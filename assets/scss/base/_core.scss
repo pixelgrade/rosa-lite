@@ -1,0 +1,128 @@
+// /*----------------------------------------*\
+//     $WORDPRESS CORE
+// \*----------------------------------------*/
+
+/**
+ * Ensure that a caption won't expand more than the content
+ */
+
+.alignnone {
+    @include rem(margin, $_u4 0 $_u);
+}
+
+.alignleft {
+    float: left;
+    @include rem(margin, $_u4 $_u2 $_u2 0);
+}
+
+.aligncenter {
+    display:block;
+    @include rem(margin, $_u4 auto $_u);
+}
+
+.alignright {
+    float: right;
+    @include rem(margin, $_u4 0 $_u2 $_u2);
+}
+
+.wp-caption {
+    @extend .cf;
+    width: auto !important;
+    max-width: 100%;
+    @include rem(margin-bottom, $_u);
+}
+
+.wp-caption-text {
+    margin-bottom: 0;
+
+    font-size:13px;
+    text-align: center;
+
+    color: $light;
+}
+
+.sticky {
+    // @empty
+}
+
+.gallery-caption {
+    // @empty
+}
+
+.bypostauthor {
+    width: auto;
+}
+
+.small-link {
+    @include font-size(12px);
+    text-transform: uppercase;
+    font-family: $alt-font-family;
+    color: $accent;
+}
+
+img[width], img[height] {
+    max-width: 100%;
+    height: auto;
+}
+
+// margin helpers
+// top
+.mt0  { @extend .flush--top; }
+.mt1  { @include rem(margin-top, 1rem !important); }
+.mt2  { @include rem(margin-top, 2rem !important); }
+.mt3  { @include rem(margin-top, 3rem !important); }
+.mt4  { @include rem(margin-top, 4rem !important); }
+// top negative
+.mt-1 { @include rem(margin-top, -1rem !important); }
+.mt-2 { @include rem(margin-top, -2rem !important); }
+.mt-3 { @include rem(margin-top, -3rem !important); }
+.mt-4 { @include rem(margin-top, -4rem !important); }
+// bottom
+.mb0  { @extend .flush--bottom; }
+.mb1  { @include rem(margin-bottom, 1rem !important); }
+.mb2  { @include rem(margin-bottom, 2rem !important); }
+.mb3  { @include rem(margin-bottom, 3rem !important); }
+.mb4  { @include rem(margin-bottom, 4rem !important); }
+// bottom negative
+.mb-1 { @include rem(margin-bottom, -1rem !important); }
+.mb-2 { @include rem(margin-bottom, -2rem !important); }
+.mb-3 { @include rem(margin-bottom, -3rem !important); }
+.mb-4 { @include rem(margin-bottom, -4rem !important); }
+
+// padding helpers
+// top
+.pt0  { @extend .hard--top; }
+.pt1  { @include rem(padding-top, 1rem !important); }
+.pt2  { @include rem(padding-top, 2rem !important); }
+.pt3  { @include rem(padding-top, 3rem !important); }
+.pt4  { @include rem(padding-top, 4rem !important); }
+// bottom
+.pb0  { @extend .hard--bottom; }
+.pb1  { @include rem(padding-bottom, 1rem !important); }
+.pb2  { @include rem(padding-bottom, 2rem !important); }
+.pb3  { @include rem(padding-bottom, 3rem !important); }
+.pb4  { @include rem(padding-bottom, 4rem !important); }
+
+// wordpress gallery
+.gallery {
+    @include rem(margin-left, -$_u4 !important);
+
+    .gallery-item {
+        @include rem(margin, 0 0 $_u2 0);
+        @include rem(padding-left, $_u4);
+    }
+
+    .gallery-icon {
+
+        img {
+            width: 100%;
+            border: 0 !important;
+        }
+    }
+
+    .gallery-caption {
+        padding: 0;
+        margin: 0;
+        line-height: 1.5;
+    }
+}

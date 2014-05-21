@@ -1,0 +1,192 @@
+/*------------------------------------*\
+    FORMS
+\*------------------------------------*/
+
+$input-height-base:              $_2u;
+
+/**
+ * Common form controls
+ *
+ * Shared size and type resets for form controls. Apply `.form-control` to any
+ * of the following form controls:
+ */
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.form-control {
+  display: block;
+  vertical-align: middle;
+  width: 100%;
+  @include rem(padding, $_u2);
+  border: 1px solid #e5e9eb;
+  outline: 0;
+
+  &:focus {
+      outline: 1px solid $accent;
+  }
+
+  .lt-ie9 & input {
+      width: 100%;
+      padding: $_u2 0;
+      border: 1px solid #e5e9eb;
+      outline: 0;
+  }
+}
+
+/**
+ * Checkboxes and radios
+ *
+ * Indent the labels to position radios/checkboxes as hanging controls.
+ */
+
+.radio,
+.checkbox {
+  display: block;
+  margin-top: $_u4;
+  margin-bottom: $_u4;
+  padding-left: $_u2;
+  vertical-align: middle;
+  label {
+    display: inline;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+  }
+}
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  float: left;
+  margin-left: $_u2;
+}
+.radio + .radio,
+.checkbox + .checkbox {
+  margin-top: -$_u4; // Move up sibling radios or checkboxes for tighter spacing
+}
+
+// Radios and checkboxes on same line
+.radio-inline,
+.checkbox-inline {
+  display: inline-block;
+  padding-left: $_u2;
+  margin-bottom: 0;
+  vertical-align: middle;
+  font-weight: normal;
+  cursor: pointer;
+}
+.radio-inline + .radio-inline,
+.checkbox-inline + .checkbox-inline {
+  margin-top: 0;
+  margin-left: $_u4; // space out consecutive inline controls
+}
+
+/** 
+  * Inline forms
+  *
+  * Make forms appear inline(-block) by adding the `.form-inline` class. Inline
+  * forms begin stacked on extra small (mobile) devices and then go inline when
+  * viewports reach <768px.
+  *
+  * Requires wrapping inputs and labels with `.form-group` for proper display of
+  * default HTML form controls and our custom form controls (e.g., input groups).
+  */
+
+.form-inline {
+
+  // Kick in the inline
+  @media (min-width: 768px) {
+    // Inline-block all the things for "inline"
+    .form-group  {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    // In navbar-form, allow folks to *not* use `.form-group`
+    .form-control {
+      display: inline-block;
+    }
+
+    // Remove default margin on radios/checkboxes that were used for stacking, and
+    // then undo the floating of radios and checkboxes to match (which also avoids
+    // a bug in WebKit: https://github.com/twbs/bootstrap/issues/1969).
+    .radio,
+    .checkbox {
+      display: inline-block;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-left: 0;
+    }
+    .radio input[type="radio"],
+    .checkbox input[type="checkbox"] {
+      float: none;
+      margin-left: 0;
+    }
+  }
+}
+
+
+
+/**
+ * Input groups
+ */ 
+
+.input-group {
+  position: relative; // For dropdowns
+  display: table;
+  border-collapse: separate; // prevent input groups from inheriting border styles from table cells when placed within a table
+
+  // Undo padding and float of grid classes
+  &.col {
+    float: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .form-control {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+
+// Display as table-cell
+.input-group-addon,
+.input-group-btn,
+.input-group .form-control {
+  display: table-cell;
+
+  &:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+}
+// Addon and addon wrapper for buttons
+.input-group-addon,
+.input-group-btn {
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle; // Match the inputs
+}
+
+
+
+
+
+
+
+
+

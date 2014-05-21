@@ -1,0 +1,11 @@
+.widget_calendar {
+
+    caption {
+        @extend .gamma;
+        @include rem(margin-bottom, $_u2);
+    }
+
+    th, td {
+        text-align: center;
+    }
+}

@@ -1,0 +1,55 @@
+/*------------------------------------*\
+               SLIDER ARROWS
+\*------------------------------------*/
+
+.rsArrow .rsArrowIcn{
+    @include rem(height, 26px);
+    @include rem(width, 26px);
+    @include rem(margin, 0 20px);
+    border-color: white;
+
+    .sub-menu--mega &{
+        @include rem(height, 20px);
+        @include rem(width, 20px);        
+    }
+}
+
+
+/**
+ * On fade transition the arrows disappear
+ */
+.rsArrow{
+    z-index: 10;
+
+    .arrows--outside &{
+        top: 0;
+        height: 100%;
+
+        .rsArrowIcn{
+            top: 45%;
+            position: relative;
+        }        
+    }    
+
+    .single-post .arrows--outside &{
+        height: 100%;
+    }    
+
+    @include media-query(palm) {
+        .billboard.arrows--outside &{
+            height: 80%;
+        }        
+    }
+
+    // To ensure a larger clickable area
+    // for the arrows
+    @include media-query(lap-and-up) {
+        .arrows--outside & {
+
+            .rsArrowIcn{
+                top: 50%;
+                position: relative;
+            }
+        }
+    }
+}

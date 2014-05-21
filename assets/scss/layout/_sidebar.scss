@@ -1,0 +1,16 @@
+/*--------------------------------*\
+               SIDEBAR
+\*--------------------------------*/
+.sidebar--main {
+	@include media-query(lap-and-up) {
+		& {
+			position: relative;
+			z-index: 5;
+
+			float: right;
+			width: $sidebar-width; 
+
+			//border-left: 1px solid $border; 
+		}
+	}
+}

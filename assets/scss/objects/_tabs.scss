@@ -1,0 +1,46 @@
+.pixcode--tabs{
+    // @extend %separator--section;
+    padding-bottom: 0;
+}
+
+.tabs__nav {
+    @extend .nav;
+    @extend .nav--block;
+    color: white;
+    background: $dark;
+    text-transform: uppercase;
+    font-family: $heading-font-family;
+    @include rem(font-size, 13px);
+    @include rem(margin-bottom, $_u);
+
+    a {
+        color: white;
+        text-decoration: none;
+
+        &.current, &:hover {
+            color: $accent;
+        }
+    }
+}
+
+.tabs__content {
+    position: relative;
+    min-height: 1px;
+    @include transition(height .2s ease-in-out);
+    // overflow: hidden;
+}
+
+.tabs__pane {
+    width: 100%;
+    position: absolute;
+    @include transition(opacity .2s ease-in-out);
+    -webkit-backface-visibility: hidden;
+    @include transform(translate3d(0,0,0));
+    // @include rem(margin-right, $_u);
+    z-index: 20;
+
+    &.hide {
+        opacity: 0;
+        z-index: 10;
+    }
+}

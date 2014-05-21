@@ -1,0 +1,105 @@
+/*-----------------------------------------*\
+               $ICON SHORTCODE
+\*-----------------------------------------*/
+
+
+.pixcode--icon {
+    display: inline-block;
+    text-align: center;
+    @include rem(font-size, 21px);
+    color: $dark;
+
+    &.square,
+    &.circle {
+        // @extend .btn;
+        // @extend .btn--negative;
+        display: inline-block;
+        background-color: $dark;
+        color: $light;
+        padding: 0;
+        
+        @include rem(font-size, 18px);
+        width: (48/18) + em;
+        height: (48/18) + em;
+        line-height: (48/18) + em;
+
+        &:hover {
+            background-color: $accent;
+            color: white;
+        }
+
+        .site__footer & {
+            background-color: #262525;
+        }
+    }
+
+    &.circle {
+        @include border-radius(999px);
+    }
+
+    &.xsmall{
+        @include rem(font-size, 14px);
+        color: white;
+
+        &.circle, &.square {
+            width: (32/16) + em;
+            height: (32/16) + em;
+            line-height: (32/16) + em;
+        }
+    }
+
+    &.small {
+        @include rem(font-size, 16px);
+
+        &.circle, &.square {
+            width: (36/16) + em;
+            height: (36/16) + em;
+            line-height: (36/16) + em;
+        }
+    }
+
+    &.medium {
+        @include rem(font-size, 21px);
+
+        &.circle, &.square {
+            width: (48/21) + em;
+            height: (48/21) + em;
+            line-height: (48/21) + em;
+        }
+    }
+
+    &.big {
+        @include rem(font-size, 36px);
+
+        &.circle, &.square {
+            width: (72/36) + em;
+            height: (72/36) + em;
+            line-height: (72/36) + em;
+        }
+    }
+}
+
+
+
+
+
+/*--------------------------------------------*\
+               ICON INSIDE A LINK
+\*--------------------------------------------*/
+
+.pixcode--icon {
+
+    a > & {
+        @include transition(all 0.15s);
+    }
+
+    a:hover > & {
+        text-decoration: none;
+        border: none;
+        color: $accent;
+  
+        &.circle, &.square {
+            background-color: $accent;
+        }
+    }
+}

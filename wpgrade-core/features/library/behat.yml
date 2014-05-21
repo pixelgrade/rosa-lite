@@ -1,0 +1,18 @@
+default:
+
+  paths:
+    features  : '.'
+    bootstrap : './../bootstrap'
+
+  extensions:
+    Behat\MinkExtension\Extension:
+      default_session: goutte
+      javascript_session: selenium2
+#     browser_name: googlechrome
+      goutte: ~
+      selenium2: ~
+
+  context:
+    class: FeatureContext
+    parameters:
+      show_cmd: 'firefox "file:///%s"'

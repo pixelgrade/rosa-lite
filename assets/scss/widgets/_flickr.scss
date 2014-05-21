@@ -1,0 +1,42 @@
+// FLICKR / INSTAGRAM
+.widget_wpgrade_flickr_widget {
+
+	.widget-title {
+		padding-bottom: 0;
+	}
+}
+
+.wpgrade-flickr-items {
+	@extend .cf;
+	border: 0 !important;
+	@include rem(margin-left, -$_u/2);
+}
+
+.wpgrade-flickr-item {
+	width: 25%;
+	float: left;
+	border: 0 solid transparent;
+	@include rem(margin-bottom, $_u/2);
+	@include rem(border-left-width, $_u/2);
+}
+
+.wpgrade-flickr-break {
+	width: 100%;
+	height: 0;
+}
+
+.wpgrade-flickr-link {
+	border: 2px solid white;
+	display: block;
+	float: left;
+	width: 100%;
+
+	img {
+		display: block;
+		width:100%;
+	}
+
+	&:hover {
+		border: 2px solid white;
+	}
+}

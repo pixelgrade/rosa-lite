@@ -1,0 +1,93 @@
+/*------------------------------------*\
+    $PAGINATIONS
+\*------------------------------------*/
+.pagination{
+    border: none;
+    text-align: center;
+    @include rem(margin, $_3u + $_u2 0);
+    padding-left: 0;
+    position: relative;
+
+    &:before{
+        content: "";
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+        border-top: 1px solid $border;
+        z-index: 1;
+
+        @include transform(translateY(50%));
+    }
+
+    &:after{
+        content: none;
+    }
+
+    li {
+        margin-bottom: 0;
+
+        a, span {
+            @include rem(padding, $_u4 $_u2);
+            border: 1px solid transparent;
+            position: relative;
+            z-index: 2;
+            
+            @include font-size(16px);
+            text-transform: uppercase;
+
+            color: $light;
+            background: white;
+
+            @include transition(all .15s linear);
+        }
+
+        a:hover{
+            color: white;                
+            background-color: $accent;
+            border-bottom: 1px solid transparent;
+        }
+
+        span.current{
+            color: $dark;
+            border: 1px solid $border;
+        }
+    }    
+
+    .inf_scroll &{
+        display: none;
+    }
+}
+
+.page-numbers.prev, .page-numbers.next{
+    position: absolute;
+    top: 0;
+
+    color: $dark;    
+
+    &.disabled{
+        color: #F0F0F0 !important;    
+        pointer-events: none;   
+    }
+}
+
+.page-numbers.prev{
+    left: 0;
+
+    &:before{
+        content: "\2190";
+        margin-right: $_u2;
+    }
+}
+
+.page-numbers.next{
+    right: 0;
+
+    &:after{
+        content: "\2192";
+        margin-left: $_u2;
+    }
+}

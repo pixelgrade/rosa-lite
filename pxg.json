@@ -1,0 +1,18 @@
+{
+	"interface": "1.1.0",
+
+	"wp-cores": [
+		{
+			"repo": "git@github.com:pixelgrade/wpgrade-core.git",
+			"path": "wpgrade-core",
+			"version": "3.4.7",
+			"features": {
+				"src": "features/available",
+				"local": "wpgrade-core/features/enabled",
+				"ensure": [
+					"user-404"
+				]
+			}
+		}
+	]
+}

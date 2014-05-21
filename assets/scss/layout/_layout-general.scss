@@ -1,0 +1,55 @@
+/*--------------------------------*\
+            LAYOUT GENERAL
+\*--------------------------------*/
+/*	
+	<body>
+	<div class="wrapper">
+		<div class="container">
+			<div class="site-header"></div>			// _header.scss
+
+			<div class="content">					// _content.scss
+				<div class="page-content"></div>
+				<div class="sidebar--main"></div>	// _sidebar.scss
+			</div>
+			
+			<div class="site-footer"></div>			// _footer.scss
+		</div>
+	</div>
+	</body>
+ */
+
+html.nicescroll{
+	overflow: hidden;
+}
+
+body{
+	background-color: #eeeeee;
+}
+
+.wrapper{
+
+	@include media-query(palm) {
+		margin: 0;
+	}
+}
+
+.content{
+	position: relative;
+}
+
+	.container{
+		max-width: $content-width;
+		margin: 0 auto;
+		padding: 1px 96px;
+
+		padding-top: 206px;
+		
+		background-color: white;
+
+		@include translate(padding-top .1s linear);
+
+		@include media-query(palm) {
+			padding: 0px 15px;
+			margin-top: 0 !important;
+		}
+	}

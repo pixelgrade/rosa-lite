@@ -1,0 +1,37 @@
+// DRIBBBLE WIDGET
+.widget_wpgrade_dribbble_widget {
+
+	.widget-title {
+		padding-bottom: 0;
+	}
+}
+
+.wpgrade-dribbble-items {
+	@extend .cf;
+	border: 0 !important;
+	@include rem(margin-left, -$_u/2);
+}
+
+.wpgrade-dribbble-item {
+	width: 50%;
+	float: left;
+	border: 0 solid transparent;
+	@include rem(margin-bottom, $_u/2);
+	@include rem(border-left-width, $_u/2);
+}
+
+.wpgrade-dribbble-link {
+	border: 2px solid white;
+	display: block;
+	float: left;
+	width: 100%;
+
+	img {
+		display: block;
+		width:100%;
+	}
+
+	&:hover {
+		border: 2px solid white;
+	}
+}

@@ -1,0 +1,292 @@
+/*---------------------------------*\
+               $WIDGET
+\*---------------------------------*/
+
+.widget {
+    padding: $_u;
+    padding-right: 0;
+
+    @include media-query(palm) {
+        padding-left: 0;
+    }
+
+    border-bottom: 1px solid $border;
+
+    @include font-size(14px);
+
+    &:last-child{
+        border-bottom: 0;
+    }
+
+    select {
+        max-width: 100%;
+    }
+
+    a{
+        @extend .link--dark;
+    }
+}
+
+.widget--main {
+    @include rem(margin-bottom, $_u);
+}
+
+.widget__title{
+    margin-top: 0;
+
+    @extend .delta;
+    text-transform: uppercase;
+}
+
+
+.widget--footer {
+    @include rem(margin-bottom, $_2u);
+}
+
+.widget--footer__title {
+    // @extend .heading;
+    // @extend .heading--footer;
+
+    em {
+        color: $accent;
+        font-style: normal;
+    }
+}
+
+
+
+
+
+/*-----------------------------------*\
+               TAG CLOUD
+\*-----------------------------------*/
+
+.widget_tag_cloud {
+
+    .wp-tag-cloud {
+        @extend .btn-list;
+    }
+
+    a {
+        @extend .btn;
+        @extend .btn--negative;
+        @include rem(font-size, 12px !important);
+
+        margin-bottom: 5px;
+    }
+
+    &.widget--main {
+
+        a {
+            background-color: #eee;
+            color: #555;
+        }
+    }
+}
+
+
+
+
+
+/*-----------------------------------------*\
+               WIDGET NAV MENU
+\*-----------------------------------------*/
+
+// rename and @extend this
+
+/*ul*/.menu--list {
+    margin: 0;
+    list-style: none;
+    @include rem(margin-top, -$_u4);
+
+    > li {
+        
+        a {
+            display: block;
+            @include rem(padding, $_u4 0);
+        }
+    }
+}
+
+.widget_nav_menu, .widget_categories, .widget_meta {
+    
+    ul {
+        @extend .menu--list;
+        @extend .multi-list;
+        @extend .two-cols;
+
+        ul {
+            display: none;
+        }
+    }
+}
+
+.widget_archive, .widget_pages, .widget_recent_comments, .widget_rss, .widget_recent_posts, .widget_recent_entries {
+
+    ul {
+        @extend .menu--list;
+
+        ul {
+            display: none;
+        }
+    }   
+}
+
+.widget--sidebar__title .rsswidget {
+
+    img {
+        display: none;
+    }
+}
+
+.widget_rss .widget--footer__title .hN {
+    color: $accent;
+}
+
+.widget {
+
+    select {
+        width: 100%;
+        @include rem(padding-left, $_u4);
+        // ??? @include rem(height, $_u + $_u2);
+    }
+}
+
+
+
+
+
+.widget_image img.alignnone{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.widget_wpgrade_posts_slider_widget{
+    .article--slider{
+        margin-bottom: 0;
+    }
+
+    .rsArrow{
+        top: 30%;
+
+        .rsArrowIcn{
+            height: 28px;
+            width: 28px;
+        }
+    }
+}
+
+/**
+ * Maybe it's good, maybe it's not...
+ */
+
+.widget_categories, .widget_recent_comments, .widget_archive{
+    ul > li a{
+        display: inline-block !important;
+    }
+}
+
+@include media-query(palm) {
+    .widget_recent_entries, .widget_recent_comments, .widget_rss, .widget_categories
+    { 
+        a{
+            text-decoration: underline;
+        }
+    }
+}
+
+.widget_rss li{
+    margin-bottom: $_u2;
+}
+
+.widget_rss li > cite:before{
+    content: '-';
+    margin-right: 5px;
+}
+
+.widget_rss .rsswidget{
+    font-weight: bold;
+}
+
+.rss-date{
+    font-style: italic;
+}
+
+.widget--footer.widget_text .wp-caption-text {
+    background-color: $dark;
+    color:$light;
+}
+
+
+
+
+
+.widget_wpgrade_social_links{
+    @extend .cf;
+
+    .widget__title{
+        margin-bottom: 0;
+        margin-right: $_u2;
+        margin-top: 8px;
+    }
+
+    .widget__title, .btn-list{
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .btn-list{
+        float: right;
+        margin: $_u4 0;
+    }
+
+    .btn-list a{
+        margin: 0 5px 5px 0;
+    }
+}
+
+
+.wpgrade_popular_posts{
+    a{
+        @extend .cf;
+    }
+
+    h4{
+        margin: 0;
+    }
+
+    @include media-query(palm) {
+        .article--list{
+            margin-bottom: $_u2;
+        }
+    }
+
+
+    @include media-query(lap-and-up) {
+
+        .article__img{
+            max-width: 72px;
+        }
+    }
+
+    .article--list{
+        margin-bottom: $_u;
+    }
+
+    .article--list__title{
+        margin: 0;
+    }    
+
+    .article--list:last-child{
+        margin-bottom: 0;
+    }
+
+    .article__category{
+        @extend .text-link;
+
+        vertical-align: top;
+
+        @include font-size(11px);
+        line-height: 11px;
+    }
+}

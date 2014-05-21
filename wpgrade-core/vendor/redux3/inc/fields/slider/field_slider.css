@@ -1,0 +1,18 @@
+.customize-control-slider .redux-container-slider .redux-slider-container {
+  margin-left: 25px;
+  margin-right: 25px;
+  width: 200px;
+  display: inline-block; }
+.customize-control-slider .redux-container-slider .redux-slider-input, .customize-control-slider .redux-container-slider .redux-slider-select-one, .customize-control-slider .redux-container-slider .redux-slider-select-two {
+  width: 100px !important;
+  text-align: center; }
+.customize-control-slider .redux-container-slider .redux-slider-label {
+  position: absolute;
+  margin-left: -5px; }
+.customize-control-slider .redux-container-slider .redux-slider-label-one {
+  position: absolute;
+  margin-left: -22px; }
+.customize-control-slider .redux-container-slider .redux-slider-label-two {
+  position: absolute;
+  margin-top: -21px;
+  margin-left: 245px; }

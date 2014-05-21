@@ -1,0 +1,11 @@
+/*------------------------------------*\
+    $GRID
+\*------------------------------------*/
+// We need these to get rid of the html comments in the grid shortcode
+.pixcode--grid {
+    @extend .cf;
+
+    > .grid__item {
+        float: left;
+    }
+}

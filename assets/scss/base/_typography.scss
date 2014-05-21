@@ -1,0 +1,267 @@
+/*------------------------------------*\
+               TYPOGRAPHY
+\*------------------------------------*/
+
+//@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700);
+
+body{
+    font-size:16px;
+    line-height: 1.625;
+    color:$gray;
+
+    @include media-query(lap-and-up) {
+        font-weight: 300;
+    }
+}
+
+
+
+/*------------------------------------*\
+               LINKS
+\*------------------------------------*/
+
+a {
+    text-decoration: none;
+
+    &, &:hover {
+        color: $accent;
+    }
+}
+
+.link--light{
+    color: $lightest;
+}
+
+.link--dark{
+    color: $dark;
+}
+
+.link--light, .link--dark{
+    &:hover{
+        color: $accent;
+    }
+}
+
+.text-link{
+    @extend .link--light;
+
+    @include font-size(14px);
+    text-transform: uppercase;
+}
+
+
+
+/*------------------------------------*\
+               HEADINGS
+\*------------------------------------*/
+
+h1, h2, h3, h4, h5, h6, hgroup, .hN {
+    font-family: $heading-font-family;
+    @include rem(margin-top, $_15u);
+    color:$dark;
+}
+
+.article__title, .article__title .hN, .widget__title .hN, .heading .hN {
+    margin-top: 0;
+}
+
+.heading{
+    margin-bottom: $_u;
+
+    h2{
+        display: inline-block;
+        margin-bottom: 0;
+    }
+
+    .archive__side-title{
+        @extend .beta;
+
+        font-weight: bold;
+        color: $light;
+    }
+}
+
+//Headings scaling - based on
+//http://typecast.com/blog/a-more-modern-scale-for-web-typography
+
+$lap-scale-size: 0.83;
+
+@include screen(601px, 999px) {
+    h1,.alpha{
+        font-size: $h1-size*$lap-scale-size;
+    }  
+}
+
+
+$palm-scale-size: 0.60;
+
+@include max-screen(600px) {
+    h1,.alpha{
+        font-size: $h1-size*$palm-scale-size;
+    }
+    h2,.beta{
+        font-size: $h2-size*$lap-scale-size; 
+    }
+    h3,.gamma{
+        font-size: $h3-size*$lap-scale-size;
+    }
+    blockquote {
+        font-size: 18px;
+    }    
+}
+
+@include media-query(palm) {
+    body{
+        font-size: 18px/30px;
+    }
+}
+
+
+/*------------------------------------*\
+               BLOCKQUOTES
+\*------------------------------------*/
+
+blockquote {
+    margin: $_15u 0;
+    
+
+    @include font-size(20px);
+    line-height: 1.5;
+    font-family: $heading-font-family;
+    text-indent: 0;
+
+    color: $light;
+
+    quotes: none;
+
+    @include media-query(lap-and-up){
+        padding-left: $_15u;
+    }
+
+    &:before{
+        content: none;
+    }
+
+    cite, .testimonial__author-name {
+        @extend .cf;
+        display: block;
+
+        margin-top: $_u2;
+        color: $dark;
+
+        @include font-size(16px);
+        font-style: normal;
+        font-weight:400;
+
+        &:before{
+            content: "";
+            width: $_15u;
+            display: block;
+            float: left;
+            margin-right: $_u2;
+            margin-top: $_u2;
+            border-top: 1px solid $border;
+        }
+    }
+}
+
+
+
+/*------------------------------------*\
+               TABLES
+\*------------------------------------*/
+
+.table--bordered{
+    @include font-size(14px);
+
+    th,
+    td{
+        border: 0;
+
+        &:empty{
+            border:inherit;
+        }
+    }
+}
+
+.table--striped{
+
+    tbody tr:nth-of-type(odd){
+        background-color: $border;
+    }
+}
+
+table {
+    @extend .table--bordered;
+    @extend .table--striped;
+}
+
+
+
+
+
+/*------------------------------------*\
+               LISTS
+\*------------------------------------*/
+
+ol{
+    margin-top: $_u;
+    margin-bottom: $_u;
+
+    ul &, ol &, dl & {
+        @include rem(margin-left, $_15u);
+        border-left: 0;
+        padding-left: 0;
+    }
+
+    li{
+        margin-bottom: $_u4;
+    }
+
+    @include media-query(palm){
+        @include rem(margin-left, $_u);
+    }
+}
+
+dl {
+
+}
+
+dt {
+    font-weight: bold;
+
+    dd + & {
+        @include rem(margin-top, $_u);
+    }
+}
+
+dd {
+    margin-left: 0;
+}
+
+ol.breadcrumb{
+    margin: $_u 0 $_u2; 
+
+    text-transform: uppercase;
+    font-size:12px;
+    line-height:1;
+    
+    color: $light;
+
+    a{
+        color: $light;
+
+        &:hover{
+            color: $accent;
+        }
+    }
+}
+
+
+/*
+ * Font-weight
+ */
+b,
+strong {
+  font-weight: 600;
+}

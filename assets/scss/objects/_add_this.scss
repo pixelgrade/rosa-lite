@@ -1,0 +1,65 @@
+.add_this_list{
+
+	@include media-query(palm) {
+		float: left;
+		margin: $_u2 0;
+	}
+
+	@include media-query(lap-and-up) {
+		float: right;
+	}
+
+	border: 1px solid $border;
+
+	a, .totals{
+		display: inline-block;
+		float:none !important;
+		padding: $_u4;
+		vertical-align: top;
+		border-left: 1px solid $border;
+
+		color: $light;
+		text-align: center;
+	}
+
+	a{
+		padding: 4px !important;
+
+		&:first-child{
+			border-left: 0;
+		}
+	}
+
+	.totals{
+		height: 40px;
+		padding: $_u4 $_u2;
+	}
+
+	.totals-text{
+		@include font-size(12px);
+	}
+
+	a:hover{
+		color: $accent;
+		& > span {
+			opacity:1;
+		}
+	}
+
+	li{
+		border-right: 1px solid $border;
+	}
+
+	li:last-child{
+		border: none;
+	}
+}
+
+.addthis_32x32_style .addthis_counter.addthis_bubble_style {
+	background:none !important;
+}
+
+.addthis_32x32_style .dummy .at300bs, .addthis_32x32_style .at300bs, .addthis_32x32_style .at15t {
+	background: url(../images/addThis_32x32_pxg.png) no-repeat left;
+	opacity:0.3;
+}

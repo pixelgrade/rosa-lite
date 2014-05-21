@@ -1,0 +1,322 @@
+/*--------------------------------*\
+               HEADER
+\*--------------------------------*/
+.site-header{
+    
+}
+
+
+
+/*----------------------------------------*\
+    $LAYOUT
+\*----------------------------------------*/
+.site-header{   
+    
+    @include media-query(palm) {
+        // @include transition(height 0.15s);
+
+        .site-header__description{
+            display: none;
+        }
+    }
+
+    @include media-query(lap-and-up) {
+        .site-header__container {
+            margin: 0 auto;
+        }
+
+        .header {
+            @include transition(padding 0.15s);
+        }
+
+        li.menu-trigger{
+            display: none;
+        }
+    }
+
+
+    .header-component{
+        @extend .flexbox__item;
+        @extend .lap-and-up-one-third;
+    }
+
+    .header-component--left{
+        text-align: left;
+    }    
+
+    .header-component--right{
+        text-align: right;
+    }
+
+    @include media-query(palm) {
+        .header-component--left, .header-component--right{
+            width: 20%;
+        }
+
+        .header-component--left .site-header__menu li.menu-trigger{
+            display: block;
+        }
+
+        .header-component--right .site-header__menu li.search-trigger{
+            display: block;
+        }
+
+        .header-component--center{
+            width: 60%;         
+        }
+    }
+}
+
+// For Firefox and Opera to obey width
+.header.flexbox{
+    table-layout: fixed;
+}
+
+.header, .navigation--main{
+    // max-width: $content-width;
+}
+
+
+/*----------------------------------------*\
+    $TITLE/LOGO
+\*----------------------------------------*/
+.site-title{
+	text-align: center;
+
+    a{
+        display: block;        
+    }
+}
+
+.site-title{
+    margin: 0;
+}
+
+.site-title--small{
+    margin-bottom: 0;
+    // display: none;
+
+    font-size:0;
+    text-transform: uppercase;
+
+    @include media-query(lap-and-up) {
+        @include transition(font-size 0.15s);
+    }
+    
+    a { @extend .link--dark; }
+    img { 
+        max-height: 0; 
+
+        @include media-query(lap-and-up) {
+            @include transition(max-height 0.20s ease-out);
+        }
+    }
+}
+
+.site-title--image{
+    margin: 0 auto;
+    display:block;
+
+    @include media-query(palm) {
+        max-width: 50%;
+    }
+
+    img {
+        display:block;
+        margin: 0 auto;
+
+        @include media-query(palm) {
+            max-height: 70px !important;
+            padding: 12px 0;
+        }
+
+        @include media-query(lap-and-up) {
+            @include transition(max-height 0.15s ease-out);  
+        }
+
+    }
+}
+
+.site-title--text {
+    @include media-query(lap-and-up) {
+        @include transition(font-size 0.15s);
+    }
+}
+
+.site-header__description{
+    margin-top: $_u4;
+    margin-bottom: 0;
+    color: $light;
+    text-align: center;
+    text-transform: uppercase;
+    font-size:12px;
+    font-weight: 500;
+    letter-spacing:1px;
+
+    @include media-query(lap-and-up) {
+        @include transition(all 0.15s);
+    }
+}
+
+
+
+
+/*----------------------------------------*\
+    $MENUS
+\*----------------------------------------*/
+.site-header__menu{
+    @extend .nav;
+
+    margin-bottom: 0;
+
+    a {
+        @extend .link--dark;
+
+        padding: $_u2;
+
+        font-size:26px;
+        @include transition(all 0.15s);
+
+    }
+    @include media-query(palm) {
+        li{
+            display: none;
+        }
+    }
+
+    // .header-component--left & li{
+    //     margin-right: 5px;
+    // }
+
+    // .header-component--right & li{
+    //     margin-left: 5px;
+    // }
+}
+
+
+
+/*----------------------------------------*\
+    $STICKY HEADER (state)
+\*----------------------------------------*/
+.header--sticky{
+
+    .site-header__wrapper{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+
+        @include media-query(palm) {
+            position: static;
+            border-bottom: 1px solid $border;
+        }
+    }
+
+    // &.admin-bar .site-header__wrapper{
+    //     @media screen and (max-width: 782px){
+    //         padding-top: 46px;
+    //     }
+
+    //     @media screen and (min-width: 783px){
+    //         padding-top: 32px;
+    //     }            
+    // }    
+
+    .site-header__container{
+        position: relative;
+
+        max-width: $content-width;
+        margin-bottom:0;
+        // margin-bottom:0;
+        margin-left: auto;
+        margin-right: auto;
+
+        .flexbox, .navigation--main{
+
+            padding-left: 12px;            
+            padding-right: 12px;
+            @include media-query(lap-and-up) {
+                padding-left: 96px;            
+                padding-right: 96px;            
+            }
+        }
+
+    }   
+
+}
+
+@include media-query(lap-and-up) {
+    .admin-bar.header--sticky .site-header__wrapper{
+        top: 32px;
+    }
+}
+
+@include media-query(lap-and-up) {
+    .header--small {
+        .site-header__container {
+            padding-top:0;
+        }
+        .header {
+            padding-bottom:0;
+            padding-top: 0;
+        }
+
+        .site-header__branding {
+            // height: 17px;
+        }
+        .site-title--text {
+            font-size:17px;
+        }
+
+        .site-title--image img {
+            max-height:0;
+        }
+
+        .site-header__description {
+            font-size:0;
+            margin-top:0;
+        }
+
+        .site-title--small{
+            font-size:17px;
+            img {
+                height: 30px;
+            }
+        }
+        .site-header__menu a {
+             @include font-size(16px);
+        }
+
+        .navigation--main {
+            max-height: 0;
+            border-bottom-width:0;
+            overflow:hidden;
+        }
+
+        .site-header {
+            @include transition(height 0.5s);
+        }
+    }
+}
+
+
+@include media-query(lap-and-up) {
+    .header--active {
+        .navigation--main {
+            max-height: 8em;
+            border-bottom-width:1px;
+        }
+
+        &.visible .navigation--main {
+            overflow:visible;
+        }
+    }
+}
+
+
+
+
+
+
+

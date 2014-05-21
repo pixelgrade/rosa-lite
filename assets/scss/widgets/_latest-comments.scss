@@ -1,0 +1,59 @@
+/*------------------------------------------------*\
+               $LATEST COMMENTS WIDGET
+\*------------------------------------------------*/
+
+.widget--latest-comments {
+    padding-bottom: 0;
+}
+
+.latest-comments__list {
+    @extend .media;
+    @include font-size(13px);
+}
+
+.latest-comments__author {
+    font-family: $heading-font-family;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    color: $dark;
+}
+
+.latest-comments__avatar {
+    @extend .media__img;
+    @include rem(margin-right, $_u2);
+}
+
+.latest-comments__body {
+    @extend .media__body;
+    color: $lightest;
+
+    p{
+        margin-bottom: 0;
+    }
+}
+
+.latest-comments__title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    font-weight: bold;
+}
+
+.latest-comments__content {
+    @include rem(margin-top, $_u2);
+    line-height: 1.4;
+}
+
+.widget--footer {
+
+    .latest-comments__title {
+        background-color: #262525;
+        color: #e2e2e2;
+    }
+
+    .latest-comments__body {
+        border-bottom-color: #262525;
+    }
+}

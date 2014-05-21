@@ -1,0 +1,55 @@
+/*-------------------------------*\
+               $BADGE
+\*-------------------------------*/
+
+.badge {
+    width: 2.5em;
+    padding: .15em 0;
+    font-family: $heading-font-family;
+    @include font-size(16px);
+    position: relative;
+    text-align: center;
+    background-color: $accent;
+    color: white;
+
+    &:after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        border: 0 solid transparent;
+        @include rem(border-width, $_u4 $_u2);
+        border-left: 0;
+        border-top-color: $dark;
+    }
+}
+
+    .badge__text {
+        display: block;
+        text-transform: uppercase;
+        @include rem(font-size, 10px);
+        margin-top: -.2em;
+        margin-bottom: .4em;
+    }
+
+.badge--article {
+    position: absolute;
+    @include rem(top, $_u2);
+    @include rem(right, -$_u2);
+    @include rem(font-size, 24px);
+    z-index: 30;
+}
+
+.badge--article--list {
+    width: 2em;
+    @include rem(padding, 4px 0);
+    @include rem(font-size, 16px);
+}
+
+.badge--review {
+    display: inline-block;
+    @include rem(margin-right, -3 * $_u2);
+}

@@ -1,0 +1,407 @@
+/*----------------------------------------*\
+*   $CONTENTS
+\*----------------------------------------*/
+/**
+ * Comments ................ styling of the comment list
+ * Comment form ............ styling of the comment form
+ */
+
+
+
+
+
+
+/*----------------------------------------*\
+*   $COMMENTS
+\*----------------------------------------*/
+.comments-area{
+    position: relative;
+    padding-bottom: $_2u;
+
+    &:before{
+        content: "";
+
+        position: absolute;
+        left: 20px;
+        top: 0;
+
+        border-left: 1px solid $border;
+        height: 100%;
+    }
+
+    &.no-comments {
+        padding:0;
+        
+        &:before{
+            content: none;
+        }
+    }
+}
+
+.comment-number{
+    width: 42px;
+    height: 42px;
+
+
+    border: 1px solid $border;
+    
+    @include font-size(14px);
+    line-height: 42px;
+    text-align: center;
+
+    color: $lightest;
+    background: white;
+
+    &.total {
+        margin-right: $_u2;
+    }
+}
+
+.comment-number--dark{
+    @extend .comment-number;
+
+    border: 1px solid $dark;
+    display: inline-block;
+
+    background-color: $dark;
+    color: white;
+    
+    @include font-size(20px);
+    line-height: 42px;
+    font-weight: 500;
+}
+
+.comments-area-title, .comment-reply-title {
+    @extend .cf;
+    margin-top: $_15u !important;
+    margin-bottom: $_2u;
+
+    h3, a{
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    h3{
+        margin: 0;
+        margin-right: $_u4;
+    }
+
+    .comment-number.total{
+        @extend .comment-number--dark;
+
+        position: relative;
+        z-index: 1;
+    }
+}
+
+    .comment-reply-title {
+        margin-bottom:$_u;
+    }
+
+.commentlist > .comment, .commentlist > .pingback {
+    padding-left: 60px;    
+}
+
+.comment, .pingback {
+    position: relative;
+
+    .comment-number {
+        position: absolute;
+        left: 0;
+        top: 24px;
+        z-index: 1;
+
+        @include media-query(palm) {
+            left: -60px;
+        }
+    }
+}
+
+@include media-query(palm) {
+    .depth-1 > .comment-article > .comment-number {
+        left: 0;
+    }
+}
+
+
+
+.comments_add-comment {
+    @extend .btn;
+    @extend .btn--primary;
+
+    padding: 3px 9px;
+    margin-top: 3px; 
+    font-size: 12px;    
+    text-transform: uppercase;
+}
+
+
+.commentlist {
+    @extend .nav;
+    list-style: none;
+    @include rem(margin-top, -$_u);
+    @include rem(margin-bottom, -$_u);
+    margin-left: 0;
+    border-left: 0;
+    padding-left: 0;
+}
+
+li.comment, li.pingback{
+    display: block;
+    margin-bottom: 0;
+    @include rem(padding-top, $_u);
+
+    .children{
+        position: relative;
+        margin-left: 0;
+        @include rem(margin-top, -$_u);
+
+        li{
+            @include media-query(lap-and-up){
+                padding-left: 72px;
+
+                &:before{
+                    content: "";
+
+                    position: absolute;
+                    top: 45px;
+
+                    border-top: 1px solid $border;
+                }
+            }
+
+            .comment-number{
+                border: 1px solid #eeeeee;
+
+                background: #eeeeee;
+                color: $gray;
+            }            
+        }
+    }
+}
+
+$first-padding-unit: 40px;
+$second-padding-unit: 72px;
+
+li.depth-2:before{
+    left: -$first-padding-unit;
+    width: 60px;    
+}
+@include media-query(lap-and-up) {
+    @for $i from 3 through 10 {
+        li.depth-#{$i}:before{
+            left: - ( $first-padding-unit + $second-padding-unit * ( $i - 2 ) );
+            width: $first-padding-unit + $second-padding-unit * ( $i - 2 );
+        }
+    }
+}
+.comment__meta{
+    @include font-size(12px);
+}
+
+.comment__author-name{
+    @include font-size(14px);
+    font-style: normal;
+    font-weight: bold;
+
+    a{ @extend .link--dark; }
+}
+
+.comment-article {
+    margin-bottom: 0;
+
+    &:hover {
+        .comment-edit-link, .comment-reply-link {
+            opacity: 1;
+        }
+    }
+}
+
+.comment__avatar {
+    @include rem(margin-right, $_u2);
+}
+
+.comment__time{
+   
+}
+
+.comment__timestamp{
+    color: $light;
+}
+
+.comment__avatar {
+    @include rem(margin-bottom, $_u);
+}
+
+.comment__content {
+    position: relative;
+
+    @include rem(margin-bottom, $_u);
+
+    @include font-size(14px);
+
+    color: $light;
+}
+
+.comment__links {
+    display: inline-block;
+    margin-left: $_u2;
+
+    @include font-size(12px);
+    font-family: $alt-font-family;
+}    
+
+.comment-edit-link, .comment-reply-link {
+    color: $light;
+    opacity: 0;
+    @include rem(margin-right, $_u2);
+    @include transition(opacity .15s ease-in-out);
+    @include transform(translateZ(0));
+}
+
+    .comment-reply-link {
+        color: $accent;
+    }
+
+.logged-in-as{
+    @extend .grid__item;
+    @extend .one-whole;
+    @include rem(margin, -$_u2 0);
+}
+
+.comment-reply-title {
+    margin-top: 0;
+}
+
+.comment-respond{
+    position: relative;
+    margin-top: -$_2u;
+
+    @include media-query(lap-and-up) {
+        padding-left: 58px;
+        .comment-reply-title {
+            margin-left:-58px;
+        }
+    }
+}
+
+#cancel-comment-reply-link{
+    position: absolute;
+    @include rem(bottom, $_u);
+    left: 0;
+    z-index: 5;
+    text-decoration: none;
+    font-style: normal;
+}
+
+
+
+
+
+/*----------------------------------------*\
+*   $COMMENT_FORM
+\*----------------------------------------*/
+.comment-form{
+    @extend .grid;
+
+    label{
+        display: none;
+    }
+
+    .lt-ie9 & {
+        label{
+            display: block;
+        }
+    }
+
+    input, textarea{
+        outline: 0 !important;
+        @include font-size(14px);
+        font-weight:300;
+    }
+}
+
+.comment-form-author,
+.comment-form-email,
+.comment-form-url{
+    @extend .grid__item;
+    @extend .one-third;
+
+    label{
+        display: none;
+    }
+
+    input{
+        padding: $_u4 0;
+
+        border: none;
+        border-bottom: 1px solid $border;
+
+
+        @include placeholder {
+            font-style: normal;
+            font-weight: 300;
+        }
+    }
+
+    .lt-ie9 & {
+        width: 30%;
+        float: none;
+        display: inline-block;
+    }
+}
+
+.comment-form-comment,
+.form-submit,
+.comment-subscription-form {
+    @extend .grid__item;
+    @extend .one-whole;
+
+    textarea{
+        padding: 0;
+        border: 0;
+        border-bottom: 1px solid $border;
+
+
+        background: url('../images/textarea-bg1.png') scroll;
+        line-height: 26px;
+    }
+}
+
+/**
+ * !Important stuff here to override wordpress styles...
+ */
+.form-submit #comment-submit {
+    @extend .btn;
+    @extend .btn--primary;
+
+    text-transform: uppercase;
+    float: right;
+
+    .lt-ie9 & {
+        width: 100px;
+    }
+}
+
+
+.add-comment{
+    margin-top: $_2u;
+    
+    .add-comment__button{
+        @extend .comment-number--dark;
+
+        position: relative;
+        z-index: 1;
+
+        margin-right: $_u2;
+        
+        font-size: 25px;
+        line-height: 30px;
+    }
+
+    .add-comment__text{
+        @extend .gamma;
+
+        font-weight: bold;
+    }
+}
