@@ -18,7 +18,7 @@ return array
 
 		// define the starting tab for the option panel
 		//'last_tab' => '0', # default: '0'
-		'global_variable'   => 'heap_readux',
+		'global_variable'   => 'rosa_redux',
 		// Define the option panel stylesheet. Options are 'standard', 'custom',
 		// and 'none'. If only minor tweaks are needed, set to 'custom' and
 		// override the necessary styles through the included custom.css

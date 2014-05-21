@@ -9,8 +9,8 @@
  *
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package Heap
- * @since Heap 1.0
+ * @package Rosa
+ * @since Rosa 1.0
  */
 
 get_header();

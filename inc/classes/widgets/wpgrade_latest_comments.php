@@ -65,7 +65,7 @@ class wpgrade_latest_comments extends WP_Widget {
 							<a class="latest-comments__title" href="<?php echo $comment->guid; ?>"><?php echo $comment->post_title; ?></a>
 						</div>
 						<div class="latest-comments__content">
-							<a href="<?php echo $comment->guid; ?>"><p><?php echo heap::limit_words(strip_tags(get_comment_text($comment->comment_ID)), 25, ' [&hellip;]'); ?></p></a>
+							<a href="<?php echo $comment->guid; ?>"><p><?php echo rosa::limit_words(strip_tags(get_comment_text($comment->comment_ID)), 25, ' [&hellip;]'); ?></p></a>
 						</div>
 					</div>
 				</article>

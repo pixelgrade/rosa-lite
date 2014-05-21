@@ -141,7 +141,7 @@
 //
 //					});
 //
-////					value.on('change', '#customize-control-heap_options-main_color .wp-color-picker', function( newval ) {
+////					value.on('change', '#customize-control-rosa_options-main_color .wp-color-picker', function( newval ) {
 ////						console.log(newval);
 ////						$( 'body .article--blog .article__categories a' ).css({color: '#111'} );
 ////					} );

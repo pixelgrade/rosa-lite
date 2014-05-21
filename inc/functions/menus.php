@@ -24,7 +24,7 @@
 		$theme_locations = get_nav_menu_locations();
 
 //		if (isset($theme_locations["main_menu"]) && ($theme_locations["main_menu"] != 0)) {
-//			require_once(wpgrade::themefilepath('inc/WPGrade_Heap_Walker_Nav_Menu.php'));
+//			require_once(wpgrade::themefilepath('inc/WPGrade_Rosa_Walker_Nav_Menu.php'));
 			
 			$args = array
 				(

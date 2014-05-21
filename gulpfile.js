@@ -1,7 +1,7 @@
 /*
  * Variables
  */
-var theme 		= 'heap',
+var theme 		= 'rosa',
 	cssPath 	= './assets/css/',
 	scssPath 	= './assets/scss/',
     jsPath 		= './assets/js/',
@@ -183,7 +183,7 @@ gulp.task('production-nested', function() {
 gulp.task('zip', ['build'], function(){
 
 	return gulp.src('./')
-		.pipe(exec('cd ./../; rm -rf heap.zip; cd ./build/; zip -r -X ./../heap.zip ./heap; cd ./../; rm -rf build'));
+		.pipe(exec('cd ./../; rm -rf rosa.zip; cd ./build/; zip -r -X ./../rosa.zip ./rosa; cd ./../; rm -rf build'));
 
 });
 
@@ -193,7 +193,7 @@ gulp.task('zip', ['build'], function(){
 gulp.task('copy-folder', ['production-nested', 'scripts'], function(){
 
 	return gulp.src('./')
-		.pipe(exec('rm -Rf ./../build; mkdir -p ./../build/heap; cp -Rf ./* ./../build/heap/'));
+		.pipe(exec('rm -Rf ./../build; mkdir -p ./../build/rosa; cp -Rf ./* ./../build/rosa/'));
 });
 
 /**
@@ -222,7 +222,7 @@ gulp.task('build', ['copy-folder'], function(){
 	];
 
 	files_to_remove.forEach( function(e,k){
-		files_to_remove[k] = '../build/heap/' + e;
+		files_to_remove[k] = '../build/rosa/' + e;
 	});
 
 	return gulp.src( files_to_remove, { read: false } )

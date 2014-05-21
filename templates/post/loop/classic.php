@@ -28,8 +28,8 @@ if (wpgrade::option('blog_infinitescroll')) {
 
 <div class="page-content  blog-archive <?php echo $classes ?>">
 	<?php if ($has_sidebar) echo '<div class="page-content__wrapper">'; ?>
-	<?php if (wpgrade::option('blog_show_breadcrumb')) heap::the_breadcrumb(); ?>
-	<?php heap::the_archive_title(); ?>
+	<?php if (wpgrade::option('blog_show_breadcrumb')) rosa::the_breadcrumb(); ?>
+	<?php rosa::the_archive_title(); ?>
 
 	<?php //first the sticky posts
 	// get current page we are on. If not set we can assume we are on page 1.

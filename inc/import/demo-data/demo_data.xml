@@ -26,14 +26,14 @@
         >
 
     <channel>
-        <title>Heap</title>
-        <link>http://pixelgrade.com/demos/heap</link>
+        <title>Rosa</title>
+        <link>http://pixelgrade.com/demos/rosa</link>
         <description>A blog for collecting things</description>
         <pubDate>Tue, 08 Apr 2014 07:29:02 +0000</pubDate>
         <language>en-US</language>
         <wp:wxr_version>1.2</wp:wxr_version>
-        <wp:base_site_url>http://pixelgrade.com/demos/heap</wp:base_site_url>
-        <wp:base_blog_url>http://pixelgrade.com/demos/heap</wp:base_blog_url>
+        <wp:base_site_url>http://pixelgrade.com/demos/rosa</wp:base_site_url>
+        <wp:base_blog_url>http://pixelgrade.com/demos/rosa</wp:base_blog_url>
 
         <wp:author><wp:author_id>1</wp:author_id><wp:author_login>admin</wp:author_login><wp:author_email>george.olaru@pixelgrade.com</wp:author_email><wp:author_display_name><![CDATA[George Olaru]]></wp:author_display_name><wp:author_first_name><![CDATA[George]]></wp:author_first_name><wp:author_last_name><![CDATA[Olaru]]></wp:author_last_name></wp:author>
 
@@ -79,10 +79,10 @@
 
         <item>
             <title>covenant-creek-shirt-serving-982</title>
-            <link>http://pixelgrade.com/demos/heap/saving-your-work-in-more-ways-than-one-2/covenant-creek-shirt-serving-982/</link>
+            <link>http://pixelgrade.com/demos/rosa/saving-your-work-in-more-ways-than-one-2/covenant-creek-shirt-serving-982/</link>
             <pubDate>Tue, 01 Apr 2014 07:21:55 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image1.png</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image1.png</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -98,22 +98,22 @@
             <wp:post_type>attachment</wp:post_type>
             <wp:post_password></wp:post_password>
             <wp:is_sticky>0</wp:is_sticky>
-            <wp:attachment_url>http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image1.png</wp:attachment_url>
+            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image1.png</wp:attachment_url>
             <wp:postmeta>
                 <wp:meta_key>_wp_attached_file</wp:meta_key>
-                <wp:meta_value><![CDATA[2014/04/http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image1.png]]></wp:meta_value>
+                <wp:meta_value><![CDATA[2014/04/http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image1.png]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_wp_attachment_metadata</wp:meta_key>
-                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:550;s:6:"height";i:774;s:4:"file";s:44:"2014/04/http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image1.png";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-213x300.jpg";s:5:"width";i:213;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:10:"small-size";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-400x562.jpg";s:5:"width";i:400;s:6:"height";i:562;s:9:"mime-type";s:10:"image/jpeg";}s:6:"square";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-400x400.jpg";s:5:"width";i:400;s:6:"height";i:400;s:9:"mime-type";s:10:"image/jpeg";}s:17:"post-square-small";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-177x177.jpg";s:5:"width";i:177;s:6:"height";i:177;s:9:"mime-type";s:10:"image/jpeg";}s:11:"post-medium";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-265x328.jpg";s:5:"width";i:265;s:6:"height";i:328;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
+                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:550;s:6:"height";i:774;s:4:"file";s:44:"2014/04/http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image1.png";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-213x300.jpg";s:5:"width";i:213;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:10:"small-size";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-400x562.jpg";s:5:"width";i:400;s:6:"height";i:562;s:9:"mime-type";s:10:"image/jpeg";}s:6:"square";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-400x400.jpg";s:5:"width";i:400;s:6:"height";i:400;s:9:"mime-type";s:10:"image/jpeg";}s:17:"post-square-small";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-177x177.jpg";s:5:"width";i:177;s:6:"height";i:177;s:9:"mime-type";s:10:"image/jpeg";}s:11:"post-medium";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-265x328.jpg";s:5:"width";i:265;s:6:"height";i:328;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
             <title>covenant-creek-shirt-home-heart</title>
-            <link>http://pixelgrade.com/demos/heap/saving-your-work-in-more-ways-than-one/covenant-creek-shirt-home-heart/</link>
+            <link>http://pixelgrade.com/demos/rosa/saving-your-work-in-more-ways-than-one/covenant-creek-shirt-home-heart/</link>
             <pubDate>Tue, 01 Apr 2014 07:25:34 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image2.png</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -129,22 +129,22 @@
             <wp:post_type>attachment</wp:post_type>
             <wp:post_password></wp:post_password>
             <wp:is_sticky>0</wp:is_sticky>
-            <wp:attachment_url>http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image2.png</wp:attachment_url>
+            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png</wp:attachment_url>
             <wp:postmeta>
                 <wp:meta_key>_wp_attached_file</wp:meta_key>
-                <wp:meta_value><![CDATA[2014/04/http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image2.png]]></wp:meta_value>
+                <wp:meta_value><![CDATA[2014/04/http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_wp_attachment_metadata</wp:meta_key>
-                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:550;s:6:"height";i:718;s:4:"file";s:43:"2014/04/http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image2.png";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-229x300.jpg";s:5:"width";i:229;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:10:"small-size";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-400x522.jpg";s:5:"width";i:400;s:6:"height";i:522;s:9:"mime-type";s:10:"image/jpeg";}s:6:"square";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-400x400.jpg";s:5:"width";i:400;s:6:"height";i:400;s:9:"mime-type";s:10:"image/jpeg";}s:17:"post-square-small";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-177x177.jpg";s:5:"width";i:177;s:6:"height";i:177;s:9:"mime-type";s:10:"image/jpeg";}s:11:"post-medium";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-265x328.jpg";s:5:"width";i:265;s:6:"height";i:328;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
+                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:550;s:6:"height";i:718;s:4:"file";s:43:"2014/04/http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-229x300.jpg";s:5:"width";i:229;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:10:"small-size";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-400x522.jpg";s:5:"width";i:400;s:6:"height";i:522;s:9:"mime-type";s:10:"image/jpeg";}s:6:"square";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-400x400.jpg";s:5:"width";i:400;s:6:"height";i:400;s:9:"mime-type";s:10:"image/jpeg";}s:17:"post-square-small";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-177x177.jpg";s:5:"width";i:177;s:6:"height";i:177;s:9:"mime-type";s:10:"image/jpeg";}s:11:"post-medium";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-265x328.jpg";s:5:"width";i:265;s:6:"height";i:328;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
             <title>covenant-creek-shirt-serving-12982</title>
-            <link>http://pixelgrade.com/demos/heap/saving-your-work-in-more-ways-than-one/covenant-creek-shirt-serving-12982/</link>
+            <link>http://pixelgrade.com/demos/rosa/saving-your-work-in-more-ways-than-one/covenant-creek-shirt-serving-12982/</link>
             <pubDate>Tue, 01 Apr 2014 07:28:37 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image11.png</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image11.png</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[Copyright Visual James]]></excerpt:encoded>
@@ -160,22 +160,22 @@
             <wp:post_type>attachment</wp:post_type>
             <wp:post_password></wp:post_password>
             <wp:is_sticky>0</wp:is_sticky>
-            <wp:attachment_url>http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image11.png</wp:attachment_url>
+            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image11.png</wp:attachment_url>
             <wp:postmeta>
                 <wp:meta_key>_wp_attached_file</wp:meta_key>
-                <wp:meta_value><![CDATA[2014/04/http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image11.png]]></wp:meta_value>
+                <wp:meta_value><![CDATA[2014/04/http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image11.png]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_wp_attachment_metadata</wp:meta_key>
-                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:871;s:6:"height";i:281;s:4:"file";s:46:"2014/04/http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image11.png";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:45:"covenant-creek-shirt-serving-12982-300x96.jpg";s:5:"width";i:300;s:6:"height";i:96;s:9:"mime-type";s:10:"image/jpeg";}s:10:"small-size";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-400x129.jpg";s:5:"width";i:400;s:6:"height";i:129;s:9:"mime-type";s:10:"image/jpeg";}s:6:"square";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-400x281.jpg";s:5:"width";i:400;s:6:"height";i:281;s:9:"mime-type";s:10:"image/jpeg";}s:17:"post-square-small";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-177x177.jpg";s:5:"width";i:177;s:6:"height";i:177;s:9:"mime-type";s:10:"image/jpeg";}s:11:"post-medium";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-265x281.jpg";s:5:"width";i:265;s:6:"height";i:281;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
+                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:871;s:6:"height";i:281;s:4:"file";s:46:"2014/04/http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image11.png";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:45:"covenant-creek-shirt-serving-12982-300x96.jpg";s:5:"width";i:300;s:6:"height";i:96;s:9:"mime-type";s:10:"image/jpeg";}s:10:"small-size";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-400x129.jpg";s:5:"width";i:400;s:6:"height";i:129;s:9:"mime-type";s:10:"image/jpeg";}s:6:"square";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-400x281.jpg";s:5:"width";i:400;s:6:"height";i:281;s:9:"mime-type";s:10:"image/jpeg";}s:17:"post-square-small";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-177x177.jpg";s:5:"width";i:177;s:6:"height";i:177;s:9:"mime-type";s:10:"image/jpeg";}s:11:"post-medium";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-265x281.jpg";s:5:"width";i:265;s:6:"height";i:281;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
-            <title>heap-logo</title>
-            <link>http://pixelgrade.com/demos/heap/?attachment_id=19</link>
+            <title>rosa-logo</title>
+            <link>http://pixelgrade.com/demos/rosa/?attachment_id=19</link>
             <pubDate>Tue, 01 Apr 2014 07:50:31 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/heap-logo.png</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/rosa-logo.png</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -184,29 +184,29 @@
             <wp:post_date_gmt>2014-04-01 07:50:31</wp:post_date_gmt>
             <wp:comment_status>open</wp:comment_status>
             <wp:ping_status>open</wp:ping_status>
-            <wp:post_name>heap-logo</wp:post_name>
+            <wp:post_name>rosa-logo</wp:post_name>
             <wp:status>inherit</wp:status>
             <wp:post_parent>0</wp:post_parent>
             <wp:menu_order>0</wp:menu_order>
             <wp:post_type>attachment</wp:post_type>
             <wp:post_password></wp:post_password>
             <wp:is_sticky>0</wp:is_sticky>
-            <wp:attachment_url>http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/heap-logo.png</wp:attachment_url>
+            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/rosa-logo.png</wp:attachment_url>
             <wp:postmeta>
                 <wp:meta_key>_wp_attached_file</wp:meta_key>
-                <wp:meta_value><![CDATA[2014/04/heap-logo.png]]></wp:meta_value>
+                <wp:meta_value><![CDATA[2014/04/rosa-logo.png]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_wp_attachment_metadata</wp:meta_key>
-                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:845;s:6:"height";i:369;s:4:"file";s:21:"2014/04/heap-logo.png";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:21:"heap-logo-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:6:"medium";a:4:{s:4:"file";s:21:"heap-logo-300x131.png";s:5:"width";i:300;s:6:"height";i:131;s:9:"mime-type";s:9:"image/png";}s:10:"small-size";a:4:{s:4:"file";s:21:"heap-logo-400x174.png";s:5:"width";i:400;s:6:"height";i:174;s:9:"mime-type";s:9:"image/png";}s:6:"square";a:4:{s:4:"file";s:21:"heap-logo-400x369.png";s:5:"width";i:400;s:6:"height";i:369;s:9:"mime-type";s:9:"image/png";}s:17:"post-square-small";a:4:{s:4:"file";s:21:"heap-logo-177x177.png";s:5:"width";i:177;s:6:"height";i:177;s:9:"mime-type";s:9:"image/png";}s:11:"post-medium";a:4:{s:4:"file";s:21:"heap-logo-265x328.png";s:5:"width";i:265;s:6:"height";i:328;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
+                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:845;s:6:"height";i:369;s:4:"file";s:21:"2014/04/rosa-logo.png";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:21:"rosa-logo-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:6:"medium";a:4:{s:4:"file";s:21:"rosa-logo-300x131.png";s:5:"width";i:300;s:6:"height";i:131;s:9:"mime-type";s:9:"image/png";}s:10:"small-size";a:4:{s:4:"file";s:21:"rosa-logo-400x174.png";s:5:"width";i:400;s:6:"height";i:174;s:9:"mime-type";s:9:"image/png";}s:6:"square";a:4:{s:4:"file";s:21:"rosa-logo-400x369.png";s:5:"width";i:400;s:6:"height";i:369;s:9:"mime-type";s:9:"image/png";}s:17:"post-square-small";a:4:{s:4:"file";s:21:"rosa-logo-177x177.png";s:5:"width";i:177;s:6:"height";i:177;s:9:"mime-type";s:9:"image/png";}s:11:"post-medium";a:4:{s:4:"file";s:21:"rosa-logo-265x328.png";s:5:"width";i:265;s:6:"height";i:328;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
-            <title>favicon-heap</title>
-            <link>http://pixelgrade.com/demos/heap/?attachment_id=20</link>
+            <title>favicon-rosa</title>
+            <link>http://pixelgrade.com/demos/rosa/?attachment_id=20</link>
             <pubDate>Tue, 01 Apr 2014 07:50:41 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/favicon-heap.png</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/favicon-rosa.png</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -215,29 +215,29 @@
             <wp:post_date_gmt>2014-04-01 07:50:41</wp:post_date_gmt>
             <wp:comment_status>open</wp:comment_status>
             <wp:ping_status>open</wp:ping_status>
-            <wp:post_name>favicon-heap</wp:post_name>
+            <wp:post_name>favicon-rosa</wp:post_name>
             <wp:status>inherit</wp:status>
             <wp:post_parent>0</wp:post_parent>
             <wp:menu_order>0</wp:menu_order>
             <wp:post_type>attachment</wp:post_type>
             <wp:post_password></wp:post_password>
             <wp:is_sticky>0</wp:is_sticky>
-            <wp:attachment_url>http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/favicon-heap.png</wp:attachment_url>
+            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/favicon-rosa.png</wp:attachment_url>
             <wp:postmeta>
                 <wp:meta_key>_wp_attached_file</wp:meta_key>
-                <wp:meta_value><![CDATA[2014/04/favicon-heap.png]]></wp:meta_value>
+                <wp:meta_value><![CDATA[2014/04/favicon-rosa.png]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_wp_attachment_metadata</wp:meta_key>
-                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:16;s:6:"height";i:16;s:4:"file";s:24:"2014/04/favicon-heap.png";s:5:"sizes";a:0:{}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
+                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:16;s:6:"height";i:16;s:4:"file";s:24:"2014/04/favicon-rosa.png";s:5:"sizes";a:0:{}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
             <title></title>
-            <link>http://pixelgrade.com/demos/heap/?p=75</link>
+            <link>http://pixelgrade.com/demos/rosa/?p=75</link>
             <pubDate>Wed, 30 Nov -0001 00:00:00 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=75</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=75</guid>
             <description></description>
             <content:encoded><![CDATA[ ]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -292,17 +292,17 @@
         </item>
         <item>
             <title>George Olaru - 2014-04-01 14:22:38</title>
-            <link>http://pixelgrade.com/demos/heap/?post_type=feedback&#038;p=142</link>
+            <link>http://pixelgrade.com/demos/rosa/?post_type=feedback&#038;p=142</link>
             <pubDate>Tue, 01 Apr 2014 14:22:38 +0000</pubDate>
             <dc:creator><![CDATA[]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?post_type=feedback&#038;p=142</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?post_type=feedback&#038;p=142</guid>
             <description></description>
             <content:encoded><![CDATA[Test
 <!--more-->
 AUTHOR: George Olaru
 AUTHOR EMAIL: george.olaru@pixelgrade.com
 AUTHOR URL: http://georgeolaru.com
-SUBJECT: [Heap] Contact
+SUBJECT: [Rosa] Contact
 IP: 86.124.174.206
 Array
 (
@@ -343,7 +343,7 @@ Array
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_feedback_subject</wp:meta_key>
-                <wp:meta_value><![CDATA[[Heap] Contact]]></wp:meta_value>
+                <wp:meta_value><![CDATA[[Rosa] Contact]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_feedback_ip</wp:meta_key>
@@ -351,7 +351,7 @@ Array
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_feedback_contact_form_url</wp:meta_key>
-                <wp:meta_value><![CDATA[http://pixelgrade.com/demos/heap/contact/]]></wp:meta_value>
+                <wp:meta_value><![CDATA[http://pixelgrade.com/demos/rosa/contact/]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_feedback_all_fields</wp:meta_key>
@@ -363,29 +363,29 @@ Array
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_feedback_akismet_values</wp:meta_key>
-                <wp:meta_value><![CDATA[a:47:{s:14:"comment_author";s:12:"George Olaru";s:20:"comment_author_email";s:27:"george.olaru@pixelgrade.com";s:18:"comment_author_url";s:22:"http://georgeolaru.com";s:20:"contact_form_subject";s:14:"[Heap] Contact";s:17:"comment_author_IP";s:14:"86.124.174.206";s:15:"comment_content";s:4:"Test";s:12:"comment_type";s:12:"contact_form";s:7:"user_ip";s:14:"86.124.174.206";s:10:"user_agent";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36";s:8:"referrer";s:41:"http://pixelgrade.com/demos/heap/contact/";s:4:"blog";s:32:"http://pixelgrade.com/demos/heap";s:15:"SERVER_SOFTWARE";s:11:"nginx/1.4.3";s:11:"REQUEST_URI";s:20:"/demos/heap/contact/";s:4:"USER";s:10:"pixelgrade";s:4:"HOME";s:16:"/home/pixelgrade";s:9:"FCGI_ROLE";s:9:"RESPONDER";s:15:"SCRIPT_FILENAME";s:49:"/home/pixelgrade/public_html/demos/heap/index.php";s:11:"SCRIPT_NAME";s:21:"/demos/heap/index.php";s:9:"PATH_INFO";s:0:"";s:11:"SERVER_NAME";s:14:"pixelgrade.com";s:12:"QUERY_STRING";s:23:"q=/demos/heap/contact/&";s:14:"REQUEST_METHOD";s:4:"POST";s:12:"CONTENT_TYPE";s:33:"application/x-www-form-urlencoded";s:14:"CONTENT_LENGTH";s:3:"237";s:12:"DOCUMENT_URI";s:21:"/demos/heap/index.php";s:13:"DOCUMENT_ROOT";s:28:"/home/pixelgrade/public_html";s:15:"SERVER_PROTOCOL";s:8:"HTTP/1.1";s:17:"GATEWAY_INTERFACE";s:7:"CGI/1.1";s:11:"REMOTE_ADDR";s:14:"86.124.174.206";s:11:"REMOTE_PORT";s:5:"41640";s:11:"SERVER_ADDR";s:14:"176.58.105.150";s:11:"SERVER_PORT";s:2:"80";s:15:"REDIRECT_STATUS";s:3:"200";s:9:"HTTP_HOST";s:14:"pixelgrade.com";s:15:"HTTP_CONNECTION";s:10:"keep-alive";s:19:"HTTP_CONTENT_LENGTH";s:3:"237";s:18:"HTTP_CACHE_CONTROL";s:9:"max-age=0";s:11:"HTTP_ACCEPT";s:74:"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";s:11:"HTTP_ORIGIN";s:21:"http://pixelgrade.com";s:15:"HTTP_USER_AGENT";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36";s:17:"HTTP_CONTENT_TYPE";s:33:"application/x-www-form-urlencoded";s:12:"HTTP_REFERER";s:41:"http://pixelgrade.com/demos/heap/contact/";s:20:"HTTP_ACCEPT_ENCODING";s:17:"gzip,deflate,sdch";s:20:"HTTP_ACCEPT_LANGUAGE";s:59:"ro,en-US;q=0.8,en;q=0.6,fr;q=0.4,it;q=0.2,es;q=0.2,pt;q=0.2";s:8:"PHP_SELF";s:21:"/demos/heap/index.php";s:18:"REQUEST_TIME_FLOAT";s:14:"1396362158.069";s:12:"REQUEST_TIME";s:10:"1396362158";}]]></wp:meta_value>
+                <wp:meta_value><![CDATA[a:47:{s:14:"comment_author";s:12:"George Olaru";s:20:"comment_author_email";s:27:"george.olaru@pixelgrade.com";s:18:"comment_author_url";s:22:"http://georgeolaru.com";s:20:"contact_form_subject";s:14:"[Rosa] Contact";s:17:"comment_author_IP";s:14:"86.124.174.206";s:15:"comment_content";s:4:"Test";s:12:"comment_type";s:12:"contact_form";s:7:"user_ip";s:14:"86.124.174.206";s:10:"user_agent";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36";s:8:"referrer";s:41:"http://pixelgrade.com/demos/rosa/contact/";s:4:"blog";s:32:"http://pixelgrade.com/demos/rosa";s:15:"SERVER_SOFTWARE";s:11:"nginx/1.4.3";s:11:"REQUEST_URI";s:20:"/demos/rosa/contact/";s:4:"USER";s:10:"pixelgrade";s:4:"HOME";s:16:"/home/pixelgrade";s:9:"FCGI_ROLE";s:9:"RESPONDER";s:15:"SCRIPT_FILENAME";s:49:"/home/pixelgrade/public_html/demos/rosa/index.php";s:11:"SCRIPT_NAME";s:21:"/demos/rosa/index.php";s:9:"PATH_INFO";s:0:"";s:11:"SERVER_NAME";s:14:"pixelgrade.com";s:12:"QUERY_STRING";s:23:"q=/demos/rosa/contact/&";s:14:"REQUEST_METHOD";s:4:"POST";s:12:"CONTENT_TYPE";s:33:"application/x-www-form-urlencoded";s:14:"CONTENT_LENGTH";s:3:"237";s:12:"DOCUMENT_URI";s:21:"/demos/rosa/index.php";s:13:"DOCUMENT_ROOT";s:28:"/home/pixelgrade/public_html";s:15:"SERVER_PROTOCOL";s:8:"HTTP/1.1";s:17:"GATEWAY_INTERFACE";s:7:"CGI/1.1";s:11:"REMOTE_ADDR";s:14:"86.124.174.206";s:11:"REMOTE_PORT";s:5:"41640";s:11:"SERVER_ADDR";s:14:"176.58.105.150";s:11:"SERVER_PORT";s:2:"80";s:15:"REDIRECT_STATUS";s:3:"200";s:9:"HTTP_HOST";s:14:"pixelgrade.com";s:15:"HTTP_CONNECTION";s:10:"keep-alive";s:19:"HTTP_CONTENT_LENGTH";s:3:"237";s:18:"HTTP_CACHE_CONTROL";s:9:"max-age=0";s:11:"HTTP_ACCEPT";s:74:"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";s:11:"HTTP_ORIGIN";s:21:"http://pixelgrade.com";s:15:"HTTP_USER_AGENT";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36";s:17:"HTTP_CONTENT_TYPE";s:33:"application/x-www-form-urlencoded";s:12:"HTTP_REFERER";s:41:"http://pixelgrade.com/demos/rosa/contact/";s:20:"HTTP_ACCEPT_ENCODING";s:17:"gzip,deflate,sdch";s:20:"HTTP_ACCEPT_LANGUAGE";s:59:"ro,en-US;q=0.8,en;q=0.6,fr;q=0.4,it;q=0.2,es;q=0.2,pt;q=0.2";s:8:"PHP_SELF";s:21:"/demos/rosa/index.php";s:18:"REQUEST_TIME_FLOAT";s:14:"1396362158.069";s:12:"REQUEST_TIME";s:10:"1396362158";}]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_feedback_email</wp:meta_key>
-                <wp:meta_value><![CDATA[a:4:{s:2:"to";a:1:{i:0;s:27:"george.olaru@pixelgrade.com";}s:7:"subject";s:14:"[Heap] Contact";s:7:"message";s:250:"Name: George Olaru
+                <wp:meta_value><![CDATA[a:4:{s:2:"to";a:1:{i:0;s:27:"george.olaru@pixelgrade.com";}s:7:"subject";s:14:"[Rosa] Contact";s:7:"message";s:250:"Name: George Olaru
 Email: george.olaru@pixelgrade.com
 Website: http://georgeolaru.com
 Comment: Test
 Time: April 1, 2014 at 2:22 pm
 IP Address: 86.124.174.206
-Contact Form URL: http://pixelgrade.com/demos/heap/contact/
+Contact Form URL: http://pixelgrade.com/demos/rosa/contact/
 
-Sent by a verified "Heap" user.";s:7:"headers";s:142:"From: George Olaru <wordpress@pixelgrade.com>
+Sent by a verified "Rosa" user.";s:7:"headers";s:142:"From: George Olaru <wordpress@pixelgrade.com>
 Reply-To: George Olaru <george.olaru@pixelgrade.com>
 Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
             <title>Home</title>
-            <link>http://pixelgrade.com/demos/heap/home/</link>
+            <link>http://pixelgrade.com/demos/rosa/home/</link>
             <pubDate>Tue, 01 Apr 2014 07:51:41 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=21</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=21</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -432,15 +432,15 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_menu_item_url</wp:meta_key>
-                <wp:meta_value><![CDATA[http://pixelgrade.com/demos/heap/]]></wp:meta_value>
+                <wp:meta_value><![CDATA[http://pixelgrade.com/demos/rosa/]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
             <title>Without Sidebar</title>
-            <link>http://pixelgrade.com/demos/heap/without-sidebar/</link>
+            <link>http://pixelgrade.com/demos/rosa/without-sidebar/</link>
             <pubDate>Tue, 01 Apr 2014 11:43:28 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=76</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=76</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -487,7 +487,7 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_menu_item_url</wp:meta_key>
-                <wp:meta_value><![CDATA[http://pixelgrade.com/demos/heap/minimalist-postcards-of-superheroes/?blog_single_show_sidebar=0]]></wp:meta_value>
+                <wp:meta_value><![CDATA[http://pixelgrade.com/demos/rosa/minimalist-postcards-of-superheroes/?blog_single_show_sidebar=0]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_wpas_done_all</wp:meta_key>
@@ -496,10 +496,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title>Post Formats</title>
-            <link>http://pixelgrade.com/demos/heap/posts/</link>
+            <link>http://pixelgrade.com/demos/rosa/posts/</link>
             <pubDate>Tue, 01 Apr 2014 11:43:28 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=77</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=77</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -555,10 +555,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title>Standard</title>
-            <link>http://pixelgrade.com/demos/heap/standard/</link>
+            <link>http://pixelgrade.com/demos/rosa/standard/</link>
             <pubDate>Tue, 01 Apr 2014 11:43:28 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=78</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=78</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -614,10 +614,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title>Video Inside</title>
-            <link>http://pixelgrade.com/demos/heap/video-inside/</link>
+            <link>http://pixelgrade.com/demos/rosa/video-inside/</link>
             <pubDate>Tue, 01 Apr 2014 11:47:06 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=81</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=81</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -673,10 +673,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title></title>
-            <link>http://pixelgrade.com/demos/heap/?p=82</link>
+            <link>http://pixelgrade.com/demos/rosa/?p=82</link>
             <pubDate>Wed, 30 Nov -0001 00:00:00 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=82</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=82</guid>
             <description></description>
             <content:encoded><![CDATA[ ]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -731,10 +731,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title>Comments and Replies</title>
-            <link>http://pixelgrade.com/demos/heap/comments-and-replies/</link>
+            <link>http://pixelgrade.com/demos/rosa/comments-and-replies/</link>
             <pubDate>Tue, 01 Apr 2014 11:57:33 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=83</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=83</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -781,7 +781,7 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_menu_item_url</wp:meta_key>
-                <wp:meta_value><![CDATA[http://pixelgrade.com/demos/heap/minimalist-postcards-of-superheroes/#comments]]></wp:meta_value>
+                <wp:meta_value><![CDATA[http://pixelgrade.com/demos/rosa/minimalist-postcards-of-superheroes/#comments]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_wpas_done_all</wp:meta_key>
@@ -790,10 +790,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title>Code Highlighting</title>
-            <link>http://pixelgrade.com/demos/heap/code-highighting/</link>
+            <link>http://pixelgrade.com/demos/rosa/code-highighting/</link>
             <pubDate>Tue, 01 Apr 2014 12:39:46 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=95</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=95</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -849,10 +849,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title>Features</title>
-            <link>http://pixelgrade.com/demos/heap/features/</link>
+            <link>http://pixelgrade.com/demos/rosa/features/</link>
             <pubDate>Tue, 01 Apr 2014 14:04:44 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=128</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=128</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -908,10 +908,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title></title>
-            <link>http://pixelgrade.com/demos/heap/129/</link>
+            <link>http://pixelgrade.com/demos/rosa/129/</link>
             <pubDate>Tue, 01 Apr 2014 14:04:44 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=129</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=129</guid>
             <description></description>
             <content:encoded><![CDATA[ ]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -967,10 +967,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title></title>
-            <link>http://pixelgrade.com/demos/heap/130/</link>
+            <link>http://pixelgrade.com/demos/rosa/130/</link>
             <pubDate>Tue, 01 Apr 2014 14:04:44 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=130</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=130</guid>
             <description></description>
             <content:encoded><![CDATA[ ]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1026,10 +1026,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title></title>
-            <link>http://pixelgrade.com/demos/heap/131/</link>
+            <link>http://pixelgrade.com/demos/rosa/131/</link>
             <pubDate>Tue, 01 Apr 2014 14:04:44 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=131</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=131</guid>
             <description></description>
             <content:encoded><![CDATA[ ]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1085,10 +1085,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title>Archive</title>
-            <link>http://pixelgrade.com/demos/heap/category/</link>
+            <link>http://pixelgrade.com/demos/rosa/category/</link>
             <pubDate>Tue, 01 Apr 2014 14:07:44 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=134</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=134</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1144,10 +1144,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title></title>
-            <link>http://pixelgrade.com/demos/heap/148/</link>
+            <link>http://pixelgrade.com/demos/rosa/148/</link>
             <pubDate>Tue, 01 Apr 2014 14:28:42 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=148</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=148</guid>
             <description></description>
             <content:encoded><![CDATA[ ]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1203,10 +1203,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title>Without Sidebar</title>
-            <link>http://pixelgrade.com/demos/heap/without-sidebar-2/</link>
+            <link>http://pixelgrade.com/demos/rosa/without-sidebar-2/</link>
             <pubDate>Tue, 01 Apr 2014 14:30:43 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=149</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=149</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1229,7 +1229,7 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_menu_item_url</wp:meta_key>
-                <wp:meta_value><![CDATA[http://pixelgrade.com/demos/heap/?blog_show_sidebar=0]]></wp:meta_value>
+                <wp:meta_value><![CDATA[http://pixelgrade.com/demos/rosa/?blog_show_sidebar=0]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_menu_item_xfn</wp:meta_key>
@@ -1262,10 +1262,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title>Elements</title>
-            <link>http://pixelgrade.com/demos/heap/elements/</link>
+            <link>http://pixelgrade.com/demos/rosa/elements/</link>
             <pubDate>Wed, 02 Apr 2014 08:44:12 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=153</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=153</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1321,10 +1321,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title></title>
-            <link>http://pixelgrade.com/demos/heap/158/</link>
+            <link>http://pixelgrade.com/demos/rosa/158/</link>
             <pubDate>Wed, 02 Apr 2014 08:47:02 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=158</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=158</guid>
             <description></description>
             <content:encoded><![CDATA[ ]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1380,10 +1380,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title></title>
-            <link>http://pixelgrade.com/demos/heap/162/</link>
+            <link>http://pixelgrade.com/demos/rosa/162/</link>
             <pubDate>Wed, 02 Apr 2014 08:52:38 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=162</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=162</guid>
             <description></description>
             <content:encoded><![CDATA[ ]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1439,10 +1439,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title></title>
-            <link>http://pixelgrade.com/demos/heap/163/</link>
+            <link>http://pixelgrade.com/demos/rosa/163/</link>
             <pubDate>Wed, 02 Apr 2014 08:52:38 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=163</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=163</guid>
             <description></description>
             <content:encoded><![CDATA[ ]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1498,10 +1498,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title></title>
-            <link>http://pixelgrade.com/demos/heap/164/</link>
+            <link>http://pixelgrade.com/demos/rosa/164/</link>
             <pubDate>Wed, 02 Apr 2014 08:52:38 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=164</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=164</guid>
             <description></description>
             <content:encoded><![CDATA[ ]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1557,10 +1557,10 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
         </item>
         <item>
             <title>Sample Page</title>
-            <link>http://pixelgrade.com/demos/heap/sample-page/</link>
+            <link>http://pixelgrade.com/demos/rosa/sample-page/</link>
             <pubDate>Tue, 01 Apr 2014 06:12:49 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?page_id=2</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?page_id=2</guid>
             <description></description>
             <content:encoded><![CDATA[This is an example page. It's different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:
 
@@ -1570,7 +1570,7 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
 
 <blockquote>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</blockquote>
 
-As a new WordPress user, you should go to <a href="http://pixelgrade.com/demos/heap/wp-admin/">your dashboard</a> to delete this page and create new pages for your content. Have fun!]]></content:encoded>
+As a new WordPress user, you should go to <a href="http://pixelgrade.com/demos/rosa/wp-admin/">your dashboard</a> to delete this page and create new pages for your content. Have fun!]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
             <wp:post_id>2</wp:post_id>
             <wp:post_date>2014-04-01 06:12:49</wp:post_date>
@@ -1591,10 +1591,10 @@ As a new WordPress user, you should go to <a href="http://pixelgrade.com/demos/h
         </item>
         <item>
             <title>Getting Started with Programming</title>
-            <link>http://pixelgrade.com/demos/heap/getting-started-with-programming/</link>
+            <link>http://pixelgrade.com/demos/rosa/getting-started-with-programming/</link>
             <pubDate>Thu, 20 Mar 2014 12:05:31 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=84</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=84</guid>
             <description></description>
             <content:encoded><![CDATA[Code highlighted inside this post, so you can share easily code with your fellow readers.
 
@@ -1653,15 +1653,15 @@ var me = new StaffMember("George", 20)]]></wp:meta_value>
                 <wp:meta_value><![CDATA[1]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
@@ -1678,10 +1678,10 @@ var me = new StaffMember("George", 20)]]></wp:meta_value>
         </item>
         <item>
             <title>Typography</title>
-            <link>http://pixelgrade.com/demos/heap/typography/</link>
+            <link>http://pixelgrade.com/demos/rosa/typography/</link>
             <pubDate>Tue, 01 Apr 2014 13:58:21 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?page_id=118</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?page_id=118</guid>
             <description></description>
             <content:encoded><![CDATA[We paid a lot of attention to getting the basics of our typography right in the new WordPress Blog theme. The purpose of this HTML is to help determine what default settings are with CSS and to make sure that all possible HTML Elements are included. For example we looked at headings. Lovely headings.
 <h1>H1 Heading</h1>
@@ -1748,10 +1748,10 @@ Frameworks make decisions for you about how to organize, structure and design a 
         </item>
         <item>
             <title>Grid System</title>
-            <link>http://pixelgrade.com/demos/heap/grid-system/</link>
+            <link>http://pixelgrade.com/demos/rosa/grid-system/</link>
             <pubDate>Tue, 01 Apr 2014 14:01:52 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?page_id=124</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?page_id=124</guid>
             <description></description>
             <content:encoded><![CDATA[The default grid system utilizes <strong>12 columns</strong>, making for a 1200px wide container. Below <strong>800px</strong> viewport size, the columns become stacked vertically.
 
@@ -1902,10 +1902,10 @@ The grid system is an aid, not a guarantee. It permits a number of possible uses
         </item>
         <item>
             <title>Shortcodes</title>
-            <link>http://pixelgrade.com/demos/heap/shortcodes/</link>
+            <link>http://pixelgrade.com/demos/rosa/shortcodes/</link>
             <pubDate>Tue, 01 Apr 2014 14:02:19 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?page_id=126</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?page_id=126</guid>
             <description></description>
             <content:encoded><![CDATA[Here is where the beauty lies. We’ve taken that extra-mile and crafted an advanced but simple to use<strong> shortcodes plugin</strong> that will allow you to give structure and bling to your pages and posts. To ensure ease of use, everything is visual, nicely packed in a modal window accessible from the Wordpress editor. <strong>Look for that funky P button. </strong>More about shortcodes in <a href="http://help.pixelgrade.com/support/solutions/articles/140272-plugins-pixcodes-shortcodes-" target="_blank">documentation</a>.
 <h3>Buttons</h3>
@@ -2053,10 +2053,10 @@ Ben is fantastic! She exceeded all expectations in every respect, and I would re
         </item>
         <item>
             <title>Smart Themes for Productive People</title>
-            <link>http://pixelgrade.com/demos/heap/super-awesome-wordpress-themes/</link>
+            <link>http://pixelgrade.com/demos/rosa/super-awesome-wordpress-themes/</link>
             <pubDate>Sat, 22 Mar 2014 08:45:52 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=155</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=155</guid>
             <description></description>
             <content:encoded><![CDATA[<a href="http://themeforest.net/user/pixelgrade/portfolio?ref=pixelgrade" target="_blank">Smart Themes for Productive People</a>]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -2087,24 +2087,24 @@ Ben is fantastic! She exceeded all expectations in every respect, and I would re
                 <wp:meta_value><![CDATA[0]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
             <title>(Audio) Music Moment Of Clarity</title>
-            <link>http://pixelgrade.com/demos/heap/zedds-music-moment-of-clarity/</link>
+            <link>http://pixelgrade.com/demos/rosa/zedds-music-moment-of-clarity/</link>
             <pubDate>Sun, 23 Mar 2014 08:49:03 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=159</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=159</guid>
             <description></description>
             <content:encoded><![CDATA[This <strong>audio post</strong> is probably just amazing. All the white-hot techno DJs and producers, few are more molten right now than Anton Zaslavski, better known as <b>Zedd</b>. Zedd’s single “Clarity” (featuring London-based female vocalist Foxes).
 
@@ -2112,7 +2112,7 @@ When we entered The Fox, which is the unofficial sister-venue of SF's The Warfie
 <h4>What is creativity really?</h4>
 From a scientific perspective, creativity is your ability to think of something original from connections made between pre-existing ideas in your brain. These connections are controlled by neurotransmitters like adenosine, which alerts your brain when you’re running out of energy and reacts.
 
-<a href="http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image2.png"><img alt="zedd-1" src="http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image2.png" width="1000" height="667" /></a>
+<a href="http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png"><img alt="zedd-1" src="http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png" width="1000" height="667" /></a>
 
 This got me wondering about coffee and beer and which one would actually help me be more creative and get work done. Hopefully, this will help you decide when it’s best to have that triple shot espresso or ice cold brew.
 
@@ -2136,11 +2136,11 @@ From a scientific perspective, creativity is your ability to think of something 
             <category domain="post_format" nicename="post-format-audio"><![CDATA[Audio]]></category>
             <category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
@@ -2156,11 +2156,11 @@ From a scientific perspective, creativity is your ability to think of something 
                 <wp:meta_value><![CDATA[1]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_audio_embed</wp:meta_key>
+                <wp:meta_key>_rosa_audio_embed</wp:meta_key>
                 <wp:meta_value><![CDATA[&lt;iframe width=&quot;100%&quot; height=&quot;166&quot; scrolling=&quot;no&quot; frameborder=&quot;no&quot; src=&quot;https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F78161243&quot;&gt;&lt;/iframe&gt;]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
@@ -2170,10 +2170,10 @@ From a scientific perspective, creativity is your ability to think of something 
         </item>
         <item>
             <title></title>
-            <link>http://pixelgrade.com/demos/heap/165/</link>
+            <link>http://pixelgrade.com/demos/rosa/165/</link>
             <pubDate>Wed, 02 Apr 2014 08:52:38 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=165</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=165</guid>
             <description></description>
             <content:encoded><![CDATA[ ]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -2229,10 +2229,10 @@ From a scientific perspective, creativity is your ability to think of something 
         </item>
         <item>
             <title></title>
-            <link>http://pixelgrade.com/demos/heap/166/</link>
+            <link>http://pixelgrade.com/demos/rosa/166/</link>
             <pubDate>Wed, 02 Apr 2014 08:53:02 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=166</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=166</guid>
             <description></description>
             <content:encoded><![CDATA[ ]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -2288,10 +2288,10 @@ From a scientific perspective, creativity is your ability to think of something 
         </item>
         <item>
             <title>Milton Glaser Critiques Modern Beer Art</title>
-            <link>http://pixelgrade.com/demos/heap/milton-glaser-critiques-modern-beer-art/</link>
+            <link>http://pixelgrade.com/demos/rosa/milton-glaser-critiques-modern-beer-art/</link>
             <pubDate>Thu, 20 Mar 2014 08:58:03 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=168</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=168</guid>
             <description></description>
             <content:encoded><![CDATA[<p itemprop="headline"><a href="http://www.nytimes.com/interactive/2014/03/30/magazine/mag30-Glaser-beer-sidebar.html?_r=2" target="_blank">Milton Glaser Critiques Modern Beer Art</a></p>]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -2310,15 +2310,15 @@ From a scientific perspective, creativity is your ability to think of something 
             <category domain="post_format" nicename="post-format-link"><![CDATA[Link]]></category>
             <category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
@@ -2336,10 +2336,10 @@ From a scientific perspective, creativity is your ability to think of something 
         </item>
         <item>
             <title>Jobs that no longer exist</title>
-            <link>http://pixelgrade.com/demos/heap/jobs-that-no-longer-exist/</link>
+            <link>http://pixelgrade.com/demos/rosa/jobs-that-no-longer-exist/</link>
             <pubDate>Sat, 15 Mar 2014 08:59:50 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=170</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=170</guid>
             <description></description>
             <content:encoded><![CDATA[<a href="http://www.boredpanda.com/extinct-jobs/">Jobs that no longer exist</a>]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -2358,15 +2358,15 @@ From a scientific perspective, creativity is your ability to think of something 
             <category domain="post_format" nicename="post-format-link"><![CDATA[Link]]></category>
             <category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
@@ -2384,10 +2384,10 @@ From a scientific perspective, creativity is your ability to think of something 
         </item>
         <item>
             <title>(Audio) When My Train Pulls In</title>
-            <link>http://pixelgrade.com/demos/heap/great-sound/</link>
+            <link>http://pixelgrade.com/demos/rosa/great-sound/</link>
             <pubDate>Mon, 17 Mar 2014 09:03:18 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=172</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=172</guid>
             <description></description>
             <content:encoded><![CDATA[This <strong>audio post</strong> is probably just amazing. All the white-hot techno DJs and producers, few are more molten right now than Anton Zaslavski, better known as <b>Zedd</b>. Zedd’s single “Clarity” (featuring London-based female vocalist Foxes).
 
@@ -2416,19 +2416,19 @@ From a scientific perspective, creativity is your ability to think of something 
             <category domain="category" nicename="personal"><![CDATA[Personal]]></category>
             <category domain="post_format" nicename="post-format-audio"><![CDATA[Audio]]></category>
             <wp:postmeta>
-                <wp:meta_key>_heap_audio_embed</wp:meta_key>
+                <wp:meta_key>_rosa_audio_embed</wp:meta_key>
                 <wp:meta_value><![CDATA[&lt;iframe width=&quot;100%&quot; height=&quot;450&quot; scrolling=&quot;no&quot; frameborder=&quot;no&quot; src=&quot;https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/123073145&amp;amp;auto_play=false&amp;amp;hide_related=false&amp;amp;visual=true&quot;&gt;&lt;/iframe&gt;]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
@@ -2446,10 +2446,10 @@ From a scientific perspective, creativity is your ability to think of something 
         </item>
         <item>
             <title>(Audio) Magna Carta Holy Grail</title>
-            <link>http://pixelgrade.com/demos/heap/audio-magna-carta-holy-grail/</link>
+            <link>http://pixelgrade.com/demos/rosa/audio-magna-carta-holy-grail/</link>
             <pubDate>Tue, 18 Mar 2014 09:06:41 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=176</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=176</guid>
             <description></description>
             <content:encoded><![CDATA[This <strong>audio post</strong> is probably just amazing. First off I wanna say big ups to Jay for ignorin the obvious but corny option he had to call this album <em>Magna CARTER Holy Grail</em>. Had this been <strong>Nas</strong> we already know he woulda done something like <em>MagNAS Carta</em>
 
@@ -2491,28 +2491,28 @@ From a scientific perspective, creativity is your ability to think of something 
                 <wp:meta_value><![CDATA[0]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_audio_embed</wp:meta_key>
+                <wp:meta_key>_rosa_audio_embed</wp:meta_key>
                 <wp:meta_value><![CDATA[&lt;iframe width=&quot;100%&quot; height=&quot;450&quot; scrolling=&quot;no&quot; frameborder=&quot;no&quot; src=&quot;https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/99619146&amp;amp;auto_play=false&amp;amp;hide_related=false&amp;amp;visual=true&quot;&gt;&lt;/iframe&gt;]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
             <title></title>
-            <link>http://pixelgrade.com/demos/heap/182/</link>
+            <link>http://pixelgrade.com/demos/rosa/182/</link>
             <pubDate>Thu, 03 Apr 2014 09:11:50 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=182</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=182</guid>
             <description></description>
             <content:encoded><![CDATA[ ]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -2568,10 +2568,10 @@ From a scientific perspective, creativity is your ability to think of something 
         </item>
         <item>
             <title>Contact The Team</title>
-            <link>http://pixelgrade.com/demos/heap/183/</link>
+            <link>http://pixelgrade.com/demos/rosa/183/</link>
             <pubDate>Thu, 03 Apr 2014 09:11:51 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=183</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=183</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -2627,10 +2627,10 @@ From a scientific perspective, creativity is your ability to think of something 
         </item>
         <item>
             <title>About</title>
-            <link>http://pixelgrade.com/demos/heap/about/</link>
+            <link>http://pixelgrade.com/demos/rosa/about/</link>
             <pubDate>Thu, 03 Apr 2014 09:13:41 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?page_id=184</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?page_id=184</guid>
             <description></description>
             <content:encoded><![CDATA[We are a young and passionate web design and development team from Iasi, Romania. We take pride in our work.
 
@@ -2663,10 +2663,10 @@ Every feature was carefully chosen and designed to ease the way to that perfect 
         </item>
         <item>
             <title></title>
-            <link>http://pixelgrade.com/demos/heap/186/</link>
+            <link>http://pixelgrade.com/demos/rosa/186/</link>
             <pubDate>Thu, 03 Apr 2014 09:14:06 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=186</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=186</guid>
             <description></description>
             <content:encoded><![CDATA[ ]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -2722,10 +2722,10 @@ Every feature was carefully chosen and designed to ease the way to that perfect 
         </item>
         <item>
             <title>Awesome Branding Package</title>
-            <link>http://pixelgrade.com/demos/heap/awesome-branding-package/</link>
+            <link>http://pixelgrade.com/demos/rosa/awesome-branding-package/</link>
             <pubDate>Wed, 19 Mar 2014 13:08:54 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=188</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=188</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -2760,28 +2760,28 @@ Every feature was carefully chosen and designed to ease the way to that perfect 
                 <wp:meta_value><![CDATA[1]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_main_gallery</wp:meta_key>
+                <wp:meta_key>_rosa_main_gallery</wp:meta_key>
                 <wp:meta_value><![CDATA[9995,9997,9999]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
             <title>Hello world!</title>
-            <link>http://pixelgrade.com/demos/heap/hello-world/</link>
+            <link>http://pixelgrade.com/demos/rosa/hello-world/</link>
             <pubDate>Tue, 01 Apr 2014 06:12:49 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=1</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=1</guid>
             <description></description>
             <content:encoded><![CDATA[Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -2828,10 +2828,10 @@ To delete a comment, just log in and view the post&#039;s comments. There you wi
         </item>
         <item>
             <title>Saving your work, in more ways than one</title>
-            <link>http://pixelgrade.com/demos/heap/saving-your-work-in-more-ways-than-one-2/</link>
+            <link>http://pixelgrade.com/demos/rosa/saving-your-work-in-more-ways-than-one-2/</link>
             <pubDate>Tue, 01 Apr 2014 07:21:42 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=4</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=4</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -2863,10 +2863,10 @@ To delete a comment, just log in and view the post&#039;s comments. There you wi
         </item>
         <item>
             <title>Saving your work, in more ways than one</title>
-            <link>http://pixelgrade.com/demos/heap/saving-your-work-in-more-ways-than-one/</link>
+            <link>http://pixelgrade.com/demos/rosa/saving-your-work-in-more-ways-than-one/</link>
             <pubDate>Tue, 01 Apr 2014 07:25:50 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=6</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=6</guid>
             <description></description>
             <content:encoded><![CDATA[<strong>A post without sidebar and narrow width created using some basic elements including a quote, ordered list and a popup image. As a web designer you need to consider what people do with their hands and heads.</strong>
 
@@ -2874,7 +2874,7 @@ On the preservation front, in an editorial is provided with a spread of ways for
 <h3>Preserving your work</h3>
 As you're employed, the app is consistently saving your work. you'll check on the standing of the <strong>auto-save</strong> at the highest of the page report whether or not it’s busy saving or if it’s wedged.
 
-[caption id="" align="alignnone" width="871"]<a href="http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image11.png"><img alt="Copyright Visual James" src="http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image11.png" width="871" height="281" /></a> Copyright Visual James[/caption]
+[caption id="" align="alignnone" width="871"]<a href="http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image11.png"><img alt="Copyright Visual James" src="http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image11.png" width="871" height="281" /></a> Copyright Visual James[/caption]
 
 Who studied German literature, German literature is, who is studying medicine, is doctor who studies physics is physics, but who studied philosophy, this will by no philosopher.
 
@@ -2921,24 +2921,24 @@ For better or worse, we live in a world of media invention. Instead of reusing a
                 <wp:meta_value><![CDATA[1]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
             <title>How the Invention of the Alphabet Usurped Female Power</title>
-            <link>http://pixelgrade.com/demos/heap/how-the-invention-of-the-alphabet-usurped-female-power/</link>
+            <link>http://pixelgrade.com/demos/rosa/how-the-invention-of-the-alphabet-usurped-female-power/</link>
             <pubDate>Mon, 31 Mar 2014 08:04:50 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=25</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=25</guid>
             <description></description>
             <content:encoded><![CDATA[<strong>A standard post created using some basic elements including a quote, ordered list and a popup image. As a web designer you need to consider what people do with their hands and heads.</strong>
 
@@ -2946,7 +2946,7 @@ Of all the sacred cows allowed to roam unimpeded in our culture, few are as reve
 <h3>Preserving your work</h3>
 They coexist as two closely overlapping bell-shaped curves with no feature superior to its reciprocal.
 
-[caption id="attachment_27" align="alignnone" width="1024"]<a href="http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image1.png"><img class="size-large wp-image-27" alt="Copyright Andrea Manzati http://www.alconic.it/" src="http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image2.png" width="1024" height="468" /></a> Copyright Andrea Manzati http://www.alconic.it/[/caption]
+[caption id="attachment_27" align="alignnone" width="1024"]<a href="http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image1.png"><img class="size-large wp-image-27" alt="Copyright Andrea Manzati http://www.alconic.it/" src="http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png" width="1024" height="468" /></a> Copyright Andrea Manzati http://www.alconic.it/[/caption]
 
 Who studied German literature, German literature is, who is studying medicine, is doctor who studies physics is physics, but who studied philosophy, this will by no philosopher.
 
@@ -2993,15 +2993,15 @@ The very concept of “brain dominance” is presently under scrutiny, as many d
                 <wp:meta_value><![CDATA[0]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
@@ -3011,10 +3011,10 @@ The very concept of “brain dominance” is presently under scrutiny, as many d
         </item>
         <item>
             <title>Happiness is only real when shared</title>
-            <link>http://pixelgrade.com/demos/heap/happiness-is-only-real-when-shared/</link>
+            <link>http://pixelgrade.com/demos/rosa/happiness-is-only-real-when-shared/</link>
             <pubDate>Sun, 30 Mar 2014 08:26:00 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=32</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=32</guid>
             <description></description>
             <content:encoded><![CDATA[Egraphy is the process of creating still or moving pictures by recording radiation on a sensitive medium like film or an electronic sensor. The products of photography are called negatives and photographs, the latter being developed from the negatives.
 
@@ -3050,15 +3050,15 @@ And beyond that, those are one-in-a-lifetime experiences that I documented throu
                 <wp:meta_value><![CDATA[1]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
@@ -3068,10 +3068,10 @@ And beyond that, those are one-in-a-lifetime experiences that I documented throu
         </item>
         <item>
             <title>Inographic elements</title>
-            <link>http://pixelgrade.com/demos/heap/inographic-elements/</link>
+            <link>http://pixelgrade.com/demos/rosa/inographic-elements/</link>
             <pubDate>Fri, 28 Mar 2014 08:34:29 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=35</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=35</guid>
             <description></description>
             <content:encoded><![CDATA[Egraphy is the process of creating still or moving pictures by recording radiation on a sensitive medium like film or an electronic sensor. The products of photography are called negatives and photographs, the latter being developed from the negatives.
 
@@ -3111,24 +3111,24 @@ And beyond that, those are one-in-a-lifetime experiences that I documented throu
                 <wp:meta_value><![CDATA[0]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
             <title>Desiring God Project</title>
-            <link>http://pixelgrade.com/demos/heap/desiring-god-project/</link>
+            <link>http://pixelgrade.com/demos/rosa/desiring-god-project/</link>
             <pubDate>Sat, 29 Mar 2014 08:38:58 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=38</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=38</guid>
             <description></description>
             <content:encoded><![CDATA[<strong>A standard post created using some basic elements including a quote, ordered list and a popup image. As a web designer you need to consider what people do with their hands and heads.</strong>
 
@@ -3180,15 +3180,15 @@ For better or worse, we live in a world of media invention. Instead of reusing a
                 <wp:meta_value><![CDATA[1]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
@@ -3198,10 +3198,10 @@ For better or worse, we live in a world of media invention. Instead of reusing a
         </item>
         <item>
             <title>Fidewinders &amp; Shirt Graphics</title>
-            <link>http://pixelgrade.com/demos/heap/fidewinders-shirt-graphics/</link>
+            <link>http://pixelgrade.com/demos/rosa/fidewinders-shirt-graphics/</link>
             <pubDate>Thu, 27 Mar 2014 08:52:57 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=46</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=46</guid>
             <description></description>
             <content:encoded><![CDATA[<strong>A standard post created using some basic elements including a quote, ordered list and a popup image. As a web designer you need to consider what people do with their hands and heads.</strong>
 
@@ -3209,7 +3209,7 @@ Of all the sacred cows allowed to roam unimpeded in our culture, few are as reve
 <h3>Preserving your work</h3>
 They coexist as two closely overlapping bell-shaped curves with no feature superior to its reciprocal.
 
-<a href="http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image11.png"><img class="alignnone size-large wp-image-48" alt="sea-monster-content" src="http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image21.png" width="1024" height="682" /></a>
+<a href="http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image11.png"><img class="alignnone size-large wp-image-48" alt="sea-monster-content" src="http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image21.png" width="1024" height="682" /></a>
 
 Who studied German literature, German literature is, who is studying medicine, is doctor who studies physics is physics, but who studied philosophy, this will by no philosopher.
 
@@ -3260,24 +3260,24 @@ The header image is under copyright © <a href="http://benmounsey.com/" target=
                 <wp:meta_value><![CDATA[0]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
             <title>Folksaga by Caleb Heisey</title>
-            <link>http://pixelgrade.com/demos/heap/student-spotlight-folksaga-by-caleb-heisey/</link>
+            <link>http://pixelgrade.com/demos/rosa/student-spotlight-folksaga-by-caleb-heisey/</link>
             <pubDate>Wed, 26 Mar 2014 08:57:18 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=50</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=50</guid>
             <description></description>
             <content:encoded><![CDATA[This is some really beautiful illustration and package design by <a href="http://www.calebheisey.com/FOLKSAGA-LIQUOR-PACKAGING" target="_blank">Caleb Heisey</a>, an MFA candidate at Tyler School of Art. The project was art directed by Paul Kepple of <a href="http://www.headcasedesign.com/" target="_blank">Headcase Design</a>.
 
@@ -3286,7 +3286,7 @@ The header image is under copyright © <a href="http://benmounsey.com/" target=
 On the preservation front, in an editorial is provided with a spread of ways for safely storing your work. the primary of those is one with that you're possible familiar: like several alternative <strong>services</strong>, associate editorial options an always-on autosave.
 <h3>Preserving your work</h3>
 As you're employed, the app is consistently saving your work. you'll check on the standing of the <strong>auto-save</strong> at the highest of the page report whether or not it’s busy saving or if it’s wedged.
-<div><a href="http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image2.png"><img class="alignnone size-full wp-image-51" alt="folksaga1_DL_700" src="http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image2.png" width="700" height="524" /></a></div>
+<div><a href="http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png"><img class="alignnone size-full wp-image-51" alt="folksaga1_DL_700" src="http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png" width="700" height="524" /></a></div>
 <span style="line-height: 1.5em;">But I would say that the study of </span><em style="line-height: 1.5em;">philosophy</em><span style="line-height: 1.5em;"> according to specialization may be an ideal preparation for the Informationsachitekten. For philosophy teaches one to work on and to the order of the terms.</span>
 <blockquote>A designer knows he has achieved perfection not when there is nothing left to add, but when there is nothing left to take away.</blockquote>
 Who studied <strong>German literature</strong>, German literature is, who is studying medicine, is doctor who studies physics is physics, but who studied philosophy, this will by no philosopher. But I would say that the study of philosophy according to specialization may be an ideal preparation for the Informationsachitekten. For philosophy teaches one to work on and to the order of the terms.
@@ -3322,28 +3322,28 @@ This post images are under copyright © <a href="http://www.calebheisey.com/FOL
                 <wp:meta_value><![CDATA[0]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_main_gallery</wp:meta_key>
+                <wp:meta_key>_rosa_main_gallery</wp:meta_key>
                 <wp:meta_value><![CDATA[9995,9997,9999]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[fade]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
             <title>Work Hard Stay Humble</title>
-            <link>http://pixelgrade.com/demos/heap/work-hard-stay-humble/</link>
+            <link>http://pixelgrade.com/demos/rosa/work-hard-stay-humble/</link>
             <pubDate>Tue, 25 Mar 2014 09:06:25 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=58</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=58</guid>
             <description></description>
             <content:encoded><![CDATA[<strong>"Work Hard Stay Humble" is a project that explores both process and materials. Development for the project began with sketches and then a digitized version. </strong>
 
@@ -3351,7 +3351,7 @@ The word piece was then enlarged and cut out of wood using shop tools. The final
 <blockquote>If this collection of work is just a preview of what’s to come, I’m very excited to see where his design career takes him.</blockquote>
 <h3>Splash-proof illustration</h3>
 Who studied German literature, German literature is, who is studying medicine, is doctor who studies physics is physics, but who studied philosophy, this will by no philosopher. But I would say that the study of philosophy according to specialization may be an ideal preparation for the Informationsachitekten.
-<div><dl id="attachment_102"><dt><a href="http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image11.png"><img class="size-large wp-image-60 aligncenter" alt="work-hard-stay-humble-2" src="http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image21.png" width="842" height="1024" /></a></dt></dl></div>
+<div><dl id="attachment_102"><dt><a href="http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image11.png"><img class="size-large wp-image-60 aligncenter" alt="work-hard-stay-humble-2" src="http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image21.png" width="842" height="1024" /></a></dt></dl></div>
 As we increasingly move past the point of sufficiency, manufacturers will continue to try filling ever-smaller niches. It becomes more about something you like/ want to use more than something you need. Is there room for one in your arsenal? Only you can answer that.  For philosophy teaches one to work on and to the order of the terms.
 
 Images for this post are under copyright © <a title="Clarke Harris - Graphic Design Portfolio" href="http://www.clarkeharris.com/" target="_blank">Clarke Harris</a>]]></content:encoded>
@@ -3384,24 +3384,24 @@ Images for this post are under copyright © <a title="Clarke Harris - Graphic D
                 <wp:meta_value><![CDATA[0]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
             <title>Minimalist Postcards Of Superheroes</title>
-            <link>http://pixelgrade.com/demos/heap/minimalist-postcards-of-superheroes/</link>
+            <link>http://pixelgrade.com/demos/rosa/minimalist-postcards-of-superheroes/</link>
             <pubDate>Wed, 26 Mar 2014 09:12:43 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=65</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=65</guid>
             <description></description>
             <content:encoded><![CDATA[<strong>Barcelona-based design studio Forma &amp; Co has created a new set of colorful, <a href="#">minimalist</a> postcards that feature well-known cultural icons like superheroes, Santa Clause and even Jesus Christ. </strong>
 
@@ -3413,13 +3413,13 @@ These striking graphics have also been made into larger promotional posters. In 
 
 [col size="6"]
 
-[caption id="attachment_66" align="alignnone" width="930"]<a href="http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image2.png"><img class="size-full wp-image-66" alt="forma_re-vision_06" src="http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image2.png" width="930" height="620" /></a> KISS © Form &amp; Co[/caption]
+[caption id="attachment_66" align="alignnone" width="930"]<a href="http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png"><img class="size-full wp-image-66" alt="forma_re-vision_06" src="http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png" width="930" height="620" /></a> KISS © Form &amp; Co[/caption]
 
 [/col]
 
 [col size="6"]
 
-[caption id="attachment_68" align="alignnone" width="930"]<a href="http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image2.png"><img class="size-full wp-image-68" alt="SPIDER-MAN / VENOM © Form &amp; Co" src="http://pixelgrade.com/demos/heap/wp-content/uploads/2014/04/placeholder_image2.png" width="930" height="620" /></a> SPIDER-MAN / VENOM © Form &amp; Co[/caption]
+[caption id="attachment_68" align="alignnone" width="930"]<a href="http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png"><img class="size-full wp-image-68" alt="SPIDER-MAN / VENOM © Form &amp; Co" src="http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png" width="930" height="620" /></a> SPIDER-MAN / VENOM © Form &amp; Co[/caption]
 
 [/col]
 
@@ -3478,19 +3478,19 @@ Images from this post are under Copyright of <a href="http://www.forma.co/es/re
                 <wp:meta_value><![CDATA[0]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_main_gallery</wp:meta_key>
+                <wp:meta_key>_rosa_main_gallery</wp:meta_key>
                 <wp:meta_value><![CDATA[9995,9997,9999]]></wp:meta_value>
             </wp:postmeta>
             <wp:comment>
@@ -3621,10 +3621,10 @@ http://www.biadanilo.it/beats-outlet10.html cuffie beats prezzo]]></wp:comment_c
         </item>
         <item>
             <title>Wallace Design</title>
-            <link>http://pixelgrade.com/demos/heap/wallace-design/</link>
+            <link>http://pixelgrade.com/demos/rosa/wallace-design/</link>
             <pubDate>Tue, 25 Mar 2014 13:15:46 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=100</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=100</guid>
             <description></description>
             <content:encoded><![CDATA[This is a <strong>Post Format Image</strong> and is for Landing pad illustration. A set of letters he did for his new nephew, Joel. His sister-in-law wanted a transportation theme. Printed on canvas, stretched around wooden frames.
 
@@ -3678,24 +3678,24 @@ For more inspiring illustrations check out Dustin Wallace portfolio on <a title
                 <wp:meta_value><![CDATA[0]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
             <title>Where things come from</title>
-            <link>http://pixelgrade.com/demos/heap/where-things-come-from/</link>
+            <link>http://pixelgrade.com/demos/rosa/where-things-come-from/</link>
             <pubDate>Tue, 25 Mar 2014 13:43:46 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=109</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=109</guid>
             <description></description>
             <content:encoded><![CDATA[The internet has established itself as a repository of knowledge. The lion’s share of the world’s knowledge, experience and information resides on server farms and can be accessed by anyone at any time.
 
@@ -3735,19 +3735,19 @@ Copyright <a href="https://vimeo.com/40459347">Hardy Seiler</a>]]></content:enco
                 <wp:meta_value><![CDATA[0]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_video_embed</wp:meta_key>
+                <wp:meta_key>_rosa_video_embed</wp:meta_key>
                 <wp:meta_value><![CDATA[&lt;iframe src=&quot;//player.vimeo.com/video/40459347&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
@@ -3757,10 +3757,10 @@ Copyright <a href="https://vimeo.com/40459347">Hardy Seiler</a>]]></content:enco
         </item>
         <item>
             <title>Printing The Future</title>
-            <link>http://pixelgrade.com/demos/heap/printing-the-future/</link>
+            <link>http://pixelgrade.com/demos/rosa/printing-the-future/</link>
             <pubDate>Sun, 23 Mar 2014 13:50:50 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=114</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=114</guid>
             <description></description>
             <content:encoded><![CDATA[Motion graphics (overview) for the exhibition 3D: printing the future at the Science Museum London.
 
@@ -3797,19 +3797,19 @@ Copyright <a href="https://vimeo.com/40459347">Hardy Seiler</a>]]></content:enc
                 <wp:meta_value><![CDATA[0]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_video_embed</wp:meta_key>
+                <wp:meta_key>_rosa_video_embed</wp:meta_key>
                 <wp:meta_value><![CDATA[&lt;iframe src=&quot;//player.vimeo.com/video/78456459?title=0&amp;amp;byline=0&amp;amp;portrait=0&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
@@ -3819,10 +3819,10 @@ Copyright <a href="https://vimeo.com/40459347">Hardy Seiler</a>]]></content:enc
         </item>
         <item>
             <title>Quote Post Format</title>
-            <link>http://pixelgrade.com/demos/heap/quote-post-format/</link>
+            <link>http://pixelgrade.com/demos/rosa/quote-post-format/</link>
             <pubDate>Sat, 29 Mar 2014 14:13:28 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?p=135</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=135</guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -3857,32 +3857,32 @@ Copyright <a href="https://vimeo.com/40459347">Hardy Seiler</a>]]></content:enc
                 <wp:meta_value><![CDATA[1]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_image_scale_mode</wp:meta_key>
+                <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
                 <wp:meta_value><![CDATA[fill]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_transition</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_transition</wp:meta_key>
                 <wp:meta_value><![CDATA[move]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_post_slider_delay</wp:meta_key>
+                <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
                 <wp:meta_value><![CDATA[1000]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_quote</wp:meta_key>
+                <wp:meta_key>_rosa_quote</wp:meta_key>
                 <wp:meta_value><![CDATA[I have not failed. I've just found 10,000 ways that won't work.]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
-                <wp:meta_key>_heap_quote_author</wp:meta_key>
+                <wp:meta_key>_rosa_quote_author</wp:meta_key>
                 <wp:meta_value><![CDATA[Thomas not Edison]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
             <title>Contact form 1</title>
-            <link>http://pixelgrade.com/demos/heap/?post_type=wpcf7_contact_form&#038;p=139</link>
+            <link>http://pixelgrade.com/demos/rosa/?post_type=wpcf7_contact_form&#038;p=139</link>
             <pubDate>Tue, 01 Apr 2014 14:19:49 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/heap/?post_type=wpcf7_contact_form&#038;p=139</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?post_type=wpcf7_contact_form&#038;p=139</guid>
             <description></description>
             <content:encoded><![CDATA[[text* your-name placeholder "Your Name"]
     [email* your-email placeholder "Your Email"]
@@ -3901,7 +3901,7 @@ Message Body:
 [your-message]
 
 --
-This e-mail was sent from a contact form on Heap (http://pixelgrade.com/demos/heap)
+This e-mail was sent from a contact form on Rosa (http://pixelgrade.com/demos/rosa)
 contact@pixelgrade.com
 
 
@@ -3913,7 +3913,7 @@ Message Body:
 [your-message]
 
 --
-This e-mail was sent from a contact form on Heap (http://pixelgrade.com/demos/heap)
+This e-mail was sent from a contact form on Rosa (http://pixelgrade.com/demos/rosa)
 [your-email]
 
 
@@ -3976,7 +3976,7 @@ Message Body:
 [your-message]
 
 --
-This e-mail was sent from a contact form on Heap (http://pixelgrade.com/demos/heap)";s:9:"recipient";s:22:"contact@pixelgrade.com";s:18:"additional_headers";s:0:"";s:11:"attachments";s:0:"";s:8:"use_html";b:0;}]]></wp:meta_value>
+This e-mail was sent from a contact form on Rosa (http://pixelgrade.com/demos/rosa)";s:9:"recipient";s:22:"contact@pixelgrade.com";s:18:"additional_headers";s:0:"";s:11:"attachments";s:0:"";s:8:"use_html";b:0;}]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_mail_2</wp:meta_key>
@@ -3984,7 +3984,7 @@ This e-mail was sent from a contact form on Heap (http://pixelgrade.com/demos/he
 [your-message]
 
 --
-This e-mail was sent from a contact form on Heap (http://pixelgrade.com/demos/heap)";s:9:"recipient";s:12:"[your-email]";s:18:"additional_headers";s:0:"";s:11:"attachments";s:0:"";s:8:"use_html";b:0;}]]></wp:meta_value>
+This e-mail was sent from a contact form on Rosa (http://pixelgrade.com/demos/rosa)";s:9:"recipient";s:12:"[your-email]";s:18:"additional_headers";s:0:"";s:11:"attachments";s:0:"";s:8:"use_html";b:0;}]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_messages</wp:meta_key>

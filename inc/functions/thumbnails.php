@@ -40,7 +40,7 @@ function wpgrade_custom_thumbnails (){
      */
     add_image_size('post-square-medium', 380, 380, true);
 
-    // Heap blog
+    // Rosa blog
     add_image_size('post-medium', 265, 328, true);
 
 }

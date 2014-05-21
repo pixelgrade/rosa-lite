@@ -34,7 +34,7 @@ if ( post_password_required() && !$wpgrade_private_post['allowed'] ) {
                 </header>
                 <div class="page__wrapper">
                     <section class="page__content  js-post-gallery  cf">
-						<?php //if (wpgrade::option('blog_single_show_breadcrumb')) heap::the_breadcrumb(); ?>
+						<?php //if (wpgrade::option('blog_single_show_breadcrumb')) rosa::the_breadcrumb(); ?>
                         <h1 class="page__title"><?php the_title(); ?></h1>
                         <hr class="separator separator--dark" />
                         <?php the_content(); ?>

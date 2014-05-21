@@ -1,8 +1,8 @@
 <?php
 /**
  * The template for displaying the footer widget areas.
- * @package Heap
- * @since   Heap 1.0
+ * @package Rosa
+ * @since   Rosa 1.0
 **/ ?>
 				</section><!-- .content -->
 				<footer class="site-footer">

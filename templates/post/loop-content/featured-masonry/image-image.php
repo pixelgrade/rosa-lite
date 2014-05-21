@@ -9,7 +9,7 @@ if (has_post_thumbnail()) {
 	// we need to search for an image in the content
 	// like it should be
 	$image = array();
-	$image[0] = heap::get_post_format_first_image_src();
+	$image[0] = rosa::get_post_format_first_image_src();
 
 	$image_ratio = 70; //some default aspect ratio in case something has gone wrong and the image has no dimensions - it happens
 }

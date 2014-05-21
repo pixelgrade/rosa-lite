@@ -715,7 +715,7 @@ msgstr ""
 "| All Rights Reserved)."
 
 #: ../assets/admin-panel/redux-sections.php:837
-#: ../inc/classes/heap.php:239
+#: ../inc/classes/rosa.php:239
 msgid "Archives"
 msgstr "Archivio"
 
@@ -1614,7 +1614,7 @@ msgid "Untitled"
 msgstr "Titolo"
 
 #: ../templates/post/single-content/header.php:28
-#: ../inc/classes/heap.php:439
+#: ../inc/classes/rosa.php:439
 #, php-format
 msgid "Posts by %s"
 msgstr ""
@@ -1630,62 +1630,62 @@ msgstr ""
 msgid "View all posts filed under %s"
 msgstr "Leggi tutti in %s"
 
-#: ../inc/classes/heap.php:202
+#: ../inc/classes/rosa.php:202
 msgid "Search Results for: "
 msgstr "Risultati ricerca per: "
 
-#: ../inc/classes/heap.php:210
+#: ../inc/classes/rosa.php:210
 #, fuzzy
 msgid "Tag"
 msgstr "Tagged"
 
-#: ../inc/classes/heap.php:216
+#: ../inc/classes/rosa.php:216
 #, fuzzy
 msgid "Category"
 msgstr "Categorie"
 
-#: ../inc/classes/heap.php:221
+#: ../inc/classes/rosa.php:221
 msgid "Daily Archives: "
 msgstr "Archivio giornaliero: "
 
-#: ../inc/classes/heap.php:227
+#: ../inc/classes/rosa.php:227
 msgid "Monthly Archives: "
 msgstr "Archivio mensile: "
 
-#: ../inc/classes/heap.php:228
+#: ../inc/classes/rosa.php:228
 msgid "F Y"
 msgstr "FY"
 
-#: ../inc/classes/heap.php:233
+#: ../inc/classes/rosa.php:233
 msgid "Yearly Archives: "
 msgstr "Archivi annuali: "
 
-#: ../inc/classes/heap.php:234
+#: ../inc/classes/rosa.php:234
 msgid "Y"
 msgstr "Y"
 
-#: ../inc/classes/heap.php:259
+#: ../inc/classes/rosa.php:259
 #, fuzzy
 msgid "Filter"
 msgstr "Filter Links"
 
-#: ../inc/classes/heap.php:262
-#: ../inc/classes/heap.php:270
+#: ../inc/classes/rosa.php:262
+#: ../inc/classes/rosa.php:270
 #, php-format
 msgid "View all in %s"
 msgstr "Vedi tutti in %s"
 
-#: ../inc/classes/heap.php:264
-#: ../inc/classes/heap.php:272
+#: ../inc/classes/rosa.php:264
+#: ../inc/classes/rosa.php:272
 msgid "View all"
 msgstr "Visualizza tutti"
 
-#: ../inc/classes/heap.php:264
-#: ../inc/classes/heap.php:272
+#: ../inc/classes/rosa.php:264
+#: ../inc/classes/rosa.php:272
 msgid "View All"
 msgstr "Visualizza tutto"
 
-#: ../inc/classes/heap.php:465
+#: ../inc/classes/rosa.php:465
 msgid "Home"
 msgstr ""
 

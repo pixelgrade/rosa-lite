@@ -12,7 +12,7 @@
  * @author     Pixel Grade Team
  * @copyright  (c) 2013, Pixel Grade Media
  */
-class heap
+class rosa
 {
 
 	/**

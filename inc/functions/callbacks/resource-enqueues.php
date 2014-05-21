@@ -37,7 +37,7 @@ function wpgrade_callback_thread_comments_scripts() {
  *
  * This callback is invoked by wpgrade_callback_enqueue_dynamic_css
  */
-function wpgrade_callback_load_google_fonts_heap() {
+function wpgrade_callback_load_google_fonts_rosa() {
 
     $fonts_array = array
     (
@@ -67,7 +67,7 @@ function wpgrade_callback_load_google_fonts_heap() {
 /**
  * This callback is invoked by wpgrade_callback_themesetup.
  */
-function wpgrade_callback_enqueue_dynamic_css_heap() {
+function wpgrade_callback_enqueue_dynamic_css_rosa() {
     $style_query = array();
 
     if (wpgrade::option('main_color')) {
@@ -78,7 +78,7 @@ function wpgrade_callback_enqueue_dynamic_css_heap() {
 
 //    if ( wpgrade::option('use_google_fonts')) {
 
-        add_action('wp_footer', 'wpgrade_callback_load_google_fonts_heap',9999);
+        add_action('wp_footer', 'wpgrade_callback_load_google_fonts_rosa',9999);
         $fonts_array = array
         (
             'google_titles_font',

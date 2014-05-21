@@ -5,17 +5,17 @@
 	# name, unless a custom value is provided)
 	# ---------------------------------------------------------------------
 
-	'name'       => 'Heap',
-	'shortname'  => 'heap',
-	'prefix'     => '_heap_',
-	'textdomain' => 'heap_txtd',
+	'name'       => 'Rosa',
+	'shortname'  => 'rosa',
+	'prefix'     => '_rosa_',
+	'textdomain' => 'rosa_txtd',
 
 	'language-path' => 'languages',
 
 	'update-notifier' => array
 	(
 		'xml-source' => 'http://pixelgrade.com/updates/',
-//		'xml-file' => 'heap.xml',
+//		'xml-file' => 'rosa.xml',
 		'cache-interval' => 10800, # 3 hours
 		'update-page-name' => 'theme-update-notifier',
 	),
@@ -193,9 +193,9 @@
 					'ajaxurl' => admin_url('admin-ajax.php'),
 					'objectl10n' => array
 					(
-						'tPrev' => __('Previous (Left arrow key)', 'heap_txtd'),
-						'tNext' => __('Next (Right arrow key)', 'heap_txtd'),
-						'tCounter' => __('of', 'heap_txtd'),
+						'tPrev' => __('Previous (Left arrow key)', 'rosa_txtd'),
+						'tNext' => __('Next (Right arrow key)', 'rosa_txtd'),
+						'tCounter' => __('of', 'rosa_txtd'),
 						'infscrLoadingText' => "",
 						'infscrReachedEnd' => "",
 					),
@@ -225,7 +225,7 @@
 		(
 			'dynamic-css' => array
 			(
-				'handler' => 'wpgrade_callback_enqueue_dynamic_css_heap',
+				'handler' => 'wpgrade_callback_enqueue_dynamic_css_rosa',
 				'priority' => 9999,
 			),
 			'rtl-support' => 'wpgrade_callback_enqueue_rtl_support',
@@ -247,8 +247,8 @@
 		'prev_next' => true,
 
 		// pagination text
-		'prev_text' => __('Prev', 'heap_txtd'),
-		'next_text' => __('Next', 'heap_txtd'),
+		'prev_text' => __('Prev', 'rosa_txtd'),
+		'next_text' => __('Next', 'rosa_txtd'),
 
 		// are the terms used for paging relative to the sort order?
 		// ie. older/newer instead of sorting agnostic previous/next
@@ -288,8 +288,8 @@
 //				'gallery' => array
 //					(
 //						'formatter' => null,
-//						'prev_text' => __('Prev Images', 'heap_txtd'),
-//						'next_text' => __('Next Images', 'heap_txtd'),
+//						'prev_text' => __('Prev Images', 'rosa_txtd'),
+//						'next_text' => __('Next Images', 'rosa_txtd'),
 //					)
 	),
 

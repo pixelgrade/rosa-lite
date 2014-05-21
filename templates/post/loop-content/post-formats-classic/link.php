@@ -22,7 +22,7 @@ if (!empty($post_format)) {
 			<?php }
 		endif;
 		?>
-		<h3 class="article__title"><a href="<?php echo heap::get_content_link_url() ?>" rel="bookmark"><?php the_title(); ?></a></h3>
+		<h3 class="article__title"><a href="<?php echo rosa::get_content_link_url() ?>" rel="bookmark"><?php the_title(); ?></a></h3>
 	</header>
 	<section  class="article__content">
 		<?php the_content(); ?>

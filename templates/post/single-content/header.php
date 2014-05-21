@@ -8,7 +8,7 @@ if (empty($post_format)) {
 
 <header class="article__header">
 	<?php get_template_part('templates/post/single-content/featured-classic/image',$post_format); ?>
-	<?php if (wpgrade::option('blog_single_show_breadcrumb')) heap::the_breadcrumb(); ?>
+	<?php if (wpgrade::option('blog_single_show_breadcrumb')) rosa::the_breadcrumb(); ?>
 
 	<?php if (get_the_title()): ?>
 	<h1 class="article__title entry-title" itemtype="name" ><?php the_title(); ?></h1>
@@ -33,7 +33,7 @@ if (empty($post_format)) {
 				<?php endif;
 
 				if ( comments_open() ) { ?>
-					<a href="#comments" class="article__comments-number"><?php heap::comments_number(); ?></a>
+					<a href="#comments" class="article__comments-number"><?php rosa::comments_number(); ?></a>
 				<?php } ?>
 			</div><!--
 			--><div class="grid__item <?php if ($both_metas) echo 'lap-and-up-one-half' ?>">
