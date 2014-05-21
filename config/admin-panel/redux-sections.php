@@ -913,60 +913,8 @@ $sections[] = array(
 	'title' => __('Header', wpgrade::textdomain()),
 	'desc' => '<p class="description">'.__('Header options allow you to control both the visual and functional aspects of the page header area.', wpgrade::textdomain()).'</p>',
 	'fields' => array(
-		array(
-            'id'=>'left-area-218293203',
-            'desc'=> '<h4>'.__('Left Area', wpgrade::textdomain()).'</h4>',
-            'type' => 'info'
-        ),
-		array(
-			'id' => 'header_social_links',
-			'type' => 'checkbox',
-			'title' => __('Social Links', wpgrade::textdomain()),
-			'subtitle' => __('Adds the social links you have configured in Theme Options > Social and SEO.', wpgrade::textdomain()),
-			'default' => '1',
-		),
-		array(
-			'id'=>'right-area-218293204',
-			'desc'=> '<h4>'.__('Right Area', wpgrade::textdomain()).'</h4>',
-			'type' => 'info'
-		),
-		array(
-			'id' => 'header_rss',
-			'type' => 'checkbox',
-			'title' => __('RSS Feed', wpgrade::textdomain()),
-			'subtitle' => __('Display a RSS feed link.', wpgrade::textdomain()),
-			'default' => '0',
-		),
-		array(
-			'id' => 'header_rss_link',
-			'type' => 'text',
-			'title' => __('RSS Feed URL', wpgrade::textdomain()),
-			'subtitle' => __('Enter here the URL you would like the RSS feed icon to link to.', wpgrade::textdomain()),
-			'default' => '#',
-			'required' => array('header_rss', '=', '1'),
-		),
-		array(
-			'id' => 'header_contact',
-			'type' => 'checkbox',
-			'title' => __('Contact Link', wpgrade::textdomain()),
-			'subtitle' => __('Display a mail to link to your linked profile email address.', wpgrade::textdomain()),
-			'default' => '0',
-		),
-		// array(
-		// 	'id' => 'header_contact_link',
-		// 	'type' => 'text',
-		// 	'title' => __('Contact URL', wpgrade::textdomain()),
-		// 	'desc' => __('Enter here the URL you would like the contact icon to link to.', wpgrade::textdomain()),
-		// 	'default' => '#',
-		// 	'required' => array('header_contact', '=', '1'),
-		// ),
-		array(
-			'id' => 'header_search',
-			'type' => 'checkbox',
-			'title' => __('Search Form', wpgrade::textdomain()),
-			'subtitle' => __('Adds a fancy search button and form in your site header.', wpgrade::textdomain()),
-			'default' => '1',
-		),
+
+
 
 	)
 );
@@ -1001,79 +949,6 @@ $sections[] = array(
     'title' => __('Archives', wpgrade::textdomain()),
     'desc' => sprintf('<p class="description">'.__('Archive options control the various aspects related to displaying posts in archives and front page. You can control things like excerpt length and various layout aspects.', wpgrade::textdomain()).'</p>',wpgrade::themename()),
     'fields' => array(
-		array(
-			'id' => 'blog_layout',
-			'type' => 'image_select',
-			'title' => __('Archive Posts Layout', wpgrade::textdomain()),
-			'subtitle' => __('Choose the layout for the <strong>front page</strong> and <strong>archive pages</strong> (eg. blog, categories, search results).', wpgrade::textdomain()),
-			'default' => 'masonry',
-			'options' => array(
-				'masonry' => array('Masonry', 'img' => wpgrade::resourceuri('images/blog-masonry.png')),
-				'classic' => array('Classic', 'img' => wpgrade::resourceuri('images/blog-classic.png')),
-			)
-		),
-		array(
-			'id'=>'masonry_columns-218293204',
-			'desc' => __('<b>Number of Columns</b> of masonry archives based on various <b>screen sizes</b>:', wpgrade::textdomain()),
-			'type' => 'info'
-		),
-		array(
-			'id' => 'blog_layout_masonry_big_columns',
-			'type' => 'select',
-			'desc' => __('<strong>LARGE</strong> screen size (1250px +)', wpgrade::textdomain()),
-			'options' => array(
-				1 => '1 column',
-				2 => '2 columns',
-				3 => '3 columns',
-				4 => '4 columns',
-				5 => '5 columns',
-				6 => '6 columns',
-			),
-			'default' => 3,
-			'select2' => array(
-				'minimumResultsForSearch' => -1, // this way the search box will be disabled
-				'allowClear' => false // don't allow a empty select
-			),
-			'required' => array('blog_layout', '=', 'masonry')
-		),
-		array(
-			'id' => 'blog_layout_masonry_medium_columns',
-			'type' => 'select',
-			'desc' => __('<strong>MEDIUM</strong> screen size (900px +)', wpgrade::textdomain()),
-			'options' => array(
-				1 => '1',
-				2 => '2',
-				3 => '3',
-				4 => '4',
-				5 => '5',
-			),
-			'default' => 2,
-			'select2' => array(
-				'minimumResultsForSearch' => -1, // this way the search box will be disabled
-				'allowClear' => false // don't allow a empty select
-			),
-			'required' => array('blog_layout', '=', 'masonry')
-		),
-		array(
-			'id' => 'blog_layout_masonry_small_columns',
-			'type' => 'select',
-			'title' => __('', wpgrade::textdomain()),
-			'desc' => __('<strong>SMALL</strong> screen size', wpgrade::textdomain()),
-			'options' => array(
-				1 => '1',
-				2 => '2',
-				3 => '3',
-				4 => '4',
-				5 => '5',
-			),
-			'default' => 1,
-			'select2' => array(
-				'minimumResultsForSearch' => -1, // this way the search box will be disabled
-				'allowClear' => false // don't allow a empty select
-			),
-			'required' => array('blog_layout', '=', 'masonry')
-		),
-
 		array(
 			'id'=>'posts_meta_data-218293204',
 			'desc'=> '<h4>'.__('Posts Meta Data', wpgrade::textdomain()).'</h4>',
@@ -1128,30 +1003,6 @@ $sections[] = array(
 			'id'=>'navigation_style-21829384',
 			'desc'=> '<h4>'.__('Navigation Style', wpgrade::textdomain()).'</h4>',
 			'type' => 'info'
-		),
-
-		array(
-			'id' => 'blog_infinitescroll',
-			'type' => 'switch',
-			'title' => __('Infinite Scroll', wpgrade::textdomain()),
-			'subtitle' => __('Replace the regular pagination with AJAX loading new items on scroll or button click (will load at once the number posts specified in Settings > Reading).', wpgrade::textdomain()),
-			'default' => '1',
-		),
-
-		array(
-			'id' => 'blog_infinitescroll_show_button',
-			'type' => 'checkbox',
-			'title' => __('Show [Load More] Button', wpgrade::textdomain()),
-			'subtitle' => __('The next posts will be loaded only on button click.', wpgrade::textdomain()),
-			'default' => '1',
-			'required' => array('blog_infinitescroll', '=', '1'),
-		),
-		array(
-			'id' => 'blog_infinitescroll_button_text',
-			'type' => 'text',
-			'title' => __('[Load More] Button Text', wpgrade::textdomain()),
-			'default' => '+ LOAD MORE',
-			'required' => array('blog_infinitescroll_show_button', '=', '1'),
 		),
 
 		array(
@@ -1720,38 +1571,6 @@ $sections[] = array(
         ),
     )
 );
-
-
-/**
- * Check if WooCommerce is active
- **/
-if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-
-	// WooCommerce
-	// ------------------------------------------------------------------------
-	$sections[] = array(
-		'icon' => "cart",
-		'icon_class' => '',
-		'title' => __('WooCommerce', wpgrade::textdomain()),
-		'desc' => '<p class="description">'.__('WooCommerce options!', wpgrade::textdomain()).'</p>',
-		'fields' => array(
-			array(
-				'id' => 'enable_woocommerce_support',
-				'type' => 'switch',
-				'title' => __('Enable WooCommerce Support', wpgrade::textdomain()),
-				'subtitle' => __('Turn this off to avoid loading the WooCommerce assets (CSS and JS).', wpgrade::textdomain()),
-				'default' => '1'
-			),
-			array(
-				'id' => 'display_product_filters',
-				'type' => 'switch',
-				'title' => __('Show Category Filter in Shop Page', wpgrade::textdomain()),
-				'subtitle' => __('Turn this On to have a product filter on the shop page.', wpgrade::textdomain()),
-				'default' => '1'
-			),
-		)
-	);
-}
 
 // Utilities - Theme Auto Update + Import Demo Data
 // ------------------------------------------------------------------------

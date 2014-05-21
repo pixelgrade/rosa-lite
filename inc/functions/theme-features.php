@@ -28,15 +28,15 @@ function wpgrade_custom_backgrounds_support(){
 
 function wpgrade_add_desktop_icons(){
 
-	if ( wpgrade::option_image_src( 'favicon' ) ) {
+	if ( wpgrade::image_src( 'favicon' ) ) {
 		echo "<link rel='icon' href=\"".wpgrade::option_image_src( 'favicon' )."\" >\n";
 	}
 
-	if ( wpgrade::option_image_src( 'apple_touch_icon' ) ) {
+	if ( wpgrade::image_src( 'apple_touch_icon' ) ) {
 		echo "<link rel=\"apple-touch-icon\" href=\"".wpgrade::option_image_src( 'apple_touch_icon' )."\" >\n";
 	}
 
-	if ( wpgrade::option_image_src( 'metro_icon' ) ) {
+	if ( wpgrade::image_src( 'metro_icon' ) ) {
 		echo "<meta name=\"msapplication-TileColor\" content=\"#f01d4f\">\n";
 		echo "<meta name=\"msapplication-TileImage\" content=\"".wpgrade::option_image_src( 'metro_icon' )."\" >\n";
 	}

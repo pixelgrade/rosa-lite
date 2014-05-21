@@ -58,12 +58,12 @@ function wpgrade_register_required_plugins() {
 //            'required'  => false,
 //            'version'   => ''
 //        ),
-//		array(
-//			'name' 		=> 'Contact Form 7',
-//			'slug' 		=> 'contact-form-7',
-//			'required' 	=> false,
-//			'version' 	=> ''
-//		),
+		array(
+			'name' 		=> 'Contact Form 7',
+			'slug' 		=> 'contact-form-7',
+			'required' 	=> false,
+			'version' 	=> ''
+		),
 	);
 	// Change this to your theme text domain, used for internationalising strings
 	$theme_text_domain = wpgrade::textdomain();
