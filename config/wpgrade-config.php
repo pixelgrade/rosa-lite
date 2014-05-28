@@ -84,7 +84,6 @@
 		'Button',
 		'Icon',
 		'Tabs',
-		'Quote',
 		'Separator',
 		'Slider',
 		'OpenTableReservations',
