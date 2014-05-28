@@ -26,7 +26,7 @@ if ( class_exists('WP_Customize_Control') ) {
 
 			$field['custom_data'] = $this->get_link();
 
-			$field_class = 'ReduxFramework_typography';
+			$field_class = 'ReduxFramework_customizer_typography';
 			if( !class_exists( $field_class ) ) {
 				$class_file = apply_filters( 'redux-typeclass-load', '/inc/fields/typography/field_typography.php', $field_class );
 

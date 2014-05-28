@@ -1,1 +1,0 @@
-<?php function test_required_func6() {}

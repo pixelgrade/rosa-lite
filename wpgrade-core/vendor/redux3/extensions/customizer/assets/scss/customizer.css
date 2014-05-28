@@ -1,6 +1,6 @@
 /*
 Syntax error: File to import not found or unreadable: compass.
-              Load path: /Applications/AMPPS/www/rosa.dev/wp-content/themes/rosa/wpgrade-core/vendor/redux3/extensions/customizer/assets/scss (DEPRECATED)
+              Load path: /Applications/AMPPS/www/heap.dev/wp-content/themes/heap/wpgrade-core/vendor/redux3/extensions/customizer/assets/scss (DEPRECATED)
         on line 3 of customizer.scss
 
 1: 
@@ -55,4 +55,4 @@ customizer.scss:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: compass.\A               Load path: /Applications/AMPPS/www/rosa.dev/wp-content/themes/rosa/wpgrade-core/vendor/redux3/extensions/customizer/assets/scss (DEPRECATED)\A         on line 3 of customizer.scss\A \A 1: \A 2: @charset \"UTF-8\";\A 3: @import \"compass\";\A 4: /*------------------------------------*\\A 5:     VARIABLES\A 6: \*------------------------------------*/\A 7: $accent 	: #3677bd;\A 8: $dark 		: #232527;"; }
+  content: "Syntax error: File to import not found or unreadable: compass.\A               Load path: /Applications/AMPPS/www/heap.dev/wp-content/themes/heap/wpgrade-core/vendor/redux3/extensions/customizer/assets/scss (DEPRECATED)\A         on line 3 of customizer.scss\A \A 1: \A 2: @charset \"UTF-8\";\A 3: @import \"compass\";\A 4: /*------------------------------------*\\A 5:     VARIABLES\A 6: \*------------------------------------*/\A 7: $accent 	: #3677bd;\A 8: $dark 		: #232527;"; }

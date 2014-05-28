@@ -110,8 +110,11 @@ class WPGradeOptions {
 	 * @return static $this
 	 */
 	function set($key, $value) {
-		$this->coredriver->set($key, $value);
-		return $this;
+
+		$drivers = array_reverse($this->drivers);
+		foreach ($drivers as $driver) {
+			$driver->set($key, $value);
+		}
 	}
 
 } # class

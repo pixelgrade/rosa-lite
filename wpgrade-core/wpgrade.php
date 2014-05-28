@@ -34,11 +34,11 @@ class wpgrade {
 	 * @return array theme configuration
 	 */
 	static function config() {
-//		if (self::$configuration === null) {
-//			self::$configuration = include self::themepath().'wpgrade-config'.EXT;
-//		}
-//
-//		return self::$configuration;
+		//		if (self::$configuration === null) {
+		//			self::$configuration = include self::themepath().'wpgrade-config'.EXT;
+		//		}
+		//
+		//		return self::$configuration;
 		return self::get_config();
 	}
 
@@ -50,8 +50,14 @@ class wpgrade {
 	}
 
 	static function set_config(){
-		if ( file_exists(self::config_path().'wpgrade-config'.EXT))
-			self::$configuration = include self::config_path().'wpgrade-config'.EXT;
+		/**
+		 * this is the old path...keep it for legacy
+		 */
+		if ( file_exists(self::themepath().'wpgrade-config'.EXT)) {
+			self::$configuration = include self::themepath().'wpgrade-config'.EXT;
+		} elseif( file_exists(self::themepath().'config/wpgrade-config'.EXT) ) {
+			self::$configuration = include self::themepath().'config/wpgrade-config'.EXT;
+		}
 	}
 
 	static function has_config(){
@@ -61,7 +67,7 @@ class wpgrade {
 		return true;
 	}
 
-	 static $shortname = null;
+	static $shortname = null;
 
 	/** @var WPGradeMeta wpgrade state information */
 	protected static $state = null;
@@ -111,7 +117,7 @@ class wpgrade {
 	}
 
 
-//// Options ///////////////////////////////////////////////////////////////////
+	//// Options ///////////////////////////////////////////////////////////////////
 
 	/** @var WPGradeOptions */
 	protected static $options_handler = null;
@@ -237,7 +243,7 @@ class wpgrade {
 	}
 
 
-//// Resolvers /////////////////////////////////////////////////////////////////
+	//// Resolvers /////////////////////////////////////////////////////////////////
 
 	/** @var array */
 	protected static $resolvers = array();
@@ -275,7 +281,7 @@ class wpgrade {
 	}
 
 
-//// Wordpress Defferred Helpers ///////////////////////////////////////////////
+	//// Wordpress Defferred Helpers ///////////////////////////////////////////////
 
 	/**
 	 * Filter content based on settings in wpgrade-config.php
@@ -322,13 +328,6 @@ class wpgrade {
 	}
 
 	/**
-	 * @return string config dir path WITH TRAILING SLASH
-	 */
-	static function config_path()	{
-		return get_template_directory().DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR;
-	}
-
-	/**
 	 * @return string theme path (it may be a child theme) WITH TRAILING SLASH
 	 */
 	static function childpath()	{
@@ -368,8 +367,8 @@ class wpgrade {
 	 */
 	static function corepartial($file) {
 
-		$templatepath = self::themepath().rtrim(self::confoption('core-partials-overwrite-path', 'templates/core'), '/').'/'.$file;
-		$childpath = self::childpath().rtrim(self::confoption('core-partials-overwrite-path','templates//core'), '/').'/'.$file;
+		$templatepath = self::themepath().rtrim(self::confoption('core-partials-overwrite-path', 'theme-partials/wpgrade-partials'), '/').'/'.$file;
+		$childpath = self::childpath().rtrim(self::confoption('core-partials-overwrite-path', 'theme-partials/wpgrade-partials'), '/').'/'.$file;
 
 		if (file_exists($childpath)) {
 			return $childpath;
@@ -508,7 +507,7 @@ class wpgrade {
 	 * @return string uri to resource file
 	 */
 	static function resourceuri($file) {
-		return wpgrade::uri(wpgrade::confoption('resource-path', 'content').'/'.ltrim($file, '/'));
+		return wpgrade::uri(wpgrade::confoption('resource-path', 'theme-content').'/'.ltrim($file, '/'));
 	}
 
 	/**
@@ -534,7 +533,7 @@ class wpgrade {
 	}
 
 
-//// Helpers ///////////////////////////////////////////////////////////////////
+	//// Helpers ///////////////////////////////////////////////////////////////////
 
 	/**
 	 * Hirarchical array merge. Will always return an array.
@@ -908,14 +907,14 @@ class wpgrade {
 		$hex = str_replace('#', '', $hex);
 
 		if (strlen($hex) == 3) {
-		   $r = hexdec(substr($hex,0,1).substr($hex,0,1));
-		   $g = hexdec(substr($hex,1,1).substr($hex,1,1));
-		   $b = hexdec(substr($hex,2,1).substr($hex,2,1));
+			$r = hexdec(substr($hex,0,1).substr($hex,0,1));
+			$g = hexdec(substr($hex,1,1).substr($hex,1,1));
+			$b = hexdec(substr($hex,2,1).substr($hex,2,1));
 		}
 		else { // strlen($hex) != 3
-		   $r = hexdec(substr($hex,0,2));
-		   $g = hexdec(substr($hex,2,2));
-		   $b = hexdec(substr($hex,4,2));
+			$r = hexdec(substr($hex,0,2));
+			$g = hexdec(substr($hex,2,2));
+			$b = hexdec(substr($hex,4,2));
 		}
 
 		$rgb = array($r, $g, $b);
@@ -967,7 +966,7 @@ class wpgrade {
 	}
 
 
-//// Media Handlers & Helpers //////////////////////////////////////////////////
+	//// Media Handlers & Helpers //////////////////////////////////////////////////
 
 	#
 	# Audio
@@ -1047,7 +1046,7 @@ class wpgrade {
 	}
 
 
-//// Internal Bootstrapping Helpers ////////////////////////////////////////////
+	//// Internal Bootstrapping Helpers ////////////////////////////////////////////
 
 	/**
 	 * Loads in core dependency.
@@ -1081,7 +1080,7 @@ class wpgrade {
 	}
 
 
-//// WPML Related Functions ////////////////////////////////////////////////////
+	//// WPML Related Functions ////////////////////////////////////////////////////
 
 	static function lang_post_id($id) {
 		if(function_exists('icl_object_id')) {
@@ -1156,7 +1155,7 @@ class wpgrade {
 	}
 
 
-//// Unit Test Helpers /////////////////////////////////////////////////////////
+	//// Unit Test Helpers /////////////////////////////////////////////////////////
 
 	/**
 	 * This method is mainly used in testing.
@@ -1171,7 +1170,7 @@ class wpgrade {
 		}
 	}
 
-//// Behavior Testing Helpers //////////////////////////////////////////////////
+	//// Behavior Testing Helpers //////////////////////////////////////////////////
 
 	/**
 	 * This method is used to return the base path to the wordpress test

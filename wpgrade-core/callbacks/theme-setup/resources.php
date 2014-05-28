@@ -43,6 +43,7 @@
 			// allow child themes to remove the localization
 			if ($script !== null) {
 
+				// localize the theme_name, we are gonna need it
 				if ( $stylename === 'wpgrade-main-scripts' ) {
 					$script['theme_name'] = wpgrade::shortname();
 				}
@@ -62,3 +63,17 @@
 		}
 		
 	}
+
+function wpgrade_add_redux_custom_style() {
+    wp_enqueue_style( 'redux-custom-css', wpgrade::coreresourceuri( 'admin-panel/css/admin-panel.css' ), array(), // Be sure to include redux-css so it's appended after the core css is applied
+    time(), 'all' );
+
+    wp_enqueue_script( 'redux-custom-js', wpgrade::coreresourceuri( 'admin-panel/js/admin-panel.js' ), array(
+      'jquery',
+      'redux-js',
+      'wp-ajax-response',
+    ), // Be sure to include redux-css so it's appended after the core css is applied
+    time(), true );
+}
+
+add_action( 'redux-enqueue-' . wpgrade::shortname() . '_options', 'wpgrade_add_redux_custom_style', 0 );

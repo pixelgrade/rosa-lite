@@ -393,8 +393,6 @@ if( !class_exists( 'ReduxFramework_extension_customizer' ) ) {
 						$option['title'] = "";
 					}
 
-
-
 					$transport = 'refresh';
 					if ( isset($option['customizer']['transport']) ) {
 						$transport = $option['customizer']['transport'];
@@ -530,10 +528,9 @@ if( !class_exists( 'ReduxFramework_extension_customizer' ) ) {
 								'field'   => $option,
 								'ReduxFramework' => $this->parent
 							) ) );
-
 							break;
 
-						case 'slider':
+						case 'customizer_slider':
 							$wp_customize->add_control( new Redux_customizer_slider( $wp_customize, $option['id'], array(
 								'label'   => $option['title'],
 								'section' => $section['id'],
@@ -546,7 +543,7 @@ if( !class_exists( 'ReduxFramework_extension_customizer' ) ) {
 							) ) );
 							break;
 
-						case 'typography':
+						case 'customizer_typography':
 							$wp_customize->add_control( new Redux_customizer_typography( $wp_customize, $option['id'], array(
 								'label'   => $option['title'],
 								'section' => $section['id'],
@@ -572,7 +569,7 @@ if( !class_exists( 'ReduxFramework_extension_customizer' ) ) {
 							) ) );
 							break;
 
-						case 'background':
+						case 'customizer_background':
 							$wp_customize->add_control( new Redux_customizer_background( $wp_customize, $option['id'], array(
 								'label'   => $option['title'],
 								'section' => $section['id'],

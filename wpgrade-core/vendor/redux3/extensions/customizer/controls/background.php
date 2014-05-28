@@ -26,7 +26,7 @@ if ( class_exists('WP_Customize_Control') ) {
 
 			$field['custom_data'] = $this->get_link();
 
-			$field_class = 'ReduxFramework_background';
+			$field_class = 'ReduxFramework_customizer_background';
 			if( !class_exists( $field_class ) ) {
 				$class_file = apply_filters( 'redux-typeclass-load', '/inc/fields/background/field_background.php', $field_class );
 

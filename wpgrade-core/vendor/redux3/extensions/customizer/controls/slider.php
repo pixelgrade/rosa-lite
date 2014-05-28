@@ -1,5 +1,6 @@
 <?php
 if ( class_exists('WP_Customize_Control') ) {
+
 	class Redux_customizer_slider extends Redux_Customize_Control {
 
 		public $type = 'slider';
@@ -24,7 +25,7 @@ if ( class_exists('WP_Customize_Control') ) {
 
 			$field['custom_data'] = $this->get_link();
 
-			$field_class = 'ReduxFramework_slider';
+			$field_class = 'ReduxFramework_customizer_slider';
 			if( !class_exists( $field_class ) ) {
 				$class_file = apply_filters( 'redux-typeclass-load', '/inc/fields/slider/field_slider.php', $field_class );
 				if( $class_file === 'inc/fields/slider/field_slider.php') {

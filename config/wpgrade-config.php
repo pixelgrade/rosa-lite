@@ -17,6 +17,9 @@
 		'cache-interval'   => 10800, # 3 hours
 		'update-page-name' => 'theme-update-notifier',
 	),
+
+	'theme-adminpanel-path'        => 'config/admin-panel',
+
 	// additional file includes (classes, functions, etc), files are loaded
 	// via wpgrade::require_all and entries should be directories; if the
 	// path does not exist it is automatically ignored

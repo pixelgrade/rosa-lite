@@ -70,6 +70,6 @@
 //		}
 
 		if ( wpgrade::option('inject_custom_css') == 'file' ){
-            wp_enqueue_style('wpgrade-custom-style', get_template_directory_uri() . '/assets/css/custom.css' );
+            wp_enqueue_style('wpgrade-custom-style', get_template_directory_uri() . '/theme-content/css/custom.css' );
         }
 	}

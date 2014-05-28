@@ -58,7 +58,7 @@
 
 	// Plugins & Resolvable Dependencies
 	// ---------------------------------
-	require wpgrade::themefilepath(wpgrade::confoption('theme-adminpanel-path', 'config/admin-panel').'/bootstrap'.EXT);
+	require wpgrade::themefilepath(wpgrade::confoption('theme-adminpanel-path', 'theme-content/admin-panel').'/bootstrap'.EXT);
 
 
 	// Hooks

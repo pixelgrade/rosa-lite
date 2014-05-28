@@ -1,0 +1,1763 @@
+/*-----------------------------------------------*\
+              THEME OPTIONS STYLING
+\*-----------------------------------------------*/
+//@import url('../../../wpgrade-core/vendor/redux3/assets/css/style.css');
+@import "compass";
+
+$content-bg: #fcfcfc;
+$sidebar-bg: #f7f7f7;
+$border-color: #dfdfdf;
+$dark: #464646;
+$light: #777777;
+$lighter: #999999;
+$accent: #07d3f8;
+
+$content-width: 800px;
+$sidebar-width: 250px;
+
+$_u: 24px;
+$_u2: $_u/2;
+$_u4: $_u/4;
+$_2u: $_u*2;
+$_15u: $_u+$_u/2;
+
+$normal: 14px;
+$big: 14px;
+
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700);
+$body-font: 'PT Sans', sans-serif;
+$heading-font: 'Open Sans', sans-serif;
+
+/*-----------------------------------------------*\
+              GENERAL + OVERWRITES
+\*-----------------------------------------------*/
+
+.redux-container {
+	font-family: $body-font;
+	margin-left: -19px;
+	margin-right: -15px;
+	margin-top: 0 !important;
+	background: url('../images/bg_pattern.png');
+	border: none;
+	@include border-radius(0);
+	@include box-shadow(none);
+
+	* {
+		@include box-sizing(border-box);
+	}
+
+	form {
+
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: $heading-font;
+		color: $dark;
+		font-weight: normal;
+	}
+
+	h3, h4 {
+		font-size: 30px;
+		margin-bottom: $_2u;
+		font-weight: 300;
+		line-height: 1;
+		border-bottom: 0;
+	}
+
+	.redux-group-tab > h3 {
+		position: absolute;
+		background: #fcfcfc;
+		z-index: 1;
+		width: 798px;
+		top: 0;
+		line-height: 130px;
+		padding-left: 48px;
+		left: 0;
+
+		&:after {
+			content: "";
+			height: 10px;
+			width: 798px;
+			display: block;
+			margin-left: -48px;
+		}
+	}
+
+	h4 {
+		font-size: 21px;
+		margin-bottom: $_u4;
+		margin-top: $_u;
+	}
+
+	h5 {
+		font-size: 15px;
+		text-transform: uppercase;
+		margin-bottom: $_u4;
+		margin-top: $_2u;
+	}
+
+	// Fixed Header on Scroll
+	&.fixed-header {
+		.redux-group-tab > h3 {
+			position: fixed;
+			left: 414px; // Wordpress + Redux Sidebar Width
+			top: 30px; //Admin Bar Height
+			background: transparent url("../images/fixed-bottom-shadow.png") bottom left repeat-x;
+		}
+		#redux-sticky #info_bar .redux-action_bar {
+			position: fixed;
+			left: 1037px;
+			right: auto;
+			top: 71px;
+		}
+
+		.branch-3-7 & {
+			.redux-group-tab > h3 {
+				left: 397px;
+			}
+			#redux-sticky #info_bar .redux-action_bar {
+				left: 1022px;
+			}
+		}
+
+	}
+}
+
+.redux-main {
+	padding: 140px $_2u $_u4+$_2u;
+	margin-left: $sidebar-width;
+	max-width: $content-width;
+	background: $content-bg;
+	border-left: 1px solid $border-color;
+	border-right: 1px solid $border-color;
+	border-top: 1px solid $border-color;
+	position: relative;
+}
+
+// 'Theme Options' title + description
+#redux-intro-text {
+	height: 6 * $_u;
+	width: $sidebar-width;
+	background: transparent;
+	border: none;
+	@include box-shadow(none);
+
+	color: $dark;
+
+	padding-left: $_u;
+	padding-top: 0;
+
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 10;
+
+	p {
+		font-family: $body-font;
+		font-weight: normal;
+		font-size: 12px;
+	}
+}
+
+#redux-sticky {
+	position: relative;
+	max-width: 1050px;
+	#info_bar {
+		padding: 0;
+		background: none;
+		border: none;
+		@include box-shadow(none);
+		z-index: 2;
+		position: absolute;
+		right: 0;
+		top: 0;
+
+		.redux-action_bar {
+			position: relative;
+			right: 36px;
+			top: 42px;
+			z-index: 999;
+
+			#redux_save {
+				font-size: 14px;
+				padding: 8px $_u;
+				height: auto;
+				text-shadow: 0 -1px 0 #000;
+				border-color: $dark;
+				background-color: #2e2e2e;
+				@include border-radius(25px);
+				@include background-image(linear-gradient(left top, #3b3b3b, #212121));
+				@include box-shadow(rgba(255, 255, 255, 0.3) 0 1px 0 inset, rgba(0, 0, 0, 0.1) 0 0 0 1px, rgba(0, 0, 0, 0.15) 0 1px 0 0);
+
+				&:hover {
+					@include background-image(linear-gradient(left top, #484848, #2e2e2e));
+				}
+			}
+
+			input:not(.button-primary) {
+				display: none;
+			}
+		}
+
+		.expand_options {
+			display: none;
+		}
+	}
+}
+
+#redux-header, #redux-footer-sticky {
+	display: none;
+}
+
+.redux-group-tab .redux-section-desc {
+
+	margin-bottom: $_u;
+
+	p.description {
+		font-style: normal;
+		font-size: inherit;
+		color: $dark;
+		line-height: 1.5;
+	}
+}
+
+/*body*/
+.redux-page {
+
+	&.branch-3-7 {
+		#wpcontent {
+			margin-left: 145px;
+			padding-left: 20px;
+		}
+	}
+
+	#wpcontent {
+		margin-left: 160px;
+		padding-left: 20px;
+		background: $sidebar-bg;
+	}
+	#wpbody-content {
+		background: $sidebar-bg;
+		padding-bottom: 0;
+
+		& > .wrap {
+			margin-top: -8px;
+		}
+	}
+	#wpfooter {
+		display: none;
+	}
+}
+
+/*-----------------------------------------------*\
+              MENU
+\*-----------------------------------------------*/
+.redux-sidebar {
+	background: $sidebar-bg;
+	padding-top: 6 * $_u;
+	width: $sidebar-width;
+	height: 100%;
+	position: absolute;
+
+	.redux-group-menu {
+		li {
+			a {
+				font-weight: normal;
+				font-size: 14px;
+				color: $dark;
+
+				padding: $_u2 $_u;
+				margin-right: 0;
+				border-width: 1px 0 1px 0;
+				border-top-color: $sidebar-bg;
+				border-bottom-color: $sidebar-bg;
+				background: transparent;
+			}
+
+			i {
+				font-size: 15px;
+				margin-right: 5px;
+				text-align: left;
+			}
+
+			a:hover, &.active a:hover {
+				width: auto;
+				color: $dark;
+				background: transparent;
+			}
+
+			&.active a {
+				color: $dark;
+				width: auto;
+				margin-right: 0;
+				border-top-color: $border-color;
+				border-bottom-color: $border-color;
+				background: $content-bg !important;
+			}
+		}
+	}
+}
+
+/*-----------------------------------------------*\
+              CONTENT
+\*-----------------------------------------------*/
+.redux-container {
+	.redux-group-tab .form-table {
+		tr {
+			border: none;
+		}
+	}
+	th {
+		font-size: 14px;
+		margin-top: $_15u;
+
+		.description {
+			font-size: 12px;
+			color: $light;
+			margin-top: 0;
+			margin-bottom: $_u4;
+			padding-right: 100px;
+		}
+	}
+
+	.redux_field_th, .redux-main .redux-field-container {
+		padding: 0;
+	}
+
+	/*
+	  * Divider
+	  */
+	.redux-sidebar .redux-group-menu li.divide {
+		margin-top: $_15u;
+		margin-bottom: $_15u;
+	}
+
+}
+
+//Change the layout to stacked
+.redux-group-tab .form-table tr {
+	th, td {
+		display: block;
+		width: 100%;
+		padding: 0;
+		position: relative;
+	}
+}
+
+//Buttons
+.redux-container {
+	.button {
+
+		&.remove-image {
+			font-size: 12px;
+			color: $light;
+			opacity: 0.7;
+
+			padding: 0;
+			background: none;
+			border: none;
+			@include box-shadow(none);
+
+			&:hover, &:focus {
+				background: none;
+				@include box-shadow(none);
+				color: $accent;
+				opacity: 1;
+			}
+		}
+	}
+
+	/*
+	  * Button Primary
+	  */
+	.button-primary {
+		font-size: 14px;
+		padding: 8px $_u;
+		height: auto;
+		text-shadow: 0 -1px 0 #000;
+		border-color: $dark;
+		background-color: #2e2e2e;
+		@include border-radius(25px);
+		@include background-image(linear-gradient(left top, #3b3b3b, #212121));
+		@include box-shadow(rgba(255, 255, 255, 0.3) 0 1px 0 inset, rgba(0, 0, 0, 0.1) 0 0 0 1px, rgba(0, 0, 0, 0.15) 0 1px 0 0);
+
+		&:hover {
+			@include background-image(linear-gradient(left top, #484848, #2e2e2e));
+		}
+	}
+
+	#wpGrade_import_demodata_button {
+		margin-top: -20px;
+	}
+}
+
+/*-----------------------------------------------*\
+              COMPONENTS
+\*-----------------------------------------------*/
+
+/*
+* Forms
+*/
+.redux-main {
+	input, select, textarea {
+		background-color: #fff !important;
+		border: 1px solid $border-color;
+		@include border-radius(0);
+		@include box-shadow(none);
+		margin-top: 0;
+		margin-bottom: 0;
+		height: $_15u;
+		line-height: 1.5;
+		padding: $_u4 $_u2;
+
+		&:hover {
+			border-color: darken($border-color, 7%);
+		}
+
+		&:focus {
+			border-color: darken($border-color, 20%);
+		}
+	}
+
+	textarea {
+		margin: 0;
+		// padding:0;
+		height: auto;
+	}
+
+	//Checkbox
+	input[type='checkbox'] {
+		border: 0px solid $border-color !important;
+		position: relative;
+		width: $_u;
+		height: $_u;
+		cursor: pointer;
+		margin-top: -3px;
+		margin-right: 6px !important;
+
+		&:before {
+			width: $_u;
+			height: $_u;
+			margin: 0;
+			background: #fff;
+			border: 1px solid $border-color;
+			content: " ";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		&:after {
+			opacity: 0;
+			content: '';
+			position: absolute;
+			width: 10px;
+			height: 6px;
+			margin: 0;
+			background: transparent;
+			top: 7px;
+			left: 7px;
+			border: 3px solid $accent;
+			border-top: none;
+			border-right: none;
+			-webkit-transform: rotate(-45deg);
+		}
+
+		&:hover {
+			&:before {
+				border-color: darken($border-color, 7%);
+			}
+		}
+
+		&:checked {
+			&:after {
+				opacity: 1;
+			}
+		}
+
+		.branch-3-7 & {
+
+		}
+
+	}
+
+	select, .select_wrapper {
+		width: auto;
+		float: left;
+		margin: 0 3px 3px 0;
+	}
+
+	//Checkbox Share links
+	tr[data-check-field="blog_single_show_share_links1"] {
+		position: relative;
+		float: left;
+		width: 50%;
+		margin-top: 18px;
+		margin-bottom: 18px;
+
+		th {
+			padding-left: 40px;
+			margin-top: 0;
+		}
+
+		td {
+			width: 35px;
+			position: absolute;
+			top: -3px;
+			left: 0;
+		}
+	}
+
+	//Checkbox - Social Icons Sortable
+	input[type='checkbox'].social-input-checkbox {
+		width: 30px !important;
+		margin: 4px 14px 4px 39px !important;
+		vertical-align: top !important;
+	}
+
+	.form-table td {
+		font-size: 14px;
+		margin-bottom: 0;
+	}
+
+	.input-append .add-on {
+		border: 1px solid $border-color;
+		@include border-radius(0);
+		background: #f7f7f7;
+		height: $_15u;
+		margin: 0;
+		line-height: $_15u;
+		float: right;
+		padding: 0 8px;
+	}
+
+	/*
+	  * Color Picker
+	  */
+	.wp-picker-container {
+		&, & * {
+			@include box-sizing(content-box !important);
+		}
+	}
+
+	.wp-color-result {
+		border: 1px solid $border-color;
+		@include border-radius(0);
+		height: $_15u;
+		line-height: $_15u;
+		padding-left: 3*$_u;
+		@include box-shadow(0 0 0 2px #fff inset);
+
+		&:after {
+			font-size: 14px;
+			padding: 0 $_u;
+			@include background-image(none);
+			background-image: none;
+			background: #fff;
+			height: 100%;
+			border: none;
+			line-height: $_15u;
+		}
+
+		&:hover, &.wp-picker-open {
+			// border:none;
+			@include box-shadow(0 0 0 2px #fff inset);
+
+			&:after {
+				border: none;
+			}
+		}
+	}
+
+	.wp-picker-holder {
+		position: absolute;
+		z-index: 99;
+	}
+
+	.redux-main .wp-picker-container {
+
+		input.wp-color-picker, input.wp-picker-default {
+			width: 60px;
+			height: $_15u;
+			padding: 0 $_u2;
+		}
+
+		.iris-picker {
+			border: 0px solid $border-color;
+			@include border-radius(0);
+			@include box-shadow(0 21px 64px 0px rgba(0, 0, 0, 0.3));
+		}
+		.iris-picker .iris-slider-offset {
+			top: 12px;
+			bottom: 0;
+		}
+
+	}
+
+	.color-transparency-check {
+		margin-top: -20px;
+		display: inline-block;
+		margin-left: 24px;
+
+		display: none;
+	}
+
+	/*
+	  * Switch
+	  */
+	.redux-container-switch {
+
+		.switch-options {
+			@include border-radius(18px);
+			@include box-shadow(0 3px 3px 0 rgba(0, 0, 0, 0.3) inset, 0 1px 0 0 rgb(255, 255, 255));
+			width: 94px;
+			height: 37px;
+			margin: 0;
+			overflow: hidden;
+			position: absolute;
+			right: 0;
+			top: -41px;
+			z-index: 0;
+		}
+
+		.cb-enable, .cb-disable, .cb-enable span, .cb-disable span {
+			background: none;
+			// @include transition(all 0.3s);
+		}
+
+		.cb-enable span, .cb-disable span {
+			width: 100%;
+			height: 100%;
+			line-height: 37px;
+			text-align: center;
+		}
+
+		.cb-enable, .cb-disable {
+			width: 50%;
+			height: 100%;
+			margin: 0 !important;
+			@include background-image(linear-gradient(#fff, #fff));
+			border-width: 0px;
+		}
+
+		.cb-enable {
+			@include border-radius(18px 0 0 18px);
+			@include box-shadow(1px 1px 2px 0 rgba(0, 0, 0, 0.3) inset, 0 1px 0 0 rgb(255, 255, 255));
+			border-color: transparent !important;
+			color: $lighter;
+			&.selected {
+				@include box-shadow(0 1px 2px 0 rgba(0, 0, 0, 0.3) inset, 0 1px 0 0 rgb(255, 255, 255));
+				@include background-image(linear-gradient(#07d0f4, #06b5d5));
+				color: #fff;
+			}
+			span {
+
+			}
+		}
+
+		.cb-disable {
+			@include border-radius(0 18px 18px 0);
+			@include box-shadow(-1px 1px 2px 0 rgba(0, 0, 0, 0.3) inset, 0 1px 0 0 rgb(255, 255, 255));
+			border-color: transparent !important;
+			color: $lighter;
+			&.selected {
+				@include box-shadow(0 1px 2px 0 rgba(0, 0, 0, 0.3) inset, -1px 1px 0 0 rgb(255, 255, 255));
+				@include background-image(linear-gradient(#dbdbdb, #bfbfbf));
+				color: #fff;
+			}
+			span {
+				//
+
+			}
+		}
+	}
+
+	/*
+	  * Info
+	  */
+	.redux-info-field {
+		background: transparent;
+		border: none;
+		color: $dark;
+		padding: 0;
+		margin-bottom: -64px;
+		margin-top: 20px;
+
+		h3 {
+			padding: 0;
+			margin: 0;
+			font-size: 24px;
+		}
+	}
+
+	/*
+	  * Ace Editor
+	  */
+
+	.redux-container-ace_editor .ace-wrapper {
+		z-index: 0;
+		position: relative;
+
+		.ace-editor-area {
+			border: 1px solid $border-color;
+			@include border-radius(0);
+		}
+	}
+
+	/*
+	  * Image Select
+	  */
+	.redux-container-image_select {
+		ul {
+			li {
+				padding-right: 12px;
+				padding-bottom: 0;
+
+				&:last-child {
+					padding: 0;
+				}
+
+				img {
+					border: 1px solid $border-color;
+					max-height: 200px;
+					@include transition(all 0.15s);
+				}
+
+				label {
+					position: relative;
+					&:after {
+						content: "";
+						width: 35px;
+						height: 6px;
+						background: $border-color;
+						position: absolute;
+						bottom: 1px;
+						left: 50%;
+						@include transform(translateX(-50%));
+						@include border-radius(10px);
+						@include transition(all 0.15s);
+					}
+
+					&.redux-image-select-selected {
+						img {
+							border-color: $accent !important;
+						}
+
+						&:after {
+							background: $accent !important;
+						}
+					}
+				}
+
+				&:hover {
+					label {
+						img {
+							border-color: darken($border-color, 20%);
+						}
+
+						&:after {
+							background: darken($border-color, 20%);
+						}
+					}
+				}
+			}
+		}
+		&#bucket_options-blog_layout ul li label:after {
+			left: 20px;
+		}
+	}
+
+	.redux-option-image {
+		margin-top: 0;
+		border: none;
+		background: none;
+		padding: 5px;
+		min-width: 16px;
+		min-height: 16px;
+		background: url('../images/transparent_bg.png');
+	}
+
+	/*
+	  * Info
+	  */
+
+	p.help, p.description, span.description, .form-wrap p {
+		font-family: $body-font;
+		// font-size:$normal;
+		// color:$dark;
+		// font-style:normal;
+	}
+
+	.redux-info-field p.description {
+		font-family: $body-font;
+		font-size: 13px;
+		color: $dark;
+		font-style: normal;
+	}
+
+	.description h3 {
+		font-size: 24px;
+	}
+
+	.typography-preview {
+		word-break: break-all;
+		padding: 12px;
+		border: 1px dotted #ccc;
+		max-height: 200px;
+	}
+	.redux-field .redux-typography-container .typography-family {
+		width: 240px !important;
+	}
+
+	/*
+	  * Select2
+	  */
+	.select2-container {
+		width: 240px !important;
+
+		.select2-choice {
+			background: #fff;
+			border: 1px solid $border-color;
+			@include border-radius(0);
+			height: $_15u;
+			line-height: $_15u;
+
+			.select2-arrow {
+				background: none;
+				border: none;
+				width: 36px;
+				margin: 0;
+
+				b {
+					background: none;
+					width: 0;
+					height: 0;
+					border-left: 5px solid transparent;
+					border-right: 5px solid transparent;
+					border-top: 7px solid $dark;
+					margin: 0;
+					padding: 0;
+					margin-top: 14px;
+					margin-right: 14px;
+					float: right;
+				}
+			}
+
+			abbr {
+				right: 36px;
+				top: 11px;
+			}
+
+			&:hover {
+				border-color: darken($border-color, 7%);
+			}
+		}
+	}
+
+	/*
+	  * Visual Editor
+	  */
+	.redux-container-editor {
+		&, & * {
+			@include box-sizing(content-box);
+		}
+
+		.mceLayout td, .mceLayout tr {
+			display: inherit;
+			width: auto;
+		}
+		.mceLayout td {
+			display: table-cell;
+
+			&.mceStatusbar {
+				border-width: 1px 0 0 0;
+			}
+		}
+		.mceLayout tr {
+			display: table-row;
+		}
+
+		.wp-switch-editor {
+			top: 3px;
+		}
+
+		textarea {
+			@include box-sizing(border-box);
+		}
+	}
+
+	/*
+	  * Container Editor (WordPress Visual Editor)
+	  */
+	.redux-container-editor {
+		.mceIframeContainer {
+			background-color: white;
+		}
+		.wp-editor-container {
+			@include border-radius(0);
+		}
+		.quicktags-toolbar input {
+			height: auto;
+			background: $content-bg;
+			padding: 2px 4px;
+		}
+
+		.quicktags-toolbar, .wp_themeSkin tr.mceFirst td.mceToolbar {
+			background: $sidebar-bg;
+		}
+	}
+
+	/*
+	  * Sortable
+	  */
+	i.icon-move:before {
+		font-family: 'Elusive-Icons' !important;
+		content: "\e67f";
+	}
+	.text_sortable {
+		li {
+			position: relative;
+			left: -45px;
+			padding-left: 45px;
+
+			input[type="checkbox"] {
+				width: 30px !important;
+				margin: 4px 30px !important;
+				vertical-align: top !important;
+			}
+
+			.checkbox_header {
+				min-width: 80px;
+				text-align: center;
+				display: inline-block;
+			}
+
+			&:hover {
+				.drag {
+					opacity: 1;
+				}
+			}
+		}
+
+		.drag {
+			position: absolute;
+			top: -2px;
+			left: 12px;
+			margin: 0 !important;
+			opacity: 0;
+			@include transition(all 0.15s);
+
+			i {
+				width: 50px;
+			}
+		}
+	}
+
+	/*
+	  * Help and Support tab
+	  */
+	.help-and-support {
+		a {
+			text-decoration: none;
+			position: relative;
+			width: 100%;
+			height: 100%;
+			display: block;
+
+			&:hover {
+				h4 {
+					color: $accent;
+				}
+			}
+		}
+
+		h4 {
+			font-size: 22px;
+			text-transform: capitalize;
+			line-height: 1.5;
+			font-weight: 300;
+		}
+		li {
+			text-align: center;
+			width: 33%;
+			float: left;
+			padding: 12px 12px;
+		}
+	}
+}
+
+/*
+* Import Demo data
+*/
+#wpGrade_import_demodata_button.redux-info-field {
+	background: transparent !important;
+	border: none;
+}
+
+.wpGrade-import-wait {
+	font-family: "PT Sans", sans-serif;
+	font-size: 13px;
+	color: #464646 !important;
+	font-style: normal;
+}
+
+.wpGrade-import-results {
+	&, i {
+		color: $light !important;
+		line-height: 1.5;
+		font-style: normal;
+		font-size: $normal;
+	}
+}
+
+/*-----------------------------------------------*\
+              SHAME
+\*-----------------------------------------------*/
+
+//When Update Bar is present (eg. WordPress 3.7.1 is available! Please update now.)
+.update-nag + .clear + .wrap .redux-container {
+	.redux-group-tab > h3 {
+		top: 58px;
+	}
+	#redux-sticky #info_bar .redux-action_bar {
+		top: 105px;
+	}
+}
+
+.redux-save-warn, .saved_notice, .redux-field-errors {
+	display: none !important;
+}
+
+//Last Menu Item (help and support)
+.redux-sidebar .redux-group-menu li:last-child {
+	position: fixed;
+	bottom: 50px;
+	width: $sidebar-width;
+}
+
+/*-----------------------------------------------*\
+              FONTS
+\*-----------------------------------------------*/
+@font-face {
+	font-family: 'linecons';
+	src: url('../../fonts/linecons/linecons.eot?98525679');
+	src: url('../../fonts/linecons/linecons.eot?98525679#iefix') format('embedded-opentype'),
+	url('../../fonts/linecons/linecons.woff?98525679') format('woff'),
+	url('../../fonts/linecons/linecons.ttf?98525679') format('truetype'),
+	url('../../fonts/linecons/linecons.svg?98525679#linecons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'linecons';
+    src: url('../../fonts/linecons/linecons.svg?98525679#linecons') format('svg');
+  }
+}
+*/
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+	font-family: "linecons";
+	font-style: normal;
+	font-weight: normal;
+	speak: none;
+
+	display: inline-block;
+	text-decoration: inherit;
+	width: 1em;
+	margin-right: .2em;
+	text-align: center;
+	/* opacity: .8; */
+
+	/* For safety - reset parent styles, that can break glyph codes*/
+	font-variant: normal;
+	text-transform: none;
+
+	/* fix buttons height, for twitter bootstrap */
+	line-height: 1em;
+
+	/* Animation center compensation - margins should be symmetric */
+	/* remove if not needed */
+	margin-left: .2em;
+
+	/* you can be more comfortable with increased icons size */
+	/* font-size: 120%; */
+
+	/* Uncomment for 3D effect */
+	/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.icon-music-1:before {
+	content: '\e800';
+}
+
+/* '' */
+.icon-wallet:before {
+	content: '\e82f';
+}
+
+/* '' */
+.icon-mail-1:before {
+	content: '\e802';
+}
+
+/* '' */
+.icon-heart-1:before {
+	content: '\e803';
+}
+
+/* '' */
+.icon-star-1:before {
+	content: '\e804';
+}
+
+/* '' */
+.icon-user-1:before {
+	content: '\e805';
+}
+
+/* '' */
+.icon-videocam:before {
+	content: '\e806';
+}
+
+/* '' */
+.icon-camera-1:before {
+	content: '\e807';
+}
+
+/* '' */
+.icon-photo:before {
+	content: '\e808';
+}
+
+/* '' */
+.icon-attach-1:before {
+	content: '\e809';
+}
+
+/* '' */
+.icon-lock-1:before {
+	content: '\e80a';
+}
+
+/* '' */
+.icon-eye-1:before {
+	content: '\e80b';
+}
+
+/* '' */
+.icon-tag-1:before {
+	content: '\e80c';
+}
+
+/* '' */
+.icon-thumbs-up-1:before {
+	content: '\e80d';
+}
+
+/* '' */
+.icon-pencil-1:before {
+	content: '\e80e';
+}
+
+/* '' */
+.icon-comment-1:before {
+	content: '\e80f';
+}
+
+/* '' */
+.icon-location-1:before {
+	content: '\e810';
+}
+
+/* '' */
+.icon-cup-1:before {
+	content: '\e811';
+}
+
+/* '' */
+.icon-trash-1:before {
+	content: '\e812';
+}
+
+/* '' */
+.icon-doc-1:before {
+	content: '\e813';
+}
+
+/* '' */
+.icon-note-1:before {
+	content: '\e814';
+}
+
+/* '' */
+.icon-cog-1:before {
+	content: '\e815';
+}
+
+/* '' */
+.icon-params:before {
+	content: '\e816';
+}
+
+/* '' */
+.icon-calendar-1:before {
+	content: '\e817';
+}
+
+/* '' */
+.icon-search-1:before {
+	content: '\e801';
+}
+
+/* '' */
+.icon-clock-1:before {
+	content: '\e819';
+}
+
+/* '' */
+.icon-lightbulb:before {
+	content: '\e81a';
+}
+
+/* '' */
+.icon-tv:before {
+	content: '\e81b';
+}
+
+/* '' */
+.icon-desktop:before {
+	content: '\e81c';
+}
+
+/* '' */
+.icon-mobile-1:before {
+	content: '\e81d';
+}
+
+/* '' */
+.icon-cd-1:before {
+	content: '\e81e';
+}
+
+/* '' */
+.icon-inbox-1:before {
+	content: '\e81f';
+}
+
+/* '' */
+.icon-globe-1:before {
+	content: '\e820';
+}
+
+/* '' */
+.icon-cloud-1:before {
+	content: '\e821';
+}
+
+/* '' */
+.icon-paper-plane-1:before {
+	content: '\e822';
+}
+
+/* '' */
+.icon-fire:before {
+	content: '\e823';
+}
+
+/* '' */
+.icon-graduation-cap-1:before {
+	content: '\e824';
+}
+
+/* '' */
+.icon-megaphone-1:before {
+	content: '\e825';
+}
+
+/* '' */
+.icon-database-1:before {
+	content: '\e826';
+}
+
+/* '' */
+.icon-key-1:before {
+	content: '\e827';
+}
+
+/* '' */
+.icon-beaker:before {
+	content: '\e828';
+}
+
+/* '' */
+.icon-truck:before {
+	content: '\e829';
+}
+
+/* '' */
+.icon-money:before {
+	content: '\e82a';
+}
+
+/* '' */
+.icon-food:before {
+	content: '\e82b';
+}
+
+/* '' */
+.icon-shop:before {
+	content: '\e82c';
+}
+
+/* '' */
+.icon-diamond:before {
+	content: '\e82d';
+}
+
+/* '' */
+.icon-t-shirt:before {
+	content: '\e82e';
+}
+
+/* '' */
+.icon-sound-1:before {
+	content: '\e818';
+}
+
+/* '' */
+
+/*
+ *
+ * Don't forget to set $args['admin_stylesheet'] to 'custom' in options.php!
+ *
+ */
+
+#redux-form-wrapper {
+	position: relative;
+}
+
+#redux-header {
+	position: relative;
+	overflow: hidden;
+	border: none;
+	background: #292e2d;
+	padding: 0;
+	-webkit-border-radius: 10px 10px 0 0;
+	-moz-border-radius: 10px 10px 0 0;
+	border-radius: 10px 10px 0 0;
+}
+
+#redux-header.active.fixed {
+	height: 70px;
+	position: fixed;
+	top: 10px;
+	width: 100%;
+	right: 0;
+	z-index: 9999;
+	-webkit-border-radius: 0 0 10px 10px;
+	-moz-border-radius: 0 0 10px 10px;
+	border-radius: 0 0 10px 10px;
+}
+
+#redux-header.active.fixed .button.button-primary {
+	margin: 25px;
+	padding: 5px 20px;
+}
+
+#redux-header.active.fixed .pixelgrade_logo {
+	border-bottom-left-radius: 9px;
+	height: 70px;
+	background-position: 0px -45px;
+}
+
+#redux-save-warn.active.fixed, #redux-save.active.fixed {
+	display: none;
+}
+
+#redux-save-warn.fixed:after, #redux-save.fixed:after {
+	display: none;
+}
+
+#redux-footer {
+	border: none;
+	background: #292e2d;
+	padding: 20px;
+	-webkit-border-radius: 0 0 10px 10px;
+	-moz-border-radius: 0 0 10px 10px;
+	border-radius: 0 0 10px 10px;
+}
+
+#redux-form-wrapper {
+	background-image: none;
+}
+
+.redux-sidebar .redux-group-menu li {
+}
+
+.redux-sidebar .redux-group-menu li.divide {
+	height: 2px;
+	background: #f0f0f0;
+}
+
+.redux-sidebar .redux-group-menu li.divide.big {
+	height: 250px;
+}
+
+.redux-sidebar .redux-group-menu li.active {
+	border-left: none !important;
+}
+
+#redux-form-wrapper .switch_wrap input[type="checkbox"]:checked + .switch {
+	background-color: #19b5ef;
+}
+
+#redux-form-wrapper.active.fill-empty-space {
+	padding-top: 145px;
+}
+
+.wpGrade-loading {
+	content: '';
+	display: block;
+	margin: 10px 0;
+	width: 100px;
+	height: 9px;
+	background: url("../img/loader2.gif") top center no-repeat;
+}
+
+/*popups used for notifying the user of certain action results*/
+
+.wpGrade_popup {
+	padding: 0;
+	position: fixed;
+	top: 40%;
+	left: 40%;
+	width: 350px;
+	z-index: 10000;
+	color: #FFF;
+	overflow: hidden;
+	// font-size: 12px;
+	line-height: 18px;
+}
+
+.wpGrade_popup .wpGrade_popup_title {
+	font-size: 16px;
+	padding: 15px 20px 15px 20px;
+	display: block;
+	margin: 0;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", sans-serif;
+	background: #000;
+	-webkit-border-radius: 8px 8px 0 0;
+	-moz-border-radius: 8px 8px 0 0;
+	border-radius: 8px 8px 0 0;
+}
+
+.wpGrade_popup_title .wpGrade_popup_icon {
+	height: 32px;
+	width: 32px;
+	display: block;
+	float: left;
+	margin-right: 15px;
+	overflow: hidden;
+}
+
+.wpGrade_popup .wpGrade_popup_content {
+	display: block;
+	padding: 10px 20px 20px 20px;
+	color: #333;
+	border: 1px solid #000;
+	border-top: 0;
+	background: #FFF;
+	border-radius: 0 0 8px 8px;
+	-webkit-border-radius: 0 0 8px 8px;
+	-moz-border-radius: 0 0 8px 8px;
+}
+
+.wpGrade_popup_success .wpGrade_popup_icon {
+	background: url("../img/success.png") no-repeat scroll center center transparent;
+}
+
+.wpGrade_popup_error .wpGrade_popup_icon {
+	background: url("../img/alert.png") no-repeat scroll center center transparent;
+}
+
+.redux-screenshot {
+	background: url("../img/transparent_bg.png");
+}
+
+.redux-image-select-header_type img {
+	max-width: none;
+	max-height: none;
+}
+
+.redux-main .redux-group-tab .form-table .text_sortable {
+	clear: both;
+}
+
+.redux-main .redux-group-tab .form-table .text_sortable label {
+	float: left;
+	display: block;
+	width: 100px;
+}
+
+.redux-main .redux-group-tab .form-table .text_sortable input {
+	width: 300px;
+}
+
+.redux-main .redux-group-tab .form-table .text_sortable .drag {
+	margin-left: 1em;
+}
+
+/*-----------------------------------------------*\
+            THEME SPECIFIC - BORDER
+\*-----------------------------------------------*/
+
+/*
+ * Left Checkbox Extender
+ */
+%checkbox {
+	tr {
+		width: 45%;
+		margin-right: 5%;
+
+		th {
+			width: 87%;
+			float: right;
+		}
+
+		td {
+			width: 10%;
+			float: left;
+			margin-top: 39px;
+		}
+	}
+}
+
+/*
+ * Style Tab
+ */
+#info-live-customizer-button + table {
+	display: none;
+}
+
+/*
+ * Branding
+ */
+#info-branding-header-90821 + table {
+	tr {
+		width: 33%;
+		float: left;
+		padding-right: 30px;
+
+		.description {
+			padding-right: 0;
+		}
+
+		&:nth-child(-n+4) {
+			width: 50%;
+		}
+
+		&:nth-child(1) {
+			//Title
+			width: 100%;
+		}
+		&:nth-child(2) {
+			//Main Logo
+			// width:100%;
+		}
+		&:nth-child(3) {
+			//Retina Switcher
+			padding-right: 0;
+			.description {
+				padding-right: 130px;
+			}
+			.switch-options {
+				top: -52px;
+			}
+		}
+		&:nth-child(4) {
+			//Retina Image
+			th {
+				display: none;
+			}
+		}
+		&:nth-child(5) {
+			//Fav Icon
+			clear: left;
+		}
+
+		&:nth-child(5), &:nth-child(6), &:nth-child(7) {
+			//Last 3
+			margin-top: 40px;
+			border-top: 1px solid #dfdfdf;
+		}
+
+	}
+}
+
+/*
+ * Header 
+ */
+#info-left-area-218293203 + table {
+	@extend %checkbox;
+	tr th {
+		width: 94%;
+	}
+	tr td {
+		width: 5%;
+	}
+	tr:nth-child(1) {
+
+	}
+}
+
+#info-right-area-218293204 + table {
+	tr:nth-child(2), tr:nth-child(4), tr:nth-child(5) {
+		th {
+			width: 94%;
+		}
+		td {
+			width: 5%;
+		}
+
+		th {
+			// width:87%;
+			float: right;
+		}
+
+		td {
+			// width:10%;
+			float: left;
+			margin-top: 39px;
+		}
+	}
+}
+
+/*
+ * Archives 
+ */
+#info-masonry_columns-218293204 {
+	margin-bottom: -44px;
+}
+
+#info-masonry_columns-218293204 + table {
+	tr:nth-child(1) {
+		display: none;
+	}
+	tr {
+		width: 29%;
+		float: left;
+		margin-right: 4%;
+
+		&:nth-child(4) {
+			width: 33%;
+			margin-right: 0;
+		}
+	}
+	.select2-container {
+		width: 100% !important;
+	}
+}
+
+// Posts Meta Data
+
+#info-posts_meta_data-218293204 + table {
+	tr:nth-child(1) {
+		width: 100% !important;
+	}
+	tr:nth-child(-n+5) {
+		width: 45%;
+		float: left;
+		margin-right: 5%;
+
+		th {
+			width: 87%;
+			float: right;
+		}
+
+		td {
+			width: 10%;
+			float: left;
+			margin-top: 39px;
+		}
+	}
+
+	tr:nth-child(6), tr:nth-child(7) {
+		width: 45%;
+		float: left;
+		margin-right: 5%;
+	}
+
+	.field-desc {
+		font-size: 12px;
+		color: #9d9d9d;
+	}
+
+	th .description {
+		padding-right: 0 !important;
+	}
+
+	input {
+		width: 100% !important;
+	}
+}
+
+// Navigation Style
+#info-navigation_style-21829384 + table {
+	tr:nth-child(1) {
+		width: 100% !important;
+	}
+	tr:nth-child(3), tr:nth-child(4) {
+		float: left;
+
+		th .description {
+			padding-right: 0 !important;
+		}
+	}
+
+	tr:nth-child(3) {
+		width: 45%;
+		margin-right: 5%;
+
+		th {
+			width: 87%;
+			float: right;
+		}
+
+		td {
+			width: 10%;
+			float: left;
+			margin-top: 39px;
+		}
+	}
+
+	tr:nth-child(4) {
+		width: 50%;
+		margin-right: 0;
+
+		th {
+			margin-top: 18px;
+		}
+	}
+
+	.field-desc {
+		font-size: 12px;
+		color: #9d9d9d;
+	}
+
+	input {
+		width: 100% !important;
+	}
+}
+
+
+
+
+
