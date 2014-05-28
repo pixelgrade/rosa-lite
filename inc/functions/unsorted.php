@@ -230,14 +230,26 @@ function wpgrade_better_excerpt($text = '') {
  * COMMENT LAYOUT
  */
 function wpgrade_comments($comment, $args, $depth) {
+	static $comment_number;
+
+	if (!isset($comment_number))
+		$comment_number = $args['per_page'] * ($args['page'] - 1) + 1;
+	else
+		$comment_number++;
+
 	$GLOBALS['comment'] = $comment; ?>
 <li <?php comment_class(); ?>>
-	<article id="comment-<?php comment_ID(); ?>" class="comment-article  media">
-		<aside class="comment__avatar  media__img">
-			<!-- custom gravatar call -->
-			<?php $bgauthemail = get_comment_author_email(); ?>
-			<img src="http://www.gravatar.com/avatar/<?php echo md5($bgauthemail); ?>?s=60" class="comment__avatar-image" height="60" width="60" style="background-image: <?php echo get_template_directory_uri(). '/library/images/nothing.gif'; ?>; background-size: 100% 100%" />
-		</aside>
+	<article id="comment-<?php $comment->comment_ID; ?>" class="comment-article  media">
+		<?php if (wpgrade::option('comments_show_numbering')): ?>
+			<span class="comment-number"><?php echo $comment_number ?></span>
+		<?php endif; ?>
+		<?php if (wpgrade::option('comments_show_avatar') && get_comment_type($comment->comment_ID) == 'comment'): ?>
+			<aside class="comment__avatar  media__img">
+				<!-- custom gravatar call -->
+				<?php $bgauthemail = get_comment_author_email(); ?>
+				<img src="http://www.gravatar.com/avatar/<?php echo md5($bgauthemail); ?>?s=60" class="comment__avatar-image" height="60" width="60" style="background-image: <?php echo get_template_directory_uri(). '/library/images/nothing.gif'; ?>; background-size: 100% 100%" />
+			</aside>
+		<?php endif; ?>
 		<div class="media__body">
 			<header class="comment__meta comment-author">
 				<?php printf('<span class="comment__author-name">%s</span>', get_comment_author_link()) ?>
