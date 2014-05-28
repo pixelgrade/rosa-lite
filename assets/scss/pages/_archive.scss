@@ -68,18 +68,15 @@
 
 .article__date{
   margin-bottom: 0;
+  @include font-size(13px);
+  text-transform: uppercase;
+  color: $gray;
 
-  .date__box{
-    padding-left: $_u2;
-
-    @include font-size(13px);
-    text-transform: uppercase;
-    color: $gray;
+  .date__dot{
+    padding: $_u4;
 
     &:after{
       content: "\2022";
-      margin-left: $_u2;
-
       color: $lightest;
     }
   }
