@@ -57,15 +57,17 @@ if ( post_password_required() && !$wpgrade_private_post['allowed'] ) {
                             wp_link_pages( $args );
                             ?>
                         </div>
-                    <?php
-                    endif;
-
-                    //comments
-                    if ( comments_open() || '0' != get_comments_number() ):
-                        comments_template();
-                    endif; ?>
+                    <?php endif; ?>
                 </div>
             </section>
+            <div class="container">
+                <?php
+                    //comments
+                    if ( comments_open() || '0' != get_comments_number() ):
+                    comments_template();
+                    endif; ?>
+                ?>
+            </div>
         </article>
     </section>
 
