@@ -24,6 +24,7 @@
     font-family: $heading-font-family;
     text-transform: uppercase;
     color: $dark;
+    margin-right: 3px;
 }
 
 .latest-comments__avatar {
@@ -38,12 +39,13 @@
 
 .latest-comments__title {
     @extend .article__title;
-    @include rem(padding, 0 $_u4);
+
+    margin-left: 3px;
+
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     text-transform: uppercase;
-    background-color: $dark;
 }
 
 .latest-comments__content {

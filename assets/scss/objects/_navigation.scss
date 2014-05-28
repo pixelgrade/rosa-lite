@@ -55,10 +55,11 @@
   &:after{
     content: "";
 
-    position: relative;
-    top: -4px;
-    left: -12px;
+    position: absolute;
+    top: 50%;
+    right: $_u4;
 
+    margin-top: -2px;
     display: inline-block;
 
     width: 5px;
@@ -67,7 +68,7 @@
     border-right: 1px solid $dark;
     border-bottom: 1px solid $dark;
 
-    @include transform(rotate(45deg));
+    @include transform(translateY(-50%) rotate(45deg));
   }
 
   &:hover > .sub-menu{
@@ -102,5 +103,22 @@
 
   a{
     padding: $_u2;
+  }
+  
+  .menu-item-has-children{
+    position: relative;
+
+    &:after{
+      right: $_u;
+
+      @include transform(rotate(-45deg));
+    }
+  }
+
+  .sub-menu{
+    left: 100%;
+    top: 0;
+
+    @include transform(translateX(0));
   }
 }

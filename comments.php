@@ -23,7 +23,7 @@
 
     <div id="comments" class="comments-area  <?php  if ( !have_comments() ) echo 'no-comments'; ?>">
         <div class="comments-area-title">
-            <h3>
+            <h3 class="comments-title">
                 <?php
                     if (have_comments()):
                         printf( _n('<span class="comment-number total">1</span> comment', '<span class="comment-number total">%1$s</span> Comments', get_comments_number(), wpgrade::textdomain()),  number_format_i18n(get_comments_number()));

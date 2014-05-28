@@ -223,7 +223,7 @@ function init(){
 	}
 
 	$('html').addClass('loaded');
-	stickyHeader();
+//	stickyHeader();
 
 	/* ONE TIME EVENT HANDLERS */
 	eventHandlersOnce();
