@@ -28,9 +28,8 @@ if(!$has_thumb && $post_format != 'image' /*&& $post_format != 'gallery'*/) $pos
 	<?php //if ( !in_array($post_format, array('quote', 'chat', 'aside','link')) ): ?>
 	<div class="article__body">
 		<?php get_template_part('templates/post/loop-content/header-classic'); ?>
-        <section class="article__content">Of all the sacred cows allowed to roam unimpeded in our culture,
-            few are as revered as literacy. Its benefits have been so incontestable that in the five
-            millennia since the advent.<br/>
+        <section class="article__content">
+            <?php echo wpgrade_better_excerpt(); ?>
         </section>
         <a href="<?php the_permalink(); ?>" class="read-more-button">Read more</a>
 	</div><!-- .article__body -->
