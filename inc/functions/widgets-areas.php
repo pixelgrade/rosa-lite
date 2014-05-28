@@ -9,8 +9,8 @@ function wpgrade_register_sidebars() {
 			'id'            => 'sidebar-main',
 			'name'          => __( 'Main Sidebar', 'rosa_txtd' ),
 			'description'   => __( 'Main Sidebar', 'rosa_txtd' ),
-			'before_title'  => '<h3 class="widget__title widget--sidebar-blog__title">',
-			'after_title'   => '</h3>',
+			'before_title'  => '<h4 class="widget__title widget--sidebar-blog__title">',
+			'after_title'   => '</h4>',
 			'before_widget' => '<div id="%1$s" class="widget widget--sidebar-blog %2$s">',
 			'after_widget'  => '</div>',
 		)

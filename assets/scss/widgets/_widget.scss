@@ -259,3 +259,28 @@
     color:$light;
 }
 
+.tagcloud a{
+  color: white;
+  margin-bottom: 2px;
+}
+
+
+
+
+
+
+/*------------------------------------*\
+    $FOOTER WIDGETS
+\*------------------------------------*/
+
+.sidebar--footer{
+  color: white;
+
+  .widget__title{
+    color: white;
+  }
+
+  a{
+    color: white;
+  }
+}

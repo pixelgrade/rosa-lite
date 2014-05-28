@@ -19,7 +19,7 @@
 
     &:hover {
         background-color: $accent;
-        color:white;
+        color:white !important;
     }
 
 //    &.btn--beta { @include font-size(12px, true, 1.25); }
