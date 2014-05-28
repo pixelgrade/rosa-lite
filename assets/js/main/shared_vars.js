@@ -40,8 +40,6 @@ if (useTransform) {
     }
 }
 
-var isotope_ready_to_filter; /* will use this variable to determine if we can filter */
-
 /* --- To enable verbose debug add to Theme Options > Custom Code footer -> globalDebug=true; --- */
 var globalDebug = false,
 	timestamp;
