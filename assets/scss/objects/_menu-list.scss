@@ -17,8 +17,7 @@
 
     .menu-list__item{
       position: relative;
-
-      padding-right: $_3u;
+      margin-bottom: 30px;
     }
 
       .menu-list__item-title{
@@ -26,7 +25,10 @@
         text-align: left;
       }
 
-      .menu-list__item-desc{
+      p.menu-list__item-desc{
+        position: relative;
+
+        margin-bottom: 0;
         text-align: left;
       }
 
