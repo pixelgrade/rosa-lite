@@ -64,53 +64,33 @@ if (is_single()) {
     <!--[if lt IE 7]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
-    <div class="wrapper  js-wrapper" id="page">
-		<?php if (wpgrade::option('header_search')) get_template_part('templates/header/search'); ?>
-		<header class="site-header">
-			<div class="site-header__wrapper  js-sticky<?php if(wpgrade::option('nav_always_show')) echo '  header--active  visible';?>" >
-				<div class="site-header__container">
-					<div class="header flexbox">
-						<div class="header-component  header-component--left">
-							<ul class="nav  site-header__menu">
-								<li class="menu-trigger"><a href="#" class="js-nav-trigger"><i class="icon-reorder"></i></a></li>
-								<?php if (wpgrade::option('header_social_links')) get_template_part('templates/core/social-icons-list'); ?>
-							</ul>
-						</div>
-						<div class="header-component  header-component--center header-transition--image-to-text">
-							<?php get_template_part('templates/header/branding'); ?>
-						</div>
-						<div class="header-component  header-component--right">
-							<ul class="nav  site-header__menu">
-								<?php if (wpgrade::option('header_rss')): ?>
-								<li><a href="<?php echo wpgrade::option('header_rss_link') ?>"><i class="icon-e-rss"></i></a></li>
-								<?php endif; ?>
-								<?php if (wpgrade::option('header_contact')): ?>
-								<li><a href="mailto:<?php echo get_bloginfo('admin_email') ?>"><i class="icon-envelope-o"></i></a></li>
-								<?php endif; ?>
-								<?php if (wpgrade::option('header_search')): ?>
-								<li class="search-trigger"><a href="#"  class="js-search-trigger"><i class="icon-e-search"></i></a></li>
-								<?php endif; ?>
-							</ul>
-						</div>
-					</div>
-					<?php
-				        $theme_locations = get_nav_menu_locations();
-				        $has_main_menu = false;
 
-				        if (isset($theme_locations["main_menu"]) && ($theme_locations["main_menu"] != 0))					
-				        	$has_main_menu = true;
+    <div class="wrapper">
+        <header class="site-header  header--inversed">
+            <div class="site-header__wrapper">
+                <div class="container">
+                    <div class="flexbox">
+                        <div class="flexbox__item">
+                            <?php get_template_part('templates/header/branding'); ?>
+                        </div>
+                        <div class="flexbox__item">
+                            <?php
+                            $theme_locations = get_nav_menu_locations();
+                            $has_main_menu = false;
+
+                            if (isset($theme_locations["main_menu"]) && ($theme_locations["main_menu"] != 0))
+                                $has_main_menu = true;
 
 
-		        	?>
-					<nav class="navigation  navigation--main<?php if(!$has_main_menu) echo "  no-menu"; ?>" id="js-navigation--main">
-						<h2 class="accessibility"><?php _e('Primary Navigation', wpgrade::textdomain()) ?></h2>
-						<?php
-							wpgrade_main_nav();
-						?>
-					</nav><!-- .navigation  .navigation- -main -->
-				</div><!-- .site-header__container -->
-			</div><!-- .site-header__wrapper -->
-		</header><!-- .site-header -->			
-		<div class="container  js-container">
-			<section class="content">
+                            ?>
+                            <nav class="navigation  navigation--main<?php if(!$has_main_menu) echo "  no-menu"; ?>" id="js-navigation--main">
+                                <h2 class="accessibility"><?php _e('Primary Navigation', wpgrade::textdomain()) ?></h2>
+                                <?php
+                                wpgrade_main_nav();
+                                ?>
+                        </div>
+                    </div><!-- .flexbox -->
+                </div><!-- .container -->
+            </div><!-- .site-header__wrapper -->
+        </header><!-- .site-header -->
 <?php

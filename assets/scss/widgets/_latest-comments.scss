@@ -3,19 +3,26 @@
 \*------------------------------------------------*/
 
 .widget--latest-comments {
+//    @extend %separator--section;
     padding-bottom: 0;
 }
 
 .latest-comments__list {
     @extend .media;
     @include font-size(13px);
+
+    &:last-child {
+        margin-bottom: 0;
+
+        .latest-comments__body {
+            border-bottom: 0;
+        }
+    }
 }
 
 .latest-comments__author {
     font-family: $heading-font-family;
-    font-weight: bold;
     text-transform: uppercase;
-
     color: $dark;
 }
 
@@ -26,22 +33,21 @@
 
 .latest-comments__body {
     @extend .media__body;
-    color: $lightest;
-
-    p{
-        margin-bottom: 0;
-    }
+    border-bottom: 1px solid #ccc;
 }
 
 .latest-comments__title {
+    @extend .article__title;
+    @include rem(padding, 0 $_u4);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-
-    font-weight: bold;
+    text-transform: uppercase;
+    background-color: $dark;
 }
 
 .latest-comments__content {
+    font-style: italic;
     @include rem(margin-top, $_u2);
     line-height: 1.4;
 }

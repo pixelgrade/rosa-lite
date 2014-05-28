@@ -2,11 +2,10 @@
     $LAYOUT
 \*------------------------------------*/
 /**
- * Page elements; header, footer, sidebar, content
+ * Page elements; header, footer, sidebar
  */
 @import "layout-general",
 		"header",
         "footer",
         "content",
-        "sidebar",
-        "featured-area";
+        "sidebar";

@@ -30,9 +30,6 @@
 // BASE
 @import "base/__base";
 
-// PLUGINS
-@import "plugins/__plugins";
-
 // OBJECTS
 @import "objects/__objects";
 
@@ -42,6 +39,8 @@
 // WIDGETS
 @import "widgets/__widgets";
 
+// PLUGINS
+@import "plugins/__plugins";
 
 // SHORTCODES
 @import "shortcodes/__shortcodes";
@@ -51,5 +50,4 @@
 
 // SHAMELESS SHAME
 @import "shame";
-
 

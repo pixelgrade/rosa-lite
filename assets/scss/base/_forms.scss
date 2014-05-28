@@ -30,9 +30,11 @@ input[type="color"],
   display: block;
   vertical-align: middle;
   width: 100%;
-  @include rem(padding, $_u2);
-  border: 1px solid #e5e9eb;
+  @include rem(padding, 10px);
+  border: 1px solid $borders;
   outline: 0;
+
+  @include border-radius(5px);
 
   &:focus {
       outline: 1px solid $accent;
@@ -43,6 +45,13 @@ input[type="color"],
       padding: $_u2 0;
       border: 1px solid #e5e9eb;
       outline: 0;
+  }
+
+  @include placeholder(){
+    text-transform: uppercase;
+    color: $dark;
+    font-size: 15px;
+    line-height: 1.2;
   }
 }
 

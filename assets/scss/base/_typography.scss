@@ -2,51 +2,28 @@
                TYPOGRAPHY
 \*------------------------------------*/
 
-//@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700);
-
-body{
-    font-size:16px;
-    line-height: 1.625;
-    color:$gray;
-
-    @include media-query(lap-and-up) {
-        font-weight: 300;
-    }
-}
-
-
 
 /*------------------------------------*\
-               LINKS
+    $FONT INCLUDES
 \*------------------------------------*/
 
-a {
-    text-decoration: none;
+@import url(http://fonts.googleapis.com/css?family=Maven+Pro:400,700,900);
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+@import url(http://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff);
 
-    &, &:hover {
-        color: $accent;
-    }
-}
 
-.link--light{
-    color: $lightest;
-}
 
-.link--dark{
-    color: $dark;
-}
 
-.link--light, .link--dark{
-    &:hover{
-        color: $accent;
-    }
-}
 
-.text-link{
-    @extend .link--light;
 
-    @include font-size(14px);
-    text-transform: uppercase;
+body{
+  font-size:16px;
+  line-height: 1.625;
+  color:$gray;
+
+  @include media-query(lap-and-up) {
+    font-weight: 300;
+  }
 }
 
 
@@ -55,30 +32,57 @@ a {
                HEADINGS
 \*------------------------------------*/
 
-h1, h2, h3, h4, h5, h6, hgroup, .hN {
-    font-family: $heading-font-family;
-    @include rem(margin-top, $_15u);
-    color:$dark;
+h1, h2, h3, h4, h5, h6, hgroup, p {
+  margin-bottom: 30px;
 }
 
+h1, h2, h3, h4, h5, h6{
+  margin-bottom: 30px;
+
+  font-family: $heading-font-family;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color:$dark;
+}
+
+
+h1{
+  margin-top: $_35u;
+  margin-bottom: $_175u;
+
+  font-weight: 900;
+}
+
+h2{
+  margin-top: $_175u;
+
+  font-weight: 700;
+}
+
+h5, h6{
+  font-weight: 400;
+}
+
+
 .article__title, .article__title .hN, .widget__title .hN, .heading .hN {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .heading{
-    margin-bottom: $_u;
+  margin-bottom: $_u;
 
-    h2{
-        display: inline-block;
-        margin-bottom: 0;
-    }
+  h2{
+    display: inline-block;
+    margin-bottom: 0;
+  }
 
-    .archive__side-title{
-        @extend .beta;
+  .archive__side-title{
+    @extend .beta;
 
-        font-weight: bold;
-        color: $light;
-    }
+    font-weight: bold;
+    color: $light;
+  }
 }
 
 //Headings scaling - based on
@@ -87,34 +91,100 @@ h1, h2, h3, h4, h5, h6, hgroup, .hN {
 $lap-scale-size: 0.83;
 
 @include screen(601px, 999px) {
-    h1,.alpha{
-        font-size: $h1-size*$lap-scale-size;
-    }  
+  h1,.alpha{
+    font-size: $h1-size*$lap-scale-size;
+  }
 }
 
 
 $palm-scale-size: 0.60;
 
 @include max-screen(600px) {
-    h1,.alpha{
-        font-size: $h1-size*$palm-scale-size;
-    }
-    h2,.beta{
-        font-size: $h2-size*$lap-scale-size; 
-    }
-    h3,.gamma{
-        font-size: $h3-size*$lap-scale-size;
-    }
-    blockquote {
-        font-size: 18px;
-    }    
+  h1,.alpha{
+    font-size: $h1-size*$palm-scale-size;
+  }
+  h2,.beta{
+    font-size: $h2-size*$lap-scale-size;
+  }
+  h3,.gamma{
+    font-size: $h3-size*$lap-scale-size;
+  }
+  blockquote {
+    font-size: 18px;
+  }
 }
 
 @include media-query(palm) {
-    body{
-        font-size: 18px/30px;
-    }
+  body{
+    font-size: 18px/30px;
+  }
 }
+
+/*------------------------------------*\
+    $PARAGRAPHS
+\*------------------------------------*/
+.article__content p {
+  margin-bottom: 30px;
+}
+
+
+
+
+
+/*------------------------------------*\
+               LINKS
+\*------------------------------------*/
+
+%text-link{
+  text-decoration: none;
+
+  &, &:hover {
+    color: $accent;
+  }
+}
+
+a {
+  @extend %text-link;
+
+  border-bottom: none;
+
+  &:hover{
+    color: $accent !important;
+  }
+}
+
+.link--light{
+  color: $lightest;
+}
+
+.link--dark{
+  color: $dark;
+}
+
+.link--light, .link--dark{
+  &:hover{
+    color: $accent;
+  }
+}
+
+.article__content a{
+  @extend %text-link;
+
+  padding-bottom: 2px;
+  border-bottom: 2px solid $accent;
+}
+
+.article__content{
+  a[href$=".jpg"], a[href$=".jpeg"], a[href$=".png"], a[href$=".gif"], a[href$=".bmp"] {
+    border: 0;
+  }
+}
+
+.link--simple a{
+ border-bottom: 0;
+}
+
+
 
 
 /*------------------------------------*\
@@ -122,48 +192,48 @@ $palm-scale-size: 0.60;
 \*------------------------------------*/
 
 blockquote {
-    margin: $_15u 0;
-    
+  margin: $_15u 0;
+
+  @include font-size(24px);
+  line-height: 1.5;
+  text-indent: 0;
+
+  border-left: 10px solid $accent;
+
+  color: $accent;
+
+  quotes: none;
+
+  @include media-query(lap-and-up){
+    padding-left: $_15u;
+  }
+
+  cite, .testimonial__author-name {
+    @extend .cf;
+
+    margin-top: $_u2;
+    color: $lightest;
 
     @include font-size(20px);
-    line-height: 1.5;
-    font-family: $heading-font-family;
-    text-indent: 0;
-
-    color: $light;
-
-    quotes: none;
-
-    @include media-query(lap-and-up){
-        padding-left: $_15u;
-    }
+    font-style: normal;
+    font-weight: 400;
 
     &:before{
-        content: none;
+      content: "";
+
+      position: relative;
+      top: -5px;
+
+      display: inline-block;
+      margin: 0 10px;
+      width: 20px;
+
+      border-top: 2px solid $lightest;
     }
-
-    cite, .testimonial__author-name {
-        @extend .cf;
-        display: block;
-
-        margin-top: $_u2;
-        color: $dark;
-
-        @include font-size(16px);
-        font-style: normal;
-        font-weight:400;
-
-        &:before{
-            content: "";
-            width: $_15u;
-            display: block;
-            float: left;
-            margin-right: $_u2;
-            margin-top: $_u2;
-            border-top: 1px solid $border;
-        }
-    }
+  }
 }
+
+
 
 
 
@@ -172,28 +242,28 @@ blockquote {
 \*------------------------------------*/
 
 .table--bordered{
-    @include font-size(14px);
+  @include font-size(14px);
 
-    th,
-    td{
-        border: 0;
+  th,
+  td{
+    border: 0;
 
-        &:empty{
-            border:inherit;
-        }
+    &:empty{
+      border:inherit;
     }
+  }
 }
 
 .table--striped{
 
-    tbody tr:nth-of-type(odd){
-        background-color: $border;
-    }
+  tbody tr:nth-of-type(odd){
+    background-color: $borders;
+  }
 }
 
 table {
-    @extend .table--bordered;
-    @extend .table--striped;
+  @extend .table--bordered;
+  @extend .table--striped;
 }
 
 
@@ -205,22 +275,22 @@ table {
 \*------------------------------------*/
 
 ol{
-    margin-top: $_u;
-    margin-bottom: $_u;
+  margin-top: $_u;
+  margin-bottom: $_u;
 
-    ul &, ol &, dl & {
-        @include rem(margin-left, $_15u);
-        border-left: 0;
-        padding-left: 0;
-    }
+  ul &, ol &, dl & {
+    @include rem(margin-left, $_15u);
+    border-left: 0;
+    padding-left: 0;
+  }
 
-    li{
-        margin-bottom: $_u4;
-    }
+  li{
+    margin-bottom: $_u4;
+  }
 
-    @include media-query(palm){
-        @include rem(margin-left, $_u);
-    }
+  @include media-query(palm){
+    @include rem(margin-left, $_u);
+  }
 }
 
 dl {
@@ -228,33 +298,33 @@ dl {
 }
 
 dt {
-    font-weight: bold;
+  font-weight: bold;
 
-    dd + & {
-        @include rem(margin-top, $_u);
-    }
+  dd + & {
+    @include rem(margin-top, $_u);
+  }
 }
 
 dd {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 ol.breadcrumb{
-    margin: $_u 0 $_u2; 
+  margin: $_u 0 $_u2;
 
-    text-transform: uppercase;
-    font-size:12px;
-    line-height:1;
-    
+  text-transform: uppercase;
+  font-size:12px;
+  line-height:1;
+
+  color: $light;
+
+  a{
     color: $light;
 
-    a{
-        color: $light;
-
-        &:hover{
-            color: $accent;
-        }
+    &:hover{
+      color: $accent;
     }
+  }
 }
 
 

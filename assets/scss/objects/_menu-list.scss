@@ -1,0 +1,40 @@
+/*------------------------------------*\
+    $MENU LISTS / ROSAs
+\*------------------------------------*/
+
+.menu-list{
+
+}
+
+  .menu-list__title{
+    text-align: left;
+  }
+
+  .menu-list__items{
+    @extend .nav;
+    @extend .nav--stacked;
+  }
+
+    .menu-list__item{
+      position: relative;
+
+      padding-right: $_3u;
+    }
+
+      .menu-list__item-title{
+        margin-bottom: 0;
+        text-align: left;
+      }
+
+      .menu-list__item-desc{
+        text-align: left;
+      }
+
+      .menu-list__item-price{
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        @include font-size(19px);
+        font-weight: bold;
+      }

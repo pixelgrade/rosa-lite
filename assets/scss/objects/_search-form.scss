@@ -1,193 +1,45 @@
 .form-search {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
+  height: 44px;
+
+  .search-query {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    height: 44px;
+    padding: 8px $_u;
+    padding-right: 70px;
+
+    border: 1px solid #ddd;
+
+    @include font-size(14px);
+    line-height: 1.2;
+
+    @include border-radius(5px);
+
+    outline: none !important;
+  }
+
+  .search-submit {
+    position: absolute;
+    top: 0; right: $_u4;
+
+    @include rem(width, $_2u);
+    @include rem(padding, $_u4);
     height: 44px;
 
-    .search-query {
-        position: absolute;
-        left: 0;
-        top: 0;
+    @include font-size(14px);
+    text-align: center;
 
-        height: 44px;
-        padding: 8px $_u2;
-        padding-right: 60px;
-        
-        border: 1px solid #ddd;
-
-        @include font-size(14px);
-        line-height: 1.2;
-
-        outline: none !important;
-    }
-
-    .search-submit {
-        position: absolute;
-        top: 0; right: 0;
-
-        @include rem(width, $_2u);
-        @include rem(padding, $_u4);
-        height: 44px;
-        
-        @include font-size(14px);
-        text-align: center;
-
-        @include border-radius(0);
-    }
+    background: none;
+    border: 0;
+  }
 }
 
 @include media-query(lap-and-up) {
-    .search-form--404{
-        width: 50%;
-    }
-}
-
-
-
-// Overlay search / main search
-
-.search__wrapper{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 300;
-
-    height: 0;
-    overflow: hidden;
-
-    background: white;
-
-    @include opacity(0);
-
-    @include media-query(lap-and-up) {
-        @include transition(all .2s linear);
-    }
-
-
-    .is--active-search &{
-        height: auto;
-        @include opacity(1);
-    }
-
-    button{
-        border: 0;
-        color: $light;
-
-        background: transparent;
-    }
-}
-
-.search__close{
-    position: absolute;
-    top: $_u2;
-    right: $_u2;
-
-    padding: $_u;
-
-    @include font-size(40px);
-
-    &:before, &:after{
-        content: "";
-
-        position: absolute;
-        left: $_u2;
-        top: $_u;
-
-        height: $_u;
-        width: $_u;
-
-        display: inline-block;
-    }
-
-    &:before{
-        border-left: 2px solid $dark;
-        @include transform(rotate(45deg));
-    }
-
-    &:after{
-        left: -4px;
-
-        border-right: 2px solid $dark;
-        @include transform(rotate(-45deg));
-    }
-}
-
-.search__container{
-    max-width: $content-width;
-    margin: 0 auto;
-    margin-top: 149px;
-    padding: 0 96px;
-
-    @include media-query(palm) {
-        padding: 0 $_u2;
-    }
-
-    .separator{
-        width: 0;
-
-        @include media-query(lap-and-up) {
-            @include transition(width 1s cubic-bezier(0.86, 0, 0.07, 1));
-        }
-
-        .is--active-search  &{
-            width: 100%;
-        }
-    }
-}
-
-.search-fullscreen{
-    position: relative;
-
-    .search-input{
-        padding-left: 0;
-        padding-right: 40px;
-
-        border: 0;
-
-        
-
-        background: transparent;
-
-        outline: none !important;
-        @include transform(translateY(-100%));
-        @include opacity(0);
-
-        @include media-query(lap-and-up) {
-            @include font-size(40px);
-            @include transition(all 0.5s cubic-bezier(0.86, 0, 0.07, 1));
-        }
-
-        .is--active-search  &{
-            @include transform(translateY(0));
-            @include opacity(1);
-        }
-    }
-
-    .search-button{
-        position: absolute;
-        right: 0;
-        top: 0;
-
-        @include font-size(26px);
-        @include media-query(lap-and-up) {
-            top: $_u2;
-        }
-    }
-}
-
-.search-description{
-    @include font-size(14px);
-
-    @include transform(translateY(100%));
-    @include opacity(0);    
-
-    @include media-query(lap-and-up) {
-        @include transition(all 0.5s cubic-bezier(0.86, 0, 0.07, 1));
-    }
-
-    .is--active-search &{
-        @include transform(translateY(0));
-        @include opacity(1);
-    }
+  .search-form--404{
+    width: 50%;
+  }
 }

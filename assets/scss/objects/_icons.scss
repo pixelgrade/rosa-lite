@@ -15,7 +15,7 @@
         // @extend .btn--negative;
         display: inline-block;
         background-color: $dark;
-        color: $light;
+        color: white;
         padding: 0;
         
         @include rem(font-size, 18px);
@@ -35,17 +35,6 @@
 
     &.circle {
         @include border-radius(999px);
-    }
-
-    &.xsmall{
-        @include rem(font-size, 14px);
-        color: white;
-
-        &.circle, &.square {
-            width: (32/16) + em;
-            height: (32/16) + em;
-            line-height: (32/16) + em;
-        }
     }
 
     &.small {
@@ -102,4 +91,13 @@
             background-color: $accent;
         }
     }
+}
+
+.social-links-list{
+  @extend .nav;
+
+  a{
+    padding: 0 3px;
+    border: 0;
+  }
 }
