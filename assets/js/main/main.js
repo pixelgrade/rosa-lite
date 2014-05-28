@@ -49,7 +49,7 @@ function scrollToTopInit() {
 			}
 		});
 
-		$('.up-link a').click(function(e) {
+		$('.up-link').click(function(e) {
 			e.preventDefault();
 			$('html, body').animate({scrollTop: 0}, duration);
 			return false;
@@ -274,6 +274,8 @@ function eventHandlersOnce() {
 	if (globalDebug) {console.group("Event Handlers Once");}
 
 	menuTrigger();
+
+	scrollToTopInit();
 
 	if (globalDebug) {console.groupEnd();}
 }
