@@ -1,6 +1,7 @@
 .widget_calendar {
 
     caption {
+        @extend .hN;
         @extend .gamma;
         @include rem(margin-bottom, $_u2);
     }

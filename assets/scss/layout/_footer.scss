@@ -2,62 +2,87 @@
                FOOTER
 \*--------------------------------*/
 .site-footer {
-	margin: $_15u 0;
+  position: relative;
 }
 
-.navigation--footer .nav--main{
+.up-link{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 10;
 
-	li {
-		padding: 0;
-	}
+  padding: 18px;
+  padding-top: $_u;
+  border: 0;
 
-	a {
-		font-size:13px;
-		font-weight:600;
-		padding: 6px 18px;
-	}
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  color: $dark;
+  background: white;
+
+  @include border-radius(50%);
+  @include transform(translateX(-50%) translateY(-50%));
+
+  &:before{
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 50%;
+
+    height: 8px;
+    width: 8px;
+
+    border-left: 2px solid $dark;
+    border-top: 2px solid $dark;
+
+    @include transform(translateX(-50%) rotate(45deg));
+  }
+}
+
+.sidebar--footer{
+  padding: $_3u 0;
+
+  color: white;
+  background-color: #121012;
+}
+
+.copyright-area{
+  @extend .cf;
+
+  padding: $_u 0;
+
+  font-size: 14px;
+  color: $light;
+
+  background-color: $dark;
 }
 
 .copyright-text{
-	@include font-size(13px);
-	text-align: center;
-
-	color: $light;
+  float: left;
 }
 
-.footer-widget-area{
-	@extend .cf;
+.navigation--footer{
+  float: right;
+}
 
-	@include media-query(lap-and-up) {
-		margin: 0 -$_u;
-	}
-	margin-top: $_2u;
+.nav--footer{
+  margin-bottom: 0;
 
-	.widget{
-		float: left;
+  a{
+    padding-left: $_u2;
 
-		padding: 0;
-		border: $_u solid transparent;
-	}
+    color: $light;
 
-	&.col-1 .widget{
-		width: 100%;
-	}
+    &:after{
+      content: "\2022";
 
-	&.col-2 .widget{
-		width: 50%;
-	}
+      margin-left: $_u2;
+    }
+  }
 
-	&.col-3 .widget{
-		width: 33.3333%;
-	}		
-
-	@include media-query(palm) {
-		&.col-1, &.col-2, &.col-3{
-			.widget{
-				float: none;
-				width: 100%;
-			}
-		}
-	}
+  li:last-child a:after{
+    content: none;
+  }
 }

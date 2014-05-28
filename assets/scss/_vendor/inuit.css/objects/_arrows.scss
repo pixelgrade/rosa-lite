@@ -11,7 +11,7 @@
 
 $arrow-size:            $half-spacing-unit!default;
 $arrow-border:          1!default;
-$border-size:                $arrow-size;
+$border:                $arrow-size;
 $arrow:                 $arrow-size - $arrow-border;
 
 /**
@@ -27,7 +27,7 @@ $arrow:                 $arrow-size - $arrow-border;
         border-collapse:separate;
     }
     &:before{
-        @include rem(border, $border-size solid transparent);
+        @include rem(border, $border solid transparent);
     }
     &:after{
         @include rem(border, $arrow solid transparent);
@@ -54,7 +54,7 @@ $arrow:                 $arrow-size - $arrow-border;
         @include rem(top, $arrow);
     }
     &:after{
-        @include rem(top, $border-size);
+        @include rem(top, $border);
     }
 }
 
@@ -64,7 +64,7 @@ $arrow:                 $arrow-size - $arrow-border;
     &:before,
     &:after{
         top:50%;
-        @include rem(margin-top, -($border-size));
+        @include rem(margin-top, -($border));
     }
     &:after{
         @include rem(margin-top, -($arrow));
@@ -78,7 +78,7 @@ $arrow:                 $arrow-size - $arrow-border;
         @include rem(bottom, $arrow);
     }
     &:after{
-        @include rem(bottom, $border-size);
+        @include rem(bottom, $border);
     }
 }
 
@@ -107,7 +107,7 @@ $arrow:                 $arrow-size - $arrow-border;
         @include rem(left, $arrow);
     }
     &:after{
-        @include rem(left, $border-size);
+        @include rem(left, $border);
     }
 }
 
@@ -117,7 +117,7 @@ $arrow:                 $arrow-size - $arrow-border;
     &:before,
     &:after{
         left:50%;
-        @include rem(margin-left, -($border-size));
+        @include rem(margin-left, -($border));
     }
     &:after{
         @include rem(margin-left, -($arrow));
@@ -131,7 +131,7 @@ $arrow:                 $arrow-size - $arrow-border;
         @include rem(right, $arrow);
     }
     &:after{
-        @include rem(right, $border-size);
+        @include rem(right, $border);
     }
 }
 

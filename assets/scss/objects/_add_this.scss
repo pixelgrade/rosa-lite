@@ -9,14 +9,14 @@
 		float: right;
 	}
 
-	border: 1px solid $border;
+	border: 1px solid $borders;
 
 	a, .totals{
 		display: inline-block;
 		float:none !important;
 		padding: $_u4;
 		vertical-align: top;
-		border-left: 1px solid $border;
+		border-left: 1px solid $borders;
 
 		color: $light;
 		text-align: center;
@@ -47,7 +47,7 @@
 	}
 
 	li{
-		border-right: 1px solid $border;
+		border-right: 1px solid $borders;
 	}
 
 	li:last-child{

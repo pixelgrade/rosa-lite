@@ -7,62 +7,74 @@
  */
 
 .alignnone {
-    @include rem(margin, $_u4 0 $_u);
+  @include rem(margin, $_u4 0 $_u);
 }
 
 .alignleft {
-    float: left;
-    @include rem(margin, $_u4 $_u2 $_u2 0);
+  float: left;
+  @include rem(margin, $_u4 $_u2 $_u2 0);
 }
 
 .aligncenter {
-    display:block;
-    @include rem(margin, $_u4 auto $_u);
+  display:block;
+  @include rem(margin, $_u4 auto $_u);
 }
 
 .alignright {
-    float: right;
-    @include rem(margin, $_u4 0 $_u2 $_u2);
+  float: right;
+  @include rem(margin, $_u4 0 $_u2 $_u2);
 }
 
 .wp-caption {
-    @extend .cf;
-    width: auto !important;
-    max-width: 100%;
-    @include rem(margin-bottom, $_u);
+  @extend .cf;
+
+  position: relative;
+
+  width: auto !important;
+  max-width: 100%;
+  @include rem(margin-bottom, $_u);
+
+  img{
+    display: block;
+  }
 }
 
 .wp-caption-text {
-    margin-bottom: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 
-    font-size:13px;
-    text-align: center;
+  margin-bottom: 0 !important;
+  padding: $_u4 $_u2;
 
-    color: $light;
+  font-size:13px;
+  text-align: center;
+
+  color: white;
+  background: rgba(0, 0, 0, .6);
 }
 
 .sticky {
-    // @empty
+  // @empty
 }
 
 .gallery-caption {
-    // @empty
+  // @empty
 }
 
 .bypostauthor {
-    width: auto;
+  width: auto;
 }
 
 .small-link {
-    @include font-size(12px);
-    text-transform: uppercase;
-    font-family: $alt-font-family;
-    color: $accent;
+  @include font-size(14px);
+  font-family: $base-font-family;
+  color: $accent;
 }
 
 img[width], img[height] {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 // margin helpers
@@ -105,24 +117,24 @@ img[width], img[height] {
 
 // wordpress gallery
 .gallery {
-    @include rem(margin-left, -$_u4 !important);
+  @include rem(margin-left, -$_u4 !important);
 
-    .gallery-item {
-        @include rem(margin, 0 0 $_u2 0);
-        @include rem(padding-left, $_u4);
+  .gallery-item {
+    @include rem(margin, 0 0 $_u2 0);
+    @include rem(padding-left, $_u4);
+  }
+
+  .gallery-icon {
+
+    img {
+      width: 100%;
+      border: 0 !important;
     }
+  }
 
-    .gallery-icon {
-
-        img {
-            width: 100%;
-            border: 0 !important;
-        }
-    }
-
-    .gallery-caption {
-        padding: 0;
-        margin: 0;
-        line-height: 1.5;
-    }
+  .gallery-caption {
+    padding: 0;
+    margin: 0;
+    line-height: 1.5;
+  }
 }

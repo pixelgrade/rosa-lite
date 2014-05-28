@@ -4,24 +4,28 @@
  * @package Rosa
  * @since   Rosa 1.0
 **/ ?>
-				</section><!-- .content -->
-				<footer class="site-footer">
-					<h2 class="accessibility"><?php __('Footer', wpgrade::textdomain()) ?></h2>
-					<div class="footer-menu">
-						<nav class="navigation  navigation--footer">
-							<?php wpgrade_footer_nav(); ?>
-						</nav>
-					</div>
-					<div class="copyright-text">
-						<span><?php echo wpgrade::option('copyright_text') ?></span>
-					</div>
 
-					<?php get_template_part('sidebar-footer'); ?>
 
-				</footer><!-- .site-footer -->
-			</div><!-- .container -->
-		</div><!-- .wrapper -->
+        <footer class="site-footer">
+            <a href="#" class="up-link">Top</a>
+            <aside class="sidebar  sidebar--footer">
+                <div class="container">
+                    <?php get_template_part('sidebar-footer'); ?>
+                </div>
+            </aside><!-- .sidebar.sidebar- -footer -->
+            <div class="copyright-area">
+                <div class="container">
+                    <span class="copyright-text">
+                        <?php echo wpgrade::option('copyright_text') ?>
+                    </span>
+                    <nav class="navigation  navigation--footer">
+                        <?php wpgrade_footer_nav(); ?>
+                    </nav>
+                </div>
+            </div><!-- .copyright-area -->
+        </footer><!-- .site- -footer -->
+        </div><!-- .wrapper -->
+
 		<?php wp_footer(); ?>
-
 	</body>
 </html>

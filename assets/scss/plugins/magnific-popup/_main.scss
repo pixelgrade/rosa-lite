@@ -298,7 +298,7 @@ button::-moz-focus-inner {
   position: absolute;
   top: 0;
   right: 0;
-  // color: $controls-text-color;
+  color: $controls-text-color;
   font-size: 12px;
   line-height: 18px;
 }
@@ -472,10 +472,11 @@ button::-moz-focus-inner {
     @include font-size(18px);
     color: $caption-title-color;
     word-wrap: break-word;
+    font-family: "Josefin Slab", serif;
   }
 
   .mfp-figure small {
-    // color: $caption-subtitle-color;
+    color: $caption-subtitle-color;
     display: block;
     font-size: 12px;
     line-height: 14px;
@@ -610,13 +611,13 @@ button::-moz-focus-inner {
   /* start state */
   .mfp-with-anim {
     opacity: 0;
-     // transition: all 0.2s ease-in-out; 
+    transition: all 0.2s ease-in-out; 
     transform: scale(0.8); 
   }
   
   &.mfp-bg {
     opacity: 0;
-    // transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
   }
   
   /* animate in */
@@ -651,7 +652,7 @@ button::-moz-focus-inner {
     @include backface-visibility(hidden);
     @include perspective(1000px);
 
-    @include opacity(0.01);
+    @include opacity(0);
     @include transition(all .2s ease-in-out);
 }
 
@@ -662,7 +663,7 @@ button::-moz-focus-inner {
 /* overlay animate out */
 .mfp-fade.mfp-bg.mfp-removing {
     @include transition(all .2s .1s ease-in-out);
-    @include opacity(0.01);
+    @include opacity(0);
 }
 
 /* content at start */
@@ -672,7 +673,7 @@ button::-moz-focus-inner {
     @include perspective(1000px);
 
     @include scale(.75);
-    @include opacity(0.01);
+    @include opacity(0);
     @include transition(all .2s .1s ease-in-out);
 }
 
@@ -686,5 +687,5 @@ button::-moz-focus-inner {
 .mfp-fade.mfp-wrap.mfp-removing .mfp-content {
     @include transition(all .2s ease-in-out);
     @include scale(.75);
-    @include opacity(0.01);
+    @include opacity(0);
 }

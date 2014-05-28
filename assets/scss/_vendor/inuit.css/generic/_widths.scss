@@ -90,7 +90,7 @@
     .#{$namespace}two-twelfths      { @extend .#{$namespace}one-sixth; }
     .#{$namespace}three-twelfths    { @extend .#{$namespace}one-quarter; }
     .#{$namespace}four-twelfths     { @extend .#{$namespace}one-third; }
-    .#{$namespace}five-twelfths     { width:41.666% }
+    .#{$namespace}five-twelfths     { width:41.666%; }
     .#{$namespace}six-twelfths      { @extend .#{$namespace}one-half; }
     .#{$namespace}seven-twelfths    { width:58.333%; }
     .#{$namespace}eight-twelfths    { @extend .#{$namespace}two-thirds; }
