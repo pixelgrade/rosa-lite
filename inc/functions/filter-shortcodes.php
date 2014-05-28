@@ -6,14 +6,36 @@
 add_filter('pixcodes_filter_params_for_separator', 'wpgrade_callback_remove_separator_params', 10, 1);
 
 function wpgrade_callback_remove_separator_params( $params ){
-	//unset unneeded params and keep only the style one
+	//we only need aligment, color and style
+
+	//change the style options
 	if ( isset( $params['style'] )) {
 		$params['style']['options'] = array(
-			'' => "Regular",
+			'line' => "Line",
 			'flower' => "Flower",
+			'line-flower' => "Line with Flower",
 		);
-		return array('style' =>  $params['style']);
 	}
+
+	if ( isset( $params['color'] )) {
+		$params['color']['options'] = array(
+			'dark' => "Dark",
+			'light' => "Light",
+			'color' => "Accent Color",
+		);
+	}
+
+	// unset unneeded params
+	if ( isset( $params['align'] )) {
+		unset($params['align']);
+	}
+	if ( isset( $params['size'] )) {
+		unset($params['size']);
+	}
+	if ( isset( $params['weight'] )) {
+		unset($params['weight']);
+	}
+
 	return $params;
 }
 
