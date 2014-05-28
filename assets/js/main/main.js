@@ -289,8 +289,6 @@ function loadUp(){
 
 	isotopeInit();
 
-	if($(".classic-infinitescroll-wrapper").length) classicInfiniteScrollingInit($(".classic-infinitescroll-wrapper"));
-
 	progressbarInit();
 	menusHover();
 
@@ -304,6 +302,8 @@ function loadUp(){
 
 	searchTrigger();
 	// sidebarHeight();
+
+	gmapInit();
 
 	//Set textarea from contact page to autoresize
 	if($("textarea").length) { $("textarea").autosize(); }

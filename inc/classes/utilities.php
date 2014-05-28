@@ -52,7 +52,7 @@ class util
 		return $output;
 	}
 
-	static function get_latest_twelve_monts( $start_month = '' ){
+	static function get_latest_twelve_months( $start_month = '' ){
 
 		if (!empty($start_month)) {
 			$month = $start_month;

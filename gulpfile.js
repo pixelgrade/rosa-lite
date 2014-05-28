@@ -15,6 +15,7 @@ var theme 		= 'rosa',
 					'push-menu',
 					'royalslider',
 					'isotope',
+					'gmap',
 					'main',
 					'404',
 					'unsorted',
@@ -74,7 +75,7 @@ gulp.task('watch', function() {
  */
 gulp.task('styles', function() {
     gulp.src('./')
-        .pipe( exec('sass --force --update --compass --sourcemap content/scss:content/css --style expanded -E utf-8  2> /dev/null') )
+        .pipe( exec('sass --force --update --compass --sourcemap assets/scss:assets/css --style expanded -E utf-8  2> /dev/null') )
         .on('error', gutil.log);
 });
 

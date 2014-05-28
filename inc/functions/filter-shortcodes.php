@@ -3,10 +3,18 @@
  * hook shortcodes params
  */
 
-add_filter('pixcodes_filter_direct_for_separator', 'wpgrade_callback_make_separator_direct', 10, 1);
+add_filter('pixcodes_filter_params_for_separator', 'wpgrade_callback_remove_separator_params', 10, 1);
 
-function wpgrade_callback_make_separator_direct( $direct ) {
-	return true;
+function wpgrade_callback_remove_separator_params( $params ){
+	//unset unneeded params and keep only the style one
+	if ( isset( $params['style'] )) {
+		$params['style']['options'] = array(
+			'' => "Regular",
+			'flower' => "Flower",
+		);
+		return array('style' =>  $params['style']);
+	}
+	return $params;
 }
 
 add_filter('pixcodes_filter_params_for_columns', 'wpgrade_callback_remove_columns_params', 10, 1);

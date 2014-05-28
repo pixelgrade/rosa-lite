@@ -1,0 +1,43 @@
+/**
+ * The zoom controls are not displayed 
+ * properly without this rule
+ */
+#gmap{
+    padding-top: 30%;
+    @include rem(min-height, 260px);
+
+    img{
+        max-width: none !important;
+    }
+
+    @include media-query(from hand) {
+        @include rem(max-height, 460px);
+    }
+}
+
+.pin_ring {
+
+    @include border-radius(50%);
+    position: absolute;
+    border: 1px dotted black;
+    pointer-events: none;
+}
+
+.pin_ring--outer{
+    margin-top: -1.25rem;
+    margin-left: -1.25rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    top: 0px;
+    left: 0px;
+    background-color: $accent;
+    background-color: rgba($accent, 0.7);
+}
+
+.pin_ring--inner{
+    width: 40%;
+    height: 40%;
+    @include border-radius(50%);
+    top: 30%;
+    left: 30%;
+}

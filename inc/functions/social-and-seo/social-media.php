@@ -66,28 +66,28 @@ function wpgrade_get_socialimage() {
  * General SEO
  */
 function wpgrade_callback_general_seo() {
-	include wpgrade::themefilepath('utilities/assets/social-and-seo/general-seo'.EXT);
+	include wpgrade::themefilepath('inc/assets/social-and-seo/general-seo'.EXT);
 }
 
 /**
  * Facebook share correct image fix (thanks to yoast).
  */
 function wpgrade_callback_facebook_opengraph() {
-	include wpgrade::themefilepath('utilities/assets/social-and-seo/facebook-opengraph'.EXT);
+	include wpgrade::themefilepath('inc/assets/social-and-seo/facebook-opengraph'.EXT);
 }
 
 /**
  * Google +1 meta info.
  */
 function wpgrade_callback_google_metas() {
-	include wpgrade::themefilepath('utilities/assets/social-and-seo/google-plus-one'.EXT);
+	include wpgrade::themefilepath('inc/assets/social-and-seo/google-plus-one'.EXT);
 }
 
 /**
  * Twitter card meta info
  */
 function wpgrade_callback_twitter_card() {
-	include wpgrade::themefilepath('utilities/assets/social-and-seo/twitter-card-tags'.EXT);
+	include wpgrade::themefilepath('inc/assets/social-and-seo/twitter-card-tags'.EXT);
 }
 
 function load_social_share() {
