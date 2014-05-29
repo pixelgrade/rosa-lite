@@ -6,7 +6,6 @@
 
 get_header();
 
-
 global $wpgrade_private_post;
 
 if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {

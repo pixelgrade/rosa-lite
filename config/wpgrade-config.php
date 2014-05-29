@@ -1,4 +1,8 @@
-<?php return array(
+<?php
+
+
+
+return array(
 	# Commented values are optional properties. Many properties are
 	# automatically deduced from others (eg. textdomain is deduced from
 	# name, unless a custom value is provided)
@@ -153,7 +157,7 @@
 		'auto-enqueue-scripts'    => array(
 			'google-maps-api',
 			'wpgrade-main-scripts',
-			'webfont-script'
+			'webfont-script',
 		),
 		// enqueue's script and localizes
 		'auto-localize-scripts'   => array(
