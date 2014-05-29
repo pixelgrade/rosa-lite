@@ -10,12 +10,6 @@
 	word-wrap: break-word;
 }
 
-.article__featured-image {
-	.content--single & {
-		margin-bottom: $_15u;
-	}
-}
-
 .article__content {
 
 }
@@ -24,86 +18,65 @@
 
 }
 
-/*------------------------------------*\
-    $MULTIPAGE
-\*------------------------------------*/
+.article__header {
+	position: relative;
+	padding: 200px 0;
+	background: #333;
+	overflow: hidden;
+	@include transform(translate3d(0, 0, 0));
 
-.article--page{
-  position: relative;
-  overflow: hidden;
+	.flexbox {
+		height: 100%;
+	}
 
-  .article__parallax {
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    @include transform(translate3d(0,0,0));
-  }
+	.flexbox__item {
+		text-align: center;
+	}
 
-  .article__header{
-    position: relative;
-    overflow: hidden;
-    @include transform(translate3d(0,0,0));
-    background: #333;
-    //    z-index: -1;
+	&.full          { height: 100%; margin-bottom: -1 * $_u; }
+	&.one-half      { height:  50%; }
+	&.two-thirds    { height:  66%; }
+}
 
-    padding: 200px 0;
-    overflow: hidden;
 
-    .flexbox{
-      height: 100%;
-    }
+.article__parallax {
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	@include transform(translate3d(0, 0, 0));
 
-    .flexbox__item{
-      text-align: center;
-    }
-  }
+	img {
+		position: absolute;
+		top: 50%; left: 50%;
+		opacity: 0;
+		@include transform(translate3d(-50%, -50%, 0));
+	}
+}
 
-  .article__header img{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    @include transform(translate3d(-50%, -50%, 0));
-    //    right: 0;
-    //    bottom: 0;
 
-    width: auto;
-    height: auto;
-  }
+.article__content {
+	position: relative;
+	width: 100%;
+	padding: 50px 0;
+	background-color: white;
+	text-align: center;
+}
 
-  .article__content{
-    position: relative;
-    //    bottom: 0;
-    //    z-index: 1;
+.pixcode--grid {
+	margin-left: -48px;
 
-    width: 100%;
-
-    padding: 50px 0;
-    background-color: white;
-
-    text-align: center;
-  }
-
-  .pixcode--grid{
-    margin-left: -48px;
-
-    .grid__item{
-      padding-left: 48px;
-    }
-  }
-
-  .content--multipage &:first-of-type{
-    .article__header{
-      padding: 0;
-    }
-  }
+	.grid__item {
+		padding-left: 48px;
+	}
 }
 
 .down-arrow {
+
 	&:before {
 		content: "";
-
 		position: absolute;
 		left: 50%;
-		bottom: $_u;
+		bottom: $_2u;
+		margin-left: -1 * $_u2;
 		z-index: 20;
 
 		height: $_u;
@@ -112,7 +85,7 @@
 		border-right: 3px solid white;
 		border-bottom: 3px solid white;
 
-		@include transform(translateX(-50%) rotate(45deg));
+		@include transform(rotate(45deg));
 	}
 }
 

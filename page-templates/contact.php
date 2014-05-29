@@ -6,9 +6,7 @@
 
  */
 
-get_header();
-
-?>
+get_header(); ?>
 <section class="content  content--single-page">
 	<?php while ( have_posts() ) : the_post(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class( "article--page  article--main" ); ?>>
@@ -22,15 +20,14 @@ get_header();
 				</div>
 			</section>
 		</article>
-		<?php get_template_part( 'templates/subpages' ); ?>
-		<?php
+		<?php get_template_part( 'templates/subpages' );
+
 		//comments
 		if ( comments_open() || '0' != get_comments_number() ): ?>
 			<div class="container">
 				<?php comments_template(); ?>
 			</div>
-		<?php endif; ?>
-	<?php endwhile; ?>
+		<?php endif;
+	endwhile; ?>
 </section>
-
 <?php get_footer();

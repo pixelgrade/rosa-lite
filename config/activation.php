@@ -7,7 +7,6 @@
  */
 
 return array(
-
 	'pixlikes-settings' => array(
 		'show_on_post'         => false,
 		'show_on_page'         => false,
@@ -359,8 +358,9 @@ return array(
 				'context'    => 'normal',
 				'priority'   => 'high',
 				'hidden'     => true,
-				'show_on'    => array( 'key'   => 'page_template',
-				                       'value' => array( 'page-templates/contact-page.php' ),
+				'show_on'    => array(
+					'key' => 'page-template',
+					'value' => array( 'page-templates/contact.php' ),
 				),
 				'show_names' => true, // Show field names on the left
 				'fields'     => array(
@@ -392,5 +392,4 @@ return array(
 			),
 		),
 	),
-
 );
