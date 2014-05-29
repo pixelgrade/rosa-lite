@@ -44,7 +44,6 @@ if (useTransform) {
 var globalDebug = false,
 	timestamp;
 
-
 (function ($, window, undefined) {
 
 	/* --- DETECT VIEWPORT SIZE --- */
@@ -92,381 +91,379 @@ var globalDebug = false,
 
 
 	}
+/* --- Magnific Popup Initialization --- */
 
-	/* --- Magnific Popup Initialization --- */
+function magnificPopupInit() {
+	if (globalDebug) {
+		console.log("Magnific Popup - Init");
+	}
 
-	function magnificPopupInit() {
-		if (globalDebug) {
-			console.log("Magnific Popup - Init");
-		}
-
-		$('.js-post-gallery').each(function () { // the containers for all your galleries should have the class gallery
-			$(this).magnificPopup({
-				delegate: 'a[href$=".jpg"], a[href$=".jpeg"], a[href$=".png"], a[href$=".gif"]', // the container for each your gallery items
-				type: 'image',
-				closeOnContentClick: false,
-				closeBtnInside: false,
-				removalDelay: 500,
-				mainClass: 'mfp-fade',
-				image: {
-					markup: '<div class="mfp-figure">' +
-					'<div class="mfp-close"></div>' +
-					'<div class="mfp-img"></div>' +
-					'<div class="mfp-bottom-bar">' +
-					'<div class="mfp-title"></div>' +
-					'<div class="mfp-counter"></div>' +
-					'</div>' +
-					'</div>',
-					titleSrc: function (item) {
-						var output = '';
-						if (typeof item.el.attr('data-alt') !== "undefined" && item.el.attr('data-alt') !== "") {
-							output += '<small>' + item.el.attr('data-alt') + '</small>';
-						}
-						return output;
+	$('.js-post-gallery').each(function () { // the containers for all your galleries should have the class gallery
+		$(this).magnificPopup({
+			delegate: 'a[href$=".jpg"], a[href$=".jpeg"], a[href$=".png"], a[href$=".gif"]', // the container for each your gallery items
+			type: 'image',
+			closeOnContentClick: false,
+			closeBtnInside: false,
+			removalDelay: 500,
+			mainClass: 'mfp-fade',
+			image: {
+				markup: '<div class="mfp-figure">' +
+				'<div class="mfp-close"></div>' +
+				'<div class="mfp-img"></div>' +
+				'<div class="mfp-bottom-bar">' +
+				'<div class="mfp-title"></div>' +
+				'<div class="mfp-counter"></div>' +
+				'</div>' +
+				'</div>',
+				titleSrc: function (item) {
+					var output = '';
+					if (typeof item.el.attr('data-alt') !== "undefined" && item.el.attr('data-alt') !== "") {
+						output += '<small>' + item.el.attr('data-alt') + '</small>';
 					}
-				},
-				gallery: {
-					enabled: true,
-					navigateByImgClick: true
-					//arrowMarkup: '<a href="#" class="gallery-arrow gallery-arrow--%dir% control-item arrow-button arrow-button--%dir%">%dir%</a>'
-				},
-				callbacks: {
-					elementParse: function (item) {
-
-						if (this.currItem != undefined) {
-							item = this.currItem;
-						}
-
-						var output = '';
-						if (typeof item.el.attr('data-alt') !== "undefined" && item.el.attr('data-alt') !== "") {
-							output += '<small>' + item.el.attr('data-alt') + '</small>';
-						}
-
-						$('.mfp-title').html(output);
-					},
-					change: function (item) {
-						var output = '';
-						if (typeof item.el.attr('data-alt') !== "undefined" && item.el.attr('data-alt') !== "") {
-							output += '<small>' + item.el.attr('data-alt') + '</small>';
-						}
-
-						$('.mfp-title').html(output);
-					}
+					return output;
 				}
-			});
-		});
-
-	}
-
-	/* --- Royal Slider Init --- */
-
-	function royalSliderInit($container) {
-		if (globalDebug) {
-			console.log("Royal Slider - Init");
-		}
-
-		$container = typeof $container !== 'undefined' ? $container : $('body');
-
-		// Transform Wordpress Galleries to Sliders
-		$container.find('.wp-gallery').each(function () {
-			sliderMarkupGallery($(this));
-		});
-
-		// Find and initialize each slider
-		$container.find('.js-pixslider').each(function () {
-
-			sliderInit($(this));
-		});
-
-	}
-
-	/*
-	 * Slider Initialization
-	 */
-	function sliderInit($slider) {
-
-		$slider.find('img').removeClass('invisible');
-
-		var $children = $(this).children(),
-			rs_arrows = typeof $slider.data('arrows') !== "undefined",
-			rs_bullets = typeof $slider.data('bullets') !== "undefined" ? "bullets" : "none",
-			rs_autoheight = typeof $slider.data('autoheight') !== "undefined",
-			rs_autoScaleSlider = false,
-			rs_autoScaleSliderWidth = $slider.data('autoscalesliderwidth'),
-			rs_autoScaleSliderHeight = $slider.data('autoscalesliderheight'),
-			rs_customArrows = typeof $slider.data('customarrows') !== "undefined",
-			rs_slidesSpacing = typeof $slider.data('slidesspacing') !== "undefined" ? parseInt($slider.data('slidesspacing')) : 0,
-			rs_keyboardNav = typeof $slider.data('fullscreen') !== "undefined",
-			rs_imageScale = $slider.data('imagescale'),
-			rs_visibleNearby = typeof $slider.data('visiblenearby') !== "undefined" ? true : false,
-			rs_imageAlignCenter = typeof $slider.data('imagealigncenter') !== "undefined",
-			rs_transition = typeof $slider.data('slidertransition') !== "undefined" && $slider.data('slidertransition') != '' ? $slider.data('slidertransition') : 'move',
-			rs_autoPlay = typeof $slider.data('sliderautoplay') !== "undefined" ? true : false,
-			rs_delay = typeof $slider.data('sliderdelay') !== "undefined" && $slider.data('sliderdelay') != '' ? $slider.data('sliderdelay') : '1000',
-			rs_drag = true,
-			rs_globalCaption = typeof $slider.data('showcaptions') !== "undefined" ? true : false;
-
-		if (rs_autoheight) {
-			rs_autoScaleSlider = false
-		} else {
-			rs_autoScaleSlider = true
-		}
-
-		// Single slide case
-		if ($children.length == 1) {
-			rs_arrows = false;
-			rs_bullets = 'none';
-			rs_customArrows = false;
-			rs_keyboardNav = false;
-			rs_drag = false;
-			rs_transition = 'fade';
-		}
-
-		// make sure default arrows won't appear if customArrows is set
-		if (rs_customArrows) arrows = false;
-
-		//the main params for Royal Slider
-		var royalSliderParams = {
-			autoHeight: rs_autoheight,
-			autoScaleSlider: rs_autoScaleSlider,
-			loop: true,
-			autoScaleSliderWidth: rs_autoScaleSliderWidth,
-			autoScaleSliderHeight: rs_autoScaleSliderHeight,
-			imageScaleMode: rs_imageScale,
-			imageAlignCenter: rs_imageAlignCenter,
-			slidesSpacing: rs_slidesSpacing,
-			arrowsNav: rs_arrows,
-			controlNavigation: rs_bullets,
-			keyboardNavEnabled: rs_keyboardNav,
-			arrowsNavAutoHide: false,
-			sliderDrag: rs_drag,
-			transitionType: rs_transition,
-			autoPlay: {
-				enabled: rs_autoPlay,
-				stopAtAction: true,
-				pauseOnHover: true,
-				delay: rs_delay
 			},
-			globalCaption: rs_globalCaption,
-			numImagesToPreload: 2
-		};
-
-		if (rs_visibleNearby) {
-			royalSliderParams['visibleNearby'] = {
+			gallery: {
 				enabled: true,
-				//centerArea: 0.8,
-				center: true,
-				breakpoint: 0,
-				//breakpointCenterArea: 0.64,
-				navigateByCenterClick: false
-			}
-		}
+				navigateByImgClick: true
+				//arrowMarkup: '<a href="#" class="gallery-arrow gallery-arrow--%dir% control-item arrow-button arrow-button--%dir%">%dir%</a>'
+			},
+			callbacks: {
+				elementParse: function (item) {
 
-		//lets fire it up
-		$slider.royalSlider(royalSliderParams);
-		$slider.addClass('slider--loaded');
+					if (this.currItem != undefined) {
+						item = this.currItem;
+					}
 
-		var royalSlider = $slider.data('royalSlider');
-		var slidesNumber = royalSlider.numSlides;
+					var output = '';
+					if (typeof item.el.attr('data-alt') !== "undefined" && item.el.attr('data-alt') !== "") {
+						output += '<small>' + item.el.attr('data-alt') + '</small>';
+					}
 
-		// create the markup for the customArrows
-		if (slidesNumber > 1)
-			if (royalSlider && rs_customArrows) {
-				var $gallery_control = $(
-					'<div class="slider-arrows  arrows-archive">' +
-					'<button class="slider-arrow  slider-arrow--left  js-arrow-left"><i class="icon-chevron-left"></i></button>' +
-					'<button class="slider-arrow  slider-arrow--right  js-arrow-right"><i class="icon-chevron-right"></i></button>' +
-					'</div>'
-				);
+					$('.mfp-title').html(output);
+				},
+				change: function (item) {
+					var output = '';
+					if (typeof item.el.attr('data-alt') !== "undefined" && item.el.attr('data-alt') !== "") {
+						output += '<small>' + item.el.attr('data-alt') + '</small>';
+					}
 
-				if ($slider.data('customarrows') == "left") {
-					$gallery_control.addClass('gallery-control--left');
-				}
-
-				$gallery_control.insertBefore($slider);
-
-				$gallery_control.on('click', '.js-arrow-left', function (event) {
-					event.preventDefault();
-					royalSlider.prev();
-				});
-
-				$gallery_control.on('click', '.js-arrow-right', function (event) {
-					event.preventDefault();
-					royalSlider.next();
-				});
-			}
-
-		royalSlider.ev.on('rsVideoPlay', function () {
-			if (rs_imageScale == 'fill') {
-				var $frameHolder = $('.rsVideoFrameHolder');
-				var top = Math.abs(royalSlider.height - $frameHolder.closest('.rsVideoContainer').height()) / 2;
-
-				$frameHolder.height(royalSlider.height);
-				$frameHolder.css('margin-top', top + 'px');
-
-			} else {
-				var $frameHolder = $('.rsVideoFrameHolder');
-				var $videoContainer = $('.rsVideoFrameHolder').closest('.rsVideoContainer');
-				var top = parseInt($frameHolder.closest('.rsVideoContainer').css('margin-top'), 10);
-
-				if (top < 0) {
-					top = Math.abs(top);
-					$frameHolder
-						.height(royalSlider.height)
-						.css('top', top + 'px');
+					$('.mfp-title').html(output);
 				}
 			}
 		});
+	});
 
-		if (slidesNumber == 1) $slider.addClass('single-slide');
+}
 
-		$slider.addClass('slider--loaded');
+/* --- Royal Slider Init --- */
+
+function royalSliderInit($container) {
+	if (globalDebug) {
+		console.log("Royal Slider - Init");
 	}
 
-	/*
-	 * Wordpress Galleries to Sliders
-	 * Create the markup for the slider from the gallery shortcode
-	 * take all the images and insert them in the .gallery <div>
-	 */
-	function sliderMarkupGallery($gallery) {
-		var $old_gallery = $gallery,
-			gallery_data = $gallery.data(),
-			$images = $old_gallery.find('img'),
-			$new_gallery = $('<div class="pixslider js-pixslider">');
+	$container = typeof $container !== 'undefined' ? $container : $('body');
 
-		$images.prependTo($new_gallery).addClass('rsImg');
+	// Transform Wordpress Galleries to Sliders
+	$container.find('.wp-gallery').each(function () {
+		sliderMarkupGallery($(this));
+	});
 
-		//add the data attributes
-		$.each(gallery_data, function (key, value) {
-			$new_gallery.attr('data-' + key, value);
-		})
+	// Find and initialize each slider
+	$container.find('.js-pixslider').each(function () {
 
-		$old_gallery.replaceWith($new_gallery);
+		sliderInit($(this));
+	});
+
+}
+
+/*
+ * Slider Initialization
+ */
+function sliderInit($slider) {
+
+	$slider.find('img').removeClass('invisible');
+
+	var $children = $(this).children(),
+		rs_arrows = typeof $slider.data('arrows') !== "undefined",
+		rs_bullets = typeof $slider.data('bullets') !== "undefined" ? "bullets" : "none",
+		rs_autoheight = typeof $slider.data('autoheight') !== "undefined",
+		rs_autoScaleSlider = false,
+		rs_autoScaleSliderWidth = $slider.data('autoscalesliderwidth'),
+		rs_autoScaleSliderHeight = $slider.data('autoscalesliderheight'),
+		rs_customArrows = typeof $slider.data('customarrows') !== "undefined",
+		rs_slidesSpacing = typeof $slider.data('slidesspacing') !== "undefined" ? parseInt($slider.data('slidesspacing')) : 0,
+		rs_keyboardNav = typeof $slider.data('fullscreen') !== "undefined",
+		rs_imageScale = $slider.data('imagescale'),
+		rs_visibleNearby = typeof $slider.data('visiblenearby') !== "undefined" ? true : false,
+		rs_imageAlignCenter = typeof $slider.data('imagealigncenter') !== "undefined",
+		rs_transition = typeof $slider.data('slidertransition') !== "undefined" && $slider.data('slidertransition') != '' ? $slider.data('slidertransition') : 'move',
+		rs_autoPlay = typeof $slider.data('sliderautoplay') !== "undefined" ? true : false,
+		rs_delay = typeof $slider.data('sliderdelay') !== "undefined" && $slider.data('sliderdelay') != '' ? $slider.data('sliderdelay') : '1000',
+		rs_drag = true,
+		rs_globalCaption = typeof $slider.data('showcaptions') !== "undefined" ? true : false;
+
+	if (rs_autoheight) {
+		rs_autoScaleSlider = false
+	} else {
+		rs_autoScaleSlider = true
 	}
 
-	/* --- GMAP Init --- */
+	// Single slide case
+	if ($children.length == 1) {
+		rs_arrows = false;
+		rs_bullets = 'none';
+		rs_customArrows = false;
+		rs_keyboardNav = false;
+		rs_drag = false;
+		rs_transition = 'fade';
+	}
 
-	function gmapInit() {
-		if ($('#gmap').length) {
+	// make sure default arrows won't appear if customArrows is set
+	if (rs_customArrows) arrows = false;
 
-			var gmap_link, gmap_variables, gmap_zoom, gmap_style;
-			gmap_link = $('#gmap').data('url');
-			gmap_style = typeof $('#gmap').data('customstyle') !== "undefined" ? "style1" : google.maps.MapTypeId.ROADMAP;
-			var gmap_markercontent = $('#gmap').data('markercontent');
+	//the main params for Royal Slider
+	var royalSliderParams = {
+		autoHeight: rs_autoheight,
+		autoScaleSlider: rs_autoScaleSlider,
+		loop: true,
+		autoScaleSliderWidth: rs_autoScaleSliderWidth,
+		autoScaleSliderHeight: rs_autoScaleSliderHeight,
+		imageScaleMode: rs_imageScale,
+		imageAlignCenter: rs_imageAlignCenter,
+		slidesSpacing: rs_slidesSpacing,
+		arrowsNav: rs_arrows,
+		controlNavigation: rs_bullets,
+		keyboardNavEnabled: rs_keyboardNav,
+		arrowsNavAutoHide: false,
+		sliderDrag: rs_drag,
+		transitionType: rs_transition,
+		autoPlay: {
+			enabled: rs_autoPlay,
+			stopAtAction: true,
+			pauseOnHover: true,
+			delay: rs_delay
+		},
+		globalCaption: rs_globalCaption,
+		numImagesToPreload: 2
+	};
 
-			// Overwrite Math.log to accept a second optional parameter as base for logarhitm
-			Math.log = (function () {
-				var log = Math.log;
-				return function (n, base) {
-					return log(n) / (base ? log(base) : 1);
-				};
-			})();
+	if (rs_visibleNearby) {
+		royalSliderParams['visibleNearby'] = {
+			enabled: true,
+			//centerArea: 0.8,
+			center: true,
+			breakpoint: 0,
+			//breakpointCenterArea: 0.64,
+			navigateByCenterClick: false
+		}
+	}
 
-			function get_url_parameter(needed_param, gmap_url) {
-				var sURLVariables = (gmap_url.split('?'))[1];
-				if (typeof sURLVariables === "undefined") {
-					return sURLVariables;
-				}
-				sURLVariables = sURLVariables.split('&');
-				for (var i = 0; i < sURLVariables.length; i++) {
-					var sParameterName = sURLVariables[i].split('=');
-					if (sParameterName[0] == needed_param) {
-						return sParameterName[1];
-					}
-				}
+	//lets fire it up
+	$slider.royalSlider(royalSliderParams);
+	$slider.addClass('slider--loaded');
+
+	var royalSlider = $slider.data('royalSlider');
+	var slidesNumber = royalSlider.numSlides;
+
+	// create the markup for the customArrows
+	if (slidesNumber > 1)
+		if (royalSlider && rs_customArrows) {
+			var $gallery_control = $(
+				'<div class="slider-arrows  arrows-archive">' +
+				'<button class="slider-arrow  slider-arrow--left  js-arrow-left"><i class="icon-chevron-left"></i></button>' +
+				'<button class="slider-arrow  slider-arrow--right  js-arrow-right"><i class="icon-chevron-right"></i></button>' +
+				'</div>'
+			);
+
+			if ($slider.data('customarrows') == "left") {
+				$gallery_control.addClass('gallery-control--left');
 			}
 
-			var gmap_coordinates = [],
-				gmap_zoom;
+			$gallery_control.insertBefore($slider);
 
-			if (gmap_link) {
-				//Parse the URL and load variables (ll = latitude/longitude; z = zoom)
-				var gmap_variables = get_url_parameter('ll', gmap_link);
-				if (typeof gmap_variables === "undefined") {
-					gmap_variables = get_url_parameter('sll', gmap_link);
+			$gallery_control.on('click', '.js-arrow-left', function (event) {
+				event.preventDefault();
+				royalSlider.prev();
+			});
+
+			$gallery_control.on('click', '.js-arrow-right', function (event) {
+				event.preventDefault();
+				royalSlider.next();
+			});
+		}
+
+	royalSlider.ev.on('rsVideoPlay', function () {
+		if (rs_imageScale == 'fill') {
+			var $frameHolder = $('.rsVideoFrameHolder');
+			var top = Math.abs(royalSlider.height - $frameHolder.closest('.rsVideoContainer').height()) / 2;
+
+			$frameHolder.height(royalSlider.height);
+			$frameHolder.css('margin-top', top + 'px');
+
+		} else {
+			var $frameHolder = $('.rsVideoFrameHolder');
+			var $videoContainer = $('.rsVideoFrameHolder').closest('.rsVideoContainer');
+			var top = parseInt($frameHolder.closest('.rsVideoContainer').css('margin-top'), 10);
+
+			if (top < 0) {
+				top = Math.abs(top);
+				$frameHolder
+					.height(royalSlider.height)
+					.css('top', top + 'px');
+			}
+		}
+	});
+
+	if (slidesNumber == 1) $slider.addClass('single-slide');
+
+	$slider.addClass('slider--loaded');
+}
+
+/*
+ * Wordpress Galleries to Sliders
+ * Create the markup for the slider from the gallery shortcode
+ * take all the images and insert them in the .gallery <div>
+ */
+function sliderMarkupGallery($gallery) {
+	var $old_gallery = $gallery,
+		gallery_data = $gallery.data(),
+		$images = $old_gallery.find('img'),
+		$new_gallery = $('<div class="pixslider js-pixslider">');
+
+	$images.prependTo($new_gallery).addClass('rsImg');
+
+	//add the data attributes
+	$.each(gallery_data, function (key, value) {
+		$new_gallery.attr('data-' + key, value);
+	})
+
+	$old_gallery.replaceWith($new_gallery);
+}
+/* --- GMAP Init --- */
+
+function gmapInit() {
+	if ($('#gmap').length) {
+
+		var gmap_link, gmap_variables, gmap_zoom, gmap_style;
+		gmap_link = $('#gmap').data('url');
+		gmap_style = typeof $('#gmap').data('customstyle') !== "undefined" ? "style1" : google.maps.MapTypeId.ROADMAP;
+		var gmap_markercontent = $('#gmap').data('markercontent');
+
+		// Overwrite Math.log to accept a second optional parameter as base for logarhitm
+		Math.log = (function () {
+			var log = Math.log;
+			return function (n, base) {
+				return log(n) / (base ? log(base) : 1);
+			};
+		})();
+
+		function get_url_parameter(needed_param, gmap_url) {
+			var sURLVariables = (gmap_url.split('?'))[1];
+			if (typeof sURLVariables === "undefined") {
+				return sURLVariables;
+			}
+			sURLVariables = sURLVariables.split('&');
+			for (var i = 0; i < sURLVariables.length; i++) {
+				var sParameterName = sURLVariables[i].split('=');
+				if (sParameterName[0] == needed_param) {
+					return sParameterName[1];
 				}
-				// if gmap_variables is still undefined that means the url was pasted from the new version of google maps
-				if (typeof gmap_variables === "undefined") {
+			}
+		}
 
-					if (gmap_link.split('!3d') != gmap_link) {
-						//new google maps old link type
+		var gmap_coordinates = [],
+			gmap_zoom;
 
-						var split, lt, ln, dist, z;
-						split = gmap_link.split('!3d');
-						lt = split[1];
-						split = split[0].split('!2d');
-						ln = split[1];
-						split = split[0].split('!1d');
-						dist = split[1];
-						gmap_zoom = 21 - Math.round(Math.log(Math.round(dist / 218), 2));
-						gmap_coordinates = [lt, ln];
+		if (gmap_link) {
+			//Parse the URL and load variables (ll = latitude/longitude; z = zoom)
+			var gmap_variables = get_url_parameter('ll', gmap_link);
+			if (typeof gmap_variables === "undefined") {
+				gmap_variables = get_url_parameter('sll', gmap_link);
+			}
+			// if gmap_variables is still undefined that means the url was pasted from the new version of google maps
+			if (typeof gmap_variables === "undefined") {
 
-					} else {
-						//new google maps new link type
+				if (gmap_link.split('!3d') != gmap_link) {
+					//new google maps old link type
 
-						var gmap_link_l;
-
-						gmap_link_l = gmap_link.split('@')[1];
-						gmap_link_l = gmap_link_l.split('z/')[0];
-
-						gmap_link_l = gmap_link_l.split(',');
-
-						var latitude = gmap_link_l[0];
-						var longitude = gmap_link_l[1];
-						var zoom = gmap_link_l[2];
-
-						if (zoom.indexOf('z') >= 0)
-							zoom = zoom.substring(0, zoom.length - 1);
-
-						gmap_coordinates[0] = latitude;
-						gmap_coordinates[1] = longitude;
-						gmap_zoom = zoom;
-					}
-
+					var split, lt, ln, dist, z;
+					split = gmap_link.split('!3d');
+					lt = split[1];
+					split = split[0].split('!2d');
+					ln = split[1];
+					split = split[0].split('!1d');
+					dist = split[1];
+					gmap_zoom = 21 - Math.round(Math.log(Math.round(dist / 218), 2));
+					gmap_coordinates = [lt, ln];
 
 				} else {
-					gmap_zoom = get_url_parameter('z', gmap_link);
-					if (typeof gmap_zoom === "undefined") {
-						gmap_zoom = 10;
-					}
-					gmap_coordinates = gmap_variables.split(',');
-				}
-			}
+					//new google maps new link type
 
-			$("#gmap").gmap3({
-				map: {
-					options: {
-						center: new google.maps.LatLng(gmap_coordinates[0], gmap_coordinates[1]),
-						zoom: parseInt(gmap_zoom),
-						mapTypeId: gmap_style,
-						mapTypeControlOptions: {mapTypeIds: []},
-						scrollwheel: false
-					}
-				},
-				overlay: {
-					latLng: new google.maps.LatLng(gmap_coordinates[0], gmap_coordinates[1]),
-					options: {
-						content: '<div class="pin_wrapper">' +
-						gmap_markercontent +
-						'</div>'
-					}
-				},
-				styledmaptype: {
-					id: "style1",
-					options: {
-						name: "Style 1"
-					},
-					styles: [
-						{
-							stylers: [
-								{saturation: -100}
-							]
-						}
-					]
+					var gmap_link_l;
+
+					gmap_link_l = gmap_link.split('@')[1];
+					gmap_link_l = gmap_link_l.split('z/')[0];
+
+					gmap_link_l = gmap_link_l.split(',');
+
+					var latitude = gmap_link_l[0];
+					var longitude = gmap_link_l[1];
+					var zoom = gmap_link_l[2];
+
+					if (zoom.indexOf('z') >= 0)
+						zoom = zoom.substring(0, zoom.length - 1);
+
+					gmap_coordinates[0] = latitude;
+					gmap_coordinates[1] = longitude;
+					gmap_zoom = zoom;
 				}
-			});
+
+
+			} else {
+				gmap_zoom = get_url_parameter('z', gmap_link);
+				if (typeof gmap_zoom === "undefined") {
+					gmap_zoom = 10;
+				}
+				gmap_coordinates = gmap_variables.split(',');
+			}
 		}
+
+		$("#gmap").gmap3({
+			map: {
+				options: {
+					center: new google.maps.LatLng(gmap_coordinates[0], gmap_coordinates[1]),
+					zoom: parseInt(gmap_zoom),
+					mapTypeId: gmap_style,
+					mapTypeControlOptions: {mapTypeIds: []},
+					scrollwheel: false
+				}
+			},
+			overlay: {
+				latLng: new google.maps.LatLng(gmap_coordinates[0], gmap_coordinates[1]),
+				options: {
+					content: '<div class="pin_wrapper">' +
+					gmap_markercontent +
+					'</div>'
+				}
+			},
+			styledmaptype: {
+				id: "style1",
+				options: {
+					name: "Style 1"
+				},
+				styles: [
+					{
+						stylers: [
+							{saturation: -100}
+						]
+					}
+				]
+			}
+		});
 	}
+}
 
 ///* ====== INTERNAL FUNCTIONS ====== */
 //
@@ -833,197 +830,195 @@ var globalDebug = false,
 // create custom event each image in parallax header
 // then show it
 
-	var wh = $(window).height();
-	var ww = $(window).width();
+var wh = $(window).height();
+var ww = $(window).width();
 
-	$(window).load(function () {
+$(window).load(function () {
 
-		var imgSelector = '.article--page .article__header img',
-			parallaxAmount = 1;
+	var imgSelector = '.article--page .article__header img',
+		parallaxAmount = 1;
+
+	$(imgSelector).each(function (i, img) {
+
+		var $img = $(img),
+			imgHeight = $img.height(),
+			imgWidth = $img.width(),
+			scaleY = parallaxAmount * wh / imgHeight,
+			scaleX = ww / imgWidth,
+			scale = Math.max(1, scaleX, scaleY),
+			initialTop = -(wh * parallaxAmount / 2),
+			finalTop = initialTop + (wh * parallaxAmount),
+			$container = $img.closest('.article__header'),
+			containerHeight = $container.outerHeight(),
+			start = $container.offset().top - wh,
+			end = start + wh + containerHeight,
+			timeline = new TimelineMax({paused: true});
+
+		$img.css({
+			width: parseInt(imgWidth * scale, 10),
+			height: parseInt(imgHeight * scale, 10)
+//            '-webkit-transform-origin': '50%, 0, 0'
+		});
+
+		timeline.append(TweenMax.fromTo($img.closest('.article__parallax'), 0.1, {
+			y: initialTop,
+//            scale: scale,
+			ease: Linear.easeNone
+		}, {
+			y: finalTop,
+//            scale: scale,
+			ease: Linear.easeNone
+		}));
+
+		$img.data('tween', {
+			timeline: timeline,
+			start: start,
+			end: end
+		});
+
+	});
+
+	var latestKnownScrollY = 0,
+		ticking = false;
+
+	function update() {
+		ticking = false;
+
+		var scrollTop = latestKnownScrollY;
 
 		$(imgSelector).each(function (i, img) {
 
 			var $img = $(img),
-				imgHeight = $img.height(),
-				imgWidth = $img.width(),
-				scaleY = parallaxAmount * wh / imgHeight,
-				scaleX = ww / imgWidth,
-				scale = Math.max(1, scaleX, scaleY),
-				initialTop = -(wh * parallaxAmount / 2),
-				finalTop = initialTop + (wh * parallaxAmount),
-				$container = $img.closest('.article__header'),
-				containerHeight = $container.outerHeight(),
-				start = $container.offset().top - wh,
-				end = start + wh + containerHeight,
-				timeline = new TimelineMax({paused: true});
+				options = $img.data('tween'),
+				progress = (1 / (options.end - options.start)) * (scrollTop - options.start);
 
-			$img.css({
-				width: parseInt(imgWidth * scale, 10),
-				height: parseInt(imgHeight * scale, 10)
-//            '-webkit-transform-origin': '50%, 0, 0'
-			});
-
-			timeline.append(TweenMax.fromTo($img.closest('.article__parallax'), 0.1, {
-				y: initialTop,
-//            scale: scale,
-				ease: Linear.easeNone
-			}, {
-				y: finalTop,
-//            scale: scale,
-				ease: Linear.easeNone
-			}));
-
-			$img.data('tween', {
-				timeline: timeline,
-				start: start,
-				end: end
-			});
-
-		});
-
-		var latestKnownScrollY = 0,
-			ticking = false;
-
-		function update() {
-			ticking = false;
-
-			var scrollTop = latestKnownScrollY;
-
-			$(imgSelector).each(function (i, img) {
-
-				var $img = $(img),
-					options = $img.data('tween'),
-					progress = (1 / (options.end - options.start)) * (scrollTop - options.start);
-
-				if (0 > progress) {
-					$img.css({'visibility': 'hidden'});
-					return;
-				}
-
-				if (1 > progress) {
-					options.timeline.progress(progress);
-					$img.css({'visibility': 'visible'});
-					return;
-				}
-
+			if (0 > progress) {
 				$img.css({'visibility': 'hidden'});
-			});
-		}
-
-		$(window).scroll(function () {
-
-			latestKnownScrollY = window.scrollY;
-			requestTick();
-
-		});
-
-		function requestTick() {
-			if (!ticking) {
-				requestAnimationFrame(update);
+				return;
 			}
-			ticking = true;
-		}
 
-		update();
+			if (1 > progress) {
+				options.timeline.progress(progress);
+				$img.css({'visibility': 'visible'});
+				return;
+			}
+
+			$img.css({'visibility': 'hidden'});
+		});
+	}
+
+	$(window).scroll(function () {
+
+		latestKnownScrollY = window.scrollY;
+		requestTick();
 
 	});
-	/* --- 404 Page --- */
-	var gifImages = [
-		"http://i.imgur.com/c9X6n.gif",
-		"http://i.imgur.com/eezCO.gif",
-		"http://i.imgur.com/DYO6X.gif",
-		"http://i.imgur.com/9DWBx.gif",
-		"http://i.imgur.com/8ZYNp.gif",
-		"http://media1.giphy.com/media/vonLA9G2VvENG/giphy.gif",
-		"http://media2.giphy.com/media/UslGBU1GPKc0g/giphy.gif",
-		"http://media.giphy.com/media/LD0OalPb8u8Le/giphy.gif",
 
-	]
-
-	function getGif() {
-		return gifImages[Math.floor(Math.random() * gifImages.length)];
+	function requestTick() {
+		if (!ticking) {
+			requestAnimationFrame(update);
+		}
+		ticking = true;
 	}
 
-	function changeBackground() {
-		$('.error404').css('background-image', 'url(' + getGif() + ')');
-	}
+	update();
+
+});
+/* --- 404 Page --- */
+var gifImages = [
+	"http://i.imgur.com/c9X6n.gif",
+	"http://i.imgur.com/eezCO.gif",
+	"http://i.imgur.com/DYO6X.gif",
+	"http://i.imgur.com/9DWBx.gif",
+	"http://i.imgur.com/8ZYNp.gif",
+	"http://media1.giphy.com/media/vonLA9G2VvENG/giphy.gif",
+	"http://media2.giphy.com/media/UslGBU1GPKc0g/giphy.gif",
+	"http://media.giphy.com/media/LD0OalPb8u8Le/giphy.gif",
+
+]
+
+function getGif() {
+	return gifImages[Math.floor(Math.random() * gifImages.length)];
+}
+
+function changeBackground() {
+	$('.error404').css('background-image', 'url(' + getGif() + ')');
+}
 
 
-	if ($('.error404').length) {
+if ($('.error404').length) {
+	changeBackground();
+}
+
+$(window).keydown(function (e) {
+	if (e.keyCode == 32) {
 		changeBackground();
 	}
-
-	$(window).keydown(function (e) {
-		if (e.keyCode == 32) {
-			changeBackground();
-		}
-	})
-	/* === Functions that require jQuery but have no place on this Earth, yet === */
+})
+/* === Functions that require jQuery but have no place on this Earth, yet === */
 
 
 //here we change the link of the Edit button in the Admin Bar
 //to make sure it reflects the current page
-	function adminBarEditFix(id) {
-		//get the admin ajax url and clean it
-		var baseURL = ajaxurl.replace('admin-ajax.php', 'post.php');
+function adminBarEditFix(id) {
+	//get the admin ajax url and clean it
+	var baseURL = ajaxurl.replace('admin-ajax.php', 'post.php');
 
-		$('#wp-admin-bar-edit a').attr('href', baseURL + '?post=' + id + '&action=edit');
-	}
+	$('#wp-admin-bar-edit a').attr('href', baseURL + '?post=' + id + '&action=edit');
+}
 
-	/* --- Load AddThis Async --- */
-	function loadAddThisScript() {
-		if (window.addthis) {
-			if (globalDebug) {
-				console.log("AddThis Load Script");
-			}
-			// Listen for the ready event
-			addthis.addEventListener('addthis.ready', addthisReady);
-			addthis.init();
-		}
-	}
-
-	/* --- AddThis On Ready - The API is fully loaded --- */
-//only fire this the first time we load the AddThis API - even when using ajax
-	function addthisReady() {
+/* --- Load AddThis Async --- */
+function loadAddThisScript() {
+	if (window.addthis) {
 		if (globalDebug) {
-			console.log("AddThis Ready");
+			console.log("AddThis Load Script");
 		}
-		addThisInit();
+		// Listen for the ready event
+		addthis.addEventListener('addthis.ready', addthisReady);
+		addthis.init();
 	}
+}
 
-	/* --- AddThis Init --- */
-	function addThisInit() {
-		if (window.addthis) {
-			if (globalDebug) {
-				console.log("AddThis Toolbox INIT");
-			}
+/* --- AddThis On Ready - The API is fully loaded --- */
+//only fire this the first time we load the AddThis API - even when using ajax
+function addthisReady() {
+	if (globalDebug) {
+		console.log("AddThis Ready");
+	}
+	addThisInit();
+}
 
-			addthis.toolbox('.addthis_toolbox');
+/* --- AddThis Init --- */
+function addThisInit() {
+	if (window.addthis) {
+		if (globalDebug) {
+			console.log("AddThis Toolbox INIT");
 		}
+
+		addthis.toolbox('.addthis_toolbox');
 	}
-
-
-	// returns the depth of the element "e" relative to element with id=id
-	// for this calculation only parents with classname = waypoint are considered
-	function getLevelDepth(e, id, waypoint, cnt) {
-		cnt = cnt || 0;
-		if (e.id.indexOf(id) >= 0) return cnt;
-		if ($(e).hasClass(waypoint)) {
-			++cnt;
-		}
-		return e.parentNode && getLevelDepth(e.parentNode, id, waypoint, cnt);
+}
+// returns the depth of the element "e" relative to element with id=id
+// for this calculation only parents with classname = waypoint are considered
+function getLevelDepth(e, id, waypoint, cnt) {
+	cnt = cnt || 0;
+	if (e.id.indexOf(id) >= 0) return cnt;
+	if ($(e).hasClass(waypoint)) {
+		++cnt;
 	}
+	return e.parentNode && getLevelDepth(e.parentNode, id, waypoint, cnt);
+}
 
-	// returns the closest element to 'e' that has class "classname"
-	function closest(e, classname) {
-		if ($(e).hasClass(classname)) {
-			return e;
-		}
-		return e.parentNode && closest(e.parentNode, classname);
+// returns the closest element to 'e' that has class "classname"
+function closest(e, classname) {
+	if ($(e).hasClass(classname)) {
+		return e;
 	}
+	return e.parentNode && closest(e.parentNode, classname);
+}
 
-})(jQuery, window);
-
+})
+(jQuery, window);
 // /* ====== HELPER FUNCTIONS ====== */
 
 //similar to PHP's empty function

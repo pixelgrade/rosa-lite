@@ -1706,7 +1706,6 @@
 	};
 })(jQuery);
 
-
 /* --- $GMAP3 ---*/
 
 // GMap 3 v5.1.1 by DEMONTE Jean-Baptiste
@@ -3944,7 +3943,6 @@
 		n.unbind(e.target, "load", this), n.unbind(e.target, "error", this)
 	}, s
 });
-
 // Magnific Popup v0.9.9 by Dmitry Semenov
 // http://bit.ly/magnific-popup#build=image+ajax+iframe+gallery+retina+fastclick
 (function (a) {
@@ -6378,7 +6376,6 @@ window.matchMedia = window.matchMedia || function (a) {
 		n(), b.update = n, a.addEventListener ? a.addEventListener("resize", x, !1) : a.attachEvent && a.attachEvent("onresize", x)
 	}
 })(this);
-
 
 /* --- ROYALSLIDER --- */
 
