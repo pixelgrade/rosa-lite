@@ -157,7 +157,7 @@ return array(
 		'auto-enqueue-scripts'    => array(
 			'google-maps-api',
 			'wpgrade-main-scripts',
-			'webfont-script'
+			'webfont-script',
 		),
 		// enqueue's script and localizes
 		'auto-localize-scripts'   => array(

@@ -2,6 +2,7 @@
 
 function gmapInit() {
 	if ($('#gmap').length) {
+		if (globalDebug) {console.log("GMap Init");}
 
 		var gmap_link, gmap_variables, gmap_zoom, gmap_style;
 		gmap_link = $('#gmap').data('url');
