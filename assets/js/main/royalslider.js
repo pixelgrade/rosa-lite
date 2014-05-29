@@ -1,19 +1,21 @@
 /* --- Royal Slider Init --- */
 
-function royalSliderInit($container){
-	if (globalDebug) {console.log("Royal Slider - Init");}
+function royalSliderInit($container) {
+	if (globalDebug) {
+		console.log("Royal Slider - Init");
+	}
 
 	$container = typeof $container !== 'undefined' ? $container : $('body');
 
 	// Transform Wordpress Galleries to Sliders
-	$container.find('.wp-gallery').each(function() {
+	$container.find('.wp-gallery').each(function () {
 		sliderMarkupGallery($(this));
 	});
 
 	// Find and initialize each slider
-	$container.find('.js-pixslider').each(function(){
+	$container.find('.js-pixslider').each(function () {
 
-			sliderInit($(this));
+		sliderInit($(this));
 	});
 
 }
@@ -21,7 +23,7 @@ function royalSliderInit($container){
 /*
  * Slider Initialization
  */
-function sliderInit($slider){
+function sliderInit($slider) {
 
 	$slider.find('img').removeClass('invisible');
 
@@ -34,20 +36,24 @@ function sliderInit($slider){
 		rs_autoScaleSliderHeight = $slider.data('autoscalesliderheight'),
 		rs_customArrows = typeof $slider.data('customarrows') !== "undefined",
 		rs_slidesSpacing = typeof $slider.data('slidesspacing') !== "undefined" ? parseInt($slider.data('slidesspacing')) : 0,
-		rs_keyboardNav  = typeof $slider.data('fullscreen') !== "undefined",
-		rs_imageScale  = $slider.data('imagescale'),
+		rs_keyboardNav = typeof $slider.data('fullscreen') !== "undefined",
+		rs_imageScale = $slider.data('imagescale'),
 		rs_visibleNearby = typeof $slider.data('visiblenearby') !== "undefined" ? true : false,
-		rs_imageAlignCenter  = typeof $slider.data('imagealigncenter') !== "undefined",
+		rs_imageAlignCenter = typeof $slider.data('imagealigncenter') !== "undefined",
 		rs_transition = typeof $slider.data('slidertransition') !== "undefined" && $slider.data('slidertransition') != '' ? $slider.data('slidertransition') : 'move',
 		rs_autoPlay = typeof $slider.data('sliderautoplay') !== "undefined" ? true : false,
 		rs_delay = typeof $slider.data('sliderdelay') !== "undefined" && $slider.data('sliderdelay') != '' ? $slider.data('sliderdelay') : '1000',
 		rs_drag = true,
 		rs_globalCaption = typeof $slider.data('showcaptions') !== "undefined" ? true : false;
 
-	if(rs_autoheight) { rs_autoScaleSlider = false } else { rs_autoScaleSlider = true }
+	if (rs_autoheight) {
+		rs_autoScaleSlider = false
+	} else {
+		rs_autoScaleSlider = true
+	}
 
 	// Single slide case
-	if ($children.length == 1){
+	if ($children.length == 1) {
 		rs_arrows = false;
 		rs_bullets = 'none';
 		rs_customArrows = false;
@@ -81,7 +87,7 @@ function sliderInit($slider){
 			pauseOnHover: true,
 			delay: rs_delay
 		},
-		globalCaption:rs_globalCaption,
+		globalCaption: rs_globalCaption,
 		numImagesToPreload: 2
 	};
 
@@ -104,12 +110,12 @@ function sliderInit($slider){
 	var slidesNumber = royalSlider.numSlides;
 
 	// create the markup for the customArrows
-	if(slidesNumber > 1)
+	if (slidesNumber > 1)
 		if (royalSlider && rs_customArrows) {
 			var $gallery_control = $(
 				'<div class="slider-arrows  arrows-archive">' +
-					'<button class="slider-arrow  slider-arrow--left  js-arrow-left"><i class="icon-chevron-left"></i></button>'+
-					'<button class="slider-arrow  slider-arrow--right  js-arrow-right"><i class="icon-chevron-right"></i></button>'+
+				'<button class="slider-arrow  slider-arrow--left  js-arrow-left"><i class="icon-chevron-left"></i></button>' +
+				'<button class="slider-arrow  slider-arrow--right  js-arrow-right"><i class="icon-chevron-right"></i></button>' +
 				'</div>'
 			);
 
@@ -119,31 +125,31 @@ function sliderInit($slider){
 
 			$gallery_control.insertBefore($slider);
 
-			$gallery_control.on('click', '.js-arrow-left', function(event){
+			$gallery_control.on('click', '.js-arrow-left', function (event) {
 				event.preventDefault();
 				royalSlider.prev();
 			});
 
-			$gallery_control.on('click', '.js-arrow-right', function(event){
+			$gallery_control.on('click', '.js-arrow-right', function (event) {
 				event.preventDefault();
 				royalSlider.next();
 			});
 		}
 
-	royalSlider.ev.on('rsVideoPlay', function() {
-		if(rs_imageScale == 'fill'){
+	royalSlider.ev.on('rsVideoPlay', function () {
+		if (rs_imageScale == 'fill') {
 			var $frameHolder = $('.rsVideoFrameHolder');
-			var top = Math.abs(royalSlider.height - $frameHolder.closest('.rsVideoContainer').height())/2;
+			var top = Math.abs(royalSlider.height - $frameHolder.closest('.rsVideoContainer').height()) / 2;
 
 			$frameHolder.height(royalSlider.height);
-			$frameHolder.css('margin-top', top+'px');
+			$frameHolder.css('margin-top', top + 'px');
 
 		} else {
 			var $frameHolder = $('.rsVideoFrameHolder');
 			var $videoContainer = $('.rsVideoFrameHolder').closest('.rsVideoContainer');
 			var top = parseInt($frameHolder.closest('.rsVideoContainer').css('margin-top'), 10);
 
-			if(top < 0){
+			if (top < 0) {
 				top = Math.abs(top);
 				$frameHolder
 					.height(royalSlider.height)
@@ -152,7 +158,7 @@ function sliderInit($slider){
 		}
 	});
 
-	if(slidesNumber == 1) $slider.addClass('single-slide');
+	if (slidesNumber == 1) $slider.addClass('single-slide');
 
 	$slider.addClass('slider--loaded');
 }
@@ -162,7 +168,7 @@ function sliderInit($slider){
  * Create the markup for the slider from the gallery shortcode
  * take all the images and insert them in the .gallery <div>
  */
-function sliderMarkupGallery($gallery){
+function sliderMarkupGallery($gallery) {
 	var $old_gallery = $gallery,
 		gallery_data = $gallery.data(),
 		$images = $old_gallery.find('img'),
@@ -172,7 +178,7 @@ function sliderMarkupGallery($gallery){
 
 	//add the data attributes
 	$.each(gallery_data, function (key, value) {
-		$new_gallery.attr('data-'+key, value);
+		$new_gallery.attr('data-' + key, value);
 	})
 
 	$old_gallery.replaceWith($new_gallery);

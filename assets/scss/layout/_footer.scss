@@ -2,87 +2,87 @@
                FOOTER
 \*--------------------------------*/
 .site-footer {
-  position: relative;
+	position: relative;
 }
 
-.up-link{
-  position: absolute;
-  top: 0;
-  left: 50%;
-  z-index: 10;
+.up-link {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	z-index: 10;
 
-  padding: 18px;
-  padding-top: $_u;
-  border: 0;
+	padding: 18px;
+	padding-top: $_u;
+	border: 0;
 
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
 
-  color: $dark;
-  background: white;
+	color: $dark;
+	background: white;
 
-  @include border-radius(50%);
-  @include transform(translateX(-50%) translateY(-50%));
+	@include border-radius(50%);
+	@include transform(translateX(-50%) translateY(-50%));
 
-  &:before{
-    content: "";
-    position: absolute;
-    top: 12px;
-    left: 50%;
+	&:before {
+		content: "";
+		position: absolute;
+		top: 12px;
+		left: 50%;
 
-    height: 8px;
-    width: 8px;
+		height: 8px;
+		width: 8px;
 
-    border-left: 2px solid $dark;
-    border-top: 2px solid $dark;
+		border-left: 2px solid $dark;
+		border-top: 2px solid $dark;
 
-    @include transform(translateX(-50%) rotate(45deg));
-  }
+		@include transform(translateX(-50%) rotate(45deg));
+	}
 }
 
-.sidebar--footer{
-  padding: $_3u 0;
+.sidebar--footer {
+	padding: $_3u 0;
 
-  color: white;
-  background-color: #121012;
+	color: white;
+	background-color: #121012;
 }
 
-.copyright-area{
-  @extend .cf;
+.copyright-area {
+	@extend .cf;
 
-  padding: $_u 0;
+	padding: $_u 0;
 
-  font-size: 14px;
-  color: $light;
+	font-size: 14px;
+	color: $light;
 
-  background-color: $dark;
+	background-color: $dark;
 }
 
-.copyright-text{
-  float: left;
+.copyright-text {
+	float: left;
 }
 
-.navigation--footer{
-  float: right;
+.navigation--footer {
+	float: right;
 }
 
-.nav--footer{
-  margin-bottom: 0;
+.nav--footer {
+	margin-bottom: 0;
 
-  a{
-    padding-left: $_u2;
+	a {
+		padding-left: $_u2;
 
-    color: $light;
+		color: $light;
 
-    &:after{
-      content: "\2022";
+		&:after {
+			content: "\2022";
 
-      margin-left: $_u2;
-    }
-  }
+			margin-left: $_u2;
+		}
+	}
 
-  li:last-child a:after{
-    content: none;
-  }
+	li:last-child a:after {
+		content: none;
+	}
 }

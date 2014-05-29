@@ -5,9 +5,9 @@
  */
 
 /**
- * @package    wpgrade
- * @category   core
- * @author     Pixel Grade Team
+ * @package        wpgrade
+ * @category       core
+ * @author         Pixel Grade Team
  * @copyright  (c) 2013, Pixel Grade Media
  */
 abstract class WPGradeOptionDriver {
@@ -15,13 +15,13 @@ abstract class WPGradeOptionDriver {
 	/**
 	 * @return option value or default
 	 */
-	abstract function get($option, $default = null);
+	abstract function get( $option, $default = null );
 
 	/**
 	 * @return static $this
 	 */
-	function set($key, $value) {
-		throw new Exception('Set operation not supported by '.__CLASS__);
+	function set( $key, $value ) {
+		throw new Exception( 'Set operation not supported by ' . __CLASS__ );
 	}
 
 } # class

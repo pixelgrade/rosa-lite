@@ -1,4 +1,4 @@
-<?php defined('ABSPATH') or die; ?>
+<?php defined( 'ABSPATH' ) or die; ?>
 
 <h3>Download Failed!</h3>
 

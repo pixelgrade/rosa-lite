@@ -1,81 +1,81 @@
 /*------------------------------------*\
     $PAGINATIONS
 \*------------------------------------*/
-.pagination{
-  border: none;
-  text-align: center;
-  @include rem(margin, $_3u + $_u2 0);
-  padding-left: 0;
-  position: relative;
+.pagination {
+	border: none;
+	text-align: center;
+	@include rem(margin, $_3u + $_u2 0);
+	padding-left: 0;
+	position: relative;
 
-  &:after{
-    content: none;
-  }
+	&:after {
+		content: none;
+	}
 
-  li {
-    margin-bottom: 0;
+	li {
+		margin-bottom: 0;
 
-    a, span {
-      position: relative;
-      z-index: 2;
+		a, span {
+			position: relative;
+			z-index: 2;
 
-      display: inline-block;
+			display: inline-block;
 
-      @include rem(padding, $_u4 $_u2);
-      border: 1px solid transparent;
+			@include rem(padding, $_u4 $_u2);
+			border: 1px solid transparent;
 
-      @include font-size(16px);
-      text-transform: uppercase;
+			@include font-size(16px);
+			text-transform: uppercase;
 
-      color: $light;
-      background: white;
+			color: $light;
+			background: white;
 
-      @include transition(all .15s linear);
-    }
+			@include transition(all .15s linear);
+		}
 
-    a:hover{
-      color: white !important;
-      background-color: $accent;
-      border-bottom: 1px solid transparent;
-    }
+		a:hover {
+			color: white !important;
+			background-color: $accent;
+			border-bottom: 1px solid transparent;
+		}
 
-    span.current{
-      color: $dark;
-      border: 1px solid $borders;
-    }
-  }
+		span.current {
+			color: $dark;
+			border: 1px solid $borders;
+		}
+	}
 
-  .inf_scroll &{
-    display: none;
-  }
+	.inf_scroll & {
+		display: none;
+	}
 }
 
-.page-numbers.prev, .page-numbers.next{
-  position: absolute;
-  top: 0;
+.page-numbers.prev, .page-numbers.next {
+	position: absolute;
+	top: 0;
 
-  color: $dark;
+	color: $dark;
 
-  &.disabled{
-    color: #F0F0F0 !important;
-    pointer-events: none;
-  }
+	&.disabled {
+		color: #F0F0F0 !important;
+		pointer-events: none;
+	}
 }
 
-.page-numbers.prev{
-  left: 0;
+.page-numbers.prev {
+	left: 0;
 
-  &:before{
-    content: "\2190";
-    margin-right: $_u2;
-  }
+	&:before {
+		content: "\2190";
+		margin-right: $_u2;
+	}
 }
 
-.page-numbers.next{
-  right: 0;
+.page-numbers.next {
+	right: 0;
 
-  &:after{
-    content: "\2192";
-    margin-left: $_u2;
-  }
+	&:after {
+		content: "\2192";
+		margin-left: $_u2;
+	}
 }

@@ -1,19 +1,18 @@
-
-(function($,window,undefined) {
+(function ($, window, undefined) {
 
 	/* --- DETECT VIEWPORT SIZE --- */
 
-	function browserSize(){
+	function browserSize() {
 		wh = $(window).height();
 		ww = $(window).width();
 		dh = $(document).height();
-		ar = ww/wh;
+		ar = ww / wh;
 	}
 
 
 	/* --- DETECT PLATFORM --- */
 
-	function platformDetect(){
+	function platformDetect() {
 		$.support.touch = 'ontouchend' in document;
 		var navUA = navigator.userAgent.toLowerCase(),
 			navPlat = navigator.platform.toLowerCase();
@@ -35,11 +34,11 @@
 
 
 		if (touch) $('html').addClass('touch');
-		
-		if(is_WindowsMobile) $('html').addClass('is--winmob');
-		if(is_android) $('html').addClass('is--ancient-android');
-		
-		if(lteie9) $('html').addClass('lteie9');		
+
+		if (is_WindowsMobile) $('html').addClass('is--winmob');
+		if (is_android) $('html').addClass('is--ancient-android');
+
+		if (lteie9) $('html').addClass('lteie9');
 
 		if (safari) $bod.addClass('safari');
 		if (phone) $bod.addClass('phone');

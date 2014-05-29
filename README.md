@@ -1,5 +1,6 @@
 ## Coding guideline
 
+ * Quick guide http://andrei-lupu.com/wordpress/wpgrade-coding-guideline/
  * First of all this is a wordPress theme so we need to respect some WordPress coding standards http://make.wordpress.org/core/handbook/coding-standards/
  * Every file / function / class should be documented by standards http://make.wordpress.org/core/handbook/inline-documentation-standards/php-documentation-standards/
 

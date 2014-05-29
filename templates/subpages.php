@@ -1,7 +1,7 @@
 <?php
 /**
  * The template for displaying the subpages.
- *
+
  */
 
 global $post, $wpgrade_private_post;
@@ -11,7 +11,7 @@ $base_args = array(
 );
 
 //test if the current page has child pages
-if (rosa::page_has_children()) {
+if ( rosa::page_has_children() ) {
 	//get only the next level pages
 	$args = array(
 		'child_of' => $post->ID,
@@ -31,8 +31,7 @@ if (rosa::page_has_children()) {
 			// password protection
 			get_template_part( 'templates/password-request-form' );
 
-		} else {
-			?>
+		} else { ?>
 			<article class="article--page  article--main">
 				<header class="article__header">
 					<?php if ( has_post_thumbnail() ):

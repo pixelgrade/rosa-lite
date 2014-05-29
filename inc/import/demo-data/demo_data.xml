@@ -35,54 +35,228 @@
         <wp:base_site_url>http://pixelgrade.com/demos/rosa</wp:base_site_url>
         <wp:base_blog_url>http://pixelgrade.com/demos/rosa</wp:base_blog_url>
 
-        <wp:author><wp:author_id>1</wp:author_id><wp:author_login>admin</wp:author_login><wp:author_email>george.olaru@pixelgrade.com</wp:author_email><wp:author_display_name><![CDATA[George Olaru]]></wp:author_display_name><wp:author_first_name><![CDATA[George]]></wp:author_first_name><wp:author_last_name><![CDATA[Olaru]]></wp:author_last_name></wp:author>
+        <wp:author>
+            <wp:author_id>1</wp:author_id>
+            <wp:author_login>admin</wp:author_login>
+            <wp:author_email>george.olaru@pixelgrade.com</wp:author_email>
+            <wp:author_display_name><![CDATA[George Olaru]]></wp:author_display_name>
+            <wp:author_first_name><![CDATA[George]]></wp:author_first_name>
+            <wp:author_last_name><![CDATA[Olaru]]></wp:author_last_name>
+        </wp:author>
 
-        <wp:category><wp:term_id>4</wp:term_id><wp:category_nicename>art</wp:category_nicename><wp:category_parent></wp:category_parent><wp:cat_name><![CDATA[Art]]></wp:cat_name></wp:category>
-        <wp:category><wp:term_id>6</wp:term_id><wp:category_nicename>design</wp:category_nicename><wp:category_parent></wp:category_parent><wp:cat_name><![CDATA[Design]]></wp:cat_name></wp:category>
-        <wp:category><wp:term_id>8</wp:term_id><wp:category_nicename>gallery</wp:category_nicename><wp:category_parent></wp:category_parent><wp:cat_name><![CDATA[Gallery]]></wp:cat_name></wp:category>
-        <wp:category><wp:term_id>2</wp:term_id><wp:category_nicename>graphics</wp:category_nicename><wp:category_parent></wp:category_parent><wp:cat_name><![CDATA[Graphics]]></wp:cat_name></wp:category>
-        <wp:category><wp:term_id>5</wp:term_id><wp:category_nicename>ideas</wp:category_nicename><wp:category_parent></wp:category_parent><wp:cat_name><![CDATA[Ideas]]></wp:cat_name></wp:category>
-        <wp:category><wp:term_id>9</wp:term_id><wp:category_nicename>image</wp:category_nicename><wp:category_parent></wp:category_parent><wp:cat_name><![CDATA[Image]]></wp:cat_name></wp:category>
-        <wp:category><wp:term_id>13</wp:term_id><wp:category_nicename>link</wp:category_nicename><wp:category_parent></wp:category_parent><wp:cat_name><![CDATA[Link]]></wp:cat_name></wp:category>
-        <wp:category><wp:term_id>3</wp:term_id><wp:category_nicename>personal</wp:category_nicename><wp:category_parent></wp:category_parent><wp:cat_name><![CDATA[Personal]]></wp:cat_name></wp:category>
-        <wp:category><wp:term_id>12</wp:term_id><wp:category_nicename>quote</wp:category_nicename><wp:category_parent></wp:category_parent><wp:cat_name><![CDATA[Quote]]></wp:cat_name></wp:category>
-        <wp:category><wp:term_id>10</wp:term_id><wp:category_nicename>standard</wp:category_nicename><wp:category_parent></wp:category_parent><wp:cat_name><![CDATA[Standard]]></wp:cat_name></wp:category>
-        <wp:category><wp:term_id>7</wp:term_id><wp:category_nicename>typography</wp:category_nicename><wp:category_parent></wp:category_parent><wp:cat_name><![CDATA[Typography]]></wp:cat_name></wp:category>
-        <wp:category><wp:term_id>1</wp:term_id><wp:category_nicename>uncategorized</wp:category_nicename><wp:category_parent></wp:category_parent><wp:cat_name><![CDATA[Uncategorized]]></wp:cat_name></wp:category>
-        <wp:category><wp:term_id>11</wp:term_id><wp:category_nicename>video</wp:category_nicename><wp:category_parent></wp:category_parent><wp:cat_name><![CDATA[Video]]></wp:cat_name></wp:category>
-        <wp:tag><wp:term_id>39</wp:term_id><wp:tag_slug>audio</wp:tag_slug><wp:tag_name><![CDATA[audio]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>18</wp:term_id><wp:tag_slug>blockquote</wp:tag_slug><wp:tag_name><![CDATA[blockquote]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>16</wp:term_id><wp:tag_slug>caption</wp:tag_slug><wp:tag_name><![CDATA[caption]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>28</wp:term_id><wp:tag_slug>code</wp:tag_slug><wp:tag_name><![CDATA[code]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>23</wp:term_id><wp:tag_slug>gallery-2</wp:tag_slug><wp:tag_name><![CDATA[gallery]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>33</wp:term_id><wp:tag_slug>image-2</wp:tag_slug><wp:tag_name><![CDATA[image]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>27</wp:term_id><wp:tag_slug>installation</wp:tag_slug><wp:tag_name><![CDATA[installation]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>30</wp:term_id><wp:tag_slug>javascript</wp:tag_slug><wp:tag_name><![CDATA[javascript]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>43</wp:term_id><wp:tag_slug>lettering</wp:tag_slug><wp:tag_name><![CDATA[lettering]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>17</wp:term_id><wp:tag_slug>list</wp:tag_slug><wp:tag_name><![CDATA[list]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>29</wp:term_id><wp:tag_slug>markup</wp:tag_slug><wp:tag_name><![CDATA[markup]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>40</wp:term_id><wp:tag_slug>music</wp:tag_slug><wp:tag_name><![CDATA[music]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>24</wp:term_id><wp:tag_slug>packaging</wp:tag_slug><wp:tag_name><![CDATA[packaging]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>31</wp:term_id><wp:tag_slug>plugins</wp:tag_slug><wp:tag_name><![CDATA[plugins]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>26</wp:term_id><wp:tag_slug>poster</wp:tag_slug><wp:tag_name><![CDATA[poster]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>35</wp:term_id><wp:tag_slug>print</wp:tag_slug><wp:tag_name><![CDATA[print]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>25</wp:term_id><wp:tag_slug>slider</wp:tag_slug><wp:tag_name><![CDATA[slider]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>14</wp:term_id><wp:tag_slug>standard-2</wp:tag_slug><wp:tag_name><![CDATA[standard]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>15</wp:term_id><wp:tag_slug>t-shirt</wp:tag_slug><wp:tag_name><![CDATA[t-shirt]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>42</wp:term_id><wp:tag_slug>typography-2</wp:tag_slug><wp:tag_name><![CDATA[typography]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>20</wp:term_id><wp:tag_slug>video-2</wp:tag_slug><wp:tag_name><![CDATA[video]]></wp:tag_name></wp:tag>
-        <wp:tag><wp:term_id>21</wp:term_id><wp:tag_slug>vimeo</wp:tag_slug><wp:tag_name><![CDATA[vimeo]]></wp:tag_name></wp:tag>
-        <wp:term><wp:term_id>19</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug>main-menu</wp:term_slug><wp:term_name><![CDATA[Main Menu]]></wp:term_name></wp:term>
-        <wp:term><wp:term_id>41</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug>footer-menu</wp:term_slug><wp:term_name><![CDATA[Footer Menu]]></wp:term_name></wp:term>
+        <wp:category>
+            <wp:term_id>4</wp:term_id>
+            <wp:category_nicename>art</wp:category_nicename>
+            <wp:category_parent></wp:category_parent>
+            <wp:cat_name><![CDATA[Art]]></wp:cat_name>
+        </wp:category>
+        <wp:category>
+            <wp:term_id>6</wp:term_id>
+            <wp:category_nicename>design</wp:category_nicename>
+            <wp:category_parent></wp:category_parent>
+            <wp:cat_name><![CDATA[Design]]></wp:cat_name>
+        </wp:category>
+        <wp:category>
+            <wp:term_id>8</wp:term_id>
+            <wp:category_nicename>gallery</wp:category_nicename>
+            <wp:category_parent></wp:category_parent>
+            <wp:cat_name><![CDATA[Gallery]]></wp:cat_name>
+        </wp:category>
+        <wp:category>
+            <wp:term_id>2</wp:term_id>
+            <wp:category_nicename>graphics</wp:category_nicename>
+            <wp:category_parent></wp:category_parent>
+            <wp:cat_name><![CDATA[Graphics]]></wp:cat_name>
+        </wp:category>
+        <wp:category>
+            <wp:term_id>5</wp:term_id>
+            <wp:category_nicename>ideas</wp:category_nicename>
+            <wp:category_parent></wp:category_parent>
+            <wp:cat_name><![CDATA[Ideas]]></wp:cat_name>
+        </wp:category>
+        <wp:category>
+            <wp:term_id>9</wp:term_id>
+            <wp:category_nicename>image</wp:category_nicename>
+            <wp:category_parent></wp:category_parent>
+            <wp:cat_name><![CDATA[Image]]></wp:cat_name>
+        </wp:category>
+        <wp:category>
+            <wp:term_id>13</wp:term_id>
+            <wp:category_nicename>link</wp:category_nicename>
+            <wp:category_parent></wp:category_parent>
+            <wp:cat_name><![CDATA[Link]]></wp:cat_name>
+        </wp:category>
+        <wp:category>
+            <wp:term_id>3</wp:term_id>
+            <wp:category_nicename>personal</wp:category_nicename>
+            <wp:category_parent></wp:category_parent>
+            <wp:cat_name><![CDATA[Personal]]></wp:cat_name>
+        </wp:category>
+        <wp:category>
+            <wp:term_id>12</wp:term_id>
+            <wp:category_nicename>quote</wp:category_nicename>
+            <wp:category_parent></wp:category_parent>
+            <wp:cat_name><![CDATA[Quote]]></wp:cat_name>
+        </wp:category>
+        <wp:category>
+            <wp:term_id>10</wp:term_id>
+            <wp:category_nicename>standard</wp:category_nicename>
+            <wp:category_parent></wp:category_parent>
+            <wp:cat_name><![CDATA[Standard]]></wp:cat_name>
+        </wp:category>
+        <wp:category>
+            <wp:term_id>7</wp:term_id>
+            <wp:category_nicename>typography</wp:category_nicename>
+            <wp:category_parent></wp:category_parent>
+            <wp:cat_name><![CDATA[Typography]]></wp:cat_name>
+        </wp:category>
+        <wp:category>
+            <wp:term_id>1</wp:term_id>
+            <wp:category_nicename>uncategorized</wp:category_nicename>
+            <wp:category_parent></wp:category_parent>
+            <wp:cat_name><![CDATA[Uncategorized]]></wp:cat_name>
+        </wp:category>
+        <wp:category>
+            <wp:term_id>11</wp:term_id>
+            <wp:category_nicename>video</wp:category_nicename>
+            <wp:category_parent></wp:category_parent>
+            <wp:cat_name><![CDATA[Video]]></wp:cat_name>
+        </wp:category>
+        <wp:tag>
+            <wp:term_id>39</wp:term_id>
+            <wp:tag_slug>audio</wp:tag_slug>
+            <wp:tag_name><![CDATA[audio]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>18</wp:term_id>
+            <wp:tag_slug>blockquote</wp:tag_slug>
+            <wp:tag_name><![CDATA[blockquote]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>16</wp:term_id>
+            <wp:tag_slug>caption</wp:tag_slug>
+            <wp:tag_name><![CDATA[caption]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>28</wp:term_id>
+            <wp:tag_slug>code</wp:tag_slug>
+            <wp:tag_name><![CDATA[code]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>23</wp:term_id>
+            <wp:tag_slug>gallery-2</wp:tag_slug>
+            <wp:tag_name><![CDATA[gallery]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>33</wp:term_id>
+            <wp:tag_slug>image-2</wp:tag_slug>
+            <wp:tag_name><![CDATA[image]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>27</wp:term_id>
+            <wp:tag_slug>installation</wp:tag_slug>
+            <wp:tag_name><![CDATA[installation]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>30</wp:term_id>
+            <wp:tag_slug>javascript</wp:tag_slug>
+            <wp:tag_name><![CDATA[javascript]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>43</wp:term_id>
+            <wp:tag_slug>lettering</wp:tag_slug>
+            <wp:tag_name><![CDATA[lettering]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>17</wp:term_id>
+            <wp:tag_slug>list</wp:tag_slug>
+            <wp:tag_name><![CDATA[list]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>29</wp:term_id>
+            <wp:tag_slug>markup</wp:tag_slug>
+            <wp:tag_name><![CDATA[markup]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>40</wp:term_id>
+            <wp:tag_slug>music</wp:tag_slug>
+            <wp:tag_name><![CDATA[music]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>24</wp:term_id>
+            <wp:tag_slug>packaging</wp:tag_slug>
+            <wp:tag_name><![CDATA[packaging]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>31</wp:term_id>
+            <wp:tag_slug>plugins</wp:tag_slug>
+            <wp:tag_name><![CDATA[plugins]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>26</wp:term_id>
+            <wp:tag_slug>poster</wp:tag_slug>
+            <wp:tag_name><![CDATA[poster]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>35</wp:term_id>
+            <wp:tag_slug>print</wp:tag_slug>
+            <wp:tag_name><![CDATA[print]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>25</wp:term_id>
+            <wp:tag_slug>slider</wp:tag_slug>
+            <wp:tag_name><![CDATA[slider]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>14</wp:term_id>
+            <wp:tag_slug>standard-2</wp:tag_slug>
+            <wp:tag_name><![CDATA[standard]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>15</wp:term_id>
+            <wp:tag_slug>t-shirt</wp:tag_slug>
+            <wp:tag_name><![CDATA[t-shirt]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>42</wp:term_id>
+            <wp:tag_slug>typography-2</wp:tag_slug>
+            <wp:tag_name><![CDATA[typography]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>20</wp:term_id>
+            <wp:tag_slug>video-2</wp:tag_slug>
+            <wp:tag_name><![CDATA[video]]></wp:tag_name>
+        </wp:tag>
+        <wp:tag>
+            <wp:term_id>21</wp:term_id>
+            <wp:tag_slug>vimeo</wp:tag_slug>
+            <wp:tag_name><![CDATA[vimeo]]></wp:tag_name>
+        </wp:tag>
+        <wp:term>
+            <wp:term_id>19</wp:term_id>
+            <wp:term_taxonomy>nav_menu</wp:term_taxonomy>
+            <wp:term_slug>main-menu</wp:term_slug>
+            <wp:term_name><![CDATA[Main Menu]]></wp:term_name>
+        </wp:term>
+        <wp:term>
+            <wp:term_id>41</wp:term_id>
+            <wp:term_taxonomy>nav_menu</wp:term_taxonomy>
+            <wp:term_slug>footer-menu</wp:term_slug>
+            <wp:term_name><![CDATA[Footer Menu]]></wp:term_name>
+        </wp:term>
 
         <generator>http://wordpress.org/?v=3.8.1</generator>
 
         <item>
             <title>covenant-creek-shirt-serving-982</title>
-            <link>http://pixelgrade.com/demos/rosa/saving-your-work-in-more-ways-than-one-2/covenant-creek-shirt-serving-982/</link>
+            <link>
+                http://pixelgrade.com/demos/rosa/saving-your-work-in-more-ways-than-one-2/covenant-creek-shirt-serving-982/
+            </link>
             <pubDate>Tue, 01 Apr 2014 07:21:55 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image1.png</guid>
+            <guid isPermaLink="false">
+                http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image1.png
+            </guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -98,22 +272,29 @@
             <wp:post_type>attachment</wp:post_type>
             <wp:post_password></wp:post_password>
             <wp:is_sticky>0</wp:is_sticky>
-            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image1.png</wp:attachment_url>
+            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image1.png
+            </wp:attachment_url>
             <wp:postmeta>
                 <wp:meta_key>_wp_attached_file</wp:meta_key>
-                <wp:meta_value><![CDATA[2014/04/http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image1.png]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[2014/04/http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image1.png]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_wp_attachment_metadata</wp:meta_key>
-                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:550;s:6:"height";i:774;s:4:"file";s:44:"2014/04/http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image1.png";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-213x300.jpg";s:5:"width";i:213;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:10:"small-size";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-400x562.jpg";s:5:"width";i:400;s:6:"height";i:562;s:9:"mime-type";s:10:"image/jpeg";}s:6:"square";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-400x400.jpg";s:5:"width";i:400;s:6:"height";i:400;s:9:"mime-type";s:10:"image/jpeg";}s:17:"post-square-small";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-177x177.jpg";s:5:"width";i:177;s:6:"height";i:177;s:9:"mime-type";s:10:"image/jpeg";}s:11:"post-medium";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-265x328.jpg";s:5:"width";i:265;s:6:"height";i:328;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[a:5:{s:5:"width";i:550;s:6:"height";i:774;s:4:"file";s:44:"2014/04/http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image1.png";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-213x300.jpg";s:5:"width";i:213;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:10:"small-size";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-400x562.jpg";s:5:"width";i:400;s:6:"height";i:562;s:9:"mime-type";s:10:"image/jpeg";}s:6:"square";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-400x400.jpg";s:5:"width";i:400;s:6:"height";i:400;s:9:"mime-type";s:10:"image/jpeg";}s:17:"post-square-small";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-177x177.jpg";s:5:"width";i:177;s:6:"height";i:177;s:9:"mime-type";s:10:"image/jpeg";}s:11:"post-medium";a:4:{s:4:"file";s:44:"covenant-creek-shirt-serving-982-265x328.jpg";s:5:"width";i:265;s:6:"height";i:328;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
             <title>covenant-creek-shirt-home-heart</title>
-            <link>http://pixelgrade.com/demos/rosa/saving-your-work-in-more-ways-than-one/covenant-creek-shirt-home-heart/</link>
+            <link>
+                http://pixelgrade.com/demos/rosa/saving-your-work-in-more-ways-than-one/covenant-creek-shirt-home-heart/
+            </link>
             <pubDate>Tue, 01 Apr 2014 07:25:34 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png</guid>
+            <guid isPermaLink="false">
+                http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png
+            </guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -129,22 +310,29 @@
             <wp:post_type>attachment</wp:post_type>
             <wp:post_password></wp:post_password>
             <wp:is_sticky>0</wp:is_sticky>
-            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png</wp:attachment_url>
+            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png
+            </wp:attachment_url>
             <wp:postmeta>
                 <wp:meta_key>_wp_attached_file</wp:meta_key>
-                <wp:meta_value><![CDATA[2014/04/http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[2014/04/http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_wp_attachment_metadata</wp:meta_key>
-                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:550;s:6:"height";i:718;s:4:"file";s:43:"2014/04/http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-229x300.jpg";s:5:"width";i:229;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:10:"small-size";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-400x522.jpg";s:5:"width";i:400;s:6:"height";i:522;s:9:"mime-type";s:10:"image/jpeg";}s:6:"square";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-400x400.jpg";s:5:"width";i:400;s:6:"height";i:400;s:9:"mime-type";s:10:"image/jpeg";}s:17:"post-square-small";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-177x177.jpg";s:5:"width";i:177;s:6:"height";i:177;s:9:"mime-type";s:10:"image/jpeg";}s:11:"post-medium";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-265x328.jpg";s:5:"width";i:265;s:6:"height";i:328;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[a:5:{s:5:"width";i:550;s:6:"height";i:718;s:4:"file";s:43:"2014/04/http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image2.png";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-229x300.jpg";s:5:"width";i:229;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";}s:10:"small-size";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-400x522.jpg";s:5:"width";i:400;s:6:"height";i:522;s:9:"mime-type";s:10:"image/jpeg";}s:6:"square";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-400x400.jpg";s:5:"width";i:400;s:6:"height";i:400;s:9:"mime-type";s:10:"image/jpeg";}s:17:"post-square-small";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-177x177.jpg";s:5:"width";i:177;s:6:"height";i:177;s:9:"mime-type";s:10:"image/jpeg";}s:11:"post-medium";a:4:{s:4:"file";s:43:"covenant-creek-shirt-home-heart-265x328.jpg";s:5:"width";i:265;s:6:"height";i:328;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
             <title>covenant-creek-shirt-serving-12982</title>
-            <link>http://pixelgrade.com/demos/rosa/saving-your-work-in-more-ways-than-one/covenant-creek-shirt-serving-12982/</link>
+            <link>
+                http://pixelgrade.com/demos/rosa/saving-your-work-in-more-ways-than-one/covenant-creek-shirt-serving-12982/
+            </link>
             <pubDate>Tue, 01 Apr 2014 07:28:37 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image11.png</guid>
+            <guid isPermaLink="false">
+                http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image11.png
+            </guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[Copyright Visual James]]></excerpt:encoded>
@@ -160,14 +348,17 @@
             <wp:post_type>attachment</wp:post_type>
             <wp:post_password></wp:post_password>
             <wp:is_sticky>0</wp:is_sticky>
-            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image11.png</wp:attachment_url>
+            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image11.png
+            </wp:attachment_url>
             <wp:postmeta>
                 <wp:meta_key>_wp_attached_file</wp:meta_key>
-                <wp:meta_value><![CDATA[2014/04/http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image11.png]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[2014/04/http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image11.png]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_wp_attachment_metadata</wp:meta_key>
-                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:871;s:6:"height";i:281;s:4:"file";s:46:"2014/04/http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image11.png";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:45:"covenant-creek-shirt-serving-12982-300x96.jpg";s:5:"width";i:300;s:6:"height";i:96;s:9:"mime-type";s:10:"image/jpeg";}s:10:"small-size";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-400x129.jpg";s:5:"width";i:400;s:6:"height";i:129;s:9:"mime-type";s:10:"image/jpeg";}s:6:"square";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-400x281.jpg";s:5:"width";i:400;s:6:"height";i:281;s:9:"mime-type";s:10:"image/jpeg";}s:17:"post-square-small";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-177x177.jpg";s:5:"width";i:177;s:6:"height";i:177;s:9:"mime-type";s:10:"image/jpeg";}s:11:"post-medium";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-265x281.jpg";s:5:"width";i:265;s:6:"height";i:281;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[a:5:{s:5:"width";i:871;s:6:"height";i:281;s:4:"file";s:46:"2014/04/http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/placeholder_image11.png";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:45:"covenant-creek-shirt-serving-12982-300x96.jpg";s:5:"width";i:300;s:6:"height";i:96;s:9:"mime-type";s:10:"image/jpeg";}s:10:"small-size";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-400x129.jpg";s:5:"width";i:400;s:6:"height";i:129;s:9:"mime-type";s:10:"image/jpeg";}s:6:"square";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-400x281.jpg";s:5:"width";i:400;s:6:"height";i:281;s:9:"mime-type";s:10:"image/jpeg";}s:17:"post-square-small";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-177x177.jpg";s:5:"width";i:177;s:6:"height";i:177;s:9:"mime-type";s:10:"image/jpeg";}s:11:"post-medium";a:4:{s:4:"file";s:46:"covenant-creek-shirt-serving-12982-265x281.jpg";s:5:"width";i:265;s:6:"height";i:281;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
@@ -191,14 +382,16 @@
             <wp:post_type>attachment</wp:post_type>
             <wp:post_password></wp:post_password>
             <wp:is_sticky>0</wp:is_sticky>
-            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/rosa-logo.png</wp:attachment_url>
+            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/rosa-logo.png
+            </wp:attachment_url>
             <wp:postmeta>
                 <wp:meta_key>_wp_attached_file</wp:meta_key>
                 <wp:meta_value><![CDATA[2014/04/rosa-logo.png]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_wp_attachment_metadata</wp:meta_key>
-                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:845;s:6:"height";i:369;s:4:"file";s:21:"2014/04/rosa-logo.png";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:21:"rosa-logo-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:6:"medium";a:4:{s:4:"file";s:21:"rosa-logo-300x131.png";s:5:"width";i:300;s:6:"height";i:131;s:9:"mime-type";s:9:"image/png";}s:10:"small-size";a:4:{s:4:"file";s:21:"rosa-logo-400x174.png";s:5:"width";i:400;s:6:"height";i:174;s:9:"mime-type";s:9:"image/png";}s:6:"square";a:4:{s:4:"file";s:21:"rosa-logo-400x369.png";s:5:"width";i:400;s:6:"height";i:369;s:9:"mime-type";s:9:"image/png";}s:17:"post-square-small";a:4:{s:4:"file";s:21:"rosa-logo-177x177.png";s:5:"width";i:177;s:6:"height";i:177;s:9:"mime-type";s:9:"image/png";}s:11:"post-medium";a:4:{s:4:"file";s:21:"rosa-logo-265x328.png";s:5:"width";i:265;s:6:"height";i:328;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[a:5:{s:5:"width";i:845;s:6:"height";i:369;s:4:"file";s:21:"2014/04/rosa-logo.png";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:21:"rosa-logo-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:6:"medium";a:4:{s:4:"file";s:21:"rosa-logo-300x131.png";s:5:"width";i:300;s:6:"height";i:131;s:9:"mime-type";s:9:"image/png";}s:10:"small-size";a:4:{s:4:"file";s:21:"rosa-logo-400x174.png";s:5:"width";i:400;s:6:"height";i:174;s:9:"mime-type";s:9:"image/png";}s:6:"square";a:4:{s:4:"file";s:21:"rosa-logo-400x369.png";s:5:"width";i:400;s:6:"height";i:369;s:9:"mime-type";s:9:"image/png";}s:17:"post-square-small";a:4:{s:4:"file";s:21:"rosa-logo-177x177.png";s:5:"width";i:177;s:6:"height";i:177;s:9:"mime-type";s:9:"image/png";}s:11:"post-medium";a:4:{s:4:"file";s:21:"rosa-logo-265x328.png";s:5:"width";i:265;s:6:"height";i:328;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
@@ -206,7 +399,8 @@
             <link>http://pixelgrade.com/demos/rosa/?attachment_id=20</link>
             <pubDate>Tue, 01 Apr 2014 07:50:41 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/favicon-rosa.png</guid>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/favicon-rosa.png
+            </guid>
             <description></description>
             <content:encoded><![CDATA[]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -222,14 +416,16 @@
             <wp:post_type>attachment</wp:post_type>
             <wp:post_password></wp:post_password>
             <wp:is_sticky>0</wp:is_sticky>
-            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/favicon-rosa.png</wp:attachment_url>
+            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/04/favicon-rosa.png
+            </wp:attachment_url>
             <wp:postmeta>
                 <wp:meta_key>_wp_attached_file</wp:meta_key>
                 <wp:meta_value><![CDATA[2014/04/favicon-rosa.png]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_wp_attachment_metadata</wp:meta_key>
-                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:16;s:6:"height";i:16;s:4:"file";s:24:"2014/04/favicon-rosa.png";s:5:"sizes";a:0:{}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[a:5:{s:5:"width";i:16;s:6:"height";i:16;s:4:"file";s:24:"2014/04/favicon-rosa.png";s:5:"sizes";a:0:{}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
@@ -355,7 +551,8 @@ Array
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_feedback_all_fields</wp:meta_key>
-                <wp:meta_value><![CDATA[a:4:{s:4:"Name";s:12:"George Olaru";s:5:"Email";s:27:"george.olaru@pixelgrade.com";s:7:"Website";s:22:"http://georgeolaru.com";s:7:"Comment";s:4:"Test";}]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[a:4:{s:4:"Name";s:12:"George Olaru";s:5:"Email";s:27:"george.olaru@pixelgrade.com";s:7:"Website";s:22:"http://georgeolaru.com";s:7:"Comment";s:4:"Test";}]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_feedback_extra_fields</wp:meta_key>
@@ -363,7 +560,8 @@ Array
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_feedback_akismet_values</wp:meta_key>
-                <wp:meta_value><![CDATA[a:47:{s:14:"comment_author";s:12:"George Olaru";s:20:"comment_author_email";s:27:"george.olaru@pixelgrade.com";s:18:"comment_author_url";s:22:"http://georgeolaru.com";s:20:"contact_form_subject";s:14:"[Rosa] Contact";s:17:"comment_author_IP";s:14:"86.124.174.206";s:15:"comment_content";s:4:"Test";s:12:"comment_type";s:12:"contact_form";s:7:"user_ip";s:14:"86.124.174.206";s:10:"user_agent";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36";s:8:"referrer";s:41:"http://pixelgrade.com/demos/rosa/contact/";s:4:"blog";s:32:"http://pixelgrade.com/demos/rosa";s:15:"SERVER_SOFTWARE";s:11:"nginx/1.4.3";s:11:"REQUEST_URI";s:20:"/demos/rosa/contact/";s:4:"USER";s:10:"pixelgrade";s:4:"HOME";s:16:"/home/pixelgrade";s:9:"FCGI_ROLE";s:9:"RESPONDER";s:15:"SCRIPT_FILENAME";s:49:"/home/pixelgrade/public_html/demos/rosa/index.php";s:11:"SCRIPT_NAME";s:21:"/demos/rosa/index.php";s:9:"PATH_INFO";s:0:"";s:11:"SERVER_NAME";s:14:"pixelgrade.com";s:12:"QUERY_STRING";s:23:"q=/demos/rosa/contact/&";s:14:"REQUEST_METHOD";s:4:"POST";s:12:"CONTENT_TYPE";s:33:"application/x-www-form-urlencoded";s:14:"CONTENT_LENGTH";s:3:"237";s:12:"DOCUMENT_URI";s:21:"/demos/rosa/index.php";s:13:"DOCUMENT_ROOT";s:28:"/home/pixelgrade/public_html";s:15:"SERVER_PROTOCOL";s:8:"HTTP/1.1";s:17:"GATEWAY_INTERFACE";s:7:"CGI/1.1";s:11:"REMOTE_ADDR";s:14:"86.124.174.206";s:11:"REMOTE_PORT";s:5:"41640";s:11:"SERVER_ADDR";s:14:"176.58.105.150";s:11:"SERVER_PORT";s:2:"80";s:15:"REDIRECT_STATUS";s:3:"200";s:9:"HTTP_HOST";s:14:"pixelgrade.com";s:15:"HTTP_CONNECTION";s:10:"keep-alive";s:19:"HTTP_CONTENT_LENGTH";s:3:"237";s:18:"HTTP_CACHE_CONTROL";s:9:"max-age=0";s:11:"HTTP_ACCEPT";s:74:"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";s:11:"HTTP_ORIGIN";s:21:"http://pixelgrade.com";s:15:"HTTP_USER_AGENT";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36";s:17:"HTTP_CONTENT_TYPE";s:33:"application/x-www-form-urlencoded";s:12:"HTTP_REFERER";s:41:"http://pixelgrade.com/demos/rosa/contact/";s:20:"HTTP_ACCEPT_ENCODING";s:17:"gzip,deflate,sdch";s:20:"HTTP_ACCEPT_LANGUAGE";s:59:"ro,en-US;q=0.8,en;q=0.6,fr;q=0.4,it;q=0.2,es;q=0.2,pt;q=0.2";s:8:"PHP_SELF";s:21:"/demos/rosa/index.php";s:18:"REQUEST_TIME_FLOAT";s:14:"1396362158.069";s:12:"REQUEST_TIME";s:10:"1396362158";}]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[a:47:{s:14:"comment_author";s:12:"George Olaru";s:20:"comment_author_email";s:27:"george.olaru@pixelgrade.com";s:18:"comment_author_url";s:22:"http://georgeolaru.com";s:20:"contact_form_subject";s:14:"[Rosa] Contact";s:17:"comment_author_IP";s:14:"86.124.174.206";s:15:"comment_content";s:4:"Test";s:12:"comment_type";s:12:"contact_form";s:7:"user_ip";s:14:"86.124.174.206";s:10:"user_agent";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36";s:8:"referrer";s:41:"http://pixelgrade.com/demos/rosa/contact/";s:4:"blog";s:32:"http://pixelgrade.com/demos/rosa";s:15:"SERVER_SOFTWARE";s:11:"nginx/1.4.3";s:11:"REQUEST_URI";s:20:"/demos/rosa/contact/";s:4:"USER";s:10:"pixelgrade";s:4:"HOME";s:16:"/home/pixelgrade";s:9:"FCGI_ROLE";s:9:"RESPONDER";s:15:"SCRIPT_FILENAME";s:49:"/home/pixelgrade/public_html/demos/rosa/index.php";s:11:"SCRIPT_NAME";s:21:"/demos/rosa/index.php";s:9:"PATH_INFO";s:0:"";s:11:"SERVER_NAME";s:14:"pixelgrade.com";s:12:"QUERY_STRING";s:23:"q=/demos/rosa/contact/&";s:14:"REQUEST_METHOD";s:4:"POST";s:12:"CONTENT_TYPE";s:33:"application/x-www-form-urlencoded";s:14:"CONTENT_LENGTH";s:3:"237";s:12:"DOCUMENT_URI";s:21:"/demos/rosa/index.php";s:13:"DOCUMENT_ROOT";s:28:"/home/pixelgrade/public_html";s:15:"SERVER_PROTOCOL";s:8:"HTTP/1.1";s:17:"GATEWAY_INTERFACE";s:7:"CGI/1.1";s:11:"REMOTE_ADDR";s:14:"86.124.174.206";s:11:"REMOTE_PORT";s:5:"41640";s:11:"SERVER_ADDR";s:14:"176.58.105.150";s:11:"SERVER_PORT";s:2:"80";s:15:"REDIRECT_STATUS";s:3:"200";s:9:"HTTP_HOST";s:14:"pixelgrade.com";s:15:"HTTP_CONNECTION";s:10:"keep-alive";s:19:"HTTP_CONTENT_LENGTH";s:3:"237";s:18:"HTTP_CACHE_CONTROL";s:9:"max-age=0";s:11:"HTTP_ACCEPT";s:74:"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";s:11:"HTTP_ORIGIN";s:21:"http://pixelgrade.com";s:15:"HTTP_USER_AGENT";s:120:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36";s:17:"HTTP_CONTENT_TYPE";s:33:"application/x-www-form-urlencoded";s:12:"HTTP_REFERER";s:41:"http://pixelgrade.com/demos/rosa/contact/";s:20:"HTTP_ACCEPT_ENCODING";s:17:"gzip,deflate,sdch";s:20:"HTTP_ACCEPT_LANGUAGE";s:59:"ro,en-US;q=0.8,en;q=0.6,fr;q=0.4,it;q=0.2,es;q=0.2,pt;q=0.2";s:8:"PHP_SELF";s:21:"/demos/rosa/index.php";s:18:"REQUEST_TIME_FLOAT";s:14:"1396362158.069";s:12:"REQUEST_TIME";s:10:"1396362158";}]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_feedback_email</wp:meta_key>
@@ -487,7 +685,8 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_menu_item_url</wp:meta_key>
-                <wp:meta_value><![CDATA[http://pixelgrade.com/demos/rosa/minimalist-postcards-of-superheroes/?blog_single_show_sidebar=0]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[http://pixelgrade.com/demos/rosa/minimalist-postcards-of-superheroes/?blog_single_show_sidebar=0]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_wpas_done_all</wp:meta_key>
@@ -781,7 +980,8 @@ Content-Type: text/plain; charset="UTF-8"";}]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_menu_item_url</wp:meta_key>
-                <wp:meta_value><![CDATA[http://pixelgrade.com/demos/rosa/minimalist-postcards-of-superheroes/#comments]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[http://pixelgrade.com/demos/rosa/minimalist-postcards-of-superheroes/#comments]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_wpas_done_all</wp:meta_key>
@@ -1607,7 +1807,8 @@ This is some HTML  code to present the markup:
 [prism key="code_snippet_html" language="markup"]
 
 <span style="line-height: 1.5em;">We’re using a lightweight, robust and elegant syntax highlighting plugin called </span><a style="line-height: 1.5em;" href="http://wordpress.org/plugins/prism-detached/">Prism code highlighter WordPress</a><span style="line-height: 1.5em;">to help do a good job on this.</span>]]></content:encoded>
-            <excerpt:encoded><![CDATA[Code highlighted inside this post, so you can share easily code with your fellow readers.]]></excerpt:encoded>
+            <excerpt:encoded>
+                <![CDATA[Code highlighted inside this post, so you can share easily code with your fellow readers.]]></excerpt:encoded>
             <wp:post_id>84</wp:post_id>
             <wp:post_date>2014-03-20 12:05:31</wp:post_date>
             <wp:post_date_gmt>2014-03-20 12:05:31</wp:post_date_gmt>
@@ -2058,7 +2259,8 @@ Ben is fantastic! She exceeded all expectations in every respect, and I would re
             <dc:creator><![CDATA[admin]]></dc:creator>
             <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=155</guid>
             <description></description>
-            <content:encoded><![CDATA[<a href="http://themeforest.net/user/pixelgrade/portfolio?ref=pixelgrade" target="_blank">Smart Themes for Productive People</a>]]></content:encoded>
+            <content:encoded>
+                <![CDATA[<a href="http://themeforest.net/user/pixelgrade/portfolio?ref=pixelgrade" target="_blank">Smart Themes for Productive People</a>]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
             <wp:post_id>155</wp:post_id>
             <wp:post_date>2014-03-22 08:45:52</wp:post_date>
@@ -2161,7 +2363,8 @@ From a scientific perspective, creativity is your ability to think of something 
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_rosa_audio_embed</wp:meta_key>
-                <wp:meta_value><![CDATA[&lt;iframe width=&quot;100%&quot; height=&quot;166&quot; scrolling=&quot;no&quot; frameborder=&quot;no&quot; src=&quot;https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F78161243&quot;&gt;&lt;/iframe&gt;]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[&lt;iframe width=&quot;100%&quot; height=&quot;166&quot; scrolling=&quot;no&quot; frameborder=&quot;no&quot; src=&quot;https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F78161243&quot;&gt;&lt;/iframe&gt;]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_thumbnail_id</wp:meta_key>
@@ -2293,7 +2496,8 @@ From a scientific perspective, creativity is your ability to think of something 
             <dc:creator><![CDATA[admin]]></dc:creator>
             <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=168</guid>
             <description></description>
-            <content:encoded><![CDATA[<p itemprop="headline"><a href="http://www.nytimes.com/interactive/2014/03/30/magazine/mag30-Glaser-beer-sidebar.html?_r=2" target="_blank">Milton Glaser Critiques Modern Beer Art</a></p>]]></content:encoded>
+            <content:encoded>
+                <![CDATA[<p itemprop="headline"><a href="http://www.nytimes.com/interactive/2014/03/30/magazine/mag30-Glaser-beer-sidebar.html?_r=2" target="_blank">Milton Glaser Critiques Modern Beer Art</a></p>]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
             <wp:post_id>168</wp:post_id>
             <wp:post_date>2014-03-20 08:58:03</wp:post_date>
@@ -2341,7 +2545,8 @@ From a scientific perspective, creativity is your ability to think of something 
             <dc:creator><![CDATA[admin]]></dc:creator>
             <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=170</guid>
             <description></description>
-            <content:encoded><![CDATA[<a href="http://www.boredpanda.com/extinct-jobs/">Jobs that no longer exist</a>]]></content:encoded>
+            <content:encoded>
+                <![CDATA[<a href="http://www.boredpanda.com/extinct-jobs/">Jobs that no longer exist</a>]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
             <wp:post_id>170</wp:post_id>
             <wp:post_date>2014-03-15 08:59:50</wp:post_date>
@@ -2417,7 +2622,8 @@ From a scientific perspective, creativity is your ability to think of something 
             <category domain="post_format" nicename="post-format-audio"><![CDATA[Audio]]></category>
             <wp:postmeta>
                 <wp:meta_key>_rosa_audio_embed</wp:meta_key>
-                <wp:meta_value><![CDATA[&lt;iframe width=&quot;100%&quot; height=&quot;450&quot; scrolling=&quot;no&quot; frameborder=&quot;no&quot; src=&quot;https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/123073145&amp;amp;auto_play=false&amp;amp;hide_related=false&amp;amp;visual=true&quot;&gt;&lt;/iframe&gt;]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[&lt;iframe width=&quot;100%&quot; height=&quot;450&quot; scrolling=&quot;no&quot; frameborder=&quot;no&quot; src=&quot;https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/123073145&amp;amp;auto_play=false&amp;amp;hide_related=false&amp;amp;visual=true&quot;&gt;&lt;/iframe&gt;]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_rosa_post_slider_delay</wp:meta_key>
@@ -2504,7 +2710,8 @@ From a scientific perspective, creativity is your ability to think of something 
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_rosa_audio_embed</wp:meta_key>
-                <wp:meta_value><![CDATA[&lt;iframe width=&quot;100%&quot; height=&quot;450&quot; scrolling=&quot;no&quot; frameborder=&quot;no&quot; src=&quot;https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/99619146&amp;amp;auto_play=false&amp;amp;hide_related=false&amp;amp;visual=true&quot;&gt;&lt;/iframe&gt;]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[&lt;iframe width=&quot;100%&quot; height=&quot;450&quot; scrolling=&quot;no&quot; frameborder=&quot;no&quot; src=&quot;https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/99619146&amp;amp;auto_play=false&amp;amp;hide_related=false&amp;amp;visual=true&quot;&gt;&lt;/iframe&gt;]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
@@ -2783,7 +2990,8 @@ Every feature was carefully chosen and designed to ease the way to that perfect 
             <dc:creator><![CDATA[admin]]></dc:creator>
             <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?p=1</guid>
             <description></description>
-            <content:encoded><![CDATA[Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!]]></content:encoded>
+            <content:encoded>
+                <![CDATA[Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!]]></content:encoded>
             <excerpt:encoded><![CDATA[]]></excerpt:encoded>
             <wp:post_id>1</wp:post_id>
             <wp:post_date>2014-04-01 06:12:49</wp:post_date>
@@ -2889,7 +3097,8 @@ Intuitiveness can be broken down into a sort of ladder, or a cake with three lay
 	<li><strong>Skills are the motor skills that you pick up.</strong> It’s the physical ability to click your mouse on up/down arrows, or to slide your finger across the scroll wheel.</li>
 </ol>
 For better or worse, we live in a world of media invention. Instead of reusing a stable of forms over and over, it’s not much harder for us to create new ones. Let’s buy this theme.]]></content:encoded>
-            <excerpt:encoded><![CDATA[Standard post this question — at the heart of which is a concern with the meaning of life — has since been answered by many other great minds.]]></excerpt:encoded>
+            <excerpt:encoded>
+                <![CDATA[Standard post this question — at the heart of which is a concern with the meaning of life — has since been answered by many other great minds.]]></excerpt:encoded>
             <wp:post_id>6</wp:post_id>
             <wp:post_date>2014-04-01 07:25:50</wp:post_date>
             <wp:post_date_gmt>2014-04-01 07:25:50</wp:post_date_gmt>
@@ -2967,7 +3176,8 @@ Intuitiveness can be broken down into a sort of ladder, or a cake with three lay
 	<li>Talented artists are for watching and playing, the Internet is to communicate.</li>
 </ol>
 The very concept of “brain dominance” is presently under scrutiny, as many dyslexics are talented artists, architects, musicians, composers, dancers, and surgeons.]]></content:encoded>
-            <excerpt:encoded><![CDATA[I’ve spent the last few weeks trying to convince some of my friends that working at a startup are good for them. I have to say that it’s been tough.]]></excerpt:encoded>
+            <excerpt:encoded>
+                <![CDATA[I’ve spent the last few weeks trying to convince some of my friends that working at a startup are good for them. I have to say that it’s been tough.]]></excerpt:encoded>
             <wp:post_id>25</wp:post_id>
             <wp:post_date>2014-03-31 08:04:50</wp:post_date>
             <wp:post_date_gmt>2014-03-31 08:04:50</wp:post_date_gmt>
@@ -3027,7 +3237,8 @@ Tiny women carry amazingly large bags, twice their eighty-pound weight. Some of 
 While I’m not the best photographer you’ll bump into, my images are worth something. It’s hard to put a monetary value on some shots, but those photos sell, and those photos arouse emotions.
 
 And beyond that, those are one-in-a-lifetime experiences that I documented through my photo trips. And beyond that, those are one-in-a-lifetime experiences that I documented through my photo trips.]]></content:encoded>
-            <excerpt:encoded><![CDATA[I’ve developed great respect for people who have the ability to touch my soul, despite it being the first time talking each other.]]></excerpt:encoded>
+            <excerpt:encoded>
+                <![CDATA[I’ve developed great respect for people who have the ability to touch my soul, despite it being the first time talking each other.]]></excerpt:encoded>
             <wp:post_id>32</wp:post_id>
             <wp:post_date>2014-03-30 08:26:00</wp:post_date>
             <wp:post_date_gmt>2014-03-30 08:26:00</wp:post_date_gmt>
@@ -3084,7 +3295,8 @@ Tiny women carry amazingly large bags, twice their eighty-pound weight. Some of 
 While I’m not the best photographer you’ll bump into, my images are worth something. It’s hard to put a monetary value on some shots, but those photos sell, and those photos arouse emotions.
 
 And beyond that, those are one-in-a-lifetime experiences that I documented through my photo trips. And beyond that, those are one-in-a-lifetime experiences that I documented through my photo trips.]]></content:encoded>
-            <excerpt:encoded><![CDATA[Some illustrations i made for an infographic. Event though the client decided to go in a different direction i thought these illustrations where a good representation of a style i am not fluent in. ]]></excerpt:encoded>
+            <excerpt:encoded>
+                <![CDATA[Some illustrations i made for an infographic. Event though the client decided to go in a different direction i thought these illustrations where a good representation of a style i am not fluent in. ]]></excerpt:encoded>
             <wp:post_id>35</wp:post_id>
             <wp:post_date>2014-03-28 08:34:29</wp:post_date>
             <wp:post_date_gmt>2014-03-28 08:34:29</wp:post_date_gmt>
@@ -3151,7 +3363,8 @@ Intuitiveness can be broken down into a sort of ladder, or a cake with three lay
 	<li><strong>Skills are the motor skills that you pick up.</strong> It’s the physical ability to click your mouse on up/down arrows, or to slide your finger across the scroll wheel.</li>
 </ol>
 For better or worse, we live in a world of media invention. Instead of reusing a stable of forms over and over, it’s not much harder for us to create new ones. Let’s buy this theme.]]></content:encoded>
-            <excerpt:encoded><![CDATA[I had Vimeo video inside the pleasure of collaborating on a sweet video project for a really cool company. ]]></excerpt:encoded>
+            <excerpt:encoded>
+                <![CDATA[I had Vimeo video inside the pleasure of collaborating on a sweet video project for a really cool company. ]]></excerpt:encoded>
             <wp:post_id>38</wp:post_id>
             <wp:post_date>2014-03-29 08:38:58</wp:post_date>
             <wp:post_date_gmt>2014-03-29 08:38:58</wp:post_date_gmt>
@@ -3193,7 +3406,8 @@ For better or worse, we live in a world of media invention. Instead of reusing a
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_oembed_3823f02a119fc5b128787d11f602a3de</wp:meta_key>
-                <wp:meta_value><![CDATA[<iframe src="//player.vimeo.com/video/80318319" width="500" height="281" frameborder="0" title="What is desiringGod.org?" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[<iframe src="//player.vimeo.com/video/80318319" width="500" height="281" frameborder="0" title="What is desiringGod.org?" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
@@ -3292,7 +3506,8 @@ As you're employed, the app is consistently saving your work. you'll check on th
 Who studied <strong>German literature</strong>, German literature is, who is studying medicine, is doctor who studies physics is physics, but who studied philosophy, this will by no philosopher. But I would say that the study of philosophy according to specialization may be an ideal preparation for the Informationsachitekten. For philosophy teaches one to work on and to the order of the terms.
 
 This post images are under copyright © <a href="http://www.calebheisey.com/FOLKSAGA-LIQUOR-PACKAGING" target="_blank">Caleb Heisey</a>]]></content:encoded>
-            <excerpt:encoded><![CDATA[This is some really beautiful illustration and package design by Caleb Heisey, an MFA candidate at Tyler School of Art. ]]></excerpt:encoded>
+            <excerpt:encoded>
+                <![CDATA[This is some really beautiful illustration and package design by Caleb Heisey, an MFA candidate at Tyler School of Art. ]]></excerpt:encoded>
             <wp:post_id>50</wp:post_id>
             <wp:post_date>2014-03-26 08:57:18</wp:post_date>
             <wp:post_date_gmt>2014-03-26 08:57:18</wp:post_date_gmt>
@@ -3355,7 +3570,8 @@ Who studied German literature, German literature is, who is studying medicine, i
 As we increasingly move past the point of sufficiency, manufacturers will continue to try filling ever-smaller niches. It becomes more about something you like/ want to use more than something you need. Is there room for one in your arsenal? Only you can answer that.  For philosophy teaches one to work on and to the order of the terms.
 
 Images for this post are under copyright © <a title="Clarke Harris - Graphic Design Portfolio" href="http://www.clarkeharris.com/" target="_blank">Clarke Harris</a>]]></content:encoded>
-            <excerpt:encoded><![CDATA[I’m quite fond of the work Clarke Harris has put out as he cuts his (Gator) teeth in the University of Florida’s graphic design program.]]></excerpt:encoded>
+            <excerpt:encoded>
+                <![CDATA[I’m quite fond of the work Clarke Harris has put out as he cuts his (Gator) teeth in the University of Florida’s graphic design program.]]></excerpt:encoded>
             <wp:post_id>58</wp:post_id>
             <wp:post_date>2014-03-25 09:06:25</wp:post_date>
             <wp:post_date_gmt>2014-03-25 09:06:25</wp:post_date_gmt>
@@ -3501,7 +3717,8 @@ Images from this post are under Copyright of <a href="http://www.forma.co/es/re
                 <wp:comment_author_IP>86.124.174.206</wp:comment_author_IP>
                 <wp:comment_date>2014-04-01 11:48:13</wp:comment_date>
                 <wp:comment_date_gmt>2014-04-01 11:48:13</wp:comment_date_gmt>
-                <wp:comment_content><![CDATA[I keep wondering lately how long it is until “on-screen legibility in mind” is just “designed for legibility” because most design will be for screens first and print second.]]></wp:comment_content>
+                <wp:comment_content>
+                    <![CDATA[I keep wondering lately how long it is until “on-screen legibility in mind” is just “designed for legibility” because most design will be for screens first and print second.]]></wp:comment_content>
                 <wp:comment_approved>1</wp:comment_approved>
                 <wp:comment_type></wp:comment_type>
                 <wp:comment_parent>0</wp:comment_parent>
@@ -3515,7 +3732,8 @@ Images from this post are under Copyright of <a href="http://www.forma.co/es/re
                 <wp:comment_author_IP>86.124.174.206</wp:comment_author_IP>
                 <wp:comment_date>2014-04-01 11:48:43</wp:comment_date>
                 <wp:comment_date_gmt>2014-04-01 11:48:43</wp:comment_date_gmt>
-                <wp:comment_content><![CDATA[I keep wondering lately how long it is until “on-screen legibility in mind” is just “designed for legibility” because most design will be for screens first and print second.]]></wp:comment_content>
+                <wp:comment_content>
+                    <![CDATA[I keep wondering lately how long it is until “on-screen legibility in mind” is just “designed for legibility” because most design will be for screens first and print second.]]></wp:comment_content>
                 <wp:comment_approved>1</wp:comment_approved>
                 <wp:comment_type></wp:comment_type>
                 <wp:comment_parent>2</wp:comment_parent>
@@ -3529,7 +3747,8 @@ Images from this post are under Copyright of <a href="http://www.forma.co/es/re
                 <wp:comment_author_IP>86.124.174.206</wp:comment_author_IP>
                 <wp:comment_date>2014-04-01 11:49:28</wp:comment_date>
                 <wp:comment_date_gmt>2014-04-01 11:49:28</wp:comment_date_gmt>
-                <wp:comment_content><![CDATA[I agree with supporting type designers. I wish more of them let me serve their fish in my restaurant. This is changing for the better though.]]></wp:comment_content>
+                <wp:comment_content>
+                    <![CDATA[I agree with supporting type designers. I wish more of them let me serve their fish in my restaurant. This is changing for the better though.]]></wp:comment_content>
                 <wp:comment_approved>1</wp:comment_approved>
                 <wp:comment_type></wp:comment_type>
                 <wp:comment_parent>3</wp:comment_parent>
@@ -3543,7 +3762,8 @@ Images from this post are under Copyright of <a href="http://www.forma.co/es/re
                 <wp:comment_author_IP>86.124.174.206</wp:comment_author_IP>
                 <wp:comment_date>2014-04-01 11:50:42</wp:comment_date>
                 <wp:comment_date_gmt>2014-04-01 11:50:42</wp:comment_date_gmt>
-                <wp:comment_content><![CDATA[I have found that simplifying terminology and dumbing things down for clients whilst judging their level of awareness works then educating them in the explaining each aspect in the correct terminology afterwards works well and helps it stick.]]></wp:comment_content>
+                <wp:comment_content>
+                    <![CDATA[I have found that simplifying terminology and dumbing things down for clients whilst judging their level of awareness works then educating them in the explaining each aspect in the correct terminology afterwards works well and helps it stick.]]></wp:comment_content>
                 <wp:comment_approved>1</wp:comment_approved>
                 <wp:comment_type></wp:comment_type>
                 <wp:comment_parent>0</wp:comment_parent>
@@ -3557,7 +3777,8 @@ Images from this post are under Copyright of <a href="http://www.forma.co/es/re
                 <wp:comment_author_IP>86.124.174.206</wp:comment_author_IP>
                 <wp:comment_date>2014-04-01 11:51:13</wp:comment_date>
                 <wp:comment_date_gmt>2014-04-01 11:51:13</wp:comment_date_gmt>
-                <wp:comment_content><![CDATA[That’s pretty neat, Andrew! In my experience, though, nothing beats a real device in their hands. If nothing else, every client should have a smart phone in their pocket. Just make sure you’ve spent time with device testing before you go that route! :)]]></wp:comment_content>
+                <wp:comment_content>
+                    <![CDATA[That’s pretty neat, Andrew! In my experience, though, nothing beats a real device in their hands. If nothing else, every client should have a smart phone in their pocket. Just make sure you’ve spent time with device testing before you go that route! :)]]></wp:comment_content>
                 <wp:comment_approved>1</wp:comment_approved>
                 <wp:comment_type></wp:comment_type>
                 <wp:comment_parent>5</wp:comment_parent>
@@ -3571,7 +3792,8 @@ Images from this post are under Copyright of <a href="http://www.forma.co/es/re
                 <wp:comment_author_IP>86.124.174.206</wp:comment_author_IP>
                 <wp:comment_date>2014-04-01 11:55:50</wp:comment_date>
                 <wp:comment_date_gmt>2014-04-01 11:55:50</wp:comment_date_gmt>
-                <wp:comment_content><![CDATA[Thank you for a fantastic article! You just encapsulated a career’s worth of visual design knowledge in a single page. Love it!]]></wp:comment_content>
+                <wp:comment_content>
+                    <![CDATA[Thank you for a fantastic article! You just encapsulated a career’s worth of visual design knowledge in a single page. Love it!]]></wp:comment_content>
                 <wp:comment_approved>1</wp:comment_approved>
                 <wp:comment_type></wp:comment_type>
                 <wp:comment_parent>0</wp:comment_parent>
@@ -3706,7 +3928,8 @@ The product is a two-minute trailer for an animated series on this theme of the 
 Through an emotional grandfather/grandson relationship, the trailer illustrates how the transfer of knowledge has changed in the last three generations. At the same time, it deals with the difference between analogue and digital knowledge.
 
 Copyright <a href="https://vimeo.com/40459347">Hardy Seiler</a>]]></content:encoded>
-            <excerpt:encoded><![CDATA[Video Post Format The internet has established itself as a repository of knowledge.]]></excerpt:encoded>
+            <excerpt:encoded>
+                <![CDATA[Video Post Format The internet has established itself as a repository of knowledge.]]></excerpt:encoded>
             <wp:post_id>109</wp:post_id>
             <wp:post_date>2014-03-25 13:43:46</wp:post_date>
             <wp:post_date_gmt>2014-03-25 13:43:46</wp:post_date_gmt>
@@ -3736,7 +3959,8 @@ Copyright <a href="https://vimeo.com/40459347">Hardy Seiler</a>]]></content:enco
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_rosa_video_embed</wp:meta_key>
-                <wp:meta_value><![CDATA[&lt;iframe src=&quot;//player.vimeo.com/video/40459347&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[&lt;iframe src=&quot;//player.vimeo.com/video/40459347&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
@@ -3767,7 +3991,8 @@ Copyright <a href="https://vimeo.com/40459347">Hardy Seiler</a>]]></content:enco
 3D: printing the future will introduce the technology behind 3D printing and take visitors on a journey through three key sectors in which the technology is driving innovation – industry, medicine and small-scale projects and businesses. We invite you to join the exhibition at the Science Museum London.
 
 Copyright <a href="https://vimeo.com/40459347">Hardy Seiler</a>]]></content:encoded>
-            <excerpt:encoded><![CDATA[Motion graphics video post format (overview) for the exhibition.]]></excerpt:encoded>
+            <excerpt:encoded>
+                <![CDATA[Motion graphics video post format (overview) for the exhibition.]]></excerpt:encoded>
             <wp:post_id>114</wp:post_id>
             <wp:post_date>2014-03-23 13:50:50</wp:post_date>
             <wp:post_date_gmt>2014-03-23 13:50:50</wp:post_date_gmt>
@@ -3798,7 +4023,8 @@ Copyright <a href="https://vimeo.com/40459347">Hardy Seiler</a>]]></content:enc
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_rosa_video_embed</wp:meta_key>
-                <wp:meta_value><![CDATA[&lt;iframe src=&quot;//player.vimeo.com/video/78456459?title=0&amp;amp;byline=0&amp;amp;portrait=0&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[&lt;iframe src=&quot;//player.vimeo.com/video/78456459?title=0&amp;amp;byline=0&amp;amp;portrait=0&quot; width=&quot;500&quot; height=&quot;281&quot; frameborder=&quot;0&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>
@@ -3870,7 +4096,8 @@ Copyright <a href="https://vimeo.com/40459347">Hardy Seiler</a>]]></content:enc
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_rosa_quote</wp:meta_key>
-                <wp:meta_value><![CDATA[I have not failed. I've just found 10,000 ways that won't work.]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[I have not failed. I've just found 10,000 ways that won't work.]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_rosa_quote_author</wp:meta_key>
@@ -3988,7 +4215,8 @@ This e-mail was sent from a contact form on Rosa (http://pixelgrade.com/demos/ro
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_messages</wp:meta_key>
-                <wp:meta_value><![CDATA[a:21:{s:12:"mail_sent_ok";s:43:"Your message was sent successfully. Thanks.";s:12:"mail_sent_ng";s:93:"Failed to send your message. Please try later or contact the administrator by another method.";s:16:"validation_error";s:74:"Validation errors occurred. Please confirm the fields and submit it again.";s:4:"spam";s:93:"Failed to send your message. Please try later or contact the administrator by another method.";s:12:"accept_terms";s:35:"Please accept the terms to proceed.";s:16:"invalid_required";s:31:"Please fill the required field.";s:17:"captcha_not_match";s:31:"Your entered code is incorrect.";s:14:"invalid_number";s:28:"Number format seems invalid.";s:16:"number_too_small";s:25:"This number is too small.";s:16:"number_too_large";s:25:"This number is too large.";s:13:"invalid_email";s:28:"Email address seems invalid.";s:11:"invalid_url";s:18:"URL seems invalid.";s:11:"invalid_tel";s:31:"Telephone number seems invalid.";s:23:"quiz_answer_not_correct";s:27:"Your answer is not correct.";s:12:"invalid_date";s:26:"Date format seems invalid.";s:14:"date_too_early";s:23:"This date is too early.";s:13:"date_too_late";s:22:"This date is too late.";s:13:"upload_failed";s:22:"Failed to upload file.";s:24:"upload_file_type_invalid";s:30:"This file type is not allowed.";s:21:"upload_file_too_large";s:23:"This file is too large.";s:23:"upload_failed_php_error";s:38:"Failed to upload file. Error occurred.";}]]></wp:meta_value>
+                <wp:meta_value>
+                    <![CDATA[a:21:{s:12:"mail_sent_ok";s:43:"Your message was sent successfully. Thanks.";s:12:"mail_sent_ng";s:93:"Failed to send your message. Please try later or contact the administrator by another method.";s:16:"validation_error";s:74:"Validation errors occurred. Please confirm the fields and submit it again.";s:4:"spam";s:93:"Failed to send your message. Please try later or contact the administrator by another method.";s:12:"accept_terms";s:35:"Please accept the terms to proceed.";s:16:"invalid_required";s:31:"Please fill the required field.";s:17:"captcha_not_match";s:31:"Your entered code is incorrect.";s:14:"invalid_number";s:28:"Number format seems invalid.";s:16:"number_too_small";s:25:"This number is too small.";s:16:"number_too_large";s:25:"This number is too large.";s:13:"invalid_email";s:28:"Email address seems invalid.";s:11:"invalid_url";s:18:"URL seems invalid.";s:11:"invalid_tel";s:31:"Telephone number seems invalid.";s:23:"quiz_answer_not_correct";s:27:"Your answer is not correct.";s:12:"invalid_date";s:26:"Date format seems invalid.";s:14:"date_too_early";s:23:"This date is too early.";s:13:"date_too_late";s:22:"This date is too late.";s:13:"upload_failed";s:22:"Failed to upload file.";s:24:"upload_file_type_invalid";s:30:"This file type is not allowed.";s:21:"upload_file_too_large";s:23:"This file is too large.";s:23:"upload_failed_php_error";s:38:"Failed to upload file. Error occurred.";}]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_additional_settings</wp:meta_key>
@@ -3999,5 +4227,6 @@ This e-mail was sent from a contact form on Rosa (http://pixelgrade.com/demos/ro
                 <wp:meta_value><![CDATA[en_US]]></wp:meta_value>
             </wp:postmeta>
         </item>
-    </item></channel>
+    </item>
+</channel>
         </rss>

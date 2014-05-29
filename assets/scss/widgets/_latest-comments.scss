@@ -3,65 +3,65 @@
 \*------------------------------------------------*/
 
 .widget--latest-comments {
-//    @extend %separator--section;
-    padding-bottom: 0;
+	//    @extend %separator--section;
+	padding-bottom: 0;
 }
 
 .latest-comments__list {
-    @extend .media;
-    @include font-size(13px);
+	@extend .media;
+	@include font-size(13px);
 
-    &:last-child {
-        margin-bottom: 0;
+	&:last-child {
+		margin-bottom: 0;
 
-        .latest-comments__body {
-            border-bottom: 0;
-        }
-    }
+		.latest-comments__body {
+			border-bottom: 0;
+		}
+	}
 }
 
 .latest-comments__author {
-    font-family: $heading-font-family;
-    text-transform: uppercase;
-    color: $dark;
-    margin-right: 3px;
+	font-family: $heading-font-family;
+	text-transform: uppercase;
+	color: $dark;
+	margin-right: 3px;
 }
 
 .latest-comments__avatar {
-    @extend .media__img;
-    @include rem(margin-right, $_u2);
+	@extend .media__img;
+	@include rem(margin-right, $_u2);
 }
 
 .latest-comments__body {
-    @extend .media__body;
-    border-bottom: 1px solid #ccc;
+	@extend .media__body;
+	border-bottom: 1px solid #ccc;
 }
 
 .latest-comments__title {
-    @extend .article__title;
+	@extend .article__title;
 
-    margin-left: 3px;
+	margin-left: 3px;
 
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-transform: uppercase;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-transform: uppercase;
 }
 
 .latest-comments__content {
-    font-style: italic;
-    @include rem(margin-top, $_u2);
-    line-height: 1.4;
+	font-style: italic;
+	@include rem(margin-top, $_u2);
+	line-height: 1.4;
 }
 
 .widget--footer {
 
-    .latest-comments__title {
-        background-color: #262525;
-        color: #e2e2e2;
-    }
+	.latest-comments__title {
+		background-color: #262525;
+		color: #e2e2e2;
+	}
 
-    .latest-comments__body {
-        border-bottom-color: #262525;
-    }
+	.latest-comments__body {
+		border-bottom-color: #262525;
+	}
 }

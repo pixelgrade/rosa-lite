@@ -1,31 +1,31 @@
-.container{
-  max-width: 1152px;
-  margin: 0 auto;
+.container {
+	max-width: 1152px;
+	margin: 0 auto;
 
-  @extend .cf;
+	@extend .cf;
 }
 
-.page-content{
-  @include media-query(lap-and-up) {
-    &.has-sidebar{
-      width: 100%;
-      margin-right: -$sidebar-width;
+.page-content {
+	@include media-query(lap-and-up) {
+		&.has-sidebar {
+			width: 100%;
+			margin-right: -$sidebar-width;
 
-      float: left;
+			float: left;
 
-      &:after{
-        content: "";
+			&:after {
+				content: "";
 
-        position: absolute;
-        top: -1px;
-        bottom: 0;
-        right: $sidebar-width;
-      }
+				position: absolute;
+				top: -1px;
+				bottom: 0;
+				right: $sidebar-width;
+			}
 
-      .page-content__wrapper{
-        padding-right: 48px;
-        margin-right: $sidebar-width;
-      }
-    }
-  }
+			.page-content__wrapper {
+				padding-right: 48px;
+				margin-right: $sidebar-width;
+			}
+		}
+	}
 }

@@ -1,6 +1,5 @@
 @charset "UTF-8";
 @import "compass";
-
 /*------------------------------------*\
     STYLE.CSS
 \*------------------------------------*/
@@ -8,46 +7,31 @@
  * Here we the inuit.css framework, then add our
  * project-specific components afterwards.
  */
-
-
-
 /*------------------------------------*\
     $SETUP
 \*------------------------------------*/
 @import "vars";
 @import "_vendor/inuit.css/inuit";
 @import "_vendor/icon-fonts/icon-fonts";
-
-
-
 /*------------------------------------*\
     $IMPORTS
 \*------------------------------------*/
-
 // TOOLS
 @import "tools/__tools";
-
 // BASE
 @import "base/__base";
-
 // OBJECTS
 @import "objects/__objects";
-
 // LAYOUT
 @import "layout/__layout";
-
 // WIDGETS
 @import "widgets/__widgets";
-
 // PLUGINS
 @import "plugins/__plugins";
-
 // SHORTCODES
 @import "shortcodes/__shortcodes";
-
 // PAGES
 @import "pages/__pages";
-
 // SHAMELESS SHAME
 @import "shame";
 

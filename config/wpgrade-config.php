@@ -1,5 +1,4 @@
-<?php return array
-(
+<?php return array(
 	# Commented values are optional properties. Many properties are
 	# automatically deduced from others (eg. textdomain is deduced from
 	# name, unless a custom value is provided)
@@ -10,21 +9,17 @@
 	'prefix'                       => '_rosa_',
 	'textdomain'                   => 'rosa_txtd',
 	'language-path'                => 'languages',
-	'update-notifier'              => array
-	(
+	'update-notifier'              => array(
 		'xml-source'       => 'http://pixelgrade.com/updates/',
-//		'xml-file' => 'rosa.xml',
+		//		'xml-file' => 'rosa.xml',
 		'cache-interval'   => 10800, # 3 hours
 		'update-page-name' => 'theme-update-notifier',
 	),
-
 	'theme-adminpanel-path'        => 'config/admin-panel',
-
 	// additional file includes (classes, functions, etc), files are loaded
 	// via wpgrade::require_all and entries should be directories; if the
 	// path does not exist it is automatically ignored
-	'include-paths'                => array
-	(
+	'include-paths'                => array(
 		'inc/classes',
 		'inc/functions',
 	),
@@ -32,8 +27,7 @@
 	// used with vendor dependencies to avoid multiple include/requires
 	// happening due to the files in question adding subfiles relative to
 	// their directory (also avoids problems with php configuration files)
-	'include-files'                => array
-	(
+	'include-files'                => array(
 		// main theme class
 		'inc/required-plugins/required-plugins.php',
 	),
@@ -51,15 +45,13 @@
 	// shorthand. Support for backend customization may be added at any
 	// time later with out requiring any alterations; the options you add
 	// here will have the lowest priority
-	'theme-options'                => array
-	(// empty
+	'theme-options'                => array( // empty
 	),
 	// Usage: body_class(wpgrade::body_class()) in header-classic.php
 	// Syntax: class => callback or boolean; eg. 'myclass' => true,
 	// 'myclass' => false, 'myclass' => 'class_check_function'. All
 	// callbacks are executed once if more classes refer the same callback.
-	'body-classes'                 => array
-	(// empty
+	'body-classes'                 => array( // empty
 	),
 	// overwrites the inline css class to allow for full control; you may
 	// also leave this null, which will invoke an internal handler and work
@@ -69,20 +61,17 @@
 	// content; all functions are ordered by priority and executed from
 	// lowest to highest. If a filter is assigned false as a priority it
 	// will be ignored in processing
-	'content-filters'              => array
-	(
-		'default' => array
-		(
+	'content-filters'              => array(
+		'default' => array(
 			'wpgrade_callback_theme_general_filters' => 100,
 			'wpgrade_callback_shortcode_filters'     => 200,
 			'wpgrade_callback_attachment_filters'    => 300,
 			'wpgrade_callback_paragraph_filters'     => 400,
 		),
 	),
-	'post-formats'                 => array(// empty - see functions.php
+	'post-formats'                 => array( // empty - see functions.php
 	),
-	'shortcodes'                   => array
-	(
+	'shortcodes'                   => array(
 		'Columns',
 		'Button',
 		'Icon',
@@ -94,136 +83,108 @@
 		'RestaurantMenu',
 	),
 	// importer
-//	'import_homepage_name' => 'Home',
-//	'import_blogpage_name' => 'Blog',
+	//	'import_homepage_name' => 'Home',
+	//	'import_blogpage_name' => 'Blog',
 
 	// decide which menus should be imported
 	'import_nav_menu'              => array(
 		'main_menu'   => 'Main Menu',
 		'footer_menu' => 'Footer Menu'
 	),
-	'resources'                    => array
-	(
+	'resources'                    => array(
 		// script declarations; scripts must be enqueue'ed to appear
-		'register'                => array
-		(
-			'head-scripts'   => array
-			(
+		'register'                => array(
+			'head-scripts'   => array(
 				'modernizr' => array(
 					'path'    => get_template_directory_uri() . '/assets/js/vendor/modernizr-2.6.2.min.js',
-					'require' => array
-					(
+					'require' => array(
 						'jquery'
 					),
 				)
 			),
-			'footer-scripts' => array
-			(
-				'wpgrade-plugins'      => array
-				(
+			'footer-scripts' => array(
+				'wpgrade-plugins'      => array(
 					'path'    => get_template_directory_uri() . '/assets/js/plugins.js',
-					'require' => array
-					(
+					'require' => array(
 						'jquery',
 						'modernizr'
 					),
 				),
-				'wpgrade-main-scripts' => array
-				(
+				'wpgrade-main-scripts' => array(
 					'path'       => get_template_directory_uri() . '/assets/js/main.js',
 					'cache_bust' => wpgrade::cachebust_string( wpgrade::themefilepath( 'assets/js/main.js' ) ),
-					'require'    => array
-					(
+					'require'    => array(
 						'wpgrade-plugins',
 					),
 				),
-				'addthis-api'          => array
-				(
+				'addthis-api'          => array(
 					'path'    => '//s7.addthis.com/js/300/addthis_widget.js#async=1',
-					'require' => array
-					(
+					'require' => array(
 						'jquery'
 					),
 				),
-				'webfont-script'       => array
-				(
+				'webfont-script'       => array(
 					'path'    => '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js',
-					'require' => array
-					(
+					'require' => array(
 						'jquery'
 					),
 				),
-				'google-maps-api'      => array
-				(
+				'google-maps-api'      => array(
 					'path'    => 'http://maps.google.com/maps/api/js?sensor=false&amp;language=en',
-					'require' => array
-					(
+					'require' => array(
 						'jquery'
 					),
 				),
 			),
-			'styles'         => array
-			(
-				'google-webfonts'    => array
-				(
+			'styles'         => array(
+				'google-webfonts'    => array(
 					'path' => 'http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700',
 				),
-				'wpgrade-main-style' => array
-				(
+				'wpgrade-main-style' => array(
 					'path'       => get_template_directory_uri() . '/assets/css/style.css',
 					'cache_bust' => wpgrade::cachebust_string( wpgrade::themefilepath( 'assets/css/style.css' ) ),
 				),
-				'404-style'          => array( 'path' => get_template_directory_uri() . '/assets/css/pages/404.css' )
-			,
+				'404-style'          => array( 'path' => get_template_directory_uri() . '/assets/css/pages/404.css' ),
 			)
 
 		), # end register
 
 		// auto invoke scripts previously registered on theme setup
-		'auto-enqueue-scripts'    => array
-		(
+		'auto-enqueue-scripts'    => array(
 			'google-maps-api',
 			'wpgrade-main-scripts',
 			'webfont-script'
 		),
 		// enqueue's script and localizes
-		'auto-localize-scripts'   => array
-		(
-			'wpgrade-main-scripts' =>
-				array
-				(
-					'ajaxurl'    => admin_url( 'admin-ajax.php' ),
-					'objectl10n' => array
-					(
-						'tPrev'             => __( 'Previous (Left arrow key)', 'rosa_txtd' ),
-						'tNext'             => __( 'Next (Right arrow key)', 'rosa_txtd' ),
-						'tCounter'          => __( 'of', 'rosa_txtd' ),
-						'infscrLoadingText' => "",
-						'infscrReachedEnd'  => "",
-					),
+		'auto-localize-scripts'   => array(
+			'wpgrade-main-scripts' => array(
+				'ajaxurl'    => admin_url( 'admin-ajax.php' ),
+				'objectl10n' => array(
+					'tPrev'             => __( 'Previous (Left arrow key)', 'rosa_txtd' ),
+					'tNext'             => __( 'Next (Right arrow key)', 'rosa_txtd' ),
+					'tCounter'          => __( 'of', 'rosa_txtd' ),
+					'infscrLoadingText' => "",
+					'infscrReachedEnd'  => "",
 				),
+			),
 		),
 		// calls function to perform extra enqueue's on theme setup
 		// handlers should be placed in theme's functions.php
-		'script-enqueue-handlers' => array
-		(
+		'script-enqueue-handlers' => array(
 			'contact-form'    => 'wpgrade_callback_contact_script',
 			'thread-comments' => 'wpgrade_callback_thread_comments_scripts',
 			'addthis'         => 'wpgrade_callback_addthis',
 		),
 		// auto invoke styles previously registered on theme setup
-		'auto-enqueue-styles'     => array
-		(
+		'auto-enqueue-styles'     => array(
 			'google-webfonts',
 			'wpgrade-main-style',
 			'404-style'
 		),
 		// calls function to perform extra enqueue's on theme setup
 		// handlers should be placed in theme's functions.php
-		'style-enqueue-handlers'  => array
-		(
-			'dynamic-css' => array
-			(
+		'style-enqueue-handlers'  => array(
+			'dynamic-css' => array(
 				'handler'  => 'wpgrade_callback_enqueue_dynamic_css_rosa',
 				'priority' => 9999,
 			),
@@ -235,8 +196,7 @@
 	// defaults for pagination; you may customize the values at any time
 	// when invoking a pagination formatter, the following defaults will be
 	// in effect if not overwritten
-	'pagination'                   => array
-	(
+	'pagination'                   => array(
 		// formatter to process the links; null if none needed
 		// the formatter should return a string and accept links and
 		// the resulting configuration
@@ -271,15 +231,14 @@
 	// is not avilable the pagination system will ignore the request so you
 	// can use the template names while developing and customize at any
 	// time later
-	'pagination-targets'           => array
-	(
+	'pagination-targets'           => array(
 		// the following is an example
-//				'gallery' => array
-//					(
-//						'formatter' => null,
-//						'prev_text' => __('Prev Images', 'rosa_txtd'),
-//						'next_text' => __('Next Images', 'rosa_txtd'),
-//					)
+		//				'gallery' => array
+		//					(
+		//						'formatter' => null,
+		//						'prev_text' => __('Prev Images', 'rosa_txtd'),
+		//						'next_text' => __('Next Images', 'rosa_txtd'),
+		//					)
 	),
 
 ); # end theme configuration

@@ -1,4 +1,4 @@
-<?php defined('ABSPATH') or die; ?>
+<?php defined( 'ABSPATH' ) or die; ?>
 
 <h3>Critical Error while trying to create backup</h3>
 

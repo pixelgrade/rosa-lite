@@ -1,44 +1,45 @@
 .form-search {
-  position: relative;
-  width: 100%;
-  height: 44px;
+	position: relative;
+	width: 100%;
+	height: 44px;
 
-  .search-query {
-    position: absolute;
-    left: 0;
-    top: 0;
+	.search-query {
+		position: absolute;
+		left: 0;
+		top: 0;
 
-    height: 44px;
-    padding: 8px $_u;
-    padding-right: 70px;
+		height: 44px;
+		padding: 8px $_u;
+		padding-right: 70px;
 
-    border: 1px solid #ddd;
+		border: 1px solid #ddd;
 
-    @include font-size(14px);
-    line-height: 1.2;
+		@include font-size(14px);
+		line-height: 1.2;
 
-    @include border-radius(5px);
+		@include border-radius(5px);
 
-    outline: none !important;
-  }
+		outline: none !important;
+	}
 
-  .search-submit {
-    position: absolute;
-    top: 0; right: $_u4;
+	.search-submit {
+		position: absolute;
+		top: 0;
+		right: $_u4;
 
-    @include rem(width, $_2u);
-    @include rem(padding, $_u4);
-    height: 44px;
+		@include rem(width, $_2u);
+		@include rem(padding, $_u4);
+		height: 44px;
 
-    @include font-size(14px);
-    text-align: center;
-    border: 0;
-    background: none;
-  }
+		@include font-size(14px);
+		text-align: center;
+		border: 0;
+		background: none;
+	}
 }
 
 @include media-query(lap-and-up) {
-  .search-form--404{
-    width: 50%;
-  }
+	.search-form--404 {
+		width: 50%;
+	}
 }

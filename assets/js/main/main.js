@@ -359,9 +359,6 @@
 //});
 
 
-
-
-
 // delay js download and images load
 // create custom event each image in parallax header
 // then show it
@@ -392,89 +389,89 @@ $(window).load(function () {
         }
     });
 
-    $(imgSelector).each(function (i, img) {
+	$(imgSelector).each(function (i, img) {
 
-        var $img            = $(img),
-            imgHeight       = $img.height(),
-            imgWidth        = $img.width(),
-            scaleY          = parallaxAmount *  wh / imgHeight,
-            scaleX          = ww / imgWidth,
-            scale           = Math.max(1, scaleX, scaleY),
-            initialTop      = - (wh * parallaxAmount / 2),
-            finalTop        = initialTop + (wh * parallaxAmount),
-            $container      = $img.closest('.article__header'),
-            containerHeight = $container.outerHeight(),
-            start           = $container.offset().top - wh,
-            end             = start + wh + containerHeight,
-            timeline        = new TimelineMax({ paused: true });
+		var $img = $(img),
+			imgHeight = $img.height(),
+			imgWidth = $img.width(),
+			scaleY = parallaxAmount * wh / imgHeight,
+			scaleX = ww / imgWidth,
+			scale = Math.max(1, scaleX, scaleY),
+			initialTop = -(wh * parallaxAmount / 2),
+			finalTop = initialTop + (wh * parallaxAmount),
+			$container = $img.closest('.article__header'),
+			containerHeight = $container.outerHeight(),
+			start = $container.offset().top - wh,
+			end = start + wh + containerHeight,
+			timeline = new TimelineMax({paused: true});
 
-        $img.css({
-            width: parseInt(imgWidth * scale, 10),
-            height: parseInt(imgHeight * scale, 10)
+		$img.css({
+			width: parseInt(imgWidth * scale, 10),
+			height: parseInt(imgHeight * scale, 10)
 //            '-webkit-transform-origin': '50%, 0, 0'
-        });
+		});
 
-        timeline.append(TweenMax.fromTo($img.closest('.article__parallax'), 0.1, {
-            y: initialTop,
+		timeline.append(TweenMax.fromTo($img.closest('.article__parallax'), 0.1, {
+			y: initialTop,
 //            scale: scale,
-            ease: Linear.easeNone
-        }, {
-            y: finalTop,
+			ease: Linear.easeNone
+		}, {
+			y: finalTop,
 //            scale: scale,
-            ease: Linear.easeNone
-        }));
+			ease: Linear.easeNone
+		}));
 
-        $img.data('tween', {
-            timeline: timeline,
-            start: start,
-            end: end
-        });
+		$img.data('tween', {
+			timeline: timeline,
+			start: start,
+			end: end
+		});
 
-    });
+	});
 
-    var latestKnownScrollY = 0,
-        ticking = false;
+	var latestKnownScrollY = 0,
+		ticking = false;
 
-    function update() {
-        ticking = false;
+	function update() {
+		ticking = false;
 
-        var scrollTop = latestKnownScrollY;
+		var scrollTop = latestKnownScrollY;
 
-        $(imgSelector).each(function (i, img) {
+		$(imgSelector).each(function (i, img) {
 
-            var $img        = $(img),
-                options     = $img.data('tween'),
-                progress    = (1 / (options.end - options.start)) * (scrollTop - options.start);
+			var $img = $(img),
+				options = $img.data('tween'),
+				progress = (1 / (options.end - options.start)) * (scrollTop - options.start);
 
-            if (0 > progress) {
-                $img.css({'visibility': 'hidden'});
-                return;
-            }
+			if (0 > progress) {
+				$img.css({'visibility': 'hidden'});
+				return;
+			}
 
-            if (1 > progress) {
-                options.timeline.progress(progress);
-                $img.css({'visibility': 'visible'});
-                return;
-            }
+			if (1 > progress) {
+				options.timeline.progress(progress);
+				$img.css({'visibility': 'visible'});
+				return;
+			}
 
-            $img.css({'visibility': 'hidden'});
-        });
-    }
+			$img.css({'visibility': 'hidden'});
+		});
+	}
 
-    $(window).scroll(function () {
+	$(window).scroll(function () {
 
-        latestKnownScrollY = window.scrollY;
-        requestTick();
+		latestKnownScrollY = window.scrollY;
+		requestTick();
 
-    });
+	});
 
-    function requestTick() {
-        if (!ticking) {
-            requestAnimationFrame(update);
-        }
-        ticking = true;
-    }
+	function requestTick() {
+		if (!ticking) {
+			requestAnimationFrame(update);
+		}
+		ticking = true;
+	}
 
-    update();
+	update();
 
 });

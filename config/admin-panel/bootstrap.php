@@ -1,6 +1,6 @@
 <?php
 
-$currentpath = dirname(__FILE__).DIRECTORY_SEPARATOR;
+$currentpath = dirname( __FILE__ ) . DIRECTORY_SEPARATOR;
 
 #
 # All relevant configuration information (args, sections, tabs) have been
@@ -21,45 +21,34 @@ $currentpath = dirname(__FILE__).DIRECTORY_SEPARATOR;
 # generally helpful.
 #
 
-wpgrade::require_coremodule('redux3');
+wpgrade::require_coremodule( 'redux3' );
 
-$currentpath = dirname(__FILE__).DIRECTORY_SEPARATOR;
+$currentpath = dirname( __FILE__ ) . DIRECTORY_SEPARATOR;
 
 global $redux_sections;
 
 $wpgrade_redux_coremodule = 'redux3'; # used inside configuration files
-$redux_args = include $currentpath.'redux-args'.EXT;
-$redux_sections = include $currentpath.'redux-sections'.EXT;
-$redux_tabs = include $currentpath.'redux-tabs'.EXT;
+$redux_args               = include $currentpath . 'redux-args' . EXT;
+$redux_sections           = include $currentpath . 'redux-sections' . EXT;
+$redux_tabs               = include $currentpath . 'redux-tabs' . EXT;
 
-$redux = new ReduxFramework($redux_sections, $redux_args, $redux_tabs);
-wpgrade::resolve('redux-instance', $redux);
+$redux = new ReduxFramework( $redux_sections, $redux_args, $redux_tabs );
+wpgrade::resolve( 'redux-instance', $redux );
 
 /**
  * Enqueue our custom css on admin panel
  */
 function wpgrade_add_admin_custom_style() {
 
-	wp_enqueue_style(
-		'redux-theme-custom-css',
-		wpgrade::resourceuri('css/admin/admin-panel.css'),
-		array(),
-		time(),
-		'all'
-	);
+	wp_enqueue_style( 'redux-theme-custom-css', wpgrade::resourceuri( 'css/admin/admin-panel.css' ), array(), time(), 'all' );
 
-	wp_enqueue_script('wp-ajax-response');
+	wp_enqueue_script( 'wp-ajax-response' );
 
-	wp_enqueue_script(
-		'redux-theme-custom-js',
-		wpgrade::resourceuri('js/admin/admin-panel.js'),
-		array(),
-		time(),
-		true
-	);
+	wp_enqueue_script( 'redux-theme-custom-js', wpgrade::resourceuri( 'js/admin/admin-panel.js' ), array(), time(), true );
 }
+
 // This example assumes your opt_name is set to redux, replace with your opt_name value
-add_action('redux/page/'. wpgrade::shortname() .'_options/enqueue', 'wpgrade_add_admin_custom_style',0);
+add_action( 'redux/page/' . wpgrade::shortname() . '_options/enqueue', 'wpgrade_add_admin_custom_style', 0 );
 
 // register callbacks
-require $currentpath.'callbacks'.EXT;
+require $currentpath . 'callbacks' . EXT;
