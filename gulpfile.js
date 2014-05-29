@@ -12,6 +12,7 @@ jsFiles = [
 	'magnific-popup',
 	'royalslider',
 	'gmap',
+	'parallax',
 	'main',
 	'404',
 	'unsorted',
