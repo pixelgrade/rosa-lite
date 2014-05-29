@@ -33,9 +33,9 @@
 		text-align: center;
 	}
 
-	&.full          { height: 100%; margin-bottom: -1 * $_u; }
-	&.one-half      { height:  50%; }
-	&.two-thirds    { height:  66%; }
+	&.full-height       { height: 100%; margin-bottom: -1 * $_u; }
+	&.half-height       { height:  50%; }
+	&.two-thirds-height { height:  66%; }
 }
 
 
