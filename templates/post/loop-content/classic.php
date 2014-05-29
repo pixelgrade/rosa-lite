@@ -25,7 +25,6 @@ if(!$has_thumb && $post_format != 'image' /*&& $post_format != 'gallery'*/) $pos
 		if( $post_format != 'quote' )
 			get_template_part('templates/post/loop-content/featured-classic/image',$post_format);
 	?>
-	<?php //if ( !in_array($post_format, array('quote', 'chat', 'aside','link')) ): ?>
 	<div class="article__body">
 		<?php get_template_part('templates/post/loop-content/header-classic'); ?>
         <section class="article__content">
