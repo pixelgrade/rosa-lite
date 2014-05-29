@@ -23,7 +23,9 @@ if (rosa::page_has_children()) {
 	$pages = get_pages( $args );
 
 	foreach ( $pages as $page ) {
-		setup_postdata( $page );
+
+        $post = $page;
+        setup_postdata($post);
 
 		if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 			// password protection
@@ -36,7 +38,9 @@ if (rosa::page_has_children()) {
 					<?php if ( has_post_thumbnail() ):
 						$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full-size' );
 						if ( ! empty( $image[0] ) ): ?>
-							<img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
+                            <div class="article__parallax">
+							    <img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
+                            </div>
 						<?php endif;
 					endif;?>
 					<div class="flexbox">
@@ -47,14 +51,14 @@ if (rosa::page_has_children()) {
 						</div>
 					</div>
 				</header>
-				<?php if ($page->post_cotent != ""): ?>
-				<section class="article__content">
-					<div class="container">
-						<section class="page__content  js-post-gallery  cf">
-							<?php the_content(); ?>
-						</section>
-					</div>
-				</section>
+				<?php if ($page->post_content != ""): ?>
+                    <section class="article__content">
+                        <div class="container">
+                            <section class="page__content  js-post-gallery  cf">
+                                <?php the_content(); ?>
+                            </section>
+                        </div>
+                    </section>
 				<?php endif; ?>
 			</article>
 		<?php

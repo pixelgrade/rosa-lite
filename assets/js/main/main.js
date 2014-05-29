@@ -371,8 +371,26 @@ var ww = $(window).width();
 
 $(window).load(function () {
 
-    var imgSelector     = '.article--page .article__header img',
-        parallaxAmount  = 1;
+    var imgSelector         = '.article--page .article__header img',
+        headerSelector      = '.site-header__wrapper',
+        parallaxAmount      = 1;
+
+    var $header             = $(headerSelector),
+        headerHeight        = $header.height();
+
+    $header.headroom({
+        // animate with GSAP
+        onPin: function () {
+            TweenMax.to($header, 0.1, {
+                y: 0
+            });
+        },
+        onUnpin: function () {
+            TweenMax.to($header, 0.1, {
+                y: -1 * headerHeight
+            });
+        }
+    });
 
     $(imgSelector).each(function (i, img) {
 

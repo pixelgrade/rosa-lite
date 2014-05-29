@@ -47,6 +47,7 @@
     position: relative;
     overflow: hidden;
     @include transform(translate3d(0,0,0));
+    background: #333;
     //    z-index: -1;
 
     padding: 200px 0;
