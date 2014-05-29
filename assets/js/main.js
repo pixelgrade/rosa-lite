@@ -892,11 +892,14 @@ $(window).load(function(){
 
     parallaxInit();
 
-    // Pikaday
-    var picker = new Pikaday({
-        field: document.getElementById('date-otreservations'),
-        format: 'MM/DD/YYYY'
-    });
+
+    if(!empty($('#date-otreservations'))){
+        // Pikaday
+        var picker = new Pikaday({
+            field: document.getElementById('date-otreservations'),
+            format: 'MM/DD/YYYY'
+        });
+    }
 
 	$('.pixcode--tabs').organicTabs();
 

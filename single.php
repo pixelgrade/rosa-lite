@@ -43,7 +43,7 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 			<article <?php post_class( 'article-single  single-post ' . $post_format_class . ' ' . $post_class_thumb ) ?>>
 				<?php get_template_part( 'templates/post/single-content/header' ); ?>
 
-				<section class="article__content">
+				<section class="article__content  js-post-gallery">
 					<?php the_content(); ?>
 				</section>
 				<?php get_template_part( 'templates/post/single-content/footer' );
