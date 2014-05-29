@@ -227,7 +227,7 @@ function wpgrade_callback_geting_active() {
 				),
 				array(
 					'name' => __( 'Custom Styling', wpgrade::textdomain() ),
-					'desc' => __('Allow us to change the map colors to better match your website.', wpgrade::textdomain() ),
+					'desc' => __( 'Allow us to change the map colors to better match your website.', wpgrade::textdomain() ),
 					'id'   => wpgrade::prefix() . 'gmap_custom_style',
 					'type' => 'checkbox',
 					'std'  => 'on',

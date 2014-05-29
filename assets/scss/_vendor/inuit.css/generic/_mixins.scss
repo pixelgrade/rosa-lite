@@ -10,47 +10,44 @@
  * Thanks to @redclov3r for the `line-height` Sass:
  * twitter.com/redclov3r/status/250301539321798657
  */
-@mixin font-size($font-size, $line-height:true, $lh-ratio: 0.5){
-    font-size:$font-size;
-    font-size:($font-size / $base-font-size)*1rem;
-    @if $line-height == true{
-        $line-height-r: $base-line-height * $lh-ratio;
-        line-height:ceil($font-size / $line-height-r + 0.001) * $lh-ratio * ($base-line-height / $font-size) + 0.01;
-    }
+@mixin font-size($font-size, $line-height: true, $lh-ratio: 0.5) {
+	font-size: $font-size;
+	font-size: ($font-size / $base-font-size)*1rem;
+	@if $line-height == true {
+		$line-height-r: $base-line-height * $lh-ratio;
+		line-height: ceil($font-size / $line-height-r + 0.001) * $lh-ratio * ($base-line-height / $font-size) + 0.01;
+	}
 }
-
 
 /**
  * Convert basic px measurements into rem units
  */
 @mixin rem($property, $values) {
-    #{$property}:$values;
-    @if $use-rem == true {
-        @if type-of($values) == "number" {
-            #{$property}:$values/$base-font-size*1rem;
-        } @else {
-            $rem-values:();
-            @each $value in $values {
-                @if type-of($value) == "number" and unit($value) == px {
-                    $rem-values:append($rem-values, $value/$base-font-size*1rem);
-                } @else {
-                    $rem-values:append($rem-values, $value); 
-                }
-            }
-            #{$property}:$rem-values;
-        }        
-    }
+	#{$property}: $values;
+	@if $use-rem == true {
+		@if type-of($values) == "number" {
+			#{$property}: $values/$base-font-size*1rem;
+		} @else {
+			$rem-values: ();
+			@each $value in $values {
+				@if type-of($value) == "number" and unit($value) == px {
+					$rem-values: append($rem-values, $value/$base-font-size*1rem);
+				} @else {
+					$rem-values: append($rem-values, $value);
+				}
+			}
+			#{$property}: $rem-values;
+		}
+	}
 }
 
 @function rem($value) {
-    @if $use-rem == true and type-of($value) == "number" and unit($value) == px {
-        @return $value/$base-font-size*1rem;
-    } @else {
-        @return $value;
-    }
+	@if $use-rem == true and type-of($value) == "number" and unit($value) == px {
+		@return $value/$base-font-size*1rem;
+	} @else {
+		@return $value;
+	}
 }
-
-
 
 /**
  * Style any number of headings in one fell swoop, e.g.:
@@ -64,16 +61,16 @@
  * With thanks to @lar_zzz, @paranoida and @rowanmanning for refining and
  * improving my initial mixin.
  */
-@mixin headings($from: 1, $to: 6){
-    @if $from >= 1 and $to <= 6{
-        $heading-selector: (unquote(""));
-        @for $i from $from through $to {
-            $heading-selector: $heading-selector, unquote("h#{$i}")
-        }
-        #{$heading-selector}{
-            @content
-        }
-    }
+@mixin headings($from: 1, $to: 6) {
+	@if $from >= 1 and $to <= 6 {
+		$heading-selector: (unquote(""));
+		@for $i from $from through $to {
+			$heading-selector: $heading-selector, unquote("h#{$i}")
+		}
+		#{$heading-selector} {
+			@content
+		}
+	}
 }
 
 /**/
@@ -83,14 +80,13 @@
    `@include vendor(border-radius, 4px);`
  *
  */
-@mixin vendor($property, $value...){
-    -webkit-#{$property}:$value;
-       -moz-#{$property}:$value;
-        -ms-#{$property}:$value;
-         -o-#{$property}:$value;
-            #{$property}:$value;
+@mixin vendor($property, $value...) {
+	-webkit-#{$property}: $value;
+	-moz-#{$property}: $value;
+	-ms-#{$property}: $value;
+	-o-#{$property}: $value;
+	#{$property}: $value;
 }
-
 
 /**
  * Create CSS keyframe animations for all vendors in one go, e.g.:
@@ -107,28 +103,27 @@
  *
  * Courtesy of @integralist: twitter.com/integralist/status/260484115315437569
  */
-@mixin keyframe ($animation-name){
-    @-webkit-keyframes $animation-name{
-        @content;
-    }
+@mixin keyframe($animation-name) {
+	@-webkit-keyframes $animation-name {
+		@content;
+	}
 
-    @-moz-keyframes $animation-name{
-        @content;
-    }
+	@-moz-keyframes $animation-name {
+		@content;
+	}
 
-    @-ms-keyframes $animation-name{
-        @content;
-    }
+	@-ms-keyframes $animation-name {
+		@content;
+	}
 
-    @-o-keyframes $animation-name{
-        @content;
-    }
+	@-o-keyframes $animation-name {
+		@content;
+	}
 
-    @keyframes $animation-name{
-        @content;
-    }
+	@keyframes $animation-name {
+		@content;
+	}
 }
-
 
 /**
  * Force overly long spans of text to truncate, e.g.:
@@ -137,13 +132,12 @@
  *
  * Where `$truncation-boundary` is a united measurement.
  */
-@mixin truncate($truncation-boundary){
-    max-width:$truncation-boundary;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+@mixin truncate($truncation-boundary) {
+	max-width: $truncation-boundary;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
-
 
 /**
  * CSS arrows!!! But... before you read on, you might want to grab a coffee...
@@ -180,114 +174,113 @@
    }
  *
  */
-@mixin arrow($arrow-edge, $arrow-location, $arrow-color, $border-color: $arrow-color){
+@mixin arrow($arrow-edge, $arrow-location, $arrow-color, $border-color: $arrow-color) {
 
-    @if $arrow-edge == top{
+	@if $arrow-edge == top {
 
-        @extend %arrow--top;
+		@extend %arrow--top;
 
-        &:before{
-            border-bottom-color:$border-color!important;
-        }
+		&:before {
+			border-bottom-color: $border-color !important;
+		}
 
-        &:after{
-            border-bottom-color:$arrow-color!important;
-        }
+		&:after {
+			border-bottom-color: $arrow-color !important;
+		}
 
-        @if $arrow-location == left{
-            @extend %arrow--left;
-        }
+		@if $arrow-location == left {
+			@extend %arrow--left;
+		}
 
-        @if $arrow-location == center{
-            @extend %arrow--center;
-        }
+		@if $arrow-location == center {
+			@extend %arrow--center;
+		}
 
-        @if $arrow-location == right{
-            @extend %arrow--right;
-        }
+		@if $arrow-location == right {
+			@extend %arrow--right;
+		}
 
-    }
+	}
 
-    @if $arrow-edge == right{
+	@if $arrow-edge == right {
 
-        @extend %arrow--far;
+		@extend %arrow--far;
 
-        &:before{
-            border-left-color:$border-color!important;
-        }
+		&:before {
+			border-left-color: $border-color !important;
+		}
 
-        &:after{
-            border-left-color:$arrow-color!important;
-        }
+		&:after {
+			border-left-color: $arrow-color !important;
+		}
 
-        @if $arrow-location == top{
-            @extend %arrow--upper;
-        }
+		@if $arrow-location == top {
+			@extend %arrow--upper;
+		}
 
-        @if $arrow-location == center{
-            @extend %arrow--middle;
-        }
+		@if $arrow-location == center {
+			@extend %arrow--middle;
+		}
 
-        @if $arrow-location == bottom{
-            @extend %arrow--lower;
-        }
+		@if $arrow-location == bottom {
+			@extend %arrow--lower;
+		}
 
-    }
+	}
 
-    @if $arrow-edge == bottom{
+	@if $arrow-edge == bottom {
 
-        @extend %arrow--bottom;
+		@extend %arrow--bottom;
 
-        &:before{
-            border-top-color:$border-color!important;
-        }
+		&:before {
+			border-top-color: $border-color !important;
+		}
 
-        &:after{
-            border-top-color:$arrow-color!important;
-        }
+		&:after {
+			border-top-color: $arrow-color !important;
+		}
 
-        @if $arrow-location == left{
-            @extend %arrow--left;
-        }
+		@if $arrow-location == left {
+			@extend %arrow--left;
+		}
 
-        @if $arrow-location == center{
-            @extend %arrow--center;
-        }
+		@if $arrow-location == center {
+			@extend %arrow--center;
+		}
 
-        @if $arrow-location == right{
-            @extend %arrow--right;
-        }
+		@if $arrow-location == right {
+			@extend %arrow--right;
+		}
 
-    }
+	}
 
-    @if $arrow-edge == left{
+	@if $arrow-edge == left {
 
-        @extend %arrow--near;
+		@extend %arrow--near;
 
-        &:before{
-            border-right-color:$border-color!important;
-        }
+		&:before {
+			border-right-color: $border-color !important;
+		}
 
-        &:after{
-            border-right-color:$arrow-color!important;
-        }
+		&:after {
+			border-right-color: $arrow-color !important;
+		}
 
-        @if $arrow-location == top{
-            @extend %arrow--upper;
-        }
+		@if $arrow-location == top {
+			@extend %arrow--upper;
+		}
 
-        @if $arrow-location == center{
-            @extend %arrow--middle;
-        }
+		@if $arrow-location == center {
+			@extend %arrow--middle;
+		}
 
-        @if $arrow-location == bottom{
-            @extend %arrow--lower;
-        }
+		@if $arrow-location == bottom {
+			@extend %arrow--lower;
+		}
 
-    }
+	}
 
 }
-
 
 /**
  * Media query mixin.
@@ -315,45 +308,57 @@
  *
  * We work out your end points for you:
  */
-$palm-end:              $lap-start - 1px;
-$lap-end:               $desk-start - 1px;
+$palm-end: $lap-start - 1px;
+$lap-end: $desk-start - 1px;
 
-@mixin media-query($media-query){
+@mixin media-query($media-query) {
 
-    @if $media-query == palm{
+	@if $media-query == palm {
 
-        @media only screen and (max-width:$palm-end) { @content; }
+		@media only screen and (max-width: $palm-end) {
+			@content;
+		}
 
-    }
+	}
 
-    @if $media-query == lap{
+	@if $media-query == lap {
 
-        @media only screen and (min-width:$lap-start) and (max-width:$lap-end) { @content; }
+		@media only screen and (min-width: $lap-start) and (max-width: $lap-end) {
+			@content;
+		}
 
-    }
+	}
 
-    @if $media-query == lap-and-up{
+	@if $media-query == lap-and-up {
 
-        @media only screen and (min-width:$lap-start) { @content; }
+		@media only screen and (min-width: $lap-start) {
+			@content;
+		}
 
-    }
+	}
 
-    @if $media-query == portable{
+	@if $media-query == portable {
 
-        @media only screen and (max-width:$lap-end) { @content; }
+		@media only screen and (max-width: $lap-end) {
+			@content;
+		}
 
-    }
+	}
 
-    @if $media-query == desk{
+	@if $media-query == desk {
 
-        @media only screen and (min-width:$desk-start) { @content; }
+		@media only screen and (min-width: $desk-start) {
+			@content;
+		}
 
-    }
+	}
 
-    @if $media-query == desk-wide{
+	@if $media-query == desk-wide {
 
-        @media only screen and (min-width: $desk-wide-start) { @content; }
+		@media only screen and (min-width: $desk-wide-start) {
+			@content;
+		}
 
-    }
+	}
 
 }

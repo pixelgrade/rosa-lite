@@ -1,5 +1,5 @@
-<?php defined('ABSPATH') or die;
-	/** @var array $error_messages */
+<?php defined( 'ABSPATH' ) or die;
+/** @var array $error_messages */
 ?>
 
 <h3>Error while trying to find update!</h3>
@@ -7,7 +7,7 @@
 <p>The system has encountered some error while trying to look for an update:</p>
 
 <ul style="list-style-type: square; padding: 0 25px">
-	<?php foreach ($error_messages as $error): ?>
+	<?php foreach ( $error_messages as $error ): ?>
 		<li><?php echo $error ?></li>
 	<?php endforeach; ?>
 </ul>

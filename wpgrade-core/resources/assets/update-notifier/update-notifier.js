@@ -1,7 +1,8 @@
 /*
  * Update notofier page setup.
  */
-;(function ($) {
+;
+(function ($) {
 
 	$(function () {
 
@@ -26,8 +27,8 @@
 				indexOf = function (needle) {
 					var i = -1, index = -1;
 
-					for(i = 0; i < this.length; i++) {
-						if(this[i] === needle) {
+					for (i = 0; i < this.length; i++) {
+						if (this[i] === needle) {
 							index = i;
 							break;
 						}
@@ -203,17 +204,17 @@
 					.addClass('current');
 
 				parse_wpgrade_state
-					(
-						'wpgrade_upgradestep_install_package',
-						['success'],
-						function (data) {
-							$step_installing_theme_updates
-								.addClass('done')
-								.removeClass('current');
+				(
+					'wpgrade_upgradestep_install_package',
+					['success'],
+					function (data) {
+						$step_installing_theme_updates
+							.addClass('done')
+							.removeClass('current');
 
-							fin();
-						}
-					);
+						fin();
+					}
+				);
 			};
 
 			var download_part = function (part, partsize, processor) {
@@ -225,22 +226,22 @@
 				}
 
 				parse_wpgrade_state
-					(
-						'wpgrade_upgradestep_download_package',
-						['success'],
-						function (data) {
-							$step_downloading_theme_updates = $('.wpgrade-upgrade-step-downloading-theme-updates');
-							var $download_progress = $('.wpg-download-progress', $step_downloading_theme_updates);
-							$('.downloaded .done', $download_progress).html(Math.floor((end + 1) / 1024));
-							processor(part, partsize, data);
-						},
-						{
-							method: program['download']['method'],
-							startbytes: start,
-							endbytes: end,
-							'content-length': program['download']['content-length']
-						}
-					);
+				(
+					'wpgrade_upgradestep_download_package',
+					['success'],
+					function (data) {
+						$step_downloading_theme_updates = $('.wpgrade-upgrade-step-downloading-theme-updates');
+						var $download_progress = $('.wpg-download-progress', $step_downloading_theme_updates);
+						$('.downloaded .done', $download_progress).html(Math.floor((end + 1) / 1024));
+						processor(part, partsize, data);
+					},
+					{
+						method: program['download']['method'],
+						startbytes: start,
+						endbytes: end,
+						'content-length': program['download']['content-length']
+					}
+				);
 			};
 
 			var download_update = function () {
@@ -273,7 +274,7 @@
 				// @todo implement direct download method
 //				else if (program['download']['method'] == 'direct') {
 				else { // unknown method
-					console.log('wpgrade: download system does not know how to handle the method '+program['download']['method']);
+					console.log('wpgrade: download system does not know how to handle the method ' + program['download']['method']);
 					ajax_parsererror();
 					return;
 				}
@@ -287,46 +288,46 @@
 					.addClass('current');
 
 				parse_wpgrade_state
-					(
-						'wpgrade_upgradestep_analyze_download_options',
-						['success'],
-						function (data) {
-							program['download']['content-length'] = parseInt(data['info']['content-length']);
-							program['download']['accept-ranges'] = data['info']['accept-ranges'];
-							$step_downloading_theme_updates = $('.wpgrade-upgrade-step-downloading-theme-updates');
-							var $download_progress = $('.wpg-download-progress', $step_downloading_theme_updates);
+				(
+					'wpgrade_upgradestep_analyze_download_options',
+					['success'],
+					function (data) {
+						program['download']['content-length'] = parseInt(data['info']['content-length']);
+						program['download']['accept-ranges'] = data['info']['accept-ranges'];
+						$step_downloading_theme_updates = $('.wpgrade-upgrade-step-downloading-theme-updates');
+						var $download_progress = $('.wpg-download-progress', $step_downloading_theme_updates);
 
-							if (data['info']['accept-ranges'] == 'bytes') {
-								program['download']['method'] = 'ajax-bytes-range';
-								$('.method-info', $download_progress).html('Downloading using the Range method.');
-								$('.downloaded').show();
-								$('.downloaded .done', $download_progress).html('0');
-								$('.downloaded .total', $download_progress).html(Math.floor(program['download']['content-length'] / 1024));
-								$('.downloaded .type', $download_progress).html('kilobytes'); // intentionally not "kibibytes" to avoid people asking
-							}
-							else if (data['info']['accept-ranges'] == 'none') {
-								program['download']['method'] = 'direct';
-								$('.method-info', $download_progress).html('Downloading using the Direct method.');
-								$('.downloaded').hide();
-								$('.downloaded .done', $download_progress).html('');
-								$('.downloaded .total', $download_progress).html('');
-								$('.downloaded .type', $download_progress).html('');
-							}
-							else { // unknown
-								console.log('wpgrade: expected none or bytes, but got ' + data['info']['accept-ranges']);
-								ajax_parsererror();
-								return;
-							}
-
-							$download_progress.show();
-
-							$step_analyzing_download_options
-								.addClass('done')
-								.removeClass('current');
-
-							download_update();
+						if (data['info']['accept-ranges'] == 'bytes') {
+							program['download']['method'] = 'ajax-bytes-range';
+							$('.method-info', $download_progress).html('Downloading using the Range method.');
+							$('.downloaded').show();
+							$('.downloaded .done', $download_progress).html('0');
+							$('.downloaded .total', $download_progress).html(Math.floor(program['download']['content-length'] / 1024));
+							$('.downloaded .type', $download_progress).html('kilobytes'); // intentionally not "kibibytes" to avoid people asking
 						}
-					);
+						else if (data['info']['accept-ranges'] == 'none') {
+							program['download']['method'] = 'direct';
+							$('.method-info', $download_progress).html('Downloading using the Direct method.');
+							$('.downloaded').hide();
+							$('.downloaded .done', $download_progress).html('');
+							$('.downloaded .total', $download_progress).html('');
+							$('.downloaded .type', $download_progress).html('');
+						}
+						else { // unknown
+							console.log('wpgrade: expected none or bytes, but got ' + data['info']['accept-ranges']);
+							ajax_parsererror();
+							return;
+						}
+
+						$download_progress.show();
+
+						$step_analyzing_download_options
+							.addClass('done')
+							.removeClass('current');
+
+						download_update();
+					}
+				);
 			};
 
 			var create_backup = function () {
@@ -337,17 +338,17 @@
 					.addClass('current');
 
 				parse_wpgrade_state
-					(
-						'wpgrade_upgradestep_backup_theme',
-						['available'],
-						function (data) {
-							$step_creating_backup
-								.addClass('done')
-								.removeClass('current');
+				(
+					'wpgrade_upgradestep_backup_theme',
+					['available'],
+					function (data) {
+						$step_creating_backup
+							.addClass('done')
+							.removeClass('current');
 
-							analyze_download_options();
-						}
-					);
+						analyze_download_options();
+					}
+				);
 			};
 
 			var search_for_update = function () {
@@ -358,34 +359,34 @@
 					.addClass('current');
 
 				parse_wpgrade_state
-					(
-						'wpgrade_upgradestep_search_for_update',
-						['available'],
-						function (data) {
-							$step_searching_for_update
-								.addClass('done')
-								.removeClass('current');
+				(
+					'wpgrade_upgradestep_search_for_update',
+					['available'],
+					function (data) {
+						$step_searching_for_update
+							.addClass('done')
+							.removeClass('current');
 
-							create_backup();
-						}
-					);
+						create_backup();
+					}
+				);
 			};
 
 			var confirm_credentials = function () {
 				$step_verify_credentials = $('.wpgrade-upgrade-step-verify-credentials');
 
 				parse_wpgrade_state
-					(
-						'wpgrade_upgradestep_check_marketplace_data',
-						['available'],
-						function (data) {
-							$step_verify_credentials
-								.addClass('done')
-								.removeClass('current');
+				(
+					'wpgrade_upgradestep_check_marketplace_data',
+					['available'],
+					function (data) {
+						$step_verify_credentials
+							.addClass('done')
+							.removeClass('current');
 
-							search_for_update();
-						}
-					);
+						search_for_update();
+					}
+				);
 			};
 
 			$('.cancel-upgrade', $upgrade_app).on('click', function (event) {

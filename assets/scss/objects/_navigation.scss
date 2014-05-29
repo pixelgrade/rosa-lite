@@ -1,124 +1,120 @@
 /*------------------------------------*\
                NAVIGATION
 \*------------------------------------*/
-.navigation--main{
-  float: right;
+.navigation--main {
+	float: right;
 }
-
 
 /**
  * Main Bar Navigation
  */
 .nav--main {
-  @extend .cf;
+	@extend .cf;
 
-  margin-bottom: 0;
+	margin-bottom: 0;
 
-  > li {
-      float: left;
+	> li {
+		float: left;
 
-      > a {
-          @include rem(padding, $_u2 $_u);
-          text-transform: uppercase;
-      }
+		> a {
+			@include rem(padding, $_u2 $_u);
+			text-transform: uppercase;
+		}
 
-//      &.current-menu-item {
-//          background-color:rgba(255,255,255,0.05);
-//      }
-  }
+		//      &.current-menu-item {
+		//          background-color:rgba(255,255,255,0.05);
+		//      }
+	}
 
-  a{
-    color: white;
-    @include font-size(14px);
+	a {
+		color: white;
+		@include font-size(14px);
 
-    &:hover{
-      color: $accent;
-    }
+		&:hover {
+			color: $accent;
+		}
 
-    .header--inversed &{
-      color: black;
-    }
-  }
+		.header--inversed & {
+			color: black;
+		}
+	}
 }
 
 .nav__item--relative {
-    position: relative;
+	position: relative;
 }
 
-.menu-item-has-children{
-  position: relative;
+.menu-item-has-children {
+	position: relative;
 
-  &:hover:after{
-    border-color: $accent;
-  }
+	&:hover:after {
+		border-color: $accent;
+	}
 
-  &:after{
-    content: "";
+	&:after {
+		content: "";
 
-    position: absolute;
-    top: 50%;
-    right: $_u4;
+		position: absolute;
+		top: 50%;
+		right: $_u4;
 
-    margin-top: -2px;
-    display: inline-block;
+		margin-top: -2px;
+		display: inline-block;
 
-    width: 5px;
-    height: 5px;
+		width: 5px;
+		height: 5px;
 
-    border-right: 1px solid $dark;
-    border-bottom: 1px solid $dark;
+		border-right: 1px solid $dark;
+		border-bottom: 1px solid $dark;
 
-    @include transform(translateY(-50%) rotate(45deg));
-  }
+		@include transform(translateY(-50%) rotate(45deg));
+	}
 
-  &:hover > .sub-menu{
-    display: block;
-  }
+	&:hover > .sub-menu {
+		display: block;
+	}
 }
-
-
-
-
 
 /*----------------------------------------*\
     $SUBMENUS
 \*----------------------------------------*/
 
-/*ul*/.sub-menu {
-  @extend .nav;
-  @extend .nav--stacked;
+/*ul*/
+.sub-menu {
+	@extend .nav;
+	@extend .nav--stacked;
 
-  position: absolute;
-  top: 100%;
-  left: 50%;
+	position: absolute;
+	top: 100%;
+	left: 50%;
 
-  display: none;
-  min-width: 170px;
+	display: none;
+	min-width: 170px;
 
-  text-align: center;
+	text-align: center;
 
-  background: white;
+	background: white;
 
-  @include transform(translateX(-50%));
+	@include transform(translateX(-50%));
 
-  a{
-    padding: $_u2;
-  }
-  
-  .menu-item-has-children{
-    position: relative;
+	a {
+		padding: $_u2;
+	}
 
-    &:after{
-      right: $_u;
+	.menu-item-has-children {
+		position: relative;
 
-      @include transform(rotate(-45deg));
-    }
-  }
+		&:after {
+			right: $_u;
 
-  .sub-menu{
-    left: 100%;
-    top: 0;
+			@include transform(rotate(-45deg));
+		}
+	}
 
-    @include transform(translateX(0));
-  }
+	.sub-menu {
+		left: 100%;
+		top: 0;
+
+		@include transform(translateX(0));
+	}
 }

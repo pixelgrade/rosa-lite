@@ -6,10 +6,9 @@
  * Demo: jsfiddle.net/inuitcss/MhHHU
  *
  */
-fieldset{
-    @include rem(padding, $base-spacing-unit);
+fieldset {
+	@include rem(padding, $base-spacing-unit);
 }
-
 
 /**
  * Text inputs
@@ -22,12 +21,11 @@ fieldset{
  *
  */
 .text-input,
-textarea{
-    /**
-     * Style these via your theme stylesheet.
-     */
+textarea {
+	/**
+	 * Style these via your theme stylesheet.
+	 */
 }
-
 
 /**
  * Group sets of form fields in a list, e.g.:
@@ -48,17 +46,18 @@ textarea{
    </ul>
  *
  */
-.form-fields{
-    list-style:none;
-    margin:0;
+.form-fields {
+	list-style: none;
+	margin: 0;
 }
-    .form-fields > li{
-        @extend %sass-margin-bottom;
-    }
-    .form-fields > li:last-child{
-        margin-bottom:0;
-    }
 
+.form-fields > li {
+	@extend %sass-margin-bottom;
+}
+
+.form-fields > li:last-child {
+	margin-bottom: 0;
+}
 
 /**
  * Labels
@@ -87,20 +86,20 @@ textarea{
  *
  */
 label,
-.label{
-    display:block;
+.label {
+	display: block;
 }
-    /**
-     * Extra help text in `label`s, e.g.:
-     *
-       <label>Card number <small class=additional>No spaces</small></label>
-     *
-     */
-    .additional{
-        display:block;
-        font-weight:normal;
-    }
 
+/**
+ * Extra help text in `label`s, e.g.:
+ *
+   <label>Card number <small class=additional>No spaces</small></label>
+ *
+ */
+.additional {
+	display: block;
+	font-weight: normal;
+}
 
 /*
  * Groups of checkboxes and radios, e.g.:
@@ -117,19 +116,19 @@ label,
    </li>
  *
  */
-.check-list{
-    list-style:none;
-    margin:0;
+.check-list {
+	list-style: none;
+	margin: 0;
 }
-    /*
-     * Labels in check-lists
-     */
-    .check-label,
-    .check-list label,
-    .check-list .label{
-        display:inline-block;
-    }
 
+/*
+ * Labels in check-lists
+ */
+.check-label,
+.check-list label,
+.check-list .label {
+	display: inline-block;
+}
 
 /**
  * Spoken forms are for forms that read like spoken word, e.g.:
@@ -146,11 +145,10 @@ label,
    </li>
  *
  */
-.spoken-form label{
-    display:inline-block;
-    font:inherit;
+.spoken-form label {
+	display: inline-block;
+	font: inherit;
 }
-
 
 /**
  * Extra help text displayed after a field when that field is in focus, e.g.:
@@ -164,11 +162,13 @@ label,
  * it reappears.
  *
  */
-/*small*/.extra-help{
-    display:inline-block;
-    visibility:hidden;
+/*small*/
+.extra-help {
+	display: inline-block;
+	visibility: hidden;
 }
+
 .text-input:active + .extra-help,
-.text-input:focus + .extra-help{
-    visibility:visible;
+.text-input:focus + .extra-help {
+	visibility: visible;
 }

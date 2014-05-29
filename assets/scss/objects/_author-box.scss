@@ -3,71 +3,71 @@
 \*------------------------------------*/
 
 .author {
-    @extend .media;
+	@extend .media;
 }
-
 
 .author__avatar {
-    @extend .media__img;
-    @include rem(margin-top, $_u4);
+	@extend .media__img;
+	@include rem(margin-top, $_u4);
 
-    img{
-        max-width: 80px;
-    }
+	img {
+		max-width: 80px;
+	}
 }
-@include media-query(palm) {
-    .author__avatar {
-        float: none;
-        margin-right: 0;
-        
-        img{
-            margin: 0 auto;
-        }
-    }
 
-    .author__title {
-        text-align: center;
-        @include rem(margin, $_u2 0);
-    }
+@include media-query(palm) {
+	.author__avatar {
+		float: none;
+		margin-right: 0;
+
+		img {
+			margin: 0 auto;
+		}
+	}
+
+	.author__title {
+		text-align: center;
+		@include rem(margin, $_u2 0);
+	}
 }
 
 .author__text {
-    @extend .media__body;
+	@extend .media__body;
 
-    color: $lightest;
+	color: $lightest;
 }
 
 .author__title {
-    h4{
-      margin: 0;
-      margin-bottom: $_u4;
-    }
+	h4 {
+		margin: 0;
+		margin-bottom: $_u4;
+	}
 
-    a {
-        color: $dark;
-    }
+	a {
+		color: $dark;
+	}
 }
 
 .author__bio {
-    margin-bottom: 0;
-    font-size: 15px;
-    line-height: 1.4;
+	margin-bottom: 0;
+	font-size: 15px;
+	line-height: 1.4;
 }
 
 .author__social-links {
-    @extend .nav;
+	@extend .nav;
 }
 
 .author__social-links__list-item {
-    @include rem(margin-right, $_u2 + $_u4);
+	@include rem(margin-right, $_u2 + $_u4);
 }
 
 .author__social-link {
-    @extend .small-link;
+	@extend .small-link;
 
-    color: $lightest;
+	color: $lightest;
 
-    i{
-      margin-right: $_u4;
-    }
+	i {
+		margin-right: $_u4;
+	}
 }

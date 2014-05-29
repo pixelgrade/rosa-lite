@@ -1,5 +1,5 @@
-<?php defined('ABSPATH') or die;
-	/** @var array $error_messages */
+<?php defined( 'ABSPATH' ) or die;
+/** @var array $error_messages */
 ?>
 
 <h3>Error while trying to Install theme!</h3>

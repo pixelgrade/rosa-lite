@@ -1,6 +1,6 @@
-(function($){
+(function ($) {
 
-    
+
 })(jQuery, window);
 
 

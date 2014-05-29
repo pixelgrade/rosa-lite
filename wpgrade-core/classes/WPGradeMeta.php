@@ -1,13 +1,13 @@
-<?php defined('ABSPATH') or die;
+<?php defined( 'ABSPATH' ) or die;
 
 /* This file is property of Pixel Grade Media. You may NOT copy, or redistribute
  * it. Please see the license that came with your copy for more information.
  */
 
 /**
- * @package    wpgrade
- * @category   core
- * @author     Pixel Grade Team
+ * @package        wpgrade
+ * @category       core
+ * @author         Pixel Grade Team
  * @copyright  (c) 2013, Pixel Grade Media
  */
 class WPGradeMeta {
@@ -17,38 +17,44 @@ class WPGradeMeta {
 
 	/**
 	 * @param  array metadata
+	 *
 	 * @return PixcoreMeta
 	 */
-	static function instance($metadata) {
-		$i = new self;
+	static function instance( $metadata ) {
+		$i           = new self;
 		$i->metadata = $metadata;
+
 		return $i;
 	}
 
 	/**
 	 * @param string meta key
+	 *
 	 * @return boolean true if key exists, false otherwise
 	 */
-	function has($key) {
-		return isset($this->metadata[$key]);
+	function has( $key ) {
+		return isset( $this->metadata[ $key ] );
 	}
 
 	/**
 	 * @param  string key
 	 * @param  mixed  default
+	 *
 	 * @return mixed
 	 */
-	function get($key, $default = null) {
-		return $this->has($key) ? $this->metadata[$key] : $default;
+	function get( $key, $default = null ) {
+		return $this->has( $key ) ? $this->metadata[ $key ] : $default;
 	}
 
 	/**
 	 * @param  string key
 	 * @param  mixed  value
+	 *
 	 * @return static $this
 	 */
-	function set($key, $value) {
-		$this->metadata[$key] = $value;
+	function set( $key, $value ) {
+		$this->metadata[ $key ] = $value;
+
 		return $this;
 	}
 
@@ -58,9 +64,9 @@ class WPGradeMeta {
 	 * @param string key
 	 * @param string value
 	 */
-	function ensure($key, $value) {
-		if ( ! $this->has($key)) {
-			$this->set($key, $value);
+	function ensure( $key, $value ) {
+		if ( ! $this->has( $key ) ) {
+			$this->set( $key, $value );
 		}
 
 		return $this;
@@ -72,26 +78,25 @@ class WPGradeMeta {
 	 *
 	 * @param  string name
 	 * @param  mixed  value
+	 *
 	 * @return static $this
 	 */
-	function add($name, $value) {
+	function add( $name, $value ) {
 
 		// Cleanup
 		// -------
 
-		if ( ! isset($this->metadata[$name])) {
-			$this->metadata[$name] = array();
-		}
-		else if ( ! is_array($this->metadata[$name]))
-		{
-			$this->metadata[$name] = array($this->metadata[$name]);
+		if ( ! isset( $this->metadata[ $name ] ) ) {
+			$this->metadata[ $name ] = array();
+		} else if ( ! is_array( $this->metadata[ $name ] ) ) {
+			$this->metadata[ $name ] = array( $this->metadata[ $name ] );
 		}
 		# else: array, no cleanup required
 
 		// Register new value
 		// ------------------
 
-		$this->metadata[$name][] = $value;
+		$this->metadata[ $name ][] = $value;
 
 		return $this;
 	}
@@ -105,12 +110,11 @@ class WPGradeMeta {
 
 	/**
 	 * Shorthand for a calling set on multiple keys.
-	 *
 	 * @return static $this
 	 */
-	function overwritemeta($overwrites) {
-		foreach ($overwrites as $key => $value) {
-			$this->set($key, $value);
+	function overwritemeta( $overwrites ) {
+		foreach ( $overwrites as $key => $value ) {
+			$this->set( $key, $value );
 		}
 
 		return $this;

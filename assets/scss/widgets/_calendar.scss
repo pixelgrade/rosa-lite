@@ -1,12 +1,12 @@
 .widget_calendar {
 
-    caption {
-        @extend .hN;
-        @extend .gamma;
-        @include rem(margin-bottom, $_u2);
-    }
+	caption {
+		@extend .hN;
+		@extend .gamma;
+		@include rem(margin-bottom, $_u2);
+	}
 
-    th, td {
-        text-align: center;
-    }
+	th, td {
+		text-align: center;
+	}
 }

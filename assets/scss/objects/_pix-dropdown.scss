@@ -1,4 +1,3 @@
-
 //<div class="pix-dropdown  up">
 //	<a class="dropdown__trigger" href="#">Filter  <span class="arrow"></span></a>
 //	<ul class="dropdown__menu  nav  nav--banner">
@@ -8,11 +7,10 @@
 //	</ul>
 //</div>
 
-
-.pix-dropdown{
+.pix-dropdown {
 
 	@include media-query(palm) {
-		.dropdown__trigger{
+		.dropdown__trigger {
 			display: none;
 		}
 	}
@@ -22,92 +20,91 @@
 		position: relative;
 		text-align: center;
 
-        &:hover{
-          .dropdown__menu{
-            border: 1px solid $borders;
-            border-top: 0;
+		&:hover {
+			.dropdown__menu {
+				border: 1px solid $borders;
+				border-top: 0;
 
-            @include border-bottom-left-radius(5px);
-            @include border-bottom-right-radius(5px);
+				@include border-bottom-left-radius(5px);
+				@include border-bottom-right-radius(5px);
 
-          }
+			}
 
-          .dropdown__trigger{
-            border-bottom: 0;
-            @include border-bottom-left-radius(0);
-            @include border-bottom-right-radius(0);
-          }
-        }
+			.dropdown__trigger {
+				border-bottom: 0;
+				@include border-bottom-left-radius(0);
+				@include border-bottom-right-radius(0);
+			}
+		}
 
-		.dropdown__trigger{
-          display: block;
-          padding: $_u4 $_15u;
+		.dropdown__trigger {
+			display: block;
+			padding: $_u4 $_15u;
 
-          border: 1px solid $borders;
-          background: none;
-          @include border-radius(5px);
+			border: 1px solid $borders;
+			background: none;
+			@include border-radius(5px);
 
-          color: $dark;
+			color: $dark;
 
-          @include font-size(12px);
-          font-weight: bold;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
+			@include font-size(12px);
+			font-weight: bold;
+			letter-spacing: 0.2em;
+			text-transform: uppercase;
 
-          &:after{
-            content: "";
+			&:after {
+				content: "";
 
-            position: relative;
-            top: -3px;
+				position: relative;
+				top: -3px;
 
-            display: inline-block;
-            margin-left: 15px;
-            width: 7px;
-            height: 7px;
+				display: inline-block;
+				margin-left: 15px;
+				width: 7px;
+				height: 7px;
 
-            border-right: 2px solid $dark;
-            border-bottom: 2px solid $dark;
+				border-right: 2px solid $dark;
+				border-bottom: 2px solid $dark;
 
-            @include transform(rotate(45deg));
-          }
-		}		
+				@include transform(rotate(45deg));
+			}
+		}
 
-
-		.dropdown__menu{
+		.dropdown__menu {
 			position: absolute;
 			left: 0;
 			top: 100%;
 
-            width: 100%;
+			width: 100%;
 
 			display: none;
 			padding-top: $_u2;
 
-//            border: 1px solid $borders;
-//            border-top: 0;
-//            @include border-radius(5px);
+			//            border: 1px solid $borders;
+			//            border-top: 0;
+			//            @include border-radius(5px);
 
 			background: white;
 
-            li{
-              width: 100%;
+			li {
+				width: 100%;
 
-              a{
-                padding: $_u4 0;
-                display: block;
-              }
-            }
+				a {
+					padding: $_u4 0;
+					display: block;
+				}
+			}
 		}
 
-		&.up{
-			.dropdown__menu{
+		&.up {
+			.dropdown__menu {
 				bottom: 100%;
 				top: auto;
 			}
 		}
 
-		&:hover .dropdown__menu{
+		&:hover .dropdown__menu {
 			display: block;
-		}		
+		}
 	}
 }

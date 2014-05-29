@@ -4,15 +4,15 @@
 /**
  * Use an explicit font stack to ensure browsers render correct `line-height`.
  */
-pre{
-    overflow:auto;
+pre {
+	overflow: auto;
 }
-    pre mark{
-        background:none;
-        border-bottom:1px solid;
-        color:inherit;
-    }
 
+pre mark {
+	background: none;
+	border-bottom: 1px solid;
+	color: inherit;
+}
 
 /**
  * Add comments to your code examples, e.g.:
@@ -20,14 +20,13 @@ pre{
    <code>&lt;/div&gt;<span class=code-comment>&lt;!-- /wrapper --&gt;</span></code>
  *
  */
-.code-comment{
-    /**
-     * Override this setting in your theme stylesheet
-     */
-    opacity:0.75;
-    filter:alpha(opacity=75);
+.code-comment {
+	/**
+	 * Override this setting in your theme stylesheet
+	 */
+	opacity: 0.75;
+	filter: alpha(opacity=75);
 }
-
 
 /**
  * You can add line numbers to your code examples but be warned, it requires
@@ -51,13 +50,14 @@ pre{
  * 3. Make sure lines of code don’t wrap.
  * 4. Give the code form by forcing the `code` to honour white-space.
  */
-.line-numbers{
-    font-family:monospace, serif;           /* [1] */
-    list-style:decimal-leading-zero inside; /* [2] */
-    white-space:nowrap;                     /* [3] */
-    overflow:auto;                          /* [3] */
-    margin-left:0;
+.line-numbers {
+	font-family: monospace, serif; /* [1] */
+	list-style: decimal-leading-zero inside; /* [2] */
+	white-space: nowrap; /* [3] */
+	overflow: auto; /* [3] */
+	margin-left: 0;
 }
-    .line-numbers code{
-        white-space:pre;                    /* [4] */
-    }
+
+.line-numbers code {
+	white-space: pre; /* [4] */
+}

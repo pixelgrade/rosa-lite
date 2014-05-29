@@ -5,20 +5,20 @@
 
 /*==========  $SEPARATORS  ==========*/
 
-.separator{
-  height: 1px;
-  margin: $_175u 0;
+.separator {
+	height: 1px;
+	margin: $_175u 0;
 
-  border: 0;
-  border-bottom: 1px solid $borders;
+	border: 0;
+	border-bottom: 1px solid $borders;
 
-  &.separator_color--dark{
-    border-color: $dark;
-  }
+	&.separator_color--dark {
+		border-color: $dark;
+	}
 
-  &.separator_color--color{
-    border-color: $accent;
-  }
+	&.separator_color--color {
+		border-color: $accent;
+	}
 }
 
 //.separator--section, %separator--section {
@@ -73,100 +73,100 @@
     $STYLISH SEPARATORS
 \*------------------------------------*/
 
-.separator--flower, .separator--line-flower{
-  display: block;
-  height: auto;
-  border: 0;
+.separator--flower, .separator--line-flower {
+	display: block;
+	height: auto;
+	border: 0;
 
-  font-size: 18px;
-  line-height: 1;
-  text-align: center;
+	font-size: 18px;
+	line-height: 1;
+	text-align: center;
 
-  color: $accent;
+	color: $accent;
 }
 
-.separator--line-flower{
-  position: relative;
-  margin: $_u2 0;
+.separator--line-flower {
+	position: relative;
+	margin: $_u2 0;
 
-  &:before, &:after{
-    content: "";
+	&:before, &:after {
+		content: "";
 
-    position: absolute;
-    top: 50%;
+		position: absolute;
+		top: 50%;
 
-    width: 45%;
+		width: 45%;
 
-    border: 1px solid white;
+		border: 1px solid white;
 
-    @include transform(translateY(-50%));
-  }
+		@include transform(translateY(-50%));
+	}
 
-  &.separator_color--dark{
-    &:before, &:after{
-      border-color: $dark;
-    }
-  }
+	&.separator_color--dark {
+		&:before, &:after {
+			border-color: $dark;
+		}
+	}
 
-  &:before{
-    left: 0;
-  }
+	&:before {
+		left: 0;
+	}
 
-  &:after{
-    right: 0;
-  }
+	&:after {
+		right: 0;
+	}
 
-  .arrows{
-    &:before, &:after{
-      content: "";
+	.arrows {
+		&:before, &:after {
+			content: "";
 
-      position: absolute;
-      top: 50%;
+			position: absolute;
+			top: 50%;
 
-      width: 0;
-      height: 0;
+			width: 0;
+			height: 0;
 
-      border: 5px solid transparent;
+			border: 5px solid transparent;
 
-      @include transform(translateY(-50%));
-    }
+			@include transform(translateY(-50%));
+		}
 
-    &:before{
-      left: 0;
+		&:before {
+			left: 0;
 
-      border-left: 7px solid white;
-    }
+			border-left: 7px solid white;
+		}
 
-    &:after{
-      right: 0;
+		&:after {
+			right: 0;
 
-      border-right: 7px solid white;
-    }
-  }
+			border-right: 7px solid white;
+		}
+	}
 
-  &.separator_color--dark .arrows{
-    &:before{
-      border-left: 7px solid $dark;
-    }
-    &:after{
-      border-right: 7px solid $dark;
-    }
-  }
+	&.separator_color--dark .arrows {
+		&:before {
+			border-left: 7px solid $dark;
+		}
+		&:after {
+			border-right: 7px solid $dark;
+		}
+	}
 }
 
-.separator--flower{
-  margin: $_u 0;
+.separator--flower {
+	margin: $_u 0;
 
-  font-size: 20px;
-  font-family: Serif;
+	font-size: 20px;
+	font-family: Serif;
 
-  color: $light;
+	color: $light;
 
-  &.separator_color--dark{
-    color: $dark;
-  }
+	&.separator_color--dark {
+		color: $dark;
+	}
 
-  &.separator_color--color{
-    color: $accent;
-  }
+	&.separator_color--color {
+		color: $accent;
+	}
 }

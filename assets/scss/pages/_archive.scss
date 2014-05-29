@@ -1,136 +1,144 @@
 /*------------------------------------*\
     $ARCHIVE
 \*------------------------------------*/
-.archive { position: relative; }
+.archive {
+	position: relative;
+}
 
-.archive__title{ margin-top: 0; }
+.archive__title {
+	margin-top: 0;
+}
 
-.article--archive{
-  @extend .cf;
+.article--archive {
+	@extend .cf;
 
-  margin-bottom: $_3u;
-  text-align: center;
+	margin-bottom: $_3u;
+	text-align: center;
 
-  @include media-query(lap-and-up) {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-direction: normal;
-    -moz-box-direction: normal;
-    -webkit-box-orient: horizontal;
-    -moz-box-orient: horizontal;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-flex-wrap: nowrap;
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-    -webkit-box-pack: start;
-    -moz-box-pack: start;
-    -webkit-justify-content: flex-start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    -webkit-align-content: stretch;
-    -ms-flex-line-pack: stretch;
-    align-content: stretch;
-    -webkit-box-align: start;
-    -moz-box-align: start;
-    -webkit-align-items: flex-start;
-    -ms-flex-align: start;
-    align-items: flex-start;
+	@include media-query(lap-and-up) {
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-direction: normal;
+		-moz-box-direction: normal;
+		-webkit-box-orient: horizontal;
+		-moz-box-orient: horizontal;
+		-webkit-flex-direction: row;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		-webkit-flex-wrap: nowrap;
+		-ms-flex-wrap: nowrap;
+		flex-wrap: nowrap;
+		-webkit-box-pack: start;
+		-moz-box-pack: start;
+		-webkit-justify-content: flex-start;
+		-ms-flex-pack: start;
+		justify-content: flex-start;
+		-webkit-align-content: stretch;
+		-ms-flex-line-pack: stretch;
+		align-content: stretch;
+		-webkit-box-align: start;
+		-moz-box-align: start;
+		-webkit-align-items: flex-start;
+		-ms-flex-align: start;
+		align-items: flex-start;
 
-    .article__featured-image, .article__body{
-      -webkit-box-ordinal-group: 1;
-      -moz-box-ordinal-group: 1;
-      -webkit-order: 0;
-      -ms-flex-order: 0;
-      order: 0;
-    }
+		.article__featured-image, .article__body {
+			-webkit-box-ordinal-group: 1;
+			-moz-box-ordinal-group: 1;
+			-webkit-order: 0;
+			-ms-flex-order: 0;
+			order: 0;
+		}
 
-    .article__featured-image{
-      -webkit-box-flex: 7;
-      -moz-box-flex: 7;
-      -webkit-flex: 7 1 auto;
-      -ms-flex: 7 1 auto;
-      flex: 7 1 auto;
-      -webkit-align-self: stretch;
-      -ms-flex-item-align: stretch;
-      align-self: stretch;
-    }
+		.article__featured-image {
+			-webkit-box-flex: 7;
+			-moz-box-flex: 7;
+			-webkit-flex: 7 1 auto;
+			-ms-flex: 7 1 auto;
+			flex: 7 1 auto;
+			-webkit-align-self: stretch;
+			-ms-flex-item-align: stretch;
+			align-self: stretch;
+		}
 
-    .article__body{
-      -webkit-box-flex: 5;
-      -moz-box-flex: 5;
-      -webkit-flex: 5 1 auto;
-      -ms-flex: 5 1 auto;
-      flex: 5 1 auto;
-      -webkit-align-self: center;
-      -ms-flex-item-align: center;
-      align-self: center;
-    }
+		.article__body {
+			-webkit-box-flex: 5;
+			-moz-box-flex: 5;
+			-webkit-flex: 5 1 auto;
+			-ms-flex: 5 1 auto;
+			flex: 5 1 auto;
+			-webkit-align-self: center;
+			-ms-flex-item-align: center;
+			align-self: center;
+		}
 
-    &:nth-child(n){
-      .article__featured-image{
-        -webkit-box-ordinal-group: 2;
-        -moz-box-ordinal-group: 2;
-        -webkit-order: 1;
-        -ms-flex-order: 1;
-        order: 1;
-      }
+		&:nth-child(n) {
+			.article__featured-image {
+				-webkit-box-ordinal-group: 2;
+				-moz-box-ordinal-group: 2;
+				-webkit-order: 1;
+				-ms-flex-order: 1;
+				order: 1;
+			}
 
-      .article__body{
-        -webkit-box-ordinal-group: 1;
-        -moz-box-ordinal-group: 1;
-        -webkit-order: 0;
-        -ms-flex-order: 0;
-        order: 0;
-      }
-    }
+			.article__body {
+				-webkit-box-ordinal-group: 1;
+				-moz-box-ordinal-group: 1;
+				-webkit-order: 0;
+				-ms-flex-order: 0;
+				order: 0;
+			}
+		}
 
-    &:nth-child(2n+1){
-      .article__body{
-        -webkit-box-ordinal-group: 2;
-        -moz-box-ordinal-group: 2;
-        -webkit-order: 1;
-        -ms-flex-order: 1;
-        order: 1;
-      }
+		&:nth-child(2n+1) {
+			.article__body {
+				-webkit-box-ordinal-group: 2;
+				-moz-box-ordinal-group: 2;
+				-webkit-order: 1;
+				-ms-flex-order: 1;
+				order: 1;
+			}
 
-      .article__featured-image{
-        -webkit-box-ordinal-group: 1;
-        -moz-box-ordinal-group: 1;
-        -webkit-order: 0;
-        -ms-flex-order: 0;
-        order: 0;
-      }
-    }
+			.article__featured-image {
+				-webkit-box-ordinal-group: 1;
+				-moz-box-ordinal-group: 1;
+				-webkit-order: 0;
+				-ms-flex-order: 0;
+				order: 0;
+			}
+		}
 
-    &.no-thumbnail{
-      display: block;
+		&.no-thumbnail {
+			display: block;
 
-      .article__body{
-        width: 100%;
-        display: block;
-      }
-    }
-  }
+			.article__body {
+				width: 100%;
+				display: block;
+			}
+		}
+	}
 
-  h2.article__title{ margin: 0; }
+	h2.article__title {
+		margin: 0;
+	}
 
-  .article__content{
-    display: block;
-    margin-bottom: $_u;
-  }
+	.article__content {
+		display: block;
+		margin-bottom: $_u;
+	}
 
-  .article__body{ padding: 0 $_2u; }
+	.article__body {
+		padding: 0 $_2u;
+	}
 
-  .article__featured-image img{
-    display: block;
-    width: 100%;
-    height: auto;
-  }
+	.article__featured-image img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
 }
 
 //.article--archive:nth-child(2n){
@@ -148,28 +156,32 @@
 //  }
 //}
 
-.article__date{
-  margin-bottom: 0;
-  @include font-size(13px);
-  text-transform: uppercase;
-  color: $gray;
+.article__date {
+	margin-bottom: 0;
+	@include font-size(13px);
+	text-transform: uppercase;
+	color: $gray;
 
-  .date__dot{
-    padding: $_u4;
+	.date__dot {
+		padding: $_u4;
 
-    &:after{
-      content: "\2022";
-      color: $lightest;
-    }
-  }
+		&:after {
+			content: "\2022";
+			color: $lightest;
+		}
+	}
 
-  .date__box:last-child:after{ content: none; }
+	.date__box:last-child:after {
+		content: none;
+	}
 }
 
-.read-more-button{ @extend .btn--text; }
+.read-more-button {
+	@extend .btn--text;
+}
 
-.archive-filter{
-  position: absolute;
-  top: 0;
-  right: 0;
+.archive-filter {
+	position: absolute;
+	top: 0;
+	right: 0;
 }

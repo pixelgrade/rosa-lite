@@ -5,9 +5,9 @@
  */
 
 /**
- * @package    wpgrade
- * @category   core
- * @author     Pixel Grade Team
+ * @package        wpgrade
+ * @category       core
+ * @author         Pixel Grade Team
  * @copyright  (c) 2013, Pixel Grade Media
  */
 class WPGradeOptionDriver_Redux extends WPGradeOptionDriver {
@@ -20,19 +20,18 @@ class WPGradeOptionDriver_Redux extends WPGradeOptionDriver {
 	/**
 	 * ...
 	 */
-	function __construct($redux_options_instance) {
+	function __construct( $redux_options_instance ) {
 		$this->redux = $redux_options_instance;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	function get($key, $default = null) {
-		$value = $this->redux->get($key, null);
-		if ($value !== null) {
+	function get( $key, $default = null ) {
+		$value = $this->redux->get( $key, null );
+		if ( $value !== null ) {
 			return $value;
-		}
-		else { // null, assuming key is not set
+		} else { // null, assuming key is not set
 			return $default;
 		}
 	}
@@ -40,16 +39,17 @@ class WPGradeOptionDriver_Redux extends WPGradeOptionDriver {
 	/**
 	 * @return static $this
 	 */
-	function set($key, $value) {
-		$this->redux->set($key, $value);
+	function set( $key, $value ) {
+		$this->redux->set( $key, $value );
+
 		return $this;
 	}
 
-	function get_args(){
+	function get_args() {
 		return $this->redux->args;
 	}
 
-	function get_sections(){
+	function get_sections() {
 		return $this->redux->sections;
 	}
 

@@ -6,10 +6,10 @@
  * Extend the clearfix class with Sass to avoid the `.cf` class appearing over
  * and over in your markup.
  */
-.cf{
-    &:after{
-        content:"";
-        display:table;
-        clear:both;
-    }
+.cf {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
 }

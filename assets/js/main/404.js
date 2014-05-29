@@ -11,21 +11,21 @@ var gifImages = [
 
 ]
 
-function getGif(){
-	return gifImages[Math.floor(Math.random()*gifImages.length)];
+function getGif() {
+	return gifImages[Math.floor(Math.random() * gifImages.length)];
 }
 
-function changeBackground(){
-	$('.error404').css('background-image', 'url('+getGif()+')');
+function changeBackground() {
+	$('.error404').css('background-image', 'url(' + getGif() + ')');
 }
 
 
-if($('.error404').length){
+if ($('.error404').length) {
 	changeBackground();
 }
 
-$(window).keydown(function(e){
-	if(e.keyCode == 32){
+$(window).keydown(function (e) {
+	if (e.keyCode == 32) {
 		changeBackground();
 	}
 })

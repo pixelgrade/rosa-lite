@@ -1,7 +1,7 @@
 <?php
 /**
  * The template for displaying the subpages.
- *
+
  */
 
 global $post, $wpgrade_private_post;
@@ -11,7 +11,7 @@ $base_args = array(
 );
 
 //test if the current page has child pages
-if (rosa::page_has_children()) {
+if ( rosa::page_has_children() ) {
 	//get only the next level pages
 	$args = array(
 		'child_of' => $post->ID,
@@ -47,14 +47,14 @@ if (rosa::page_has_children()) {
 						</div>
 					</div>
 				</header>
-				<?php if ($page->post_cotent != ""): ?>
-				<section class="article__content">
-					<div class="container">
-						<section class="page__content  js-post-gallery  cf">
-							<?php the_content(); ?>
-						</section>
-					</div>
-				</section>
+				<?php if ( $page->post_cotent != "" ): ?>
+					<section class="article__content">
+						<div class="container">
+							<section class="page__content  js-post-gallery  cf">
+								<?php the_content(); ?>
+							</section>
+						</div>
+					</section>
 				<?php endif; ?>
 			</article>
 		<?php

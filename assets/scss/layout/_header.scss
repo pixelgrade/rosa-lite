@@ -1,50 +1,46 @@
 /*--------------------------------*\
                HEADER
 \*--------------------------------*/
-.site-header{
-  @extend .cf;
+.site-header {
+	@extend .cf;
 }
 
-.site-header__wrapper{
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
+.site-header__wrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
 
-  @include media-query(palm) {
-    position: static;
-  }
+	@include media-query(palm) {
+		position: static;
+	}
 
-  .header--inversed &{
-    background: white;
-  }
+	.header--inversed & {
+		background: white;
+	}
 }
-
-
-
-
 
 /*----------------------------------------*\
     $TITLE/LOGO
 \*----------------------------------------*/
 .site-title {
-  @extend .flexbox;
+	@extend .flexbox;
 
-  height: $_3u;
-  margin: 0;
+	height: $_3u;
+	margin: 0;
 }
 
 .site-logo {
-  @extend .flexbox__item;
+	@extend .flexbox__item;
 
-  width:100%;
-  img {
-      display:block;
-      max-height: 100%;
+	width: 100%;
+	img {
+		display: block;
+		max-height: 100%;
 
-    .header--inversed &{
-        -webkit-filter: invert(100%);
-    }
-  }
+		.header--inversed & {
+			-webkit-filter: invert(100%);
+		}
+	}
 }

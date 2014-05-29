@@ -10,13 +10,14 @@
 .redux-main .redux-container-background .background-size select,
 .redux-main .redux-container-background .background-repeat,
 .redux-main .redux-container-background .background-repeat select {
-  width: 200px !important;
-  margin-right: 10px;
-  margin-bottom: 7px;
+	width: 200px !important;
+	margin-right: 10px;
+	margin-bottom: 7px;
 }
+
 .redux-main .redux-container-background .background-preview {
-  display: block;
-  width: 100%;
-  margin: 5px 0 10px;
-  border: 1px dotted lightgray;
+	display: block;
+	width: 100%;
+	margin: 5px 0 10px;
+	border: 1px dotted lightgray;
 }

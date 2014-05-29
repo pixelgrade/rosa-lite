@@ -5,9 +5,9 @@
  */
 
 /**
- * @package    wpgrade
- * @category   core
- * @author     Pixel Grade Team
+ * @package        wpgrade
+ * @category       core
+ * @author         Pixel Grade Team
  * @copyright  (c) 2013, Pixel Grade Media
  */
 class WPGradeOptionDriver_Config extends WPGradeOptionDriver {
@@ -20,18 +20,17 @@ class WPGradeOptionDriver_Config extends WPGradeOptionDriver {
 	/**
 	 * ...
 	 */
-	function __construct($config) {
+	function __construct( $config ) {
 		$this->config = $config;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	function get($key, $default = null) {
-		if (isset($this->config[$key])) {
-			return $this->config[$key];
-		}
-		else { // no value
+	function get( $key, $default = null ) {
+		if ( isset( $this->config[ $key ] ) ) {
+			return $this->config[ $key ];
+		} else { // no value
 			return $default;
 		}
 	}
@@ -39,9 +38,9 @@ class WPGradeOptionDriver_Config extends WPGradeOptionDriver {
 	/**
 	 * @return static $this
 	 */
-	function set($key, $value)
-	{
-		$this->config[$key] = $value;
+	function set( $key, $value ) {
+		$this->config[ $key ] = $value;
+
 		return $this;
 	}
 

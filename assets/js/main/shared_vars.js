@@ -24,20 +24,20 @@ var transform;
 
 // setting up transform prefixes
 var prefixes = {
-    webkit: 'webkitTransform',
-    firefox: 'MozTransform',
-    ie: 'msTransform',
-    w3c: 'transform'
+	webkit: 'webkitTransform',
+	firefox: 'MozTransform',
+	ie: 'msTransform',
+	w3c: 'transform'
 };
 
 if (useTransform) {
-    if (is_webkit) {
-        transform = prefixes.webkit;
-    } else if (is_firefox) {
-        transform = prefixes.firefox;
-    } else if (is_newer_ie) {
-        transform = prefixes.ie;
-    }
+	if (is_webkit) {
+		transform = prefixes.webkit;
+	} else if (is_firefox) {
+		transform = prefixes.firefox;
+	} else if (is_newer_ie) {
+		transform = prefixes.ie;
+	}
 }
 
 /* --- To enable verbose debug add to Theme Options > Custom Code footer -> globalDebug=true; --- */

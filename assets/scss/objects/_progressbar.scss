@@ -3,28 +3,28 @@
 \*-------------------------------------*/
 
 .progressbar {
-    @extend .cf;
-    @include rem(height, $_u2);
-    background-color: $dark;
-    position: relative;
+	@extend .cf;
+	@include rem(height, $_u2);
+	background-color: $dark;
+	position: relative;
 
-    &:after {
-        content: "";
-        display: block;
-        position: absolute;
-        width: 0;
-        height: 0;
-        bottom: 0;
-        right: -1px;
-        border: 0 solid transparent;
-        @include rem(border-width, 3px $_u4);
-        border-bottom-color: white;
-        border-right-color: white;
-    }
+	&:after {
+		content: "";
+		display: block;
+		position: absolute;
+		width: 0;
+		height: 0;
+		bottom: 0;
+		right: -1px;
+		border: 0 solid transparent;
+		@include rem(border-width, 3px $_u4);
+		border-bottom-color: white;
+		border-right-color: white;
+	}
 }
 
 .progressbar__progress {
-    float: left;
-    @include rem(height, $_u2);
-    background-color: $accent;
+	float: left;
+	@include rem(height, $_u2);
+	background-color: $accent;
 }

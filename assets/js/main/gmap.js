@@ -9,10 +9,10 @@ function gmapInit() {
 		var gmap_markercontent = $('#gmap').data('markercontent');
 
 		// Overwrite Math.log to accept a second optional parameter as base for logarhitm
-		Math.log = (function() {
+		Math.log = (function () {
 			var log = Math.log;
-			return function(n, base) {
-				return log(n)/(base ? log(base) : 1);
+			return function (n, base) {
+				return log(n) / (base ? log(base) : 1);
 			};
 		})();
 
@@ -22,7 +22,7 @@ function gmapInit() {
 				return sURLVariables;
 			}
 			sURLVariables = sURLVariables.split('&');
-			for (var i = 0; i < sURLVariables.length; i++)  {
+			for (var i = 0; i < sURLVariables.length; i++) {
 				var sParameterName = sURLVariables[i].split('=');
 				if (sParameterName[0] == needed_param) {
 					return sParameterName[1];
@@ -42,7 +42,7 @@ function gmapInit() {
 			// if gmap_variables is still undefined that means the url was pasted from the new version of google maps
 			if (typeof gmap_variables === "undefined") {
 
-				if(gmap_link.split('!3d') != gmap_link){
+				if (gmap_link.split('!3d') != gmap_link) {
 					//new google maps old link type
 
 					var split, lt, ln, dist, z;
@@ -52,7 +52,7 @@ function gmapInit() {
 					ln = split[1];
 					split = split[0].split('!1d');
 					dist = split[1];
-					gmap_zoom = 21 - Math.round(Math.log(Math.round(dist/218), 2));
+					gmap_zoom = 21 - Math.round(Math.log(Math.round(dist / 218), 2));
 					gmap_coordinates = [lt, ln];
 
 				} else {
@@ -69,14 +69,13 @@ function gmapInit() {
 					var longitude = gmap_link_l[1];
 					var zoom = gmap_link_l[2];
 
-					if(zoom.indexOf('z') >= 0)
-						zoom = zoom.substring(0, zoom.length-1);
+					if (zoom.indexOf('z') >= 0)
+						zoom = zoom.substring(0, zoom.length - 1);
 
 					gmap_coordinates[0] = latitude;
 					gmap_coordinates[1] = longitude;
 					gmap_zoom = zoom;
 				}
-
 
 
 			} else {
@@ -89,8 +88,8 @@ function gmapInit() {
 		}
 
 		$("#gmap").gmap3({
-			map:{
-				options:{
+			map: {
+				options: {
 					center: new google.maps.LatLng(gmap_coordinates[0], gmap_coordinates[1]),
 					zoom: parseInt(gmap_zoom),
 					mapTypeId: gmap_style,
@@ -98,23 +97,23 @@ function gmapInit() {
 					scrollwheel: false
 				}
 			},
-			overlay:{
+			overlay: {
 				latLng: new google.maps.LatLng(gmap_coordinates[0], gmap_coordinates[1]),
-				options:{
-					content:  '<div class="pin_wrapper">' +
-						gmap_markercontent +
-						'</div>'
+				options: {
+					content: '<div class="pin_wrapper">' +
+					gmap_markercontent +
+					'</div>'
 				}
 			},
-			styledmaptype:{
+			styledmaptype: {
 				id: "style1",
-				options:{
+				options: {
 					name: "Style 1"
 				},
 				styles: [
 					{
 						stylers: [
-							{ saturation: -100 }
+							{saturation: -100}
 						]
 					}
 				]
