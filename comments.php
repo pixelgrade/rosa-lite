@@ -8,9 +8,7 @@
  * @package wpGrade
  * @since   wpGrade 1.0
  */
-?>
 
-<?php
 /*
  * If the current post is protected by a password and
  * the visitor has not yet entered the password we will
@@ -18,12 +16,9 @@
  */
 if ( post_password_required() ) {
 	return;
-}
-?>
+} ?>
 
-	<div id="comments" class="comments-area  <?php if ( ! have_comments() ) {
-		echo 'no-comments';
-	} ?>">
+	<div id="comments" class="comments-area  <?php if ( ! have_comments() ) { echo 'no-comments'; } ?>">
 		<div class="comments-area-title">
 			<h3 class="comments-title">
 				<?php
@@ -36,12 +31,10 @@ if ( post_password_required() ) {
 			</h3>
 			<?php echo '<a class="comments_add-comment" href="#reply-title">' . __( 'Add yours', wpgrade::textdomain() ) . '</a>'; ?>
 		</div>
-
-		<?php // You can start editing here -- including this comment! ?>
-
-		<?php if ( have_comments() ) : ?>
-
-			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
+		<?php
+		// You can start editing here -- including this comment!
+		if ( have_comments() ) :
+			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 				<nav role="navigation" id="comment-nav-above" class="site-navigation comment-navigation">
 					<h3 class="assistive-text"><?php _e( 'Comment navigation', wpgrade::textdomain() ); ?></h3>
 
@@ -58,8 +51,7 @@ if ( post_password_required() ) {
 				 * define wpgrade_comment() and that will be used instead.
 				 * See wpgrade_comment() in inc/template-tags.php for more.
 				 */
-				wp_list_comments( array( 'callback' => 'wpgrade_comments', 'short_ping' => true ) );
-				?>
+				wp_list_comments( array( 'callback' => 'wpgrade_comments', 'short_ping' => true ) ); ?>
 			</ol><!-- .commentlist -->
 
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
@@ -127,4 +119,4 @@ if ( ! have_comments() ) {
 	$comments_args['title_reply'] = '';
 }
 
-comment_form( $comments_args ); ?>
+comment_form( $comments_args );
