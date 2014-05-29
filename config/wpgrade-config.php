@@ -1,4 +1,8 @@
-<?php return array(
+<?php
+
+
+
+return array(
 	# Commented values are optional properties. Many properties are
 	# automatically deduced from others (eg. textdomain is deduced from
 	# name, unless a custom value is provided)
