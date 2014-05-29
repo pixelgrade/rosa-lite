@@ -546,6 +546,14 @@ class rosa
 
 	}
 
+	static function page_has_children() {
+		global $post;
+
+		$pages = get_pages('child_of=' . $post->ID);
+
+		return count($pages);
+	}
+
 }
 
 function custom_warning_handler($errno, $errstr) {

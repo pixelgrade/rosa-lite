@@ -41,9 +41,9 @@ wpgrade::resolve('redux-instance', $redux);
 function wpgrade_add_admin_custom_style() {
 
 	wp_enqueue_style(
-		'redux-custom-css',
+		'redux-theme-custom-css',
 		wpgrade::resourceuri('css/admin/admin-panel.css'),
-		array(), // Be sure to include redux-css so it's appended after the core css is applied
+		array(),
 		time(),
 		'all'
 	);
@@ -51,9 +51,9 @@ function wpgrade_add_admin_custom_style() {
 	wp_enqueue_script('wp-ajax-response');
 
 	wp_enqueue_script(
-		'redux-custom-js',
+		'redux-theme-custom-js',
 		wpgrade::resourceuri('js/admin/admin-panel.js'),
-		array('jquery' ), // Be sure to include redux-css so it's appended after the core css is applied
+		array(),
 		time(),
 		true
 	);

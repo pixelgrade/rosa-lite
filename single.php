@@ -19,8 +19,6 @@ if ( post_password_required() && !$wpgrade_private_post['allowed'] ) {
 		$has_sidebar = true;
 	}
 
-    // get_template_part('templates/post/single-content/'. $single_layout . $with_sidebar);
-
 	//post thumb specific
 	$has_thumb = has_post_thumbnail();
 

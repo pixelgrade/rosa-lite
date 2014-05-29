@@ -24,7 +24,9 @@ if ( post_password_required() && !$wpgrade_private_post['allowed'] ) {
                 <?php if (has_post_thumbnail()):
                     $image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full-size');
                     if (!empty($image[0])): ?>
-                        <img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
+                        <div class="article__parallax">
+                            <img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
+                        </div>
                     <?php endif;
                 endif;?>
                 <div class="flexbox">
@@ -60,16 +62,16 @@ if ( post_password_required() && !$wpgrade_private_post['allowed'] ) {
                     <?php endif; ?>
                 </div>
             </section>
-                <?php
-                    //comments
-                    if ( comments_open() || '0' != get_comments_number() ): ?>
-                    <div class="container">
-                        <?php comments_template(); ?>
-                    </div>
-                <?php endif; ?>
         </article>
+	<?php get_template_part('templates/subpages'); ?>
+	<?php
+	//comments
+	if ( comments_open() || '0' != get_comments_number() ): ?>
+		<div class="container">
+			<?php comments_template(); ?>
+		</div>
+	<?php endif; ?>
     </section>
-
 <?php } // close if password protection
 
 get_footer();
