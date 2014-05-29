@@ -11,6 +11,14 @@
 
   border: 0;
   border-bottom: 1px solid $borders;
+
+  &.separator_color--dark{
+    border-color: $dark;
+  }
+
+  &.separator_color--color{
+    border-color: $accent;
+  }
 }
 
 //.separator--section, %separator--section {
@@ -65,18 +73,20 @@
     $STYLISH SEPARATORS
 \*------------------------------------*/
 
-.separator-stylish{
+.separator--flower, .separator--line-flower{
   display: block;
+  height: auto;
+  border: 0;
 
   font-size: 18px;
   line-height: 1;
+  text-align: center;
 
   color: $accent;
 }
 
-.separator-stylish--1{
+.separator--line-flower{
   position: relative;
-
   margin: $_u2 0;
 
   &:before, &:after{
@@ -90,6 +100,12 @@
     border: 1px solid white;
 
     @include transform(translateY(-50%));
+  }
+
+  &.separator_color--dark{
+    &:before, &:after{
+      border-color: $dark;
+    }
   }
 
   &:before{
@@ -127,13 +143,30 @@
       border-right: 7px solid white;
     }
   }
+
+  &.separator_color--dark .arrows{
+    &:before{
+      border-left: 7px solid $dark;
+    }
+    &:after{
+      border-right: 7px solid $dark;
+    }
+  }
 }
 
-.separator-stylish--2{
+.separator--flower{
   margin: $_u 0;
 
   font-size: 20px;
   font-family: Serif;
 
   color: $light;
+
+  &.separator_color--dark{
+    color: $dark;
+  }
+
+  &.separator_color--color{
+    color: $accent;
+  }
 }
