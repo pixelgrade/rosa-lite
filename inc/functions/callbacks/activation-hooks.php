@@ -198,6 +198,42 @@ function wpgrade_callback_geting_active() {
 				),
 			)
 		),
+		//for the Page Fancy Header Covers
+		wpgrade::shortname() . '_page_cover'       => array(
+			'id'         => wpgrade::shortname() . '_page_cover',
+			'title'      => __( 'Header Image Cover Text', wpgrade::textdomain() ),
+			'pages'      => array( 'page' ), // Post type
+			'context'    => 'normal',
+			'priority'   => 'high',
+			'show_names' => true, // Show field names on the left
+			'fields'     => array(
+				array(
+					'name'    => __( 'Subtitle', wpgrade::textdomain() ),
+					'desc'    => __( "This is optional. Leave empty to remove the subtitle.", wpgrade::textdomain() ),
+					'id'      => wpgrade::prefix() . 'page_cover_subtitle',
+					'type'    => 'textarea_small',
+				),
+				array(
+					'name'    => __( 'Title', wpgrade::textdomain() ),
+					'desc'    => __( "If left empty we will use the page title. Put a space if you don't want a cover text.", wpgrade::textdomain() ),
+					'id'      => wpgrade::prefix() . 'page_cover_title',
+					'type'    => 'textarea_small',
+				),
+				array(
+					'name'    => __( 'Description', wpgrade::textdomain() ),
+					'desc'    => __( "This is optional. Leave empty to remove the description. You can use shortcodes (like the Separator) or even images to further embellish this.", wpgrade::textdomain() ),
+					'id'      => wpgrade::prefix() . 'page_cover_description',
+					'type'    => 'wysiwyg',
+					'options' => array(
+						'media_buttons' => true,
+						'textarea_rows' => 3,
+						'teeny'         => false,
+						'tinymce'       => true,
+						'quicktags'     => true,
+					),
+				),
+			),
+		),
 		//for the Contact Page template
 		wpgrade::shortname() . '_homepage_chooser' => array(
 			'id'         => wpgrade::shortname() . '_homepage_chooser',
@@ -206,7 +242,7 @@ function wpgrade_callback_geting_active() {
 			'context'    => 'normal',
 			'priority'   => 'high',
 			'hidden'     => true,
-			'show_on'    => array( 'key' => 'page_template', 'value' => array( 'contact-page.php' ), ),
+			'show_on'    => array( 'key' => 'page_template', 'value' => array( 'page-templates/contact-page.php' ), ),
 			'show_names' => true, // Show field names on the left
 			'fields'     => array(
 				array(
@@ -233,7 +269,7 @@ function wpgrade_callback_geting_active() {
 						'textarea_rows' => 3,
 					),
 				),
-			)
+			),
 		),
 	);
 
