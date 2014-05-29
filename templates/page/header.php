@@ -15,7 +15,7 @@ $description = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::pr
 $description = apply_filters( 'the_content', $description );
 $description = str_replace( ']]>', ']]&gt;', $description );
 ?>
-<header class="article__header">
+<header class="article__header full down-arrow">
 	<?php
 	//get the Google Maps URL to test if empty
 	$gmap_url = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_url', true );

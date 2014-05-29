@@ -124,43 +124,6 @@ function containerPlacement(){
 	$('.js-container').css('padding-top', $('.js-sticky').height() + 'px');
 }
 
-//function stickyHeader(){
-//
-//	var sticky = $('.js-sticky'),
-//		header = $('.site-header__wrapper'),
-//		offset = sticky.offset(),
-//		stickyHeight = sticky.height();
-//
-//	$(window).scroll(function() {
-//	    if ( $(window).scrollTop() > offset.top + 150){
-//	    	if(!$('body').hasClass('header--small')){
-//	    		$('body').addClass('header--small');
-//	    	}
-//	    } else {
-//	        $('body').removeClass('header--small');
-//	    }
-//	});
-//
-//	if($('body').hasClass('nav-scroll-hide')){
-//		header.hoverIntent({
-//			interval: 100,
-//			timeout: 300,
-//			over: function(){
-//				header.addClass('header--active');
-//				setTimeout(function(){
-//					header.addClass('visible');
-//				}, 200);
-//			},
-//			out: function(){
-//				header.removeClass('visible');
-//				header.removeClass('header--active');
-//				setTimeout(function(){
-//				}, 200);
-//			}
-//		});
-//	}
-//}
-
 
 /* ====== INTERNAL FUNCTIONS END ====== */
 
@@ -305,9 +268,11 @@ $(document).ready(function(){
 /* ====== ON WINDOW LOAD ====== */
 
 $(window).load(function(){
+
 	if (globalDebug) {console.group("OnWindowLoad");}
 
-	parallaxInit();
+	stickyHeaderInit();
+    parallaxInit();
 
 	$('.pixcode--tabs').organicTabs();
 
@@ -317,6 +282,7 @@ $(window).load(function(){
 /* ====== ON RESIZE ====== */
 
 $(window).on("debouncedresize", function(e){
+
 	if (globalDebug) {console.group("OnResize");}
 
 	niceScrollInit();

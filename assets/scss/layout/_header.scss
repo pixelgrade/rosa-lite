@@ -16,6 +16,10 @@
 	&.header--inversed {
 		background: white;
 	}
+
+	.admin-bar & {
+		top: 32px;
+	}
 }
 
 /*----------------------------------------*\
