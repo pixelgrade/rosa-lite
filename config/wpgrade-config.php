@@ -241,4 +241,29 @@
 		//					)
 	),
 
+	/**
+	 * ACTIVATION SETTINGS
+	 * These settings will be needed when the theme will get active
+	 * Careful with the first setup, most of them will go in the clients database and they will be stored there
+	 */
+
+	'pixlikes-settings' => array(
+		'show_on_post'         => false,
+		'show_on_page'         => false,
+		'show_on_hompage'      => false,
+		'show_on_archive'      => false,
+		'like_action'          => 'click',
+		'hover_time'           => 1000,
+		'free_votes'           => false,
+		'load_likes_with_ajax' => false,
+	),
+
+	'pixtypes-settings' => array(
+		'metaboxes' => array(),
+		'post_types' => array(),
+		'taxonomies' => array()
+	),
+
+
+
 ); # end theme configuration

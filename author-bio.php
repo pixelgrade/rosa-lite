@@ -21,18 +21,18 @@
 					<a class="author__social-link" href="<?php echo get_the_author_meta( 'url' ) ?>" target="_blank"><i class="icon-home"></i><?php _e( 'Website', wpgrade::textdomain() ); ?>
 					</a>
 				</li>
-			<?php endif; ?>
-			<?php if ( get_the_author_meta( 'user_tw' ) ): ?>
+			<?php endif;
+			if ( get_the_author_meta( 'user_tw' ) ): ?>
 				<li class="author__social-links__list-item">
 					<a class="author__social-link" href="https://twitter.com/<?php echo get_the_author_meta( 'user_tw' ) ?>" target="_blank"><i class="icon-twitter"></i>Twitter</a>
 				</li>
-			<?php endif; ?>
-			<?php if ( get_the_author_meta( 'user_fb' ) ): ?>
+			<?php endif;
+			if ( get_the_author_meta( 'user_fb' ) ): ?>
 				<li class="author__social-links__list-item">
 					<a class="author__social-link" href="https://www.facebook.com/<?php echo get_the_author_meta( 'user_fb' ) ?>" target="_blank"><i class="icon-facebook"></i>Facebook</a>
 				</li>
-			<?php endif; ?>
-			<?php if ( get_the_author_meta( 'google_profile' ) ): ?>
+			<?php endif;
+			if ( get_the_author_meta( 'google_profile' ) ): ?>
 				<li class="author__social-links__list-item">
 					<a class="author__social-link" href="<?php echo get_the_author_meta( 'google_profile' ) ?>" target="_blank"><i class="icon-google-plus"></i>Google+</a>
 				</li>

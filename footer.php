@@ -5,8 +5,6 @@
  * @since   Rosa 1.0
  **/
 ?>
-
-
 <footer class="site-footer">
 	<a href="#" class="up-link"><?php _e( 'Top', wpgrade::textdomain() ) ?></a>
 	<aside class="sidebar  sidebar--footer">

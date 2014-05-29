@@ -63,5 +63,4 @@ if ( rosa::page_has_children() ) {
 
 	//reset to the main page
 	wp_reset_postdata();
-
 }

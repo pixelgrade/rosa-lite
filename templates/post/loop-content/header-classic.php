@@ -14,8 +14,7 @@ if ( wpgrade::option( 'blog_custom_date_separator' ) ) {
 	$date = str_replace( '  ', ' ', $date );
 
 	$date = str_replace( ' ', '<span class="date__dot"></span>', $date );
-}
-?>
+} ?>
 
 <header>
 	<div class="article__date">

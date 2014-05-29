@@ -3,18 +3,9 @@
 function wpgrade_callback_geting_active() {
 
 	/**
-	 * make sure pixlikes has the right settings
+	 * Make sure pixlikes has the right settings
 	 */
-	$pixlikes_settings = array(
-		'show_on_post'         => false,
-		'show_on_page'         => false,
-		'show_on_hompage'      => false,
-		'show_on_archive'      => false,
-		'like_action'          => 'click',
-		'hover_time'           => 1000,
-		'free_votes'           => false,
-		'load_likes_with_ajax' => false,
-	);
+	$pixlikes_settings = wpgrade::confoption('pixlikes-settings');
 	update_option( 'pixlikes_settings', $pixlikes_settings );
 
 	/**
