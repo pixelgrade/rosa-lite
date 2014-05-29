@@ -45,31 +45,18 @@
 		-ms-flex-align: start;
 		align-items: flex-start;
 
-		.article__featured-image, .article__body {
-			-webkit-box-ordinal-group: 1;
-			-moz-box-ordinal-group: 1;
-			-webkit-order: 0;
-			-ms-flex-order: 0;
-			order: 0;
-		}
 
 		.article__featured-image {
-			-webkit-box-flex: 7;
-			-moz-box-flex: 7;
-			-webkit-flex: 7 1 auto;
-			-ms-flex: 7 1 auto;
-			flex: 7 1 auto;
+			width: 58.333%;
+
 			-webkit-align-self: stretch;
 			-ms-flex-item-align: stretch;
 			align-self: stretch;
 		}
 
 		.article__body {
-			-webkit-box-flex: 5;
-			-moz-box-flex: 5;
-			-webkit-flex: 5 1 auto;
-			-ms-flex: 5 1 auto;
-			flex: 5 1 auto;
+			width: 41.666%;
+
 			-webkit-align-self: center;
 			-ms-flex-item-align: center;
 			align-self: center;
