@@ -1,4 +1,8 @@
-<?php return array(
+<?php
+
+
+
+return array(
 	# Commented values are optional properties. Many properties are
 	# automatically deduced from others (eg. textdomain is deduced from
 	# name, unless a custom value is provided)
@@ -240,30 +244,5 @@
 		//						'next_text' => __('Next Images', 'rosa_txtd'),
 		//					)
 	),
-
-	/**
-	 * ACTIVATION SETTINGS
-	 * These settings will be needed when the theme will get active
-	 * Careful with the first setup, most of them will go in the clients database and they will be stored there
-	 */
-
-	'pixlikes-settings' => array(
-		'show_on_post'         => false,
-		'show_on_page'         => false,
-		'show_on_hompage'      => false,
-		'show_on_archive'      => false,
-		'like_action'          => 'click',
-		'hover_time'           => 1000,
-		'free_votes'           => false,
-		'load_likes_with_ajax' => false,
-	),
-
-	'pixtypes-settings' => array(
-		'metaboxes' => array(),
-		'post_types' => array(),
-		'taxonomies' => array()
-	),
-
-
 
 ); # end theme configuration
