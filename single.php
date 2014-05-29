@@ -35,10 +35,7 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 	$post_format_class = '';
 	if ( ! empty( $post_format ) ) {
 		$post_format_class = 'article--' . $post_format;
-	};
-
-	?>
-
+	}; ?>
 	<section class="container  container--single">
 		<div class="page-content  has-sidebar">
 			<?php if ( $has_sidebar ) {
@@ -50,10 +47,8 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 				<section class="article__content">
 					<?php the_content(); ?>
 				</section>
+				<?php get_template_part( 'templates/post/single-content/footer' );
 
-				<?php get_template_part( 'templates/post/single-content/footer' ); ?>
-
-				<?php
 				// If comments are open or we have at least one comment, load up the comment template
 				if ( comments_open() || '0' != get_comments_number() ) {
 					comments_template();

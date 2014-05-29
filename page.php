@@ -15,9 +15,7 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 	// password protection
 	get_template_part( 'templates/password-request-form' );
 
-} else {
-	?>
-
+} else { ?>
 	<section class="content  content--single-page">
 		<article class="article--page  article--main">
 			<header class="article__header">
@@ -63,8 +61,8 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 				</div>
 			</section>
 		</article>
-		<?php get_template_part( 'templates/subpages' ); ?>
-		<?php
+		<?php get_template_part( 'templates/subpages' );
+
 		//comments
 		if ( comments_open() || '0' != get_comments_number() ): ?>
 			<div class="container">

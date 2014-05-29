@@ -29,8 +29,7 @@ if ( rosa::page_has_children() ) {
 			// password protection
 			get_template_part( 'templates/password-request-form' );
 
-		} else {
-			?>
+		} else { ?>
 			<article class="article--page  article--main">
 				<header class="article__header">
 					<?php if ( has_post_thumbnail() ):
