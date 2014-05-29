@@ -236,15 +236,16 @@ return array(
 				),
 			),
 			//for the Contact Page template
-			wpgrade::shortname() . '_homepage_chooser' => array(
-				'id'         => wpgrade::shortname() . '_homepage_chooser',
+			wpgrade::shortname() . '_contact_page' => array(
+				'id'         => wpgrade::shortname() . '_contact_page',
 				'title'      => __( 'Configure Your Google Map', 'rosa_txtd' ),
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
 				'priority'   => 'high',
 				'hidden'     => true,
-				'show_on'    => array( 'key'   => 'page_template',
-				                       'value' => array( 'page-templates/contact-page.php' ),
+				'show_on'    => array(
+					'key' => 'page-template',
+					'value' => array( 'page-templates/contact.php' ),
 				),
 				'show_names' => true, // Show field names on the left
 				'fields'     => array(
