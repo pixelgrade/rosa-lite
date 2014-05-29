@@ -28,75 +28,73 @@
     $MULTIPAGE
 \*------------------------------------*/
 
-.article--page {
-	position: relative;
-	overflow: hidden;
+.article--page{
+  position: relative;
+  overflow: hidden;
 
-	.article__parallax {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		@include transform(translate3d(0, 0, 0));
-	}
+  .article__parallax {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    @include transform(translate3d(0,0,0));
+  }
 
-	.article__header {
-		position: relative;
-		overflow: hidden;
-		@include transform(translate3d(0, 0, 0));
-		//    z-index: -1;
+  .article__header{
+    position: relative;
+    overflow: hidden;
+    @include transform(translate3d(0,0,0));
+    background: #333;
+    //    z-index: -1;
 
-		padding: 200px 0;
-		overflow: hidden;
+    padding: 200px 0;
+    overflow: hidden;
 
-		.flexbox {
-			height: 100%;
-		}
+    .flexbox{
+      height: 100%;
+    }
 
-		.flexbox__item {
-			text-align: center;
-		}
-	}
+    .flexbox__item{
+      text-align: center;
+    }
+  }
 
-	.article__header img {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		@include transform(translate3d(-50%, -50%, 0));
-		//    right: 0;
-		//    bottom: 0;
+  .article__header img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform(translate3d(-50%, -50%, 0));
+    //    right: 0;
+    //    bottom: 0;
 
-		width: auto;
-		height: auto;
-	}
+    width: auto;
+    height: auto;
+  }
 
-	.article__content {
-		position: relative;
-		//    bottom: 0;
-		//    z-index: 1;
+  .article__content{
+    position: relative;
+    //    bottom: 0;
+    //    z-index: 1;
 
-		width: 100%;
+    width: 100%;
 
-		padding: 50px 0;
-		background-color: white;
+    padding: 50px 0;
+    background-color: white;
 
-		text-align: center;
-	}
+    text-align: center;
+  }
 
-	.pixcode--grid {
-		margin-left: -48px;
+  .pixcode--grid{
+    margin-left: -48px;
 
-		.grid__item {
-			padding-left: 48px;
-		}
-	}
+    .grid__item{
+      padding-left: 48px;
+    }
+  }
 
-	.content--multipage &:first-of-type {
-		.article__header {
-			padding: 0;
-		}
-	}
+  .content--multipage &:first-of-type{
+    .article__header{
+      padding: 0;
+    }
+  }
 }
 
 .down-arrow {

@@ -17,11 +17,10 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 
 } else {
 	?>
-
 	<section class="content  content--single-page">
 		<?php while ( have_posts() ) : the_post(); ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class( "article--page  article--main" ); ?>>
-				<?php get_template_part('templates/page/header') ?>
+				<?php get_template_part( 'templates/page/header' ) ?>
 				<section class="article__content">
 					<div class="container">
 						<section class="page__content  js-post-gallery  cf">

@@ -16,4 +16,4 @@ $blog_style = wpgrade::option( 'blog_layout', 'classic' );
 
 get_template_part( 'templates/post/loop/' . $blog_style );
 
-get_footer(); ?>
+get_footer();

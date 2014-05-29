@@ -18,7 +18,6 @@ if ( rosa::page_has_children() ) {
 	$pages = get_pages( $args );
 
 	foreach ( $pages as $post ) : setup_postdata( $post );
-
 		if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 			// password protection
 			get_template_part( 'templates/password-request-form' );
@@ -26,7 +25,7 @@ if ( rosa::page_has_children() ) {
 		} else {
 			?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class( "article--page article--main article--subpage" ); ?>>
-				<?php get_template_part('templates/page/header') ?>
+				<?php get_template_part( 'templates/page/header' ) ?>
 				<?php if ( $post->post_content != "" ): ?>
 					<section class="article__content">
 						<div class="container">
@@ -35,6 +34,7 @@ if ( rosa::page_has_children() ) {
 							</section>
 						</div>
 					</section>
+
 				<?php endif; ?>
 			</article>
 		<?php

@@ -25,7 +25,7 @@ if ( empty( $post_format ) ) {
 	<div class="entry__meta--header">
 		<div class="grid">
 			<div class="grid__item <?php if ( $both_metas ) {
-	echo 'lap-and-up-one-half'
+	echo 'lap-and-up-one-half';
 } ?>">
 				<?php if ( wpgrade::option( 'blog_single_show_title_meta_info' ) ):
 	$author_display_name = get_the_author_meta( 'display_name' );
