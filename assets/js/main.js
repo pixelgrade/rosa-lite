@@ -941,6 +941,9 @@ $(window).load(function () {
 
 	update();
 
+
+    // Pikaday
+    var picker = new Pikaday({ field: document.getElementById('date-otreservations') });
 });
 /* --- 404 Page --- */
 var gifImages = [
