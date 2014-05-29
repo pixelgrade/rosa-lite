@@ -84,15 +84,11 @@ echo ' ' . $schema_org . ' ' . $data_ajaxloading . ' ' . $data_currentid . ' ' .
 
 						if ( isset( $theme_locations["main_menu"] ) && ( $theme_locations["main_menu"] != 0 ) ) {
 							$has_main_menu = true;
-						}
-						?>
-						<nav class="navigation  navigation--main<?php if ( ! $has_main_menu ) {
-							echo "  no-menu";
-						} ?>" id="js-navigation--main">
+						} ?>
+						<nav class="navigation  navigation--main<?php echo ( ! $has_main_menu ) ? "  no-menu" : "" ; ?>" id="js-navigation--main">
 							<h2 class="accessibility"><?php _e( 'Primary Navigation', wpgrade::textdomain() ) ?></h2>
-							<?php
-							wpgrade_main_nav();
-							?>
+							<?php wpgrade_main_nav(); ?>
+						</nav>
 					</div>
 				</div>
 				<!-- .flexbox -->
