@@ -1,0 +1,59 @@
+/*------------------------------------*\
+    $OPEN TABLE RESERVATIONS
+\*------------------------------------*/
+
+.otreservation-title-wrapper{
+	margin-bottom: $_15u;
+}
+
+.otreservations-title{
+	margin: 0;
+}
+
+.otreservations-subtitle{
+	font-size: 10px;
+	text-transform: uppercase;
+	color: $lightest;
+}
+
+.otw-widget-form{
+	margin: 0 auto;
+	max-width: 700px;
+}
+
+.otw-wrapper{
+	@extend .grid;
+	@extend .pixcode--grid;
+}
+
+.otw-input-wrap{
+	@extend .grid__item;
+	@extend .lap-and-up-one-third;
+
+	label{
+		margin-right: $_u2;
+	}
+
+	label, input, select{
+		display: inline-block;
+	}
+
+	input, select{
+		width: 150px;
+		height: 40px;
+		background: none;
+
+		border: 1px solid $borders;
+		@include border-radius(3px);
+	}
+}
+
+.otw-button-wrap{
+	@extend .grid__item;
+	margin-top: $_15u;
+}
+
+.otreservations-submit{
+	@extend .btn;
+	@extend .btn--secondary;
+}

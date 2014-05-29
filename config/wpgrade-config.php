@@ -245,4 +245,63 @@ return array(
 		//					)
 	),
 
+	// setup here your thumbnails sizes
+	'thumbnails_sizes'             => array(
+
+		/**
+		 * MAXIMUM SIZE
+		 * Maximum Full Image Size
+		 * - Sliders
+		 * - Lightbox
+		 */
+
+		'full-size'         => array(
+			'width' => 2048
+		),
+		/**
+		 * MEDIUM SIZE
+		 * - Split Article
+		 * - Tablet Sliders
+		 */
+
+		'medium-size'       => array(
+			'width' => 1024,
+		),
+		/**
+		 * SMALL SIZE (cropped)
+		 * - Masonry Grid
+		 * - Mobile Sliders
+		 */
+
+		'small-size'        => array(
+			'width' => 400
+		),
+
+		// Classic blog
+		'post-square-small' => array(
+			'width'     => 177,
+			'height'    => 177,
+			'hard_crop' => true
+		),
+
+		/**
+		 * MEDIUM SIZE (cropped)
+		 * - Related Posts
+		 */
+
+		'post-square-medium' => array(
+			'width'     => 380,
+			'height'    => 380,
+			'hard_crop' => true
+		),
+
+		// Rosa blog (cropped)
+		'post-medium' => array(
+			'width'     => 265,
+			'height'    => 328,
+			'hard_crop' => true
+		)
+
+	),
+
 ); # end theme configuration

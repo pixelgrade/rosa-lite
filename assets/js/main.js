@@ -863,6 +863,15 @@ $(window).load(function(){
 	stickyHeaderInit();
     parallaxInit();
 
+
+    if(!empty($('#date-otreservations'))){
+        // Pikaday
+        var picker = new Pikaday({
+            field: document.getElementById('date-otreservations'),
+            format: 'MM/DD/YYYY'
+        });
+    }
+
 	$('.pixcode--tabs').organicTabs();
 
 });
@@ -877,7 +886,6 @@ $(window).on("debouncedresize", function(e){
 	niceScrollInit();
 	resizeVideos();
 
-	if (globalDebug) {console.groupEnd();}
 });
 /* --- 404 Page --- */
 var gifImages = [

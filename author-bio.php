@@ -5,7 +5,7 @@
  */
 ?>
 <hr class="separator"/>
-<aside class="author-box" itemscope itemtype="http://schema.org/Person">
+<aside class="author" itemscope itemtype="http://schema.org/Person">
 	<div class="author__avatar">
 		<?php echo '<img src="' . util::get_avatar_url( get_the_author_meta( 'email' ), '80' ) . '" itemprop="image" alt="avatar" />'; ?>
 	</div>
