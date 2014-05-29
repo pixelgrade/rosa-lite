@@ -7,7 +7,6 @@
  */
 
 return array(
-
 	'pixlikes-settings' => array(
 		'show_on_post'         => false,
 		'show_on_page'         => false,
@@ -277,5 +276,4 @@ return array(
 			),
 		),
 	),
-
 );

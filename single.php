@@ -47,7 +47,6 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 					<?php the_content(); ?>
 				</section>
 				<?php get_template_part( 'templates/post/single-content/footer' );
-
 				// If comments are open or we have at least one comment, load up the comment template
 				if ( comments_open() || '0' != get_comments_number() ) {
 					comments_template();
