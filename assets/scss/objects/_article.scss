@@ -37,14 +37,20 @@
   position: relative;
   overflow: hidden;
 
+  .article__parallax {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    @include transform(translate3d(0,0,0));
+  }
+
   .article__header{
     position: relative;
-    z-index: -1;
+    overflow: hidden;
+    @include transform(translate3d(0,0,0));
+    //    z-index: -1;
 
     padding: 200px 0;
     overflow: hidden;
-
-    background: $dark;
 
     .flexbox{
       height: 100%;
@@ -57,27 +63,30 @@
 
   .article__header img{
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 50%;
+    left: 50%;
+    @include transform(translate3d(-50%, -50%, 0));
+    //    right: 0;
+    //    bottom: 0;
 
-    width: 100%;
+    width: auto;
     height: auto;
   }
 
   .article__content{
     position: relative;
+    //    bottom: 0;
+    //    z-index: 1;
 
     width: 100%;
 
     padding: 50px 0;
     background-color: white;
 
-//    text-align: center;
+    text-align: center;
   }
 
-  .pixcode--grid.double-gutter{
+  .pixcode--grid{
     margin-left: -48px;
 
     .grid__item{

@@ -1,45 +1,21 @@
 <?php
 $output = '';
-$ratio = '';
-switch ($size) {
-    case 1:
-        $ratio = 'one-twelfth';
-        break;
-    case 2:
-        $ratio = 'two-twelfths';
-        break;
-    case 3:
-        $ratio = 'three-twelfths';
-        break;
-    case 4:
-        $ratio = 'four-twelfths';
-        break;
-    case 5:
-        $ratio = 'five-twelfths';
-        break;
-    case 6:
-        $ratio = 'six-twelfths';
-        break;
-    case 7:
-        $ratio = 'seven-twelfths';
-        break;
-    case 8:
-        $ratio = 'eight-twelfths';
-        break;
-    case 9:
-        $ratio = 'nine-twelfths';
-        break;
-    case 10:
-        $ratio = 'ten-twelfths';
-        break;
-    case 11:
-        $ratio = 'eleven-twelfths';
-        break;
-    case 12:
-        $ratio = 'one-whole';
-        break;
-}
-$output .= '<div class="grid__item  '.$ratio. ' palm-one-whole ' .$class.'">'.PHP_EOL;
+$ratios = array(
+	1 => 'one-twelfth',
+	2 => 'two-twelfths',
+	3 => 'three-twelfths',
+	4 => 'four-twelfths',
+	5 => 'five-twelfths',
+	6 => 'six-twelfths',
+	7 => 'seven-twelfths',
+	8 => 'eight-twelfths',
+	9 => 'nine-twelfths',
+	10 => 'ten-twelfths',
+	11 => 'eleven-twelfths',
+	12 => 'one-whole',
+);
+
+$output .= '<div class="grid__item '.$ratios[$size]. ' palm-one-whole ' .$class.'">'.PHP_EOL;
 $output .= $this->get_clean_content( $content ).PHP_EOL;
 $output .= '</div>'.PHP_EOL;
 echo $output;

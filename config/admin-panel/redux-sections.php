@@ -914,8 +914,6 @@ $sections[] = array(
 	'desc' => '<p class="description">'.__('Header options allow you to control both the visual and functional aspects of the page header area.', wpgrade::textdomain()).'</p>',
 	'fields' => array(
 
-
-
 	)
 );
 
@@ -962,13 +960,6 @@ $sections[] = array(
 			'default' => '1',
 		),
 		array(
-			'id' => 'blog_show_date',
-			'type' => 'checkbox',
-			'title' => __('Date', wpgrade::textdomain()),
-			'subtitle' => __('Display the post publish date.', wpgrade::textdomain()),
-			'default' => '1',
-		),
-		array(
 			'id' => 'blog_show_comments',
 			'type' => 'checkbox',
 			'title' => __('Comments Number', wpgrade::textdomain()),
@@ -981,7 +972,22 @@ $sections[] = array(
 			'title' => __('Likes Number', wpgrade::textdomain()),
 			'subtitle' => __('(only if the PixLikes plugin is active)', wpgrade::textdomain()),
 			'default' => '1',
-		),		
+		),
+	    array(
+		    'id' => 'blog_show_date',
+		    'type' => 'checkbox',
+		    'title' => __('Date', wpgrade::textdomain()),
+		    'subtitle' => __('Display the post publish date.', wpgrade::textdomain()),
+		    'default' => '1',
+	    ),
+	    array(
+		    'id' => 'blog_custom_date_separator',
+		    'type' => 'checkbox',
+		    'title' => __('Custom Date Separator', wpgrade::textdomain()),
+		    'subtitle' => __('Change spaces, commas or slashes with a custom dot.', wpgrade::textdomain()),
+		    'default' => '1',
+		    'required' => array('blog_show_date', '=', true)
+	    ),
 
 		array(
 			'id' => 'blog_excerpt_more_text',
