@@ -1,11 +1,8 @@
 /*--------------------------------*\
                HEADER
 \*--------------------------------*/
-.site-header {
-	@extend .cf;
-}
 
-.site-header__wrapper {
+.site-header {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -16,7 +13,7 @@
 		position: static;
 	}
 
-	.header--inversed & {
+	&.header--inversed {
 		background: white;
 	}
 }
