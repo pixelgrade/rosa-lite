@@ -6,43 +6,30 @@
 
 function wpgrade_custom_thumbnails() {
 
-	// Add theme support for Featured Images
-	add_theme_support( 'post-thumbnails' );
+	$sizes = wpgrade::confoption( 'thumbnails_sizes' );
 
-	/*
-	 * MAXIMUM SIZE
-	 * Maximum Full Image Size
-	 * - Sliders
-	 * - Lightbox
-	 */
-	add_image_size( 'full-size', 2048 );
+	if ( ! empty( $sizes ) ) {
+		foreach ( $sizes as $size_key => $values ) {
 
-	/*
-	 * MEDIUM SIZE
-	 * - Split Article
-	 * - Tablet Sliders
-	 */
-	add_image_size( 'medium-size', 1024 );
+			$width = 0;
+			if ( isset( $values['width'] ) ) {
+				$width = $values['width'];
+			}
 
-	/*
-	 * SMALL SIZE (cropped)
-	 * - Masonry Grid
-	 * - Mobile Sliders
-	 */
-	add_image_size( 'small-size', 400 );
+			$height = 0;
+			if ( isset( $values['height'] ) ) {
+				$height = $values['height'];
+			}
 
-	// Classic blog
-	add_image_size( 'post-square-small', 177, 177, true );
+			$hard_crop = false;
+			if ( isset( $values['hard_crop'] ) ) {
+				$hard_crop = $values['hard_crop'];
+			}
 
-	/*
-	 * MEDIUM SIZE (cropped)
-	 * - Related Posts
-	 */
-	add_image_size( 'post-square-medium', 380, 380, true );
+			add_image_size( $size_key, $width, $height, $hard_crop );
 
-	// Rosa blog
-	add_image_size( 'post-medium', 265, 328, true );
-
+		}
+	}
 }
 
 add_action( 'after_setup_theme', 'wpgrade_custom_thumbnails' );
