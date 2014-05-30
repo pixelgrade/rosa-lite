@@ -4,7 +4,8 @@
  */
 function wpgrade_callback_custom_theme_features() {
 	add_theme_support( 'automatic-feed-links' );
-//    add_theme_support( 'html5', array( 'gallery', 'caption' ) );
+
+	add_theme_support( 'html5', array( 'gallery', 'caption' ) );
 
 	// @todo CLEANUP consider options for spliting editor style out of main style
 	add_editor_style( get_template_directory_uri() . '/assets/css/style.css' );
@@ -40,6 +41,7 @@ add_filter('post_gallery', 'wpgrade_custom_post_gallery', 10, 2);
 
 function wpgrade_custom_post_gallery($output, $attr) {
 	global $post, $wp_locale;
+	static $instance = 0;
 
 	// We're trusting author input, so let's at least make sure it looks like a valid orderby statement
 	if ( isset( $attr['orderby'] ) ) {
@@ -60,7 +62,8 @@ function wpgrade_custom_post_gallery($output, $attr) {
 		'size'       => 'thumbnail',
 		'include'    => '',
 		'exclude'    => '',
-		'link'       => ''
+		'link'       => '',
+		'mkslideshow'=> false,
 	), $attr, 'gallery'));
 
 	$id = intval($id);
