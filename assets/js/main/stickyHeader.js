@@ -7,6 +7,7 @@ function stickyHeaderInit() {
         headerHeight        = $header.height();
 
     $header.headroom({
+        tolerance: 15,
         // animate with GSAP
         onPin: function () {
             TweenMax.to($header, 0.1, {
