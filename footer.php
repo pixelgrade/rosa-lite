@@ -25,7 +25,6 @@
 	</div>
 	<!-- .copyright-area -->
 </footer><!-- .site- -footer -->
-</div><!-- .wrapper -->
 
 <?php wp_footer(); ?>
 </body>

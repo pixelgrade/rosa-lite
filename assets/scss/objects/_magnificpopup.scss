@@ -1,0 +1,53 @@
+/*----------------------------------------*\
+    $MAGNIFIC POPUP STYLING + OVERRIDES
+\*----------------------------------------*/
+
+
+button.mfp-arrow{
+	position: absolute;
+	top: 50%;
+
+	@include rem(height, 55px);
+	@include rem(width, 55px);
+	display: block;
+
+	border: 0;
+	border-bottom: 2px solid white;
+	outline: 0;
+
+	@include media-query(palm) {
+		@include rem(height, 25px);
+		@include rem(width, 25px);
+	}
+}
+
+button.mfp-arrow-left{
+   left: 35px;
+   @include transform(rotate(45deg));
+   border-left: 2px solid white;
+}
+
+button.mfp-arrow-right{
+   right: 35px;
+   @include transform(rotate(-45deg));
+   border-right: 2px solid white;
+}
+
+.mfp-bottom-bar{
+  color: white;
+}
+
+.mfp-counter{
+     @include font-size(16px);
+     text-align: center;
+}
+
+div.mfp-title{
+  	margin-top: 0;
+
+	font-family: $base-font-family;
+
+	small{
+		@include font-size(16px);
+	}
+}

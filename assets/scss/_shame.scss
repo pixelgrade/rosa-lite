@@ -2,82 +2,37 @@
               GENERAL STUFF
 \*------------------------------------*/
 
-// html {
-//     color: $gray;
-// }
+html, body {
+	height: 100%;
+}
 
-// .show-on-ie8 {
-//     display: none;
-// }
+.map__marker {
+	position: relative;
+	bottom: 100%;
+	left: -50%;
+	background: black;
+	color: white;
+	padding: $_u $_2u;
+	border-radius: $_u4 / 2;
 
-// .lt-ie9 .show-on-ie8 {
-//     display: block;
-// }
+	&:after {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		border: $_u2 solid transparent;
+		border-top-color: black;
+		margin-left: - $_u2;
+	}
+}
 
-// .container {
-//     @extend .cf;
-//     @extend .soft--sides;
-//     max-width: 1096px;
-//     margin: 0 auto;
-// }
+.map__marker-wrap {
+	position: absolute;
+	bottom: 0; left: 0;
+}
 
-// .sidebar {
-
-//     @include media-query(lap-and-up) {
-//         @include rem(padding-left, $_2u);
-//     }
-// }
-
-// .grid--thin {
-//     @include rem(margin-left, -5px);
-
-//     > .grid__item {
-//         @include rem(padding-left, 5px);
-//     }
-// }
-
-// /**
-//  * Magnific popup
-//  */
-// button.mfp-arrow{
-//   position: absolute;
-//   top: 50%;
-//   @include rem(height, 55px);
-//   @include rem(width, 55px);
-//   display: block;
-//   border-bottom: 2px solid white;
-//   outline: 0;
-
-//   @include media-query(palm) {
-//     @include rem(height, 25px);
-//     @include rem(width, 25px);
-//   }
-// }
-
-// button.mfp-arrow-left{
-//   left: 35px;
-//   @include transform(rotate(45deg));
-//   border-left: 2px solid white;
-// }
-
-// button.mfp-arrow-right{
-//   right: 35px;
-//   @include transform(rotate(-45deg));  
-//   border-right: 2px solid white;
-// }
-
-// .mfp-counter{
-//     @include font-size(16px);
-//     width: 100%;
-//     left: 0;
-//     text-align: center;
-// }
-
-// /*------------------------------------*\
-//               SHAME
-// \*------------------------------------*/
-
-// img[width], img[height] {
-//     max-width: 100%;
-//     height: auto;
-// }
+.article__header .gallery-item {
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+}

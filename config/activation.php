@@ -199,15 +199,36 @@ return array(
 					),
 				)
 			),
-			//for the Page Fancy Header Covers
-			wpgrade::shortname() . '_page_cover'       => array(
-				'id'         => wpgrade::shortname() . '_page_cover',
-				'title'      => __( 'Header Image Cover Text', 'rosa_txtd' ),
+			//for the Page Header Covers
+			wpgrade::shortname() . '_page_header_area_cover'       => array(
+				'id'         => wpgrade::shortname() . '_page_header_area_cover',
+				'title'      => __( 'Header Area', 'rosa_txtd' ),
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
 				'priority'   => 'high',
 				'show_names' => true, // Show field names on the left
 				'fields'     => array(
+					array(
+						'name' => __( 'Header Height', 'rosa_txtd' ),
+						'desc' => __( '<p class="cmb_metabox_description">Select the height of the header area in relation to the browser window.</p>', 'rosa_txtd' ),
+						'id'   => wpgrade::prefix() . 'page_header_height',
+						'type'    => 'select',
+						'options' => array(
+							array(
+								'name'  => __( 'Half', 'rosa_txtd' ),
+								'value' => 'half-height',
+							),
+							array(
+								'name'  => __( 'Two Thirds', 'rosa_txtd' ),
+								'value' => 'two-thirds-height',
+							),
+							array(
+								'name'  => __( 'Full Height', 'rosa_txtd' ),
+								'value' => 'full-height',
+							)
+						),
+						'std'     => 'half-height',
+					),
 					array(
 						'name' => __( 'Subtitle', 'rosa_txtd' ),
 						'desc' => __( "This is optional. Leave empty to remove the subtitle.", 'rosa_txtd' ),
@@ -235,9 +256,108 @@ return array(
 					),
 				),
 			),
+			wpgrade::shortname() . '_page_header_area_slideshow'  => array(
+				'id'         => wpgrade::shortname() . '_page_header_area_slideshow',
+				'title'      => __( 'Slideshow Settings', 'rosa_txtd' ),
+				'pages'      => array( 'page' ), // Post type
+				'context'    => 'normal',
+				'priority'   => 'high',
+				'hidden'     => true,
+				'show_on'    => array(
+					'key' => 'page-template',
+					'value' => array( 'page-templates/slideshow.php' ),
+				),
+				'show_names' => true, // Show field names on the left
+				'fields'     => array(
+					array(
+						'name' => __( 'Images', 'rosa_txtd' ),
+						'id'   => wpgrade::prefix() . 'main_gallery',
+						'type' => 'gallery',
+					),
+					array(
+						'name'    => __( 'Image Scaling', 'rosa_txtd' ),
+						'desc'    => __( '<p class="cmb_metabox_description"><strong>Fill</strong> scales image to completely fill slider container (recommended for landscape images)</p>
+<p class="cmb_metabox_description"><strong>Fit</strong> scales image to fit the container (recommended for portrait images)</p>
+<p class="cmb_metabox_description"><strong>Fit if Smaller</strong> scales image to fit only if size of slider container is less than size of image.</p>
+<p class="cmb_metabox_description"><a target="_blank" href="http://bit.ly/slider-image-scaling">Visual explanation</a></p>', 'rosa_txtd' ),
+						'id'      => wpgrade::prefix() . 'post_slider_image_scale_mode',
+						'type'    => 'select',
+						'options' => array(
+							array(
+								'name'  => __( 'Fit', 'rosa_txtd' ),
+								'value' => 'fit'
+							),
+							array(
+								'name'  => __( 'Fill', 'rosa_txtd' ),
+								'value' => 'fill'
+							),
+							array(
+								'name'  => __( 'Fit if Smaller', 'rosa_txtd' ),
+								'value' => 'fit-if-smaller'
+							)
+						),
+						'std'     => 'fill'
+					),
+					array(
+						'name'    => __( 'Show Nearby Images', 'rosa_txtd' ),
+						'desc'    => __( 'Enable this if you want to avoid having empty space on the sides of the image when using mostly portrait images.', 'rosa_txtd' ),
+						'id'      => wpgrade::prefix() . 'post_slider_visiblenearby',
+						'type'    => 'select',
+						'options' => array(
+							array(
+								'name'  => __( 'Enabled', 'rosa_txtd' ),
+								'value' => true
+							),
+							array(
+								'name'  => __( 'Disabled', 'rosa_txtd' ),
+								'value' => false
+							)
+						),
+						'std'     => false
+					),
+					array(
+						'name'    => __( 'Slider transition', 'rosa_txtd' ),
+						'id'      => wpgrade::prefix() . 'post_slider_transition',
+						'type'    => 'select',
+						'options' => array(
+							array(
+								'name'  => __( 'Slide/Move', 'rosa_txtd' ),
+								'value' => 'move'
+							),
+							array(
+								'name'  => __( 'Fade', 'rosa_txtd' ),
+								'value' => 'fade'
+							)
+						),
+						'std'     => 'move'
+					),
+					array(
+						'name'    => __( 'Slider autoplay', 'rosa_txtd' ),
+						'id'      => wpgrade::prefix() . 'post_slider_autoplay',
+						'type'    => 'select',
+						'options' => array(
+							array(
+								'name'  => __( 'Enabled', 'rosa_txtd' ),
+								'value' => true
+							),
+							array(
+								'name'  => __( 'Disabled', 'rosa_txtd' ),
+								'value' => false
+							)
+						),
+						'std'     => false
+					),
+					array(
+						'name' => __( 'Autoplay delay between slides (in milliseconds)', 'rosa_txtd' ),
+						'id'   => wpgrade::prefix() . 'post_slider_delay',
+						'type' => 'text_small',
+						'std'  => '1000'
+					)
+				)
+			),
 			//for the Contact Page template
-			wpgrade::shortname() . '_contact_page' => array(
-				'id'         => wpgrade::shortname() . '_contact_page',
+			wpgrade::shortname() . '_gmap_settings' => array(
+				'id'         => wpgrade::shortname() . '_gmap_settings',
 				'title'      => __( 'Configure Your Google Map', 'rosa_txtd' ),
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
@@ -267,7 +387,7 @@ return array(
 					array(
 						'name'    => __( 'Marker Content', 'rosa_txtd' ),
 						'desc'    => __( 'Insert here the content of the location marker - leave empty for no custom marker.', 'rosa_txtd' ),
-						'id'      => wpgrade::prefix() . 'gmap_maker_content',
+						'id'      => wpgrade::prefix() . 'gmap_marker_content',
 						'type'    => 'wysiwyg',
 						'std'     => '',
 						'options' => array(

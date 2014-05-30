@@ -383,7 +383,7 @@ class rosa {
 			}
 
 			$shrtcode = do_shortcode( $gallery );
-			var_dump( $template, $shrtcode );
+			//var_dump( $template, $shrtcode );
 			//			$shrtcode = preg_replace('/(<dd class="wp-caption-text gallery-caption">.+?)+(<\/dd>)/i', '', $shrtcode);
 			if ( ! empty( $shrtcode ) ) {
 

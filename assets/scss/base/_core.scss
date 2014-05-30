@@ -62,6 +62,24 @@
 	// @empty
 }
 
+.gallery-item{
+	position: relative;
+
+	.wp-caption-text{
+		left: 6px;
+	}
+
+	.gallery-icon a{
+		display: block;
+		padding-bottom: 0;
+		border: 0 !important;
+	}
+
+	img{
+		display: block;
+	}
+}
+
 .bypostauthor {
 	width: auto;
 }
@@ -199,11 +217,14 @@ img[width], img[height] {
 
 // wordpress gallery
 .gallery {
-	@include rem(margin-left, -$_u4 !important);
+	@extend .cf;
+	margin-left: -$_u !important;
 
 	.gallery-item {
-		@include rem(margin, 0 0 $_u2 0);
-		@include rem(padding-left, $_u4);
+		margin-bottom: 0;
+
+		border-left: $_u solid transparent;
+		border-bottom: $_u solid transparent;
 	}
 
 	.gallery-icon {
