@@ -246,7 +246,6 @@ button.mfp-arrow {
 	overflow: visible;
 	cursor: pointer;
 	background: transparent;
-	border: 0;
 	-webkit-appearance: none;
 	display: block;
 	padding: 0;
@@ -275,6 +274,8 @@ button::-moz-focus-inner {
 	padding: 0 0 18px 10px;
 	color: $controls-color;
 	outline: 0;
+
+	border: 0;
 
 	font-style: normal;
 	font-size: 28px;
@@ -306,10 +307,10 @@ button::-moz-focus-inner {
 // "1 of X" counter
 .mfp-counter {
 	position: absolute;
-	top: 0;
+	top: 6px;
 	right: 0;
 	color: $controls-text-color;
-	font-size: 12px;
+	font-size: 18px;
 	line-height: 18px;
 }
 
