@@ -15,12 +15,13 @@ if ( empty( $title ) ) {
 	$title = get_the_title();
 }
 $description = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_description', true );
-//taken from the_content definition
-$description = apply_filters( 'the_content', $description );
-$description = str_replace( ']]>', ']]&gt;', $description );
+//filter the content with some limitations to avoid having plugins doing nasty things to it
+$description = wpgrade::filter_content($description,'default');
 ?>
 <header class="article__header <?php echo $header_height ?>">
 	<?php
+	/* FIRST TEST FOR CONTACT PAGE TEMPLATE */
+
 	//get the Google Maps URL to test if empty
 	$gmap_url = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_url', true );
 
@@ -34,6 +35,8 @@ $description = str_replace( ']]>', ']]&gt;', $description );
 		     data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>"></div>
 	<?php
 	else :
+		/* THEN TEST FOR SLIDESHOW PAGE TEMPLATE */
+
 		$gallery_ids = get_post_meta( $post->ID, wpgrade::prefix() . 'main_gallery', true );
 
 		if ( get_page_template_slug( get_the_ID() ) == 'page-templates/slideshow.php' && ! empty( $gallery_ids ) ):
@@ -51,7 +54,7 @@ $description = str_replace( ']]>', ']]&gt;', $description );
 			}
 
 			if ( ! empty( $attachments ) ) :
-				//let's grab info regarding the slider
+				//let's grab the info regarding the slider
 				$image_scale_mode            = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_image_scale_mode', true );
 				$slider_visiblenearby        = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_visiblenearby', true );
 				$slider_transition           = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_transition', true );
@@ -59,12 +62,8 @@ $description = str_replace( ']]>', ']]&gt;', $description );
 				$slider_transition_direction = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_transition_direction', true );
 				$slider_autoplay             = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_autoplay', true );
 
-				$full_screen_button = get_post_meta( get_the_ID(), wpgrade::prefix() . 'full_screen_button', true );
-
-				$share_button = get_post_meta( get_the_ID(), wpgrade::prefix() . 'gallery_share_button', true );
-
 				if ( $slider_autoplay ) {
-					$slider_delay = get_post_meta( get_the_ID(), wpgrade::prefix() . 'gallery_slider_delay', true );
+					$slider_delay = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_delay', true );
 				}
 				?>
 				<div class="content--page-slider">
@@ -153,6 +152,8 @@ $description = str_replace( ']]>', ']]&gt;', $description );
 				</div>
 			<?php endif;
 		else :
+			/* OR REGULAR PAGE */
+
 			if ( has_post_thumbnail() ):
 				$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full-size' );
 				if ( ! empty( $image[0] ) ): ?>
