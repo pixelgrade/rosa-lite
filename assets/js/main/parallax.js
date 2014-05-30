@@ -5,32 +5,37 @@ function parallaxInit() {
 	if (globalDebug) {console.log("Parallax Init");}
 
 	var imgSelector         = '.article__parallax img',
-		parallaxAmount      = 1;
+		parallaxAmount      = 0.5;
 
     // prepare images for parallax effect
 	$(imgSelector).each(function (i, img) {
 
-        var $img = $(img),
-            imgHeight = $img.height(),
-            imgWidth = $img.width(),
-            $container = $img.closest('.article__header'),
-            containerHeight = $container.outerHeight(),
+        var $img                = $(img),
+            imgHeight           = $img.height(),
+            imgWidth            = $img.width(),
+            $container          = $img.closest('.article__header'),
+            containerHeight     = $container.outerHeight(),
+            parallaxDistance    = (wh - containerHeight) * parallaxAmount,
             // find scale needed for the image to fit container and move desired amount
-            scaleY = parallaxAmount * wh / imgHeight,
-            scaleX = ww / imgWidth,
-            scale = Math.max(1, scaleX, scaleY),
+            scaleY              = (parallaxDistance + (containerHeight * parallaxAmount)) / imgHeight,
+            scaleX              = ww / imgWidth,
+            scale               = Math.max(1, scaleX, scaleY),
             // calculate needed values to properly move the image on scroll
-            initialTop = -(wh * parallaxAmount / 2),
-            finalTop = initialTop + (wh * parallaxAmount),
-            start = $container.offset().top - wh,
-            end = start + wh + containerHeight,
-            timeline = new TimelineMax({paused: true});
+            initialTop          = -1 * (parallaxDistance) / 2 - (containerHeight * parallaxAmount),
+            finalTop            = -1 * initialTop,
+            start               = $container.offset().top - wh,
+            end                 = start + wh + containerHeight,
+            timeline            = new TimelineMax({paused: true});
 
         // scale image up to desired size
 		$img.css({
 			width: parseInt(imgWidth * scale, 10),
 			height: parseInt(imgHeight * scale, 10)
 		});
+
+        if (globalDebug) { console.log('x: ', ww, imgWidth, scaleX) };
+        if (globalDebug) { console.log('y: ', parallaxDistance, imgHeight, scaleY) };
+        if (globalDebug) { console.log('pd = (' + wh + ' (wh) + ' + containerHeight + ' (ch)) * ' + imgHeight + ' (ih) = ' + parallaxDistance) };
 
         // fade image in
         TweenMax.to($img, 0.6, {opacity: 1});
@@ -80,6 +85,7 @@ function parallaxInit() {
 				if (1 > progress) {
 					options.timeline.progress(progress);
 					$img.css({'visibility': 'visible'});
+                    if (globalDebug) { console.log(i); }
 					return;
 				}
 			}

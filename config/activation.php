@@ -280,7 +280,7 @@ return array(
 <p class="cmb_metabox_description"><strong>Fit</strong> scales image to fit the container (recommended for portrait images)</p>
 <p class="cmb_metabox_description"><strong>Fit if Smaller</strong> scales image to fit only if size of slider container is less than size of image.</p>
 <p class="cmb_metabox_description"><a target="_blank" href="http://bit.ly/slider-image-scaling">Visual explanation</a></p>', 'rosa_txtd' ),
-						'id'      => wpgrade::prefix() . 'post_image_scale_mode',
+						'id'      => wpgrade::prefix() . 'post_slider_image_scale_mode',
 						'type'    => 'select',
 						'options' => array(
 							array(

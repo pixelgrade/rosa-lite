@@ -60,18 +60,14 @@ $description = wpgrade::filter_content( $description, 'default' );
 				$slider_transition_direction = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_transition_direction', true );
 				$slider_autoplay             = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_autoplay', true );
 
+
 				if ( $slider_autoplay ) {
 					$slider_delay = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_delay', true );
 				}
 				?>
+
 				<div class="content--page-slider">
 					<div class="content-helper">
-						<div class="slider-controls">
-							<div class="slider-controls__arrows">
-								<span class="slider-arrow  js-slider-arrow-prev"><i class="icon-angle-up"></i></span>
-								<span class="slider-arrow  js-slider-arrow-next"><i class="icon-angle-down"></i></span>
-							</div>
-						</div>
 						<div class="pixslider  pixslider--page  js-pixslider"
 						     data-customarrows="right"
 						     data-imagealigncenter
@@ -109,21 +105,23 @@ $description = wpgrade::filter_content( $description, 'default' );
 									<div class="gallery-item cover" itemscope itemtype="http://schema.org/ImageObject"
 									     data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
 									     data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>">
-										<div class="flexbox">
-											<div class="flexbox__item">
-												<hgroup class="article__headline">
-													<?php if ( ! empty( $subtitle ) ) {
-														echo '<h2 class="headline__secondary">' . esc_html( $subtitle ) . '</h2>';
-													} ?>
-													<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
-													<?php if ( ! empty( $description ) ) {
-														echo '<span class="headline__description">' . $description . '</span>';
-													} ?>
-												</hgroup>
-											</div>
-										</div>
-										<img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
-										     alt="<?php echo $attachment->post_excerpt; ?>" itemprop="contentURL"/>
+                                        <div class="article__parallax">
+										    <img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
+										         alt="<?php echo $attachment->post_excerpt; ?>" itemprop="contentURL"/>
+                                        </div>
+                                        <div class="flexbox">
+                                            <div class="flexbox__item">
+                                                <hgroup class="article__headline">
+                                                    <?php if ( ! empty( $subtitle ) ) {
+                                                        echo '<h2 class="headline__secondary">' . esc_html( $subtitle ) . '</h2>';
+                                                    } ?>
+                                                    <h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
+                                                    <?php if ( ! empty( $description ) ) {
+                                                        echo '<span class="headline__description">' . $description . '</span>';
+                                                    } ?>
+                                                </hgroup>
+                                            </div>
+                                        </div>
 									</div>
 									<?php
 									$set_cover = false;
@@ -134,9 +132,11 @@ $description = wpgrade::filter_content( $description, 'default' );
 									     itemtype="http://schema.org/ImageObject"
 									     data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
 									     data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>" <?php echo ( ! empty( $video_autoplay ) ) ? 'data-video_autoplay="' . $video_autoplay . '"' : ''; ?>>
-										<img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
+										<div class="article__parallax">
+                                            <img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
 										     alt="<?php echo $attachment->post_excerpt; ?>"
 										     itemprop="contentURL" <?php echo ( ! empty( $video_url ) ) ? ' data-rsVideo="' . $video_url . '"' : ''; ?>  />
+                                        </div>
 									</div>
 								<?php
 								}
