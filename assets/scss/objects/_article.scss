@@ -10,6 +10,11 @@
 	word-wrap: break-word;
 }
 
+.post .article__title{
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
+}
+
 .article__content {
 
 }
@@ -18,7 +23,7 @@
 
 }
 
-.article__header {
+.page .article__header {
 	position: relative;
 	padding: 200px 0;
 	background: #333;
@@ -58,12 +63,11 @@
 }
 
 
-.article__content {
+.page .article__content {
 	position: relative;
 	width: 100%;
 	padding: 50px 0;
 	background-color: white;
-	text-align: center;
 }
 
 .pixcode--grid {

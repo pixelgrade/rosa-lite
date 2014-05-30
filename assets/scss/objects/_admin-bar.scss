@@ -2,6 +2,9 @@
     $ADMIN BAR
 \*------------------------------------*/
 
-.admin-bar .site-header__wrapper {
-	top: 32px;
+.admin-bar{
+	.site-header__wrapper, .mfp-close {
+		top: 32px;
+	}
+
 }
