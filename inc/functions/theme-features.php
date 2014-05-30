@@ -126,15 +126,8 @@ function wpgrade_custom_post_gallery($output, $attr) {
 			}
 			#{$selector} .gallery-item {
 				float: {$float};
-				margin-top: 10px;
 				text-align: center;
 				width: {$itemwidth}%;
-			}
-			#{$selector} img {
-				border: 2px solid #cfcfcf;
-			}
-			#{$selector} .gallery-caption {
-				margin-left: 0;
 			}
 			/* see gallery_shortcode() in wp-includes/media.php */
 		</style>\n\t\t";
