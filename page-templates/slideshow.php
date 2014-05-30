@@ -1,12 +1,14 @@
 <?php
 /**
- * Template Name: Contact Page
- * This is the template that is used for the contact page/section
- * It is a page with additional controls for the Google Maps section
+ * Template Name: Page with Slideshow
+ * This is the template that is used for pages that have a header section with a slideshow instead of a featured image
+ * It is a page with additional controls for the slideshow
 
  */
 
-get_header(); ?>
+get_header();
+
+?>
 <section class="content  content--single-page">
 	<?php while ( have_posts() ) : the_post(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class( "article--page  article--main" ); ?>>
@@ -20,14 +22,15 @@ get_header(); ?>
 				</div>
 			</section>
 		</article>
-		<?php get_template_part( 'templates/subpages' );
-
+		<?php get_template_part( 'templates/subpages' ); ?>
+		<?php
 		//comments
 		if ( comments_open() || '0' != get_comments_number() ): ?>
 			<div class="container">
 				<?php comments_template(); ?>
 			</div>
-		<?php endif;
-	endwhile; ?>
+		<?php endif; ?>
+	<?php endwhile; ?>
 </section>
+
 <?php get_footer();

@@ -1,65 +1,50 @@
 /* --- Parallax Init --- */
 
-//delay js download and images load
-//create custom event each image in parallax header
-//then show it
-
 function parallaxInit() {
+
 	if (globalDebug) {console.log("Parallax Init");}
 
-	var imgSelector         = '.article--page .article__header img',
-		headerSelector      = '.site-header__wrapper',
+	var imgSelector         = '.article__header img',
 		parallaxAmount      = 1;
 
-	var $header             = $(headerSelector),
-		headerHeight        = $header.height();
-
-	$header.headroom({
-		// animate with GSAP
-		onPin: function () {
-			TweenMax.to($header, 0.1, {
-				y: 0
-			});
-		},
-		onUnpin: function () {
-			TweenMax.to($header, 0.1, {
-				y: -1 * headerHeight
-			});
-		}
-	});
-
+    // prepare images for parallax effect
 	$(imgSelector).each(function (i, img) {
 
-		var $img = $(img),
-			imgHeight = $img.height(),
-			imgWidth = $img.width(),
-			scaleY = parallaxAmount * wh / imgHeight,
-			scaleX = ww / imgWidth,
-			scale = Math.max(1, scaleX, scaleY),
-			initialTop = -(wh * parallaxAmount / 2),
-			finalTop = initialTop + (wh * parallaxAmount),
-			$container = $img.closest('.article__header'),
-			containerHeight = $container.outerHeight(),
-			start = $container.offset().top - wh,
-			end = start + wh + containerHeight,
-			timeline = new TimelineMax({paused: true});
+        var $img = $(img),
+            imgHeight = $img.height(),
+            imgWidth = $img.width(),
+            $container = $img.closest('.article__header'),
+            containerHeight = $container.outerHeight(),
+            // find scale needed for the image to fit container and move desired amount
+            scaleY = parallaxAmount * wh / imgHeight,
+            scaleX = ww / imgWidth,
+            scale = Math.max(1, scaleX, scaleY),
+            // calculate needed values to properly move the image on scroll
+            initialTop = -(wh * parallaxAmount / 2),
+            finalTop = initialTop + (wh * parallaxAmount),
+            start = $container.offset().top - wh,
+            end = start + wh + containerHeight,
+            timeline = new TimelineMax({paused: true});
 
+        // scale image up to desired size
 		$img.css({
 			width: parseInt(imgWidth * scale, 10),
 			height: parseInt(imgHeight * scale, 10)
-//            '-webkit-transform-origin': '50%, 0, 0'
 		});
 
+        // fade image in
+        TweenMax.to($img, 0.6, {opacity: 1});
+
+        // create timeline for current image
 		timeline.append(TweenMax.fromTo($img.closest('.article__parallax'), 0.1, {
 			y: initialTop,
-//            scale: scale,
 			ease: Linear.easeNone
 		}, {
 			y: finalTop,
-//            scale: scale,
 			ease: Linear.easeNone
 		}));
 
+        // bind sensible variables for tweening to the image using a data attribute
 		$img.data('tween', {
 			timeline: timeline,
 			start: start,
@@ -98,10 +83,8 @@ function parallaxInit() {
 	}
 
 	$(window).scroll(function () {
-
 		latestKnownScrollY = window.scrollY;
 		requestTick();
-
 	});
 
 	function requestTick() {
