@@ -1,13 +1,9 @@
 <?php
 /**
- * This template handles the page headers with image/slideshow and cover text
+ * This template handles the page headers with image and cover text
  */
 
-global $post;
-
 //first lets get to know this page a little better
-$header_height = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_header_height', true );
-
 $subtitle = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_subtitle', true );
 $title    = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_title', true );
 if ( empty( $title ) ) {
@@ -16,9 +12,9 @@ if ( empty( $title ) ) {
 }
 $description = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_description', true );
 //filter the content with some limitations to avoid having plugins doing nasty things to it
-$description = wpgrade::filter_content($description,'default');
+$description = wpgrade::filter_content( $description, 'default' );
 ?>
-<header class="article__header <?php echo $header_height ?>">
+<header class="article__header">
 	<?php
 	/* FIRST TEST FOR CONTACT PAGE TEMPLATE */
 
@@ -175,6 +171,6 @@ $description = wpgrade::filter_content($description,'default');
 					</hgroup>
 				</div>
 			</div>
-		<?php endif; ?>
-	<?php endif; ?>
+		<?php endif;
+	endif;?>
 </header>
