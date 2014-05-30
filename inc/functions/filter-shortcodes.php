@@ -21,7 +21,6 @@ function wpgrade_callback_change_separator_params( $params ) {
 		$params['color']['options'] = array(
 			'dark'  => "Dark",
 			'light' => "Light",
-			'color' => "Accent Color",
 		);
 	}
 
