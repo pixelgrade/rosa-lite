@@ -86,3 +86,40 @@
 		content: none;
 	}
 }
+
+.footer-widget-area{
+	@extend .cf;
+
+	@include media-query(lap-and-up) {
+		margin: 0 -$_u;
+	}
+	margin-top: $_2u;
+
+	.widget{
+		float: left;
+
+		padding: 0;
+		border: $_u solid transparent;
+	}
+
+	&.col-1 .widget{
+		width: 100%;
+	}
+
+	&.col-2 .widget{
+		width: 50%;
+	}
+
+	&.col-3 .widget{
+		width: 33.3333%;
+	}
+
+	@include media-query(palm) {
+		&.col-1, &.col-2, &.col-3{
+			.widget{
+				float: none;
+				width: 100%;
+			}
+		}
+	}
+}
