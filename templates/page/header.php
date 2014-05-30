@@ -4,6 +4,8 @@
  */
 
 //first lets get to know this page a little better
+$header_height = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_header_height', true );
+
 $subtitle = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_subtitle', true );
 $title    = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_title', true );
 if ( empty( $title ) ) {
@@ -14,7 +16,7 @@ $description = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::pr
 //filter the content with some limitations to avoid having plugins doing nasty things to it
 $description = wpgrade::filter_content( $description, 'default' );
 ?>
-<header class="article__header">
+<header class="article__header <?php echo $header_height ?>">
 	<?php
 	/* FIRST TEST FOR CONTACT PAGE TEMPLATE */
 
@@ -23,7 +25,7 @@ $description = wpgrade::filter_content( $description, 'default' );
 
 	if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' && ! empty( $gmap_url ) ) :
 		$gmap_custom_style   = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_custom_style', true );
-		$gmap_marker_content = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_maker_content', true );
+		$gmap_marker_content = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_marker_content', true );
 
 		?>
 		<div id="gmap"
