@@ -386,7 +386,7 @@ return array(
 					array(
 						'name'    => __( 'Marker Content', 'rosa_txtd' ),
 						'desc'    => __( 'Insert here the content of the location marker - leave empty for no custom marker.', 'rosa_txtd' ),
-						'id'      => wpgrade::prefix() . 'gmap_maker_content',
+						'id'      => wpgrade::prefix() . 'gmap_marker_content',
 						'type'    => 'wysiwyg',
 						'std'     => '',
 						'options' => array(

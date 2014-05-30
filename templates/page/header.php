@@ -23,7 +23,7 @@ $description = wpgrade::filter_content( $description, 'default' );
 
 	if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' && ! empty( $gmap_url ) ) :
 		$gmap_custom_style   = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_custom_style', true );
-		$gmap_marker_content = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_maker_content', true );
+		$gmap_marker_content = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_marker_content', true );
 
 		?>
 		<div id="gmap"
