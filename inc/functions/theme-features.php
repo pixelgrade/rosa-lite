@@ -4,6 +4,7 @@
  */
 function wpgrade_callback_custom_theme_features() {
 	add_theme_support( 'automatic-feed-links' );
+//    add_theme_support( 'html5', array( 'gallery', 'caption' ) );
 
 	// @todo CLEANUP consider options for spliting editor style out of main style
 	add_editor_style( get_template_directory_uri() . '/assets/css/style.css' );
@@ -125,15 +126,8 @@ function wpgrade_custom_post_gallery($output, $attr) {
 			}
 			#{$selector} .gallery-item {
 				float: {$float};
-				margin-top: 10px;
 				text-align: center;
 				width: {$itemwidth}%;
-			}
-			#{$selector} img {
-				border: 2px solid #cfcfcf;
-			}
-			#{$selector} .gallery-caption {
-				margin-left: 0;
 			}
 			/* see gallery_shortcode() in wp-includes/media.php */
 		</style>\n\t\t";

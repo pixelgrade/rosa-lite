@@ -150,7 +150,7 @@ a {
 	}
 }
 
-.article__content a {
+.article__content a:not([class]) {
 	@extend %text-link;
 
 	padding-bottom: 2px;
