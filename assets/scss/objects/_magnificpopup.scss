@@ -42,10 +42,12 @@ button.mfp-arrow-right{
      text-align: center;
 }
 
-.mfp-title{
-  margin-top: 0;
+div.mfp-title{
+  	margin-top: 0;
 
-  small{
-    @include font-size(16px);
-  }
+	font-family: $base-font-family;
+
+	small{
+		@include font-size(16px);
+	}
 }

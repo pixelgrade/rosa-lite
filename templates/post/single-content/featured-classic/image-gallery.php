@@ -46,7 +46,7 @@ if ( ! empty( $attachments ) ):
 	if ( $slider_height == '' ) {
 		$slider_height = '525';
 	}
-	$slider_captions = true;
+	$slider_captions = false;
 
 	$slider_visiblenearby = get_post_meta( wpgrade::lang_post_id( get_the_ID() ), wpgrade::prefix() . 'post_slider_visiblenearby', true );
 

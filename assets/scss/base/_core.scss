@@ -62,6 +62,24 @@
 	// @empty
 }
 
+.gallery-item{
+	position: relative;
+
+	.wp-caption-text{
+		left: 6px;
+	}
+
+	.gallery-icon a{
+		display: block;
+		padding-bottom: 0;
+		border: 0;
+	}
+
+	img{
+		display: block;
+	}
+}
+
 .bypostauthor {
 	width: auto;
 }
