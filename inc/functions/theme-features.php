@@ -35,7 +35,7 @@ function wpgrade_overwrite_gallery_atts( $out, $pairs, $atts ) {
 /*
  * Add custom filter for gallery shortcode output
  */
-//add_filter('post_gallery', 'wpgrade_custom_post_gallery', 10, 2);
+add_filter('post_gallery', 'wpgrade_custom_post_gallery', 10, 2);
 
 function wpgrade_custom_post_gallery($output, $attr) {
 	global $post, $wp_locale;
