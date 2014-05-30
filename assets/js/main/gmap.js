@@ -101,9 +101,12 @@ function gmapInit() {
 			overlay: {
 				latLng: new google.maps.LatLng(gmap_coordinates[0], gmap_coordinates[1]),
 				options: {
-					content: '<div class="pin_wrapper">' +
-					gmap_markercontent +
-					'</div>'
+					content:
+                        '<div class="map__marker-wrap">' +
+                            '<div class="map__marker">' +
+                                    gmap_markercontent +
+                            '</div>' +
+                        '</div>'
 				}
 			},
 			styledmaptype: {
@@ -112,13 +115,28 @@ function gmapInit() {
 					name: "Style 1"
 				},
 				styles: [
-					{
-						stylers: [
-							{saturation: -100}
-						]
-					}
-				]
+                    {
+                        "stylers": [
+                            { "saturation": -100 },
+                            { "gamma": 1.45 },
+                            { "visibility": "simplified" }
+                        ]
+                    },{
+                        "featureType": "road",
+                        "stylers": [
+                            { "hue": "#ffaa00" },
+                            { "saturation": 48 },
+                            { "gamma": 0.53 },
+                            { "visibility": "on" }
+                        ]
+                    },{
+                        "featureType": "administrative",
+                        "stylers": [
+                            { "visibility": "on" }
+                        ]
+                    }
+                ]
 			}
 		});
-	}
+    }
 }

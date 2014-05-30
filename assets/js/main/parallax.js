@@ -4,7 +4,7 @@ function parallaxInit() {
 
 	if (globalDebug) {console.log("Parallax Init");}
 
-	var imgSelector         = '.article__header img',
+	var imgSelector         = '.article__parallax img',
 		parallaxAmount      = 1;
 
     // prepare images for parallax effect
@@ -53,7 +53,7 @@ function parallaxInit() {
 
 	});
 
-	var latestKnownScrollY = 0,
+	var latestKnownScrollY = window.scrollY,
 		ticking = false;
 
 	function update() {
