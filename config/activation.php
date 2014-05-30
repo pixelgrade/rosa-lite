@@ -262,6 +262,11 @@ return array(
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
 				'priority'   => 'high',
+				'hidden'     => true,
+				'show_on'    => array(
+					'key' => 'page-template',
+					'value' => array( 'default', 'page-templates/slideshow.php' ),
+				),
 				'show_names' => true, // Show field names on the left
 				'fields'     => array(
 					array(

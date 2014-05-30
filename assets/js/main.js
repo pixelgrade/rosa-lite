@@ -533,17 +533,23 @@ function parallaxInit() {
 
 			var $img = $(img),
 				options = $img.data('tween'),
+				progress = 0;
+
+			//some sanity check
+			//we wouldn't want to divide by 0 - the Universe might come to an end
+			if (! empty(options) && (options.end - options.start) !== 0) {
 				progress = (1 / (options.end - options.start)) * (scrollTop - options.start);
 
-			if (0 > progress) {
-				$img.css({'visibility': 'hidden'});
-				return;
-			}
+				if (0 > progress) {
+					$img.css({'visibility': 'hidden'});
+					return;
+				}
 
-			if (1 > progress) {
-				options.timeline.progress(progress);
-				$img.css({'visibility': 'visible'});
-				return;
+				if (1 > progress) {
+					options.timeline.progress(progress);
+					$img.css({'visibility': 'visible'});
+					return;
+				}
 			}
 
 			$img.css({'visibility': 'hidden'});
