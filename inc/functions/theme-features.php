@@ -121,7 +121,7 @@ function wpgrade_custom_post_gallery($output, $attr) {
 	 *                    Defaults to false if the theme supports HTML5 galleries.
 	 *                    Otherwise, defaults to true.
 	 */
-	if ( apply_filters( 'use_default_gallery_style', ! $html5 ) ) {
+	if ( apply_filters( 'use_default_gallery_style', true) ) {
 		$gallery_style = "
 		<style type='text/css'>
 			#{$selector} {
