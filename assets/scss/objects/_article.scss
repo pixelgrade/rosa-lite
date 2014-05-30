@@ -10,6 +10,11 @@
 	word-wrap: break-word;
 }
 
+.post .article__title{
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
+}
+
 .article__content {
 
 }
@@ -53,7 +58,7 @@
 }
 
 
-.article__content {
+.page .article__content {
 	position: relative;
 	width: 100%;
 	padding: 50px 0;
