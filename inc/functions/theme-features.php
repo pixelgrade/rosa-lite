@@ -4,10 +4,199 @@
  */
 function wpgrade_callback_custom_theme_features() {
 	add_theme_support( 'automatic-feed-links' );
+
 	// @todo CLEANUP consider options for spliting editor style out of main style
 	add_editor_style( get_template_directory_uri() . '/assets/css/style.css' );
 }
 
+//use different image sizes depending on the number of columns
+add_filter( 'shortcode_atts_gallery', 'wpgrade_overwrite_gallery_atts', 10, 3 );
+
+function wpgrade_overwrite_gallery_atts( $out, $pairs, $atts ) {
+
+	//if we need to make a slideshow then output full size images
+	if ( isset( $atts['mkslideshow'] ) && $atts['mkslideshow'] == true ) {
+		$out['size'] = 'full-size';
+	} elseif ( isset( $atts['columns'] ) ) { //else smaller images depending on no. of columns
+		switch ( $atts['columns'] ) {
+			case '1':
+				$out['size'] = 'medium-size';
+				break;
+			case '2':
+				$out['size'] = 'post-square-medium';
+				break;
+		}
+
+	}
+
+	return $out;
+}
+
+/*
+ * Add custom filter for gallery shortcode output
+ */
+//add_filter('post_gallery', 'wpgrade_custom_post_gallery', 10, 2);
+
+function wpgrade_custom_post_gallery($output, $attr) {
+	global $post, $wp_locale;
+
+	// We're trusting author input, so let's at least make sure it looks like a valid orderby statement
+	if ( isset( $attr['orderby'] ) ) {
+		$attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
+		if ( !$attr['orderby'] )
+			unset( $attr['orderby'] );
+	}
+
+	$html5 = current_theme_supports( 'html5', 'gallery' );
+	extract(shortcode_atts(array(
+		'order'      => 'ASC',
+		'orderby'    => 'menu_order ID',
+		'id'         => $post ? $post->ID : 0,
+		'itemtag'    => $html5 ? 'figure'     : 'dl',
+		'icontag'    => $html5 ? 'div'        : 'dt',
+		'captiontag' => $html5 ? 'figcaption' : 'dd',
+		'columns'    => 3,
+		'size'       => 'thumbnail',
+		'include'    => '',
+		'exclude'    => '',
+		'link'       => ''
+	), $attr, 'gallery'));
+
+	$id = intval($id);
+	if ( 'RAND' == $order )
+		$orderby = 'none';
+
+	if ( !empty($include) ) {
+		$_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+
+		$attachments = array();
+		foreach ( $_attachments as $key => $val ) {
+			$attachments[$val->ID] = $_attachments[$key];
+		}
+	} elseif ( !empty($exclude) ) {
+		$attachments = get_children( array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+	} else {
+		$attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+	}
+
+	if ( empty($attachments) )
+		return '';
+
+	if ( is_feed() ) {
+		$output = "\n";
+		foreach ( $attachments as $att_id => $attachment )
+			$output .= wp_get_attachment_link($att_id, $size, true) . "\n";
+		return $output;
+	}
+
+	$itemtag = tag_escape($itemtag);
+	$captiontag = tag_escape($captiontag);
+	$icontag = tag_escape($icontag);
+	$valid_tags = wp_kses_allowed_html( 'post' );
+	if ( ! isset( $valid_tags[ $itemtag ] ) )
+		$itemtag = 'dl';
+	if ( ! isset( $valid_tags[ $captiontag ] ) )
+		$captiontag = 'dd';
+	if ( ! isset( $valid_tags[ $icontag ] ) )
+		$icontag = 'dt';
+
+	$columns = intval($columns);
+	$itemwidth = $columns > 0 ? floor(100/$columns) : 100;
+	$float = is_rtl() ? 'right' : 'left';
+
+	$selector = "gallery-{$instance}";
+
+	$gallery_style = $gallery_div = '';
+
+	/**
+	 * Filter whether to print default gallery styles.
+	 *
+	 * @since 3.1.0
+	 *
+	 * @param bool $print Whether to print default gallery styles.
+	 *                    Defaults to false if the theme supports HTML5 galleries.
+	 *                    Otherwise, defaults to true.
+	 */
+	if ( apply_filters( 'use_default_gallery_style', ! $html5 ) ) {
+		$gallery_style = "
+		<style type='text/css'>
+			#{$selector} {
+				margin: auto;
+			}
+			#{$selector} .gallery-item {
+				float: {$float};
+				margin-top: 10px;
+				text-align: center;
+				width: {$itemwidth}%;
+			}
+			#{$selector} img {
+				border: 2px solid #cfcfcf;
+			}
+			#{$selector} .gallery-caption {
+				margin-left: 0;
+			}
+			/* see gallery_shortcode() in wp-includes/media.php */
+		</style>\n\t\t";
+	}
+
+	$size_class = sanitize_html_class( $size );
+	$gallery_div = "<div id='$selector' class='gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
+
+	/**
+	 * Filter the default gallery shortcode CSS styles.
+	 *
+	 * @since 2.5.0
+	 *
+	 * @param string $gallery_style Default gallery shortcode CSS styles.
+	 * @param string $gallery_div   Opening HTML div container for the gallery shortcode output.
+	 */
+	$output = apply_filters( 'gallery_style', $gallery_style . $gallery_div );
+
+	$i = 0;
+	foreach ( $attachments as $id => $attachment ) {
+		if ( ! empty( $link ) && 'file' === $link )
+			$image_output = wp_get_attachment_link( $id, $size, false, false );
+		elseif ( ! empty( $link ) && 'none' === $link )
+			$image_output = wp_get_attachment_image( $id, $size, false );
+		else
+			$image_output = wp_get_attachment_link( $id, $size, true, false );
+
+		$image_meta  = wp_get_attachment_metadata( $id );
+
+		$orientation = '';
+		if ( isset( $image_meta['height'], $image_meta['width'] ) )
+			$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
+
+		$output .= "<{$itemtag} class='gallery-item'>";
+		$output .= "
+			<{$icontag} class='gallery-icon {$orientation}'>
+				$image_output
+			</{$icontag}>";
+		if ( $captiontag && trim($attachment->post_excerpt) ) {
+			$output .= "
+				<{$captiontag} class='wp-caption-text gallery-caption'>
+				" . wptexturize($attachment->post_excerpt) . "
+				</{$captiontag}>";
+		}
+		$output .= "</{$itemtag}>";
+		if ( ! $html5 && $columns > 0 && ++$i % $columns == 0 ) {
+			$output .= '<br style="clear: both" />';
+		}
+	}
+
+	if ( ! $html5 && $columns > 0 && $i % $columns !== 0 ) {
+		$output .= "
+			<br style='clear: both' />";
+	}
+
+	$output .= "
+		</div>\n";
+
+	return $output;
+}
+
+// Hook into the 'after_setup_theme' action
+//add_action( 'after_setup_theme', 'wpgrade_custom_backgrounds_support' );
 
 function wpgrade_custom_backgrounds_support() {
 
@@ -22,9 +211,7 @@ function wpgrade_custom_backgrounds_support() {
 	add_theme_support( 'custom-background', $background_args );
 }
 
-// Hook into the 'after_setup_theme' action
-//add_action( 'after_setup_theme', 'wpgrade_custom_backgrounds_support' );
-
+add_action( 'wp_head', 'wpgrade_add_desktop_icons' );
 
 function wpgrade_add_desktop_icons() {
 
@@ -43,7 +230,7 @@ function wpgrade_add_desktop_icons() {
 
 }
 
-add_action( 'wp_head', 'wpgrade_add_desktop_icons' );
+add_action( 'wp', 'wpgrade_prepare_password_for_custom_post_types' );
 
 function wpgrade_prepare_password_for_custom_post_types() {
 
@@ -52,8 +239,7 @@ function wpgrade_prepare_password_for_custom_post_types() {
 
 }
 
-add_action( 'wp', 'wpgrade_prepare_password_for_custom_post_types' );
-
+add_filter( 'mce_buttons', 'add_next_page_button' );
 // Add "Next page" button to TinyMCE
 function add_next_page_button( $mce_buttons ) {
 	$pos = array_search( 'wp_more', $mce_buttons, true );
@@ -66,8 +252,7 @@ function add_next_page_button( $mce_buttons ) {
 	return $mce_buttons;
 }
 
-add_filter( 'mce_buttons', 'add_next_page_button' );
-
+add_filter( 'wp_link_pages_args', 'add_next_and_number' );
 // Customize the "wp_link_pages()" to be able to display both numbers and prev/next links
 function add_next_and_number( $args ) {
 	if ( $args['next_or_number'] == 'next_and_number' ) {
@@ -96,53 +281,58 @@ function add_next_and_number( $args ) {
 	return $args;
 }
 
-add_filter( 'wp_link_pages_args', 'add_next_and_number' );
+/*
+ * Add custom fields to attachments
+ */
+add_action( 'init', 'wpgrade_register_attachments_custom_fields' );
 
+function wpgrade_register_attachments_custom_fields() {
 
-function wpgrade_register_attachments() {
+	//add video support for attachments
+	if ( ! function_exists( 'add_video_url_field_to_attachments' ) ) {
 
-	// add video support for attachments
-	//	if ( !function_exists( 'add_video_url_field_to_attachments' ) ) {
-	//		function add_video_url_field_to_attachments($form_fields, $post){
-	//			if ( !isset($form_fields["video_url"]) ) {
-	//				$form_fields["video_url"] = array(
-	//					"label" => __("Video URL", wpgrade::textdomain() ),
-	//					"input" => "text", // this is default if "input" is omitted
-	//					"value" => esc_url( get_post_meta($post->ID, "_video_url", true) ),
-	//					"helps" => __("<p class='desc'>Attach a video to this image <span class='small'>(Youtube or Vimeo)</span>.</p>", wpgrade::textdomain() ),
-	//				);
-	//			}
-	//
-	//			if ( !isset($form_fields["video_autoplay"]) ) {
-	//
-	//				$meta = get_post_meta( $post->ID, "_video_autoplay", true );
-	//				// Set the checkbox checked or not
-	//				if ( $meta == 'on' )
-	//					$checked = ' checked="checked"';
-	//				else
-	//					$checked = '';
-	//
-	//				$form_fields["video_autoplay"] = array(
-	//					"label" => __("Video  Autoplay", wpgrade::textdomain() ),
-	//					"input" => "html",
-	//					"html" => '<input' .
-	//						$checked . ' type="checkbox" name="attachments[' . $post->ID . '][video_autoplay]" id="attachments[' . $post->ID . '][video_autoplay]" /><label for="attachments[' . $post->ID . '][video_autoplay]">Enable Video Autoplay ?</label>'
-	//
-	//				);
-	//			}
-	//
-	//            if ( !isset($form_fields["external_url"]) ) {
-	//                $form_fields["external_url"] = array(
-	//                    "label" => __("External URL", wpgrade::textdomain() ),
-	//                    "input" => "text",
-	//                    "value" => esc_url( get_post_meta($post->ID, "_external_url", true) ),
-	//                    "helps" => __("<p class='desc'>Set this image to link to an external website.</p>", wpgrade::textdomain() ),
-	//                );
-	//            }
-	//			return $form_fields;
-	//		}
-	//		add_filter("attachment_fields_to_edit", "add_video_url_field_to_attachments", 99999, 2);
-	//	}
+		function add_video_url_field_to_attachments( $form_fields, $post ) {
+			if ( ! isset( $form_fields["video_url"] ) ) {
+				$form_fields["video_url"] = array(
+					"label" => __( "Video URL", wpgrade::textdomain() ),
+					"input" => "text", // this is default if "input" is omitted
+					"value" => esc_url( get_post_meta( $post->ID, "_video_url", true ) ),
+					"helps" => __( "<p class='desc'>Attach a video to this image <span class='small'>(YouTube or Vimeo)</span>.</p>", wpgrade::textdomain() ),
+				);
+			}
+
+			if ( ! isset( $form_fields["video_autoplay"] ) ) {
+
+				$meta = get_post_meta( $post->ID, "_video_autoplay", true );
+				// Set the checkbox checked or not
+				if ( $meta == 'on' ) {
+					$checked = ' checked="checked"';
+				} else {
+					$checked = '';
+				}
+
+				$form_fields["video_autoplay"] = array(
+					"label" => __( "Video  Autoplay", wpgrade::textdomain() ),
+					"input" => "html",
+					"html"  => '<input' . $checked . ' type="checkbox" name="attachments[' . $post->ID . '][video_autoplay]" id="attachments[' . $post->ID . '][video_autoplay]" /><label for="attachments[' . $post->ID . '][video_autoplay]">' . __( 'Enable Video Autoplay?', wpgrade::textdomain() ) . '</label>'
+
+				);
+			}
+
+//			if ( ! isset( $form_fields["external_url"] ) ) {
+//				$form_fields["external_url"] = array(
+//					"label" => __( "External URL", wpgrade::textdomain() ),
+//					"input" => "text",
+//					"value" => esc_url( get_post_meta( $post->ID, "_external_url", true ) ),
+//					"helps" => __( "<p class='desc'>Set this image to link to an external website.</p>", wpgrade::textdomain() ),
+//				);
+//			}
+
+			return $form_fields;
+		}
+
+		add_filter( "attachment_fields_to_edit", "add_video_url_field_to_attachments", 99999, 2 );
+	}
 
 	/**
 	 * Save custom media metadata fields
@@ -155,31 +345,34 @@ function wpgrade_register_attachments() {
 	 * @return $post
 	 */
 
-	//	if ( !function_exists( 'add_image_attachment_fields_to_save' ) ) {
-	//		add_filter("attachment_fields_to_save", "add_image_attachment_fields_to_save", 9999 , 2);
-	//		function add_image_attachment_fields_to_save( $post, $attachment ) {
-	//			if ( isset( $attachment['video_url'] ) )
-	//				update_post_meta( $post['ID'], '_video_url', esc_url($attachment['video_url']) );
-	//
-	//			if ( isset( $attachment['video_autoplay'] ) ) {
-	//				update_post_meta( $post['ID'], '_video_autoplay', 'on' );
-	//			} else {
-	//				update_post_meta( $post['ID'], '_video_autoplay', 'off' );
-	//			}
-	//
-	//
-	//
-	//            if ( isset( $attachment['external_url'] ) )
-	//                update_post_meta( $post['ID'], '_external_url', esc_url($attachment['external_url']) );
-	//
-	//			return $post;
-	//		}
-	//	}
+	if ( ! function_exists( 'add_image_attachment_fields_to_save' ) ) {
+
+		add_filter( "attachment_fields_to_save", "add_image_attachment_fields_to_save", 9999, 2 );
+
+		function add_image_attachment_fields_to_save( $post, $attachment ) {
+			if ( isset( $attachment['video_url'] ) ) {
+				update_post_meta( $post['ID'], '_video_url', esc_url( $attachment['video_url'] ) );
+			}
+
+			if ( isset( $attachment['video_autoplay'] ) ) {
+				update_post_meta( $post['ID'], '_video_autoplay', 'on' );
+			} else {
+				update_post_meta( $post['ID'], '_video_autoplay', 'off' );
+			}
+
+
+//			if ( isset( $attachment['external_url'] ) ) {
+//				update_post_meta( $post['ID'], '_external_url', esc_url( $attachment['external_url'] ) );
+//			}
+
+			return $post;
+		}
+	}
 }
 
-add_action( 'init', 'wpgrade_register_attachments' );
-
-
+/*
+ * Add custom styling for the media popup
+ */
 add_action( 'print_media_templates', 'wpgrade_custom_style_for_mediabox' );
 
 function wpgrade_custom_style_for_mediabox() {
@@ -236,4 +429,48 @@ function wpgrade_custom_style_for_mediabox() {
 		}
 	</style>
 <?php
+}
+
+/*
+ * Add custom settings to the gallery popup interface
+ */
+add_action( 'print_media_templates', 'wpgrade_custom_gallery_settings' );
+
+function wpgrade_custom_gallery_settings() {
+
+	// define your backbone template;
+	// the "tmpl-" prefix is required,
+	// and your input field should have a data-setting attribute
+	// matching the shortcode name
+	?>
+	<script type="text/html" id="tmpl-mkslideshow">
+		<label class="setting">
+			<span><?php _e( 'Make this gallery a slideshow', wpgrade::textdomain() ) ?></span>
+			<input type="checkbox" data-setting="mkslideshow">
+		</label>
+	</script>
+
+	<script>
+
+		jQuery(document).ready(function () {
+
+			// add your shortcode attribute and its default value to the
+			// gallery settings list; $.extend should work as well...
+			_.extend(wp.media.gallery.defaults, {
+				mkslideshow: false
+			});
+
+			// merge default gallery settings template with yours
+			wp.media.view.Settings.Gallery = wp.media.view.Settings.Gallery.extend({
+				template: function (view) {
+					return wp.media.template('gallery-settings')(view)
+					+ wp.media.template('mkslideshow')(view);
+				}
+			});
+
+		});
+
+	</script>
+<?php
+
 }

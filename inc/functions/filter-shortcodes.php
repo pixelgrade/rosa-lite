@@ -43,17 +43,7 @@ add_filter( 'pixcodes_filter_params_for_button', 'wpgrade_callback_change_button
 
 function wpgrade_callback_change_button_params( $params ) {
 
-	//change the text_size options - use it as a style option
-	if ( isset( $params['text_size'] ) ) {
-		$params['text_size']['options'] = array(
-			''        => "Regular",
-			'primary'      => "Primary",
-			'text' => "Text",
-		);
-		$params['text_size']['name'] = 'Style';
-	}
-
-	//change the text_size options - use it as a size option
+	//change the size options
 	if ( isset( $params['size'] ) ) {
 		$params['size']['options'] = array(
 			''        => "Regular",
@@ -61,6 +51,24 @@ function wpgrade_callback_change_button_params( $params ) {
 			'large' => "Large",
 		);
 		$params['size']['name'] = 'Size';
+		$params['size']['admin_class'] = 'span5 push1';
+	}
+
+	//add new params in the right order
+	$params = util::array_insert_before('size', $params, 'style', array(
+		'type' => 'select',
+		'name' => 'Style',
+		'options' => array(
+			''        => "Regular",
+			'primary'      => "Primary",
+			'text' => "Text",
+		),
+		'admin_class' => 'span6'
+	));
+
+	// unset unneeded params
+	if ( isset( $params['text_size'] ) ) {
+		unset( $params['text_size'] );
 	}
 
 	return $params;
