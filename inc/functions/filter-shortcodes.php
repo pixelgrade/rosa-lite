@@ -3,9 +3,9 @@
  * hook shortcodes params
  */
 
-add_filter( 'pixcodes_filter_params_for_separator', 'wpgrade_callback_remove_separator_params', 10, 1 );
+add_filter( 'pixcodes_filter_params_for_separator', 'wpgrade_callback_change_separator_params', 10, 1 );
 
-function wpgrade_callback_remove_separator_params( $params ) {
+function wpgrade_callback_change_separator_params( $params ) {
 	//we only need aligment, color and style
 
 	//change the style options
@@ -34,6 +34,33 @@ function wpgrade_callback_remove_separator_params( $params ) {
 	}
 	if ( isset( $params['weight'] ) ) {
 		unset( $params['weight'] );
+	}
+
+	return $params;
+}
+
+add_filter( 'pixcodes_filter_params_for_button', 'wpgrade_callback_change_button_params', 10, 1 );
+
+function wpgrade_callback_change_button_params( $params ) {
+
+	//change the text_size options - use it as a style option
+	if ( isset( $params['text_size'] ) ) {
+		$params['text_size']['options'] = array(
+			''        => "Regular",
+			'primary'      => "Primary",
+			'text' => "Text",
+		);
+		$params['text_size']['name'] = 'Style';
+	}
+
+	//change the text_size options - use it as a size option
+	if ( isset( $params['size'] ) ) {
+		$params['size']['options'] = array(
+			''        => "Regular",
+			'small'      => "Small",
+			'large' => "Large",
+		);
+		$params['size']['name'] = 'Size';
 	}
 
 	return $params;
