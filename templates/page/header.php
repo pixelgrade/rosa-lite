@@ -159,7 +159,8 @@ $description = wpgrade::filter_content( $description, 'default' );
 						<img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
 					</div>
 				<?php endif;
-			endif;?>
+			endif;
+			if (! empty( $subtitle ) || (! empty( $title ) && $title !== ' ') || ! empty( $description )) : ?>
 			<div class="flexbox">
 				<div class="flexbox__item">
 					<hgroup class="article__headline">
@@ -174,5 +175,6 @@ $description = wpgrade::filter_content( $description, 'default' );
 				</div>
 			</div>
 		<?php endif;
+			endif;
 	endif;?>
 </header>
