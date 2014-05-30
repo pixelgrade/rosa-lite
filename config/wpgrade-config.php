@@ -277,7 +277,7 @@ return array(
 			'width' => 400
 		),
 
-		// Classic blog
+		// Classic blog (cropped)
 		'post-square-small' => array(
 			'width'     => 177,
 			'height'    => 177,

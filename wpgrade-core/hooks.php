@@ -98,13 +98,6 @@ function wpgrade_callback_themesetup() {
 	// Other Settings
 	// --------------
 
-	// the callback wpgrade_callback_custom_theme_features should be placed
-	// in functions.php and contain theme specific settings
-	if ( function_exists( 'wpgrade_callback_custom_theme_features' ) ) {
-		// register theme features
-		add_action( 'after_setup_theme', 'wpgrade_callback_custom_theme_features' );
-	}
-
 	// cleanup the content (eg. remove <p>s around images)
 	add_filter( 'the_content', 'wpgrade_callback_cleanup_the_content' );
 	// cleanup excerpt (eg. replace [..] with a Read more link)
@@ -118,6 +111,12 @@ function wpgrade_callback_themesetup() {
 
 add_action( 'after_setup_theme', 'wpgrade_callback_themesetup', 16 );
 
+// the callback wpgrade_callback_custom_theme_features should be placed
+// in functions.php and contain theme specific settings
+if ( function_exists( 'wpgrade_callback_custom_theme_features' ) ) {
+	// register theme features
+	add_action( 'after_setup_theme', 'wpgrade_callback_custom_theme_features' );
+}
 
 /**
  * ...

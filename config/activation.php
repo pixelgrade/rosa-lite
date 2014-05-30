@@ -265,7 +265,7 @@ return array(
 				'hidden'     => true,
 				'show_on'    => array(
 					'key' => 'page-template',
-					'value' => array( 'default', 'page-templates/slideshow.php' ),
+					'value' => array( 'page-templates/slideshow.php' ),
 				),
 				'show_names' => true, // Show field names on the left
 				'fields'     => array(
