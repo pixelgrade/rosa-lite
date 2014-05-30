@@ -5,6 +5,9 @@
  */
 
 function wpgrade_custom_thumbnails() {
+	
+	// Add theme support for Featured Images
+	add_theme_support( 'post-thumbnails' );
 
 	$sizes = wpgrade::confoption( 'thumbnails_sizes' );
 
