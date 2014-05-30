@@ -19,11 +19,15 @@
 
 	&:hover {
 		background-color: $accent;
-		color: white !important;
+		color: white;
 	}
 
 	//    &.btn--beta { @include font-size(12px, true, 1.25); }
 	//    &.btn--alpha { @include font-size(12px, true, 1.5); }
+
+	&.a{
+		border-bottom: none;
+	}
 }
 
 .btn--primary {
@@ -125,7 +129,7 @@
 	}
 }
 
-.btn--text {
+.btn.btn--text {
 	@extend %text-link;
 
 	padding: $_u4 0;
@@ -134,6 +138,7 @@
 
 	border: 0;
 	border-bottom: 2px solid $accent;
+	@include border-radius(0);
 
 	font-size: 15px;
 	line-height: 1;
