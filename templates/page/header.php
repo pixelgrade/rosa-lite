@@ -58,8 +58,6 @@ else :
 				$image_scale_mode            = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_image_scale_mode', true );
 				$slider_visiblenearby        = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_visiblenearby', true );
 				$slider_transition           = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_transition', true );
-				$slider_transition_direction = '';
-				$slider_transition_direction = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_transition_direction', true );
 				$slider_autoplay             = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_autoplay', true );
 
 
@@ -75,7 +73,7 @@ else :
 						     data-imagescale="<?php echo $image_scale_mode; ?>"
 						     data-slidertransition="<?php echo $slider_transition; ?>"
 							<?php if ( $slider_transition == 'move' ) : ?>
-								data-slidertransitiondirection="<?php echo $slider_transition_direction; ?>"
+								data-slidertransitiondirection="horizontal"
 							<?php endif; ?>
 						     data-bullets
 							<?php

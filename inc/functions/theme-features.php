@@ -37,158 +37,139 @@ function wpgrade_overwrite_gallery_atts( $out, $pairs, $atts ) {
 /*
  * Add custom filter for gallery shortcode output
  */
-add_filter('post_gallery', 'wpgrade_custom_post_gallery', 10, 2);
+add_filter( 'post_gallery', 'wpgrade_custom_post_gallery', 10, 2 );
 
-function wpgrade_custom_post_gallery($output, $attr) {
+function wpgrade_custom_post_gallery( $output, $attr ) {
 	global $post, $wp_locale;
 	static $instance = 0;
 
 	// We're trusting author input, so let's at least make sure it looks like a valid orderby statement
 	if ( isset( $attr['orderby'] ) ) {
 		$attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
-		if ( !$attr['orderby'] )
+		if ( ! $attr['orderby'] ) {
 			unset( $attr['orderby'] );
+		}
 	}
 
 	$html5 = current_theme_supports( 'html5', 'gallery' );
-	extract(shortcode_atts(array(
-		'order'      => 'ASC',
-		'orderby'    => 'menu_order ID',
-		'id'         => $post ? $post->ID : 0,
-		'itemtag'    => $html5 ? 'figure'     : 'dl',
-		'icontag'    => $html5 ? 'div'        : 'dt',
-		'captiontag' => $html5 ? 'figcaption' : 'dd',
-		'columns'    => 3,
-		'size'       => 'thumbnail',
-		'include'    => '',
-		'exclude'    => '',
-		'link'       => '',
-		'mkslideshow'=> false,
-	), $attr, 'gallery'));
+	extract( shortcode_atts( array(
+		'order'       => 'ASC',
+		'orderby'     => 'menu_order ID',
+		'id'          => $post ? $post->ID : 0,
+		'itemtag'     => $html5 ? 'figure' : 'dl',
+		'icontag'     => $html5 ? 'div' : 'dt',
+		'captiontag'  => $html5 ? 'figcaption' : 'dd',
+		'columns'     => 3,
+		'size'        => 'thumbnail',
+		'include'     => '',
+		'exclude'     => '',
+		'link'        => '',
+		'mkslideshow' => false,
+	), $attr, 'gallery' ) );
 
-	$id = intval($id);
-	if ( 'RAND' == $order )
+	$id = intval( $id );
+	if ( 'RAND' == $order ) {
 		$orderby = 'none';
+	}
 
-	if ( !empty($include) ) {
-		$_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+	if ( ! empty( $include ) ) {
+		$_attachments = get_posts( array(
+			'include'        => $include,
+			'post_status'    => 'inherit',
+			'post_type'      => 'attachment',
+			'post_mime_type' => 'image',
+			'order'          => $order,
+			'orderby'        => $orderby
+		) );
 
 		$attachments = array();
 		foreach ( $_attachments as $key => $val ) {
-			$attachments[$val->ID] = $_attachments[$key];
+			$attachments[ $val->ID ] = $_attachments[ $key ];
 		}
-	} elseif ( !empty($exclude) ) {
-		$attachments = get_children( array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+	} elseif ( ! empty( $exclude ) ) {
+		$attachments = get_children( array(
+			'post_parent'    => $id,
+			'exclude'        => $exclude,
+			'post_status'    => 'inherit',
+			'post_type'      => 'attachment',
+			'post_mime_type' => 'image',
+			'order'          => $order,
+			'orderby'        => $orderby
+		) );
 	} else {
-		$attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+		$attachments = get_children( array(
+			'post_parent'    => $id,
+			'post_status'    => 'inherit',
+			'post_type'      => 'attachment',
+			'post_mime_type' => 'image',
+			'order'          => $order,
+			'orderby'        => $orderby
+		) );
 	}
 
-	if ( empty($attachments) )
+	if ( empty( $attachments ) ) {
 		return '';
+	}
 
 	if ( is_feed() ) {
 		$output = "\n";
-		foreach ( $attachments as $att_id => $attachment )
-			$output .= wp_get_attachment_link($att_id, $size, true) . "\n";
+		foreach ( $attachments as $att_id => $attachment ) {
+			$output .= wp_get_attachment_link( $att_id, $size, true ) . "\n";
+		}
+
 		return $output;
 	}
 
 	//If we need to make a slideshow out of this gallery
-	if (true === $mkslideshow) {
-		?>
-		<div class="content--gallery-slideshow">
-					<div class="content-helper">
-						<div class="slider-controls">
-							<div class="slider-controls__arrows">
-								<span class="slider-arrow  js-slider-arrow-prev"><i class="icon-angle-up"></i></span>
-								<span class="slider-arrow  js-slider-arrow-next"><i class="icon-angle-down"></i></span>
-							</div>
-						</div>
-						<div class="pixslider  pixslider--page  js-pixslider"
-						     data-customarrows="right"
-						     data-imagealigncenter
-						     data-imagescale="fill"
-						     data-slidertransition="fade"
-						                           <?php if ( $slider_transition == 'move' ) : ?>
-			data-slidertransitiondirection="<?php echo $slider_transition_direction; ?>"
-		<?php endif; ?>
-						     data-bullets
-							<?php
-							if ( $slider_autoplay ) {
-								echo 'data-sliderautoplay="" ';
-								echo 'data-sliderdelay="' . $slider_delay . '" ';
-							}
-							if ( $slider_visiblenearby ) {
-								echo 'data-visiblenearby ';
-							}
-							?> >
-							<?php
-							$set_cover = true;;
 
-							foreach ( $attachments as $attachment ) :
+	if ( "true" === $mkslideshow ) {
 
-								$full_img          = wp_get_attachment_image_src( $attachment->ID, 'full-size' );
-								$attachment_fields = get_post_custom( $attachment->ID );
+		$output .= '
+			<div class="content--gallery-slideshow">
+				<div class="pixslider  pixslider--gallery-slideshow  js-pixslider"
+				     data-customarrows="right"
+				     data-imagealigncenter
+				     data-imagescale="fill"
+				     data-slidertransition="fade"
+				     data-bullets>';
+		foreach ( $attachments as $id => $attachment ) :
 
-								// prepare the video url if there is one
-								$video_url = ( isset( $attachment_fields['_video_url'][0] ) && ! empty( $attachment_fields['_video_url'][0] ) ) ? esc_url( $attachment_fields['_video_url'][0] ) : '';
+			$full_img          = wp_get_attachment_image_src( $attachment->ID, 'full-size' );
+			$attachment_fields = get_post_custom( $attachment->ID );
 
-								// should the video auto play?
-								$video_autoplay = ( isset( $attachment_fields['_video_autoplay'][0] ) && ! empty( $attachment_fields['_video_autoplay'][0] ) && $attachment_fields['_video_autoplay'][0] === 'on' ) ? $attachment_fields['_video_autoplay'][0] : '';
+			// prepare the video url if there is one
+			$video_url = ( isset( $attachment_fields['_video_url'][0] ) && ! empty( $attachment_fields['_video_url'][0] ) ) ? esc_url( $attachment_fields['_video_url'][0] ) : '';
 
-								if ( true === $set_cover ) {
-									?>
-									<div class="gallery-item cover" itemscope itemtype="http://schema.org/ImageObject"
-									     data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
-									     data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>">
-										<div class="flexbox">
-											<div class="flexbox__item">
-												<hgroup class="article__headline">
-													<?php if ( ! empty( $subtitle ) ) {
-														echo '<h2 class="headline__secondary">' . esc_html( $subtitle ) . '</h2>';
-													} ?>
-													<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
-													<?php if ( ! empty( $description ) ) {
-														echo '<span class="headline__description">' . $description . '</span>';
-													} ?>
-												</hgroup>
-											</div>
-										</div>
-										<img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
-										     alt="<?php echo $attachment->post_excerpt; ?>" itemprop="contentURL"/>
-									</div>
-									<?php
-									$set_cover = false;
-								} else {
-									?>
-									<div class="gallery-item<?php echo( ! empty( $video_url ) ? ' video' : '' );
-									echo ( $video_autoplay == 'on' ) ? ' video_autoplay' : ''; ?>" itemscope
-									     itemtype="http://schema.org/ImageObject"
-									     data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
-									     data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>" <?php echo ( ! empty( $video_autoplay ) ) ? 'data-video_autoplay="' . $video_autoplay . '"' : ''; ?>>
-										<img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
-										     alt="<?php echo $attachment->post_excerpt; ?>"
-										     itemprop="contentURL" <?php echo ( ! empty( $video_url ) ) ? ' data-rsVideo="' . $video_url . '"' : ''; ?>  />
-									</div>
-								<?php
-								}
-							endforeach; ?>
-						</div>
-					</div>
-				</div><!-- .content .content--gallery-slideshow -->
-	<?php
-	} else {
+			// should the video auto play?
+			$video_autoplay = ( isset( $attachment_fields['_video_autoplay'][0] ) && ! empty( $attachment_fields['_video_autoplay'][0] ) && $attachment_fields['_video_autoplay'][0] === 'on' ) ? $attachment_fields['_video_autoplay'][0] : '';
+
+			$output .= '<div class="gallery-item' . ( ! empty( $video_url ) ? ' video' : '' ) . ( ( $video_autoplay == 'on' ) ? ' video_autoplay' : '' ) . '" itemscope
+						     itemtype="http://schema.org/ImageObject"
+						     data-caption="' . htmlspecialchars( $attachment->post_excerpt ) . '"
+						     data-description="' . htmlspecialchars( $attachment->post_content ) . '"' . ( ( ! empty( $video_autoplay ) ) ? 'data-video_autoplay="' . $video_autoplay . '"' : '' ) . '>
+							<img src="' . $full_img[0] . '" class="attachment-blog-big rsImg"
+							     alt="' . $attachment->post_excerpt . '"
+							     itemprop="contentURL" ' . ( ( ! empty( $video_url ) ) ? ' data-rsVideo="' . $video_url . '"' : '' ) . ' />
+						</div>';
+		endforeach;
+		$output .= '</div>
+		</div><!-- .content .content--gallery-slideshow -->';
+
+	} else { //just a normal grid gallery
 
 		$itemtag    = tag_escape( $itemtag );
 		$captiontag = tag_escape( $captiontag );
 		$icontag    = tag_escape( $icontag );
 		$valid_tags = wp_kses_allowed_html( 'post' );
-		if ( ! isset( $valid_tags[ $itemtag ] ) )
+		if ( ! isset( $valid_tags[ $itemtag ] ) ) {
 			$itemtag = 'dl';
-		if ( ! isset( $valid_tags[ $captiontag ] ) )
+		}
+		if ( ! isset( $valid_tags[ $captiontag ] ) ) {
 			$captiontag = 'dd';
-		if ( ! isset( $valid_tags[ $icontag ] ) )
+		}
+		if ( ! isset( $valid_tags[ $icontag ] ) ) {
 			$icontag = 'dt';
+		}
 
 		$columns   = intval( $columns );
 		$itemwidth = $columns > 0 ? floor( 100 / $columns ) : 100;
@@ -237,18 +218,20 @@ function wpgrade_custom_post_gallery($output, $attr) {
 
 		$i = 0;
 		foreach ( $attachments as $id => $attachment ) {
-			if ( ! empty( $link ) && 'file' === $link )
+			if ( ! empty( $link ) && 'file' === $link ) {
 				$image_output = wp_get_attachment_link( $id, $size, false, false );
-			elseif ( ! empty( $link ) && 'none' === $link )
+			} elseif ( ! empty( $link ) && 'none' === $link ) {
 				$image_output = wp_get_attachment_image( $id, $size, false );
-			else
+			} else {
 				$image_output = wp_get_attachment_link( $id, $size, true, false );
+			}
 
 			$image_meta = wp_get_attachment_metadata( $id );
 
 			$orientation = '';
-			if ( isset( $image_meta['height'], $image_meta['width'] ) )
+			if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
 				$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
+			}
 
 			$output .= "<{$itemtag} class='gallery-item'>";
 			$output .= "
@@ -275,6 +258,7 @@ function wpgrade_custom_post_gallery($output, $attr) {
 		$output .= "
 		</div>\n";
 	}
+
 	return $output;
 }
 
