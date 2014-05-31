@@ -592,8 +592,9 @@ function parallaxInit() {
 
 function navigatorInit() {
 
-    var $navigator = $('.navigator'),
-        $headers = $('.article__header');
+    var $navigator      = $('.navigator'),
+        $headers        = $('.article__header'),
+        lastSelected    = 0;
 
     if (!$navigator.length || $headers.length < 2) {
         return;
@@ -603,14 +604,13 @@ function navigatorInit() {
         $('<div class="navigator__item"></div>').appendTo($navigator);
     }
 
-//    $navigator.clone().appendTo($headers);
-//    $navigator.clone().appendTo($headers.next());
+    var $selected = $('<div class="navigator__item  navigator__item--selected"></div>').appendTo($navigator);
 
     $navigator.css({
         'margin-top': -1 * $navigator.height() / 2
     });
 
-//    requestTick();
+    requestTick();
 
     TweenMax.to($navigator, 0.3, {opacity: 1});
 
@@ -618,6 +618,9 @@ function navigatorInit() {
         ticking = false;
 
     function update() {
+
+        var currentSelected;
+
         ticking = false;
 
         $headers.each(function(i, header) {
@@ -628,7 +631,7 @@ function navigatorInit() {
                 navigatorMiddle = latestKnownScrollY + (wh / 2);
 
             if (navigatorMiddle > headerTop) {
-                $navigator.children().removeClass('navigator__item--selected').eq(i).addClass('navigator__item--selected');
+                currentSelected = i;
                 $navigator.removeClass('navigator--black');
 
                 if (navigatorMiddle > headerBottom) {
@@ -638,19 +641,24 @@ function navigatorInit() {
 
         });
 
+        if (lastSelected != currentSelected) {
+            lastSelected = currentSelected;
+            TweenMax.to($selected, 0.3, {top: 24 * currentSelected, ease: 'Bounce'});
+        }
+
     }
 
-//    $(window).scroll(function () {
-//        latestKnownScrollY = window.scrollY;
-//        requestTick();
-//    });
-//
-//    function requestTick() {
-//        if (!ticking) {
-//            requestAnimationFrame(update);
-//        }
-//        ticking = true;
-//    }
+    $(window).scroll(function () {
+        latestKnownScrollY = window.scrollY;
+        requestTick();
+    });
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
 }
 /* --- Sticky Header Init --- */
 

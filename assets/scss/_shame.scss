@@ -55,6 +55,8 @@ html, body {
 }
 
 .navigator__item--selected {
+	position: absolute;
+	top: 0; left: 0;
 	background: white;
 	border-color: transparent;
 }
