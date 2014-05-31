@@ -52,6 +52,7 @@ html, body {
 	margin-bottom: $_u2;
 	border-radius: 50%;
 	border: 2px solid white;
+	@include transition(background-color, border-color .1s ease-in-out);
 }
 
 .navigator__item--selected {
