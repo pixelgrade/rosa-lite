@@ -15,10 +15,11 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 	// password protection
 	get_template_part( 'templates/password-request-form' );
 
-} else {
+} else { ?>
 
+    <div class="navigator"></div>
 
-    while ( have_posts() ) : the_post();
+    <?php while ( have_posts() ) : the_post();
 
         get_template_part( 'templates/page/header' ); ?>
 

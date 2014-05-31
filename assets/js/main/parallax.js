@@ -33,10 +33,6 @@ function parallaxInit() {
 			height: parseInt(imgHeight * scale, 10)
 		});
 
-        if (globalDebug) { console.log('x: ', ww, imgWidth, scaleX) };
-        if (globalDebug) { console.log('y: ', parallaxDistance, imgHeight, scaleY) };
-        if (globalDebug) { console.log('pd = (' + wh + ' (wh) + ' + containerHeight + ' (ch)) * ' + imgHeight + ' (ih) = ' + parallaxDistance) };
-
         // fade image in
         TweenMax.to($img, 0.6, {opacity: 1});
 
@@ -85,7 +81,6 @@ function parallaxInit() {
 				if (1 > progress) {
 					options.timeline.progress(progress);
 					$img.css({'visibility': 'visible'});
-                    if (globalDebug) { console.log(i); }
 					return;
 				}
 			}

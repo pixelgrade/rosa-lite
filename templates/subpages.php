@@ -24,8 +24,8 @@ if ( rosa::page_has_children() ) {
 
 		} else {
 			?>
+            <?php get_template_part( 'templates/page/header' ) ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class( "article--page article--main article--subpage" ); ?>>
-				<?php get_template_part( 'templates/page/header' ) ?>
 				<?php if ( $post->post_content != "" ): ?>
 					<section class="article__content">
 						<div class="container">
