@@ -366,6 +366,7 @@ return array(
 				'show_on'    => array(
 					'key' => 'page-template',
 					'value' => array( 'page-templates/contact.php' ),
+					'display' => true, // make this false if you want to hide it
 				),
 				'show_names' => true, // Show field names on the left
 				'fields'     => array(
@@ -390,7 +391,11 @@ return array(
 						'type'    => 'wysiwyg',
 						'std'     => '',
 						'options' => array(
+							'media_buttons' => true,
 							'textarea_rows' => 3,
+							'teeny'         => false,
+							'tinymce'       => true,
+							'quicktags'     => true,
 						),
 					),
 				),

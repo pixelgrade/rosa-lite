@@ -15,29 +15,31 @@ if ( empty( $title ) ) {
 $description = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_description', true );
 //filter the content with some limitations to avoid having plugins doing nasty things to it
 $description = wpgrade::filter_content( $description, 'default' );
-?>
-<header class="article__header <?php echo $header_height ?>">
-	<?php
-	/* FIRST TEST FOR CONTACT PAGE TEMPLATE */
 
-	//get the Google Maps URL to test if empty
-	$gmap_url = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_url', true );
+/* FIRST TEST FOR CONTACT PAGE TEMPLATE */
 
-	if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' && ! empty( $gmap_url ) ) :
-		$gmap_custom_style   = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_custom_style', true );
-		$gmap_marker_content = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_marker_content', true );
+//get the Google Maps URL to test if empty
+$gmap_url = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_url', true );
 
-		?>
+if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' && ! empty( $gmap_url ) ) :
+	$gmap_custom_style   = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_custom_style', true );
+	$gmap_marker_content = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_marker_content', true );
+
+	?>
+	<header class="article__header <?php echo $header_height ?>">
 		<div id="gmap"
 		     data-url="<?php esc_attr_e( $gmap_url ); ?>" <?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
 		     data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>"></div>
-	<?php
-	else :
-		/* THEN TEST FOR SLIDESHOW PAGE TEMPLATE */
+	</header>
+<?php
+else :
+	/* THEN TEST FOR SLIDESHOW PAGE TEMPLATE */
 
-		$gallery_ids = get_post_meta( $post->ID, wpgrade::prefix() . 'main_gallery', true );
+	$gallery_ids = get_post_meta( $post->ID, wpgrade::prefix() . 'main_gallery', true );
 
-		if ( get_page_template_slug( get_the_ID() ) == 'page-templates/slideshow.php' && ! empty( $gallery_ids ) ):
+	if ( get_page_template_slug( get_the_ID() ) == 'page-templates/slideshow.php' && ! empty( $gallery_ids ) ): ?>
+		<header class="article__header <?php echo $header_height ?>">
+			<?php
 			$gallery_ids = explode( ',', $gallery_ids );
 
 			if ( ! empty( $gallery_ids ) ) {
@@ -56,8 +58,6 @@ $description = wpgrade::filter_content( $description, 'default' );
 				$image_scale_mode            = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_image_scale_mode', true );
 				$slider_visiblenearby        = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_visiblenearby', true );
 				$slider_transition           = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_transition', true );
-				$slider_transition_direction = '';
-				$slider_transition_direction = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_transition_direction', true );
 				$slider_autoplay             = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_autoplay', true );
 
 
@@ -65,7 +65,6 @@ $description = wpgrade::filter_content( $description, 'default' );
 					$slider_delay = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_delay', true );
 				}
 				?>
-
 				<div class="content--page-slider">
 					<div class="content-helper">
 						<div class="pixslider  pixslider--page  js-pixslider"
@@ -74,7 +73,7 @@ $description = wpgrade::filter_content( $description, 'default' );
 						     data-imagescale="<?php echo $image_scale_mode; ?>"
 						     data-slidertransition="<?php echo $slider_transition; ?>"
 							<?php if ( $slider_transition == 'move' ) : ?>
-								data-slidertransitiondirection="<?php echo $slider_transition_direction; ?>"
+								data-slidertransitiondirection="horizontal"
 							<?php endif; ?>
 						     data-bullets
 							<?php
@@ -105,23 +104,23 @@ $description = wpgrade::filter_content( $description, 'default' );
 									<div class="gallery-item cover" itemscope itemtype="http://schema.org/ImageObject"
 									     data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
 									     data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>">
-                                        <div class="article__parallax">
-										    <img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
-										         alt="<?php echo $attachment->post_excerpt; ?>" itemprop="contentURL"/>
-                                        </div>
-                                        <div class="flexbox">
-                                            <div class="flexbox__item">
-                                                <hgroup class="article__headline">
-                                                    <?php if ( ! empty( $subtitle ) ) {
-                                                        echo '<h2 class="headline__secondary">' . esc_html( $subtitle ) . '</h2>';
-                                                    } ?>
-                                                    <h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
-                                                    <?php if ( ! empty( $description ) ) {
-                                                        echo '<span class="headline__description">' . $description . '</span>';
-                                                    } ?>
-                                                </hgroup>
-                                            </div>
-                                        </div>
+										<div class="article__parallax">
+											<img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
+											     alt="<?php echo $attachment->post_excerpt; ?>" itemprop="contentURL"/>
+										</div>
+										<div class="flexbox">
+											<div class="flexbox__item">
+												<hgroup class="article__headline">
+													<?php if ( ! empty( $subtitle ) ) {
+														echo '<h2 class="headline__secondary">' . esc_html( $subtitle ) . '</h2>';
+													} ?>
+													<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
+													<?php if ( ! empty( $description ) ) {
+														echo '<span class="headline__description">' . $description . '</span>';
+													} ?>
+												</hgroup>
+											</div>
+										</div>
 									</div>
 									<?php
 									$set_cover = false;
@@ -133,10 +132,10 @@ $description = wpgrade::filter_content( $description, 'default' );
 									     data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
 									     data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>" <?php echo ( ! empty( $video_autoplay ) ) ? 'data-video_autoplay="' . $video_autoplay . '"' : ''; ?>>
 										<div class="article__parallax">
-                                            <img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
-										     alt="<?php echo $attachment->post_excerpt; ?>"
-										     itemprop="contentURL" <?php echo ( ! empty( $video_url ) ) ? ' data-rsVideo="' . $video_url . '"' : ''; ?>  />
-                                        </div>
+											<img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
+											     alt="<?php echo $attachment->post_excerpt; ?>"
+											     itemprop="contentURL" <?php echo ( ! empty( $video_url ) ) ? ' data-rsVideo="' . $video_url . '"' : ''; ?>  />
+										</div>
 									</div>
 								<?php
 								}
@@ -148,31 +147,36 @@ $description = wpgrade::filter_content( $description, 'default' );
 				<div class="empty-slideshow">
 					<?php _e( 'Currently there are no images assigned to this slideshow', wpgrade::textdomain() ); ?>
 				</div>
-			<?php endif;
-		else :
-			/* OR REGULAR PAGE */
-
-			if ( has_post_thumbnail() ):
-				$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full-size' );
-				if ( ! empty( $image[0] ) ): ?>
-					<div class="article__parallax">
-						<img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
+			<?php endif; ?>
+		</header>
+	<?php
+	else :
+		/* OR REGULAR PAGE */
+		if ( has_post_thumbnail() || ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) : ?>
+			<header class="article__header <?php echo $header_height ?>">
+				<?php if ( has_post_thumbnail() ):
+					$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full-size' );
+					if ( ! empty( $image[0] ) ): ?>
+						<div class="article__parallax">
+							<img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
+						</div>
+					<?php endif;
+				endif;?>
+				<div class="flexbox">
+					<div class="flexbox__item">
+						<hgroup class="article__headline">
+							<?php if ( ! empty( $subtitle ) ) {
+								echo '<h2 class="headline__secondary">' . esc_html( $subtitle ) . '</h2>';
+							} ?>
+							<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
+							<?php if ( ! empty( $description ) ) {
+								echo '<span class="headline__description">' . $description . '</span>';
+							} ?>
+						</hgroup>
 					</div>
-				<?php endif;
-			endif;?>
-			<div class="flexbox">
-				<div class="flexbox__item">
-					<hgroup class="article__headline">
-						<?php if ( ! empty( $subtitle ) ) {
-							echo '<h2 class="headline__secondary">' . esc_html( $subtitle ) . '</h2>';
-						} ?>
-						<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
-						<?php if ( ! empty( $description ) ) {
-							echo '<span class="headline__description">' . $description . '</span>';
-						} ?>
-					</hgroup>
 				</div>
-			</div>
+			</header>
 		<?php endif;
-	endif;?>
+	endif;
+endif;?>
 </header>
