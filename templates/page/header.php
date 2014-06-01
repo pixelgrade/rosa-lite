@@ -24,9 +24,9 @@ $gmap_url = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefi
 if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' && ! empty( $gmap_url ) ) :
 	$gmap_custom_style   = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_custom_style', true );
 	$gmap_marker_content = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_marker_content', true );
-
+	$gmap_height = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_gmap_height', true );
 	?>
-	<header class="article__header <?php echo $header_height ?>">
+	<header class="article__header <?php echo $gmap_height ?>">
 		<div id="gmap"
 		     data-url="<?php esc_attr_e( $gmap_url ); ?>" <?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
 		     data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>"></div>
