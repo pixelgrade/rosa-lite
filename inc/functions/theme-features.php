@@ -3,9 +3,6 @@
  * Invoked by wpgrade_callback_themesetup
  */
 function wpgrade_callback_custom_theme_features() {
-	add_theme_support( 'automatic-feed-links' );
-
-	add_theme_support( 'html5', array( 'gallery', 'caption' ) );
 
 	// @todo CLEANUP consider options for spliting editor style out of main style
 	add_editor_style( get_template_directory_uri() . '/assets/css/style.css' );

@@ -1,39 +1,4 @@
 <?php
-
-function wpgrade_is_all_multibyte( $string ) {
-	if ( function_exists( 'mb_check_encoding' ) ) {
-		// check if the string doesn't contain invalid byte sequence
-		if ( mb_check_encoding( $string, 'UTF-8' ) === false ) {
-			return false;
-		}
-
-		$length = mb_strlen( $string, 'UTF-8' );
-
-		for ( $i = 0; $i < $length; $i += 1 ) {
-			$char = mb_substr( $string, $i, 1, 'UTF-8' );
-
-			// check if the string doesn't contain single character
-			if ( mb_check_encoding( $char, 'ASCII' ) ) {
-				return false;
-			}
-		}
-
-		return true;
-	} else {
-		return false;
-	}
-
-}
-
-function wpgrade_contains_any_multibyte( $string ) {
-	if ( function_exists( 'mb_check_encoding' ) ) {
-		return ! mb_check_encoding( $string, 'ASCII' ) && mb_check_encoding( $string, 'UTF-8' );
-	} else {
-		return false;
-	}
-}
-
-
 /**
  * Cutting the titles and adding '...' after
  *
@@ -282,17 +247,6 @@ function wpgrade_comments( $comment, $args, $depth ) {
 	<!-- </li> is added by WordPress automatically -->
 <?php
 } // don't remove this bracket!
-
-function custom_excerpt_length( $length ) {
-	// Set custom excerpt length - number of words to be shown in excerpts
-	if ( wpgrade::option( 'blog_excerpt_length' ) ) {
-		return absint( wpgrade::option( 'blog_excerpt_length' ) );
-	} else {
-		return 55;
-	}
-}
-
-add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 /**
  * Replace the [...] wordpress puts in when using the the_excerpt() method.
