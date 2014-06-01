@@ -23,9 +23,6 @@ function wpgrade_main_nav() {
 	// test if there are menu locations to prevent errors
 	$theme_locations = get_nav_menu_locations();
 
-	//		if (isset($theme_locations["main_menu"]) && ($theme_locations["main_menu"] != 0)) {
-	//			require_once(wpgrade::themefilepath('inc/WPGrade_Rosa_Walker_Nav_Menu.php'));
-
 	$args = array(
 		'theme_location' => 'main_menu',
 		'menu'           => '',
@@ -35,7 +32,6 @@ function wpgrade_main_nav() {
 		'menu_id'        => '',
 		'fallback_cb'    => 'wpgrade_please_select_a_menu',
 		'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-		'walker'         => new WPGrade_Arrow_Walker_Nav_Menu()
 	);
 
 	wp_nav_menu( $args );

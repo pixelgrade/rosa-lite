@@ -17,9 +17,11 @@ if ( wpgrade::option( 'blog_custom_date_separator' ) ) {
 } ?>
 
 <header>
+	<?php if (wpgrade::option('blog_show_date')) : ?>
 	<div class="article__date">
 		<time class="published" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo $date ?></time>
 	</div>
+	<?php endif; ?>
 	<h2 class="article__title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 	<span class="separator-stylish  separator-stylish--2">&#10043;</span>
 </header>

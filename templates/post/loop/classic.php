@@ -5,24 +5,6 @@
 
 global $wp_query;
 
-$has_sidebar = false;
-if ( wpgrade::option( 'blog_show_sidebar' ) ) {
-	$has_sidebar = true;
-}
-
-//lets figure out the classes needed for the content wrapper
-$classes = 'blog-archive--classic';
-
-//infinite scrolling
-$mosaic_classes = '';
-if ( wpgrade::option( 'blog_infinitescroll' ) ) {
-	$mosaic_classes .= ' infinite_scroll';
-	$classes .= ' inf_scroll';
-
-	if ( wpgrade::option( 'blog_infinitescroll_show_button' ) ) {
-		$mosaic_classes .= ' infinite_scroll_with_button';
-	}
-}
 ?>
 
 <section class="container  container--archive">

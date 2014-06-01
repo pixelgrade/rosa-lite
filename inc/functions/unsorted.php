@@ -199,13 +199,13 @@ function wpgrade_better_excerpt( $text = '' ) {
 		$text        = str_replace( ']]>', ']]&gt;', $text );
 
 		// Removes any JavaScript in posts (between <script> and </script> tags)
-		/*$text = preg_replace('@<script[^>]*?>.*?</script>@si', '', $text); */
+		$text = preg_replace('@<script[^>]*?>.*?</script>@si', '', $text);
 
 		// Enable formatting in excerpts - Add HTML tags that you want to be parsed in excerpts
 		$allowed_tags = '<p><a><em><strong><i><br><h1><h2><h3><h4><h5><h6><blockquote><ul><li><ol><iframe><embed><object><script>';
 		$text         = strip_tags( $text, $allowed_tags );
 
-		// Set custom excerpt length - number of words to be shown in excerpts
+		// Set custom excerpt length - number of characters to be shown in excerpts
 		if ( wpgrade::option( 'blog_excerpt_length' ) ) {
 			$excerpt_length = absint( wpgrade::option( 'blog_excerpt_length' ) );
 		} else {
