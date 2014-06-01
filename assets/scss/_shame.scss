@@ -36,3 +36,39 @@ html, body {
 	position: absolute;
 	top: 0; left: 0; bottom: 0; right: 0;
 }
+
+.navigator {
+	opacity: 0;
+	position: fixed;
+	top: 50%;
+	right: 48px;
+	z-index: 999;
+}
+
+.navigator__item {
+	display: block;
+	width: $_u2;
+	height: $_u2;
+	margin-bottom: $_u2;
+	border-radius: 50%;
+	border: 2px solid white;
+	@include transition(background-color, border-color .1s ease-in-out);
+}
+
+.navigator__item--selected {
+	position: absolute;
+	top: 0; left: 0;
+	background: white;
+	border-color: transparent;
+}
+
+.navigator--black {
+
+	.navigator__item {
+		border-color: black;
+	}
+
+	.navigator__item--selected {
+		background: black;
+	}
+}

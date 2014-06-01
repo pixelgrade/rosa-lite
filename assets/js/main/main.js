@@ -273,6 +273,7 @@ $(window).load(function(){
 
 	stickyHeaderInit();
     parallaxInit();
+    navigatorInit();
 
 
     if(!empty($('#date-otreservations'))){
