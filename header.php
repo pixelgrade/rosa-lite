@@ -40,15 +40,15 @@ $data_smoothscrolling = ( wpgrade::option( 'use_smooth_scroll' ) == 1 ) ? 'data-
 
 //make the header menu bar transparent
 //only for static pages
-if (is_page()) {
+if ( is_page() ) {
 
-	if (get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php') {
+	if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
 		$make_transparent_menu_bar = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'header_transparent_menu_bar_contact', true );
 	} else {
 		$make_transparent_menu_bar = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'header_transparent_menu_bar', true );
 	}
-	
-	if ($make_transparent_menu_bar == 'on') {
+
+	if ( $make_transparent_menu_bar == 'on' ) {
 		$class_name .= '  header--transparent';
 	}
 }
@@ -84,32 +84,32 @@ echo ' ' . $schema_org . ' ' . $data_ajaxloading . ' ' . $data_currentid . ' ' .
 	improve your experience.</p>
 <![endif]-->
 <div id="page">
-<div class="site-header  header--inversed">
-    <div class="container">
-        <div class="flexbox">
-            <div class="flexbox__item">
-                <a href="#" class="js-nav-trigger  nav-trigger"><i class="icon-reorder"></i></a>
-            </div>
-            <div class="flexbox__item">
-                <?php get_template_part( 'templates/header/branding' ); ?>
-            </div>
-            <div class="flexbox__item">
-                <?php
-                $theme_locations = get_nav_menu_locations();
-                $has_main_menu   = false;
+	<div class="site-header  header--inversed">
+		<div class="container">
+			<div class="flexbox">
+				<div class="flexbox__item">
+					<a href="#" class="js-nav-trigger  nav-trigger"><i class="icon-reorder"></i></a>
+				</div>
+				<div class="flexbox__item">
+					<?php get_template_part( 'templates/header/branding' ); ?>
+				</div>
+				<div class="flexbox__item">
+					<?php
+					$theme_locations = get_nav_menu_locations();
+					$has_main_menu   = false;
 
-                if ( isset( $theme_locations["main_menu"] ) && ( $theme_locations["main_menu"] != 0 ) ) {
-                    $has_main_menu = true;
-                } ?>
-                <nav class="navigation  navigation--main<?php echo ( ! $has_main_menu ) ? "  no-menu" : "" ; ?>" id="js-navigation--main">
-                    <h2 class="accessibility"><?php _e( 'Primary Navigation', wpgrade::textdomain() ) ?></h2>
-                    <?php wpgrade_main_nav(); ?>
-                </nav>
-            </div>
-        </div>
-        <!-- .flexbox -->
-    </div>
-    <!-- .container -->
-</div>
-<!-- .site-header -->
+					if ( isset( $theme_locations["main_menu"] ) && ( $theme_locations["main_menu"] != 0 ) ) {
+						$has_main_menu = true;
+					} ?>
+					<nav class="navigation  navigation--main<?php echo ( ! $has_main_menu ) ? "  no-menu" : ""; ?>" id="js-navigation--main">
+						<h2 class="accessibility"><?php _e( 'Primary Navigation', wpgrade::textdomain() ) ?></h2>
+						<?php wpgrade_main_nav(); ?>
+					</nav>
+				</div>
+			</div>
+			<!-- .flexbox -->
+		</div>
+		<!-- .container -->
+	</div>
+	<!-- .site-header -->
 <?php
