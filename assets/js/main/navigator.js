@@ -6,6 +6,7 @@ function navigatorInit() {
         lastSelected    = 0,
         isWhite         = true,
         wasWhite        = true,
+        scrollDuration  = 300,
         latestKnownScrollY = window.scrollY,
         ticking = false;
 
@@ -15,12 +16,34 @@ function navigatorInit() {
     }
 
     // add bullets to the indicator for each header found
-    for (var i = 0; i < $headers.length; i = i + 1) {
-        $('<div class="navigator__item"></div>').appendTo($navigator);
-    }
+    $headers.each(function (i, header) {
+        var $header = $(header),
+            $button = $('<a href="#" class="navigator__item"><div class="bullet"></div></a>');
+
+        $button.appendTo($navigator);
+        $header.data('offsetTop', $header.offset().top);
+
+        $button.on('click', function (e) {
+
+            e.preventDefault();
+
+            var headerTop   = $header.data('offsetTop'),
+                distance    = Math.abs(latestKnownScrollY - headerTop),
+                duration    = scrollDuration * distance / 1000;
+
+            $('html, body').animate({
+                scrollTop: headerTop
+            }, {
+                duration: duration,
+                easing: "easeOutCubic"
+            });
+
+            return false;
+        });
+    });
 
     // add an indicator for the section that's currently in the viewport
-    var $selected = $('<div class="navigator__item  navigator__item--selected"></div>').appendTo($navigator);
+    var $selected = $('<div class="navigator__item  navigator__item--selected"><div class="bullet"></div></div>').appendTo($navigator);
 
     // after all the bullets have been added vertically center the navigator
     $navigator.css({
@@ -40,7 +63,7 @@ function navigatorInit() {
         $headers.each(function(i, header) {
 
             var $header         = $(header),
-                headerTop       = $header.offset().top,
+                headerTop       = $header.data('offsetTop'),
                 headerBottom    = headerTop + $header.outerHeight(),
                 navigatorMiddle = latestKnownScrollY + (wh / 2);
 
