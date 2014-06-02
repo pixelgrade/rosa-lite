@@ -11,17 +11,20 @@
 
 	background: white;
 
+	.admin-bar &{
+		top: 32px;
+	}
+
 	@include media-query(palm) {
 		position: relative;
-		top: 0;
+
+		.admin-bar &{
+			top: 0;
+		}
 	}
 
 	.header--transparent &{
 		background: transparent;
-	}
-
-	.admin-bar &{
-		top: 32px;
 	}
 }
 
