@@ -5,20 +5,31 @@
 
 .tabs__nav {
 	@extend .nav;
-	@extend .nav--block;
-	color: white;
-	background: $dark;
-	text-transform: uppercase;
-	font-family: $heading-font-family;
-	@include rem(font-size, 13px);
+	@extend .nav--banner;
+
 	@include rem(margin-bottom, $_u);
 
+	font-family: $heading-font-family;
+	@include rem(font-size, 32px);
+	letter-spacing: 0.01em;
+	font-weight: bold;
+	text-transform: uppercase;
+
+	li{
+		border: $_u4 solid transparent;
+
+		&:last-child{
+			border: 0;
+		}
+	}
+
 	a {
-		color: white;
 		text-decoration: none;
+		color: $dark;
 
 		&.current, &:hover {
 			color: $accent;
+			border-bottom: 3px solid $accent;
 		}
 	}
 }
