@@ -67,6 +67,19 @@ else :
 				}
 				?>
                 <header class="article__header  <?php echo $header_height ?>">
+                    <div class="flexbox">
+                        <div class="flexbox__item">
+                            <hgroup class="article__headline">
+                                <?php if ( ! empty( $subtitle ) ) {
+                                    echo '<h2 class="headline__secondary">' . esc_html( $subtitle ) . '</h2>';
+                                } ?>
+                                <h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
+                                <?php if ( ! empty( $description ) ) {
+                                    echo '<span class="headline__description">' . $description . '</span>';
+                                } ?>
+                            </hgroup>
+                        </div>
+                    </div>
                     <div class="article__parallax  header--slideshow  js-pixslider"
                      data-autoHeight
                      data-imagealigncenter
@@ -104,17 +117,6 @@ else :
                                 <div class="gallery-item cover" itemscope itemtype="http://schema.org/ImageObject"
                                      data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
                                      data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>">
-                                        <div class="slider-cover">
-                                            <hgroup class="article__headline">
-                                                <?php if ( ! empty( $subtitle ) ) {
-                                                    echo '<h2 class="headline__secondary">' . esc_html( $subtitle ) . '</h2>';
-                                                } ?>
-                                                <h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
-                                                <?php if ( ! empty( $description ) ) {
-                                                    echo '<span class="headline__description">' . $description . '</span>';
-                                                } ?>
-                                            </hgroup>
-                                        </div>
                                         <img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
                                              alt="<?php echo $attachment->post_excerpt; ?>" itemprop="contentURL"/>
                                 </div>
@@ -149,7 +151,7 @@ else :
 				<?php if ( has_post_thumbnail() ):
 					$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full-size' );
 					if ( ! empty( $image[0] ) ): ?>
-						<div class="article__parallax">
+						<div class="article__parallax  article__parallax--img">
 							<img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
 						</div>
 					<?php endif;

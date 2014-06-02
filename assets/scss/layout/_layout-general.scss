@@ -1,12 +1,17 @@
 /*------------------------------------*\
     $LAYOUT GENERAL
 \*------------------------------------*/
+#page{
+	height: 100%;
+}
 
 .container--multipage, .container--single-page {
 	padding-bottom: $_3u;
 }
 
-.container--archive, .container--single {
-	padding-top: 2*$_3u;
-	padding-bottom: $_3u;
+@include media-query(lap-and-up){
+	.container--archive, .container--single {
+		padding-top: 2*$_3u;
+		padding-bottom: $_3u;
+	}
 }

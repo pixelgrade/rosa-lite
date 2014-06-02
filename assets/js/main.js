@@ -1038,7 +1038,10 @@ $(window).load(function(){
 
 	if (globalDebug) {console.group("OnWindowLoad");}
 
-	stickyHeaderInit();
+    if (ww > 900){
+        stickyHeaderInit();
+    }
+
     parallaxInit();
     navigatorInit();
 
@@ -1066,6 +1069,61 @@ $(window).on("debouncedresize", function(e){
 	resizeVideos();
 
 });
+
+//function animateCover() {
+//
+//    $('.article__header').each(function(i, header) {
+//        var $header         = $(header),
+//            timeline        = new TimelineLite({paused: true}),
+//            $title          = $header.find('.headline__primary'),
+//            $subtitle       = $header.find('.headline__secondary'),
+//            $description    = $header.find('.headline__description'),
+//            $arrows         = $description.find('.arrows');
+//
+//        timeline.fromTo($title, 1, {
+//            'letter-spacing': 50,
+//            'opacity': 0
+//        }, {
+//            'letter-spacing': 10,
+//            'opacity': 1,
+//            'easing': "easeOutStrong"
+//        });
+//
+//        timeline.fromTo($subtitle, 0.9, {
+//            'opacity': 0,
+//            'y': 20
+//        }, {
+//            'opacity': 1,
+//            'y': 0
+//        }, '-=0.65');
+//
+//        timeline.fromTo($star, 0.55, {
+//
+//        }, {
+//
+//        }, '-=0.6');
+//
+//        timeline.fromTo($lines, 0.6, {
+//
+//        }, {
+//
+//        }, '-=0.45');
+//
+//        timeline.fromTo($arrows, 0.2 {
+//
+//        }, {
+//
+//        }, '-=0.27');
+//
+//        timeline.play();
+//
+//    });
+//}
+
+setTimeout(function () {
+//    animateCover();
+}, 300);
+
 /* --- 404 Page --- */
 var gifImages = [
 	"http://i.imgur.com/c9X6n.gif",

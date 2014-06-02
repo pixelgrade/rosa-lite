@@ -6,7 +6,7 @@
 }
 
 .archive__title {
-	margin-top: 0;
+	margin: 0;
 	display: inline-block;
 }
 
@@ -126,6 +126,12 @@
 		display: block;
 		width: 100%;
 		height: auto;
+	}
+
+	@include media-query(palm){
+		.article__featured-image{
+			margin-bottom: $_u;
+		}
 	}
 }
 

@@ -488,25 +488,28 @@ img.rsImg {
 	}
 }
 
-.rsArrow {
-	width: 50px;
-	height: 80px;
+.article__featured-image, .content--gallery-slideshow {
+	.rsArrow {
+		width: 50px;
+		height: 80px;
 
-	background: rgba(0, 0, 0, 0.5);
+		background: rgba(0, 0, 0, 0.5);
 
-	@include transform(translateY(-50%));
+		@include transform(translateY(-50%));
+	}
+
+	.rsArrowLeft .rsArrowIcn {
+		margin-left: 16px;
+	}
+
+	.rsArrowIcn {
+		height: 35px;
+		width: 35px;
+
+		margin: 0;
+		margin-top: 22px;
+
+		border-color: white;
+	}
 }
 
-.rsArrowLeft .rsArrowIcn {
-	margin-left: 16px;
-}
-
-.rsArrowIcn {
-	height: 35px;
-	width: 35px;
-
-	margin: 0;
-	margin-top: 22px;
-
-	border-color: white;
-}
