@@ -196,7 +196,7 @@
 			jQuery('.background_upload_button').remove();
 		}
 
-		//$.reduxBackground.preview(selector);
+//		$.reduxBackground.preview(selector);
 
 	};
 
