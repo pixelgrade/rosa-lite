@@ -110,15 +110,18 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'color'            => array(
-						'selector' => "	a, .nav--main a:hover, 
+						'selector' => "	a, a:hover,
+										.nav--main a:hover, 
 										.headline__secondary,
-										.separator--flower, .separator--line-flower, .separator--flower.separator_color--color",
+										.separator--flower, .separator--line-flower, .separator--flower.separator_color--color,
+										.tabs__nav a.current, .tabs__nav a:hover,
+										",
 					),
 					'background-color' => array(
 						'selector' => "",
 					),
 					'border-color' => array(
-						   'selector' => "",
+						   'selector' => ".tabs__nav a.current, .tabs__nav a:hover",
 					),
 					'outline-color'    => array(
 						'selector' => "",
@@ -333,6 +336,50 @@ $sections[] = array(
 			),
 			'output'         => array( '.headline__secondary' ),
 		),
+		array(
+			'id'            => 'subheadings_margin-bottom',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'Margin Bottom', wpgrade::textdomain() ),
+			'validate'      => 'numeric',
+			'default'       => '15',
+			'min'           => -48,
+			'step'          => 1,
+			'max'           => 48,
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'margin-bottom' => array(
+						'selector' => '.headline__secondary',
+						'unit'     => 'px',
+					)
+				)
+			),
+			'compiler'      => true
+		),
+		array(
+			'id'            => 'subheadings_first-letter',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'First Letter Offset', wpgrade::textdomain() ),
+			'validate'      => 'numeric',
+			'default'       => '15',
+			'min'           => -48,
+			'step'          => 0.1,
+			'max'           => 48,
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'line-height' => array(
+						'selector' => '.headline__secondary::first-letter',
+						'unit'     => 'px',
+					)
+				)
+			),
+			'compiler'      => true
+		),
+
+
 		// Navigation Font
 		array(
 			'id'             => 'google_nav_font',
@@ -1235,10 +1282,10 @@ $sections[] = array(
 			'title'      => __( 'Social Links', wpgrade::textdomain() ),
 			'subtitle'   => sprintf( __( 'Define and reorder your social pages links.<br /><b>Note:</b> These will be displayed in the "%s Social Links" widget so you can put them anywhere on your site. Only those filled will appear.<br /><br /><strong> You need to input the <strong>complete</strong> URL (ie. http://twitter.com/username)</strong>', wpgrade::textdomain() ), wpgrade::themename() ),
 			'desc'       => __( 'Icons provided by <strong>FontAwesome</strong> and <strong>Entypo</strong>.', wpgrade::textdomain() ),
-//			'checkboxes' => array(
-//				'widget' => __( 'Widget', wpgrade::textdomain() ),
-//				'header' => __( 'Header', wpgrade::textdomain() )
-//			),
+			'checkboxes' => array(
+				'widget' => __( 'Widget', wpgrade::textdomain() ),
+				'header' => __( 'Header', wpgrade::textdomain() )
+			),
 			'options'    => array(
 				'flickr'        => __( 'Flickr', wpgrade::textdomain() ),
 				'tumblr'        => __( 'Tumblr', wpgrade::textdomain() ),
