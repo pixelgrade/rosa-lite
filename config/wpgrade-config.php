@@ -141,6 +141,9 @@ return array(
 				),
 			),
 			'styles'         => array(
+//				'google-webfonts'    => array(
+//					'path' => 'http://fonts.googleapis.com/css?family=Maven+Pro:400,700,900|Lato:400,700|Herr+Von+Muellerhoff',
+//				),
 				'wpgrade-main-style' => array(
 					'path'       => get_template_directory_uri() . '/assets/css/style.css',
 					'cache_bust' => wpgrade::cachebust_string( wpgrade::themefilepath( 'assets/css/style.css' ) ),
