@@ -122,6 +122,10 @@
 		@include border-radius(0);
 
 		background: transparent;
+
+		&:hover{
+			color: $accent !important;
+		}
 	}
 
 	a.btn:last-child {
