@@ -303,9 +303,11 @@ $sections[] = array(
 				'transport' => 'refresh',
 			),
 			'default'        => array(
-				'font-family' => 'Open Sans',
+				'font-family' => 'Maven Pro',
 				'google'      => true,
 			),
+			'output'         => array( 'h1, h2, h3, h4, h5, h6' ),
+
 		),
 		// SubHeadings Font
 		array(
@@ -319,16 +321,17 @@ $sections[] = array(
 			'text-align'     => false,
 			'all_styles'     => true,
 			'required'       => array( 'use_google_fonts', '=', 1 ),
-			'title'          => __( '<button></button> SubHeadings', wpgrade::textdomain() ),
+			'title'          => __( '<button></button> Sub Headings', wpgrade::textdomain() ),
 			'subtitle'       => __( 'Font for titles and headings.', wpgrade::textdomain() ),
 			'compiler'       => true,
 			'customizer'     => array(
 				'transport' => 'refresh',
 			),
 			'default'        => array(
-				'font-family' => 'Open Sans',
+				'font-family' => 'Herr Von Muellerhoff',
 				'google'      => true,
 			),
+			'output'         => array( '.headline__secondary' ),
 		),
 		// Navigation Font
 		array(
@@ -349,16 +352,18 @@ $sections[] = array(
 				'transport' => 'refresh',
 			),
 			'default'        => array(
-				'font-family' => 'Open Sans',
+				'font-family' => 'Cabin',
 				'google'      => true,
 			),
+			'output'         => array( '.navigation--main' ),
+			
 		),
 		array(
 			'id'            => 'nav_font-size',
 			'type'          => 'customizer_slider',
 			'title'         => __( 'Font Size', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
-			'default'       => '14',
+			'default'       => '15',
 			'min'           => 8,
 			'step'          => 1,
 			'max'           => 30,
@@ -446,6 +451,7 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
+
 		// Body Font
 		array(
 			'id'             => 'google_body_font',
@@ -465,9 +471,10 @@ $sections[] = array(
 				'transport' => 'refresh',
 			),
 			'default'        => array(
-				'font-family' => 'Open Sans',
+				'font-family' => 'Cabin',
 				'google'      => true,
 			),
+			'output'         => array( 'body' ),
 		),
 		array(
 			'id'            => 'body-font-size',
@@ -512,10 +519,10 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
+
 		/*
 		 * Sizes and Spacing
 		 */
-
 		array(
 			'id'         => 'sizes_title',
 			'title'      => '<h3>' . __( 'Sizes and spacings', wpgrade::textdomain() ) . '</h3>',
@@ -551,32 +558,31 @@ $sections[] = array(
 			'compiler'      => true
 		),
 		array(
-			'id'            => 'content_horizontal_margins',
+			'id'            => 'sections_vertical_margins',
 			'type'          => 'customizer_slider',
-			'title'         => __( 'Container Horizontal Margins', wpgrade::textdomain() ),
+			'title'         => __( 'Sections Vertical Margins', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
-			'default'       => '96',
-			'min'           => 24,
+			'default'       => '78',
+			'min'           => 0,
 			'step'          => 6,
 			'max'           => 120,
 			'display_value' => 'text',
 			'customizer'    => array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
-					'padding-left'  => array(
-						'selector' => '.container',
+					'padding-top'  => array(
+						'selector' => '.page .article__content',
 						'unit'     => 'px',
-						'media'    => 'screen and (min-width: 900px)'
 					),
-					'padding-right' => array(
-						'selector' => '.container',
+					'padding-bottom'  => array(
+						'selector' => '.page .article__content',
 						'unit'     => 'px',
-						'media'    => 'screen and (min-width: 900px)'
 					)
 				)
 			),
 			'compiler'      => true
 		),
+
 		array(
 			'id'            => 'sidebar_width',
 			'type'          => 'customizer_slider',
@@ -645,7 +651,7 @@ $sections[] = array(
 			'type'          => 'customizer_slider',
 			'title'         => __( 'Header Vertical Margins', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
-			'default'       => '36',
+			'default'       => '0',
 			'min'           => 0,
 			'step'          => 1,
 			'max'           => 100,
@@ -655,12 +661,12 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'padding-top'    => array(
-						'selector' => '.header',
+						'selector' => '.site-header',
 						'unit'     => 'px',
 						'media'    => 'screen and (min-width: 900px)'
 					),
 					'padding-bottom' => array(
-						'selector' => '.header',
+						'selector' => '.site-header',
 						'unit'     => 'px',
 						'media'    => 'screen and (min-width: 900px)'
 					)
