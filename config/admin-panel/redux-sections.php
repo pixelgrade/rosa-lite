@@ -300,7 +300,8 @@ $sections[] = array(
 				'transport' => 'refresh',
 			),
 			'default'        => array(
-				'font-family' => 'Maven Pro',
+				'font-family' => 'Source Sans Pro',
+				'font-weight' => '900',
 				'google'      => true,
 			),
 			'output'         => array( 'h1, h2, h3, h4, h5, h6' ),
@@ -336,7 +337,7 @@ $sections[] = array(
 			'title'         => __( 'Margin Bottom', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '15',
-			'min'           => - 48,
+			'min'           => -90,
 			'step'          => 1,
 			'max'           => 48,
 			'display_value' => 'text',
@@ -372,6 +373,7 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
+		
 		// Navigation Font
 		array(
 			'id'             => 'google_nav_font',
