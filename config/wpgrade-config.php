@@ -127,12 +127,12 @@ return array(
 						'jquery'
 					),
 				),
-//				'webfont-script'       => array(
-//					'path'    => '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js',
-//					'require' => array(
-//						'jquery'
-//					),
-//				),
+				'webfont-script'       => array(
+					'path'    => '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js',
+					'require' => array(
+						'jquery'
+					),
+				),
 				'google-maps-api'      => array(
 					'path'    => 'http://maps.google.com/maps/api/js?sensor=false&amp;language=en',
 					'require' => array(
@@ -156,7 +156,7 @@ return array(
 		'auto-enqueue-scripts'    => array(
 			'google-maps-api',
 			'wpgrade-main-scripts',
-//			'webfont-script',
+			'webfont-script',
 		),
 		// enqueue's script and localizes
 		'auto-localize-scripts'   => array(

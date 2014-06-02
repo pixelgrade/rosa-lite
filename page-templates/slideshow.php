@@ -16,7 +16,6 @@ get_header();
 			<section class="article__content">
 				<div class="container">
 					<section class="page__content  js-post-gallery  cf">
-						<h1 class="entry__title"><?php the_title(); ?></h1>
 						<?php the_content(); ?>
 					</section>
 				</div>
