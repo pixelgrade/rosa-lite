@@ -40,11 +40,11 @@ wpgrade::resolve( 'redux-instance', $redux );
  */
 function wpgrade_add_admin_custom_style() {
 
-	wp_enqueue_style( 'redux-theme-custom-css', wpgrade::resourceuri( 'css/admin/admin-panel.css' ), array(), time(), 'all' );
+	wp_enqueue_style( wpgrade::shortname() . 'redux-theme-custom-css', wpgrade::resourceuri( 'css/admin/admin-panel.css' ), array(), time(), 'all' );
 
 	wp_enqueue_script( 'wp-ajax-response' );
 
-	wp_enqueue_script( 'redux-theme-custom-js', wpgrade::resourceuri( 'js/admin/admin-panel.js' ), array(), time(), true );
+	wp_enqueue_script( wpgrade::shortname() . 'redux-theme-custom-js', wpgrade::resourceuri( 'js/admin/admin-panel.js' ), array(), time(), true );
 }
 
 // This example assumes your opt_name is set to redux, replace with your opt_name value
