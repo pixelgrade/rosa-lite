@@ -11,6 +11,8 @@ global $wp_query;
 	<div class="page-content  archive">
 		<?php rosa::the_archive_title(); ?>
 
+		<?php get_template_part('templates/post/loop/categories-dropdown'); ?>
+
 		<?php //first the sticky posts
 		// get current page we are on. If not set we can assume we are on page 1.
 		$current_page = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
