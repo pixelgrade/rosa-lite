@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Contact Page
+ * Template Name: Map Header
  * This is the template that is used for the contact page/section
  * It is a page with additional controls for the Google Maps section
 

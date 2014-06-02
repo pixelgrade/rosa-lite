@@ -22,19 +22,6 @@ class rosa {
 
 		echo (int) $num_comments;
 
-		//		if ( comments_open() ) {
-		//			if ( $num_comments == 0 ) {
-		//				$comments = __('No Comments');
-		//			} elseif ( $num_comments > 1 ) {
-		//				$comments = $num_comments . __(' Comments');
-		//			} else {
-		//				$comments = __('1 Comment');
-		//			}
-		//			$write_comments = '<a href="' . get_comments_link() .'">'. $comments.'</a>';
-		//		} else {
-		//			$write_comments =  __('Comments are off for this post.');
-		//		}
-
 	}
 
 	/**

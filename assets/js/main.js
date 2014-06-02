@@ -1038,7 +1038,10 @@ $(window).load(function(){
 
 	if (globalDebug) {console.group("OnWindowLoad");}
 
-	stickyHeaderInit();
+    if (ww > 900){
+        stickyHeaderInit();
+    }
+
     parallaxInit();
     navigatorInit();
 

@@ -127,12 +127,12 @@ return array(
 						'jquery'
 					),
 				),
-				'webfont-script'       => array(
-					'path'    => '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js',
-					'require' => array(
-						'jquery'
-					),
-				),
+//				'webfont-script'       => array(
+//					'path'    => '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js',
+//					'require' => array(
+//						'jquery'
+//					),
+//				),
 				'google-maps-api'      => array(
 					'path'    => 'http://maps.google.com/maps/api/js?sensor=false&amp;language=en',
 					'require' => array(
@@ -142,13 +142,12 @@ return array(
 			),
 			'styles'         => array(
 				'google-webfonts'    => array(
-					'path' => 'http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700',
+					'path' => 'http://fonts.googleapis.com/css?family=Maven+Pro:400,700,900|Lato:400,700|Herr+Von+Muellerhoff',
 				),
 				'wpgrade-main-style' => array(
 					'path'       => get_template_directory_uri() . '/assets/css/style.css',
 					'cache_bust' => wpgrade::cachebust_string( wpgrade::themefilepath( 'assets/css/style.css' ) ),
 				),
-				'404-style'          => array( 'path' => get_template_directory_uri() . '/assets/css/pages/404.css' ),
 			)
 
 		), # end register
@@ -157,7 +156,7 @@ return array(
 		'auto-enqueue-scripts'    => array(
 			'google-maps-api',
 			'wpgrade-main-scripts',
-			'webfont-script',
+//			'webfont-script',
 		),
 		// enqueue's script and localizes
 		'auto-localize-scripts'   => array(
@@ -183,7 +182,6 @@ return array(
 		'auto-enqueue-styles'     => array(
 			'google-webfonts',
 			'wpgrade-main-style',
-			'404-style'
 		),
 		// calls function to perform extra enqueue's on theme setup
 		// handlers should be placed in theme's functions.php
@@ -193,6 +191,7 @@ return array(
 				'priority' => 9999,
 			),
 			'rtl-support' => 'wpgrade_callback_enqueue_rtl_support',
+			'404-page' => 'wpgrade_callback_enqueue_404_css',
 		),
 
 	), # end resource
