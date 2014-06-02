@@ -24,7 +24,7 @@ return array(
 			//for the Page Header Covers
 			wpgrade::shortname() . '_page_header_area_cover'       => array(
 				'id'         => wpgrade::shortname() . '_page_header_area_cover',
-				'title'      => __( 'Header Area', 'rosa_txtd' ),
+				'title'      => __( 'Featured Header Area', 'rosa_txtd' ),
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
 				'priority'   => 'high',
@@ -41,15 +41,15 @@ return array(
 						'type'    => 'select',
 						'options' => array(
 							array(
-								'name'  => __( 'Half', 'rosa_txtd' ),
+								'name'  => __( '&nbsp; ◉◯ &nbsp;Half', 'rosa_txtd' ),
 								'value' => 'half-height',
 							),
 							array(
-								'name'  => __( 'Two Thirds', 'rosa_txtd' ),
+								'name'  => __( '◉◉◯ Two Thirds', 'rosa_txtd' ),
 								'value' => 'two-thirds-height',
 							),
 							array(
-								'name'  => __( 'Full Height', 'rosa_txtd' ),
+								'name'  => __( '◉◉◉ Full Height', 'rosa_txtd' ),
 								'value' => 'full-height',
 							)
 						),
@@ -57,19 +57,19 @@ return array(
 					),
 					array(
 						'name' => __( 'Subtitle', 'rosa_txtd' ),
-						'desc' => __( "This is optional. Leave empty to remove the subtitle.", 'rosa_txtd' ),
+						// 'desc' => __( "This is optional. Leave empty to remove the subtitle.", 'rosa_txtd' ),
 						'id'   => wpgrade::prefix() . 'page_cover_subtitle',
-						'type' => 'textarea_small',
+						'type' => 'text',
 					),
 					array(
 						'name' => __( 'Title', 'rosa_txtd' ),
-						'desc' => __( "If left empty we will use the page title. Put a space if you don't want a cover text.", 'rosa_txtd' ),
+						'desc' => __( "If left empty we will use the page title. Tip: put a space if you don't want any cover text.", 'rosa_txtd' ),
 						'id'   => wpgrade::prefix() . 'page_cover_title',
-						'type' => 'textarea_small',
+						'type' => 'text',
 					),
 					array(
 						'name'    => __( 'Description', 'rosa_txtd' ),
-						'desc'    => __( "This is optional. Leave empty to remove the description. You can use shortcodes (like the Separator) or even images to further embellish this.", 'rosa_txtd' ),
+						'desc'    => __( "You can use shortcodes (like the Separator) or even images to further embellish this.", 'rosa_txtd' ),
 						'id'      => wpgrade::prefix() . 'page_cover_description',
 						'type'    => 'wysiwyg',
 						'options' => array(
@@ -190,7 +190,7 @@ return array(
 			//for the Contact Page template
 			wpgrade::shortname() . '_gmap_settings' => array(
 				'id'         => wpgrade::shortname() . '_gmap_settings',
-				'title'      => __( 'Configure Your Google Map', 'rosa_txtd' ),
+				'title'      => __( 'Map Coordinates & Display Options', 'rosa_txtd' ),
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
 				'priority'   => 'high',
@@ -203,42 +203,42 @@ return array(
 				'show_names' => true, // Show field names on the left
 				'fields'     => array(
 					array(
-						'name' => __( 'Google Maps URL', 'rosa_txtd' ),
-						'desc' => __( 'Please paste here the Share URL you have taken from www.google.com/maps.', 'rosa_txtd' ),
-						'id'   => wpgrade::prefix() . 'gmap_url',
-						'type' => 'textarea_small',
-						'std'  => '',
-					),
-					array(
 						'name' => __( 'Map Height', 'rosa_txtd' ),
 						'desc' => __( '<p class="cmb_metabox_description">Select the height of the Google Map area in relation to the browser window.</p>', 'rosa_txtd' ),
 						'id'   => wpgrade::prefix() . 'page_gmap_height',
 						'type'    => 'select',
 						'options' => array(
 							array(
-								'name'  => __( 'Half', 'rosa_txtd' ),
+								'name'  => __( '&nbsp; ◉◯ &nbsp;Half', 'rosa_txtd' ),
 								'value' => 'half-height',
 							),
 							array(
-								'name'  => __( 'Two Thirds', 'rosa_txtd' ),
+								'name'  => __( '◉◉◯ Two Thirds', 'rosa_txtd' ),
 								'value' => 'two-thirds-height',
 							),
 							array(
-								'name'  => __( 'Full Height', 'rosa_txtd' ),
+								'name'  => __( '◉◉◉ Full Height', 'rosa_txtd' ),
 								'value' => 'full-height',
 							)
 						),
 						'std'     => 'half-height',
 					),
 					array(
-						'name' => __( 'Custom Styling', 'rosa_txtd' ),
+						'name' => __( 'Google Maps URL', 'rosa_txtd' ),
+						'desc' => __( 'Paste here the Share URL you have taken from <a href="http://www.google.com/maps" target="_blank">Google Maps</a>.', 'rosa_txtd' ),
+						'id'   => wpgrade::prefix() . 'gmap_url',
+						'type' => 'textarea_small',
+						'std'  => '',
+					),
+					array(
+						'name' => __( 'Custom Colors', 'rosa_txtd' ),
 						'desc' => __( 'Allow us to change the map colors to better match your website.', 'rosa_txtd' ),
 						'id'   => wpgrade::prefix() . 'gmap_custom_style',
 						'type' => 'checkbox',
 						'std'  => 'on',
 					),
 					array(
-						'name'    => __( 'Marker Content', 'rosa_txtd' ),
+						'name'    => __( 'Pin Content', 'rosa_txtd' ),
 						'desc'    => __( 'Insert here the content of the location marker - leave empty for no custom marker.', 'rosa_txtd' ),
 						'id'      => wpgrade::prefix() . 'gmap_marker_content',
 						'type'    => 'wysiwyg',

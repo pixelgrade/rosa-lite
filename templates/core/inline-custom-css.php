@@ -1,76 +1,31 @@
 <?php
-//	/* @var string $main_color */
-//	/* @var array  $fonts */
-//	/* @var string $rgb */
-//
-//$main_color = wpgrade::option('main_color');
-//
-//
-//$rgb = implode(',', wpgrade::hex2rgb_array($main_color));
-//$fonts = array();
-//
-//if (wpgrade::option('use_google_fonts')) {
-//	$fonts_array = array
-//	(
-//		'google_titles_font',
-//		'google_second_font',
-//		'google_nav_font',
-//		'google_body_font'
-//	);
-//
-//	foreach ($fonts_array as $font) {
-//		$the_font = wpgrade::get_the_typo($font);
-//		if ( isset($the_font['font-family'] ) && ! empty($the_font['font-family'])) {
-//			$fonts[$font] = $the_font;
-//		}
-//	}
-//}
-//
-//function hex2rgb($hex) {
-//    $hex = str_replace("#", "", $hex);
-//
-//    if(strlen($hex) == 3) {
-//        $r = hexdec(substr($hex,0,1).substr($hex,0,1));
-//        $g = hexdec(substr($hex,1,1).substr($hex,1,1));
-//        $b = hexdec(substr($hex,2,1).substr($hex,2,1));
-//    } else {
-//        $r = hexdec(substr($hex,0,2));
-//        $g = hexdec(substr($hex,2,2));
-//        $b = hexdec(substr($hex,4,2));
-//    }
-//    $rgb = array($r, $g, $b);
-////     return implode(",", $rgb); // returns the rgb values separated by commas
-//    return $rgb; // returns an array with the rgb values
-//}
-//
-///**
-// * Generate all the css declared in customizer's config
-// */
-//
-//$redux_sections =  wpgrade::get_redux_sections();
-//
-//foreach ( $redux_sections as $key => $section ){
-//
-//	if ( isset( $section['fields'] ) ) {
-//
-//		foreach ($section['fields'] as $i => $field) {
-//
-//			if ( isset($field['customizer']) && isset($field['customizer']['css_rules']) ) {
-//
-//				foreach ( $field['customizer']['css_rules'] as $key => $rule) {
-//
-//					//rebuild the option value for each rule
-//					$option_value = wpgrade::option( $field['id']);
-//
-//					// @TODO  make from this a method used also in customizer
-//					wpgrade::display_dynamic_css_rule( $rule, $key, $option_value );
-//				}
-//			}
-//		}
-//	}
-//}
-//
-//
+/**
+ * Generate all the css declared in customizer's config
+ */
+
+$redux_sections =  wpgrade::get_redux_sections();
+
+foreach ( $redux_sections as $key => $section ){
+
+	if ( isset( $section['fields'] ) ) {
+
+		foreach ($section['fields'] as $i => $field) {
+
+			if ( isset($field['customizer']) && isset($field['customizer']['css_rules']) ) {
+
+				foreach ( $field['customizer']['css_rules'] as $key => $rule) {
+
+					//rebuild the option value for each rule
+					$option_value = wpgrade::option( $field['id']);
+
+					// @TODO  make from this a method used also in customizer
+					wpgrade::display_dynamic_css_rule( $rule, $key, $option_value );
+				}
+			}
+		}
+	}
+}
+
 //if ( !empty($main_color) ){
 //$rgb = implode(",", hex2rgb($main_color));
 ?>

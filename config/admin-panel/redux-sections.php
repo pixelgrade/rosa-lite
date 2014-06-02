@@ -76,6 +76,7 @@ $sections[] = array(
 	'icon_class' => '',
 	'title'      => __( 'Style', wpgrade::textdomain() ),
 	'desc'       => '<p class="description">' . __( 'The style options control the general styling of the site, like accent color and Google Web Fonts. You can choose custom fonts for various typography elements with font weight, character set, size and/or line height. You also have a live preview for your chosen fonts.', wpgrade::textdomain() ) . '</p>',
+	'customizer_only' => false,
 	'fields'     => array(
 		array(
 			'id'         => 'live-customizer-button' . $debug,
@@ -387,7 +388,7 @@ $sections[] = array(
 		// Headings Font
 		array(
 			'id'             => 'google_titles_font',
-			'type'           => 'typography',
+			'type'           => 'customizer_typography',
 			'color'          => false,
 			'font-size'      => false,
 			'line-height'    => false,
@@ -410,7 +411,7 @@ $sections[] = array(
 		// Navigation Font
 		array(
 			'id'             => 'google_nav_font',
-			'type'           => 'typography',
+			'type'           => 'customizer_typography',
 			'color'          => false,
 			'font-size'      => false,
 			'line-height'    => false,
@@ -432,7 +433,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'nav_font-size',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Font Size', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '14',
@@ -453,7 +454,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'nav_letter-spacing',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Letter Spacing', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '0',
@@ -526,7 +527,7 @@ $sections[] = array(
 		// Body Font
 		array(
 			'id'             => 'google_body_font',
-			'type'           => 'typography',
+			'type'           => 'customizer_typography',
 			'color'          => false,
 			'font-size'      => false,
 			'line-height'    => false,
@@ -548,7 +549,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'body-font-size',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Font Size', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '16',
@@ -569,7 +570,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'body-line-height',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Line Height', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '1.6',
@@ -607,7 +608,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'content_width',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Site Container Width', wpgrade::textdomain() ),
 			'subtitle'      => __( 'Set the width of the container.', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
@@ -629,7 +630,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'content_horizontal_margins',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Container Horizontal Margins', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '96',
@@ -656,7 +657,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'sidebar_width',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Sidebar Width', wpgrade::textdomain() ),
 			'subtitle'      => __( 'Set the width of the sidebar.', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
@@ -697,7 +698,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'header_logo_height',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Logo Height', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '90',
@@ -719,7 +720,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'header_vertical_margins',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Header Vertical Margins', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '36',
@@ -753,7 +754,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'navigation_menu_items_spacing',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Menu Items Spacing', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => 24,
@@ -780,7 +781,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'navigation_vertical_margins',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Navigation Vertical Margins', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => 21,
@@ -910,7 +911,6 @@ $sections[] = array(
 			'type'     => 'text',
 			'title'    => __( 'Read More Text', wpgrade::textdomain() ),
 			'subtitle' => __( 'Set the read more link text.', wpgrade::textdomain() ),
-			'desc'     => __( '(leave empty if you want to remove it)', wpgrade::textdomain() ),
 			'default'  => 'Read more',
 		),
 		array(
@@ -918,7 +918,6 @@ $sections[] = array(
 			'type'     => 'text',
 			'title'    => __( 'Excerpt "More" Text', wpgrade::textdomain() ),
 			'subtitle' => __( 'Change the default [...] with something else.', wpgrade::textdomain() ),
-			'desc'     => __( '(leave empty if you want to remove it)', wpgrade::textdomain() ),
 			'default'  => '..',
 		),
 		array(
@@ -943,7 +942,7 @@ $sections[] = array(
 		array(
 			'id'       => 'blog_custom_date_separator',
 			'type'     => 'checkbox',
-			'title'    => __( 'Custom Date Separator', wpgrade::textdomain() ),
+			'title'    => __( 'Dot Separator', wpgrade::textdomain() ),
 			'subtitle' => __( 'Change spaces, commas or slashes with a custom dot.', wpgrade::textdomain() ),
 			'default'  => '1',
 			'required' => array( 'blog_show_date', '=', true )
