@@ -192,27 +192,28 @@ class rosa {
 
 		$object = get_queried_object();
 
-		if ( is_home() ) {
-			//do nothing - no title is needed
+		if ( is_home() ) { ?>
+			<h1 class="hN  archive__title"><?php single_post_title(); ?></h1>
+		<?php
 		} elseif ( is_search() ) {
 			?>
 			<div class="heading headin--main">
 				<span class="archive__side-title beta"><?php _e( 'Search Results for: ', wpgrade::textdomain() ) ?></span>
 
-				<h2 class="hN"><?php echo get_search_query(); ?></h2>
+				<h1 class="hN  archive__title"><?php echo get_search_query(); ?></h1>
 			</div>
 			<hr class="separator"/>
 		<?php
 		} elseif ( is_tag() ) {
 			?>
 			<div class="heading headin--main">
-				<h2 class="hN"><?php echo single_tag_title( '', false ); ?></h2>
+				<h1 class="hN  archive__title"><?php echo single_tag_title( '', false ); ?></h1>
 				<span class="archive__side-title beta"><?php _e( 'Tag', wpgrade::textdomain() ) ?></span>
 			</div>
 			<hr class="separator"/>
 		<?php } elseif ( ! empty( $object ) && isset( $object->term_id ) ) { ?>
 			<div class="heading headin--main">
-				<h2 class="hN"><?php echo $object->name; ?></h2>
+				<h1 class="hN  archive__title"><?php echo $object->name; ?></h1>
 				<span class="archive__side-title beta"><?php _e( 'Category', wpgrade::textdomain() ) ?></span>
 			</div>
 			<hr class="separator"/>
@@ -220,21 +221,21 @@ class rosa {
 			<div class="heading headin--main">
 				<span class="archive__side-title beta"><?php _e( 'Daily Archives: ', wpgrade::textdomain() ) ?></span>
 
-				<h2 class="hN"><?php echo get_the_date(); ?></h2>
+				<h1 class="hN  archive__title"><?php echo get_the_date(); ?></h1>
 			</div>
 			<hr class="separator"/>
 		<?php } elseif ( is_month() ) { ?>
 			<div class="heading headin--main">
 				<span class="archive__side-title beta"><?php _e( 'Monthly Archives: ', wpgrade::textdomain() ) ?></span>
 
-				<h2 class="hN"><?php echo get_the_date( _x( 'F Y', 'monthly archives date format', wpgrade::textdomain() ) ); ?></h2>
+				<h1 class="hN  archive__title"><?php echo get_the_date( _x( 'F Y', 'monthly archives date format', wpgrade::textdomain() ) ); ?></h1>
 			</div>
 			<hr class="separator"/>
 		<?php } elseif ( is_year() ) { ?>
 			<div class="heading headin--main">
 				<span class="archive__side-title beta"><?php _e( 'Yearly Archives: ', wpgrade::textdomain() ) ?></span>
 
-				<h2 class="hN"><?php echo get_the_date( _x( 'Y', 'yearly archives date format', wpgrade::textdomain() ) ); ?></h2>
+				<h1 class="hN  archive__title"><?php echo get_the_date( _x( 'Y', 'yearly archives date format', wpgrade::textdomain() ) ); ?></h1>
 			</div>
 			<hr class="separator"/>
 		<?php } else { ?>

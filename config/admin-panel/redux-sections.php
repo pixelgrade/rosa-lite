@@ -902,29 +902,9 @@ $sections[] = array(
 
 $sections[] = array(
 	'icon'   => 'pencil-1',
-	'title'  => __( 'Archives', wpgrade::textdomain() ),
-	'desc'   => sprintf( '<p class="description">' . __( 'Archive options control the various aspects related to displaying posts in archives and front page. You can control things like excerpt length and various layout aspects.', wpgrade::textdomain() ) . '</p>', wpgrade::themename() ),
+	'title'  => __( 'Blog - Archive', wpgrade::textdomain() ),
+	'desc'   => sprintf( '<p class="description">' . __( 'Archive options control the various aspects related to displaying posts in blog archives. You can control things like excerpt length and various layout aspects.', wpgrade::textdomain() ) . '</p>', wpgrade::themename() ),
 	'fields' => array(
-		array(
-			'id'   => 'posts_meta_data-218293204',
-			'desc' => '<h4>' . __( 'Posts Meta Data', wpgrade::textdomain() ) . '</h4>',
-			'type' => 'info'
-		),
-		array(
-			'id'       => 'blog_show_date',
-			'type'     => 'checkbox',
-			'title'    => __( 'Date', wpgrade::textdomain() ),
-			'subtitle' => __( 'Display the post publish date.', wpgrade::textdomain() ),
-			'default'  => '1',
-		),
-		array(
-			'id'       => 'blog_custom_date_separator',
-			'type'     => 'checkbox',
-			'title'    => __( 'Custom Date Separator', wpgrade::textdomain() ),
-			'subtitle' => __( 'Change spaces, commas or slashes with a custom dot.', wpgrade::textdomain() ),
-			'default'  => '1',
-			'required' => array( 'blog_show_date', '=', true )
-		),
 		array(
 			'id'       => 'blog_read_more_text',
 			'type'     => 'text',
@@ -948,12 +928,32 @@ $sections[] = array(
 			'subtitle' => __( 'Set the number of characters for posts excerpt.', wpgrade::textdomain() ),
 			'default'  => '140',
 		),
+		array(
+			'id'   => 'posts_meta_data-218293204',
+			'desc' => '<h4>' . __( 'Posts Meta Informations', wpgrade::textdomain() ) . '</h4>',
+			'type' => 'info'
+		),
+		array(
+			'id'       => 'blog_show_date',
+			'type'     => 'checkbox',
+			'title'    => __( 'Date', wpgrade::textdomain() ),
+			'subtitle' => __( 'Display the post publish date.', wpgrade::textdomain() ),
+			'default'  => '1',
+		),
+		array(
+			'id'       => 'blog_custom_date_separator',
+			'type'     => 'checkbox',
+			'title'    => __( 'Custom Date Separator', wpgrade::textdomain() ),
+			'subtitle' => __( 'Change spaces, commas or slashes with a custom dot.', wpgrade::textdomain() ),
+			'default'  => '1',
+			'required' => array( 'blog_show_date', '=', true )
+		),
 	)
 );
 
 $sections[] = array(
 	'icon'   => 'pencil-1',
-	'title'  => __( 'Posts', wpgrade::textdomain() ),
+	'title'  => __( 'Blog - Single', wpgrade::textdomain() ),
 	'desc'   => sprintf( '<p class="description">' . __( 'Post options control the various aspects related to the <b>single post page</b>.', wpgrade::textdomain() ) . '</p>', wpgrade::themename() ),
 	'fields' => array(
 		array(
@@ -1476,7 +1476,7 @@ $sections[] = array(
 		array(
 			'id'   => 'typography-21',
 			'desc' => __( '<h3>Theme One-Click Update</h3>
-				<p class="description">' . __( 'Let us notify you when new versions of this theme are live on ThemeForest! Update with just one button click. Forget about manual updates!', wpgrade::textdomain() ) . '</p>', wpgrade::textdomain() ),
+				<p class="description">' . __( 'Let us notify you when new versions of this theme are live on ThemeForest! Update with just one button click and forget about manual updates!</p><p> If you have any troubles with this system please refer to <a href="http://bit.ly/backend-update">Updating a theme</a> article.', wpgrade::textdomain() ) . '</p>', wpgrade::textdomain() ),
 			'type' => 'info'
 		),
 		array(

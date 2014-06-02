@@ -38,6 +38,21 @@ $data_ajaxloading = ( wpgrade::option( 'use_ajax_loading' ) == 1 ) ? 'data-ajaxl
 $class_name .= ( wpgrade::option( 'use_ajax_loading' ) == 1 ) ? ' animations' : '';
 $data_smoothscrolling = ( wpgrade::option( 'use_smooth_scroll' ) == 1 ) ? 'data-smoothscrolling' : '';
 
+//make the header menu bar transparent
+//only for static pages
+if (is_page()) {
+
+	if (get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php') {
+		$make_transparent_menu_bar = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'header_transparent_menu_bar_contact', true );
+	} else {
+		$make_transparent_menu_bar = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'header_transparent_menu_bar', true );
+	}
+	
+	if ($make_transparent_menu_bar == 'on') {
+		$class_name .= '  header--transparent';
+	}
+}
+
 //we use this so we can generate links with post id
 //right now we use it to change the Edit Post link in the admin bar
 $data_currentid = '';
@@ -68,10 +83,13 @@ echo ' ' . $schema_org . ' ' . $data_ajaxloading . ' ' . $data_currentid . ' ' .
 	your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
 	improve your experience.</p>
 <![endif]-->
-
+<div id="page">
 <div class="site-header  header--inversed">
     <div class="container">
         <div class="flexbox">
+            <div class="flexbox__item">
+                <a href="#" class="js-nav-trigger  nav-trigger"><i class="icon-reorder"></i></a>
+            </div>
             <div class="flexbox__item">
                 <?php get_template_part( 'templates/header/branding' ); ?>
             </div>

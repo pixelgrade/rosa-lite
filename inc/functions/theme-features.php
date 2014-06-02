@@ -124,11 +124,11 @@ function wpgrade_custom_post_gallery( $output, $attr ) {
 		$output .= '
 			<div class="content--gallery-slideshow">
 				<div class="pixslider  pixslider--gallery-slideshow  js-pixslider"
-				     data-customarrows="right"
+				     data-arrows
 				     data-imagealigncenter
 				     data-imagescale="fill"
 				     data-slidertransition="fade"
-				     data-bullets>';
+				     >';
 		foreach ( $attachments as $id => $attachment ) :
 
 			$full_img          = wp_get_attachment_image_src( $attachment->ID, 'full-size' );

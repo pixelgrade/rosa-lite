@@ -9,15 +9,18 @@
 	right: 0;
 	z-index: 100;
 
+	background: white;
+
 	@include media-query(palm) {
-		position: static;
+		position: relative;
+		top: 0;
 	}
 
-	&.header--inversed {
-		background: white;
+	.header--transparent &{
+		background: transparent;
 	}
 
-	.admin-bar & {
+	.admin-bar &{
 		top: 32px;
 	}
 }
@@ -40,7 +43,7 @@
 		display: block;
 		max-height: 100%;
 
-		.header--inversed & {
+		.header--transparent & {
 			-webkit-filter: invert(100%);
 		}
 	}
@@ -49,4 +52,8 @@
 a.site-logo--text{
 	font-weight: 700;
 	color: $dark;
+
+	@include media-query(palm){
+		text-align: center;
+	}
 }

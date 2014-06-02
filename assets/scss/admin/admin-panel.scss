@@ -124,8 +124,26 @@
 }
 
 /*
- * Archives
+ * Blog - Archive
  */
+#3_section_group table {
+	tr {
+		width: 45%;
+		float: left;
+		margin-right: 5%;
+
+		th {
+			width: 87%;
+			float: right;
+		}
+
+		td {
+			width: 10%;
+			float: left;
+			margin-top: 39px;
+		}
+	}
+}
 #info-masonry_columns-218293204 {
 	margin-bottom: -44px;
 }
@@ -171,11 +189,8 @@
 			margin-top: 39px;
 		}
 	}
-	tr:nth-child(4) {
-		width: 95%;
-		float: left;
-	}
-	tr:nth-child(5), tr:nth-child(6) {
+
+	tr:nth-child(2), tr:nth-child(3) {
 		width: 45%;
 		float: left;
 		margin-right: 5%;

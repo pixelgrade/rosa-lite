@@ -832,6 +832,23 @@ function menusHover() {
     }
 }
 
+function menuTrigger(){
+    $(document).on('click', '.js-nav-trigger', function(e) {
+        var windowHeigth = $(window).height();
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        if($('html').hasClass('navigation--is-visible')){
+            $('#page').css('height', '');
+            $('html').removeClass('navigation--is-visible');
+        } else {
+            $('#page').height(windowHeigth);
+            $('html').addClass('navigation--is-visible');
+        }
+    });
+}
+
 
 /* --- $VIDEOS --- */
 
@@ -930,7 +947,7 @@ function loadUp(){
 
 	royalSliderInit();
 
-	menusHover();
+	//menusHover();
 
 	magnificPopupInit();
 
@@ -953,6 +970,7 @@ function loadUp(){
 function eventHandlersOnce() {
 	if (globalDebug) {console.group("Event Handlers Once");}
 
+    menuTrigger();
 	scrollToTopInit();
 
 	if (globalDebug) {console.groupEnd();}
