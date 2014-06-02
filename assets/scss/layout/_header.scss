@@ -10,15 +10,11 @@
 	z-index: 100;
 
 	@include media-query(palm) {
-		position: static;
+		position: relative;
 	}
 
-	&.header--inversed {
+	.header--inversed &{
 		background: white;
-	}
-
-	.admin-bar & {
-		top: 32px;
 	}
 }
 

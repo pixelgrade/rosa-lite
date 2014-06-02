@@ -68,10 +68,13 @@ echo ' ' . $schema_org . ' ' . $data_ajaxloading . ' ' . $data_currentid . ' ' .
 	your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
 	improve your experience.</p>
 <![endif]-->
-
+<div id="page">
 <div class="site-header  header--inversed">
     <div class="container">
         <div class="flexbox">
+            <div class="flexbox__item">
+                <a href="#" class="js-nav-trigger  nav-trigger"><i class="icon-reorder"></i></a>
+            </div>
             <div class="flexbox__item">
                 <?php get_template_part( 'templates/header/branding' ); ?>
             </div>
