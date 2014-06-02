@@ -18,8 +18,10 @@ if ( ! $has_thumb ) {
 		<section class="article__content">
 			<?php echo wpgrade_better_excerpt(); ?>
 		</section>
-		<?php if (! empty(wpgrade::option('blog_read_more_text')) ) : ?>
-		<a href="<?php the_permalink(); ?>" class="read-more-button"><?php echo wpgrade::option('blog_read_more_text') ?></a>
+		<?php
+		$read_more = wpgrade::option( 'blog_read_more_text' );
+		if ( ! empty( $read_more ) ) : ?>
+			<a href="<?php the_permalink(); ?>" class="read-more-button"><?php echo $read_more ?></a>
 		<?php endif; ?>
 	</div>
 	<!-- .article__body -->
