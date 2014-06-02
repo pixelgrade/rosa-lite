@@ -262,7 +262,7 @@ return array(
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
 				'priority'   => 'high',
-				'hidden'     => true,
+				'hidden'     => false,
 				'show_on'    => array(
 					'key' => 'page-template',
 					'value' => array( 'page-templates/slideshow.php' ),
@@ -366,7 +366,7 @@ return array(
 				'show_on'    => array(
 					'key' => 'page-template',
 					'value' => array( 'page-templates/contact.php' ),
-					'display' => true, // make this false if you want to hide it
+					'hide' => true, // make this true if you want to hide it
 				),
 				'show_names' => true, // Show field names on the left
 				'fields'     => array(
