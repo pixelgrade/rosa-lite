@@ -68,6 +68,10 @@
 		border-right: 1px solid $dark;
 		border-bottom: 1px solid $dark;
 
+		.header--transparent & {
+			border-color: white;
+		}
+
 		@include transform(translateY(-50%) rotate(45deg));
 	}
 
@@ -75,6 +79,10 @@
 		display: block;
 	}
 }
+
+
+
+
 
 /*----------------------------------------*\
     $SUBMENUS
@@ -98,6 +106,10 @@
 
 	@include transform(translateX(-50%));
 
+	.header--transparent &{
+		background: transparent;
+	}
+
 	a {
 		padding: $_u2;
 	}
@@ -120,11 +132,15 @@
 	}
 }
 
+
+
+
+
 /*------------------------------------*\
     $MOBILE NAVIGATION
 \*------------------------------------*/
 
-.nav-trigger{
+a.nav-trigger{
 	position: absolute;
 	top: 50%;
 	left: 0;
@@ -132,7 +148,8 @@
 
 	padding: $_u2;
 
-	font-size: 32px;
+	font-size: 28px;
+	color: $dark;
 
 	@include media-query(lap-and-up){
 		display: none;

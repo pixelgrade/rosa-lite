@@ -254,33 +254,36 @@ return array(
 		 * - Sliders
 		 * - Lightbox
 		 */
-
 		'full-size'         => array(
 			'width' => 2048
 		),
+
+		/**
+		 * LARGE SIZE
+		 * - Single post without sidebar
+		 */
+		'large-size'         => array(
+			'width' => 1200
+		),
+
 		/**
 		 * MEDIUM SIZE
-		 * - Split Article
 		 * - Tablet Sliders
+		 * - Archive Featured Image
+		 * - Single Featured Image
 		 */
-
 		'medium-size'       => array(
-			'width' => 1024,
+			'width' => 900,
 		),
+
 		/**
-		 * SMALL SIZE (cropped)
+		 * SMALL SIZE
 		 * - Masonry Grid
 		 * - Mobile Sliders
 		 */
-
 		'small-size'        => array(
-			'width' => 400
+			'width' => 400,
 		),
-
-		// Blog archive
-		'post-medium' => array(
-			'width'     => 665,
-		)
 
 	),
 

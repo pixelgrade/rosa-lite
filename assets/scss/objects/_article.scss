@@ -25,7 +25,7 @@
 
 .page .article__header {
 	position: relative;
-	padding: 200px 0;
+//	padding: 200px 0;
 	background: #333;
 	overflow: hidden;
 	@include transform(translate3d(0, 0, 0));
@@ -38,7 +38,7 @@
 		text-align: center;
 	}
 
-	&.full-height       { height: 100%; margin-bottom: -1 * $_u; }
+	&.full-height       { height: 105%; }
 	&.half-height       { height:  50%; }
 	&.two-thirds-height { height:  66%; }
 
@@ -57,6 +57,9 @@
 	position: absolute;
 	top: 0; right: 0; bottom: 0; left: 0;
 	@include transform(translate3d(0, 0, 0));
+}
+
+.article__parallax--img {
 
 	img {
 		position: absolute;
@@ -155,37 +158,4 @@
 	font-size: 15px;
 	letter-spacing: 0.348em;
 	text-transform: uppercase;
-}
-
-
-
-
-
-
-/*------------------------------------*\
-    $SINGLE GALLERY
-\*------------------------------------*/
-.article__header {
-	.rsArrow {
-		width: 50px;
-		height: 80px;
-
-		background: rgba(0, 0, 0, 0.5);
-
-		@include transform(translateY(-50%));
-	}
-
-	.rsArrowLeft .rsArrowIcn {
-		margin-left: 16px;
-	}
-
-	.rsArrowIcn {
-		height: 35px;
-		width: 35px;
-
-		margin: 0;
-		margin-top: 22px;
-
-		border-color: white;
-	}
 }

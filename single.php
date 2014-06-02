@@ -25,22 +25,13 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 	if ( ! $has_thumb ) {
 		$post_class_thumb = 'no-thumbnail';
 	}
-
-	//post format specific
-	$post_format = get_post_format();
-	if ( empty( $post_format ) || $post_format == 'standard' ) {
-		$post_format = '';
-	}
-	$post_format_class = '';
-	if ( ! empty( $post_format ) ) {
-		$post_format_class = 'article--' . $post_format;
-	}; ?>
+	?>
 	<section class="container  container--single">
 		<div class="page-content  has-sidebar">
 			<?php if ( $has_sidebar ) {
 				echo '<div class="page-content__wrapper">';
 			} ?>
-			<article <?php post_class( 'article-single  single-post ' . $post_format_class . ' ' . $post_class_thumb ) ?>>
+			<article <?php post_class( 'article-single  single-post ' . $post_class_thumb ) ?>>
 				<?php get_template_part( 'templates/post/single-content/header' ); ?>
 
 				<section class="article__content  js-post-gallery">

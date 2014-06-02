@@ -113,10 +113,10 @@ function sliderInit($slider) {
 	if (slidesNumber > 1)
 		if (royalSlider && rs_customArrows) {
 			var $gallery_control = $(
-				'<div class="slider-arrows  arrows-archive">' +
-				'<button class="slider-arrow  slider-arrow--left  js-arrow-left"><i class="icon-chevron-left"></i></button>' +
-				'<button class="slider-arrow  slider-arrow--right  js-arrow-right"><i class="icon-chevron-right"></i></button>' +
-				'</div>'
+                '<div>' +
+                    '<div class="rsArrow rsArrowLeft js-arrow-left" style="display: block;"><div class="rsArrowIcn"></div></div>' +
+                    '<div class="rsArrow rsArrowRight js-arrow-right" style="display: block;"><div class="rsArrowIcn"></div></div>' +
+                '</div>'
 			);
 
 			if ($slider.data('customarrows') == "left") {
