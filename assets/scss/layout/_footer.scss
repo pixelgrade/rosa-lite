@@ -59,16 +59,23 @@
 	background-color: $dark;
 }
 
-.copyright-text {
-	float: left;
-}
 
-.navigation--footer {
-	float: right;
+@include media-query(lap-and-up){
+	.copyright-text {
+		float: left;
+	}
+
+	.navigation--footer {
+		float: right;
+	}
 }
 
 .nav--footer {
 	margin-bottom: 0;
+
+	@include media-query(palm){
+		margin: $_u2 0;
+	}
 
 	a {
 		padding-left: $_u2;
