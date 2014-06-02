@@ -23,8 +23,8 @@ if ( rosa::page_has_children() ) {
 			get_template_part( 'templates/password-request-form' );
 
 		} else {
-			?>
-            <?php get_template_part( 'templates/page/header' ) ?>
+
+			get_template_part( 'templates/page/header' ) ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class( "article--page article--main article--subpage" ); ?>>
 				<?php if ( $post->post_content != "" ): ?>
 					<section class="article__content">
