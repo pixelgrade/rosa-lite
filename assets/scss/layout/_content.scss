@@ -3,6 +3,10 @@
 	margin: 0 auto;
 
 	@extend .cf;
+
+	@include media-query(palm) {
+		margin: 0 $_u2;
+	}
 }
 
 .page-content {

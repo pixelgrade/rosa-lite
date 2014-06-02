@@ -148,7 +148,6 @@ return array(
 					'path'       => get_template_directory_uri() . '/assets/css/style.css',
 					'cache_bust' => wpgrade::cachebust_string( wpgrade::themefilepath( 'assets/css/style.css' ) ),
 				),
-				'404-style'          => array( 'path' => get_template_directory_uri() . '/assets/css/pages/404.css' ),
 			)
 
 		), # end register
@@ -183,7 +182,6 @@ return array(
 		'auto-enqueue-styles'     => array(
 			'google-webfonts',
 			'wpgrade-main-style',
-			'404-style'
 		),
 		// calls function to perform extra enqueue's on theme setup
 		// handlers should be placed in theme's functions.php
@@ -193,6 +191,7 @@ return array(
 				'priority' => 9999,
 			),
 			'rtl-support' => 'wpgrade_callback_enqueue_rtl_support',
+			'404-page' => 'wpgrade_callback_enqueue_404_css',
 		),
 
 	), # end resource

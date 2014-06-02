@@ -127,6 +127,12 @@
 		width: 100%;
 		height: auto;
 	}
+
+	@include media-query(palm){
+		.article__featured-image{
+			margin-bottom: $_u;
+		}
+	}
 }
 
 //.article--archive:nth-child(2n){
