@@ -97,17 +97,26 @@ function wpgrade_callback_enqueue_dynamic_css_rosa() {
 	}
 }
 
+/**
+ * Enqueue the 404 page css
+ */
+function wpgrade_callback_enqueue_404_css() {
+	if (is_404()) {
+		wp_enqueue_style( wpgrade::shortname() . '-404-style', get_template_directory_uri() . '/assets/css/pages/404.css', array(), time(), 'all' );
+	}
+}
+
 
 /**
  * Enqueue our custom css on admin panel
  */
 function wpgrade_add_admin_custom_style() {
 
-	wp_enqueue_style( wpgrade::shortname() . 'redux-theme-custom-css', wpgrade::resourceuri( 'css/admin/admin-panel.css' ), array(), time(), 'all' );
+	wp_enqueue_style( wpgrade::shortname() . '-redux-theme-custom', wpgrade::resourceuri( 'css/admin/admin-panel.css' ), array(), time(), 'all' );
 
 	wp_enqueue_script( 'wp-ajax-response' );
 
-	wp_enqueue_script( wpgrade::shortname() . 'redux-theme-custom-js', wpgrade::resourceuri( 'js/admin/admin-panel.js' ), array(), time(), true );
+	wp_enqueue_script( wpgrade::shortname() . '-redux-theme-custom', wpgrade::resourceuri( 'js/admin/admin-panel.js' ), array(), time(), true );
 }
 
 // This example assumes your opt_name is set to redux, replace with your opt_name value
