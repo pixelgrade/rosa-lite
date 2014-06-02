@@ -59,21 +59,28 @@
 	background-color: $dark;
 }
 
-.copyright-text {
-	float: left;
-}
 
-.navigation--footer {
-	float: right;
+@include media-query(lap-and-up){
+	.copyright-text {
+		float: left;
+	}
+
+	.navigation--footer {
+		float: right;
+	}
 }
 
 .nav--footer {
 	margin-bottom: 0;
 
+	@include media-query(palm){
+		margin: $_u2 0;
+	}
+
 	a {
 		padding-left: $_u2;
 
-		color: $light;
+		color: $light !important;
 
 		&:after {
 			content: "\2022";
@@ -82,7 +89,15 @@
 		}
 	}
 
+	li:first-child a{
+		padding-left: 0;
+	}
+
 	li:last-child a:after {
+		content: none;
+	}
+
+	.menu-item-has-children:after{
 		content: none;
 	}
 }

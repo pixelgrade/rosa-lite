@@ -4,6 +4,10 @@
 	top: 50%;
 	right: 48px;
 	z-index: 999;
+
+	@include media-query(palm) {
+		display: none;
+	}
 }
 
 .navigator__item {

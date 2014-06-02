@@ -43,72 +43,63 @@
 	color: $accent;
 }
 
-
-// usage :: <span class="separator separator--line-flower">&#10043;<span class="arrows"></span></span>
 .separator--line-flower {
 	position: relative;
 	margin: 36px 0;
 
-	&:before, &:after {
+	.line {
+		content: "";
+		position: absolute;
+		top: 50%;
+		width: 45%;
+		border: 1px solid white;
+		@include transform(translateY(-50%));
+	}
+
+	&.separator_color--dark .line {
+		border-color: $dark;
+	}
+
+	.line--left {
+		right: 55%;
+	}
+
+	.line--right {
+		left: 55%;
+	}
+
+	.arrow--left,
+	.arrow--right {
 		content: "";
 
 		position: absolute;
 		top: 50%;
 
-		width: 45%;
+		width: 0;
+		height: 0;
 
-		border: 1px solid white;
+		border: 5px solid transparent;
 
 		@include transform(translateY(-50%));
 	}
 
-	&.separator_color--dark {
-		&:before, &:after {
-			border-color: $dark;
-		}
-	}
-
-	&:before {
+	.arrow--left {
 		left: 0;
+		border-left: 7px solid white;
 	}
 
-	&:after {
+	.arrow--right {
 		right: 0;
+		border-right: 7px solid white;
 	}
 
-	.arrows {
-		&:before, &:after {
-			content: "";
+	&.separator_color--dark {
 
-			position: absolute;
-			top: 50%;
-
-			width: 0;
-			height: 0;
-
-			border: 5px solid transparent;
-
-			@include transform(translateY(-50%));
-		}
-
-		&:before {
-			left: 0;
-
-			border-left: 7px solid white;
-		}
-
-		&:after {
-			right: 0;
-
-			border-right: 7px solid white;
-		}
-	}
-
-	&.separator_color--dark .arrows {
-		&:before {
+		.arrow--left {
 			border-left: 7px solid $dark;
 		}
-		&:after {
+
+		.arrow--right {
 			border-right: 7px solid $dark;
 		}
 	}
