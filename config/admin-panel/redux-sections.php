@@ -72,12 +72,12 @@ $sections[] = array(
 // ------------------------------------------------------------------------
 
 $sections[] = array(
-	'icon'       => "params",
-	'icon_class' => '',
-	'title'      => __( 'Style', wpgrade::textdomain() ),
-	'desc'       => '<p class="description">' . __( 'The style options control the general styling of the site, like accent color and Google Web Fonts. You can choose custom fonts for various typography elements with font weight, character set, size and/or line height. You also have a live preview for your chosen fonts.', wpgrade::textdomain() ) . '</p>',
+	'icon'            => "params",
+	'icon_class'      => '',
+	'title'           => __( 'Style', wpgrade::textdomain() ),
+	'desc'            => '<p class="description">' . __( 'The style options control the general styling of the site, like accent color and Google Web Fonts. You can choose custom fonts for various typography elements with font weight, character set, size and/or line height. You also have a live preview for your chosen fonts.', wpgrade::textdomain() ) . '</p>',
 	'customizer_only' => false,
-	'fields'     => array(
+	'fields'          => array(
 		array(
 			'id'         => 'live-customizer-button' . $debug,
 			'title'      => '<a href="' . admin_url( "customize.php" ) . '" class="button button-primary" id="live-customizer-button">
@@ -110,15 +110,18 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'color'            => array(
-						'selector' => "	a, .nav--main a:hover, 
+						'selector' => "	a, a:hover,
+										.nav--main a:hover, 
 										.headline__secondary,
-										.separator--flower, .separator--line-flower, .separator--flower.separator_color--color",
+										.separator--flower, .separator--line-flower, .separator--flower.separator_color--color,
+										.tabs__nav a.current, .tabs__nav a:hover,
+										",
 					),
 					'background-color' => array(
 						'selector' => "",
 					),
-					'border-color' => array(
-						   'selector' => "",
+					'border-color'     => array(
+						'selector' => ".tabs__nav a.current, .tabs__nav a:hover",
 					),
 					'outline-color'    => array(
 						'selector' => "",
@@ -136,7 +139,7 @@ $sections[] = array(
 			'customizer' => array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
-					'color' => array(
+					'color'        => array(
 						'selector' => " body, 
 										.up-link"
 					),
@@ -184,7 +187,6 @@ $sections[] = array(
 			'type'       => 'customizer_info',
 			'customizer' => array()
 		),
-		
 		array(
 			'id'         => 'header_background_color',
 			'type'       => 'color',
@@ -225,7 +227,6 @@ $sections[] = array(
 				)
 			),
 		),
-
 		array(
 			'id'         => 'content_background_color',
 			'type'       => 'color',
@@ -266,10 +267,6 @@ $sections[] = array(
 				)
 			),
 		),
-
-
-
-
 		array(
 			'id'         => 'typography_title',
 			'title'      => '<h3>' . __( 'Typography', wpgrade::textdomain() ) . '</h3>',
@@ -333,6 +330,48 @@ $sections[] = array(
 			),
 			'output'         => array( '.headline__secondary' ),
 		),
+		array(
+			'id'            => 'subheadings_margin-bottom',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'Margin Bottom', wpgrade::textdomain() ),
+			'validate'      => 'numeric',
+			'default'       => '15',
+			'min'           => - 48,
+			'step'          => 1,
+			'max'           => 48,
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'margin-bottom' => array(
+						'selector' => '.headline__secondary',
+						'unit'     => 'px',
+					)
+				)
+			),
+			'compiler'      => true
+		),
+		array(
+			'id'            => 'subheadings_first-letter',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'First Letter Offset', wpgrade::textdomain() ),
+			'validate'      => 'numeric',
+			'default'       => '15',
+			'min'           => - 48,
+			'step'          => 0.1,
+			'max'           => 48,
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'line-height' => array(
+						'selector' => '.headline__secondary::first-letter',
+						'unit'     => 'px',
+					)
+				)
+			),
+			'compiler'      => true
+		),
 		// Navigation Font
 		array(
 			'id'             => 'google_nav_font',
@@ -356,7 +395,7 @@ $sections[] = array(
 				'google'      => true,
 			),
 			'output'         => array( '.navigation--main' ),
-			
+
 		),
 		array(
 			'id'            => 'nav_font-size',
@@ -451,7 +490,6 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
-
 		// Body Font
 		array(
 			'id'             => 'google_body_font',
@@ -519,7 +557,6 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
-
 		/*
 		 * Sizes and Spacing
 		 */
@@ -570,11 +607,11 @@ $sections[] = array(
 			'customizer'    => array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
-					'padding-top'  => array(
+					'padding-top'    => array(
 						'selector' => '.page .article__content',
 						'unit'     => 'px',
 					),
-					'padding-bottom'  => array(
+					'padding-bottom' => array(
 						'selector' => '.page .article__content',
 						'unit'     => 'px',
 					)
@@ -582,7 +619,6 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
-
 		array(
 			'id'            => 'sidebar_width',
 			'type'          => 'customizer_slider',
@@ -1235,10 +1271,10 @@ $sections[] = array(
 			'title'      => __( 'Social Links', wpgrade::textdomain() ),
 			'subtitle'   => sprintf( __( 'Define and reorder your social pages links.<br /><b>Note:</b> These will be displayed in the "%s Social Links" widget so you can put them anywhere on your site. Only those filled will appear.<br /><br /><strong> You need to input the <strong>complete</strong> URL (ie. http://twitter.com/username)</strong>', wpgrade::textdomain() ), wpgrade::themename() ),
 			'desc'       => __( 'Icons provided by <strong>FontAwesome</strong> and <strong>Entypo</strong>.', wpgrade::textdomain() ),
-//			'checkboxes' => array(
-//				'widget' => __( 'Widget', wpgrade::textdomain() ),
-//				'header' => __( 'Header', wpgrade::textdomain() )
-//			),
+			'checkboxes' => array(
+				'widget' => __( 'Widget', wpgrade::textdomain() ),
+				'header' => __( 'Header', wpgrade::textdomain() )
+			),
 			'options'    => array(
 				'flickr'        => __( 'Flickr', wpgrade::textdomain() ),
 				'tumblr'        => __( 'Tumblr', wpgrade::textdomain() ),

@@ -73,7 +73,7 @@
 	a {
 		padding-left: $_u2;
 
-		color: $light;
+		color: $light !important;
 
 		&:after {
 			content: "\2022";
@@ -83,6 +83,10 @@
 	}
 
 	li:last-child a:after {
+		content: none;
+	}
+
+	.menu-item-has-children:after{
 		content: none;
 	}
 }

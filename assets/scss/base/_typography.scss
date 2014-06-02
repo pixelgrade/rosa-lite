@@ -58,8 +58,6 @@ h5, h6 {
 }
 
 .heading {
-	margin-bottom: $_u;
-
 	h2 {
 		display: inline-block;
 		margin-bottom: 0;
@@ -183,6 +181,10 @@ blockquote {
 	color: $accent;
 
 	quotes: none;
+
+	@include media-query(palm) {
+		padding-left: $_u2;
+	}
 
 	@include media-query(lap-and-up) {
 		padding-left: $_15u;

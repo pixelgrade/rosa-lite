@@ -202,7 +202,7 @@ function loadUp(){
 	if (globalDebug) {console.group("LoadUp");}
 
 	//load web fonts
-	//loadWebFonts();
+	loadWebFonts();
 
 	// always
 	niceScrollInit();
