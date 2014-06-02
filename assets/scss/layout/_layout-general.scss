@@ -1,6 +1,9 @@
 /*------------------------------------*\
     $LAYOUT GENERAL
 \*------------------------------------*/
+#page{
+	height: 100%;
+}
 
 .container--multipage, .container--single-page {
 	padding-bottom: $_3u;
