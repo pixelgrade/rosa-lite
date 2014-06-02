@@ -118,11 +118,19 @@
 
 .article__headline {
 	position: relative;
-
 	display: inline-block;
 	margin-bottom: 0;
-
 	text-align: center;
+//	opacity: 0;
+
+	.headline__primary,
+	.headline__secondary,
+	.headline__description,
+	.star,
+	.line,
+	.arrow {
+		opacity: 0;
+	}
 
 	.separator {
 		margin: $_u 0;
