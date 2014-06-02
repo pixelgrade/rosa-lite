@@ -31,7 +31,9 @@
 	@include transform(translate3d(0, 0, 0));
 
 	.flexbox {
+		position: relative;
 		height: 100%;
+		z-index: 10;
 	}
 
 	.flexbox__item {
