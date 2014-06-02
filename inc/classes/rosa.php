@@ -192,8 +192,9 @@ class rosa {
 
 		$object = get_queried_object();
 
-		if ( is_home() ) {
-			//do nothing - no title is needed
+		if ( is_home() ) { ?>
+			<h2 class="hN"><?php single_post_title(); ?></h2>
+		<?php
 		} elseif ( is_search() ) {
 			?>
 			<div class="heading headin--main">
