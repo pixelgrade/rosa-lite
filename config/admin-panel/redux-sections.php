@@ -76,6 +76,7 @@ $sections[] = array(
 	'icon_class' => '',
 	'title'      => __( 'Style', wpgrade::textdomain() ),
 	'desc'       => '<p class="description">' . __( 'The style options control the general styling of the site, like accent color and Google Web Fonts. You can choose custom fonts for various typography elements with font weight, character set, size and/or line height. You also have a live preview for your chosen fonts.', wpgrade::textdomain() ) . '</p>',
+	'customizer_only' => false,
 	'fields'     => array(
 		array(
 			'id'         => 'live-customizer-button' . $debug,
@@ -910,7 +911,6 @@ $sections[] = array(
 			'type'     => 'text',
 			'title'    => __( 'Read More Text', wpgrade::textdomain() ),
 			'subtitle' => __( 'Set the read more link text.', wpgrade::textdomain() ),
-			'desc'     => __( '(leave empty if you want to remove it)', wpgrade::textdomain() ),
 			'default'  => 'Read more',
 		),
 		array(
@@ -918,7 +918,6 @@ $sections[] = array(
 			'type'     => 'text',
 			'title'    => __( 'Excerpt "More" Text', wpgrade::textdomain() ),
 			'subtitle' => __( 'Change the default [...] with something else.', wpgrade::textdomain() ),
-			'desc'     => __( '(leave empty if you want to remove it)', wpgrade::textdomain() ),
 			'default'  => '..',
 		),
 		array(
@@ -943,7 +942,7 @@ $sections[] = array(
 		array(
 			'id'       => 'blog_custom_date_separator',
 			'type'     => 'checkbox',
-			'title'    => __( 'Custom Date Separator', wpgrade::textdomain() ),
+			'title'    => __( 'Dot Separator', wpgrade::textdomain() ),
 			'subtitle' => __( 'Change spaces, commas or slashes with a custom dot.', wpgrade::textdomain() ),
 			'default'  => '1',
 			'required' => array( 'blog_show_date', '=', true )
