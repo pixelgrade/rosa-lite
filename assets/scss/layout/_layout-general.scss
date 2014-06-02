@@ -3,6 +3,14 @@
 \*------------------------------------*/
 #page{
 	height: 100%;
+
+	@include media-query(lap-and-up){
+		padding-top: $_3u;
+	}
+
+	.header--transparent &{
+		padding-top: 0;
+	}
 }
 
 .container--multipage, .container--single-page {

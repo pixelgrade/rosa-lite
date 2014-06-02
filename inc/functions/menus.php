@@ -51,11 +51,11 @@ function wpgrade_footer_nav() {
 			'container'      => '',
 			'container_id'   => '',
 			//                    'menu_class'      => 'site-navigation site-navigation--footer site-navigation--secondary flush--bottom',
-			'menu_class'     => 'footer-menu',
+			'menu_class'     => 'nav--footer',
 			'fallback_cb'    => false,
 			'menu_id'        => '',
 			'depth'          => 1,
-			'items_wrap'     => '<ul id="%1$s" class="%2$s  nav  nav--main">%3$s</ul>',
+			'items_wrap'     => '<ul id="%1$s" class="%2$s  nav">%3$s</ul>',
 		);
 
 		wp_nav_menu( $args );

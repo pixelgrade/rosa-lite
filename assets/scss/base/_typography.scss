@@ -182,6 +182,10 @@ blockquote {
 
 	quotes: none;
 
+	@include media-query(palm) {
+		padding-left: $_u2;
+	}
+
 	@include media-query(lap-and-up) {
 		padding-left: $_15u;
 	}

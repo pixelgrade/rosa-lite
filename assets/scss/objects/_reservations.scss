@@ -2,6 +2,10 @@
     $OPEN TABLE RESERVATIONS
 \*------------------------------------*/
 
+.otreservations{
+	text-align: center;
+}
+
 .otreservation-title-wrapper{
 	margin-bottom: $_15u;
 }
@@ -29,6 +33,10 @@
 .otw-input-wrap{
 	@extend .grid__item;
 	@extend .lap-and-up-one-third;
+
+	@include media-query(palm){
+		margin-bottom: $_u;
+	}
 
 	label{
 		margin-right: $_u2;
