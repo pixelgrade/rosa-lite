@@ -370,7 +370,7 @@ return array(
 				'show_on'    => array(
 					'key' => 'page-template',
 					'value' => array( 'page-templates/contact.php' ),
-					'hide' => true, // make this true if you want to hide it
+//					'hide' => true, // make this true if you want to hide it
 				),
 				'show_names' => true, // Show field names on the left
 				'fields'     => array(
