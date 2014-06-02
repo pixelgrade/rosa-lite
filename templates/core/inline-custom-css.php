@@ -133,32 +133,34 @@
 // */
 ///*
 //$site_background_color = wpgrade::option('site_background_color');
+/*
 ?>
-	//
-	//body { background-color: <?php echo $site_background_color; ?>; }
-	//
-	//<?php
-//
+
+	body { background-color: <?php echo $site_background_color; ?>; }
+
+	<?php
+
 //$content_background_color = wpgrade::option('content_background_color');
 ?>
-	//
-	//.container { background-color: <?php echo $content_background_color; ?>; }
-	//
-	//<?php
-//
+
+	.container { background-color: <?php echo $content_background_color; ?>; }
+
+	<?php
+
 //$header_background_color = wpgrade::option('header_background_color');
 ?>
-	//
-	//.site-header { background-color: <?php echo $header_background_color ?>; }
-	//
-	//<?php
+
+	.site-header { background-color: <?php echo $header_background_color ?>; }
+
+	<?php
+
 //
 //$navigation_background_color = wpgrade::option('navigation_background_color');
 ?>
-	//
-	//.navigation--main { background-color: <?php echo $navigation_background_color ?>; }
-	//
-	//<?php
+<!--	//-->
+<!--	//.navigation--main { background-color: --><?php //echo $navigation_background_color ?><!--; }-->
+<!--	//-->
+<!--	//--><?php
 //*/
 //
 //

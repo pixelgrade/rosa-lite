@@ -209,7 +209,7 @@ function loadUp(){
 
 	royalSliderInit();
 
-	menusHover();
+	//menusHover();
 
 	magnificPopupInit();
 
