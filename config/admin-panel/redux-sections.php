@@ -1229,10 +1229,10 @@ $sections[] = array(
 			'title'      => __( 'Social Links', wpgrade::textdomain() ),
 			'subtitle'   => sprintf( __( 'Define and reorder your social pages links.<br /><b>Note:</b> These will be displayed in the "%s Social Links" widget so you can put them anywhere on your site. Only those filled will appear.<br /><br /><strong> You need to input the <strong>complete</strong> URL (ie. http://twitter.com/username)</strong>', wpgrade::textdomain() ), wpgrade::themename() ),
 			'desc'       => __( 'Icons provided by <strong>FontAwesome</strong> and <strong>Entypo</strong>.', wpgrade::textdomain() ),
-//			'checkboxes' => array(
-//				'widget' => __( 'Widget', wpgrade::textdomain() ),
-//				'header' => __( 'Header', wpgrade::textdomain() )
-//			),
+			'checkboxes' => array(
+				'widget' => __( 'Widget', wpgrade::textdomain() ),
+				'header' => __( 'Header', wpgrade::textdomain() )
+			),
 			'options'    => array(
 				'flickr'        => __( 'Flickr', wpgrade::textdomain() ),
 				'tumblr'        => __( 'Tumblr', wpgrade::textdomain() ),
