@@ -6,10 +6,10 @@ html, body {
 	height: 100%;
 }
 
-.article__header .gallery-item {
-	position: absolute;
-	top: 0; left: 0; bottom: 0; right: 0;
-}
+//.article__header .gallery-item {
+//	position: absolute;
+//	top: 0; left: 0; bottom: 0; right: 0;
+//}
 
 .navigator {
 	opacity: 0;
@@ -53,4 +53,12 @@ html, body {
 	.navigator__item--selected .bullet {
 		background: black;
 	}
+}
+
+.slider-cover {
+	margin: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	@include transform(translate3d(-50%, -50%, 0));
 }

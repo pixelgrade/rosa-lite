@@ -5,6 +5,7 @@
  * @since   Rosa 1.0
  **/
 ?>
+
 <footer class="site-footer">
 	<a href="#" class="up-link"><?php _e( 'Top', wpgrade::textdomain() ) ?></a>
 	<aside class="sidebar  sidebar--footer">
@@ -15,9 +16,9 @@
 	<!-- .sidebar.sidebar- -footer -->
 	<div class="copyright-area">
 		<div class="container">
-                    <span class="copyright-text">
-                        <?php echo wpgrade::option( 'copyright_text' ) ?>
-                    </span>
+			<span class="copyright-text">
+				<?php echo wpgrade::option( 'copyright_text' ) ?>
+			</span>
 			<nav class="navigation  navigation--footer">
 				<?php wpgrade_footer_nav(); ?>
 			</nav>

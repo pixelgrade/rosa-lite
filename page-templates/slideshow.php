@@ -1,7 +1,7 @@
 <?php
 /**
- * Template Name: Page with Slideshow
- * This is the template that is used for pages that have a header section with a slideshow instead of a featured image
+ * Template Name: Slideshow Header
+ * Description: This is the template that is used for pages that have a header section with a slideshow instead of a featured image
  * It is a page with additional controls for the slideshow
 
  */

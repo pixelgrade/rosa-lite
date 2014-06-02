@@ -76,6 +76,7 @@ $sections[] = array(
 	'icon_class' => '',
 	'title'      => __( 'Style', wpgrade::textdomain() ),
 	'desc'       => '<p class="description">' . __( 'The style options control the general styling of the site, like accent color and Google Web Fonts. You can choose custom fonts for various typography elements with font weight, character set, size and/or line height. You also have a live preview for your chosen fonts.', wpgrade::textdomain() ) . '</p>',
+	'customizer_only' => false,
 	'fields'     => array(
 		array(
 			'id'         => 'live-customizer-button' . $debug,
@@ -100,69 +101,27 @@ $sections[] = array(
 		array(
 			'id'         => 'main_color',
 			'type'       => 'color',
-			'title'      => __( 'Main Color', wpgrade::textdomain() ),
+			'title'      => __( 'Accent Color', wpgrade::textdomain() ),
 			'subtitle'   => __( 'Use the color picker to change the main color of the site to match your brand color.', wpgrade::textdomain() ),
-			'default'    => '#0093bf',
+			'default'    => '#c59d5f',
 			'validate'   => 'color',
 			'compiler'   => true,
 			'customizer' => array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'color'            => array(
-						'selector' => "a, a:hover, .link--light:hover,
-							.text-link:hover,
-							.wpgrade_popular_posts .article__category:hover,
-							.meta-list a.btn:hover,
-							.meta-list a.comments_add-comment:hover,
-							.meta-list .form-submit a#comment-submit:hover,
-							.form-submit .meta-list a#comment-submit:hover,
-							.meta-list .widget_tag_cloud a:hover,
-							.widget_tag_cloud .meta-list a:hover,
-							.meta-list a.load-more__button:hover,
-							.article__comments-number:hover,
-							.author__social-link:hover,
-							.article-archive .article__categories a:hover,
-
-							.link--dark:hover,
-							.nav--main a:hover,
-							.comment__author-name a:hover,
-							.author__title a:hover,
-							.site-title--small a:hover,
-							.site-header__menu a:hover,
-							.widget a:hover,
-
-							.article-archive--quote blockquote:before,
-							.menu-item-has-children:hover > a,
-							ol.breadcrumb a:hover,
-							a:hover > .pixcode--icon,
-							.tabs__nav a.current, .tabs__nav a:hover,
-							.quote--single-featured:before",
+						'selector' => "	a, .nav--main a:hover, 
+										.headline__secondary,
+										.separator--flower, .separator--line-flower, .separator--flower.separator_color--color",
 					),
 					'background-color' => array(
-						'selector' => ".pagination .pagination-item--current span,
-							.pagination li a:hover,
-							.pagination li span:hover,
-							.rsNavSelected,
-							.progressbar__progress,
-							.comments_add-comment:hover,
-							.form-submit #comment-submit:hover,
-							.widget_tag_cloud a:hover,
-							.btn--primary,
-							.comments_add-comment,
-							.form-submit #comment-submit,
-							a:hover > .pixcode--icon.circle,
-							a:hover > .pixcode--icon.square,
-							.btn--add-to-cart,
-							.wpcf7-form-control.wpcf7-submit,
-							.pagination--archive ol li a:hover,
-							.btn:hover,
-							.comments_add-comment:hover,
-							.form-submit #comment-submit:hover,
-							.widget_tag_cloud a:hover,
-							.load-more__button:hover",
+						'selector' => "",
+					),
+					'border-color' => array(
+						   'selector' => "",
 					),
 					'outline-color'    => array(
-						'selector' => 'select:focus, textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .form-control:focus',
+						'selector' => "",
 					),
 				)
 			)
@@ -170,16 +129,20 @@ $sections[] = array(
 		array(
 			'id'         => 'text_color',
 			'type'       => 'color',
-			'title'      => __( 'Text', wpgrade::textdomain() ),
-			'default'    => '#424242',
+			'title'      => __( 'Text Color', wpgrade::textdomain() ),
+			'default'    => '#515150',
 			'validate'   => 'color',
 			'compiler'   => true,
 			'customizer' => array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'color' => array(
-						'selector' => "body"
+						'selector' => " body, 
+										.up-link"
 					),
+					'border-color' => array(
+						'selector' => ".up-link:before"
+					)
 				)
 			)
 		),
@@ -187,7 +150,7 @@ $sections[] = array(
 			'id'         => 'headings_color',
 			'type'       => 'color',
 			'title'      => __( 'Headings color', wpgrade::textdomain() ),
-			'default'    => '#1a1919',
+			'default'    => '#262526',
 			'validate'   => 'color',
 			'compiler'   => true,
 			'customizer' => array(
@@ -200,92 +163,28 @@ $sections[] = array(
 			)
 		),
 		array(
+			'id'         => 'nav_links',
+			'type'       => 'color',
+			'title'      => __( 'Nav Links', wpgrade::textdomain() ),
+			'default'    => '#262526',
+			'validate'   => 'color',
+			'compiler'   => true,
+			'customizer' => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'color' => array(
+						'selector' => ".nav--main a, a.site-logo--text"
+					),
+				)
+			)
+		),
+		array(
 			'id'         => 'backgrounds_title',
 			'title'      => '<h3>' . __( 'Backgrounds', wpgrade::textdomain() ) . '</h3>',
 			'type'       => 'customizer_info',
 			'customizer' => array()
 		),
-		array(
-			'id'         => 'site_background_color',
-			'type'       => 'color',
-			'title'      => __( 'Site', wpgrade::textdomain() ),
-			'default'    => '#eeeeee',
-			'validate'   => 'color',
-			'compiler'   => true,
-			'customizer' => array(
-				'transport' => 'postMessage',
-				'css_rules' => array(
-					'background-color' => array(
-						'selector' => "body"
-					),
-				)
-			)
-		),
-		array(
-			'id'               => 'body_image_pattern',
-			'type'             => 'background',
-			'output'           => array( 'body' ),
-			'icon'             => 'test',
-			'title'            => __( '<button></button>', wpgrade::textdomain() ),
-			'subtitle'         => __( 'Container background with image.', wpgrade::textdomain() ),
-			'customizer'       => array(
-				'transport' => 'refresh',
-			),
-			'background-color' => false,
-			'default'          => array(
-				'background-repeat'     => '',
-				'background-size'       => '',
-				'background-attachment' => '',
-				'background-position'   => '',
-				'background-image'      => '',
-				'media'                 => array(
-					'id'        => '',
-					'height'    => '',
-					'width'     => '',
-					'thumbnail' => '',
-				)
-			),
-		),
-		array(
-			'id'         => 'content_background_color',
-			'type'       => 'color',
-			'title'      => __( 'Content', wpgrade::textdomain() ),
-			'default'    => '#ffffff',
-			'validate'   => 'color',
-			'compiler'   => true,
-			'customizer' => array(
-				'transport' => 'postMessage',
-				'css_rules' => array(
-					'background-color' => array(
-						'selector' => ".container"
-					),
-				)
-			)
-		),
-		array(
-			'id'               => 'container_image_pattern',
-			'type'             => 'background',
-			'output'           => array( '.container' ),
-			'title'            => __( '<button></button>', wpgrade::textdomain() ),
-			'subtitle'         => __( 'Container background with image.', wpgrade::textdomain() ),
-			'customizer'       => array(
-				'transport' => 'refresh',
-			),
-			'background-color' => false,
-			'default'          => array(
-				'background-repeat'     => '',
-				'background-size'       => '',
-				'background-attachment' => '',
-				'background-position'   => '',
-				'background-image'      => '',
-				'media'                 => array(
-					'id'        => '',
-					'height'    => '',
-					'width'     => '',
-					'thumbnail' => '',
-				)
-			),
-		),
+		
 		array(
 			'id'         => 'header_background_color',
 			'type'       => 'color',
@@ -297,17 +196,17 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'background-color' => array(
-						'selector' => ".header"
+						'selector' => ".site-header"
 					),
 				)
 			)
 		),
 		array(
 			'id'               => 'header_image_pattern',
-			'type'             => 'background',
-			'output'           => array( '.header' ),
+			'type'             => 'customizer_background',
+			'output'           => array( '.site-header' ),
 			'title'            => __( '<button></button>', wpgrade::textdomain() ),
-			'subtitle'         => __( 'Header background with image.', wpgrade::textdomain() ),
+			'subtitle'         => __( 'Container background with image.', wpgrade::textdomain() ),
 			'customizer'       => array(
 				'transport' => 'refresh',
 			),
@@ -326,10 +225,11 @@ $sections[] = array(
 				)
 			),
 		),
+
 		array(
-			'id'         => 'navigation_background_color',
+			'id'         => 'content_background_color',
 			'type'       => 'color',
-			'title'      => __( 'Navigation', wpgrade::textdomain() ),
+			'title'      => __( 'Content', wpgrade::textdomain() ),
 			'default'    => '#ffffff',
 			'validate'   => 'color',
 			'compiler'   => true,
@@ -337,18 +237,17 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'background-color' => array(
-						'selector' => ".navigation--main",
-						'media'    => 'screen and (min-width: 900px)'
+						'selector' => ".page .article__content, .up-link"
 					),
 				)
 			)
 		),
 		array(
-			'id'               => 'nav_image_pattern',
-			'type'             => 'background',
-			'output'           => array( '.navigation' ),
+			'id'               => 'container_image_pattern',
+			'type'             => 'customizer_background',
+			'output'           => array( '.page .article__content' ),
 			'title'            => __( '<button></button>', wpgrade::textdomain() ),
-			'subtitle'         => __( 'Navigation background with image.', wpgrade::textdomain() ),
+			'subtitle'         => __( 'Container background with image.', wpgrade::textdomain() ),
 			'customizer'       => array(
 				'transport' => 'refresh',
 			),
@@ -367,6 +266,10 @@ $sections[] = array(
 				)
 			),
 		),
+
+
+
+
 		array(
 			'id'         => 'typography_title',
 			'title'      => '<h3>' . __( 'Typography', wpgrade::textdomain() ) . '</h3>',
@@ -380,14 +283,11 @@ $sections[] = array(
 			'subtitle' => __( 'Tap into the massive <a href="http://www.google.com/fonts/">Google Fonts</a> collection (with Live preview).', wpgrade::textdomain() ),
 			'default'  => '1',
 			'compiler' => true,
-			//		    'customizer' => array(
-			//			    'transport' => 'refresh'
-			//		    )
 		),
 		// Headings Font
 		array(
 			'id'             => 'google_titles_font',
-			'type'           => 'typography',
+			'type'           => 'customizer_typography',
 			'color'          => false,
 			'font-size'      => false,
 			'line-height'    => false,
@@ -407,10 +307,33 @@ $sections[] = array(
 				'google'      => true,
 			),
 		),
+		// SubHeadings Font
+		array(
+			'id'             => 'google_subtitles_font',
+			'type'           => 'customizer_typography',
+			'color'          => false,
+			'font-size'      => false,
+			'line-height'    => false,
+			'text-transform' => false,
+			'letter-spacing' => false,
+			'text-align'     => false,
+			'all_styles'     => true,
+			'required'       => array( 'use_google_fonts', '=', 1 ),
+			'title'          => __( '<button></button> SubHeadings', wpgrade::textdomain() ),
+			'subtitle'       => __( 'Font for titles and headings.', wpgrade::textdomain() ),
+			'compiler'       => true,
+			'customizer'     => array(
+				'transport' => 'refresh',
+			),
+			'default'        => array(
+				'font-family' => 'Open Sans',
+				'google'      => true,
+			),
+		),
 		// Navigation Font
 		array(
 			'id'             => 'google_nav_font',
-			'type'           => 'typography',
+			'type'           => 'customizer_typography',
 			'color'          => false,
 			'font-size'      => false,
 			'line-height'    => false,
@@ -432,7 +355,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'nav_font-size',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Font Size', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '14',
@@ -453,7 +376,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'nav_letter-spacing',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Letter Spacing', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '0',
@@ -526,7 +449,7 @@ $sections[] = array(
 		// Body Font
 		array(
 			'id'             => 'google_body_font',
-			'type'           => 'typography',
+			'type'           => 'customizer_typography',
 			'color'          => false,
 			'font-size'      => false,
 			'line-height'    => false,
@@ -548,7 +471,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'body-font-size',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Font Size', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '16',
@@ -569,7 +492,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'body-line-height',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Line Height', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '1.6',
@@ -607,7 +530,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'content_width',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Site Container Width', wpgrade::textdomain() ),
 			'subtitle'      => __( 'Set the width of the container.', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
@@ -629,7 +552,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'content_horizontal_margins',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Container Horizontal Margins', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '96',
@@ -656,7 +579,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'sidebar_width',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Sidebar Width', wpgrade::textdomain() ),
 			'subtitle'      => __( 'Set the width of the sidebar.', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
@@ -697,7 +620,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'header_logo_height',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Logo Height', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '90',
@@ -719,7 +642,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'header_vertical_margins',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Header Vertical Margins', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '36',
@@ -753,7 +676,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'navigation_menu_items_spacing',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Menu Items Spacing', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => 24,
@@ -780,7 +703,7 @@ $sections[] = array(
 		),
 		array(
 			'id'            => 'navigation_vertical_margins',
-			'type'          => 'slider',
+			'type'          => 'customizer_slider',
 			'title'         => __( 'Navigation Vertical Margins', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => 21,
@@ -910,7 +833,6 @@ $sections[] = array(
 			'type'     => 'text',
 			'title'    => __( 'Read More Text', wpgrade::textdomain() ),
 			'subtitle' => __( 'Set the read more link text.', wpgrade::textdomain() ),
-			'desc'     => __( '(leave empty if you want to remove it)', wpgrade::textdomain() ),
 			'default'  => 'Read more',
 		),
 		array(
@@ -918,7 +840,6 @@ $sections[] = array(
 			'type'     => 'text',
 			'title'    => __( 'Excerpt "More" Text', wpgrade::textdomain() ),
 			'subtitle' => __( 'Change the default [...] with something else.', wpgrade::textdomain() ),
-			'desc'     => __( '(leave empty if you want to remove it)', wpgrade::textdomain() ),
 			'default'  => '..',
 		),
 		array(
@@ -943,7 +864,7 @@ $sections[] = array(
 		array(
 			'id'       => 'blog_custom_date_separator',
 			'type'     => 'checkbox',
-			'title'    => __( 'Custom Date Separator', wpgrade::textdomain() ),
+			'title'    => __( 'Dot Separator', wpgrade::textdomain() ),
 			'subtitle' => __( 'Change spaces, commas or slashes with a custom dot.', wpgrade::textdomain() ),
 			'default'  => '1',
 			'required' => array( 'blog_show_date', '=', true )

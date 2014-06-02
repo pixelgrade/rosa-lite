@@ -1,7 +1,31 @@
 /*-----------------------------------------------*\
+       THEME OPTIONS STYLING THEME SPECIFIC
+       --------------- ROSA ---------------
+\*-----------------------------------------------*/
+.redux-group-tab[data-rel="3"] table {
+	tr {
+		width: 45%;
+		float: left;
+		margin-right: 5%;
+	}
+
+	span.description {
+		padding-right: 0;
+	}
+
+	input {
+		width: 100% !important;
+	}
+}
+
+
+/*-----------------------------------------------*\
     THEME OPTIONS STYLING THEME SPECIFIC - HEAP
 \*-----------------------------------------------*/
 
+.redux-main {
+	color:red;
+}
 /*
  * Left Checkbox Extender
  */

@@ -292,9 +292,13 @@ $heading-font: 'Open Sans', sans-serif;
 				color: $dark;
 				width: auto;
 				margin-right: 0;
-				border-top-color: $border-color;
-				border-bottom-color: $border-color;
+				border-top: 1px solid $border-color;
+				border-bottom:1px solid $border-color;
 				background: $content-bg !important;
+			}
+
+			&:first-child a, &.divide + li a {
+				border-top: none !important;
 			}
 		}
 	}
@@ -810,6 +814,11 @@ $heading-font: 'Open Sans', sans-serif;
 	}
 	.redux-field .redux-typography-container .typography-family {
 		width: 240px !important;
+	}
+
+	.field-desc {
+		font-size: 12px;
+		color: #9d9d9d;
 	}
 
 	/*
