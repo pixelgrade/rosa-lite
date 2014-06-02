@@ -38,7 +38,7 @@ else :
 	$gallery_ids = get_post_meta( $post->ID, wpgrade::prefix() . 'main_gallery', true );
 
 	if ( get_page_template_slug( get_the_ID() ) == 'page-templates/slideshow.php' && ! empty( $gallery_ids ) ): ?>
-		<header class="article__header <?php echo $header_height ?>">
+		<header class="article__header <?php echo $header_height ?>  header--slideshow">
 			<?php
 			$gallery_ids = explode( ',', $gallery_ids );
 
@@ -68,7 +68,7 @@ else :
 				<div class="content--page-slider">
 					<div class="content-helper">
 						<div class="pixslider  pixslider--page  js-pixslider"
-						     data-customarrows="right"
+						     data-arrows
 						     data-imagealigncenter
 						     data-imagescale="<?php echo $image_scale_mode; ?>"
 						     data-slidertransition="<?php echo $slider_transition; ?>"
