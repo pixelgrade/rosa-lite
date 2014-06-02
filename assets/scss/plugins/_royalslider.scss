@@ -472,9 +472,21 @@ img.rsImg {
 	background-color: $accent;
 }
 
+
+
+
+
 /*------------------------------------*\
     $CUSTOM ARROWS
 \*------------------------------------*/
+
+.royalSlider{
+	@include opacity(0);
+
+	&.slider--loaded{
+		@include opacity(1);
+	}
+}
 
 .rsArrow {
 	width: 50px;
