@@ -13,10 +13,15 @@
 
 	@include media-query(palm) {
 		position: relative;
+		top: 0;
 	}
 
 	.header--transparent &{
 		background: transparent;
+	}
+
+	.admin-bar &{
+		top: 32px;
 	}
 }
 
@@ -47,4 +52,8 @@
 a.site-logo--text{
 	font-weight: 700;
 	color: $dark;
+
+	@include media-query(palm){
+		text-align: center;
+	}
 }

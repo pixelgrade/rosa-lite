@@ -471,3 +471,30 @@ img.rsImg {
 	@include rem(margin, 0 6px);
 	background-color: $accent;
 }
+
+/*------------------------------------*\
+    $CUSTOM ARROWS
+\*------------------------------------*/
+
+.rsArrow {
+	width: 50px;
+	height: 80px;
+
+	background: rgba(0, 0, 0, 0.5);
+
+	@include transform(translateY(-50%));
+}
+
+.rsArrowLeft .rsArrowIcn {
+	margin-left: 16px;
+}
+
+.rsArrowIcn {
+	height: 35px;
+	width: 35px;
+
+	margin: 0;
+	margin-top: 22px;
+
+	border-color: white;
+}
