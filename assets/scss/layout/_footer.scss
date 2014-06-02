@@ -82,6 +82,10 @@
 		}
 	}
 
+	li:first-child a{
+		padding-left: 0;
+	}
+
 	li:last-child a:after {
 		content: none;
 	}

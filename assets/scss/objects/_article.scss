@@ -30,6 +30,10 @@
 	overflow: hidden;
 	@include transform(translate3d(0, 0, 0));
 
+	@include media-query(palm){
+		padding: 0 $_u2;
+	}
+
 	.flexbox {
 		position: relative;
 		height: 100%;
