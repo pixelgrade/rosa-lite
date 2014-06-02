@@ -6,8 +6,16 @@
 //first lets get to know this page a little better
 $header_height = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_header_height', true );
 
-$subtitle = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_subtitle', true );
-$title    = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_title', true );
+$subtitle = trim( get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_subtitle', true ) );
+//we need to mess with the subtitle a little bit - because it deserves it
+//we need to wrap the first subtitle letter in a span so we can control it - height wise
+if ( ! empty( $subtitle ) ) {
+	$subtitle   = esc_html( $subtitle );
+	$first_char = mb_substr( $subtitle, 0, 1 );
+	$subtitle   = '<span class="first-letter">' . $first_char . '</span>' . mb_substr( $subtitle, 1 );
+}
+
+$title = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_title', true );
 if ( empty( $title ) ) {
 	//use the page title if empty
 	$title = get_the_title();
@@ -22,17 +30,17 @@ $description = wpgrade::filter_content( $description, 'default' );
 $gmap_url = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_url', true );
 
 if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) :
-	if ( ! empty( $gmap_url) ) :
+	if ( ! empty( $gmap_url ) ) :
 		$gmap_custom_style   = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_custom_style', true );
 		$gmap_marker_content = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_marker_content', true );
-		$gmap_height = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_gmap_height', true );
+		$gmap_height         = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_gmap_height', true );
 		?>
 		<header class="article__header <?php echo $gmap_height ?>">
 			<div id="gmap"
 			     data-url="<?php esc_attr_e( $gmap_url ); ?>" <?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
 			     data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>"></div>
 		</header>
-<?php
+	<?php
 	endif;
 else :
 	/* THEN TEST FOR SLIDESHOW PAGE TEMPLATE */
@@ -40,109 +48,109 @@ else :
 	$gallery_ids = get_post_meta( $post->ID, wpgrade::prefix() . 'main_gallery', true );
 
 	if ( get_page_template_slug( get_the_ID() ) == 'page-templates/slideshow.php' && ! empty( $gallery_ids ) ): ?>
-			<?php
-			$gallery_ids = explode( ',', $gallery_ids );
+		<?php
+		$gallery_ids = explode( ',', $gallery_ids );
 
-			if ( ! empty( $gallery_ids ) ) {
-				$attachments = get_posts( array(
-					'post_type'      => 'attachment',
-					'posts_per_page' => - 1,
-					'orderby'        => "post__in",
-					'post__in'       => $gallery_ids
-				) );
-			} else {
-				$attachments = array();
+		if ( ! empty( $gallery_ids ) ) {
+			$attachments = get_posts( array(
+				'post_type'      => 'attachment',
+				'posts_per_page' => - 1,
+				'orderby'        => "post__in",
+				'post__in'       => $gallery_ids
+			) );
+		} else {
+			$attachments = array();
+		}
+
+		if ( ! empty( $attachments ) ) :
+			//let's grab the info regarding the slider
+			$image_scale_mode     = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_image_scale_mode', true );
+			$slider_visiblenearby = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_visiblenearby', true );
+			$slider_transition    = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_transition', true );
+			$slider_autoplay      = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_autoplay', true );
+
+
+			if ( $slider_autoplay ) {
+				$slider_delay = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_delay', true );
 			}
-
-			if ( ! empty( $attachments ) ) :
-				//let's grab the info regarding the slider
-				$image_scale_mode            = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_image_scale_mode', true );
-				$slider_visiblenearby        = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_visiblenearby', true );
-				$slider_transition           = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_transition', true );
-				$slider_autoplay             = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_autoplay', true );
-
-
-				if ( $slider_autoplay ) {
-					$slider_delay = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_delay', true );
-				}
-				?>
-                <header class="article__header  <?php echo $header_height ?>">
-                    <div class="flexbox">
-                        <div class="flexbox__item">
-                            <hgroup class="article__headline">
-                                <?php if ( ! empty( $subtitle ) ) {
-                                    echo '<h2 class="headline__secondary">' . esc_html( $subtitle ) . '</h2>';
-                                } ?>
-                                <h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
-                                <?php if ( ! empty( $description ) ) {
-                                    echo '<span class="headline__description">' . $description . '</span>';
-                                } ?>
-                            </hgroup>
-                        </div>
-                    </div>
-                    <div class="article__parallax  header--slideshow  js-pixslider"
-                     data-autoHeight
-                     data-imagealigncenter
-                     data-imagescale="<?php echo $image_scale_mode; ?>"
-                     data-slidertransition="<?php echo $slider_transition; ?>"
-                     data-customArrows
-                        <?php if ( $slider_transition == 'move' ) : ?>
-                            data-slidertransitiondirection="horizontal"
-                        <?php endif; ?>
-                        <?php
-                        if ( $slider_autoplay ) {
-                            echo 'data-sliderautoplay="" ';
-                            echo 'data-sliderdelay="' . $slider_delay . '" ';
-                        }
-                        if ( $slider_visiblenearby ) {
-                            echo 'data-visiblenearby ';
-                        }
-                        ?> >
-                        <?php
-                        $set_cover = true;;
-
-                        foreach ( $attachments as $attachment ) :
-
-                            $full_img          = wp_get_attachment_image_src( $attachment->ID, 'full-size' );
-                            $attachment_fields = get_post_custom( $attachment->ID );
-
-                            // prepare the video url if there is one
-                            $video_url = ( isset( $attachment_fields['_video_url'][0] ) && ! empty( $attachment_fields['_video_url'][0] ) ) ? esc_url( $attachment_fields['_video_url'][0] ) : '';
-
-                            // should the video auto play?
-                            $video_autoplay = ( isset( $attachment_fields['_video_autoplay'][0] ) && ! empty( $attachment_fields['_video_autoplay'][0] ) && $attachment_fields['_video_autoplay'][0] === 'on' ) ? $attachment_fields['_video_autoplay'][0] : '';
-
-                            if ( true === $set_cover ) {
-                                ?>
-                                <div class="gallery-item cover" itemscope itemtype="http://schema.org/ImageObject"
-                                     data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
-                                     data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>">
-                                        <img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
-                                             alt="<?php echo $attachment->post_excerpt; ?>" itemprop="contentURL"/>
-                                </div>
-                                <?php
-                                $set_cover = false;
-                            } else {
-                                ?>
-                                <div class="gallery-item<?php echo( ! empty( $video_url ) ? ' video' : '' );
-                                echo ( $video_autoplay == 'on' ) ? ' video_autoplay' : ''; ?>" itemscope
-                                     itemtype="http://schema.org/ImageObject"
-                                     data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
-                                     data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>" <?php echo ( ! empty( $video_autoplay ) ) ? 'data-video_autoplay="' . $video_autoplay . '"' : ''; ?>>
-                                        <img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
-                                             alt="<?php echo $attachment->post_excerpt; ?>"
-                                             itemprop="contentURL" <?php echo ( ! empty( $video_url ) ) ? ' data-rsVideo="' . $video_url . '"' : ''; ?>  />
-                                </div>
-                            <?php
-                            }
-                        endforeach; ?>
-                    </div>
-                </header>
-			<?php else : ?>
-				<div class="empty-slideshow">
-					<?php _e( 'Currently there are no images assigned to this slideshow', wpgrade::textdomain() ); ?>
+			?>
+			<header class="article__header  <?php echo $header_height ?>">
+				<div class="flexbox">
+					<div class="flexbox__item">
+						<hgroup class="article__headline">
+							<?php if ( ! empty( $subtitle ) ) {
+								echo '<h2 class="headline__secondary">' . $subtitle . '</h2>';
+							} ?>
+							<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
+							<?php if ( ! empty( $description ) ) {
+								echo '<span class="headline__description">' . $description . '</span>';
+							} ?>
+						</hgroup>
+					</div>
 				</div>
-			<?php endif; ?>
+				<div class="article__parallax  header--slideshow  js-pixslider"
+				     data-autoHeight
+				     data-imagealigncenter
+				     data-imagescale="<?php echo $image_scale_mode; ?>"
+				     data-slidertransition="<?php echo $slider_transition; ?>"
+				     data-customArrows
+					<?php if ( $slider_transition == 'move' ) : ?>
+						data-slidertransitiondirection="horizontal"
+					<?php endif; ?>
+					<?php
+					if ( $slider_autoplay ) {
+						echo 'data-sliderautoplay="" ';
+						echo 'data-sliderdelay="' . $slider_delay . '" ';
+					}
+					if ( $slider_visiblenearby ) {
+						echo 'data-visiblenearby ';
+					}
+					?> >
+					<?php
+					$set_cover = true;;
+
+					foreach ( $attachments as $attachment ) :
+
+						$full_img          = wp_get_attachment_image_src( $attachment->ID, 'full-size' );
+						$attachment_fields = get_post_custom( $attachment->ID );
+
+						// prepare the video url if there is one
+						$video_url = ( isset( $attachment_fields['_video_url'][0] ) && ! empty( $attachment_fields['_video_url'][0] ) ) ? esc_url( $attachment_fields['_video_url'][0] ) : '';
+
+						// should the video auto play?
+						$video_autoplay = ( isset( $attachment_fields['_video_autoplay'][0] ) && ! empty( $attachment_fields['_video_autoplay'][0] ) && $attachment_fields['_video_autoplay'][0] === 'on' ) ? $attachment_fields['_video_autoplay'][0] : '';
+
+						if ( true === $set_cover ) {
+							?>
+							<div class="gallery-item cover" itemscope itemtype="http://schema.org/ImageObject"
+							     data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
+							     data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>">
+								<img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
+								     alt="<?php echo $attachment->post_excerpt; ?>" itemprop="contentURL"/>
+							</div>
+							<?php
+							$set_cover = false;
+						} else {
+							?>
+							<div class="gallery-item<?php echo( ! empty( $video_url ) ? ' video' : '' );
+							echo ( $video_autoplay == 'on' ) ? ' video_autoplay' : ''; ?>" itemscope
+							     itemtype="http://schema.org/ImageObject"
+							     data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
+							     data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>" <?php echo ( ! empty( $video_autoplay ) ) ? 'data-video_autoplay="' . $video_autoplay . '"' : ''; ?>>
+								<img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
+								     alt="<?php echo $attachment->post_excerpt; ?>"
+								     itemprop="contentURL" <?php echo ( ! empty( $video_url ) ) ? ' data-rsVideo="' . $video_url . '"' : ''; ?>  />
+							</div>
+						<?php
+						}
+					endforeach; ?>
+				</div>
+			</header>
+		<?php else : ?>
+			<div class="empty-slideshow">
+				<?php _e( 'Currently there are no images assigned to this slideshow', wpgrade::textdomain() ); ?>
+			</div>
+		<?php endif; ?>
 	<?php
 	else :
 		/* OR REGULAR PAGE */
@@ -160,7 +168,7 @@ else :
 					<div class="flexbox__item">
 						<hgroup class="article__headline">
 							<?php if ( ! empty( $subtitle ) ) {
-								echo '<h2 class="headline__secondary">' . esc_html( $subtitle ) . '</h2>';
+								echo '<h2 class="headline__secondary">' . $subtitle . '</h2>';
 							} ?>
 							<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
 							<?php if ( ! empty( $description ) ) {
