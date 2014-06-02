@@ -1,11 +1,14 @@
 .container {
-	max-width: 1152px;
+	max-width: 1104px;
 	margin: 0 auto;
+
+	padding: 0 $_u;
 
 	@extend .cf;
 
 	@include media-query(palm) {
 		margin: 0 $_u2;
+		padding: 0;
 	}
 }
 
