@@ -10,7 +10,7 @@ global $wp_query;
 <section class="container  container--archive">
 	<div class="page-content  archive">
 		<?php rosa::the_archive_title(); ?>
-		
+
 		<?php get_template_part('templates/post/loop/categories-dropdown'); ?>
 
 		<?php //first the sticky posts
