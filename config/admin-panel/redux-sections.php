@@ -873,12 +873,12 @@ $sections[] = array(
 // Header/Footer Options
 // ------------------------------------------------------------------------
 
-$sections[] = array(
-	'icon'   => 'note-1',
-	'title'  => __( 'Header', wpgrade::textdomain() ),
-	'desc'   => '<p class="description">' . __( 'Header options allow you to control both the visual and functional aspects of the page header area.', wpgrade::textdomain() ) . '</p>',
-	'fields' => array()
-);
+//$sections[] = array(
+//	'icon'   => 'note-1',
+//	'title'  => __( 'Header', wpgrade::textdomain() ),
+//	'desc'   => '<p class="description">' . __( 'Header options allow you to control both the visual and functional aspects of the page header area.', wpgrade::textdomain() ) . '</p>',
+//	'fields' => array()
+//);
 
 $sections[] = array(
 	'icon'   => 'note-1',
@@ -897,11 +897,6 @@ $sections[] = array(
 	)
 );
 
-
-// $sections[] = array(
-//     'type' => 'divide',
-// );
-
 // Archives Options
 // ------------------------------------------------------------------------
 
@@ -915,27 +910,6 @@ $sections[] = array(
 			'desc' => '<h4>' . __( 'Posts Meta Data', wpgrade::textdomain() ) . '</h4>',
 			'type' => 'info'
 		),
-//		array(
-//			'id'       => 'blog_show_categories',
-//			'type'     => 'checkbox',
-//			'title'    => __( 'Categories', wpgrade::textdomain() ),
-//			'subtitle' => __( 'Display the post categories.', wpgrade::textdomain() ),
-//			'default'  => '1',
-//		),
-//		array(
-//			'id'       => 'blog_show_comments',
-//			'type'     => 'checkbox',
-//			'title'    => __( 'Comments Number', wpgrade::textdomain() ),
-//			'subtitle' => __( 'Display the number of comments.', wpgrade::textdomain() ),
-//			'default'  => '1',
-//		),
-//		array(
-//			'id'       => 'blog_show_likes',
-//			'type'     => 'checkbox',
-//			'title'    => __( 'Likes Number', wpgrade::textdomain() ),
-//			'subtitle' => __( '(only if the PixLikes plugin is active)', wpgrade::textdomain() ),
-//			'default'  => '1',
-//		),
 		array(
 			'id'       => 'blog_show_date',
 			'type'     => 'checkbox',
@@ -974,18 +948,6 @@ $sections[] = array(
 			'subtitle' => __( 'Set the number of characters for posts excerpt.', wpgrade::textdomain() ),
 			'default'  => '140',
 		),
-		array(
-			'id'   => 'navigation_style-21829384',
-			'desc' => '<h4>' . __( 'Navigation Style', wpgrade::textdomain() ) . '</h4>',
-			'type' => 'info'
-		),
-		array(
-			'id'       => 'blog_show_breadcrumb',
-			'type'     => 'switch',
-			'title'    => __( 'Show Archive Breadcrumb', wpgrade::textdomain() ),
-			'subtitle' => __( 'Do you want to show the archive breadcrumb?', wpgrade::textdomain() ),
-			'default'  => false,
-		),
 	)
 );
 
@@ -994,20 +956,6 @@ $sections[] = array(
 	'title'  => __( 'Posts', wpgrade::textdomain() ),
 	'desc'   => sprintf( '<p class="description">' . __( 'Post options control the various aspects related to the <b>single post page</b>.', wpgrade::textdomain() ) . '</p>', wpgrade::themename() ),
 	'fields' => array(
-//		array(
-//			'id'       => 'blog_single_show_breadcrumb',
-//			'type'     => 'switch',
-//			'title'    => __( 'Show Post Breadcrumb', wpgrade::textdomain() ),
-//			'subtitle' => __( 'Do you want to show the post breadcrumb?', wpgrade::textdomain() ),
-//			'default'  => true,
-//		),
-//		array(
-//			'id'       => 'blog_single_show_title_meta_info',
-//			'type'     => 'switch',
-//			'title'    => __( 'Show Post Title Extra Info', wpgrade::textdomain() ),
-//			'subtitle' => __( 'Do you want to show the date and the author under the title?', wpgrade::textdomain() ),
-//			'default'  => true,
-//		),
 		array(
 			'id'       => 'blog_single_show_author_box',
 			'type'     => 'switch',
