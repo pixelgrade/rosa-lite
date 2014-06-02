@@ -607,6 +607,7 @@ function navigatorInit() {
         lastSelected    = 0,
         isWhite         = true,
         wasWhite        = true,
+        scrollDuration  = 300,
         latestKnownScrollY = window.scrollY,
         ticking = false;
 
@@ -616,12 +617,34 @@ function navigatorInit() {
     }
 
     // add bullets to the indicator for each header found
-    for (var i = 0; i < $headers.length; i = i + 1) {
-        $('<div class="navigator__item"></div>').appendTo($navigator);
-    }
+    $headers.each(function (i, header) {
+        var $header = $(header),
+            $button = $('<a href="#" class="navigator__item"><div class="bullet"></div></a>');
+
+        $button.appendTo($navigator);
+        $header.data('offsetTop', $header.offset().top);
+
+        $button.on('click', function (e) {
+
+            e.preventDefault();
+
+            var headerTop   = $header.data('offsetTop'),
+                distance    = Math.abs(latestKnownScrollY - headerTop),
+                duration    = scrollDuration * distance / 1000;
+
+            $('html, body').animate({
+                scrollTop: headerTop
+            }, {
+                duration: duration,
+                easing: "easeOutCubic"
+            });
+
+            return false;
+        });
+    });
 
     // add an indicator for the section that's currently in the viewport
-    var $selected = $('<div class="navigator__item  navigator__item--selected"></div>').appendTo($navigator);
+    var $selected = $('<div class="navigator__item  navigator__item--selected"><div class="bullet"></div></div>').appendTo($navigator);
 
     // after all the bullets have been added vertically center the navigator
     $navigator.css({
@@ -641,7 +664,7 @@ function navigatorInit() {
         $headers.each(function(i, header) {
 
             var $header         = $(header),
-                headerTop       = $header.offset().top,
+                headerTop       = $header.data('offsetTop'),
                 headerBottom    = headerTop + $header.outerHeight(),
                 navigatorMiddle = latestKnownScrollY + (wh / 2);
 
@@ -745,11 +768,13 @@ function niceScrollInit() {
 }
 
 function scrollToTopInit() {
-	if (!empty($('.up-link'))) {
-		if (globalDebug) {console.log("ScrollToTop Init");}
 
-		var offset = 220,
-			duration = 500;
+    if (!empty($('.up-link'))) {
+
+        if (globalDebug) {console.log("ScrollToTop Init");}
+
+		var offset      = 220,
+            duration    = 300;
 
 		$(window).scroll(function() {
 			if ($(this).scrollTop() > offset) {
@@ -761,36 +786,45 @@ function scrollToTopInit() {
 
 		$('.up-link').click(function(e) {
 			e.preventDefault();
-			$('html, body').animate({scrollTop: 0}, duration);
-			return false;
+
+            var scrollDuration = window.scrollY * duration / 1000;
+
+            $('html, body').animate({
+                scrollTop: 0
+            }, {
+                duration: scrollDuration,
+                easing: "easeOutCubic"
+            });
+
+            return false;
 		});
 	}
 }
 
 // Menu Hover with delay
-function menusHover() {
-  $('.menu-item-has-children').hoverIntent({
-	interval: 0,
-	timeout: 300,
-	over: showMenu,
-	out: hideMenu
-  })
-
-  function showMenu() {
-	var self = $(this);
-	self.removeClass('hidden');
-	setTimeout(function(){
-	  self.addClass('open');
-	}, 150);
-  }
-  function hideMenu() {
-	var self = $(this);
-	self.removeClass('open');
-	setTimeout(function(){
-	  self.addClass('hidden');
-	}, 150);
-  }
-}
+//function menusHover() {
+//    $('.menu-item-has-children').hoverIntent({
+//        interval: 0,
+//        timeout: 300,
+//        over: showMenu,
+//        out: hideMenu
+//    })
+//
+//    function showMenu() {
+//        var self = $(this);
+//        self.removeClass('hidden');
+//        setTimeout(function(){
+//            self.addClass('open');
+//        }, 150);
+//    }
+//    function hideMenu() {
+//        var self = $(this);
+//        self.removeClass('open');
+//        setTimeout(function(){
+//        self.addClass('hidden');
+//        }, 150);
+//    }
+//}
 
 
 /* --- $VIDEOS --- */

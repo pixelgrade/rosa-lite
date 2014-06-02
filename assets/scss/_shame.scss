@@ -47,28 +47,36 @@ html, body {
 
 .navigator__item {
 	display: block;
-	width: $_u2;
-	height: $_u2;
-	margin-bottom: $_u2;
-	border-radius: 50%;
-	border: 2px solid white;
-	@include transition(background-color, border-color .1s ease-in-out);
+	padding: $_u4;
+
+	.bullet {
+		width: $_u2;
+		height: $_u2;
+		border-radius: 50%;
+		border: 2px solid white;
+		@include transition(background-color, border-color .1s ease-in-out);
+		cursor: pointer;
+	}
 }
 
 .navigator__item--selected {
 	position: absolute;
 	top: 0; left: 0;
-	background: white;
-	border-color: transparent;
+
+	.bullet {
+		background: white;
+		border-color: transparent;
+		cursor: default;
+	}
 }
 
 .navigator--black {
 
-	.navigator__item {
+	.navigator__item .bullet {
 		border-color: black;
 	}
 
-	.navigator__item--selected {
+	.navigator__item--selected .bullet {
 		background: black;
 	}
 }

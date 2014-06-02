@@ -36,11 +36,13 @@ function niceScrollInit() {
 }
 
 function scrollToTopInit() {
-	if (!empty($('.up-link'))) {
-		if (globalDebug) {console.log("ScrollToTop Init");}
 
-		var offset = 220,
-			duration = 500;
+    if (!empty($('.up-link'))) {
+
+        if (globalDebug) {console.log("ScrollToTop Init");}
+
+		var offset      = 220,
+            duration    = 300;
 
 		$(window).scroll(function() {
 			if ($(this).scrollTop() > offset) {
@@ -52,36 +54,45 @@ function scrollToTopInit() {
 
 		$('.up-link').click(function(e) {
 			e.preventDefault();
-			$('html, body').animate({scrollTop: 0}, duration);
-			return false;
+
+            var scrollDuration = window.scrollY * duration / 1000;
+
+            $('html, body').animate({
+                scrollTop: 0
+            }, {
+                duration: scrollDuration,
+                easing: "easeOutCubic"
+            });
+
+            return false;
 		});
 	}
 }
 
 // Menu Hover with delay
-function menusHover() {
-  $('.menu-item-has-children').hoverIntent({
-	interval: 0,
-	timeout: 300,
-	over: showMenu,
-	out: hideMenu
-  })
-
-  function showMenu() {
-	var self = $(this);
-	self.removeClass('hidden');
-	setTimeout(function(){
-	  self.addClass('open');
-	}, 150);
-  }
-  function hideMenu() {
-	var self = $(this);
-	self.removeClass('open');
-	setTimeout(function(){
-	  self.addClass('hidden');
-	}, 150);
-  }
-}
+//function menusHover() {
+//    $('.menu-item-has-children').hoverIntent({
+//        interval: 0,
+//        timeout: 300,
+//        over: showMenu,
+//        out: hideMenu
+//    })
+//
+//    function showMenu() {
+//        var self = $(this);
+//        self.removeClass('hidden');
+//        setTimeout(function(){
+//            self.addClass('open');
+//        }, 150);
+//    }
+//    function hideMenu() {
+//        var self = $(this);
+//        self.removeClass('open');
+//        setTimeout(function(){
+//        self.addClass('hidden');
+//        }, 150);
+//    }
+//}
 
 
 /* --- $VIDEOS --- */
