@@ -173,6 +173,14 @@ gulp.task('styles-nested', function () {
 });
 
 /**
+ * Cleanup the css folder and recreate the css files compressed
+ */
+gulp.task('styles-compressed', function () {
+	return gulp.src('./')
+		.pipe(exec('rm -Rf ./assets/css/* ; ruby assets/+production-compressed.rb'));
+});
+
+/**
  * Create a zip archive out of the cleaned folder and delete the folder
  */
 gulp.task('zip', ['build'], function () {
