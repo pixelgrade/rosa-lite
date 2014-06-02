@@ -163,8 +163,9 @@ else :
 								echo '<h2 class="headline__secondary">' . esc_html( $subtitle ) . '</h2>';
 							} ?>
 							<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
+
 							<?php if ( ! empty( $description ) ) {
-								echo '<span class="headline__description">' . $description . '</span>';
+								echo '<div class="headline__description">' . $description . '</div>';
 							} ?>
 						</hgroup>
 					</div>
