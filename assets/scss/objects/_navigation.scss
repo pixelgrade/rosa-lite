@@ -10,11 +10,10 @@
  */
 .nav--main {
 	@extend .cf;
-  
+
 	margin-bottom: 0;
 
 	> li {
-		float: left;
 
 		> a {
 			@include rem(padding, $_u2 $_u);
@@ -209,6 +208,10 @@ $nav-width: 200px;
 			}
 
 			&.menu-item-has-children{
+				&:after{
+					content: none;
+				}
+
 				> a{
 					position: relative;
 				}
@@ -231,9 +234,15 @@ $nav-width: 200px;
 		}
 
 		.sub-menu{
-			border: 0;
+			position: static;
+
+			display: block;
 			padding-left: $_u2;
+
+			border: 0;
 			background: transparent;
+
+			@include transform(translateX(0));
 		}
 
 		.sub-menu .sub-menu{
