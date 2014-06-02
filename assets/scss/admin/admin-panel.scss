@@ -155,7 +155,7 @@
 	tr:nth-child(1) {
 		width: 100% !important;
 	}
-	tr:nth-child(-n+6) {
+	tr:nth-child(-n+3) {
 		width: 45%;
 		float: left;
 		margin-right: 5%;
@@ -171,18 +171,11 @@
 			margin-top: 39px;
 		}
 	}
-	tr:nth-child(6) {
+	tr:nth-child(4) {
 		width: 95%;
-
-		th {
-			width: 94%;
-		}
-
-		td {
-			width: 5%;
-		}
+		float: left;
 	}
-	tr:nth-child(7), tr:nth-child(8) {
+	tr:nth-child(5), tr:nth-child(6) {
 		width: 45%;
 		float: left;
 		margin-right: 5%;

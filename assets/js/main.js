@@ -491,61 +491,60 @@ function parallaxInit() {
 	if (globalDebug) {console.log("Parallax Init");}
 
 	var imgSelector         = '.article__parallax img',
-		parallaxAmount      = 0.5;
+		parallaxAmount      = 0.5,
+        latestKnownScrollY  = window.scrollY,
+        ticking             = false;
 
     // prepare images for parallax effect
-	$(imgSelector).each(function (i, img) {
+    function prepare() {
 
-        var $img                = $(img),
-            imgHeight           = $img.height(),
-            imgWidth            = $img.width(),
-            $container          = $img.closest('.article__header'),
-            containerHeight     = $container.outerHeight(),
-            parallaxDistance    = (wh - containerHeight) * parallaxAmount,
-            // find scale needed for the image to fit container and move desired amount
-            scaleY              = (parallaxDistance + (containerHeight * parallaxAmount)) / imgHeight,
-            scaleX              = ww / imgWidth,
-            scale               = Math.max(1, scaleX, scaleY),
-            // calculate needed values to properly move the image on scroll
-            initialTop          = -1 * (parallaxDistance) / 2 - (containerHeight * parallaxAmount),
-            finalTop            = -1 * initialTop,
-            start               = $container.offset().top - wh,
-            end                 = start + wh + containerHeight,
-            timeline            = new TimelineMax({paused: true});
+        $(imgSelector).each(function (i, img) {
 
-        // scale image up to desired size
-		$img.css({
-			width: parseInt(imgWidth * scale, 10),
-			height: parseInt(imgHeight * scale, 10)
-		});
+            var $img                = $(img),
+                imgHeight           = $img.height(),
+                imgWidth            = $img.width(),
+                $container          = $img.closest('.article__header'),
+                containerHeight     = $container.outerHeight(),
+                parallaxDistance    = (wh - containerHeight) * parallaxAmount,
+                // find scale needed for the image to fit container and move desired amount
+                scaleY              = (parallaxDistance + (containerHeight * parallaxAmount)) / imgHeight,
+                scaleX              = ww / imgWidth,
+                scale               = Math.max(1, scaleX, scaleY),
+                // calculate needed values to properly move the image on scroll
+                initialTop          = -1 * (parallaxDistance) / 2 - (containerHeight * parallaxAmount),
+                finalTop            = -1 * initialTop,
+                start               = $container.offset().top - wh,
+                end                 = start + wh + containerHeight,
+                timeline            = new TimelineMax({paused: true});
 
-        if (globalDebug) { console.log('x: ', ww, imgWidth, scaleX) };
-        if (globalDebug) { console.log('y: ', parallaxDistance, imgHeight, scaleY) };
-        if (globalDebug) { console.log('pd = (' + wh + ' (wh) + ' + containerHeight + ' (ch)) * ' + imgHeight + ' (ih) = ' + parallaxDistance) };
+            // scale image up to desired size
+            $img.css({
+                width: parseInt(imgWidth * scale, 10),
+                height: parseInt(imgHeight * scale, 10)
+            });
 
-        // fade image in
-        TweenMax.to($img, 0.6, {opacity: 1});
+            // fade image in
+            TweenMax.to($img, 0.6, {opacity: 1});
 
-        // create timeline for current image
-		timeline.append(TweenMax.fromTo($img.closest('.article__parallax'), 0.1, {
-			y: initialTop,
-			ease: Linear.easeNone
-		}, {
-			y: finalTop,
-			ease: Linear.easeNone
-		}));
+            // create timeline for current image
+            timeline.append(TweenMax.fromTo($img.closest('.article__parallax'), 0.1, {
+                y: initialTop,
+                ease: Linear.easeNone
+            }, {
+                y: finalTop,
+                ease: Linear.easeNone
+            }));
 
-        // bind sensible variables for tweening to the image using a data attribute
-		$img.data('tween', {
-			timeline: timeline,
-			start: start,
-			end: end
-		});
+            // bind sensible variables for tweening to the image using a data attribute
+            $img.data('tween', {
+                timeline: timeline,
+                start: start,
+                end: end
+            });
 
-	});
+        });
 
-	var latestKnownScrollY = window.scrollY,
-		ticking = false;
+    }
 
 	function update() {
 		ticking = false;
@@ -571,7 +570,6 @@ function parallaxInit() {
 				if (1 > progress) {
 					options.timeline.progress(progress);
 					$img.css({'visibility': 'visible'});
-                    if (globalDebug) { console.log(i); }
 					return;
 				}
 			}
@@ -592,9 +590,100 @@ function parallaxInit() {
 		ticking = true;
 	}
 
-	update();
+    function initialize() {
+        prepare();
+        update();
+    }
+
+    $(window).on('resize orientationchange', initialize);
+    initialize();
 }
 
+function navigatorInit() {
+
+    var $navigator      = $('.navigator'),
+        $headers        = $('.article__header'),
+        currentSelected = 0,
+        lastSelected    = 0,
+        isWhite         = true,
+        wasWhite        = true,
+        latestKnownScrollY = window.scrollY,
+        ticking = false;
+
+    // if we're not on a page or there's only one header ABORT MISSION!
+    if (!$navigator.length || $headers.length < 2) {
+        return;
+    }
+
+    // add bullets to the indicator for each header found
+    for (var i = 0; i < $headers.length; i = i + 1) {
+        $('<div class="navigator__item"></div>').appendTo($navigator);
+    }
+
+    // add an indicator for the section that's currently in the viewport
+    var $selected = $('<div class="navigator__item  navigator__item--selected"></div>').appendTo($navigator);
+
+    // after all the bullets have been added vertically center the navigator
+    $navigator.css({
+        'margin-top': -1 * $navigator.height() / 2
+    });
+
+    // update
+    requestTick();
+    TweenMax.to($navigator, 0.3, {opacity: 1});
+
+    // function used to update navigator's color and indicator's position
+    function update() {
+
+        ticking = false;
+
+        // loop through each header and find current state
+        $headers.each(function(i, header) {
+
+            var $header         = $(header),
+                headerTop       = $header.offset().top,
+                headerBottom    = headerTop + $header.outerHeight(),
+                navigatorMiddle = latestKnownScrollY + (wh / 2);
+
+            if (navigatorMiddle > headerTop) {
+                currentSelected = i;
+                isWhite = true;
+
+                if (navigatorMiddle > headerBottom) {
+                    isWhite = false;
+                }
+            }
+
+        });
+
+        // if the navigator's indicator has to be moved
+        // then move it accordingly and update state
+        if (lastSelected != currentSelected) {
+            lastSelected = currentSelected;
+            TweenMax.to($selected, 0.3, {top: 24 * currentSelected});
+        }
+
+        // if the navigator's color has to be changed
+        // then change it accordingly and update state
+        if (wasWhite != isWhite) {
+            wasWhite = isWhite;
+            $navigator.toggleClass('navigator--black', !isWhite);
+        }
+
+    }
+
+    $(window).scroll(function () {
+        latestKnownScrollY = window.scrollY;
+        requestTick();
+    });
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+}
 /* --- Sticky Header Init --- */
 
 function stickyHeaderInit() {
@@ -893,6 +982,7 @@ $(window).load(function(){
 
 	stickyHeaderInit();
     parallaxInit();
+    navigatorInit();
 
 
     if(!empty($('#date-otreservations'))){

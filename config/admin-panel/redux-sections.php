@@ -873,12 +873,12 @@ $sections[] = array(
 // Header/Footer Options
 // ------------------------------------------------------------------------
 
-$sections[] = array(
-	'icon'   => 'note-1',
-	'title'  => __( 'Header', wpgrade::textdomain() ),
-	'desc'   => '<p class="description">' . __( 'Header options allow you to control both the visual and functional aspects of the page header area.', wpgrade::textdomain() ) . '</p>',
-	'fields' => array()
-);
+//$sections[] = array(
+//	'icon'   => 'note-1',
+//	'title'  => __( 'Header', wpgrade::textdomain() ),
+//	'desc'   => '<p class="description">' . __( 'Header options allow you to control both the visual and functional aspects of the page header area.', wpgrade::textdomain() ) . '</p>',
+//	'fields' => array()
+//);
 
 $sections[] = array(
 	'icon'   => 'note-1',
@@ -897,11 +897,6 @@ $sections[] = array(
 	)
 );
 
-
-// $sections[] = array(
-//     'type' => 'divide',
-// );
-
 // Archives Options
 // ------------------------------------------------------------------------
 
@@ -914,27 +909,6 @@ $sections[] = array(
 			'id'   => 'posts_meta_data-218293204',
 			'desc' => '<h4>' . __( 'Posts Meta Data', wpgrade::textdomain() ) . '</h4>',
 			'type' => 'info'
-		),
-		array(
-			'id'       => 'blog_show_categories',
-			'type'     => 'checkbox',
-			'title'    => __( 'Categories', wpgrade::textdomain() ),
-			'subtitle' => __( 'Display the post categories.', wpgrade::textdomain() ),
-			'default'  => '1',
-		),
-		array(
-			'id'       => 'blog_show_comments',
-			'type'     => 'checkbox',
-			'title'    => __( 'Comments Number', wpgrade::textdomain() ),
-			'subtitle' => __( 'Display the number of comments.', wpgrade::textdomain() ),
-			'default'  => '1',
-		),
-		array(
-			'id'       => 'blog_show_likes',
-			'type'     => 'checkbox',
-			'title'    => __( 'Likes Number', wpgrade::textdomain() ),
-			'subtitle' => __( '(only if the PixLikes plugin is active)', wpgrade::textdomain() ),
-			'default'  => '1',
 		),
 		array(
 			'id'       => 'blog_show_date',
@@ -952,6 +926,14 @@ $sections[] = array(
 			'required' => array( 'blog_show_date', '=', true )
 		),
 		array(
+			'id'       => 'blog_read_more_text',
+			'type'     => 'text',
+			'title'    => __( 'Read More Text', wpgrade::textdomain() ),
+			'subtitle' => __( 'Set the read more link text.', wpgrade::textdomain() ),
+			'desc'     => __( '(leave empty if you want to remove it)', wpgrade::textdomain() ),
+			'default'  => 'Read more',
+		),
+		array(
 			'id'       => 'blog_excerpt_more_text',
 			'type'     => 'text',
 			'title'    => __( 'Excerpt "More" Text', wpgrade::textdomain() ),
@@ -966,30 +948,6 @@ $sections[] = array(
 			'subtitle' => __( 'Set the number of characters for posts excerpt.', wpgrade::textdomain() ),
 			'default'  => '140',
 		),
-		array(
-			'id'   => 'navigation_style-21829384',
-			'desc' => '<h4>' . __( 'Navigation Style', wpgrade::textdomain() ) . '</h4>',
-			'type' => 'info'
-		),
-		array(
-			'id'       => 'blog_show_breadcrumb',
-			'type'     => 'switch',
-			'title'    => __( 'Show Archive Breadcrumb', wpgrade::textdomain() ),
-			'subtitle' => __( 'Do you want to show the archive breadcrumb?', wpgrade::textdomain() ),
-			'default'  => false,
-		),
-		array(
-			'id'   => 'archive_sidebar-86329384',
-			'desc' => '<h4>' . __( 'Sidebar', wpgrade::textdomain() ) . '</h4>',
-			'type' => 'info'
-		),
-		array(
-			'id'       => 'blog_show_sidebar',
-			'type'     => 'switch',
-			'title'    => __( 'Show Sidebar', wpgrade::textdomain() ),
-			'subtitle' => __( 'Show the main sidebar in the archive pages.', wpgrade::textdomain() ),
-			'default'  => '1',
-		),
 	)
 );
 
@@ -998,20 +956,6 @@ $sections[] = array(
 	'title'  => __( 'Posts', wpgrade::textdomain() ),
 	'desc'   => sprintf( '<p class="description">' . __( 'Post options control the various aspects related to the <b>single post page</b>.', wpgrade::textdomain() ) . '</p>', wpgrade::themename() ),
 	'fields' => array(
-		array(
-			'id'       => 'blog_single_show_breadcrumb',
-			'type'     => 'switch',
-			'title'    => __( 'Show Post Breadcrumb', wpgrade::textdomain() ),
-			'subtitle' => __( 'Do you want to show the post breadcrumb?', wpgrade::textdomain() ),
-			'default'  => true,
-		),
-		array(
-			'id'       => 'blog_single_show_title_meta_info',
-			'type'     => 'switch',
-			'title'    => __( 'Show Post Title Extra Info', wpgrade::textdomain() ),
-			'subtitle' => __( 'Do you want to show the date and the author under the title?', wpgrade::textdomain() ),
-			'default'  => true,
-		),
 		array(
 			'id'       => 'blog_single_show_author_box',
 			'type'     => 'switch',
@@ -1030,23 +974,6 @@ $sections[] = array(
 			'title'    => __( 'Show Share Links', wpgrade::textdomain() ),
 			'subtitle' => __( 'Do you want to show share icon links in your articles?', wpgrade::textdomain() ),
 			'default'  => true,
-		),
-		array(
-			'id'       => 'blog_single_share_links_position',
-			'type'     => 'select',
-			'title'    => __( 'Share Links Position', wpgrade::textdomain() ),
-			'subtitle' => __( 'Choose where to display the share links.', wpgrade::textdomain() ),
-			'options'  => array(
-				'top'    => 'Top',
-				'bottom' => 'Bottom',
-				'both'   => 'Both Top & Bottom',
-			),
-			'default'  => 'both',
-			'select2'  => array(
-				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
-				'allowClear'              => false // don't allow a empty select
-			),
-			'required' => array( 'blog_single_show_share_links', '=', true )
 		),
 		array(
 			'id'   => 'posts_comments-812329384',
@@ -1381,10 +1308,10 @@ $sections[] = array(
 			'title'      => __( 'Social Links', wpgrade::textdomain() ),
 			'subtitle'   => sprintf( __( 'Define and reorder your social pages links.<br /><b>Note:</b> These will be displayed in the "%s Social Links" widget so you can put them anywhere on your site. Only those filled will appear.<br /><br /><strong> You need to input the <strong>complete</strong> URL (ie. http://twitter.com/username)</strong>', wpgrade::textdomain() ), wpgrade::themename() ),
 			'desc'       => __( 'Icons provided by <strong>FontAwesome</strong> and <strong>Entypo</strong>.', wpgrade::textdomain() ),
-			'checkboxes' => array(
-				'widget' => __( 'Widget', wpgrade::textdomain() ),
-				'header' => __( 'Header', wpgrade::textdomain() )
-			),
+//			'checkboxes' => array(
+//				'widget' => __( 'Widget', wpgrade::textdomain() ),
+//				'header' => __( 'Header', wpgrade::textdomain() )
+//			),
 			'options'    => array(
 				'flickr'        => __( 'Flickr', wpgrade::textdomain() ),
 				'tumblr'        => __( 'Tumblr', wpgrade::textdomain() ),

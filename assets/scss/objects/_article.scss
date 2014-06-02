@@ -42,6 +42,10 @@
 	&.half-height       { height:  50%; }
 	&.two-thirds-height { height:  66%; }
 
+	&.header--slideshow{
+		padding: 0;
+	}
+
 	#gmap {
 		position: absolute;
 		top: 0; right: 0; bottom: 0; left: 0;
@@ -161,7 +165,7 @@
 /*------------------------------------*\
     $SINGLE GALLERY
 \*------------------------------------*/
-.article__featured-image {
+.article__header {
 	.rsArrow {
 		width: 50px;
 		height: 80px;

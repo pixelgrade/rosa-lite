@@ -19,7 +19,7 @@
 
 	&:hover {
 		background-color: $accent;
-		color: white;
+		color: white !important;
 	}
 
 	//    &.btn--beta { @include font-size(12px, true, 1.25); }
@@ -140,8 +140,11 @@
 	border-bottom: 2px solid $accent;
 	@include border-radius(0);
 
-	font-size: 15px;
 	line-height: 1;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
+
+	&:hover{
+		color: $accent !important;
+	}
 }

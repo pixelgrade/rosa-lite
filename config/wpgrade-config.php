@@ -277,29 +277,9 @@ return array(
 			'width' => 400
 		),
 
-		// Classic blog (cropped)
-		'post-square-small' => array(
-			'width'     => 177,
-			'height'    => 177,
-			'hard_crop' => true
-		),
-
-		/**
-		 * MEDIUM SIZE (cropped)
-		 * - Related Posts
-		 */
-
-		'post-square-medium' => array(
-			'width'     => 380,
-			'height'    => 380,
-			'hard_crop' => true
-		),
-
-		// Rosa blog (cropped)
+		// Blog archive
 		'post-medium' => array(
-			'width'     => 265,
-			'height'    => 328,
-			'hard_crop' => true
+			'width'     => 665,
 		)
 
 	),

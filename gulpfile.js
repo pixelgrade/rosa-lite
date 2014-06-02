@@ -13,6 +13,7 @@ jsFiles = [
 	'royalslider',
 	'gmap',
 	'parallax',
+	'navigator',
     'stickyHeader',
 	'main',
 	'404',

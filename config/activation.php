@@ -206,6 +206,10 @@ return array(
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
 				'priority'   => 'high',
+				'show_on'    => array(
+					'key' => 'page-template',
+					'value' => array( 'default', 'page-templates/slideshow.php' ),
+				),
 				'show_names' => true, // Show field names on the left
 				'fields'     => array(
 					array(
@@ -376,6 +380,27 @@ return array(
 						'id'   => wpgrade::prefix() . 'gmap_url',
 						'type' => 'textarea_small',
 						'std'  => '',
+					),
+					array(
+						'name' => __( 'Map Height', 'rosa_txtd' ),
+						'desc' => __( '<p class="cmb_metabox_description">Select the height of the Google Map area in relation to the browser window.</p>', 'rosa_txtd' ),
+						'id'   => wpgrade::prefix() . 'page_gmap_height',
+						'type'    => 'select',
+						'options' => array(
+							array(
+								'name'  => __( 'Half', 'rosa_txtd' ),
+								'value' => 'half-height',
+							),
+							array(
+								'name'  => __( 'Two Thirds', 'rosa_txtd' ),
+								'value' => 'two-thirds-height',
+							),
+							array(
+								'name'  => __( 'Full Height', 'rosa_txtd' ),
+								'value' => 'full-height',
+							)
+						),
+						'std'     => 'half-height',
 					),
 					array(
 						'name' => __( 'Custom Styling', 'rosa_txtd' ),
