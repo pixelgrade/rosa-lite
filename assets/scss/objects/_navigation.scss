@@ -27,7 +27,7 @@
 	}
 
 	a {
-		color: white;
+		color: black;
 //		color: black;
 		@include font-size(14px);
 
@@ -35,8 +35,8 @@
 			color: $accent;
 		}
 
-		.header--inversed & {
-			color: black;
+		.header--transparent & {
+			color: white;
 		}
 	}
 }

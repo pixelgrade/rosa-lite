@@ -9,12 +9,14 @@
 	right: 0;
 	z-index: 100;
 
+	background: white;
+
 	@include media-query(palm) {
 		position: relative;
 	}
 
-	.header--inversed &{
-		background: white;
+	.header--transparent &{
+		background: transparent;
 	}
 }
 
@@ -36,7 +38,7 @@
 		display: block;
 		max-height: 100%;
 
-		.header--inversed & {
+		.header--transparent & {
 			-webkit-filter: invert(100%);
 		}
 	}
