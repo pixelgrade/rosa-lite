@@ -72,12 +72,12 @@ $sections[] = array(
 // ------------------------------------------------------------------------
 
 $sections[] = array(
-	'icon'       => "params",
-	'icon_class' => '',
-	'title'      => __( 'Style', wpgrade::textdomain() ),
-	'desc'       => '<p class="description">' . __( 'The style options control the general styling of the site, like accent color and Google Web Fonts. You can choose custom fonts for various typography elements with font weight, character set, size and/or line height. You also have a live preview for your chosen fonts.', wpgrade::textdomain() ) . '</p>',
+	'icon'            => "params",
+	'icon_class'      => '',
+	'title'           => __( 'Style', wpgrade::textdomain() ),
+	'desc'            => '<p class="description">' . __( 'The style options control the general styling of the site, like accent color and Google Web Fonts. You can choose custom fonts for various typography elements with font weight, character set, size and/or line height. You also have a live preview for your chosen fonts.', wpgrade::textdomain() ) . '</p>',
 	'customizer_only' => false,
-	'fields'     => array(
+	'fields'          => array(
 		array(
 			'id'         => 'live-customizer-button' . $debug,
 			'title'      => '<a href="' . admin_url( "customize.php" ) . '" class="button button-primary" id="live-customizer-button">
@@ -120,8 +120,8 @@ $sections[] = array(
 					'background-color' => array(
 						'selector' => "",
 					),
-					'border-color' => array(
-						   'selector' => ".tabs__nav a.current, .tabs__nav a:hover",
+					'border-color'     => array(
+						'selector' => ".tabs__nav a.current, .tabs__nav a:hover",
 					),
 					'outline-color'    => array(
 						'selector' => "",
@@ -139,7 +139,7 @@ $sections[] = array(
 			'customizer' => array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
-					'color' => array(
+					'color'        => array(
 						'selector' => " body, 
 										.up-link"
 					),
@@ -187,7 +187,6 @@ $sections[] = array(
 			'type'       => 'customizer_info',
 			'customizer' => array()
 		),
-		
 		array(
 			'id'         => 'header_background_color',
 			'type'       => 'color',
@@ -228,7 +227,6 @@ $sections[] = array(
 				)
 			),
 		),
-
 		array(
 			'id'         => 'content_background_color',
 			'type'       => 'color',
@@ -269,10 +267,6 @@ $sections[] = array(
 				)
 			),
 		),
-
-
-
-
 		array(
 			'id'         => 'typography_title',
 			'title'      => '<h3>' . __( 'Typography', wpgrade::textdomain() ) . '</h3>',
@@ -342,7 +336,7 @@ $sections[] = array(
 			'title'         => __( 'Margin Bottom', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '15',
-			'min'           => -48,
+			'min'           => - 48,
 			'step'          => 1,
 			'max'           => 48,
 			'display_value' => 'text',
@@ -363,7 +357,7 @@ $sections[] = array(
 			'title'         => __( 'First Letter Offset', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '15',
-			'min'           => -48,
+			'min'           => - 48,
 			'step'          => 0.1,
 			'max'           => 48,
 			'display_value' => 'text',
@@ -378,8 +372,6 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
-
-
 		// Navigation Font
 		array(
 			'id'             => 'google_nav_font',
@@ -403,7 +395,7 @@ $sections[] = array(
 				'google'      => true,
 			),
 			'output'         => array( '.navigation--main' ),
-			
+
 		),
 		array(
 			'id'            => 'nav_font-size',
@@ -498,7 +490,6 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
-
 		// Body Font
 		array(
 			'id'             => 'google_body_font',
@@ -566,7 +557,6 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
-
 		/*
 		 * Sizes and Spacing
 		 */
@@ -617,11 +607,11 @@ $sections[] = array(
 			'customizer'    => array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
-					'padding-top'  => array(
+					'padding-top'    => array(
 						'selector' => '.page .article__content',
 						'unit'     => 'px',
 					),
-					'padding-bottom'  => array(
+					'padding-bottom' => array(
 						'selector' => '.page .article__content',
 						'unit'     => 'px',
 					)
@@ -629,7 +619,6 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
-
 		array(
 			'id'            => 'sidebar_width',
 			'type'          => 'customizer_slider',

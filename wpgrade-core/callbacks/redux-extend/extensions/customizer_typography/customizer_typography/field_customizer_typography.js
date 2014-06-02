@@ -36,7 +36,7 @@ jQuery(document).ready(function ($) {
 	}
 
 	function typographySelect(selector) {
-		var mainID = jQuery(selector).parents('.redux-typography-container').attr('data-id');
+		var mainID = $(selector).parents('.redux-typography-container').attr('data-id');
 
 		// customizer things
 		var customizer_id = $('#' + mainID + ' .redux-typography-font-family').attr('name');
@@ -65,8 +65,7 @@ jQuery(document).ready(function ($) {
 		var units = $('#' + mainID).data('units');
 		var option = $('#' + mainID + ' .redux-typography-family option:selected');
 		var output = family;
-		//$('#' + mainID + ' select.redux-typography-style').val('');
-		//$('#' + mainID + ' select.redux-typography-subsets').val('');
+
 		var google = option.data('google'); // Check if font is a google font
 		// Page load. Speeds things up memory wise to offload to client
 		if (!$('#' + mainID).hasClass('typography-initialized')) {
@@ -85,7 +84,7 @@ jQuery(document).ready(function ($) {
 		var details = "";
 
 		if (option.data('details')) {
-			details = jQuery.parseJSON(decodeURIComponent(option.data('details')));
+			details = $.parseJSON(decodeURIComponent(option.data('details')));
 			$('#' + mainID + ' .redux-typography-font-options').val(decodeURIComponent(option.data('details')));
 		}
 
@@ -217,7 +216,6 @@ jQuery(document).ready(function ($) {
 		if (size === '') {
 			$('#' + mainID + ' .typography-font-size').val('');
 		} else {
-			//console.log('here-font-size');
 			$('#' + mainID + ' .typography-font-size').val(size + units);
 		}
 		if (height === '') {
@@ -258,10 +256,10 @@ jQuery(document).ready(function ($) {
 	}
 
 	//init for each element
-	jQuery('.redux-typography-container').each(function () {
-		var family = jQuery(this).find('select.redux-typography-family');
+	$('.redux-typography-container').each(function () {
+		var family = $(this).find('select.redux-typography-family');
 		if (family.data('value') !== "") {
-			jQuery(family).val(family.data('value'));
+			$(family).val(family.data('value'));
 		}
 		typographySelect(family);
 	});
@@ -270,40 +268,42 @@ jQuery(document).ready(function ($) {
 	/**
 	 * First create the selectors
 	 */
-	jQuery(".redux-typography-family, .redux-typography-family-backup, .redux-typography-align, .redux-typography-transform").select2({
+	$(".redux-typography-family, .redux-typography-family-backup, .redux-typography-align, .redux-typography-transform").select2({
 		width: 'resolve',
 		triggerChange: true,
 		allowClear: true
 	});
 
 	//init when value is changed
-	jQuery('.redux-typography').on('change', function () {
+	$(document).on('change', '.redux-typography', function () {
 		typographySelect(this);
-		if (typeof api !== "undefined")
+
+		if (typeof api !== "undefined") {
 			api.trigger('change');
+		}
 	});
 	//init when value is changed
-	jQuery('.redux-typography-size, .redux-typography-height, .redux-typography-word, .redux-typography-letter, .redux-typography-align, .redux-typography-transform').keyup(function () {
+	$('.redux-typography-size, .redux-typography-height, .redux-typography-word, .redux-typography-letter, .redux-typography-align, .redux-typography-transform').keyup(function () {
 		typographySelect(this);
 	});
 	// Have to redeclare the wpColorPicker to get a callback function
 	$('.redux-typography-color').wpColorPicker({
 		change: function (event, ui) {
-			redux_change(jQuery(this));
-			jQuery(this).val(ui.color.toString());
-			typographySelect(jQuery(this));
+			redux_change($(this));
+			$(this).val(ui.color.toString());
+			typographySelect($(this));
 		}
 	});
 
-	jQuery(".redux-typography-size").numeric({
+	$(".redux-typography-size").numeric({
 		allowMinus: false
 	});
 
-	jQuery(".redux-typography-height, .redux-typography-word, .redux-typography-letter").numeric({
+	$(".redux-typography-height, .redux-typography-word, .redux-typography-letter").numeric({
 		allowMinus: true
 	});
 
-	jQuery('.redux-typography-qtip').each(function () {
+	$('.redux-typography-qtip').each(function () {
 		$(this).qtip({
 //            text: function(event, api) {
 //                return $(this).attr('qtip-content');
