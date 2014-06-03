@@ -50,7 +50,7 @@ function wpgrade_callback_load_google_fonts_config_rosa() {
 
 	$fonts_array = array(
 		'google_titles_font',
-		//'google_second_font',
+		'google_subtitles_font',
 		'google_nav_font',
 		'google_body_font'
 	);
@@ -80,7 +80,7 @@ function wpgrade_callback_load_google_fonts_api_rosa() {
 
 	$fonts_array = array(
 		'google_titles_font',
-		//'google_second_font',
+		'google_subtitles_font',
 		'google_nav_font',
 		'google_body_font'
 	);
