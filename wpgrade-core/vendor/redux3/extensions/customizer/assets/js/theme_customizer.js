@@ -7,82 +7,78 @@
 
 
 
-( function( exports, $ ) {
+(function (exports, $) {
 
-	$(document).ready(function(){
+	$(document).ready(function () {
 
 		var api = exports.customize,
 			controls = api.settings.controls,
 			settings = api.settings.settings;
 
-
 		backgroundInit();
 		typographyInit();
 		spacingInit();
-						
-		$(this).on('click', function(){
+
+		$(this).on('click', function () {
 			// $('.customize-control-background .redux-field').removeClass('active');
 		});
 
-
-
-
 		function backgroundInit() {
-			$('.customize-control-background').each(function(){
+			var $bg_control = $('.customize-control-background');
+			$bg_control.each(function () {
 				var _self = $(this),
 					label = $(this).find('label'),
 					upload = $(this).find('input.redux-background-input');
-				
+
 				$(this).prepend(label);
 
-				if(upload.val()) {
+				if (upload.val()) {
 					label.find('button').addClass('active')
 				}
 			});
 
 			// Toggle the Background Container
-			$('.customize-control-background').on('click', '.customize-control-title button', function(e){
+			$bg_control.on('click', '.customize-control-title button', function (e) {
 				e.stopPropagation();
 				e.preventDefault();
 				$(this).closest($('.customize-control-background')).find('.redux-field-container').toggleClass('active');
 			});
 
 			// Remove Icon Class '.active'
-			$('.customize-control-background').on('click', '.button.remove-image', function(){
+			$bg_control.on('click', '.button.remove-image', function () {
 				$(this).closest($('.customize-control-background')).find('button.active').removeClass('active');
 			})
 		}
 
-
-
 		function typographyInit() {
-			$('.customize-control-typography').each(function(){
+			var $typo_control = $('.customize-control-typography');
+			$typo_control.each(function () {
 				var _self = $(this),
 					label = $(this).find('label'),
 					upload = $(this).find('input.redux-background-input');
-				
+
 				// $(this).prepend(label);
-				$(this).nextUntil('.customize-control-typography').each(function(){
+				$(this).nextUntil('.customize-control-typography').each(function () {
 					$(this).addClass('123').appendTo(_self.find('.redux-field-container .redux-typography-container'));
 				});
 			});
 
 			// Toggle the Background Container
-			$('.customize-control-typography').on('click', '.customize-control-title button', function(e){
+			$typo_control.on('click', '.customize-control-title button', function (e) {
 				e.stopPropagation();
 				e.preventDefault();
 				$(this).closest($('.customize-control-typography')).find('.redux-typography-container').toggleClass('active');
 			});
 
 			// Remove Icon Class '.active'
-			$('.customize-control-typography').on('click', '.button.remove-image', function(){
+			$typo_control.on('click', '.button.remove-image', function () {
 				// $(this).closest($('.customize-control-typography')).find('button.active').removeClass('active');
 			})
 		}
 
 
 		function spacingInit() {
-			$('.sizes_section').each(function(){
+			$('.sizes_section').each(function () {
 				var _self = $(this),
 					_parent = $(this).closest('li').addClass('dropdown-section-trigger'),
 					_container = _parent.parent().addClass('customize-dropdown-section'),
@@ -93,7 +89,7 @@
 				$('<div class="dropdown-section-content"></div>').appendTo(_container);
 
 				// Insert options into container
-				_parent.nextUntil('div').each(function(){
+				_parent.nextUntil('div').each(function () {
 					$(this).appendTo(_container.find('.dropdown-section-content'));
 				});
 
@@ -104,22 +100,22 @@
 
 
 			// Toggle the DropDown Container
-			$('.customize-dropdown-section').on('click', '.dropdown-section-trigger', function(e){
+			$('.customize-dropdown-section').on('click', '.dropdown-section-trigger', function (e) {
 				e.stopPropagation();
 				e.preventDefault();
 				$(this).next().toggleClass('active');
 			});
 
 			// Remove Icon Class '.active'
-			$('.customize-control-typography').on('click', '.button.remove-image', function(){
+			$('.customize-control-typography').on('click', '.button.remove-image', function () {
 				// $(this).closest($('.customize-control-typography')).find('button.active').removeClass('active');
 			})
 		}
 
 		// iterate thtough all settings and pick up ours
-		$.each(controls ,function(settingId, val){
+		$.each(controls, function (settingId, val) {
 
-			if ( settingId.indexOf( theme_name ) === -1 ) {
+			if (settingId.indexOf(theme_name) === -1) {
 				return;
 			}
 
@@ -146,10 +142,13 @@
 //			}
 		});
 
-
-		$(document).on('click', 'a#reset-style-defaults', function(ev){
+		/**
+		 * On Reset Styles click do an ajax request which will reset the style section.
+		 */
+		$(document).on('click', 'a#reset-style-defaults', function (ev) {
 			ev.preventDefault();
 
+			// Very important ASK the user to confirm the reset!
 			if (!confirm(redux.args.reset_confirm)) {
 				return false;
 			} else {
@@ -157,23 +156,21 @@
 				//let's reset the section style
 				var _ajax_nonce = $(this).data('ajax_nonce') || '';
 				jQuery.ajax({
-					type: "post",url: exports.ajax.settings.url,data: { action: 'reset_style_section', type: 'get', _ajax_nonce: _ajax_nonce},
+					type: "post",
+					url: exports.ajax.settings.url,
+					data: {action: 'reset_style_section', type: 'get', _ajax_nonce: _ajax_nonce},
 					//beforeSend: function() {jQuery("#loading").show("slow");}, //show loading just when link is clicked
 					//complete: function() { jQuery("#loading").hide("fast");}, //stop showing loading when the process is complete
-					success: function( response ){
+					success: function (response) {
 						location.reload();
 					},
-					error: function(){
+					error: function () {
 						alert('This is wrong!');
 					}
 				});
 			}
 		});
-
 	});
-
-
-
-})( wp, jQuery );
+})(wp, jQuery);
 
 
