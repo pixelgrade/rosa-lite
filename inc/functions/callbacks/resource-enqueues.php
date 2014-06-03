@@ -110,6 +110,7 @@ function wpgrade_callback_enqueue_404_css() {
 /**
  * Enqueue our custom css on admin panel
  */
+add_action( 'redux/page/' . wpgrade::shortname() . '_options/enqueue', 'wpgrade_add_admin_custom_style', 0 );
 function wpgrade_add_admin_custom_style() {
 
 	wp_enqueue_style( wpgrade::shortname() . '-redux-theme-custom', wpgrade::resourceuri( 'css/admin/admin-panel.css' ), array(), time(), 'all' );
@@ -119,5 +120,14 @@ function wpgrade_add_admin_custom_style() {
 	wp_enqueue_script( wpgrade::shortname() . '-redux-theme-custom', wpgrade::resourceuri( 'js/admin/admin-panel.js' ), array(), time(), true );
 }
 
-// This example assumes your opt_name is set to redux, replace with your opt_name value
-add_action( 'redux/page/' . wpgrade::shortname() . '_options/enqueue', 'wpgrade_add_admin_custom_style', 0 );
+/*
+ * Enqueue some custom JS in the admin area for various small tasks
+ */
+add_action('admin_enqueue_scripts','wpgrade_add_admin_general_script');
+function wpgrade_add_admin_general_script( $hook ){
+	wp_enqueue_script(
+		'wpgrade_admin_general_script', //unique handle
+		get_template_directory_uri().'/assets/js/admin/admin-general.js', //location
+		array('jquery')  //dependencies
+	);
+}
