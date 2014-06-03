@@ -109,22 +109,21 @@ $sections[] = array(
 			'customizer' => array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
-					'color'            => array(
+					'color' => array(
 						'selector' => "	a, a:hover,
 										.nav--main a:hover, 
 										.headline__secondary,
 										.separator--flower, .separator--line-flower, .separator--flower.separator_color--color,
-										.tabs__nav a.current, .tabs__nav a:hover,
-										",
+										.tabs__nav a.current, .tabs__nav a:hover",
 					),
 					'background-color' => array(
-						'selector' => "",
+						'selector' => ".test",
 					),
 					'border-color'     => array(
 						'selector' => ".tabs__nav a.current, .tabs__nav a:hover",
 					),
 					'outline-color'    => array(
-						'selector' => "",
+						'selector' => ".test",
 					),
 				)
 			)
@@ -181,6 +180,24 @@ $sections[] = array(
 				)
 			)
 		),
+		array(
+			'id'         => 'cover_text',
+			'type'       => 'color',
+			'title'      => __( 'Cover Text', wpgrade::textdomain() ),
+			'default'    => '#fff',
+			'validate'   => 'color',
+			'compiler'   => true,
+			'customizer' => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'color' => array(
+						'selector' => ".article__header .article__headline .headline__primary, 
+										.article__header .article__headline .headline__description"
+					),
+				)
+			)
+		),
+
 		array(
 			'id'         => 'backgrounds_title',
 			'title'      => '<h3>' . __( 'Backgrounds', wpgrade::textdomain() ) . '</h3>',
@@ -737,33 +754,6 @@ $sections[] = array(
 						'media'    => 'screen and (min-width: 900px)'
 					),
 					'padding-right' => array(
-						'selector' => '.nav--main > .menu-item > a',
-						'unit'     => 'px',
-						'media'    => 'screen and (min-width: 900px)'
-					)
-				)
-			),
-			'compiler'      => true
-		),
-		array(
-			'id'            => 'navigation_vertical_margins',
-			'type'          => 'customizer_slider',
-			'title'         => __( 'Navigation Vertical Margins', wpgrade::textdomain() ),
-			'validate'      => 'numeric',
-			'default'       => 21,
-			'min'           => 1,
-			'step'          => 1,
-			'max'           => 40,
-			'display_value' => 'text',
-			'customizer'    => array(
-				'transport' => 'postMessage',
-				'css_rules' => array(
-					'padding-top'    => array(
-						'selector' => '.nav--main > .menu-item > a',
-						'unit'     => 'px',
-						'media'    => 'screen and (min-width: 900px)'
-					),
-					'padding-bottom' => array(
 						'selector' => '.nav--main > .menu-item > a',
 						'unit'     => 'px',
 						'media'    => 'screen and (min-width: 900px)'
