@@ -22,7 +22,7 @@
 						
 		$(this).on('click', function(){
 			// $('.customize-control-background .redux-field').removeClass('active');
-		})
+		});
 
 
 
@@ -123,9 +123,6 @@
 				return;
 			}
 
-			
-
-
 			var setting = settings[settingId],
 				type = val.type,
 				transport = setting.transport;
@@ -148,6 +145,31 @@
 //				});
 //			}
 		});
+
+
+		$(document).on('click', 'a#reset-style-defaults', function(ev){
+			ev.preventDefault();
+
+			if (!confirm(redux.args.reset_confirm)) {
+				return false;
+			} else {
+
+				//let's reset the section style
+				var _ajax_nonce = $(this).data('ajax_nonce') || '';
+				jQuery.ajax({
+					type: "post",url: exports.ajax.settings.url,data: { action: 'reset_style_section', type: 'get', _ajax_nonce: _ajax_nonce},
+					//beforeSend: function() {jQuery("#loading").show("slow");}, //show loading just when link is clicked
+					//complete: function() { jQuery("#loading").hide("fast");}, //stop showing loading when the process is complete
+					success: function( response ){
+						location.reload();
+					},
+					error: function(){
+						alert('This is wrong!');
+					}
+				});
+			}
+		});
+
 	});
 
 

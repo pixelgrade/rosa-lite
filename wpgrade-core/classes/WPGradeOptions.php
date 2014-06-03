@@ -108,6 +108,18 @@ class WPGradeOptions {
 		return false;
 	}
 
+	function get_defaults() {
+		$drivers = array_reverse( $this->drivers );
+		foreach ( $drivers as $driver ) {
+			$val = $driver->_default_values();
+			if ( ! empty( $val ) ) {
+				return $val;
+			}
+		}
+
+		return false;
+	}
+
 	/**
 	 * Adds a key to the options. The value is added to the core driver which
 	 * is at the bottom of the stack.

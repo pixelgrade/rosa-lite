@@ -165,6 +165,10 @@ class wpgrade {
 		return self::options()->get_sections();
 	}
 
+	static function get_redux_defaults() {
+		return self::options()->get_defaults();
+	}
+
 	/**
 	 * Get the image src attribute.
 	 * Target should be a valid option accessible via WPGradeOptions interface.

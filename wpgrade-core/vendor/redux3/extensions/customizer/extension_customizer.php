@@ -136,6 +136,8 @@ if( !class_exists( 'ReduxFramework_extension_customizer' ) ) {
 
 
 //			add_action('customize_save', array($this, 'save_options_defaults'), 100);
+
+			add_action('wp_ajax_reset_style_section', array( $this, 'reset_style_section'));
 		}
 
 		public function _override_values( $data ) {
@@ -153,8 +155,6 @@ if( !class_exists( 'ReduxFramework_extension_customizer' ) ) {
 		function save_options_defaults( $wp_customize ) {
 //			checkCSSRegen(); // Checks if I need to regen and does so
 //			set_theme_mod('regen-css', time()+3); // Waits 3 seconds until everything is saved
-
-//			wpgrade::g
 
 			$redux = new $this->parent;
 
@@ -807,31 +807,32 @@ if( !class_exists( 'ReduxFramework_extension_customizer' ) ) {
 			wp_localize_script($key, 'settings_config', $this->localized_settings );
 		}
 
-	} // class
+		/**
+		 * This is a wpgrade specific hook!
+		 * @TODO Maybe refactor it in the future to work in redux extension
+		 */
+		public function reset_style_section () {
 
-} // if
+			check_ajax_referer( 'reset-style-section', 'security' );
 
-if ( !function_exists('recursive_array_search') ) {
+			$defaults = wpgrade::get_redux_defaults();
+			$sections = wpgrade::get_redux_sections();
 
-	function recursive_array_search_and_get_value($s,$arrays) {
-		var_export($arrays);
-
-		foreach($arrays as $key => $array) {
-			$current_key=$key;
-//			var_dump($s);
-//			var_export($array);
-			if($s == $current_key) {
-				return $array;
-			} elseif (is_array($array) && recursive_array_search_and_get_value($s,$array) !== false) {
-				return recursive_array_search_and_get_value($s,$array);
+			if ( !empty( $sections ) ) {
+				foreach ( $sections as $section) {
+					if ( $section['id'] == 'style' && isset( $section['fields'] ) && !empty( $section['fields'] ) ) {
+						foreach ( $section['fields'] as $field ) {
+							if ( isset( $field['id'] ) && isset( $defaults[ $field['id'] ] )) {
+								$default_value = $defaults[ $field['id'] ] ;
+								wpgrade::setoption($field['id'], $default_value);
+							}
+						}
+					}
+				}
 			}
 		}
-
-		return false;
-
-	}
-
-}
+	} // class
+} // if
 
 function search_multi($array, $key, $value)
 {
