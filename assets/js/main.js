@@ -12,7 +12,6 @@ var is_older_ie = ua.match(/msie/i) && !is_newer_ie;
 var is_ancient_ie = ua.match(/msie 6/i);
 var is_mobile = ua.match(/mobile/i);
 var is_OSX = (ua.match(/(iPad|iPhone|iPod|Macintosh)/g) ? true : false);
-var is_WindowsMobile = ua.match(new RegExp("IEMobile", "i"));
 
 
 var nua = navigator.userAgent;
@@ -71,6 +70,7 @@ var globalDebug = false,
 			svgSupportAlt = (document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1")) ? true : false,
 			ff3x = (/gecko/i.test(navUA) && /rv:1.9/i.test(navUA)) ? true : false;
 
+        ieMobile = navigator.userAgent.match(/Windows Phone/i) ? true : false;
 		phone = (isiPhone > -1 || isiPod > -1 || isAndroidPhone > -1) ? true : false;
 		touch = $.support.touch ? true : false;
 		ltie9 = $.support.leadingWhitespace ? false : true;
@@ -81,7 +81,7 @@ var globalDebug = false,
 
 		if (touch) $('html').addClass('touch');
 
-		if (is_WindowsMobile) $('html').addClass('is--winmob');
+		if (ieMobile) $('html').addClass('is--winmob');
 		if (is_android) $('html').addClass('is--ancient-android');
 
 		if (lteie9) $('html').addClass('lteie9');
@@ -887,7 +887,7 @@ function resizeVideos() {
 }
 
 function containerPlacement(){
-	$('.js-container').css('padding-top', $('.js-sticky').height() + 'px');
+	$('#page').css('padding-top', $('.js-header').outerHeight() + 'px');
 }
 
 
@@ -947,7 +947,7 @@ function loadUp(){
 
 	royalSliderInit();
 
-	//menusHover();
+	containerPlacement();
 
 	magnificPopupInit();
 
@@ -983,6 +983,20 @@ function eventHandlers() {
 	//Magnific Popup arrows
 	$('body').off('click', '.js-arrow-popup-prev', magnificPrev).on('click', '.js-arrow-popup-prev', magnificPrev);
 	$('body').off('click', '.js-arrow-popup-next', magnificNext).on('click', '.js-arrow-popup-next', magnificNext);
+
+    var filterHandler;
+
+    if(touch) {
+        filterHandler = 'click';
+    } else {
+        filterHandler = 'hover';
+    }
+
+    if(ieMobile) filterHandler = 'click';
+
+    $('.pix-dropdown').on(filterHandler, function(){
+        $(this).toggleClass('active');
+    });
 
 	if (globalDebug) {console.groupEnd();}
 }

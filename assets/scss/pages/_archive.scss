@@ -8,6 +8,19 @@
 .archive__title {
 	margin: 0;
 	display: inline-block;
+
+	@include media-query(palm){
+		margin-top: $_u;
+		display: block;
+		text-align: center;
+	}
+}
+
+@include media-query(palm){
+	.archive__side-title{
+		display: block;
+		text-align: center;
+	}
 }
 
 .article--archive {
@@ -175,7 +188,13 @@
 }
 
 .archive-filter {
-	position: absolute;
-	top: 0;
-	right: 0;
+	@include media-query(palm){
+		margin-bottom: $_u;
+	}
+
+	@include media-query(lap-and-up){
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
 }

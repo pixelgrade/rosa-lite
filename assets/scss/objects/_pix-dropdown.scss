@@ -9,18 +9,18 @@
 
 .pix-dropdown {
 
-	@include media-query(palm) {
-		.dropdown__trigger {
-			display: none;
-		}
-	}
+//	@include media-query(palm) {
+//		.dropdown__trigger {
+//			display: none;
+//		}
+//	}
 
-	@include media-query(lap-and-up) {
+//	@include media-query(lap-and-up) {
 
 		position: relative;
 		text-align: center;
 
-		&:hover {
+		&.active {
 			.dropdown__menu {
 				border: 1px solid $borders;
 				border-top: 0;
@@ -78,6 +78,7 @@
 			width: 100%;
 
 			display: none;
+
 			padding-top: $_u2;
 
 			//            border: 1px solid $borders;
@@ -103,8 +104,8 @@
 			}
 		}
 
-		&:hover .dropdown__menu {
+		&.active .dropdown__menu {
 			display: block;
 		}
-	}
+//	}
 }
