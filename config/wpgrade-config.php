@@ -180,7 +180,7 @@ return array(
 		),
 		// auto invoke styles previously registered on theme setup
 		'auto-enqueue-styles'     => array(
-			'google-webfonts',
+//			'google-webfonts',
 			'wpgrade-main-style',
 		),
 		// calls function to perform extra enqueue's on theme setup
