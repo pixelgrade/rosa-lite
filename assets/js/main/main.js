@@ -294,6 +294,7 @@ $(window).load(function(){
     }
 
     parallaxInit();
+    coverAnimationsInit();
     navigatorInit();
 
 
@@ -322,60 +323,3 @@ $(window).on("debouncedresize", function(e){
 	resizeVideos();
 
 });
-
-function animateCover() {
-
-    $('.article__headline').each(function(i, header) {
-        var $header         = $(header),
-            timeline        = new TimelineLite({paused: true}),
-            $title          = $header.find('.headline__primary'),
-            $subtitle       = $header.find('.headline__secondary'),
-            $description    = $header.find('.headline__description'),
-//            $separator      = $header.find('.pixcode--separator'),
-            $star           = $header.find('.star'),
-            $lines          = $header.find('.line'),
-            $arrows         = $description.find('.arrow');
-
-        $description.css({opacity: 1});
-        $description = $description.children().not('.pixcode--separator');
-        $description.css({opacity: 0});
-
-        timeline.fromTo($title, 1, {
-            'letter-spacing': 50,
-            'opacity': 0,
-            'y': 30
-        }, {
-            'letter-spacing': 10,
-            'opacity': 1,
-            'y': 0
-        });
-
-        timeline.fromTo($subtitle, 0.9, {
-            'opacity': 0,
-            'y': 20
-        }, {
-            'opacity': 1,
-            'y': 0
-        }, '-=0.65');
-
-        timeline.to($star, 0.2, {opacity: 1}, '-=0.6');
-        timeline.fromTo($star, 0.55, {rotation: -270}, {rotation: 0}, '-=0.2');
-        timeline.fromTo($lines, 0.6, {width: 0}, {width: '45%', opacity: 1, ease: Expo.easeOut}, '-=0.45');
-        timeline.fromTo($arrows, 0.2, {opacity: 0}, {opacity: 1}, '-=0.27');
-
-        timeline.fromTo($description, 0.75, {
-            'opacity': 0,
-            'y': '-20'
-        }, {
-            'opacity': 1,
-            'y': 0
-        }, '-=0.28');
-
-        timeline.play();
-
-    });
-}
-
-setTimeout(function () {
-    animateCover();
-}, 300);
