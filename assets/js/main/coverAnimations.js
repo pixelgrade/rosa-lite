@@ -60,6 +60,11 @@ function coverAnimationsInit() {
             start               = headerTop + headerHeight / 2 - wh / 2,
             end                 = start + wh / 3;
 
+        if (i == 0) {
+            start = headerTop;
+            end = start + wh / 3;
+        }
+
         timeline.tweenTo("animatedIn", {
 
             onComplete: function () {
@@ -71,6 +76,7 @@ function coverAnimationsInit() {
                     timePassed      = partialProgress * timeline.getLabelTime("animatedOut");
 
                 if (ab > partialProgress) {
+                    requestTick();
                     return;
                 }
 

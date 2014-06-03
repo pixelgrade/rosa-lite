@@ -46,6 +46,7 @@ function sliderInit($slider) {
 		rs_drag = true,
 		rs_globalCaption = typeof $slider.data('showcaptions') !== "undefined" ? true : false;
 
+    console.log(rs_imageAlignCenter);
 	if (rs_autoheight) {
 		rs_autoScaleSlider = false
 	} else {

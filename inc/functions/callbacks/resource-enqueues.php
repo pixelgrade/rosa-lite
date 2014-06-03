@@ -66,7 +66,7 @@ function wpgrade_callback_load_google_fonts_config_rosa() {
 
 	$families = apply_filters( 'wpgrade_google_fonts', $families );
 
-	if ( ! empty( $families ) ) {
+	if ( ! empty( $families ) || is_preview() ) {
 		// any variables in scope will be available in the partial
 		include wpgrade::themefilepath( 'templates/core/google-fonts-config' . EXT );
 	}
@@ -96,7 +96,7 @@ function wpgrade_callback_load_google_fonts_api_rosa() {
 
 	$families = apply_filters( 'wpgrade_google_fonts', $families );
 
-	if ( ! empty( $families ) ) {
+	if ( ! empty( $families ) || is_preview() ) {
 		//only enqueue the api is we actually have webfonts
 		wp_enqueue_script('webfont-script');
 	}
