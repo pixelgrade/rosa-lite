@@ -1,4 +1,12 @@
+/*------------------------------------*\
+    $CONTACT FORM
+\*------------------------------------*/
+
 .wpcf7-form-control.wpcf7-submit {
 	@extend .btn;
 	@extend .btn--secondary;
+}
+
+.wpcf7-form-control{
+	margin-bottom: $_u;
 }

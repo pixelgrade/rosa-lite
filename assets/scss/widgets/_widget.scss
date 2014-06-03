@@ -39,7 +39,7 @@
 }
 
 .widget--footer {
-	@include rem(margin-bottom, $_2u);
+	@include rem(margin-bottom, $_u2);
 
 	.widget__title {
 		color: white;
@@ -112,34 +112,7 @@
 			display: block;
 			@include rem(padding, $_u4 0);
 		}
-		//
-		//        + li {
-		//            border-top: 1px solid #333131;
-		//            margin-top: -1px;
-		//
-		//
-		//            .site__footer & {
-		//                border-top-color: #262525;
-		//            }
-		//        }
 	}
-
-	//    &.two-cols {
-	//
-	//        > li + li {
-	//            border-top: 0;
-	//            margin-top: 0;
-	//        }
-	//
-	//        > li + li + li {
-	//            border-top: 1px solid #ddd;
-	//            margin-top: -1px;
-	//
-	//            .site__footer & {
-	//                border-top-color: #262525;
-	//            }
-	//        }
-	//    }
 }
 
 .widget_nav_menu, .widget_categories, .widget_meta {

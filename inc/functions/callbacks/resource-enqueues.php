@@ -3,9 +3,9 @@
 /**
  * Invoked in wpgrade-config.php
  */
-function wpgrade_callback_contact_script() {
-	if ( is_page_template( 'template-contact.php' ) ) {
-		wp_enqueue_script( 'contact-scripts' );
+function wpgrade_callback_gmaps_api_script() {
+	if ( is_page_template( 'page-templates/contact.php' ) ) {
+		wp_enqueue_script( 'google-maps-api' );
 	}
 }
 
@@ -33,10 +33,20 @@ function wpgrade_callback_thread_comments_scripts() {
 
 
 /**
- * Load google fonts appropriate script block.
- * This callback is invoked by wpgrade_callback_enqueue_dynamic_css
+ * Invoked in wpgrade-config.php
  */
-function wpgrade_callback_load_google_fonts_rosa() {
+function wpgrade_callback_enqueue_google_fonts_rosa() {
+	//put the webfonts config inline script in the footer
+	add_action( 'wp_footer', 'wpgrade_callback_load_google_fonts_api_rosa');
+	//put the webfonts config inline script in the footer
+	add_action( 'wp_footer', 'wpgrade_callback_load_google_fonts_config_rosa', 9999 );
+}
+
+/**
+ * Load google fonts config script block.
+ * This callback is invoked by wpgrade_callback_enqueue_google_fonts
+ */
+function wpgrade_callback_load_google_fonts_config_rosa() {
 
 	$fonts_array = array(
 		'google_titles_font',
@@ -63,20 +73,11 @@ function wpgrade_callback_load_google_fonts_rosa() {
 }
 
 /**
- * This callback is invoked by wpgrade_callback_themesetup.
+ * Load google fonts webfonts loader api script.
+ * This callback is invoked by wpgrade_callback_enqueue_google_fonts
  */
-function wpgrade_callback_enqueue_dynamic_css_rosa() {
-	$style_query = array();
+function wpgrade_callback_load_google_fonts_api_rosa() {
 
-	if ( wpgrade::option( 'main_color' ) ) {
-		$main_color           = wpgrade::option( 'main_color' );
-		$main_color           = str_replace( '#', '', $main_color );
-		$style_query['color'] = $main_color;
-	}
-
-	//    if ( wpgrade::option('use_google_fonts')) {
-
-	add_action( 'wp_footer', 'wpgrade_callback_load_google_fonts_rosa', 9999 );
 	$fonts_array = array(
 		'google_titles_font',
 		//'google_second_font',
@@ -84,13 +85,27 @@ function wpgrade_callback_enqueue_dynamic_css_rosa() {
 		'google_body_font'
 	);
 
+	$families = array();
 	foreach ( $fonts_array as $font ) {
-		$the_font = wpgrade::get_the_typo( $font );
-		if ( ! empty( $the_font ) ) {
-			$style_query['fonts'][ $font ] = $the_font;
+		$clean_font = wpgrade::get_google_font_name( $font );
+
+		if ( ! empty( $clean_font ) ) {
+			$families[] = $clean_font;
 		}
 	}
-	//    }
+
+	$families = apply_filters( 'wpgrade_google_fonts', $families );
+
+	if ( ! empty( $families ) ) {
+		//only enqueue the api is we actually have webfonts
+		wp_enqueue_script('webfont-script');
+	}
+}
+
+/**
+ * This callback is invoked by wpgrade_callback_themesetup.
+ */
+function wpgrade_callback_enqueue_dynamic_css_rosa() {
 
 	if ( wpgrade::option( 'inject_custom_css' ) == 'file' ) {
 		wp_enqueue_style( 'wpgrade-custom-style', get_template_directory_uri() . '/assets/css/custom.css' );

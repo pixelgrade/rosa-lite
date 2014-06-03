@@ -12,7 +12,6 @@ var is_older_ie = ua.match(/msie/i) && !is_newer_ie;
 var is_ancient_ie = ua.match(/msie 6/i);
 var is_mobile = ua.match(/mobile/i);
 var is_OSX = (ua.match(/(iPad|iPhone|iPod|Macintosh)/g) ? true : false);
-var is_WindowsMobile = ua.match(new RegExp("IEMobile", "i"));
 
 
 var nua = navigator.userAgent;

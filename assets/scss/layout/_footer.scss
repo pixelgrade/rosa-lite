@@ -106,15 +106,20 @@
 	@extend .cf;
 
 	@include media-query(lap-and-up) {
-		margin: 0 -$_u;
+		margin: 0 -$_u2;
 	}
 	margin-top: $_2u;
 
 	.widget{
 		float: left;
 
+		margin-bottom: $_u2;
 		padding: 0;
-		border: $_u solid transparent;
+		border: $_u2 solid transparent;
+
+		p{
+			margin: 0;
+		}
 	}
 
 	&.col-1 .widget{
