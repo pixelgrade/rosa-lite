@@ -25,6 +25,7 @@
 			svgSupportAlt = (document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1")) ? true : false,
 			ff3x = (/gecko/i.test(navUA) && /rv:1.9/i.test(navUA)) ? true : false;
 
+        ieMobile = navigator.userAgent.match(/Windows Phone/i) ? true : false;
 		phone = (isiPhone > -1 || isiPod > -1 || isAndroidPhone > -1) ? true : false;
 		touch = $.support.touch ? true : false;
 		ltie9 = $.support.leadingWhitespace ? false : true;
@@ -35,7 +36,7 @@
 
 		if (touch) $('html').addClass('touch');
 
-		if (is_WindowsMobile) $('html').addClass('is--winmob');
+		if (ieMobile) $('html').addClass('is--winmob');
 		if (is_android) $('html').addClass('is--ancient-android');
 
 		if (lteie9) $('html').addClass('lteie9');
