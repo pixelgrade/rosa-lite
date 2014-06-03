@@ -66,7 +66,7 @@ echo ' ' . $schema_org . ' ' . $data_smoothscrolling . ' ' ?> >
 	improve your experience.</p>
 <![endif]-->
 <div id="page">
-	<div class="site-header  header--inversed">
+	<div class="site-header  header--inversed  js-header">
 		<div class="container">
 			<div class="flexbox">
 				<div class="flexbox__item">

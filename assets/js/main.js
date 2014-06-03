@@ -12,7 +12,6 @@ var is_older_ie = ua.match(/msie/i) && !is_newer_ie;
 var is_ancient_ie = ua.match(/msie 6/i);
 var is_mobile = ua.match(/mobile/i);
 var is_OSX = (ua.match(/(iPad|iPhone|iPod|Macintosh)/g) ? true : false);
-var is_WindowsMobile = ua.match(new RegExp("IEMobile", "i"));
 
 
 var nua = navigator.userAgent;
@@ -71,6 +70,7 @@ var globalDebug = false,
 			svgSupportAlt = (document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1")) ? true : false,
 			ff3x = (/gecko/i.test(navUA) && /rv:1.9/i.test(navUA)) ? true : false;
 
+        ieMobile = navigator.userAgent.match(/Windows Phone/i) ? true : false;
 		phone = (isiPhone > -1 || isiPod > -1 || isAndroidPhone > -1) ? true : false;
 		touch = $.support.touch ? true : false;
 		ltie9 = $.support.leadingWhitespace ? false : true;
@@ -81,7 +81,7 @@ var globalDebug = false,
 
 		if (touch) $('html').addClass('touch');
 
-		if (is_WindowsMobile) $('html').addClass('is--winmob');
+		if (ieMobile) $('html').addClass('is--winmob');
 		if (is_android) $('html').addClass('is--ancient-android');
 
 		if (lteie9) $('html').addClass('lteie9');
@@ -533,7 +533,7 @@ function parallaxInit() {
             }
 
             // create timeline for current image
-            timeline.append(TweenMax.fromTo($container, 0.1, {
+            timeline.append(TweenMax.fromTo($container, 0.3, {
                 y: initialTop,
                 ease: Linear.easeNone
             }, {
@@ -605,6 +605,152 @@ function parallaxInit() {
     initialize();
 }
 
+function coverAnimationsInit() {
+
+    var selector            = '.article__header',
+        latestKnownScrollY  = window.scrollY,
+        ticking             = false,
+        wh                  = $(window).height();
+
+    $('.article__header').each(function(i, header) {
+        var $header         = $(header),
+            $headline       = $header.find('.article__headline'),
+            timeline        = new TimelineMax(),
+            $title          = $headline.find('.headline__primary'),
+            $subtitle       = $headline.find('.headline__secondary'),
+            $description    = $headline.find('.headline__description'),
+            $star           = $headline.find('.star'),
+            $lines          = $headline.find('.line'),
+            $arrows         = $description.find('.arrow'),
+            headerTop       = $header.offset().top,
+            headerHeight    = $header.outerHeight();
+
+        $header.find('.pixcode--separator').width($title.width());
+
+        $description.css({opacity: 1});
+        $description = $description.children().not('.pixcode--separator');
+        $description.css({opacity: 0});
+
+        // ------ A
+
+        timeline.fromTo($title, 0.72, {'letter-spacing': 50}, {'letter-spacing': 13, ease: Expo.easeOut});
+        timeline.fromTo($title, 0.89, {opacity: 0}, {opacity: 1, ease: Expo.easeOut}, '-=0.72');
+        timeline.fromTo($title, 1, {'y': 30}, {'y': 0, ease: Expo.easeOut}, '-=0.89');
+        timeline.fromTo($subtitle, 0.65, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.65');
+        timeline.fromTo($subtitle, 0.9, {y: 30}, {y: 0, ease: Quint.easeOut}, '-=0.65');
+        timeline.fromTo($star, 0.15, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.6');
+        timeline.fromTo($star, 0.55, {rotation: -270}, {rotation: 0, ease: Back.easeOut}, '-=0.5');
+        timeline.fromTo($lines, 0.6, {width: 0}, {width: '45%', opacity: 1, ease: Quint.easeOut}, '-=0.55');
+        timeline.fromTo($arrows, 0.2, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.27');
+        timeline.fromTo($description, 0.5, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.28');
+        timeline.fromTo($description, 0.75, {y: -20}, {y: 0}, '-=0.5');
+
+        // ------ B
+        timeline.addLabel("animatedIn");
+
+        timeline.to($title, 1.08, {opacity: 0, y: -60, ease: Quad.easeIn});
+        timeline.to($description, 1.08, {y: 60, opacity: 0, ease: Quad.easeIn}, '-=1.08');
+        timeline.to($subtitle, 1.08, {opacity: 0, y: -90, ease: Quad.easeIn}, '-=1.08');
+        timeline.to($lines, 0.86, {width: 0, opacity: 0, ease: Quad.easeIn}, '-=0.94');
+        timeline.to($star, 1, {rotation: 180}, '-=1.08');
+        timeline.to($star, 0.11, {opacity: 0}, '-=0.03');
+        timeline.to($arrows, 0.14, {opacity: 0}, '-=1.08');
+
+        timeline.addLabel("animatedOut");
+
+        // ------ C
+
+        var animatedInTime      = timeline.getLabelTime("animatedIn"),
+            animatedOutTime     = timeline.getLabelTime("animatedOut"),
+            ab                  = animatedInTime / animatedOutTime,
+            bc                  = 1 - ab,
+            start               = headerTop + headerHeight / 2 - wh / 2,
+            end                 = start + wh / 3;
+
+        timeline.tweenTo("animatedIn", {
+
+            onComplete: function () {
+
+                latestKnownScrollY = window.scrollY;
+
+                var progress        = (1 / (end - start)) * (latestKnownScrollY - start),
+                    partialProgress = ab + bc * progress,
+                    timePassed      = partialProgress * timeline.getLabelTime("animatedOut");
+
+                if (ab > partialProgress) {
+                    return;
+                }
+
+                timeline.addLabel("finishedAt", timePassed);
+                timeline.tweenTo("finishedAt", {
+                   onComplete: function () {
+
+                       $(window).scroll(function () {
+                           latestKnownScrollY = window.scrollY;
+                           requestTick();
+                       });
+
+                   }
+                });
+            }
+        });
+
+        $headline.data('tween', {
+            timeline:       timeline,
+            ab:             ab,
+            bc:             bc,
+            start:          start,
+            end:            end
+        });
+
+    });
+
+
+    function update () {
+        ticking = false;
+
+        $(selector).each(function (i, element) {
+
+            var $headline   = $(element).find('.article__headline'),
+                options     = $headline.data('tween'),
+                progress    = 0;
+
+            // some sanity check
+            // we wouldn't want to divide by 0 - the Universe might come to an end
+            if (! empty(options) && (options.end - options.start) !== 0) {
+
+                // progress on the total timeline (ac)
+                progress = (1 / (options.end - options.start)) * (latestKnownScrollY - options.start);
+
+                // progress on partial timeline (bc)
+                // point B being labeled as "animated"
+                var partialProgress = options.ab + options.bc * progress;
+
+                if (0 > progress) {
+                    return;
+                }
+
+                if (1 > progress) {
+                    options.timeline.progress(partialProgress);
+                }
+            }
+        });
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+//    function initialize() {
+//        update();
+//    }
+//
+//    $(window).on('resize orientationchange', initialize);
+//    initialize();
+}
 function navigatorInit() {
 
     var $navigator      = $('.navigator'),
@@ -887,7 +1033,7 @@ function resizeVideos() {
 }
 
 function containerPlacement(){
-	$('.js-container').css('padding-top', $('.js-sticky').height() + 'px');
+	$('#page').css('padding-top', $('.js-header').outerHeight() + 'px');
 }
 
 
@@ -947,7 +1093,7 @@ function loadUp(){
 
 	royalSliderInit();
 
-	//menusHover();
+	containerPlacement();
 
 	magnificPopupInit();
 
@@ -983,6 +1129,20 @@ function eventHandlers() {
 	//Magnific Popup arrows
 	$('body').off('click', '.js-arrow-popup-prev', magnificPrev).on('click', '.js-arrow-popup-prev', magnificPrev);
 	$('body').off('click', '.js-arrow-popup-next', magnificNext).on('click', '.js-arrow-popup-next', magnificNext);
+
+    var filterHandler;
+
+    if(touch) {
+        filterHandler = 'click';
+    } else {
+        filterHandler = 'hover';
+    }
+
+    if(ieMobile) filterHandler = 'click';
+
+    $('.pix-dropdown').on(filterHandler, function(){
+        $(this).toggleClass('active');
+    });
 
 	if (globalDebug) {console.groupEnd();}
 }
@@ -1043,6 +1203,7 @@ $(window).load(function(){
     }
 
     parallaxInit();
+    coverAnimationsInit();
     navigatorInit();
 
 
@@ -1050,8 +1211,10 @@ $(window).load(function(){
         // Pikaday
         var picker = new Pikaday({
             field: document.getElementById('date-otreservations'),
-            format: 'MM/DD/YYYY'
+            format: 'MM/DD/YYYY',
+            minDate: moment().toDate()
         });
+        picker.setDate(moment().format('MM/DD/YYYY'));
     }
 
 	$('.pixcode--tabs').organicTabs();
@@ -1069,63 +1232,6 @@ $(window).on("debouncedresize", function(e){
 	resizeVideos();
 
 });
-
-function animateCover() {
-
-    $('.article__headline').each(function(i, header) {
-        var $header         = $(header),
-            timeline        = new TimelineLite({paused: true}),
-            $title          = $header.find('.headline__primary'),
-            $subtitle       = $header.find('.headline__secondary'),
-            $description    = $header.find('.headline__description'),
-//            $separator      = $header.find('.pixcode--separator'),
-            $star           = $header.find('.star'),
-            $lines          = $header.find('.line'),
-            $arrows         = $description.find('.arrow');
-
-        $description.css({opacity: 1});
-        $description = $description.children().not('.pixcode--separator');
-        $description.css({opacity: 0});
-
-        timeline.fromTo($title, 1, {
-            'letter-spacing': 50,
-            'opacity': 0,
-            'y': 30
-        }, {
-            'letter-spacing': 10,
-            'opacity': 1,
-            'y': 0
-        });
-
-        timeline.fromTo($subtitle, 0.9, {
-            'opacity': 0,
-            'y': 20
-        }, {
-            'opacity': 1,
-            'y': 0
-        }, '-=0.65');
-
-        timeline.to($star, 0.2, {opacity: 1}, '-=0.6');
-        timeline.fromTo($star, 0.55, {rotation: -270}, {rotation: 0}, '-=0.2');
-        timeline.fromTo($lines, 0.6, {width: 0}, {width: '45%', opacity: 1, ease: Expo.easeOut}, '-=0.45');
-        timeline.fromTo($arrows, 0.2, {opacity: 0}, {opacity: 1}, '-=0.27');
-
-        timeline.fromTo($description, 0.75, {
-            'opacity': 0,
-            'y': '-20'
-        }, {
-            'opacity': 1,
-            'y': 0
-        }, '-=0.28');
-
-        timeline.play();
-
-    });
-}
-
-setTimeout(function () {
-    animateCover();
-}, 300);
 
 /* --- 404 Page --- */
 var gifImages = [

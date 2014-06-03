@@ -47,7 +47,7 @@ function parallaxInit() {
             }
 
             // create timeline for current image
-            timeline.append(TweenMax.fromTo($container, 0.1, {
+            timeline.append(TweenMax.fromTo($container, 0.3, {
                 y: initialTop,
                 ease: Linear.easeNone
             }, {
