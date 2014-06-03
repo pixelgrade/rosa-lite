@@ -365,7 +365,7 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'line-height' => array(
-						'selector' => '.headline__secondary::first-letter',
+						'selector' => '.headline__secondary .first-letter',
 						'unit'     => 'px',
 					)
 				)
@@ -459,7 +459,7 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'text-transform' => array(
-						'selector' => '.navigation a',
+						'selector' => '.nav--main > .menu-item > a',
 					)
 				)
 			),

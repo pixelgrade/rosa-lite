@@ -54,7 +54,7 @@ if ( wpgrade::option( 'use_google_fonts' ) ) {
 }
 
 if ( isset( $fonts['google_titles_font'] ) ) { ?>
-	/* Select classes here */
+	/* Titles classes here */
 	h1, h2, h3, h4, h5, h6, hgroup,
 	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
 	blockquote,
@@ -66,9 +66,18 @@ if ( isset( $fonts['google_titles_font'] ) ) { ?>
 <?php
 }
 
+if ( isset( $fonts['google_subtitles_font'] ) ) { ?>
+	/* Subtitles classes here */
+	.headline__secondary {
+	<?php wpgrade::display_font_params( $fonts['google_subtitles_font'] ); ?>
+	}
+
+<?php
+}
+
 if ( isset( $fonts['google_nav_font'] ) ) { ?>
-	/* Select classes here */
-	.navigation a{
+	/* Nav classes here */
+	.navigation a {
 	<?php wpgrade::display_font_params( $fonts['google_nav_font'] ); ?>
 	}
 
@@ -78,7 +87,7 @@ if ( isset( $fonts['google_nav_font'] ) ) { ?>
 if ( isset( $fonts['google_body_font'] ) ) {
 	// this needs a default
 	$font_size = '14px'; ?>
-	/* Select classes here */
+	/* Body classes here */
 	html, .wp-caption-text, .small-link,
 	.post-nav-link__label, .author__social-link,
 	.comment__links, .score__desc  {
