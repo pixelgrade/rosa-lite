@@ -210,6 +210,6 @@
 //        select = $('.slider-select').selectize({
 //            create: true,
 //            sortField: 'text'
-//        });        
+//        });
 	});
 })(jQuery);
