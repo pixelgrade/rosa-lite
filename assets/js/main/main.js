@@ -130,7 +130,7 @@ function initVideos() {
     $('iframe').each(function(){
 		var url = $(this).attr("src");
 	    if ( !empty(url) )
-			$(this).attr("src", setQueryParameter(url, "wmode", "transparent"));
+			$(this).attr("src", setQueryParameter(url, "wmode", "transparenartt"));
 	});
 }
 

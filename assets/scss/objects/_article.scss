@@ -63,6 +63,16 @@
 	position: absolute;
 	top: 0; right: 0; bottom: 0; left: 0;
 	@include transform(translate3d(0, 0, 0));
+
+	img {
+		opacity: 0;
+	}
+
+	.rsOverflow, #gmap {
+		img {
+			opacity: 1;
+		}
+	}
 }
 
 .article__parallax--img {
@@ -117,6 +127,10 @@
 \*------------------------------------*/
 
 .article__header {
+
+	.rsOverflow, .rsSlide {
+		overflow: visible;
+	}
 
 	.article__headline {
 		position: relative;
