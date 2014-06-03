@@ -309,7 +309,7 @@ $sections[] = array(
 				'font-family' => 'Maven Pro',
 				'google'      => true,
 			),
-			'output'         => array( 'h1, h2, h3, h4, h5, h6' ),
+//			'output'         => array( 'h1, h2, h3, h4, h5, h6' ),
 
 		),
 		// SubHeadings Font
@@ -334,7 +334,7 @@ $sections[] = array(
 				'font-family' => 'Herr Von Muellerhoff',
 				'google'      => true,
 			),
-			'output'         => array( '.headline__secondary' ),
+//			'output'         => array( '.headline__secondary' ),
 		),
 		array(
 			'id'            => 'subheadings_margin-bottom',
@@ -400,7 +400,7 @@ $sections[] = array(
 				'font-family' => 'Cabin',
 				'google'      => true,
 			),
-			'output'         => array( '.navigation--main' ),
+//			'output'         => array( '.navigation--main' ),
 
 		),
 		array(
@@ -518,7 +518,7 @@ $sections[] = array(
 				'font-family' => 'Cabin',
 				'google'      => true,
 			),
-			'output'         => array( 'body' ),
+//			'output'         => array( 'body' ),
 		),
 		array(
 			'id'            => 'body-font-size',
