@@ -204,6 +204,7 @@ function sliderInit($slider) {
 		rs_drag = true,
 		rs_globalCaption = typeof $slider.data('showcaptions') !== "undefined" ? true : false;
 
+    console.log(rs_imageAlignCenter);
 	if (rs_autoheight) {
 		rs_autoScaleSlider = false
 	} else {
@@ -667,6 +668,11 @@ function coverAnimationsInit() {
             start               = headerTop + headerHeight / 2 - wh / 2,
             end                 = start + wh / 3;
 
+        if (i == 0) {
+            start = headerTop;
+            end = start + wh / 3;
+        }
+
         timeline.tweenTo("animatedIn", {
 
             onComplete: function () {
@@ -678,6 +684,7 @@ function coverAnimationsInit() {
                     timePassed      = partialProgress * timeline.getLabelTime("animatedOut");
 
                 if (ab > partialProgress) {
+                    requestTick();
                     return;
                 }
 
@@ -953,31 +960,6 @@ function scrollToTopInit() {
 	}
 }
 
-// Menu Hover with delay
-function menusHover() {
-    $('.menu-item-has-children').hoverIntent({
-        interval: 0,
-        timeout: 300,
-        over: showMenu,
-        out: hideMenu
-    })
-
-    function showMenu() {
-        var self = $(this);
-        self.removeClass('hidden');
-        setTimeout(function(){
-            self.addClass('open');
-        }, 150);
-    }
-    function hideMenu() {
-        var self = $(this);
-        self.removeClass('open');
-        setTimeout(function(){
-        self.addClass('hidden');
-        }, 150);
-    }
-}
-
 function menuTrigger(){
     $(document).on('click', '.js-nav-trigger', function(e) {
         var windowHeigth = $(window).height();
@@ -1014,7 +996,7 @@ function initVideos() {
     $('iframe').each(function(){
 		var url = $(this).attr("src");
 	    if ( !empty(url) )
-			$(this).attr("src", setQueryParameter(url, "wmode", "transparent"));
+			$(this).attr("src", setQueryParameter(url, "wmode", "transparenartt"));
 	});
 }
 

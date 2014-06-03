@@ -87,6 +87,12 @@ $sections[] = array(
 			'customizer' => array()
 		),
 		array(
+			'id'         => 'customizer_reset_button_section',
+			'title'      => '<a class="btn" id="reset-style-defaults" href="#" data-ajax_nonce="'.  wp_create_nonce( "reset-style-section" ) .'">' . __( 'Reset Style', wpgrade::textdomain() ) . '</a>',
+			'type'       => 'customizer_info',
+			'customizer' => array()
+		),
+		array(
 			'id'         => 'customizer_title',
 			'title'      => '<h1>' . __( 'Customizer', wpgrade::textdomain() ) . '</h1><p>Use the controls below to change fonts, colors, sizes and other styling options.</p>',
 			'type'       => 'customizer_info',
@@ -383,7 +389,7 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'line-height' => array(
-						'selector' => '.headline__secondary::first-letter',
+						'selector' => '.headline__secondary .first-letter',
 						'unit'     => 'px',
 					)
 				)
@@ -478,7 +484,7 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'text-transform' => array(
-						'selector' => '.navigation a',
+						'selector' => '.nav--main > .menu-item > a',
 					)
 				)
 			),
@@ -822,7 +828,6 @@ $sections[] = array(
 			'default'    => '1',
 			'customizer' => array()
 		),
-
 	)
 );
 

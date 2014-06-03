@@ -5,7 +5,7 @@
 function wpgrade_callback_custom_theme_features() {
 
 	// @todo CLEANUP consider options for spliting editor style out of main style
-	add_editor_style( get_template_directory_uri() . '/assets/css/style.css' );
+//	add_editor_style( get_template_directory_uri() . '/assets/css/style.css' );
 }
 
 //use different image sizes depending on the number of columns
