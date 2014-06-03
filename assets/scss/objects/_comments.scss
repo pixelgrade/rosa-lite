@@ -311,6 +311,8 @@ li.depth-2:before {
 		outline: 0 !important;
 		@include font-size(14px);
 		font-weight: 300;
+
+		@include border-radius(0);
 	}
 }
 
