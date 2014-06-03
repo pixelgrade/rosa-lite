@@ -312,8 +312,10 @@ $(window).load(function(){
         // Pikaday
         var picker = new Pikaday({
             field: document.getElementById('date-otreservations'),
-            format: 'MM/DD/YYYY'
+            format: 'MM/DD/YYYY',
+            minDate: moment().toDate()
         });
+        picker.setDate(moment().format('MM/DD/YYYY'));
     }
 
 	$('.pixcode--tabs').organicTabs();
