@@ -488,7 +488,7 @@ img.rsImg {
 	}
 }
 
-.article__featured-image, .content--gallery-slideshow {
+//.article__featured-image, .content--gallery-slideshow,  {
 	.rsArrow {
 		width: 50px;
 		height: 80px;
@@ -511,5 +511,18 @@ img.rsImg {
 
 		border-color: white;
 	}
-}
+//}
 
+.pixcode-slider[data-arrows]{
+	.rsArrow{
+		background: transparent;
+	}
+
+	.rsArrowIcn{
+		border-color: $dark;
+	}
+
+	.slide{
+		padding: 0 50px;
+	}
+}
