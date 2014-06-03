@@ -9,7 +9,11 @@
 	}
 
 	.header--transparent &{
-		padding-top: 0;
+		padding-top: 0 !important;
+	}
+
+	@include media-query(palm){
+		padding-top: 0 !important;
 	}
 }
 

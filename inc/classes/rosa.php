@@ -181,6 +181,7 @@ class rosa {
 
 		if ( is_home() ) { ?>
 			<h1 class="hN  archive__title"><?php single_post_title(); ?></h1>
+            <hr class="separator"/>
 		<?php
 		} elseif ( is_search() ) {
 			?>

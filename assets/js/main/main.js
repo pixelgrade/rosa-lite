@@ -149,7 +149,7 @@ function resizeVideos() {
 }
 
 function containerPlacement(){
-	$('.js-container').css('padding-top', $('.js-sticky').height() + 'px');
+	$('#page').css('padding-top', $('.js-header').outerHeight() + 'px');
 }
 
 
@@ -209,7 +209,7 @@ function loadUp(){
 
 	royalSliderInit();
 
-	//menusHover();
+	containerPlacement();
 
 	magnificPopupInit();
 
@@ -245,6 +245,20 @@ function eventHandlers() {
 	//Magnific Popup arrows
 	$('body').off('click', '.js-arrow-popup-prev', magnificPrev).on('click', '.js-arrow-popup-prev', magnificPrev);
 	$('body').off('click', '.js-arrow-popup-next', magnificNext).on('click', '.js-arrow-popup-next', magnificNext);
+
+    var filterHandler;
+
+    if(touch) {
+        filterHandler = 'click';
+    } else {
+        filterHandler = 'hover';
+    }
+
+    if(ieMobile) filterHandler = 'click';
+
+    $('.pix-dropdown').on(filterHandler, function(){
+        $(this).toggleClass('active');
+    });
 
 	if (globalDebug) {console.groupEnd();}
 }
@@ -313,8 +327,10 @@ $(window).load(function(){
         // Pikaday
         var picker = new Pikaday({
             field: document.getElementById('date-otreservations'),
-            format: 'MM/DD/YYYY'
+            format: 'MM/DD/YYYY',
+            minDate: moment().toDate()
         });
+        picker.setDate(moment().format('MM/DD/YYYY'));
     }
 
 	$('.pixcode--tabs').organicTabs();

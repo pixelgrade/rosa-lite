@@ -1437,7 +1437,7 @@ $sections[] = array(
 	'desc'       => '<p class="description">' . __( 'Utilities help you keep up-to-date with new versions of the theme. Also you can import the demo data from here.', wpgrade::textdomain() ) . '</p>',
 	'fields'     => array(
 		array(
-			'id'   => 'typography-21',
+			'id'   => 'theme-one-click-update-info',
 			'desc' => __( '<h3>Theme One-Click Update</h3>
 				<p class="description">' . __( 'Let us notify you when new versions of this theme are live on ThemeForest! Update with just one button click and forget about manual updates!</p><p> If you have any troubles with this system please refer to <a href="http://bit.ly/backend-update">Updating a theme</a> article.', wpgrade::textdomain() ) . '</p>', wpgrade::textdomain() ),
 			'type' => 'info'
@@ -1472,7 +1472,7 @@ $sections[] = array(
 			'required' => array( 'themeforest_upgrade', '=', 1 )
 		),
 		array(
-			'id'   => 'typography-21',
+			'id'   => 'import-demo-data-info',
 			'desc' => __( '<h3>Import Demo Data</h3>
 				<p class="description">' . __( 'Here you can import the demo data and get on your way of setting up the site like the theme demo (images not included due to copyright).', wpgrade::textdomain() ) . '</p>', wpgrade::textdomain() ),
 			'type' => 'info'

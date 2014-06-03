@@ -79,11 +79,11 @@ else :
 					<div class="flexbox__item">
 						<hgroup class="article__headline">
 							<?php if ( ! empty( $subtitle ) ) {
-								echo '<h2 class="headline__secondary">' . $subtitle . '</h2>';
+								echo '<h2 class="headline__secondary">' . $subtitle . '</h2>' . PHP_EOL;
 							} ?>
 							<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
 							<?php if ( ! empty( $description ) ) {
-								echo '<span class="headline__description">' . $description . '</span>';
+								echo '<span class="headline__description">' . $description . '</span>' . PHP_EOL;
 							} ?>
 						</hgroup>
 					</div>
@@ -94,16 +94,14 @@ else :
 				     data-imagescale="<?php echo $image_scale_mode; ?>"
 				     data-slidertransition="<?php echo $slider_transition; ?>"
 				     data-customArrows
-					<?php if ( $slider_transition == 'move' ) : ?>
-						data-slidertransitiondirection="horizontal"
-					<?php endif; ?>
 					<?php
+					if ( $slider_transition == 'move' ) echo 'data-slidertransitiondirection="horizontal"' . PHP_EOL;
 					if ( $slider_autoplay ) {
-						echo 'data-sliderautoplay="" ';
-						echo 'data-sliderdelay="' . $slider_delay . '" ';
+						echo 'data-sliderautoplay="" ' . PHP_EOL;
+						echo 'data-sliderdelay="' . $slider_delay . '" ' . PHP_EOL;
 					}
 					if ( $slider_visiblenearby ) {
-						echo 'data-visiblenearby ';
+						echo 'data-visiblenearby ' . PHP_EOL;
 					}
 					?> >
 					<?php
@@ -168,10 +166,9 @@ else :
 					<div class="flexbox__item">
 						<hgroup class="article__headline">
 							<?php if ( ! empty( $subtitle ) ) {
-								echo '<h2 class="headline__secondary">' . $subtitle . '</h2>';
+								echo '<h2 class="headline__secondary">' . $subtitle . '</h2>' . PHP_EOL;
 							} ?>
 							<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
-
 							<?php if ( ! empty( $description ) ) {
 								echo '<div class="headline__description">' . $description . '</div>';
 							} ?>

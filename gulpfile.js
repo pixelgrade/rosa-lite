@@ -124,7 +124,7 @@ gulp.task('scripts-compressed', function () {
 });
 
 
-gulp.task('start', ['production-nested', 'scripts'], function () {
+gulp.task('start', ['styles-nested', 'scripts'], function () {
 	console.log('theme should be ready');
 });
 
@@ -168,9 +168,17 @@ gulp.task('default', ['help'], function () {
 /**
  * Cleanup the css folder and recreate the css files
  */
-gulp.task('production-nested', function () {
+gulp.task('styles-nested', function () {
 	return gulp.src('./')
 		.pipe(exec('rm -Rf ./assets/css/* ; ruby assets/+production-nested.rb'));
+});
+
+/**
+ * Cleanup the css folder and recreate the css files compressed
+ */
+gulp.task('styles-compressed', function () {
+	return gulp.src('./')
+		.pipe(exec('rm -Rf ./assets/css/* ; ruby assets/+production-compressed.rb'));
 });
 
 /**
@@ -186,7 +194,7 @@ gulp.task('zip', ['build'], function () {
 /**
  * Copy theme folder outside in a build folder, recreate styles before that
  */
-gulp.task('copy-folder', ['production-nested', 'scripts'], function () {
+gulp.task('copy-folder', ['styles-nested', 'scripts'], function () {
 
 	return gulp.src('./')
 		.pipe(exec('rm -Rf ./../build; mkdir -p ./../build/rosa; cp -Rf ./* ./../build/rosa/'));
@@ -240,7 +248,8 @@ gulp.task('help', function () {
 		'zip                Create a zip archive from the current build folder and deletes it \n' +
 		'=== Style === \n' +
 		'styles             Compiles styles in development mode \n' +
-		'production-nested  Prepare the style for production (deletes all existing files in the css folder) \n' +
+		'styles-compressed  Compiles styles in development mode \n' +
+		'styles-nested      Prepare the style for production (deletes all existing files in the css folder) \n' +
 		'=== Scripts === \n' +
 		'scripts            Concatenate all js scripts \n' +
 		'scripts-compressed Concatenate all js scripts and compress the file with uglify \n' +
