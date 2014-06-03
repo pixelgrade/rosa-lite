@@ -47,7 +47,7 @@
 							counter++;
 
 						});
-
+console.log(to);
 						$('#'+id).cssUpdate({
 							properties: properties,
 							propertyValue: to

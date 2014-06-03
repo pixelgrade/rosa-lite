@@ -131,7 +131,6 @@
 //
 //						var selector = $( '.article__title' );
 //
-//
 //					});
 //
 ////					value.on('change', '#customize-control-heap_options-main_color .wp-color-picker', function( newval ) {
