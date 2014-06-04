@@ -1,16 +1,6 @@
 
 /* ====== INTERNAL FUNCTIONS ====== */
 
-/* --- Load Web Fonts --- */
-
-function loadWebFonts() {
-	if (globalDebug) {console.log("Load Web Fonts");}
-
-	if (typeof WebFontConfig != 'undefined') {
-		WebFont.load(WebFontConfig);
-	}
-}
-
 /* --- NICESCROLL --- */
 function niceScrollInit() {
 	if (globalDebug) {console.log("NiceScroll Init");}
@@ -175,9 +165,6 @@ function init(){
 
 function loadUp(){
 	if (globalDebug) {console.group("LoadUp");}
-
-	//load web fonts
-	loadWebFonts();
 
 	// always
 	niceScrollInit();
