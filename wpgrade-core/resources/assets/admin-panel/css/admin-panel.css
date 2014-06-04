@@ -51,9 +51,11 @@
       display: block;
       margin-left: -48px; }
   .redux-container h4 {
-    font-size: 21px;
     margin-bottom: 6px;
-    margin-top: 24px; }
+    margin-top: 24px;
+    font-size: 17px;
+    font-weight: 400;
+    text-transform: uppercase; }
   .redux-container h5 {
     font-size: 15px;
     text-transform: uppercase;
@@ -84,7 +86,7 @@
   border-top: 1px solid #dfdfdf;
   position: relative; }
 
-#redux-intro-text {
+.redux-container #redux-intro-text {
   height: 144px;
   width: 250px;
   background: transparent;
@@ -99,7 +101,7 @@
   left: 0;
   top: 0;
   z-index: 10; }
-  #redux-intro-text p {
+  .redux-container #redux-intro-text p {
     font-family: "PT Sans", sans-serif;
     font-weight: normal;
     font-size: 12px; }
@@ -204,11 +206,11 @@
     width: auto;
     color: #464646;
     background: transparent; }
-  .redux-sidebar .redux-group-menu li.active a {
+  .redux-sidebar .redux-group-menu li.active a, .redux-sidebar .redux-group-menu li:first-child.active a {
     color: #464646;
     width: auto;
     margin-right: 0;
-    border-top: 1px solid #dfdfdf;
+    border-top: 1px solid #dfdfdf !important;
     border-bottom: 1px solid #dfdfdf;
     background: #fcfcfc !important; }
   .redux-sidebar .redux-group-menu li:first-child a, .redux-sidebar .redux-group-menu li.divide + li a {
@@ -785,8 +787,8 @@
 \*-----------------------------------------------*/
 @font-face {
   font-family: 'linecons';
-  src: url("../../fonts/linecons/linecons.eot?98525679");
-  src: url("../../fonts/linecons/linecons.eot?98525679#iefix") format("embedded-opentype"), url("../../fonts/linecons/linecons.woff?98525679") format("woff"), url("../../fonts/linecons/linecons.ttf?98525679") format("truetype"), url("../../fonts/linecons/linecons.svg?98525679#linecons") format("svg");
+  src: url("../fonts/linecons.eot");
+  src: url("../fonts/linecons.eot") format("embedded-opentype"), url("../fonts/linecons.woff") format("woff"), url("../fonts/linecons.ttf") format("truetype"), url("../fonts/linecons.svg") format("svg");
   font-weight: normal;
   font-style: normal; }
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */

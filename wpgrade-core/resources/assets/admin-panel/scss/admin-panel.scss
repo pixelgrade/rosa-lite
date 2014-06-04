@@ -86,9 +86,11 @@ $heading-font: 'Open Sans', sans-serif;
 	}
 
 	h4 {
-		font-size: 21px;
 		margin-bottom: $_u4;
 		margin-top: $_u;
+		font-size: 17px;
+		font-weight:400;
+		text-transform: uppercase;
 	}
 
 	h5 {
@@ -137,7 +139,7 @@ $heading-font: 'Open Sans', sans-serif;
 }
 
 // 'Theme Options' title + description
-#redux-intro-text {
+.redux-container #redux-intro-text {
 	height: 6 * $_u;
 	width: $sidebar-width;
 	background: transparent;
@@ -288,11 +290,11 @@ $heading-font: 'Open Sans', sans-serif;
 				background: transparent;
 			}
 
-			&.active a {
+			&.active a, &:first-child.active a {
 				color: $dark;
 				width: auto;
 				margin-right: 0;
-				border-top: 1px solid $border-color;
+				border-top: 1px solid $border-color !important;
 				border-bottom:1px solid $border-color;
 				background: $content-bg !important;
 			}
@@ -1052,11 +1054,11 @@ $heading-font: 'Open Sans', sans-serif;
 \*-----------------------------------------------*/
 @font-face {
 	font-family: 'linecons';
-	src: url('../../fonts/linecons/linecons.eot?98525679');
-	src: url('../../fonts/linecons/linecons.eot?98525679#iefix') format('embedded-opentype'),
-	url('../../fonts/linecons/linecons.woff?98525679') format('woff'),
-	url('../../fonts/linecons/linecons.ttf?98525679') format('truetype'),
-	url('../../fonts/linecons/linecons.svg?98525679#linecons') format('svg');
+	src: url('../fonts/linecons.eot');
+	src: url('../fonts/linecons.eot') format('embedded-opentype'),
+		url('../fonts/linecons.woff') format('woff'),
+		url('../fonts/linecons.ttf') format('truetype'),
+		url('../fonts/linecons.svg') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }

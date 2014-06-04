@@ -219,6 +219,7 @@ img[width], img[height] {
 .gallery {
 	@extend .cf;
 	margin-left: -$_u !important;
+	margin-bottom: -$_u !important;
 
 	.gallery-item {
 		margin-bottom: 0;
