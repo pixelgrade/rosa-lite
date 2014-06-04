@@ -63,6 +63,7 @@ h3.accordion-section-title, #customize-info {
     text-transform: uppercase;
     text-align: center;
     line-height: 54px;
+    outline: none;
     -moz-border-radius: 0;
     -webkit-border-radius: 0;
     border-radius: 0;

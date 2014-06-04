@@ -120,6 +120,7 @@ h3.accordion-section-title, #customize-info {
 		text-transform 	: uppercase;
 		text-align 		: center;
 		line-height 	: 54px;
+		outline 		: none;
 		@include border-radius(0);
 		@include box-shadow(none);
 		@include transition(all 0.2s);
