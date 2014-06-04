@@ -1040,7 +1040,7 @@ function resizeVideos() {
 }
 
 function containerPlacement(){
-	$('#page').css('padding-top', $('.js-header').outerHeight() + 'px');
+	$('#page').css('padding-top', $('.js-header').outerHeight() + 48 + 'px');
 }
 
 
@@ -1098,7 +1098,7 @@ function loadUp(){
 
 	royalSliderInit();
 
-//	containerPlacement();
+	containerPlacement();
 
 	magnificPopupInit();
 

@@ -10,15 +10,7 @@
 	margin: $_175u 0;
 
 	border: 0;
-	border-bottom: 1px solid $borders;
-
-	&.separator_color--dark {
-		border-color: $dark;
-	}
-
-	&.separator_color--color {
-		border-color: $accent;
-	}
+	border-bottom: 2px solid $borders;
 }
 
 
@@ -56,7 +48,7 @@
 	}
 
 	&.separator_color--dark .line {
-		border-color: $light;
+		border-color: $borders;
 	}
 
 	.line--left {
@@ -95,11 +87,11 @@
 	&.separator_color--dark {
 
 		.arrow--left {
-			border-left: 7px solid $light;
+			border-left: 7px solid $borders;
 		}
 
 		.arrow--right {
-			border-right: 7px solid $light;
+			border-right: 7px solid $borders;
 		}
 	}
 }
