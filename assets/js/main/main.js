@@ -331,9 +331,10 @@ function iScrollInit() {
         click: true
     }
 
-    $('body').addClass('iScroll');
-
-    iScroll = Modernizr.touch || !is_OSX ? new IScroll('#wrapper', options) : null;
+    if (Modernizr.touch || !is_OSX) {
+        $('body').addClass('iScroll');
+        iScroll = new IScroll('#wrapper', options);
+    }
 
     resizeCovers();
 }

@@ -898,16 +898,6 @@ function stickyHeaderInit() {
 
 /* ====== INTERNAL FUNCTIONS ====== */
 
-/* --- Load Web Fonts --- */
-
-function loadWebFonts() {
-	if (globalDebug) {console.log("Load Web Fonts");}
-
-	if (typeof WebFontConfig != 'undefined') {
-		WebFont.load(WebFontConfig);
-	}
-}
-
 /* --- NICESCROLL --- */
 function niceScrollInit() {
 	if (globalDebug) {console.log("NiceScroll Init");}
@@ -1071,13 +1061,6 @@ function init(){
 
 function loadUp(){
 	if (globalDebug) {console.group("LoadUp");}
-
-    $(WebFont).on("loading active inactive", function(e) {
-        console.log("ceva");
-    });
-
-	//load web fonts
-	loadWebFonts();
 
 	// always
 	niceScrollInit();
@@ -1245,9 +1228,10 @@ function iScrollInit() {
         click: true
     }
 
-    $('body').addClass('iScroll');
-
-    iScroll = Modernizr.touch || !is_OSX ? new IScroll('#wrapper', options) : null;
+    if (Modernizr.touch || !is_OSX) {
+        $('body').addClass('iScroll');
+        iScroll = new IScroll('#wrapper', options);
+    }
 
     resizeCovers();
 }
