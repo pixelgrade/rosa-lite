@@ -19,7 +19,7 @@
 
 	&:hover {
 		background-color: $accent;
-		color: white !important;
+		color: white;
 	}
 
 	//    &.btn--beta { @include font-size(12px, true, 1.25); }
@@ -124,7 +124,7 @@
 		background: transparent;
 
 		&:hover{
-			color: $accent !important;
+			color: $accent;
 		}
 	}
 
@@ -138,7 +138,7 @@
 
 	padding: $_u4 0;
 
-	background: none;
+	background: transparent !important;
 
 	border: 0;
 	border-bottom: 2px solid $accent;
@@ -150,6 +150,6 @@
 	letter-spacing: 0.1em;
 
 	&:hover{
-		color: $accent !important;
+		color: $accent;
 	}
 }

@@ -109,19 +109,28 @@ $sections[] = array(
 			'customizer' => array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
-					'color' => array(
-						'selector' => "	a, a:hover,
-										.nav--main a:hover, 
-										.headline__secondary,
-										.separator--flower, .separator--line-flower, .separator--flower.separator_color--color,
-										.article__header .article__headline .headline__description .star,
-										.tabs__nav a.current, .tabs__nav a:hover",
+					'color'            => array(
+						'selector' => "	a, a:hover, .nav--main a:hover, .headline__secondary, .separator--flower, .separator--line-flower, .separator--flower.separator_color--color,
+										.tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment,
+										.comments_add-comment.read-more-button, .form-submit .btn--text#comment-submit,
+										.form-submit #comment-submit.read-more-button, .btn--text.wpcf7-form-control.wpcf7-submit,
+										.wpcf7-form-control.wpcf7-submit.read-more-button, .btn--text.otreservations-submit,
+										.otreservations-submit.read-more-button, .widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button,
+										a:hover > .pixcode--icon, .widget a:hover, blockquote, .meta-list a.btn:hover,
+										.meta-list a.comments_add-comment:hover, .meta-list .form-submit a#comment-submit:hover,
+										.form-submit .meta-list a#comment-submit:hover, .meta-list a.wpcf7-form-control.wpcf7-submit:hover,
+										.meta-list a.otreservations-submit:hover, .meta-list .widget_tag_cloud a:hover, .widget_tag_cloud .meta-list a:hover, .btn.btn--text:hover,
+										.article__content a:not([class]), .article__content a:hover:not([class]):hover"
 					),
 					'background-color' => array(
-						'selector' => ".test",
+						'selector' => ".btn--primary, .btn, .comments_add-comment, .form-submit #comment-submit, .btn:hover",
 					),
 					'border-color'     => array(
-						'selector' => ".tabs__nav a.current, .tabs__nav a:hover",
+						'selector' => ".tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button,
+						.form-submit .btn--text#comment-submit, .form-submit #comment-submit.read-more-button,
+						.btn--text.wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit.read-more-button,
+						.btn--text.otreservations-submit, .otreservations-submit.read-more-button,
+						.widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button, blockquote, .article__content a:not([class])",
 					),
 					'outline-color'    => array(
 						'selector' => ".test",
