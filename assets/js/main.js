@@ -687,15 +687,17 @@ var CoverAnimation = {
 
             var animatedInTime      = timeline.getLabelTime("animatedIn"),
                 animatedOutTime     = timeline.getLabelTime("animatedOut"),
-                ab                  = animatedInTime / animatedOutTime,
-                bc                  = 1 - ab,
                 start               = headerTop + headerHeight / 2 - wh / 2,
-                end                 = start + wh / 3;
+                end                 = start + wh / 2,
+                ab, bc;
 
             if (i == 0) {
-                start = headerTop;
-                end = start + wh / 3;
+                start = headerTop + wh / 8;
+                end = start + wh / 2;
             }
+
+            ab = animatedInTime / animatedOutTime;
+            bc = 1 - ab;
 
             timeline.tweenTo("animatedIn", {
 
@@ -754,10 +756,10 @@ var CoverAnimation = {
                 var partialProgress = options.ab + options.bc * progress;
 
                 if (0 > progress) {
-                    return;
+                    partialProgress = options.ab;
                 }
 
-                if (1 > progress) {
+                if (1 > partialProgress) {
                     options.timeline.progress(partialProgress);
                 }
             }
@@ -942,7 +944,11 @@ function scrollToTopInit() {
 		$('.up-link').click(function(e) {
 			e.preventDefault();
 
-            var scrollDuration = window.scrollY * duration / 1000;
+            var scrollDuration = getScroll().y * duration / 1000;
+
+            if (iScroll) {
+                iScroll.scrollTo(0, 0, scrollDuration, 'quadratic');
+            }
 
             $('html, body').animate({
                 scrollTop: 0

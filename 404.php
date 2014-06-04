@@ -8,7 +8,7 @@ get_header(); ?>
 	<div class="content-404">
 		<h1 class="hN"><?php _e( 'Whoops!', wpgrade::textdomain() ); ?></h1>
 
-		<p class="description"><?php printf( __( 'The page you’re looking for could have been deleted or never have existed*', wpgrade::textdomain() ), home_url() ); ?></p>
+		<p class="description"><?php printf( __( "The page you're looking for could have been deleted or never have existed*", wpgrade::textdomain() ), home_url() ); ?></p>
 		<a class="btn btn--primary btn--beta btn--large" href="<?php echo home_url(); ?>" title="<?php bloginfo( 'name' ) ?>" rel="home">
 			<?php printf( __( '&#8592; Return to the Home Page', wpgrade::textdomain() ), home_url() ); ?>
 		</a>
