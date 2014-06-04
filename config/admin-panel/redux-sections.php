@@ -28,24 +28,37 @@ $sections[] = array(
 			'desc' => '<h3>' . __( 'Branding', wpgrade::textdomain() ) . '</h3>',
 			'type' => 'info'
 		),
+
 		array(
-			'id'       => 'main_logo',
+			'id'       => 'main_logo_light',
 			'type'     => 'media',
 			'title'    => __( 'Main Logo', wpgrade::textdomain() ),
 			'subtitle' => __( 'If there is no image uploaded, plain text will be used instead (generated from the site\'s name).', wpgrade::textdomain() ),
 		),
-		array(
+        array(
 			'id'       => 'use_retina_logo',
 			'type'     => 'switch',
 			'title'    => __( '2x Retina Logo', wpgrade::textdomain() ),
 			'subtitle' => __( 'To be Retina-ready you need to add a 2x size logo image.', wpgrade::textdomain() ),
 		),
 		array(
-			'id'       => 'retina_main_logo',
-			'type'     => 'media',
-			'title'    => __( '', wpgrade::textdomain() ),
-			'required' => array( 'use_retina_logo', 'equals', 1 )
-		),
+            'id'       => 'retina_main_logo_light',
+            'type'     => 'media',
+            'title'    => __( 'Retina Logo light', wpgrade::textdomain() ),
+            'required' => array( 'use_retina_logo', 'equals', 1 )
+        ),
+
+        array(
+            'id'       => 'main_logo_dark',
+            'type'     => 'media',
+            'title'    => __( 'Main Logo Inversed', wpgrade::textdomain() ),
+        ),
+        array(
+            'id'       => 'retina_main_logo_dark',
+            'type'     => 'media',
+            'title'    => __( 'Retina Logo dark', wpgrade::textdomain() ),
+            'required' => array( 'use_retina_logo', 'equals', 1 )
+        ),
 		array(
 			'id'       => 'favicon',
 			'type'     => 'media',
@@ -630,7 +643,7 @@ $sections[] = array(
 			'title'         => __( 'Site Container Width', wpgrade::textdomain() ),
 			'subtitle'      => __( 'Set the width of the container.', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
-			'default'       => '1368',
+			'default'       => '1250',
 			'min'           => 600,
 			'step'          => 1,
 			'max'           => 2700,

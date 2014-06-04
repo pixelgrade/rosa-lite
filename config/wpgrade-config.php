@@ -142,7 +142,7 @@ return array(
 			),
 			'styles'         => array(
 				'google-webfonts'    => array(
-					'path' => 'http://fonts.googleapis.com/css?family=Maven+Pro:400,700,900|Lato:400,700|Herr+Von+Muellerhoff',
+					'path' => 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700,400italic,700italic|Herr+Von+Muellerhoff',
 				),
 				'wpgrade-main-style' => array(
 					'path'       => get_template_directory_uri() . '/assets/css/style.css',
