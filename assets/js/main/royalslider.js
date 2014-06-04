@@ -46,7 +46,7 @@ function sliderInit($slider) {
 		rs_drag = true,
 		rs_globalCaption = typeof $slider.data('showcaptions') !== "undefined" ? true : false;
 
-    console.log(rs_imageAlignCenter);
+    //console.log(rs_imageAlignCenter);
 	if (rs_autoheight) {
 		rs_autoScaleSlider = false
 	} else {
@@ -103,21 +103,28 @@ function sliderInit($slider) {
 		}
 	}
 
+
 	//lets fire it up
 	$slider.royalSlider(royalSliderParams);
 	$slider.addClass('slider--loaded');
 
+
 	var royalSlider = $slider.data('royalSlider');
 	var slidesNumber = royalSlider.numSlides;
 
+//	//trigger this so all the video initializations and others take place for the first slide
+//	setTimeout(function() {
+//		royalSlider.ev.trigger('rsAfterSlideChange');
+//	}, 1);
+
 	// create the markup for the customArrows
-	if (slidesNumber > 1)
+	if (slidesNumber > 1) {
 		if (royalSlider && rs_customArrows) {
 			var $gallery_control = $(
-                '<div>' +
-                    '<div class="rsArrow rsArrowLeft js-arrow-left" style="display: block;"><div class="rsArrowIcn"></div></div>' +
-                    '<div class="rsArrow rsArrowRight js-arrow-right" style="display: block;"><div class="rsArrowIcn"></div></div>' +
-                '</div>'
+				'<div>' +
+				'<div class="rsArrow rsArrowLeft js-arrow-left" style="display: block;"><div class="rsArrowIcn"></div></div>' +
+				'<div class="rsArrow rsArrowRight js-arrow-right" style="display: block;"><div class="rsArrowIcn"></div></div>' +
+				'</div>'
 			);
 
 			if ($slider.data('customarrows') == "left") {
@@ -136,28 +143,58 @@ function sliderInit($slider) {
 				royalSlider.next();
 			});
 		}
+	}
 
-	royalSlider.ev.on('rsVideoPlay', function () {
-		if (rs_imageScale == 'fill') {
-			var $frameHolder = $('.rsVideoFrameHolder');
-			var top = Math.abs(royalSlider.height - $frameHolder.closest('.rsVideoContainer').height()) / 2;
-
-			$frameHolder.height(royalSlider.height);
-			$frameHolder.css('margin-top', top + 'px');
-
-		} else {
-			var $frameHolder = $('.rsVideoFrameHolder');
-			var $videoContainer = $('.rsVideoFrameHolder').closest('.rsVideoContainer');
-			var top = parseInt($frameHolder.closest('.rsVideoContainer').css('margin-top'), 10);
-
-			if (top < 0) {
-				top = Math.abs(top);
-				$frameHolder
-					.height(royalSlider.height)
-					.css('top', top + 'px');
-			}
-		}
-	});
+//	royalSlider.ev.on('rsVideoPlay', function () {
+//
+//		if (rs_imageScale == 'fill') {
+//			var $frameHolder = $('.rsVideoFrameHolder');
+////			var top = Math.abs(royalSlider.height - $frameHolder.closest('.rsVideoContainer').height()) / 2;
+//
+//			$frameHolder.height(royalSlider.height);
+////			$frameHolder.css('margin-top', top + 'px');
+//
+//		} else {
+//			var $frameHolder = $('.rsVideoFrameHolder');
+//			var $videoContainer = $('.rsVideoFrameHolder').closest('.rsVideoContainer');
+//			var top = parseInt($frameHolder.closest('.rsVideoContainer').css('margin-top'), 10);
+//
+//			if (top < 0) {
+//				top = Math.abs(top);
+//				$frameHolder
+//					.height(royalSlider.height)
+//					.css('top', top + 'px');
+//			}
+//		}
+//	});
+//
+//	royalSlider.ev.on('rsBeforeAnimStart', function(event) {
+//		royalSlider.stopVideo();
+//	});
+//
+//	// auto play video sliders if is set so
+//	royalSlider.ev.on('rsAfterSlideChange', function(event) {
+//
+//		$slide_content = $( royalSlider.currSlide.content );
+//
+//		// triggers after slide change
+//		rs_videoAutoPlay = typeof $slide_content.data('video_autoplay') !== "undefined";
+//
+//		if ( rs_videoAutoPlay ) {
+//			royalSlider.stopVideo();
+//			royalSlider.playVideo();
+//		}
+//
+//	});
+//
+//	// after destroying a video remove the autoplay class (this way the image gets visible)
+//	royalSlider.ev.on('rsOnDestroyVideoElement', function(i ,el){
+//
+//		$slide_content = $( this.currSlide.content );
+//
+//		$($slide_content).removeClass('video_autoplay');
+//
+//	});
 
 	if (slidesNumber == 1) $slider.addClass('single-slide');
 

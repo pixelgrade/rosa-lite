@@ -6,8 +6,9 @@
 
  */
 
-get_header(); ?>
-<?php while ( have_posts() ) : the_post(); ?>
+get_header();
+
+while ( have_posts() ) : the_post(); ?>
 	<?php get_template_part( 'templates/page/header' ) ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class( "article--page  article--main" ); ?>>
 		<section class="article__content">
@@ -26,5 +27,6 @@ get_header(); ?>
 			<?php comments_template(); ?>
 		</div>
 	<?php endif;
-endwhile; ?>
-<?php get_footer();
+endwhile;
+
+get_footer();
