@@ -87,13 +87,6 @@ $sections[] = array(
 			'customizer' => array()
 		),
 		array(
-			'id'         => 'customizer_reset_button_section',
-			'title'      => '<a class="btn" id="reset-style-defaults" href="#" data-ajax_nonce="'.  wp_create_nonce( "reset-style-section" ) .'">' . __( 'Reset Style', wpgrade::textdomain() ) . '</a>',
-			'type'       => 'customizer_info',
-			'default'    => 'Test',
-			'customizer' => array()
-		),
-		array(
 			'id'         => 'customizer_title',
 			'title'      => '<h1>' . __( 'Customizer', wpgrade::textdomain() ) . '</h1><p>Use the controls below to change fonts, colors, sizes and other styling options.</p>',
 			'type'       => 'customizer_info',
@@ -116,19 +109,28 @@ $sections[] = array(
 			'customizer' => array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
-					'color' => array(
-						'selector' => "	a, a:hover,
-										.nav--main a:hover, 
-										.headline__secondary,
-										.separator--flower, .separator--line-flower, .separator--flower.separator_color--color,
-										.article__header .article__headline .headline__description .star,
-										.tabs__nav a.current, .tabs__nav a:hover",
+					'color'            => array(
+						'selector' => "	a, a:hover, .nav--main a:hover, .headline__secondary, .separator--flower, .separator--line-flower, .separator--flower.separator_color--color,
+										.tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment,
+										.comments_add-comment.read-more-button, .form-submit .btn--text#comment-submit,
+										.form-submit #comment-submit.read-more-button, .btn--text.wpcf7-form-control.wpcf7-submit,
+										.wpcf7-form-control.wpcf7-submit.read-more-button, .btn--text.otreservations-submit,
+										.otreservations-submit.read-more-button, .widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button,
+										a:hover > .pixcode--icon, .widget a:hover, blockquote, .meta-list a.btn:hover,
+										.meta-list a.comments_add-comment:hover, .meta-list .form-submit a#comment-submit:hover,
+										.form-submit .meta-list a#comment-submit:hover, .meta-list a.wpcf7-form-control.wpcf7-submit:hover,
+										.meta-list a.otreservations-submit:hover, .meta-list .widget_tag_cloud a:hover, .widget_tag_cloud .meta-list a:hover, .btn.btn--text:hover,
+										.article__content a:not([class]), .article__content a:hover:not([class]):hover"
 					),
 					'background-color' => array(
-						'selector' => ".test",
+						'selector' => ".btn--primary, .btn, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover",
 					),
 					'border-color'     => array(
-						'selector' => ".tabs__nav a.current, .tabs__nav a:hover",
+						'selector' => ".tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button,
+						.form-submit .btn--text#comment-submit, .form-submit #comment-submit.read-more-button,
+						.btn--text.wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit.read-more-button,
+						.btn--text.otreservations-submit, .otreservations-submit.read-more-button,
+						.widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button, blockquote, .article__content a:not([class])",
 					),
 					'outline-color'    => array(
 						'selector' => ".test",
@@ -172,22 +174,23 @@ $sections[] = array(
 				)
 			)
 		),
-		array(
-			'id'         => 'nav_links',
-			'type'       => 'color',
-			'title'      => __( 'Nav Links', wpgrade::textdomain() ),
-			'default'    => '#262526',
-			'validate'   => 'color',
-			'compiler'   => true,
-			'customizer' => array(
-				'transport' => 'postMessage',
-				'css_rules' => array(
-					'color' => array(
-						'selector' => ".nav--main a, a.site-logo--text"
-					),
-				)
-			)
-		),
+		// Not needed now
+		// array(
+		// 	'id'         => 'nav_links',
+		// 	'type'       => 'color',
+		// 	'title'      => __( 'Nav Links', wpgrade::textdomain() ),
+		// 	'default'    => '#262526',
+		// 	'validate'   => 'color',
+		// 	'compiler'   => true,
+		// 	'customizer' => array(
+		// 		'transport' => 'postMessage',
+		// 		'css_rules' => array(
+		// 			'color' => array(
+		// 				'selector' => ".nav--main a, a.site-logo--text"
+		// 			),
+		// 		)
+		// 	)
+		// ),
 		array(
 			'id'         => 'cover_text',
 			'type'       => 'color',
@@ -263,7 +266,7 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'background-color' => array(
-						'selector' => ".page .article__content, .up-link"
+						'selector' => ".page .article__content, .up-link, .container--archive, .container--single"
 					),
 				)
 			)
@@ -797,6 +800,14 @@ $sections[] = array(
 		//  'type' => 'customizer_info',
 		//  'customizer' => array()
 		// ),
+		
+		array(
+			'id'         => 'customizer_reset_button_section',
+			'title'      => '<a class="btn" id="reset-style-defaults" href="#" data-ajax_nonce="'.  wp_create_nonce( "reset-style-section" ) .'">' . __( 'Reset to Defaults', wpgrade::textdomain() ) . '</a>',
+			'type'       => 'customizer_info',
+			'default'    => 'Test',
+			'customizer' => array()
+		),
 
 		array(
 			'id'         => 'options_title',

@@ -12,6 +12,10 @@
 
 	a {
 		color: $dark;
+
+		&:hover{
+			color: $accent;
+		}
 	}
 
 	.sidebar--main & {

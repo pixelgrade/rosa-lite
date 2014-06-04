@@ -45,9 +45,14 @@
 }
 
 .headline__primary {
+	position: relative;
+	z-index:1; //over .headline__secondary
+
 	margin: 0;
 
 	letter-spacing: 0.174em;
+
+	// @include opacity(0.9);
 }
 
 .headline__secondary {
