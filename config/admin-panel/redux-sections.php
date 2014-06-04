@@ -120,6 +120,7 @@ $sections[] = array(
 										.nav--main a:hover, 
 										.headline__secondary,
 										.separator--flower, .separator--line-flower, .separator--flower.separator_color--color,
+										.article__header .article__headline .headline__description .star,
 										.tabs__nav a.current, .tabs__nav a:hover",
 					),
 					'background-color' => array(
@@ -198,7 +199,7 @@ $sections[] = array(
 				'css_rules' => array(
 					'color' => array(
 						'selector' => ".article__header .article__headline .headline__primary, 
-										.article__header .article__headline .headline__description"
+										.article__header .article__headline .headline__description *"
 					),
 				)
 			)
@@ -355,11 +356,11 @@ $sections[] = array(
 //			'output'         => array( '.headline__secondary' ),
 		),
 		array(
-			'id'            => 'subheadings_margin-bottom',
+			'id'            => 'subheadings_bottom-spacing',
 			'type'          => 'customizer_slider',
-			'title'         => __( 'Margin Bottom', wpgrade::textdomain() ),
+			'title'         => __( 'Bottom Spacing', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
-			'default'       => '15',
+			'default'       => '-38',
 			'min'           => -90,
 			'step'          => 1,
 			'max'           => 48,
@@ -375,20 +376,41 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
+		// array(
+		// 	'id'            => 'subheadings_first-letter-size',
+		// 	'type'          => 'customizer_slider',
+		// 	'title'         => __( 'First Letter Size', wpgrade::textdomain() ),
+		// 	'validate'      => 'numeric',
+		// 	'default'       => '1.22',
+		// 	'min'           => 1,
+		// 	'step'          => 0.1,
+		// 	'max'           => 3,
+		// 	'display_value' => 'text',
+		// 	'customizer'    => array(
+		// 		'transport' => 'postMessage',
+		// 		'css_rules' => array(
+		// 			'font-size' => array(
+		// 				'selector' => '.headline__secondary .first-letter',
+		// 				'unit'     => 'em',
+		// 			)
+		// 		)
+		// 	),
+		// 	'compiler'      => true
+		// ),
 		array(
 			'id'            => 'subheadings_first-letter',
 			'type'          => 'customizer_slider',
 			'title'         => __( 'First Letter Offset', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
-			'default'       => '15',
+			'default'       => '9',
 			'min'           => - 48,
-			'step'          => 0.1,
-			'max'           => 48,
+			'step'          => 1,
+			'max'           => 90,
 			'display_value' => 'text',
 			'customizer'    => array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
-					'line-height' => array(
+					'top' => array(
 						'selector' => '.headline__secondary .first-letter',
 						'unit'     => 'px',
 					)
