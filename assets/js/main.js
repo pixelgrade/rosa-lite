@@ -687,15 +687,17 @@ var CoverAnimation = {
 
             var animatedInTime      = timeline.getLabelTime("animatedIn"),
                 animatedOutTime     = timeline.getLabelTime("animatedOut"),
-                ab                  = animatedInTime / animatedOutTime,
-                bc                  = 1 - ab,
                 start               = headerTop + headerHeight / 2 - wh / 2,
-                end                 = start + wh / 2;
+                end                 = start + wh / 2,
+                ab, bc;
 
             if (i == 0) {
                 start = headerTop + wh / 8;
                 end = start + wh / 2;
             }
+
+            ab = animatedInTime / animatedOutTime;
+            bc = 1 - ab;
 
             timeline.tweenTo("animatedIn", {
 
