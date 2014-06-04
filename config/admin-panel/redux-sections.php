@@ -140,7 +140,7 @@ $sections[] = array(
 						.widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button, blockquote, .article__content a:not([class])",
 					),
 					'outline-color'    => array(
-						'selector' => "",
+						'selector' => ".test",
 					),
 				)
 			)
@@ -201,6 +201,24 @@ $sections[] = array(
 				)
 			)
 		),
+		array(
+			'id'         => 'cover_text',
+			'type'       => 'color',
+			'title'      => __( 'Cover Text', wpgrade::textdomain() ),
+			'default'    => '#fff',
+			'validate'   => 'color',
+			'compiler'   => true,
+			'customizer' => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'color' => array(
+						'selector' => ".article__header .article__headline .headline__primary, 
+										.article__header .article__headline .headline__description *"
+					),
+				)
+			)
+		),
+
 		array(
 			'id'         => 'backgrounds_title',
 			'title'      => '<h3>' . __( 'Backgrounds', wpgrade::textdomain() ) . '</h3>',
@@ -320,7 +338,8 @@ $sections[] = array(
 				'transport' => 'refresh',
 			),
 			'default'        => array(
-				'font-family' => 'Maven Pro',
+				'font-family' => 'Source Sans Pro',
+				'font-weight' => '900',
 				'google'      => true,
 			),
 //			'output'         => array( 'h1, h2, h3, h4, h5, h6' ),
@@ -351,12 +370,12 @@ $sections[] = array(
 //			'output'         => array( '.headline__secondary' ),
 		),
 		array(
-			'id'            => 'subheadings_margin-bottom',
+			'id'            => 'subheadings_bottom-spacing',
 			'type'          => 'customizer_slider',
-			'title'         => __( 'Margin Bottom', wpgrade::textdomain() ),
+			'title'         => __( 'Bottom Spacing', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
-			'default'       => '15',
-			'min'           => - 48,
+			'default'       => '-38',
+			'min'           => -90,
 			'step'          => 1,
 			'max'           => 48,
 			'display_value' => 'text',
@@ -371,20 +390,41 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
+		// array(
+		// 	'id'            => 'subheadings_first-letter-size',
+		// 	'type'          => 'customizer_slider',
+		// 	'title'         => __( 'First Letter Size', wpgrade::textdomain() ),
+		// 	'validate'      => 'numeric',
+		// 	'default'       => '1.22',
+		// 	'min'           => 1,
+		// 	'step'          => 0.1,
+		// 	'max'           => 3,
+		// 	'display_value' => 'text',
+		// 	'customizer'    => array(
+		// 		'transport' => 'postMessage',
+		// 		'css_rules' => array(
+		// 			'font-size' => array(
+		// 				'selector' => '.headline__secondary .first-letter',
+		// 				'unit'     => 'em',
+		// 			)
+		// 		)
+		// 	),
+		// 	'compiler'      => true
+		// ),
 		array(
 			'id'            => 'subheadings_first-letter',
 			'type'          => 'customizer_slider',
 			'title'         => __( 'First Letter Offset', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
-			'default'       => '15',
+			'default'       => '9',
 			'min'           => - 48,
-			'step'          => 0.1,
-			'max'           => 48,
+			'step'          => 1,
+			'max'           => 90,
 			'display_value' => 'text',
 			'customizer'    => array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
-					'line-height' => array(
+					'top' => array(
 						'selector' => '.headline__secondary .first-letter',
 						'unit'     => 'px',
 					)
@@ -392,6 +432,7 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
+		
 		// Navigation Font
 		array(
 			'id'             => 'google_nav_font',
@@ -755,33 +796,6 @@ $sections[] = array(
 						'media'    => 'screen and (min-width: 900px)'
 					),
 					'padding-right' => array(
-						'selector' => '.nav--main > .menu-item > a',
-						'unit'     => 'px',
-						'media'    => 'screen and (min-width: 900px)'
-					)
-				)
-			),
-			'compiler'      => true
-		),
-		array(
-			'id'            => 'navigation_vertical_margins',
-			'type'          => 'customizer_slider',
-			'title'         => __( 'Navigation Vertical Margins', wpgrade::textdomain() ),
-			'validate'      => 'numeric',
-			'default'       => 21,
-			'min'           => 1,
-			'step'          => 1,
-			'max'           => 40,
-			'display_value' => 'text',
-			'customizer'    => array(
-				'transport' => 'postMessage',
-				'css_rules' => array(
-					'padding-top'    => array(
-						'selector' => '.nav--main > .menu-item > a',
-						'unit'     => 'px',
-						'media'    => 'screen and (min-width: 900px)'
-					),
-					'padding-bottom' => array(
 						'selector' => '.nav--main > .menu-item > a',
 						'unit'     => 'px',
 						'media'    => 'screen and (min-width: 900px)'
