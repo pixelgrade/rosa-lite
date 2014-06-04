@@ -73,3 +73,11 @@ html, body, #wrapper, #scroller, #page {
 	display: inline-block;
 	vertical-align: top;
 }
+
+.pixcode--grid.thick-gutter{
+	margin-left: -78px;
+
+	> .grid__item{
+		padding-left: 78px;
+	}
+}

@@ -41,8 +41,6 @@ function wpgrade_callback_enqueue_google_fonts_rosa() {
 
 	//put the webfonts config inline script in the head to avoid the FOUT
 	add_action( 'wp_head', 'wpgrade_callback_load_google_fonts_config_rosa' );
-	//load the google fonts configuration after the head custom js to allow overwrite
-	add_action( 'wp_head', 'wpgrade_callback_load_google_fonts_fire_rosa', 9999 );
 }
 
 /**
@@ -72,35 +70,6 @@ function wpgrade_callback_load_google_fonts_config_rosa() {
 	if ( ! empty( $families ) || is_preview() ) {
 		// any variables in scope will be available in the partial
 		include wpgrade::themefilepath( 'templates/core/google-fonts-config' . EXT );
-	}
-}
-
-/**
- * Load google fonts config fire block.
- * This callback is invoked by wpgrade_callback_enqueue_google_fonts_rosa
- */
-function wpgrade_callback_load_google_fonts_fire_rosa() {
-
-	$fonts_array = array(
-		'google_titles_font',
-		'google_subtitles_font',
-		'google_nav_font',
-		'google_body_font'
-	);
-
-	$families = array();
-	foreach ( $fonts_array as $font ) {
-		$clean_font = wpgrade::get_google_font_name( $font );
-
-		if ( ! empty( $clean_font ) ) {
-			$families[] = $clean_font;
-		}
-	}
-
-	$families = apply_filters( 'wpgrade_google_fonts', $families );
-
-	if ( ! empty( $families ) || is_preview() ) {
-		echo '<script type="text/javascript">WebFont.load(customFontsConfig);</script>' . PHP_EOL;
 	}
 }
 
