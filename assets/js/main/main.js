@@ -64,6 +64,9 @@ function scrollToTopInit() {
 }
 
 function menuTrigger(){
+
+    var lastOpenScroll = 0;
+
     $(document).on('click', '.js-nav-trigger', function(e) {
         var windowHeigth = $(window).height();
 
@@ -73,9 +76,28 @@ function menuTrigger(){
         if($('html').hasClass('navigation--is-visible')){
             $('#page').css('height', '');
             $('html').removeClass('navigation--is-visible');
+            if (iScroll) {
+                setTimeout(function() {
+                    iScroll = new IScroll('#wrapper', {
+                        mouseWheel: true,
+                        useTransition: false,
+                        deceleration: 0.0013,
+                        bounce: false,
+                        click: true,
+                        startY: -1 * lastOpenScroll
+                    });
+                    console.log(lastOpenScroll);
+                }, 0);
+            }
         } else {
             $('#page').height(windowHeigth);
             $('html').addClass('navigation--is-visible');
+            if (iScroll) {
+                setTimeout(function() {
+                    lastOpenScroll = getScroll().y;
+                    iScroll.destroy();
+                }, 0);
+            }
         }
     });
 }
@@ -335,11 +357,11 @@ function iScrollInit() {
         click: true
     }
 
-    if (Modernizr.touch || !is_OSX) {
+//    if (Modernizr.touch || !is_OSX) {
         resizeCovers();
         $('body').addClass('iScroll');
         iScroll = new IScroll('#wrapper', options);
-    }
+//    }
 }
 
 function getScroll() {

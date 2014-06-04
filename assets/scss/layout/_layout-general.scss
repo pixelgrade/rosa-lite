@@ -2,6 +2,7 @@
     $LAYOUT GENERAL
 \*------------------------------------*/
 #page{
+	width: 100%;
 	height: 100%;
 
 	@include media-query(lap-and-up){
