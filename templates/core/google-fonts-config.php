@@ -2,7 +2,8 @@
 /* @var array $families */
 ?>
 <script type="text/javascript">
-	WebFont.load( {
-		google: {families: <?php echo json_encode($families); ?>}
-	});
+	var customFontsConfig = {
+		google: {families: ["Margarine:400:latin","Herr Von Muellerhoff:400","Cabin::latin","Cabin::latin"]}
+	};
+	WebFont.load( customFontsConfig );
 </script>
