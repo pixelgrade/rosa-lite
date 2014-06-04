@@ -1,14 +1,51 @@
 /*------------------------------------*\
               GENERAL STUFF
 \*------------------------------------*/
+//
+html {
+	-ms-touch-action: none;
+}
 
-html, body {
+html, body, #wrapper, #scroller, #page {
 	height: 100%;
 }
 
-#page {
-	height: 100%;
+.iScroll {
+	overflow: hidden;
+
+	#wrapper {
+		width: 100%;
+		overflow: hidden;
+	}
+
+	#scroller {
+		position: absolute;
+		z-index: 1;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		width: 100%;
+		height: auto;
+		-webkit-transform: translateZ(0);
+		-moz-transform: translateZ(0);
+		-ms-transform: translateZ(0);
+		-o-transform: translateZ(0);
+		transform: translateZ(0);
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		-webkit-text-size-adjust: none;
+		-moz-text-size-adjust: none;
+		-ms-text-size-adjust: none;
+		-o-text-size-adjust: none;
+		text-size-adjust: none;
+	}
 }
+
+//
+//#page {
+//	height: 100%;
+//}
 
 //.article__header .gallery-item {
 //	position: absolute;

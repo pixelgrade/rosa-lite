@@ -148,7 +148,6 @@ function init(){
 	    }
 	}
 
-	$('html').addClass('loaded');
 //	stickyHeader();
 
 	/* ONE TIME EVENT HANDLERS */
@@ -280,8 +279,10 @@ $(window).load(function(){
         stickyHeaderInit();
     }
 
-    parallaxInit();
-    coverAnimationsInit();
+    iScrollInit();
+    Parallax.initialize();
+    CoverAnimation.initialize();
+
     navigatorInit();
 
 
@@ -306,7 +307,60 @@ $(window).on("debouncedresize", function(e){
 
 	if (globalDebug) {console.group("OnResize");}
 
-	niceScrollInit();
-	resizeVideos();
+    ww = window.innerWidth;
+    wh = window.innerHeight;
+
+    niceScrollInit();
+    resizeVideos();
+
+    if (iScroll) {
+        resizeCovers();
+    }
 
 });
+
+var iScroll;
+
+function iScrollInit() {
+
+    var options = {
+        mouseWheel: true,
+        useTransition: false,
+        deceleration: 0.0013,
+        bounce: false,
+        click: true
+    }
+
+    $('body').addClass('iScroll');
+
+    iScroll = Modernizr.touch || !is_OSX ? new IScroll('#wrapper', options) : null;
+
+    resizeCovers();
+}
+
+function getScroll() {
+
+    var x, y;
+
+    if (iScroll) {
+        x = iScroll.x * -1;
+        y = iScroll.y * -1;
+    } else {
+        x = window.scrollX;
+        y = window.scrollY;
+    }
+
+    return {x: x, y: y};
+}
+
+function resizeCovers() {
+    $('.full-height').height(wh);
+    $('.half-height').height(wh / 2);
+    $('.two-thirds-height').height(wh * 2 / 3);
+}
+
+(function animationLoop() {
+    window.requestAnimationFrame(animationLoop);
+    Parallax.update();
+    CoverAnimation.update();
+})();
