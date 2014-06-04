@@ -756,10 +756,10 @@ var CoverAnimation = {
                 var partialProgress = options.ab + options.bc * progress;
 
                 if (0 > progress) {
-                    return;
+                    partialProgress = options.ab;
                 }
 
-                if (1 > progress) {
+                if (1 > partialProgress) {
                     options.timeline.progress(partialProgress);
                 }
             }
@@ -944,7 +944,11 @@ function scrollToTopInit() {
 		$('.up-link').click(function(e) {
 			e.preventDefault();
 
-            var scrollDuration = window.scrollY * duration / 1000;
+            var scrollDuration = getScroll().y * duration / 1000;
+
+            if (iScroll) {
+                iScroll.scrollTo(0, 0, scrollDuration, 'quadratic');
+            }
 
             $('html, body').animate({
                 scrollTop: 0

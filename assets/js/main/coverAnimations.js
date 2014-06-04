@@ -133,10 +133,10 @@ var CoverAnimation = {
                 var partialProgress = options.ab + options.bc * progress;
 
                 if (0 > progress) {
-                    return;
+                    partialProgress = options.ab;
                 }
 
-                if (1 > progress) {
+                if (1 > partialProgress) {
                     options.timeline.progress(partialProgress);
                 }
             }
