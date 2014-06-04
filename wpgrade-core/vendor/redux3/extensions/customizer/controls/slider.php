@@ -34,8 +34,7 @@ if ( class_exists('WP_Customize_Control') ) {
 				}
 			}
 
-			$value = wpgrade::option($field['id'], $field['default']);
-
+			$value = wpgrade::option($field['id'], 0);
 			if( class_exists( $field_class ) && method_exists( $field_class, 'render' ) ) {
 				$enqueue = new $field_class( $field, $value, $this->ReduxFramework );
 //				$enqueue->enqueue();
