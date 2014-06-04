@@ -1097,7 +1097,7 @@ function loadUp(){
 
 	royalSliderInit();
 
-	containerPlacement();
+//	containerPlacement();
 
 	magnificPopupInit();
 
@@ -1258,11 +1258,11 @@ function iScrollInit() {
         click: true
     }
 
-//    if (Modernizr.touch || !is_OSX) {
+    if (Modernizr.touch || !is_OSX) {
         resizeCovers();
         $('body').addClass('iScroll');
         iScroll = new IScroll('#wrapper', options);
-//    }
+    }
 }
 
 function getScroll() {
