@@ -658,14 +658,14 @@ var CoverAnimation = {
 
             // ------ A
 
-            timeline.fromTo($title, 0.72, {'letter-spacing': 50}, {'letter-spacing': 13, ease: Expo.easeOut});
+            timeline.fromTo($title, 0.72, {'letter-spacing': '1em', 'margin-right': '-0.9em'}, {'letter-spacing': '0.2em', 'margin-right': '-0.1em', ease: Expo.easeOut});
             timeline.fromTo($title, 0.89, {opacity: 0}, {opacity: 1, ease: Expo.easeOut}, '-=0.72');
             timeline.fromTo($title, 1, {'y': 30}, {'y': 0, ease: Expo.easeOut}, '-=0.89');
             timeline.fromTo($subtitle, 0.65, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.65');
             timeline.fromTo($subtitle, 0.9, {y: 30}, {y: 0, ease: Quint.easeOut}, '-=0.65');
             timeline.fromTo($star, 0.15, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.6');
             timeline.fromTo($star, 0.55, {rotation: -270}, {rotation: 0, ease: Back.easeOut}, '-=0.5');
-            timeline.fromTo($lines, 0.6, {width: 0}, {width: '45%', opacity: 1, ease: Quint.easeOut}, '-=0.55');
+            timeline.fromTo($lines, 0.6, {width: 0}, {width: '42%', opacity: 1, ease: Quint.easeOut}, '-=0.55');
             timeline.fromTo($arrows, 0.2, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.27');
             timeline.fromTo($description, 0.5, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.28');
             timeline.fromTo($description, 0.75, {y: -20}, {y: 0}, '-=0.5');
@@ -963,6 +963,9 @@ function scrollToTopInit() {
 }
 
 function menuTrigger(){
+
+    var lastOpenScroll = 0;
+
     $(document).on('click', '.js-nav-trigger', function(e) {
         var windowHeigth = $(window).height();
 
@@ -972,9 +975,28 @@ function menuTrigger(){
         if($('html').hasClass('navigation--is-visible')){
             $('#page').css('height', '');
             $('html').removeClass('navigation--is-visible');
+            if (iScroll) {
+                setTimeout(function() {
+                    iScroll = new IScroll('#wrapper', {
+                        mouseWheel: true,
+                        useTransition: false,
+                        deceleration: 0.0013,
+                        bounce: false,
+                        click: true,
+                        startY: -1 * lastOpenScroll
+                    });
+                    console.log(lastOpenScroll);
+                }, 0);
+            }
         } else {
             $('#page').height(windowHeigth);
             $('html').addClass('navigation--is-visible');
+            if (iScroll) {
+                setTimeout(function() {
+                    lastOpenScroll = getScroll().y;
+                    iScroll.destroy();
+                }, 0);
+            }
         }
     });
 }
@@ -1043,12 +1065,14 @@ function init(){
 
 	var is_retina = (window.retina || window.devicePixelRatio > 1);
 	if (is_retina && $('.site-logo--image-2x').length) {
-	    var image = $('.site-logo--image-2x').find('img');
 
-	    if (image.data('logo2x') !== undefined) {
-	        image.attr('src', image.data('logo2x'));
-	        $('.site-logo--image-2x').addClass('using-retina-logo');
-	    }
+	    $('.site-logo--image-2x').children('img').each(function(){
+
+            if (typeof $(this).data('logo2x') !== "undefined") {
+                $(this).attr('src', $(this).data('logo2x'));
+                $('.site-logo--image-2x').addClass('using-retina-logo');
+            }
+        });
 	}
 
 //	stickyHeader();
@@ -1234,11 +1258,11 @@ function iScrollInit() {
         click: true
     }
 
-    if (Modernizr.touch || !is_OSX) {
+//    if (Modernizr.touch || !is_OSX) {
         resizeCovers();
         $('body').addClass('iScroll');
         iScroll = new IScroll('#wrapper', options);
-    }
+//    }
 }
 
 function getScroll() {

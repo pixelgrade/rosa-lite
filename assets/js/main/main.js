@@ -64,6 +64,9 @@ function scrollToTopInit() {
 }
 
 function menuTrigger(){
+
+    var lastOpenScroll = 0;
+
     $(document).on('click', '.js-nav-trigger', function(e) {
         var windowHeigth = $(window).height();
 
@@ -73,9 +76,28 @@ function menuTrigger(){
         if($('html').hasClass('navigation--is-visible')){
             $('#page').css('height', '');
             $('html').removeClass('navigation--is-visible');
+            if (iScroll) {
+                setTimeout(function() {
+                    iScroll = new IScroll('#wrapper', {
+                        mouseWheel: true,
+                        useTransition: false,
+                        deceleration: 0.0013,
+                        bounce: false,
+                        click: true,
+                        startY: -1 * lastOpenScroll
+                    });
+                    console.log(lastOpenScroll);
+                }, 0);
+            }
         } else {
             $('#page').height(windowHeigth);
             $('html').addClass('navigation--is-visible');
+            if (iScroll) {
+                setTimeout(function() {
+                    lastOpenScroll = getScroll().y;
+                    iScroll.destroy();
+                }, 0);
+            }
         }
     });
 }
@@ -144,12 +166,14 @@ function init(){
 
 	var is_retina = (window.retina || window.devicePixelRatio > 1);
 	if (is_retina && $('.site-logo--image-2x').length) {
-	    var image = $('.site-logo--image-2x').find('img');
 
-	    if (image.data('logo2x') !== undefined) {
-	        image.attr('src', image.data('logo2x'));
-	        $('.site-logo--image-2x').addClass('using-retina-logo');
-	    }
+	    $('.site-logo--image-2x').children('img').each(function(){
+
+            if (typeof $(this).data('logo2x') !== "undefined") {
+                $(this).attr('src', $(this).data('logo2x'));
+                $('.site-logo--image-2x').addClass('using-retina-logo');
+            }
+        });
 	}
 
 //	stickyHeader();
@@ -335,11 +359,11 @@ function iScrollInit() {
         click: true
     }
 
-    if (Modernizr.touch || !is_OSX) {
+//    if (Modernizr.touch || !is_OSX) {
         resizeCovers();
         $('body').addClass('iScroll');
         iScroll = new IScroll('#wrapper', options);
-    }
+//    }
 }
 
 function getScroll() {

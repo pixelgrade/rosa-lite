@@ -704,7 +704,8 @@
   .redux-main .text_sortable li {
     position: relative;
     left: -45px;
-    padding-left: 45px; }
+    padding-left: 45px;
+    margin-bottom: 6px !important; }
     .redux-main .text_sortable li input[type="checkbox"] {
       width: 30px !important;
       margin: 4px 30px !important;
@@ -717,7 +718,7 @@
       opacity: 1; }
   .redux-main .text_sortable .drag {
     position: absolute;
-    top: -2px;
+    top: 4px;
     left: 12px;
     margin: 0 !important;
     opacity: 0;

@@ -9,7 +9,7 @@
 	right: 0;
 	z-index: 100;
 
-	background: white;
+	background-color: white;
 
 	.admin-bar &{
 		top: 32px;
@@ -24,7 +24,20 @@
 	}
 
 	.header--transparent &{
-		background: transparent;
+		background-color: transparent;
+		@include transition(background-color .2s linear);
+	}
+
+	&.headroom--not-top{
+		background-color: white;
+
+		.site-logo-img--dark{
+			display: block;
+		}
+
+		.site-logo-img--light{
+			display: none;
+		}
 	}
 }
 
@@ -45,9 +58,27 @@
 	img {
 		display: block;
 		max-height: 100%;
+		margin: 0 auto;
+	}
 
-		.header--transparent & {
-			-webkit-filter: invert(100%);
+	.site-logo-img--light{
+		display: none;
+	}
+
+	&.using-retina-logo img{
+		max-width: 50%;
+	}
+}
+
+
+@include media-query(lap-and-up) {
+	.header--transparent{
+		.site-logo-img--light{
+			display: block;
+		}
+
+		.site-logo-img--dark{
+			display: none;
 		}
 	}
 }

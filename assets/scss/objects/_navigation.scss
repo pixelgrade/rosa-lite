@@ -19,16 +19,13 @@
 			@include rem(padding, $_u2 $_u);
 			text-transform: uppercase;
 		}
-
-		//      &.current-menu-item {
-		//          background-color:rgba(255,255,255,0.05);
-		//      }
 	}
 
 	a {
-		color: black;
-//		color: black;
+		color: $dark;
 		@include font-size(14px);
+
+		@include transition(color .2s linear);
 
 		&:hover {
 			color: $accent;
@@ -37,16 +34,26 @@
 		.header--transparent & {
 			color: white;
 		}
+
+		.headroom--not-top &{
+			color: $dark;
+		}
 	}
 
-	.current-menu-item a:after {
-		content: "";
-		display: block;
+	@include media-query(lap-and-up){
+		.current-menu-item a:after {
+			content: "";
+			display: block;
 
-		border-bottom: 2px solid $dark;
+			border-bottom: 2px solid $dark;
 
-		.header--transparent & {
-			border-color: white;
+			.header--transparent & {
+				border-color: white;
+			}
+
+			.headroom--not-top &{
+				border-color: $dark;
+			}
 		}
 	}
 }
@@ -153,7 +160,7 @@
 a.nav-trigger{
 	position: absolute;
 	top: 50%;
-	left: 0;
+	left: $_u2;
 	@include transform(translateY(-50%));
 
 	padding: $_u2;
