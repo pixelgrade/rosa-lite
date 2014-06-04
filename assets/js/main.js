@@ -690,11 +690,11 @@ var CoverAnimation = {
                 ab                  = animatedInTime / animatedOutTime,
                 bc                  = 1 - ab,
                 start               = headerTop + headerHeight / 2 - wh / 2,
-                end                 = start + wh / 3;
+                end                 = start + wh / 2;
 
             if (i == 0) {
-                start = headerTop;
-                end = start + wh / 3;
+                start = headerTop + wh / 8;
+                end = start + wh / 2;
             }
 
             timeline.tweenTo("animatedIn", {
