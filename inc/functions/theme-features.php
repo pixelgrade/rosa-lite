@@ -395,7 +395,7 @@ function wpgrade_register_attachments_custom_fields() {
 			return $form_fields;
 		}
 
-		add_filter( "attachment_fields_to_edit", "add_video_url_field_to_attachments", 99999, 2 );
+//		add_filter( "attachment_fields_to_edit", "add_video_url_field_to_attachments", 99999, 2 );
 	}
 
 	/**
@@ -411,7 +411,7 @@ function wpgrade_register_attachments_custom_fields() {
 
 	if ( ! function_exists( 'add_image_attachment_fields_to_save' ) ) {
 
-		add_filter( "attachment_fields_to_save", "add_image_attachment_fields_to_save", 9999, 2 );
+//		add_filter( "attachment_fields_to_save", "add_image_attachment_fields_to_save", 9999, 2 );
 
 		function add_image_attachment_fields_to_save( $post, $attachment ) {
 			if ( isset( $attachment['video_url'] ) ) {

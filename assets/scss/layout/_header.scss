@@ -56,6 +56,10 @@ a.site-logo--text{
 	font-weight: 700;
 	color: $dark;
 
+	.header--transparent &{
+		color: white !important;
+	}
+
 	@include media-query(palm){
 		text-align: center;
 	}

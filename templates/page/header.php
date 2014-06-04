@@ -75,6 +75,7 @@ else :
 			}
 			?>
 			<header class="article__header  <?php echo $header_height ?>">
+				<?php if (! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description )) : ?>
 				<div class="flexbox">
 					<div class="flexbox__item">
 						<hgroup class="article__headline">
@@ -88,6 +89,7 @@ else :
 						</hgroup>
 					</div>
 				</div>
+				<?php endif; ?>
 				<div class="article__parallax  header--slideshow  js-pixslider"
 				     data-autoHeight
 				     data-imagealigncenter
@@ -105,7 +107,7 @@ else :
 					}
 					?> >
 					<?php
-					$set_cover = true;;
+					$set_cover = false;
 
 					foreach ( $attachments as $attachment ) :
 
@@ -161,7 +163,8 @@ else :
 							<img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
 						</div>
 					<?php endif;
-				endif;?>
+				endif;
+				if (! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description )) : ?>
 				<div class="flexbox">
 					<div class="flexbox__item">
 						<hgroup class="article__headline">
@@ -175,6 +178,7 @@ else :
 						</hgroup>
 					</div>
 				</div>
+				<?php endif; ?>
 			</header>
 		<?php endif;
 	endif;
