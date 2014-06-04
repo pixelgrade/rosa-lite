@@ -160,7 +160,7 @@
 a.nav-trigger{
 	position: absolute;
 	top: 50%;
-	left: 0;
+	left: $_u2;
 	@include transform(translateY(-50%));
 
 	padding: $_u2;

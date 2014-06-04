@@ -44,7 +44,7 @@ $sections[] = array(
 		array(
             'id'       => 'retina_main_logo_light',
             'type'     => 'media',
-            'title'    => __( '', wpgrade::textdomain() ),
+            'title'    => __( 'Retina Logo light', wpgrade::textdomain() ),
             'required' => array( 'use_retina_logo', 'equals', 1 )
         ),
 
@@ -56,7 +56,7 @@ $sections[] = array(
         array(
             'id'       => 'retina_main_logo_dark',
             'type'     => 'media',
-            'title'    => __( '', wpgrade::textdomain() ),
+            'title'    => __( 'Retina Logo dark', wpgrade::textdomain() ),
             'required' => array( 'use_retina_logo', 'equals', 1 )
         ),
 		array(
