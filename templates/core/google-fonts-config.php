@@ -5,5 +5,4 @@
 	var customFontsConfig = {
 		google: {families: ["Margarine:400:latin","Herr Von Muellerhoff:400","Cabin::latin","Cabin::latin"]}
 	};
-	WebFont.load( customFontsConfig );
 </script>
