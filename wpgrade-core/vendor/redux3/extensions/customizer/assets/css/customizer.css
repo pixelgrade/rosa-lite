@@ -4,13 +4,15 @@
 /*------------------------------------*\
     RESETS
 \*------------------------------------*/
-.wp-full-overlay-sidebar .wp-full-overlay-sidebar-content {
-  background: #232527;
-  top: 0; }
-.wp-full-overlay-sidebar * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+.wp-full-overlay-sidebar {
+  border-right: 0; }
+  .wp-full-overlay-sidebar .wp-full-overlay-sidebar-content {
+    background: #232527;
+    top: 0; }
+  .wp-full-overlay-sidebar * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
 
 #customize-theme-controls .accordion-section-content {
   display: block !important; }

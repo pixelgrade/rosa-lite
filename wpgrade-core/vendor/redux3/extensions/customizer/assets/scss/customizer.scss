@@ -23,6 +23,8 @@ $popup 		: 275px;
 \*------------------------------------*/
 .wp-full-overlay-sidebar {
 
+	border-right: 0;
+
 	.wp-full-overlay-sidebar-content {
 		background: $dark;
 		top:0;
