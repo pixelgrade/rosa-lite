@@ -141,6 +141,11 @@
 //			}
 		});
 
+		// If the customizer has saved things remove the save confirmation confirm
+		api.bind('saved', function () {
+			window.onbeforeunload = null;
+		});
+
 		/**
 		 * On Reset Styles click do an ajax request which will reset the style section.
 		 */

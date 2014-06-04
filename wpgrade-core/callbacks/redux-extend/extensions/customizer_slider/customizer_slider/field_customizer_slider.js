@@ -145,18 +145,16 @@
 							$('input.redux-slider-value-one-' + mainID).attr('value', slider.val());
 						}
 					}
-
 					if (displayValue == DISPLAY_SELECT) {
 						$('.redux-slider-select-one').select2('val', slider.val()[0]);
-
 						if (handles === 2) {
 							$('.redux-slider-select-two').select2('val', slider.val()[1]);
 						}
 					}
 
 					// Uncomment when selectize is live
-					// var selectize = select[0].selectize;
-					// selectize.setValue(slider.val()[0]);
+//					var selectize = select[0].selectize;
+//					selectize.setValue(slider.val()[0]);
 					//redux_change(jQuery(this).parents('.redux-field-container:first').find('input'));
 					$('.redux-slider-input-one-' + mainID).trigger('change');
 
