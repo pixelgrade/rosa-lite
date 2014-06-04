@@ -65,7 +65,7 @@ var Parallax = {
 
         });
 
-        $('.article__parallax').first().append('<span class="down-arrow"></span>');
+        $('.home .article__parallax').first().append('<span class="down-arrow"></span>');
 
     },
 
