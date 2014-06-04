@@ -49,6 +49,7 @@ function scrollToTopInit() {
 
             if (iScroll) {
                 iScroll.scrollTo(0, 0, scrollDuration, 'quadratic');
+                return;
             }
 
             $('html, body').animate({
@@ -362,7 +363,10 @@ function iScrollInit() {
     if (Modernizr.touch || !is_OSX) {
         resizeCovers();
         $('body').addClass('iScroll');
-        iScroll = new IScroll('#wrapper', options);
+
+        setTimeout(function () {
+            iScroll = new IScroll('#wrapper', options);
+        }, 0);
     }
 }
 
