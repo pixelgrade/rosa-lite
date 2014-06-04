@@ -123,7 +123,7 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'color'            => array(
-						'selector' => "	a, a:hover, .nav--main a:hover, .headline__secondary, .separator--flower, .separator--line-flower, .separator--flower.separator_color--color,
+						'selector' => "	a, a:hover, .nav--main a:hover, .headline__secondary, .separator--line-flower,
 										.tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment,
 										.comments_add-comment.read-more-button, .form-submit .btn--text#comment-submit,
 										.form-submit #comment-submit.read-more-button, .btn--text.wpcf7-form-control.wpcf7-submit,
