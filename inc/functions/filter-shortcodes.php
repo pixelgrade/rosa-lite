@@ -98,14 +98,6 @@ function wpgrade_callback_remove_columns_params( $params ) {
 		unset( $params['inner_info'] );
 	}
 
-    //add new params in the right order
-    $params = util::array_insert_after('cols_nr', $params, 'thick_gutter', array(
-        'type' => 'switch',
-        'name' => 'Thick gutter',
-        'options' => array(),
-        'admin_class' => 'span6 push3'
-    ));
-
 	return $params;
 }
 

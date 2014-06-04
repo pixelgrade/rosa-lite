@@ -65,35 +65,36 @@ echo ' ' . $schema_org . ' ' . $data_smoothscrolling . ' ' ?> >
 	your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
 	improve your experience.</p>
 <![endif]-->
+<div id="page">
+    <div class="site-header  header--inversed  js-header">
+        <div class="container">
+            <div class="flexbox">
+                <div class="flexbox__item">
+                    <a href="#" class="js-nav-trigger  nav-trigger"><i class="icon-reorder"></i></a>
+                </div>
+                <div class="flexbox__item">
+                    <?php get_template_part( 'templates/header/branding' ); ?>
+                </div>
+                <div class="flexbox__item">
+                    <?php
+                    $theme_locations = get_nav_menu_locations();
+                    $has_main_menu   = false;
+
+                    if ( isset( $theme_locations["main_menu"] ) && ( $theme_locations["main_menu"] != 0 ) ) {
+                        $has_main_menu = true;
+                    } ?>
+                    <nav class="navigation  navigation--main<?php echo ( ! $has_main_menu ) ? "  no-menu" : ""; ?>" id="js-navigation--main">
+                        <h2 class="accessibility"><?php _e( 'Primary Navigation', wpgrade::textdomain() ) ?></h2>
+                        <?php wpgrade_main_nav(); ?>
+                    </nav>
+                </div>
+            </div>
+            <!-- .flexbox -->
+        </div>
+        <!-- .container -->
+    </div>
+    <!-- .site-header -->
 <div id="wrapper">
     <div id="scroller">
-<div id="page">
-	<div class="site-header  header--inversed  js-header">
-		<div class="container">
-			<div class="flexbox">
-				<div class="flexbox__item">
-					<a href="#" class="js-nav-trigger  nav-trigger"><i class="icon-reorder"></i></a>
-				</div>
-				<div class="flexbox__item">
-					<?php get_template_part( 'templates/header/branding' ); ?>
-				</div>
-				<div class="flexbox__item">
-					<?php
-					$theme_locations = get_nav_menu_locations();
-					$has_main_menu   = false;
 
-					if ( isset( $theme_locations["main_menu"] ) && ( $theme_locations["main_menu"] != 0 ) ) {
-						$has_main_menu = true;
-					} ?>
-					<nav class="navigation  navigation--main<?php echo ( ! $has_main_menu ) ? "  no-menu" : ""; ?>" id="js-navigation--main">
-						<h2 class="accessibility"><?php _e( 'Primary Navigation', wpgrade::textdomain() ) ?></h2>
-						<?php wpgrade_main_nav(); ?>
-					</nav>
-				</div>
-			</div>
-			<!-- .flexbox -->
-		</div>
-		<!-- .container -->
-	</div>
-	<!-- .site-header -->
 <?php

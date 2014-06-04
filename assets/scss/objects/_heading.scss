@@ -50,7 +50,8 @@
 	position: relative;
 	z-index:1; //over .headline__secondary
 	margin: 0;
-	letter-spacing: 0.174em;
+	letter-spacing: 0.2em;
+	margin-right: -0.1em;
 }
 
 .headline__secondary {
@@ -63,6 +64,8 @@
 	font-weight: normal;
 	letter-spacing: 0;
 	text-transform: none;
+	padding: 0 72px;
+	margin: 0 -72px;
 
 	color: $accent;
 
@@ -71,6 +74,8 @@
 		top: 10px;
 		
 		font-size: 1.22em;
+		padding: 0 72px;
+		margin: 0 -72px;
 	}
 }
 

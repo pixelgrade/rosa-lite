@@ -74,10 +74,14 @@ html, body, #wrapper, #scroller, #page {
 	vertical-align: top;
 }
 
-.pixcode--grid.thick-gutter{
-	margin-left: -78px;
+.pixcode--grid {
+	margin-left: -48px;
 
 	> .grid__item{
-		padding-left: 78px;
+		padding-left: 48px;
 	}
+}
+
+.island {
+	padding: 30px 78px;
 }

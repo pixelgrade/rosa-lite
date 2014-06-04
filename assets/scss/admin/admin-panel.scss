@@ -67,7 +67,7 @@
 			padding-right: 0;
 		}
 
-		&:nth-child(-n+4) {
+		&:nth-child(-n+6) {
 			width: 50%;
 		}
 
@@ -79,7 +79,7 @@
 			//Main Logo
 			// width:100%;
 		}
-		&:nth-child(3) {
+		&:nth-child(3), &:nth-child(5) {
 			//Retina Switcher
 			padding-right: 0;
 			.description {
@@ -89,18 +89,18 @@
 				top: -52px;
 			}
 		}
-		&:nth-child(4) {
+		&:nth-child(4), &:nth-child(60) {
 			//Retina Image
 			th {
 				display: none;
 			}
 		}
-		&:nth-child(5) {
+		&:nth-child(7), &:nth-child(5) {
 			//Fav Icon
 			clear: left;
 		}
 
-		&:nth-child(5), &:nth-child(6), &:nth-child(7) {
+		&:nth-child(7), &:nth-child(8), &:nth-child(9) {
 			//Last 3
 			margin-top: 40px;
 			border-top: 1px solid #dfdfdf;
