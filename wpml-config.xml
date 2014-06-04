@@ -1,9 +1,9 @@
 <wpml-config>
     <admin-texts>
-        <key name="border_options">
-            <key name="footer_twitter_title"/>
+        <key name="rosa_options">
             <key name="copyright_text"/>
-            <key name="social_footer_menu_title"/>
+            <key name="blog_read_more_text"/>
+            <key name="blog_excerpt_more_text"/>
         </key>
     </admin-texts>
     <language-switcher-settings>
