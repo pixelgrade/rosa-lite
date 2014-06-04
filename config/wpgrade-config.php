@@ -104,7 +104,13 @@ return array(
 					'require' => array(
 						'jquery'
 					),
-				)
+				),
+				'webfont-script'       => array(
+					'path'    => '//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js',
+					'require' => array(
+						'jquery'
+					),
+				),
 			),
 			'footer-scripts' => array(
 				'wpgrade-plugins'      => array(
@@ -123,12 +129,6 @@ return array(
 				),
 				'addthis-api'          => array(
 					'path'    => '//s7.addthis.com/js/300/addthis_widget.js#async=1',
-					'require' => array(
-						'jquery'
-					),
-				),
-				'webfont-script'       => array(
-					'path'    => '//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js',
 					'require' => array(
 						'jquery'
 					),
@@ -174,7 +174,7 @@ return array(
 		// calls function to perform extra enqueue's on theme setup
 		// handlers should be placed in theme's functions.php
 		'script-enqueue-handlers' => array(
-			'google-web-fonts'   => 'wpgrade_callback_enqueue_google_fonts_rosa',
+			'google-web-fonts'=> 'wpgrade_callback_enqueue_google_fonts_rosa',
 			'contact-page'    => 'wpgrade_callback_gmaps_api_script',
 			'thread-comments' => 'wpgrade_callback_thread_comments_scripts',
 			'addthis'         => 'wpgrade_callback_addthis',
