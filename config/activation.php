@@ -41,15 +41,15 @@ return array(
 						'type'    => 'select',
 						'options' => array(
 							array(
-								'name'  => __( '&nbsp; ◉◯ &nbsp;Half', 'rosa_txtd' ),
+								'name'  => __( '&nbsp; &#9673;&#9711; &nbsp;Half', 'rosa_txtd' ),
 								'value' => 'half-height',
 							),
 							array(
-								'name'  => __( '◉◉◯ Two Thirds', 'rosa_txtd' ),
+								'name'  => __( '&#9673;&#9673;&#9711; Two Thirds', 'rosa_txtd' ),
 								'value' => 'two-thirds-height',
 							),
 							array(
-								'name'  => __( '◉◉◉ Full Height', 'rosa_txtd' ),
+								'name'  => __( '&#9673;&#9673;&#9673; Full Height', 'rosa_txtd' ),
 								'value' => 'full-height',
 							)
 						),
@@ -209,15 +209,15 @@ return array(
 						'type'    => 'select',
 						'options' => array(
 							array(
-								'name'  => __( '&nbsp; ◉◯ &nbsp;Half', 'rosa_txtd' ),
+								'name'  => __( '&nbsp; &#9673;&#9711; &nbsp;Half', 'rosa_txtd' ),
 								'value' => 'half-height',
 							),
 							array(
-								'name'  => __( '◉◉◯ Two Thirds', 'rosa_txtd' ),
+								'name'  => __( '&#9673;&#9673;&#9711; Two Thirds', 'rosa_txtd' ),
 								'value' => 'two-thirds-height',
 							),
 							array(
-								'name'  => __( '◉◉◉ Full Height', 'rosa_txtd' ),
+								'name'  => __( '&#9673;&#9673;&#9673; Full Height', 'rosa_txtd' ),
 								'value' => 'full-height',
 							)
 						),
