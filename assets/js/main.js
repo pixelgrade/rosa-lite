@@ -559,9 +559,9 @@ var Parallax = {
                         imgHeight   = $img.height(),
                         imgWidth    = $img.width(),
                         // find scale needed for the image to fit container and move desired amount
-                        scaleY      = (parallaxDistance + (containerHeight * that.amount)) / imgHeight,
+                        scaleY      = (parallaxDistance + containerHeight) / imgHeight,
                         scaleX      = ww / imgWidth,
-                        scale       = Math.max(1, scaleX, scaleY);
+                        scale       = Math.max(scaleX, scaleY);
 
                     // scale image up to desired size
                     $img.css({
@@ -948,6 +948,7 @@ function scrollToTopInit() {
 
             if (iScroll) {
                 iScroll.scrollTo(0, 0, scrollDuration, 'quadratic');
+                return;
             }
 
             $('html, body').animate({
@@ -1261,7 +1262,10 @@ function iScrollInit() {
     if (Modernizr.touch || !is_OSX) {
         resizeCovers();
         $('body').addClass('iScroll');
-        iScroll = new IScroll('#wrapper', options);
+
+        setTimeout(function () {
+            iScroll = new IScroll('#wrapper', options);
+        }, 0);
     }
 }
 
