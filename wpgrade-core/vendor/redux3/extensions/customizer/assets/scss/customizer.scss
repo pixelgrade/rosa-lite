@@ -23,6 +23,8 @@ $popup 		: 275px;
 \*------------------------------------*/
 .wp-full-overlay-sidebar {
 
+	border-right: 0;
+
 	.wp-full-overlay-sidebar-content {
 		background: $dark;
 		top:0;
@@ -52,7 +54,7 @@ h3.accordion-section-title, #customize-info {
 }
 
 #accordion-section-style {
-	padding-bottom:150px;
+	// padding-bottom:150px;
 }
 
 .accordion-section-content {
@@ -118,6 +120,7 @@ h3.accordion-section-title, #customize-info {
 		text-transform 	: uppercase;
 		text-align 		: center;
 		line-height 	: 54px;
+		outline 		: none;
 		@include border-radius(0);
 		@include box-shadow(none);
 		@include transition(all 0.2s);
@@ -678,6 +681,19 @@ h3.accordion-section-title, #customize-info {
 	li:last-child {
 		display:none;
 	}
+}
+
+/*
+ * Reset Button
+ */
+#reset-style-defaults {
+	text-align: center;
+	display: block;
+	background: #1d1e20;
+	padding: 12px;
+	color: #b1b5b9;
+	text-transform: uppercase;
+	margin-top: 100px;
 }
 
 /*

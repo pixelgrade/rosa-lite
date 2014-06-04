@@ -31,7 +31,7 @@ function wpgrade_callback_shortcode_filters( $content ) {
 	// including Wordpress plugin.php for is_plugin_active function
 	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
-	if ( is_plugin_active( 'pixelgrade-shortcodes/plugin.php' ) ) {
+	if ( is_plugin_active( 'pixcodes/pixcodes.php' ) ) {
 		$content = wpgrade_remove_spaces_around_shortcodes( $content );
 	}
 

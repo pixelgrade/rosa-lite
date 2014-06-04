@@ -92,7 +92,9 @@
 					'margin-bottom',
 					'right',
 					'font-size',
-					'letter-spacing'
+					'letter-spacing',
+					'top',
+					'bottom'
 				],
 			// if there is a negative rule ... keep it negative
 			is_negative = self.is_negative_rule(rule_name, properties, selectorText );

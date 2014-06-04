@@ -11,7 +11,7 @@ if ( isset( $_GET['debug_mod'] ) && $_GET['debug_mod'] === 'true' ) {
 // ------------------------------------------------------------------------
 
 $sections[] = array(
-	'icon'       => 'database-1',
+	'icon'       => 'icon-database-1',
 	'icon_class' => '',
 	'title'      => __( 'General', wpgrade::textdomain() ),
 	'desc'       => sprintf( '<p class="description">' . __( 'General settings contains options that have a site-wide reach like defining your site dynamics or branding (including logo and other icons).', wpgrade::textdomain() ) . '</p>', wpgrade::themename() ),
@@ -72,7 +72,7 @@ $sections[] = array(
 // ------------------------------------------------------------------------
 
 $sections[] = array(
-	'icon'            => "params",
+	'icon'            => "icon-params",
 	'icon_class'      => '',
 	'title'           => __( 'Style', wpgrade::textdomain() ),
 	'desc'            => '<p class="description">' . __( 'The style options control the general styling of the site, like accent color and Google Web Fonts. You can choose custom fonts for various typography elements with font weight, character set, size and/or line height. You also have a live preview for your chosen fonts.', wpgrade::textdomain() ) . '</p>',
@@ -84,13 +84,6 @@ $sections[] = array(
 							' . __( 'Access the Live Customizer', wpgrade::textdomain() ) . '
 						</a>',
 			'type'       => 'info',
-			'customizer' => array()
-		),
-		array(
-			'id'         => 'customizer_reset_button_section',
-			'title'      => '<a class="btn" id="reset-style-defaults" href="#" data-ajax_nonce="'.  wp_create_nonce( "reset-style-section" ) .'">' . __( 'Reset Style', wpgrade::textdomain() ) . '</a>',
-			'type'       => 'customizer_info',
-			'default'    => 'Test',
 			'customizer' => array()
 		),
 		array(
@@ -117,21 +110,31 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'color'            => array(
-						'selector' => "	a, a:hover,
-										.nav--main a:hover, 
-										.headline__secondary,
-										.separator--flower, .separator--line-flower, .separator--flower.separator_color--color,
-										.tabs__nav a.current, .tabs__nav a:hover,
-										",
+						'selector' => "	a, a:hover, .nav--main a:hover, .headline__secondary, .separator--flower, .separator--line-flower, .separator--flower.separator_color--color,
+										.tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment,
+										.comments_add-comment.read-more-button, .form-submit .btn--text#comment-submit,
+										.form-submit #comment-submit.read-more-button, .btn--text.wpcf7-form-control.wpcf7-submit,
+										.wpcf7-form-control.wpcf7-submit.read-more-button, .btn--text.otreservations-submit,
+										.otreservations-submit.read-more-button, .widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button,
+										a:hover > .pixcode--icon, .widget a:hover, blockquote, .meta-list a.btn:hover,
+										.meta-list a.comments_add-comment:hover, .meta-list .form-submit a#comment-submit:hover,
+										.form-submit .meta-list a#comment-submit:hover, .meta-list a.wpcf7-form-control.wpcf7-submit:hover,
+										.meta-list a.otreservations-submit:hover, .meta-list .widget_tag_cloud a:hover, .widget_tag_cloud .meta-list a:hover, .btn.btn--text:hover,
+										.article__content a:not([class]), .article__content a:hover:not([class]):hover,
+										.article__header .article__headline .headline__description .star"
 					),
 					'background-color' => array(
-						'selector' => "",
+						'selector' => ".btn--primary, .btn, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover",
 					),
 					'border-color'     => array(
-						'selector' => ".tabs__nav a.current, .tabs__nav a:hover",
+						'selector' => ".tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button,
+						.form-submit .btn--text#comment-submit, .form-submit #comment-submit.read-more-button,
+						.btn--text.wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit.read-more-button,
+						.btn--text.otreservations-submit, .otreservations-submit.read-more-button,
+						.widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button, blockquote, .article__content a:not([class])",
 					),
 					'outline-color'    => array(
-						'selector' => "",
+						'selector' => ".test",
 					),
 				)
 			)
@@ -172,22 +175,41 @@ $sections[] = array(
 				)
 			)
 		),
+		// Not needed now
+		// array(
+		// 	'id'         => 'nav_links',
+		// 	'type'       => 'color',
+		// 	'title'      => __( 'Nav Links', wpgrade::textdomain() ),
+		// 	'default'    => '#262526',
+		// 	'validate'   => 'color',
+		// 	'compiler'   => true,
+		// 	'customizer' => array(
+		// 		'transport' => 'postMessage',
+		// 		'css_rules' => array(
+		// 			'color' => array(
+		// 				'selector' => ".nav--main a, a.site-logo--text"
+		// 			),
+		// 		)
+		// 	)
+		// ),
 		array(
-			'id'         => 'nav_links',
+			'id'         => 'cover_text',
 			'type'       => 'color',
-			'title'      => __( 'Nav Links', wpgrade::textdomain() ),
-			'default'    => '#262526',
+			'title'      => __( 'Cover Text', wpgrade::textdomain() ),
+			'default'    => '#fff',
 			'validate'   => 'color',
 			'compiler'   => true,
 			'customizer' => array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'color' => array(
-						'selector' => ".nav--main a, a.site-logo--text"
+						'selector' => ".article__header .article__headline .headline__primary, 
+										.article__header .article__headline .headline__description *"
 					),
 				)
 			)
 		),
+
 		array(
 			'id'         => 'backgrounds_title',
 			'title'      => '<h3>' . __( 'Backgrounds', wpgrade::textdomain() ) . '</h3>',
@@ -245,7 +267,7 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'background-color' => array(
-						'selector' => ".page .article__content, .up-link"
+						'selector' => ".page .article__content, .up-link, html"
 					),
 				)
 			)
@@ -307,7 +329,8 @@ $sections[] = array(
 				'transport' => 'refresh',
 			),
 			'default'        => array(
-				'font-family' => 'Maven Pro',
+				'font-family' => 'Source Sans Pro',
+				'font-weight' => '900',
 				'google'      => true,
 			),
 //			'output'         => array( 'h1, h2, h3, h4, h5, h6' ),
@@ -338,12 +361,12 @@ $sections[] = array(
 //			'output'         => array( '.headline__secondary' ),
 		),
 		array(
-			'id'            => 'subheadings_margin-bottom',
+			'id'            => 'subheadings_bottom-spacing',
 			'type'          => 'customizer_slider',
-			'title'         => __( 'Margin Bottom', wpgrade::textdomain() ),
+			'title'         => __( 'Bottom Spacing', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
-			'default'       => '15',
-			'min'           => - 48,
+			'default'       => '-38',
+			'min'           => -90,
 			'step'          => 1,
 			'max'           => 48,
 			'display_value' => 'text',
@@ -358,20 +381,41 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
+		// array(
+		// 	'id'            => 'subheadings_first-letter-size',
+		// 	'type'          => 'customizer_slider',
+		// 	'title'         => __( 'First Letter Size', wpgrade::textdomain() ),
+		// 	'validate'      => 'numeric',
+		// 	'default'       => '1.22',
+		// 	'min'           => 1,
+		// 	'step'          => 0.1,
+		// 	'max'           => 3,
+		// 	'display_value' => 'text',
+		// 	'customizer'    => array(
+		// 		'transport' => 'postMessage',
+		// 		'css_rules' => array(
+		// 			'font-size' => array(
+		// 				'selector' => '.headline__secondary .first-letter',
+		// 				'unit'     => 'em',
+		// 			)
+		// 		)
+		// 	),
+		// 	'compiler'      => true
+		// ),
 		array(
 			'id'            => 'subheadings_first-letter',
 			'type'          => 'customizer_slider',
 			'title'         => __( 'First Letter Offset', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
-			'default'       => '15',
+			'default'       => '9',
 			'min'           => - 48,
-			'step'          => 0.1,
-			'max'           => 48,
+			'step'          => 1,
+			'max'           => 90,
 			'display_value' => 'text',
 			'customizer'    => array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
-					'line-height' => array(
+					'top' => array(
 						'selector' => '.headline__secondary .first-letter',
 						'unit'     => 'px',
 					)
@@ -379,6 +423,7 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
+		
 		// Navigation Font
 		array(
 			'id'             => 'google_nav_font',
@@ -750,39 +795,20 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
-		array(
-			'id'            => 'navigation_vertical_margins',
-			'type'          => 'customizer_slider',
-			'title'         => __( 'Navigation Vertical Margins', wpgrade::textdomain() ),
-			'validate'      => 'numeric',
-			'default'       => 21,
-			'min'           => 1,
-			'step'          => 1,
-			'max'           => 40,
-			'display_value' => 'text',
-			'customizer'    => array(
-				'transport' => 'postMessage',
-				'css_rules' => array(
-					'padding-top'    => array(
-						'selector' => '.nav--main > .menu-item > a',
-						'unit'     => 'px',
-						'media'    => 'screen and (min-width: 900px)'
-					),
-					'padding-bottom' => array(
-						'selector' => '.nav--main > .menu-item > a',
-						'unit'     => 'px',
-						'media'    => 'screen and (min-width: 900px)'
-					)
-				)
-			),
-			'compiler'      => true
-		),
 		// array(
 		//     'id'=>'sidebar_title',
 		//     'title'=> '<h4>'.__('Sidebar', wpgrade::textdomain()).'</h4>',
 		//  'type' => 'customizer_info',
 		//  'customizer' => array()
 		// ),
+		
+		array(
+			'id'         => 'customizer_reset_button_section',
+			'title'      => '<a class="btn" id="reset-style-defaults" href="#" data-ajax_nonce="'.  wp_create_nonce( "reset-style-section" ) .'">' . __( 'Reset to Defaults', wpgrade::textdomain() ) . '</a>',
+			'type'       => 'customizer_info',
+			'default'    => 'Test',
+			'customizer' => array()
+		),
 
 		array(
 			'id'         => 'options_title',
@@ -852,7 +878,7 @@ $sections[] = array(
 //);
 
 $sections[] = array(
-	'icon'   => 'note-1',
+	'icon'   => 'icon-note-1',
 	'title'  => __( 'Footer', wpgrade::textdomain() ),
 	'desc'   => '<p class="description">' . __( 'Footer options allow you to control both the visual and functional aspects of the page footer area.', wpgrade::textdomain() ) . '</p>',
 	'fields' => array(
@@ -872,7 +898,7 @@ $sections[] = array(
 // ------------------------------------------------------------------------
 
 $sections[] = array(
-	'icon'   => 'pencil-1',
+	'icon'   => 'icon-pencil-1',
 	'title'  => __( 'Blog - Archive', wpgrade::textdomain() ),
 	'desc'   => sprintf( '<p class="description">' . __( 'Archive options control the various aspects related to displaying posts in blog archives. You can control things like excerpt length and various layout aspects.', wpgrade::textdomain() ) . '</p>', wpgrade::themename() ),
 	'fields' => array(
@@ -921,7 +947,7 @@ $sections[] = array(
 );
 
 $sections[] = array(
-	'icon'   => 'pencil-1',
+	'icon'   => 'icon-pencil-1',
 	'title'  => __( 'Blog - Single', wpgrade::textdomain() ),
 	'desc'   => sprintf( '<p class="description">' . __( 'Post options control the various aspects related to the <b>single post page</b>.', wpgrade::textdomain() ) . '</p>', wpgrade::themename() ),
 	'fields' => array(
@@ -987,7 +1013,7 @@ $sections[] = array(
 // ------------------------------------------------------------------------
 
 $sections[] = array(
-	'icon'       => "thumbs-up-1",
+	'icon'       => "icon-thumbs-up-1",
 	'icon_class' => '',
 	'title'      => __( 'Social and SEO', wpgrade::textdomain() ),
 	'desc'       => '<p class="description">' . __( 'Social and SEO options allow you to display your social links and choose where to display them. Then you can set the social SEO related info added in the meta tags or used in various widgets.', wpgrade::textdomain() ) . '</p>',
@@ -1382,7 +1408,7 @@ $sections[] = array(
 // ------------------------------------------------------------------------
 
 $sections[] = array(
-	'icon'       => "database-1",
+	'icon'       => "icon-database-1",
 	'icon_class' => '',
 	'title'      => __( 'Custom Code', wpgrade::textdomain() ),
 	'desc'       => '<p class="description">' . __( 'You can change the site style and behaviour by adding custom scripts to all pages within your site using the custom code areas below.', wpgrade::textdomain() ) . '</p>',
@@ -1437,7 +1463,7 @@ $sections[] = array(
 // ------------------------------------------------------------------------
 
 $sections[] = array(
-	'icon'       => "truck",
+	'icon'       => "icon-truck",
 	'icon_class' => '',
 	'title'      => __( 'Utilities', wpgrade::textdomain() ),
 	'desc'       => '<p class="description">' . __( 'Utilities help you keep up-to-date with new versions of the theme. Also you can import the demo data from here.', wpgrade::textdomain() ) . '</p>',
@@ -1525,7 +1551,7 @@ $sections[] = array(
 // ------------------------------------------------------------------------
 
 $sections[] = array(
-	'icon'       => "cd-1",
+	'icon'       => "icon-cd-1",
 	'icon_class' => '',
 	'title'      => __( 'Help and Support', wpgrade::textdomain() ),
 	'desc'       => '<p class="description">' . __( 'If you had anything less than a great experience with this theme please contact us now. You can also find answers in our community site, or official articles and tutorials in our knowledge base.', wpgrade::textdomain() ) . '</p>

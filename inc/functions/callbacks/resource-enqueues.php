@@ -39,13 +39,13 @@ function wpgrade_callback_enqueue_google_fonts_rosa() {
 	//load the web fonts loader api - if that is the case
 	wpgrade_callback_load_google_fonts_api_rosa();
 
-	//put the webfonts config inline script in the head to avoid the f***ing FOUT
-	add_action( 'wp_head', 'wpgrade_callback_load_google_fonts_config_rosa', 9999 );
+	//put the webfonts config inline script in the head to avoid the FOUT
+	add_action( 'wp_head', 'wpgrade_callback_load_google_fonts_config_rosa' );
 }
 
 /**
  * Load google fonts config script block.
- * This callback is invoked by wpgrade_callback_enqueue_google_fonts
+ * This callback is invoked by wpgrade_callback_enqueue_google_fonts_rosa
  */
 function wpgrade_callback_load_google_fonts_config_rosa() {
 

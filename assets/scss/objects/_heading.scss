@@ -1,0 +1,87 @@
+/*------------------------------------*\
+    $ARTICLE HEADING + SUBHEADING
+\*------------------------------------*/
+
+.article__header {
+
+	.rsOverflow, .rsSlide {
+		overflow: visible;
+	}
+
+	.article__headline {
+		position: relative;
+		display: inline-block;
+		margin-bottom: 0;
+		text-align: center;
+	//	opacity: 0;
+
+		.headline__primary,
+		.headline__secondary,
+		.headline__description,
+		.star,
+		.line,
+		.arrow {
+			opacity: 0;
+		}
+
+		.headline__primary {
+			display: inline-block;
+		}
+
+		.pixcode--separator {
+			display: inline-block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.separator {
+			display: block;
+		}
+
+		.headline__primary, .headline__description {
+			color: white;
+		}
+	}
+}
+
+.headline__primary {
+	position: relative;
+	z-index:1; //over .headline__secondary
+
+	margin: 0;
+
+	letter-spacing: 0.174em;
+
+	// @include opacity(0.9);
+}
+
+.headline__secondary {
+	position: relative;
+
+	margin: 0;
+
+	font-family: $alt-font-family;
+	font-size: 100px;
+	font-weight: normal;
+	letter-spacing: 0;
+	text-transform: none;
+
+	color: $accent;
+
+	.first-letter {
+		position:relative;
+		top: 10px;
+		
+		font-size: 1.22em;
+	}
+}
+
+.headline__description {
+	font-size: 15px;
+	letter-spacing: 0.348em;
+	text-transform: uppercase;
+
+	h1, h2, h3, h4, h5, h6 {
+		margin-bottom: $_u2;
+	}
+}
