@@ -1229,11 +1229,10 @@ function iScrollInit() {
     }
 
     if (Modernizr.touch || !is_OSX) {
+        resizeCovers();
         $('body').addClass('iScroll');
         iScroll = new IScroll('#wrapper', options);
     }
-
-    resizeCovers();
 }
 
 function getScroll() {
