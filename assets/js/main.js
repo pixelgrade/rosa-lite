@@ -39,6 +39,9 @@ if (useTransform) {
 	}
 }
 
+var ww = window.innerWidth,
+    wh = window.innerHeight;
+
 /* --- To enable verbose debug add to Theme Options > Custom Code footer -> globalDebug=true; --- */
 var globalDebug = false,
 	timestamp;
@@ -524,25 +527,26 @@ function gmapInit() {
 
 /* --- Parallax Init --- */
 
-function parallaxInit() {
+var Parallax = {
+    selector:   '.article__parallax',
+    amount:     0.5,
 
-	if (globalDebug) {console.log("Parallax Init");}
+    initialize: function () {
+        this.prepare();
+        this.update();
+    },
 
-	var selector            = '.article__parallax',
-		parallaxAmount      = 0.5,
-        latestKnownScrollY  = window.scrollY,
-        ticking             = false;
+    prepare: function() {
 
-    // prepare images for parallax effect
-    function prepare() {
+        var that = this;
 
-        $(selector).each(function (i, element) {
+        $(this.selector).each(function (i, element) {
 
             var $container          = $(element),
                 containerHeight     = $container.outerHeight(),
-                parallaxDistance    = (wh - containerHeight) * parallaxAmount,
+                parallaxDistance    = (wh - containerHeight) * that.amount,
                 // calculate needed values to properly move the image on scroll
-                initialTop          = -1 * (parallaxDistance) / 2 - (containerHeight * parallaxAmount),
+                initialTop          = -1 * (parallaxDistance) / 2 - (containerHeight * that.amount),
                 finalTop            = -1 * initialTop,
                 start               = $container.offset().top - wh,
                 end                 = start + wh + containerHeight,
@@ -555,7 +559,7 @@ function parallaxInit() {
                         imgHeight   = $img.height(),
                         imgWidth    = $img.width(),
                         // find scale needed for the image to fit container and move desired amount
-                        scaleY      = (parallaxDistance + (containerHeight * parallaxAmount)) / imgHeight,
+                        scaleY      = (parallaxDistance + (containerHeight * that.amount)) / imgHeight,
                         scaleX      = ww / imgWidth,
                         scale       = Math.max(1, scaleX, scaleY);
 
@@ -588,172 +592,151 @@ function parallaxInit() {
 
         });
 
-    }
+    },
 
-	function update() {
-		ticking = false;
+    update: function() {
 
-		var scrollTop = latestKnownScrollY;
+        var scrollTop = getScroll().y;
 
-		$(selector).each(function (i, element) {
+        $(this.selector).each(function (i, element) {
 
-			var $container  = $(element),
-				options     = $container.data('tween'),
-				progress    = 0;
+            var $container  = $(element),
+                options     = $container.data('tween'),
+                progress    = 0;
 
-			// some sanity check
-			// we wouldn't want to divide by 0 - the Universe might come to an end
-			if (! empty(options) && (options.end - options.start) !== 0) {
-				progress = (1 / (options.end - options.start)) * (scrollTop - options.start);
+            // some sanity check
+            // we wouldn't want to divide by 0 - the Universe might come to an end
+            if (! empty(options) && (options.end - options.start) !== 0) {
+                progress = (1 / (options.end - options.start)) * (scrollTop - options.start);
 
-				if (0 > progress) {
-					// $img.css({'visibility': 'hidden'});
-					return;
-				}
-
-				if (1 > progress) {
-					options.timeline.progress(progress);
-					// $img.css({'visibility': 'visible'});
-					return;
-				}
-			}
-
-			// $img.css({'visibility': 'hidden'});
-		});
-	}
-
-	$(window).scroll(function () {
-		latestKnownScrollY = window.scrollY;
-		requestTick();
-	});
-
-	function requestTick() {
-		if (!ticking) {
-			requestAnimationFrame(update);
-		}
-		ticking = true;
-	}
-
-    function initialize() {
-        prepare(true);
-        update();
-    }
-
-    $(window).on('resize orientationchange', initialize);
-    initialize();
-}
-
-function coverAnimationsInit() {
-
-    var selector            = '.article__header',
-        latestKnownScrollY  = window.scrollY,
-        ticking             = false,
-        wh                  = $(window).height();
-
-    $('.article__header').each(function(i, header) {
-        var $header         = $(header),
-            $headline       = $header.find('.article__headline'),
-            timeline        = new TimelineMax(),
-            $title          = $headline.find('.headline__primary'),
-            $subtitle       = $headline.find('.headline__secondary'),
-            $description    = $headline.find('.headline__description'),
-            $star           = $headline.find('.star'),
-            $lines          = $headline.find('.line'),
-            $arrows         = $description.find('.arrow'),
-            headerTop       = $header.offset().top,
-            headerHeight    = $header.outerHeight();
-
-        $header.find('.pixcode--separator').width($title.width());
-
-        $description.css({opacity: 1});
-        $description = $description.children().not('.pixcode--separator');
-        $description.css({opacity: 0});
-
-        // ------ A
-
-        timeline.fromTo($title, 0.72, {'letter-spacing': 50}, {'letter-spacing': 13, ease: Expo.easeOut});
-        timeline.fromTo($title, 0.89, {opacity: 0}, {opacity: 1, ease: Expo.easeOut}, '-=0.72');
-        timeline.fromTo($title, 1, {'y': 30}, {'y': 0, ease: Expo.easeOut}, '-=0.89');
-        timeline.fromTo($subtitle, 0.65, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.65');
-        timeline.fromTo($subtitle, 0.9, {y: 30}, {y: 0, ease: Quint.easeOut}, '-=0.65');
-        timeline.fromTo($star, 0.15, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.6');
-        timeline.fromTo($star, 0.55, {rotation: -270}, {rotation: 0, ease: Back.easeOut}, '-=0.5');
-        timeline.fromTo($lines, 0.6, {width: 0}, {width: '45%', opacity: 1, ease: Quint.easeOut}, '-=0.55');
-        timeline.fromTo($arrows, 0.2, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.27');
-        timeline.fromTo($description, 0.5, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.28');
-        timeline.fromTo($description, 0.75, {y: -20}, {y: 0}, '-=0.5');
-
-        // ------ B
-        timeline.addLabel("animatedIn");
-
-        timeline.to($title, 1.08, {opacity: 0, y: -60, ease: Quad.easeIn});
-        timeline.to($description, 1.08, {y: 60, opacity: 0, ease: Quad.easeIn}, '-=1.08');
-        timeline.to($subtitle, 1.08, {opacity: 0, y: -90, ease: Quad.easeIn}, '-=1.08');
-        timeline.to($lines, 0.86, {width: 0, opacity: 0, ease: Quad.easeIn}, '-=0.94');
-        timeline.to($star, 1, {rotation: 180}, '-=1.08');
-        timeline.to($star, 0.11, {opacity: 0}, '-=0.03');
-        timeline.to($arrows, 0.14, {opacity: 0}, '-=1.08');
-
-        timeline.addLabel("animatedOut");
-
-        // ------ C
-
-        var animatedInTime      = timeline.getLabelTime("animatedIn"),
-            animatedOutTime     = timeline.getLabelTime("animatedOut"),
-            ab                  = animatedInTime / animatedOutTime,
-            bc                  = 1 - ab,
-            start               = headerTop + headerHeight / 2 - wh / 2,
-            end                 = start + wh / 3;
-
-        if (i == 0) {
-            start = headerTop;
-            end = start + wh / 3;
-        }
-
-        timeline.tweenTo("animatedIn", {
-
-            onComplete: function () {
-
-                latestKnownScrollY = window.scrollY;
-
-                var progress        = (1 / (end - start)) * (latestKnownScrollY - start),
-                    partialProgress = ab + bc * progress,
-                    timePassed      = partialProgress * timeline.getLabelTime("animatedOut");
-
-                if (ab > partialProgress) {
-                    requestTick();
+                if (0 > progress) {
                     return;
                 }
 
-                timeline.addLabel("finishedAt", timePassed);
-                timeline.tweenTo("finishedAt", {
-                   onComplete: function () {
-
-                       $(window).scroll(function () {
-                           latestKnownScrollY = window.scrollY;
-                           requestTick();
-                       });
-
-                   }
-                });
+                if (1 > progress) {
+                    options.timeline.progress(progress);
+                }
             }
         });
+    }
+};
 
-        $headline.data('tween', {
-            timeline:       timeline,
-            ab:             ab,
-            bc:             bc,
-            start:          start,
-            end:            end
+/* --- Cover Animations Init --- */
+
+var CoverAnimation = {
+    selector:       '.article__header',
+    initialized:    false,
+    animated:       false,
+
+    initialize: function () {
+
+        var that = this;
+
+        if (this.initialized) {
+            return;
+        }
+
+        $(this.selector).each(function(i, header) {
+
+            var $header         = $(header),
+                $headline       = $header.find('.article__headline'),
+                timeline        = new TimelineMax(),
+                $title          = $headline.find('.headline__primary'),
+                $subtitle       = $headline.find('.headline__secondary'),
+                $description    = $headline.find('.headline__description'),
+                $star           = $headline.find('.star'),
+                $lines          = $headline.find('.line'),
+                $arrows         = $description.find('.arrow'),
+                headerTop       = $header.offset().top,
+                headerHeight    = $header.outerHeight();
+
+            $header.find('.pixcode--separator').width($title.width());
+
+            $description.css({opacity: 1});
+            $description = $description.children().not('.pixcode--separator');
+            $description.css({opacity: 0});
+
+            // ------ A
+
+            timeline.fromTo($title, 0.72, {'letter-spacing': 50}, {'letter-spacing': 13, ease: Expo.easeOut});
+            timeline.fromTo($title, 0.89, {opacity: 0}, {opacity: 1, ease: Expo.easeOut}, '-=0.72');
+            timeline.fromTo($title, 1, {'y': 30}, {'y': 0, ease: Expo.easeOut}, '-=0.89');
+            timeline.fromTo($subtitle, 0.65, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.65');
+            timeline.fromTo($subtitle, 0.9, {y: 30}, {y: 0, ease: Quint.easeOut}, '-=0.65');
+            timeline.fromTo($star, 0.15, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.6');
+            timeline.fromTo($star, 0.55, {rotation: -270}, {rotation: 0, ease: Back.easeOut}, '-=0.5');
+            timeline.fromTo($lines, 0.6, {width: 0}, {width: '45%', opacity: 1, ease: Quint.easeOut}, '-=0.55');
+            timeline.fromTo($arrows, 0.2, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.27');
+            timeline.fromTo($description, 0.5, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.28');
+            timeline.fromTo($description, 0.75, {y: -20}, {y: 0}, '-=0.5');
+
+            // ------ B
+            timeline.addLabel("animatedIn");
+
+            timeline.to($title, 1.08, {opacity: 0, y: -60, ease: Quad.easeIn});
+            timeline.to($description, 1.08, {y: 60, opacity: 0, ease: Quad.easeIn}, '-=1.08');
+            timeline.to($subtitle, 1.08, {opacity: 0, y: -90, ease: Quad.easeIn}, '-=1.08');
+            timeline.to($lines, 0.86, {width: 0, opacity: 0, ease: Quad.easeIn}, '-=0.94');
+            timeline.to($star, 1, {rotation: 180}, '-=1.08');
+            timeline.to($star, 0.11, {opacity: 0}, '-=0.03');
+            timeline.to($arrows, 0.14, {opacity: 0}, '-=1.08');
+
+            timeline.addLabel("animatedOut");
+
+            // ------ C
+
+            var animatedInTime      = timeline.getLabelTime("animatedIn"),
+                animatedOutTime     = timeline.getLabelTime("animatedOut"),
+                ab                  = animatedInTime / animatedOutTime,
+                bc                  = 1 - ab,
+                start               = headerTop + headerHeight / 2 - wh / 2,
+                end                 = start + wh / 3;
+
+            if (i == 0) {
+                start = headerTop;
+                end = start + wh / 3;
+            }
+
+            timeline.tweenTo("animatedIn", {
+
+                onComplete: function () {
+
+                    var progress        = (1 / (end - start)) * (getScroll().y - start),
+                        partialProgress = ab + bc * progress,
+                        timePassed      = partialProgress * timeline.getLabelTime("animatedOut");
+
+                    if (ab >= partialProgress) {
+                        that.animated = true;
+                        return;
+                    }
+
+                    timeline.addLabel("finishedAt", timePassed);
+                    timeline.tweenTo("finishedAt", {
+                        onComplete: function () {
+                            that.animated = true;
+                        }
+                    });
+                }
+            });
+
+            $headline.data('tween', {
+                timeline:       timeline,
+                ab:             ab,
+                bc:             bc,
+                start:          start,
+                end:            end
+            });
+
         });
+    },
 
-    });
+    update: function () {
 
+        if (!this.animated) {
+            return;
+        }
 
-    function update () {
-        ticking = false;
-
-        $(selector).each(function (i, element) {
+        $(this.selector).each(function (i, element) {
 
             var $headline   = $(element).find('.article__headline'),
                 options     = $headline.data('tween'),
@@ -764,7 +747,7 @@ function coverAnimationsInit() {
             if (! empty(options) && (options.end - options.start) !== 0) {
 
                 // progress on the total timeline (ac)
-                progress = (1 / (options.end - options.start)) * (latestKnownScrollY - options.start);
+                progress = (1 / (options.end - options.start)) * (getScroll().y - options.start);
 
                 // progress on partial timeline (bc)
                 // point B being labeled as "animated"
@@ -780,20 +763,6 @@ function coverAnimationsInit() {
             }
         });
     }
-
-    function requestTick() {
-        if (!ticking) {
-            requestAnimationFrame(update);
-        }
-        ticking = true;
-    }
-
-//    function initialize() {
-//        update();
-//    }
-//
-//    $(window).on('resize orientationchange', initialize);
-//    initialize();
 }
 function navigatorInit() {
 
@@ -1076,7 +1045,6 @@ function init(){
 	    }
 	}
 
-	$('html').addClass('loaded');
 //	stickyHeader();
 
 	/* ONE TIME EVENT HANDLERS */
@@ -1208,8 +1176,10 @@ $(window).load(function(){
         stickyHeaderInit();
     }
 
-    parallaxInit();
-    coverAnimationsInit();
+    iScrollInit();
+    Parallax.initialize();
+    CoverAnimation.initialize();
+
     navigatorInit();
 
 
@@ -1234,11 +1204,64 @@ $(window).on("debouncedresize", function(e){
 
 	if (globalDebug) {console.group("OnResize");}
 
-	niceScrollInit();
-	resizeVideos();
+    ww = window.innerWidth;
+    wh = window.innerHeight;
+
+    niceScrollInit();
+    resizeVideos();
+
+    if (iScroll) {
+        resizeCovers();
+    }
 
 });
 
+var iScroll;
+
+function iScrollInit() {
+
+    var options = {
+        mouseWheel: true,
+        useTransition: false,
+        deceleration: 0.0013,
+        bounce: false,
+        click: true
+    }
+
+    if (Modernizr.touch || !is_OSX) {
+        $('body').addClass('iScroll');
+        iScroll = new IScroll('#wrapper', options);
+    }
+
+    resizeCovers();
+}
+
+function getScroll() {
+
+    var x, y;
+
+    if (iScroll) {
+        x = iScroll.x * -1;
+        y = iScroll.y * -1;
+    } else {
+        x = window.scrollX;
+        y = window.scrollY;
+    }
+
+    return {x: x, y: y};
+}
+
+function resizeCovers() {
+    $('.full-height').height(wh);
+    $('.half-height').height(wh / 2);
+    $('.two-thirds-height').height(wh * 2 / 3);
+}
+
+(function animationLoop() {
+    window.requestAnimationFrame(animationLoop);
+    Parallax.update();
+    CoverAnimation.update();
+})();
 /* --- 404 Page --- */
 var gifImages = [
 	"http://i.imgur.com/c9X6n.gif",

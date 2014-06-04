@@ -267,7 +267,7 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'background-color' => array(
-						'selector' => ".page .article__content, .up-link, .container--archive, .container--single"
+						'selector' => ".page .article__content, .up-link, html"
 					),
 				)
 			)

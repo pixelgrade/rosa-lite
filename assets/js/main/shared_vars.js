@@ -39,6 +39,9 @@ if (useTransform) {
 	}
 }
 
+var ww = window.innerWidth,
+    wh = window.innerHeight;
+
 /* --- To enable verbose debug add to Theme Options > Custom Code footer -> globalDebug=true; --- */
 var globalDebug = false,
 	timestamp;
