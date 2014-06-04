@@ -36,6 +36,8 @@
 
 		.separator {
 			display: block;
+			margin-top:3px;
+			margin-bottom:3px;
 		}
 
 		.headline__primary, .headline__description {
@@ -77,9 +79,9 @@
 }
 
 .headline__description {
-	font-size: 15px;
-	letter-spacing: 0.348em;
-	text-transform: uppercase;
+	// font-size: 15px;
+	// letter-spacing: 0.348em;
+	// text-transform: uppercase;
 
 	h1, h2, h3, h4, h5, h6 {
 		margin-bottom: $_u2;
