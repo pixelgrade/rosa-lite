@@ -25,6 +25,10 @@ function wpgrade_register_sidebars() {
 		'after_widget'  => '</div>',
 	) );
 
+	//allow the Text Widgets to handle shortcodes
+	add_filter( 'widget_text', 'shortcode_unautop');
+	add_filter('widget_text', 'do_shortcode');
+
 }
 
 add_action( 'widgets_init', 'wpgrade_register_sidebars' );
