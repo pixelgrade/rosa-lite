@@ -932,6 +932,7 @@ $heading-font: 'Open Sans', sans-serif;
 			position: relative;
 			left: -45px;
 			padding-left: 45px;
+			margin-bottom: 6px !important;
 
 			input[type="checkbox"] {
 				width: 30px !important;
@@ -954,7 +955,7 @@ $heading-font: 'Open Sans', sans-serif;
 
 		.drag {
 			position: absolute;
-			top: -2px;
+			top: 4px;
 			left: 12px;
 			margin: 0 !important;
 			opacity: 0;
