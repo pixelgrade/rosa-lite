@@ -130,7 +130,7 @@ $sections[] = array(
 										.article__content a:not([class]), .article__content a:hover:not([class]):hover"
 					),
 					'background-color' => array(
-						'selector' => ".btn--primary, .btn, .comments_add-comment, .form-submit #comment-submit, .btn:hover",
+						'selector' => ".btn--primary, .btn, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover",
 					),
 					'border-color'     => array(
 						'selector' => ".tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button,
@@ -276,7 +276,7 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'background-color' => array(
-						'selector' => ".page .article__content, .up-link"
+						'selector' => ".page .article__content, .up-link, .container--archive, .container--single"
 					),
 				)
 			)
