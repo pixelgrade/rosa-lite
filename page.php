@@ -9,7 +9,7 @@
 
 get_header();
 
-global $wpgrade_private_post;
+global $post, $wpgrade_private_post;
 
 if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 	// password protection
@@ -24,6 +24,7 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 		get_template_part( 'templates/page/header' ); ?>
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class( "article--page  article--main" ); ?>>
+			<?php if (!empty( $post->post_content ) ) : ?>
 			<section class="article__content">
 				<div class="container">
 					<section class="page__content  js-post-gallery  cf">
@@ -47,6 +48,7 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 					<?php endif; ?>
 				</div>
 			</section>
+			<?php endif; ?>
 		</article>
 		<?php get_template_part( 'templates/subpages' );
 
