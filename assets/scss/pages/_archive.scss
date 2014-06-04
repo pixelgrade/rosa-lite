@@ -6,8 +6,11 @@
 }
 
 .archive__title {
-	margin: 0;
-	margin-bottom: 36px;
+	@include media-query(lap-and-up){
+		margin-top: 42px;
+		margin-bottom: 36px;
+	}
+
 	display: inline-block;
 
 	@include media-query(palm){
@@ -195,7 +198,7 @@
 
 	@include media-query(lap-and-up){
 		position: absolute;
-		top: 0;
+		top: 42px;
 		right: 0;
 	}
 }
