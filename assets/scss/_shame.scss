@@ -26,3 +26,9 @@ html, body {
 .pixslider--gallery-slideshow{
 	margin-bottom: $_u;
 }
+
+.pixcode--grid img{
+	margin: 0;
+	display: inline-block;
+	vertical-align: top;
+}

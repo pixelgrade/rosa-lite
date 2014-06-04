@@ -100,3 +100,26 @@ function wpgrade_callback_remove_columns_params( $params ) {
 
 	return $params;
 }
+
+
+add_filter( 'pixcodes_filter_params_for_icon', 'wpgrade_callback_change_icon_params', 10, 1 );
+
+function wpgrade_callback_change_icon_params( $params ) {
+
+    //add new params in the right order
+    $params = util::array_insert_after('size', $params, 'link', array(
+        'type' => 'text',
+        'name' => 'Link',
+        'options' => array(),
+        'admin_class' => 'span6'
+    ));
+
+    $params = util::array_insert_after('link', $params, 'link_target_blank', array(
+        'type' => 'switch',
+        'name' => 'Open in new window',
+        'options' => array(),
+        'admin_class' => 'span3 push3'
+    ));
+
+    return $params;
+}
