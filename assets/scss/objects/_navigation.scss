@@ -38,6 +38,17 @@
 			color: white;
 		}
 	}
+
+	.current-menu-item a:after {
+		content: "";
+		display: block;
+
+		border-bottom: 2px solid $dark;
+
+		.header--transparent & {
+			border-color: white;
+		}
+	}
 }
 
 .nav__item--relative {
