@@ -2,7 +2,7 @@
 /* @var array $families */
 ?>
 <script type="text/javascript">
-	var customFontsConfig = {
+	WebFont.load( {
 		google: {families: <?php echo json_encode($families); ?>}
-	};
+	});
 </script>
