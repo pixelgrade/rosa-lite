@@ -23,9 +23,22 @@
 		}
 	}
 
-	.header--transparent &{
+	.header--transparent & {
 		background-color: transparent;
 		@include transition(background-color .2s linear);
+
+		@include media-query(palm) {
+			background-color: white;
+			color: black;
+
+			.site-logo-img--dark{
+				display: block;
+			}
+
+			.site-logo-img--light{
+				display: none;
+			}
+		}
 	}
 
 	&.headroom--not-top{
@@ -58,7 +71,10 @@
 	img {
 		display: block;
 		max-height: 100%;
-		margin: 0 auto;
+
+		@include media-query(palm) {
+			margin: 0 auto;
+		}
 	}
 
 	.site-logo-img--light{

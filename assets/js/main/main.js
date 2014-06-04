@@ -49,6 +49,7 @@ function scrollToTopInit() {
 
             if (iScroll) {
                 iScroll.scrollTo(0, 0, scrollDuration, 'quadratic');
+                return;
             }
 
             $('html, body').animate({
@@ -198,7 +199,7 @@ function loadUp(){
 
 	royalSliderInit();
 
-	containerPlacement();
+//	containerPlacement();
 
 	magnificPopupInit();
 
@@ -359,11 +360,14 @@ function iScrollInit() {
         click: true
     }
 
-//    if (Modernizr.touch || !is_OSX) {
+    if (Modernizr.touch || !is_OSX) {
         resizeCovers();
         $('body').addClass('iScroll');
-        iScroll = new IScroll('#wrapper', options);
-//    }
+
+        setTimeout(function () {
+            iScroll = new IScroll('#wrapper', options);
+        }, 0);
+    }
 }
 
 function getScroll() {

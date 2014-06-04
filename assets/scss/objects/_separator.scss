@@ -39,25 +39,24 @@
 	letter-spacing: normal;
 	line-height: 1;
 	text-align: center;
-
-	color: $accent;
 }
 
 .separator--line-flower {
 	position: relative;
 	margin: 36px 0;
+	color: $accent;
 
 	.line {
 		content: "";
 		position: absolute;
 		top: 50%;
-		width: 45%;
+		width: 42%;
 		border: 1px solid white;
 		@include transform(translateY(-50%));
 	}
 
 	&.separator_color--dark .line {
-		border-color: $dark;
+		border-color: $light;
 	}
 
 	.line--left {
@@ -96,11 +95,11 @@
 	&.separator_color--dark {
 
 		.arrow--left {
-			border-left: 7px solid $dark;
+			border-left: 7px solid $light;
 		}
 
 		.arrow--right {
-			border-right: 7px solid $dark;
+			border-right: 7px solid $light;
 		}
 	}
 }
@@ -108,16 +107,8 @@
 .separator--flower {
 	margin: $_u 0;
 
-	font-size: 20px;
+	font-size: 17px;
 	font-family: Serif;
 
-	color: $light;
-
-	&.separator_color--dark {
-		color: $dark;
-	}
-
-	&.separator_color--color {
-		color: $accent;
-	}
+	color: #9a9998;
 }
