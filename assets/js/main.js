@@ -1037,12 +1037,14 @@ function init(){
 
 	var is_retina = (window.retina || window.devicePixelRatio > 1);
 	if (is_retina && $('.site-logo--image-2x').length) {
-	    var image = $('.site-logo--image-2x').find('img');
 
-	    if (image.data('logo2x') !== undefined) {
-	        image.attr('src', image.data('logo2x'));
-	        $('.site-logo--image-2x').addClass('using-retina-logo');
-	    }
+	    $('.site-logo--image-2x').children('img').each(function(){
+
+            if (typeof $(this).data('logo2x') !== "undefined") {
+                $(this).attr('src', $(this).data('logo2x'));
+                $('.site-logo--image-2x').addClass('using-retina-logo');
+            }
+        });
 	}
 
 //	stickyHeader();
