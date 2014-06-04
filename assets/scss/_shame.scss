@@ -36,7 +36,7 @@ html, body {
 .pixcode--grid.thick-gutter{
 	margin-left: -78px;
 
-	.grid__item{
+	> .grid__item{
 		padding-left: 78px;
 	}
 }
