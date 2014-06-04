@@ -36,10 +36,11 @@ function wpgrade_callback_thread_comments_scripts() {
  * Invoked in wpgrade-config.php
  */
 function wpgrade_callback_enqueue_google_fonts_rosa() {
-	//put the webfonts config inline script in the footer
-	add_action( 'wp_footer', 'wpgrade_callback_load_google_fonts_api_rosa');
-	//put the webfonts config inline script in the footer
-	add_action( 'wp_footer', 'wpgrade_callback_load_google_fonts_config_rosa', 9999 );
+	//load the web fonts loader api - if that is the case
+	wpgrade_callback_load_google_fonts_api_rosa();
+
+	//put the webfonts config inline script in the head to avoid the f***ing FOUT
+	add_action( 'wp_head', 'wpgrade_callback_load_google_fonts_config_rosa', 9999 );
 }
 
 /**
