@@ -100,7 +100,7 @@ function wpgrade_callback_load_google_fonts_fire_rosa() {
 	$families = apply_filters( 'wpgrade_google_fonts', $families );
 
 	if ( ! empty( $families ) || is_preview() ) {
-		echo '<script type="text/javascript">WebFont.load(customFontsConfig);</script>' . PHP_EOL;
+		//echo '<script type="text/javascript">WebFont.load(customFontsConfig);</script>' . PHP_EOL;
 	}
 }
 
