@@ -87,7 +87,6 @@
   position: relative; }
 
 .redux-container #redux-intro-text {
-  height: 144px;
   width: 250px;
   background: transparent;
   border: none;
@@ -99,7 +98,7 @@
   padding-top: 0;
   position: absolute;
   left: 0;
-  top: 0;
+  top: 24px;
   z-index: 10; }
   .redux-container #redux-intro-text p {
     font-family: "PT Sans", sans-serif;
@@ -705,7 +704,8 @@
   .redux-main .text_sortable li {
     position: relative;
     left: -45px;
-    padding-left: 45px; }
+    padding-left: 45px;
+    margin-bottom: 6px !important; }
     .redux-main .text_sortable li input[type="checkbox"] {
       width: 30px !important;
       margin: 4px 30px !important;
@@ -718,7 +718,7 @@
       opacity: 1; }
   .redux-main .text_sortable .drag {
     position: absolute;
-    top: -2px;
+    top: 4px;
     left: 12px;
     margin: 0 !important;
     opacity: 0;

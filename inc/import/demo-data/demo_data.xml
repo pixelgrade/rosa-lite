@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-<!-- generator="WordPress/3.9.1" created="2014-06-02 11:37" -->
+<!-- generator="WordPress/3.9.1" created="2014-06-04 11:57" -->
 <rss version="2.0"
      xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
      xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -29,7 +29,7 @@
         <title>Rosa</title>
         <link>http://pixelgrade.com/demos/rosa</link>
         <description>Just another WordPress site</description>
-        <pubDate>Mon, 02 Jun 2014 11:37:31 +0000</pubDate>
+        <pubDate>Wed, 04 Jun 2014 11:57:35 +0000</pubDate>
         <language>en-US</language>
         <wp:wxr_version>1.2</wp:wxr_version>
         <wp:base_site_url>http://pixelgrade.com/demos/rosa</wp:base_site_url>
@@ -81,6 +81,14 @@
             <wp:postmeta>
                 <wp:meta_key>_wp_attachment_metadata</wp:meta_key>
                 <wp:meta_value><![CDATA[a:5:{s:5:"width";i:1440;s:6:"height";i:1029;s:4:"file";s:29:"2014/05/holiday2013_front.jpg";s:5:"sizes";a:8:{s:9:"thumbnail";a:4:{s:4:"file";s:29:"holiday2013_front-276x192.jpg";s:5:"width";i:276;s:6:"height";i:192;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:29:"holiday2013_front-300x214.jpg";s:5:"width";i:300;s:6:"height";i:214;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:30:"holiday2013_front-1024x731.jpg";s:5:"width";i:1024;s:6:"height";i:731;s:9:"mime-type";s:10:"image/jpeg";}s:11:"medium-size";a:4:{s:4:"file";s:30:"holiday2013_front-1024x731.jpg";s:5:"width";i:1024;s:6:"height";i:731;s:9:"mime-type";s:10:"image/jpeg";}s:10:"small-size";a:4:{s:4:"file";s:29:"holiday2013_front-400x285.jpg";s:5:"width";i:400;s:6:"height";i:285;s:9:"mime-type";s:10:"image/jpeg";}s:17:"post-square-small";a:4:{s:4:"file";s:29:"holiday2013_front-177x177.jpg";s:5:"width";i:177;s:6:"height";i:177;s:9:"mime-type";s:10:"image/jpeg";}s:18:"post-square-medium";a:4:{s:4:"file";s:29:"holiday2013_front-380x380.jpg";s:5:"width";i:380;s:6:"height";i:380;s:9:"mime-type";s:10:"image/jpeg";}s:11:"post-medium";a:4:{s:4:"file";s:29:"holiday2013_front-265x328.jpg";s:5:"width";i:265;s:6:"height";i:328;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_video_url</wp:meta_key>
+                <wp:meta_value><![CDATA[]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_video_autoplay</wp:meta_key>
+                <wp:meta_value><![CDATA[off]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
@@ -713,7 +721,7 @@ As a new WordPress user, you should go to <a href="http://pixelgrade.com/demos/r
             <dc:creator><![CDATA[admin]]></dc:creator>
             <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?page_id=5</guid>
             <description></description>
-            <content:encoded><![CDATA[[row cols_nr="2"]
+            <content:encoded><![CDATA[[row cols_nr="2" thick_gutter="on"]
 [col size="6"]
 [heading subtitle="Discover" title="Our Story"]
 
@@ -773,7 +781,16 @@ As a new WordPress user, you should go to <a href="http://pixelgrade.com/demos/r
             <wp:postmeta>
                 <wp:meta_key>_rosa_page_cover_description</wp:meta_key>
                 <wp:meta_value><![CDATA[[hr color="light" style="line-flower"]
+
 READY TO BE OPENED]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_header_transparent_menu_bar</wp:meta_key>
+                <wp:meta_value><![CDATA[on]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_header_transparent_menu_bar_contact</wp:meta_key>
+                <wp:meta_value><![CDATA[of]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
@@ -783,7 +800,7 @@ READY TO BE OPENED]]></wp:meta_value>
             <dc:creator><![CDATA[admin]]></dc:creator>
             <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?page_id=15</guid>
             <description></description>
-            <content:encoded><![CDATA[[row cols_nr="2"]
+            <content:encoded><![CDATA[[row cols_nr="2" thick_gutter="on"]
 
 [col size="6"]
 
@@ -840,6 +857,14 @@ READY TO BE OPENED]]></wp:meta_value>
                 <wp:meta_key>_thumbnail_id</wp:meta_key>
                 <wp:meta_value><![CDATA[20]]></wp:meta_value>
             </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_header_transparent_menu_bar</wp:meta_key>
+                <wp:meta_value><![CDATA[of]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_header_transparent_menu_bar_contact</wp:meta_key>
+                <wp:meta_value><![CDATA[of]]></wp:meta_value>
+            </wp:postmeta>
         </item>
         <item>
             <title>Make a Reservation</title>
@@ -848,7 +873,7 @@ READY TO BE OPENED]]></wp:meta_value>
             <dc:creator><![CDATA[admin]]></dc:creator>
             <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?page_id=32</guid>
             <description></description>
-            <content:encoded><![CDATA[[row cols_nr="2"]
+            <content:encoded><![CDATA[[row cols_nr="2" thick_gutter="on"]
 
 [col size="6"]
 <p style="text-align: center;">[heading subtitle="Culinary" title="Delight"]</p>
@@ -911,6 +936,14 @@ READY TO BE OPENED]]></wp:meta_value>
                 <wp:meta_key>_rosa_gmap_custom_style</wp:meta_key>
                 <wp:meta_value><![CDATA[of]]></wp:meta_value>
             </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_header_transparent_menu_bar</wp:meta_key>
+                <wp:meta_value><![CDATA[of]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_header_transparent_menu_bar_contact</wp:meta_key>
+                <wp:meta_value><![CDATA[of]]></wp:meta_value>
+            </wp:postmeta>
         </item>
         <item>
             <title>Reservation</title>
@@ -963,7 +996,7 @@ Whatever your event or celebration, we are here to make your special day a truly
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_rosa_page_header_height</wp:meta_key>
-                <wp:meta_value><![CDATA[half-height]]></wp:meta_value>
+                <wp:meta_value><![CDATA[two-thirds-height]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_rosa_gmap_custom_style</wp:meta_key>
@@ -983,6 +1016,18 @@ Whatever your event or celebration, we are here to make your special day a truly
 
 Booking a table online is easy and takes just a couple of minutes.]]></wp:meta_value>
             </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_header_transparent_menu_bar</wp:meta_key>
+                <wp:meta_value><![CDATA[on]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_header_transparent_menu_bar_contact</wp:meta_key>
+                <wp:meta_value><![CDATA[of]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_thumbnail_id</wp:meta_key>
+                <wp:meta_value><![CDATA[117]]></wp:meta_value>
+            </wp:postmeta>
         </item>
         <item>
             <title>Rooms</title>
@@ -991,7 +1036,7 @@ Booking a table online is easy and takes just a couple of minutes.]]></wp:meta_v
             <dc:creator><![CDATA[admin]]></dc:creator>
             <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?page_id=46</guid>
             <description></description>
-            <content:encoded><![CDATA[[row cols_nr="2"]
+            <content:encoded><![CDATA[[row cols_nr="2" thick_gutter="on"]
 
 [col size="6"]
 
@@ -1072,7 +1117,7 @@ Call our reservations team on (027) 8338 145 for more information.</p>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_rosa_page_header_height</wp:meta_key>
-                <wp:meta_value><![CDATA[half-height]]></wp:meta_value>
+                <wp:meta_value><![CDATA[two-thirds-height]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_rosa_gmap_custom_style</wp:meta_key>
@@ -1080,7 +1125,23 @@ Call our reservations team on (027) 8338 145 for more information.</p>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_rosa_main_gallery</wp:meta_key>
-                <wp:meta_value><![CDATA[9,20,33]]></wp:meta_value>
+                <wp:meta_value><![CDATA[182,20,33]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_header_transparent_menu_bar</wp:meta_key>
+                <wp:meta_value><![CDATA[of]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_post_slider_image_scale_mode</wp:meta_key>
+                <wp:meta_value><![CDATA[fill]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_header_transparent_menu_bar_contact</wp:meta_key>
+                <wp:meta_value><![CDATA[of]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_page_cover_title</wp:meta_key>
+                <wp:meta_value><![CDATA[ ]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
@@ -1347,279 +1408,6 @@ designed for sharing. Using incredible British produce, whole animals and fish a
             </wp:postmeta>
         </item>
         <item>
-            <title>Tabbed Menu</title>
-            <link>http://pixelgrade.com/demos/rosa/menu/tabbed-menu/</link>
-            <pubDate>Fri, 30 May 2014 13:03:00 +0000</pubDate>
-            <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?page_id=91</guid>
-            <description></description>
-            <content:encoded><![CDATA[[tabs]
-
-[tab title="Dinner"]
-
-<br class="Apple-interchange-newline" />[row cols_nr="2"]
-
-[col size="6"]
-
-[restaurantmenu]
-
-##Cornish-mackerel
-**Cornish mackerel, marinated tomatoes, fragrant curry, tamarillo
-==$10.45
-
-##Quail
-**Smoked quail, crispy egg, spelt, girolles, parsley
-==$9.95
-
-##Curry-Tamarillor
-**Cornish mackerel, marinated tomatoes, fragrant curry, tamarillo
-== $7.95
-
-##Crispy
-**Smoked quail, crispy egg, spelt, girolles, parsley
-==$12.95
-
-##Roasted Steak Roulade
-**Mint p<span style="color: #515252;">arsley with apple cider vinegar, salt, sugar &amp; spices</span>
-==$14.95
-
-##Seasonal Soup
-**Daily preparation
-==$5.95
-
-[/restaurantmenu]
-
-[/col]
-
-[col size="6"]
-
-[restaurantmenu]
-
-##Campo Lindo Chicken
-**Fava beans, artchokes, farro &amp; black current gastrique
-==$24.95
-
-##Maple Farm Breast
-**Creamy polenta, english peas, carrots &amp; port sauce
-==$29.95
-
-##Sea-Trout
-**Roast Trout, English asparagus, Jersey Royals, watercress
-==$26.95
-
-##Filet De Saumon
-**Baked salmon fillet, hollandaise sauce, rosemary salt potatoes
-==$13.95
-
-##Confit de Canard
-**Duck confit, white bean &amp; ham cassoulet, wilted spinach
-==$12.15
-
-##Poulet Cordon Bleu
-**Paupiette of chicken, blue cheese &amp; ham, rosemary salt  and beans
-==$13.95
-
-[/restaurantmenu]
-
-[/col]
-
-[/row]
-
-[/tab]
-
-[tab title="Lunch"]
-
-[row cols_nr="2"]
-
-[col size="6"]
-
-[restaurantmenu]
-
-##Campo Lindo Chicken
-**Fava beans, artchokes, farro &amp; black current gastrique
-==$24.95
-
-##Maple Farm Breast
-**Creamy polenta, english peas, carrots &amp; port sauce
-==$29.95
-
-##Sea-Trout
-**Roast Trout, English asparagus, Jersey Royals, watercress
-==$26.95
-
-##Crispy
-**Smoked quail, crispy egg, spelt, girolles, parsley
-==$12.95
-
-##Roasted Steak Roulade
-**Mint p<span style="color: #515252;">arsley with apple cider vinegar, salt, sugar &amp; spices</span>
-==$14.95
-
-##Seasonal Soup
-**Daily preparation
-==$5.95
-
-[/restaurantmenu]
-
-[/col]
-
-[col size="6"]
-
-[restaurantmenu]
-
-##Crispy
-**Smoked quail, crispy egg, spelt, girolles, parsley
-==$12.95
-
-##Roasted Steak Roulade
-**Mint p<span style="color: #515252;">arsley with apple cider vinegar, salt, sugar &amp; spices</span>
-==$14.95
-
-##Seasonal Soup
-**Daily preparation
-
-##Filet De Saumon
-**Baked salmon fillet, hollandaise sauce, rosemary salt potatoes
-==$13.95
-
-##Confit de Canard
-**Duck confit, white bean &amp; ham cassoulet, wilted spinach
-==$12.15
-
-##Poulet Cordon Bleu
-**Paupiette of chicken, blue cheese &amp; ham, rosemary salt  and beans
-==$13.95
-
-[/restaurantmenu]
-
-[/col]
-
-[/row]
-
-[/tab]
-
-[tab title="Drinks"]
-
-[row cols_nr="2"]
-
-[col size="6"]
-
-[restaurantmenu]
-
-##Champagne
-==Bottle
-
-##Chapel Down
-**Brut Rose
-==$47.95
-
-##Chandon
-**Brut Imperial
-==$46.95
-
-##Chandon
-**Brut ARG
-==$46.95
-
-##Beers
-==Lager
-
-##Meantime Pilsner
-**Hells Lager
-==$4.45
-
-##Camden Hells Lager
-**Pale Ale
-==$5.95
-
-##Wyld Wood
-**Apple Cider
-==$5.50
-
-[/restaurantmenu]
-
-[/col]
-
-[col size="6"]
-
-[restaurantmenu]
-
-##White Wine
-==Bottle
-
-##Gascogne Blanc
-**Cuvee Jean Paul, 2013
-==$20.95
-
-##Alpha Zeta
-**Chardonnay, Veneto, 2011
-==$36.95
-
-##Fairview Darling
-**Paarl, South Africa, 2012
-==$26.95
-
-##Red Wine
-==Bottle
-
-##Excelsior
-**Cabernet Sauvognon, South Africa, 2011
-==$29.95
-
-##Malbec Montes Classic
-**Colchagua Valley, Mendoza, 2012
-==$35.95
-
-##16 Stops Mclaren
-**Vale Shiraz, Australia, 2012
-==$35.50
-
-[/restaurantmenu]
-
-[/col]
-
-[/row]
-
-[/tab]
-
-[/tabs]
-
-&nbsp;]]></content:encoded>
-            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-            <wp:post_id>91</wp:post_id>
-            <wp:post_date>2014-05-30 13:03:00</wp:post_date>
-            <wp:post_date_gmt>2014-05-30 13:03:00</wp:post_date_gmt>
-            <wp:comment_status>open</wp:comment_status>
-            <wp:ping_status>open</wp:ping_status>
-            <wp:post_name>tabbed-menu</wp:post_name>
-            <wp:status>publish</wp:status>
-            <wp:post_parent>69</wp:post_parent>
-            <wp:menu_order>0</wp:menu_order>
-            <wp:post_type>page</wp:post_type>
-            <wp:post_password></wp:post_password>
-            <wp:is_sticky>0</wp:is_sticky>
-            <wp:postmeta>
-                <wp:meta_key>_edit_last</wp:meta_key>
-                <wp:meta_value><![CDATA[1]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_wp_page_template</wp:meta_key>
-                <wp:meta_value><![CDATA[default]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_rosa_page_header_height</wp:meta_key>
-                <wp:meta_value><![CDATA[half-height]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_rosa_gmap_custom_style</wp:meta_key>
-                <wp:meta_value><![CDATA[of]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_rosa_page_cover_title</wp:meta_key>
-                <wp:meta_value><![CDATA[ ]]></wp:meta_value>
-            </wp:postmeta>
-        </item>
-        <item>
             <title></title>
             <link>http://pixelgrade.com/demos/rosa/uncategorized/115/</link>
             <pubDate>Fri, 30 May 2014 13:47:30 +0000</pubDate>
@@ -1675,116 +1463,6 @@ designed for sharing. Using incredible British produce, whole animals and fish a
             </wp:postmeta>
         </item>
         <item>
-            <title>Contact</title>
-            <link>http://pixelgrade.com/demos/rosa/contact/</link>
-            <pubDate>Fri, 30 May 2014 14:17:08 +0000</pubDate>
-            <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?page_id=116</guid>
-            <description></description>
-            <content:encoded><![CDATA[[row cols_nr="2"]
-
-[col size="6"]
-<h3>Get in touch</h3>
-The Rosa’s restaurant and bar are located on the ground and first floor within the Winchester Grade VI listed building of the Royal Institution of Chartered Surveyors. The restaurant and bar both have their own entrances.
-
-If you have questions or comments, please get a hold of us in whichever way is most convenient. Ask away. There is no reasonable question that our team can not answer
-<h3>Follow us</h3>
-<a title="PixelGrade on Facebook" href="https://www.facebook.com/PixelGradeMedia" target="_blank">[icon type="circle" size="medium" name="e-facebook"]</a> <a title="PixelGrade on Twitter" href="https://twitter.com/pixelgrade" target="_blank">[icon type="circle" size="medium" name="e-twitter"]</a>
-
-[/col]
-
-[col size="6"]
-
-[contact-form-7 id="4" title="Restaurant Contact Form"]
-
-[/col]
-
-[/row]]]></content:encoded>
-            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-            <wp:post_id>116</wp:post_id>
-            <wp:post_date>2014-05-30 14:17:08</wp:post_date>
-            <wp:post_date_gmt>2014-05-30 14:17:08</wp:post_date_gmt>
-            <wp:comment_status>closed</wp:comment_status>
-            <wp:ping_status>closed</wp:ping_status>
-            <wp:post_name>contact</wp:post_name>
-            <wp:status>publish</wp:status>
-            <wp:post_parent>0</wp:post_parent>
-            <wp:menu_order>0</wp:menu_order>
-            <wp:post_type>page</wp:post_type>
-            <wp:post_password></wp:post_password>
-            <wp:is_sticky>0</wp:is_sticky>
-            <wp:postmeta>
-                <wp:meta_key>_edit_last</wp:meta_key>
-                <wp:meta_value><![CDATA[1]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_thumbnail_id</wp:meta_key>
-                <wp:meta_value><![CDATA[117]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_wp_page_template</wp:meta_key>
-                <wp:meta_value><![CDATA[default]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_rosa_page_header_height</wp:meta_key>
-                <wp:meta_value><![CDATA[half-height]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_rosa_page_cover_subtitle</wp:meta_key>
-                <wp:meta_value><![CDATA[Find us]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_rosa_gmap_custom_style</wp:meta_key>
-                <wp:meta_value><![CDATA[of]]></wp:meta_value>
-            </wp:postmeta>
-        </item>
-        <item>
-            <title>Map</title>
-            <link>http://pixelgrade.com/demos/rosa/contact/map/</link>
-            <pubDate>Fri, 30 May 2014 14:20:56 +0000</pubDate>
-            <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?page_id=123</guid>
-            <description></description>
-            <content:encoded><![CDATA[]]></content:encoded>
-            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-            <wp:post_id>123</wp:post_id>
-            <wp:post_date>2014-05-30 14:20:56</wp:post_date>
-            <wp:post_date_gmt>2014-05-30 14:20:56</wp:post_date_gmt>
-            <wp:comment_status>closed</wp:comment_status>
-            <wp:ping_status>closed</wp:ping_status>
-            <wp:post_name>map</wp:post_name>
-            <wp:status>publish</wp:status>
-            <wp:post_parent>116</wp:post_parent>
-            <wp:menu_order>0</wp:menu_order>
-            <wp:post_type>page</wp:post_type>
-            <wp:post_password></wp:post_password>
-            <wp:is_sticky>0</wp:is_sticky>
-            <wp:postmeta>
-                <wp:meta_key>_edit_last</wp:meta_key>
-                <wp:meta_value><![CDATA[1]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_wp_page_template</wp:meta_key>
-                <wp:meta_value><![CDATA[page-templates/contact.php]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_rosa_page_header_height</wp:meta_key>
-                <wp:meta_value><![CDATA[two-thirds-height]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_rosa_gmap_url</wp:meta_key>
-                <wp:meta_value><![CDATA[https://www.google.com/maps/@51.387316,-2.364979,15z?hl=ro]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_rosa_gmap_custom_style</wp:meta_key>
-                <wp:meta_value><![CDATA[on]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_rosa_gmap_marker_content</wp:meta_key>
-                <wp:meta_value><![CDATA[<h2>Rosa</h2>]]></wp:meta_value>
-            </wp:postmeta>
-        </item>
-        <item>
             <title></title>
             <link>http://pixelgrade.com/demos/rosa/uncategorized/125/</link>
             <pubDate>Fri, 30 May 2014 14:25:44 +0000</pubDate>
@@ -1837,44 +1515,6 @@ If you have questions or comments, please get a hold of us in whichever way is m
             <wp:postmeta>
                 <wp:meta_key>_menu_item_url</wp:meta_key>
                 <wp:meta_value><![CDATA[]]></wp:meta_value>
-            </wp:postmeta>
-        </item>
-        <item>
-            <title>News</title>
-            <link>http://pixelgrade.com/demos/rosa/news/</link>
-            <pubDate>Fri, 30 May 2014 14:27:56 +0000</pubDate>
-            <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?page_id=126</guid>
-            <description></description>
-            <content:encoded><![CDATA[]]></content:encoded>
-            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-            <wp:post_id>126</wp:post_id>
-            <wp:post_date>2014-05-30 14:27:56</wp:post_date>
-            <wp:post_date_gmt>2014-05-30 14:27:56</wp:post_date_gmt>
-            <wp:comment_status>open</wp:comment_status>
-            <wp:ping_status>open</wp:ping_status>
-            <wp:post_name>news</wp:post_name>
-            <wp:status>publish</wp:status>
-            <wp:post_parent>0</wp:post_parent>
-            <wp:menu_order>0</wp:menu_order>
-            <wp:post_type>page</wp:post_type>
-            <wp:post_password></wp:post_password>
-            <wp:is_sticky>0</wp:is_sticky>
-            <wp:postmeta>
-                <wp:meta_key>_edit_last</wp:meta_key>
-                <wp:meta_value><![CDATA[1]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_wp_page_template</wp:meta_key>
-                <wp:meta_value><![CDATA[default]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_rosa_page_header_height</wp:meta_key>
-                <wp:meta_value><![CDATA[half-height]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_rosa_gmap_custom_style</wp:meta_key>
-                <wp:meta_value><![CDATA[of]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
@@ -2106,6 +1746,130 @@ If you have questions or comments, please get a hold of us in whichever way is m
             <wp:postmeta>
                 <wp:meta_key>_menu_item_url</wp:meta_key>
                 <wp:meta_value><![CDATA[]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+        <item>
+            <title>rosa-favicon</title>
+            <link>http://pixelgrade.com/demos/rosa/?attachment_id=180</link>
+            <pubDate>Wed, 04 Jun 2014 10:15:35 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/06/rosa-favicon.png</guid>
+            <description></description>
+            <content:encoded><![CDATA[]]></content:encoded>
+            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+            <wp:post_id>180</wp:post_id>
+            <wp:post_date>2014-06-04 10:15:35</wp:post_date>
+            <wp:post_date_gmt>2014-06-04 10:15:35</wp:post_date_gmt>
+            <wp:comment_status>open</wp:comment_status>
+            <wp:ping_status>open</wp:ping_status>
+            <wp:post_name>rosa-favicon</wp:post_name>
+            <wp:status>inherit</wp:status>
+            <wp:post_parent>0</wp:post_parent>
+            <wp:menu_order>0</wp:menu_order>
+            <wp:post_type>attachment</wp:post_type>
+            <wp:post_password></wp:post_password>
+            <wp:is_sticky>0</wp:is_sticky>
+            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/06/rosa-favicon.png</wp:attachment_url>
+            <wp:postmeta>
+                <wp:meta_key>_wp_attached_file</wp:meta_key>
+                <wp:meta_value><![CDATA[2014/06/rosa-favicon.png]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_wp_attachment_metadata</wp:meta_key>
+                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:16;s:6:"height";i:16;s:4:"file";s:24:"2014/06/rosa-favicon.png";s:5:"sizes";a:0:{}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+        <item>
+            <title>logo-rosa</title>
+            <link>http://pixelgrade.com/demos/rosa/?attachment_id=181</link>
+            <pubDate>Wed, 04 Jun 2014 10:15:39 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/06/logo-rosa.png</guid>
+            <description></description>
+            <content:encoded><![CDATA[]]></content:encoded>
+            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+            <wp:post_id>181</wp:post_id>
+            <wp:post_date>2014-06-04 10:15:39</wp:post_date>
+            <wp:post_date_gmt>2014-06-04 10:15:39</wp:post_date_gmt>
+            <wp:comment_status>open</wp:comment_status>
+            <wp:ping_status>open</wp:ping_status>
+            <wp:post_name>logo-rosa</wp:post_name>
+            <wp:status>inherit</wp:status>
+            <wp:post_parent>0</wp:post_parent>
+            <wp:menu_order>0</wp:menu_order>
+            <wp:post_type>attachment</wp:post_type>
+            <wp:post_password></wp:post_password>
+            <wp:is_sticky>0</wp:is_sticky>
+            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/06/logo-rosa.png</wp:attachment_url>
+            <wp:postmeta>
+                <wp:meta_key>_wp_attached_file</wp:meta_key>
+                <wp:meta_value><![CDATA[2014/06/logo-rosa.png]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_wp_attachment_metadata</wp:meta_key>
+                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:86;s:6:"height";i:28;s:4:"file";s:21:"2014/06/logo-rosa.png";s:5:"sizes";a:0:{}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+        <item>
+            <title>vk-drinking</title>
+            <link>http://pixelgrade.com/demos/rosa/reservation/rooms-2/attachment/vk-drinking/</link>
+            <pubDate>Wed, 04 Jun 2014 11:48:33 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/05/vk-drinking.jpg</guid>
+            <description></description>
+            <content:encoded><![CDATA[]]></content:encoded>
+            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+            <wp:post_id>182</wp:post_id>
+            <wp:post_date>2014-06-04 11:48:33</wp:post_date>
+            <wp:post_date_gmt>2014-06-04 11:48:33</wp:post_date_gmt>
+            <wp:comment_status>open</wp:comment_status>
+            <wp:ping_status>open</wp:ping_status>
+            <wp:post_name>vk-drinking</wp:post_name>
+            <wp:status>inherit</wp:status>
+            <wp:post_parent>46</wp:post_parent>
+            <wp:menu_order>0</wp:menu_order>
+            <wp:post_type>attachment</wp:post_type>
+            <wp:post_password></wp:post_password>
+            <wp:is_sticky>0</wp:is_sticky>
+            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/05/vk-drinking.jpg</wp:attachment_url>
+            <wp:postmeta>
+                <wp:meta_key>_wp_attached_file</wp:meta_key>
+                <wp:meta_value><![CDATA[2014/05/vk-drinking.jpg]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_wp_attachment_metadata</wp:meta_key>
+                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:1401;s:6:"height";i:949;s:4:"file";s:23:"2014/05/vk-drinking.jpg";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:23:"vk-drinking-276x192.jpg";s:5:"width";i:276;s:6:"height";i:192;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:23:"vk-drinking-300x203.jpg";s:5:"width";i:300;s:6:"height";i:203;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:24:"vk-drinking-1024x693.jpg";s:5:"width";i:1024;s:6:"height";i:693;s:9:"mime-type";s:10:"image/jpeg";}s:10:"large-size";a:4:{s:4:"file";s:24:"vk-drinking-1200x812.jpg";s:5:"width";i:1200;s:6:"height";i:812;s:9:"mime-type";s:10:"image/jpeg";}s:11:"medium-size";a:4:{s:4:"file";s:23:"vk-drinking-900x609.jpg";s:5:"width";i:900;s:6:"height";i:609;s:9:"mime-type";s:10:"image/jpeg";}s:10:"small-size";a:4:{s:4:"file";s:23:"vk-drinking-400x270.jpg";s:5:"width";i:400;s:6:"height";i:270;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+        <item>
+            <title>pizzelles_FW</title>
+            <link>http://pixelgrade.com/demos/rosa/reservation/rooms-2/attachment/pizzelles_fw/</link>
+            <pubDate>Wed, 04 Jun 2014 11:52:16 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/05/pizzelles_fw.jpg</guid>
+            <description></description>
+            <content:encoded><![CDATA[]]></content:encoded>
+            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+            <wp:post_id>183</wp:post_id>
+            <wp:post_date>2014-06-04 11:52:16</wp:post_date>
+            <wp:post_date_gmt>2014-06-04 11:52:16</wp:post_date_gmt>
+            <wp:comment_status>open</wp:comment_status>
+            <wp:ping_status>open</wp:ping_status>
+            <wp:post_name>pizzelles_fw</wp:post_name>
+            <wp:status>inherit</wp:status>
+            <wp:post_parent>46</wp:post_parent>
+            <wp:menu_order>0</wp:menu_order>
+            <wp:post_type>attachment</wp:post_type>
+            <wp:post_password></wp:post_password>
+            <wp:is_sticky>0</wp:is_sticky>
+            <wp:attachment_url>http://pixelgrade.com/demos/rosa/wp-content/uploads/2014/05/pizzelles_fw.jpg</wp:attachment_url>
+            <wp:postmeta>
+                <wp:meta_key>_wp_attached_file</wp:meta_key>
+                <wp:meta_value><![CDATA[2014/05/pizzelles_fw.jpg]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_wp_attachment_metadata</wp:meta_key>
+                <wp:meta_value><![CDATA[a:5:{s:5:"width";i:2000;s:6:"height";i:1478;s:4:"file";s:24:"2014/05/pizzelles_fw.jpg";s:5:"sizes";a:6:{s:9:"thumbnail";a:4:{s:4:"file";s:24:"pizzelles_fw-276x192.jpg";s:5:"width";i:276;s:6:"height";i:192;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:24:"pizzelles_fw-300x221.jpg";s:5:"width";i:300;s:6:"height";i:221;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:25:"pizzelles_fw-1024x756.jpg";s:5:"width";i:1024;s:6:"height";i:756;s:9:"mime-type";s:10:"image/jpeg";}s:10:"large-size";a:4:{s:4:"file";s:25:"pizzelles_fw-1200x886.jpg";s:5:"width";i:1200;s:6:"height";i:886;s:9:"mime-type";s:10:"image/jpeg";}s:11:"medium-size";a:4:{s:4:"file";s:24:"pizzelles_fw-900x665.jpg";s:5:"width";i:900;s:6:"height";i:665;s:9:"mime-type";s:10:"image/jpeg";}s:10:"small-size";a:4:{s:4:"file";s:24:"pizzelles_fw-400x295.jpg";s:5:"width";i:400;s:6:"height";i:295;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
@@ -2384,6 +2148,447 @@ This e-mail was sent from a contact form on Rosa (http://pixelgrade.com/demos/ro
             <wp:postmeta>
                 <wp:meta_key>_wp_trash_meta_time</wp:meta_key>
                 <wp:meta_value><![CDATA[1401453786]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+        <item>
+            <title>Tabbed Menu</title>
+            <link>http://pixelgrade.com/demos/rosa/menu/tabbed-menu/</link>
+            <pubDate>Fri, 30 May 2014 13:03:00 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?page_id=91</guid>
+            <description></description>
+            <content:encoded><![CDATA[[tabs]
+
+[tab title="Dinner"]
+
+<br class="Apple-interchange-newline" />[row cols_nr="2"]
+
+[col size="6"]
+
+[restaurantmenu]
+
+##Cornish-mackerel
+**Cornish mackerel, marinated tomatoes, fragrant curry, tamarillo
+==$10.45
+
+##Quail
+**Smoked quail, crispy egg, spelt, girolles, parsley
+==$9.95
+
+##Curry-Tamarillor
+**Cornish mackerel, marinated tomatoes, fragrant curry, tamarillo
+== $7.95
+
+##Crispy
+**Smoked quail, crispy egg, spelt, girolles, parsley
+==$12.95
+
+##Roasted Steak Roulade
+**Mint p<span style="color: #515252;">arsley with apple cider vinegar, salt, sugar &amp; spices</span>
+==$14.95
+
+##Seasonal Soup
+**Daily preparation
+==$5.95
+
+[/restaurantmenu]
+
+[/col]
+
+[col size="6"]
+
+[restaurantmenu]
+
+##Campo Lindo Chicken
+**Fava beans, artchokes, farro &amp; black current gastrique
+==$24.95
+
+##Maple Farm Breast
+**Creamy polenta, english peas, carrots &amp; port sauce
+==$29.95
+
+##Sea-Trout
+**Roast Trout, English asparagus, Jersey Royals, watercress
+==$26.95
+
+##Filet De Saumon
+**Baked salmon fillet, hollandaise sauce, rosemary salt potatoes
+==$13.95
+
+##Confit de Canard
+**Duck confit, white bean &amp; ham cassoulet, wilted spinach
+==$12.15
+
+##Poulet Cordon Bleu
+**Paupiette of chicken, blue cheese &amp; ham, rosemary salt  and beans
+==$13.95
+
+[/restaurantmenu]
+
+[/col]
+
+[/row]
+
+[/tab]
+
+[tab title="Lunch"]
+
+[row cols_nr="2"]
+
+[col size="6"]
+
+[restaurantmenu]
+
+##Campo Lindo Chicken
+**Fava beans, artchokes, farro &amp; black current gastrique
+==$24.95
+
+##Maple Farm Breast
+**Creamy polenta, english peas, carrots &amp; port sauce
+==$29.95
+
+##Sea-Trout
+**Roast Trout, English asparagus, Jersey Royals, watercress
+==$26.95
+
+##Crispy
+**Smoked quail, crispy egg, spelt, girolles, parsley
+==$12.95
+
+##Roasted Steak Roulade
+**Mint p<span style="color: #515252;">arsley with apple cider vinegar, salt, sugar &amp; spices</span>
+==$14.95
+
+##Seasonal Soup
+**Daily preparation
+==$5.95
+
+[/restaurantmenu]
+
+[/col]
+
+[col size="6"]
+
+[restaurantmenu]
+
+##Crispy
+**Smoked quail, crispy egg, spelt, girolles, parsley
+==$12.95
+
+##Roasted Steak Roulade
+**Mint p<span style="color: #515252;">arsley with apple cider vinegar, salt, sugar &amp; spices</span>
+==$14.95
+
+##Seasonal Soup
+**Daily preparation
+
+##Filet De Saumon
+**Baked salmon fillet, hollandaise sauce, rosemary salt potatoes
+==$13.95
+
+##Confit de Canard
+**Duck confit, white bean &amp; ham cassoulet, wilted spinach
+==$12.15
+
+##Poulet Cordon Bleu
+**Paupiette of chicken, blue cheese &amp; ham, rosemary salt  and beans
+==$13.95
+
+[/restaurantmenu]
+
+[/col]
+
+[/row]
+
+[/tab]
+
+[tab title="Drinks"]
+
+[row cols_nr="2"]
+
+[col size="6"]
+
+[restaurantmenu]
+
+##Champagne
+==Bottle
+
+##Chapel Down
+**Brut Rose
+==$47.95
+
+##Chandon
+**Brut Imperial
+==$46.95
+
+##Chandon
+**Brut ARG
+==$46.95
+
+##Beers
+==Lager
+
+##Meantime Pilsner
+**Hells Lager
+==$4.45
+
+##Camden Hells Lager
+**Pale Ale
+==$5.95
+
+##Wyld Wood
+**Apple Cider
+==$5.50
+
+[/restaurantmenu]
+
+[/col]
+
+[col size="6"]
+
+[restaurantmenu]
+
+##White Wine
+==Bottle
+
+##Gascogne Blanc
+**Cuvee Jean Paul, 2013
+==$20.95
+
+##Alpha Zeta
+**Chardonnay, Veneto, 2011
+==$36.95
+
+##Fairview Darling
+**Paarl, South Africa, 2012
+==$26.95
+
+##Red Wine
+==Bottle
+
+##Excelsior
+**Cabernet Sauvognon, South Africa, 2011
+==$29.95
+
+##Malbec Montes Classic
+**Colchagua Valley, Mendoza, 2012
+==$35.95
+
+##16 Stops Mclaren
+**Vale Shiraz, Australia, 2012
+==$35.50
+
+[/restaurantmenu]
+
+[/col]
+
+[/row]
+
+[/tab]
+
+[/tabs]
+
+&nbsp;]]></content:encoded>
+            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+            <wp:post_id>91</wp:post_id>
+            <wp:post_date>2014-05-30 13:03:00</wp:post_date>
+            <wp:post_date_gmt>2014-05-30 13:03:00</wp:post_date_gmt>
+            <wp:comment_status>open</wp:comment_status>
+            <wp:ping_status>open</wp:ping_status>
+            <wp:post_name>tabbed-menu</wp:post_name>
+            <wp:status>publish</wp:status>
+            <wp:post_parent>69</wp:post_parent>
+            <wp:menu_order>0</wp:menu_order>
+            <wp:post_type>page</wp:post_type>
+            <wp:post_password></wp:post_password>
+            <wp:is_sticky>0</wp:is_sticky>
+            <wp:postmeta>
+                <wp:meta_key>_edit_last</wp:meta_key>
+                <wp:meta_value><![CDATA[1]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_wp_page_template</wp:meta_key>
+                <wp:meta_value><![CDATA[default]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_page_header_height</wp:meta_key>
+                <wp:meta_value><![CDATA[half-height]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_gmap_custom_style</wp:meta_key>
+                <wp:meta_value><![CDATA[of]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_page_cover_title</wp:meta_key>
+                <wp:meta_value><![CDATA[ ]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+        <item>
+            <title>Contact</title>
+            <link>http://pixelgrade.com/demos/rosa/contact/</link>
+            <pubDate>Fri, 30 May 2014 14:17:08 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?page_id=116</guid>
+            <description></description>
+            <content:encoded><![CDATA[[row cols_nr="2"]
+
+[col size="6"]
+<h3>Get in touch</h3>
+The Rosa’s restaurant and bar are located on the ground and first floor within the Winchester Grade VI listed building of the Royal Institution of Chartered Surveyors. The restaurant and bar both have their own entrances.
+
+If you have questions or comments, please get a hold of us in whichever way is most convenient. Ask away. There is no reasonable question that our team can not answer
+<h3>Follow us</h3>
+[icon type="circle" size="medium" link="https://www.facebook.com/PixelGradeMedia" link_target_blank="on" name="e-facebook"] [icon type="circle" size="medium" link="https://twitter.com/pixelgrade" link_target_blank="on" name="e-tumblr"]
+
+[/col]
+
+[col size="6"]
+
+[contact-form-7 id="4" title="Restaurant Contact Form"]
+
+[/col]
+
+[/row]]]></content:encoded>
+            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+            <wp:post_id>116</wp:post_id>
+            <wp:post_date>2014-05-30 14:17:08</wp:post_date>
+            <wp:post_date_gmt>2014-05-30 14:17:08</wp:post_date_gmt>
+            <wp:comment_status>closed</wp:comment_status>
+            <wp:ping_status>closed</wp:ping_status>
+            <wp:post_name>contact</wp:post_name>
+            <wp:status>publish</wp:status>
+            <wp:post_parent>0</wp:post_parent>
+            <wp:menu_order>0</wp:menu_order>
+            <wp:post_type>page</wp:post_type>
+            <wp:post_password></wp:post_password>
+            <wp:is_sticky>0</wp:is_sticky>
+            <wp:postmeta>
+                <wp:meta_key>_edit_last</wp:meta_key>
+                <wp:meta_value><![CDATA[1]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_thumbnail_id</wp:meta_key>
+                <wp:meta_value><![CDATA[117]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_wp_page_template</wp:meta_key>
+                <wp:meta_value><![CDATA[default]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_page_header_height</wp:meta_key>
+                <wp:meta_value><![CDATA[half-height]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_page_cover_subtitle</wp:meta_key>
+                <wp:meta_value><![CDATA[Find us]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_gmap_custom_style</wp:meta_key>
+                <wp:meta_value><![CDATA[of]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_header_transparent_menu_bar</wp:meta_key>
+                <wp:meta_value><![CDATA[of]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_header_transparent_menu_bar_contact</wp:meta_key>
+                <wp:meta_value><![CDATA[of]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+        <item>
+            <title>Map</title>
+            <link>http://pixelgrade.com/demos/rosa/contact/map/</link>
+            <pubDate>Fri, 30 May 2014 14:20:56 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?page_id=123</guid>
+            <description></description>
+            <content:encoded><![CDATA[]]></content:encoded>
+            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+            <wp:post_id>123</wp:post_id>
+            <wp:post_date>2014-05-30 14:20:56</wp:post_date>
+            <wp:post_date_gmt>2014-05-30 14:20:56</wp:post_date_gmt>
+            <wp:comment_status>closed</wp:comment_status>
+            <wp:ping_status>closed</wp:ping_status>
+            <wp:post_name>map</wp:post_name>
+            <wp:status>publish</wp:status>
+            <wp:post_parent>116</wp:post_parent>
+            <wp:menu_order>0</wp:menu_order>
+            <wp:post_type>page</wp:post_type>
+            <wp:post_password></wp:post_password>
+            <wp:is_sticky>0</wp:is_sticky>
+            <wp:postmeta>
+                <wp:meta_key>_edit_last</wp:meta_key>
+                <wp:meta_value><![CDATA[1]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_wp_page_template</wp:meta_key>
+                <wp:meta_value><![CDATA[page-templates/contact.php]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_page_header_height</wp:meta_key>
+                <wp:meta_value><![CDATA[]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_gmap_url</wp:meta_key>
+                <wp:meta_value><![CDATA[https://www.google.com/maps/@51.387316,-2.364979,15z]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_gmap_custom_style</wp:meta_key>
+                <wp:meta_value><![CDATA[on]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_gmap_marker_content</wp:meta_key>
+                <wp:meta_value><![CDATA[<h2>Rosa</h2>]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_header_transparent_menu_bar</wp:meta_key>
+                <wp:meta_value><![CDATA[of]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_page_gmap_height</wp:meta_key>
+                <wp:meta_value><![CDATA[half-height]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_header_transparent_menu_bar_contact</wp:meta_key>
+                <wp:meta_value><![CDATA[of]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
+        <item>
+            <title>News</title>
+            <link>http://pixelgrade.com/demos/rosa/news/</link>
+            <pubDate>Fri, 30 May 2014 14:27:56 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa/?page_id=126</guid>
+            <description></description>
+            <content:encoded><![CDATA[]]></content:encoded>
+            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+            <wp:post_id>126</wp:post_id>
+            <wp:post_date>2014-05-30 14:27:56</wp:post_date>
+            <wp:post_date_gmt>2014-05-30 14:27:56</wp:post_date_gmt>
+            <wp:comment_status>open</wp:comment_status>
+            <wp:ping_status>open</wp:ping_status>
+            <wp:post_name>news</wp:post_name>
+            <wp:status>publish</wp:status>
+            <wp:post_parent>0</wp:post_parent>
+            <wp:menu_order>0</wp:menu_order>
+            <wp:post_type>page</wp:post_type>
+            <wp:post_password></wp:post_password>
+            <wp:is_sticky>0</wp:is_sticky>
+            <wp:postmeta>
+                <wp:meta_key>_edit_last</wp:meta_key>
+                <wp:meta_value><![CDATA[1]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_wp_page_template</wp:meta_key>
+                <wp:meta_value><![CDATA[default]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_page_header_height</wp:meta_key>
+                <wp:meta_value><![CDATA[half-height]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_rosa_gmap_custom_style</wp:meta_key>
+                <wp:meta_value><![CDATA[of]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
@@ -2712,7 +2917,7 @@ Melt the butter in a pan and gently cook the shallots on a low heat for a few mi
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_pixlikes</wp:meta_key>
-                <wp:meta_value><![CDATA[0]]></wp:meta_value>
+                <wp:meta_value><![CDATA[1]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_rosa_post_image_scale_mode</wp:meta_key>

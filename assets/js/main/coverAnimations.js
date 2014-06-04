@@ -35,14 +35,14 @@ var CoverAnimation = {
 
             // ------ A
 
-            timeline.fromTo($title, 0.72, {'letter-spacing': 50}, {'letter-spacing': 13, ease: Expo.easeOut});
+            timeline.fromTo($title, 0.72, {'letter-spacing': '1em', 'margin-right': '-0.9em'}, {'letter-spacing': '0.2em', 'margin-right': '-0.1em', ease: Expo.easeOut});
             timeline.fromTo($title, 0.89, {opacity: 0}, {opacity: 1, ease: Expo.easeOut}, '-=0.72');
             timeline.fromTo($title, 1, {'y': 30}, {'y': 0, ease: Expo.easeOut}, '-=0.89');
             timeline.fromTo($subtitle, 0.65, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.65');
             timeline.fromTo($subtitle, 0.9, {y: 30}, {y: 0, ease: Quint.easeOut}, '-=0.65');
             timeline.fromTo($star, 0.15, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.6');
             timeline.fromTo($star, 0.55, {rotation: -270}, {rotation: 0, ease: Back.easeOut}, '-=0.5');
-            timeline.fromTo($lines, 0.6, {width: 0}, {width: '45%', opacity: 1, ease: Quint.easeOut}, '-=0.55');
+            timeline.fromTo($lines, 0.6, {width: 0}, {width: '42%', opacity: 1, ease: Quint.easeOut}, '-=0.55');
             timeline.fromTo($arrows, 0.2, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.27');
             timeline.fromTo($description, 0.5, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.28');
             timeline.fromTo($description, 0.75, {y: -20}, {y: 0}, '-=0.5');
@@ -64,15 +64,17 @@ var CoverAnimation = {
 
             var animatedInTime      = timeline.getLabelTime("animatedIn"),
                 animatedOutTime     = timeline.getLabelTime("animatedOut"),
-                ab                  = animatedInTime / animatedOutTime,
-                bc                  = 1 - ab,
                 start               = headerTop + headerHeight / 2 - wh / 2,
-                end                 = start + wh / 3;
+                end                 = start + wh / 2,
+                ab, bc;
 
             if (i == 0) {
-                start = headerTop;
-                end = start + wh / 3;
+                start = headerTop + wh / 8;
+                end = start + wh / 2;
             }
+
+            ab = animatedInTime / animatedOutTime;
+            bc = 1 - ab;
 
             timeline.tweenTo("animatedIn", {
 
@@ -131,10 +133,10 @@ var CoverAnimation = {
                 var partialProgress = options.ab + options.bc * progress;
 
                 if (0 > progress) {
-                    return;
+                    partialProgress = options.ab;
                 }
 
-                if (1 > progress) {
+                if (1 > partialProgress) {
                     options.timeline.progress(partialProgress);
                 }
             }

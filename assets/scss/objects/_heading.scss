@@ -36,6 +36,8 @@
 
 		.separator {
 			display: block;
+			margin-top:3px;
+			margin-bottom:3px;
 		}
 
 		.headline__primary, .headline__description {
@@ -47,12 +49,9 @@
 .headline__primary {
 	position: relative;
 	z-index:1; //over .headline__secondary
-
 	margin: 0;
-
-	letter-spacing: 0.174em;
-
-	// @include opacity(0.9);
+	letter-spacing: 0.2em;
+	margin-right: -0.1em;
 }
 
 .headline__secondary {
@@ -65,6 +64,8 @@
 	font-weight: normal;
 	letter-spacing: 0;
 	text-transform: none;
+	padding: 0 72px;
+	margin: 0 -48px;
 
 	color: $accent;
 
@@ -73,13 +74,15 @@
 		top: 10px;
 		
 		font-size: 1.22em;
+		padding: 0 72px;
+		margin: 0 -72px;
 	}
 }
 
 .headline__description {
-	font-size: 15px;
-	letter-spacing: 0.348em;
-	text-transform: uppercase;
+	// font-size: 15px;
+	// letter-spacing: 0.348em;
+	// text-transform: uppercase;
 
 	h1, h2, h3, h4, h5, h6 {
 		margin-bottom: $_u2;

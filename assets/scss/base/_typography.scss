@@ -30,6 +30,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 30px;
 
 	font-family: $heading-font-family;
+	font-weight: bold;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
 
@@ -43,10 +44,8 @@ h1 {
 	font-weight: 900;
 }
 
-h2 {
+h2, h3, h4 {
 	margin-top: $_175u;
-
-	font-weight: 700;
 }
 
 h5, h6 {

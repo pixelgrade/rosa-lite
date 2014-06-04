@@ -132,7 +132,8 @@ $sections[] = array(
 										.meta-list a.comments_add-comment:hover, .meta-list .form-submit a#comment-submit:hover,
 										.form-submit .meta-list a#comment-submit:hover, .meta-list a.wpcf7-form-control.wpcf7-submit:hover,
 										.meta-list a.otreservations-submit:hover, .meta-list .widget_tag_cloud a:hover, .widget_tag_cloud .meta-list a:hover, .btn.btn--text:hover,
-										.article__content a:not([class]), .article__content a:hover:not([class]):hover"
+										.article__content a:not([class]), .article__content a:hover:not([class]):hover,
+										.article__header .article__headline .headline__description .star"
 					),
 					'background-color' => array(
 						'selector' => ".btn--primary, .btn, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover",
