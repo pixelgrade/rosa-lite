@@ -87,13 +87,6 @@ $sections[] = array(
 			'customizer' => array()
 		),
 		array(
-			'id'         => 'customizer_reset_button_section',
-			'title'      => '<a class="btn" id="reset-style-defaults" href="#" data-ajax_nonce="'.  wp_create_nonce( "reset-style-section" ) .'">' . __( 'Reset Style', wpgrade::textdomain() ) . '</a>',
-			'type'       => 'customizer_info',
-			'default'    => 'Test',
-			'customizer' => array()
-		),
-		array(
 			'id'         => 'customizer_title',
 			'title'      => '<h1>' . __( 'Customizer', wpgrade::textdomain() ) . '</h1><p>Use the controls below to change fonts, colors, sizes and other styling options.</p>',
 			'type'       => 'customizer_info',
@@ -181,26 +174,23 @@ $sections[] = array(
 				)
 			)
 		),
-		array(
-			'id'         => 'nav_links',
-			'type'       => 'color',
-			'title'      => __( 'Nav Links', wpgrade::textdomain() ),
-			'default'    => '#262526',
-			'validate'   => 'color',
-			'compiler'   => true,
-			'customizer' => array(
-				'transport' => 'postMessage',
-				'css_rules' => array(
-					'color' => array(
-						'selector' => ".nav--main a, .nav--footer a"
-					),
-
-                    'border-color' => array(
-                        'selector' => ".nav--main .current-menu-item a:after"
-                    ),
-				)
-			)
-		),
+		// Not needed now
+		// array(
+		// 	'id'         => 'nav_links',
+		// 	'type'       => 'color',
+		// 	'title'      => __( 'Nav Links', wpgrade::textdomain() ),
+		// 	'default'    => '#262526',
+		// 	'validate'   => 'color',
+		// 	'compiler'   => true,
+		// 	'customizer' => array(
+		// 		'transport' => 'postMessage',
+		// 		'css_rules' => array(
+		// 			'color' => array(
+		// 				'selector' => ".nav--main a, a.site-logo--text"
+		// 			),
+		// 		)
+		// 	)
+		// ),
 		array(
 			'id'         => 'cover_text',
 			'type'       => 'color',
@@ -810,6 +800,14 @@ $sections[] = array(
 		//  'type' => 'customizer_info',
 		//  'customizer' => array()
 		// ),
+		
+		array(
+			'id'         => 'customizer_reset_button_section',
+			'title'      => '<a class="btn" id="reset-style-defaults" href="#" data-ajax_nonce="'.  wp_create_nonce( "reset-style-section" ) .'">' . __( 'Reset to Defaults', wpgrade::textdomain() ) . '</a>',
+			'type'       => 'customizer_info',
+			'default'    => 'Test',
+			'customizer' => array()
+		),
 
 		array(
 			'id'         => 'options_title',
