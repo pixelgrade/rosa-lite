@@ -11,7 +11,7 @@ if ( isset( $_GET['debug_mod'] ) && $_GET['debug_mod'] === 'true' ) {
 // ------------------------------------------------------------------------
 
 $sections[] = array(
-	'icon'       => 'database-1',
+	'icon'       => 'icon-database-1',
 	'icon_class' => '',
 	'title'      => __( 'General', wpgrade::textdomain() ),
 	'desc'       => sprintf( '<p class="description">' . __( 'General settings contains options that have a site-wide reach like defining your site dynamics or branding (including logo and other icons).', wpgrade::textdomain() ) . '</p>', wpgrade::themename() ),
@@ -72,7 +72,7 @@ $sections[] = array(
 // ------------------------------------------------------------------------
 
 $sections[] = array(
-	'icon'            => "params",
+	'icon'            => "icon-params",
 	'icon_class'      => '',
 	'title'           => __( 'Style', wpgrade::textdomain() ),
 	'desc'            => '<p class="description">' . __( 'The style options control the general styling of the site, like accent color and Google Web Fonts. You can choose custom fonts for various typography elements with font weight, character set, size and/or line height. You also have a live preview for your chosen fonts.', wpgrade::textdomain() ) . '</p>',
@@ -877,7 +877,7 @@ $sections[] = array(
 //);
 
 $sections[] = array(
-	'icon'   => 'note-1',
+	'icon'   => 'icon-note-1',
 	'title'  => __( 'Footer', wpgrade::textdomain() ),
 	'desc'   => '<p class="description">' . __( 'Footer options allow you to control both the visual and functional aspects of the page footer area.', wpgrade::textdomain() ) . '</p>',
 	'fields' => array(
@@ -897,7 +897,7 @@ $sections[] = array(
 // ------------------------------------------------------------------------
 
 $sections[] = array(
-	'icon'   => 'pencil-1',
+	'icon'   => 'icon-pencil-1',
 	'title'  => __( 'Blog - Archive', wpgrade::textdomain() ),
 	'desc'   => sprintf( '<p class="description">' . __( 'Archive options control the various aspects related to displaying posts in blog archives. You can control things like excerpt length and various layout aspects.', wpgrade::textdomain() ) . '</p>', wpgrade::themename() ),
 	'fields' => array(
@@ -946,7 +946,7 @@ $sections[] = array(
 );
 
 $sections[] = array(
-	'icon'   => 'pencil-1',
+	'icon'   => 'icon-pencil-1',
 	'title'  => __( 'Blog - Single', wpgrade::textdomain() ),
 	'desc'   => sprintf( '<p class="description">' . __( 'Post options control the various aspects related to the <b>single post page</b>.', wpgrade::textdomain() ) . '</p>', wpgrade::themename() ),
 	'fields' => array(
@@ -1012,7 +1012,7 @@ $sections[] = array(
 // ------------------------------------------------------------------------
 
 $sections[] = array(
-	'icon'       => "thumbs-up-1",
+	'icon'       => "icon-thumbs-up-1",
 	'icon_class' => '',
 	'title'      => __( 'Social and SEO', wpgrade::textdomain() ),
 	'desc'       => '<p class="description">' . __( 'Social and SEO options allow you to display your social links and choose where to display them. Then you can set the social SEO related info added in the meta tags or used in various widgets.', wpgrade::textdomain() ) . '</p>',
@@ -1407,7 +1407,7 @@ $sections[] = array(
 // ------------------------------------------------------------------------
 
 $sections[] = array(
-	'icon'       => "database-1",
+	'icon'       => "icon-database-1",
 	'icon_class' => '',
 	'title'      => __( 'Custom Code', wpgrade::textdomain() ),
 	'desc'       => '<p class="description">' . __( 'You can change the site style and behaviour by adding custom scripts to all pages within your site using the custom code areas below.', wpgrade::textdomain() ) . '</p>',
@@ -1462,7 +1462,7 @@ $sections[] = array(
 // ------------------------------------------------------------------------
 
 $sections[] = array(
-	'icon'       => "truck",
+	'icon'       => "icon-truck",
 	'icon_class' => '',
 	'title'      => __( 'Utilities', wpgrade::textdomain() ),
 	'desc'       => '<p class="description">' . __( 'Utilities help you keep up-to-date with new versions of the theme. Also you can import the demo data from here.', wpgrade::textdomain() ) . '</p>',
@@ -1550,7 +1550,7 @@ $sections[] = array(
 // ------------------------------------------------------------------------
 
 $sections[] = array(
-	'icon'       => "cd-1",
+	'icon'       => "icon-cd-1",
 	'icon_class' => '',
 	'title'      => __( 'Help and Support', wpgrade::textdomain() ),
 	'desc'       => '<p class="description">' . __( 'If you had anything less than a great experience with this theme please contact us now. You can also find answers in our community site, or official articles and tutorials in our knowledge base.', wpgrade::textdomain() ) . '</p>
