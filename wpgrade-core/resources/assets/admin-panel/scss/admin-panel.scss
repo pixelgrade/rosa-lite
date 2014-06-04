@@ -140,7 +140,6 @@ $heading-font: 'Open Sans', sans-serif;
 
 // 'Theme Options' title + description
 .redux-container #redux-intro-text {
-	height: 6 * $_u;
 	width: $sidebar-width;
 	background: transparent;
 	border: none;
@@ -153,7 +152,7 @@ $heading-font: 'Open Sans', sans-serif;
 
 	position: absolute;
 	left: 0;
-	top: 0;
+	top: 24px;
 	z-index: 10;
 
 	p {

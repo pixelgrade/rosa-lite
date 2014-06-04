@@ -87,7 +87,6 @@
   position: relative; }
 
 .redux-container #redux-intro-text {
-  height: 144px;
   width: 250px;
   background: transparent;
   border: none;
@@ -99,7 +98,7 @@
   padding-top: 0;
   position: absolute;
   left: 0;
-  top: 0;
+  top: 24px;
   z-index: 10; }
   .redux-container #redux-intro-text p {
     font-family: "PT Sans", sans-serif;
