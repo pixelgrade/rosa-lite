@@ -88,11 +88,11 @@ html, body, #wrapper, #scroller, #page {
 		padding-left: 48px;
 	}
 
-	@include media-query(palm) {
-		.aligncenter{
-			margin: 0;
-		}
-	}
+//	@include media-query(palm) {
+//		.aligncenter{
+//			margin: 0;
+//		}
+//	}
 }
 
 // this will be used as
@@ -102,7 +102,8 @@ html, body, #wrapper, #scroller, #page {
 	// reset the default .grid__item padding-left
 	// because .island has it's own padding
 	@include media-query(palm){
-		padding: 0 0 0 48px;
+//		padding: 0 0 0 48px;
+		padding-left: 48px;
 		margin-bottom: 0;
 	}
 
