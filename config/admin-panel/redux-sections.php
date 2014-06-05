@@ -137,7 +137,7 @@ $sections[] = array(
 										.article__header .article__headline .headline__description .star"
 					),
 					'background-color' => array(
-						'selector' => ".btn--primary, .btn, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover",
+						'selector' => ".btn--primary, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover",
 					),
 					'border-color'     => array(
 						'selector' => ".tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button,
