@@ -7,7 +7,7 @@
 
 	font-size: 12px;
 	line-height: 1;
-	font-weight: 700;
+	font-weight: normal;
 	text-transform: uppercase;
 	letter-spacing: .2em;
 
@@ -136,7 +136,7 @@
 .btn.btn--text {
 	@extend %text-link;
 
-	padding: $_u4 0;
+	padding: 3px 0;
 
 	background: transparent !important;
 

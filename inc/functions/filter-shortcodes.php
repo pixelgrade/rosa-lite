@@ -19,8 +19,8 @@ function wpgrade_callback_change_separator_params( $params ) {
 
 	if ( isset( $params['color'] ) ) {
 		$params['color']['options'] = array(
-			'dark'  => "Dark",
-			'light' => "Light",
+			''  => "Gray",
+			'white' => "White",
 		);
 	}
 

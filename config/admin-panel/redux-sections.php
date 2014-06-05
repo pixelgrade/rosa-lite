@@ -343,7 +343,6 @@ $sections[] = array(
 			),
 			'default'        => array(
 				'font-family' => 'Source Sans Pro',
-				'font-weight' => '900',
 				'google'      => true,
 			),
 //			'output'         => array( 'h1, h2, h3, h4, h5, h6' ),
@@ -605,7 +604,7 @@ $sections[] = array(
 			'type'          => 'customizer_slider',
 			'title'         => __( 'Line Height', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
-			'default'       => '1.6',
+			'default'       => '1.7',
 			'min'           => 0,
 			'max'           => 3,
 			'step'          => .1,

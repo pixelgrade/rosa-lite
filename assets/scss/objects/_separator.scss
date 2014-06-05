@@ -5,12 +5,16 @@
 
 /*==========  $SEPARATORS  ==========*/
 
-.separator {
-	height: 1px;
+hr, .separator {
+	height: 0px;
 	margin: $_175u 0;
 
 	border: 0;
 	border-bottom: 2px solid $borders;
+
+	&.separator_color--white {
+		border-color: white;
+	}
 }
 
 
@@ -47,7 +51,7 @@
 		@include transform(translateY(-50%));
 	}
 
-	&.separator_color--dark .line {
+	&.separator_color--gray .line {
 		border-color: $borders;
 	}
 
@@ -84,7 +88,7 @@
 		border-right: 7px solid white;
 	}
 
-	&.separator_color--dark {
+	&.separator_color--gray {
 
 		.arrow--left {
 			border-left: 7px solid $borders;
