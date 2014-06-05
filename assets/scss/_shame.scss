@@ -88,8 +88,10 @@ html, body, #wrapper, #scroller, #page {
 		padding-left: 48px;
 	}
 
-	.aligncenter{
-		margin: 0;
+	@include media-query(palm) {
+		.aligncenter{
+			margin: 0;
+		}
 	}
 }
 
