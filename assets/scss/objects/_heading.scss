@@ -65,10 +65,10 @@
 	letter-spacing: 0;
 	text-transform: none;
 
-// these two cause a
-//	padding: 0 72px;
-//	margin: 0 -72px;
-// mothafucka horizontal scroll
+	@include media-query(lap-and-up){
+		padding: 0 72px;
+		margin: 0 -72px;
+	}
 
 	color: $accent;
 

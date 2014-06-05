@@ -13,10 +13,6 @@
 .menu-list__items {
 	@extend .nav;
 	@extend .nav--stacked;
-
-	&:last-child{
-		margin-bottom: 0;
-	}
 }
 
 .menu-list__item {
