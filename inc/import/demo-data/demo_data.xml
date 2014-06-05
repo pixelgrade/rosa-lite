@@ -806,7 +806,7 @@ As a new WordPress user, you should go to <a href="http://pixelgrade.com/demos/r
 
 [col size="6"]
 
-[gallery columns="2" link="file" ids="29,27,26,28"]
+[gallery columns="2" link="file" ids="9,26"]
 
 [/col]
 
@@ -857,7 +857,7 @@ As a new WordPress user, you should go to <a href="http://pixelgrade.com/demos/r
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_thumbnail_id</wp:meta_key>
-                <wp:meta_value><![CDATA[9]]></wp:meta_value>
+                <wp:meta_value><![CDATA[26]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_rosa_header_transparent_menu_bar</wp:meta_key>
@@ -1184,7 +1184,7 @@ Call our reservations team on (027) 8338 145 for more information.</p>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_rosa_main_gallery</wp:meta_key>
-                <wp:meta_value><![CDATA[182,20,33]]></wp:meta_value>
+                <wp:meta_value><![CDATA[9,26]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_rosa_header_transparent_menu_bar</wp:meta_key>
@@ -2264,7 +2264,7 @@ We are all human as well and humans are not perfect creatures. When you learn to
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_thumbnail_id</wp:meta_key>
-                <wp:meta_value><![CDATA[26]]></wp:meta_value>
+                <wp:meta_value><![CDATA[9]]></wp:meta_value>
             </wp:postmeta>
             <wp:postmeta>
                 <wp:meta_key>_pixlikes</wp:meta_key>
