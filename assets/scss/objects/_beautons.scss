@@ -7,7 +7,7 @@
 
 	font-size: 12px;
 	line-height: 1;
-	font-weight: 700;
+	font-weight: normal;
 	text-transform: uppercase;
 	letter-spacing: .2em;
 
@@ -21,9 +21,6 @@
 		background-color: $accent;
 		color: white;
 	}
-
-	//    &.btn--beta { @include font-size(12px, true, 1.25); }
-	//    &.btn--alpha { @include font-size(12px, true, 1.5); }
 
 	&.a{
 		border-bottom: none;
@@ -52,8 +49,7 @@
     $SIZES
 \*------------------------------------*/
 .btn--small {
-	font-size: 11px;
-	padding: $_u4 18px;
+	padding: 9px 18px;
 	//    &.btn--beta {
 	//      padding-top: $_u4;
 	//      padding-bottom: $_u4;
@@ -136,7 +132,7 @@
 .btn.btn--text {
 	@extend %text-link;
 
-	padding: $_u4 0;
+	padding: 3px 0;
 
 	background: transparent !important;
 

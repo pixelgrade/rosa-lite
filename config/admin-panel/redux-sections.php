@@ -137,7 +137,7 @@ $sections[] = array(
 										.article__header .article__headline .headline__description .star"
 					),
 					'background-color' => array(
-						'selector' => ".btn--primary, .comments_add-comment, .form-submit #comment-submit, .wpcf7-form-control.wpcf7-submit:hover, .btn:hover",
+						'selector' => ".btn--primary, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover",
 					),
 					'border-color'     => array(
 						'selector' => ".tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button,
@@ -343,7 +343,6 @@ $sections[] = array(
 			),
 			'default'        => array(
 				'font-family' => 'Source Sans Pro',
-				'font-weight' => '900',
 				'google'      => true,
 			),
 //			'output'         => array( 'h1, h2, h3, h4, h5, h6' ),
@@ -467,7 +466,7 @@ $sections[] = array(
 			'type'          => 'customizer_slider',
 			'title'         => __( 'Font Size', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
-			'default'       => '15',
+			'default'       => '13',
 			'min'           => 8,
 			'step'          => 1,
 			'max'           => 30,
@@ -488,8 +487,8 @@ $sections[] = array(
 			'type'          => 'customizer_slider',
 			'title'         => __( 'Letter Spacing', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
-			'default'       => '0',
-			'min'           => - 5,
+			'default'       => '1',
+			'min'           => -5,
 			'step'          => 1,
 			'max'           => 20,
 			'display_value' => 'text',
@@ -605,7 +604,7 @@ $sections[] = array(
 			'type'          => 'customizer_slider',
 			'title'         => __( 'Line Height', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
-			'default'       => '1.6',
+			'default'       => '1.7',
 			'min'           => 0,
 			'max'           => 3,
 			'step'          => .1,
