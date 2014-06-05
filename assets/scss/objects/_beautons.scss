@@ -11,8 +11,8 @@
 	text-transform: uppercase;
 	letter-spacing: .2em;
 
-	background-color: #262525;
-	color: #a6a1a1;
+	background-color: $dark;
+	color: white;
 
 	@include transition(all .15s);
 	@include border-radius(3px);
@@ -35,7 +35,7 @@
 	color: white;
 
 	&:hover {
-		background: $dark;
+		background-color: $dark !important;
 	}
 }
 
