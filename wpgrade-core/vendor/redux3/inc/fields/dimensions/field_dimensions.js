@@ -1,32 +1,49 @@
-(function($) {
+(function( $ ) {
     "use strict";
 
-    $(document).ready(function() {
+    $.reduxDimensions = $.reduxDimensions || {};
 
-        $(".redux-dimensions-height, .redux-dimensions-width").numeric({
-            //allowMinus   : false,
-        });
+    $( document ).ready(
+        function() {
+            $.reduxDimensions.init();
+        }
+    );
 
-        $(".redux-dimensions-units").select2({
+    $.reduxDimensions.init = function() {
+        var default_params = {
             width: 'resolve',
             triggerChange: true,
             allowClear: true
-        });
+        };
 
-        $('.redux-dimensions-input').on('change', function() {
-            var units = $(this).parents('.redux-field:first').find('.field-units').val();
-            if ($(this).parents('.redux-field:first').find('.redux-dimensions-units').length !== 0) {
-                units = $(this).parents('.redux-field:first').find('.redux-dimensions-units option:selected').val();
-            }
-            if (typeof units !== 'undefined') {
-                $('#' + $(this).attr('rel')).val($(this).val() + units);
-            } else {
-                $('#' + $(this).attr('rel')).val($(this).val());
-            }
-        });
+        var select2_handle = $( '.redux-dimensions-container' ).find( '.select2_params' );
+        if ( select2_handle.size() > 0 ) {
+            var select2_params = select2_handle.val();
 
-        $('.redux-dimensions-units').on('change', function() {
-            $(this).parents('.redux-field:first').find('.redux-dimensions-input').change();
-        });
-    });
-})(jQuery);
+            select2_params = JSON.parse( select2_params );
+            default_params = $.extend( {}, default_params, select2_params );
+        }
+
+        $( ".redux-dimensions-units" ).select2( default_params );
+
+        $( '.redux-dimensions-input' ).on(
+            'change', function() {
+                var units = $( this ).parents( '.redux-field:first' ).find( '.field-units' ).val();
+                if ( $( this ).parents( '.redux-field:first' ).find( '.redux-dimensions-units' ).length !== 0 ) {
+                    units = $( this ).parents( '.redux-field:first' ).find( '.redux-dimensions-units option:selected' ).val();
+                }
+                if ( typeof units !== 'undefined' ) {
+                    $( '#' + $( this ).attr( 'rel' ) ).val( $( this ).val() + units );
+                } else {
+                    $( '#' + $( this ).attr( 'rel' ) ).val( $( this ).val() );
+                }
+            }
+        );
+
+        $( '.redux-dimensions-units' ).on(
+            'change', function() {
+                $( this ).parents( '.redux-field:first' ).find( '.redux-dimensions-input' ).change();
+            }
+        );
+    };
+})( jQuery );
