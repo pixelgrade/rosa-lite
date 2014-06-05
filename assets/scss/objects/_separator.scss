@@ -47,12 +47,12 @@ hr, .separator {
 		position: absolute;
 		top: 50%;
 		width: 42%;
-		border: 1px solid white;
+		border: 1px solid $borders;
 		@include transform(translateY(-50%));
 	}
 
-	&.separator_color--gray .line {
-		border-color: $borders;
+	&.separator_color--white .line {
+		border-color: white;
 	}
 
 	.line--left {
@@ -80,22 +80,22 @@ hr, .separator {
 
 	.arrow--left {
 		left: 0;
-		border-left: 7px solid white;
+		border-left: 7px solid $borders;
 	}
 
 	.arrow--right {
 		right: 0;
-		border-right: 7px solid white;
+		border-right: 7px solid $borders;
 	}
 
-	&.separator_color--gray {
+	&.separator_color--white {
 
 		.arrow--left {
-			border-left: 7px solid $borders;
+			border-left: 7px solid white;
 		}
 
 		.arrow--right {
-			border-right: 7px solid $borders;
+			border-right: 7px solid white;
 		}
 	}
 }
