@@ -146,6 +146,7 @@
 	letter-spacing: 0.1em;
 
 	&:hover{
-		color: $accent;
+		color: $dark !important;
+		border-color: $dark !important;
 	}
 }

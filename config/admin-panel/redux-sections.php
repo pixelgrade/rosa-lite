@@ -134,7 +134,7 @@ $sections[] = array(
 										.form-submit .meta-list a#comment-submit:hover, .meta-list a.wpcf7-form-control.wpcf7-submit:hover,
 										.meta-list a.otreservations-submit:hover, .meta-list .widget_tag_cloud a:hover, .widget_tag_cloud .meta-list a:hover, .btn.btn--text:hover,
 										.article__content a:not([class]), .article__content a:hover:not([class]):hover,
-										.article__header .article__headline .headline__description .star"
+										.article__header .article__headline .headline__description .star, .read-more-button, .read-more-button:hover"
 					),
 					'background-color' => array(
 						'selector' => ".btn--primary, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover",
@@ -143,7 +143,7 @@ $sections[] = array(
 						'selector' => ".tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button,
 						.form-submit .btn--text#comment-submit, .form-submit #comment-submit.read-more-button,
 						.btn--text.wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit.read-more-button,
-						.btn--text.otreservations-submit, .otreservations-submit.read-more-button,
+						.btn--text.otreservations-submit, .otreservations-submit, .read-more-button,
 						.widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button, blockquote, .article__content a:not([class])",
 					),
 					'outline-color'    => array(

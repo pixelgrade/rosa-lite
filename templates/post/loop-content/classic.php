@@ -14,7 +14,7 @@ if ( ! $has_thumb ) {
 
 <article <?php post_class( 'article  article--archive ' . $post_class_thumb ); ?>>
     <?php get_template_part( 'templates/post/loop-content/featured-classic/image' ); ?>
-	<div class="article__body">
+	<div class="article__body  island">
 		<?php get_template_part( 'templates/post/loop-content/header-classic' ); ?>
 		<section class="article__content">
 			<?php echo wpgrade_better_excerpt(); ?>
