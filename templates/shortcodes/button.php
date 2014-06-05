@@ -6,7 +6,7 @@
     // get needed classes
     $classes = 'pixcode  pixcode--btn  btn';
     $classes.= !empty($size) ? '  btn--'.$size : '';
-    $classes.= !empty($style) ? '  btn--'.$style : '';
+    $classes.= !empty($type) ? '  btn--'.$type : '';
     $classes.= !empty($class) ? '  '.$class : '';
     // create class attribute
     $classes = $classes !== '' ? 'class="'.$classes.'"' : '';

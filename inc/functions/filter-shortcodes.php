@@ -6,17 +6,9 @@
 add_filter( 'pixcodes_filter_params_for_separator', 'wpgrade_callback_change_separator_params', 10, 1 );
 
 function wpgrade_callback_change_separator_params( $params ) {
-	//we only need aligment, color and style
+	//we only need alignment, color and style
 
 	//change the style options
-	if ( isset( $params['style'] ) ) {
-		$params['style']['options'] = array(
-			'line'        => "Line",
-			'flower'      => "Flower",
-			'line-flower' => "Line with Flower",
-		);
-	}
-
 	if ( isset( $params['color'] ) ) {
 		$params['color']['options'] = array(
 			''  => "Gray",
@@ -24,7 +16,22 @@ function wpgrade_callback_change_separator_params( $params ) {
 		);
 	}
 
+	//add new params in the right order
+	$params = util::array_insert_after('color', $params, 'type', array(
+		'type' => 'select',
+		'name' => 'Type',
+		'options' => array(
+			'line'        => "Line",
+			'flower'      => "Flower",
+			'line-flower' => "Line with Flower",
+		),
+		'admin_class' => 'span5 push1',
+	));
+
 	// unset unneeded params
+	if ( isset( $params['style'] ) ) {
+		unset( $params['style'] );
+	}
 	if ( isset( $params['align'] ) ) {
 		unset( $params['align'] );
 	}
@@ -54,9 +61,9 @@ function wpgrade_callback_change_button_params( $params ) {
 	}
 
 	//add new params in the right order
-	$params = util::array_insert_before('size', $params, 'style', array(
+	$params = util::array_insert_before('size', $params, 'type', array(
 		'type' => 'select',
-		'name' => 'Style',
+		'name' => 'Type',
 		'options' => array(
 			''        => "Regular",
 			'primary'      => "Primary",
