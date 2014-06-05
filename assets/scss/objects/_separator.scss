@@ -5,12 +5,16 @@
 
 /*==========  $SEPARATORS  ==========*/
 
-.separator {
-	height: 1px;
+hr, .separator {
+	height: 0px;
 	margin: $_175u 0;
 
 	border: 0;
 	border-bottom: 2px solid $borders;
+
+	&.separator_color--white {
+		border-color: white;
+	}
 }
 
 
@@ -43,12 +47,12 @@
 		position: absolute;
 		top: 50%;
 		width: 42%;
-		border: 1px solid white;
+		border: 1px solid $borders;
 		@include transform(translateY(-50%));
 	}
 
-	&.separator_color--dark .line {
-		border-color: $borders;
+	&.separator_color--white .line {
+		border-color: white;
 	}
 
 	.line--left {
@@ -76,22 +80,22 @@
 
 	.arrow--left {
 		left: 0;
-		border-left: 7px solid white;
+		border-left: 7px solid $borders;
 	}
 
 	.arrow--right {
 		right: 0;
-		border-right: 7px solid white;
+		border-right: 7px solid $borders;
 	}
 
-	&.separator_color--dark {
+	&.separator_color--white {
 
 		.arrow--left {
-			border-left: 7px solid $borders;
+			border-left: 7px solid white;
 		}
 
 		.arrow--right {
-			border-right: 7px solid $borders;
+			border-right: 7px solid white;
 		}
 	}
 }

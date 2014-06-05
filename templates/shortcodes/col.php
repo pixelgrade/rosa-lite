@@ -16,6 +16,7 @@ $ratios = array(
 );
 
 $output .= '<div class="grid__item ' . $ratios[ $size ] . ' palm-one-whole ' . $class . '">' . PHP_EOL;
-$output .= $this->get_clean_content( $content ) . PHP_EOL;
+if( $class =='promo-box' ) $output .= '<div class="promo-box__container">' . $this->get_clean_content( $content ) . '</div>' . PHP_EOL;
+else $output .= $this->get_clean_content( $content ) . PHP_EOL;
 $output .= '</div>' . PHP_EOL;
 echo $output;
