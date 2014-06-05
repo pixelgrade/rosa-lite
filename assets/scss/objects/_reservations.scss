@@ -67,3 +67,25 @@
 	@extend .btn;
 	@extend .btn--secondary;
 }
+
+
+
+
+.promo-box__container{
+	padding: 36px 54px;
+	background-color: $accent;
+	color: white;
+
+	.promo-box.dark &{
+		background-color: $dark;
+	}
+
+	h1, h2, h3, h4, h5, h6{
+		margin-top: 0;
+		color: white;
+	}
+
+	p:last-child{
+		margin-bottom: 0;
+	}
+}
