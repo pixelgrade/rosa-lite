@@ -95,8 +95,12 @@
 .page .article__content {
 	position: relative;
 	width: 100%;
-	padding: 50px 0;
+	margin: 50px 0;
 	background-color: white;
+
+	@include media-query(palm) {
+		margin: 36px 0;
+	}
 }
 
 .down-arrow {

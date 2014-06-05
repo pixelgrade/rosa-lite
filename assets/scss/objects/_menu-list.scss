@@ -13,11 +13,19 @@
 .menu-list__items {
 	@extend .nav;
 	@extend .nav--stacked;
+
+	&:last-child{
+		margin-bottom: 0;
+	}
 }
 
 .menu-list__item {
 	position: relative;
 	margin-bottom: 30px;
+
+	&:last-child{
+		margin-bottom: 0;
+	}
 }
 
 .menu-list__item-title {
