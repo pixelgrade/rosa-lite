@@ -68,12 +68,19 @@ html, body, #wrapper, #scroller, #page {
 	margin-bottom: $_u;
 }
 
-.pixcode--grid img{
-	margin: 0;
-	display: inline-block;
-	vertical-align: top;
+// remove img margins in the grid so that the
+// "Section vertical margins" option
+// in customizer works right
+@include media-query(lap-and-up){
+	.pixcode--grid img{
+		margin: 0;
+		display: inline-block;
+		vertical-align: top;
+	}
+
 }
 
+// 2x grid gutter
 .pixcode--grid {
 	margin-left: -48px;
 
