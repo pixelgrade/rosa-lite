@@ -23,7 +23,7 @@ function wpgrade_callback_change_separator_params( $params ) {
 		'options' => array(
 			'line'        => "Line",
 			'flower'      => "Flower",
-			'line_flower' => "Line with Flower",
+			'line-flower' => "Line with Flower",
 		),
 		'admin_class' => 'span5 push1',
 	));

@@ -10,7 +10,7 @@ $classes .= ! empty( $color ) ? ' separator_color--' . $color : '';
 $classes = 'class="' . trim( $classes ) . '"';
 
 
-if ( $type == 'line_flower' ) {
+if ( $type == 'line-flower' ) {
 	echo '<div ' . $classes . '>' . PHP_EOL .
             '<div class="line  line--left"></div>' . PHP_EOL .
             '<div class="line  line--right"></div>' . PHP_EOL .
