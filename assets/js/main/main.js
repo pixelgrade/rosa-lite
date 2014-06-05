@@ -31,11 +31,13 @@ function scrollToTopInit() {
 
         if (globalDebug) {console.log("ScrollToTop Init");}
 
-		var offset      = 220,
+		var offset      = 600,
             duration    = 300;
 
+        var elOffset = $('.up-link').offset().top;
+
 		$(window).scroll(function() {
-			if ($(this).scrollTop() > offset) {
+			if ($(this).scrollTop() > (elOffset - offset)) {
 				$('.up-link').fadeIn(duration);
 			} else {
 				$('.up-link').fadeOut(duration);
