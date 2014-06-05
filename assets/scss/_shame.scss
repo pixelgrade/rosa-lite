@@ -68,20 +68,49 @@ html, body, #wrapper, #scroller, #page {
 	margin-bottom: $_u;
 }
 
-.pixcode--grid img{
-	margin: 0;
-	display: inline-block;
-	vertical-align: top;
+// remove img margins in the grid so that the
+// "Section vertical margins" option
+// in customizer works right
+@include media-query(lap-and-up){
+	.pixcode--grid img{
+		margin: 0;
+		display: inline-block;
+		vertical-align: top;
+	}
+
 }
 
+// 2x grid gutter
 .pixcode--grid {
 	margin-left: -48px;
 
 	> .grid__item{
 		padding-left: 48px;
 	}
+
+//	@include media-query(palm) {
+//		.aligncenter{
+//			margin: 0;
+//		}
+//	}
 }
 
-.island {
-	padding: 30px 78px;
+// this will be used as
+// .island.grid__item on homepage
+.pixcode--grid .island {
+
+	// reset the default .grid__item padding-left
+	// because .island has it's own padding
+	@include media-query(palm){
+//		padding: 0 0 0 48px;
+		padding-left: 48px;
+		margin-bottom: 0;
+	}
+
+	@include media-query(lap-and-up) {
+		margin-bottom: 0;
+		padding: 30px 78px;
+		// to override grid__item's 48px left padding
+		padding-left: 78px !important;
+	}
 }

@@ -31,7 +31,8 @@
 			}
 
 			.dropdown__trigger {
-				border-bottom: 0;
+				border-bottom: 1px solid transparent;
+
 				@include border-bottom-left-radius(0);
 				@include border-bottom-right-radius(0);
 			}
@@ -76,16 +77,21 @@
 			top: 100%;
 
 			width: 100%;
-
 			display: none;
-
-			padding-top: $_u2;
-
-			//            border: 1px solid $borders;
-			//            border-top: 0;
-			//            @include border-radius(5px);
+			padding: $_u2 0;
 
 			background: white;
+
+			&:before{
+				content: "";
+
+				position: absolute;
+				top: 2px;
+				left: 10%;
+				right: 10%;
+
+				border-bottom: 1px solid $borders;
+			}
 
 			li {
 				width: 100%;

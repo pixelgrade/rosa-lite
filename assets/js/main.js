@@ -592,7 +592,7 @@ var Parallax = {
 
         });
 
-        $('.article__parallax').first().append('<span class="down-arrow"></span>');
+        $('.home .article__parallax').first().append('<span class="down-arrow"></span>');
 
     },
 
@@ -1147,7 +1147,10 @@ function eventHandlers() {
 
     if(ieMobile) filterHandler = 'click';
 
-    $('.pix-dropdown').on(filterHandler, function(){
+    $('.pix-dropdown').on(filterHandler, function(e){
+        e.preventDefault();
+        e.stopPropagation();
+
         $(this).toggleClass('active');
     });
 

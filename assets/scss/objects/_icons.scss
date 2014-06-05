@@ -32,6 +32,10 @@
 		}
 	}
 
+	&.square {
+		@include border-radius(3px);
+	}
+
 	&.circle {
 		@include border-radius(999px);
 	}
