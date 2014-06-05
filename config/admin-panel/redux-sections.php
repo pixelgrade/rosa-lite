@@ -674,10 +674,12 @@ $sections[] = array(
 					'padding-top'    => array(
 						'selector' => '.page .article__content',
 						'unit'     => 'px',
+                        'media'    => 'only screen and (min-width: 900px)',
 					),
 					'padding-bottom' => array(
 						'selector' => '.page .article__content',
 						'unit'     => 'px',
+                        'media'    => 'only screen and (min-width: 900px)',
 					)
 				)
 			),

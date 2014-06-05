@@ -64,8 +64,11 @@
 	font-weight: normal;
 	letter-spacing: 0;
 	text-transform: none;
-	padding: 0 72px;
-	margin: 0 -72px;
+
+// these two cause a
+//	padding: 0 72px;
+//	margin: 0 -72px;
+// mothafucka horizontal scroll
 
 	color: $accent;
 
