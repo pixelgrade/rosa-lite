@@ -97,19 +97,20 @@ html, body, #wrapper, #scroller, #page {
 
 // this will be used as
 // .island.grid__item on homepage
-.pixcode--grid .island {
+.grid__item.island {
 
 	// reset the default .grid__item padding-left
 	// because .island has it's own padding
 	@include media-query(palm){
 //		padding: 0 0 0 48px;
 		padding-left: 48px;
+		padding-right: 0;
 		margin-bottom: 0;
 	}
 
 	@include media-query(lap-and-up) {
 		margin-bottom: 0;
-		padding: 30px 78px;
+		padding: 30px;
 		// to override grid__item's 48px left padding
 		padding-left: 78px !important;
 	}

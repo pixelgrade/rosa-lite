@@ -11,12 +11,14 @@ var Navigator = {
     lastSelected:       0,
     isWhite:            true,
     wasWhite:           true,
+    initialized:        false,
 
     initialize: function () {
 
         var that        = this,
             $navigator  = this.$el;
 
+        this.initialized = true;
         this.$sections = $(that.sectionSelector);
 
         if (this.$sections.length < 2) {
@@ -65,6 +67,10 @@ var Navigator = {
 
         var that        = this,
             $navigator  = this.$el;
+
+        if (!this.initialized) {
+            this.initialize();
+        }
 
         // loop through each header and find current state
         this.$sections.each(function(i, element) {
