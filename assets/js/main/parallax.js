@@ -15,66 +15,75 @@ var Parallax = {
 
         $(this.selector).each(function (i, element) {
 
-            var $container          = $(element),
+            var $parallax           = $(element),
+                $container          = $parallax.parent(),
+                containerTop        = $container.offset().top,
+                containerWidth      = $container.outerWidth(),
                 containerHeight     = $container.outerHeight(),
-                parallaxDistance    = (wh - containerHeight) * that.amount,
-                // calculate needed values to properly move the image on scroll
+                parallaxDistance    = windowHeight * that.amount,
+                parallaxInfo        = {
+                    start:          containerTop - windowHeight,
+                    end:            containerTop + containerHeight
+                },
                 initialTop          = -1 * (parallaxDistance) / 2 - (containerHeight * that.amount),
-                finalTop            = -1 * initialTop,
-                start               = $container.offset().top - wh,
-                end                 = start + wh + containerHeight,
-                timeline            = new TimelineMax({paused: true});
+                finalTop            = -1 * initialTop;
 
-            if ($container.hasClass('article__parallax--img')) {
+            if ($parallax.hasClass('article__parallax--img')) {
 
-                $container.find('img').each(function (i, img) {
-                    var $img        = $(img),
-                        imgHeight   = $img.height(),
-                        imgWidth    = $img.width(),
+                $parallax.find('img').each(function (i, element) {
+                    var $image          = $(element),
+                        imageHeight     = $image.height(),
+                        imageWidth      = $image.width(),
                         // find scale needed for the image to fit container and move desired amount
-                        scaleY      = (parallaxDistance + containerHeight) / imgHeight,
-                        scaleX      = ww / imgWidth,
-                        scale       = Math.max(scaleX, scaleY);
+                        scaleY          = (parallaxDistance + containerHeight) / imageHeight,
+                        scaleX          = containerWidth / imageWidth,
+                        scale           = Math.max(scaleX, scaleY);
 
                     // scale image up to desired size
-                    $img.css({
-                        width: parseInt(imgWidth * scale, 10),
-                        height: parseInt(imgHeight * scale, 10)
+                    $image.css({
+                        width: parseInt(imageWidth * scale + 1, 10),
+                        height: parseInt(imageHeight * scale + 1, 10)
                     });
 
                     // fade image in
-                    TweenMax.to($img, 0.6, {opacity: 1});
+                    TweenMax.to($image, 0.5, {
+                        opacity: 1,
+                        onComplete: function () {
+                            CoverAnimation.initialize();
+                        }
+                    });
                 });
             }
 
+            var timeline = new TimelineMax({ paused: true });
+
             // create timeline for current image
-            timeline.append(TweenMax.fromTo($container, 0.3, {
-                y: initialTop,
-                ease: Linear.easeNone
+            timeline.append(TweenMax.fromTo($parallax, 1, {
+                y: initialTop
             }, {
                 y: finalTop,
                 ease: Linear.easeNone
             }));
 
+            parallaxInfo.timeline = timeline;
+
             // bind sensible variables for tweening to the image using a data attribute
-            $container.data('tween', {
-                timeline: timeline,
-                start: start,
-                end: end
-            });
+            $parallax.data('parallax', parallaxInfo);
 
         });
 
+        this.update(window.scrollY, false);
+
     },
 
-    update: function() {
+    update: function(scrollTop, tween) {
 
-        var scrollTop = getScroll().y;
+        tween = typeof tween !== "undefined" ? tween : !is_OSX;
 
         $(this.selector).each(function (i, element) {
 
-            var $container  = $(element),
-                options     = $container.data('tween'),
+            var $parallax   = $(element),
+                options     = $parallax.data('parallax'),
                 progress    = 0;
 
             // some sanity check
@@ -82,13 +91,22 @@ var Parallax = {
             if (! empty(options) && (options.end - options.start) !== 0) {
                 progress = (1 / (options.end - options.start)) * (scrollTop - options.start);
 
+
                 if (0 > progress) {
+                    options.timeline.progress(0);
                     return;
                 }
 
-                if (1 > progress) {
-                    options.timeline.progress(progress);
+                if (progress > 1) {
+                    options.timeline.progress(1);
+                    return;
                 }
+
+//                if (tween) {
+//                    options.timeline.tweenTo(progress);
+//                } else {
+                    options.timeline.progress(progress);
+//                }
             }
         });
     }

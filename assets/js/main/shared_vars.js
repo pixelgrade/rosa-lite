@@ -1,6 +1,6 @@
 // /* ====== SHARED VARS ====== */
 
-var phone, touch, ltie9, lteie9, wh, ww, dh, ar, fonts, ieMobile;
+var phone, touch, ltie9, lteie9, dh, ar, fonts, ieMobile;
 
 var ua = navigator.userAgent;
 var winLoc = window.location.toString();
@@ -39,8 +39,8 @@ if (useTransform) {
 	}
 }
 
-var ww = window.innerWidth,
-    wh = window.innerHeight;
+var windowWidth = window.innerWidth,
+    windowHeight = window.innerHeight;
 
 /* --- To enable verbose debug add to Theme Options > Custom Code footer -> globalDebug=true; --- */
 var globalDebug = false,

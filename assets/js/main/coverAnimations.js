@@ -80,7 +80,7 @@ var CoverAnimation = {
 
                 onComplete: function () {
 
-                    var progress        = (1 / (end - start)) * (getScroll().y - start),
+                    var progress        = (1 / (end - start)) * (latestKnownScrollY - start),
                         partialProgress = ab + bc * progress,
                         timePassed      = partialProgress * timeline.getLabelTime("animatedOut");
 
@@ -109,7 +109,7 @@ var CoverAnimation = {
         });
     },
 
-    update: function () {
+    update: function (scrollTop) {
 
         if (!this.animated) {
             return;
@@ -126,7 +126,7 @@ var CoverAnimation = {
             if (! empty(options) && (options.end - options.start) !== 0) {
 
                 // progress on the total timeline (ac)
-                progress = (1 / (options.end - options.start)) * (getScroll().y - options.start);
+                progress = (1 / (options.end - options.start)) * (scrollTop - options.start);
 
                 // progress on partial timeline (bc)
                 // point B being labeled as "animated"

@@ -3,25 +3,34 @@
 
 /* --- NICESCROLL --- */
 function niceScrollInit() {
-	if (globalDebug) {console.log("NiceScroll Init");}
+    if (globalDebug) {console.log("NiceScroll Init");}
 
-	var smoothScroll = $('body').data('smoothscrolling') !== undefined;
+    var smoothScroll = $('body').data('smoothscrolling') !== undefined;
 
-	if (smoothScroll && ww > 899 && !touch && !is_OSX) {
-		$('html').addClass('nicescroll');
-		$('[data-smoothscrolling]').niceScroll({
-			zindex: 9999,
-			cursorcolor: '#000000',
-			cursoropacitymin: 0.1,
-			cursoropacitymax: 0.5,
-			cursorwidth: 4,
-			cursorborder: 0,
-			railpadding: { right : 2 },
-			mousescrollstep: 40,
-			scrollspeed: 100,
-			hidecursordelay: 100
-		});
-	}
+    if (smoothScroll && ww > 899 && !touch && !is_OSX) {
+        var $window = $(window);		//Window object
+
+        var scrollTime = 0.6;			//Scroll time
+        var scrollDistance = 240;		//Distance. Use smaller value for shorter scroll and greater value for longer scroll
+
+        $window.on("mousewheel DOMMouseScroll", function(event){
+
+            event.preventDefault();
+
+            var delta = event.originalEvent.wheelDelta/120 || -event.originalEvent.detail/3;
+            var scrollTop = $window.scrollTop();
+            var finalScroll = scrollTop - parseInt(delta*scrollDistance);
+
+            TweenMax.to($window, scrollTime, {
+                scrollTo : { y: finalScroll, autoKill:true },
+                ease: Power1.easeOut,	//For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
+                autoKill: true,
+                overwrite: 5
+            });
+
+        });
+
+    }
 
 }
 
@@ -47,11 +56,6 @@ function scrollToTopInit() {
 
             var scrollDuration = getScroll().y * duration / 1000;
 
-            if (iScroll) {
-                iScroll.scrollTo(0, 0, scrollDuration, 'quadratic');
-                return;
-            }
-
             $('html, body').animate({
                 scrollTop: 0
             }, {
@@ -66,8 +70,6 @@ function scrollToTopInit() {
 
 function menuTrigger(){
 
-    var lastOpenScroll = 0;
-
     $(document).on('click', '.js-nav-trigger', function(e) {
         var windowHeigth = $(window).height();
 
@@ -77,28 +79,9 @@ function menuTrigger(){
         if($('html').hasClass('navigation--is-visible')){
             $('#page').css('height', '');
             $('html').removeClass('navigation--is-visible');
-            if (iScroll) {
-                setTimeout(function() {
-                    iScroll = new IScroll('#wrapper', {
-                        mouseWheel: true,
-                        useTransition: false,
-                        deceleration: 0.0013,
-                        bounce: false,
-                        click: true,
-                        startY: -1 * lastOpenScroll
-                    });
-                    console.log(lastOpenScroll);
-                }, 0);
-            }
         } else {
             $('#page').height(windowHeigth);
             $('html').addClass('navigation--is-visible');
-            if (iScroll) {
-                setTimeout(function() {
-                    lastOpenScroll = getScroll().y;
-                    iScroll.destroy();
-                }, 0);
-            }
         }
     });
 }
@@ -140,14 +123,10 @@ function resizeVideos() {
     });
 }
 
-function containerPlacement(){
-	$('#page').css('padding-top', $('.js-header').outerHeight() + 'px');
-}
-
 
 /* ====== INTERNAL FUNCTIONS END ====== */
 
-function init(){
+function init() {
 	if (globalDebug) {console.group("Init");}
 
 	// /* GLOBAL VARS */
@@ -195,8 +174,6 @@ function loadUp(){
 	if (globalDebug) {console.group("LoadUp");}
 
 	// always
-	niceScrollInit();
-
 	royalSliderInit();
 
 //	containerPlacement();
@@ -308,11 +285,9 @@ $(window).load(function(){
         stickyHeaderInit();
     }
 
-    iScrollInit();
     Parallax.initialize();
-    CoverAnimation.initialize();
-
-    navigatorInit();
+    Navigator.initialize();
+    niceScrollInit();
 
 
     if(!empty($('#date-otreservations'))){
@@ -332,67 +307,36 @@ $(window).load(function(){
 
 /* ====== ON RESIZE ====== */
 
-$(window).on("debouncedresize", function(e){
+$(window).on("debouncedresize", function(e) {
 
 	if (globalDebug) {console.group("OnResize");}
 
-    ww = window.innerWidth;
-    wh = window.innerHeight;
+    windowWidth     = $(window).width();
+    windowHeight    = $(window).height();
 
-    niceScrollInit();
     resizeVideos();
-
-    if (iScroll) {
-        resizeCovers();
-    }
-
 });
 
-var iScroll;
+var latestKnownScrollY = 0,
+    ticking = false;
 
-function iScrollInit() {
+function updateStuff() {
+    ticking = false;
 
-    var options = {
-        mouseWheel: true,
-        useTransition: false,
-        deceleration: 0.0013,
-        bounce: false,
-        click: true
-    }
+    var currentScrollY = latestKnownScrollY;
 
-    if (Modernizr.touch || !is_OSX) {
-        resizeCovers();
-        $('body').addClass('iScroll');
-
-        setTimeout(function () {
-            iScroll = new IScroll('#wrapper', options);
-        }, 0);
-    }
+    Parallax.update(currentScrollY);
+    CoverAnimation.update(currentScrollY);
 }
 
-function getScroll() {
-
-    var x, y;
-
-    if (iScroll) {
-        x = iScroll.x * -1;
-        y = iScroll.y * -1;
-    } else {
-        x = window.scrollX;
-        y = window.scrollY;
+function requestTick() {
+    if (!ticking) {
+        requestAnimationFrame(updateStuff);
     }
-
-    return {x: x, y: y};
+    ticking = true;
 }
 
-function resizeCovers() {
-    $('.full-height').height(wh);
-    $('.half-height').height(wh / 2);
-    $('.two-thirds-height').height(wh * 2 / 3);
-}
-
-(function animationLoop() {
-    window.requestAnimationFrame(animationLoop);
-    Parallax.update();
-    CoverAnimation.update();
-})();
+$(window).on("scroll", function () {
+    latestKnownScrollY = window.scrollY;
+    requestTick();
+});

@@ -1,6 +1,6 @@
 // /* ====== SHARED VARS ====== */
 
-var phone, touch, ltie9, lteie9, wh, ww, dh, ar, fonts, ieMobile;
+var phone, touch, ltie9, lteie9, dh, ar, fonts, ieMobile;
 
 var ua = navigator.userAgent;
 var winLoc = window.location.toString();
@@ -39,8 +39,8 @@ if (useTransform) {
 	}
 }
 
-var ww = window.innerWidth,
-    wh = window.innerHeight;
+var windowWidth = window.innerWidth,
+    windowHeight = window.innerHeight;
 
 /* --- To enable verbose debug add to Theme Options > Custom Code footer -> globalDebug=true; --- */
 var globalDebug = false,
@@ -542,66 +542,75 @@ var Parallax = {
 
         $(this.selector).each(function (i, element) {
 
-            var $container          = $(element),
+            var $parallax           = $(element),
+                $container          = $parallax.parent(),
+                containerTop        = $container.offset().top,
+                containerWidth      = $container.outerWidth(),
                 containerHeight     = $container.outerHeight(),
-                parallaxDistance    = (wh - containerHeight) * that.amount,
-                // calculate needed values to properly move the image on scroll
+                parallaxDistance    = windowHeight * that.amount,
+                parallaxInfo        = {
+                    start:          containerTop - windowHeight,
+                    end:            containerTop + containerHeight
+                },
                 initialTop          = -1 * (parallaxDistance) / 2 - (containerHeight * that.amount),
-                finalTop            = -1 * initialTop,
-                start               = $container.offset().top - wh,
-                end                 = start + wh + containerHeight,
-                timeline            = new TimelineMax({paused: true});
+                finalTop            = -1 * initialTop;
 
-            if ($container.hasClass('article__parallax--img')) {
+            if ($parallax.hasClass('article__parallax--img')) {
 
-                $container.find('img').each(function (i, img) {
-                    var $img        = $(img),
-                        imgHeight   = $img.height(),
-                        imgWidth    = $img.width(),
+                $parallax.find('img').each(function (i, element) {
+                    var $image          = $(element),
+                        imageHeight     = $image.height(),
+                        imageWidth      = $image.width(),
                         // find scale needed for the image to fit container and move desired amount
-                        scaleY      = (parallaxDistance + containerHeight) / imgHeight,
-                        scaleX      = ww / imgWidth,
-                        scale       = Math.max(scaleX, scaleY);
+                        scaleY          = (parallaxDistance + containerHeight) / imageHeight,
+                        scaleX          = containerWidth / imageWidth,
+                        scale           = Math.max(scaleX, scaleY);
 
                     // scale image up to desired size
-                    $img.css({
-                        width: parseInt(imgWidth * scale, 10),
-                        height: parseInt(imgHeight * scale, 10)
+                    $image.css({
+                        width: parseInt(imageWidth * scale + 1, 10),
+                        height: parseInt(imageHeight * scale + 1, 10)
                     });
 
                     // fade image in
-                    TweenMax.to($img, 0.6, {opacity: 1});
+                    TweenMax.to($image, 0.5, {
+                        opacity: 1,
+                        onComplete: function () {
+                            CoverAnimation.initialize();
+                        }
+                    });
                 });
             }
 
+            var timeline = new TimelineMax({ paused: true });
+
             // create timeline for current image
-            timeline.append(TweenMax.fromTo($container, 0.3, {
-                y: initialTop,
-                ease: Linear.easeNone
+            timeline.append(TweenMax.fromTo($parallax, 1, {
+                y: initialTop
             }, {
                 y: finalTop,
                 ease: Linear.easeNone
             }));
 
+            parallaxInfo.timeline = timeline;
+
             // bind sensible variables for tweening to the image using a data attribute
-            $container.data('tween', {
-                timeline: timeline,
-                start: start,
-                end: end
-            });
+            $parallax.data('parallax', parallaxInfo);
 
         });
 
+        this.update(window.scrollY, false);
+
     },
 
-    update: function() {
+    update: function(scrollTop, tween) {
 
-        var scrollTop = getScroll().y;
+        tween = typeof tween !== "undefined" ? tween : !is_OSX;
 
         $(this.selector).each(function (i, element) {
 
-            var $container  = $(element),
-                options     = $container.data('tween'),
+            var $parallax   = $(element),
+                options     = $parallax.data('parallax'),
                 progress    = 0;
 
             // some sanity check
@@ -609,13 +618,22 @@ var Parallax = {
             if (! empty(options) && (options.end - options.start) !== 0) {
                 progress = (1 / (options.end - options.start)) * (scrollTop - options.start);
 
+
                 if (0 > progress) {
+                    options.timeline.progress(0);
                     return;
                 }
 
-                if (1 > progress) {
-                    options.timeline.progress(progress);
+                if (progress > 1) {
+                    options.timeline.progress(1);
+                    return;
                 }
+
+//                if (tween) {
+//                    options.timeline.tweenTo(progress);
+//                } else {
+                    options.timeline.progress(progress);
+//                }
             }
         });
     }
@@ -703,7 +721,7 @@ var CoverAnimation = {
 
                 onComplete: function () {
 
-                    var progress        = (1 / (end - start)) * (getScroll().y - start),
+                    var progress        = (1 / (end - start)) * (latestKnownScrollY - start),
                         partialProgress = ab + bc * progress,
                         timePassed      = partialProgress * timeline.getLabelTime("animatedOut");
 
@@ -732,7 +750,7 @@ var CoverAnimation = {
         });
     },
 
-    update: function () {
+    update: function (scrollTop) {
 
         if (!this.animated) {
             return;
@@ -749,7 +767,7 @@ var CoverAnimation = {
             if (! empty(options) && (options.end - options.start) !== 0) {
 
                 // progress on the total timeline (ac)
-                progress = (1 / (options.end - options.start)) * (getScroll().y - options.start);
+                progress = (1 / (options.end - options.start)) * (scrollTop - options.start);
 
                 // progress on partial timeline (bc)
                 // point B being labeled as "animated"
@@ -766,81 +784,89 @@ var CoverAnimation = {
         });
     }
 }
-function navigatorInit() {
+/* --- Navigator Init --- */
 
-    var $navigator      = $('.navigator'),
-        $headers        = $('.article__header'),
-        currentSelected = 0,
-        lastSelected    = 0,
-        isWhite         = true,
-        wasWhite        = true,
-        scrollDuration  = 300,
-        latestKnownScrollY = window.scrollY,
-        ticking = false;
+var Navigator = {
+    // variables
+    $el:                $('.navigator'),
+    sectionSelector:    '.article__header',
+    scrollDuration:     300,
 
-    // if we're not on a page or there's only one header ABORT MISSION!
-    if (!$navigator.length || $headers.length < 2) {
-        return;
-    }
+    // private
+    currentSelected:    0,
+    lastSelected:       0,
+    isWhite:            true,
+    wasWhite:           true,
 
-    // add bullets to the indicator for each header found
-    $headers.each(function (i, header) {
-        var $header = $(header),
-            $button = $('<a href="#" class="navigator__item"><div class="bullet"></div></a>');
+    $sections:         $(this.sectionSelector),
 
-        $button.appendTo($navigator);
-        $header.data('offsetTop', $header.offset().top);
+    initialize: function () {
 
-        $button.on('click', function (e) {
+        var that        = this,
+            $navigator  = this.$el;
 
-            e.preventDefault();
+        if (!this.$sections.length) {
+            return;
+        }
 
-            var headerTop   = $header.data('offsetTop'),
-                distance    = Math.abs(latestKnownScrollY - headerTop),
-                duration    = scrollDuration * distance / 1000;
+        this.$sections.each(function (index, element) {
 
-            $('html, body').animate({
-                scrollTop: headerTop
-            }, {
-                duration: duration,
-                easing: "easeOutCubic"
+            var $section    = $(element),
+                sectionTop  = $section.offset().top,
+                $button     = $('<a href="#" class="navigator__item"><div class="bullet"></div></a>');
+
+            $button.appendTo($navigator);
+            $section.data('offsetTop', sectionTop);
+
+            $button.on('click', function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                var scrollDistance = Math.abs(latestKnownScrollY - headerTop),
+                    scrollDuration = that.scrollDuration * scrollDistance / 1000;
+
+                $('html, body').animate({
+                    scrollTop: sectionTop
+                }, {
+                    duration: scrollDuration,
+                    easing: "easeOutCubic"
+                });
+
+                return false;
             });
 
-            return false;
         });
-    });
 
-    // add an indicator for the section that's currently in the viewport
-    var $selected = $('<div class="navigator__item  navigator__item--selected"><div class="bullet"></div></div>').appendTo($navigator);
+        $('<div class="navigator__item  navigator__item--selected"><div class="bullet"></div></div>').appendTo($navigator);
 
-    // after all the bullets have been added vertically center the navigator
-    $navigator.css({
-        'margin-top': -1 * $navigator.height() / 2
-    });
+        $navigator.css({
+            'margin-top': -1 * $navigator.height() / 2
+        });
 
-    // update
-    requestTick();
-    TweenMax.to($navigator, 0.3, {opacity: 1});
+        TweenMax.to($navigator, 0.3, {
+            opacity: 1
+        });
+    },
 
-    // function used to update navigator's color and indicator's position
-    function update() {
+    update: function (scrollTop) {
 
-        ticking = false;
+        var that        = this,
+            $navigator  = this.$el;
 
         // loop through each header and find current state
-        $headers.each(function(i, header) {
+        this.$sections.each(function(i, element) {
 
-            var $header         = $(header),
-                headerTop       = $header.data('offsetTop'),
-                headerBottom    = headerTop + $header.outerHeight(),
-                navigatorMiddle = latestKnownScrollY + (wh / 2);
+            var $section        = $(element),
+                sectionTop      = $section.data('offsetTop'),
+                sectionBottom   = sectionTop + $section.outerHeight(),
+                navigatorMiddle = scrollTop + (windowHeight / 2);
 
-            if (navigatorMiddle > headerTop) {
-                currentSelected = i;
-                isWhite = true;
+            if (navigatorMiddle > sectionTop) {
+                that.currentSelected = i;
+                that.isWhite = true;
 
-                if (navigatorMiddle > headerBottom) {
-                    isWhite = false;
+                if (navigatorMiddle > sectionBottom) {
+                    that.isWhite = false;
                 }
             }
 
@@ -848,31 +874,19 @@ function navigatorInit() {
 
         // if the navigator's indicator has to be moved
         // then move it accordingly and update state
-        if (lastSelected != currentSelected) {
-            lastSelected = currentSelected;
-            TweenMax.to($selected, 0.3, {top: 24 * currentSelected});
+        if (this.lastSelected != this.currentSelected) {
+            this.lastSelected = this.currentSelected;
+            TweenMax.to($selected, 0.3, {top: 24 * that.currentSelected});
         }
 
         // if the navigator's color has to be changed
         // then change it accordingly and update state
-        if (wasWhite != isWhite) {
-            wasWhite = isWhite;
-            $navigator.toggleClass('navigator--black', !isWhite);
+        if (this.wasWhite != this.isWhite) {
+            this.wasWhite = this.isWhite;
+            $navigator.toggleClass('navigator--black', !that.isWhite);
         }
-
     }
 
-    $(window).scroll(function () {
-        latestKnownScrollY = window.scrollY;
-        requestTick();
-    });
-
-    function requestTick() {
-        if (!ticking) {
-            requestAnimationFrame(update);
-        }
-        ticking = true;
-    }
 }
 /* --- Sticky Header Init --- */
 
@@ -902,25 +916,34 @@ function stickyHeaderInit() {
 
 /* --- NICESCROLL --- */
 function niceScrollInit() {
-	if (globalDebug) {console.log("NiceScroll Init");}
+    if (globalDebug) {console.log("NiceScroll Init");}
 
-	var smoothScroll = $('body').data('smoothscrolling') !== undefined;
+    var smoothScroll = $('body').data('smoothscrolling') !== undefined;
 
-	if (smoothScroll && ww > 899 && !touch && !is_OSX) {
-		$('html').addClass('nicescroll');
-		$('[data-smoothscrolling]').niceScroll({
-			zindex: 9999,
-			cursorcolor: '#000000',
-			cursoropacitymin: 0.1,
-			cursoropacitymax: 0.5,
-			cursorwidth: 4,
-			cursorborder: 0,
-			railpadding: { right : 2 },
-			mousescrollstep: 40,
-			scrollspeed: 100,
-			hidecursordelay: 100
-		});
-	}
+    if (smoothScroll && ww > 899 && !touch && !is_OSX) {
+        var $window = $(window);		//Window object
+
+        var scrollTime = 0.6;			//Scroll time
+        var scrollDistance = 240;		//Distance. Use smaller value for shorter scroll and greater value for longer scroll
+
+        $window.on("mousewheel DOMMouseScroll", function(event){
+
+            event.preventDefault();
+
+            var delta = event.originalEvent.wheelDelta/120 || -event.originalEvent.detail/3;
+            var scrollTop = $window.scrollTop();
+            var finalScroll = scrollTop - parseInt(delta*scrollDistance);
+
+            TweenMax.to($window, scrollTime, {
+                scrollTo : { y: finalScroll, autoKill:true },
+                ease: Power1.easeOut,	//For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
+                autoKill: true,
+                overwrite: 5
+            });
+
+        });
+
+    }
 
 }
 
@@ -946,11 +969,6 @@ function scrollToTopInit() {
 
             var scrollDuration = getScroll().y * duration / 1000;
 
-            if (iScroll) {
-                iScroll.scrollTo(0, 0, scrollDuration, 'quadratic');
-                return;
-            }
-
             $('html, body').animate({
                 scrollTop: 0
             }, {
@@ -965,8 +983,6 @@ function scrollToTopInit() {
 
 function menuTrigger(){
 
-    var lastOpenScroll = 0;
-
     $(document).on('click', '.js-nav-trigger', function(e) {
         var windowHeigth = $(window).height();
 
@@ -976,28 +992,9 @@ function menuTrigger(){
         if($('html').hasClass('navigation--is-visible')){
             $('#page').css('height', '');
             $('html').removeClass('navigation--is-visible');
-            if (iScroll) {
-                setTimeout(function() {
-                    iScroll = new IScroll('#wrapper', {
-                        mouseWheel: true,
-                        useTransition: false,
-                        deceleration: 0.0013,
-                        bounce: false,
-                        click: true,
-                        startY: -1 * lastOpenScroll
-                    });
-                    console.log(lastOpenScroll);
-                }, 0);
-            }
         } else {
             $('#page').height(windowHeigth);
             $('html').addClass('navigation--is-visible');
-            if (iScroll) {
-                setTimeout(function() {
-                    lastOpenScroll = getScroll().y;
-                    iScroll.destroy();
-                }, 0);
-            }
         }
     });
 }
@@ -1039,14 +1036,10 @@ function resizeVideos() {
     });
 }
 
-function containerPlacement(){
-	$('#page').css('padding-top', $('.js-header').outerHeight() + 'px');
-}
-
 
 /* ====== INTERNAL FUNCTIONS END ====== */
 
-function init(){
+function init() {
 	if (globalDebug) {console.group("Init");}
 
 	// /* GLOBAL VARS */
@@ -1094,8 +1087,6 @@ function loadUp(){
 	if (globalDebug) {console.group("LoadUp");}
 
 	// always
-	niceScrollInit();
-
 	royalSliderInit();
 
 //	containerPlacement();
@@ -1207,11 +1198,9 @@ $(window).load(function(){
         stickyHeaderInit();
     }
 
-    iScrollInit();
     Parallax.initialize();
-    CoverAnimation.initialize();
-
-    navigatorInit();
+    Navigator.initialize();
+    niceScrollInit();
 
 
     if(!empty($('#date-otreservations'))){
@@ -1231,70 +1220,39 @@ $(window).load(function(){
 
 /* ====== ON RESIZE ====== */
 
-$(window).on("debouncedresize", function(e){
+$(window).on("debouncedresize", function(e) {
 
 	if (globalDebug) {console.group("OnResize");}
 
-    ww = window.innerWidth;
-    wh = window.innerHeight;
+    windowWidth     = $(window).width();
+    windowHeight    = $(window).height();
 
-    niceScrollInit();
     resizeVideos();
-
-    if (iScroll) {
-        resizeCovers();
-    }
-
 });
 
-var iScroll;
+var latestKnownScrollY = 0,
+    ticking = false;
 
-function iScrollInit() {
+function updateStuff() {
+    ticking = false;
 
-    var options = {
-        mouseWheel: true,
-        useTransition: false,
-        deceleration: 0.0013,
-        bounce: false,
-        click: true
-    }
+    var currentScrollY = latestKnownScrollY;
 
-    if (Modernizr.touch || !is_OSX) {
-        resizeCovers();
-        $('body').addClass('iScroll');
-
-        setTimeout(function () {
-            iScroll = new IScroll('#wrapper', options);
-        }, 0);
-    }
+    Parallax.update(currentScrollY);
+    CoverAnimation.update(currentScrollY);
 }
 
-function getScroll() {
-
-    var x, y;
-
-    if (iScroll) {
-        x = iScroll.x * -1;
-        y = iScroll.y * -1;
-    } else {
-        x = window.scrollX;
-        y = window.scrollY;
+function requestTick() {
+    if (!ticking) {
+        requestAnimationFrame(updateStuff);
     }
-
-    return {x: x, y: y};
+    ticking = true;
 }
 
-function resizeCovers() {
-    $('.full-height').height(wh);
-    $('.half-height').height(wh / 2);
-    $('.two-thirds-height').height(wh * 2 / 3);
-}
-
-(function animationLoop() {
-    window.requestAnimationFrame(animationLoop);
-    Parallax.update();
-    CoverAnimation.update();
-})();
+$(window).on("scroll", function () {
+    latestKnownScrollY = window.scrollY;
+    requestTick();
+});
 /* --- 404 Page --- */
 var gifImages = [
 	"http://i.imgur.com/c9X6n.gif",

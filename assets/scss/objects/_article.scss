@@ -28,7 +28,6 @@
 //	padding: 200px 0;
 	background: #333;
 	overflow: hidden;
-	@include transform(translate3d(0, 0, 0));
 
 	@include media-query(palm){
 		padding: 0 $_u2;
@@ -62,7 +61,9 @@
 .article__parallax {
 	position: absolute;
 	top: 0; right: 0; bottom: 0; left: 0;
-	@include transform(translate3d(0, 0, 0));
+	background-attachment: fixed;
+	background-position: 50% 50%;
+//	@include transform(translate3d(0, 0, 0));
 
 	img {
 		opacity: 0;
