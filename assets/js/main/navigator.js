@@ -23,8 +23,6 @@ var Navigator = {
             return;
         }
 
-        console.log(this.$el);
-
         this.$sections.each(function (index, element) {
             var $section    = $(element),
                 sectionTop  = $section.offset().top,
