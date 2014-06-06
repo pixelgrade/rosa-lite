@@ -840,14 +840,15 @@ var Navigator = {
     isWhite:            true,
     wasWhite:           true,
     initialized:        false,
+    timeline:           new TimelineMax({ paused: true }),
 
     initialize: function () {
 
         var that        = this,
             $navigator  = this.$el;
 
-        this.initialized = true;
-        this.$sections = $(that.sectionSelector);
+        this.initialized    = true;
+        this.$sections      = $(that.sectionSelector);
 
         if (this.$sections.length < 2) {
             return;
@@ -880,7 +881,29 @@ var Navigator = {
 
         });
 
-        this.$selected = $('<div class="navigator__item  navigator__item--selected"><div class="bullet"></div></div>').appendTo($navigator);
+        this.$selected          = $('<div class="navigator__item  navigator__item--selected"><div class="bullet"></div></div>').appendTo($navigator);
+        this.$selectedBullet    = this.$selected.find('.bullet');
+
+        this.timeline.add(TweenMax.to(that.$selectedBullet, 0, {}));
+
+        this.timeline.add(TweenMax.to(that.$selectedBullet, 0.1, {
+            'border-top-left-radius': 20,
+            'border-top-right-radius': 20,
+            'scaleY': 2,
+            'scaleX': 0.6
+        }));
+
+        this.timeline.add(TweenMax.to(that.$selectedBullet, 0.1, {
+            'border-top-left-radius': 50,
+            'border-top-right-radius': 50,
+            'scaleY': 1,
+            'scaleX': 1
+        }));
+
+        this.timeline.add(TweenMax.to(that.$selectedBullet, 0, {
+            'scale': 1.2
+        }));
+
 
         $navigator.css({
             'margin-top': -1 * $navigator.height() / 2
@@ -897,7 +920,8 @@ var Navigator = {
             $navigator  = this.$el;
 
         if (!this.initialized) {
-            this.initialize();
+//            this.initialize();
+            return;
         }
 
         // loop through each header and find current state
@@ -924,6 +948,8 @@ var Navigator = {
         if (this.lastSelected != this.currentSelected) {
             this.lastSelected = this.currentSelected;
             TweenMax.to(this.$selected, 0.3, {top: 24 * that.currentSelected});
+            that.timeline.tweenFromTo(0, 0.3);
+//            that.timeline.play();
         }
 
         // if the navigator's color has to be changed
