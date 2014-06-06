@@ -27,10 +27,11 @@
 	a {
 		text-decoration: none;
 		color: $dark;
+		border-bottom: 3px solid transparent;
 
 		&.current, &:hover {
 			color: $accent;
-			border-bottom: 3px solid $accent;
+			border-color: $accent;
 		}
 	}
 }

@@ -932,14 +932,17 @@ function scrollToTopInit() {
 
         if (globalDebug) {console.log("ScrollToTop Init");}
 
-		var offset      = 220,
-            duration    = 300;
+		var $el         = $('.up-link'),
+            offset      = 600,
+            duration    = 500;
+
+        var elOffset = $el.offset().top;
 
 		$(window).scroll(function() {
-			if ($(this).scrollTop() > offset) {
-				$('.up-link').fadeIn(duration);
+			if ($(this).scrollTop() > (elOffset - offset)) {
+                $el.fadeIn(duration);
 			} else {
-				$('.up-link').fadeOut(duration);
+                $el.fadeOut(duration);
 			}
 		});
 
@@ -1461,4 +1464,22 @@ function setQueryParameter(uri, key, value) {
 	else {
 		return uri + separator + key + "=" + value;
 	}
+}
+
+// http://stackoverflow.com/a/7557433
+function isElementInViewport (el) {
+
+    //special bonus for those using jQuery
+    if (el instanceof jQuery) {
+        el = el[0];
+    }
+
+    var rect = el.getBoundingClientRect();
+
+    return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+    );
 }
