@@ -13,6 +13,8 @@ var CoverAnimation = {
             return;
         }
 
+        this.initialized = true;
+
         $(this.selector).each(function(i, header) {
 
             var $header         = $(header),
@@ -50,7 +52,13 @@ var CoverAnimation = {
             // ------ B
             timeline.addLabel("animatedIn");
 
-            timeline.to($title, 1.08, {opacity: 0, y: -60, ease: Quad.easeIn});
+            if (i == 0) {
+                timeline.to($headline, 1.08, {y: 200, ease: Linear.easeNone});
+                timeline.to($title, 1.08, {opacity: 0, y: -60, ease: Quad.easeIn}, '-=1.08');
+            } else {
+                timeline.to($title, 1.08, {opacity: 0, y: -60, ease: Quad.easeIn});
+            }
+
             timeline.to($description, 1.08, {y: 60, opacity: 0, ease: Quad.easeIn}, '-=1.08');
             timeline.to($subtitle, 1.08, {opacity: 0, y: -90, ease: Quad.easeIn}, '-=1.08');
             timeline.to($lines, 0.86, {width: 0, opacity: 0, ease: Quad.easeIn}, '-=0.94');
@@ -65,12 +73,12 @@ var CoverAnimation = {
             var animatedInTime      = timeline.getLabelTime("animatedIn"),
                 animatedOutTime     = timeline.getLabelTime("animatedOut"),
                 start               = headerTop + headerHeight / 2 - wh / 2,
-                end                 = start + wh / 2,
+                end                 = start + headerHeight / 2,
                 ab, bc;
 
             if (i == 0) {
-                start = headerTop + wh / 8;
-                end = start + wh / 2;
+                start = headerTop + windowHeight / 8;
+                end = start + windowHeight / 2;
             }
 
             ab = animatedInTime / animatedOutTime;
@@ -86,15 +94,20 @@ var CoverAnimation = {
                         partialProgress = ab + bc * progress,
                         timePassed      = partialProgress * timeline.getLabelTime("animatedOut");
 
-                    if (ab >= partialProgress) {
-                        that.animated = true;
+                    if (ab > partialProgress) {
+                        setTimeout(function () {
+                            that.animated = true;
+                        }, 50);
                         return;
                     }
 
                     timeline.addLabel("finishedAt", timePassed);
                     timeline.tweenTo("finishedAt", {
                         onComplete: function () {
-                            that.animated = true;
+                            setTimeout(function () {
+                                that.animated = true;
+                            }, 50);
+                            return;
                         }
                     });
                 }
