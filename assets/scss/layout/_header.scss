@@ -62,6 +62,10 @@
 
 	height: $_3u;
 	margin: 0;
+
+	@include media-query(palm){
+		padding: 0 $_2u;
+	}
 }
 
 .site-logo {
