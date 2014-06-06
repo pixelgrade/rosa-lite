@@ -11,22 +11,22 @@ function wpgrade_callback_change_separator_params( $params ) {
 	//change the style options
 	if ( isset( $params['color'] ) ) {
 		$params['color']['options'] = array(
-			''  => "Gray",
+			''      => "Gray",
 			'white' => "White",
 		);
 	}
 
 	//add new params in the right order
-	$params = util::array_insert_after('color', $params, 'type', array(
-		'type' => 'select',
-		'name' => 'Type',
-		'options' => array(
+	$params = util::array_insert_after( 'color', $params, 'type', array(
+		'type'        => 'select',
+		'name'        => 'Type',
+		'options'     => array(
 			'line'        => "Line",
 			'flower'      => "Flower",
 			'line-flower' => "Line with Flower",
 		),
 		'admin_class' => 'span5 push1',
-	));
+	) );
 
 	// unset unneeded params
 	if ( isset( $params['style'] ) ) {
@@ -51,26 +51,26 @@ function wpgrade_callback_change_button_params( $params ) {
 
 	//change the size options
 	if ( isset( $params['size'] ) ) {
-		$params['size']['options'] = array(
-			''        => "Regular",
-			'small'      => "Small",
+		$params['size']['options']     = array(
+			''      => "Regular",
+			'small' => "Small",
 			'large' => "Large",
 		);
-		$params['size']['name'] = 'Size';
+		$params['size']['name']        = 'Size';
 		$params['size']['admin_class'] = 'span5 push1';
 	}
 
 	//add new params in the right order
-	$params = util::array_insert_before('size', $params, 'type', array(
-		'type' => 'select',
-		'name' => 'Type',
-		'options' => array(
+	$params = util::array_insert_before( 'size', $params, 'type', array(
+		'type'        => 'select',
+		'name'        => 'Type',
+		'options'     => array(
 			''        => "Regular",
-			'primary'      => "Primary",
-			'text' => "Text",
+			'primary' => "Primary",
+			'text'    => "Text",
 		),
 		'admin_class' => 'span6'
-	));
+	) );
 
 	// unset unneeded params
 	if ( isset( $params['text_size'] ) ) {
@@ -113,20 +113,20 @@ add_filter( 'pixcodes_filter_params_for_icon', 'wpgrade_callback_change_icon_par
 
 function wpgrade_callback_change_icon_params( $params ) {
 
-    //add new params in the right order
-    $params = util::array_insert_after('size', $params, 'link', array(
-        'type' => 'text',
-        'name' => 'Link',
-        'options' => array(),
-        'admin_class' => 'span6'
-    ));
+	//add new params in the right order
+	$params = util::array_insert_after( 'size', $params, 'link', array(
+		'type'        => 'text',
+		'name'        => 'Link',
+		'options'     => array(),
+		'admin_class' => 'span6'
+	) );
 
-    $params = util::array_insert_after('link', $params, 'link_target_blank', array(
-        'type' => 'switch',
-        'name' => 'Open in new window',
-        'options' => array(),
-        'admin_class' => 'span3 push3'
-    ));
+	$params = util::array_insert_after( 'link', $params, 'link_target_blank', array(
+		'type'        => 'switch',
+		'name'        => 'Open in new window',
+		'options'     => array(),
+		'admin_class' => 'span3 push3'
+	) );
 
-    return $params;
+	return $params;
 }
