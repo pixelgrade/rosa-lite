@@ -19,7 +19,7 @@ var Navigator = {
 
         this.$sections = $(that.sectionSelector);
 
-        if (!this.$sections.length) {
+        if (this.$sections.length < 2) {
             return;
         }
 
