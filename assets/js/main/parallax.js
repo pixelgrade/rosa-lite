@@ -34,6 +34,12 @@ var Parallax = {
                 initialTop          = -1 * (windowHeight + containerHeight) * that.amount / 2;
                 finalTop            = -1 * initialTop;
 
+
+            $parallax.css({
+                height: containerHeight + windowHeight * that.amount,
+                'top': -1 * windowHeight * that.amount / 2
+            });
+
             if ($parallax.hasClass('article__parallax--img')) {
 
                 $parallax.find('img').each(function (i, element) {
@@ -67,6 +73,8 @@ var Parallax = {
                         }
                     });
                 });
+            } else {
+                CoverAnimation.initialize();
             }
 
             var timeline = new TimelineMax({ paused: true });

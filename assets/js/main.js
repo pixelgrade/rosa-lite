@@ -561,6 +561,12 @@ var Parallax = {
                 initialTop          = -1 * (windowHeight + containerHeight) * that.amount / 2;
                 finalTop            = -1 * initialTop;
 
+
+            $parallax.css({
+                height: containerHeight + windowHeight * that.amount,
+                'top': -1 * windowHeight * that.amount / 2
+            });
+
             if ($parallax.hasClass('article__parallax--img')) {
 
                 $parallax.find('img').each(function (i, element) {
@@ -594,6 +600,8 @@ var Parallax = {
                         }
                     });
                 });
+            } else {
+                CoverAnimation.initialize();
             }
 
             var timeline = new TimelineMax({ paused: true });
@@ -1123,32 +1131,6 @@ function init() {
 }
 
 
-/* ====== CONDITIONAL LOADING ====== */
-
-function loadUp(){
-	if (globalDebug) {console.group("LoadUp");}
-
-	// always
-	royalSliderInit();
-
-//	containerPlacement();
-
-	magnificPopupInit();
-
-	initVideos();
-	resizeVideos();
-
-	gmapInit();
-
-	//Set textarea from contact page to autoresize
-	if($("textarea").length) { $("textarea").autosize(); }
-
-	$(".pixcode--tabs").organicTabs();
-
-	if (globalDebug) {console.groupEnd();}
-}
-
-
 /* ====== EVENT HANDLERS ====== */
 
 function eventHandlersOnce() {
@@ -1227,7 +1209,6 @@ $(document).ready(function(){
 
 	/* --- INITIALIZE --- */
 	init();
-	loadUp();
 
 	if (globalDebug) {console.groupEnd();}
 });
@@ -1246,6 +1227,18 @@ $(window).load(function(){
     Parallax.initialize();
     Navigator.initialize();
     niceScrollInit();
+
+    // always
+    royalSliderInit();
+    magnificPopupInit();
+    initVideos();
+    resizeVideos();
+    gmapInit();
+
+    //Set textarea from contact page to autoresize
+    if($("textarea").length) { $("textarea").autosize(); }
+
+    $(".pixcode--tabs").organicTabs();
 
 
     if(!empty($('#date-otreservations'))){
@@ -1273,6 +1266,9 @@ $(window).on("debouncedresize", function(e) {
     windowHeight    = $(window).height();
 
     resizeVideos();
+    Parallax.initialize();
+    CoverAnimation.initialize();
+    royalSliderInit();
 });
 
 var latestKnownScrollY = 0,
