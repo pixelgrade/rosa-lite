@@ -80,6 +80,8 @@ var CoverAnimation = {
 
                 onComplete: function () {
 
+                    if (Modernizr.touch) { return; }
+
                     var progress        = (1 / (end - start)) * (latestKnownScrollY - start),
                         partialProgress = ab + bc * progress,
                         timePassed      = partialProgress * timeline.getLabelTime("animatedOut");
@@ -111,7 +113,7 @@ var CoverAnimation = {
 
     update: function (scrollTop) {
 
-        if (!this.animated) {
+        if (!this.animated || Modernizr.touch) {
             return;
         }
 

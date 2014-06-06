@@ -7,39 +7,51 @@ var Parallax = {
     $el:        $(this.selector),
 
     initialize: function () {
+
+        if (Modernizr.touch) {
+            this.amount = 0;
+        }
+
         this.prepare();
-        this.update();
+        this.update(window.scrollY, false);
     },
 
     prepare: function() {
 
         var that = this;
 
-        this.$el.each(function (i, element) {
+        $(this.selector).each(function (i, element) {
 
             var $parallax           = $(element),
                 $container          = $parallax.parent(),
                 containerTop        = $container.offset().top,
                 containerWidth      = $container.outerWidth(),
                 containerHeight     = $container.outerHeight(),
-                parallaxDistance    = windowHeight * that.amount,
                 parallaxInfo        = {
                     start:          containerTop - windowHeight,
                     end:            containerTop + containerHeight
                 },
-                initialTop          = -1 * (parallaxDistance) / 2 - (containerHeight * that.amount),
+                initialTop          = -1 * (windowHeight + containerHeight) * that.amount / 2;
                 finalTop            = -1 * initialTop;
 
             if ($parallax.hasClass('article__parallax--img')) {
 
                 $parallax.find('img').each(function (i, element) {
+
                     var $image          = $(element),
                         imageHeight     = $image.height(),
                         imageWidth      = $image.width(),
                         // find scale needed for the image to fit container and move desired amount
-                        scaleY          = (parallaxDistance + containerHeight) / imageHeight,
+                        scaleY          = ((windowHeight - containerHeight) * that.amount + containerHeight) / imageHeight,
                         scaleX          = containerWidth / imageWidth,
                         scale           = Math.max(scaleX, scaleY);
+
+                    // header resizing on mobile makes image too small
+                    // 80 pixels should be enough
+                    if (Modernizr.touch) {
+                        scaleY = (scaleY * imageHeight + 80) / imageHeight;
+                        scale = Math.max(scaleX, scaleY);
+                    }
 
                     // scale image up to desired size
                     $image.css({
@@ -74,14 +86,17 @@ var Parallax = {
 
         });
 
-        this.update(window.scrollY, false);
-        this.$el.first().append('<span class="down-arrow"></span>');
+        $(this.selector).first().append('<span class="down-arrow"></span>');
 
     },
 
     update: function(scrollTop, tween) {
 
-        this.$el.each(function (i, element) {
+        if (this.amount == 0) {
+            return;
+        }
+
+        $(this.selector).each(function (i, element) {
 
             var $parallax   = $(element),
                 options     = $parallax.data('parallax'),

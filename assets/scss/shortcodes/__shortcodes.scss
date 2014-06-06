@@ -6,7 +6,8 @@
  */
 @import "grid";
 
-.pixcode--heading{
+.pixcode--heading {
+	overflow: hidden;
 	text-align: center;
 	display: block;
 }

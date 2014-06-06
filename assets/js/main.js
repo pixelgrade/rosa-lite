@@ -534,39 +534,51 @@ var Parallax = {
     $el:        $(this.selector),
 
     initialize: function () {
+
+        if (Modernizr.touch) {
+            this.amount = 0;
+        }
+
         this.prepare();
-        this.update();
+        this.update(window.scrollY, false);
     },
 
     prepare: function() {
 
         var that = this;
 
-        this.$el.each(function (i, element) {
+        $(this.selector).each(function (i, element) {
 
             var $parallax           = $(element),
                 $container          = $parallax.parent(),
                 containerTop        = $container.offset().top,
                 containerWidth      = $container.outerWidth(),
                 containerHeight     = $container.outerHeight(),
-                parallaxDistance    = windowHeight * that.amount,
                 parallaxInfo        = {
                     start:          containerTop - windowHeight,
                     end:            containerTop + containerHeight
                 },
-                initialTop          = -1 * (parallaxDistance) / 2 - (containerHeight * that.amount),
+                initialTop          = -1 * (windowHeight + containerHeight) * that.amount / 2;
                 finalTop            = -1 * initialTop;
 
             if ($parallax.hasClass('article__parallax--img')) {
 
                 $parallax.find('img').each(function (i, element) {
+
                     var $image          = $(element),
                         imageHeight     = $image.height(),
                         imageWidth      = $image.width(),
                         // find scale needed for the image to fit container and move desired amount
-                        scaleY          = (parallaxDistance + containerHeight) / imageHeight,
+                        scaleY          = ((windowHeight - containerHeight) * that.amount + containerHeight) / imageHeight,
                         scaleX          = containerWidth / imageWidth,
                         scale           = Math.max(scaleX, scaleY);
+
+                    // header resizing on mobile makes image too small
+                    // 80 pixels should be enough
+                    if (Modernizr.touch) {
+                        scaleY = (scaleY * imageHeight + 80) / imageHeight;
+                        scale = Math.max(scaleX, scaleY);
+                    }
 
                     // scale image up to desired size
                     $image.css({
@@ -601,14 +613,17 @@ var Parallax = {
 
         });
 
-        this.update(window.scrollY, false);
-        this.$el.first().append('<span class="down-arrow"></span>');
+        $(this.selector).first().append('<span class="down-arrow"></span>');
 
     },
 
     update: function(scrollTop, tween) {
 
-        this.$el.each(function (i, element) {
+        if (this.amount == 0) {
+            return;
+        }
+
+        $(this.selector).each(function (i, element) {
 
             var $parallax   = $(element),
                 options     = $parallax.data('parallax'),
@@ -718,6 +733,8 @@ var CoverAnimation = {
 
                 onComplete: function () {
 
+                    if (Modernizr.touch) { return; }
+
                     var progress        = (1 / (end - start)) * (latestKnownScrollY - start),
                         partialProgress = ab + bc * progress,
                         timePassed      = partialProgress * timeline.getLabelTime("animatedOut");
@@ -749,7 +766,7 @@ var CoverAnimation = {
 
     update: function (scrollTop) {
 
-        if (!this.animated) {
+        if (!this.animated || Modernizr.touch) {
             return;
         }
 
@@ -795,19 +812,20 @@ var Navigator = {
     isWhite:            true,
     wasWhite:           true,
 
-    $sections:         $(this.sectionSelector),
-
     initialize: function () {
 
         var that        = this,
             $navigator  = this.$el;
 
+        this.$sections = $(that.sectionSelector);
+
         if (!this.$sections.length) {
             return;
         }
 
-        this.$sections.each(function (index, element) {
+        console.log(this.$el);
 
+        this.$sections.each(function (index, element) {
             var $section    = $(element),
                 sectionTop  = $section.offset().top,
                 $button     = $('<a href="#" class="navigator__item"><div class="bullet"></div></a>');
@@ -834,7 +852,7 @@ var Navigator = {
 
         });
 
-        $('<div class="navigator__item  navigator__item--selected"><div class="bullet"></div></div>').appendTo($navigator);
+        this.$selected = $('<div class="navigator__item  navigator__item--selected"><div class="bullet"></div></div>').appendTo($navigator);
 
         $navigator.css({
             'margin-top': -1 * $navigator.height() / 2
@@ -873,7 +891,7 @@ var Navigator = {
         // then move it accordingly and update state
         if (this.lastSelected != this.currentSelected) {
             this.lastSelected = this.currentSelected;
-            TweenMax.to($selected, 0.3, {top: 24 * that.currentSelected});
+            TweenMax.to(this.$selected, 0.3, {top: 24 * that.currentSelected});
         }
 
         // if the navigator's color has to be changed
@@ -918,25 +936,34 @@ function niceScrollInit() {
     var smoothScroll = $('body').data('smoothscrolling') !== undefined;
 
     if (smoothScroll && ww > 899 && !touch && !is_OSX) {
-        var $window = $(window);		//Window object
+        var $window = $(window);		// Window object
 
-        var scrollTime = 0.6;			//Scroll time
-        var scrollDistance = 240;		//Distance. Use smaller value for shorter scroll and greater value for longer scroll
+        var scrollTime = .5;			    // Scroll time
+        var scrollDistance = 400;		// Distance. Use smaller value for shorter scroll and greater value for longer scroll
 
         $window.on("mousewheel DOMMouseScroll", function(event){
 
             event.preventDefault();
 
-            var delta = event.originalEvent.wheelDelta/120 || -event.originalEvent.detail/3;
+            var delta = event.originalEvent.wheelDelta / 120 || - event.originalEvent.detail / 3;
             var scrollTop = $window.scrollTop();
-            var finalScroll = scrollTop - parseInt(delta*scrollDistance);
+            var finalScroll = scrollTop - parseInt(delta * scrollDistance);
 
             TweenMax.to($window, scrollTime, {
-                scrollTo : { y: finalScroll, autoKill:true },
-                ease: Power1.easeOut,	//For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
-                autoKill: true,
-                overwrite: 5
+                scrollTo: {
+                    y:          finalScroll,
+                    autoKill:   true
+                },
+                ease:           Power1.easeOut,	// For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
+                autoKill:       true,
+                overwrite:      5,
+                onUpdate:       applyValue,
+                onUpdateParams: ["{self}"]
             });
+
+            function applyValue() {
+                $window.trigger('scroll');
+            }
 
         });
 
@@ -957,17 +984,19 @@ function scrollToTopInit() {
         var elOffset = $el.offset().top;
 
 		$(window).scroll(function() {
-			if ($(this).scrollTop() > (elOffset - offset)) {
+
+			if (latestKnownScrollY > (elOffset - offset)) {
                 $el.fadeIn(duration);
 			} else {
                 $el.fadeOut(duration);
 			}
+
 		});
 
 		$('.up-link').click(function(e) {
 			e.preventDefault();
 
-            var scrollDuration = getScroll().y * duration / 1000;
+            var scrollDuration = latestKnownScrollY * duration / 1000;
 
             $('html, body').animate({
                 scrollTop: 0
@@ -1089,7 +1118,7 @@ function loadUp(){
 	// always
 	royalSliderInit();
 
-	containerPlacement();
+//	containerPlacement();
 
 	magnificPopupInit();
 
@@ -1243,6 +1272,7 @@ function updateStuff() {
 
     Parallax.update(currentScrollY);
     CoverAnimation.update(currentScrollY);
+    Navigator.update(currentScrollY);
 }
 
 function requestTick() {

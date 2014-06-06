@@ -12,19 +12,20 @@ var Navigator = {
     isWhite:            true,
     wasWhite:           true,
 
-    $sections:         $(this.sectionSelector),
-
     initialize: function () {
 
         var that        = this,
             $navigator  = this.$el;
 
+        this.$sections = $(that.sectionSelector);
+
         if (!this.$sections.length) {
             return;
         }
 
-        this.$sections.each(function (index, element) {
+        console.log(this.$el);
 
+        this.$sections.each(function (index, element) {
             var $section    = $(element),
                 sectionTop  = $section.offset().top,
                 $button     = $('<a href="#" class="navigator__item"><div class="bullet"></div></a>');
@@ -51,7 +52,7 @@ var Navigator = {
 
         });
 
-        $('<div class="navigator__item  navigator__item--selected"><div class="bullet"></div></div>').appendTo($navigator);
+        this.$selected = $('<div class="navigator__item  navigator__item--selected"><div class="bullet"></div></div>').appendTo($navigator);
 
         $navigator.css({
             'margin-top': -1 * $navigator.height() / 2
@@ -90,7 +91,7 @@ var Navigator = {
         // then move it accordingly and update state
         if (this.lastSelected != this.currentSelected) {
             this.lastSelected = this.currentSelected;
-            TweenMax.to($selected, 0.3, {top: 24 * that.currentSelected});
+            TweenMax.to(this.$selected, 0.3, {top: 24 * that.currentSelected});
         }
 
         // if the navigator's color has to be changed

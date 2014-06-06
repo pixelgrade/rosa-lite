@@ -8,25 +8,34 @@ function niceScrollInit() {
     var smoothScroll = $('body').data('smoothscrolling') !== undefined;
 
     if (smoothScroll && ww > 899 && !touch && !is_OSX) {
-        var $window = $(window);		//Window object
+        var $window = $(window);		// Window object
 
-        var scrollTime = 0.6;			//Scroll time
-        var scrollDistance = 240;		//Distance. Use smaller value for shorter scroll and greater value for longer scroll
+        var scrollTime = .5;			    // Scroll time
+        var scrollDistance = 400;		// Distance. Use smaller value for shorter scroll and greater value for longer scroll
 
         $window.on("mousewheel DOMMouseScroll", function(event){
 
             event.preventDefault();
 
-            var delta = event.originalEvent.wheelDelta/120 || -event.originalEvent.detail/3;
+            var delta = event.originalEvent.wheelDelta / 120 || - event.originalEvent.detail / 3;
             var scrollTop = $window.scrollTop();
-            var finalScroll = scrollTop - parseInt(delta*scrollDistance);
+            var finalScroll = scrollTop - parseInt(delta * scrollDistance);
 
             TweenMax.to($window, scrollTime, {
-                scrollTo : { y: finalScroll, autoKill:true },
-                ease: Power1.easeOut,	//For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
-                autoKill: true,
-                overwrite: 5
+                scrollTo: {
+                    y:          finalScroll,
+                    autoKill:   true
+                },
+                ease:           Power1.easeOut,	// For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
+                autoKill:       true,
+                overwrite:      5,
+                onUpdate:       applyValue,
+                onUpdateParams: ["{self}"]
             });
+
+            function applyValue() {
+                $window.trigger('scroll');
+            }
 
         });
 
@@ -47,17 +56,19 @@ function scrollToTopInit() {
         var elOffset = $el.offset().top;
 
 		$(window).scroll(function() {
-			if ($(this).scrollTop() > (elOffset - offset)) {
+
+			if (latestKnownScrollY > (elOffset - offset)) {
                 $el.fadeIn(duration);
 			} else {
                 $el.fadeOut(duration);
 			}
+
 		});
 
 		$('.up-link').click(function(e) {
 			e.preventDefault();
 
-            var scrollDuration = getScroll().y * duration / 1000;
+            var scrollDuration = latestKnownScrollY * duration / 1000;
 
             $('html, body').animate({
                 scrollTop: 0
@@ -179,7 +190,7 @@ function loadUp(){
 	// always
 	royalSliderInit();
 
-	containerPlacement();
+//	containerPlacement();
 
 	magnificPopupInit();
 
@@ -333,6 +344,7 @@ function updateStuff() {
 
     Parallax.update(currentScrollY);
     CoverAnimation.update(currentScrollY);
+    Navigator.update(currentScrollY);
 }
 
 function requestTick() {
