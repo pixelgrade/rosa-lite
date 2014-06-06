@@ -29,13 +29,10 @@ function niceScrollInit() {
                 ease:           Power1.easeOut,	// For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
                 autoKill:       true,
                 overwrite:      5,
-                onUpdate:       applyValue,
-                onUpdateParams: ["{self}"]
+                onUpdate:       function () {
+                    $window.trigger('scroll');
+                }
             });
-
-            function applyValue() {
-                $window.trigger('scroll');
-            }
 
         });
 

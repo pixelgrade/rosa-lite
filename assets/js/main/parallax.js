@@ -13,16 +13,20 @@ var Parallax = {
         }
 
         this.prepare();
-        this.update(window.scrollY);
+        this.update(window.scrollY, false);
     },
 
     prepare: function() {
 
         var that = this;
 
-        if (!this.$el.length) {
+        if (!(this.selector).length) {
             CoverAnimation.initialize();
             return;
+        } else {
+            setTimeout(function() {
+               CoverAnimation.initialize();
+            });
         }
 
         $(this.selector).each(function (i, element) {
@@ -44,6 +48,8 @@ var Parallax = {
                 height: containerHeight + windowHeight * that.amount,
                 'top': -1 * windowHeight * that.amount / 2
             });
+
+            console.log($parallax.find('img').length);
 
             if ($parallax.hasClass('article__parallax--img') && $parallax.find('img').length) {
 
@@ -103,7 +109,7 @@ var Parallax = {
 
     update: function(scrollTop) {
 
-        if (this.amount == 0 || !this.$el.length) {
+        if (this.amount == 0 || !$(this.selector).length) {
             return;
         }
 
