@@ -40,7 +40,7 @@ var Parallax = {
                 'top': -1 * windowHeight * that.amount / 2
             });
 
-            if ($parallax.hasClass('article__parallax--img')) {
+            if ($parallax.hasClass('article__parallax--img') && $parallax.find('img').length) {
 
                 $parallax.find('img').each(function (i, element) {
 
