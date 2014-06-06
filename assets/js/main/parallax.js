@@ -34,9 +34,6 @@ var Parallax = {
                 initialTop          = -1 * (windowHeight + containerHeight) * that.amount / 2;
                 finalTop            = -1 * initialTop;
 
-
-            $parallax.height($parallax.height() + windowHeight * that.amount);
-
             if ($parallax.hasClass('article__parallax--img')) {
 
                 $parallax.find('img').each(function (i, element) {
