@@ -31,16 +31,17 @@ function scrollToTopInit() {
 
         if (globalDebug) {console.log("ScrollToTop Init");}
 
-		var offset      = 600,
-            duration    = 300;
+		var $el         = $('.up-link'),
+            offset      = 600,
+            duration    = 500;
 
-        var elOffset = $('.up-link').offset().top;
+        var elOffset = $el.offset().top;
 
 		$(window).scroll(function() {
 			if ($(this).scrollTop() > (elOffset - offset)) {
-				$('.up-link').fadeIn(duration);
+                $el.fadeIn(duration);
 			} else {
-				$('.up-link').fadeOut(duration);
+                $el.fadeOut(duration);
 			}
 		});
 
