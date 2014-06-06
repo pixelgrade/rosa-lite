@@ -87,8 +87,8 @@ return array(
 		'RestaurantMenu',
 	),
 	// importer
-	//	'import_homepage_name' => 'Home',
-	//	'import_blogpage_name' => 'Blog',
+		'import_homepage_name' => 'Home Page',
+		'import_blogpage_name' => 'News',
 
 	// decide which menus should be imported
 	'import_nav_menu'              => array(
@@ -100,7 +100,7 @@ return array(
 		'register'                => array(
 			'head-scripts'   => array(
 				'modernizr' => array(
-					'path'    => get_template_directory_uri() . '/assets/js/vendor/modernizr-2.6.2.min.js',
+					'path'    => get_template_directory_uri() . '/assets/js/vendor/modernizr-2.8.2.min.js',
 					'require' => array(
 						'jquery'
 					),

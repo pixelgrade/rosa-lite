@@ -4,6 +4,7 @@
 .sidebar--main {
 	@include media-query(lap-and-up) {
 		& {
+			margin-top: 42px;
 			position: relative;
 			z-index: 5;
 

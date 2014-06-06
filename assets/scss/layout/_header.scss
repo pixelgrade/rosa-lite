@@ -41,7 +41,7 @@
 		}
 	}
 
-	&.headroom--not-top{
+	&.headroom--not-top {
 		background-color: white;
 
 		.site-logo-img--dark{
@@ -62,6 +62,10 @@
 
 	height: $_3u;
 	margin: 0;
+
+	@include media-query(palm){
+		padding: 0 $_2u;
+	}
 }
 
 .site-logo {

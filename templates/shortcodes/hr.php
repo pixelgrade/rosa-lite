@@ -1,25 +1,27 @@
 <?php
+if (empty( $type )) $type = '';
 
 // get needed classes
 $classes = 'pixcode  pixcode--separator  separator';
-$classes .= ! empty( $style ) ? ' separator--' . $style : '';
+$classes .= ! empty( $type ) ? ' separator--' . $type : '';
 $classes .= ! empty( $color ) ? ' separator_color--' . $color : '';
 
 // create class attribute
 $classes = 'class="' . trim( $classes ) . '"';
 
-if ( $style == 'line-flower' ) {
-	echo '<div ' . $classes . '>' .
-            '<div class="line  line--left"></div>' .
-            '<div class="line  line--right"></div>' .
-            '<div class="star">&#10043;</div>' .
-            '<div class="arrows">' .
-                '<div class="arrow arrow--left"></div>' .
-                '<div class="arrow arrow--right"></div>' .
-            '</div>' .
-        '</div>';
-} elseif ( $style == 'flower' ) {
-	echo '<div ' . $classes . '>&#10043;</div>';
+
+if ( $type == 'line-flower' ) {
+	echo '<div ' . $classes . '>' . PHP_EOL .
+            '<div class="line  line--left"></div>' . PHP_EOL .
+            '<div class="line  line--right"></div>' . PHP_EOL .
+            '<div class="star">&#10043;</div>' . PHP_EOL .
+            '<div class="arrows">' . PHP_EOL .
+                '<div class="arrow arrow--left"></div>' . PHP_EOL .
+                '<div class="arrow arrow--right"></div>' . PHP_EOL .
+            '</div>' . PHP_EOL .
+        '</div>' . PHP_EOL ;
+} elseif ( $type == 'flower' ) {
+	echo '<div ' . $classes . '>&#10043;</div>' . PHP_EOL ;
 } else {
-	echo '<hr ' . $classes . '/>';
+	echo '<hr ' . $classes . '/>' . PHP_EOL ;
 }

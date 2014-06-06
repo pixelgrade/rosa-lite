@@ -5,19 +5,15 @@
 
 /*==========  $SEPARATORS  ==========*/
 
-.separator {
-	height: 1px;
+hr, .separator {
+	height: 0px;
 	margin: $_175u 0;
 
 	border: 0;
-	border-bottom: 1px solid $borders;
+	border-bottom: 2px solid $borders;
 
-	&.separator_color--dark {
-		border-color: $dark;
-	}
-
-	&.separator_color--color {
-		border-color: $accent;
+	&.separator_color--white {
+		border-color: white;
 	}
 }
 
@@ -39,25 +35,24 @@
 	letter-spacing: normal;
 	line-height: 1;
 	text-align: center;
-
-	color: $accent;
 }
 
 .separator--line-flower {
 	position: relative;
 	margin: 36px 0;
+	color: $accent;
 
 	.line {
 		content: "";
 		position: absolute;
 		top: 50%;
-		width: 45%;
-		border: 1px solid white;
+		width: 42%;
+		border: 1px solid $borders;
 		@include transform(translateY(-50%));
 	}
 
-	&.separator_color--dark .line {
-		border-color: $dark;
+	&.separator_color--white .line {
+		border-color: white;
 	}
 
 	.line--left {
@@ -85,22 +80,22 @@
 
 	.arrow--left {
 		left: 0;
-		border-left: 7px solid white;
+		border-left: 7px solid $borders;
 	}
 
 	.arrow--right {
 		right: 0;
-		border-right: 7px solid white;
+		border-right: 7px solid $borders;
 	}
 
-	&.separator_color--dark {
+	&.separator_color--white {
 
 		.arrow--left {
-			border-left: 7px solid $dark;
+			border-left: 7px solid white;
 		}
 
 		.arrow--right {
-			border-right: 7px solid $dark;
+			border-right: 7px solid white;
 		}
 	}
 }
@@ -108,16 +103,8 @@
 .separator--flower {
 	margin: $_u 0;
 
-	font-size: 20px;
+	font-size: 17px;
 	font-family: Serif;
 
-	color: $light;
-
-	&.separator_color--dark {
-		color: $dark;
-	}
-
-	&.separator_color--color {
-		color: $accent;
-	}
+	color: #9a9998;
 }

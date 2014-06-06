@@ -14,7 +14,7 @@ body {
 	color: $gray;
 
 	@include media-query(lap-and-up) {
-		font-weight: 300;
+		// font-weight: 300;
 	}
 }
 
@@ -46,10 +46,11 @@ h1 {
 
 h2, h3, h4 {
 	margin-top: $_175u;
+	font-weight: 500;
 }
 
 h5, h6 {
-	font-weight: 400 !important;
+	font-weight: 400;
 	letter-spacing:6px;
 }
 
@@ -109,7 +110,7 @@ $palm-scale-size: 0.60;
     $PARAGRAPHS
 \*------------------------------------*/
 .article__content p {
-	margin-bottom: 30px;
+	margin-bottom: $_u;
 }
 
 /*------------------------------------*\
@@ -234,8 +235,11 @@ blockquote {
 
 .table--striped {
 
+	tbody tr {
+	}
+
 	tbody tr:nth-of-type(odd) {
-		background-color: $borders;
+		background-color: #fcfcfc;
 	}
 }
 

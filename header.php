@@ -72,7 +72,7 @@ echo ' ' . $schema_org . ' ' . $data_smoothscrolling . ' ' ?> >
                 <div class="flexbox__item">
                     <a href="#" class="js-nav-trigger  nav-trigger"><i class="icon-reorder"></i></a>
                 </div>
-                <div class="flexbox__item">
+                <div class="flexbox__item  branding-container">
                     <?php get_template_part( 'templates/header/branding' ); ?>
                 </div>
                 <div class="flexbox__item">
@@ -83,6 +83,7 @@ echo ' ' . $schema_org . ' ' . $data_smoothscrolling . ' ' ?> >
                     if ( isset( $theme_locations["main_menu"] ) && ( $theme_locations["main_menu"] != 0 ) ) {
                         $has_main_menu = true;
                     } ?>
+                    &nbsp;
                     <nav class="navigation  navigation--main<?php echo ( ! $has_main_menu ) ? "  no-menu" : ""; ?>" id="js-navigation--main">
                         <h2 class="accessibility"><?php _e( 'Primary Navigation', wpgrade::textdomain() ) ?></h2>
                         <?php wpgrade_main_nav(); ?>

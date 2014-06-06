@@ -23,5 +23,6 @@ if ( wpgrade::option( 'blog_custom_date_separator' ) ) {
 	</div>
 	<?php endif; ?>
 	<h2 class="article__title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-	<span class="separator-stylish  separator-stylish--2">&#10043;</span>
+    <div class="separator separator--flower">&#10043;</div>
+
 </header>

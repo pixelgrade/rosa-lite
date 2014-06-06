@@ -41,7 +41,7 @@
 	}
 
 	@include media-query(lap-and-up){
-		.current-menu-item a:after {
+		> .current-menu-item > a:after {
 			content: "";
 			display: block;
 
@@ -125,6 +125,10 @@
 
 	.header--transparent &{
 		background: transparent;
+	}
+
+	.headroom--not-top &{
+		background: white;
 	}
 
 	a {

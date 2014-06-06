@@ -7,7 +7,7 @@
 ?>
 
 			<footer class="site-footer">
-				<a href="#" class="up-link"><?php _e( 'Top', wpgrade::textdomain() ) ?></a>
+				<a href="#" id="up-link" class="up-link"><?php _e( 'Top', wpgrade::textdomain() ) ?></a>
 				<aside class="sidebar  sidebar--footer">
 					<div class="container">
 						<?php get_template_part( 'sidebar-footer' ); ?>

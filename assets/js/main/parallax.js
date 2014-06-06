@@ -4,6 +4,8 @@ var Parallax = {
     selector:   '.article__parallax',
     amount:     0.5,
 
+    $el:        $(this.selector),
+
     initialize: function () {
         this.prepare();
         this.update();
@@ -13,7 +15,7 @@ var Parallax = {
 
         var that = this;
 
-        $(this.selector).each(function (i, element) {
+        this.$el.each(function (i, element) {
 
             var $parallax           = $(element),
                 $container          = $parallax.parent(),
@@ -73,14 +75,13 @@ var Parallax = {
         });
 
         this.update(window.scrollY, false);
+        this.$el.first().append('<span class="down-arrow"></span>');
 
     },
 
     update: function(scrollTop, tween) {
 
-        tween = typeof tween !== "undefined" ? tween : !is_OSX;
-
-        $(this.selector).each(function (i, element) {
+        this.$el.each(function (i, element) {
 
             var $parallax   = $(element),
                 options     = $parallax.data('parallax'),
@@ -102,11 +103,7 @@ var Parallax = {
                     return;
                 }
 
-//                if (tween) {
-//                    options.timeline.tweenTo(progress);
-//                } else {
-                    options.timeline.progress(progress);
-//                }
+                options.timeline.progress(progress);
             }
         });
     }

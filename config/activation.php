@@ -28,6 +28,7 @@ return array(
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
 				'priority'   => 'high',
+				'hidden'     => true,
 				'show_on'    => array(
 					'key' => 'page-template',
 					'value' => array( 'default', 'page-templates/slideshow.php' ),
@@ -94,7 +95,7 @@ return array(
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
 				'priority'   => 'high',
-				'hidden'     => false,
+				'hidden'     => true,
 				'show_on'    => array(
 					'key' => 'page-template',
 					'value' => array( 'page-templates/slideshow.php' ),

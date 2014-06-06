@@ -531,6 +531,8 @@ var Parallax = {
     selector:   '.article__parallax',
     amount:     0.5,
 
+    $el:        $(this.selector),
+
     initialize: function () {
         this.prepare();
         this.update();
@@ -540,7 +542,7 @@ var Parallax = {
 
         var that = this;
 
-        $(this.selector).each(function (i, element) {
+        this.$el.each(function (i, element) {
 
             var $parallax           = $(element),
                 $container          = $parallax.parent(),
@@ -600,14 +602,13 @@ var Parallax = {
         });
 
         this.update(window.scrollY, false);
+        this.$el.first().append('<span class="down-arrow"></span>');
 
     },
 
     update: function(scrollTop, tween) {
 
-        tween = typeof tween !== "undefined" ? tween : !is_OSX;
-
-        $(this.selector).each(function (i, element) {
+        this.$el.each(function (i, element) {
 
             var $parallax   = $(element),
                 options     = $parallax.data('parallax'),
@@ -629,11 +630,7 @@ var Parallax = {
                     return;
                 }
 
-//                if (tween) {
-//                    options.timeline.tweenTo(progress);
-//                } else {
-                    options.timeline.progress(progress);
-//                }
+                options.timeline.progress(progress);
             }
         });
     }
@@ -953,14 +950,17 @@ function scrollToTopInit() {
 
         if (globalDebug) {console.log("ScrollToTop Init");}
 
-		var offset      = 220,
-            duration    = 300;
+		var $el         = $('.up-link'),
+            offset      = 600,
+            duration    = 500;
+
+        var elOffset = $el.offset().top;
 
 		$(window).scroll(function() {
-			if ($(this).scrollTop() > offset) {
-				$('.up-link').fadeIn(duration);
+			if ($(this).scrollTop() > (elOffset - offset)) {
+                $el.fadeIn(duration);
 			} else {
-				$('.up-link').fadeOut(duration);
+                $el.fadeOut(duration);
 			}
 		});
 
@@ -1089,7 +1089,7 @@ function loadUp(){
 	// always
 	royalSliderInit();
 
-//	containerPlacement();
+	containerPlacement();
 
 	magnificPopupInit();
 
@@ -1136,7 +1136,10 @@ function eventHandlers() {
 
     if(ieMobile) filterHandler = 'click';
 
-    $('.pix-dropdown').on(filterHandler, function(){
+    $('.pix-dropdown').on(filterHandler, function(e){
+        e.preventDefault();
+        e.stopPropagation();
+
         $(this).toggleClass('active');
     });
 
@@ -1253,6 +1256,7 @@ $(window).on("scroll", function () {
     latestKnownScrollY = window.scrollY;
     requestTick();
 });
+
 /* --- 404 Page --- */
 var gifImages = [
 	"http://i.imgur.com/c9X6n.gif",
@@ -1414,4 +1418,22 @@ function setQueryParameter(uri, key, value) {
 	else {
 		return uri + separator + key + "=" + value;
 	}
+}
+
+// http://stackoverflow.com/a/7557433
+function isElementInViewport (el) {
+
+    //special bonus for those using jQuery
+    if (el instanceof jQuery) {
+        el = el[0];
+    }
+
+    var rect = el.getBoundingClientRect();
+
+    return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+    );
 }
