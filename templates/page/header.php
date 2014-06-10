@@ -179,6 +179,9 @@ else :
 					</div>
 				</div>
 				<?php endif; ?>
+                <?php if ( is_front_page() && (!isset($post->post_parent) || $post->post_parent == 0 )) {
+                    echo '<span class="down-arrow"></span>';
+                } ?>
 			</header>
 		<?php endif;
 	endif;
