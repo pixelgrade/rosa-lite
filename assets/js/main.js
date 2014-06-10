@@ -780,7 +780,7 @@ var CoverAnimation = {
 
                             if (currentProgress && Math.abs(timeline.progress() - currentProgress) < 0.1) {
                                 that.animated = true;
-                                timeline.pause();
+                                this.kill();
                             }
                         }
                     });
@@ -989,14 +989,11 @@ function stickyHeaderInit() {
         offset: offset,
         // animate with GSAP
         onPin: function () {
-            TweenMax.to($header, 0.1, {
-                y: 0
-            });
+            TweenMax.to($header, 0.1, {top: 0});
         },
         onUnpin: function () {
-            TweenMax.to($header, 0.1, {
-                y: -1 * headerHeight
-            });
+            if ($('html').hasClass('navigation--is-visible')) {return}
+            TweenMax.to($header, 0.1, {top: -1 * headerHeight});
         }
     });
 }
@@ -1084,16 +1081,15 @@ function scrollToTopInit() {
 function menuTrigger(){
 
     $(document).on('click', '.js-nav-trigger', function(e) {
-        var windowHeigth = $(window).height();
 
         e.preventDefault();
         e.stopPropagation();
 
         if($('html').hasClass('navigation--is-visible')){
-            $('#page').css('height', '');
+            $('body').css('overflow', '');
             $('html').removeClass('navigation--is-visible');
         } else {
-            $('#page').height(windowHeigth);
+            $('body').css({'overflow': 'hidden'});
             $('html').addClass('navigation--is-visible');
         }
     });
@@ -1270,9 +1266,7 @@ $(window).load(function(){
 
 	if (globalDebug) {console.group("OnWindowLoad");}
 
-    if (ww > 900){
-        stickyHeaderInit();
-    }
+    stickyHeaderInit();
 
     Parallax.initialize();
     Navigator.initialize();

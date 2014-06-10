@@ -4,57 +4,18 @@
 //
 html {
 	-ms-touch-action: none;
+	overflow-x: hidden;
 }
 
-html, body, #wrapper, #scroller, #page {
+html, body, #page {
+	width: 100%;
 	height: 100%;
 }
 
-.iScroll {
+.noscroll {
+	position: relative;
 	overflow: hidden;
-
-	#wrapper {
-		position: absolute;
-		z-index: 1;
-		top: 0;
-		bottom: 0;
-		width: 100%;
-		overflow: hidden;
-	}
-
-	#scroller {
-		position: absolute;
-		z-index: 1;
-		-webkit-tap-highlight-color: rgba(0,0,0,0);
-		width: 100%;
-		height: auto;
-		-webkit-transform: translateZ(0);
-		-moz-transform: translateZ(0);
-		-ms-transform: translateZ(0);
-		-o-transform: translateZ(0);
-		transform: translateZ(0);
-		-webkit-touch-callout: none;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-		-webkit-text-size-adjust: none;
-		-moz-text-size-adjust: none;
-		-ms-text-size-adjust: none;
-		-o-text-size-adjust: none;
-		text-size-adjust: none;
-	}
 }
-
-//
-//#page {
-//	height: 100%;
-//}
-
-//.article__header .gallery-item {
-//	position: absolute;
-//	top: 0; left: 0; bottom: 0; right: 0;
-//}
 
 .slider-cover {
 	margin: auto;
@@ -72,6 +33,7 @@ html, body, #wrapper, #scroller, #page {
 // "Section vertical margins" option
 // in customizer works right
 @include media-query(lap-and-up){
+
 	.pixcode--grid img{
 		margin: 0;
 		display: inline-block;
