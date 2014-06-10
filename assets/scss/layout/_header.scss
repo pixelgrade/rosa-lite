@@ -114,7 +114,9 @@ a.site-logo--text{
 	@include transition(color .2s linear);
 
 	.header--transparent &{
-		color: white;
+		@include media-query(lap-and-up){
+			color: white;
+		}
 	}
 
 	@include media-query(palm){
