@@ -1600,5 +1600,4 @@ $sections[] = array(
 	'fields'     => array()
 );
 
-
 return $sections;
