@@ -694,6 +694,7 @@ var CoverAnimation = {
                 $star           = $headline.find('.star'),
                 $lines          = $headline.find('.line'),
                 $arrows         = $description.find('.arrow'),
+                $hr             = $description.find('hr'),
                 headerTop       = $header.offset().top,
                 headerHeight    = $header.outerHeight();
 
@@ -713,6 +714,7 @@ var CoverAnimation = {
             timeline.fromTo($star, 0.15, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.6');
             timeline.fromTo($star, 0.55, {rotation: -270}, {rotation: 0, ease: Back.easeOut}, '-=0.5');
             timeline.fromTo($lines, 0.6, {width: 0}, {width: '42%', opacity: 1, ease: Quint.easeOut}, '-=0.55');
+            timeline.fromTo($hr, 0.6, {width: 0}, {width: '100%', opacity: 1, ease: Quint.easeOut}, '-=0.6');
             timeline.fromTo($arrows, 0.2, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.27');
             timeline.fromTo($description, 0.5, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.28');
             timeline.fromTo($description, 0.75, {y: -20}, {y: 0}, '-=0.5');
@@ -721,7 +723,7 @@ var CoverAnimation = {
             timeline.addLabel("animatedIn");
 
             if (i == 0) {
-                timeline.to($headline, 1.08, {y: 200, ease: Linear.easeNone});
+                timeline.to($headline, 1.08, {y: 150, ease: Linear.easeNone});
                 timeline.to($title, 1.08, {opacity: 0, y: -60, ease: Quad.easeIn}, '-=1.08');
             } else {
                 timeline.to($title, 1.08, {opacity: 0, y: -60, ease: Quad.easeIn});
@@ -730,6 +732,7 @@ var CoverAnimation = {
             timeline.to($description, 1.08, {y: 60, opacity: 0, ease: Quad.easeIn}, '-=1.08');
             timeline.to($subtitle, 1.08, {opacity: 0, y: -90, ease: Quad.easeIn}, '-=1.08');
             timeline.to($lines, 0.86, {width: 0, opacity: 0, ease: Quad.easeIn}, '-=0.94');
+            timeline.to($hr, 0.86, {width: 0, opacity: 0, ease: Quad.easeIn}, '-=0.86');
             timeline.to($star, 1, {rotation: 180}, '-=1.08');
             timeline.to($star, 0.11, {opacity: 0}, '-=0.03');
             timeline.to($arrows, 0.14, {opacity: 0}, '-=1.08');
@@ -745,7 +748,7 @@ var CoverAnimation = {
                 ab, bc;
 
             if (i == 0) {
-                start = headerTop + windowHeight / 8;
+                start = headerTop;
                 end = start + windowHeight / 2;
             }
 
@@ -967,10 +970,15 @@ function stickyHeaderInit() {
 
     var headerSelector      = '.site-header',
         $header             = $(headerSelector),
-        headerHeight        = $header.height();
+        headerHeight        = $header.height(),
+        $headers            = $('.article__header'),
+        offset              = $headers.length ? $headers.first().height() : 0;
+
+    console.log(offset);
 
     $header.headroom({
         tolerance: 15,
+        offset: offset,
         // animate with GSAP
         onPin: function () {
             TweenMax.to($header, 0.1, {
