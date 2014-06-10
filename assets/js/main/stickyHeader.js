@@ -8,8 +8,6 @@ function stickyHeaderInit() {
         $headers            = $('.article__header'),
         offset              = $headers.length ? $headers.first().height() : 0;
 
-    console.log(offset);
-
     $header.headroom({
         tolerance: 15,
         offset: offset,

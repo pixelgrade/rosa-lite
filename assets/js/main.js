@@ -632,7 +632,7 @@ var Parallax = {
 
     },
 
-    update: function(scrollTop) {
+    update: function() {
 
         if (this.amount == 0 || !$(this.selector).length) {
             return;
@@ -647,7 +647,7 @@ var Parallax = {
             // some sanity check
             // we wouldn't want to divide by 0 - the Universe might come to an end
             if (! empty(options) && (options.end - options.start) !== 0) {
-                progress = (1 / (options.end - options.start)) * (scrollTop - options.start);
+                progress = (1 / (options.end - options.start)) * (latestKnownScrollY - options.start);
 
 
                 if (0 > progress) {
@@ -762,23 +762,30 @@ var CoverAnimation = {
                     if (Modernizr.touch) { return; }
 
                     var progress        = (1 / (end - start)) * (latestKnownScrollY - start),
-                        partialProgress = ab + bc * progress,
+                        partialProgress = progress < 0 ? ab : ab + bc * progress,
                         timePassed      = partialProgress * timeline.getLabelTime("animatedOut");
 
                     if (ab > partialProgress) {
-                        setTimeout(function () {
-                            that.animated = true;
-                        }, 50);
+                        that.animated = true;
                         return;
+                    }
+
+                    if (i == 0) {
+                        console.log(progress, partialProgress, timePassed);
                     }
 
                     timeline.addLabel("finishedAt", timePassed);
                     timeline.tweenTo("finishedAt", {
                         onComplete: function () {
-                            setTimeout(function () {
+                            that.animated = true;
+                        },
+                        onUpdate: function () {
+                            var currentProgress = $headline.data('progress');
+
+                            if (currentProgress && Math.abs(timeline.progress() - currentProgress) < 0.1) {
                                 that.animated = true;
-                            }, 50);
-                            return;
+                                timeline.pause();
+                            }
                         }
                     });
                 }
@@ -795,11 +802,9 @@ var CoverAnimation = {
         });
     },
 
-    update: function (scrollTop) {
+    update: function () {
 
-        if (!this.animated || Modernizr.touch) {
-            return;
-        }
+        var that = this;
 
         $(this.selector).each(function (i, element) {
 
@@ -812,11 +817,17 @@ var CoverAnimation = {
             if (! empty(options) && (options.end - options.start) !== 0) {
 
                 // progress on the total timeline (ac)
-                progress = (1 / (options.end - options.start)) * (scrollTop - options.start);
+                progress = (1 / (options.end - options.start)) * (latestKnownScrollY - options.start);
 
                 // progress on partial timeline (bc)
                 // point B being labeled as "animated"
                 var partialProgress = options.ab + options.bc * progress;
+
+                $headline.data('progress', partialProgress);
+
+                if (!that.animated || Modernizr.touch) {
+                    return;
+                }
 
                 if (0 > progress) {
                     partialProgress = options.ab;
@@ -824,7 +835,10 @@ var CoverAnimation = {
 
                 if (1 > partialProgress) {
                     options.timeline.progress(partialProgress);
+                    return;
                 }
+
+                options.timeline.progress(1);
             }
         });
     }
@@ -917,7 +931,7 @@ var Navigator = {
         });
     },
 
-    update: function (scrollTop) {
+    update: function () {
 
         var that        = this,
             $navigator  = this.$el;
@@ -933,7 +947,7 @@ var Navigator = {
             var $section        = $(element),
                 sectionTop      = $section.data('offsetTop'),
                 sectionBottom   = sectionTop + $section.outerHeight(),
-                navigatorMiddle = scrollTop + (windowHeight / 2);
+                navigatorMiddle = latestKnownScrollY + (windowHeight / 2);
 
             if (navigatorMiddle > sectionTop) {
                 that.currentSelected = i;
@@ -973,8 +987,6 @@ function stickyHeaderInit() {
         headerHeight        = $header.height(),
         $headers            = $('.article__header'),
         offset              = $headers.length ? $headers.first().height() : 0;
-
-    console.log(offset);
 
     $header.headroom({
         tolerance: 15,
@@ -1313,17 +1325,15 @@ $(window).on("debouncedresize", function(e) {
     royalSliderInit();
 });
 
-var latestKnownScrollY = 0,
+var latestKnownScrollY = window.scrollY,
     ticking = false;
 
 function updateStuff() {
     ticking = false;
 
-    var currentScrollY = latestKnownScrollY;
-
-    Parallax.update(currentScrollY);
-    CoverAnimation.update(currentScrollY);
-    Navigator.update(currentScrollY);
+    Parallax.update();
+    CoverAnimation.update();
+    Navigator.update();
 }
 
 function requestTick() {
