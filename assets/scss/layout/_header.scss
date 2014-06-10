@@ -48,6 +48,10 @@
 			display: block;
 		}
 
+		.site-logo--text{
+			color: $dark;
+		}
+
 		.site-logo-img--light{
 			display: none;
 		}
@@ -107,8 +111,10 @@ a.site-logo--text{
 	font-weight: 700;
 	color: $dark;
 
+	@include transition(color .2s linear);
+
 	.header--transparent &{
-		color: white !important;
+		color: white;
 	}
 
 	@include media-query(palm){

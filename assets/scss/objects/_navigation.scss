@@ -89,6 +89,10 @@
 			border-color: white;
 		}
 
+		.headroom--not-top & {
+			border-color: $dark;
+		}
+
 		@include transform(translateY(-50%) rotate(45deg));
 	}
 
