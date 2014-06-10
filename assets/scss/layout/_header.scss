@@ -107,10 +107,8 @@ a.site-logo--text{
 
 	@include transition(color .2s linear);
 
-	.header--transparent &{
-		@include media-query(lap-and-up){
-			color: white;
-		}
+	.header--transparent & {
+		color: white;
 	}
 
 	@include media-query(palm){
