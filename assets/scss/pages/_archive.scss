@@ -138,6 +138,11 @@
 	.article__content {
 		display: block;
 		margin-bottom: $_u;
+
+		ul, li {
+			margin-left: 0;
+			list-style: none;
+		}
 	}
 //
 //	.article__body {
