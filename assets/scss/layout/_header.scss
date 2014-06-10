@@ -87,17 +87,14 @@
 	}
 }
 
+.header--transparent{
 
-@include media-query(lap-and-up) {
+	.site-logo-img--light{
+		display: block;
+	}
 
-	.header--transparent{
-		.site-logo-img--light{
-			display: block;
-		}
-
-		.site-logo-img--dark{
-			display: none;
-		}
+	.site-logo-img--dark{
+		display: none;
 	}
 }
 
