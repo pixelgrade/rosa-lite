@@ -319,17 +319,15 @@ $(window).on("debouncedresize", function(e) {
     royalSliderInit();
 });
 
-var latestKnownScrollY = 0,
+var latestKnownScrollY = window.scrollY,
     ticking = false;
 
 function updateStuff() {
     ticking = false;
 
-    var currentScrollY = latestKnownScrollY;
-
-    Parallax.update(currentScrollY);
-    CoverAnimation.update(currentScrollY);
-    Navigator.update(currentScrollY);
+    Parallax.update();
+    CoverAnimation.update();
+    Navigator.update();
 }
 
 function requestTick() {

@@ -86,7 +86,7 @@ var Navigator = {
         });
     },
 
-    update: function (scrollTop) {
+    update: function () {
 
         var that        = this,
             $navigator  = this.$el;
@@ -102,7 +102,7 @@ var Navigator = {
             var $section        = $(element),
                 sectionTop      = $section.data('offsetTop'),
                 sectionBottom   = sectionTop + $section.outerHeight(),
-                navigatorMiddle = scrollTop + (windowHeight / 2);
+                navigatorMiddle = latestKnownScrollY + (windowHeight / 2);
 
             if (navigatorMiddle > sectionTop) {
                 that.currentSelected = i;

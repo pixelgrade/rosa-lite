@@ -105,7 +105,7 @@ var Parallax = {
 
     },
 
-    update: function(scrollTop) {
+    update: function() {
 
         if (this.amount == 0 || !$(this.selector).length) {
             return;
@@ -120,7 +120,7 @@ var Parallax = {
             // some sanity check
             // we wouldn't want to divide by 0 - the Universe might come to an end
             if (! empty(options) && (options.end - options.start) !== 0) {
-                progress = (1 / (options.end - options.start)) * (scrollTop - options.start);
+                progress = (1 / (options.end - options.start)) * (latestKnownScrollY - options.start);
 
 
                 if (0 > progress) {
