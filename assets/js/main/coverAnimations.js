@@ -102,10 +102,6 @@ var CoverAnimation = {
                         return;
                     }
 
-                    if (i == 0) {
-                        console.log(progress, partialProgress, timePassed);
-                    }
-
                     timeline.addLabel("finishedAt", timePassed);
                     timeline.tweenTo("finishedAt", {
                         onComplete: function () {
