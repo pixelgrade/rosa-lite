@@ -1,6 +1,6 @@
 // /* ====== SHARED VARS ====== */
 
-var phone, touch, ltie9, lteie9, dh, ar, fonts, ieMobile;
+var phone, touch, ltie9, dh, ar, fonts, ieMobile;
 
 var ua = navigator.userAgent;
 var winLoc = window.location.toString();
@@ -10,6 +10,7 @@ var is_firefox = ua.match(/gecko/i);
 var is_newer_ie = ua.match(/msie (9|([1-9][0-9]))/i);
 var is_older_ie = ua.match(/msie/i) && !is_newer_ie;
 var is_ancient_ie = ua.match(/msie 6/i);
+var is_ie = is_ancient_ie || is_older_ie || is_newer_ie;
 var is_mobile = ua.match(/mobile/i);
 var is_OSX = (ua.match(/(iPad|iPhone|iPod|Macintosh)/g) ? true : false);
 
@@ -1001,12 +1002,12 @@ function niceScrollInit() {
 
     var smoothScroll = $('body').data('smoothscrolling') !== undefined;
 
-    if (smoothScroll && !touch && !is_OSX) {
+    if (smoothScroll && !is_OSX && !touch) {
         var $window = $(window);		// Window object
         var scrollTime = 1;			    // Scroll time
         var scrollDistance = 400;		// Distance. Use smaller value for shorter scroll and greater value for longer scroll
 
-        $window.on("mousewheel DOMMouseScroll", function(event){
+        $window.on("mousewheel DOMMouseScroll", function(event) {
 
             event.preventDefault();
 
@@ -1333,7 +1334,6 @@ function requestTick() {
 
 $(window).on("scroll", function () {
     latestKnownScrollY = scrollContainer.scrollTop();
-    console.log(latestKnownScrollY);
     requestTick();
 });
 

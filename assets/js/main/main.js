@@ -7,12 +7,12 @@ function niceScrollInit() {
 
     var smoothScroll = $('body').data('smoothscrolling') !== undefined;
 
-    if (smoothScroll && !touch && !is_OSX) {
+    if (smoothScroll && !is_OSX && !touch) {
         var $window = $(window);		// Window object
         var scrollTime = 1;			    // Scroll time
         var scrollDistance = 400;		// Distance. Use smaller value for shorter scroll and greater value for longer scroll
 
-        $window.on("mousewheel DOMMouseScroll", function(event){
+        $window.on("mousewheel DOMMouseScroll", function(event) {
 
             event.preventDefault();
 
@@ -339,6 +339,5 @@ function requestTick() {
 
 $(window).on("scroll", function () {
     latestKnownScrollY = scrollContainer.scrollTop();
-    console.log(latestKnownScrollY);
     requestTick();
 });
