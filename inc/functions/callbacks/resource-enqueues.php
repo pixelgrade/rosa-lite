@@ -3,15 +3,6 @@
 /**
  * Invoked in wpgrade-config.php
  */
-function wpgrade_callback_gmaps_api_script() {
-	if ( is_page_template( 'page-templates/contact.php' ) ) {
-		wp_enqueue_script( 'google-maps-api' );
-	}
-}
-
-/**
- * Invoked in wpgrade-config.php
- */
 function wpgrade_callback_addthis() {
 	//lets determine if we need the addthis script at all
 	if ( is_single() && wpgrade::option( 'blog_single_show_share_links' ) ):

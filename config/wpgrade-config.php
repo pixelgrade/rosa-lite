@@ -154,7 +154,7 @@ return array(
 
 		// auto invoke scripts previously registered on theme setup
 		'auto-enqueue-scripts'    => array(
-			'google-maps-api',
+//			'google-maps-api',
 			'wpgrade-main-scripts',
 //			'webfont-script',
 		),
@@ -175,7 +175,6 @@ return array(
 		// handlers should be placed in theme's functions.php
 		'script-enqueue-handlers' => array(
 			'google-web-fonts'=> 'wpgrade_callback_enqueue_google_fonts_rosa',
-			'contact-page'    => 'wpgrade_callback_gmaps_api_script',
 			'thread-comments' => 'wpgrade_callback_thread_comments_scripts',
 			'addthis'         => 'wpgrade_callback_addthis',
 		),
