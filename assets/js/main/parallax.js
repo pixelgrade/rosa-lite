@@ -23,10 +23,6 @@ var Parallax = {
         if (!(this.selector).length) {
             CoverAnimation.initialize();
             return;
-        } else {
-            setTimeout(function() {
-               CoverAnimation.initialize();
-            });
         }
 
         $(this.selector).each(function (i, element) {
@@ -78,7 +74,9 @@ var Parallax = {
                     TweenMax.to($image, 0.5, {
                         opacity: 1,
                         onComplete: function () {
-                            CoverAnimation.initialize();
+                            setTimeout(function() {
+                                CoverAnimation.initialize();
+                            }, 300);
                         }
                     });
                 });

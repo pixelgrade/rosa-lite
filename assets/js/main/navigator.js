@@ -38,7 +38,7 @@ var Navigator = {
                 event.preventDefault();
                 event.stopPropagation();
 
-                var scrollDistance = Math.abs(latestKnownScrollY - headerTop),
+                var scrollDistance = Math.abs(latestKnownScrollY - sectionTop),
                     scrollDuration = that.scrollDuration * scrollDistance / 1000;
 
                 $('html, body').animate({

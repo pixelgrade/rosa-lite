@@ -7,19 +7,17 @@ function niceScrollInit() {
 
     var smoothScroll = $('body').data('smoothscrolling') !== undefined;
 
-    if (smoothScroll && ww > 899 && !touch && !is_OSX) {
+    if (smoothScroll && !touch && !is_OSX) {
         var $window = $(window);		// Window object
-
-        var scrollTime = .5;			    // Scroll time
+        var scrollTime = 1;			    // Scroll time
         var scrollDistance = 400;		// Distance. Use smaller value for shorter scroll and greater value for longer scroll
 
         $window.on("mousewheel DOMMouseScroll", function(event){
 
             event.preventDefault();
 
-            var delta = event.originalEvent.wheelDelta / 120 || - event.originalEvent.detail / 3;
-            var scrollTop = $window.scrollTop();
-            var finalScroll = scrollTop - parseInt(delta * scrollDistance);
+            var delta = event.originalEvent.wheelDelta / 120 || - event.originalEvent.detail / 3
+            var finalScroll = latestKnownScrollY - parseInt(delta * scrollDistance);
 
             TweenMax.to($window, scrollTime, {
                 scrollTo: {
@@ -28,10 +26,7 @@ function niceScrollInit() {
                 },
                 ease:           Power1.easeOut,	// For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
                 autoKill:       true,
-                overwrite:      5,
-                onUpdate:       function () {
-                    $window.trigger('scroll');
-                }
+                overwrite:      5
             });
 
         });
@@ -311,19 +306,27 @@ $(window).on("debouncedresize", function(e) {
     windowHeight    = $(window).height();
 
     resizeVideos();
-    Parallax.initialize();
-    CoverAnimation.initialize();
     royalSliderInit();
+
+    if (!$('html').is('.ie9, .lt-ie9')) {
+        Parallax.initialize();
+    } else {
+        CoverAnimation.initialize();
+    }
 });
 
-var latestKnownScrollY = window.scrollY,
+var scrollContainer = $('html').scrollTop() ? $('html') : $('body'),
+    latestKnownScrollY = scrollContainer.scrollTop(),
     ticking = false;
 
 function updateStuff() {
     ticking = false;
 
-    Parallax.update();
-    CoverAnimation.update();
+    if (!$('html').is('.ie9, .lt-ie9')) {
+        Parallax.update();
+        CoverAnimation.update();
+    }
+
     Navigator.update();
 }
 
@@ -335,6 +338,7 @@ function requestTick() {
 }
 
 $(window).on("scroll", function () {
-    latestKnownScrollY = window.scrollY;
+    latestKnownScrollY = scrollContainer.scrollTop();
+    console.log(latestKnownScrollY);
     requestTick();
 });
