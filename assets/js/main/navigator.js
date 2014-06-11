@@ -2,7 +2,7 @@
 
 var Navigator = {
     // variables
-    $el:                $('.navigator'),
+    $el:                $('<div class="navigator"></div>'),
     sectionSelector:    '.article__header',
     scrollDuration:     300,
 
@@ -25,6 +25,7 @@ var Navigator = {
         if (this.$sections.length < 2) {
             return;
         }
+
 
         this.$sections.each(function (index, element) {
             var $section    = $(element),
@@ -77,9 +78,7 @@ var Navigator = {
         }));
 
 
-        $navigator.css({
-            'margin-top': -1 * $navigator.height() / 2
-        });
+        $navigator.css({'margin-top': -1 * $navigator.height() / 2}).prependTo("body");
 
         TweenMax.to($navigator, 0.3, {
             opacity: 1
