@@ -41,6 +41,7 @@
 	}
 
 	@include media-query(lap-and-up){
+
 		> .current-menu-item > a:after {
 			content: "";
 			display: block;
@@ -127,7 +128,7 @@
 
 	@include transform(translateX(-50%));
 
-	.header--transparent &{
+	.header--transparent & {
 		background: transparent;
 	}
 
@@ -167,25 +168,33 @@
 
 a.nav-trigger{
 	position: absolute;
-	top: 50%;
+	top: 36px;
 	left: $_u2;
 	@include transform(translateY(-50%));
 
-	padding: $_u2;
+	padding: 0 $_u2;
 
 	font-size: 28px;
 	color: $dark;
 
-	@include media-query(lap-and-up){
+	@include media-query(lap-and-up) {
 		display: none;
 	}
 }
 
 $nav-width: 200px;
 
+@include media-query(lap-and-up) {
+
+	.navigation--main {
+		height: auto !important;
+	}
+}
+
 // Mobile navigation
 @include media-query(palm) {
-	.navigation--main{
+
+	.navigation--main {
 		position: fixed;
 		left: -$nav-width;
 		top: 0;
@@ -203,7 +212,7 @@ $nav-width: 200px;
 
 		background: $dark;
 
-		.nav--main li{
+		.nav--main li {
 			display: list-item;
 			padding: 0;
 
@@ -276,19 +285,20 @@ $nav-width: 200px;
 		}
 	}
 
-	#page{
+	#page {
 		@include transition(transform .3s cubic-bezier(0.86, 0, 0.07, 1));
 	}
 
 	.navigation--is-visible{
-		#page{
-			position: fixed;
+
+		#page {
+//			position: fixed;
 			@include transform(translateX($nav-width));
 		}
 
 		&.is--winmob, &.is--ancient-android{
 
-			#page{
+			#page {
 				@include transform(translateX(0));
 				left: $nav-width;
 			}

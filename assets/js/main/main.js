@@ -82,16 +82,15 @@ function scrollToTopInit() {
 function menuTrigger(){
 
     $(document).on('click', '.js-nav-trigger', function(e) {
-        var windowHeigth = $(window).height();
 
         e.preventDefault();
         e.stopPropagation();
 
         if($('html').hasClass('navigation--is-visible')){
-            $('#page').css('height', '');
+            $('body').css('overflow', '');
             $('html').removeClass('navigation--is-visible');
         } else {
-            $('#page').height(windowHeigth);
+            $('body').css({'overflow': 'hidden'});
             $('html').addClass('navigation--is-visible');
         }
     });
@@ -268,9 +267,7 @@ $(window).load(function(){
 
 	if (globalDebug) {console.group("OnWindowLoad");}
 
-    if (ww > 900){
-        stickyHeaderInit();
-    }
+    stickyHeaderInit();
 
     Parallax.initialize();
     Navigator.initialize();

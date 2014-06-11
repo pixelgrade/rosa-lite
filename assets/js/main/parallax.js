@@ -100,9 +100,6 @@ var Parallax = {
             $parallax.data('parallax', parallaxInfo);
 
         });
-
-        $(this.selector).first().append('<span class="down-arrow"></span>');
-
     },
 
     update: function() {

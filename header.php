@@ -95,7 +95,5 @@ echo ' ' . $schema_org . ' ' . $data_smoothscrolling . ' ' ?> >
         <!-- .container -->
     </div>
     <!-- .site-header -->
-<div id="wrapper">
-    <div id="scroller">
 
 <?php

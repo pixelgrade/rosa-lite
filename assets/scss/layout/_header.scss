@@ -6,38 +6,27 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	right: 0;
+	width: 100%;
 	z-index: 100;
-
 	background-color: white;
+	@include transition(all .3s cubic-bezier(0.86, 0, 0.07, 1));
 
-	.admin-bar &{
+	.admin-bar & {
 		top: 32px;
 	}
 
 	@include media-query(palm) {
-		position: relative;
 
-		.admin-bar &{
+		.admin-bar & {
 			top: 0;
 		}
 	}
 
 	.header--transparent & {
 		background-color: transparent;
-		@include transition(background-color .2s linear);
 
-		@include media-query(palm) {
-			background-color: white;
-			color: black;
-
-			.site-logo-img--dark{
-				display: block;
-			}
-
-			.site-logo-img--light{
-				display: none;
-			}
+		a.nav-trigger {
+			color: white;
 		}
 	}
 
@@ -54,6 +43,10 @@
 
 		.site-logo-img--light{
 			display: none;
+		}
+
+		a.nav-trigger {
+			color: black;
 		}
 	}
 }
@@ -94,16 +87,14 @@
 	}
 }
 
+.header--transparent{
 
-@include media-query(lap-and-up) {
-	.header--transparent{
-		.site-logo-img--light{
-			display: block;
-		}
+	.site-logo-img--light{
+		display: block;
+	}
 
-		.site-logo-img--dark{
-			display: none;
-		}
+	.site-logo-img--dark{
+		display: none;
 	}
 }
 
@@ -113,10 +104,8 @@ a.site-logo--text{
 
 	@include transition(color .2s linear);
 
-	.header--transparent &{
-		@include media-query(lap-and-up){
-			color: white;
-		}
+	.header--transparent & {
+		color: white;
 	}
 
 	@include media-query(palm){

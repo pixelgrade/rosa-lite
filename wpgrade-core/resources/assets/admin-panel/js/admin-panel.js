@@ -424,14 +424,6 @@
 		ensure_height_of_container();
 	});
 
-	//Remove WP update notices (eg. This theme requires the following..)
-	// $('.redux-page .settings-error').hide();
-
-
-	//Remove last divider from the menu
-	$('.redux-sidebar .redux-group-menu li:last-child').remove();
-
-
 	$(document).ready(function () {
 		// $('.redux-page .settings-error').parent().hide();
 	});

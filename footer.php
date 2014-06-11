@@ -4,6 +4,13 @@
  * @package Rosa
  * @since   Rosa 1.0
  **/
+
+global $is_gmap;
+
+if ( $is_gmap === true ) {
+	//we definitely need the Google Maps API
+	wp_enqueue_script( 'google-maps-api' );
+}
 ?>
 
 			<footer class="site-footer">
@@ -26,8 +33,6 @@
 				</div>
 				<!-- .copyright-area -->
 			</footer><!-- .site- -footer -->
-            </div>
-            </div>
 		</div><!-- #page -->
 		<?php wp_footer(); ?>
 	</body>

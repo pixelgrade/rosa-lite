@@ -112,7 +112,7 @@ var CoverAnimation = {
 
                             if (currentProgress && Math.abs(timeline.progress() - currentProgress) < 0.1) {
                                 that.animated = true;
-                                timeline.pause();
+                                this.kill();
                             }
                         }
                     });

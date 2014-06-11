@@ -61,10 +61,10 @@
 	letter-spacing: 0;
 	text-transform: none;
 
-	@include media-query(lap-and-up){
+//	@include media-query(lap-and-up){
 		padding: 0 72px;
 		margin: 0 -72px;
-	}
+//	}
 
 	color: $accent;
 
