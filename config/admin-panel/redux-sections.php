@@ -333,7 +333,6 @@ $sections[] = array(
 			'text-transform' => false,
 			'letter-spacing' => false,
 			'text-align'     => false,
-			'all_styles'     => true,
 			'preview'        => false,
 			'required'       => array( 'use_google_fonts', '=', 1 ),
 			'title'          => __( '<button></button> Headings', wpgrade::textdomain() ),
@@ -359,7 +358,6 @@ $sections[] = array(
 			'text-transform' => false,
 			'letter-spacing' => false,
 			'text-align'     => false,
-			'all_styles'     => true,
 			'preview'        => false,
 			'required'       => array( 'use_google_fonts', '=', 1 ),
 			'title'          => __( '<button></button> Sub Headings', wpgrade::textdomain() ),
@@ -448,7 +446,6 @@ $sections[] = array(
 			'text-transform' => false,
 			'letter-spacing' => false,
 			'text-align'     => false,
-			'all_styles'     => true,
 			'preview'        => false,
 			'required'       => array( 'use_google_fonts', '=', 1 ),
 			'title'          => __( '<button></button> Navigation', wpgrade::textdomain() ),
@@ -544,7 +541,7 @@ $sections[] = array(
 			'default'       => 'none',
 			'select2'       => array( // here you can provide params for the select2 jquery call
 				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
-				'allowClear'              => false // don't allow a empty select
+				'allowClear'              => true // don't allow a empty select
 			),
 			'display_value' => 'text',
 			'customizer'    => array(
@@ -567,7 +564,7 @@ $sections[] = array(
 			'text-transform' => false,
 			'letter-spacing' => false,
 			'text-align'     => false,
-			'all_styles'     => true,
+			'all-styles'     => true,
 			'preview'        => false,
 			'required'       => array( 'use_google_fonts', '=', 1 ),
 			'title'          => __( '<button></button> Body', wpgrade::textdomain() ),

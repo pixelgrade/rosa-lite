@@ -83,6 +83,8 @@
 		// select2 magic, to load font-family dynamically
 		var data = [{id:'none', text: 'none'}];
 		$(".redux-typography-family").select2({
+			allowClear: true,
+
 			matcher: function (term, text) {
 				return text.toUpperCase().indexOf(term.toUpperCase()) === 0;
 			},
@@ -299,16 +301,23 @@
 
 				// STYLES
 				var selected = "";
-				$.each(details.variants, function(index, variant) {
-					if (variant.id === style || $.reduxTypography.size(details.variants) === 1) {
-						selected = ' selected="selected"';
-						style = variant.id;
-					} else {
-						selected = "";
-					}
 
-					html += '<option value="' + variant.id + '"' + selected + '>' + variant.name.replace(/\+/g, " ") + '</option>';
-				});
+				if ( typeof details.variants !== 'undefined') {
+
+					$.each(details.variants, function(index, variant) {
+						if (variant.id === style || $.reduxTypography.size(details.variants) === 1) {
+							selected = ' selected="selected"';
+							style = variant.id;
+						} else {
+							selected = "";
+						}
+
+						html += '<option value="' + variant.id + '"' + selected + '>' + variant.name.replace(/\+/g, " ") + '</option>';
+					});
+
+				} else {
+					html += 'option value=""></option>';
+				}
 
 				// destroy select2
 				$('#' + mainID + ' .redux-typography-style').select2("destroy");
@@ -324,16 +333,18 @@
 				selected = "";
 				html = '<option value=""></option>';
 
-				$.each(details.subsets, function(index, subset) {
-					if (subset.id === script || $.reduxTypography.size(details.subsets) === 1) {
-						selected = ' selected="selected"';
-						script = subset.id;
-					} else {
-						selected = "";
-					}
+				if ( typeof details.subsets !== 'undefined') {
+					$.each(details.subsets, function (index, subset) {
+						if (subset.id === script || $.reduxTypography.size(details.subsets) === 1) {
+							selected = ' selected="selected"';
+							script = subset.id;
+						} else {
+							selected = "";
+						}
 
-					html += '<option value="' + subset.id + '"' + selected + '>' + subset.name.replace(/\+/g, " ") + '</option>';
-				});
+						html += '<option value="' + subset.id + '"' + selected + '>' + subset.name.replace(/\+/g, " ") + '</option>';
+					});
+				}
 
 				if (typeof (familyBackup) !== "undefined" && familyBackup !== "") {
 					output += ', ' + familyBackup;

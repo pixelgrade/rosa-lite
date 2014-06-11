@@ -720,7 +720,7 @@ if (!class_exists('ReduxFramework_typography')) {
                             $this->parent->typography[$font['font-family']] = array();
                         }
 
-                        if (isset($this->field['all_styles'])) {
+                        if (isset($this->field['all-styles'])) {
                             if (!isset($font['font-options']) || empty($font['font-options'])) {
                                 $this->getGoogleArray();
 
@@ -732,7 +732,7 @@ if (!class_exists('ReduxFramework_typography')) {
                             }
                         }
 
-                        if (isset($font['font-options']) && !empty($font['font-options']) && isset($this->field['all_styles']) && filter_var($this->field['all_styles'], FILTER_VALIDATE_BOOLEAN)) {
+                        if (isset($font['font-options']) && !empty($font['font-options']) && isset($this->field['all-styles']) && filter_var($this->field['all-styles'], FILTER_VALIDATE_BOOLEAN)) {
                             if (isset($font['font-options']) && !empty($font['font-options']['variants'])) {
                                 if (!isset($this->parent->typography[$font['font-family']]['all-styles']) || empty($this->parent->typography[$font['font-family']]['all-styles'])) {
                                     $this->parent->typography[$font['font-family']]['all-styles'] = array();
