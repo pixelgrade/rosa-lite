@@ -3,6 +3,11 @@
  * This template handles the page headers with image and cover text
  */
 
+global $is_gmap, $page_section_idx;
+
+//increment the page section number
+$page_section_idx++;
+
 //first lets get to know this page a little better
 $header_height = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_header_height', true );
 
@@ -31,6 +36,9 @@ $gmap_url = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefi
 
 if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) :
 	if ( ! empty( $gmap_url ) ) :
+		//set the global so everybody knows that we are in dire need of the Google Maps API
+		$is_gmap = true;
+
 		$gmap_custom_style   = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_custom_style', true );
 		$gmap_marker_content = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_marker_content', true );
 		$gmap_height         = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_gmap_height', true );
@@ -179,8 +187,8 @@ else :
 					</div>
 				</div>
 				<?php endif; ?>
-                <?php if ( is_front_page() && (!isset($post->post_parent) || $post->post_parent == 0 )) {
-                    echo '<span class="down-arrow"></span>';
+                <?php if ( $page_section_idx == 1 && $header_height == 'full-height' ) {
+                    echo '<span class="down-arrow"></span>' . PHP_EOL;
                 } ?>
 			</header>
 		<?php endif;

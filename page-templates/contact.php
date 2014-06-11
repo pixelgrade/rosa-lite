@@ -7,6 +7,10 @@
 
 global $post;
 
+//some global variables that we use in our page sections
+$is_gmap = false;
+$page_section_idx = 0;
+
 get_header();
 
 while ( have_posts() ) : the_post(); ?>

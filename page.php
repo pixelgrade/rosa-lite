@@ -11,13 +11,15 @@ get_header();
 
 global $post, $wpgrade_private_post;
 
+//some global variables that we use in our page sections
+$is_gmap = false;
+$page_section_idx = 0;
+
 if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 	// password protection
 	get_template_part( 'templates/password-request-form' );
 
 } else { ?>
-
-	<div class="navigator"></div>
 
 	<?php while ( have_posts() ) : the_post();
 
