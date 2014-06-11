@@ -27,8 +27,6 @@ function niceScrollInit() {
 
             scrollTo = latestKnownScrollY - delta * scrollDistance;
 
-            console.log(scrollTo);
-
             if (scrollTo) {
 
                 event.preventDefault();
@@ -65,7 +63,7 @@ function scrollToTopInit() {
 
 		$(window).scroll(function() {
 
-			if (latestKnownScrollY > (elOffset - offset)) {
+			if (latestKnownScrollY > (elOffset - wh + 100)) {
                 $el.fadeIn(duration);
 			} else {
                 $el.fadeOut(duration);

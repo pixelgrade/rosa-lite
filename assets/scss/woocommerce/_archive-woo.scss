@@ -2,28 +2,56 @@
     $WOOCOMMERCE ARCHIVE
 \*------------------------------------*/
 
-.product{
+@include media-query(lap-and-up){
+	body.woocommerce ul.products{
+		margin: 0 -1.5%;
+	}
+}
+
+body.woocommerce ul.products li.product{
 	position: relative;
+
 	text-align: center;
+
+	@include media-query(palm){
+		width: 100%;
+	}
+
+	@include media-query(lap-and-up){
+		width: 30%;
+		margin: 0 1.5%;
+		margin-bottom: $_2u;
+	}
+
 
 	.product__title{
 		margin: $_u2 0;
 	}
 
-	.add_to_cart_button{
+	.product__button{
+		@extend .btn;
+		@extend .btn--text;
+
 		position: absolute;
 		bottom: 0;
 		left: 50%;
 		@include transform(translateX(-50%));
 
 		background: white !important;
+		color: $accent;
 
 		@include opacity(0);
 		@include transition(opacity .2s linear);
 	}
 
-	&:hover .add_to_cart_button{
-		@include opacity(1);
+	&:hover {
+		.product__button{
+			@include opacity(1);
+		}
+
+		.price{
+			@include opacity(0);
+		}
 	}
 
 	.price{
@@ -32,6 +60,8 @@
 		font-size: 19px !important;
 		font-family: $heading-font-family;
 		color: $dark !important;
+
+		@include transition(opacity .2s linear);
 
 		ins{
 			color: $accent !important;
@@ -46,20 +76,59 @@
 	hr{
 		margin: $_u2 0;
 	}
+
+	.product__cat{
+		padding: 0 $_u4;
+		border: 0;
+
+		font-size: 13px;
+		font-weight: normal;
+		text-transform: uppercase;
+		color: $lightest;
+	}
+
+	.product__badge {
+		@extend .btn;
+		@extend .btn--small;
+
+		position: absolute;
+		top: -3px;
+		left: -3px;
+
+		&.on-sale{
+			@extend .btn--primary;
+		}
+	}
+
+	.added_to_cart{
+		@extend .btn;
+		@extend .btn--text;
+
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		@include transform(translateX(-50%));
+
+		margin-top: $_u2;
+
+		color: $accent;
+
+		&:after{
+			content: none;
+		}
+	}
 }
 
 body.woocommerce ul.products li.product a img, body.woocommerce-page ul.products li.product a img{
-	@include box-shadow(none);
-
-	&:hover{
-		@include box-shadow(none);
-	}
+	@include box-shadow(none !important);
 }
 
 .shop-categories{
 	margin-bottom: $_3u;
 
 	a{
+		margin: 0 $_u2;
+
 		&.active{
 			color: $accent;
 			border-bottom: 3px solid $accent;
