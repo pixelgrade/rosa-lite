@@ -1004,25 +1004,41 @@ function niceScrollInit() {
 
     if (smoothScroll && !is_OSX && !touch) {
         var $window = $(window);		// Window object
-        var scrollTime = 1;			    // Scroll time
-        var scrollDistance = 400;		// Distance. Use smaller value for shorter scroll and greater value for longer scroll
+//        var scrollTime = 1;			    // Scroll time
+//        var scrollDistance = 400;		// Distance. Use smaller value for shorter scroll and greater value for longer scroll
 
         $window.on("mousewheel DOMMouseScroll", function(event) {
 
-            event.preventDefault();
+            var scrollTo,
+                scrollDistance  = 400,
+                delta;
 
-            var delta = event.originalEvent.wheelDelta / 120 || - event.originalEvent.detail / 3
-            var finalScroll = latestKnownScrollY - parseInt(delta * scrollDistance);
+            if (event.type == 'mousewheel') {
+                delta    = event.originalEvent.wheelDelta / 120;
+            }
+            else if (event.type == 'DOMMouseScroll') {
+                delta    = - event.originalEvent.detail / 3;
+            }
 
-            TweenMax.to($window, scrollTime, {
-                scrollTo: {
-                    y:          finalScroll,
-                    autoKill:   true
-                },
-                ease:           Power1.easeOut,	// For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
-                autoKill:       true,
-                overwrite:      5
-            });
+            scrollTo = latestKnownScrollY - delta * scrollDistance;
+
+            console.log(scrollTo);
+
+            if (scrollTo) {
+
+                event.preventDefault();
+
+                TweenMax.to($window, .6, {
+                    scrollTo: {
+                        y:          scrollTo,
+                        autoKill:   true
+                    },
+                    ease:           Power1.easeOut,	// For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
+                    autoKill:       true,
+                    overwrite:      5
+                });
+
+            }
 
         });
 
@@ -1310,8 +1326,7 @@ $(window).on("debouncedresize", function(e) {
     }
 });
 
-var scrollContainer = $('html').scrollTop() ? $('html') : $('body'),
-    latestKnownScrollY = scrollContainer.scrollTop(),
+var latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop(),
     ticking = false;
 
 function updateStuff() {
@@ -1333,7 +1348,7 @@ function requestTick() {
 }
 
 $(window).on("scroll", function () {
-    latestKnownScrollY = scrollContainer.scrollTop();
+    latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop();
     requestTick();
 });
 
