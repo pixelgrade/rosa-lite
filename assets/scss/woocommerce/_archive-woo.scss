@@ -3,5 +3,66 @@
 \*------------------------------------*/
 
 .product{
+	position: relative;
 	text-align: center;
+
+	.product__title{
+		margin: $_u2 0;
+	}
+
+	.add_to_cart_button{
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		@include transform(translateX(-50%));
+
+		background: white !important;
+
+		@include opacity(0);
+		@include transition(opacity .2s linear);
+	}
+
+	&:hover .add_to_cart_button{
+		@include opacity(1);
+	}
+
+	.price{
+		margin-bottom: 0 !important;
+
+		font-size: 19px !important;
+		font-family: $heading-font-family;
+		color: $dark !important;
+
+		ins{
+			color: $accent !important;
+			border-bottom: 0;
+		}
+
+		del{
+			font-size: 19px !important;
+		}
+	}
+
+	hr{
+		margin: $_u2 0;
+	}
+}
+
+body.woocommerce ul.products li.product a img, body.woocommerce-page ul.products li.product a img{
+	@include box-shadow(none);
+
+	&:hover{
+		@include box-shadow(none);
+	}
+}
+
+.shop-categories{
+	margin-bottom: $_3u;
+
+	a{
+		&.active{
+			color: $accent;
+			border-bottom: 3px solid $accent;
+		}
+	}
 }
