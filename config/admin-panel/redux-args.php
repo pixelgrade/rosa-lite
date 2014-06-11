@@ -16,6 +16,8 @@ return array(
 
 	// if you want to use Google Webfonts, you MUST define the api key
 	'google_api_key'        => 'AIzaSyB7Yj842mK5ogSiDa3eRrZUIPTzgiGopls',
+	'async_typography'      => false, // Use a asynchronous font on the front end or font string
+
 	// define the starting tab for the option panel
 	//'last_tab' => '0', # default: '0'
 	'global_variable'       => 'rosa_redux',
