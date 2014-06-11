@@ -187,7 +187,7 @@ else :
 					</div>
 				</div>
 				<?php endif; ?>
-                <?php if ( $page_section_idx == 1 ) {
+                <?php if ( $page_section_idx == 1 && $header_height == 'full-height' ) {
                     echo '<span class="down-arrow"></span>' . PHP_EOL;
                 } ?>
 			</header>
