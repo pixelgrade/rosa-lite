@@ -17,8 +17,6 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 
 } else { ?>
 
-	<div class="navigator"></div>
-
 	<?php while ( have_posts() ) : the_post();
 
 		get_template_part( 'templates/page/header' ); ?>
