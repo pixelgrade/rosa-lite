@@ -52,6 +52,28 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] )
 		?>
 
 		<h4 class="product__title"><?php the_title(); ?></h4>
+
+        <?php
+            // Getting the categories for each product
+            $terms = get_the_terms( $product->id, 'product_cat' );
+            if( !empty($terms) && ! is_wp_error( $terms ) ): ?>
+
+            <ul class="product__cats  nav">
+
+            <?php
+
+            // Getting only the first 3 categories
+            $terms = array_slice($terms, 0, 3);
+
+            foreach ( $terms as $term ) {
+                echo '<li class="product__cat"><span rel="category">' . $term->name . '</span></li>';
+            }
+            ?>
+
+            </ul>
+
+            <?php endif;
+        ?>
         <hr/>
 
 		<?php

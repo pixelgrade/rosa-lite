@@ -22,8 +22,14 @@
 		@include transition(opacity .2s linear);
 	}
 
-	&:hover .add_to_cart_button{
-		@include opacity(1);
+	&:hover {
+		.add_to_cart_button{
+			@include opacity(1);
+		}
+
+		.price{
+			@include opacity(0);
+		}
 	}
 
 	.price{
@@ -32,6 +38,8 @@
 		font-size: 19px !important;
 		font-family: $heading-font-family;
 		color: $dark !important;
+
+		@include transition(opacity .2s linear);
 
 		ins{
 			color: $accent !important;
@@ -46,14 +54,20 @@
 	hr{
 		margin: $_u2 0;
 	}
+
+	.product__cat{
+		padding: 0 $_u4;
+		border: 0;
+
+		font-size: 13px;
+		font-weight: normal;
+		text-transform: uppercase;
+		color: $lightest;
+	}
 }
 
 body.woocommerce ul.products li.product a img, body.woocommerce-page ul.products li.product a img{
-	@include box-shadow(none);
-
-	&:hover{
-		@include box-shadow(none);
-	}
+	@include box-shadow(none !important);
 }
 
 .shop-categories{
