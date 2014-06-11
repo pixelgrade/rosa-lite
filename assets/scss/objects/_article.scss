@@ -91,6 +91,20 @@
 	}
 }
 
+
+.lt-ie9, .ie9 {
+
+	.article__parallax {
+		width: 100% !important;
+		height: 100% !important;
+		top: 0 !important;
+		bottom: auto !important;
+		left: 0 !important;
+		transform: none !important;
+		-ms-transform: none !important;
+	}
+}
+
 .article__parallax--img {
 
 	img {
@@ -99,6 +113,18 @@
 		opacity: 0;
 		max-width: none;
 		@include transform(translate3d(-50%, -50%, 0));
+	}
+}
+
+.lt-ie9, .ie9 {
+
+	.article__parallax--img {
+
+		img {
+			width: 100% !important;
+			top: 0 !important;
+			left: 0 !important;
+		}
 	}
 }
 

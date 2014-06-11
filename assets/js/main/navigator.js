@@ -2,7 +2,7 @@
 
 var Navigator = {
     // variables
-    $el:                $('.navigator'),
+    $el:                $('<div class="navigator"></div>'),
     sectionSelector:    '.article__header',
     scrollDuration:     300,
 
@@ -26,6 +26,7 @@ var Navigator = {
             return;
         }
 
+
         this.$sections.each(function (index, element) {
             var $section    = $(element),
                 sectionTop  = $section.offset().top,
@@ -38,7 +39,7 @@ var Navigator = {
                 event.preventDefault();
                 event.stopPropagation();
 
-                var scrollDistance = Math.abs(latestKnownScrollY - headerTop),
+                var scrollDistance = Math.abs(latestKnownScrollY - sectionTop),
                     scrollDuration = that.scrollDuration * scrollDistance / 1000;
 
                 $('html, body').animate({
@@ -77,9 +78,7 @@ var Navigator = {
         }));
 
 
-        $navigator.css({
-            'margin-top': -1 * $navigator.height() / 2
-        });
+        $navigator.css({'margin-top': -1 * $navigator.height() / 2}).prependTo("body");
 
         TweenMax.to($navigator, 0.3, {
             opacity: 1

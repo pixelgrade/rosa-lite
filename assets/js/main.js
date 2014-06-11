@@ -1,6 +1,6 @@
 // /* ====== SHARED VARS ====== */
 
-var phone, touch, ltie9, lteie9, dh, ar, fonts, ieMobile;
+var phone, touch, ltie9, dh, ar, fonts, ieMobile;
 
 var ua = navigator.userAgent;
 var winLoc = window.location.toString();
@@ -10,6 +10,7 @@ var is_firefox = ua.match(/gecko/i);
 var is_newer_ie = ua.match(/msie (9|([1-9][0-9]))/i);
 var is_older_ie = ua.match(/msie/i) && !is_newer_ie;
 var is_ancient_ie = ua.match(/msie 6/i);
+var is_ie = is_ancient_ie || is_older_ie || is_newer_ie;
 var is_mobile = ua.match(/mobile/i);
 var is_OSX = (ua.match(/(iPad|iPhone|iPod|Macintosh)/g) ? true : false);
 
@@ -550,10 +551,6 @@ var Parallax = {
         if (!(this.selector).length) {
             CoverAnimation.initialize();
             return;
-        } else {
-            setTimeout(function() {
-               CoverAnimation.initialize();
-            });
         }
 
         $(this.selector).each(function (i, element) {
@@ -605,7 +602,9 @@ var Parallax = {
                     TweenMax.to($image, 0.5, {
                         opacity: 1,
                         onComplete: function () {
-                            CoverAnimation.initialize();
+                            setTimeout(function() {
+                                CoverAnimation.initialize();
+                            }, 300);
                         }
                     });
                 });
@@ -840,7 +839,7 @@ var CoverAnimation = {
 
 var Navigator = {
     // variables
-    $el:                $('.navigator'),
+    $el:                $('<div class="navigator"></div>'),
     sectionSelector:    '.article__header',
     scrollDuration:     300,
 
@@ -864,6 +863,7 @@ var Navigator = {
             return;
         }
 
+
         this.$sections.each(function (index, element) {
             var $section    = $(element),
                 sectionTop  = $section.offset().top,
@@ -876,7 +876,7 @@ var Navigator = {
                 event.preventDefault();
                 event.stopPropagation();
 
-                var scrollDistance = Math.abs(latestKnownScrollY - headerTop),
+                var scrollDistance = Math.abs(latestKnownScrollY - sectionTop),
                     scrollDuration = that.scrollDuration * scrollDistance / 1000;
 
                 $('html, body').animate({
@@ -915,9 +915,7 @@ var Navigator = {
         }));
 
 
-        $navigator.css({
-            'margin-top': -1 * $navigator.height() / 2
-        });
+        $navigator.css({'margin-top': -1 * $navigator.height() / 2}).prependTo("body");
 
         TweenMax.to($navigator, 0.3, {
             opacity: 1
@@ -1003,32 +1001,43 @@ function niceScrollInit() {
 
     var smoothScroll = $('body').data('smoothscrolling') !== undefined;
 
-    if (smoothScroll && ww > 899 && !touch && !is_OSX) {
+    if (smoothScroll && !is_OSX && !touch) {
         var $window = $(window);		// Window object
+//        var scrollTime = 1;			    // Scroll time
+//        var scrollDistance = 400;		// Distance. Use smaller value for shorter scroll and greater value for longer scroll
 
-        var scrollTime = .5;			    // Scroll time
-        var scrollDistance = 400;		// Distance. Use smaller value for shorter scroll and greater value for longer scroll
+        $window.on("mousewheel DOMMouseScroll", function(event) {
 
-        $window.on("mousewheel DOMMouseScroll", function(event){
+            var scrollTo,
+                scrollDistance  = 400,
+                delta;
 
-            event.preventDefault();
+            if (event.type == 'mousewheel') {
+                delta    = event.originalEvent.wheelDelta / 120;
+            }
+            else if (event.type == 'DOMMouseScroll') {
+                delta    = - event.originalEvent.detail / 3;
+            }
 
-            var delta = event.originalEvent.wheelDelta / 120 || - event.originalEvent.detail / 3;
-            var scrollTop = $window.scrollTop();
-            var finalScroll = scrollTop - parseInt(delta * scrollDistance);
+            scrollTo = latestKnownScrollY - delta * scrollDistance;
 
-            TweenMax.to($window, scrollTime, {
-                scrollTo: {
-                    y:          finalScroll,
-                    autoKill:   true
-                },
-                ease:           Power1.easeOut,	// For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
-                autoKill:       true,
-                overwrite:      5,
-                onUpdate:       function () {
-                    $window.trigger('scroll');
-                }
-            });
+            console.log(scrollTo);
+
+            if (scrollTo) {
+
+                event.preventDefault();
+
+                TweenMax.to($window, .6, {
+                    scrollTo: {
+                        y:          scrollTo,
+                        autoKill:   true
+                    },
+                    ease:           Power1.easeOut,	// For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
+                    autoKill:       true,
+                    overwrite:      5
+                });
+
+            }
 
         });
 
@@ -1307,19 +1316,26 @@ $(window).on("debouncedresize", function(e) {
     windowHeight    = $(window).height();
 
     resizeVideos();
-    Parallax.initialize();
-    CoverAnimation.initialize();
     royalSliderInit();
+
+    if (!$('html').is('.ie9, .lt-ie9')) {
+        Parallax.initialize();
+    } else {
+        CoverAnimation.initialize();
+    }
 });
 
-var latestKnownScrollY = window.scrollY,
+var latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop(),
     ticking = false;
 
 function updateStuff() {
     ticking = false;
 
-    Parallax.update();
-    CoverAnimation.update();
+    if (!$('html').is('.ie9, .lt-ie9')) {
+        Parallax.update();
+        CoverAnimation.update();
+    }
+
     Navigator.update();
 }
 
@@ -1331,7 +1347,7 @@ function requestTick() {
 }
 
 $(window).on("scroll", function () {
-    latestKnownScrollY = window.scrollY;
+    latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop();
     requestTick();
 });
 

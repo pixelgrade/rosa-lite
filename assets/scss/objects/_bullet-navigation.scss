@@ -13,6 +13,7 @@
 .navigator__item {
 	display: block;
 	padding: $_u4;
+	background: rgba(255,255,255, 0.01);
 
 	.bullet {
 		width: $_u2;
@@ -31,6 +32,7 @@
 	.bullet {
 		background: white;
 		border-color: transparent;
+		border-color: rgba(255, 255, 255, 0.01);
 		cursor: default;
 	}
 }

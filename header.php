@@ -5,7 +5,9 @@
 <html class="lt-ie9 lt-ie8" <?php language_attributes(); ?>> <![endif]-->
 <!--[if IE 8]>
 <html class="lt-ie9" <?php language_attributes(); ?>> <![endif]-->
-<!--[if gt IE 8]><!-->
+<!--[if IE 9]>
+<html class="ie9" <?php language_attributes(); ?>> <![endif]-->
+<!--[if gt IE 9]><!-->
 <html <?php language_attributes(); ?>> <!--<![endif]-->
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=<?php bloginfo( 'charset' ); ?>">

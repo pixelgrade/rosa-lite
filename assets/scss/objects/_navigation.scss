@@ -59,6 +59,12 @@
 	}
 }
 
+.lt-ie9, .ie9 {
+	.header--transparent .nav--main a {
+		color: black;
+	}
+}
+
 .nav__item--relative {
 	position: relative;
 }
@@ -128,8 +134,17 @@
 
 	@include transform(translateX(-50%));
 
+	.lt-ie9 & {
+		left: 0;
+		@include transform(none);
+	}
+
 	.header--transparent & {
 		background: transparent;
+
+		.lt-ie9 &, .ie9 & {
+			background: white;
+		}
 	}
 
 	.headroom--not-top &{

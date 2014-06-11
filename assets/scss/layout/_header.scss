@@ -28,6 +28,14 @@
 		a.nav-trigger {
 			color: white;
 		}
+
+		.lt-ie9 &, .ie9 & {
+			background-color: white;
+
+			a.nav-trigger {
+				color: black;
+			}
+		}
 	}
 
 	&.headroom--not-top {
@@ -96,6 +104,17 @@
 	.site-logo-img--dark{
 		display: none;
 	}
+
+	.lt-ie9 &, .ie9 & {
+
+		.site-logo-img--light{
+			display: none;
+		}
+
+		.site-logo-img--dark{
+			display: block;
+		}
+	}
 }
 
 a.site-logo--text{
@@ -106,6 +125,10 @@ a.site-logo--text{
 
 	.header--transparent & {
 		color: white;
+	}
+
+	.lt-ie9 .header--transparent &, .ie9 .header--transparent & {
+			color: black;
 	}
 
 	@include media-query(palm){
