@@ -228,6 +228,7 @@ gulp.task('build', ['copy-folder'], function () {
 		'**/.sass*',
 		'**/.git*',
 		'*.sublime-project',
+		'**/.DS_Store',
 		'woocommerce'
 	];
 
