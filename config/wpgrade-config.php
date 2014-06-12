@@ -100,7 +100,7 @@ return array(
 		'register'                => array(
 			'head-scripts'   => array(
 				'modernizr' => array(
-					'path'    => get_template_directory_uri() . '/assets/js/vendor/modernizr-2.8.2.min.js',
+					'path'    => get_template_directory_uri() . '/assets/js/vendor/modernizr.min.js',
 					'require' => array(
 						'jquery'
 					),
