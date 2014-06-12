@@ -542,7 +542,7 @@ if (!class_exists('ReduxFramework_customizer_typography')) {
 				}
 				$link.= $family;
 
-				if (!empty($font['font-style'])) {
+				if (!empty($font['font-style']) || !empty($font['all-styles'])) {
 					$link.= ':';
 					if (!empty($font['all-styles'])) {
 						$link.= implode(',', $font['all-styles']);
@@ -584,7 +584,7 @@ if (!class_exists('ReduxFramework_customizer_typography')) {
 				}
 				$link.= $family;
 
-				if (!empty($font['font-style'])) {
+				if (!empty($font['font-style']) || !empty($font['all-styles'])) {
 					$link.= ':';
 					if (!empty($font['all-styles'])) {
 						$link.= implode(',', $font['all-styles']);
@@ -714,19 +714,19 @@ if (!class_exists('ReduxFramework_customizer_typography')) {
 							$this->parent->typography[$font['font-family']] = array();
 						}
 
-						if (isset($this->field['all_styles'])) {
+						if (isset($this->field['all-styles'])) {
 							if (!isset($font['font-options']) || empty($font['font-options'])) {
 								$this->getGoogleArray();
 
 								if (isset($this->parent->googleArray) && !empty($this->parent->googleArray) && isset($this->parent->googleArray[$family])) {
 									$font['font-options'] = $this->parent->googleArray[$family];
 								}
-							} else {
+							} elseif ( is_string($font['font-options']) ) {
 								$font['font-options'] = json_decode($font['font-options'], true);
 							}
 						}
 
-						if (isset($font['font-options']) && !empty($font['font-options']) && isset($this->field['all_styles']) && filter_var($this->field['all_styles'], FILTER_VALIDATE_BOOLEAN)) {
+						if (isset($font['font-options']) && !empty($font['font-options']) && isset($this->field['all-styles']) && filter_var($this->field['all-styles'], FILTER_VALIDATE_BOOLEAN)) {
 							if (isset($font['font-options']) && !empty($font['font-options']['variants'])) {
 								if (!isset($this->parent->typography[$font['font-family']]['all-styles']) || empty($this->parent->typography[$font['font-family']]['all-styles'])) {
 									$this->parent->typography[$font['font-family']]['all-styles'] = array();
