@@ -7,7 +7,7 @@ function niceScrollInit() {
 
     var smoothScroll = $('body').data('smoothscrolling') !== undefined;
 
-    if (smoothScroll && !is_OSX && !touch && !("MozAppearance" in root.style)) {
+    if (smoothScroll && !is_OSX && !touch) {
 
         var $window = $(window);		// Window object
 
@@ -70,13 +70,11 @@ var ScrollToTop = {
         this.end        = this.start + 250;
         this.timeline   = new TimelineMax({ paused: true });
 
-
-        console.log($('.btn--top_contour'));
         this.timeline.to($('.btn--top_contour'), 2, {
             width:  260,
             height: 260,
-            y:      -10,
-            x:      -20,
+            top:    -130,
+            left:   -100,
             ease:   Power2.easeOut
         });
 
@@ -92,7 +90,6 @@ var ScrollToTop = {
         }
 
         progress = (1 / (this.end - this.start)) * (latestKnownScrollY - this.start);
-        console.log(progress);
 
         if (0 > progress) {
             this.timeline.progress(0);

@@ -13,7 +13,7 @@ function stickyHeaderInit() {
         offset: offset,
         // animate with GSAP
         onPin: function () {
-            TweenMax.to($header, 0.1, {top: 0});
+            TweenMax.to($header, 0.1, {top: ''});
         },
         onUnpin: function () {
             if ($('html').hasClass('navigation--is-visible')) {return}

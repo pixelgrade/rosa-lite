@@ -11,17 +11,6 @@
 	background-color: white;
 	@include transition(all .3s cubic-bezier(0.86, 0, 0.07, 1));
 
-	.admin-bar & {
-		top: 32px;
-	}
-
-	@include media-query(palm) {
-
-		.admin-bar & {
-			top: 0;
-		}
-	}
-
 	.header--transparent & {
 		background-color: transparent;
 
