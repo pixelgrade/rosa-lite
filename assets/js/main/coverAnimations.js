@@ -111,8 +111,10 @@ var CoverAnimation = {
                             var currentProgress = $headline.data('progress');
 
                             if (currentProgress && Math.abs(timeline.progress() - currentProgress) < 0.1) {
-                                that.animated = true;
                                 this.kill();
+                                setTimeout(function() {
+                                    that.animated = true;
+                                }, 10);
                             }
                         }
                     });

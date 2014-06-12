@@ -10,7 +10,7 @@ function stickyHeaderInit() {
 
     $header.headroom({
         tolerance: 15,
-        offset: offset,
+        offset: offset - headerHeight - 1,
         // animate with GSAP
         onPin: function () {
             TweenMax.to($header, 0.1, {top: ''});

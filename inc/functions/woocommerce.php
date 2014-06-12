@@ -8,6 +8,16 @@
 */
 
 /**
+ * Assets
+ */
+function wpgrade_callback_load_woocommerce_assets(){
+    global $woocommerce;
+    if ( !wpgrade::option('enable_woocommerce_support', '0') ) return;
+    wp_enqueue_style('wpgrade-woocommerce', get_template_directory_uri() . '/assets/css/woocommerce.css', array('woocommerce-general'), wpgrade::cachebust_string(wpgrade::themefilepath('assets/css/woocommerce.css')) );
+}
+add_action('wp_enqueue_scripts','wpgrade_callback_load_woocommerce_assets',1);
+
+/**
  * Woocommerce support
  * If woocommerce is active and is required woo support then load tehm all
  */

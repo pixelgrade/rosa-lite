@@ -28,9 +28,10 @@ var Navigator = {
 
 
         this.$sections.each(function (index, element) {
-            var $section    = $(element),
-                sectionTop  = $section.offset().top,
-                $button     = $('<a href="#" class="navigator__item"><div class="bullet"></div></a>');
+            var $section        = $(element),
+                sectionTop      = $section.offset().top,
+                sectionHeight   = $section.outerHeight(),
+                $button         = $('<a href="#" class="navigator__item"><div class="bullet"></div></a>');
 
             $button.appendTo($navigator);
             $section.data('offsetTop', sectionTop);
@@ -39,15 +40,7 @@ var Navigator = {
                 event.preventDefault();
                 event.stopPropagation();
 
-                var scrollDistance = Math.abs(latestKnownScrollY - sectionTop),
-                    scrollDuration = that.scrollDuration * scrollDistance / 1000;
-
-                $('html, body').animate({
-                    scrollTop: sectionTop
-                }, {
-                    duration: scrollDuration,
-                    easing: "easeOutCubic"
-                });
+                smoothScrollTo(sectionTop - windowHeight/2 + sectionHeight/2);
 
                 return false;
             });

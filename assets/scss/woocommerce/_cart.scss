@@ -1,0 +1,48 @@
+/*------------------------------------*\
+    $CART
+\*------------------------------------*/
+
+body.woocommerce .cart-collaterals .cart_totals, 
+body.woocommerce-page .cart-collaterals .cart_totals,
+body.woocommerce .cart-collaterals .shipping_calculator, 
+body.woocommerce-page .cart-collaterals .shipping_calculator{
+	float: none;
+	text-align: left;
+	width: 100%;
+}
+
+td.actions input.button{
+	line-height: 1.6345 !important;
+}
+
+td.actions{
+	padding: $_u2 $_u4 !important;
+}
+
+body.woocommerce #content .quantity, 
+body.woocommerce .quantity, 
+body.woocommerce-page #content .quantity, 
+body.woocommerce-page .quantity{
+	margin-left: 0;
+}
+
+body.woocommerce table.shop_table, body.woocommerce-page table.shop_table{
+	@include border-radius(0);
+}
+
+body.woocommerce #content table.cart td.actions .coupon .input-text, 
+body.woocommerce table.cart td.actions .coupon .input-text, 
+body.woocommerce-page #content table.cart td.actions .coupon .input-text, 
+body.woocommerce-page table.cart td.actions .coupon .input-text{
+	width: 120px;
+	height: 38px;
+	@include box-shadow(none);
+}
+
+.shipping-calculator-button:after{
+	content: none !important;
+}
+
+.product-thumbnail-link{
+	color: $dark;
+}

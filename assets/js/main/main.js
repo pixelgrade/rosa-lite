@@ -79,30 +79,31 @@ var ScrollToTop = {
         });
 
         this.timeline.fromTo($('.btn--top_text'), 2, {y: 15, scale: 0.5}, {y: 0, scale: 1, opacity: 1, ease: Expo.easeOut}, '-=1.3');
+
+        this.$button.on('click', function (e) {
+            e.preventDefault();
+            smoothScrollTo(0);
+        });
     },
 
     update: function () {
-
-        var progress;
 
         if (empty(this.$button)) {
             return;
         }
 
-        progress = (1 / (this.end - this.start)) * (latestKnownScrollY - this.start);
-
-        if (0 > progress) {
-            this.timeline.progress(0);
-            return;
-        }
-
-        if (1 < progress) {
-            this.timeline.progress(1);
-            return;
-        }
-
-        this.timeline.progress(progress);
+        setProgress(this.timeline, this.start, this.end);
     }
+}
+
+function smoothScrollTo(y, speed) {
+
+    speed = typeof speed == "undefined" ? 1 : speed;
+
+    var distance = Math.abs(latestKnownScrollY - y),
+        time     = speed * distance / 1000;
+
+    TweenMax.to($(window), time, {scrollTo: {y: y, autoKill: true, ease: Power2.easeInOut}});
 }
 
 
@@ -298,6 +299,7 @@ $(window).load(function(){
     Parallax.initialize();
     Navigator.initialize();
     ScrollToTop.initialize();
+    DownArrow.initialize();
     niceScrollInit();
 
     // always
@@ -314,6 +316,7 @@ $(window).load(function(){
 
 
     if(!empty($('#date-otreservations'))){
+
         // Pikaday
         var picker = new Pikaday({
             field: document.getElementById('date-otreservations'),
@@ -326,6 +329,79 @@ $(window).load(function(){
 	$('.pixcode--tabs').organicTabs();
 
 });
+
+var DownArrow = {
+    selector:   '.down-arrow',
+    $arrow:     null,
+    timeline:   null,
+    start:      0,
+    end:        0,
+
+    initialize: function () {
+
+        var that = this;
+
+        this.$arrow = $(this.selector);
+
+        if (empty(this.$arrow)) {
+            return;
+        }
+
+        this.start      = 0;
+        this.end        = this.start + 300;
+        this.timeline   = new TimelineMax({ paused: true });
+        this.$next      = this.$arrow.closest('.article__header').nextAll('.article__header, .article--page').first();
+
+        if (!empty(this.$next)) {
+            this.nextTop    = this.$next.offset().top;
+            this.nextHeight = this.$next.outerHeight();
+        }
+
+        this.timeline.to(this.$arrow, 1, {y: 100, opacity: 0, ease: Linear.easeNone});
+
+        this.$arrow.on('click', function (e) {
+            e.preventDefault();
+
+            if (empty(that.$next)) {
+                return;
+            }
+
+            if (that.$next.is('.article__header')) {
+                smoothScrollTo(that.nextTop - windowHeight/2 + that.nextHeight/2);
+            } else {
+                smoothScrollTo(that.nextTop - $('.site-header').outerHeight());
+            }
+
+        });
+    },
+
+    update: function () {
+
+        if (empty(this.$arrow)) {
+            return;
+        }
+
+        setProgress(this.timeline, this.start, this.end);
+    }
+}
+
+
+function setProgress(timeline, start, end) {
+
+    var progress = (latestKnownScrollY - start) / (end - start);
+
+    if (0 > progress) {
+        timeline.progress(0);
+        return;
+    }
+
+    if (1 < progress) {
+        timeline.progress(1);
+        return;
+    }
+
+    timeline.progress(progress);
+}
 
 
 /* ====== ON RESIZE ====== */
@@ -360,6 +436,7 @@ function updateStuff() {
 
     Navigator.update();
     ScrollToTop.update();
+    DownArrow.update();
 }
 
 function requestTick() {
