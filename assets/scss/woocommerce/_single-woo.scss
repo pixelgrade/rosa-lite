@@ -1,3 +1,7 @@
+/*------------------------------------*\
+    $SINGLE PRODUCT
+\*------------------------------------*/
+
 .single-product {
 
 	.product {
@@ -42,17 +46,6 @@ body.woocommerce .woocommerce-product-rating{
 		color: $dark;
 	}
 }
-
-/********************/
-/********************/
-/********************/
-/********************/
-/********************/
-/********************/
-
-/*------------------------------------*\
-    $SINGLE PRODUCT
-\*------------------------------------*/
 
 body.woocommerce #content div.product div.images img,
 body.woocommerce div.product div.images img,
@@ -293,6 +286,7 @@ body.woocommerce .woocommerce-tabs li{
 
 .product__tabs a{
 	@include font-size(24px);
+	margin: 0 $_u2;
 }
 
 .woocommerce-breadcrumb{

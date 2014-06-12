@@ -12,4 +12,3 @@
                 </div><!-- .container -->
             </section><!-- .article__content -->
         </article><!-- .post-## -->
-<?php
