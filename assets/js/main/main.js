@@ -357,7 +357,7 @@ var DownArrow = {
             this.nextHeight = this.$next.outerHeight();
         }
 
-        this.timeline.to(this.$arrow, 1, {y: 100, opacity: 0, ease: Linear.easeNone});
+        this.timeline.to(this.$arrow, 1, {y: 100, opacity: 0, ease: Linear.easeNone, overwrite: "none"});
 
         this.$arrow.on('click', function (e) {
             e.preventDefault();
@@ -372,6 +372,14 @@ var DownArrow = {
                 smoothScrollTo(that.nextTop - $('.site-header').outerHeight());
             }
 
+        });
+
+        this.$arrow.on('mouseenter', function () {
+            TweenMax.to(that.$arrow, 0.2, {opacity: 1, scale: 1.5, ease: Back.easeOut, overwrite: "none"});
+        });
+
+        this.$arrow.on('mouseleave', function () {
+            TweenMax.to(that.$arrow, 0.4, {scale: 1, ease: Elastic.easeOut, overwrite: "none"});
         });
     },
 

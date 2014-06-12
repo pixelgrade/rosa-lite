@@ -541,17 +541,12 @@ var Parallax = {
         }
 
         this.prepare();
-        this.update(window.scrollY, false);
+        this.update(latestKnownScrollY, false);
     },
 
     prepare: function() {
 
         var that = this;
-
-        if (!(this.selector).length) {
-            CoverAnimation.initialize();
-            return;
-        }
 
         $(this.selector).each(function (i, element) {
 
@@ -572,6 +567,10 @@ var Parallax = {
                 height: containerHeight + windowHeight * that.amount,
                 'top': -1 * windowHeight * that.amount / 2
             });
+
+            setTimeout(function() {
+                CoverAnimation.initialize();
+            }, 800);
 
             if ($parallax.hasClass('article__parallax--img') && $parallax.find('img').length) {
 
@@ -599,14 +598,7 @@ var Parallax = {
                     });
 
                     // fade image in
-                    TweenMax.to($image, 0.5, {
-                        opacity: 1,
-                        onComplete: function () {
-                            setTimeout(function() {
-                                CoverAnimation.initialize();
-                            }, 300);
-                        }
-                    });
+                    TweenMax.to($image, 0.5, {opacity: 1});
                 });
             }
 
@@ -1348,7 +1340,7 @@ var DownArrow = {
             this.nextHeight = this.$next.outerHeight();
         }
 
-        this.timeline.to(this.$arrow, 1, {y: 100, opacity: 0, ease: Linear.easeNone});
+        this.timeline.to(this.$arrow, 1, {y: 100, opacity: 0, ease: Linear.easeNone, overwrite: "none"});
 
         this.$arrow.on('click', function (e) {
             e.preventDefault();
@@ -1363,6 +1355,14 @@ var DownArrow = {
                 smoothScrollTo(that.nextTop - $('.site-header').outerHeight());
             }
 
+        });
+
+        this.$arrow.on('mouseenter', function () {
+            TweenMax.to(that.$arrow, 0.2, {opacity: 1, scale: 1.5, ease: Back.easeOut, overwrite: "none"});
+        });
+
+        this.$arrow.on('mouseleave', function () {
+            TweenMax.to(that.$arrow, 0.4, {scale: 1, ease: Elastic.easeOut, overwrite: "none"});
         });
     },
 
