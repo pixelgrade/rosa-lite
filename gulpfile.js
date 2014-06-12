@@ -215,6 +215,11 @@ gulp.task('build', ['copy-folder'], function () {
 		'wpgrade-core/vendor/redux2',
 		'wpgrade-core/features',
 		'wpgrade-core/tests',
+		'wpgrade-core/**/*.less',
+		'wpgrade-core/**/*.scss',
+		'wpgrade-core/**/*.rb',
+		'wpgrade-core/**/sass',
+		'wpgrade-core/**/scss',
 		'pxg.json',
 		'build',
 		'css',
@@ -222,7 +227,10 @@ gulp.task('build', ['copy-folder'], function () {
 		'**/*.css.map',
 		'**/.sass*',
 		'**/.git*',
-		'*.sublime-project'
+		'*.sublime-project',
+		'.DS_Store',
+		'**/.DS_Store',
+		'woocommerce'
 	];
 
 	files_to_remove.forEach(function (e, k) {

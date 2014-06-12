@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ROSA - An Exquisite Restaurant Wordpress Theme\n"
 "POT-Creation-Date: 2014-06-04 15:41+0200\n"
-"PO-Revision-Date: 2014-06-04 15:41+0200\n"
+"PO-Revision-Date: 2014-06-11 22:08+0200\n"
 "Last-Translator: Vlad Olaru <vlad.olaru@pixelgrade.com>\n"
 "Language-Team: PixelGrade <contact@pixelgrade.com>\n"
 "Language: es\n"
@@ -318,8 +318,8 @@ msgid ""
 "<h4>Theme Options</h4><p>These allow you to adjust the overall settings for "
 "your website.</p>"
 msgstr ""
-"<h4>Opciones del tema - Theme Options</h4><p>Estas te permiten ajustar la "
-"configuración general de su sitio web.</p>"
+"<h4>Opciones del tema</h4><p>Estas te permiten ajustar la configuración "
+"general de su sitio web.</p>"
 
 #: ../config/admin-panel/redux-args.php:42
 msgid "Follow us on Twitter"
@@ -335,7 +335,7 @@ msgstr "Síguenos en Facebook"
 
 #: ../config/admin-panel/redux-args.php:77 ../wpgrade-core/hooks.php:172
 msgid "Theme Options"
-msgstr "Opciones del Tema - Theme Options"
+msgstr "Opciones del Tema"
 
 #: ../config/admin-panel/redux-args.php:81
 #: ../config/admin-panel/redux-sections.php:815
