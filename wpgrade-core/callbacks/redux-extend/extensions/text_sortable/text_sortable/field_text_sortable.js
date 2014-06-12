@@ -120,7 +120,7 @@
 								var a = b(this).offset();
 								e -= a.top;
 								g -= a.left;
-								return!1
+								return !1
 							}
 						});
 						if (f.scrollContainer == window)c -= b(window).scrollTop(), d -= b(window).scrollLeft(), c = Math.max(0, c - b(window).height() + 5) + Math.min(0, c - 5), d = Math.max(0, d - b(window).width() + 5) + Math.min(0, d - 5); else var i = b(f.scrollContainer), h = i.offset(), c = Math.max(0, c - i.height() - h.top) + Math.min(0, c - h.top), d = Math.max(0, d - i.width() - h.left) + Math.min(0, d - h.left);
@@ -163,14 +163,14 @@
 							b(document).unbind("mousemove", a.swapItems);
 							b(document).unbind("mouseup", a.dropItem);
 							f.scrollContainer != window && b(window).unbind("DOMMouseScroll mousewheel", a.wheel);
-							return!1
+							return !1
 						}
 					},
 					swapItems: function (d) {
-						if (null == a.draggedItem)return!1;
+						if (null == a.draggedItem)return !1;
 						a.setPos(d.pageX, d.pageY);
 						for (var c = a.findPos(d.pageX, d.pageY), e = a, g = 0; -1 == c && f.dragBetween && g < h.length; g++)c = h[g].findPos(d.pageX, d.pageY), e = h[g];
-						if (-1 == c)return!1;
+						if (-1 == c)return !1;
 						var i = function () {
 							return b(e.container).children().not(e.draggedItem)
 						}, d = i().not(f.itemSelector).each(function () {
@@ -186,11 +186,11 @@
 							b.buildPositionTable()
 						});
 						l = a.draggedItem.offset();
-						return!1
+						return !1
 					},
 					findPos: function (a, b) {
 						for (var e = 0; e < this.pos.length; e++)if (this.pos[e].left < a && this.pos[e].right > a && this.pos[e].top < b && this.pos[e].bottom > b)return e;
-						return-1
+						return -1
 					},
 					createDropTargets: function () {
 						f.dragBetween && b(h).each(function () {

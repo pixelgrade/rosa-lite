@@ -123,7 +123,7 @@ var Parallax = {
                     return;
                 }
 
-                if (progress > 1) {
+                if (1 < progress) {
                     options.timeline.progress(1);
                     return;
                 }
