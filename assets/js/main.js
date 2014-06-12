@@ -775,8 +775,10 @@ var CoverAnimation = {
                             var currentProgress = $headline.data('progress');
 
                             if (currentProgress && Math.abs(timeline.progress() - currentProgress) < 0.1) {
-                                that.animated = true;
                                 this.kill();
+                                setTimeout(function() {
+                                    that.animated = true;
+                                }, 10);
                             }
                         }
                     });
@@ -865,9 +867,10 @@ var Navigator = {
 
 
         this.$sections.each(function (index, element) {
-            var $section    = $(element),
-                sectionTop  = $section.offset().top,
-                $button     = $('<a href="#" class="navigator__item"><div class="bullet"></div></a>');
+            var $section        = $(element),
+                sectionTop      = $section.offset().top,
+                sectionHeight   = $section.outerHeight(),
+                $button         = $('<a href="#" class="navigator__item"><div class="bullet"></div></a>');
 
             $button.appendTo($navigator);
             $section.data('offsetTop', sectionTop);
@@ -876,15 +879,7 @@ var Navigator = {
                 event.preventDefault();
                 event.stopPropagation();
 
-                var scrollDistance = Math.abs(latestKnownScrollY - sectionTop),
-                    scrollDuration = that.scrollDuration * scrollDistance / 1000;
-
-                $('html, body').animate({
-                    scrollTop: sectionTop
-                }, {
-                    duration: scrollDuration,
-                    easing: "easeOutCubic"
-                });
+                smoothScrollTo(sectionTop - windowHeight/2 + sectionHeight/2);
 
                 return false;
             });
@@ -983,7 +978,7 @@ function stickyHeaderInit() {
 
     $header.headroom({
         tolerance: 15,
-        offset: offset,
+        offset: offset - headerHeight - 1,
         // animate with GSAP
         onPin: function () {
             TweenMax.to($header, 0.1, {top: ''});
@@ -1075,6 +1070,11 @@ var ScrollToTop = {
         });
 
         this.timeline.fromTo($('.btn--top_text'), 2, {y: 15, scale: 0.5}, {y: 0, scale: 1, opacity: 1, ease: Expo.easeOut}, '-=1.3');
+
+        this.$button.on('click', function (e) {
+            e.preventDefault();
+            smoothScrollTo(0);
+        });
     },
 
     update: function () {
@@ -1085,6 +1085,16 @@ var ScrollToTop = {
 
         setProgress(this.timeline, this.start, this.end);
     }
+}
+
+function smoothScrollTo(y, speed) {
+
+    speed = typeof speed == "undefined" ? 1 : speed;
+
+    var distance = Math.abs(latestKnownScrollY - y),
+        time     = speed * distance / 1000;
+
+    TweenMax.to($(window), time, {scrollTo: {y: y, autoKill: true, ease: Power2.easeInOut}});
 }
 
 
@@ -1297,6 +1307,7 @@ $(window).load(function(){
 
 
     if(!empty($('#date-otreservations'))){
+
         // Pikaday
         var picker = new Pikaday({
             field: document.getElementById('date-otreservations'),
@@ -1318,17 +1329,41 @@ var DownArrow = {
     end:        0,
 
     initialize: function () {
+
+        var that = this;
+
         this.$arrow = $(this.selector);
 
         if (empty(this.$arrow)) {
             return;
         }
 
-        this.start      = this.$arrow.offset().top - windowHeight;
+        this.start      = 0;
         this.end        = this.start + 300;
         this.timeline   = new TimelineMax({ paused: true });
+        this.$next      = this.$arrow.closest('.article__header').nextAll('.article__header, .article--page').first();
+
+        if (!empty(this.$next)) {
+            this.nextTop    = this.$next.offset().top;
+            this.nextHeight = this.$next.outerHeight();
+        }
 
         this.timeline.to(this.$arrow, 1, {y: 100, opacity: 0, ease: Linear.easeNone});
+
+        this.$arrow.on('click', function (e) {
+            e.preventDefault();
+
+            if (empty(that.$next)) {
+                return;
+            }
+
+            if (that.$next.is('.article__header')) {
+                smoothScrollTo(that.nextTop - windowHeight/2 + that.nextHeight/2);
+            } else {
+                smoothScrollTo(that.nextTop - $('.site-header').outerHeight());
+            }
+
+        });
     },
 
     update: function () {

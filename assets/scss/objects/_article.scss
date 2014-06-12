@@ -1,8 +1,8 @@
 /*---------------------------------*\
                ARTICLE
 \*---------------------------------*/
-.article {
-
+.article--page {
+	overflow: hidden;
 }
 
 .article__title a {
@@ -130,6 +130,7 @@
 
 
 .page, .archive {
+
 	.article__content {
 		position: relative;
 		width: 100%;
@@ -140,23 +141,19 @@
 
 .down-arrow {
 	display: block;
-	position: relative;
 	opacity: 0.7;
+	position: absolute;
+	left: 50%;
+	bottom: 84px;
+	margin-left: -1 * $_u2;
+	z-index: 20;
 
-	&:before {
-		content: "";
-		position: absolute;
-		left: 50%;
-		bottom: 84px;
-		margin-left: -1 * $_u2;
-		z-index: 20;
+	height: $_u;
+	width: $_u;
 
-		height: $_u;
-		width: $_u;
+	border-right: 3px solid white;
+	border-bottom: 3px solid white;
 
-		border-right: 3px solid white;
-		border-bottom: 3px solid white;
-
-		@include transform(rotate(45deg));
-	}
+	@include transform(rotate(45deg));
+	cursor: pointer;
 }
