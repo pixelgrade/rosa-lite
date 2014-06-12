@@ -917,6 +917,8 @@ var Navigator = {
 
         $navigator.css({'margin-top': -1 * $navigator.height() / 2}).prependTo("body");
 
+        this.update();
+
         TweenMax.to($navigator, 0.3, {
             opacity: 1
         });
@@ -1345,7 +1347,9 @@ function requestTick() {
 }
 
 $(window).on("scroll", function () {
-    latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop();
+    var lastScroll = $('html').scrollTop() || $('body').scrollTop();
+    console.log(lastScroll - latestKnownScrollY);
+    latestKnownScrollY = lastScroll;
     requestTick();
 });
 

@@ -80,6 +80,8 @@ var Navigator = {
 
         $navigator.css({'margin-top': -1 * $navigator.height() / 2}).prependTo("body");
 
+        this.update();
+
         TweenMax.to($navigator, 0.3, {
             opacity: 1
         });

@@ -351,6 +351,8 @@ function requestTick() {
 }
 
 $(window).on("scroll", function () {
-    latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop();
+    var lastScroll = $('html').scrollTop() || $('body').scrollTop();
+    console.log(lastScroll - latestKnownScrollY);
+    latestKnownScrollY = lastScroll;
     requestTick();
 });
