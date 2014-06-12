@@ -49,61 +49,14 @@ function niceScrollInit() {
 }
 
 
-var ScrollToTop = {
-    selector:   '.btn--top',
-    $button:    null,
-    offsetTop:  0,
-    start:      0,
-    end:        0,
-    timeline:   null,
-
-    initialize: function () {
-
-        this.$button = $(this.selector);
-
-        if (empty(this.$button)) {
-            return;
-        }
-
-        this.offsetTop  = this.$button.offset().top;
-        this.start      = this.offsetTop - windowHeight + 100;
-        this.end        = this.start + 250;
-        this.timeline   = new TimelineMax({ paused: true });
-
-        this.timeline.to($('.btn--top_contour'), 2, {
-            width:  260,
-            height: 260,
-            top:    -130,
-            left:   -100,
-            ease:   Power2.easeOut
-        });
-
-        this.timeline.fromTo($('.btn--top_text'), 2, {y: 15, scale: 0.5}, {y: 0, scale: 1, opacity: 1, ease: Expo.easeOut}, '-=1.3');
-
-        this.$button.on('click', function (e) {
-            e.preventDefault();
-            smoothScrollTo(0);
-        });
-    },
-
-    update: function () {
-
-        if (empty(this.$button)) {
-            return;
-        }
-
-        setProgress(this.timeline, this.start, this.end);
-    }
-}
-
 function smoothScrollTo(y, speed) {
 
     speed = typeof speed == "undefined" ? 1 : speed;
 
     var distance = Math.abs(latestKnownScrollY - y),
-        time     = speed * distance / 1000;
+        time     = speed * distance / 2000;
 
-    TweenMax.to($(window), time, {scrollTo: {y: y, autoKill: true, ease: Power2.easeInOut}});
+    TweenMax.to($(window), time, {scrollTo: {y: y, autoKill: true, ease: Quint.easeInOut}});
 }
 
 
@@ -329,69 +282,6 @@ $(window).load(function(){
 	$('.pixcode--tabs').organicTabs();
 
 });
-
-var DownArrow = {
-    selector:   '.down-arrow',
-    $arrow:     null,
-    timeline:   null,
-    start:      0,
-    end:        0,
-
-    initialize: function () {
-
-        var that = this;
-
-        this.$arrow = $(this.selector);
-
-        if (empty(this.$arrow)) {
-            return;
-        }
-
-        this.start      = 0;
-        this.end        = this.start + 300;
-        this.timeline   = new TimelineMax({ paused: true });
-        this.$next      = this.$arrow.closest('.article__header').nextAll('.article__header, .article--page').first();
-
-        if (!empty(this.$next)) {
-            this.nextTop    = this.$next.offset().top;
-            this.nextHeight = this.$next.outerHeight();
-        }
-
-        this.timeline.to(this.$arrow, 1, {y: 100, opacity: 0, ease: Linear.easeNone, overwrite: "none"});
-
-        this.$arrow.on('click', function (e) {
-            e.preventDefault();
-
-            if (empty(that.$next)) {
-                return;
-            }
-
-            if (that.$next.is('.article__header')) {
-                smoothScrollTo(that.nextTop - windowHeight/2 + that.nextHeight/2);
-            } else {
-                smoothScrollTo(that.nextTop - $('.site-header').outerHeight());
-            }
-
-        });
-
-        this.$arrow.on('mouseenter', function () {
-            TweenMax.to(that.$arrow, 0.2, {opacity: 1, scale: 1.5, ease: Back.easeOut, overwrite: "none"});
-        });
-
-        this.$arrow.on('mouseleave', function () {
-            TweenMax.to(that.$arrow, 0.4, {scale: 1, ease: Elastic.easeOut, overwrite: "none"});
-        });
-    },
-
-    update: function () {
-
-        if (empty(this.$arrow)) {
-            return;
-        }
-
-        setProgress(this.timeline, this.start, this.end);
-    }
-}
 
 
 function setProgress(timeline, start, end) {
