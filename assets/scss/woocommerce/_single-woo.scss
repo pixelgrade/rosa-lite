@@ -1,0 +1,50 @@
+.single-product {
+
+	.product {
+		.pixcode--tabs {
+			clear: both;
+		}
+	}
+
+	.posted_in, .tagged_as {
+		display: block;
+		margin-bottom: 12px;
+
+		a {
+			display: inline-block;
+			color: $light;
+			border: 1px solid $light;
+			text-decoration: none;
+			padding: 3px 9px;
+			font-size: 12px;
+			border-left-width: 0;
+			text-transform: uppercase;
+
+			&:first-child {
+				border-left-width: 1px;
+			}
+		}
+	}
+
+	.category_label, .tags_label {
+		display: inline-block;
+		background: $dark;
+		color: white;
+		border-radius: 3px;
+		text-transform: uppercase;
+		font-size: 12px;
+		padding: 3px 9px;
+		margin-right: 12px;
+	}
+}
+
+html .woocommerce button.button.alt {
+	background: $dark;
+	text-transform: uppercase;
+	padding: 12px 30px;
+	letter-spacing: 3px;
+	border-radius: 3px;
+	border: 0;
+	box-shadow: none;
+	font-size: 12px;
+}
