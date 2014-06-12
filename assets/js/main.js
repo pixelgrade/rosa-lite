@@ -753,10 +753,6 @@ var CoverAnimation = {
                         partialProgress = progress < 0 ? ab : ab + bc * progress,
                         timePassed      = partialProgress * timeline.getLabelTime("animatedOut");
 
-                    if (ab > partialProgress) {
-                        that.animated = true;
-                        return;
-                    }
 
                     timeline.addLabel("finishedAt", timePassed);
                     timeline.tweenTo("finishedAt", {
@@ -765,12 +761,8 @@ var CoverAnimation = {
                         },
                         onUpdate: function () {
                             var currentProgress = $headline.data('progress');
-
-                            if (currentProgress && Math.abs(timeline.progress() - currentProgress) < 0.1) {
+                            if (currentProgress && Math.abs(timeline.progress() - currentProgress) < 0.02) {
                                 this.kill();
-                                setTimeout(function() {
-                                    that.animated = true;
-                                }, 10);
                             }
                         }
                     });
@@ -791,6 +783,10 @@ var CoverAnimation = {
     update: function () {
 
         var that = this;
+
+        if (!this.animated) {
+            return;
+        }
 
         $(this.selector).each(function (i, element) {
 
