@@ -181,7 +181,7 @@ else :
 							} ?>
 							<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
 							<?php if ( ! empty( $description ) ) {
-								echo '<div class="headline__description">' . $description . '</div>';
+								echo '<div class="headline__description">' . $description . '</div>' . PHP_EOL;
 							} ?>
 						</hgroup>
 					</div>
