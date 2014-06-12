@@ -3,7 +3,7 @@
 if ( class_exists('WP_Customize_Control') ) {
 	class Redux_customizer_info extends Redux_Customize_Control {
 
-		public $type = 'info';
+		public $type = 'customizer_info';
 		public $custom_data;
 		public $ReduxFramework;
 		public $option_key;
