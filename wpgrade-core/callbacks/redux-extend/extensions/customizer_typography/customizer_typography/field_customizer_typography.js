@@ -10,28 +10,28 @@
  * Date:                May 25, 2014
  */
 
-(function($) {
+(function ($) {
 	"use strict";
 
 	$.reduxTypography = $.reduxTypography || {};
 
-	var selVals     = [];
+	var selVals = [];
 	var isSelecting = false;
 
 	var default_params = {
-		width:          'resolve',
-		triggerChange:  true,
-		allowClear:     true
+		width: 'resolve',
+		triggerChange: true,
+		allowClear: true
 	};
 
-	$(document).ready(function() {
+	$(document).ready(function () {
 		$.reduxTypography.init();
 	});
 
-	$.reduxTypography.init = function() {
+	$.reduxTypography.init = function () {
 
 		// init each typography field
-		$('.redux-typography-container').each(function() {
+		$('.redux-typography-container').each(function () {
 			var family = $(this).find('.redux-typography-family');
 
 			if (family.data('value') !== "") {
@@ -52,18 +52,18 @@
 		});
 
 		//init when value is changed
-		$('.redux-typography').on('change', function() {
+		$('.redux-typography').on('change', function () {
 			$.reduxTypography.select($(this)); //.parents('.redux-container-typography:first'));
 		});
 
 		//init when value is changed
-		$('.redux-typography-size, .redux-typography-height, .redux-typography-word, .redux-typography-letter, .redux-typography-align, .redux-typography-transform, .redux-typography-font-variant, .redux-typography-decoration').keyup(function() {
-			$.reduxTypography.select ($(this).parents('.redux-container-typography:first'));
+		$('.redux-typography-size, .redux-typography-height, .redux-typography-word, .redux-typography-letter, .redux-typography-align, .redux-typography-transform, .redux-typography-font-variant, .redux-typography-decoration').keyup(function () {
+			$.reduxTypography.select($(this).parents('.redux-container-typography:first'));
 		});
 
 		// Have to redeclare the wpColorPicker to get a callback function
 		$('.redux-typography-color').wpColorPicker({
-			change: function(event, ui) {
+			change: function (event, ui) {
 				redux_change($(this));
 				$(this).val(ui.color.toString());
 				$.reduxTypography.select($(this));
@@ -81,7 +81,9 @@
 		});
 
 		// select2 magic, to load font-family dynamically
-		var data = [{id:'none', text: 'none'}];
+		var data = [
+			{id: 'none', text: 'none'}
+		];
 		$(".redux-typography-family").select2({
 			allowClear: true,
 
@@ -93,13 +95,13 @@
 				return window.Select2.query.local(data)(query);
 			},
 
-			initSelection : function(element, callback) {
+			initSelection: function (element, callback) {
 				var data = {id: element.val(), text: element.val()};
 				callback(data);
 			}
 
 			// when one clicks on the font-family select box
-		}).on("select2-opening", function(e) {
+		}).on("select2-opening", function (e) {
 
 			// Get field ID
 			var thisID = $(this).parents('.redux-container-typography:first').attr('data-id');
@@ -121,7 +123,7 @@
 			}
 
 			// If standard fonts, push onto array
-			if (redux.stdfonts !== undefined && isUserFonts === 0 ) {
+			if (redux.stdfonts !== undefined && isUserFonts === 0) {
 				buildData.push(redux.stdfonts);
 			}
 
@@ -134,11 +136,11 @@
 					var obj = redux.typography[thisID].std_font;
 
 					for (var prop in obj) {
-						if(obj.hasOwnProperty(prop)){
+						if (obj.hasOwnProperty(prop)) {
 							fontKids.push({
-								id:             prop,
-								text:           prop,
-								'data-google':  'false'
+								id: prop,
+								text: prop,
+								'data-google': 'false'
 							});
 						}
 					}
@@ -146,8 +148,8 @@
 
 				// <optgroup>
 				var fontData = {
-					text:       'Standard Fonts',
-					children:   fontKids
+					text: 'Standard Fonts',
+					children: fontKids
 				};
 
 				buildData.push(fontData);
@@ -171,15 +173,15 @@
 			$('#' + thisID + " .redux-typography-family").select2('val', selFamily);
 
 			// When selection is made.
-		}).on('select2-selecting', function(val, object) {
-			var fontName    = val.object.text;
-			var thisID      = $(this).parents('.redux-container-typography:first').attr('data-id');
+		}).on('select2-selecting', function (val, object) {
+			var fontName = val.object.text;
+			var thisID = $(this).parents('.redux-container-typography:first').attr('data-id');
 
 			$('#' + thisID + ' #' + thisID + '-family').data('value', fontName);
 			$('#' + thisID + ' #' + thisID + '-family').attr('placeholder', fontName);
 
 			// option values
-			selVals     = val;
+			selVals = val;
 			isSelecting = true;
 
 			redux_change($(this));
@@ -191,7 +193,7 @@
 	};
 
 	// Return font size
-	$.reduxTypography.size = function(obj) {
+	$.reduxTypography.size = function (obj) {
 		var size = 0,
 			key;
 
@@ -205,7 +207,7 @@
 	};
 
 	// Return proper bool value
-	$.reduxTypography.makeBool = function(val) {
+	$.reduxTypography.makeBool = function (val) {
 		if (val == 'false' || val == '0' || val === false || val === 0) {
 			return false;
 		} else if (val == 'true' || val == '1' || val === true || val == 1) {
@@ -214,14 +216,14 @@
 	};
 
 	//  Sync up font options
-	$.reduxTypography.select = function(selector) {
+	$.reduxTypography.select = function (selector) {
 		var api = wp.customize;
 		// Main id for selected field
-		var mainID          = $(selector).parents('.redux-container-typography:first').attr('data-id');
+		var mainID = $(selector).parents('.redux-container-typography:first').attr('data-id');
 
 		// customizer things
 		var customizer_id = $('#' + mainID + ' .redux-typography-font-family').attr('name');
-		if ( typeof customizer_id !== 'undefined' ) {
+		if (typeof customizer_id !== 'undefined') {
 			customizer_id = customizer_id.replace('[font-family]', '');
 		} else {
 			customizer_id = 0;
@@ -229,25 +231,25 @@
 
 
 		// Set all the variables to be checked against
-		var family          = $('#' + mainID + ' #' + mainID + '-family').val();
+		var family = $('#' + mainID + ' #' + mainID + '-family').val();
 
 		if (!family) {
 			family = null; //"inherit";
 		}
 
-		var familyBackup    = $('#' + mainID + ' select.redux-typography-family-backup').val();
-		var size            = $('#' + mainID + ' .redux-typography-size').val();
-		var height          = $('#' + mainID + ' .redux-typography-height').val();
-		var word            = $('#' + mainID + ' .redux-typography-word').val();
-		var letter          = $('#' + mainID + ' .redux-typography-letter').val();
-		var align           = $('#' + mainID + ' select.redux-typography-align').val();
-		var transform       = $('#' + mainID + ' select.redux-typography-transform').val();
-		var fontVariant     = $('#' + mainID + ' select.redux-typography-font-variant').val();
-		var decoration      = $('#' + mainID + ' select.redux-typography-decoration').val();
-		var style           = $('#' + mainID + ' select.redux-typography-style').val();
-		var script          = $('#' + mainID + ' select.redux-typography-subsets').val();
-		var color           = $('#' + mainID + ' .redux-typography-color').val();
-		var units           = $('#' + mainID).data('units');
+		var familyBackup = $('#' + mainID + ' select.redux-typography-family-backup').val();
+		var size = $('#' + mainID + ' .redux-typography-size').val();
+		var height = $('#' + mainID + ' .redux-typography-height').val();
+		var word = $('#' + mainID + ' .redux-typography-word').val();
+		var letter = $('#' + mainID + ' .redux-typography-letter').val();
+		var align = $('#' + mainID + ' select.redux-typography-align').val();
+		var transform = $('#' + mainID + ' select.redux-typography-transform').val();
+		var fontVariant = $('#' + mainID + ' select.redux-typography-font-variant').val();
+		var decoration = $('#' + mainID + ' select.redux-typography-decoration').val();
+		var style = $('#' + mainID + ' select.redux-typography-style').val();
+		var script = $('#' + mainID + ' select.redux-typography-subsets').val();
+		var color = $('#' + mainID + ' .redux-typography-color').val();
+		var units = $('#' + mainID).data('units');
 
 		var output = family;
 
@@ -262,8 +264,8 @@
 
 		// Page load. Speeds things up memory wise to offload to client
 		if (!$('#' + mainID).hasClass('typography-initialized')) {
-			style   = $('#' + mainID + ' select.redux-typography-style').data('value');
-			script  = $('#' + mainID + ' select.redux-typography-subsets').data('value');
+			style = $('#' + mainID + ' select.redux-typography-style').data('value');
+			script = $('#' + mainID + ' select.redux-typography-subsets').data('value');
 
 			if (style !== "") {
 				style = String(style);
@@ -285,10 +287,10 @@
 			details = redux.fonts.google[family];
 		} else {
 			details = {
-				'400':          'Normal 400',
-				'700':          'Bold 700',
-				'400italic':    'Normal 400 Italic',
-				'700italic':    'Bold 700 Italic'
+				'400': 'Normal 400',
+				'700': 'Bold 700',
+				'400italic': 'Normal 400 Italic',
+				'700italic': 'Bold 700 Italic'
 			};
 		}
 
@@ -302,9 +304,9 @@
 				// STYLES
 				var selected = "";
 
-				if ( typeof details.variants !== 'undefined') {
+				if (typeof details.variants !== 'undefined') {
 
-					$.each(details.variants, function(index, variant) {
+					$.each(details.variants, function (index, variant) {
 						if (variant.id === style || $.reduxTypography.size(details.variants) === 1) {
 							selected = ' selected="selected"';
 							style = variant.id;
@@ -326,14 +328,14 @@
 				$('#' + mainID + ' .redux-typography-style').html(html);
 
 				// Init select2
-				$('#' + mainID +  ' .redux-typography-style').select2(default_params);
+				$('#' + mainID + ' .redux-typography-style').select2(default_params);
 
 
 				// SUBSETS
 				selected = "";
 				html = '<option value=""></option>';
 
-				if ( typeof details.subsets !== 'undefined') {
+				if (typeof details.subsets !== 'undefined') {
 					$.each(details.subsets, function (index, subset) {
 						if (subset.id === script || $.reduxTypography.size(details.subsets) === 1) {
 							selected = ' selected="selected"';
@@ -357,13 +359,13 @@
 				$('#' + mainID + ' .redux-typography-subsets').html(html);
 
 				// Init select2
-				$('#' + mainID +  ' .redux-typography-subsets').select2(default_params);
+				$('#' + mainID + ' .redux-typography-subsets').select2(default_params);
 
 				$('#' + mainID + ' .redux-typography-subsets').parent().fadeIn('fast');
 				$('#' + mainID + ' .typography-family-backup').fadeIn('fast');
 			} else {
 				if (details) {
-					$.each(details, function(index, value) {
+					$.each(details, function (index, value) {
 						if (index === style || index === "normal") {
 							selected = ' selected="selected"';
 							$('#' + mainID + ' .typography-style .select2-chosen').text(value);
@@ -399,7 +401,7 @@
 			style = "";
 			$('#' + mainID + ' select.redux-typography-style').select2('val', '');
 		} else if (style === "400") {
-			$('#' + mainID +  ' select.redux-typography-style').select2('val', style);
+			$('#' + mainID + ' select.redux-typography-style').select2('val', style);
 		}
 
 		// Handle empty subset select

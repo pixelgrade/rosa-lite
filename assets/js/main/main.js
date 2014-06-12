@@ -7,7 +7,7 @@ function niceScrollInit() {
 
     var smoothScroll = $('body').data('smoothscrolling') !== undefined;
 
-    if (smoothScroll && !is_OSX && !touch && !("MozAppearance" in root.style)) {
+    if (smoothScroll && !is_OSX && !touch) {
 
         var $window = $(window);		// Window object
 
@@ -48,44 +48,63 @@ function niceScrollInit() {
 
 }
 
-function scrollToTopInit() {
 
-    if (!empty($('.up-link'))) {
+var ScrollToTop = {
+    selector:   '.btn--top',
+    $button:    null,
+    offsetTop:  0,
+    start:      0,
+    end:        0,
+    timeline:   null,
 
-        if (globalDebug) {console.log("ScrollToTop Init");}
+    initialize: function () {
 
-		var $el         = $('.up-link'),
-            offset      = 600,
-            duration    = 500;
+        this.$button = $(this.selector);
 
-        var elOffset = $el.offset().top;
+        if (empty(this.$button)) {
+            return;
+        }
 
-		$(window).scroll(function() {
+        this.offsetTop  = this.$button.offset().top;
+        this.start      = this.offsetTop - windowHeight + 100;
+        this.end        = this.start + 250;
+        this.timeline   = new TimelineMax({ paused: true });
 
-			if (latestKnownScrollY > (elOffset - wh + 100)) {
-                $el.fadeIn(duration);
-			} else {
-                $el.fadeOut(duration);
-			}
+        this.timeline.to($('.btn--top_contour'), 2, {
+            width:  260,
+            height: 260,
+            top:    -130,
+            left:   -100,
+            ease:   Power2.easeOut
+        });
 
-		});
+        this.timeline.fromTo($('.btn--top_text'), 2, {y: 15, scale: 0.5}, {y: 0, scale: 1, opacity: 1, ease: Expo.easeOut}, '-=1.3');
+    },
 
-		$('.up-link').click(function(e) {
-			e.preventDefault();
+    update: function () {
 
-            var scrollDuration = latestKnownScrollY * duration / 1000;
+        var progress;
 
-            $('html, body').animate({
-                scrollTop: 0
-            }, {
-                duration: scrollDuration,
-                easing: "easeOutCubic"
-            });
+        if (empty(this.$button)) {
+            return;
+        }
 
-            return false;
-		});
-	}
+        progress = (1 / (this.end - this.start)) * (latestKnownScrollY - this.start);
+
+        if (0 > progress) {
+            this.timeline.progress(0);
+            return;
+        }
+
+        if (1 < progress) {
+            this.timeline.progress(1);
+            return;
+        }
+
+        this.timeline.progress(progress);
+    }
 }
+
 
 function menuTrigger(){
 
@@ -192,7 +211,6 @@ function eventHandlersOnce() {
 	if (globalDebug) {console.group("Event Handlers Once");}
 
     menuTrigger();
-	scrollToTopInit();
 
 	if (globalDebug) {console.groupEnd();}
 }
@@ -279,6 +297,7 @@ $(window).load(function(){
 
     Parallax.initialize();
     Navigator.initialize();
+    ScrollToTop.initialize();
     niceScrollInit();
 
     // always
@@ -340,6 +359,7 @@ function updateStuff() {
     }
 
     Navigator.update();
+    ScrollToTop.update();
 }
 
 function requestTick() {
@@ -350,8 +370,6 @@ function requestTick() {
 }
 
 $(window).on("scroll", function () {
-    var lastScroll = $('html').scrollTop() || $('body').scrollTop();
-    console.log(lastScroll - latestKnownScrollY);
-    latestKnownScrollY = lastScroll;
+    latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop();
     requestTick();
 });

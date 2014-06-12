@@ -89,7 +89,7 @@ $heading-font: 'Open Sans', sans-serif;
 		margin-bottom: $_u4;
 		margin-top: $_u;
 		font-size: 17px;
-		font-weight:400;
+		font-weight: 400;
 		text-transform: uppercase;
 	}
 
@@ -294,7 +294,7 @@ $heading-font: 'Open Sans', sans-serif;
 				width: auto;
 				margin-right: 0;
 				border-top: 1px solid $border-color !important;
-				border-bottom:1px solid $border-color;
+				border-bottom: 1px solid $border-color;
 				background: $content-bg !important;
 			}
 
@@ -1056,9 +1056,9 @@ $heading-font: 'Open Sans', sans-serif;
 	font-family: 'linecons';
 	src: url('../fonts/linecons.eot');
 	src: url('../fonts/linecons.eot') format('embedded-opentype'),
-		url('../fonts/linecons.woff') format('woff'),
-		url('../fonts/linecons.ttf') format('truetype'),
-		url('../fonts/linecons.svg') format('svg');
+	url('../fonts/linecons.woff') format('woff'),
+	url('../fonts/linecons.ttf') format('truetype'),
+	url('../fonts/linecons.svg') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
