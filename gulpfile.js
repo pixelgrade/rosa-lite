@@ -227,7 +227,8 @@ gulp.task('build', ['copy-folder'], function () {
 		'**/*.css.map',
 		'**/.sass*',
 		'**/.git*',
-		'*.sublime-project'
+		'*.sublime-project',
+		'woocommerce'
 	];
 
 	files_to_remove.forEach(function (e, k) {
