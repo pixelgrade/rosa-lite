@@ -7,6 +7,7 @@
 if ( class_exists('ReduxFramework_customizer_typography')) {
 	global $redux;
 	$typography = new ReduxFramework_customizer_typography( null, null, $redux );
+	//var_dump($redux->typography);
 	$families = $typography->makeGoogleWebfontString( $redux->typography ); ?>
 	<script type="text/javascript">
 		WebFont.load({ google: {families: [<?php echo ($families); ?>]} });
