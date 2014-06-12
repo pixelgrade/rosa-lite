@@ -139,6 +139,9 @@
 }
 
 .down-arrow {
+	display: block;
+	position: relative;
+	opacity: 0.7;
 
 	&:before {
 		content: "";
