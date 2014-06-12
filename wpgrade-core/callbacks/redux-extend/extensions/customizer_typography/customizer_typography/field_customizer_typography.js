@@ -518,8 +518,7 @@
 			}
 
 			$('#' + mainID + ' .typography-preview').slideDown();
-
-			set_customizer_value(customizer_id, 'font-options', decodeURIComponent(details));
+			set_customizer_value(customizer_id, 'font-options', details);
 			set_customizer_value(customizer_id, 'font-weight', style);
 			set_customizer_value(customizer_id, 'google', google);
 			set_customizer_value(customizer_id, 'subsets', script);
