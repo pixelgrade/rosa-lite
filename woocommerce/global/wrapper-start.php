@@ -9,11 +9,11 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-    if( is_shop() ) :
+    if( is_shop() ) {
 
-        $shop_page_id = wc_get_page_id( 'shop' );
+        $shop_page_id = wc_get_page_id('shop');
 
-        if(!empty($shop_page_id) && $shop_page_id != 0) {
+        if (!empty($shop_page_id) && $shop_page_id != 0) {
             global $post;
             $post = get_post($shop_page_id);
 
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
             get_template_part('templates/page/header');
         }
-    endif;
+    }
 
     ?>
 
