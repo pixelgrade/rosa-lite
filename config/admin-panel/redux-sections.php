@@ -1564,6 +1564,30 @@ $sections[] = array(
 	)
 );
 
+/**
+ * Check if WooCommerce is active
+ **/
+if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+
+	// WooCommerce
+	// ------------------------------------------------------------------------
+	$sections[] = array(
+		'icon' => "icon-cart",
+		'icon_class' => '',
+		'title' => __('WooCommerce', wpgrade::textdomain()),
+		'desc' => '<p class="description">'.__('WooCommerce options!', wpgrade::textdomain()).'</p>',
+		'fields' => array(
+			array(
+				'id' => 'enable_woocommerce_support',
+				'type' => 'switch',
+				'title' => __('Enable WooCommerce Support', wpgrade::textdomain()),
+				'subtitle' => __('Turn this off to avoid loading the WooCommerce assets (CSS and JS).', wpgrade::textdomain()),
+				'default' => '1',
+			),
+		)
+	);
+}
+
 // Help and Support
 // ------------------------------------------------------------------------
 
