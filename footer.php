@@ -13,8 +13,19 @@ if ( $is_gmap === true ) {
 }
 ?>
 
+            <div class="flexbox  flexbox--btn-top">
+                <div class="flexbox__item  btn--top_left"><b></b></div>
+                <div class="flexbox__item  btn--top_wrapper">
+                    <div class="btn--top">
+                        <div class="btn--top_overflow">
+                            <div class="btn--top_contour"></div>
+                        </div>
+                        <a href="#" class="btn--top_text"><?php _e( 'Top', wpgrade::textdomain() ) ?></a>
+                    </div>
+                </div>
+                <div class="flexbox__item  btn--top_right"><b></b></div>
+            </div>
 			<footer class="site-footer">
-				<a href="#" id="up-link" class="up-link"><?php _e( 'Top', wpgrade::textdomain() ) ?></a>
 				<aside class="sidebar  sidebar--footer">
 					<div class="container">
 						<?php get_template_part( 'sidebar-footer' ); ?>

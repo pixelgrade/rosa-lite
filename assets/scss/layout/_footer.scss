@@ -5,25 +5,58 @@
 	position: relative;
 }
 
-.up-link {
+// make columns take same amount of space
+.flexbox--btn-top {
+	table-layout: fixed;
+}
+
+.btn--top_wrapper {
+	width: 60px;
+	text-align: center;
+}
+
+.btn--top_left, .btn--top_right {
+	background: #121012;
+}
+
+.btn--top {
+	width: 60px;
+	height: 30px;
+	position: relative;
+}
+
+.btn--top_overflow {
+	width: 60px;
+	height: 30px;
+	position: relative;
+	overflow: hidden;
+}
+
+.btn--top_contour {
+	width: 220px;
+	height: 220px;
 	position: absolute;
-	top: 0;
-	left: 50%;
-	z-index: 10;
+	top: -120px;
+	left: -80px;
+	border: 100px solid #121012;
+	border-radius: 50%;
+}
 
-	padding: 18px;
-	padding-top: $_u;
-	border: 0;
-
+.btn--top_text {
+	display: block;
+	position: absolute;
+	top: -26px;
+	left: 0;
+	opacity: 0;
+	width: 60px;
+	height: 60px;
+	padding-top: 20px;
 	font-size: 12px;
 	font-weight: 700;
 	text-transform: uppercase;
-
+	letter-spacing: 2px;
+	margin-left: 2px;
 	color: $dark;
-	background: white;
-
-	@include border-radius(50%);
-	@include transform(translateX(-50%) translateY(-50%));
 
 	&:before {
 		content: "";

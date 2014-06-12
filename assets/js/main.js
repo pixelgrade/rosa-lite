@@ -651,7 +651,7 @@ var Parallax = {
                     return;
                 }
 
-                if (progress > 1) {
+                if (1 < progress) {
                     options.timeline.progress(1);
                     return;
                 }
@@ -1044,44 +1044,66 @@ function niceScrollInit() {
 
 }
 
-function scrollToTopInit() {
 
-    if (!empty($('.up-link'))) {
+var ScrollToTop = {
+    selector:   '.btn--top',
+    $button:    null,
+    offsetTop:  0,
+    start:      0,
+    end:        0,
+    timeline:   null,
 
-        if (globalDebug) {console.log("ScrollToTop Init");}
+    initialize: function () {
 
-		var $el         = $('.up-link'),
-            offset      = 600,
-            duration    = 500;
+        this.$button = $(this.selector);
 
-        var elOffset = $el.offset().top;
+        if (empty(this.$button)) {
+            return;
+        }
 
-		$(window).scroll(function() {
+        this.offsetTop  = this.$button.offset().top;
+        this.start      = this.offsetTop - windowHeight + 100;
+        this.end        = this.start + 250;
+        this.timeline   = new TimelineMax({ paused: true });
 
-			if (latestKnownScrollY > (elOffset - wh + 100)) {
-                $el.fadeIn(duration);
-			} else {
-                $el.fadeOut(duration);
-			}
 
-		});
+        console.log($('.btn--top_contour'));
+        this.timeline.to($('.btn--top_contour'), 2, {
+            width:  260,
+            height: 260,
+            y:      -10,
+            x:      -20,
+            ease:   Power2.easeOut
+        });
 
-		$('.up-link').click(function(e) {
-			e.preventDefault();
+        this.timeline.fromTo($('.btn--top_text'), 2, {y: 15, scale: 0.5}, {y: 0, scale: 1, opacity: 1, ease: Expo.easeOut}, '-=1.3');
+    },
 
-            var scrollDuration = latestKnownScrollY * duration / 1000;
+    update: function () {
 
-            $('html, body').animate({
-                scrollTop: 0
-            }, {
-                duration: scrollDuration,
-                easing: "easeOutCubic"
-            });
+        var progress;
 
-            return false;
-		});
-	}
+        if (empty(this.$button)) {
+            return;
+        }
+
+        progress = (1 / (this.end - this.start)) * (latestKnownScrollY - this.start);
+        console.log(progress);
+
+        if (0 > progress) {
+            this.timeline.progress(0);
+            return;
+        }
+
+        if (1 < progress) {
+            this.timeline.progress(1);
+            return;
+        }
+
+        this.timeline.progress(progress);
+    }
 }
+
 
 function menuTrigger(){
 
@@ -1188,7 +1210,6 @@ function eventHandlersOnce() {
 	if (globalDebug) {console.group("Event Handlers Once");}
 
     menuTrigger();
-	scrollToTopInit();
 
 	if (globalDebug) {console.groupEnd();}
 }
@@ -1275,6 +1296,7 @@ $(window).load(function(){
 
     Parallax.initialize();
     Navigator.initialize();
+    ScrollToTop.initialize();
     niceScrollInit();
 
     // always
@@ -1336,6 +1358,7 @@ function updateStuff() {
     }
 
     Navigator.update();
+    ScrollToTop.update();
 }
 
 function requestTick() {
@@ -1346,9 +1369,7 @@ function requestTick() {
 }
 
 $(window).on("scroll", function () {
-    var lastScroll = $('html').scrollTop() || $('body').scrollTop();
-    console.log(lastScroll - latestKnownScrollY);
-    latestKnownScrollY = lastScroll;
+    latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop();
     requestTick();
 });
 
