@@ -50,8 +50,11 @@
 /*
  * Style Tab
  */
-#info-live-customizer-button + table {
-	display: none;
+.redux-group-tab[id="1_section_group"] {
+	
+	table, div.redux-field-customizer_info {
+		display: none;
+	}
 }
 
 /*
