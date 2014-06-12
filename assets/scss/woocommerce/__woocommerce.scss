@@ -4,3 +4,177 @@
 
 @import "archive-woo";
 @import "single-woo";
+@import "cart";
+
+
+
+
+
+
+.product__badge {
+	@extend .btn;
+	@extend .btn--small;
+
+	position: absolute;
+	top: -3px;
+	left: -3px;
+
+	&.on-sale{
+		@extend .btn--primary;
+	}
+}
+
+.woocommerce ins{
+	border: none;
+}
+
+
+.btn {
+	padding: $_u2 30px;
+
+	font-size: 12px;
+	line-height: 1;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+
+	background-color: $dark;
+	color: white;
+
+	@include transition(all .15s);
+	@include border-radius(3px);
+
+	&:hover {
+		background-color: $accent;
+		color: white;
+	}
+
+	&.a{
+		border-bottom: none;
+	}
+}
+
+.btn--primary {
+	background-color: $accent;
+	color: white;
+
+	&:hover {
+		background-color: $dark !important;
+	}
+}
+
+
+.btn--small {
+	padding: 9px 18px;
+}
+
+.btn--text {
+	text-decoration: none;
+
+	padding: 3px 0;
+
+	background: transparent !important;
+
+	border: 0;
+	border-bottom: 2px solid $accent;
+	@include border-radius(0);
+
+	font-size: 15px;
+	line-height: 1;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+
+	&:hover{
+		color: $dark !important;
+		border-color: $dark !important;
+	}
+}
+
+body.woocommerce, body.woocommerce-page{
+	.table--striped tbody tr:nth-of-type(odd), table tbody tr:nth-of-type(odd){
+		background: transparent;
+	}
+}
+
+body.woocommerce, body.woocommerce-page{
+
+	div.woocommerce-message, div.woocommerce-info, .woocommerce-error{
+		margin-top: $_u !important;
+		padding-left: 1em !important;
+
+		border: none;
+		border: 1px solid $borders;
+
+		background: none;
+
+		@include border-radius(0);
+		@include box-shadow(none);
+
+		&:before{
+			content: none;
+		}
+
+		.button{
+			&:after{
+				content: none;
+			}
+		}
+	}
+
+	.woocommerce-error{
+		border: 1px solid red;
+	}
+}
+
+
+#review-submit,
+body.woocommerce div.woocommerce-message .button,
+td.actions input.button,
+form.shipping_calculator button.button,
+body.woocommerce-page input.button{
+	// margin-top: $_u2;
+	padding: $_u4 $_u;
+
+	border: none;
+
+	letter-spacing: .0625em;
+	@include font-size(14px, true, 1.083);
+	font-weight: 300;
+	text-transform: uppercase;
+
+	background: $dark;
+	color: white;
+
+	@include transition(all .15s);
+	@include border-radius(5px);
+
+
+
+	&:hover {
+		background: $accent;
+		color:white;
+	}
+}
+
+#ship-to-different-address *{
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+
+ul.payment_methods{
+
+	li *{
+		display: inline-block;
+	}
+}
+
+body.woocommerce-page #payment div.payment_box{
+	background: transparent;
+	border: 1px solid $borders;
+	@include box-shadow(none);
+
+	&:after{
+		content: none;
+	}
+}

@@ -20,7 +20,7 @@ $tabs = apply_filters( 'woocommerce_product_tabs', array() );
 if ( ! empty( $tabs ) ) : ?>
 
 	<div class="pixcode  pixcode--tabs">
-		<ul class="pixcode--tabs__nav  tabs__nav  nav  nav-tabs">
+		<ul class="pixcode--tabs__nav  tabs__nav  nav  nav-tabs  product__tabs">
 
 			<?php
                 $first = true;

@@ -10,6 +10,9 @@
 
 body.woocommerce ul.products li.product{
 	position: relative;
+	float: none;
+	display: inline-block;
+	vertical-align: top;
 
 	text-align: center;
 
@@ -87,19 +90,6 @@ body.woocommerce ul.products li.product{
 		color: $lightest;
 	}
 
-	.product__badge {
-		@extend .btn;
-		@extend .btn--small;
-
-		position: absolute;
-		top: -3px;
-		left: -3px;
-
-		&.on-sale{
-			@extend .btn--primary;
-		}
-	}
-
 	.added_to_cart{
 		@extend .btn;
 		@extend .btn--text;
@@ -111,10 +101,17 @@ body.woocommerce ul.products li.product{
 
 		margin-top: $_u2;
 
-		color: $accent;
-
 		&:after{
 			content: none;
+		}
+	}
+
+	a.added_to_cart{
+		color: $accent;
+
+		&:hover{
+			color: $accent !important;
+			border-color: $accent !important;
 		}
 	}
 }

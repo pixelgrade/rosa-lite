@@ -28,48 +28,46 @@
 
 }
 
-.page, .archive {
-	.article__header {
+.article__header.article__header--page {
+	position: relative;
+	//	padding: 200px 0;
+	background: #333;
+	overflow: hidden;
+
+	@include media-query(palm) {
+		padding: 0 $_u2;
+	}
+
+	.flexbox {
 		position: relative;
-		//	padding: 200px 0;
-		background: #333;
-		overflow: hidden;
+		height: 100%;
+		z-index: 10;
+	}
 
-		@include media-query(palm) {
-			padding: 0 $_u2;
-		}
+	.flexbox__item {
+		text-align: center;
+	}
 
-		.flexbox {
-			position: relative;
-			height: 100%;
-			z-index: 10;
-		}
+	&.full-height {
+		height: 105%;
+	}
+	&.half-height {
+		height: 50%;
+	}
+	&.two-thirds-height {
+		height: 66%;
+	}
 
-		.flexbox__item {
-			text-align: center;
-		}
+	&.header--slideshow {
+		padding: 0;
+	}
 
-		&.full-height {
-			height: 105%;
-		}
-		&.half-height {
-			height: 50%;
-		}
-		&.two-thirds-height {
-			height: 66%;
-		}
-
-		&.header--slideshow {
-			padding: 0;
-		}
-
-		#gmap {
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-		}
+	#gmap {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
 	}
 }
 

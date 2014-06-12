@@ -100,7 +100,7 @@ return array(
 		'register'                => array(
 			'head-scripts'   => array(
 				'modernizr' => array(
-					'path'    => get_template_directory_uri() . '/assets/js/vendor/modernizr-2.8.2.min.js',
+					'path'    => get_template_directory_uri() . '/assets/js/vendor/modernizr.min.js',
 					'require' => array(
 						'jquery'
 					),
@@ -142,7 +142,7 @@ return array(
 			),
 			'styles'         => array(
 				'google-webfonts'    => array(
-					'path' => 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700,400italic,700italic|Herr+Von+Muellerhoff',
+					'path' => '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700,400italic,700italic|Herr+Von+Muellerhoff',
 				),
 				'wpgrade-main-style' => array(
 					'path'       => get_template_directory_uri() . '/assets/css/style.css',

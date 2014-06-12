@@ -226,11 +226,13 @@ gulp.task('build', ['copy-folder'], function () {
 		'.idea',
 		'**/*.css.map',
 		'**/.sass*',
+		'.sass*',
 		'**/.git*',
 		'*.sublime-project',
 		'.DS_Store',
 		'**/.DS_Store',
-		'woocommerce'
+		'__MACOSX',
+		'**/__MACOSX'
 	];
 
 	files_to_remove.forEach(function (e, k) {
