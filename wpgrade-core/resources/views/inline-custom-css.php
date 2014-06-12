@@ -33,7 +33,9 @@
 		.article-control-button:hover {
 			color:
 
+
 <?php echo $main_color; ?>
+
 
 	;
 			}
@@ -66,7 +68,9 @@
 			.lt-ie9 .project-no-image .portfolio-item-info {
 				background-color:
 
+
 <?php echo $main_color; ?>
+
 
 	;
 			}
@@ -74,7 +78,9 @@
 			.border-color {
 				border-color:
 
+
 <?php echo $main_color; ?>
+
 
 	;
 			}
@@ -83,7 +89,9 @@
 			.sub-menu li:first-child {
 				border-top-color:
 
+
 <?php echo $main_color; ?>
+
 
 	;
 			}
@@ -91,7 +99,9 @@
 			.border-right-color	{
 				border-right-color:
 
+
 <?php echo $main_color; ?>
+
 
 	;
 			}
@@ -100,7 +110,9 @@
 			.homepage-slider {
 				border-bottom-color:
 
+
 <?php echo $main_color; ?>
+
 
 	;
 			}
@@ -115,7 +127,9 @@
 			.type-post .entry-content q {
 				border-left-color:
 
+
 <?php echo $main_color; ?>
+
 
 	;
 			}
@@ -124,7 +138,9 @@
 			  .wrapper-header-small {
 				background-color:
 
+
 <?php echo $main_color; ?>
+
 
 	;
 			  }
@@ -135,7 +151,9 @@
 				.site-mainmenu li:hover {
 					background-color:
 
+
 <?php echo $main_color; ?>
+
 
 	;
 				}
@@ -145,7 +163,9 @@
 				.project-title {
 					border-left-color:
 
+
 <?php echo $main_color; ?>
+
 
 	;
 				}
@@ -153,12 +173,16 @@
 				.portfolio-item-info, .team-member-profile-table {
 					background-color:
 
+
 <?php echo $main_color; ?>
+
 
 	;
 					background-color: rgba(
 
+
 <?php echo $rgb . ', 0.75'; ?>
+
 
 	);
 				}
@@ -167,7 +191,9 @@
 				.shc-infobox.border-left-right {
 					border-right-color:
 
+
 <?php echo $main_color; ?>
+
 
 	;
 				}
@@ -176,7 +202,9 @@
 				.shc-infobox.border-left-right {
 					border-left-color:
 
+
 <?php echo $main_color; ?>
+
 
 	;
 				}
@@ -184,7 +212,9 @@
 				.team-member-container:hover .team-member-name {
 					color:
 
+
 <?php echo $main_color; ?>
+
 
 	;
 				}
