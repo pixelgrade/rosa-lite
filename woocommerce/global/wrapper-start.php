@@ -9,26 +9,29 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-    $shop_page_id = wc_get_page_id( 'shop' );
+    if( is_shop() ) :
 
-    if(!empty($shop_page_id) && $shop_page_id != 0){
-        global $post;
-        $post = get_post($shop_page_id);
+        $shop_page_id = wc_get_page_id( 'shop' );
 
-        setup_postdata($post);?>
+        if(!empty($shop_page_id) && $shop_page_id != 0) {
+            global $post;
+            $post = get_post($shop_page_id);
 
-        <?php
+            setup_postdata($post);
 
-        get_template_part( 'templates/page/header' ); ?>
+            get_template_part('templates/page/header');
+        }
+    endif;
+
+    ?>
 
         <article id="post-<?php the_ID(); ?>" <?php post_class( "article--page  article--main" ); ?>>
             <section class="article__content">
                 <div class="container">
+                    <?php if(is_product()) echo '<hr />'; ?>
                     <section class="page__content  js-post-gallery  cf">
 
-        <?php
 
-        wp_reset_postdata();
-    }
-
+<?php
+    wp_reset_postdata();
 ?>
