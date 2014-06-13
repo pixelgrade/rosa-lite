@@ -9,18 +9,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-    if( is_shop() ) {
-
-        $shop_page_id = wc_get_page_id('shop');
-
-        if (!empty($shop_page_id) && $shop_page_id != 0) {
-            global $post;
-            $post = get_post($shop_page_id);
-
-            setup_postdata($post);
-
-            get_template_part('templates/page/header');
-        }
+    if( is_shop() || is_cart() || is_checkout() || is_checkout_pay_page() || is_account_page() || is_order_received_page() ) {
+	    get_template_part('templates/page/header');
     }
 
     ?>
@@ -33,5 +23,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
 <?php
-    wp_reset_postdata();
-?>
+	if( is_shop() || is_cart() || is_checkout() || is_checkout_pay_page() || is_account_page() || is_order_received_page() ) {
+		wp_reset_postdata();
+	}

@@ -27,7 +27,6 @@
 	wp_head(); ?>
 </head>
 <?php
-
 $class_name = 'header--sticky';
 
 if ( wpgrade::option( 'nav_always_show' ) ) {
@@ -37,6 +36,29 @@ if ( wpgrade::option( 'nav_always_show' ) ) {
 }
 
 $data_smoothscrolling = ( wpgrade::option( 'use_smooth_scroll' ) == 1 ) ? 'data-smoothscrolling' : '';
+
+//first let's test if we are in woocommerce
+if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+	//we need to setup post data
+	if( is_shop() || is_cart() || is_checkout() || is_checkout_pay_page() || is_account_page() || is_order_received_page() ) {
+
+		$shop_page_id = wc_get_page_id('shop');
+
+		if (!empty($shop_page_id) && $shop_page_id != 0) {
+			global $post;
+			$post = get_post($shop_page_id);
+
+			setup_postdata($post);
+
+			$make_transparent_menu_bar = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'header_transparent_menu_bar', true );
+
+			if ( $make_transparent_menu_bar == 'on' ) {
+				$class_name .= '  header--transparent';
+			}
+
+		}
+	}
+}
 
 //make the header menu bar transparent
 //only for static pages

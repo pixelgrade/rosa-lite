@@ -53,7 +53,7 @@ if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) :
 else :
 	/* THEN TEST FOR SLIDESHOW PAGE TEMPLATE */
 
-	$gallery_ids = get_post_meta( $post->ID, wpgrade::prefix() . 'main_gallery', true );
+	$gallery_ids = get_post_meta( get_the_ID(), wpgrade::prefix() . 'main_gallery', true );
 
 	if ( get_page_template_slug( get_the_ID() ) == 'page-templates/slideshow.php' && ! empty( $gallery_ids ) ): ?>
 		<?php
