@@ -67,7 +67,7 @@ echo ' ' . $schema_org . ' ' . $data_smoothscrolling . ' ' ?> >
 	your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
 	improve your experience.</p>
 <![endif]-->
-<div id="page">
+<div id="page" class="page">
     <div class="site-header  header--inversed  js-header">
         <div class="container">
             <div class="flexbox">
