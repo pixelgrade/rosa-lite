@@ -249,7 +249,17 @@ $(window).load(function(){
 
     stickyHeaderInit();
 
-    Parallax.initialize();
+
+    if (!$('html').is('.ie9, .lt-ie9')) {
+        Parallax.initialize();
+        setTimeout(function() {
+            CoverAnimation.initialize();
+        }, 600);
+    } else {
+        setTimeout(function() {
+            CoverAnimation.initialize();
+        }, 400);
+    }
     Navigator.initialize();
     ScrollToTop.initialize();
     DownArrow.initialize();
@@ -316,7 +326,6 @@ $(window).on("debouncedresize", function(e) {
 
     if (!$('html').is('.ie9, .lt-ie9')) {
         Parallax.initialize();
-    } else {
         CoverAnimation.initialize();
     }
 });
