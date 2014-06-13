@@ -91,7 +91,7 @@ var CoverAnimation = {
 
                 onComplete: function () {
 
-                    if (Modernizr.touch) { return; }
+                    if (Modernizr.touch && is_OSX) { return; }
 
                     var progress        = (1 / (end - start)) * (latestKnownScrollY - start),
                         partialProgress = progress < 0 ? ab : ab + bc * progress,
@@ -151,7 +151,7 @@ var CoverAnimation = {
 
                 $headline.data('progress', partialProgress);
 
-                if (!that.animated || Modernizr.touch) {
+                if (!that.animated || (Modernizr.touch && is_OSX)) {
                     return;
                 }
 

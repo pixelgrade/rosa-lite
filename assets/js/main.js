@@ -17,6 +17,7 @@ var is_OSX = (ua.match(/(iPad|iPhone|iPod|Macintosh)/g) ? true : false);
 
 var nua = navigator.userAgent;
 var is_android = ((nua.indexOf('Mozilla/5.0') !== -1 && nua.indexOf('Android ') !== -1 && nua.indexOf('AppleWebKit') !== -1) && nua.indexOf('Chrome') === -1);
+var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
 
 var useTransform = true;
 var use2DTransform = (ua.match(/msie 9/i) || winLoc.match(/transform\=2d/i));
@@ -713,6 +714,11 @@ var DownArrow = {
             return;
         }
 
+        if (Modernizr.touch && is_OSX) {
+            this.timeline.progress(0);
+            return;
+        }
+
         setProgress(this.timeline, this.start, this.end);
     }
 }
@@ -758,6 +764,11 @@ var ScrollToTop = {
     update: function () {
 
         if (empty(this.$button)) {
+            return;
+        }
+
+        if (Modernizr.touch && is_OSX) {
+            this.timeline.progress(1);
             return;
         }
 
@@ -858,7 +869,7 @@ var CoverAnimation = {
 
                 onComplete: function () {
 
-                    if (Modernizr.touch) { return; }
+                    if (Modernizr.touch && is_OSX) { return; }
 
                     var progress        = (1 / (end - start)) * (latestKnownScrollY - start),
                         partialProgress = progress < 0 ? ab : ab + bc * progress,
@@ -918,7 +929,7 @@ var CoverAnimation = {
 
                 $headline.data('progress', partialProgress);
 
-                if (!that.animated || Modernizr.touch) {
+                if (!that.animated || (Modernizr.touch && is_OSX)) {
                     return;
                 }
 

@@ -57,6 +57,11 @@ var DownArrow = {
             return;
         }
 
+        if (Modernizr.touch && is_OSX) {
+            this.timeline.progress(0);
+            return;
+        }
+
         setProgress(this.timeline, this.start, this.end);
     }
 }
