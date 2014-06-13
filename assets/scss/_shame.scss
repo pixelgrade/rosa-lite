@@ -81,33 +81,3 @@ html, body, #page {
 .gmnoprint img{
 	max-width: none;
 }
-
-.admin-bar {
-
-	.site-header {
-		top: 32px;
-
-		@media screen and ( max-width: 782px ) {
-			top: 46px;
-		}
-	}
-
-	.navigation--main {
-
-		@include media-query(palm) {
-			top: 32px;
-
-			@media screen and ( max-width: 782px ) {
-				top: 46px;
-			}
-		}
-	}
-
-	#page {
-		margin-top: -32px;
-
-		@media screen and ( max-width: 782px ) {
-			margin-top: -46px;
-		}
-	}
-}

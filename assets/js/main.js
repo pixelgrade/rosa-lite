@@ -874,13 +874,15 @@ var CoverAnimation = {
 
                     timeline.addLabel("finishedAt", timePassed);
                     timeline.tweenTo("finishedAt", {
-                        onComplete: function () {
-                            that.animated = true;
-                        },
                         onUpdate: function () {
-                            var currentProgress = $headline.data('progress');
-                            if (currentProgress && Math.abs(timeline.progress() - currentProgress) < 0.02) {
+                            var scrollProgress  = $headline.data('progress'),
+                                currentProgress = timeline.progress();
+
+                            scrollProgress = typeof scrollProgress == "undefined" ? 0 : scrollProgress;
+
+                            if ((scrollProgress && Math.abs(currentProgress - scrollProgress) < 0.01) || (currentProgress >= ab && scrollProgress <= ab)) {
                                 this.kill();
+                                that.animated = true;
                             }
                         }
                     });
@@ -901,10 +903,6 @@ var CoverAnimation = {
     update: function () {
 
         var that = this;
-
-        if (!this.animated) {
-            return;
-        }
 
         $(this.selector).each(function (i, element) {
 
