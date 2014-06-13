@@ -82,8 +82,7 @@ if ( is_single() ) {
 	$schema_org .= 'itemscope itemtype="http://schema.org/WebPage"';
 } ?>
 
-<body <?php body_class( $class_name );
-echo ' ' . $schema_org . ' ' . $data_smoothscrolling . ' ' ?> >
+<body <?php body_class( $class_name ); echo ' ' . $schema_org . ' ' . $data_smoothscrolling . ' ' ?> >
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
 	your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
@@ -142,8 +141,8 @@ echo ' ' . $schema_org . ' ' . $data_smoothscrolling . ' ' ?> >
                                     </a>
                                     <ul class="sub-menu">
                                         <li><span class="shop-menu-item__price"><?php echo $woocommerce->cart->get_cart_total(); ?></span></li>
-                                        <li><a href="<?php echo $woocommerce->cart->get_cart_url(); ?>">View cart</a></li>
-                                        <li><a href="<?php echo $woocommerce->cart->get_checkout_url()?>">Checkout</a></li>
+                                        <li><a href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><?php _e('View cart', 'woocommerce') ?></a></li>
+                                        <li><a href="<?php echo $woocommerce->cart->get_checkout_url()?>"><?php _e('Checkout', 'woocommerce') ?></a></li>
                                     </ul>
                                 </li>
 
