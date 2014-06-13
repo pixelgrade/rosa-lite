@@ -391,6 +391,14 @@ $nav-width: 200px;
 	.shop-menu-item__price{
 		padding: $_u2 0;
 		display: block;
+
+		.header--transparent & {
+			color: white;
+		}
+
+		.headroom--not-top &{
+			color: $dark;
+		}
 	}
 
 	.navigation--main .nav--main &.menu-item-has-children > a:after{
