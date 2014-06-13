@@ -9,7 +9,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-    if( is_shop() || is_cart() || is_checkout() || is_checkout_pay_page() || is_account_page() || is_order_received_page() ) {
+    if( is_shop() || is_cart() || is_checkout() || is_checkout_pay_page() || is_account_page() ||
+        is_order_received_page() ) {
 	    get_template_part('templates/page/header');
     }
 

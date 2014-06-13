@@ -96,3 +96,17 @@ function wpgrade_custom_breadrumb_home_url() {
 // move the breadcrumb before title
 remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
 add_action('woocommerce_single_product_summary', 'woocommerce_breadcrumb', 3, 0 );
+
+
+
+
+/**
+ * Custom Add To Cart Messages
+ * Add this to your theme functions.php file
+ **/
+add_filter( 'wc_add_to_cart_params', 'custom_add_to_cart_message' );
+function custom_add_to_cart_message( $params ) {
+    $params['i18n_view_cart'] = esc_attr__( 'Product Added', 'woocommerce' );
+
+    return $params;
+}
