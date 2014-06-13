@@ -134,8 +134,17 @@ body.woocommerce ul.products li.product a img, body.woocommerce-page ul.products
 	@include box-shadow(none !important);
 }
 
+body.woocommerce-page {
+	.pagination {
+		margin: 40px 0;
+	}
+}
+
 .shop-categories{
-	margin-bottom: $_3u;
+	&.tabs__nav  {
+		margin-bottom: 70px;
+		margin-top: -12px;
+	}
 
 	a{
 		margin: 0 $_u2;
