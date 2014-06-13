@@ -2,6 +2,7 @@
  * Variables
  */
 var theme = 'rosa',
+	themeTextDomain = '\'rosa_txtd\'',
 	cssPath = './assets/css/',
 	scssPath = './assets/scss/',
 	jsPath = './assets/js/',
@@ -51,6 +52,7 @@ var gulp = require('gulp'),
 	cache = require('gulp-cache'),
 	livereload = require('gulp-livereload'),
 	browserSync = require('browser-sync'),
+	replace = require('gulp-replace');
 	gutil = require('gulp-util'), //Error Handler
 	lr = require('tiny-lr'),
 	server = lr();
@@ -184,16 +186,6 @@ gulp.task('styles-compressed', function () {
 });
 
 /**
- * Create a zip archive out of the cleaned folder and delete the folder
- */
-gulp.task('zip', ['build'], function () {
-
-	return gulp.src('./')
-		.pipe(exec('cd ./../; rm -rf rosa.zip; cd ./build/; zip -r -X ./../rosa.zip ./rosa; cd ./../; rm -rf build'));
-
-});
-
-/**
  * Copy theme folder outside in a build folder, recreate styles before that
  */
 gulp.task('copy-folder', ['styles-nested', 'scripts'], function () {
@@ -203,9 +195,18 @@ gulp.task('copy-folder', ['styles-nested', 'scripts'], function () {
 });
 
 /**
+ * Replace the bad dynamic text domain with a static one
+ */
+gulp.task('txtdomain-replace', ['copy-folder'], function(){
+	gulp.src('../build/rosa/**/*.php')
+		.pipe(replace(/wpgrade\:\:textdomain\(\)/g, themeTextDomain))
+		.pipe(gulp.dest('../build/rosa'));
+});
+
+/**
  * Clean the folder of unneeded files and folders
  */
-gulp.task('build', ['copy-folder'], function () {
+gulp.task('build', ['txtdomain-replace'], function () {
 
 	// files that should not be present in build zip
 	files_to_remove = [
@@ -243,6 +244,16 @@ gulp.task('build', ['copy-folder'], function () {
 
 	return gulp.src(files_to_remove, {read: false})
 		.pipe(clean({force: true}));
+});
+
+/**
+ * Create a zip archive out of the cleaned folder and delete the folder
+ */
+gulp.task('zip', ['build'], function () {
+
+	return gulp.src('./')
+		.pipe(exec('cd ./../; rm -rf rosa.zip; cd ./build/; zip -r -X ./../rosa.zip ./rosa; cd ./../; rm -rf build'));
+
 });
 
 

@@ -21,6 +21,7 @@
 		"jshint-stylish": "~0.1.5",
 		"gulp-zip": "~0.1.2",
 		"browser-sync": "~0.8.0",
-		"gulp-util": "~2.2.14"
+		"gulp-util": "~2.2.14",
+		"gulp-replace": "~0.3.0"
 	}
 }
