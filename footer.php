@@ -11,6 +11,8 @@ if ( $is_gmap === true ) {
 	//we definitely need the Google Maps API
 	wp_enqueue_script( 'google-maps-api' );
 }
+
+            if (!is_404()):
 ?>
 
             <div class="flexbox  flexbox--btn-top">
@@ -44,6 +46,9 @@ if ( $is_gmap === true ) {
 				</div>
 				<!-- .copyright-area -->
 			</footer><!-- .site- -footer -->
+
+            <?php endif; ?>
+
 		</div><!-- #page -->
 		<?php wp_footer(); ?>
 	</body>

@@ -3,16 +3,13 @@
 \*------------------------------------*/
 @charset "UTF-8";
 @import "compass";
-@import url(http://fonts.googleapis.com/css?family=Satisfy);
 
 /*body*/
 .error404 {
-	& {
-		background-repeat: no-repeat;
-		background-position: center center;
-		@include background-size(cover);
-		background-color: red;
-	}
+	background-repeat: no-repeat;
+	background-position: center center;
+	@include background-size(cover);
+	background-color: black;
 
 	.overlay {
 		position: fixed;
@@ -20,19 +17,12 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
-		z-index: -1;
-		background: blue;
-
-	}
-
-	.overlay--color {
-		background: #00a8da;
-		opacity: 0.3;
+		z-index: 1;
 	}
 
 	.overlay--shadow {
 		background: #1a1919;
-		opacity: 0.5;
+		opacity: 0.6;
 	}
 
 	.container {
@@ -57,20 +47,19 @@
 		padding: 20px;
 		color: white;
 		text-align: center;
+		z-index: 10;
 	}
 
 	h1 {
 		display: inline-block;
-		border-bottom: 7px solid white;
-		font-family: "Satisfy";
-		font-size: 120px;
-		font-weight: 300;
-		line-height: 1;
+		letter-spacing: auto;
 		color: white;
-
 	}
 
 	.description {
+		position: relative;
+		z-index: 10;
+
 		&.second {
 			position: fixed;
 			bottom: 58px;

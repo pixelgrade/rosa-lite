@@ -46,7 +46,8 @@ var windowWidth = window.innerWidth,
 
 /* --- To enable verbose debug add to Theme Options > Custom Code footer -> globalDebug=true; --- */
 var globalDebug = false,
-	timestamp;
+	timestamp,
+    gifImages;
 
 (function ($, window, undefined) {
 
@@ -874,6 +875,12 @@ var CoverAnimation = {
 
                     timeline.addLabel("finishedAt", timePassed);
                     timeline.tweenTo("finishedAt", {
+                        onComplete: function () {
+                            if (!that.animated) {
+                                that.animated = true;
+                                this.kill();
+                            }
+                        },
                         onUpdate: function () {
                             var scrollProgress  = $headline.data('progress'),
                                 currentProgress = timeline.progress();
@@ -881,8 +888,8 @@ var CoverAnimation = {
                             scrollProgress = typeof scrollProgress == "undefined" ? 0 : scrollProgress;
 
                             if ((scrollProgress && Math.abs(currentProgress - scrollProgress) < 0.01) || (currentProgress >= ab && scrollProgress <= ab)) {
-                                this.kill();
                                 that.animated = true;
+                                this.kill();
                             }
                         }
                     });
@@ -1454,16 +1461,13 @@ $(window).on("scroll", function () {
 });
 
 /* --- 404 Page --- */
-var gifImages = [
-	"http://i.imgur.com/c9X6n.gif",
-	"http://i.imgur.com/eezCO.gif",
-	"http://i.imgur.com/DYO6X.gif",
-	"http://i.imgur.com/9DWBx.gif",
-	"http://i.imgur.com/8ZYNp.gif",
-	"http://media1.giphy.com/media/vonLA9G2VvENG/giphy.gif",
-	"http://media2.giphy.com/media/UslGBU1GPKc0g/giphy.gif",
-	"http://media.giphy.com/media/LD0OalPb8u8Le/giphy.gif",
-
+gifImages = [
+	"http://i.imgur.com/ShiZM6m.gif",
+    "http://i.imgur.com/8ZYNp.gif",
+    "http://i.imgur.com/Xb4fq.gif",
+    "http://i.imgur.com/UYPLKwN.gif",
+    "http://media.tumblr.com/d9e792a91d5391b8a7aa22689d4e2555/tumblr_inline_mwq1hmelce1qmoozl.gif",
+    "http://www.teen.com/wp-content/uploads/2013/10/world-without-jennifer-lawrence-gifs-food-uproxx-2.gif"
 ]
 
 function getGif() {
@@ -1474,10 +1478,11 @@ function changeBackground() {
 	$('.error404').css('background-image', 'url(' + getGif() + ')');
 }
 
-
-if ($('.error404').length) {
-	changeBackground();
-}
+$(window).on('load', function() {
+    if ($('.error404').length) {
+        changeBackground();
+    }
+});
 
 $(window).keydown(function (e) {
 	if (e.keyCode == 32) {
