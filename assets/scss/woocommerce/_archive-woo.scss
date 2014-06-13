@@ -126,6 +126,7 @@ body.woocommerce ul.products li.product a img, body.woocommerce-page ul.products
 	a{
 		margin: 0 $_u2;
 		@include font-size(24px);
+		font-weight: 500;
 
 		&.active{
 			color: $accent;
