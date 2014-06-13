@@ -43,6 +43,11 @@ var ScrollToTop = {
             return;
         }
 
+        if (Modernizr.touch && is_OSX) {
+            this.timeline.progress(1);
+            return;
+        }
+
         setProgress(this.timeline, this.start, this.end);
     }
 }

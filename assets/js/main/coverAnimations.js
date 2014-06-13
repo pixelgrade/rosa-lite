@@ -91,7 +91,7 @@ var CoverAnimation = {
 
                 onComplete: function () {
 
-                    if (Modernizr.touch) { return; }
+                    if (Modernizr.touch && is_OSX) { return; }
 
                     var progress        = (1 / (end - start)) * (latestKnownScrollY - start),
                         partialProgress = progress < 0 ? ab : ab + bc * progress,
@@ -100,13 +100,15 @@ var CoverAnimation = {
 
                     timeline.addLabel("finishedAt", timePassed);
                     timeline.tweenTo("finishedAt", {
-                        onComplete: function () {
-                            that.animated = true;
-                        },
                         onUpdate: function () {
-                            var currentProgress = $headline.data('progress');
-                            if (currentProgress && Math.abs(timeline.progress() - currentProgress) < 0.02) {
+                            var scrollProgress  = $headline.data('progress'),
+                                currentProgress = timeline.progress();
+
+                            scrollProgress = typeof scrollProgress == "undefined" ? 0 : scrollProgress;
+
+                            if ((scrollProgress && Math.abs(currentProgress - scrollProgress) < 0.01) || (currentProgress >= ab && scrollProgress <= ab)) {
                                 this.kill();
+                                that.animated = true;
                             }
                         }
                     });
@@ -128,10 +130,6 @@ var CoverAnimation = {
 
         var that = this;
 
-        if (!this.animated) {
-            return;
-        }
-
         $(this.selector).each(function (i, element) {
 
             var $headline   = $(element).find('.article__headline'),
@@ -151,7 +149,7 @@ var CoverAnimation = {
 
                 $headline.data('progress', partialProgress);
 
-                if (!that.animated || Modernizr.touch) {
+                if (!that.animated || (Modernizr.touch && is_OSX)) {
                     return;
                 }
 

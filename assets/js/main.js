@@ -17,6 +17,7 @@ var is_OSX = (ua.match(/(iPad|iPhone|iPod|Macintosh)/g) ? true : false);
 
 var nua = navigator.userAgent;
 var is_android = ((nua.indexOf('Mozilla/5.0') !== -1 && nua.indexOf('Android ') !== -1 && nua.indexOf('AppleWebKit') !== -1) && nua.indexOf('Chrome') === -1);
+var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
 
 var useTransform = true;
 var use2DTransform = (ua.match(/msie 9/i) || winLoc.match(/transform\=2d/i));
@@ -568,10 +569,6 @@ var Parallax = {
                 'top': -1 * windowHeight * that.amount / 2
             });
 
-            setTimeout(function() {
-                CoverAnimation.initialize();
-            }, 800);
-
             if ($parallax.hasClass('article__parallax--img') && $parallax.find('img').length) {
 
                 $parallax.find('img').each(function (i, element) {
@@ -713,6 +710,11 @@ var DownArrow = {
             return;
         }
 
+        if (Modernizr.touch && is_OSX) {
+            this.timeline.progress(0);
+            return;
+        }
+
         setProgress(this.timeline, this.start, this.end);
     }
 }
@@ -758,6 +760,11 @@ var ScrollToTop = {
     update: function () {
 
         if (empty(this.$button)) {
+            return;
+        }
+
+        if (Modernizr.touch && is_OSX) {
+            this.timeline.progress(1);
             return;
         }
 
@@ -858,7 +865,7 @@ var CoverAnimation = {
 
                 onComplete: function () {
 
-                    if (Modernizr.touch) { return; }
+                    if (Modernizr.touch && is_OSX) { return; }
 
                     var progress        = (1 / (end - start)) * (latestKnownScrollY - start),
                         partialProgress = progress < 0 ? ab : ab + bc * progress,
@@ -867,13 +874,15 @@ var CoverAnimation = {
 
                     timeline.addLabel("finishedAt", timePassed);
                     timeline.tweenTo("finishedAt", {
-                        onComplete: function () {
-                            that.animated = true;
-                        },
                         onUpdate: function () {
-                            var currentProgress = $headline.data('progress');
-                            if (currentProgress && Math.abs(timeline.progress() - currentProgress) < 0.02) {
+                            var scrollProgress  = $headline.data('progress'),
+                                currentProgress = timeline.progress();
+
+                            scrollProgress = typeof scrollProgress == "undefined" ? 0 : scrollProgress;
+
+                            if ((scrollProgress && Math.abs(currentProgress - scrollProgress) < 0.01) || (currentProgress >= ab && scrollProgress <= ab)) {
                                 this.kill();
+                                that.animated = true;
                             }
                         }
                     });
@@ -895,10 +904,6 @@ var CoverAnimation = {
 
         var that = this;
 
-        if (!this.animated) {
-            return;
-        }
-
         $(this.selector).each(function (i, element) {
 
             var $headline   = $(element).find('.article__headline'),
@@ -918,7 +923,7 @@ var CoverAnimation = {
 
                 $headline.data('progress', partialProgress);
 
-                if (!that.animated || Modernizr.touch) {
+                if (!that.animated || (Modernizr.touch && is_OSX)) {
                     return;
                 }
 
@@ -1339,7 +1344,17 @@ $(window).load(function(){
 
     stickyHeaderInit();
 
-    Parallax.initialize();
+
+    if (!$('html').is('.ie9, .lt-ie9')) {
+        Parallax.initialize();
+        setTimeout(function() {
+            CoverAnimation.initialize();
+        }, 600);
+    } else {
+        setTimeout(function() {
+            CoverAnimation.initialize();
+        }, 400);
+    }
     Navigator.initialize();
     ScrollToTop.initialize();
     DownArrow.initialize();
@@ -1406,7 +1421,6 @@ $(window).on("debouncedresize", function(e) {
 
     if (!$('html').is('.ie9, .lt-ie9')) {
         Parallax.initialize();
-    } else {
         CoverAnimation.initialize();
     }
 });

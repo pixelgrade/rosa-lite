@@ -17,6 +17,7 @@ var is_OSX = (ua.match(/(iPad|iPhone|iPod|Macintosh)/g) ? true : false);
 
 var nua = navigator.userAgent;
 var is_android = ((nua.indexOf('Mozilla/5.0') !== -1 && nua.indexOf('Android ') !== -1 && nua.indexOf('AppleWebKit') !== -1) && nua.indexOf('Chrome') === -1);
+var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
 
 var useTransform = true;
 var use2DTransform = (ua.match(/msie 9/i) || winLoc.match(/transform\=2d/i));

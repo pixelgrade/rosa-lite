@@ -1,9 +1,6 @@
 /*------------------------------------*\
     $ARCHIVE
 \*------------------------------------*/
-.archive {
-	position: relative;
-}
 
 .archive__title {
 	@include media-query(lap-and-up){
