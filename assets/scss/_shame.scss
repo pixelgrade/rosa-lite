@@ -90,17 +90,22 @@ html, body, #page {
 // apply a null transform so it is consisten
 // with the case where the navigation is open on small screens
 @include media-query(palm) {
+
 	.admin-bar .page {
 		@include transform(translateX(0));
 	}
 }
 
 .admin-bar {
-	.site-header {
-		top: 32px;
 
-		@media screen and (max-width: 782px) {
-		top: 46px;
-	}
+	@include media-query(lap-and-up) {
+
+		.site-header {
+			top: 32px;
+
+			@media screen and (max-width: 782px) {
+				top: 46px;
+			}
+		}
 	}
 }

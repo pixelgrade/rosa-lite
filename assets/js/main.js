@@ -874,6 +874,12 @@ var CoverAnimation = {
 
                     timeline.addLabel("finishedAt", timePassed);
                     timeline.tweenTo("finishedAt", {
+                        onComplete: function () {
+                            if (!that.animated) {
+                                that.animated = true;
+                                this.kill();
+                            }
+                        },
                         onUpdate: function () {
                             var scrollProgress  = $headline.data('progress'),
                                 currentProgress = timeline.progress();
@@ -881,8 +887,8 @@ var CoverAnimation = {
                             scrollProgress = typeof scrollProgress == "undefined" ? 0 : scrollProgress;
 
                             if ((scrollProgress && Math.abs(currentProgress - scrollProgress) < 0.01) || (currentProgress >= ab && scrollProgress <= ab)) {
-                                this.kill();
                                 that.animated = true;
+                                this.kill();
                             }
                         }
                     });
