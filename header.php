@@ -87,7 +87,6 @@ echo ' ' . $schema_org . ' ' . $data_smoothscrolling . ' ' ?> >
                     } ?>
                     <nav class="navigation  navigation--main<?php echo ( ! $has_main_menu ) ? "  no-menu" : ""; ?>" id="js-navigation--main">
                         <h2 class="accessibility"><?php _e( 'Primary Navigation', wpgrade::textdomain() ) ?></h2>
-                        <?php wpgrade_main_nav(); ?>
                         <ul class="nav  nav--main  nav--items-social">
                             <?php
 
@@ -101,33 +100,34 @@ echo ' ' . $schema_org . ' ' . $data_smoothscrolling . ' ' ?> >
                             if (!empty($social_links)):
                                 foreach ($social_links as $domain => $icon):
                                     if (isset($icon['value'] ) && isset($icon['checkboxes']['header'] ) ): $value = $icon['value']; ?>
-                                    <li>
-                                        <a class="social-icon" href="<?php echo $value ?>" <?php echo $target ?>>
-                                            <i class="icon-e-<?php echo $domain; ?>"></i>
-                                        </a>
-                                    </li>
+                                        <li>
+                                            <a class="social-icon" href="<?php echo $value ?>" <?php echo $target ?>>
+                                                <i class="icon-e-<?php echo $domain; ?>"></i>
+                                            </a>
+                                        </li>
                                     <?php endif;
                                 endforeach;
                             endif;
 
                             if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && wpgrade::option( 'show_cart_menu' )) :
 
-                            global $woocommerce; ?>
+                                global $woocommerce; ?>
 
-                            <li class="shop-menu-item  menu-item-has-children">
-                                <a class="social-icon  " href="<?php echo $woocommerce->cart->get_cart_url(); ?>">
-                                    <i class="icon-shopping-cart"></i>
-                                    <span class="shop-items-number"><?php echo sprintf(_n('%d', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?></span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li><span class="shop-menu-item__price"><?php echo $woocommerce->cart->get_cart_total(); ?></span></li>
-                                    <li><a href="<?php echo $woocommerce->cart->get_cart_url(); ?>">View cart</a></li>
-                                    <li><a href="<?php echo $woocommerce->cart->get_checkout_url()?>">Checkout</a></li>
-                                </ul>
-                            </li>
+                                <li class="shop-menu-item  menu-item-has-children">
+                                    <a class="social-icon  " href="<?php echo $woocommerce->cart->get_cart_url(); ?>">
+                                        <i class="icon-shopping-cart"></i>
+                                        <span class="shop-items-number"><?php echo sprintf(_n('%d', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><span class="shop-menu-item__price"><?php echo $woocommerce->cart->get_cart_total(); ?></span></li>
+                                        <li><a href="<?php echo $woocommerce->cart->get_cart_url(); ?>">View cart</a></li>
+                                        <li><a href="<?php echo $woocommerce->cart->get_checkout_url()?>">Checkout</a></li>
+                                    </ul>
+                                </li>
 
                             <?php endif; ?>
                         </ul>
+                        <?php wpgrade_main_nav(); ?>
                     </nav>
                 </div>
             </div>
