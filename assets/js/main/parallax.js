@@ -13,17 +13,12 @@ var Parallax = {
         }
 
         this.prepare();
-        this.update(window.scrollY, false);
+        this.update(latestKnownScrollY, false);
     },
 
     prepare: function() {
 
         var that = this;
-
-        if (!(this.selector).length) {
-            CoverAnimation.initialize();
-            return;
-        }
 
         $(this.selector).each(function (i, element) {
 
@@ -44,6 +39,10 @@ var Parallax = {
                 height: containerHeight + windowHeight * that.amount,
                 'top': -1 * windowHeight * that.amount / 2
             });
+
+            setTimeout(function() {
+                CoverAnimation.initialize();
+            }, 800);
 
             if ($parallax.hasClass('article__parallax--img') && $parallax.find('img').length) {
 
@@ -71,14 +70,7 @@ var Parallax = {
                     });
 
                     // fade image in
-                    TweenMax.to($image, 0.5, {
-                        opacity: 1,
-                        onComplete: function () {
-                            setTimeout(function() {
-                                CoverAnimation.initialize();
-                            }, 300);
-                        }
-                    });
+                    TweenMax.to($image, 0.5, {opacity: 1});
                 });
             }
 
