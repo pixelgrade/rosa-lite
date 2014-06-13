@@ -9,6 +9,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+return;
+
 global $post, $product;
 ?>
 <?php if ( $product->is_on_sale() ) :?>

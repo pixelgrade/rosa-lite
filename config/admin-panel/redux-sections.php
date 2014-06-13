@@ -1584,6 +1584,12 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 				'subtitle' => __('Turn this off to avoid loading the WooCommerce assets (CSS and JS).', wpgrade::textdomain()),
 				'default' => '1',
 			),
+            array(
+                'id' => 'show_cart_menu',
+                'type' => 'switch',
+                'title' => __('Show cart menu in main navigation', wpgrade::textdomain()),
+                'default' => '1',
+            ),
 		)
 	);
 }

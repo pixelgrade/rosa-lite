@@ -10,6 +10,7 @@
  */
 .nav--main {
 	@extend .cf;
+	display: inline-block;
 
 	margin-bottom: 0;
 
@@ -324,3 +325,49 @@ $nav-width: 200px;
 		}
 	}
 }
+
+
+
+
+
+
+/*------------------------------------*\
+    $ICONS, SHOP MENU ITEM
+\*------------------------------------*/
+.nav--items-social{
+	margin-left: $_u2;
+
+	a{
+		padding-left: $_u2 !important;
+		padding-right: $_u2 !important;
+	}
+}
+
+.shop-menu-item{
+	&:after{
+		content: none;
+	}
+
+	.shop-items-number{
+		position: absolute;
+		right: 3px;
+		bottom: 3px;
+		
+		width: 16px;
+		height: 16px;
+
+		font-size: 10px;
+		line-height: 16px;
+		text-align: center;
+
+		color: white;
+		background-color: $accent;
+		@include border-radius(50%);
+	}
+
+	.shop-menu-item__price{
+		padding: $_u2 0;
+		display: block;
+	}
+}
+
