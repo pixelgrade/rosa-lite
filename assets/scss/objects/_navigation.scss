@@ -334,13 +334,36 @@ $nav-width: 200px;
 /*------------------------------------*\
     $ICONS, SHOP MENU ITEM
 \*------------------------------------*/
+
 .nav--items-social{
-	margin-left: $_u2;
 
 	a{
 		padding-left: $_u2 !important;
 		padding-right: $_u2 !important;
 	}
+
+	@include media-query(palm){
+		margin-bottom: $_u;
+
+		.navigation--main & li{
+			display: inline-block;
+			border-bottom: 0;
+
+			&.menu-item-has-children > a{
+				border-bottom: 0;
+			}
+		}
+
+		ul.sub-menu{
+			display: none !important;
+		}
+	}
+
+	@include media-query(lap-and-up){
+		margin-left: $_u2;
+		float: right;
+	}
+
 }
 
 .shop-menu-item{
@@ -368,6 +391,18 @@ $nav-width: 200px;
 	.shop-menu-item__price{
 		padding: $_u2 0;
 		display: block;
+
+		.header--transparent & {
+			color: white;
+		}
+
+		.headroom--not-top &{
+			color: $dark;
+		}
+	}
+
+	.navigation--main .nav--main &.menu-item-has-children > a:after{
+		content: none;
 	}
 }
 
