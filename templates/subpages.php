@@ -13,6 +13,7 @@ if ( rosa::page_has_children() ) {
 		'hierarchical' => 0,
 		'child_of'     => $post->ID,
 		'parent'       => $post->ID,
+		'sort_column' => 'menu_order, ID',
 	);
 
 	$pages = get_pages( $args );
