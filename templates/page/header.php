@@ -10,6 +10,9 @@ $page_section_idx++;
 
 //first lets get to know this page a little better
 $header_height = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_header_height', true );
+if ( empty($header_height) ) {
+	$header_height = 'half-height';
+}
 
 $subtitle = trim( get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_subtitle', true ) );
 //we need to mess with the subtitle a little bit - because it deserves it
@@ -53,7 +56,7 @@ if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) :
 else :
 	/* THEN TEST FOR SLIDESHOW PAGE TEMPLATE */
 
-	$gallery_ids = get_post_meta( $post->ID, wpgrade::prefix() . 'main_gallery', true );
+	$gallery_ids = get_post_meta( get_the_ID(), wpgrade::prefix() . 'main_gallery', true );
 
 	if ( get_page_template_slug( get_the_ID() ) == 'page-templates/slideshow.php' && ! empty( $gallery_ids ) ): ?>
 		<?php
