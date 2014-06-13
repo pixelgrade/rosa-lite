@@ -1,5 +1,5 @@
 /* --- 404 Page --- */
-var gifImages = [
+gifImages = [
 	"http://i.imgur.com/ShiZM6m.gif",
     "http://i.imgur.com/8ZYNp.gif",
     "http://i.imgur.com/Xb4fq.gif",
@@ -16,10 +16,11 @@ function changeBackground() {
 	$('.error404').css('background-image', 'url(' + getGif() + ')');
 }
 
-
-if ($('.error404').length) {
-	changeBackground();
-}
+$(window).on('load', function() {
+    if ($('.error404').length) {
+        changeBackground();
+    }
+});
 
 $(window).keydown(function (e) {
 	if (e.keyCode == 32) {

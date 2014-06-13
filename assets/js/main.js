@@ -46,7 +46,8 @@ var windowWidth = window.innerWidth,
 
 /* --- To enable verbose debug add to Theme Options > Custom Code footer -> globalDebug=true; --- */
 var globalDebug = false,
-	timestamp;
+	timestamp,
+    gifImages;
 
 (function ($, window, undefined) {
 
@@ -1460,7 +1461,7 @@ $(window).on("scroll", function () {
 });
 
 /* --- 404 Page --- */
-var gifImages = [
+gifImages = [
 	"http://i.imgur.com/ShiZM6m.gif",
     "http://i.imgur.com/8ZYNp.gif",
     "http://i.imgur.com/Xb4fq.gif",
@@ -1477,10 +1478,11 @@ function changeBackground() {
 	$('.error404').css('background-image', 'url(' + getGif() + ')');
 }
 
-
-if ($('.error404').length) {
-	changeBackground();
-}
+$(window).on('load', function() {
+    if ($('.error404').length) {
+        changeBackground();
+    }
+});
 
 $(window).keydown(function (e) {
 	if (e.keyCode == 32) {
