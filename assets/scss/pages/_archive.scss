@@ -93,6 +93,10 @@
 			order: 0;
 
 			padding: 0 72px 0 42px;
+
+			&.no-thumbnail{
+				padding: 0 72px;
+			}
 		}
 
 		&:nth-child(2n+1) {

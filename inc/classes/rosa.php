@@ -180,7 +180,8 @@ class rosa {
 		$object = get_queried_object();
 
 		if ( is_home() ) { ?>
-			<h1 class="hN  archive__title"><?php single_post_title(); ?></h1>
+			<h1 class="hN  archive__title">
+                <?php  if( isset($object->post_title)) echo $object->post_title; else _e( 'News', wpgrade::textdomain() ); ?></h1>
             <hr class="separator"/>
 		<?php
 		} elseif ( is_search() ) {
