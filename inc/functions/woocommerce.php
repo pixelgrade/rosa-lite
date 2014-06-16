@@ -1,11 +1,10 @@
 <?php
-/* This snippet removes the action that inserts thumbnails to products in teh loop
-* and re-adds the function customized with our wrapper in it.
-* It applies to all archives with products.
-*
-* @original plugin: WooCommerce
-* @author of snippet: Brian Krogsard
-*/
+/**
+ * Woocommerce support
+ * If woocommerce is active and is required woo support then load them all
+ */
+
+add_theme_support( 'woocommerce' );
 
 /**
  * Assets
