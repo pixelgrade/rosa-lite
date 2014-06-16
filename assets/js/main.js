@@ -1150,7 +1150,6 @@ function niceScrollInit() {
 
 }
 
-
 function smoothScrollTo(y, speed) {
 
     speed = typeof speed == "undefined" ? 1 : speed;

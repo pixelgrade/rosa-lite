@@ -36,12 +36,18 @@ if ( $is_gmap === true ) {
 				<!-- .sidebar.sidebar- -footer -->
 				<div class="copyright-area">
 					<div class="container">
-						<span class="copyright-text">
-							<?php echo wpgrade::option( 'copyright_text' ) ?>
-						</span>
-						<nav class="navigation  navigation--footer">
-							<?php wpgrade_footer_nav(); ?>
-						</nav>
+                        <div class="flexbox">
+                            <div class="flexbox__item">
+                                <span class="copyright-text">
+                                    <?php echo wpgrade::option( 'copyright_text' ) ?>
+                                </span>
+                            </div>
+                            <div class="flexbox__item">
+                                <nav class="navigation  navigation--footer">
+                                    <?php wpgrade_footer_nav(); ?>
+                                </nav>
+                            </div>
+                        </div>
 					</div>
 				</div>
 				<!-- .copyright-area -->
