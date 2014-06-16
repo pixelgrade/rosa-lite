@@ -7,29 +7,11 @@
 @import "cart";
 
 
+/*------------------------------------*\
+    $EXTENDS
+\*------------------------------------*/
 
-
-
-
-.product__badge {
-	@extend .btn;
-	@extend .btn--small;
-
-	position: absolute;
-	top: -3px;
-	left: -3px;
-
-	&.on-sale{
-		@extend .btn--primary;
-	}
-}
-
-.woocommerce ins{
-	border: none;
-}
-
-
-.btn {
+%btn {
 	padding: $_u2 30px;
 
 	font-size: 12px;
@@ -54,7 +36,7 @@
 	}
 }
 
-.btn--primary {
+%btn--primary {
 	background-color: $accent;
 	color: white;
 
@@ -64,11 +46,11 @@
 }
 
 
-.btn--small {
+%btn--small {
 	padding: 9px 18px;
 }
 
-.btn--text {
+%btn--text {
 	text-decoration: none;
 
 	color: $accent;
@@ -90,6 +72,27 @@
 		color: $dark !important;
 		border-color: $dark !important;
 	}
+}
+
+
+
+
+
+.product__badge {
+	@extend %btn;
+	@extend %btn--small;
+
+	position: absolute;
+	top: -3px;
+	left: -3px;
+
+	&.on-sale{
+		@extend %btn--primary;
+	}
+}
+
+.woocommerce ins{
+	border: none;
 }
 
 body.woocommerce, body.woocommerce-page{

@@ -16,24 +16,31 @@ body.woocommerce ul.products li.product{
 
 	text-align: center;
 
-	@include media-query(palm){
+	@media screen and (max-width: 480px){
 		width: 100%;
 	}
 
-	@include media-query(lap-and-up){
-		width: 30%;
+	@media screen and (min-width: 481px){
 		margin: 0 1.5%;
-		margin-bottom: $_2u;
+		margin-bottom: 78px;
+	}
+
+	@media screen and (min-width: 481px) and (max-width: 768px){
+		width: 46%;
+	}
+
+	@media screen and (min-width: 769px){
+		width: 30%;
 	}
 
 
 	.product__title{
-		margin: $_u2 0;
+		margin: 18px 0 3px;
 	}
 
 	.product__button{
-		@extend .btn;
-		@extend .btn--text;
+		@extend %btn;
+		@extend %btn--text;
 
 		position: absolute;
 		bottom: 0;
@@ -91,8 +98,8 @@ body.woocommerce ul.products li.product{
 	}
 
 	.added_to_cart{
-		@extend .btn;
-		@extend .btn--text;
+		@extend %btn;
+		@extend %btn--text;
 
 		position: absolute;
 		bottom: 0;
@@ -134,13 +141,23 @@ body.woocommerce ul.products li.product a img, body.woocommerce-page ul.products
 	@include box-shadow(none !important);
 }
 
+body.woocommerce-page {
+	.pagination {
+		margin: 40px 0;
+	}
+}
+
 .shop-categories{
-	margin-bottom: $_3u;
+	&.tabs__nav  {
+		margin-bottom: 70px;
+		margin-top: -12px;
+	}
 
 	a{
 		margin: 0 $_u2;
 		@include font-size(24px);
-		font-weight: 500;
+		@include transition(all 0.2s);
+		// font-weight: 600;
 
 		&.active{
 			color: $accent;

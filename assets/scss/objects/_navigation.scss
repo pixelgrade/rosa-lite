@@ -342,6 +342,10 @@ $nav-width: 200px;
 		padding-right: $_u2 !important;
 	}
 
+	i {
+		font-size: 14px;
+	}
+
 	@include media-query(palm){
 		margin-bottom: $_u;
 

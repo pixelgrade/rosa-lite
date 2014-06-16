@@ -78,7 +78,7 @@
 	padding: $_u 0;
 
 	@include media-query(lap-and-up) {
-		padding: $_3u 0;
+		padding: 1px 0 $_2u 0;
 	}
 
 	color: white;
@@ -88,7 +88,7 @@
 .copyright-area {
 	@extend .cf;
 
-	padding: $_u 0;
+	padding: $_u2 0;
 
 	font-size: 14px;
 	color: $light;
@@ -96,14 +96,20 @@
 	background-color: $dark;
 }
 
-
 @include media-query(lap-and-up){
+	.footer-container{
+		display: table;
+		width: 100%;
+	}
+
 	.copyright-text {
-		float: left;
+		display: table-cell;
+		text-align: left;
 	}
 
 	.navigation--footer {
-		float: right;
+		display: table-cell;
+		text-align: right;
 	}
 }
 
@@ -115,7 +121,7 @@
 	}
 
 	a {
-		padding-left: $_u2;
+		padding: $_u2;
 
 		color: $light;
 
@@ -124,10 +130,6 @@
 
 			margin-left: $_u2;
 		}
-	}
-
-	li:first-child a{
-		padding-left: 0;
 	}
 
 	li:last-child a:after {
