@@ -128,11 +128,6 @@ gulp.task('scripts-compressed', function () {
 });
 
 
-gulp.task('start', ['styles-nested', 'scripts'], function () {
-	console.log('theme should be ready');
-});
-
-
 gulp.task('dev', function () {
 	gulp.src('./')
 		.pipe(
@@ -183,6 +178,14 @@ gulp.task('styles-nested', function () {
 gulp.task('styles-compressed', function () {
 	return gulp.src('./')
 		.pipe(exec('rm -Rf ./assets/css/* ; ruby assets/+production-compressed.rb'));
+});
+
+gulp.task('start', ['styles-nested', 'scripts'], function () {
+	console.log('theme should be ready');
+});
+
+gulp.task('server', ['styles-compressed', 'scripts-compressed'], function () {
+	console.log('The styles and scripts have been compiled for production! Go and clear the caches!');
 });
 
 /**

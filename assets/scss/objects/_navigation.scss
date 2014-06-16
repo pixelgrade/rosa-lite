@@ -364,7 +364,7 @@ $nav-width: 200px;
 	}
 
 	@include media-query(lap-and-up){
-		margin-left: $_u2;
+		// margin-left: $_u2;
 		float: right;
 	}
 

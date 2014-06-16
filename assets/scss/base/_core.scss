@@ -246,3 +246,10 @@ img[width], img[height] {
 		line-height: 1.5;
 	}
 }
+
+// Hidden Classes
+.home-hidden {
+	.home & {
+		display: none;
+	}
+}
