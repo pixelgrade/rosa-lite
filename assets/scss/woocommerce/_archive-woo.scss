@@ -10,7 +10,7 @@
 
 body.woocommerce ul.products li.product{
 	position: relative;
-	float: none;
+	float: none !important;
 	display: inline-block;
 	vertical-align: top;
 
