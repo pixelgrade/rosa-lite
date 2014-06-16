@@ -96,14 +96,20 @@
 	background-color: $dark;
 }
 
-
 @include media-query(lap-and-up){
+	.footer-container{
+		display: table;
+		width: 100%;
+	}
+
 	.copyright-text {
-		float: left;
+		display: table-cell;
+		text-align: left;
 	}
 
 	.navigation--footer {
-		float: right;
+		display: table-cell;
+		text-align: right;
 	}
 }
 

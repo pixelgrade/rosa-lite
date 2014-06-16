@@ -16,14 +16,21 @@ body.woocommerce ul.products li.product{
 
 	text-align: center;
 
-	@include media-query(palm){
+	@media screen and (max-width: 480px){
 		width: 100%;
 	}
 
-	@include media-query(lap-and-up){
-		width: 30%;
+	@media screen and (min-width: 481px){
 		margin: 0 1.5%;
 		margin-bottom: 78px;
+	}
+
+	@media screen and (min-width: 481px) and (max-width: 768px){
+		width: 46%;
+	}
+
+	@media screen and (min-width: 769px){
+		width: 30%;
 	}
 
 
