@@ -23,17 +23,17 @@ body.woocommerce ul.products li.product{
 	@include media-query(lap-and-up){
 		width: 30%;
 		margin: 0 1.5%;
-		margin-bottom: $_2u;
+		margin-bottom: 78px;
 	}
 
 
 	.product__title{
-		margin: $_u2 0;
+		margin: 18px 0 3px;
 	}
 
 	.product__button{
-		@extend .btn;
-		@extend .btn--text;
+		@extend %btn;
+		@extend %btn--text;
 
 		position: absolute;
 		bottom: 0;
@@ -91,8 +91,8 @@ body.woocommerce ul.products li.product{
 	}
 
 	.added_to_cart{
-		@extend .btn;
-		@extend .btn--text;
+		@extend %btn;
+		@extend %btn--text;
 
 		position: absolute;
 		bottom: 0;
@@ -149,7 +149,8 @@ body.woocommerce-page {
 	a{
 		margin: 0 $_u2;
 		@include font-size(24px);
-		font-weight: 500;
+		@include transition(all 0.2s);
+		// font-weight: 600;
 
 		&.active{
 			color: $accent;

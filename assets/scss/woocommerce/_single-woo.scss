@@ -97,7 +97,7 @@ body.woocommerce-page div.product div.images img{
 			font-size: 12px;
 
 			&, a {
-				color: #919191;
+				color: #b3b3b3;
 			}
 		}
 	}
@@ -159,7 +159,7 @@ body.woocommerce .quantity input.qty,
 body.woocommerce-page #content .quantity input.qty,
 body.woocommerce-page .quantity input.qty{
 	width: 50px;
-	height: 40px;
+	height: 36px;
 
 	border: none;
 
@@ -185,22 +185,15 @@ body.woocommerce-page a.button.alt,
 body.woocommerce-page button.button.alt,
 body.woocommerce-page input.button.alt,
 body.woocommerce-page #respond input#submit{
-	padding: $_u4+1px $_u;
 
-	border: none;
+	@extend %btn;
 
-	letter-spacing: .0625em;
-	@include font-size(14px, true, 1.083);
-	font-weight: 500;
-	text-transform: uppercase;
+	margin-left: 12px;
 
 	background: $dark;
-	color: white;
-
-	@include transition(all .15s);
-	@include border-radius(5px);
-
-
+	border: none;
+	text-shadow: none;
+	box-shadow: none;
 
 	&:hover {
 		background: $accent;
