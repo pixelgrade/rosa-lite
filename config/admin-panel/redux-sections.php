@@ -140,7 +140,7 @@ $sections[] = array(
 										.single-product .entry-summary .price span, body.woocommerce .star-rating span:before"
 					),
 					'background-color' => array(
-						'selector' => ".btn--primary, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover,
+						'selector' => ".btn--primary, .shop-menu-item .shop-items-number, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover,
 						                .pagination li a:hover, form.shipping_calculator button.button:hover",
 					),
                     'background' => array(

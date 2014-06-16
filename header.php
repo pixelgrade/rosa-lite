@@ -36,6 +36,7 @@ if ( wpgrade::option( 'nav_always_show' ) ) {
 }
 
 $data_smoothscrolling = ( wpgrade::option( 'use_smooth_scroll' ) == 1 ) ? 'data-smoothscrolling' : '';
+$data_main_color = ( wpgrade::option( 'main_color' )) ? 'data-color="'. wpgrade::option('main_color') .'"' : '';
 
 //first let's test if we are in woocommerce
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
@@ -82,7 +83,7 @@ if ( is_single() ) {
 	$schema_org .= 'itemscope itemtype="http://schema.org/WebPage"';
 } ?>
 
-<body <?php body_class( $class_name ); echo ' ' . $schema_org . ' ' . $data_smoothscrolling . ' ' ?> >
+<body <?php body_class( $class_name ); echo ' ' . $schema_org . ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
 	your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to

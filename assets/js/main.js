@@ -511,7 +511,7 @@ function gmapInit() {
                     },{
                         "featureType": "road",
                         "stylers": [
-                            { "hue": "#ffaa00" },
+                            { "hue": $("body").data("color") ? $("body").data("color") : "#ffaa00" },
                             { "saturation": 48 },
                             { "gamma": 0.53 },
                             { "visibility": "on" }
@@ -735,9 +735,11 @@ var ScrollToTop = {
             return;
         }
 
+        var footerHeight = $('.site-footer').height();
+
         this.offsetTop  = this.$button.offset().top;
-        this.start      = this.offsetTop - windowHeight + 200;
-        this.end        = this.start + 250;
+        this.end        = this.offsetTop - windowHeight + footerHeight;
+        this.start      = this.end - footerHeight / 2;
         this.timeline   = new TimelineMax({ paused: true });
 
         this.timeline.to($('.btn--top_contour'), 2, {
