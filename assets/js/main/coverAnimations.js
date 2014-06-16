@@ -87,6 +87,11 @@ var CoverAnimation = {
             ab = animatedInTime / animatedOutTime;
             bc = 1 - ab;
 
+            if (Modernizr.touch && is_OSX) {
+                timeline.tweenTo("animatedIn");
+                return;
+            }
+
             timeline.tweenTo("animatedOut", {
                 onComplete: function () {
                     $headline.data("animated", true);

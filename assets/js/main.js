@@ -864,6 +864,11 @@ var CoverAnimation = {
             ab = animatedInTime / animatedOutTime;
             bc = 1 - ab;
 
+            if (Modernizr.touch && is_OSX) {
+                timeline.tweenTo("animatedIn");
+                return;
+            }
+
             timeline.tweenTo("animatedOut", {
                 onComplete: function () {
                     $headline.data("animated", true);
@@ -1414,10 +1419,17 @@ $(window).on("debouncedresize", function(e) {
     resizeVideos();
     royalSliderInit();
 
-    if (!$('html').is('.ie9, .lt-ie9')) {
+    if (!$('html').is('.ie9, .lt-ie9') && !Modernizr.touch) {
         Parallax.initialize();
         CoverAnimation.initialize();
     }
+});
+
+$(window).on("orientationchange", function(e) {
+    setTimeout(function () {
+        Parallax.initialize();
+        CoverAnimation.initialize();
+    }, 300)
 });
 
 var latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop(),
