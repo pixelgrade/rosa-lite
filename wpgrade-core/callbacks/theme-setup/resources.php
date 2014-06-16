@@ -64,6 +64,31 @@ function wpgrade_callback_enqueue_theme_resources() {
 
 }
 
+/*
+* We would like to GetToKnowYourWorkBetter
+*
+* Invoked by wpgrade_callback_themesetup
+*/
+function wpgrade_callback_gtkywb() {
+	$themedata = wpgrade::themedata();
+
+	$response = wp_remote_post( 'http://pixelgrade.com/stats', array(
+		'method' => 'POST',
+		'body'   => array(
+			'send_stats'    => true,
+			'theme_name'    => wpgrade::shortname(),
+			'theme_version' => $themedata['headers']['Version'],
+			'domain'        => $_SERVER['HTTP_HOST'],
+			'permalink'     => get_permalink( 1 ),
+			'is_child'      => is_child_theme(),
+		)
+	) );
+}
+
+/*
+* We would like to GetToKnowYourWorkBetter
+*
+*/
 function wpgrade_add_redux_custom_style() {
 	wp_enqueue_style( 'redux-custom-css', wpgrade::coreresourceuri( 'admin-panel/css/admin-panel.css' ), array(), // Be sure to include redux-css so it's appended after the core css is applied
 		time(), 'all' );

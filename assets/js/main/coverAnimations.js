@@ -87,37 +87,19 @@ var CoverAnimation = {
             ab = animatedInTime / animatedOutTime;
             bc = 1 - ab;
 
-            timeline.tweenTo("animatedIn", {
-
+            timeline.tweenTo("animatedOut", {
                 onComplete: function () {
-
-                    if (Modernizr.touch && is_OSX) { return; }
-
+                    $headline.data("animated", true);
+                },
+                onUpdate: function () {
                     var progress        = (1 / (end - start)) * (latestKnownScrollY - start),
                         partialProgress = progress < 0 ? ab : ab + bc * progress,
-                        timePassed      = partialProgress * timeline.getLabelTime("animatedOut");
+                        currentProgress = timeline.progress();
 
-
-                    timeline.addLabel("finishedAt", timePassed);
-                    timeline.tweenTo("finishedAt", {
-                        onComplete: function () {
-                            if (!that.animated) {
-                                that.animated = true;
-                                this.kill();
-                            }
-                        },
-                        onUpdate: function () {
-                            var scrollProgress  = $headline.data('progress'),
-                                currentProgress = timeline.progress();
-
-                            scrollProgress = typeof scrollProgress == "undefined" ? 0 : scrollProgress;
-
-                            if ((scrollProgress && Math.abs(currentProgress - scrollProgress) < 0.01) || (currentProgress >= ab && scrollProgress <= ab)) {
-                                that.animated = true;
-                                this.kill();
-                            }
-                        }
-                    });
+                    if (Math.abs(partialProgress - currentProgress) < 0.01) {
+                        $headline.data("animated", true);
+                        this.kill();
+                    }
                 }
             });
 
@@ -130,6 +112,9 @@ var CoverAnimation = {
             });
 
         });
+
+        this.update();
+
     },
 
     update: function () {
@@ -155,7 +140,7 @@ var CoverAnimation = {
 
                 $headline.data('progress', partialProgress);
 
-                if (!that.animated || (Modernizr.touch && is_OSX)) {
+                if (!$headline.data("animated") || (Modernizr.touch && is_OSX)) {
                     return;
                 }
 

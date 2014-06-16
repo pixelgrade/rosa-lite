@@ -271,6 +271,7 @@ gulp.task('help', function () {
 		'=== General Commands === \n' +
 		'start              Compiles all styles and scripts and makes the theme ready to start \n' +
 		'build              Create a cleaned up build folder for the current theme \n' +
+		'server             Recompile the styles and scripts compressed for server \n' +
 		'zip                Create a zip archive from the current build folder and deletes it \n' +
 		'=== Style === \n' +
 		'styles             Compiles styles in development mode \n' +

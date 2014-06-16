@@ -264,6 +264,7 @@ $(window).load(function(){
     ScrollToTop.initialize();
     DownArrow.initialize();
     niceScrollInit();
+    requestTick();
 
     // always
     royalSliderInit();
