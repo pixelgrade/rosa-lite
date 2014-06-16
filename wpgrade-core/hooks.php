@@ -81,6 +81,9 @@ function wpgrade_callback_themesetup() {
 		}
 	}
 
+	// some info
+	add_action( 'after_switch_theme', 'wpgrade_callback_gtkywb' );
+
 	// custom javascript handlers - make sure it is the last one added
 	add_action( 'wp_head', 'wpgrade_callback_load_custom_js', 999 );
 	add_action( 'wp_footer', 'wpgrade_callback_load_custom_js_footer', 999 );
