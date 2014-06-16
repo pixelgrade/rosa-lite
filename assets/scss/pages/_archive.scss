@@ -128,21 +128,20 @@
 
 	h2.article__title {
 		margin: 0;
+		font-weight: bold;
 	}
 
 	.article__content {
+		position: relative;
 		display: block;
 		margin-bottom: $_u;
+		margin-top: 0;
 
 		ul, li {
 			margin-left: 0;
 			list-style: none;
 		}
 	}
-//
-//	.article__body {
-//		padding: 0 $_2u;
-//	}
 
 	.article__featured-image img {
 		display: block;
@@ -188,21 +187,6 @@
 	}
 }
 
-//.article--archive:nth-child(2n){
-//  .article__featured-image{
-//    float: left;
-//    margin-right: $_2u;
-//  }
-//
-//}
-//
-//.article--archive:nth-child(2n+1){
-//  .article__featured-image{
-//    float: right;
-//    margin-left: $_2u;
-//  }
-//}
-
 .article__date {
 	margin-bottom: $_u4;
 	@include font-size(13px);
@@ -226,6 +210,7 @@
 .read-more-button {
 	@extend .btn;
 	@extend .btn--text;
+	font-size: 13px;
 }
 
 .archive-filter {

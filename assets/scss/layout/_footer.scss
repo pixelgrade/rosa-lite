@@ -78,7 +78,7 @@
 	padding: $_u 0;
 
 	@include media-query(lap-and-up) {
-		padding: $_3u 0;
+		padding: 1px 0 $_2u 0;
 	}
 
 	color: white;

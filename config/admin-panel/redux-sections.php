@@ -675,12 +675,12 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'margin-top'    => array(
-						'selector' => '.page .article__content',
+						'selector' => '.page .type-page .article__content',
 						'unit'     => 'px',
                         'media'    => 'only screen and (min-width: 900px)',
 					),
 					'margin-bottom' => array(
-						'selector' => '.page .article__content',
+						'selector' => '.page .type-page .article__content',
 						'unit'     => 'px',
                         'media'    => 'only screen and (min-width: 900px)',
 					)
