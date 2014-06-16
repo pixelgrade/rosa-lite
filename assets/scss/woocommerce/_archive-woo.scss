@@ -74,7 +74,7 @@ body.woocommerce ul.products li.product{
 		@include transition(opacity .2s linear);
 
 		ins{
-			color: $accent !important;
+			color: $accent;
 			border-bottom: 0;
 		}
 
@@ -128,12 +128,12 @@ body.woocommerce ul.products li.product{
 	}
 
 	a.added_to_cart{
-		color: $accent;
+		@extend %btn;
+		@extemd %btn--text;
 
-		&:hover{
-			color: $accent !important;
-			border-color: $accent !important;
-		}
+		padding: 0 !important;
+		padding-bottom: 3px !important;
+		font-size: 15px !important;
 	}
 }
 

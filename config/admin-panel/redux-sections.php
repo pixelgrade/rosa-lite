@@ -134,17 +134,27 @@ $sections[] = array(
 										.form-submit .meta-list a#comment-submit:hover, .meta-list a.wpcf7-form-control.wpcf7-submit:hover,
 										.meta-list a.otreservations-submit:hover, .meta-list .widget_tag_cloud a:hover, .widget_tag_cloud .meta-list a:hover, .btn.btn--text:hover,
 										.article__content a:not([class]), .article__content a:hover:not([class]):hover,
-										.article__header .article__headline .headline__description .star, .read-more-button, .read-more-button:hover"
+										.article__header .article__headline .headline__description .star, .read-more-button, .read-more-button:hover, .shop-categories a.active,
+										body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart,
+										body.woocommerce ul.products li.product a.added_to_cart, body.woocommerce ul.products li.product .price ins,
+										.single-product .entry-summary .price span, body.woocommerce .star-rating span:before"
 					),
 					'background-color' => array(
-						'selector' => ".btn--primary, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover",
+						'selector' => ".btn--primary, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover,
+						                .pagination li a:hover, form.shipping_calculator button.button:hover",
 					),
+                    'background' => array(
+                        'selector' => "body.woocommerce button.button.alt:hover, body.woocommerce-page #respond input#submit:hover,
+                                        body.woocommerce div.woocommerce-message .button:hover, td.actions input.button:hover, body.woocommerce-page input.button:hover,
+                                        body.woocommerce-page input.button.alt:hover"
+                    ),
 					'border-color'     => array(
 						'selector' => ".tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button,
 						.form-submit .btn--text#comment-submit, .form-submit #comment-submit.read-more-button,
 						.btn--text.wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit.read-more-button,
 						.btn--text.otreservations-submit, .otreservations-submit, .read-more-button,
-						.widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button, blockquote, .article__content a:not([class])",
+						.widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button, blockquote, .article__content a:not([class]), .shop-categories a.active,
+						body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart",
 					),
 					'outline-color'    => array(
 						'selector' => ".test",
