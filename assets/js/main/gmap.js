@@ -124,7 +124,7 @@ function gmapInit() {
                     },{
                         "featureType": "road",
                         "stylers": [
-                            { "hue": "#ffaa00" },
+                            { "hue": $("body").data("color") ? $("body").data("color") : "#ffaa00" },
                             { "saturation": 48 },
                             { "gamma": 0.53 },
                             { "visibility": "on" }
