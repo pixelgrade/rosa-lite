@@ -250,7 +250,7 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'background-color' => array(
-						'selector' => ".site-header"
+						'selector' => ".site-header, .site-header.headroom--not-top, .sub-menu, .headroom--not-top .sub-menu"
 					),
 				)
 			)
