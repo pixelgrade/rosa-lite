@@ -14,9 +14,11 @@ var ScrollToTop = {
             return;
         }
 
+        var footerHeight = $('.site-footer').height();
+
         this.offsetTop  = this.$button.offset().top;
-        this.start      = this.offsetTop - windowHeight + 200;
-        this.end        = this.start + 250;
+        this.end        = this.offsetTop - windowHeight + footerHeight;
+        this.start      = this.end - footerHeight / 2;
         this.timeline   = new TimelineMax({ paused: true });
 
         this.timeline.to($('.btn--top_contour'), 2, {

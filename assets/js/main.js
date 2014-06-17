@@ -511,7 +511,7 @@ function gmapInit() {
                     },{
                         "featureType": "road",
                         "stylers": [
-                            { "hue": "#ffaa00" },
+                            { "hue": $("body").data("color") ? $("body").data("color") : "#ffaa00" },
                             { "saturation": 48 },
                             { "gamma": 0.53 },
                             { "visibility": "on" }
@@ -735,9 +735,11 @@ var ScrollToTop = {
             return;
         }
 
+        var footerHeight = $('.site-footer').height();
+
         this.offsetTop  = this.$button.offset().top;
-        this.start      = this.offsetTop - windowHeight + 200;
-        this.end        = this.start + 250;
+        this.end        = this.offsetTop - windowHeight + footerHeight;
+        this.start      = this.end - footerHeight / 2;
         this.timeline   = new TimelineMax({ paused: true });
 
         this.timeline.to($('.btn--top_contour'), 2, {
@@ -861,6 +863,11 @@ var CoverAnimation = {
 
             ab = animatedInTime / animatedOutTime;
             bc = 1 - ab;
+
+            if (Modernizr.touch && is_OSX) {
+                timeline.tweenTo("animatedIn");
+                return;
+            }
 
             timeline.tweenTo("animatedOut", {
                 onComplete: function () {
@@ -1009,6 +1016,21 @@ var Navigator = {
         $navigator.css({'margin-top': -1 * $navigator.height() / 2}).prependTo("body");
 
         this.update();
+
+        $('.navigator__item').each(function (i, obj) {
+
+            var items   = $('.navigator__item').length,
+                stagger = 3000 + i * 400,
+                $obj    = $(obj);
+
+            if ($obj.is('.navigator__item--selected')) {
+                stagger = stagger + items * 100;
+            }
+
+            setTimeout(function () {
+                TweenMax.fromTo($obj, 1, {opacity: 0, scale: 0.7}, {opacity: 1.25, scale: 1, ease: Elastic.easeOut});
+            }, stagger);
+        });
 
         TweenMax.to($navigator, 0.3, {
             opacity: 1
@@ -1412,10 +1434,17 @@ $(window).on("debouncedresize", function(e) {
     resizeVideos();
     royalSliderInit();
 
-    if (!$('html').is('.ie9, .lt-ie9')) {
+    if (!$('html').is('.ie9, .lt-ie9') && !Modernizr.touch) {
         Parallax.initialize();
         CoverAnimation.initialize();
     }
+});
+
+$(window).on("orientationchange", function(e) {
+    setTimeout(function () {
+        Parallax.initialize();
+        CoverAnimation.initialize();
+    }, 300)
 });
 
 var latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop(),

@@ -36,6 +36,7 @@ if ( wpgrade::option( 'nav_always_show' ) ) {
 }
 
 $data_smoothscrolling = ( wpgrade::option( 'use_smooth_scroll' ) == 1 ) ? 'data-smoothscrolling' : '';
+$data_main_color = ( wpgrade::option( 'main_color' )) ? 'data-color="'. wpgrade::option('main_color') .'"' : '';
 
 //first let's test if we are in woocommerce
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
@@ -82,7 +83,7 @@ if ( is_single() ) {
 	$schema_org .= 'itemscope itemtype="http://schema.org/WebPage"';
 } ?>
 
-<body <?php body_class( $class_name ); echo ' ' . $schema_org . ' ' . $data_smoothscrolling . ' ' ?> >
+<body <?php body_class( $class_name ); echo ' ' . $schema_org . ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
 	your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
@@ -135,16 +136,19 @@ if ( is_single() ) {
                                 global $woocommerce; ?>
 
                                 <li class="shop-menu-item  menu-item-has-children">
-                                    <a class="social-icon  " href="<?php echo $woocommerce->cart->get_cart_url(); ?>">
-                                        <i class="icon-shopping-cart"></i>
-                                        <span class="shop-items-number"><?php echo sprintf(_n('%d', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?></span>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li><span class="shop-menu-item__price"><?php echo $woocommerce->cart->get_cart_total(); ?></span></li>
-                                        <li><a href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><?php _e('View cart', 'woocommerce') ?></a></li>
-                                        <li><a href="<?php echo $woocommerce->cart->get_checkout_url()?>"><?php _e('Checkout', 'woocommerce') ?></a></li>
-                                    </ul>
+                                    <div class="widget_shopping_cart_content">
+                                        <a class="cart-icon-link" href="<?php echo $woocommerce->cart->get_cart_url(); ?>">
+                                            <i class="icon-shopping-cart"></i>
+                                            <span class="shop-items-number"><?php echo sprintf(_n('%d', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?></span>
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><span class="shop-menu-item__price"><?php echo $woocommerce->cart->get_cart_total(); ?></span></li>
+                                            <li><a href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><?php _e('View cart', 'woocommerce') ?></a></li>
+                                            <li><a href="<?php echo $woocommerce->cart->get_checkout_url()?>"><?php _e('Checkout', 'woocommerce') ?></a></li>
+                                        </ul>
+                                    </div>
                                 </li>
+
 
                             <?php endif; ?>
                         </ul>
