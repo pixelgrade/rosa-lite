@@ -1,9 +1,10 @@
 /*---------------------------------*\
                ARTICLE
 \*---------------------------------*/
-.article--page {
-	overflow: hidden;
-}
+// cand mai pun una de asta sper sa pun si un comentariu cu motivul
+//.article--page {
+//	overflow: hidden;
+//}
 
 .article__title a {
 	-ms-word-wrap: break-word;
@@ -90,7 +91,7 @@
 }
 
 
-.lt-ie9, .ie9 {
+.lt-ie9, .ie9, .touch {
 
 	.article__parallax {
 		width: 100% !important;
@@ -98,8 +99,7 @@
 		top: 0 !important;
 		bottom: auto !important;
 		left: 0 !important;
-		transform: none !important;
-		-ms-transform: none !important;
+		@include transform(none);
 	}
 }
 
@@ -122,8 +122,14 @@
 			width: 100% !important;
 			top: 0 !important;
 			left: 0 !important;
+			@include transform(none);
 		}
 	}
+}
+
+.touch .article__parallax--img img {
+	top: 0;
+	@include transform(translateX(-50%));
 }
 
 
@@ -165,4 +171,12 @@
 
 		@include transform(rotate(45deg));
 	}
+}
+
+.article--page + .article--page {
+
+}
+
+.article--page + .article--page.has-post-thumbnail {
+
 }
