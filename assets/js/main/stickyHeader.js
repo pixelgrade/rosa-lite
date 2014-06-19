@@ -4,9 +4,9 @@ function stickyHeaderInit() {
 
     var headerSelector      = '.site-header',
         $header             = $(headerSelector),
-        headerHeight        = $header.height(),
+        headerHeight        = $header.outerHeight(),
         $headers            = $('.article__header'),
-        offset              = $headers.length ? $headers.first().height() : 0;
+        offset              = $headers.length ? $headers.first().outerHeight() : 0;
 
     $header.headroom({
         tolerance: 15,
