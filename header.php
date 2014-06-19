@@ -136,16 +136,19 @@ if ( is_single() ) {
                                 global $woocommerce; ?>
 
                                 <li class="shop-menu-item  menu-item-has-children">
-                                    <a class="social-icon  " href="<?php echo $woocommerce->cart->get_cart_url(); ?>">
-                                        <i class="icon-shopping-cart"></i>
-                                        <span class="shop-items-number"><?php echo sprintf(_n('%d', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?></span>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li><span class="shop-menu-item__price"><?php echo $woocommerce->cart->get_cart_total(); ?></span></li>
-                                        <li><a href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><?php _e('View cart', 'woocommerce') ?></a></li>
-                                        <li><a href="<?php echo $woocommerce->cart->get_checkout_url()?>"><?php _e('Checkout', 'woocommerce') ?></a></li>
-                                    </ul>
+                                    <div class="widget_shopping_cart_content">
+                                        <a class="cart-icon-link" href="<?php echo $woocommerce->cart->get_cart_url(); ?>">
+                                            <i class="icon-shopping-cart"></i>
+                                            <span class="shop-items-number"><?php echo sprintf(_n('%d', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?></span>
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><span class="shop-menu-item__price"><?php echo $woocommerce->cart->get_cart_total(); ?></span></li>
+                                            <li><a href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><?php _e('View cart', 'woocommerce') ?></a></li>
+                                            <li><a href="<?php echo $woocommerce->cart->get_checkout_url()?>"><?php _e('Checkout', 'woocommerce') ?></a></li>
+                                        </ul>
+                                    </div>
                                 </li>
+
 
                             <?php endif; ?>
                         </ul>
