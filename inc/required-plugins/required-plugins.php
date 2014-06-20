@@ -47,7 +47,7 @@ function wpgrade_register_required_plugins() {
 			'slug'               => 'pixcodes',
 			'source'             => get_template_directory() . '/inc/required-plugins/plugins/pixcodes.zip',
 			'required'           => false,
-			'version'            => '2.2.3',
+			'version'            => '2.2.4',
 			'force_activation'   => false,
 			'force_deactivation' => false,
 			'external_url'       => '',
