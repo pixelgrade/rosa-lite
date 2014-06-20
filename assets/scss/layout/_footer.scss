@@ -32,7 +32,7 @@
 
 	&:before{
 		position: absolute;
-		top: 0;
+		top: -10px;
 		left: 50%;
 		@include transform(translateX(-50%) translateY(-100%));
 
@@ -43,6 +43,14 @@
 		border: 35px solid transparent;
 
 		border-bottom-color: $dark;
+
+		.copyright-area__light &{
+			border-bottom-color: $lightest;
+		}
+
+		.copyright-area__accent &{
+			border-bottom-color: $accent;
+		}
 	}
 }
 
@@ -70,7 +78,7 @@
 	left: 50%;
 	width: 60px;
 	height: 60px;
-	padding-top: 20px;
+//	padding-top: 20px;
 	font-size: 12px;
 	font-weight: 700;
 	text-transform: uppercase;
@@ -95,11 +103,11 @@
 	}
 
 	&:before {
-		top: 12px;
+		top: 2px;
 	}
 
 	&:after{
-		top: 18px;
+		top: 8px;
 	}
 }
 
@@ -114,7 +122,7 @@
 	padding: $_u 0;
 
 	@include media-query(lap-and-up) {
-		padding: 1px 0 $_2u 0;
+		padding: 1px 0 $_3u 0;
 	}
 
 	color: white;
@@ -131,6 +139,23 @@
 
 	color: $light;
 	background-color: $dark;
+
+	&.copyright-area__dark{
+		background-color: $dark;
+	}
+
+	&.copyright-area__light{
+		background-color: $lightest;
+	}
+
+	&.copyright-area__accent{
+		background-color: $accent;
+		color: white;
+
+		a{
+			color: white;
+		}
+	}
 }
 
 .copyright-text, .navigation--footer{
@@ -171,10 +196,13 @@
 
 	@include media-query(lap-and-up) {
 		margin: 0 -$_u2;
+		margin-top: 0;
+		margin-bottom: 0;
 	}
 
 	.widget{
-		float: left;
+		display: inline-block;
+		vertical-align: middle;
 
 		margin-bottom: $_u2;
 		padding: 0;
@@ -187,6 +215,22 @@
 
 	&.col-1 .widget{
 		width: 100%;
+		border: 0;
+	}
+
+	&.col-1{
+		&.one-third, &.one-whole, &.two-thirds{
+			margin: 0 auto;
+
+		}
+
+		&.one-third{
+			width: 33%;
+		}
+
+		&.two-thirds{
+			width: 66%;
+		}
 	}
 
 	&.col-2 .widget{
@@ -197,12 +241,47 @@
 		width: 33.3333%;
 	}
 
+	&.col-4 .widget{
+		width: 25%;
+	}
+
+	&.col-5 .widget{
+		width: 20%;
+	}
+
+	&.col-6 .widget{
+		width: 16.66666666666667%;
+	}
+
 	@include media-query(palm) {
 		&.col-1, &.col-2, &.col-3{
 			.widget{
-				float: none;
 				width: 100%;
 			}
 		}
 	}
+}
+
+.sidebar--footer__light{
+	background-color: white;
+
+	color: $dark !important;
+
+	a{
+		color: $dark !important;
+	}
+}
+
+.sidebar--footer__dark{
+	background-color: $dark;
+
+	color: white;
+
+	a{
+		color: white;
+	}
+}
+
+.sidebar--footer__accent{
+	background-color: $accent;
 }
