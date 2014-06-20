@@ -11,7 +11,7 @@
 
 // make columns take same amount of space
 .flexbox--btn-top {
-	position: relative;
+//	position: relative;
 	z-index: 100;
 	table-layout: fixed;
 }
@@ -28,11 +28,17 @@
 .btn--top {
 //	width: 60px;
 //	height: 30px;
-	position: relative;
+//	position: relative;
+
+	position: absolute;
+	top: 0;
+	left: 50%;
+
+	@include transform(translateX(-50%));
 
 	&:before{
 		position: absolute;
-		top: -10px;
+		top: 0;
 		left: 50%;
 		@include transform(translateX(-50%) translateY(-100%));
 
@@ -121,8 +127,9 @@
 
 .copyright-area {
 	@extend .cf;
+	position: relative;
 
-	padding: $_u2 0;
+	padding: $_3u 0;
 
 	font-size: 14px;
 	text-align: center;
@@ -148,8 +155,8 @@
 	}
 }
 
-.copyright-text, .navigation--footer{
-	margin: $_u 0;
+.copyright-text{
+	margin-bottom: $_u;
 }
 
 .nav--footer {
