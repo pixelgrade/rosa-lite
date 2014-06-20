@@ -967,7 +967,7 @@ $sections[] = array(
 				'4' => '4',
 				'6' => '6',
 			),
-			'default'  => '3',
+			'default'  => '2',
 			'placeholder' => __( 'Select the number of columns', wpgrade::textdomain() ),
 			'select2'  => array( // here you can provide params for the select2 jquery call
 				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
