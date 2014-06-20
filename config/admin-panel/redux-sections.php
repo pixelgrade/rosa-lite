@@ -981,15 +981,15 @@ $sections[] = array(
             'options'  => array(
                 'one-third' => 'One third',
                 'two-thirds' => 'Two thirds',
-                'one-whole' => 'One whole',
+                'one-whole' => 'Whole',
             ),
             'default'  => 'one_third',
-            'placeholder' => __( 'Select the number of columns', wpgrade::textdomain() ),
+            'placeholder' => __( 'Select the widget width', wpgrade::textdomain() ),
             'select2'  => array( // here you can provide params for the select2 jquery call
                 'minimumResultsForSearch' => - 1, // this way the search box will be disabled
                 'allowClear'              => false // don't allow a empty select
             ),
-            'required' => array( 'footer_number_of_columns', 'equals', 1 ),
+            'required' => array( 'footer_number_of_columns', '=', 1 ),
         ),
 		array(
 			'id'       => 'copyright_text',
