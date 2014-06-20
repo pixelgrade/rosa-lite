@@ -320,6 +320,40 @@ $sections[] = array(
 			),
 		),
 		array(
+			'id'            => 'footer_sidebar_style',
+			'type'          => 'select',
+			'title'         => __( 'Footer Widget Area Style', wpgrade::textdomain() ),
+			'options'       => array(
+				'light'       => 'Light',
+				'dark' => 'Dark',
+				'accent'  => 'Accent Color',
+			),
+			'default'       => 'dark',
+			'select2'       => array( // here you can provide params for the select2 jquery call
+				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
+				'allowClear'              => false // don't allow a empty select
+			),
+			'display_value' => 'text',
+			'customizer'    => array(),
+		),
+		array(
+			'id'            => 'footer_bottombar_style',
+			'type'          => 'select',
+			'title'         => __( 'Footer Bottom Bar Style', wpgrade::textdomain() ),
+			'options'       => array(
+				'light'       => 'Light',
+				'dark' => 'Dark',
+				'accent'  => 'Accent Color',
+			),
+			'default'       => 'dark',
+			'select2'       => array( // here you can provide params for the select2 jquery call
+				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
+				'allowClear'              => false // don't allow a empty select
+			),
+			'display_value' => 'text',
+			'customizer'    => array(),
+		),
+		array(
 			'id'         => 'typography_title',
 			'title'      => '<h3>' . __( 'Typography', wpgrade::textdomain() ) . '</h3>',
 			'type'       => 'customizer_info',
@@ -910,6 +944,25 @@ $sections[] = array(
 	'desc'   => '<p class="description">' . __( 'Footer options allow you to control both the visual and functional aspects of the page footer area.', wpgrade::textdomain() ) . '</p>',
 	'fields' => array(
 		array(
+			'id'       => 'footer_number_of_columns',
+			'type'     => 'select',
+			'title'    => __( 'Widget Area Number of Columns', wpgrade::textdomain() ),
+			'subtitle' => __( 'Select how many number of columns should the Footer widget area have.', wpgrade::textdomain() ),
+			'options'  => array(
+				'1' => '1',
+				'2' => '2',
+				'3' => '3',
+				'4' => '4',
+				'6' => '6',
+			),
+			'default'  => '3',
+			'placeholder' => __( 'Select the number of columns', wpgrade::textdomain() ),
+			'select2'  => array( // here you can provide params for the select2 jquery call
+				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
+				'allowClear'              => false // don't allow a empty select
+			),
+		),
+		array(
 			'id'       => 'copyright_text',
 			'type'     => 'editor',
 			'title'    => __( 'Copyright Text', wpgrade::textdomain() ),
@@ -1458,7 +1511,7 @@ $sections[] = array(
 			'subtitle' => sprintf( __( 'Select how to insert the custom CSS into your pages.', wpgrade::textdomain() ), wpgrade::themename() ),
 			'default'  => 'inline',
 			'options'  => array(
-				'inline' => __( 'Inline <em>(recommended)</em>', wpgrade::textdomain() ),
+				'inlinee' => __( 'Inline <em>(recommended)</em>', wpgrade::textdomain() ),
 				'file'   => __( 'Write To File (might require file permissions)', wpgrade::textdomain() )
 			),
 			'select2'  => array( // here you can provide params for the select2 jquery call

@@ -12,7 +12,9 @@ if ( $is_gmap === true ) {
 	wp_enqueue_script( 'google-maps-api' );
 }
 
-            if (!is_404()):
+if (!is_404()):
+	$footer_sidebar_style = 'sidebar--footer__' . wpgrade::option( 'footer_sidebar_style' );
+	$footer_bottom_bar_style = 'copyright-area__' . wpgrade::option( 'footer_bottombar_style' );
 ?>
 
             <div class="flexbox  flexbox--btn-top">
@@ -28,13 +30,13 @@ if ( $is_gmap === true ) {
                 <div class="flexbox__item  btn--top_right"><b></b></div>
             </div>
 			<footer class="site-footer">
-				<aside class="sidebar  sidebar--footer">
+				<aside class="sidebar  sidebar--footer <?php echo $footer_sidebar_style ?>">
 					<div class="container">
 						<?php get_template_part( 'sidebar-footer' ); ?>
 					</div>
 				</aside>
-				<!-- .sidebar.sidebar- -footer -->
-				<div class="copyright-area">
+				<!-- .sidebar.sidebar--footer -->
+				<div class="copyright-area <?php echo $footer_bottom_bar_style ?>">
 					<div class="container">
                         <div class="footer-container">
                             <span class="copyright-text">
@@ -49,7 +51,7 @@ if ( $is_gmap === true ) {
 				<!-- .copyright-area -->
 			</footer><!-- .site- -footer -->
 
-            <?php endif; ?>
+<?php endif; ?>
 
 		</div><!-- #page -->
 		<?php wp_footer(); ?>
