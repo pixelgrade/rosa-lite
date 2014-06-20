@@ -45,7 +45,7 @@
 		border-bottom-color: $dark;
 
 		.copyright-area__light &{
-			border-bottom-color: $lightest;
+			border-bottom-color: white;
 		}
 
 		.copyright-area__accent &{
@@ -100,6 +100,10 @@
 		border-top: 2px solid white;
 
 		@include transform(translateX(-50%) rotate(45deg));
+
+		.copyright-area__light &{
+			border-color: $dark;
+		}
 	}
 
 	&:before {
@@ -114,20 +118,6 @@
 
 
 
-
-
-
-
-.sidebar--footer {
-	padding: $_u 0;
-
-	@include media-query(lap-and-up) {
-		padding: 1px 0 $_3u 0;
-	}
-
-	color: white;
-	background-color: #121012;
-}
 
 .copyright-area {
 	@extend .cf;
@@ -145,7 +135,7 @@
 	}
 
 	&.copyright-area__light{
-		background-color: $lightest;
+		background-color: white;
 	}
 
 	&.copyright-area__accent{
@@ -191,6 +181,18 @@
 	}
 }
 
+
+.sidebar--footer {
+	padding: $_u 0;
+
+	@include media-query(lap-and-up) {
+		padding: $_3u 0;
+	}
+
+	color: white;
+	background-color: #121012;
+}
+
 .footer-widget-area{
 	@extend .cf;
 
@@ -204,12 +206,16 @@
 		display: inline-block;
 		vertical-align: middle;
 
-		margin-bottom: $_u2;
+		margin-bottom: $_2u;
 		padding: 0;
 		border: $_u2 solid transparent;
 
 		p{
 			margin: 0;
+		}
+
+		.widget__title{
+			margin-top: 0;
 		}
 	}
 
@@ -267,13 +273,17 @@
 
 	color: $dark !important;
 
+	.widget__title{
+		color: $dark !important;
+	}
+
 	a{
 		color: $dark !important;
 	}
 }
 
 .sidebar--footer__dark{
-	background-color: $dark;
+	background-color: #121212;
 
 	color: white;
 
