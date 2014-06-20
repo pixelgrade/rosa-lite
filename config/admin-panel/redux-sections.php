@@ -320,9 +320,17 @@ $sections[] = array(
 			),
 		),
 		array(
+			'id'         => 'backgrounds_footer',
+			'title'      => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Footer', wpgrade::textdomain() ) . '</span></label>',
+			'type'       => 'customizer_info',
+			'customizer' => array()
+		),
+		array(
 			'id'            => 'footer_sidebar_style',
 			'type'          => 'select',
 			'title'         => __( 'Footer Widget Area Style', wpgrade::textdomain() ),
+			'display_value' => 'text',
+			'class'         => 'small-text',
 			'options'       => array(
 				'light'       => 'Light',
 				'dark' => 'Dark',
@@ -333,13 +341,16 @@ $sections[] = array(
 				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
 				'allowClear'              => false // don't allow a empty select
 			),
-			'display_value' => 'text',
-			'customizer'    => array(),
+			'customizer'       => array(
+				'transport' => 'refresh',
+			),
 		),
 		array(
 			'id'            => 'footer_bottombar_style',
 			'type'          => 'select',
 			'title'         => __( 'Footer Bottom Bar Style', wpgrade::textdomain() ),
+			'display_value' => 'text',
+			'class'         => 'small-text',
 			'options'       => array(
 				'light'       => 'Light',
 				'dark' => 'Dark',
@@ -350,8 +361,9 @@ $sections[] = array(
 				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
 				'allowClear'              => false // don't allow a empty select
 			),
-			'display_value' => 'text',
-			'customizer'    => array(),
+			'customizer'       => array(
+				'transport' => 'refresh',
+			),
 		),
 		array(
 			'id'         => 'typography_title',
