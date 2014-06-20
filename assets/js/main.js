@@ -742,15 +742,15 @@ var ScrollToTop = {
         this.start      = this.end - footerHeight / 2;
         this.timeline   = new TimelineMax({ paused: true });
 
-        this.timeline.to($('.btn--top_contour'), 2, {
-            width:  260,
-            height: 260,
-            top:    -130,
-            left:   -100,
-            ease:   Power2.easeOut
-        });
-
-        this.timeline.fromTo($('.btn--top_text'), 2, {y: 15, scale: 0.5}, {y: 0, scale: 1, opacity: 1, ease: Expo.easeOut}, '-=1.3');
+//        this.timeline.to($('.btn--top_contour'), 2, {
+//            width:  260,
+//            height: 260,
+//            top:    -130,
+//            left:   -100,
+//            ease:   Power2.easeOut
+//        });
+//
+//        this.timeline.fromTo($('.btn--top_text'), 2, {y: 15, scale: 0.5}, {y: 0, scale: 1, opacity: 1, ease: Expo.easeOut}, '-=1.3');
 
         this.$button.on('click', function (e) {
             e.preventDefault();
@@ -1090,9 +1090,9 @@ function stickyHeaderInit() {
 
     var headerSelector      = '.site-header',
         $header             = $(headerSelector),
-        headerHeight        = $header.height(),
+        headerHeight        = $header.outerHeight(),
         $headers            = $('.article__header'),
-        offset              = $headers.length ? $headers.first().height() : 0;
+        offset              = $headers.length ? $headers.first().outerHeight() : 0;
 
     $header.headroom({
         tolerance: 15,

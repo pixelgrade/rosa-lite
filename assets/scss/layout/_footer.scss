@@ -5,32 +5,50 @@
 	position: relative;
 }
 
+/*------------------------------------*\
+    $TOP BUTTON
+\*------------------------------------*/
+
 // make columns take same amount of space
 .flexbox--btn-top {
 	position: relative;
 	z-index: 100;
-	margin-top: -30px;
 	table-layout: fixed;
 }
 
 .btn--top_wrapper {
-	width: 60px;
+//	width: 60px;
 	text-align: center;
 }
 
-.btn--top_left, .btn--top_right {
-	background: #121012;
-}
+//.btn--top_left, .btn--top_right {
+//	background: #121012;
+//}
 
 .btn--top {
-	width: 60px;
-	height: 30px;
+//	width: 60px;
+//	height: 30px;
 	position: relative;
+
+	&:before{
+		position: absolute;
+		top: 0;
+		left: 50%;
+		@include transform(translateX(-50%) translateY(-100%));
+
+		content: '';
+		width: 0;
+		height: 0;
+
+		border: 35px solid transparent;
+
+		border-bottom-color: $dark;
+	}
 }
 
 .btn--top_overflow {
-	width: 60px;
-	height: 30px;
+//	width: 60px;
+//	height: 30px;
 	position: relative;
 	overflow: hidden;
 }
@@ -48,9 +66,8 @@
 .btn--top_text {
 	display: block;
 	position: absolute;
-	top: -26px;
-	left: 0;
-	opacity: 0;
+	top: 0;
+	left: 50%;
 	width: 60px;
 	height: 60px;
 	padding-top: 20px;
@@ -58,24 +75,40 @@
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	margin-left: 2px;
-	color: $dark;
+//	margin-left: 2px;
+	color: white;
 
-	&:before {
+	@include transform(translateX(-50%) translateY(-30%));
+
+	&:before, &:after{
 		content: "";
 		position: absolute;
-		top: 12px;
 		left: 50%;
 
-		height: 8px;
-		width: 8px;
+		height: 10px;
+		width: 10px;
 
-		border-left: 2px solid $dark;
-		border-top: 2px solid $dark;
+		border-left: 2px solid white;
+		border-top: 2px solid white;
 
 		@include transform(translateX(-50%) rotate(45deg));
 	}
+
+	&:before {
+		top: 12px;
+	}
+
+	&:after{
+		top: 18px;
+	}
 }
+
+
+
+
+
+
+
 
 .sidebar--footer {
 	padding: $_u 0;
@@ -94,26 +127,14 @@
 	padding: $_u2 0;
 
 	font-size: 14px;
-	color: $light;
+	text-align: center;
 
+	color: $light;
 	background-color: $dark;
 }
 
-@include media-query(lap-and-up){
-	.footer-container{
-		display: table;
-		width: 100%;
-	}
-
-	.copyright-text {
-		display: table-cell;
-		text-align: left;
-	}
-
-	.navigation--footer {
-		display: table-cell;
-		text-align: right;
-	}
+.copyright-text, .navigation--footer{
+	margin: $_u 0;
 }
 
 .nav--footer {
@@ -123,19 +144,20 @@
 		margin: $_u2 0;
 	}
 
+	li:after{
+		content: "\2022";
+
+		margin: 0 $_u4;
+	}
+
 	a {
 		padding: $_u2;
 
+		text-transform: uppercase;
 		color: $light;
-
-		&:after {
-			content: "\2022";
-
-			margin-left: $_u2;
-		}
 	}
 
-	li:last-child a:after {
+	li:last-child:after{
 		content: none;
 	}
 

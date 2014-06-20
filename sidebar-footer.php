@@ -1,10 +1,9 @@
 <?php if (is_active_sidebar('sidebar-footer')):
 
-	$widgets_number = wpgrade::count_sidebar_widgets('sidebar-footer', false);
+	$col_number = '';
 
-	if ( $widgets_number >= 3 ) {
-		$widgets_number = 3;
-	} ?>
+    ?>
+
 	<div class="footer-widget-area  col-<?php echo $widgets_number; ?>">
 		<aside class="sidebar">
 		<?php dynamic_sidebar('sidebar-footer'); ?>
