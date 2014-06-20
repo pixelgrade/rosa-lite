@@ -45,7 +45,7 @@
 		border-bottom-color: $dark;
 
 		.copyright-area__light &{
-			border-bottom-color: $lightest;
+			border-bottom-color: white;
 		}
 
 		.copyright-area__accent &{
@@ -100,6 +100,10 @@
 		border-top: 2px solid white;
 
 		@include transform(translateX(-50%) rotate(45deg));
+
+		.copyright-area__light &{
+			border-color: $dark;
+		}
 	}
 
 	&:before {
@@ -145,7 +149,7 @@
 	}
 
 	&.copyright-area__light{
-		background-color: $lightest;
+		background-color: white;
 	}
 
 	&.copyright-area__accent{
@@ -267,13 +271,17 @@
 
 	color: $dark !important;
 
+	.widget__title{
+		color: $dark !important;
+	}
+
 	a{
 		color: $dark !important;
 	}
 }
 
 .sidebar--footer__dark{
-	background-color: $dark;
+	background-color: #121212;
 
 	color: white;
 
