@@ -742,15 +742,15 @@ var ScrollToTop = {
         this.start      = this.end - footerHeight / 2;
         this.timeline   = new TimelineMax({ paused: true });
 
-        this.timeline.to($('.btn--top_contour'), 2, {
-            width:  260,
-            height: 260,
-            top:    -130,
-            left:   -100,
-            ease:   Power2.easeOut
-        });
-
-        this.timeline.fromTo($('.btn--top_text'), 2, {y: 15, scale: 0.5}, {y: 0, scale: 1, opacity: 1, ease: Expo.easeOut}, '-=1.3');
+//        this.timeline.to($('.btn--top_contour'), 2, {
+//            width:  260,
+//            height: 260,
+//            top:    -130,
+//            left:   -100,
+//            ease:   Power2.easeOut
+//        });
+//
+//        this.timeline.fromTo($('.btn--top_text'), 2, {y: 15, scale: 0.5}, {y: 0, scale: 1, opacity: 1, ease: Expo.easeOut}, '-=1.3');
 
         this.$button.on('click', function (e) {
             e.preventDefault();
@@ -863,6 +863,11 @@ var CoverAnimation = {
 
             ab = animatedInTime / animatedOutTime;
             bc = 1 - ab;
+
+            if (Modernizr.touch && is_OSX) {
+                timeline.tweenTo("animatedIn");
+                return;
+            }
 
             timeline.tweenTo("animatedOut", {
                 onComplete: function () {
@@ -1012,6 +1017,21 @@ var Navigator = {
 
         this.update();
 
+        $('.navigator__item').each(function (i, obj) {
+
+            var items   = $('.navigator__item').length,
+                stagger = 3000 + i * 400,
+                $obj    = $(obj);
+
+            if ($obj.is('.navigator__item--selected')) {
+                stagger = stagger + items * 100;
+            }
+
+            setTimeout(function () {
+                TweenMax.fromTo($obj, 1, {opacity: 0, scale: 0.7}, {opacity: 1.25, scale: 1, ease: Elastic.easeOut});
+            }, stagger);
+        });
+
         TweenMax.to($navigator, 0.3, {
             opacity: 1
         });
@@ -1070,9 +1090,9 @@ function stickyHeaderInit() {
 
     var headerSelector      = '.site-header',
         $header             = $(headerSelector),
-        headerHeight        = $header.height(),
+        headerHeight        = $header.outerHeight(),
         $headers            = $('.article__header'),
-        offset              = $headers.length ? $headers.first().height() : 0;
+        offset              = $headers.length ? $headers.first().outerHeight() : 0;
 
     $header.headroom({
         tolerance: 15,
@@ -1414,10 +1434,17 @@ $(window).on("debouncedresize", function(e) {
     resizeVideos();
     royalSliderInit();
 
-    if (!$('html').is('.ie9, .lt-ie9')) {
+    if (!$('html').is('.ie9, .lt-ie9') && !Modernizr.touch) {
         Parallax.initialize();
         CoverAnimation.initialize();
     }
+});
+
+$(window).on("orientationchange", function(e) {
+    setTimeout(function () {
+        Parallax.initialize();
+        CoverAnimation.initialize();
+    }, 300)
 });
 
 var latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop(),

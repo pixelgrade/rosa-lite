@@ -87,8 +87,8 @@ if ( is_user_logged_in() ) {
 		'comment_notes_before' => '',
 		'comment_notes_after'  => '',
 		'fields'               => apply_filters( 'comment_form_default_fields', array(
-			'author' => '<p class="comment-form-author"><label for="author" class="show-on-ie8">' . __( 'Name', wpgrade::textdomain() ) . '</label><input id="author" name="author" type="text" placeholder="' . __( 'Name', wpgrade::textdomain() ) . '..." size="30" ' . $aria_req . ' /></p>',
-			'email'  => '<p class="comment-form-email"><label for="email" class="show-on-ie8">' . __( 'Email', wpgrade::textdomain() ) . '</label><input id="email" name="email" size="30" type="text" placeholder="' . __( 'your@email.com', wpgrade::textdomain() ) . '..." ' . $aria_req . ' /></p>'
+			'author' => '<p class="comment-form-author"><label for="author" class="show-on-ie8">' . __( 'Name', wpgrade::textdomain() ) . '</label><input id="author" name="author" value="' . esc_attr( $commenter['comment_author'] ) . '" type="text" placeholder="' . __( 'Name', wpgrade::textdomain() ) . '..." size="30" ' . $aria_req . ' /></p>',
+			'email'  => '<p class="comment-form-email"><label for="email" class="show-on-ie8">' . __( 'Email', wpgrade::textdomain() ) . '</label><input id="email" name="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" type="text" placeholder="' . __( 'your@email.com', wpgrade::textdomain() ) . '..." ' . $aria_req . ' /></p>'
 		) ),
 		'id_submit'            => 'comment-submit',
 		'label_submit'         => __( 'Submit', wpgrade::textdomain() ),
@@ -103,9 +103,9 @@ if ( is_user_logged_in() ) {
 		'comment_notes_before' => '',
 		'comment_notes_after'  => '',
 		'fields'               => apply_filters( 'comment_form_default_fields', array(
-			'author' => '<p class="comment-form-author"><label for="author" class="show-on-ie8">' . __( 'Name', wpgrade::textdomain() ) . '</label><input id="author" name="author" type="text" placeholder="' . __( 'Name', wpgrade::textdomain() ) . '..." size="30" ' . $aria_req . ' /></p><!--',
-			'email'  => '--><p class="comment-form-email"><label for="name" class="show-on-ie8">' . __( 'Email', wpgrade::textdomain() ) . '</label><input id="email" name="email" size="30" type="text" placeholder="' . __( 'your@email.com', wpgrade::textdomain() ) . '..." ' . $aria_req . ' /></p><!--',
-			'url'    => '--><p class="comment-form-url"><label for="url" class="show-on-ie8">' . __( 'Url', wpgrade::textdomain() ) . '</label><input id="url" name="url" size="30" placeholder="' . __( 'Website', wpgrade::textdomain() ) . '..." type="text"></p>'
+			'author' => '<p class="comment-form-author"><label for="author" class="show-on-ie8">' . __( 'Name', wpgrade::textdomain() ) . '</label><input id="author" name="author" value="' . esc_attr( $commenter['comment_author'] ) . '" type="text" placeholder="' . __( 'Name', wpgrade::textdomain() ) . '..." size="30" ' . $aria_req . ' /></p><!--',
+			'email'  => '--><p class="comment-form-email"><label for="name" class="show-on-ie8">' . __( 'Email', wpgrade::textdomain() ) . '</label><input id="email" name="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" type="text" placeholder="' . __( 'your@email.com', wpgrade::textdomain() ) . '..." ' . $aria_req . ' /></p><!--',
+			'url'    => '--><p class="comment-form-url"><label for="url" class="show-on-ie8">' . __( 'Url', wpgrade::textdomain() ) . '</label><input id="url" name="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" placeholder="' . __( 'Website', wpgrade::textdomain() ) . '..." type="text"></p>'
 		) ),
 		'id_submit'            => 'comment-submit',
 		'label_submit'         => __( 'Submit', wpgrade::textdomain() ),

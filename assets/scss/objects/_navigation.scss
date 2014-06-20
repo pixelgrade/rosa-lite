@@ -408,5 +408,20 @@ $nav-width: 200px;
 	.navigation--main .nav--main &.menu-item-has-children > a:after{
 		content: none;
 	}
+
+	.cart-icon-link{
+		@include rem(padding, $_u2 $_u);
+		display: block;
+	}
+
+	.widget_shopping_cart_content{
+		display: inline-block;
+	}
+
+	&:hover{
+		.sub-menu{
+			display: block;
+		}
+	}
 }
 

@@ -75,6 +75,21 @@ var Navigator = {
 
         this.update();
 
+        $('.navigator__item').each(function (i, obj) {
+
+            var items   = $('.navigator__item').length,
+                stagger = 3000 + i * 400,
+                $obj    = $(obj);
+
+            if ($obj.is('.navigator__item--selected')) {
+                stagger = stagger + items * 100;
+            }
+
+            setTimeout(function () {
+                TweenMax.fromTo($obj, 1, {opacity: 0, scale: 0.7}, {opacity: 1.25, scale: 1, ease: Elastic.easeOut});
+            }, stagger);
+        });
+
         TweenMax.to($navigator, 0.3, {
             opacity: 1
         });
