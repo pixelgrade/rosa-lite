@@ -46,7 +46,7 @@
 		width: 0;
 		height: 0;
 
-		border: 35px solid transparent;
+		border: 32px solid transparent;
 
 		border-bottom-color: $dark;
 
@@ -92,7 +92,7 @@
 //	margin-left: 2px;
 	color: white;
 
-	@include transform(translateX(-50%) translateY(-30%));
+	@include transform(translateX(-50%) translateY(-10%));
 
 	&:before, &:after{
 		content: "";
@@ -129,7 +129,7 @@
 	@extend .cf;
 	position: relative;
 
-	padding: $_3u 0;
+	padding: $_25u 0 $_2u 0;
 
 	font-size: 14px;
 	text-align: center;
@@ -156,7 +156,7 @@
 }
 
 .copyright-text{
-	margin-bottom: $_u;
+	margin-bottom: $_u15;
 }
 
 .nav--footer {

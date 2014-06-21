@@ -1540,7 +1540,7 @@ $sections[] = array(
 			'subtitle' => sprintf( __( 'Select how to insert the custom CSS into your pages.', wpgrade::textdomain() ), wpgrade::themename() ),
 			'default'  => 'inline',
 			'options'  => array(
-				'inlinee' => __( 'Inline <em>(recommended)</em>', wpgrade::textdomain() ),
+				'inline' => __( 'Inline <em>(recommended)</em>', wpgrade::textdomain() ),
 				'file'   => __( 'Write To File (might require file permissions)', wpgrade::textdomain() )
 			),
 			'select2'  => array( // here you can provide params for the select2 jquery call
