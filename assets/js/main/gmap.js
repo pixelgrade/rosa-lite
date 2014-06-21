@@ -118,7 +118,7 @@ function gmapInit() {
                     {
                         "stylers": [
                             { "saturation": -100 },
-                            { "gamma": 1.45 },
+                            { "gamma": 2.45 },
                             { "visibility": "simplified" }
                         ]
                     },{
@@ -126,7 +126,7 @@ function gmapInit() {
                         "stylers": [
                             { "hue": $("body").data("color") ? $("body").data("color") : "#ffaa00" },
                             { "saturation": 48 },
-                            { "gamma": 0.53 },
+                            { "gamma": 0.40 },
                             { "visibility": "on" }
                         ]
                     },{

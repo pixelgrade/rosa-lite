@@ -273,6 +273,25 @@
 			}
 		}
 	}
+
+	//Helper Classes
+	@include media-query(lap-and-up) {
+		& .widget.one-half {
+			width: 50% !important;
+		}
+
+		& .widget.one-third {
+			width: 33% !important;
+		}
+
+		& .widget.two-thirds {
+			width: 66% !important;
+		}
+	}
+
+	& .widget.centered {
+		text-align: center;
+	}
 }
 
 .sidebar--footer__light{
