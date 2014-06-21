@@ -6,6 +6,8 @@
 	.site-footer & {
 		a {
 			float: none;
+			position:relative;
+			top: -6px;
 		}
 
 		.pixcode--icon {
