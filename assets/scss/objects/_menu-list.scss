@@ -43,7 +43,7 @@ p.menu-list__item-desc {
 	margin-bottom: 0;
 	text-align: left;
 
-	&:after{
+	.menu-list__dotted &:after{
 		content: '';
 		position: absolute;
 		top: -10px;
