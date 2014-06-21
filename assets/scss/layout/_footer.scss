@@ -80,7 +80,7 @@
 .btn--top_text {
 	display: block;
 	position: absolute;
-	top: 0;
+	top: $_u2;
 	left: 50%;
 	width: 60px;
 	height: 60px;
@@ -193,7 +193,7 @@
 	padding: $_u 0;
 
 	@include media-query(lap-and-up) {
-		padding: $_3u 0;
+		padding: 66px 0 $_u2;
 	}
 
 	color: white;
@@ -213,7 +213,7 @@
 		display: inline-block;
 		vertical-align: middle;
 
-		margin-bottom: $_2u;
+		margin-bottom: 54px;
 		padding: 0;
 		border: $_u2 solid transparent;
 
