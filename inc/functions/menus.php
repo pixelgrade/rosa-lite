@@ -41,7 +41,7 @@ function wpgrade_main_nav() {
 /*
  * Function for displaying The Footer Menu
  */
-function wpgrade_footer_nav() {
+function wpgrade_footer_nav($before = '', $after = '') {
 	$theme_locations = get_nav_menu_locations();
 
 	if ( isset( $theme_locations["footer_menu"] ) && ( $theme_locations["footer_menu"] != 0 ) ) {
@@ -55,7 +55,7 @@ function wpgrade_footer_nav() {
 			'fallback_cb'    => false,
 			'menu_id'        => '',
 			'depth'          => 1,
-			'items_wrap'     => '<ul id="%1$s" class="%2$s  nav">%3$s</ul>',
+			'items_wrap'     => $before . '<ul id="%1$s" class="%2$s  nav">%3$s</ul>' . $after,
 		);
 
 		wp_nav_menu( $args );
