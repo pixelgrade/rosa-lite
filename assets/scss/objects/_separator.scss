@@ -107,4 +107,8 @@ hr, .separator {
 	font-family: Serif;
 
 	color: #9a9998;
+
+	.site-footer & {
+		color: $accent;
+	}
 }

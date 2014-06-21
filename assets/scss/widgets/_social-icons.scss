@@ -1,0 +1,25 @@
+/*------------------------------------------------*\
+               $SOCIAL ICONS WIDGET
+\*------------------------------------------------*/
+
+.widget_wpgrade_social_links {
+	.site-footer & {
+		a {
+			float: none;
+		}
+
+		.pixcode--icon {
+			color: white;
+			font-size: 24px;
+
+			&:hover {
+				color: $accent;
+			}
+
+			&:before {
+				margin-left:12px;
+				margin-right: 12px;
+			}
+		}
+	}
+}

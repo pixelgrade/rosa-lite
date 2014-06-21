@@ -3,7 +3,7 @@
 
 	height: 36px;
 	width: 100%;
-	margin-bottom: $_u4;
+	margin: 0 auto $_u4 auto;
 
 	input.form-control{
 		position: absolute;
@@ -24,7 +24,7 @@
 
 		@include placeholder{
 			@include font-size(14px);
-			color: $light;
+			color: #b3b3b3;
 			text-transform: none;
 		}
 
