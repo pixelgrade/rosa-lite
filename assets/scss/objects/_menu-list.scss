@@ -3,7 +3,9 @@
 \*------------------------------------*/
 
 .menu-list {
-
+	hr {
+		margin: $_15u 0;
+	}
 }
 
 .menu-list__title {
@@ -17,7 +19,7 @@
 
 .menu-list__item {
 	position: relative;
-	margin-bottom: 60px;
+	margin-bottom: 30px;
 
 	&:last-child{
 		margin-bottom: 0;
@@ -74,13 +76,12 @@ p.menu-list__item-desc {
 
 .menu-list__item-highlight-title{
 	position: absolute;
-	top: -42px;
+	top: -38px;
 	left: -18px;
 
 	padding: 0 18px;
 
-	@include font-size(13px);
-	font-weight: bold;
+	font-size: 13px;
 	text-transform: uppercase;
 	letter-spacing: 0.250em;
 
@@ -88,13 +89,19 @@ p.menu-list__item-desc {
 	background-color: $accent;
 }
 
-.menu-list__item-highlight-wrapper:before{
-	content: '';
-	position: absolute;
-	top: -18px;
-	left: -18px;
-	right: -18px;
-	bottom: -18px;
+.menu-list__item-highlight-wrapper {
 
-	border: 2px solid $accent;
+	margin-top: 54px;
+	margin-bottom: 38px;
+
+	&:before{
+		content: '';
+		position: absolute;
+		top: -18px;
+		left: -18px;
+		right: -18px;
+		bottom: -18px;
+
+		border: 2px solid $accent;
+	}
 }
