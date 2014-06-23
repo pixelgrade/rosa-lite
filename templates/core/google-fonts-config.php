@@ -25,11 +25,17 @@ if ( class_exists('ReduxFramework_customizer_typography')) {
 			}
 		}
 	}
-	$families = $typography->makeGoogleWebfontString( $typography->parent->typography ); ?>
-	<script type="text/javascript">
-		WebFont.load({ google: {families: [<?php echo ($families); ?>]} });
-	</script>
-<?php } else { // legacy compatibility ?>
+	if ( ! empty($typography->parent->typography) ) {
+		$families = $typography->makeGoogleWebfontString( $typography->parent->typography );
+		if ( ! empty($families)) {
+			?>
+			<script type="text/javascript">
+				WebFont.load({google: {families: [<?php echo ($families); ?>]}});
+			</script>
+		<?php
+		}
+	}
+} else { // legacy compatibility ?>
 	<script type="text/javascript">
 		WebFont.load({
 			google: {families: <?php echo json_encode($families); ?>}
