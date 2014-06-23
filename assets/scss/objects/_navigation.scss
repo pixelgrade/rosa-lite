@@ -294,6 +294,10 @@ $nav-width: 200px;
 			background: transparent;
 
 			@include transform(translateX(0));
+
+			@include media-query(palm) {
+				background: transparent !important;
+			}
 		}
 
 		.sub-menu .sub-menu{
