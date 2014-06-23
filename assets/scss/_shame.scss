@@ -2,8 +2,14 @@
               GENERAL STUFF
 \*------------------------------------*/
 //
+
+//@-ms-viewport{
+//	width: device-width;
+//	height: device-height;
+//}
+
 html {
-	-ms-touch-action: none;
+//	-ms-touch-action: pan-y;
 	overflow-x: hidden;
 }
 

@@ -137,7 +137,7 @@ $sections[] = array(
 										.article__header .article__headline .headline__description .star, .read-more-button, .read-more-button:hover, .shop-categories a.active,
 										body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart,
 										body.woocommerce ul.products li.product a.added_to_cart, body.woocommerce ul.products li.product .price ins,
-										.single-product .entry-summary .price span, body.woocommerce .star-rating span:before"
+										.single-product .entry-summary .price span, body.woocommerce .star-rating span:before, .comment-reply-link"
 					),
 					'background-color' => array(
 						'selector' => ".btn--primary, .shop-menu-item .shop-items-number, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover,
@@ -1664,7 +1664,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	// WooCommerce
 	// ------------------------------------------------------------------------
 	$sections[] = array(
-		'icon' => "icon-cart",
+		'icon' => "icon-money",
 		'icon_class' => '',
 		'title' => __('WooCommerce', wpgrade::textdomain()),
 		'desc' => '<p class="description">'.__('WooCommerce options!', wpgrade::textdomain()).'</p>',

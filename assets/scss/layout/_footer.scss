@@ -193,6 +193,10 @@
 		margin-bottom: 0;
 	}
 
+	@include media-query(palm) {
+		width: 100% !important;
+	}
+
 	.widget{
 		display: inline-block;
 		vertical-align: middle;
