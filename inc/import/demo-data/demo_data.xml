@@ -69,7 +69,7 @@
         <wp:term><wp:term_id>26</wp:term_id><wp:term_taxonomy>product_cat</wp:term_taxonomy><wp:term_slug>salads</wp:term_slug><wp:term_parent></wp:term_parent><wp:term_name><![CDATA[Salads]]></wp:term_name></wp:term>
         <wp:term><wp:term_id>24</wp:term_id><wp:term_taxonomy>product_cat</wp:term_taxonomy><wp:term_slug>starters</wp:term_slug><wp:term_parent></wp:term_parent><wp:term_name><![CDATA[Starters]]></wp:term_name></wp:term>
         <wp:term><wp:term_id>2</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug>main-menu</wp:term_slug><wp:term_name><![CDATA[Main Menu]]></wp:term_name></wp:term>
-        <wp:term><wp:term_id>12</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug>footer</wp:term_slug><wp:term_name><![CDATA[Footer]]></wp:term_name></wp:term>
+        <wp:term><wp:term_id>12</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug>footer-menu</wp:term_slug><wp:term_name><![CDATA[Footer Menu]]></wp:term_name></wp:term>
 
         <generator>http://wordpress.org/?v=3.9.1</generator>
 
@@ -656,7 +656,7 @@
             <wp:post_type>nav_menu_item</wp:post_type>
             <wp:post_password></wp:post_password>
             <wp:is_sticky>0</wp:is_sticky>
-            <category domain="nav_menu" nicename="footer"><![CDATA[Footer]]></category>
+            <category domain="nav_menu" nicename="footer-menu"><![CDATA[Footer Menu]]></category>
             <wp:postmeta>
                 <wp:meta_key>_menu_item_type</wp:meta_key>
                 <wp:meta_value><![CDATA[post_type]]></wp:meta_value>
@@ -711,7 +711,7 @@
             <wp:post_type>nav_menu_item</wp:post_type>
             <wp:post_password></wp:post_password>
             <wp:is_sticky>0</wp:is_sticky>
-            <category domain="nav_menu" nicename="footer"><![CDATA[Footer]]></category>
+            <category domain="nav_menu" nicename="footer-menu"><![CDATA[Footer Menu]]></category>
             <wp:postmeta>
                 <wp:meta_key>_menu_item_type</wp:meta_key>
                 <wp:meta_value><![CDATA[post_type]]></wp:meta_value>
