@@ -83,8 +83,11 @@ html, body, #page {
 }
 
 // contain margins of child elements
-.page-content {
-	overflow: hidden;
+@include media-query(palm) {
+
+	.page-content {
+		padding-top: 72px;
+	}
 }
 
 // apply a null transform so it is consisten
