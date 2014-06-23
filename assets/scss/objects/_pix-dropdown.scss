@@ -80,6 +80,11 @@
 			display: none;
 			padding: $_u2 0;
 
+			// categories dropdown needs background
+			.page-content & {
+				background: white;
+			}
+
 			&:before{
 				content: "";
 
