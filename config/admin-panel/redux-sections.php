@@ -1664,7 +1664,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	// WooCommerce
 	// ------------------------------------------------------------------------
 	$sections[] = array(
-		'icon' => "icon-cart",
+		'icon' => "icon-money",
 		'icon_class' => '',
 		'title' => __('WooCommerce', wpgrade::textdomain()),
 		'desc' => '<p class="description">'.__('WooCommerce options!', wpgrade::textdomain()).'</p>',
