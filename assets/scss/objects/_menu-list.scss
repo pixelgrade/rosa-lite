@@ -4,6 +4,24 @@
 
 .menu-list {
 
+	hr.dots{
+		position: absolute;
+		bottom: 4px;
+		left: 0;
+		right: 0;
+		z-index: 1;
+
+		margin: 0;
+		
+		height: 3px;
+		display: block;
+
+		background-image: radial-gradient(circle closest-side, $lightest 99%, transparent 1%);
+		background-position: bottom;
+		background-size: 6px 3px;
+		background-repeat: repeat-x;
+	}
+	
 }
 
 .menu-list__title {
@@ -26,15 +44,18 @@
 
 .menu-list__item-title {
 	position: relative;
-	z-index: 5;
-	
-	display: inline-block;
+
 	margin-top: 0;
 	margin-bottom: 0;
-	margin-right: $_3u;
+	padding-right: $_3u;
 
 	background-color: white;
 	text-align: left;
+	
+	.item-title{
+		position: relative;
+		z-index: 5;
+	}
 }
 
 p.menu-list__item-desc {
@@ -42,22 +63,6 @@ p.menu-list__item-desc {
 
 	margin-bottom: 0;
 	text-align: left;
-
-	.menu-list__dotted &:after{
-		content: '';
-		position: absolute;
-		top: -10px;
-		left: 0;
-		right: 0;
-
-		height: 3px;
-		display: block;
-
-		background-image: radial-gradient(circle closest-side, $lightest 99%, transparent 1%);
-		background-position: bottom;
-		background-size: 6px 3px;
-		background-repeat: repeat-x;
-	}
 }
 
 .menu-list__item-price {
