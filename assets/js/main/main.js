@@ -7,7 +7,7 @@ function niceScrollInit() {
 
     var smoothScroll = $('body').data('smoothscrolling') !== undefined;
 
-    if (smoothScroll && !is_OSX && !touch) {
+    if (smoothScroll && !is_OSX && !Modernizr.touch && !is_mobile_ie) {
 
         var $window = $(window);		// Window object
 
@@ -248,6 +248,10 @@ $(window).load(function(){
 	if (globalDebug) {console.group("OnWindowLoad");}
 
     stickyHeaderInit();
+
+    if (is_mobile_ie) {
+        $("html").addClass("mobile-ie");
+    }
 
     //Set textarea from contact page to autoresize
     if($("textarea").length) { $("textarea").autosize(); }

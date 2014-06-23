@@ -5,14 +5,15 @@ var phone, touch, ltie9, dh, ar, fonts, ieMobile;
 var ua = navigator.userAgent;
 var winLoc = window.location.toString();
 
-var is_webkit = ua.match(/webkit/i);
-var is_firefox = ua.match(/gecko/i);
-var is_newer_ie = ua.match(/msie (9|([1-9][0-9]))/i);
-var is_older_ie = ua.match(/msie/i) && !is_newer_ie;
-var is_ancient_ie = ua.match(/msie 6/i);
-var is_ie = is_ancient_ie || is_older_ie || is_newer_ie;
-var is_mobile = ua.match(/mobile/i);
-var is_OSX = (ua.match(/(iPad|iPhone|iPod|Macintosh)/g) ? true : false);
+var is_webkit       = ua.match(/webkit/i);
+var is_firefox      = ua.match(/gecko/i);
+var is_newer_ie     = ua.match(/msie (9|([1-9][0-9]))/i);
+var is_older_ie     = ua.match(/msie/i) && !is_newer_ie;
+var is_ancient_ie   = ua.match(/msie 6/i);
+var is_ie           = is_ancient_ie || is_older_ie || is_newer_ie;
+var is_mobile_ie    = navigator.userAgent.indexOf('IEMobile') !== -1;
+var is_mobile       = ua.match(/mobile/i);
+var is_OSX          = ua.match(/(iPad|iPhone|iPod|Macintosh)/g ? true : false);
 
 
 var nua = navigator.userAgent;
@@ -1145,7 +1146,7 @@ function niceScrollInit() {
 
     var smoothScroll = $('body').data('smoothscrolling') !== undefined;
 
-    if (smoothScroll && !is_OSX && !touch) {
+    if (smoothScroll && !is_OSX && !Modernizr.touch && !is_mobile_ie) {
 
         var $window = $(window);		// Window object
 
@@ -1386,6 +1387,10 @@ $(window).load(function(){
 	if (globalDebug) {console.group("OnWindowLoad");}
 
     stickyHeaderInit();
+
+    if (is_mobile_ie) {
+        $("html").addClass("mobile-ie");
+    }
 
     //Set textarea from contact page to autoresize
     if($("textarea").length) { $("textarea").autosize(); }

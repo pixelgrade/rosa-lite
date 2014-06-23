@@ -309,6 +309,23 @@ $nav-width: 200px;
 		@include transition(transform .3s cubic-bezier(0.86, 0, 0.07, 1));
 	}
 
+	// I don't wanna do this anymore
+	// I don't wanna be the reason why
+	// Every time I seed this kind of code
+	// I feel I die a little more inside
+	.mobile-ie.navigation--is-visible {
+
+		#page {
+			position: absolute;
+			left: $nav-width;
+			@include transform(none);
+		}
+
+		.site-header {
+			position: absolute;
+		}
+	}
+
 	.navigation--is-visible{
 
 		#page {
