@@ -1387,6 +1387,10 @@ $(window).load(function(){
 
     stickyHeaderInit();
 
+    //Set textarea from contact page to autoresize
+    if($("textarea").length) { $("textarea").autosize(); }
+
+    $(".pixcode--tabs").organicTabs();
 
     if (!$('html').is('.ie9, .lt-ie9')) {
         Parallax.initialize();
@@ -1410,11 +1414,6 @@ $(window).load(function(){
     initVideos();
     resizeVideos();
     gmapInit();
-
-    //Set textarea from contact page to autoresize
-    if($("textarea").length) { $("textarea").autosize(); }
-
-    $(".pixcode--tabs").organicTabs();
 
 
     if(!empty($('#date-otreservations'))){
