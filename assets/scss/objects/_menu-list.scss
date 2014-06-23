@@ -96,10 +96,20 @@ p.menu-list__item-desc {
 
 .menu-list__item-highlight-title{
 	position: absolute;
-	top: -38px;
-	left: -18px;
 
-	padding: 0 18px;
+	@include media-query(palm){
+		top: -21px;
+		left: 0;
+
+		padding: 0 $_u2;
+	}
+	@include media-query(lap-and-up){
+		top: -38px;
+		left: -18px;
+
+		padding: 0 18px;
+	}
+
 
 	font-size: 13px;
 	text-transform: uppercase;
@@ -114,14 +124,32 @@ p.menu-list__item-desc {
 	margin-top: 54px;
 	margin-bottom: 38px;
 
-	&:before{
+	&:before {
 		content: '';
 		position: absolute;
-		top: -18px;
-		left: -18px;
-		right: -18px;
-		bottom: -18px;
 
 		border: 2px solid $accent;
+	}
+
+	@include media-query(palm){
+		padding: $_u2;
+
+		&:before {
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+	}
+
+	@include media-query(lap-and-up){
+		&:before{
+			top: -18px;
+			left: -18px;
+			right: -18px;
+			bottom: -18px;
+
+			border: 2px solid $accent;
+		}
 	}
 }
