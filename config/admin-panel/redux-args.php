@@ -132,7 +132,7 @@ return array(
 	//'import_icon_type' => 'image',
 
 	// disable the panel sections showing as submenu items
-	//'allow_sub_menu' => false, # default: true
+	'allow_sub_menu' => false, # default: true
 
 	// Set ANY custom page help tabs, displayed using the new help tab API.
 	// Tabs are shown in order of definition.
