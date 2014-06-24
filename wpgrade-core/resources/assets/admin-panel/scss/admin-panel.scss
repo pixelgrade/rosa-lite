@@ -1,9 +1,9 @@
 //@import "compass";
-@import "vars";
-@import "resets";
-@import "tools";
-@import "layout";
-
+@import "vars",
+		"resets",
+		"tools",
+		"layout",
+		"icons";
 
 @function rem($px) {
 	@return $px;
@@ -196,8 +196,16 @@
 			}
 		}
 
-		.redux-group-tab-link-a span.group_title {
-			padding: 0;
+		.redux-group-tab-link-a{
+			position: static;
+			
+			span.group_title{
+				padding: 0;
+			}
+			
+			i{
+				left: 0;
+			}
 		}
 	}
 
@@ -225,7 +233,8 @@
 			opacity: 0.05;
 		}
 	}
-}
+
+} // .redux-container
 
 h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li {
 	&:empty {
