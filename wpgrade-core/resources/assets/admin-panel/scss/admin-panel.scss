@@ -1,4 +1,4 @@
-//@import "compass";
+@charset "UTF-8";
 @import "vars",
 		"resets",
 		"tools",
@@ -25,82 +25,100 @@
 	font-size: rem(24px);
 }
 
+.alpha {
+	@extend .fs60;
+	font-weight: 100;
+	color: $accent2;
+	position: relative;
+
+	&:after {
+		content: "";
+		display: block;
+		width: 150%;
+		height: 2px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		background: $accent;
+	}
+}
+
+.beta {
+	@extend .fs42;
+	float: left;
+	position: relative;
+	padding-right: 0.5em;
+	color: $accent;
+
+	&:before {
+		content: "";
+		display: block;
+		width: 9999em;
+		height: 1px;
+		background: $border;
+		position: absolute;
+		top: 50%;
+		left: 100%;
+		// what the fuck is wrong with that font's line-height?
+		margin-top: -0.05em;
+	}
+
+	// so we clear the next element as we don't have access to markup
+	+ * {
+		clear: left;
+
+		// there's a display none on empty elements
+		// but we need this here
+		&:empty {display: block;}
+	}
+}
 
 .redux-container {
 	@extend %font--body;
 	position: relative;
 	background: $accent;
 	background-image: linear-gradient(135deg, $accent2, $accent);
-
-	#redux-intro-text {
-		background: white;
-		border: 0;
-		padding: 0;
-		overflow: hidden;
-	}
-
-	.redux-main {
-		background: white;
-	}
+	background-attachment: fixed;
+	background-size: 100%;
+	background-repeat: none;
 
 	// TYPOGRAPHY
 	h1, h2, h3, h4, h5, h6 {
 		@extend %font--heading;
 	}
 
-	.alpha {
-		@extend .fs60;
-		font-weight: 100;
-		color: $accent2;
+	#redux-intro-text {
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 22%;
+		color: white;
+		border: 0;
+		padding: 0;
+		overflow: hidden;
+		background: none;
+		margin: 0;
+		box-shadow: none;
+
 	}
 
-	h1 {
-		@extend .alpha;
-	}
+	.redux-main {
+		background: white;
 
-	h2 {
-		@extend .fs42;
-	}
+		.redux-group-tab {
 
-	h3 {
-		@extend .fs32;
-	}
+			> h1, > h2, > h3, > h4, > h5, > h6 {
+				@extend .alpha;
+				float: none;
 
-	h4 {
-		@extend .fs24;
-	}
-
-	.redux-group-tab {
-
-		h3 {
-			margin: 0;
-			border: 0;
-			float: left;
-			position: relative;
-			padding-right: 0.5em;
-			color: $accent;
-
-			&:before {
-				content: "";
-				display: block;
-				width: 9999em;
-				height: 1px;
-				background: $border;
-				position: absolute;
-				top: 50%;
-				left: 100%;
-				// what the fuck is wrong with that font's line-height?
-				margin-top: -0.05em;
+				&:before {
+					display: none;
+				}
 			}
+		}
 
-			// so we clear the next element as we don't have access to markup
-			+ * {
-				clear: left;
-
-				// there's a display none on empty elements
-				// but we need this here
-				&:empty {display: block;}
-			}
+		h1, h2, h3, h4, h5, h6 {
+			@extend .beta;
 		}
 	}
 
@@ -209,32 +227,20 @@
 		}
 	}
 
-	#redux-intro-text {
-		padding: 6em 6em 4em;
-		overflow: hidden;
-
-		> h4 {
-			@extend .alpha;
-			position: relative;
-
-			&:after {
-				content: "";
-				display: block;
-				width: 150%;
-				height: 2px;
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				background: $accent;
-			}
-		}
-
-		> p {
-			opacity: 0.05;
-		}
+	// hide 'n seek
+	.redux-group-tab[id="1_section_group"] table,
+	.redux-group-tab[id="1_section_group"] div.redux-field-customizer_info {
+		display: none;
 	}
 
+	.switch-options {
+		float: right;
+		margin-top: -6em;
+	}
+
+
 } // .redux-container
+
 
 h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li {
 	&:empty {
