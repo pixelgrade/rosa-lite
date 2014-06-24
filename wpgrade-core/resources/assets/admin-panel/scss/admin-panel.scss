@@ -1,78 +1,17 @@
-//@import "compass";
+@import "compass";
+@import "vars";
+@import "resets";
 @import "layout";
 
-
-// RESEEEEEET
-
-.redux-container {
-
-	// let's try to fill some stuff
-	width: auto;
-	margin: 0 -20px 0 -22px;
-	border: 0;
-
-	*, *:before, *:after {
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-//		margin: 0;
-//		padding: 0;
-
-		// hard reset
-		background: none;
-		border: 0;
-	}
-
-	#redux-footer {
-		background: none !important;
-		border: 0;
-		margin: 0;
-		padding: 0;
-	}
-
-	.redux-info-field.redux-normal {
-		background: none;
-		color: inherit;
-		margin: 0;
-		padding: 0;
-	}
-
-	// that table :sigh:
-	.form-table {
-		&, thead, tbody, tfoot, tr, th, td {
-			display: block;
-		}
-	}
-}
 
 @function rem($px) {
 	@return $px;
 }
 
-// VARS
-
-$border:    #d9d9d9;
-$light:     #919191;
-$gray:      #515151;
-$dark:      #262626;
-$accent:    #0095ea;
-
-// FONTS
-
-@import url('http://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans:400,600');
-
-%font--body {
-	font-family: "Open Sans", sans-serif;
-}
-
-%font--heading {
-	font-family: "Josefin Sans", sans-serif;
-	text-transform: uppercase;
-}
-
 
 .redux-container {
 	@extend %font--body;
+	position: relative;
 
 	h1, h2, h3, h4, h5, h6 {
 		@extend %font--heading;
@@ -98,13 +37,6 @@ $accent:    #0095ea;
 
 	.redux-sidebar {
 		background: $accent;
-		width: 16%;
-	}
-
-	.redux-main {
-		width: 62%;
-		margin-left: 0;
-		float: left;
 	}
 
 	.redux-main + .clear {
@@ -125,6 +57,24 @@ $accent:    #0095ea;
 
 	.clear{
 		display: none;
+	}
+
+	.redux-sidebar .redux-group-menu li.active a{
+		width: auto;
+	}
+
+	.expand_options{
+		display: none;
+	}
+
+	#redux-header{
+		display: none;
+	}
+
+	#info_bar{
+		padding: 0;
+		background: transparent;
+		border: 0;
 	}
 }
 

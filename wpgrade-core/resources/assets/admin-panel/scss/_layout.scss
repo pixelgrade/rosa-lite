@@ -3,11 +3,31 @@
 \*------------------------------------*/
 
 // Sidebars, etc
+.redux-container{
+	.redux-sidebar {
+		position: absolute;
+		left: 0;
+		top: 0;
 
-.redux-sidebar {
-	width: 258px;
-}
+		width: 16%;
+		height: 100%;
+	}
 
-.redux-main{
-	margin-left: 258px;
+	.redux-main{
+		margin-left: 16%;
+		width: 62%;
+		float: left;
+	}
+
+	.redux-action_bar{
+		position: absolute;
+		right: 0;
+		bottom: 0;
+
+		float: none;
+	}
+
+	#redux-intro-text{
+		margin-left: 16%;
+	}
 }

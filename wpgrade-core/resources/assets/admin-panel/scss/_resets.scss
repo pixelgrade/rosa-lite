@@ -1,0 +1,44 @@
+/*------------------------------------*\
+    $RESET
+\*------------------------------------*/
+
+.redux-container {
+
+	// let's try to fill some stuff
+	width: auto;
+	margin: 0 -20px 0 -22px;
+	border: 0;
+
+	*, *:before, *:after {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		//		margin: 0;
+		//		padding: 0;
+
+		// hard reset
+		background: none;
+		border: 0;
+	}
+
+	#redux-footer {
+		background: none !important;
+		border: 0;
+		margin: 0;
+		padding: 0;
+	}
+
+	.redux-info-field.redux-normal {
+		background: none;
+		color: inherit;
+		margin: 0;
+		padding: 0;
+	}
+
+	// that table :sigh:
+	.form-table {
+		&, thead, tbody, tfoot, tr, th, td {
+			display: block;
+		}
+	}
+}

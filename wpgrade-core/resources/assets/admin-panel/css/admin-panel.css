@@ -1,15 +1,22 @@
 @import url("http://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans:400,600");
 /*------------------------------------*\
-    $LAYOUT
+    $VARS
 \*------------------------------------*/
-.redux-sidebar {
-  width: 258px;
+/*------------------------------------*\
+    $FONTS
+\*------------------------------------*/
+.redux-container {
+  font-family: "Open Sans", sans-serif;
 }
 
-.redux-main {
-  margin-left: 258px;
+.redux-container h1, .redux-container h2, .redux-container h3, .redux-container h4, .redux-container h5, .redux-container h6 {
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
 }
 
+/*------------------------------------*\
+    $RESET
+\*------------------------------------*/
 .redux-container {
   width: auto;
   margin: 0 -20px 0 -22px;
@@ -38,15 +45,34 @@
   display: block;
 }
 
+/*------------------------------------*\
+    $LAYOUT
+\*------------------------------------*/
+.redux-container .redux-sidebar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 16%;
+  height: 100%;
+}
+.redux-container .redux-main {
+  margin-left: 16%;
+  width: 62%;
+  float: left;
+}
+.redux-container .redux-action_bar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  float: none;
+}
+.redux-container #redux-intro-text {
+  margin-left: 16%;
+}
+
 .redux-container {
-  font-family: "Open Sans", sans-serif;
+  position: relative;
 }
-
-.redux-container h1, .redux-container h2, .redux-container h3, .redux-container h4, .redux-container h5, .redux-container h6 {
-  font-family: "Josefin Sans", sans-serif;
-  text-transform: uppercase;
-}
-
 .redux-container h1 {
   font-size: 60px;
 }
@@ -61,12 +87,6 @@
 }
 .redux-container .redux-sidebar {
   background: #0095ea;
-  width: 16%;
-}
-.redux-container .redux-main {
-  width: 62%;
-  margin-left: 0;
-  float: left;
 }
 .redux-container .redux-main + .clear {
   display: none;
@@ -82,6 +102,20 @@
 }
 .redux-container .clear {
   display: none;
+}
+.redux-container .redux-sidebar .redux-group-menu li.active a {
+  width: auto;
+}
+.redux-container .expand_options {
+  display: none;
+}
+.redux-container #redux-header {
+  display: none;
+}
+.redux-container #info_bar {
+  padding: 0;
+  background: transparent;
+  border: 0;
 }
 
 /*# sourceMappingURL=admin-panel.css.map */
