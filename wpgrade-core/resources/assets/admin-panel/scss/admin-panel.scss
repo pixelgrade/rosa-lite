@@ -30,6 +30,7 @@
 	@extend %font--body;
 	position: relative;
 	background: $accent;
+	background-image: linear-gradient(135deg, $accent2, $accent);
 
 	#redux-intro-text {
 		background: white;
@@ -170,32 +171,32 @@
 
 	// Sidebar menu
 
-	.redux-sidebar{
-		.redux-group-menu{
-			li{
+	.redux-sidebar {
+
+		.redux-group-menu {
+
+			li {
 				padding-left: 22%;
 
-				a{
+				a {
 					padding: 20px 0;
-
-//					@include font-size(16px);
 					font-size: 16px;
 					text-transform: uppercase;
 					text-align: left;
 				}
 
-				&.active a{
+				&.active a {
 					color: white;
 				}
 
-				&.divide{
+				&.divide {
 					border: 0;
 					padding: 24px 0;
 				}
 			}
 		}
 
-		.redux-group-tab-link-a span.group_title{
+		.redux-group-tab-link-a span.group_title {
 			padding: 0;
 		}
 	}
