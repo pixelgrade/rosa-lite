@@ -56,4 +56,18 @@
 		color: white;
 		opacity: 1;
 	}
+
+	.redux-action_bar{
+		float: none;
+	}
+
+	#info_bar{
+		border: none;
+		box-shadow: none;
+	}
+}
+
+#rosa_options\[defaults-section\],
+#rosa_options\[defaults\]{
+	display: none; // temporary
 }

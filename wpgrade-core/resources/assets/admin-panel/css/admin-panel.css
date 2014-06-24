@@ -47,6 +47,15 @@
     background: transparent;
     color: white;
     opacity: 1; }
+  .redux-container .redux-action_bar {
+    float: none; }
+  .redux-container #info_bar {
+    border: none;
+    box-shadow: none; }
+
+#rosa_options\[defaults-section\],
+#rosa_options\[defaults\] {
+  display: none; }
 
 /*------------------------------------*\
     $LAYOUT
@@ -71,6 +80,9 @@
   margin-left: 16%; }
 .redux-container .form-table th {
   width: auto; }
+.redux-container .redux-action_bar {
+  margin-bottom: 12px;
+  text-align: center; }
 
 .fs60, .redux-container .alpha, .redux-container h1, .redux-container #redux-intro-text > h4 {
   font-size: 60px; }
@@ -158,6 +170,20 @@
     padding: 0;
     border: solid white;
     border-width: 0 6em; }
+  .redux-container .redux-sidebar .redux-group-menu li {
+    padding-left: 22%; }
+    .redux-container .redux-sidebar .redux-group-menu li a {
+      padding: 20px 0;
+      font-size: 16px;
+      text-transform: uppercase;
+      text-align: left; }
+    .redux-container .redux-sidebar .redux-group-menu li.active a {
+      color: white; }
+    .redux-container .redux-sidebar .redux-group-menu li.divide {
+      border: 0;
+      padding: 24px 0; }
+  .redux-container .redux-sidebar .redux-group-tab-link-a span.group_title {
+    padding: 0; }
   .redux-container #redux-intro-text {
     padding: 6em 6em 4em;
     overflow: hidden; }
