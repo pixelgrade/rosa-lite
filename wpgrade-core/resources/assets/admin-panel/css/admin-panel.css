@@ -503,8 +503,21 @@
   margin-bottom: 10px !important;
   display: block;
 }
+.redux-container .redux-sidebar .redux-group-menu li:after {
+  content: "";
+  position: absolute;
+  left: 22%;
+  right: 0;
+  bottom: 0;
+  display: block;
+  height: 1px;
+  background-color: white;
+  background-blend-mode: overlay;
+  opacity: 0.5;
+}
 .redux-container .redux-sidebar .redux-group-menu li a {
   padding: 20px 0;
+  border: 0;
   font-family: "Josefin Sans", serif;
   font-weight: 400;
   font-size: 16px;
@@ -514,9 +527,25 @@
 .redux-container .redux-sidebar .redux-group-menu li.active a {
   color: white;
 }
+.redux-container .redux-sidebar .redux-group-menu li.active a:after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 48%;
+  display: block;
+  height: 10px;
+  width: 10px;
+  background: white;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(50%);
+  border-radius: 50%;
+}
 .redux-container .redux-sidebar .redux-group-menu li.divide {
   border: 0;
   padding: 24px 0;
+}
+.redux-container .redux-sidebar .redux-group-menu li.divide:after {
+  content: none;
 }
 .redux-container .redux-sidebar .redux-group-tab-link-a {
   position: static;
