@@ -87,13 +87,13 @@ return array(
 		'RestaurantMenu',
 	),
 	// importer
-		'import_homepage_name' => 'Home Page',
-		'import_blogpage_name' => 'News',
+	'import_homepage_name' => 'Home Page',
+	'import_blogpage_name' => 'News',
 
 	// decide which menus should be imported
 	'import_nav_menu'              => array(
 		'main_menu'   => 'Main Menu',
-		'footer_menu' => 'Footer Menu'
+		'footer_menu' => 'Footer Menu',
 	),
 	'resources'                    => array(
 		// script declarations; scripts must be enqueue'ed to appear

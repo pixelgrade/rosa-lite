@@ -2,8 +2,14 @@
               GENERAL STUFF
 \*------------------------------------*/
 //
+
+//@-ms-viewport{
+//	width: device-width;
+//	height: device-height;
+//}
+
 html {
-	-ms-touch-action: none;
+//	-ms-touch-action: pan-y;
 	overflow-x: hidden;
 }
 
@@ -83,8 +89,11 @@ html, body, #page {
 }
 
 // contain margins of child elements
-.page-content {
-	overflow: hidden;
+@include media-query(palm) {
+
+	.page-content {
+		padding-top: 72px;
+	}
 }
 
 // apply a null transform so it is consisten

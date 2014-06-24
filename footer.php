@@ -25,18 +25,12 @@ if ( ! is_404() ):
 		</aside>
 		<!-- .sidebar.sidebar- -footer -->
 		<div class="copyright-area <?php echo $footer_bottom_bar_style ?>">
-			<div class="flexbox  flexbox--btn-top">
-				<div class="flexbox__item  btn--top_left"><b></b></div>
-				<div class="flexbox__item  btn--top_wrapper">
-					<div class="btn--top">
-						<div class="btn--top_overflow">
-							<div class="btn--top_contour"></div>
-						</div>
-						<a href="#" class="btn--top_text"></a>
-					</div>
-				</div>
-				<div class="flexbox__item  btn--top_right"><b></b></div>
-			</div>
+            <div class="btn--top">
+                <a href="#" class="btn--top_text">
+                    <span class="btn__arrow btn__arrow--top"></span>
+                    <span class="btn__arrow btn__arrow--bottom"></span>
+                </a>
+            </div>
 			<div class="container">
 				<div class="footer-container">
 					<?php $copyright_text = wpgrade::option( 'copyright_text' );

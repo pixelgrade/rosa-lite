@@ -216,6 +216,8 @@ $nav-width: 200px;
 		top: 0;
 		bottom: 0;
 
+		-webkit-overflow-scrolling: touch;
+
 		overflow-y: scroll;
 
 		width: $nav-width;
@@ -294,6 +296,10 @@ $nav-width: 200px;
 			background: transparent;
 
 			@include transform(translateX(0));
+
+			@include media-query(palm) {
+				background: transparent !important;
+			}
 		}
 
 		.sub-menu .sub-menu{
@@ -304,6 +310,44 @@ $nav-width: 200px;
 	#page {
 		@include transition(transform .3s cubic-bezier(0.86, 0, 0.07, 1));
 	}
+
+	// I don't wanna do this anymore
+	// I don't wanna be the reason why
+	// Every time I seed this kind of code
+	// I feel I die a little more inside
+	.mobile-ie.navigation--is-visible {
+
+		#page {
+			position: fixed;
+			left: $nav-width;
+			@include transform(none);
+		}
+
+		.site-header {
+			position: fixed;
+			left: $nav-width;
+			top: 0;
+			@include transform(none);
+		}
+
+		.navigation {
+			position: fixed;
+		}
+
+		.navigation {
+			-ms-touch-action: pan-y;
+			overflow-y: auto;
+			height: 100%;
+			bottom: auto;
+		}
+	}
+
+	.mobile-ie {
+		#page, .site-header {
+			@include transition(none);
+		}
+	}
+
 
 	.navigation--is-visible{
 

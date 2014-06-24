@@ -5,14 +5,15 @@ var phone, touch, ltie9, dh, ar, fonts, ieMobile;
 var ua = navigator.userAgent;
 var winLoc = window.location.toString();
 
-var is_webkit = ua.match(/webkit/i);
-var is_firefox = ua.match(/gecko/i);
-var is_newer_ie = ua.match(/msie (9|([1-9][0-9]))/i);
-var is_older_ie = ua.match(/msie/i) && !is_newer_ie;
-var is_ancient_ie = ua.match(/msie 6/i);
-var is_ie = is_ancient_ie || is_older_ie || is_newer_ie;
-var is_mobile = ua.match(/mobile/i);
-var is_OSX = (ua.match(/(iPad|iPhone|iPod|Macintosh)/g) ? true : false);
+var is_webkit       = ua.match(/webkit/i);
+var is_firefox      = ua.match(/gecko/i);
+var is_newer_ie     = ua.match(/msie (9|([1-9][0-9]))/i);
+var is_older_ie     = ua.match(/msie/i) && !is_newer_ie;
+var is_ancient_ie   = ua.match(/msie 6/i);
+var is_ie           = is_ancient_ie || is_older_ie || is_newer_ie;
+var is_mobile_ie    = navigator.userAgent.indexOf('IEMobile') !== -1;
+var is_mobile       = ua.match(/mobile/i);
+var is_OSX          = ua.match(/(iPad|iPhone|iPod|Macintosh)/g ? true : false);
 
 
 var nua = navigator.userAgent;
@@ -726,6 +727,7 @@ var ScrollToTop = {
     start:      0,
     end:        0,
     timeline:   null,
+    played:     false,
 
     initialize: function () {
 
@@ -735,22 +737,39 @@ var ScrollToTop = {
             return;
         }
 
-        var footerHeight = $('.site-footer').height();
+        var footerHeight = $('.copyright-area').outerHeight();
 
         this.offsetTop  = this.$button.offset().top;
-        this.end        = this.offsetTop - windowHeight + footerHeight;
-        this.start      = this.end - footerHeight / 2;
+        this.start      = this.offsetTop - windowHeight + footerHeight * 3/4;
+        this.end        = this.start + windowHeight;
         this.timeline   = new TimelineMax({ paused: true });
 
-//        this.timeline.to($('.btn--top_contour'), 2, {
-//            width:  260,
-//            height: 260,
-//            top:    -130,
-//            left:   -100,
-//            ease:   Power2.easeOut
-//        });
-//
-//        this.timeline.fromTo($('.btn--top_text'), 2, {y: 15, scale: 0.5}, {y: 0, scale: 1, opacity: 1, ease: Expo.easeOut}, '-=1.3');
+        this.timeline.fromTo(this.$button, .6, {
+            top:    32
+        }, {
+            top:    0,
+            ease:   Power3.easeOut
+        });
+
+        this.timeline.fromTo($('.btn__arrow--top'), .4, {
+            y: 15,
+            opacity: 0
+        }, {
+            y: 0,
+            scale: 1,
+            opacity: 1,
+            ease: Back.easeOut
+        }, '-=0.1');
+
+        this.timeline.fromTo($('.btn__arrow--bottom'),.4, {
+            y: 15,
+            opacity: 0
+        }, {
+            y: 0,
+            scale: 1,
+            opacity: 1,
+            ease: Back.easeOut
+        }, '-=0.25');
 
         this.$button.on('click', function (e) {
             e.preventDefault();
@@ -771,7 +790,18 @@ var ScrollToTop = {
             return;
         }
 
-        setProgress(this.timeline, this.start, this.end);
+        if (this.start < latestKnownScrollY && latestKnownScrollY <= this.end) {
+            if (!this.played) {
+                this.timeline.play();
+                this.played = true;
+            }
+        } else {
+            if (this.played) {
+                this.timeline.reverse();
+                this.played = false;
+            }
+        }
+
     }
 }
 
@@ -1116,7 +1146,7 @@ function niceScrollInit() {
 
     var smoothScroll = $('body').data('smoothscrolling') !== undefined;
 
-    if (smoothScroll && !is_OSX && !touch) {
+    if (smoothScroll && !is_OSX && !Modernizr.touch && !is_mobile_ie) {
 
         var $window = $(window);		// Window object
 
@@ -1358,6 +1388,14 @@ $(window).load(function(){
 
     stickyHeaderInit();
 
+    if (is_mobile_ie) {
+        $("html").addClass("mobile-ie");
+    }
+
+    //Set textarea from contact page to autoresize
+    if($("textarea").length) { $("textarea").autosize(); }
+
+    $(".pixcode--tabs").organicTabs();
 
     if (!$('html').is('.ie9, .lt-ie9')) {
         Parallax.initialize();
@@ -1381,11 +1419,6 @@ $(window).load(function(){
     initVideos();
     resizeVideos();
     gmapInit();
-
-    //Set textarea from contact page to autoresize
-    if($("textarea").length) { $("textarea").autosize(); }
-
-    $(".pixcode--tabs").organicTabs();
 
 
     if(!empty($('#date-otreservations'))){

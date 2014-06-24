@@ -60,22 +60,6 @@
 	}
 }
 
-.btn--top_overflow {
-//	width: 60px;
-//	height: 30px;
-	position: relative;
-	overflow: hidden;
-}
-
-.btn--top_contour {
-	width: 220px;
-	height: 220px;
-	position: absolute;
-	top: -120px;
-	left: -80px;
-	border: 100px solid #121012;
-	border-radius: 50%;
-}
 
 .btn--top_text {
 	display: block;
@@ -94,8 +78,8 @@
 
 	@include transform(translateX(-50%) translateY(-30%));
 
-	&:before, &:after{
-		content: "";
+	.btn__arrow {
+		display: block;
 		position: absolute;
 		left: 50%;
 
@@ -112,11 +96,11 @@
 		}
 	}
 
-	&:before {
+	.btn__arrow--top {
 		top: 2px;
 	}
 
-	&:after{
+	.btn__arrow--bottom {
 		top: 8px;
 	}
 }
@@ -207,6 +191,10 @@
 		margin: 0 -$_u2;
 		margin-top: 0;
 		margin-bottom: 0;
+	}
+
+	@include media-query(palm) {
+		width: 100% !important;
 	}
 
 	.widget{

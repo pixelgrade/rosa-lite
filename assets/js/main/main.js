@@ -7,7 +7,7 @@ function niceScrollInit() {
 
     var smoothScroll = $('body').data('smoothscrolling') !== undefined;
 
-    if (smoothScroll && !is_OSX && !touch) {
+    if (smoothScroll && !is_OSX && !Modernizr.touch && !is_mobile_ie) {
 
         var $window = $(window);		// Window object
 
@@ -249,6 +249,14 @@ $(window).load(function(){
 
     stickyHeaderInit();
 
+    if (is_mobile_ie) {
+        $("html").addClass("mobile-ie");
+    }
+
+    //Set textarea from contact page to autoresize
+    if($("textarea").length) { $("textarea").autosize(); }
+
+    $(".pixcode--tabs").organicTabs();
 
     if (!$('html').is('.ie9, .lt-ie9')) {
         Parallax.initialize();
@@ -272,11 +280,6 @@ $(window).load(function(){
     initVideos();
     resizeVideos();
     gmapInit();
-
-    //Set textarea from contact page to autoresize
-    if($("textarea").length) { $("textarea").autosize(); }
-
-    $(".pixcode--tabs").organicTabs();
 
 
     if(!empty($('#date-otreservations'))){

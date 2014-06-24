@@ -8,10 +8,14 @@
 	<div class="search-form">
 		<?php get_search_form(); ?>
 	</div>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
 <?php else : ?>
 
 	<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', wpgrade::textdomain() ); ?></p>
 	<div class="search-form  search-form--404">
 		<?php get_search_form(); ?>
 	</div>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
 <?php endif; ?>
