@@ -176,10 +176,17 @@
 		.redux-group-menu {
 
 			li {
+				position: relative;
+
 				padding-left: 22%;
+				margin-bottom: 10px !important;
+				display: block;
 
 				a {
 					padding: 20px 0;
+
+					font-family: "Josefin Sans", serif;
+					font-weight: 400;
 					font-size: 16px;
 					text-transform: uppercase;
 					text-align: left;
@@ -204,7 +211,11 @@
 			}
 			
 			i{
-				left: 0;
+				top: 50%;
+				left: 3%;
+
+				-webkit-transform: translateY(-50%);
+				transform: translateY(-50%);
 			}
 		}
 	}

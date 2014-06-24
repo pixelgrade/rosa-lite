@@ -406,6 +406,7 @@
 .redux-container {
   position: relative;
   background: #0095ea;
+  background-image: linear-gradient(135deg, #4cebcc, #0095ea);
 }
 .redux-container #redux-intro-text {
   background: white;
@@ -497,10 +498,15 @@
   border-width: 0 6em;
 }
 .redux-container .redux-sidebar .redux-group-menu li {
+  position: relative;
   padding-left: 22%;
+  margin-bottom: 10px !important;
+  display: block;
 }
 .redux-container .redux-sidebar .redux-group-menu li a {
   padding: 20px 0;
+  font-family: "Josefin Sans", serif;
+  font-weight: 400;
   font-size: 16px;
   text-transform: uppercase;
   text-align: left;
@@ -519,7 +525,10 @@
   padding: 0;
 }
 .redux-container .redux-sidebar .redux-group-tab-link-a i {
-  left: 0;
+  top: 50%;
+  left: 3%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 .redux-container #redux-intro-text {
   padding: 6em 6em 4em;
