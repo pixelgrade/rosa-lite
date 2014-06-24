@@ -1,3 +1,4 @@
+@import url("http://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans:400,600");
 .redux-container {
   width: auto;
   margin: 0 -20px 0 -22px;
@@ -20,3 +21,36 @@
     padding: 0; }
   .redux-container .form-table, .redux-container .form-table thead, .redux-container .form-table tbody, .redux-container .form-table tfoot, .redux-container .form-table tr, .redux-container .form-table th, .redux-container .form-table td {
     display: block; }
+
+.redux-container {
+  font-family: "Open Sans", sans-serif; }
+
+.redux-container h1, .redux-container h2, .redux-container h3, .redux-container h4, .redux-container h5, .redux-container h6 {
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase; }
+
+.redux-container h1 {
+  font-size: 60px; }
+.redux-container h2 {
+  font-size: 42px; }
+.redux-container h3 {
+  font-size: 32px; }
+.redux-container h4 {
+  font-size: 24px; }
+.redux-container .redux-sidebar {
+  background: #0095ea;
+  width: 16%; }
+.redux-container .redux-main {
+  width: 62%;
+  margin-left: 0;
+  float: left; }
+.redux-container .redux-main + .clear {
+  display: none; }
+.redux-container #redux-footer-sticky {
+  width: 22%;
+  overflow: hidden;
+  background: #0095ea; }
+.redux-container #redux-footer {
+  width: auto !important; }
+
+/*# sourceMappingURL=admin-panel.css.map */

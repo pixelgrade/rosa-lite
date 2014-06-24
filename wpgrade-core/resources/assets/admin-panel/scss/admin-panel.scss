@@ -1,5 +1,7 @@
 //@import "compass";
 
+// RESEEEEEET
+
 .redux-container {
 
 	// let's try to fill some stuff
@@ -38,5 +40,82 @@
 		&, thead, tbody, tfoot, tr, th, td {
 			display: block;
 		}
+	}
+}
+
+@function rem($px) {
+	@return $px;
+}
+
+// VARS
+
+$border:    #d9d9d9;
+$light:     #919191;
+$gray:      #515151;
+$dark:      #262626;
+$accent:    #0095ea;
+
+// FONTS
+
+@import url('http://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans:400,600');
+
+%font--body {
+	font-family: "Open Sans", sans-serif;
+}
+
+%font--heading {
+	font-family: "Josefin Sans", sans-serif;
+	text-transform: uppercase;
+}
+
+
+.redux-container {
+	@extend %font--body;
+
+	h1, h2, h3, h4, h5, h6 {
+		@extend %font--heading;
+	}
+
+	h1 {
+		font-size: rem(60px);
+	}
+
+	h2 {
+		font-size: rem(42px);
+	}
+
+	h3 {
+		font-size: rem(32px);
+	}
+
+	h4 {
+		font-size: rem(24px);
+	}
+
+	// LAYOUT
+
+	.redux-sidebar {
+		background: $accent;
+		width: 16%;
+	}
+
+	.redux-main {
+		width: 62%;
+		margin-left: 0;
+		float: left;
+	}
+
+	.redux-main + .clear {
+		display: none;
+	}
+
+	#redux-footer-sticky {
+		width: 22%;
+		overflow: hidden;
+		background: $accent;
+	}
+
+	#redux-footer {
+		width: auto !important;
 	}
 }
