@@ -151,6 +151,42 @@
 	.redux-main{
 		background: white;
 	}
+
+
+
+
+	// Sidebar menu
+
+	.redux-sidebar{
+		.redux-group-menu{
+			li{
+				padding-left: 22%;
+
+				a{
+					padding: 20px 0;
+
+//					@include font-size(16px);
+					font-size: 16px;
+					text-transform: uppercase;
+					text-align: left;
+				}
+
+				&.active a{
+					color: white;
+				}
+
+				&.divide{
+					border: 0;
+					padding: 24px 0;
+				}
+			}
+		}
+
+		.redux-group-tab-link-a span.group_title{
+			padding: 0;
+		}
+	}
+
 }
 
 h2:empty {
