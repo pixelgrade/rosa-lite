@@ -1,22 +1,40 @@
+/*------------------------------------*\
+    $LAYOUT
+\*------------------------------------*/
+.redux-sidebar {
+  width: 258px;
+}
+
+.redux-main {
+  margin-left: 258px;
+}
+
 .redux-container {
   width: auto;
   margin: 0 -20px 0 -22px;
-  border: 0; }
-  .redux-container *, .redux-container *:before, .redux-container *:after {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    background: none;
-    border: 0; }
-  .redux-container #redux-footer {
-    background: none !important;
-    border: 0;
-    margin: 0;
-    padding: 0; }
-  .redux-container .redux-info-field.redux-normal {
-    background: none;
-    color: inherit;
-    margin: 0;
-    padding: 0; }
-  .redux-container .form-table, .redux-container .form-table thead, .redux-container .form-table tbody, .redux-container .form-table tfoot, .redux-container .form-table tr, .redux-container .form-table th, .redux-container .form-table td {
-    display: block; }
+  border: 0;
+}
+.redux-container *, .redux-container *:before, .redux-container *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: none;
+  border: 0;
+}
+.redux-container #redux-footer {
+  background: none !important;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.redux-container .redux-info-field.redux-normal {
+  background: none;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+.redux-container .form-table, .redux-container .form-table thead, .redux-container .form-table tbody, .redux-container .form-table tfoot, .redux-container .form-table tr, .redux-container .form-table th, .redux-container .form-table td {
+  display: block;
+}
+
+/*# sourceMappingURL=admin-panel.css.map */
