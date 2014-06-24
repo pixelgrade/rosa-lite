@@ -1,4 +1,4 @@
-@import "compass";
+//@import "compass";
 @import "vars";
 @import "resets";
 @import "layout";
@@ -12,6 +12,8 @@
 .redux-container {
 	@extend %font--body;
 	position: relative;
+
+	background: $accent;
 
 	h1, h2, h3, h4, h5, h6 {
 		@extend %font--heading;
@@ -34,10 +36,6 @@
 	}
 
 	// LAYOUT
-
-	.redux-sidebar {
-		background: $accent;
-	}
 
 	.redux-main + .clear {
 		display: none;
@@ -75,6 +73,10 @@
 		padding: 0;
 		background: transparent;
 		border: 0;
+	}
+
+	.redux-main{
+		background: white;
 	}
 }
 

@@ -44,6 +44,11 @@
 .redux-container .form-table, .redux-container .form-table thead, .redux-container .form-table tbody, .redux-container .form-table tfoot, .redux-container .form-table tr, .redux-container .form-table th, .redux-container .form-table td {
   display: block;
 }
+.redux-container .redux-sidebar .redux-group-menu li a {
+  background: transparent;
+  color: white;
+  opacity: 1;
+}
 
 /*------------------------------------*\
     $LAYOUT
@@ -64,6 +69,7 @@
   position: absolute;
   right: 0;
   bottom: 0;
+  width: 22%;
   float: none;
 }
 .redux-container #redux-intro-text {
@@ -72,6 +78,7 @@
 
 .redux-container {
   position: relative;
+  background: #0095ea;
 }
 .redux-container h1 {
   font-size: 60px;
@@ -84,9 +91,6 @@
 }
 .redux-container h4 {
   font-size: 24px;
-}
-.redux-container .redux-sidebar {
-  background: #0095ea;
 }
 .redux-container .redux-main + .clear {
   display: none;
@@ -116,6 +120,9 @@
   padding: 0;
   background: transparent;
   border: 0;
+}
+.redux-container .redux-main {
+  background: white;
 }
 
 /*# sourceMappingURL=admin-panel.css.map */
