@@ -13,10 +13,10 @@
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
-		//		margin: 0;
-		//		padding: 0;
 
 		// hard reset
+		// margin: 0;
+		// padding: 0;
 		background: none;
 		border: 0;
 	}
@@ -35,14 +35,23 @@
 		padding: 0;
 	}
 
+	// just in case
+	h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li {
+		margin: 0;
+		line-height: 1.5;
+	}
+
 	// that table :sigh:
 	.form-table {
 		&, thead, tbody, tfoot, tr, th, td {
 			display: block;
+			border: 0;
+			padding: 0;
+			margin: 0;
 		}
 	}
 
-	.redux-sidebar .redux-group-menu li a{
+	.redux-sidebar .redux-group-menu li a {
 		background: transparent;
 		color: white;
 		opacity: 1;

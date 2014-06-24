@@ -49,7 +49,7 @@
 
 	.alpha {
 		@extend .fs60;
-		font-weight: 300;
+		font-weight: 100;
 		color: $accent2;
 	}
 
@@ -74,19 +74,31 @@
 		h3 {
 			margin: 0;
 			border: 0;
+			float: left;
 			position: relative;
+			padding-right: 0.5em;
+			color: $accent;
 
-			&:after {
+			&:before {
 				content: "";
 				display: block;
-				width: 100%;
+				width: 9999em;
 				height: 1px;
 				background: $border;
 				position: absolute;
 				top: 50%;
-				right: 0;
+				left: 100%;
 				// what the fuck is wrong with that font's line-height?
 				margin-top: -0.05em;
+			}
+
+			// so we clear the next element as we don't have access to markup
+			+ * {
+				clear: left;
+
+				// there's a display none on empty elements
+				// but we need this here
+				&:empty {display: block;}
 			}
 		}
 	}
@@ -148,12 +160,13 @@
 		color: white;
 	}
 
-	.redux-main{
+	.redux-main {
 		background: white;
+		overflow: hidden;
+		padding: 0;
+		border: solid white;
+		border-width: 0 6em;
 	}
-
-
-
 
 	// Sidebar menu
 
@@ -195,13 +208,35 @@
 		}
 	}
 
+	#redux-intro-text {
+		padding: 6em 6em 4em;
+		overflow: hidden;
 
-}
+		> h4 {
+			@extend .alpha;
+			position: relative;
 
-h2:empty {
-	display: none;
-}
+			&:after {
+				content: "";
+				display: block;
+				width: 150%;
+				height: 2px;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				background: $accent;
+			}
+		}
 
-#redux-intro-text > h4 {
-	@extend .alpha;
+		> p {
+			opacity: 0.05;
+		}
+	}
+
+} // .redux-container
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li {
+	&:empty {
+		display: none;
+	}
 }

@@ -42,8 +42,15 @@
   margin: 0;
   padding: 0;
 }
+.redux-container h1, .redux-container h2, .redux-container h3, .redux-container h4, .redux-container h5, .redux-container h6, .redux-container p, .redux-container ul, .redux-container ol, .redux-container dl, .redux-container li {
+  margin: 0;
+  line-height: 1.5;
+}
 .redux-container .form-table, .redux-container .form-table thead, .redux-container .form-table tbody, .redux-container .form-table tfoot, .redux-container .form-table tr, .redux-container .form-table th, .redux-container .form-table td {
   display: block;
+  border: 0;
+  padding: 0;
+  margin: 0;
 }
 .redux-container .redux-sidebar .redux-group-menu li a {
   background: transparent;
@@ -83,7 +90,6 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 22%;
   float: none;
 }
 .redux-container #redux-intro-text {
@@ -411,24 +417,33 @@
   background: white;
 }
 .redux-container .alpha, .redux-container h1, .redux-container #redux-intro-text > h4 {
-  font-weight: 300;
+  font-weight: 100;
   color: #4cebcc;
 }
 .redux-container .redux-group-tab h3 {
   margin: 0;
   border: 0;
+  float: left;
   position: relative;
+  padding-right: 0.5em;
+  color: #0095ea;
 }
-.redux-container .redux-group-tab h3:after {
+.redux-container .redux-group-tab h3:before {
   content: "";
   display: block;
-  width: 100%;
+  width: 9999em;
   height: 1px;
   background: #d9d9d9;
   position: absolute;
   top: 50%;
-  right: 0;
+  left: 100%;
   margin-top: -0.05em;
+}
+.redux-container .redux-group-tab h3 + * {
+  clear: left;
+}
+.redux-container .redux-group-tab h3 + *:empty {
+  display: block;
 }
 .redux-container .redux-main + .clear {
   display: none;
@@ -476,6 +491,10 @@
 }
 .redux-container .redux-main {
   background: white;
+  overflow: hidden;
+  padding: 0;
+  border: solid white;
+  border-width: 0 6em;
 }
 .redux-container .redux-sidebar .redux-group-menu li {
   padding-left: 22%;
@@ -502,8 +521,28 @@
 .redux-container .redux-sidebar .redux-group-tab-link-a i {
   left: 0;
 }
+.redux-container #redux-intro-text {
+  padding: 6em 6em 4em;
+  overflow: hidden;
+}
+.redux-container #redux-intro-text > h4 {
+  position: relative;
+}
+.redux-container #redux-intro-text > h4:after {
+  content: "";
+  display: block;
+  width: 150%;
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #0095ea;
+}
+.redux-container #redux-intro-text > p {
+  opacity: 0.05;
+}
 
-h2:empty {
+h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty, p:empty, ul:empty, ol:empty, dl:empty, li:empty {
   display: none;
 }
 
