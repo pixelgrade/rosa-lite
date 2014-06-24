@@ -3,7 +3,8 @@
 \*------------------------------------*/
 
 // Sidebars, etc
-.redux-container{
+.redux-container {
+
 	.redux-sidebar {
 		position: absolute;
 		left: 0;
@@ -13,13 +14,14 @@
 		height: 100%;
 	}
 
-	.redux-main{
+	.redux-main, #redux-intro-text {
 		margin-left: 16%;
 		width: 62%;
 		float: left;
 	}
 
-	.redux-action_bar{
+	#redux-sticky {
+		width: 22%;
 		position: absolute;
 		right: 0;
 		bottom: 0;
@@ -29,5 +31,12 @@
 
 	#redux-intro-text{
 		margin-left: 16%;
+	}
+
+	.form-table {
+
+		th {
+			width: auto;
+		}
 	}
 }

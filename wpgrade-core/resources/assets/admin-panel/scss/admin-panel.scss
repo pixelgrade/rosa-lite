@@ -1,6 +1,7 @@
-@import "compass";
+//@import "compass";
 @import "vars";
 @import "resets";
+@import "tools";
 @import "layout";
 
 
@@ -8,29 +9,86 @@
 	@return $px;
 }
 
+.fs60 {
+	font-size: rem(60px);
+}
+
+.fs42 {
+	font-size: rem(42px);
+}
+
+.fs32 {
+	font-size: rem(32px);
+}
+
+.fs24 {
+	font-size: rem(24px);
+}
+
 
 .redux-container {
 	@extend %font--body;
 	position: relative;
 
+	#redux-intro-text {
+		background: white;
+		border: 0;
+		padding: 0;
+		overflow: hidden;
+	}
+
+	.redux-main {
+		background: white;
+	}
+
+	// TYPOGRAPHY
+
 	h1, h2, h3, h4, h5, h6 {
 		@extend %font--heading;
 	}
 
+	.alpha {
+		@extend .fs60;
+		font-weight: 300;
+		color: $accent2;
+	}
+
 	h1 {
-		font-size: rem(60px);
+		@extend .alpha;
 	}
 
 	h2 {
-		font-size: rem(42px);
+		@extend .fs42;
 	}
 
 	h3 {
-		font-size: rem(32px);
+		@extend .fs32;
 	}
 
 	h4 {
-		font-size: rem(24px);
+		@extend .fs24;
+	}
+
+	.redux-group-tab {
+
+		h3 {
+			margin: 0;
+			border: 0;
+			position: relative;
+
+			&:after {
+				content: "";
+				display: block;
+				width: 100%;
+				height: 1px;
+				background: $border;
+				position: absolute;
+				top: 50%;
+				right: 0;
+				// what the fuck is wrong with that font's line-height?
+				margin-top: -0.05em;
+			}
+		}
 	}
 
 	// LAYOUT
@@ -71,10 +129,34 @@
 		display: none;
 	}
 
-	#info_bar{
+	#info_bar {
 		padding: 0;
 		background: transparent;
 		border: 0;
 	}
+
+	.button {
+		height: auto;
+		border: 1px solid $border;
+		color: $border;
+		background: white;
+		margin: 0;
+		box-shadow: none;
+		border-radius: 0.5em;
+		padding: 0.25em 1.5em;
+	}
+
+	.button2 {
+		border: 1px solid #808080;
+		background: #808080;
+		color: white;
+	}
 }
 
+h2:empty {
+	display: none;
+}
+
+#redux-intro-text > h4 {
+	@extend .alpha;
+}
