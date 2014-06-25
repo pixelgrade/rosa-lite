@@ -27,6 +27,10 @@
 		border: 0;
 	}
 
+	.redux-main * {
+		@extend .mbp0;
+	}
+
 	#redux-footer {
 		background: none !important;
 		border: 0;
@@ -51,7 +55,15 @@
 	.form-table {
 		&, thead, tbody, tfoot, tr, th, td {
 			@extend .mbp0;
-			display: block;
+			display: block !important;
+		}
+
+//		tr[style="display:table-row;"] {
+//			display: block !important;
+//		}
+
+		tr.hide {
+			display: none !important;
 		}
 	}
 

@@ -1,4 +1,6 @@
 @charset "UTF-8";
+//@import "compass";
+
 @import "vars",
 		"resets",
 		"tools",
@@ -10,27 +12,27 @@
 }
 
 .fs60 {
-	font-size: rem(60px);
+	@include baseline(60px);
 }
 
 .fs42 {
-	font-size: rem(42px);
+	@include baseline(42px);
 }
 
 .fs32 {
-	font-size: rem(32px);
+	@include baseline(32px);
 }
 
 .fs24 {
-	font-size: rem(24px);
+	@include baseline(24px);
 }
 
 .fs19 {
-	font-size: rem(19px);
+	@include baseline(19px);
 }
 
 .fs14 {
-	font-size: rem(14px);
+	@include baseline(14px);
 }
 
 .alpha {
@@ -54,7 +56,7 @@
 }
 
 .beta {
-	@extend .fs42;
+	@extend .fs32;
 	float: left;
 	position: relative;
 	padding-right: 0.5em;
@@ -69,8 +71,6 @@
 		position: absolute;
 		top: 50%;
 		left: 100%;
-		// what the fuck is wrong with that font's line-height?
-		margin-top: -0.05em;
 	}
 
 	// so we clear the next element as we don't have access to markup
@@ -92,8 +92,19 @@
 	background-size: 100%;
 	background-repeat: none;
 
-	.hide {
-		display: none;
+	.form-table {
+
+		tr {
+			margin-bottom: rem(48px);
+
+			&[style="border-bottom:0;"] {
+				margin-bottom: 0;
+			}
+		}
+
+		.hide {
+			display: none;
+		}
 	}
 
 	// TYPOGRAPHY
@@ -185,7 +196,7 @@
 		border: 0;
 	}
 
-	.button, .button-primary, .button-secondary {
+	.button, .button-primary, .button-secondary, .button.remove-image {
 		height: auto;
 		border: 1px solid $border;
 		color: $border;
@@ -195,21 +206,44 @@
 		border-radius: 0.5em;
 		padding: 0.25em 1.5em;
 		margin-right: 1.5em;
+
+		-webkit-transition: all .2s ease-in-out;
+		-moz-transition: all .2s ease-in-out;
+		-ms-transition: all .2s ease-in-out;
+		-o-transition: all .2s ease-in-out;
+		transition: all .2s ease-in-out;
+
+		&:hover {
+			background: white;
+			color: $light;
+			border-color: $light;
+			box-shadow: none;
+		}
 	}
 
 	.button, .button-primary {
 		border: 1px solid #808080;
 		background: #808080;
 		color: white;
+
+		&:hover {
+			border-color: $accent;
+			background: $accent;
+			color: white;
+		}
 	}
 
 	.redux-main {
 		background: white;
 		overflow: hidden;
-		padding: 0;
 		border: solid white;
 		// how 'bout dat biatch? // lol, so hardcore // much hate
-		border-width: 0 6vw;
+		padding: 3vw 6vw 6vw;
+		border: 0;
+
+//		.description {
+//			@extend .fs14;
+//		}
 
 		.text_sortable {
 
@@ -345,10 +379,22 @@
 	.redux_field_th {
 		@extend .fs19;
 		color: $gray;
+//		margin-bottom: 0;
 
 		span {
 			@extend .fs14;
 			color: $light;
+//			margin-bottom: 0;
+		}
+	}
+
+	.upload_button_div {
+		@extend .fs14;
+	}
+
+	tr {
+		:last-child {
+			margin-bottom: 0;
 		}
 	}
 
@@ -386,6 +432,96 @@
 		color: white;
 	}
 
+	.redux-field-info {
+		overflow: hidden;
+	}
+
+	.screenshot {
+		display: block;
+		width: 9.9em;
+		height: 9.9em;
+		border: 1px solid $border;
+		border-collapse: separate;
+
+		background-image:
+			-moz-linear-gradient(45deg, #ddd 25%, transparent 25%,transparent 75%, #ddd 75%, #ddd 100%),
+			-moz-linear-gradient(45deg, #ddd 25%, transparent 25%,transparent 75%, #ddd 75%, #ddd 100%);
+		background-image:
+			-webkit-linear-gradient(45deg, #ddd 25%, transparent 25%,transparent 75%, #ddd 75%, #ddd 100%),
+			-webkit-linear-gradient(45deg, #ddd 25%, transparent 25%,transparent 75%, #ddd 75%, #ddd 100%);
+		-moz-background-size: 1em 1em;
+		background-size: 1em 1em;
+		-webkit-background-size: 1em 1em;
+		background-position: 0 0, 0.5em 0.5em;
+
+		box-shadow: white 0 0 0 0.25em inset;
+
+		> a {
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+			border: 0.25em solid transparent;
+
+			img {
+				display: inline-block;
+				max-width: 100%;
+			}
+		}
+	}
+
+	.row--image {
+		position: relative;
+
+		> .screenshot {
+			float: left;
+			margin-right: 2em;
+			margin-top: 0;
+			position: static;
+		}
+
+		td .screenshot {
+			position: absolute;
+			top: 0; left: 0;
+			background: none;
+			border-color: transparent;
+			overflow: hidden;
+
+			img {
+				position: absolute;
+				top: 50%; left: 50%;
+				max-width: 100%;
+				background: none;
+				-webkit-transform: translate(-50%, -50%);
+				-moz-transform: translate(-50%, -50%);
+				-ms-transform: translate(-50%, -50%);
+				-o-transform: translate(-50%, -50%);
+				transform: translate(-50%, -50%);
+			}
+		}
+
+		.redux_field_th {
+			padding-right: 0;
+		}
+
+		&:after {
+			content: " ";
+			display: table;
+			clear: both;
+		}
+	}
+
+	input[type="text"],
+	textarea {
+		box-shadow: none;
+		background: none;
+		padding: 0.5em 1em;
+		border: 2px solid $border;
+	}
+
+	.redux-field {
+//		@extend .fs19;
+	}
+
 } // .redux-container
 
 
@@ -395,7 +531,7 @@
 }
 
 
-h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li {
+h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li, th, td, tr {
 	&:empty {
 		display: none;
 	}

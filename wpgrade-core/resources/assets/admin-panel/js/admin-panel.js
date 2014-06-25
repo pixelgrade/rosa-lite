@@ -485,4 +485,14 @@
         }, 100);
     });
 
+    var $screenshot = $('.redux-main').find('.screenshot');
+
+    $screenshot.each(function (i, obj) {
+
+        var $this = $(obj);
+
+        $this.closest('tr').addClass('row--image');
+        $("<div class='screenshot'></div>").prependTo($this.closest('.row--image'));
+    });
+
 })(jQuery, window);
