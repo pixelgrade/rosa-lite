@@ -482,10 +482,22 @@
 
     $screenshot.each(function (i, obj) {
 
-        var $this = $(obj);
+        var $this = $(obj),
+            $newScreenshot = $("<div class='screenshot'></div>");
+
 
         $this.closest('tr').addClass('row--image');
-        $("<div class='screenshot'></div>").prependTo($this.closest('.row--image'));
+        $newScreenshot.prependTo($this.closest('.row--image'));
+
+        $newScreenshot.on('click', function (e) {
+            $newScreenshot.parent().find('.media_upload_button').trigger('click');
+        });
+
+        var $smallImage = $this.closest('tr').find('.js-image--small');
+
+        if ($smallImage.length) {
+            $smallImage.closest('tr').addClass('image--small');
+        }
     });
 
 
@@ -493,7 +505,6 @@
     $('.redux-group-menu a').on('click', function() {
         setTimeout(function(){
             var text = $('.redux-group-tab:visible > h3').html();
-
             $('#floating-title').html(text);
         }, 100);
     });

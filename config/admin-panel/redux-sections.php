@@ -62,18 +62,21 @@ $sections[] = array(
 		array(
 			'id'       => 'favicon',
 			'type'     => 'media',
+            'class'    => 'js-image--small',
 			'title'    => __( 'Favicon', wpgrade::textdomain() ),
 			'subtitle' => __( 'Upload a 16 x 16px image that will be used as a favicon.', wpgrade::textdomain() ),
 		),
 		array(
 			'id'       => 'apple_touch_icon',
 			'type'     => 'media',
+            'class'    => 'js-image--small',
 			'title'    => __( 'Apple Touch Icon', wpgrade::textdomain() ),
 			'subtitle' => __( 'You can customize the icon for the Apple touch shortcut to your website. The size of this icon must be 77x77px.', wpgrade::textdomain() )
 		),
 		array(
 			'id'       => 'metro_icon',
 			'type'     => 'media',
+            'class'    => 'js-image--small',
 			'title'    => __( 'Metro Icon', wpgrade::textdomain() ),
 			'subtitle' => __( 'The size of this icon must be 144x144px.', wpgrade::textdomain() )
 		)
