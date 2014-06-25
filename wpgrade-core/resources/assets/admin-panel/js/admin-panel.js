@@ -477,4 +477,12 @@
 		fixDiv();
 	});
 
+    $('.redux-group-menu a').on('click', function() {
+        setTimeout(function(){
+            var text = $('.redux-group-tab:visible > h3').html();
+
+            $('#floating-title').html(text);
+        }, 100);
+    });
+
 })(jQuery, window);
