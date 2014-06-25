@@ -101,11 +101,16 @@
 		position: absolute;
 		right: 0;
 		top: 0;
+
 		width: 22%;
 		border: 0;
 		overflow: hidden;
-		background: none;
 		margin: 0;
+
+		font-size: 1rem;
+
+		color: white;
+		background: none;
 		box-shadow: none;
 		padding: 3em;
 
@@ -200,7 +205,7 @@
 		overflow: hidden;
 		padding: 0;
 		border: solid white;
-		// how 'bout dat biatch?
+		// how 'bout dat biatch? // lol, so hardcore // much hate
 		border-width: 0 6vw;
 
 		.text_sortable {
@@ -331,6 +336,21 @@
 			@extend .fs14;
 			color: $light;
 		}
+	}
+
+	#redux_save{
+		padding: 22px 30px;
+		padding-top: 26px;
+
+		font-family: "Josefin Sans", serif;
+		font-size: rem(19px);
+		line-height: rem(19px);
+		letter-spacing: .150em;
+		text-transform: uppercase;
+
+		border: 3px solid white;
+		background: transparent;
+		border-radius: 100px;
 	}
 
 } // .redux-container
