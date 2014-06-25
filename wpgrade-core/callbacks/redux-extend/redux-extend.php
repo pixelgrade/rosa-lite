@@ -29,3 +29,19 @@ if ( ! function_exists( 'redux_register_custom_extension_loader' ) ) :
 	// Modify {$redux_opt_name} to match your opt_name
 	add_action( "redux/extensions/{$redux_opt_name}/before", 'redux_register_custom_extension_loader', 0 );
 endif;
+
+/**
+ * Hook into the panel's footer
+ */
+
+add_action('redux/page/rosa_options/form/after', 'wpgrade_extend_redux_footer');
+
+function wpgrade_extend_redux_footer() {
+	var_dump( 'bag in footer ce vreau!');
+}
+
+add_action('redux/page/rosa_options/sections/after', 'wpgrade_hook_after_redux_sections');
+
+function wpgrade_hook_after_redux_sections() {
+	var_dump( 'bag dupa sectiuni ce vreau');
+}
