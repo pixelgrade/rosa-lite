@@ -1,9 +1,9 @@
 @charset "UTF-8";
 @import "vars",
-		"resets",
-		"tools",
-		"layout",
-		"icons";
+"resets",
+"tools",
+"layout",
+"icons";
 
 @function rem($px) {
 	@return $px;
@@ -319,11 +319,11 @@
 
 		.redux-group-tab-link-a{
 			position: static;
-			
+
 			span.group_title{
 				padding: 0;
 			}
-			
+
 			i{
 				top: 50%;
 				left: 5%;

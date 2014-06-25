@@ -43,5 +43,5 @@ endif;
 add_action('redux/page/rosa_options/sections/after', 'wpgrade_hook_after_redux_sections');
 
 function wpgrade_hook_after_redux_sections() {
-    echo '<h3 id="floating-title"></h3>';
+	echo '<h3 id="floating-title"></h3>';
 }
