@@ -10,6 +10,7 @@
 		left: 0;
 		top: 0;
 
+		padding-top: 112px;
 		width: 16%;
 		height: 100%;
 	}
@@ -24,11 +25,12 @@
 		width: 22%;
 		position: absolute;
 		right: 0;
-		bottom: 0;
+		bottom: 80px;
 		float: none;
 	}
 
 	#redux-intro-text {
+		top: 112px;
 		margin-left: 16%;
 	}
 
@@ -40,7 +42,6 @@
 	}
 
 	.redux-action_bar{
-		margin-bottom: 12px;
 		text-align: center;
 	}
 }

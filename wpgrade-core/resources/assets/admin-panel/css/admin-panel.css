@@ -79,6 +79,7 @@
   position: absolute;
   left: 0;
   top: 0;
+  padding-top: 112px;
   width: 16%;
   height: 100%;
 }
@@ -91,17 +92,17 @@
   width: 22%;
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: 80px;
   float: none;
 }
 .redux-container #redux-intro-text {
+  top: 112px;
   margin-left: 16%;
 }
 .redux-container .form-table th {
   width: auto;
 }
 .redux-container .redux-action_bar {
-  margin-bottom: 12px;
   text-align: center;
 }
 
@@ -466,7 +467,6 @@
 .redux-container #redux-intro-text {
   position: absolute;
   right: 0;
-  top: 0;
   width: 22%;
   padding: 2em;
   overflow: hidden;
@@ -591,6 +591,14 @@
 .redux-container .redux-sidebar .redux-group-menu li.divide:after {
   content: none;
 }
+.redux-container .redux-sidebar .redux-group-menu li:last-child {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+}
+.redux-container .redux-sidebar .redux-group-menu li:last-child:after {
+  content: none;
+}
 .redux-container .redux-sidebar .redux-group-tab-link-a {
   position: static;
 }
@@ -618,8 +626,8 @@
   color: #919191;
 }
 .redux-container #redux_save {
-  padding: 22px 30px;
-  padding-top: 26px;
+  padding: 16px 30px;
+  padding-top: 22px;
   font-family: "Josefin Sans", serif;
   font-size: 19px;
   line-height: 19px;

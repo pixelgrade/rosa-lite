@@ -100,7 +100,6 @@
 	#redux-intro-text {
 		position: absolute;
 		right: 0;
-		top: 0;
 
 		width: 22%;
 		padding: 2em;
@@ -282,7 +281,17 @@
 						content: none;
 					}
 				}
-			}
+
+				&:last-child{
+					position: absolute;
+					bottom: 50px;
+					left: 0;
+
+					&:after{
+						content: none;
+					}
+				}
+			} // li
 		}
 
 		.redux-group-tab-link-a{
@@ -325,8 +334,8 @@
 	}
 
 	#redux_save{
-		padding: 22px 30px;
-		padding-top: 26px;
+		padding: 16px 30px;
+		padding-top: 22px;
 
 		font-family: "Josefin Sans", serif;
 		font-size: rem(19px);
