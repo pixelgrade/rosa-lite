@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @charset "UTF-8";
 /*------------------------------------*\
     $VARS
@@ -58,32 +57,30 @@
     border: none;
     box-shadow: none; }
 
-#rosa_options\[defaults-section\],
-#rosa_options\[defaults\] {
-  display: none; }
-
 /*------------------------------------*\
     $LAYOUT
 \*------------------------------------*/
 .redux-container .redux-sidebar {
-  position: absolute;
-  left: 0;
+  position: fixed;
+  left: 162px;
   top: 0;
   padding-top: 112px;
-  width: 16%;
+  width: 14%;
   height: 100%; }
 .redux-container .redux-main, .redux-container #redux-intro-text {
   margin-left: 16%;
   width: 62%;
   float: left; }
 .redux-container #redux-sticky {
-  width: 22%;
-  position: absolute;
+  width: 19%;
+  position: fixed;
   right: 0;
   bottom: 80px;
-  float: none; }
+  float: none;
+  z-index: 10; }
 .redux-container #redux-intro-text {
-  top: 112px;
+  top: 0;
+  padding-top: 112px !important;
   margin-left: 16%; }
 .redux-container .form-table th {
   width: auto; }
@@ -101,68 +98,14 @@
   font-style: normal; }
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
-=======
->>>>>>> 088ef3d28646f9148461ca589c892394138e9303
 /*
-Syntax error: File to import not found or unreadable: vars.
-              Load paths:
-                /Applications/AMPPS/www/redux/wp-content/themes/rosa/wpgrade-core/resources/assets/admin-panel (DEPRECATED)
-                /Applications/AMPPS/www/redux/wp-content/themes/rosa/wpgrade-core/resources/assets/admin-panel/sass
-                /Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.16/stylesheets
-                Compass::SpriteImporter
-                /Applications/AMPPS/www/redux/wp-content/themes/rosa/wpgrade-core/resources/assets/admin-panel/scss
-        on line 2 of scss/admin-panel.scss
-
-1: @charset "UTF-8";
-2: @import "vars",
-3: "resets",
-4: "tools",
-5: "layout",
-6: "icons";
-7: 
-
-Backtrace:
-scss/admin-panel.scss:2
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/import_node.rb:66:in `rescue in import'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/import_node.rb:45:in `import'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/import_node.rb:28:in `imported_file'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/import_node.rb:37:in `css_import?'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/perform.rb:282:in `visit_import'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/perform.rb:153:in `block in visit'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/stack.rb:79:in `block in with_base'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/stack.rb:115:in `with_frame'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/stack.rb:79:in `with_base'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/perform.rb:153:in `visit'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/base.rb:52:in `map'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit_children'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/perform.rb:174:in `with_environment'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/perform.rb:161:in `visit_children'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/perform.rb:181:in `visit_root'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/perform.rb:152:in `visit'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/perform.rb:8:in `visit'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/root_node.rb:36:in `css_tree'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/engine.rb:364:in `_render_with_sourcemap'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/engine.rb:292:in `render_with_sourcemap'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/plugin/compiler.rb:345:in `update_stylesheet'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/plugin/compiler.rb:191:in `block in update_stylesheets'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/plugin/compiler.rb:188:in `each'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/plugin/compiler.rb:188:in `update_stylesheets'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/plugin/compiler.rb:276:in `block in watch'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/listen-1.1.6/lib/listen/listener.rb:236:in `call'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/listen-1.1.6/lib/listen/listener.rb:236:in `on_change'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/listen-1.1.6/lib/listen/listener.rb:271:in `block in initialize_adapter'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/listen-1.1.6/lib/listen/adapter.rb:244:in `call'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/listen-1.1.6/lib/listen/adapter.rb:244:in `report_changes'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/listen-1.1.6/lib/listen/adapter.rb:313:in `poll_changed_directories'
-/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/listen-1.1.6/lib/listen/adapter.rb:289:in `block in start_poller'
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'linecons';
+    src: url('../../fonts/linecons/linecons.svg?98525679#linecons') format('svg');
+  }
+}
 */
-<<<<<<< HEAD
 [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "linecons";
   font-style: normal;
@@ -463,9 +406,9 @@ scss/admin-panel.scss:2
   .redux-container .form-table .hide {
     display: none; }
   .redux-container #redux-intro-text {
-    position: absolute;
+    position: fixed;
     right: 0;
-    width: 22%;
+    width: 19%;
     border: 0;
     overflow: hidden;
     margin: 0;
@@ -561,7 +504,7 @@ scss/admin-panel.scss:2
       opacity: 0.5; }
     .redux-container .redux-sidebar .redux-group-menu li a {
       padding: 20px 0;
-      padding-right: 20px;
+      padding-right: 10%;
       border: 0;
       font-family: "Josefin Sans", serif;
       font-weight: 400;
@@ -573,11 +516,11 @@ scss/admin-panel.scss:2
       .redux-container .redux-sidebar .redux-group-menu li.active a:after {
         content: "";
         position: absolute;
-        right: 10px;
+        right: 7%;
         top: 48%;
         display: block;
-        height: 10px;
-        width: 10px;
+        height: 12px;
+        width: 12px;
         background: white;
         -webkit-transform: translateY(-50%);
         transform: translateY(50%);
@@ -589,7 +532,7 @@ scss/admin-panel.scss:2
         content: none; }
     .redux-container .redux-sidebar .redux-group-menu li:last-child {
       position: absolute;
-      bottom: 50px;
+      bottom: 80px;
       left: 0;
       right: 0; }
       .redux-container .redux-sidebar .redux-group-menu li:last-child:after {
@@ -600,12 +543,12 @@ scss/admin-panel.scss:2
       padding: 0; }
     .redux-container .redux-sidebar .redux-group-tab-link-a i {
       top: 50%;
-      left: 3%;
+      left: 5%;
       -webkit-transform: translateY(-50%);
       transform: translateY(-50%); }
   .redux-container .redux-group-tab[id="1_section_group"] table,
   .redux-container .redux-group-tab[id="1_section_group"] div.redux-field-customizer_info {
-    display: none; }
+    display: none !important; }
   .redux-container .redux-container-switch .switch-options {
     float: right;
     margin-top: -4em;
@@ -722,10 +665,10 @@ scss/admin-panel.scss:2
     background: transparent;
     border-radius: 100px; }
   .redux-container #floating-title {
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 36px;
-    width: 22%;
+    width: 20%;
     padding: 36px;
     font-family: "Josefin Sans", serif;
     font-weight: 100;
@@ -764,12 +707,38 @@ scss/admin-panel.scss:2
       float: left;
       margin-right: 2em;
       margin-top: 0;
-      position: static; }
+      cursor: pointer;
+      position: relative; }
+      .redux-container .row--image > .screenshot:empty {
+        background: white; }
+        .redux-container .row--image > .screenshot:empty:before, .redux-container .row--image > .screenshot:empty:after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          background: #d9d9d9;
+          pointer-events: none; }
+        .redux-container .row--image > .screenshot:empty:before {
+          width: 2px;
+          margin-left: -1px;
+          height: 2em;
+          margin-top: -1em; }
+        .redux-container .row--image > .screenshot:empty:after {
+          width: 2em;
+          margin-left: -1em;
+          height: 2px;
+          margin-top: -1px; }
+    .redux-container .row--image .redux_field_th, .redux-container .row--image td {
+      margin-left: 168px; }
+    .redux-container .row--image.image--small .screenshot {
+      width: 4.9em;
+      height: 4.9em; }
+    .redux-container .row--image.image--small .redux_field_th, .redux-container .row--image.image--small td {
+      margin-left: 98px; }
     .redux-container .row--image td .screenshot {
       position: absolute;
       top: 0;
       left: 0;
-      background: none;
       border-color: transparent;
       overflow: hidden; }
       .redux-container .row--image td .screenshot img {
@@ -803,9 +772,3 @@ h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty, p:empty, ul:empty, o
   display: none; }
 
 /*# sourceMappingURL=admin-panel.css.map */
-=======
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: vars.\A               Load paths:\A                 /Applications/AMPPS/www/redux/wp-content/themes/rosa/wpgrade-core/resources/assets/admin-panel (DEPRECATED)\A                 /Applications/AMPPS/www/redux/wp-content/themes/rosa/wpgrade-core/resources/assets/admin-panel/sass\A                 /Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.16/stylesheets\A                 Compass::SpriteImporter\A                 /Applications/AMPPS/www/redux/wp-content/themes/rosa/wpgrade-core/resources/assets/admin-panel/scss\A         on line 2 of scss/admin-panel.scss\A \A 1: @charset \"UTF-8\";\A 2: @import \"vars\",\A 3: \"resets\",\A 4: \"tools\",\A 5: \"layout\",\A 6: \"icons\";\A 7: "; }
->>>>>>> 088ef3d28646f9148461ca589c892394138e9303
