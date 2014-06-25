@@ -367,6 +367,25 @@
 		border-radius: 100px;
 	}
 
+	#floating-title{
+		position: absolute;
+		right: 0;
+		top: 36px;
+
+		width: 22%;
+		padding: rem(36px);
+
+		font-family: "Josefin Sans", serif;
+		font-weight: 100;
+		font-size: rem(120px);
+		line-height: rem(120px);
+		word-wrap: break-word;
+
+		opacity: 0.2;
+		background-blend-mode: overlay;
+		color: white;
+	}
+
 } // .redux-container
 
 

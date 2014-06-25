@@ -647,6 +647,21 @@
   background: transparent;
   border-radius: 100px;
 }
+.redux-container #floating-title {
+  position: absolute;
+  right: 0;
+  top: 36px;
+  width: 22%;
+  padding: 36px;
+  font-family: "Josefin Sans", serif;
+  font-weight: 100;
+  font-size: 120px;
+  line-height: 120px;
+  word-wrap: break-word;
+  opacity: 0.2;
+  background-blend-mode: overlay;
+  color: white;
+}
 
 #toplevel_page_rosa_options a:after {
   border-right-color: #47dad1 !important;
