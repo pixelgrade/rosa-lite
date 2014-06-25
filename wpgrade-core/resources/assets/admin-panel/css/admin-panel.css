@@ -335,7 +335,7 @@
 .fs19, .redux-container .redux_field_th {
   font-size: 19px; }
 
-.fs14, .redux-container #redux-intro-text, .redux-container #redux-intro-text > *, .redux-container #redux-intro-text > p, .redux-container .redux_field_th span {
+.fs14, .redux-container #redux-intro-text, .redux-container #redux-intro-text > *, .redux-container #redux-intro-text > p, .redux-container .redux-container-switch .switch-options label span:before, .redux-container .redux_field_th span {
   font-size: 14px; }
 
 .alpha, .redux-container .redux-main .redux-group-tab > h1, .redux-container .redux-main .redux-group-tab > h2, .redux-container .redux-main .redux-group-tab > h3, .redux-container .redux-main .redux-group-tab > h4, .redux-container .redux-main .redux-group-tab > h5, .redux-container .redux-main .redux-group-tab > h6 {
@@ -381,6 +381,8 @@
   background-attachment: fixed;
   background-size: 100%;
   background-repeat: none; }
+  .redux-container .hide {
+    display: none; }
   .redux-container #redux-intro-text {
     position: absolute;
     right: 0;
@@ -504,9 +506,105 @@
   .redux-container .redux-group-tab[id="1_section_group"] table,
   .redux-container .redux-group-tab[id="1_section_group"] div.redux-field-customizer_info {
     display: none; }
-  .redux-container .switch-options {
+  .redux-container .redux-container-switch .switch-options {
     float: right;
-    margin-top: -6em; }
+    margin-top: -6em;
+    width: 7.4em;
+    height: 3.4em;
+    position: relative; }
+    .redux-container .redux-container-switch .switch-options label {
+      margin: 0 !important;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 1.7em;
+      border: 1px solid #d9d9d9;
+      z-index: 20;
+      background: none;
+      -webkit-transition: all .2s ease-in-out;
+      -moz-transition: all .2s ease-in-out;
+      -ms-transition: all .2s ease-in-out;
+      -o-transition: all .2s ease-in-out;
+      transition: all .2s ease-in-out;
+      opacity: 1; }
+      .redux-container .redux-container-switch .switch-options label span {
+        color: transparent; }
+        .redux-container .redux-container-switch .switch-options label span:before {
+          color: black;
+          position: absolute; }
+      .redux-container .redux-container-switch .switch-options label:before {
+        content: "";
+        position: absolute;
+        top: 0.2em;
+        left: 0.2em;
+        width: 3em;
+        height: 3em;
+        background: white;
+        border-radius: 1.8em; }
+      .redux-container .redux-container-switch .switch-options label:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 1.55em;
+        left: 1.55em;
+        width: 0.3em;
+        height: 0.3em;
+        border-radius: 50%;
+        background: #d9d9d9;
+        box-shadow: #d9d9d9 0.5em 0 0, #d9d9d9 -0.5em 0 0; }
+      .redux-container .redux-container-switch .switch-options label:before, .redux-container .redux-container-switch .switch-options label:after {
+        -webkit-transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1);
+        /* older webkit */
+        -webkit-transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        -moz-transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        -o-transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        /* easeOutBack */ }
+      .redux-container .redux-container-switch .switch-options label.selected {
+        z-index: 10;
+        opacity: 0; }
+      .redux-container .redux-container-switch .switch-options label.cb-disable {
+        background: #0095ea;
+        border: 0; }
+        .redux-container .redux-container-switch .switch-options label.cb-disable:before, .redux-container .redux-container-switch .switch-options label.cb-disable:after {
+          -webkit-transform: translateX(4em);
+          -moz-transform: translateX(4em);
+          -ms-transform: translateX(4em);
+          -o-transform: translateX(4em);
+          transform: translateX(4em); }
+        .redux-container .redux-container-switch .switch-options label.cb-disable span:before {
+          content: "Yep";
+          color: white;
+          top: 0.7em;
+          left: 1.3em; }
+        .redux-container .redux-container-switch .switch-options label.cb-disable.selected:before, .redux-container .redux-container-switch .switch-options label.cb-disable.selected:after {
+          -webkit-transform: none;
+          -moz-transform: none;
+          -ms-transform: none;
+          -o-transform: none;
+          transform: none; }
+      .redux-container .redux-container-switch .switch-options label.cb-enable {
+        background: white; }
+        .redux-container .redux-container-switch .switch-options label.cb-enable:before {
+          border: 1px solid #d9d9d9;
+          margin-top: -1px;
+          margin-left: -1px; }
+        .redux-container .redux-container-switch .switch-options label.cb-enable span:before {
+          content: "Nope";
+          color: #d9d9d9;
+          top: 0.6em;
+          right: 1em; }
+        .redux-container .redux-container-switch .switch-options label.cb-enable.selected:before, .redux-container .redux-container-switch .switch-options label.cb-enable.selected:after {
+          -webkit-transform: translateX(4em);
+          -moz-transform: translateX(4em);
+          -ms-transform: translateX(4em);
+          -o-transform: translateX(4em);
+          transform: translateX(4em); }
+  .redux-container .description {
+    padding-right: 9em; }
   .redux-container .redux_field_th {
     color: #515151; }
     .redux-container .redux_field_th span {
