@@ -104,7 +104,6 @@
 	#redux-intro-text {
 		position: absolute;
 		right: 0;
-		top: 0;
 
 		width: 22%;
 		border: 0;
@@ -260,6 +259,8 @@
 
 				a {
 					padding: 20px 0;
+					// make room for the "active" button indicator
+					padding-right: 20px;
 
 					border: 0;
 
@@ -300,7 +301,20 @@
 						content: none;
 					}
 				}
-			}
+
+
+				// help and support button
+				&:last-child{
+					position: absolute;
+					bottom: 50px;
+					left: 0;
+					right: 0;
+
+					&:after{
+						content: none;
+					}
+				}
+			} // li
 		}
 
 		.redux-group-tab-link-a{
@@ -339,8 +353,8 @@
 	}
 
 	#redux_save{
-		padding: 22px 30px;
-		padding-top: 26px;
+		padding: 16px 30px;
+		padding-top: 22px;
 
 		font-family: "Josefin Sans", serif;
 		font-size: rem(19px);
@@ -354,6 +368,12 @@
 	}
 
 } // .redux-container
+
+
+//very very important
+#toplevel_page_rosa_options a:after{
+	border-right-color: #47dad1 !important;
+}
 
 
 h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li {
