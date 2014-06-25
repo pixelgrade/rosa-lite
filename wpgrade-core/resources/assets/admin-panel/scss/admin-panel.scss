@@ -255,6 +255,8 @@
 
 				a {
 					padding: 20px 0;
+					// make room for the "active" button indicator
+					padding-right: 20px;
 
 					border: 0;
 
@@ -296,10 +298,13 @@
 					}
 				}
 
+
+				// help and support button
 				&:last-child{
 					position: absolute;
 					bottom: 50px;
 					left: 0;
+					right: 0;
 
 					&:after{
 						content: none;
@@ -363,6 +368,12 @@
 	}
 
 } // .redux-container
+
+
+//very very important
+#toplevel_page_rosa_options a:after{
+	border-right-color: #47dad1 !important;
+}
 
 
 h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li {

@@ -569,6 +569,7 @@
 }
 .redux-container .redux-sidebar .redux-group-menu li a {
   padding: 20px 0;
+  padding-right: 20px;
   border: 0;
   font-family: "Josefin Sans", serif;
   font-weight: 400;
@@ -603,6 +604,7 @@
   position: absolute;
   bottom: 50px;
   left: 0;
+  right: 0;
 }
 .redux-container .redux-sidebar .redux-group-menu li:last-child:after {
   content: none;
@@ -644,6 +646,10 @@
   border: 3px solid white;
   background: transparent;
   border-radius: 100px;
+}
+
+#toplevel_page_rosa_options a:after {
+  border-right-color: #47dad1 !important;
 }
 
 h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty, p:empty, ul:empty, ol:empty, dl:empty, li:empty {
