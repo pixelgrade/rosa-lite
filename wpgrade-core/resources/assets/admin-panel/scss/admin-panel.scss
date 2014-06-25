@@ -102,20 +102,21 @@
 		right: 0;
 
 		width: 22%;
-		padding: 2em;
+		border: 0;
 		overflow: hidden;
 		margin: 0;
 
 		font-size: 1rem;
 
-		border: 0;
-
 		color: white;
 		background: none;
 		box-shadow: none;
+		padding: 3em;
 
-		> p {
+		&, > *, > p {
+			@extend %font--body;
 			color: white;
+			@extend .fs14;
 		}
 	}
 
@@ -180,7 +181,7 @@
 		border: 0;
 	}
 
-	.button {
+	.button, .button-primary, .button-secondary {
 		height: auto;
 		border: 1px solid $border;
 		color: $border;
@@ -189,9 +190,10 @@
 		box-shadow: none;
 		border-radius: 0.5em;
 		padding: 0.25em 1.5em;
+		margin-right: 1.5em;
 	}
 
-	.button {
+	.button, .button-primary {
 		border: 1px solid #808080;
 		background: #808080;
 		color: white;
@@ -202,8 +204,20 @@
 		overflow: hidden;
 		padding: 0;
 		border: solid white;
-		// how 'bout dat biatch? // lol, so hardcore
+		// how 'bout dat biatch? // lol, so hardcore // much hate
 		border-width: 0 6vw;
+
+		.text_sortable {
+
+			> li {
+				display: block;
+				clear: both;
+
+				input[type="checkbox"] {
+					width: 30px;
+				}
+			}
+		}
 	}
 
 	.redux-field-container {
