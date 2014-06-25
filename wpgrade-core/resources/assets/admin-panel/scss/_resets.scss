@@ -2,6 +2,12 @@
     $RESET
 \*------------------------------------*/
 
+.mbp0 {
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+
 .redux-container {
 
 	// let's try to fill some stuff
@@ -37,17 +43,15 @@
 
 	// just in case
 	h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li {
-		margin: 0;
+		@extend .mbp0;
 		line-height: 1.5;
 	}
 
 	// that table :sigh:
 	.form-table {
 		&, thead, tbody, tfoot, tr, th, td {
+			@extend .mbp0;
 			display: block;
-			border: 0;
-			padding: 0;
-			margin: 0;
 		}
 	}
 

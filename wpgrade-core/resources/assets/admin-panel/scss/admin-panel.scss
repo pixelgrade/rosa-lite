@@ -25,11 +25,21 @@
 	font-size: rem(24px);
 }
 
+.fs19 {
+	font-size: rem(19px);
+}
+
+.fs14 {
+	font-size: rem(14px);
+}
+
 .alpha {
 	@extend .fs60;
 	font-weight: 100;
 	color: $accent2;
 	position: relative;
+	margin-right: -6vw;
+	padding-right: 6vw;
 
 	&:after {
 		content: "";
@@ -99,7 +109,11 @@
 		background: none;
 		margin: 0;
 		box-shadow: none;
+		padding: 2em;
 
+		> p {
+			color: white;
+		}
 	}
 
 	.redux-main {
@@ -109,6 +123,7 @@
 
 			> h1, > h2, > h3, > h4, > h5, > h6 {
 				@extend .alpha;
+				border: 0;
 				float: none;
 
 				&:before {
@@ -173,7 +188,7 @@
 		padding: 0.25em 1.5em;
 	}
 
-	.button2 {
+	.button {
 		border: 1px solid #808080;
 		background: #808080;
 		color: white;
@@ -184,7 +199,12 @@
 		overflow: hidden;
 		padding: 0;
 		border: solid white;
-		border-width: 0 6em;
+		// how 'bout dat biatch?
+		border-width: 0 6vw;
+	}
+
+	.redux-field-container {
+		@extend .mbp0;
 	}
 
 	// Sidebar menu
@@ -194,10 +214,17 @@
 		.redux-group-menu {
 
 			li {
+				position: relative;
+
 				padding-left: 22%;
+				margin-bottom: 10px !important;
+				display: block;
 
 				a {
 					padding: 20px 0;
+
+					font-family: "Josefin Sans", serif;
+					font-weight: 400;
 					font-size: 16px;
 					text-transform: uppercase;
 					text-align: left;
@@ -222,7 +249,11 @@
 			}
 			
 			i{
-				left: 0;
+				top: 50%;
+				left: 3%;
+
+				-webkit-transform: translateY(-50%);
+				transform: translateY(-50%);
 			}
 		}
 	}
@@ -238,6 +269,16 @@
 		margin-top: -6em;
 	}
 
+
+	.redux_field_th {
+		@extend .fs19;
+		color: $gray;
+
+		span {
+			@extend .fs14;
+			color: $light;
+		}
+	}
 
 } // .redux-container
 

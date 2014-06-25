@@ -16,6 +16,11 @@
 /*------------------------------------*\
     $RESET
 \*------------------------------------*/
+.mbp0, .redux-container h1, .redux-container h2, .redux-container h3, .redux-container h4, .redux-container h5, .redux-container h6, .redux-container p, .redux-container ul, .redux-container ol, .redux-container dl, .redux-container li, .redux-container .form-table, .redux-container .form-table thead, .redux-container .form-table tbody, .redux-container .form-table tfoot, .redux-container .form-table tr, .redux-container .form-table th, .redux-container .form-table td, .redux-container .redux-field-container {
+  margin: 0;
+  border: 0;
+  padding: 0; }
+
 .redux-container {
   width: auto;
   margin: 0 -20px 0 -22px;
@@ -37,13 +42,9 @@
     margin: 0;
     padding: 0; }
   .redux-container h1, .redux-container h2, .redux-container h3, .redux-container h4, .redux-container h5, .redux-container h6, .redux-container p, .redux-container ul, .redux-container ol, .redux-container dl, .redux-container li {
-    margin: 0;
     line-height: 1.5; }
   .redux-container .form-table, .redux-container .form-table thead, .redux-container .form-table tbody, .redux-container .form-table tfoot, .redux-container .form-table tr, .redux-container .form-table th, .redux-container .form-table td {
-    display: block;
-    border: 0;
-    padding: 0;
-    margin: 0; }
+    display: block; }
   .redux-container .redux-sidebar .redux-group-menu li a {
     background: transparent;
     color: white;
@@ -331,10 +332,18 @@
 .fs24 {
   font-size: 24px; }
 
+.fs19, .redux-container .redux_field_th {
+  font-size: 19px; }
+
+.fs14, .redux-container .redux_field_th span {
+  font-size: 14px; }
+
 .alpha, .redux-container .redux-main .redux-group-tab > h1, .redux-container .redux-main .redux-group-tab > h2, .redux-container .redux-main .redux-group-tab > h3, .redux-container .redux-main .redux-group-tab > h4, .redux-container .redux-main .redux-group-tab > h5, .redux-container .redux-main .redux-group-tab > h6 {
   font-weight: 100;
   color: #4cebcc;
-  position: relative; }
+  position: relative;
+  margin-right: -6vw;
+  padding-right: 6vw; }
   .alpha:after, .redux-container .redux-main .redux-group-tab > h1:after, .redux-container .redux-main .redux-group-tab > h2:after, .redux-container .redux-main .redux-group-tab > h3:after, .redux-container .redux-main .redux-group-tab > h4:after, .redux-container .redux-main .redux-group-tab > h5:after, .redux-container .redux-main .redux-group-tab > h6:after {
     content: "";
     display: block;
@@ -383,10 +392,14 @@
     overflow: hidden;
     background: none;
     margin: 0;
-    box-shadow: none; }
+    box-shadow: none;
+    padding: 2em; }
+    .redux-container #redux-intro-text > p {
+      color: white; }
   .redux-container .redux-main {
     background: white; }
     .redux-container .redux-main .redux-group-tab > h1, .redux-container .redux-main .redux-group-tab > h2, .redux-container .redux-main .redux-group-tab > h3, .redux-container .redux-main .redux-group-tab > h4, .redux-container .redux-main .redux-group-tab > h5, .redux-container .redux-main .redux-group-tab > h6 {
+      border: 0;
       float: none; }
       .redux-container .redux-main .redux-group-tab > h1:before, .redux-container .redux-main .redux-group-tab > h2:before, .redux-container .redux-main .redux-group-tab > h3:before, .redux-container .redux-main .redux-group-tab > h4:before, .redux-container .redux-main .redux-group-tab > h5:before, .redux-container .redux-main .redux-group-tab > h6:before {
         display: none; }
@@ -420,7 +433,7 @@
     box-shadow: none;
     border-radius: 0.5em;
     padding: 0.25em 1.5em; }
-  .redux-container .button2 {
+  .redux-container .button {
     border: 1px solid #808080;
     background: #808080;
     color: white; }
@@ -429,11 +442,16 @@
     overflow: hidden;
     padding: 0;
     border: solid white;
-    border-width: 0 6em; }
+    border-width: 0 6vw; }
   .redux-container .redux-sidebar .redux-group-menu li {
-    padding-left: 22%; }
+    position: relative;
+    padding-left: 22%;
+    margin-bottom: 10px !important;
+    display: block; }
     .redux-container .redux-sidebar .redux-group-menu li a {
       padding: 20px 0;
+      font-family: "Josefin Sans", serif;
+      font-weight: 400;
       font-size: 16px;
       text-transform: uppercase;
       text-align: left; }
@@ -447,13 +465,20 @@
     .redux-container .redux-sidebar .redux-group-tab-link-a span.group_title {
       padding: 0; }
     .redux-container .redux-sidebar .redux-group-tab-link-a i {
-      left: 0; }
+      top: 50%;
+      left: 3%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%); }
   .redux-container .redux-group-tab[id="1_section_group"] table,
   .redux-container .redux-group-tab[id="1_section_group"] div.redux-field-customizer_info {
     display: none; }
   .redux-container .switch-options {
     float: right;
     margin-top: -6em; }
+  .redux-container .redux_field_th {
+    color: #515151; }
+    .redux-container .redux_field_th span {
+      color: #919191; }
 
 h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty, p:empty, ul:empty, ol:empty, dl:empty, li:empty {
   display: none; }
