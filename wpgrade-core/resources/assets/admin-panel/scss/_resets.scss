@@ -94,3 +94,7 @@
 		display: inline-block;
 	}
 }
+
+.redux-save-warn, .saved_notice{
+	display: none !important;
+}
