@@ -477,6 +477,19 @@
 		fixDiv();
 	});
 
+
+    var $screenshot = $('.redux-main').find('.screenshot');
+
+    $screenshot.each(function (i, obj) {
+
+        var $this = $(obj);
+
+        $this.closest('tr').addClass('row--image');
+        $("<div class='screenshot'></div>").prependTo($this.closest('.row--image'));
+    });
+
+
+    // change floating text
     $('.redux-group-menu a').on('click', function() {
         setTimeout(function(){
             var text = $('.redux-group-tab:visible > h3').html();
@@ -485,4 +498,25 @@
         }, 100);
     });
 
+
+    // regroup reset buttons
+    var button1 = $("#redux-sticky [id='rosa_options[defaults-section]']");
+    var button2 = $("#redux-sticky [id='rosa_options[defaults]']");
+
+    button1.remove();
+    button2.remove();
+
+    var $resetMenu = $('<div>', { class: "reset-menu"});
+    $resetMenu.insertAfter($('#redux_save'));
+
+    $resetMenu.append(button1).append(button2);
+
+
+
+    // set top / bottom of fixed elements
+
+    var top = $('.redux-main').offset().top + 'px';
+
+    $('.redux-sidebar').css('top', top);
+    $('#redux-intro-text').css('top', top);
 })(jQuery, window);

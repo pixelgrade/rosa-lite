@@ -1,0 +1,50 @@
+/*------------------------------------*\
+    $LAYOUT
+\*------------------------------------*/
+
+// Sidebars, etc
+.redux-container {
+
+	.redux-sidebar {
+		position: fixed;
+		left: 162px;
+		top: 0;
+
+		padding-top: 112px;
+		width: 14%;
+		height: 100%;
+	}
+
+	.redux-main, #redux-intro-text {
+		margin-left: 16%;
+		width: 62%;
+		float: left;
+	}
+
+	#redux-sticky {
+		width: 19%;
+		position: fixed;
+		right: 0;
+		bottom: 80px;
+		float: none;
+
+		z-index: 10;
+	}
+
+	#redux-intro-text {
+		top: 0;
+		padding-top: 112px !important;
+		margin-left: 16%;
+	}
+
+	.form-table {
+
+		th {
+			width: auto;
+		}
+	}
+
+	.redux-action_bar{
+		text-align: center;
+	}
+}

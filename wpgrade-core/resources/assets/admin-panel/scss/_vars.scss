@@ -1,0 +1,29 @@
+/*------------------------------------*\
+    $VARS
+\*------------------------------------*/
+
+$border:    #d9d9d9;
+$light:     #919191;
+$gray:      #515151;
+$dark:      #262626;
+$accent:    #0095ea;
+$accent2:   #4cebcc;
+
+
+$u: 24px;
+
+
+/*------------------------------------*\
+    $FONTS
+\*------------------------------------*/
+
+@import url('http://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400|Open+Sans:400,600');
+
+%font--body {
+	font-family: "Open Sans", sans-serif;
+}
+
+%font--heading {
+	font-family: "Josefin Sans", sans-serif;
+	text-transform: uppercase;
+}
