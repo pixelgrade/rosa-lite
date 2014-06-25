@@ -67,20 +67,15 @@
   box-shadow: none;
 }
 
-#rosa_options\[defaults-section\],
-#rosa_options\[defaults\] {
-  display: none;
-}
-
 /*------------------------------------*\
     $LAYOUT
 \*------------------------------------*/
 .redux-container .redux-sidebar {
-  position: absolute;
-  left: 0;
+  position: fixed;
+  left: 162px;
   top: 0;
   padding-top: 112px;
-  width: 16%;
+  width: 14%;
   height: 100%;
 }
 .redux-container .redux-main, .redux-container #redux-intro-text {
@@ -89,14 +84,16 @@
   float: left;
 }
 .redux-container #redux-sticky {
-  width: 22%;
-  position: absolute;
+  width: 19%;
+  position: fixed;
   right: 0;
   bottom: 80px;
   float: none;
+  z-index: 10;
 }
 .redux-container #redux-intro-text {
-  top: 112px;
+  top: 0;
+  padding-top: 112px !important;
   margin-left: 16%;
 }
 .redux-container .form-table th {
@@ -468,9 +465,9 @@
   display: none;
 }
 .redux-container #redux-intro-text {
-  position: absolute;
+  position: fixed;
   right: 0;
-  width: 22%;
+  width: 19%;
   border: 0;
   overflow: hidden;
   margin: 0;
@@ -572,7 +569,7 @@
 }
 .redux-container .redux-sidebar .redux-group-menu li a {
   padding: 20px 0;
-  padding-right: 20px;
+  padding-right: 10%;
   border: 0;
   font-family: "Josefin Sans", serif;
   font-weight: 400;
@@ -586,11 +583,11 @@
 .redux-container .redux-sidebar .redux-group-menu li.active a:after {
   content: "";
   position: absolute;
-  right: 10px;
+  right: 7%;
   top: 48%;
   display: block;
-  height: 10px;
-  width: 10px;
+  height: 12px;
+  width: 12px;
   background: white;
   -webkit-transform: translateY(-50%);
   transform: translateY(50%);
@@ -605,7 +602,7 @@
 }
 .redux-container .redux-sidebar .redux-group-menu li:last-child {
   position: absolute;
-  bottom: 50px;
+  bottom: 80px;
   left: 0;
   right: 0;
 }
@@ -620,7 +617,7 @@
 }
 .redux-container .redux-sidebar .redux-group-tab-link-a i {
   top: 50%;
-  left: 3%;
+  left: 5%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
@@ -763,10 +760,10 @@
   border-radius: 100px;
 }
 .redux-container #floating-title {
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 36px;
-  width: 22%;
+  width: 20%;
   padding: 36px;
   font-family: "Josefin Sans", serif;
   font-weight: 100;

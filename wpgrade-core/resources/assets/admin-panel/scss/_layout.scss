@@ -6,12 +6,12 @@
 .redux-container {
 
 	.redux-sidebar {
-		position: absolute;
-		left: 0;
+		position: fixed;
+		left: 162px;
 		top: 0;
 
 		padding-top: 112px;
-		width: 16%;
+		width: 14%;
 		height: 100%;
 	}
 
@@ -22,15 +22,18 @@
 	}
 
 	#redux-sticky {
-		width: 22%;
-		position: absolute;
+		width: 19%;
+		position: fixed;
 		right: 0;
 		bottom: 80px;
 		float: none;
+
+		z-index: 10;
 	}
 
 	#redux-intro-text {
-		top: 112px;
+		top: 0;
+		padding-top: 112px !important;
 		margin-left: 16%;
 	}
 

@@ -102,10 +102,10 @@
 	}
 
 	#redux-intro-text {
-		position: absolute;
+		position: fixed;
 		right: 0;
 
-		width: 22%;
+		width: 19%;
 		border: 0;
 		overflow: hidden;
 		margin: 0;
@@ -260,7 +260,7 @@
 				a {
 					padding: 20px 0;
 					// make room for the "active" button indicator
-					padding-right: 20px;
+					padding-right: 10%;
 
 					border: 0;
 
@@ -278,12 +278,12 @@
 						content: "";
 
 						position: absolute;
-						right: 10px;
+						right: 7%;
 						top: 48%;
 
 						display: block;
-						height: 10px;
-						width: 10px;
+						height: 12px;
+						width: 12px;
 
 						background: white;
 
@@ -306,7 +306,7 @@
 				// help and support button
 				&:last-child{
 					position: absolute;
-					bottom: 50px;
+					bottom: 80px;
 					left: 0;
 					right: 0;
 
@@ -326,7 +326,7 @@
 			
 			i{
 				top: 50%;
-				left: 3%;
+				left: 5%;
 
 				-webkit-transform: translateY(-50%);
 				transform: translateY(-50%);
@@ -368,11 +368,11 @@
 	}
 
 	#floating-title{
-		position: absolute;
+		position: fixed;
 		right: 0;
 		top: 36px;
 
-		width: 22%;
+		width: 20%;
 		padding: rem(36px);
 
 		font-family: "Josefin Sans", serif;
