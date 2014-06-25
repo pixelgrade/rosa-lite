@@ -92,6 +92,10 @@
 	background-size: 100%;
 	background-repeat: none;
 
+	.hide {
+		display: none;
+	}
+
 	// TYPOGRAPHY
 	h1, h2, h3, h4, h5, h6 {
 		@extend %font--heading;
@@ -336,11 +340,7 @@
 		display: none;
 	}
 
-	.switch-options {
-		float: right;
-		margin-top: -6em;
-	}
-
+	@import "switch";
 
 	.redux_field_th {
 		@extend .fs19;
