@@ -102,17 +102,17 @@
 		right: 0;
 		top: 0;
 		width: 22%;
-		color: white;
 		border: 0;
-		padding: 0;
 		overflow: hidden;
 		background: none;
 		margin: 0;
 		box-shadow: none;
-		padding: 2em;
+		padding: 3em;
 
-		> p {
+		&, > *, > p {
+			@extend %font--body;
 			color: white;
+			@extend .fs14;
 		}
 	}
 
@@ -177,7 +177,7 @@
 		border: 0;
 	}
 
-	.button {
+	.button, .button-primary, .button-secondary {
 		height: auto;
 		border: 1px solid $border;
 		color: $border;
@@ -186,9 +186,10 @@
 		box-shadow: none;
 		border-radius: 0.5em;
 		padding: 0.25em 1.5em;
+		margin-right: 1.5em;
 	}
 
-	.button {
+	.button, .button-primary {
 		border: 1px solid #808080;
 		background: #808080;
 		color: white;
@@ -201,6 +202,18 @@
 		border: solid white;
 		// how 'bout dat biatch?
 		border-width: 0 6vw;
+
+		.text_sortable {
+
+			> li {
+				display: block;
+				clear: both;
+
+				input[type="checkbox"] {
+					width: 30px;
+				}
+			}
+		}
 	}
 
 	.redux-field-container {

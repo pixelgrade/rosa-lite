@@ -6,7 +6,7 @@
     $FONTS
 \*------------------------------------*/
 @import url("http://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400|Open+Sans:400,600");
-.redux-container {
+.redux-container, .redux-container #redux-intro-text, .redux-container #redux-intro-text > *, .redux-container #redux-intro-text > p {
   font-family: "Open Sans", sans-serif; }
 
 .redux-container h1, .redux-container h2, .redux-container h3, .redux-container h4, .redux-container h5, .redux-container h6 {
@@ -335,7 +335,7 @@
 .fs19, .redux-container .redux_field_th {
   font-size: 19px; }
 
-.fs14, .redux-container .redux_field_th span {
+.fs14, .redux-container #redux-intro-text, .redux-container #redux-intro-text > *, .redux-container #redux-intro-text > p, .redux-container .redux_field_th span {
   font-size: 14px; }
 
 .alpha, .redux-container .redux-main .redux-group-tab > h1, .redux-container .redux-main .redux-group-tab > h2, .redux-container .redux-main .redux-group-tab > h3, .redux-container .redux-main .redux-group-tab > h4, .redux-container .redux-main .redux-group-tab > h5, .redux-container .redux-main .redux-group-tab > h6 {
@@ -386,15 +386,13 @@
     right: 0;
     top: 0;
     width: 22%;
-    color: white;
     border: 0;
-    padding: 0;
     overflow: hidden;
     background: none;
     margin: 0;
     box-shadow: none;
-    padding: 2em; }
-    .redux-container #redux-intro-text > p {
+    padding: 3em; }
+    .redux-container #redux-intro-text, .redux-container #redux-intro-text > *, .redux-container #redux-intro-text > p {
       color: white; }
   .redux-container .redux-main {
     background: white; }
@@ -424,7 +422,7 @@
     padding: 0;
     background: transparent;
     border: 0; }
-  .redux-container .button {
+  .redux-container .button, .redux-container .button-primary, .redux-container .button-secondary {
     height: auto;
     border: 1px solid #d9d9d9;
     color: #d9d9d9;
@@ -432,8 +430,9 @@
     margin: 0;
     box-shadow: none;
     border-radius: 0.5em;
-    padding: 0.25em 1.5em; }
-  .redux-container .button {
+    padding: 0.25em 1.5em;
+    margin-right: 1.5em; }
+  .redux-container .button, .redux-container .button-primary {
     border: 1px solid #808080;
     background: #808080;
     color: white; }
@@ -443,6 +442,11 @@
     padding: 0;
     border: solid white;
     border-width: 0 6vw; }
+    .redux-container .redux-main .text_sortable > li {
+      display: block;
+      clear: both; }
+      .redux-container .redux-main .text_sortable > li input[type="checkbox"] {
+        width: 30px; }
   .redux-container .redux-sidebar .redux-group-menu li {
     position: relative;
     padding-left: 22%;
