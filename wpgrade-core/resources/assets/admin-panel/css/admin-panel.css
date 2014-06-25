@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @charset "UTF-8";
 /*------------------------------------*\
     $VARS
@@ -100,14 +101,68 @@
   font-style: normal; }
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+=======
+>>>>>>> 088ef3d28646f9148461ca589c892394138e9303
 /*
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @font-face {
-    font-family: 'linecons';
-    src: url('../../fonts/linecons/linecons.svg?98525679#linecons') format('svg');
-  }
-}
+Syntax error: File to import not found or unreadable: vars.
+              Load paths:
+                /Applications/AMPPS/www/redux/wp-content/themes/rosa/wpgrade-core/resources/assets/admin-panel (DEPRECATED)
+                /Applications/AMPPS/www/redux/wp-content/themes/rosa/wpgrade-core/resources/assets/admin-panel/sass
+                /Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.16/stylesheets
+                Compass::SpriteImporter
+                /Applications/AMPPS/www/redux/wp-content/themes/rosa/wpgrade-core/resources/assets/admin-panel/scss
+        on line 2 of scss/admin-panel.scss
+
+1: @charset "UTF-8";
+2: @import "vars",
+3: "resets",
+4: "tools",
+5: "layout",
+6: "icons";
+7: 
+
+Backtrace:
+scss/admin-panel.scss:2
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/import_node.rb:66:in `rescue in import'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/import_node.rb:45:in `import'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/import_node.rb:28:in `imported_file'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/import_node.rb:37:in `css_import?'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/perform.rb:282:in `visit_import'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/perform.rb:153:in `block in visit'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/stack.rb:79:in `block in with_base'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/stack.rb:115:in `with_frame'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/stack.rb:79:in `with_base'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/perform.rb:153:in `visit'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit_children'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/perform.rb:174:in `with_environment'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/perform.rb:161:in `visit_children'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/perform.rb:181:in `visit_root'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/engine.rb:364:in `_render_with_sourcemap'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/engine.rb:292:in `render_with_sourcemap'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/plugin/compiler.rb:345:in `update_stylesheet'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/plugin/compiler.rb:191:in `block in update_stylesheets'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/plugin/compiler.rb:188:in `each'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/plugin/compiler.rb:188:in `update_stylesheets'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/sass-3.3.0.rc.2/lib/sass/plugin/compiler.rb:276:in `block in watch'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/listen-1.1.6/lib/listen/listener.rb:236:in `call'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/listen-1.1.6/lib/listen/listener.rb:236:in `on_change'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/listen-1.1.6/lib/listen/listener.rb:271:in `block in initialize_adapter'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/listen-1.1.6/lib/listen/adapter.rb:244:in `call'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/listen-1.1.6/lib/listen/adapter.rb:244:in `report_changes'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/listen-1.1.6/lib/listen/adapter.rb:313:in `poll_changed_directories'
+/Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/listen-1.1.6/lib/listen/adapter.rb:289:in `block in start_poller'
 */
+<<<<<<< HEAD
 [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "linecons";
   font-style: normal;
@@ -748,3 +803,9 @@ h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty, p:empty, ul:empty, o
   display: none; }
 
 /*# sourceMappingURL=admin-panel.css.map */
+=======
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: vars.\A               Load paths:\A                 /Applications/AMPPS/www/redux/wp-content/themes/rosa/wpgrade-core/resources/assets/admin-panel (DEPRECATED)\A                 /Applications/AMPPS/www/redux/wp-content/themes/rosa/wpgrade-core/resources/assets/admin-panel/sass\A                 /Users/cristianfrumusanu/.rbenv/versions/1.9.3-p194/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.16/stylesheets\A                 Compass::SpriteImporter\A                 /Applications/AMPPS/www/redux/wp-content/themes/rosa/wpgrade-core/resources/assets/admin-panel/scss\A         on line 2 of scss/admin-panel.scss\A \A 1: @charset \"UTF-8\";\A 2: @import \"vars\",\A 3: \"resets\",\A 4: \"tools\",\A 5: \"layout\",\A 6: \"icons\";\A 7: "; }
+>>>>>>> 088ef3d28646f9148461ca589c892394138e9303

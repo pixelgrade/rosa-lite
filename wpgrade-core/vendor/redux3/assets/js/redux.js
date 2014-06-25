@@ -737,7 +737,7 @@ jQuery( document ).ready(
             function() {
                 var relid = jQuery( this ).data( 'rel' ); // The group ID of interest
                 var oldid = jQuery( '.redux-group-tab-link-li.active .redux-group-tab-link-a' ).data( 'rel' );
-                
+
                 if ( oldid === relid ) {
                     return;
                 }

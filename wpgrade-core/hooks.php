@@ -149,19 +149,3 @@ function wpgrade_callbacks_html5_shim() {
 		include wpgrade::corepartial( 'ie-shim' . EXT );
 	}
 }
-
-/**
- * Adds a shortcut to theme options to admin bar
- */
-function theme_options_admin_bar_render() {
-	global $wp_admin_bar;
-
-	$wp_admin_bar->add_menu( array(
-		'parent' => 'appearance',
-		'id'     => 'theme_opts',
-		'title'  => __( 'Theme Options', wpgrade::textdomain() ),
-		'href'   => admin_url( 'admin.php?page=' . wpgrade::shortname() . '_options&tab=0' )
-	) );
-}
-
-add_action( 'wp_before_admin_bar_render', 'theme_options_admin_bar_render' );
