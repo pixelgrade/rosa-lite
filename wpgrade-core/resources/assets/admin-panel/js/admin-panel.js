@@ -498,21 +498,6 @@
         }, 100);
     });
 
-
-    // regroup reset buttons
-    var button1 = $("#redux-sticky [id='rosa_options[defaults-section]']");
-    var button2 = $("#redux-sticky [id='rosa_options[defaults]']");
-
-    button1.remove();
-    button2.remove();
-
-    var $resetMenu = $('<div>', { class: "reset-menu"});
-    $resetMenu.insertAfter($('#redux_save'));
-
-    $resetMenu.append(button1).append(button2);
-
-
-
     // set top / bottom of fixed elements
 
     var top = $('.redux-main').offset().top + 'px';
