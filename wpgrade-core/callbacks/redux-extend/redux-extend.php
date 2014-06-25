@@ -40,8 +40,18 @@ endif;
 //
 //}
 
-add_action('redux/page/rosa_options/sections/after', 'wpgrade_hook_after_redux_sections');
-
+add_action('redux/page/' . wpgrade::$shortname . '_options/sections/after', 'wpgrade_hook_after_redux_sections');
 function wpgrade_hook_after_redux_sections() {
 	echo '<h3 id="floating-title"></h3>';
+}
+
+
+add_action('redux/options/' . wpgrade::$shortname . '_options/settings/change', 'wpgrade_hook_after_redux_save_btn');
+
+function wpgrade_hook_after_redux_save_btn(){
+
+	submit_button( __( 'Reset Section', 'redux-framework' ), 'secondary', wpgrade::$shortname . '_options' . '[defaults-section]', false );
+
+	submit_button( __( 'Reset All', 'redux-framework' ), 'secondary', wpgrade::$shortname . '_options' . '[defaults]', false );
+
 }
