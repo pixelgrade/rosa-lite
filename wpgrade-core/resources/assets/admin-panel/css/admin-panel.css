@@ -120,6 +120,22 @@
 .redux-container .redux-action_bar {
   text-align: center;
 }
+@media screen and (max-height: 950px) {
+  .redux-container .redux-sidebar, .redux-container #redux-intro-text, .redux-container .redux-main {
+    padding-top: 0 !important;
+  }
+}
+@media screen and (max-height: 845px) {
+  .redux-container .redux-sidebar .redux-group-menu li a {
+    padding: 10px 0 !important;
+  }
+  .redux-container .redux-sidebar .redux-group-menu li.divide {
+    padding: 10px 0 !important;
+  }
+  .redux-container .redux-sidebar .redux-group-menu li:last-child {
+    margin-top: 24px !important;
+  }
+}
 
 .field, .redux-container input[type="text"],
 .redux-container textarea, .redux-container .select2-container .select2-choice {
@@ -578,6 +594,7 @@
   z-index: 10;
   width: 20%;
   padding: 3em;
+  padding-top: 112px;
   margin: 0;
   overflow: hidden;
   border: 0;
@@ -735,10 +752,7 @@
   content: none;
 }
 .redux-container .redux-sidebar .redux-group-menu li:last-child {
-  position: absolute;
-  bottom: 100px;
-  left: 0;
-  right: 0;
+  margin-top: 72px;
 }
 .redux-container .redux-sidebar .redux-group-menu li:last-child:after {
   content: none;

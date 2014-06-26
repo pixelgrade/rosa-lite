@@ -50,4 +50,26 @@
 	.redux-action_bar{
 		text-align: center;
 	}
+
+	@media screen and (max-height: 950px){
+		.redux-sidebar, #redux-intro-text, .redux-main{
+			padding-top: 0 !important;
+		}
+	}
+
+	@media screen and (max-height: 845px){
+		.redux-sidebar .redux-group-menu{
+			li a{
+				padding: 10px 0 !important;
+			}
+
+			li.divide{
+				padding: 10px 0 !important;
+			}
+
+			li:last-child{
+				margin-top: 24px !important;
+			}
+		}
+	}
 }
