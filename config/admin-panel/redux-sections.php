@@ -1485,7 +1485,7 @@ $sections[] = array(
 			'id'                => 'twitter_card_site',
 			'type'              => 'text',
 			'title'             => __( 'Twitter Site Username', wpgrade::textdomain() ),
-			'subtitle'          => __( 'The Twitter username of the entire site. The username for the author will be taken from the author\'s profile (skip the @)', wpgrade::textdomain() ),
+			'subtitle'          => __( 'The Twitter username of the entire site. The username for the author will be taken from the author\'s profile', wpgrade::textdomain() ),
 			'required'          => array( 'prepare_for_social_share', '=', 1 ),
 			'validate_callback' => 'wpgrade_trim_twitter_username'
 		),
