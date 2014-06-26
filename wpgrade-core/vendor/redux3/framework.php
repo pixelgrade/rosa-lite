@@ -3050,7 +3050,12 @@
 
                             if ( isset( $field['validate_callback'] ) && function_exists( $field['validate_callback'] ) ) {
                                 $callbackvalues                 = call_user_func( $field['validate_callback'], $field, $plugin_options[ $field['id'] ], $options[ $field['id'] ] );
-                                $plugin_options[ $field['id'] ] = $callbackvalues['value'];
+
+                                if ( is_array($callbackvalues) && isset($callbackvalues['value']) ) {
+                                    $plugin_options[ $field['id'] ] = $callbackvalues['value'];
+                                } else {
+                                    $plugin_options[ $field['id'] ] = $callbackvalues;
+                                }
 
                                 if ( isset( $callbackvalues['error'] ) ) {
                                     $this->errors[] = $callbackvalues['error'];

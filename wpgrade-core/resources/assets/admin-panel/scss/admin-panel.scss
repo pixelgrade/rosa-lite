@@ -2,89 +2,12 @@
 //@import "compass";
 
 @import "vars",
-"resets",
-"tools",
-"layout",
-"chosen",
-"icons";
-
-@function rem($px) {
-	@return $px;
-}
-
-.fs60 {
-	@include baseline(60px);
-}
-
-.fs42 {
-	@include baseline(42px);
-}
-
-.fs32 {
-	@include baseline(32px);
-}
-
-.fs24 {
-	@include baseline(24px);
-}
-
-.fs19 {
-	@include baseline(19px);
-}
-
-.fs14 {
-	@include baseline(14px);
-}
-
-.alpha {
-	@extend .fs60;
-	font-weight: 100;
-	color: $accent2;
-	position: relative;
-	margin-right: -6vw;
-	padding-right: 6vw;
-
-	&:after {
-		content: "";
-		display: block;
-		width: 150%;
-		height: 2px;
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		background: $accent;
-
-		z-index: 1;
-	}
-}
-
-.beta {
-	@extend .fs32;
-	float: left;
-	position: relative;
-	padding-right: 0.5em;
-	color: $accent;
-
-	&:before {
-		content: "";
-		display: block;
-		width: 9999em;
-		height: 1px;
-		background: $border;
-		position: absolute;
-		top: 50%;
-		left: 100%;
-	}
-
-	// so we clear the next element as we don't have access to markup
-	+ * {
-		clear: left;
-
-		// there's a display none on empty elements
-		// but we need this here
-		&:empty {display: block;}
-	}
-}
+        "resets",
+        "tools",
+        "typography",
+        "layout",
+        "fields",
+        "icons";
 
 .redux-container {
 	@extend %font--body;
@@ -110,11 +33,6 @@
 		}
 	}
 
-	// TYPOGRAPHY
-	h1, h2, h3, h4, h5, h6 {
-		@extend %font--heading;
-	}
-
 	#redux-intro-text {
 		position: fixed;
 		right: 0;
@@ -138,27 +56,6 @@
 			@extend %font--body;
 			color: white;
 			@extend .fs14;
-		}
-	}
-
-	.redux-main {
-		background: white;
-
-		.redux-group-tab {
-
-			> h1, > h2, > h3, > h4, > h5, > h6 {
-				@extend .alpha;
-				border: 0;
-				float: none;
-
-				&:before {
-					display: none;
-				}
-			}
-		}
-
-		h1, h2, h3, h4, h5, h6 {
-			@extend .beta;
 		}
 	}
 
@@ -203,6 +100,7 @@
 	}
 
 	.button, .button-primary, .button-secondary, .button.remove-image {
+        @extend .fs14;
 		height: auto;
 		border: 1px solid $border;
 		color: $border;
@@ -225,6 +123,10 @@
 			border-color: $light;
 			box-shadow: none;
 		}
+
+        span:before {
+            color: $border;
+        }
 	}
 
 	.button, .button-primary {
@@ -237,6 +139,10 @@
 			background: $accent;
 			color: white;
 		}
+
+        span:before {
+            color: white;
+        }
 	}
 
 	.redux-main {
@@ -261,9 +167,35 @@
 				display: block;
 				clear: both;
 
-				input[type="checkbox"] {
-					width: 30px;
-				}
+                &:after {
+                    content: " ";
+                    display: table;
+                    clear: both;
+                }
+
+                &.head {
+
+                    span {
+                        @extend .fs14;
+                        margin-left: 1em;
+                    }
+
+                    .spacer {
+                        margin-left: -0.3em;
+                    }
+                }
+
+                label {
+                    @extend .fs14;
+                }
+
+                label, input {
+                    float: left;
+                }
+
+                input[type="checkbox"] {
+                    margin-left: 2em;
+                }
 			}
 		}
 		
@@ -571,6 +503,7 @@
 				-ms-transform: translate(-50%, -50%);
 				-o-transform: translate(-50%, -50%);
 				transform: translate(-50%, -50%);
+                z-index: 20;
 			}
 		}
 
@@ -586,8 +519,35 @@
 	}
 
 	.redux-field {
-//		@extend .fs19;
+		@extend .fs14;
 	}
+
+    .redux-container-editor {
+        margin: 1em 0;
+    }
+
+	.ace-editor-area {
+		border: 2px solid $border;
+
+		&.ace_focus {
+			border-color: $accent;
+		}
+	}
+
+    .wp-editor-wrap {
+
+        &, *, *:before, &:after {
+            box-sizing: content-box;
+        }
+    }
+
+    #info-wpGrade_import_demodata_button {
+        margin-top: 1em;
+    }
+
+    .ace_cursor {
+        border-left: 2px solid $dark;
+    }
 
 } // .redux-container
 
@@ -701,4 +661,82 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li, th, td, tr {
 			color: white;
 		}
 	}
+}
+
+
+body .redux-container .redux-main {
+
+    input[type="checkbox"] {
+        // magic numbers
+        width: 2.68em !important;
+        height: 2.68em !important;
+        outline: none;
+        box-shadow: none;
+        background: 0;
+        color: white;
+        position: relative;
+
+        &:before, &:after {
+            -webkit-transition: all .2s ease-in-out;
+            -moz-transition: all .2s ease-in-out;
+            -ms-transition: all .2s ease-in-out;
+            -o-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+        }
+
+        &:before {
+            content: "" !important;
+            margin: 0 !important;
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid $border;
+        }
+
+        &:after {
+            content: "";
+            width: 1em;
+            height: 0.6em;
+            border: 0 solid white;
+            border-bottom-width: 0.3em;
+            border-left-width: 0.3em;
+
+            position: absolute;
+            top: 1em;
+            left: 0.9em;
+
+            -webkit-transform: rotate(-45deg) scale(0.5);
+            -moz-transform: rotate(-45deg) scale(0.5);
+            -ms-transform: rotate(-45deg) scale(0.5);
+            -o-transform: rotate(-45deg) scale(0.5);
+            transform: rotate(-45deg) scale(0.5);
+        }
+
+        &:checked {
+
+            &:before {
+                border-color: $accent;
+                background: $accent;
+            }
+
+            &:after {
+                -webkit-transform: rotate(-45deg);
+                -moz-transform: rotate(-45deg);
+                -ms-transform: rotate(-45deg);
+                -o-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}
+
+
+.redux-container {
+
+    .redux-container-checkbox {
+        width: auto;
+        float: right;
+        margin-top: -4em;
+    }
 }

@@ -15,6 +15,7 @@
 	input[type="text"],
 	textarea {
 		@extend .field;
+		@extend .fs14;
 
 		&:focus {
 			@extend .field--focus;
@@ -22,7 +23,6 @@
 	}
 
 	.select2-container {
-		@extend .fs14;
 		border-radius: 0;
 		background: none;
 		border: 0;
@@ -59,7 +59,7 @@
 .select2-drop {
 	margin-top: 0.75em;
 	box-shadow: rgba(0,0,0,0.15) 0 0.3em 0.6em;
-	border: 2px solid #d9d9d9;
+	border: 2px solid;
 	border-color: #d9d9d9 !important;
 	border-radius: 0.5em;
 	overflow: hidden;
