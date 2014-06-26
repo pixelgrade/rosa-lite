@@ -507,14 +507,30 @@
     var $bigIcon = null,
         iconClass = null;
 
+
     setTimeout(function(){
         iconClass = $('.redux-group-tab-link-li.active').find('i').attr('class');
         $bigIcon = $('<i>', {class: iconClass + ' big-icon', id: 'big-icon'});
         $('.redux-main').append($bigIcon);
+
+        // move initial description to sidebar
+        var $active         = $('.redux-group-tab-link-li.active > a'),
+            tabNo           = $active.data('key'),
+            $tab            = $("#" + tabNo + "_section_group"),
+            description     = $tab.find('.redux-section-desc .description').text();
+
+        $("#redux-intro-text").append("<p class='description'>" + description + "</p>");
+
     }, 100);
 
-
     $('.redux-group-menu a').on('click', function() {
+
+        var tabNo           = $(this).data('key'),
+            $tab            = $("#" + tabNo + "_section_group"),
+            description     = $tab.find('.redux-section-desc .description').text();
+
+        $("#redux-intro-text .description").text(description);
+
         setTimeout(function(){
             // change floating text
             var text = $('.redux-group-tab:visible > h3').html();

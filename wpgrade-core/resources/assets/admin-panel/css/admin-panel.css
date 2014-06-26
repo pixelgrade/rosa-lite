@@ -1249,4 +1249,8 @@ body .redux-container .redux-main input[type="checkbox"]:checked:after {
   margin-top: -4em;
 }
 
+.redux-group-tab .description {
+  display: none;
+}
+
 /*# sourceMappingURL=admin-panel.css.map */
