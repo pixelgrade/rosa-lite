@@ -52,6 +52,8 @@
 		bottom: 0;
 		left: 0;
 		background: $accent;
+
+		z-index: 1;
 	}
 }
 
@@ -234,12 +236,16 @@
 	}
 
 	.redux-main {
-		background: white;
-		overflow: hidden;
-		border: solid white;
-		// how 'bout dat biatch? // lol, so hardcore // much hate
+		position: relative;
+
+		// how 'bout dat biatch? // lol, so hardcore // much hate // wow very comments
 		padding: 3vw 6vw 6vw;
+		overflow: hidden;
+
+		border: solid white;
 		border: 0;
+
+		background: white;
 
 //		.description {
 //			@extend .fs14;
@@ -256,7 +262,19 @@
 				}
 			}
 		}
-	}
+		
+		i#big-icon{
+			position: absolute;
+			right: 70px;
+			top: 24px;
+
+			font-size: rem(188px);
+			color: #d2d2d2;
+
+			opacity: .1;
+		}
+		
+	} // .redux-main
 
 	.redux-field-container {
 		@extend .mbp0;

@@ -462,6 +462,7 @@
   bottom: 0;
   left: 0;
   background: #0095ea;
+  z-index: 1;
 }
 
 .beta, .redux-container .redux-main h1, .redux-container .redux-main h2, .redux-container .redux-main h3, .redux-container .redux-main h4, .redux-container .redux-main h5, .redux-container .redux-main h6 {
@@ -592,11 +593,12 @@
   color: white;
 }
 .redux-container .redux-main {
-  background: white;
+  position: relative;
+  padding: 3vw 6vw 6vw;
   overflow: hidden;
   border: solid white;
-  padding: 3vw 6vw 6vw;
   border: 0;
+  background: white;
 }
 .redux-container .redux-main .text_sortable > li {
   display: block;
@@ -604,6 +606,14 @@
 }
 .redux-container .redux-main .text_sortable > li input[type="checkbox"] {
   width: 30px;
+}
+.redux-container .redux-main i#big-icon {
+  position: absolute;
+  right: 70px;
+  top: 24px;
+  font-size: 188px;
+  color: #d2d2d2;
+  opacity: .1;
 }
 .redux-container .redux-sidebar .redux-group-menu li {
   position: relative;
