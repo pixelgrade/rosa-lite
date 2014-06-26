@@ -30,6 +30,10 @@
 
     .redux-main {
 
+        .form-table>tbody>tr>th {
+            padding-bottom: inherit !important;
+        }
+
         * {
             @extend .mbp0;
         }
@@ -81,6 +85,10 @@
 			@extend .mbp0;
 			display: block !important;
 		}
+
+        tr[style="display: none;"] {
+            display: none !important;
+        }
 
 //		tr[style="display:table-row;"] {
 //			display: block !important;

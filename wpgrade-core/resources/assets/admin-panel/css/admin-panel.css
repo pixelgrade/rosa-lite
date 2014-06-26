@@ -31,6 +31,8 @@
     box-sizing: border-box;
     background: none;
     border: 0; }
+  .redux-container .redux-main .form-table > tbody > tr > th {
+    padding-bottom: inherit !important; }
   .redux-container .redux-main .wp-switch-editor {
     border: 2px solid #d9d9d9;
     border-bottom: 0;
@@ -59,6 +61,8 @@
     line-height: 1.5; }
   .redux-container .form-table, .redux-container .form-table thead, .redux-container .form-table tbody, .redux-container .form-table tfoot, .redux-container .form-table tr, .redux-container .form-table th, .redux-container .form-table td {
     display: block !important; }
+  .redux-container .form-table tr[style="display: none;"] {
+    display: none !important; }
   .redux-container .form-table tr.hide {
     display: none !important; }
   .redux-container .redux-sidebar .redux-group-menu li a {
@@ -874,6 +878,8 @@
       border-color: #0095ea; }
   .redux-container .wp-editor-wrap, .redux-container .wp-editor-wrap *, .redux-container .wp-editor-wrap *:before, .redux-container .wp-editor-wrap:after {
     box-sizing: content-box; }
+  .redux-container #info-wpGrade_import_demodata_button {
+    margin-top: 1em; }
 
 #toplevel_page_rosa_options a:after {
   border-right-color: #47dad1 !important; }
