@@ -1107,6 +1107,11 @@ h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty, p:empty, ul:empty, o
 /*------------------------------------*\
     $Reset menu
 \*------------------------------------*/
+.reset-menu_wrapper {
+  position: relative;
+  display: inline-block;
+}
+
 #info_bar, .reset-menu_cog {
   display: inline-block;
   vertical-align: middle;
@@ -1127,8 +1132,8 @@ h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty, p:empty, ul:empty, o
 .reset-menu {
   position: absolute;
   top: auto;
-  bottom: 120px;
-  right: 36px;
+  bottom: calc(100% + 38px);
+  right: -12px;
 }
 
 .reset-menu_list {
