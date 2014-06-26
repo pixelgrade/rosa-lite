@@ -114,7 +114,9 @@
   border-radius: 0;
   background: none;
   border: 0;
-  box-shadow: none; }
+  box-shadow: none;
+  width: auto !important;
+  min-width: 9.3em; }
   .redux-container .select2-container .select2-choice {
     height: auto; }
     .redux-container .select2-container .select2-choice .select2-arrow {
@@ -123,27 +125,32 @@
       border-left: 0;
       background: none; }
 
+.select2-chosen {
+  width: auto !important; }
+
 .select2-drop {
-  margin-top: 0.5em;
-  border: 0;
-  box-shadow: rgba(0, 0, 0, 0.25) 0 0 0.5em 0.15em;
+  margin-top: 0.75em;
+  box-shadow: rgba(0, 0, 0, 0.15) 0 0.3em 0.6em;
+  border: 2px solid #d9d9d9;
+  border-color: #d9d9d9 !important;
   border-radius: 0.5em;
+  overflow: hidden;
   width: auto !important;
   min-width: 10em; }
 
 .select2-results {
   padding: 0;
-  margin: 0;
-  overflow: hidden; }
+  margin: 0; }
   .select2-results > li {
-    border-top: 1px solid #d9d9d9;
+    border-top: 2px solid #ececec;
     margin-bottom: 0; }
     .select2-results > li:first-child {
       border-top: 0; }
     .select2-results > li .select2-result-label {
-      padding: 0.5em 1em; }
+      padding: 0.75em 1em; }
   .select2-results .select2-highlighted {
-    background: #0095ea !important; }
+    background: #ececec !important;
+    color: black !important; }
 
 /*-----------------------------------------------*\
               ICONS
@@ -409,7 +416,7 @@
   padding-top: 0.41em;
   margin-bottom: 1.09em; }
 
-.fs14, .redux-container #redux-intro-text, .redux-container #redux-intro-text > *, .redux-container #redux-intro-text > p, .redux-container .redux-container-switch .switch-options label span:before, .redux-container .redux_field_th span, .redux-container .upload_button_div {
+.fs14, .redux-container .select2-container, .redux-container #redux-intro-text, .redux-container #redux-intro-text > *, .redux-container #redux-intro-text > p, .redux-container .redux-container-switch .switch-options label span:before, .redux-container .redux_field_th span, .redux-container .upload_button_div {
   font-size: 14px;
   line-height: 1.5;
   padding-top: 0.41em;
@@ -429,7 +436,8 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    background: #0095ea; }
+    background: #0095ea;
+    z-index: 1; }
 
 .beta, .redux-container .redux-main h1, .redux-container .redux-main h2, .redux-container .redux-main h3, .redux-container .redux-main h4, .redux-container .redux-main h5, .redux-container .redux-main h6 {
   float: left;
@@ -466,15 +474,16 @@
   .redux-container #redux-intro-text {
     position: fixed;
     right: 0;
+    z-index: 10;
     width: 19%;
-    border: 0;
-    overflow: hidden;
+    padding: 3em;
     margin: 0;
+    overflow: hidden;
+    border: 0;
     font-size: 1rem;
     color: white;
     background: none;
-    box-shadow: none;
-    padding: 3em; }
+    box-shadow: none; }
     .redux-container #redux-intro-text, .redux-container #redux-intro-text > *, .redux-container #redux-intro-text > p {
       color: white; }
   .redux-container .redux-main {
@@ -534,16 +543,24 @@
       background: #0095ea;
       color: white; }
   .redux-container .redux-main {
-    background: white;
+    position: relative;
+    padding: 3vw 6vw 6vw;
     overflow: hidden;
     border: solid white;
-    padding: 3vw 6vw 6vw;
-    border: 0; }
+    border: 0;
+    background: white; }
     .redux-container .redux-main .text_sortable > li {
       display: block;
       clear: both; }
       .redux-container .redux-main .text_sortable > li input[type="checkbox"] {
         width: 30px; }
+    .redux-container .redux-main i#big-icon {
+      position: absolute;
+      right: 70px;
+      top: 24px;
+      font-size: 188px;
+      color: #d2d2d2;
+      opacity: .1; }
   .redux-container .redux-sidebar .redux-group-menu li {
     position: relative;
     padding-left: 22%;
@@ -553,7 +570,7 @@
       content: "";
       position: absolute;
       left: 22%;
-      right: 0;
+      right: -100%;
       bottom: 0;
       display: block;
       height: 1px;
@@ -590,7 +607,7 @@
         content: none; }
     .redux-container .redux-sidebar .redux-group-menu li:last-child {
       position: absolute;
-      bottom: 80px;
+      bottom: 100px;
       left: 0;
       right: 0; }
       .redux-container .redux-sidebar .redux-group-menu li:last-child:after {

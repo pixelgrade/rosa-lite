@@ -53,6 +53,8 @@
 		bottom: 0;
 		left: 0;
 		background: $accent;
+
+		z-index: 1;
 	}
 }
 
@@ -116,18 +118,20 @@
 	#redux-intro-text {
 		position: fixed;
 		right: 0;
+		z-index: 10;
 
 		width: 19%;
-		border: 0;
-		overflow: hidden;
+		padding: 3em;
 		margin: 0;
+		overflow: hidden;
+
+		border: 0;
 
 		font-size: 1rem;
 
 		color: white;
 		background: none;
 		box-shadow: none;
-		padding: 3em;
 
 		&, > *, > p {
 			@extend %font--body;
@@ -235,12 +239,16 @@
 	}
 
 	.redux-main {
-		background: white;
-		overflow: hidden;
-		border: solid white;
-		// how 'bout dat biatch? // lol, so hardcore // much hate
+		position: relative;
+
+		// how 'bout dat biatch? // lol, so hardcore // much hate // wow very comments
 		padding: 3vw 6vw 6vw;
+		overflow: hidden;
+
+		border: solid white;
 		border: 0;
+
+		background: white;
 
 //		.description {
 //			@extend .fs14;
@@ -257,7 +265,19 @@
 				}
 			}
 		}
-	}
+		
+		i#big-icon{
+			position: absolute;
+			right: 70px;
+			top: 24px;
+
+			font-size: rem(188px);
+			color: #d2d2d2;
+
+			opacity: .1;
+		}
+		
+	} // .redux-main
 
 	.redux-field-container {
 		@extend .mbp0;
@@ -280,7 +300,8 @@
 					content: "";
 					position: absolute;
 					left: 22%;
-					right: 0;
+
+					right: -100%;
 					bottom: 0;
 
 					display: block;
@@ -341,7 +362,7 @@
 				// help and support button
 				&:last-child{
 					position: absolute;
-					bottom: 80px;
+					bottom: 100px;
 					left: 0;
 					right: 0;
 
