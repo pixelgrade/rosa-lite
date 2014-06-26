@@ -202,6 +202,7 @@
 	}
 
 	.button, .button-primary, .button-secondary, .button.remove-image {
+        @extend .fs14;
 		height: auto;
 		border: 1px solid $border;
 		color: $border;
@@ -224,6 +225,10 @@
 			border-color: $light;
 			box-shadow: none;
 		}
+
+        span:before {
+            color: $border;
+        }
 	}
 
 	.button, .button-primary {
@@ -236,6 +241,10 @@
 			background: $accent;
 			color: white;
 		}
+
+        span:before {
+            color: white;
+        }
 	}
 
 	.redux-main {
@@ -612,14 +621,24 @@
 		@extend .fs14;
 	}
 
-	.ace-editor-area {
+    .redux-container-editor {
+        margin: 1em 0;
+    }
 
+	.ace-editor-area {
 		border: 2px solid $border;
 
 		&.ace_focus {
 			border-color: $accent;
 		}
 	}
+
+    .wp-editor-wrap {
+
+        &, *, *:before, &:after {
+            box-sizing: content-box;
+        }
+    }
 
 } // .redux-container
 
