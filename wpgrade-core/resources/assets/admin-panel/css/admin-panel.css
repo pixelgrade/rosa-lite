@@ -959,25 +959,54 @@ h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty, p:empty, ul:empty, o
 }
 #reset-menu_trigger:checked + .reset-menu .reset-menu_list {
   opacity: 1;
-  max-height: 200px;
+  pointer-events: auto;
 }
 
 .reset-menu_cog {
   font-size: 24px;
 }
 
+.reset-menu {
+  position: absolute;
+  top: auto;
+  bottom: 115%;
+  right: 5%;
+}
+
 .reset-menu_list {
   margin-top: 24px !important;
-  max-height: 0;
   opacity: 0;
-  -webkit-transition: all .5s ease-out;
-  -moz-transition: all .5s ease-out;
-  -ms-transition: all .5s ease-out;
-  -o-transition: all .5s ease-out;
-  transition: all .5s ease-out;
+  pointer-events: none;
+  border-radius: 0.5em;
+  border: 1px solid #d8d8d8 !important;
+  -webkit-transition: all .2s ease-out;
+  -moz-transition: all .2s ease-out;
+  -ms-transition: all .2s ease-out;
+  -o-transition: all .2s ease-out;
+  transition: all .2s ease-out;
 }
 .reset-menu_list li {
-  display: inline-block;
+  display: block;
+}
+.reset-menu_list li:first-child input[type="submit"] {
+  border-bottom: 1px solid black;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.reset-menu_list li:nth-child(2) input[type="submit"] {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+.reset-menu_list input[type="submit"] {
+  font-size: 14px;
+  width: 100%;
+  color: black;
+  background: white;
+  border: 0;
+}
+.reset-menu_list input[type="submit"]:hover {
+  background: black;
+  color: white;
 }
 
 /*# sourceMappingURL=admin-panel.css.map */

@@ -56,8 +56,6 @@ function wpgrade_hook_after_redux_save_btn(){
 	submit_button( __( 'Reset Section', 'redux-framework' ), 'secondary', wpgrade::$shortname . '_options' . '[defaults-section]', false );
     echo '</li><li>';
 	submit_button( __( 'Reset All', 'redux-framework' ), 'secondary', wpgrade::$shortname . '_options' . '[defaults]', false );
-    echo '</li></ul>';
-
-    echo '</div>';
+    echo '</li></ul></div>';
 
 }
