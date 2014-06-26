@@ -5,6 +5,7 @@
 "resets",
 "tools",
 "layout",
+"chosen",
 "icons";
 
 @function rem($px) {
@@ -401,6 +402,7 @@
 	#redux_save{
 		padding: 16px 30px;
 		padding-top: 22px;
+		margin-right: 12px;
 
 		font-family: "Josefin Sans", serif;
 		font-size: rem(19px);
@@ -559,18 +561,6 @@
 		}
 	}
 
-	input[type="text"],
-	textarea {
-		box-shadow: none;
-		background: none;
-		padding: 0.5em 1em;
-		border: 2px solid $border;
-
-		&:focus {
-			border-color: $accent;
-		}
-	}
-
 	.redux-field {
 //		@extend .fs19;
 	}
@@ -587,5 +577,80 @@
 h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li, th, td, tr {
 	&:empty {
 		display: none;
+	}
+}
+
+/*------------------------------------*\
+    $Reset menu
+\*------------------------------------*/
+#info_bar, .reset-menu_cog{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#reset-menu_trigger{
+	display: none;
+
+	&:checked + .reset-menu .reset-menu_list{
+		opacity: 1;
+		pointer-events: auto;
+	}
+}
+
+.reset-menu_cog{
+	font-size: rem(24px);
+}
+
+.reset-menu{
+	position: absolute;
+	top: auto;
+	bottom: 115%;
+	right: 5%;
+}
+
+.reset-menu_list{
+	margin-top: 24px !important;
+
+	opacity: 0;
+	pointer-events: none;
+
+	border-radius: 0.5em;
+
+	border: 1px solid #d8d8d8 !important;
+
+	-webkit-transition: all .2s ease-out;
+	-moz-transition: all .2s ease-out;
+	-ms-transition: all .2s ease-out;
+	-o-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+
+	li{
+		display: block;
+
+		&:first-child input[type="submit"]{
+			border-bottom: 1px solid black;
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+
+		&:nth-child(2) input[type="submit"]{
+			border-top-right-radius: 0;
+			border-top-left-radius: 0;
+		}
+	}
+
+	input[type="submit"]{
+		font-size: rem(14px);
+		width: 100%;
+
+		color: black;
+		background: white;
+
+		border: 0;
+
+		&:hover{
+			background: black;
+			color: white;
+		}
 	}
 }

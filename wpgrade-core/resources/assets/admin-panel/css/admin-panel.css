@@ -57,6 +57,17 @@
     border: none;
     box-shadow: none; }
 
+#rosa_options\[defaults-section\],
+#rosa_options\[defaults\] {
+  display: none; }
+
+.reset-menu #rosa_options\[defaults-section\],
+.reset-menu #rosa_options\[defaults\] {
+  display: inline-block; }
+
+.redux-save-warn, .saved_notice {
+  display: none !important; }
+
 /*------------------------------------*\
     $LAYOUT
 \*------------------------------------*/
@@ -86,6 +97,53 @@
   width: auto; }
 .redux-container .redux-action_bar {
   text-align: center; }
+
+.field, .redux-container input[type="text"],
+.redux-container textarea, .redux-container .select2-container .select2-choice {
+  background: none;
+  box-shadow: none;
+  border: 2px solid #d9d9d9;
+  border-radius: 0;
+  padding: 0.5em 1em; }
+
+.field--focus, .redux-container input[type="text"]:focus,
+.redux-container textarea:focus, .redux-container .select2-container.select2-dropdown-open .select2-choice {
+  border-color: #0095ea; }
+
+.redux-container .select2-container {
+  border-radius: 0;
+  background: none;
+  border: 0;
+  box-shadow: none; }
+  .redux-container .select2-container .select2-choice {
+    height: auto; }
+    .redux-container .select2-container .select2-choice .select2-arrow {
+      margin-right: 0.45em;
+      margin-top: 0.45em;
+      border-left: 0;
+      background: none; }
+
+.select2-drop {
+  margin-top: 0.5em;
+  border: 0;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 0 0.5em 0.15em;
+  border-radius: 0.5em;
+  width: auto !important;
+  min-width: 10em; }
+
+.select2-results {
+  padding: 0;
+  margin: 0;
+  overflow: hidden; }
+  .select2-results > li {
+    border-top: 1px solid #d9d9d9;
+    margin-bottom: 0; }
+    .select2-results > li:first-child {
+      border-top: 0; }
+    .select2-results > li .select2-result-label {
+      padding: 0.5em 1em; }
+  .select2-results .select2-highlighted {
+    background: #0095ea !important; }
 
 /*-----------------------------------------------*\
               ICONS
@@ -656,6 +714,7 @@
   .redux-container #redux_save {
     padding: 16px 30px;
     padding-top: 22px;
+    margin-right: 12px;
     font-family: "Josefin Sans", serif;
     font-size: 19px;
     line-height: 19px;
@@ -760,20 +819,63 @@
       content: " ";
       display: table;
       clear: both; }
-  .redux-container input[type="text"],
-  .redux-container textarea {
-    box-shadow: none;
-    background: none;
-    padding: 0.5em 1em;
-    border: 2px solid #d9d9d9; }
-    .redux-container input[type="text"]:focus,
-    .redux-container textarea:focus {
-      border-color: #0095ea; }
 
 #toplevel_page_rosa_options a:after {
   border-right-color: #47dad1 !important; }
 
 h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty, p:empty, ul:empty, ol:empty, dl:empty, li:empty, th:empty, td:empty, tr:empty {
   display: none; }
+
+/*------------------------------------*\
+    $Reset menu
+\*------------------------------------*/
+#info_bar, .reset-menu_cog {
+  display: inline-block;
+  vertical-align: middle; }
+
+#reset-menu_trigger {
+  display: none; }
+  #reset-menu_trigger:checked + .reset-menu .reset-menu_list {
+    opacity: 1;
+    pointer-events: auto; }
+
+.reset-menu_cog {
+  font-size: 24px; }
+
+.reset-menu {
+  position: absolute;
+  top: auto;
+  bottom: 115%;
+  right: 5%; }
+
+.reset-menu_list {
+  margin-top: 24px !important;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 0.5em;
+  border: 1px solid #d8d8d8 !important;
+  -webkit-transition: all .2s ease-out;
+  -moz-transition: all .2s ease-out;
+  -ms-transition: all .2s ease-out;
+  -o-transition: all .2s ease-out;
+  transition: all .2s ease-out; }
+  .reset-menu_list li {
+    display: block; }
+    .reset-menu_list li:first-child input[type="submit"] {
+      border-bottom: 1px solid black;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0; }
+    .reset-menu_list li:nth-child(2) input[type="submit"] {
+      border-top-right-radius: 0;
+      border-top-left-radius: 0; }
+  .reset-menu_list input[type="submit"] {
+    font-size: 14px;
+    width: 100%;
+    color: black;
+    background: white;
+    border: 0; }
+    .reset-menu_list input[type="submit"]:hover {
+      background: black;
+      color: white; }
 
 /*# sourceMappingURL=admin-panel.css.map */
