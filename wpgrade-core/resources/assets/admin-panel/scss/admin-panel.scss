@@ -117,18 +117,20 @@
 	#redux-intro-text {
 		position: fixed;
 		right: 0;
+		z-index: 10;
 
 		width: 19%;
-		border: 0;
-		overflow: hidden;
+		padding: 3em;
 		margin: 0;
+		overflow: hidden;
+
+		border: 0;
 
 		font-size: 1rem;
 
 		color: white;
 		background: none;
 		box-shadow: none;
-		padding: 3em;
 
 		&, > *, > p {
 			@extend %font--body;
@@ -297,7 +299,8 @@
 					content: "";
 					position: absolute;
 					left: 22%;
-					right: 0;
+
+					right: -100%;
 					bottom: 0;
 
 					display: block;
@@ -358,7 +361,7 @@
 				// help and support button
 				&:last-child{
 					position: absolute;
-					bottom: 80px;
+					bottom: 100px;
 					left: 0;
 					right: 0;
 

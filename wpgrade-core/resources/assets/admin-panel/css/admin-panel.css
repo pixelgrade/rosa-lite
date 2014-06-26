@@ -508,15 +508,16 @@
 .redux-container #redux-intro-text {
   position: fixed;
   right: 0;
+  z-index: 10;
   width: 19%;
-  border: 0;
-  overflow: hidden;
+  padding: 3em;
   margin: 0;
+  overflow: hidden;
+  border: 0;
   font-size: 1rem;
   color: white;
   background: none;
   box-shadow: none;
-  padding: 3em;
 }
 .redux-container #redux-intro-text, .redux-container #redux-intro-text > *, .redux-container #redux-intro-text > p {
   color: white;
@@ -625,7 +626,7 @@
   content: "";
   position: absolute;
   left: 22%;
-  right: 0;
+  right: -100%;
   bottom: 0;
   display: block;
   height: 1px;
@@ -668,7 +669,7 @@
 }
 .redux-container .redux-sidebar .redux-group-menu li:last-child {
   position: absolute;
-  bottom: 80px;
+  bottom: 100px;
   left: 0;
   right: 0;
 }
