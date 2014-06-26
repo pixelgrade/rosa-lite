@@ -5,6 +5,7 @@
 "resets",
 "tools",
 "layout",
+"chosen",
 "icons";
 
 @function rem($px) {
@@ -476,23 +477,47 @@
 		-webkit-background-size: 1em 1em;
 		background-position: 0 0, 0.5em 0.5em;
 
-		box-shadow: white 0 0 0 0.25em inset;
-
-		> a {
-			display: table-cell;
-			vertical-align: middle;
-			text-align: center;
-			border: 0.25em solid transparent;
-
-			img {
-				display: inline-block;
-				max-width: 100%;
-			}
-		}
+		box-shadow: white 0 0 0 0.5em inset;
+		padding: 0.5em;
 	}
 
 	.row--image {
 		position: relative;
+
+		.screenshot {
+
+			&:before, &:after {
+				display: none;
+				content: "";
+				position: absolute;
+				top: 50%; left: 50%;
+				background: $border;
+				pointer-events: none;
+			}
+
+			&:before {
+				width: 2px;
+				margin-left: -1px;
+				height: 2em;
+				margin-top: -1em;
+			}
+
+			&:after {
+				width: 2em;
+				margin-left: -1em;
+				height: 2px;
+				margin-top: -1px;
+			}
+
+			&.hide {
+				display: block;
+				background: none;
+
+				&:before, &:after {
+					display: block;
+				}
+			}
+		}
 
 		> .screenshot {
 			float: left;
@@ -503,28 +528,10 @@
 
 			&:empty {
 				background: white;
+			}
 
-				&:before, &:after {
-					content: "";
-					position: absolute;
-					top: 50%; left: 50%;
-					background: $border;
-					pointer-events: none;
-				}
-
-				&:before {
-					width: 2px;
-					margin-left: -1px;
-					height: 2em;
-					margin-top: -1em;
-				}
-
-				&:after {
-					width: 2em;
-					margin-left: -1em;
-					height: 2px;
-					margin-top: -1px;
-				}
+			&:before, &:after {
+				display: none;
 			}
 		}
 
@@ -554,6 +561,7 @@
 				position: absolute;
 				top: 50%; left: 50%;
 				max-width: 100%;
+				max-width: calc(100% - 0.5em);
 				background: none;
 				-webkit-transform: translate(-50%, -50%);
 				-moz-transform: translate(-50%, -50%);
@@ -572,14 +580,6 @@
 			display: table;
 			clear: both;
 		}
-	}
-
-	input[type="text"],
-	textarea {
-		box-shadow: none;
-		background: none;
-		padding: 0.5em 1em;
-		border: 2px solid $border;
 	}
 
 	.redux-field {

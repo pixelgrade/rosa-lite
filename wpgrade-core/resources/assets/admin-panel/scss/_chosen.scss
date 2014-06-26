@@ -1,0 +1,91 @@
+.field {
+	background: none;
+	box-shadow: none;
+	border: 2px solid $border;
+	border-radius: 0;
+	padding: 0.5em 1em;
+}
+
+.field--focus {
+	border-color: $accent;
+}
+
+.redux-container {
+
+	input[type="text"],
+	textarea {
+		@extend .field;
+
+		&:focus {
+			@extend .field--focus;
+		}
+	}
+
+	.select2-container {
+		@extend .fs14;
+		border-radius: 0;
+		background: none;
+		border: 0;
+		box-shadow: none;
+		width: auto !important;
+		min-width: 9.3em;
+
+		.select2-choice {
+			@extend .field;
+			height: auto;
+
+			.select2-arrow {
+				margin-right: 0.45em;
+				margin-top: 0.45em;
+				border-left: 0;
+				background: none;
+			}
+
+		}
+
+		&.select2-dropdown-open {
+
+			.select2-choice {
+				@extend .field--focus;
+			}
+		}
+	}
+}
+
+.select2-chosen {
+	width: auto !important;
+}
+
+.select2-drop {
+	margin-top: 0.75em;
+	box-shadow: rgba(0,0,0,0.15) 0 0.3em 0.6em;
+	border: 2px solid #d9d9d9;
+	border-color: #d9d9d9 !important;
+	border-radius: 0.5em;
+	overflow: hidden;
+	width: auto !important;
+	min-width: 10em;
+}
+
+.select2-results {
+	padding: 0;
+	margin: 0;
+
+	> li {
+		border-top: 2px solid #ececec;
+		margin-bottom: 0;
+
+		&:first-child {
+			border-top: 0;
+		}
+
+		.select2-result-label {
+			padding: 0.75em 1em;
+		}
+	}
+
+	.select2-highlighted {
+		background: #ececec !important;
+		color: black !important;
+	}
+}
