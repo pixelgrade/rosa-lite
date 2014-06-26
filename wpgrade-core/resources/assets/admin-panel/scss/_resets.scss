@@ -57,6 +57,14 @@
                 padding: 1em;
             }
         }
+
+        .mce-statusbar {
+            border-top: 1px solid $border;
+        }
+
+        .mce-path {
+            padding: 0 8px 2px;
+        }
     }
 
 	#redux-footer {
