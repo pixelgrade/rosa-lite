@@ -1058,6 +1058,9 @@ h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty, p:empty, ul:empty, o
   -ms-transition: all .1s ease-out;
   -o-transition: all .1s ease-out;
   transition: all .1s ease-out;
+  -webkit-box-shadow: 0px 3px 13px 0px rgba(50, 50, 50, 0.15);
+  -moz-box-shadow: 0px 3px 13px 0px rgba(50, 50, 50, 0.15);
+  box-shadow: 0px 3px 13px 0px rgba(50, 50, 50, 0.15);
 }
 .reset-menu_list:after {
   content: "";
