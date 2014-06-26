@@ -22,13 +22,16 @@
 	}
 
 	#redux-sticky {
-		width: 19%;
 		position: fixed;
 		right: 0;
-		bottom: 80px;
+		bottom: 25px;
+		z-index: 10;
+
+		padding: 3em;
+
+		width: 20%;
 		float: none;
 
-		z-index: 10;
 	}
 
 	#redux-intro-text {
