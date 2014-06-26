@@ -260,9 +260,35 @@
 				display: block;
 				clear: both;
 
-				input[type="checkbox"] {
-					width: 30px;
-				}
+                &:after {
+                    content: " ";
+                    display: table;
+                    clear: both;
+                }
+
+                &.head {
+
+                    span {
+                        @extend .fs14;
+                        margin-left: 1em;
+                    }
+
+                    .spacer {
+                        margin-left: -0.3em;
+                    }
+                }
+
+                label {
+                    @extend .fs14;
+                }
+
+                label, input {
+                    float: left;
+                }
+
+                input[type="checkbox"] {
+                    margin-left: 2em;
+                }
 			}
 		}
 		
@@ -583,7 +609,16 @@
 	}
 
 	.redux-field {
-//		@extend .fs19;
+		@extend .fs14;
+	}
+
+	.ace-editor-area {
+
+		border: 2px solid $border;
+
+		&.ace_focus {
+			border-color: $accent;
+		}
 	}
 
 } // .redux-container
@@ -674,4 +709,72 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li, th, td, tr {
 			color: white;
 		}
 	}
+}
+
+
+body .redux-container .redux-main {
+
+    input[type="checkbox"] {
+        // magic numbers
+        width: 2.68em !important;
+        height: 2.68em !important;
+        outline: none;
+        box-shadow: none;
+        background: 0;
+        color: white;
+        position: relative;
+
+        &:before, &:after {
+            -webkit-transition: all .2s ease-in-out;
+            -moz-transition: all .2s ease-in-out;
+            -ms-transition: all .2s ease-in-out;
+            -o-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+        }
+
+        &:before {
+            content: "" !important;
+            margin: 0 !important;
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid $border;
+        }
+
+        &:after {
+            content: "";
+            width: 1em;
+            height: 0.6em;
+            border: 0 solid white;
+            border-bottom-width: 0.3em;
+            border-left-width: 0.3em;
+
+            position: absolute;
+            top: 1em;
+            left: 0.9em;
+
+            -webkit-transform: rotate(-45deg) scale(0.5);
+            -moz-transform: rotate(-45deg) scale(0.5);
+            -ms-transform: rotate(-45deg) scale(0.5);
+            -o-transform: rotate(-45deg) scale(0.5);
+            transform: rotate(-45deg) scale(0.5);
+        }
+
+        &:checked {
+
+            &:before {
+                border-color: $accent;
+                background: $accent;
+            }
+
+            &:after {
+                -webkit-transform: rotate(-45deg);
+                -moz-transform: rotate(-45deg);
+                -ms-transform: rotate(-45deg);
+                -o-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+            }
+        }
+    }
 }
