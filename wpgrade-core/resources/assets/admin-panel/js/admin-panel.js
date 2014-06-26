@@ -501,13 +501,17 @@
     });
 
 
+
+
+    // Set the big icon in .redux-main
     var $bigIcon = null,
         iconClass = null;
 
     setTimeout(function(){
-    iconClass = $('.redux-group-tab-link-li.active').find('i').attr('class');
-    $bigIcon = $('<i>', {class: iconClass + ' big-icon', id: 'big-icon'});
-    $('.redux-main').append($bigIcon);}, 100);
+        iconClass = $('.redux-group-tab-link-li.active').find('i').attr('class');
+        $bigIcon = $('<i>', {class: iconClass + ' big-icon', id: 'big-icon'});
+        $('.redux-main').append($bigIcon);
+    }, 100);
 
 
     $('.redux-group-menu a').on('click', function() {
@@ -517,7 +521,7 @@
             $('#floating-title').html(text);
 
 
-            // change the big icon
+            // change the big icon accordingly
             iconClass = $('.redux-group-tab-link-li.active').find('i').attr('class');
 
             $bigIcon.removeClass();
