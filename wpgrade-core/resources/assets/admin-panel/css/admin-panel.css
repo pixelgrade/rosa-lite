@@ -692,17 +692,33 @@
     background-size: 1em 1em;
     -webkit-background-size: 1em 1em;
     background-position: 0 0, 0.5em 0.5em;
-    box-shadow: white 0 0 0 0.25em inset; }
-    .redux-container .screenshot > a {
-      display: table-cell;
-      vertical-align: middle;
-      text-align: center;
-      border: 0.25em solid transparent; }
-      .redux-container .screenshot > a img {
-        display: inline-block;
-        max-width: 100%; }
+    box-shadow: white 0 0 0 0.5em inset;
+    padding: 0.5em; }
   .redux-container .row--image {
     position: relative; }
+    .redux-container .row--image .screenshot:before, .redux-container .row--image .screenshot:after {
+      display: none;
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: #d9d9d9;
+      pointer-events: none; }
+    .redux-container .row--image .screenshot:before {
+      width: 2px;
+      margin-left: -1px;
+      height: 2em;
+      margin-top: -1em; }
+    .redux-container .row--image .screenshot:after {
+      width: 2em;
+      margin-left: -1em;
+      height: 2px;
+      margin-top: -1px; }
+    .redux-container .row--image .screenshot.hide {
+      display: block;
+      background: none; }
+      .redux-container .row--image .screenshot.hide:before, .redux-container .row--image .screenshot.hide:after {
+        display: block; }
     .redux-container .row--image > .screenshot {
       float: left;
       margin-right: 2em;
@@ -711,23 +727,8 @@
       position: relative; }
       .redux-container .row--image > .screenshot:empty {
         background: white; }
-        .redux-container .row--image > .screenshot:empty:before, .redux-container .row--image > .screenshot:empty:after {
-          content: "";
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          background: #d9d9d9;
-          pointer-events: none; }
-        .redux-container .row--image > .screenshot:empty:before {
-          width: 2px;
-          margin-left: -1px;
-          height: 2em;
-          margin-top: -1em; }
-        .redux-container .row--image > .screenshot:empty:after {
-          width: 2em;
-          margin-left: -1em;
-          height: 2px;
-          margin-top: -1px; }
+      .redux-container .row--image > .screenshot:before, .redux-container .row--image > .screenshot:after {
+        display: none; }
     .redux-container .row--image .redux_field_th, .redux-container .row--image td {
       margin-left: 168px; }
     .redux-container .row--image.image--small .screenshot {
@@ -746,6 +747,7 @@
         top: 50%;
         left: 50%;
         max-width: 100%;
+        max-width: calc(100% - 0.5em);
         background: none;
         -webkit-transform: translate(-50%, -50%);
         -moz-transform: translate(-50%, -50%);
@@ -764,6 +766,9 @@
     background: none;
     padding: 0.5em 1em;
     border: 2px solid #d9d9d9; }
+    .redux-container input[type="text"]:focus,
+    .redux-container textarea:focus {
+      border-color: #0095ea; }
 
 #toplevel_page_rosa_options a:after {
   border-right-color: #47dad1 !important; }
