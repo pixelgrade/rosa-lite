@@ -50,12 +50,12 @@ add_action('redux/options/' . wpgrade::$shortname . '_options/settings/change', 
 
 function wpgrade_hook_after_redux_save_btn(){
 
-    echo '<label class="reset-menu_cog" for="reset-menu_trigger"><i class="icon-cog-1"></i></label><input type="checkbox" id="reset-menu_trigger" />';
+    echo '<div class="reset-menu_wrapper"><label class="reset-menu_cog" for="reset-menu_trigger"><i class="icon-cog-1"></i></label><input type="checkbox" id="reset-menu_trigger" />';
 
     echo '<div class="reset-menu"><ul class="reset-menu_list"><li>';
 	submit_button( __( 'Reset Section', 'redux-framework' ), 'secondary', wpgrade::$shortname . '_options' . '[defaults-section]', false );
     echo '</li><li>';
 	submit_button( __( 'Reset All', 'redux-framework' ), 'secondary', wpgrade::$shortname . '_options' . '[defaults]', false );
-    echo '</li></ul></div>';
+    echo '</li></ul></div></div>';
 
 }
