@@ -549,7 +549,10 @@
     // set top / bottom of fixed elements
 
     var top = $('.redux-main').offset().top + 'px';
-
-    $('.redux-sidebar').css('top', top);
     $('#redux-intro-text').css('top', top);
+
+    if($('.redux-sidebar').height() > $(window).height()){
+        $('.redux-sidebar').css('top', top);
+        $('.redux-main').addClass('fixed-sidebar');
+    }
 })(jQuery, window);

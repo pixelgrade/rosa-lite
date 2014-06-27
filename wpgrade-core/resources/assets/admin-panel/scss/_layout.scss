@@ -6,13 +6,16 @@
 .redux-container {
 
 	.redux-sidebar {
-		position: fixed;
-		left: 162px;
+		position: absolute;
 		top: 0;
 
-		padding-top: 112px;
+		padding-top: 126px;
 		width: 14%;
-		height: 100%;
+
+		.fixed-sidebar &{
+			position: fixed;
+			left: 162px;
+		}
 	}
 
 	.redux-main, #redux-intro-text {
@@ -36,7 +39,7 @@
 
 	#redux-intro-text {
 		top: 0;
-		padding-top: 112px !important;
+		padding-top: 140px !important;
 		margin-left: 16%;
 	}
 
