@@ -138,9 +138,15 @@
 	.article__content {
 		position: relative;
 		width: 100%;
-		margin: 50px 0;
+		padding: 50px 0;
 		background-color: white;
 	}
+
+//	&.inverse-colors {
+//		.article__content {
+//			background-color: black;
+//		}
+//	}
 }
 
 .down-arrow {

@@ -23,11 +23,24 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 
 	<?php while ( have_posts() ) : the_post();
 
-		get_template_part( 'templates/page/header' ); ?>
+		get_template_part( 'templates/page/header' );
 
-		<article id="post-<?php the_ID(); ?>" <?php post_class( "article--page  article--main" ); ?>>
+		$classes = "article--page  article--main";
+		$style = '';
+		$inverse_colors = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'inverse_section_colors', true );
+		if ($inverse_colors) {
+			$classes .= ' inverse-colors';
+
+			$text_color = wpgrade::option('text_color');
+			$background_color = wpgrade::option('content_background_color');
+
+			$style .= ' style="background-color: '.$text_color.'; color: '.$background_color.'" ';
+		}
+		?>
+
+		<article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
 			<?php if (!empty( $post->post_content ) ) : ?>
-			<section class="article__content">
+			<section class="article__content" <?php echo $style ?>>
 				<div class="container">
 					<section class="page__content  js-post-gallery  cf">
 						<?php the_content(); ?>

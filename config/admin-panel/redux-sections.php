@@ -730,12 +730,12 @@ $sections[] = array(
 			'customizer'    => array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
-					'margin-top'    => array(
+					'padding-top'    => array(
 						'selector' => '.page .type-page .article__content',
 						'unit'     => 'px',
                         'media'    => 'only screen and (min-width: 900px)',
 					),
-					'margin-bottom' => array(
+					'padding-bottom' => array(
 						'selector' => '.page .type-page .article__content',
 						'unit'     => 'px',
                         'media'    => 'only screen and (min-width: 900px)',
