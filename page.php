@@ -28,7 +28,7 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 		$classes = "article--page  article--main";
 		$style = '';
 		$inverse_colors = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'inverse_section_colors', true );
-		if ($inverse_colors) {
+		if ($inverse_colors == 'on') {
 			$classes .= ' inverse-colors';
 
 			$text_color = wpgrade::option('text_color');
