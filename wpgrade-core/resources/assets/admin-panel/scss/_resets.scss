@@ -123,14 +123,12 @@
 	}
 }
 
-#rosa_options\[defaults-section\],
-#rosa_options\[defaults\]{
+#info_bar input[name*="defaults"]{
 	display: none; // temporary
 }
 
 .reset-menu{
-	#rosa_options\[defaults-section\],
-	#rosa_options\[defaults\]{
+	input{
 		display: inline-block;
 	}
 }
