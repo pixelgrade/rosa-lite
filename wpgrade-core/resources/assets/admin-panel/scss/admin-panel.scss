@@ -601,6 +601,11 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li, th, td, tr {
 /*------------------------------------*\
     $Reset menu
 \*------------------------------------*/
+.reset-menu_wrapper{
+	position: relative;
+	display: inline-block;
+}
+
 #info_bar, .reset-menu_cog{
 	display: inline-block;
 	vertical-align: middle;
@@ -622,8 +627,8 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li, th, td, tr {
 .reset-menu{
 	position: absolute;
 	top: auto;
-	bottom: 120px;
-	right: 36px;
+	bottom: calc(100% + 38px);
+	right: -12px;
 }
 
 .reset-menu_list{
