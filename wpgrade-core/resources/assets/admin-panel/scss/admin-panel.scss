@@ -57,6 +57,15 @@
 			color: white;
 			@extend .fs14;
 		}
+
+        > h4, > p {
+            display: none;
+        }
+
+        > .description {
+            display: block;
+            font-style: normal;
+        }
 	}
 
 	// LAYOUT
@@ -549,6 +558,31 @@
         border-left: 2px solid $dark;
     }
 
+    .redux-hint-qtip {
+        float: none !important;
+        display: inline-block;
+        margin-left: 0.5em;
+        border: 2px solid $border;
+        position: relative;
+        top: 0.25em;
+        width: 1.2em;
+        height: 1.2em;
+        border-radius: 50%;
+        cursor: help;
+
+        &:before {
+            content: "i";
+            position: absolute;
+            top: 0; left: 40%;
+            color: $border;
+            font-size: 12px !important;
+        }
+
+        > i {
+            display: none;
+        }
+    }
+
 } // .redux-container
 
 
@@ -744,5 +778,36 @@ body .redux-container .redux-main {
 .redux-group-tab {
     .description {
         display: none;
+    }
+}
+
+.pop-up {
+    margin-top: 0.75em;
+    box-shadow: rgba(0,0,0,0.15) 0 0.3em 0.6em;
+    border: 2px solid;
+    border-color: #d9d9d9 !important;
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+.qtip-shadow {
+    box-shadow: rgba(0,0,0,0.15) 0 0.3em 0.6em;
+}
+
+.qtip-light {
+    @extend .fs14;
+    padding-top: 0;
+    border: 2px solid #d9d9d9;
+    border-radius: 0.5em;
+
+    .qtip-titlebar {
+        background: #ececec;
+        font-weight: bold;
+        padding: 0.5em 1em;
+        border-bottom: 1px solid #ececec;
+    }
+
+    .qtip-content {
+        padding: 0.5em 1em;
     }
 }

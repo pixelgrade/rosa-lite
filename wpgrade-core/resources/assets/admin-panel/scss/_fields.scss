@@ -57,12 +57,7 @@
 }
 
 .select2-drop {
-	margin-top: 0.75em;
-	box-shadow: rgba(0,0,0,0.15) 0 0.3em 0.6em;
-	border: 2px solid;
-	border-color: #d9d9d9 !important;
-	border-radius: 0.5em;
-	overflow: hidden;
+	@extend .pop-up;
 	width: auto !important;
 	min-width: 10em;
 }

@@ -91,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
   display: none !important; }
 
 .fs14, .redux-container input[type="text"],
-.redux-container textarea, .redux-container #redux-intro-text, .redux-container #redux-intro-text > *, .redux-container #redux-intro-text > p, .redux-container .button, .redux-container .button-primary, .redux-container .button-secondary, .redux-container .button.remove-image, .redux-container .redux-main .text_sortable > li.head span, .redux-container .redux-main .text_sortable > li label, .redux-container .redux-container-switch .switch-options label span:before, .redux-container .redux_field_th span, .redux-container .upload_button_div, .redux-container .redux-field {
+.redux-container textarea, .redux-container #redux-intro-text, .redux-container #redux-intro-text > *, .redux-container #redux-intro-text > p, .redux-container .button, .redux-container .button-primary, .redux-container .button-secondary, .redux-container .button.remove-image, .redux-container .redux-main .text_sortable > li.head span, .redux-container .redux-main .text_sortable > li label, .redux-container .redux-container-switch .switch-options label span:before, .redux-container .redux_field_th span, .redux-container .upload_button_div, .redux-container .redux-field, .qtip-light {
   font-size: 14px;
   line-height: 1.5;
   padding-top: 0.41em;
@@ -243,12 +243,6 @@ h1, h2, h3, h4, h5, h6 {
   width: auto !important; }
 
 .select2-drop {
-  margin-top: 0.75em;
-  box-shadow: rgba(0, 0, 0, 0.15) 0 0.3em 0.6em;
-  border: 2px solid;
-  border-color: #d9d9d9 !important;
-  border-radius: 0.5em;
-  overflow: hidden;
   width: auto !important;
   min-width: 10em; }
 
@@ -529,6 +523,11 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: none; }
     .redux-container #redux-intro-text, .redux-container #redux-intro-text > *, .redux-container #redux-intro-text > p {
       color: white; }
+    .redux-container #redux-intro-text > h4, .redux-container #redux-intro-text > p {
+      display: none; }
+    .redux-container #redux-intro-text > .description {
+      display: block;
+      font-style: normal; }
   .redux-container .redux-main + .clear {
     display: none; }
   .redux-container #redux-footer-sticky {
@@ -896,6 +895,26 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 1em; }
   .redux-container .ace_cursor {
     border-left: 2px solid #262626; }
+  .redux-container .redux-hint-qtip {
+    float: none !important;
+    display: inline-block;
+    margin-left: 0.5em;
+    border: 2px solid #d9d9d9;
+    position: relative;
+    top: 0.25em;
+    width: 1.2em;
+    height: 1.2em;
+    border-radius: 50%;
+    cursor: help; }
+    .redux-container .redux-hint-qtip:before {
+      content: "i";
+      position: absolute;
+      top: 0;
+      left: 40%;
+      color: #d9d9d9;
+      font-size: 12px !important; }
+    .redux-container .redux-hint-qtip > i {
+      display: none; }
 
 #toplevel_page_rosa_options a:after {
   border-right-color: #47dad1 !important; }
@@ -1026,5 +1045,28 @@ body .redux-container .redux-main input[type="checkbox"] {
 
 .redux-group-tab .description {
   display: none; }
+
+.pop-up, .select2-drop {
+  margin-top: 0.75em;
+  box-shadow: rgba(0, 0, 0, 0.15) 0 0.3em 0.6em;
+  border: 2px solid;
+  border-color: #d9d9d9 !important;
+  border-radius: 0.5em;
+  overflow: hidden; }
+
+.qtip-shadow {
+  box-shadow: rgba(0, 0, 0, 0.15) 0 0.3em 0.6em; }
+
+.qtip-light {
+  padding-top: 0;
+  border: 2px solid #d9d9d9;
+  border-radius: 0.5em; }
+  .qtip-light .qtip-titlebar {
+    background: #ececec;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    border-bottom: 1px solid #ececec; }
+  .qtip-light .qtip-content {
+    padding: 0.5em 1em; }
 
 /*# sourceMappingURL=admin-panel.css.map */

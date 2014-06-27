@@ -33,6 +33,9 @@ $sections[] = array(
 			'type'     => 'media',
 			'title'    => __( 'Main Logo', wpgrade::textdomain() ),
 			'subtitle' => __( 'If there is no image uploaded, plain text will be used instead (generated from the site\'s name).', wpgrade::textdomain() ),
+            'hint'     => array(
+                'content' => 'This is the content of the tool-tip'
+            )
 		),
 		array(
 			'id'       => 'use_retina_logo',
