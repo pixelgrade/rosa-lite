@@ -6,22 +6,28 @@
 .redux-container {
 
 	.redux-sidebar {
-		position: absolute;
-		top: 0;
-
+		float: left;
+		overflow: hidden;
 		padding-top: 126px;
-		width: 14%;
+		width: 16%;
+	}
 
-		.fixed-sidebar &{
+	&.fixed-sidebar{
+		.redux-sidebar{
 			position: fixed;
 			left: 162px;
+			width: 14%;
+		}
+
+		.redux-main{
+			margin-left: 16%;
 		}
 	}
 
-	.redux-main, #redux-intro-text {
-		margin-left: 16%;
+	.redux-main{
 		width: 62%;
 		float: left;
+		margin-left: 0;
 	}
 
 	#redux-sticky {
@@ -54,25 +60,25 @@
 		text-align: center;
 	}
 
-	@media screen and (max-height: 950px){
-		.redux-sidebar, #redux-intro-text, .redux-main{
-			padding-top: 0 !important;
-		}
-	}
-
-	@media screen and (max-height: 925px){
-		.redux-sidebar .redux-group-menu{
-			li a{
-				padding: 10px 0 !important;
-			}
-
-			li.divide{
-				padding: 10px 0 !important;
-			}
-
-			li:last-child{
-				margin-top: 24px !important;
-			}
-		}
-	}
+//	@media screen and (max-height: 950px){
+//		.redux-sidebar, #redux-intro-text, .redux-main{
+//			padding-top: 0 !important;
+//		}
+//	}
+//
+//	@media screen and (max-height: 925px){
+//		.redux-sidebar .redux-group-menu{
+//			li a{
+//				padding: 10px 0 !important;
+//			}
+//
+//			li.divide{
+//				padding: 10px 0 !important;
+//			}
+//
+//			li:last-child{
+//				margin-top: 24px !important;
+//			}
+//		}
+//	}
 }

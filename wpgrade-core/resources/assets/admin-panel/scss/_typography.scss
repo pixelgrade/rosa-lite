@@ -44,6 +44,7 @@ $font-sizes: 14, 19, 24, 32, 42, 60 !default;
         position: absolute;
         top: 50%;
         left: 100%;
+        margin-left: 0.75em;
     }
 
     // so we clear the next element as we don't have access to markup

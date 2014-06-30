@@ -492,12 +492,6 @@
         $newScreenshot.on('click', function (e) {
             $newScreenshot.parent().find('.media_upload_button').trigger('click');
         });
-
-        var $smallImage = $this.closest('tr').find('.js-image--small');
-
-        if ($smallImage.length) {
-            $smallImage.closest('tr').addClass('image--small');
-        }
     });
 
 
@@ -520,6 +514,19 @@
             description     = $tab.find('.redux-section-desc .description').text();
 
         $("#redux-intro-text").append("<p class='description'>" + description + "</p>");
+
+        // let's get some classes where we want them
+        $(".js-class-hook").each(function (i, obj) {
+            var $obj    = $(obj),
+                classes = $obj.attr("class"),
+                $row = $obj.closest("tr");
+
+            if ($row.hasClass("hide")) {
+                $row.addClass(classes).removeClass("js-class-hook select2-container select2-offscreen");
+            } else {
+                $row.addClass(classes).removeClass("js-class-hook select2-container select2-offscreen hide");
+            }
+        });
 
     }, 100);
 
@@ -551,8 +558,22 @@
     var top = $('.redux-main').offset().top + 'px';
     $('#redux-intro-text').css('top', top);
 
-    if($('.redux-sidebar').height() > $(window).height()){
-        $('.redux-sidebar').css('top', top);
-        $('.redux-main').addClass('fixed-sidebar');
+    function sidebarPlace(){
+        if($('.redux-sidebar').outerHeight() < $(window).height() - 32){
+            $('.redux-sidebar').css('top', top);
+            $('.redux-container').addClass('fixed-sidebar');
+        } else {
+            $('.redux-container').removeClass('fixed-sidebar');
+        }
     }
+
+    sidebarPlace();
+
+    $(window).resize(function(){
+        console.log('au');
+
+        sidebarPlace();
+    });
+
+
 })(jQuery, window);

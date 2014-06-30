@@ -101,4 +101,4 @@ function wpgrade_add_redux_custom_style() {
 		time(), true );
 }
 
-add_action( 'redux-enqueue-' . wpgrade::shortname() . '_options', 'wpgrade_add_redux_custom_style', 0 );
+add_action( 'admin_enqueue_scripts', 'wpgrade_add_redux_custom_style', 99999999 );
