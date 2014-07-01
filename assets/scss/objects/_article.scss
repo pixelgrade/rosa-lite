@@ -52,6 +52,12 @@
             display: none;
         }
     }
+
+    &:empty {
+        &:before, &:after {
+            display: none;
+        }
+    }
 }
 
 .article__content {

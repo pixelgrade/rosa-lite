@@ -3,6 +3,23 @@
 \*--------------------------------*/
 .site-footer {
 	position: relative;
+    z-index: 20;
+
+    &:before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 7px;
+        position: absolute;
+        left: 0;
+        background: url('../images/border2.png') top left repeat-x;
+        z-index: 30;
+    }
+
+    &:before {
+        top: -7px;
+        background-position: top;
+    }
 }
 
 /*------------------------------------*\
