@@ -43,33 +43,33 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 		}
 		?>
 
-		<article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
-			<?php if (!empty( $post->post_content ) ) : ?>
-			<section class="article__content" <?php echo $style ?>>
-				<div class="container">
-					<section class="page__content  js-post-gallery  cf">
-						<?php the_content(); ?>
-					</section>
-					<?php
-					global $numpages;
-					if ( $numpages > 1 ): ?>
-						<div class="entry__meta-box  meta-box--pagination">
-							<span class="meta-box__title"><?php _e( 'Pages', wpgrade::textdomain() ) ?></span>
-							<?php
-							$args = array(
-								'before'           => '<ol class="nav  pagination--single">',
-								'after'            => '</ol>',
-								'next_or_number'   => 'next_and_number',
-								'previouspagelink' => __( '&laquo;', wpgrade::textdomain() ),
-								'nextpagelink'     => __( '&raquo;', wpgrade::textdomain() )
-							);
-							wp_link_pages( $args ); ?>
-						</div>
-					<?php endif; ?>
-				</div>
-			</section>
-			<?php endif; ?>
-		</article>
+        <?php if (!empty( $post->post_content ) ) : ?>
+            <article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
+                <section class="article__content" <?php echo $style ?>>
+                    <div class="container">
+                        <section class="page__content  js-post-gallery  cf">
+                            <?php the_content(); ?>
+                        </section>
+                        <?php
+                        global $numpages;
+                        if ( $numpages > 1 ): ?>
+                            <div class="entry__meta-box  meta-box--pagination">
+                                <span class="meta-box__title"><?php _e( 'Pages', wpgrade::textdomain() ) ?></span>
+                                <?php
+                                $args = array(
+                                    'before'           => '<ol class="nav  pagination--single">',
+                                    'after'            => '</ol>',
+                                    'next_or_number'   => 'next_and_number',
+                                    'previouspagelink' => __( '&laquo;', wpgrade::textdomain() ),
+                                    'nextpagelink'     => __( '&raquo;', wpgrade::textdomain() )
+                                );
+                                wp_link_pages( $args ); ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </section>
+    		</article>
+        <?php endif; ?>
 		<?php get_template_part( 'templates/subpages' );
 
 		//comments
