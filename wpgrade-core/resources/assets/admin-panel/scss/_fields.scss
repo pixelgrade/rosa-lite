@@ -4,6 +4,22 @@
 	border: 2px solid $border;
 	border-radius: 0;
 	padding: 0.5em 1em;
+    margin: 0.5em 0;
+    max-width: 90%;
+
+    -webkit-transition: border-color .2s ease-in-out;
+    -moz-transition: border-color .2s ease-in-out;
+    -ms-transition: border-color .2s ease-in-out;
+    -o-transition: border-color .2s ease-in-out;
+    transition: border-color .2s ease-in-out;
+
+    .text_sortable & {
+        margin-top: 0;
+    }
+
+    &:hover {
+        border-color: $light;
+    }
 }
 
 .field--focus {
@@ -15,7 +31,7 @@
 	input[type="text"],
 	textarea {
 		@extend .field;
-		@extend .fs14;
+        font-size: 1em;
 
 		&:focus {
 			@extend .field--focus;
@@ -54,6 +70,7 @@
 
 .select2-chosen {
 	width: auto !important;
+    min-width: 8em;
 }
 
 .select2-drop {

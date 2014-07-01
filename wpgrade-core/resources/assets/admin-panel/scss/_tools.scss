@@ -18,7 +18,7 @@ $cap-height: 		0.68;
 	$line-height: $rhythm * $lines / $font-size;
 
 	// use the results
-	font-size: $font-size;
+	font-size: $font-size * 1em / 16px;
 	line-height: $line-height;
 
 	$baseline-distance: ($line-height - $cap-height) / 2;

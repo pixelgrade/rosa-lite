@@ -101,4 +101,7 @@ function wpgrade_add_redux_custom_style() {
 		time(), true );
 }
 
-add_action( 'admin_enqueue_scripts', 'wpgrade_add_redux_custom_style', 99999999 );
+// Enqueue the admin page CSS and JS ONLY on themeoptions page
+if ( isset( $_GET['page'] ) && $_GET['page'] == wpgrade::get_redux_arg('page_slug') ) {
+	add_action( 'admin_enqueue_scripts', 'wpgrade_add_redux_custom_style', 99999999 );
+}

@@ -2,7 +2,7 @@
 body .redux-container .redux-main {
 
     tr.display-inline-block {
-        display: inline-block !important;
+        float: left;
     }
 
     tr.display-block {
@@ -42,6 +42,14 @@ body .redux-container .redux-main {
     }
 
     .mr {
-        margin-right: 1em;
+        margin-right: 1em !important;
+    }
+
+    .mt-2 {
+        margin-top: -2em !important;
+    }
+
+    .mt-3 {
+        margin-top: -3em !important;
     }
 }
