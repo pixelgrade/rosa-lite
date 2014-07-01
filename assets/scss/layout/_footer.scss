@@ -31,35 +31,27 @@
 //	position: relative;
 
 	position: absolute;
-	top: 0;
+	top: -12px;
 	left: 50%;
 
 	@include transform(translateX(-50%));
-
-	&:before{
-		position: absolute;
-		top: 0;
-		left: 50%;
-		@include transform(translateX(-50%) translateY(-100%));
-
-		content: '';
-		width: 0;
-		height: 0;
-
-		border: 32px solid transparent;
-
-		border-bottom-color: $dark;
-
-		.copyright-area__light &{
-			border-bottom-color: white;
-		}
-
-		.copyright-area__accent &{
-			border-bottom-color: $accent;
-		}
-	}
 }
 
+
+.copyright-area {
+
+    svg {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        margin-left: -96px;
+        margin-top: -50px;
+
+        path {
+            fill: $dark;
+        }
+    }
+}
 
 .btn--top_text {
 	display: block;
@@ -177,7 +169,7 @@
 	padding: $_u 0;
 
 	@include media-query(lap-and-up) {
-		padding: 66px 0 $_u2;
+		padding: 66px 0 60px;
 	}
 
 	color: white;

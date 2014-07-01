@@ -25,6 +25,9 @@ if ( ! is_404() ):
 		</aside>
 		<!-- .sidebar.sidebar- -footer -->
 		<div class="copyright-area <?php echo $footer_bottom_bar_style ?>">
+            <svg class="blurp--bottom" width="192" height="61" x="0px" y="0px" viewBox="0 0 142.7 56.2">
+                <path fill="#FFFFFF" d="M138.6,46.4c21.8,0-50.3,9.8-67.3,9.8s-89-10.8-67.2-10.8C42.6,45.4,42.3,0,70.8,0  C100.1,0,100.6,46.4,138.6,46.4z"/>
+            </svg>
             <div class="btn--top">
                 <a href="#" class="btn--top_text">
                     <span class="btn__arrow btn__arrow--top"></span>

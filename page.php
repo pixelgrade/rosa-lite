@@ -9,7 +9,7 @@
 
 get_header();
 
-global $post, $wpgrade_private_post;
+global $post, $wpgrade_private_post, $page_section_idx, $header_height;
 
 //some global variables that we use in our page sections
 $is_gmap = false;
@@ -23,9 +23,14 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 
 	<?php while ( have_posts() ) : the_post();
 
-		get_template_part( 'templates/page/header' ); ?>
+		get_template_part( 'templates/page/header' );
 
-		<article id="post-<?php the_ID(); ?>" <?php post_class( "article--page  article--main" ); ?>>
+        $class = "";
+        if ( $page_section_idx == 1 && $header_height == 'full-height' ) {
+            $class = " article--arrow";
+        } ?>
+
+		<article id="post-<?php the_ID(); ?>" <?php post_class( "article--page  article--main" . $class ); ?>>
 			<?php if (!empty( $post->post_content ) ) : ?>
 			<section class="article__content">
 				<div class="container">

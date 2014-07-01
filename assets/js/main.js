@@ -680,7 +680,8 @@ var DownArrow = {
             this.nextHeight = this.$next.outerHeight();
         }
 
-        this.timeline.to(this.$arrow, 1, {y: 100, opacity: 0, ease: Linear.easeNone, overwrite: "none"});
+        this.timeline.to(this.$arrow, .2, {y: 10, opacity: 0, ease: Linear.easeNone, overwrite: "none"});
+        this.timeline.to('.blurp--top', .3, {scaleY: 0, ease: Linear.easeNone, overwrite: "none"});
 
         this.$arrow.on('click', function (e) {
             e.preventDefault();
@@ -696,28 +697,20 @@ var DownArrow = {
             }
 
         });
-
-        this.$arrow.on('mouseenter', function () {
-            TweenMax.to(that.$arrow, 0.2, {opacity: 1, scale: 1.25, ease: Back.easeOut, overwrite: "none"});
-        });
-
-        this.$arrow.on('mouseleave', function () {
-            TweenMax.to(that.$arrow, 0.4, {scale: 1, ease: Strong.easeOut, overwrite: "none"});
-        });
     },
 
     update: function () {
-
-        if (empty(this.$arrow)) {
-            return;
-        }
-
-        if (Modernizr.touch && is_OSX) {
-            this.timeline.progress(0);
-            return;
-        }
-
-        setProgress(this.timeline, this.start, this.end);
+//
+//        if (empty(this.$arrow)) {
+//            return;
+//        }
+//
+//        if (Modernizr.touch && is_OSX) {
+//            this.timeline.progress(0);
+//            return;
+//        }
+//
+//        setProgress(this.timeline, this.start, this.end);
     }
 }
 var ScrollToTop = {
@@ -744,11 +737,15 @@ var ScrollToTop = {
         this.end        = this.start + windowHeight;
         this.timeline   = new TimelineMax({ paused: true });
 
-        this.timeline.fromTo(this.$button, .6, {
-            top:    32
+        this.timeline.fromTo('.blurp--bottom', .6, {
+            y:          40,
+            scale:      0.5
         }, {
-            top:    0,
-            ease:   Power3.easeOut
+            y:          0,
+            scale:      1,
+            ease:       Power3.easeOut,
+            force3D:    true
+
         });
 
         this.timeline.fromTo($('.btn__arrow--top'), .4, {

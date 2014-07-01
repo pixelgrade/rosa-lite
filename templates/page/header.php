@@ -3,7 +3,7 @@
  * This template handles the page headers with image and cover text
  */
 
-global $is_gmap, $page_section_idx;
+global $is_gmap, $page_section_idx, $header_height;
 
 //increment the page section number
 $page_section_idx++;
@@ -191,6 +191,9 @@ else :
 				</div>
 				<?php endif; ?>
                 <?php if ( $page_section_idx == 1 && $header_height == 'full-height' ) {
+                    echo '<svg class="blurp--top" width="192" height="61" x="0px" y="0px" viewBox="0 0 142.7 56.2">' . PHP_EOL .
+                        '<path fill="#FFFFFF" d="M138.6,46.4c21.8,0-50.3,9.8-67.3,9.8s-89-10.8-67.2-10.8C42.6,45.4,42.3,0,70.8,0  C100.1,0,100.6,46.4,138.6,46.4z"/>' . PHP_EOL .
+                    '</svg>';
                     echo '<div class="down-arrow"><div class="arrow"></div></div>' . PHP_EOL;
                 } ?>
 			</header>
