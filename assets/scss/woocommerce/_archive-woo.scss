@@ -8,6 +8,14 @@
 	}
 }
 
+html body.woocommerce ul.products {
+    text-align: center;
+
+    li.product {
+        margin: 0 1.25%;
+    }
+}
+
 body.woocommerce ul.products li.product{
 	position: relative;
 	float: none !important;
