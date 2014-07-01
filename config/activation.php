@@ -87,6 +87,12 @@ return array(
 						'id'   => wpgrade::prefix() . 'header_transparent_menu_bar',
 						'type' => 'checkbox',
 					),
+					array(
+						'name' => __( 'Inverse The Colors', 'rosa_txtd' ),
+						'desc' => __( "This will make the background black and the text white.", 'rosa_txtd' ),
+						'id'   => wpgrade::prefix() . 'inverse_section_colors',
+						'type' => 'checkbox',
+					),
 				),
 			),
 			wpgrade::shortname() . '_page_header_area_slideshow'  => array(
