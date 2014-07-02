@@ -123,3 +123,7 @@ html, body, #page {
     background: white;
     color: black !important;
 }
+
+.article__header .btn {
+    @include transition(none);
+}
