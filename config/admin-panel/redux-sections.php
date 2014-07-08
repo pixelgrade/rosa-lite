@@ -773,7 +773,7 @@ $sections[] = array(
 					'right'        => array(
 						'selector' => '.page-content.has-sidebar:after',
 						'unit'     => 'px',
-						'media'    => 'only screen and (min-width: 900px)'
+						'media'    => 'only screen and (min-width: 900px)',
 					),
 					'margin-right' => array(
 						'selector'          => '.page-content.has-sidebar .page-content__wrapper',
