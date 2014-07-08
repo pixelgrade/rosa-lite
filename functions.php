@@ -10,6 +10,15 @@ if ( ! defined( 'EXT' ) ) {
 # function and class includes
 #
 
+// ensure REQUEST_PROTOCOL is defined
+if ( ! defined('REQUEST_PROTOCOL')) {
+	if (is_ssl()) {
+		define( 'REQUEST_PROTOCOL', 'https:' );
+	} else {
+		define( 'REQUEST_PROTOCOL', 'http:' );
+	}
+}
+
 // Theme specific settings
 // -----------------------
 
