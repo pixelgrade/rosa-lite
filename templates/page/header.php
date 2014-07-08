@@ -206,9 +206,7 @@ else :
 	                }
 
 	                if ( $down_arrow_style == 'bubble') {
-	                    echo '<svg class="blurp--top" width="192" height="61" x="0px" y="0px" viewBox="0 0 142.7 56.2">' . PHP_EOL .
-	                        '<path fill="#FFFFFF" d="M138.6,46.4c21.8,0-50.3,9.8-67.3,9.8s-89-10.8-67.2-10.8C42.6,45.4,42.3,0,70.8,0  C100.1,0,100.6,46.4,138.6,46.4z"/>' . PHP_EOL .
-                        '</svg>';
+	                    echo '<svg class="blurp--top" width="192" height="61" viewBox="0 0 160.7 61.5" enable-background="new 0 0 160.7 61.5" xml:space="preserve"><path fill="#FFFFFF" d="M0.6,50.8C44,50.8,50.3,0,80.3,0v61.5C80.3,61.5-8,50.8,0.6,50.8z M160.1,50.8C116.7,50.8,110.3,0,80.3,0v61.5C80.3,61.5,168.7,50.8,160.1,50.8z"/></svg>';
 	                }
                     echo '<div class="down-arrow down-arrow--' . $down_arrow_style . '"><div class="arrow"></div></div>' . PHP_EOL;
                 } ?>

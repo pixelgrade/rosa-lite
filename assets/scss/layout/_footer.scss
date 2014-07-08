@@ -5,7 +5,7 @@
 	position: relative;
     z-index: 20;
 
-    &:before {
+    &.border-waves:before {
         content: "";
         display: block;
         width: 100%;
