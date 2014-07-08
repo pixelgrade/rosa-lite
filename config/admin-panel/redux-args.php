@@ -154,6 +154,34 @@ return array(
 
 	// Set the help sidebar for the options page.
 	// 'help_sidebar' => __('<p>This is the sidebar content, HTML is allowed.</p>', wpgrade::textdomain()),
+    'hints'    => array(
+        'icon'              => 'icon-question-sign',
+        'icon_position'     => 'right',
+        'icon_color'        => 'lightgray',
+        'icon_size'         => 'normal',
 
+        'tip_style'         => array(
+            'color'     => 'light',
+            'shadow'    => false,
+            'rounded'   => false,
+            'style'     => '',
+        ),
+        'tip_position'      => array(
+            'my' => 'bottom center',
+            'at' => 'top center',
+        ),
+        'tip_effect' => array(
+            'show' => array(
+                'effect'    => 'fade',
+                'duration'  => '50',
+                'event'     => 'mouseover',
+            ),
+            'hide' => array(
+                'effect'    => 'fade',
+                'duration'  => '50',
+                'event'     => 'click mouseleave',
+            ),
+        ),
+    )
 
 ); # config

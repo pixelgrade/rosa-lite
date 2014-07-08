@@ -156,6 +156,7 @@ gulp.task('watch-styles', function () {
 
 	// Watch .js files
 	gulp.watch('./assets/scss/**/*.scss', ['styles']);
+	gulp.watch('./wpgrade-core/resources/assets/admin-panel/scss/**/*.scss', ['styles']);
 
 });
 
