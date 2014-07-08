@@ -227,7 +227,7 @@
 }
 
 .down-arrow--bubble {
-    bottom: 10%;
+    bottom: -16px;
 
     .arrow {
         width: $_u * 2/3;
@@ -240,7 +240,7 @@
 }
 
 .down-arrow--transparent {
-    bottom: -16px;
+    bottom: 5%;
 
     .arrow {
         width: $_u;

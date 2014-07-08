@@ -16,10 +16,6 @@ var DownArrow = {
             return;
         }
 
-        if (this.$arrow.hasClass('down-arrow--bubble')) {
-            this.bubble = true;
-        }
-
         this.start      = 0;
         this.end        = this.start + 300;
         this.timeline   = new TimelineMax({ paused: true });
@@ -30,8 +26,14 @@ var DownArrow = {
             this.nextHeight = this.$next.outerHeight();
         }
 
-        this.timeline.to(this.$arrow, .2, {y: 10, opacity: 0, ease: Linear.easeNone, overwrite: "none"});
-        this.timeline.to('.blurp--top', .3, {scaleY: 0, ease: Linear.easeNone, overwrite: "none"});
+
+        if (this.$arrow.hasClass('down-arrow--bubble')) {
+            this.timeline.to(this.$arrow, .2, {y: 10, opacity: 0, ease: Linear.easeNone, overwrite: "none"});
+            this.timeline.to('.blurp--top', .3, {scaleY: 0, ease: Linear.easeNone, overwrite: "none"});
+            this.bubble = true;
+        } else {
+            this.timeline.to(this.$arrow, 1, {y: 100, opacity: 0, ease: Linear.easeNone, overwrite: "none"});
+        }
 
         this.$arrow.on('click', function (e) {
             e.preventDefault();
