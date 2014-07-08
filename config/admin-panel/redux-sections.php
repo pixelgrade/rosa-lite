@@ -886,7 +886,7 @@ $sections[] = array(
 			'type'          => 'customizer_slider',
 			'title'         => __( 'Border Width', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
-			'default'       => '0',
+			'default'       => 0,
 			'min'           => 0,
 			'step'          => 6,
 			'max'           => 72,
@@ -901,6 +901,11 @@ $sections[] = array(
 					),
 					'border-top-width' => array(
 						'selector' => '.site-header',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					),
+					'border-bottom-width' => array(
+						'selector' => '.site-footer',
 						'unit'     => 'px',
 						'media'    => 'screen and (min-width: 900px)'
 					)
@@ -933,7 +938,6 @@ $sections[] = array(
 			'id'         => 'customizer_reset_button_section',
 			'title'      => '<a class="btn" id="reset-style-defaults" href="#" data-ajax_nonce="' . wp_create_nonce( "reset-style-section" ) . '">' . __( 'Reset to Defaults', wpgrade::textdomain() ) . '</a>',
 			'type'       => 'customizer_info',
-			'default'    => 'Test',
 			'customizer' => array()
 		),
 		//		array(
