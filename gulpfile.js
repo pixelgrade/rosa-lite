@@ -195,7 +195,7 @@ gulp.task('server', ['styles-compressed', 'scripts-compressed'], function () {
 gulp.task('copy-folder', ['styles-nested', 'scripts'], function () {
 
 	return gulp.src('./')
-		.pipe(exec('rm -Rf ./../build; mkdir -p ./../build/rosa; cp -Rf ./* ./../build/rosa/'));
+		.pipe(exec("rm -Rf ./../build; mkdir -p ./../build/rosa; rsync -aq --exclude='node_modules' ./* ./../build/rosa/"));
 });
 
 /**
