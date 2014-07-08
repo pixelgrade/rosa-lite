@@ -18,7 +18,7 @@ while ( have_posts() ) : the_post(); ?>
 	<?php get_template_part( 'templates/page/header' );
 
 	$classes      = "article--page  article--main";
-	$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_border_style', true );
+	$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_border_style', true );
 	if ( ! empty( $border_style ) ) {
 		$classes .= ' border-' . $border_style;
 	}
