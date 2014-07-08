@@ -236,7 +236,7 @@
                 wp_enqueue_script(
                     'redux-field-slider-js',
                     ReduxFramework::$_url . 'inc/fields/slider/field_slider' . $min . '.js',
-                    array( 'jquery', 'nouislider-js' ),
+                    array( 'jquery', 'nouislider-js', 'redux-js', 'select2-js' ),
                     time(),
                     true
                 );
@@ -263,6 +263,7 @@
 
                 $fieldID   = $this->field['id'];
                 $fieldName = $this->field['name'];
+                //$fieldName = $this->parent->args['opt_name'] . '[' . $this->field['id'] . ']';
 
                 // Set handle number variable.
                 $twoHandles = false;

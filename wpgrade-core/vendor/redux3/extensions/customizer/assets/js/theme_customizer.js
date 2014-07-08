@@ -78,7 +78,7 @@
 
 
 		function spacingInit() {
-			$('.sizes_section').each(function () {
+			$('.sizes_section').each(function(){
 				var _self = $(this),
 					_parent = $(this).closest('li').addClass('dropdown-section-trigger'),
 					_container = _parent.parent().addClass('customize-dropdown-section'),
@@ -89,14 +89,14 @@
 				$('<div class="dropdown-section-content"></div>').appendTo(_container);
 
 				// Insert options into container
-				_parent.nextUntil('div').each(function () {
+				_parent.nextUntil('div').each(function(){
 					$(this).appendTo(_container.find('.dropdown-section-content'));
 				});
 
-			});
+				// Clean up the title of the sections (eg. Sizes and Spacings)
+				_container.first().prev().addClass('customize-dropdown-title');
 
-			// Clean up the title of the sections (eg. Sizes and Spacings)
-			$('.customize-dropdown-section').first().prev().addClass('customize-dropdown-title');
+			});
 
 
 			// Toggle the DropDown Container

@@ -477,4 +477,121 @@
 		fixDiv();
 	});
 
+
+	var $screenshot = $('.redux-main').find('.screenshot');
+
+	$screenshot.each(function (i, obj) {
+
+		var $this = $(obj),
+			$newScreenshot = $("<div class='screenshot'></div>");
+
+
+		$this.closest('tr').addClass('row--image');
+		$newScreenshot.prependTo($this.closest('.row--image'));
+
+		$this.on('click', function (e) {
+			e.preventDefault();
+			e.stopPropagation();
+			$newScreenshot.parent().find('.media_upload_button').trigger('click');
+		});
+
+		$newScreenshot.on('click', function (e) {
+			e.preventDefault();
+			e.stopPropagation();
+			$newScreenshot.parent().find('.media_upload_button').trigger('click');
+		});
+	});
+
+
+	// Set the big icon in .redux-main
+	var $bigIcon = null,
+		iconClass = null;
+
+
+	setTimeout(function () {
+		iconClass = $('.redux-group-tab-link-li.active').find('i').attr('class');
+		$bigIcon = $('<i>', {class: iconClass + ' big-icon', id: 'big-icon'});
+		$('.redux-main').append($bigIcon);
+
+		// move initial description to sidebar
+		var $active = $('.redux-group-tab-link-li.active > a'),
+			tabNo = $active.data('key'),
+			$tab = $("#" + tabNo + "_section_group"),
+			description = $tab.find('.redux-section-desc .description').text();
+
+		$("#redux-intro-text").append("<p class='description'>" + description + "</p>");
+
+		// let's get some classes where we want them
+		$(".js-class-hook").each(function (i, obj) {
+			var $obj = $(obj),
+				classes = $obj.attr("class"),
+				$row = $obj.closest("tr");
+
+			if ($row.hasClass("hide")) {
+				$row.addClass(classes).removeClass("js-class-hook select2-container select2-offscreen");
+			} else {
+				$row.addClass(classes).removeClass("js-class-hook select2-container select2-offscreen hide");
+			}
+		});
+
+		$(".redux-container").on('change input select', function () {
+				if (!jQuery(this).hasClass('noUpdate')) {
+					$('#redux-sticky').addClass('is-visible');
+				}
+			}
+		);
+
+	}, 100);
+
+	$('.redux-group-menu a').on('click', function () {
+
+		var tabNo = $(this).data('key'),
+			$tab = $("#" + tabNo + "_section_group"),
+			description = $tab.find('.redux-section-desc .description').text(),
+			sidebarHeight = $('.redux-sidebar').height();
+
+		$("#redux-intro-text .description").text(description);
+
+		$('.redux-main').css('height', '');
+
+		if ($tab.outerHeight() < sidebarHeight) {
+			$('.redux-main').height(sidebarHeight);
+		}
+
+		setTimeout(function () {
+			// change floating text
+			var text = $('.redux-group-tab:visible > h3').html();
+			$('#floating-title').html(text);
+
+
+			// change the big icon accordingly
+			iconClass = $('.redux-group-tab-link-li.active').find('i').attr('class');
+
+			$bigIcon.removeClass();
+			$bigIcon.attr('class', iconClass);
+
+		}, 100);
+	});
+
+	// set top / bottom of fixed elements
+
+	var top = $('.redux-main').offset().top + 'px';
+	$('#redux-intro-text').css('top', top);
+
+	function sidebarPlace() {
+		if ($('.redux-sidebar').outerHeight() < $(window).height() - 32) {
+			$('.redux-sidebar').css('top', top);
+			$('.redux-container').addClass('fixed-sidebar');
+		} else {
+			$('.redux-container').removeClass('fixed-sidebar');
+		}
+	}
+
+	sidebarPlace();
+
+	$(window).resize(function () {
+		sidebarPlace();
+	});
+
+
 })(jQuery, window);

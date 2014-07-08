@@ -29,7 +29,7 @@
             /**
              * Creates or returns an instance of this class.
              *
-             * @return  Foo A single instance of this class.
+             * @return Redux_Tracking A single instance of this class.
              */
             public static function get_instance() {
 
@@ -44,7 +44,6 @@
             /**
              * Class constructor
              *
-             * @param ReduxFramework $parent
              */
 
             function __construct() {
@@ -52,6 +51,9 @@
 
             }
 
+            /**
+             * @param ReduxFramework $parent
+             */
             public function load( $parent ) {
                 $this->parent = $parent;
 
@@ -205,7 +207,7 @@
                                             button.bind(
                                                 'click.pointer', function() {
                                                     t.element.pointer( 'close' );
-                                                    console.log( 'close button' );
+                                                    //console.log( 'close button' );
                                                 }
                                             );
                                             return button;
