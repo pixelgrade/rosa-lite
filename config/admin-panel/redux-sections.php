@@ -876,10 +876,17 @@ $sections[] = array(
 			'compiler'      => true
 		),
 		array(
-			'id'         => 'sizes_border',
-			'title'      => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Border', wpgrade::textdomain() ) . '</span></label>',
+			'id'         => 'options_title',
+			'title'      => '<h3>' . __( 'Options', wpgrade::textdomain() ) . '</h3>',
 			'type'       => 'customizer_info',
 			'customizer' => array()
+		),
+		array(
+			'id'              => 'options_elements',
+			'title'           => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Elements', wpgrade::textdomain() ) . '</span></label>',
+			'type'            => 'customizer_info',
+			//			'customizer_only' => true,
+			'customizer'      => array()
 		),
 		array(
 			'id'            => 'border_width',
@@ -912,12 +919,6 @@ $sections[] = array(
 				)
 			),
 			'compiler'      => true
-		),
-		array(
-			'id'         => 'options_title',
-			'title'      => '<h3>' . __( 'Options', wpgrade::textdomain() ) . '</h3>',
-			'type'       => 'customizer_info',
-			'customizer' => array()
 		),
 		array(
 			'id'         => 'down_arrow_style',
