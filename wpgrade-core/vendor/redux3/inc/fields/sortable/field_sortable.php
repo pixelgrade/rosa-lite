@@ -54,7 +54,7 @@
                     if ( ! isset( $this->value[ $k ] ) ) {
 
                         // A save has previously been done.
-                        if ( array_key_exists( $k, $this->value ) ) {
+                        if ( is_array( $this->value ) && array_key_exists( $k, $this->value ) ) {
                             $this->value[ $k ] = $v;
 
                             // Missing database entry, meaning no save has yet been done.
@@ -111,8 +111,10 @@
                     if ( $this->field['mode'] == "checkbox" || ( isset( $this->field['label'] ) && $this->field['label'] == true ) ) {
                         if ( $this->field['mode'] != "checkbox" ) {
                             echo "<br />";
+                            echo '<label for="' . $this->field['id'] . '[' . $k . ']"><strong>' . $k . '</strong></label>';
+                        } else {
+                            echo '<label for="' . $this->field['id'] . '[' . $k . ']"><strong>' . $options[ $k ] . '</strong></label>';
                         }
-                        echo '<label for="' . $this->field['id'] . '[' . $k . ']"><strong>' . $options[ $k ] . '</strong></label>';
                     }
                     if ( $this->field['mode'] == "checkbox" ) {
                         echo '</div>';
@@ -134,7 +136,7 @@
                 wp_enqueue_script(
                     'redux-field-sortable-js',
                     ReduxFramework::$_url . 'inc/fields/sortable/field_sortable' . Redux_Functions::isMin() . '.js',
-                    array( 'jquery' ),
+                    array( 'jquery', 'redux-js' ),
                     time(),
                     true
                 );

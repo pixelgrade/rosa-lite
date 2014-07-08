@@ -1,15 +1,34 @@
+/*global redux_change, redux*/
+
 (function( $ ) {
     "use strict";
 
-    $.reduxImportExport = $.reduxImportExport || {};
+    redux.field_objects = redux.field_objects || {};
+    redux.field_objects.import_export = redux.field_objects.import_export || {};
 
     $( document ).ready(
         function() {
-            $.reduxImportExport.init();
+            redux.field_objects.import_export.init();
         }
     );
 
-    $.reduxImportExport.init = function() {
+    redux.field_objects.import_export.init = function( selector ) {
+
+        if ( !selector ) {
+            selector = $( document ).find( '.redux-container-import_export' );
+        }
+        
+        var parent = selector;
+        if ( !selector.hasClass( 'redux-field-container' ) ) {
+            parent = selector.parents( '.redux-field-container:first' );
+        }
+        
+        if ( parent.hasClass( 'redux-field-init' ) ) {
+            parent.removeClass( 'redux-field-init' );
+        } else {
+            return;
+        }
+
         $( '#redux-import' ).click(
             function( e ) {
                 if ( $( '#import-code-value' ).val() === "" && $( '#import-link-value' ).val() === "" ) {
@@ -57,5 +76,26 @@
                 $( '#redux-export-link-value' ).fadeIn( 'fast' );
             }
         );
+
+        var textBox1 = document.getElementById("redux-export-code");
+        textBox1.onfocus = function() {
+            textBox1.select();
+            // Work around Chrome's little problem
+            textBox1.onmouseup = function() {
+                // Prevent further mouseup intervention
+                textBox1.onmouseup = null;
+                return false;
+            };
+        };
+        var textBox2 = document.getElementById("import-code-value");
+        textBox2.onfocus = function() {
+            textBox2.select();
+            // Work around Chrome's little problem
+            textBox2.onmouseup = function() {
+                // Prevent further mouseup intervention
+                textBox2.onmouseup = null;
+                return false;
+            };
+        };
     };
 })( jQuery );

@@ -590,8 +590,6 @@
 	sidebarPlace();
 
 	$(window).resize(function () {
-		console.log('au');
-
 		sidebarPlace();
 	});
 

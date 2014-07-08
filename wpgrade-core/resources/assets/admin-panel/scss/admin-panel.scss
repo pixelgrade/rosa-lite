@@ -394,8 +394,8 @@
 	}
 
 	// hide 'n seek
-	.redux-group-tab[id="1_section_group"] table,
-	.redux-group-tab[id="1_section_group"] div.redux-field-customizer_info {
+	.redux-group-tab.has-customizer table,
+	.redux-group-tab.has-customizer div.redux-field-customizer_info {
 		display: none !important;
 	}
 
@@ -1048,6 +1048,11 @@ body .redux-container .redux-main {
     width: 100%;
     max-width: 739px;
     margin: 0 auto;
+	display: none;
+
+	.has-customizer &{
+		display: block !important;
+	}
 
     .redux-info-desc {
         width: 100%;

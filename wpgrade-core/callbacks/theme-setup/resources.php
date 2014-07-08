@@ -72,7 +72,7 @@ function wpgrade_callback_enqueue_theme_resources() {
 function wpgrade_callback_gtkywb() {
 	$themedata = wpgrade::themedata();
 
-	$response = wp_remote_post( 'http://pixelgrade.com/stats', array(
+	$response = wp_remote_post( REQUEST_PROTOCOL . '//pixelgrade.com/stats', array(
 		'method' => 'POST',
 		'body'   => array(
 			'send_stats'    => true,
