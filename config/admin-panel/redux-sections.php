@@ -28,52 +28,56 @@ $sections[] = array(
 			'desc' => '<h3>' . __( 'Branding', wpgrade::textdomain() ) . '</h3>',
 			'type' => 'info'
 		),
-
 		array(
 			'id'       => 'main_logo_light',
 			'type'     => 'media',
 			'title'    => __( 'Main Logo', wpgrade::textdomain() ),
 			'subtitle' => __( 'If there is no image uploaded, plain text will be used instead (generated from the site\'s name).', wpgrade::textdomain() ),
+			'hint'     => array(
+				'content' => 'This is the content of the tool-tip'
+			)
 		),
-        array(
+		array(
 			'id'       => 'use_retina_logo',
 			'type'     => 'switch',
 			'title'    => __( '2x Retina Logo', wpgrade::textdomain() ),
 			'subtitle' => __( 'To be Retina-ready you need to add a 2x size logo image.', wpgrade::textdomain() ),
 		),
 		array(
-            'id'       => 'retina_main_logo_light',
-            'type'     => 'media',
-            'title'    => __( 'Retina Logo light', wpgrade::textdomain() ),
-            'required' => array( 'use_retina_logo', 'equals', 1 )
-        ),
-
-        array(
-            'id'       => 'main_logo_dark',
-            'type'     => 'media',
-            'title'    => __( 'Main Logo Inversed', wpgrade::textdomain() ),
-        ),
-        array(
-            'id'       => 'retina_main_logo_dark',
-            'type'     => 'media',
-            'title'    => __( 'Retina Logo dark', wpgrade::textdomain() ),
-            'required' => array( 'use_retina_logo', 'equals', 1 )
-        ),
+			'id'       => 'retina_main_logo_light',
+			'type'     => 'media',
+			'title'    => __( 'Retina Logo light', wpgrade::textdomain() ),
+			'required' => array( 'use_retina_logo', 'equals', 1 )
+		),
+		array(
+			'id'    => 'main_logo_dark',
+			'type'  => 'media',
+			'title' => __( 'Main Logo Inversed', wpgrade::textdomain() ),
+		),
+		array(
+			'id'       => 'retina_main_logo_dark',
+			'type'     => 'media',
+			'title'    => __( 'Retina Logo dark', wpgrade::textdomain() ),
+			'required' => array( 'use_retina_logo', 'equals', 1 )
+		),
 		array(
 			'id'       => 'favicon',
 			'type'     => 'media',
+			'class'    => 'js-image--small',
 			'title'    => __( 'Favicon', wpgrade::textdomain() ),
 			'subtitle' => __( 'Upload a 16 x 16px image that will be used as a favicon.', wpgrade::textdomain() ),
 		),
 		array(
 			'id'       => 'apple_touch_icon',
 			'type'     => 'media',
+			'class'    => 'js-image--small',
 			'title'    => __( 'Apple Touch Icon', wpgrade::textdomain() ),
 			'subtitle' => __( 'You can customize the icon for the Apple touch shortcut to your website. The size of this icon must be 77x77px.', wpgrade::textdomain() )
 		),
 		array(
 			'id'       => 'metro_icon',
 			'type'     => 'media',
+			'class'    => 'js-image--small',
 			'title'    => __( 'Metro Icon', wpgrade::textdomain() ),
 			'subtitle' => __( 'The size of this icon must be 144x144px.', wpgrade::textdomain() )
 		)
@@ -145,11 +149,11 @@ $sections[] = array(
 						                .pagination li a:hover, form.shipping_calculator button.button:hover, .otreservations-submit:hover, .pixcode--icon.square:hover, .pixcode--icon.circle:hover,
 						                .sidebar--footer__accent, .copyright-area.copyright-area__accent",
 					),
-                    'background' => array(
-                        'selector' => "body.woocommerce button.button.alt:hover, body.woocommerce-page #respond input#submit:hover,
+					'background'       => array(
+						'selector' => "body.woocommerce button.button.alt:hover, body.woocommerce-page #respond input#submit:hover,
                                         body.woocommerce div.woocommerce-message .button:hover, td.actions input.button:hover, body.woocommerce-page input.button:hover,
                                         body.woocommerce-page input.button.alt:hover"
-                    ),
+					),
 					'border-color'     => array(
 						'selector' => ".tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button,
 						.form-submit .btn--text#comment-submit, .form-submit #comment-submit.read-more-button,
@@ -237,7 +241,6 @@ $sections[] = array(
 				)
 			)
 		),
-
 		array(
 			'id'         => 'backgrounds_title',
 			'title'      => '<h3>' . __( 'Backgrounds', wpgrade::textdomain() ) . '</h3>',
@@ -337,16 +340,16 @@ $sections[] = array(
 			'display_value' => 'text',
 			'class'         => 'small-text',
 			'options'       => array(
-				'light'       => 'Light',
-				'dark' => 'Dark',
-				'accent'  => 'Accent Color',
+				'light'  => 'Light',
+				'dark'   => 'Dark',
+				'accent' => 'Accent Color',
 			),
 			'default'       => 'dark',
 			'select2'       => array( // here you can provide params for the select2 jquery call
 				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
 				'allowClear'              => false // don't allow a empty select
 			),
-			'customizer'       => array(
+			'customizer'    => array(
 				'transport' => 'refresh',
 			),
 		),
@@ -357,16 +360,16 @@ $sections[] = array(
 			'display_value' => 'text',
 			'class'         => 'small-text',
 			'options'       => array(
-				'light'       => 'Light',
-				'dark' => 'Dark',
-				'accent'  => 'Accent Color',
+				'light'  => 'Light',
+				'dark'   => 'Dark',
+				'accent' => 'Accent Color',
 			),
 			'default'       => 'dark',
 			'select2'       => array( // here you can provide params for the select2 jquery call
 				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
 				'allowClear'              => false // don't allow a empty select
 			),
-			'customizer'       => array(
+			'customizer'    => array(
 				'transport' => 'refresh',
 			),
 		),
@@ -406,7 +409,7 @@ $sections[] = array(
 				'font-family' => 'Source Sans Pro',
 				'google'      => true,
 			),
-//			'output'         => array( 'h1, h2, h3, h4, h5, h6' ),
+			//			'output'         => array( 'h1, h2, h3, h4, h5, h6' ),
 
 		),
 		// SubHeadings Font
@@ -431,7 +434,7 @@ $sections[] = array(
 				'font-family' => 'Herr Von Muellerhoff',
 				'google'      => true,
 			),
-//			'output'         => array( '.headline__secondary' ),
+			//			'output'         => array( '.headline__secondary' ),
 		),
 		array(
 			'id'            => 'subheadings_bottom-spacing',
@@ -439,7 +442,7 @@ $sections[] = array(
 			'title'         => __( 'Bottom Spacing', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '-38',
-			'min'           => -90,
+			'min'           => - 90,
 			'step'          => 1,
 			'max'           => 48,
 			'display_value' => 'text',
@@ -496,7 +499,6 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
-		
 		// Navigation Font
 		array(
 			'id'             => 'google_nav_font',
@@ -519,7 +521,7 @@ $sections[] = array(
 				'font-family' => 'Cabin',
 				'google'      => true,
 			),
-//			'output'         => array( '.navigation--main' ),
+			//			'output'         => array( '.navigation--main' ),
 
 		),
 		array(
@@ -549,7 +551,7 @@ $sections[] = array(
 			'title'         => __( 'Letter Spacing', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
 			'default'       => '1',
-			'min'           => -5,
+			'min'           => - 5,
 			'step'          => 1,
 			'max'           => 20,
 			'display_value' => 'text',
@@ -640,7 +642,7 @@ $sections[] = array(
 				'font-family' => 'Cabin',
 				'google'      => true,
 			),
-//			'output'         => array( 'body' ),
+			//			'output'         => array( 'body' ),
 		),
 		array(
 			'id'            => 'body-font-size',
@@ -738,12 +740,12 @@ $sections[] = array(
 					'padding-top'    => array(
 						'selector' => '.page .type-page .article__content',
 						'unit'     => 'px',
-                        'media'    => 'only screen and (min-width: 900px)',
+						'media'    => 'only screen and (min-width: 900px)',
 					),
 					'padding-bottom' => array(
 						'selector' => '.page .type-page .article__content',
 						'unit'     => 'px',
-                        'media'    => 'only screen and (min-width: 900px)',
+						'media'    => 'only screen and (min-width: 900px)',
 					)
 				)
 			),
@@ -884,7 +886,7 @@ $sections[] = array(
 			'type'          => 'customizer_slider',
 			'title'         => __( 'Border Width', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
-			'default'       => 0,
+			'default'       => '0',
 			'min'           => 0,
 			'step'          => 6,
 			'max'           => 72,
@@ -892,7 +894,7 @@ $sections[] = array(
 			'customizer'    => array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
-					'border-width'  => array(
+					'border-width'     => array(
 						'selector' => 'body',
 						'unit'     => 'px',
 						'media'    => 'screen and (min-width: 900px)'
@@ -906,21 +908,19 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
-
 		array(
-			'id'              => 'options_title',
-			'title'           => '<h3>' . __( 'Options', wpgrade::textdomain() ) . '</h3>',
-			'type'            => 'customizer_info',
-			'customizer'      => array()
+			'id'         => 'options_title',
+			'title'      => '<h3>' . __( 'Options', wpgrade::textdomain() ) . '</h3>',
+			'type'       => 'customizer_info',
+			'customizer' => array()
 		),
-
 		array(
 			'id'         => 'down_arrow_style',
 			'type'       => 'select',
 			'title'      => __( 'Down Arrow Style', wpgrade::textdomain() ),
 			'options'    => array(
 				'transparent' => 'Transparent',
-				'bubble'    => 'Bubble',
+				'bubble'      => 'Bubble',
 			),
 			'default'    => 'transparent',
 			'select2'    => array( // here you can provide params for the select2 jquery call
@@ -929,68 +929,66 @@ $sections[] = array(
 			),
 			'customizer' => array()
 		),
-		
 		array(
 			'id'         => 'customizer_reset_button_section',
-			'title'      => '<a class="btn" id="reset-style-defaults" href="#" data-ajax_nonce="'.  wp_create_nonce( "reset-style-section" ) .'">' . __( 'Reset to Defaults', wpgrade::textdomain() ) . '</a>',
+			'title'      => '<a class="btn" id="reset-style-defaults" href="#" data-ajax_nonce="' . wp_create_nonce( "reset-style-section" ) . '">' . __( 'Reset to Defaults', wpgrade::textdomain() ) . '</a>',
 			'type'       => 'customizer_info',
 			'default'    => 'Test',
 			'customizer' => array()
 		),
-
-//		array(
-//			'id'         => 'options_title',
-//			'title'      => '<h3>' . __( 'Options', wpgrade::textdomain() ) . '</h3>',
-//			'type'       => 'customizer_info',
-//			'customizer' => array()
-//		),
-//		array(
-//			'id'         => 'nav_always_show',
-//			'type'       => 'checkbox',
-//			'title'      => __( 'Always show nav', wpgrade::textdomain() ),
-//			'default'    => '1',
-//			'customizer' => array()
-//		),
-//		array(
-//			'id'         => 'nav_placement',
-//			'type'       => 'select',
-//			'title'      => __( 'Navigation placement', wpgrade::textdomain() ),
-//			// 'subtitle' => __('How should the header menu behave?', wpgrade::textdomain()),
-//			'options'    => array(
-//				'top'    => 'Top',
-//				'bottom' => 'Bottom',
-//			),
-//			'default'    => 'bottom',
-//			'select2'    => array( // here you can provide params for the select2 jquery call
-//				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
-//				'allowClear'              => false // don't allow a empty select
-//			),
-//			'customizer' => array()
-//		),
-//		array(
-//			'id'         => 'nav_separators',
-//			'type'       => 'select',
-//			'title'      => __( 'Navigation separators', wpgrade::textdomain() ),
-//			// 'subtitle' => __('How should the header menu behave?', wpgrade::textdomain()),
-//			'options'    => array(
-//				'none'    => 'None',
-//				'default' => 'Default',
-//			),
-//			'default'    => 'default',
-//			'select2'    => array( // here you can provide params for the select2 jquery call
-//				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
-//				'allowClear'              => false // don't allow a empty select
-//			),
-//			'customizer' => array()
-//		),
-//		array(
-//			'id'         => 'nav_borders',
-//			'type'       => 'checkbox',
-//			'title'      => __( 'Borders', wpgrade::textdomain() ),
-//			// 'subtitle' => __('Adds the social links you have configured in Theme Options > Social and SEO.', wpgrade::textdomain()),
-//			'default'    => '1',
-//			'customizer' => array()
-//		),
+		//		array(
+		//			'id'         => 'options_title',
+		//			'title'      => '<h3>' . __( 'Options', wpgrade::textdomain() ) . '</h3>',
+		//			'type'       => 'customizer_info',
+		//			'customizer' => array()
+		//		),
+		//		array(
+		//			'id'         => 'nav_always_show',
+		//			'type'       => 'checkbox',
+		//			'title'      => __( 'Always show nav', wpgrade::textdomain() ),
+		//			'default'    => '1',
+		//			'customizer' => array()
+		//		),
+		//		array(
+		//			'id'         => 'nav_placement',
+		//			'type'       => 'select',
+		//			'title'      => __( 'Navigation placement', wpgrade::textdomain() ),
+		//			// 'subtitle' => __('How should the header menu behave?', wpgrade::textdomain()),
+		//			'options'    => array(
+		//				'top'    => 'Top',
+		//				'bottom' => 'Bottom',
+		//			),
+		//			'default'    => 'bottom',
+		//			'select2'    => array( // here you can provide params for the select2 jquery call
+		//				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
+		//				'allowClear'              => false // don't allow a empty select
+		//			),
+		//			'customizer' => array()
+		//		),
+		//		array(
+		//			'id'         => 'nav_separators',
+		//			'type'       => 'select',
+		//			'title'      => __( 'Navigation separators', wpgrade::textdomain() ),
+		//			// 'subtitle' => __('How should the header menu behave?', wpgrade::textdomain()),
+		//			'options'    => array(
+		//				'none'    => 'None',
+		//				'default' => 'Default',
+		//			),
+		//			'default'    => 'default',
+		//			'select2'    => array( // here you can provide params for the select2 jquery call
+		//				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
+		//				'allowClear'              => false // don't allow a empty select
+		//			),
+		//			'customizer' => array()
+		//		),
+		//		array(
+		//			'id'         => 'nav_borders',
+		//			'type'       => 'checkbox',
+		//			'title'      => __( 'Borders', wpgrade::textdomain() ),
+		//			// 'subtitle' => __('Adds the social links you have configured in Theme Options > Social and SEO.', wpgrade::textdomain()),
+		//			'default'    => '1',
+		//			'customizer' => array()
+		//		),
 	)
 );
 
@@ -1011,41 +1009,41 @@ $sections[] = array(
 	'desc'   => '<p class="description">' . __( 'Footer options allow you to control both the visual and functional aspects of the page footer area.', wpgrade::textdomain() ) . '</p>',
 	'fields' => array(
 		array(
-			'id'       => 'footer_number_of_columns',
-			'type'     => 'select',
-			'title'    => __( 'Widget Area Number of Columns', wpgrade::textdomain() ),
-			'subtitle' => __( 'Select how many number of columns should the Footer widget area have.', wpgrade::textdomain() ),
-			'options'  => array(
+			'id'          => 'footer_number_of_columns',
+			'type'        => 'select',
+			'title'       => __( 'Widget Area Number of Columns', wpgrade::textdomain() ),
+			'subtitle'    => __( 'Select how many number of columns should the Footer widget area have.', wpgrade::textdomain() ),
+			'options'     => array(
 				'1' => '1',
 				'2' => '2',
 				'3' => '3',
 				'4' => '4',
 				'6' => '6',
 			),
-			'default'  => '2',
+			'default'     => '2',
 			'placeholder' => __( 'Select the number of columns', wpgrade::textdomain() ),
-			'select2'  => array( // here you can provide params for the select2 jquery call
+			'select2'     => array( // here you can provide params for the select2 jquery call
 				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
 				'allowClear'              => false // don't allow a empty select
 			),
 		),
-        array(
-            'id'       => 'footer_column_width',
-            'type'     => 'select',
-            'title'    => __( 'Widget Column width', wpgrade::textdomain() ),
-            'options'  => array(
-                'one-third' => 'One third',
-                'two-thirds' => 'Two thirds',
-                'one-whole' => 'Whole',
-            ),
-            'default'  => 'one_third',
-            'placeholder' => __( 'Select the widget width', wpgrade::textdomain() ),
-            'select2'  => array( // here you can provide params for the select2 jquery call
-                'minimumResultsForSearch' => - 1, // this way the search box will be disabled
-                'allowClear'              => false // don't allow a empty select
-            ),
-            'required' => array( 'footer_number_of_columns', '=', 1 ),
-        ),
+		array(
+			'id'          => 'footer_column_width',
+			'type'        => 'select',
+			'title'       => __( 'Widget Column width', wpgrade::textdomain() ),
+			'options'     => array(
+				'one-third'  => 'One third',
+				'two-thirds' => 'Two thirds',
+				'one-whole'  => 'Whole',
+			),
+			'default'     => 'one_third',
+			'placeholder' => __( 'Select the widget width', wpgrade::textdomain() ),
+			'select2'     => array( // here you can provide params for the select2 jquery call
+				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
+				'allowClear'              => false // don't allow a empty select
+			),
+			'required'    => array( 'footer_number_of_columns', '=', 1 ),
+		),
 		array(
 			'id'       => 'copyright_text',
 			'type'     => 'editor',
@@ -1539,11 +1537,12 @@ $sections[] = array(
 			'required' => array( 'prepare_for_social_share', '=', 1 )
 		),
 		array(
-			'id'       => 'twitter_card_site',
-			'type'     => 'text',
-			'title'    => __( 'Twitter Site Username', wpgrade::textdomain() ),
-			'subtitle' => __( 'The Twitter username of the entire site. The username for the author will be taken from the author\'s profile (skip the @)', wpgrade::textdomain() ),
-			'required' => array( 'prepare_for_social_share', '=', 1 )
+			'id'                => 'twitter_card_site',
+			'type'              => 'text',
+			'title'             => __( 'Twitter Site Username', wpgrade::textdomain() ),
+			'subtitle'          => __( 'The Twitter username of the entire site. The username for the author will be taken from the author\'s profile', wpgrade::textdomain() ),
+			'required'          => array( 'prepare_for_social_share', '=', 1 ),
+			'validate_callback' => 'wpgrade_trim_twitter_username'
 		),
 		array(
 			'id'    => 'social_share_default_image',
@@ -1719,24 +1718,24 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	// WooCommerce
 	// ------------------------------------------------------------------------
 	$sections[] = array(
-		'icon' => "icon-money",
+		'icon'       => "icon-money",
 		'icon_class' => '',
-		'title' => __('WooCommerce', wpgrade::textdomain()),
-		'desc' => '<p class="description">'.__('WooCommerce options!', wpgrade::textdomain()).'</p>',
-		'fields' => array(
+		'title'      => __( 'WooCommerce', wpgrade::textdomain() ),
+		'desc'       => '<p class="description">' . __( 'WooCommerce options!', wpgrade::textdomain() ) . '</p>',
+		'fields'     => array(
 			array(
-				'id' => 'enable_woocommerce_support',
-				'type' => 'switch',
-				'title' => __('Enable WooCommerce Support', wpgrade::textdomain()),
-				'subtitle' => __('Turn this off to avoid loading the WooCommerce assets (CSS and JS).', wpgrade::textdomain()),
+				'id'       => 'enable_woocommerce_support',
+				'type'     => 'switch',
+				'title'    => __( 'Enable WooCommerce Support', wpgrade::textdomain() ),
+				'subtitle' => __( 'Turn this off to avoid loading the WooCommerce assets (CSS and JS).', wpgrade::textdomain() ),
+				'default'  => '1',
+			),
+			array(
+				'id'      => 'show_cart_menu',
+				'type'    => 'switch',
+				'title'   => __( 'Show cart menu in main navigation', wpgrade::textdomain() ),
 				'default' => '1',
 			),
-            array(
-                'id' => 'show_cart_menu',
-                'type' => 'switch',
-                'title' => __('Show cart menu in main navigation', wpgrade::textdomain()),
-                'default' => '1',
-            ),
 		)
 	);
 }

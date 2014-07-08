@@ -16,8 +16,6 @@
 
 #customize-theme-controls .accordion-section-content {
   display: block !important; }
-  #customize-theme-controls .accordion-section-content:last-child {
-    display: none !important; }
 
 h3.accordion-section-title, #customize-info {
   display: none; }
@@ -135,7 +133,7 @@ h3.accordion-section-title, #customize-info {
 
 .customize-control-background .customize-control-title button, .customize-control-typography .customize-control-title button, .customize-dropdown-section .dropdown-section-trigger .customize-control-title button {
   position: absolute;
-  top: -40px;
+  top: -36px;
   right: 45px;
   display: block;
   height: 30px;
@@ -245,7 +243,7 @@ h3.accordion-section-title, #customize-info {
     .customize-control-color .wp-picker-container .wp-picker-open + .wp-picker-input-wrap input.button {
       float: right; }
 .customize-control-color .wp-color-result {
-  top: -3px;
+  top: -6px;
   height: 30px;
   width: 30px;
   margin: 0;
@@ -444,6 +442,8 @@ h3.accordion-section-title, #customize-info {
       font-size: 13px;
       color: #232527;
       margin-top: 5px; }
+    .customize-dropdown-section .dropdown-section-content .customize-control:first-child {
+      border-top: none; }
   .customize-dropdown-section .dropdown-section-content .customize-control-info {
     display: none; }
   .customize-dropdown-section .dropdown-section-content:after {

@@ -157,6 +157,21 @@ class wpgrade {
 		}
 	}
 
+	/**
+	 * Get a redux config argument
+	 * @param $arg
+	 *
+	 * @return bool
+	 */
+	static function get_redux_arg( $arg ) {
+		$args = self::get_redux_args();
+
+		if (!empty($arg) && isset($args[$arg]) ) {
+			return $args[$arg];
+		}
+		return false;
+	}
+
 	static function get_redux_args() {
 		return self::options()->get_args();
 	}

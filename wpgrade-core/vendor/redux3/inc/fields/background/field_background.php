@@ -107,7 +107,6 @@
                     echo '<input type="hidden" class="select2_params" value="' . $select2_params . '">';
                 }
 
-
                 if ( $this->field['background-color'] === true ) {
 
                     if ( isset( $this->value['color'] ) && empty( $this->value['background-color'] ) ) {
@@ -115,7 +114,8 @@
                     }
 
                     echo '<input data-id="' . $this->field['id'] . '" name="' . $this->field['name'] . '[background-color]' . $this->field['name_suffix'] . '" id="' . $this->field['id'] . '-color" class="redux-color redux-background-input redux-color-init ' . $this->field['class'] . '"  type="text" value="' . $this->value['background-color'] . '"  data-default-color="' . ( isset( $this->field['default']['background-color'] ) ? $this->field['default']['background-color'] : "" ) . '" />';
-
+                    echo '<input type="hidden" class="redux-saved-color" id="' . $this->field['id'] . '-saved-color' . '" value="">';
+                    
                     if ( ! isset( $this->field['transparent'] ) || $this->field['transparent'] !== false ) {
                         $tChecked = "";
                         if ( $this->value['background-color'] == "transparent" ) {
@@ -350,8 +350,8 @@
             public function enqueue() {
                 wp_enqueue_script(
                     'redux-field-background-js',
-                    ReduxFramework::$_url . 'inc/fields/background/field_background.js',
-                    array( 'jquery', 'wp-color-picker', 'select2-js' ),
+                    ReduxFramework::$_url . 'inc/fields/background/field_background' . Redux_Functions::isMin() . '.js',
+                    array( 'jquery', 'wp-color-picker', 'select2-js', 'redux-js' ),
                     time(),
                     true
                 );

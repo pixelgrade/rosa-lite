@@ -1,0 +1,24 @@
+/*
+Errno::ENOENT: No such file or directory - theme-content/scss
+
+Backtrace:
+/Users/razvan/.rvm/gems/ruby-2.0.0-p451@global/gems/sass-3.3.7/lib/sass/plugin/compiler.rb:405:in `read'
+/Users/razvan/.rvm/gems/ruby-2.0.0-p451@global/gems/sass-3.3.7/lib/sass/plugin/compiler.rb:405:in `update_stylesheet'
+/Users/razvan/.rvm/gems/ruby-2.0.0-p451@global/gems/sass-3.3.7/lib/sass/plugin/compiler.rb:189:in `block in update_stylesheets'
+/Users/razvan/.rvm/gems/ruby-2.0.0-p451@global/gems/sass-3.3.7/lib/sass/plugin/compiler.rb:186:in `each'
+/Users/razvan/.rvm/gems/ruby-2.0.0-p451@global/gems/sass-3.3.7/lib/sass/plugin/compiler.rb:186:in `update_stylesheets'
+/Users/razvan/.rvm/gems/ruby-2.0.0-p451@global/gems/sass-3.3.7/lib/sass/plugin.rb:82:in `update_stylesheets'
+/Users/razvan/.rvm/gems/ruby-2.0.0-p451@global/gems/sass-3.3.7/lib/sass/exec.rb:489:in `watch_or_update'
+/Users/razvan/.rvm/gems/ruby-2.0.0-p451@global/gems/sass-3.3.7/lib/sass/exec.rb:346:in `process_result'
+/Users/razvan/.rvm/gems/ruby-2.0.0-p451@global/gems/sass-3.3.7/lib/sass/exec.rb:43:in `parse'
+/Users/razvan/.rvm/gems/ruby-2.0.0-p451@global/gems/sass-3.3.7/lib/sass/exec.rb:22:in `parse!'
+/Users/razvan/.rvm/gems/ruby-2.0.0-p451@global/gems/sass-3.3.7/bin/sass:13:in `<top (required)>'
+/Users/razvan/.rvm/rubies/ruby-2.0.0-p451/bin/sass:23:in `load'
+/Users/razvan/.rvm/rubies/ruby-2.0.0-p451/bin/sass:23:in `<main>'
+/Users/razvan/.rvm/gems/ruby-2.0.0-p451@global/bin/ruby_executable_hooks:15:in `eval'
+/Users/razvan/.rvm/gems/ruby-2.0.0-p451@global/bin/ruby_executable_hooks:15:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Errno::ENOENT: No such file or directory - theme-content/scss"; }

@@ -130,8 +130,6 @@
 			var attachment = frame.state().get('selection').first();
 			frame.close();
 
-			console.log(attachment.attributes.type);
-
 			if (attachment.attributes.type !== "image") {
 				return;
 			}
@@ -177,6 +175,15 @@
 		if (!selector.find('.remove-image').addClass('hide')) {
 			return;
 		}
+
+		var customizer_id = selector.find('.upload').attr('name');
+
+		if (typeof customizer_id !== 'undefined') {
+			customizer_id = customizer_id.replace('[background-image]', '');
+		} else {
+			customizer_id = 0;
+		}
+
 		selector.find('.remove-image').addClass('hide');//hide "Remove" button
 		selector.find('.upload').val('');
 		selector.find('.upload-id').val('');
@@ -197,6 +204,16 @@
 		}
 
 		//$.reduxBackground.preview(selector);
+
+		if (typeof window._wpCustomizeSettings === 'undefined') {
+			return;
+		}
+
+		if (window._wpCustomizeSettings.settings[customizer_id] === 'undefined' || window._wpCustomizeSettings.settings[customizer_id].value === 'undefined') {
+			return;
+		}
+
+		window._wpCustomizeSettings.settings[customizer_id].value['background-image'] = '';
 
 	};
 

@@ -1,0 +1,103 @@
+.field {
+	background: none;
+	box-shadow: none;
+	border: 2px solid $border;
+	border-radius: 0;
+	padding: 0.5em 1em;
+    margin: 0.5em 0;
+    max-width: 90%;
+
+    -webkit-transition: border-color .2s ease-in-out;
+    -moz-transition: border-color .2s ease-in-out;
+    -ms-transition: border-color .2s ease-in-out;
+    -o-transition: border-color .2s ease-in-out;
+    transition: border-color .2s ease-in-out;
+
+    .text_sortable & {
+        margin-top: 0;
+    }
+
+    &:hover {
+        border-color: $light;
+    }
+}
+
+.field--focus {
+	border-color: $accent;
+}
+
+.redux-container {
+
+	input[type="text"],
+	textarea {
+		@extend .field;
+        font-size: 1em;
+
+		&:focus {
+			@extend .field--focus;
+		}
+	}
+
+	.select2-container {
+		border-radius: 0;
+		background: none;
+		border: 0;
+		box-shadow: none;
+		width: auto !important;
+		min-width: 9.3em;
+
+		.select2-choice {
+			@extend .field;
+			height: auto;
+
+			.select2-arrow {
+				margin-right: 0.45em;
+				margin-top: 0.45em;
+				border-left: 0;
+				background: none;
+			}
+
+		}
+
+		&.select2-dropdown-open {
+
+			.select2-choice {
+				@extend .field--focus;
+			}
+		}
+	}
+}
+
+.select2-chosen {
+	width: auto !important;
+    min-width: 8em;
+}
+
+.select2-drop {
+	@extend .pop-up;
+	width: auto !important;
+	min-width: 10em;
+}
+
+.select2-results {
+	padding: 0;
+	margin: 0;
+
+	> li {
+		border-top: 2px solid #ececec;
+		margin-bottom: 0;
+
+		&:first-child {
+			border-top: 0;
+		}
+
+		.select2-result-label {
+			padding: 0.75em 1em;
+		}
+	}
+
+	.select2-highlighted {
+		background: #ececec !important;
+		color: black !important;
+	}
+}

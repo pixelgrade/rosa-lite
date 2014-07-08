@@ -29,6 +29,10 @@ wpgrade::require_all( $classpath );
 // Setup Option Drivers
 // --------------------
 
+if ( wpgrade::confoption('wpml_separate_options', false ) ) {
+	$wpgrade_redux = new wpGrade_Redux();
+}
+
 // the handler is the main object responsible for managing the drivers
 wpgrade::options_handler( new WPGradeOptions() );
 

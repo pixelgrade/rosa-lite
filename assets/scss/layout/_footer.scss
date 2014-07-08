@@ -9,15 +9,15 @@
         content: "";
         display: block;
         width: 100%;
-        height: 7px;
+        height: 14px;
         position: absolute;
         left: 0;
-        background: url('../images/border2.png') top left repeat-x;
+        background: url('../images/border-wave-black.svg') top left repeat-x;
         z-index: 30;
     }
 
     &:before {
-        top: -7px;
+        top: -6px;
         background-position: top;
     }
 }
