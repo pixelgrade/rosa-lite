@@ -4,7 +4,7 @@
 
  */
 
-global $post, $wpgrade_private_post;
+global $post, $wpgrade_private_post, $footer_needs_big_waves;
 
 //test if the current page has child pages
 if ( rosa::page_has_children() ) {
@@ -13,7 +13,7 @@ if ( rosa::page_has_children() ) {
 		'hierarchical' => 0,
 		'child_of'     => $post->ID,
 		'parent'       => $post->ID,
-		'sort_column' => 'menu_order, ID',
+		'sort_column'  => 'menu_order, ID',
 	);
 
 	$pages = get_pages( $args );
@@ -27,7 +27,7 @@ if ( rosa::page_has_children() ) {
 			get_template_part( 'templates/page/header' );
 
 			$classes = "article--page article--main article--subpage";
-			$style = '';
+			$style   = '';
 //			$inverse_colors = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'inverse_section_colors', true );
 //			if ($inverse_colors == 'on') {
 //				$classes .= ' inverse-colors';
@@ -39,12 +39,17 @@ if ( rosa::page_has_children() ) {
 //			}
 
 			$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_border_style', true );
-			if ( !empty($border_style) ) {
+			if ( ! empty( $border_style ) ) {
 				$classes .= ' border-' . $border_style;
 			}
-			?>
-			<article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
-				<?php if ( $post->post_content != "" ): ?>
+			//make sure that no waves go unaccounted for
+			$footer_needs_big_waves = false;
+
+			if ( ! empty( $post->post_content ) ):
+				//if the section has content, the footer definitely doesn't need waves
+				$footer_needs_big_waves = false;
+				?>
+				<article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
 					<section class="article__content" <?php echo $style ?>>
 						<div class="container">
 							<section class="page__content  js-post-gallery  cf">
@@ -52,10 +57,14 @@ if ( rosa::page_has_children() ) {
 							</section>
 						</div>
 					</section>
-
-				<?php endif; ?>
-			</article>
-		<?php
+				</article>
+			<?php
+			else :
+				//if we have a section with no content and it has waves then maybe this will be the last one and should splash the footer
+				if ( $border_style == 'waves' ) {
+					$footer_needs_big_waves = true;
+				}
+			endif;
 		} // close if password protection
 
 	endforeach;

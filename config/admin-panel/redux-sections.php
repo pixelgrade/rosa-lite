@@ -773,7 +773,7 @@ $sections[] = array(
 					'right'        => array(
 						'selector' => '.page-content.has-sidebar:after',
 						'unit'     => 'px',
-						'media'    => 'only screen and (min-width: 900px)'
+						'media'    => 'only screen and (min-width: 900px)',
 					),
 					'margin-right' => array(
 						'selector'          => '.page-content.has-sidebar .page-content__wrapper',
@@ -886,7 +886,7 @@ $sections[] = array(
 			'type'          => 'customizer_slider',
 			'title'         => __( 'Border Width', wpgrade::textdomain() ),
 			'validate'      => 'numeric',
-			'default'       => '0',
+			'default'       => 0,
 			'min'           => 0,
 			'step'          => 6,
 			'max'           => 72,
@@ -901,6 +901,11 @@ $sections[] = array(
 					),
 					'border-top-width' => array(
 						'selector' => '.site-header',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					),
+					'border-bottom-width' => array(
+						'selector' => '.site-footer',
 						'unit'     => 'px',
 						'media'    => 'screen and (min-width: 900px)'
 					)
