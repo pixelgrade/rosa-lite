@@ -13,7 +13,7 @@ var is_ancient_ie   = ua.match(/msie 6/i);
 var is_ie           = is_ancient_ie || is_older_ie || is_newer_ie;
 var is_mobile_ie    = navigator.userAgent.indexOf('IEMobile') !== -1;
 var is_mobile       = ua.match(/mobile/i);
-var is_OSX          = ua.match(/(iPad|iPhone|iPod|Macintosh)/g ? true : false);
+var is_OSX          = ua.match(/(iPad|iPhone|iPod|Macintosh)/g) ? true : false;
 
 
 var nua = navigator.userAgent;
