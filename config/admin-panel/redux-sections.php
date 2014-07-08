@@ -87,6 +87,7 @@ $sections[] = array(
 $sections[] = array(
 	'icon'            => "icon-params",
 	'icon_class'      => '',
+	'class'           => 'has-customizer',
 	'title'           => __( 'Style', wpgrade::textdomain() ),
 	'desc'            => '<p class="description">' . __( 'The style options control the general styling of the site, like accent color and Google Web Fonts. You can choose custom fonts for various typography elements with font weight, character set, size and/or line height. You also have a live preview for your chosen fonts.', wpgrade::textdomain() ) . '</p>',
 	'customizer_only' => false,
