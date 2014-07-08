@@ -36,18 +36,19 @@
 				position: absolute;
 				left: 0;
 				background: url('../images/border-wave.svg') top left repeat-x;
-				z-index: 20;
 			}
 
-			&:before {
-				top: -6px;
-				background-position: top;
-			}
+            &:before {
+                top: -6px;
+                background-position: top;
+                z-index: 20;
+            }
 
-			&:after {
-				bottom: -6px;
-				background-position: bottom;
-			}
+            &:after {
+                bottom: -6px;
+                background-position: bottom;
+                z-index: 21;
+            }
 		}
 
     &.article--arrow {
