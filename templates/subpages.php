@@ -28,14 +28,19 @@ if ( rosa::page_has_children() ) {
 
 			$classes = "article--page article--main article--subpage";
 			$style = '';
-			$inverse_colors = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'inverse_section_colors', true );
-			if ($inverse_colors == 'on') {
-				$classes .= ' inverse-colors';
+//			$inverse_colors = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'inverse_section_colors', true );
+//			if ($inverse_colors == 'on') {
+//				$classes .= ' inverse-colors';
+//
+//				$text_color = wpgrade::option('text_color');
+//				$background_color = wpgrade::option('content_background_color');
+//
+//				$style .= ' style="background-color: '.$text_color.'; color: '.$background_color.'" ';
+//			}
 
-				$text_color = wpgrade::option('text_color');
-				$background_color = wpgrade::option('content_background_color');
-
-				$style .= ' style="background-color: '.$text_color.'; color: '.$background_color.'" ';
+			$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_border_style', true );
+			if ( !empty($border_style) ) {
+				$classes .= ' border-' . $border_style;
 			}
 			?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>

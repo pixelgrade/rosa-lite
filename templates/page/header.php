@@ -3,16 +3,20 @@
  * This template handles the page headers with image and cover text
  */
 
-global $is_gmap, $page_section_idx;
+global $is_gmap, $page_section_idx, $header_height;
 
 //increment the page section number
 $page_section_idx++;
 
+//header general classes
+$classes = "article__header  article__header--page";
+
 //first lets get to know this page a little better
 $header_height = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_header_height', true );
 if ( empty($header_height) ) {
-	$header_height = 'half-height';
+	$header_height = 'half-height'; //the default
 }
+$classes .= ' ' . $header_height;
 
 $subtitle = trim( get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_subtitle', true ) );
 //we need to mess with the subtitle a little bit - because it deserves it
@@ -45,8 +49,12 @@ if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) :
 		$gmap_custom_style   = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_custom_style', true );
 		$gmap_marker_content = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_marker_content', true );
 		$gmap_height         = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_gmap_height', true );
+		if ( empty($gmap_height) ) {
+			$gmap_height = 'half-height'; //the default
+		}
+		$classes .= ' ' . $gmap_height;
 		?>
-		<header class="article__header  article__header--page  <?php echo $gmap_height ?>">
+		<header class="<?php echo $classes ?>">
 			<div id="gmap"
 			     data-url="<?php esc_attr_e( $gmap_url ); ?>" <?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
 			     data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>"></div>
@@ -85,7 +93,7 @@ else :
 				$slider_delay = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_delay', true );
 			}
 			?>
-			<header class="article__header  article__header--page  <?php echo $header_height ?>">
+			<header class="<?php echo $classes ?>">
 				<?php if (! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description )) : ?>
 				<div class="flexbox">
 					<div class="flexbox__item">
@@ -166,7 +174,7 @@ else :
 	else :
 		/* OR REGULAR PAGE */
 		if ( has_post_thumbnail() || ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) : ?>
-			<header class="article__header  article__header--page  <?php echo $header_height ?>" data-type="image">
+			<header class="<?php echo $classes ?>" data-type="image">
 				<?php if ( has_post_thumbnail() ):
 					$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full-size' );
 					if ( ! empty( $image[0] ) ): ?>
@@ -191,7 +199,18 @@ else :
 				</div>
 				<?php endif; ?>
                 <?php if ( $page_section_idx == 1 && $header_height == 'full-height' ) {
-                    echo '<div class="down-arrow"><div class="arrow"></div></div>' . PHP_EOL;
+	                //get the global option regarding down arrow style
+	                $down_arrow_style = wpgrade::option('down_arrow_style');
+	                if ( empty($down_arrow_style) ) {
+		                $down_arrow_style = 'transparent'; //the default
+	                }
+
+	                if ( $down_arrow_style == 'bubble') {
+	                    echo '<svg class="blurp--top" width="192" height="61" x="0px" y="0px" viewBox="0 0 142.7 56.2">' . PHP_EOL .
+	                        '<path fill="#FFFFFF" d="M138.6,46.4c21.8,0-50.3,9.8-67.3,9.8s-89-10.8-67.2-10.8C42.6,45.4,42.3,0,70.8,0  C100.1,0,100.6,46.4,138.6,46.4z"/>' . PHP_EOL .
+                        '</svg>';
+	                }
+                    echo '<div class="down-arrow down-arrow--' . $down_arrow_style . '"><div class="arrow"></div></div>' . PHP_EOL;
                 } ?>
 			</header>
 		<?php endif;

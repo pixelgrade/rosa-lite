@@ -22,11 +22,15 @@ var ScrollToTop = {
         this.end        = this.start + windowHeight;
         this.timeline   = new TimelineMax({ paused: true });
 
-        this.timeline.fromTo(this.$button, .6, {
-            top:    32
+        this.timeline.fromTo('.blurp--bottom', .6, {
+            y:          40,
+            scale:      0.5
         }, {
-            top:    0,
-            ease:   Power3.easeOut
+            y:          0,
+            scale:      1,
+            ease:       Power3.easeOut,
+            force3D:    true
+
         });
 
         this.timeline.fromTo($('.btn__arrow--top'), .4, {

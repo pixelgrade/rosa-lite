@@ -37,7 +37,7 @@ return array(
 				'fields'     => array(
 					array(
 						'name' => __( 'Header Height', 'rosa_txtd' ),
-						'desc' => __( '<p class="cmb_metabox_description">Select the height of the header area in relation to the browser window.</p>', 'rosa_txtd' ),
+						'desc' => '<p class="cmb_metabox_description">' . __( 'Select the height of the header area in relation to the browser window.', 'rosa_txtd' ).'</p>',
 						'id'   => wpgrade::prefix() . 'page_header_height',
 						'type'    => 'select',
 						'options' => array(
@@ -88,11 +88,28 @@ return array(
 						'type' => 'checkbox',
 					),
 					array(
-						'name' => __( 'Inverse The Colors', 'rosa_txtd' ),
-						'desc' => __( "This will make the background black and the text white.", 'rosa_txtd' ),
-						'id'   => wpgrade::prefix() . 'inverse_section_colors',
-						'type' => 'checkbox',
+						'name' => __( 'Content Border Style', 'rosa_txtd' ),
+						'desc' => '<p class="cmb_metabox_description">'.__( 'Select the style of the top and bottom borders of the content.', 'rosa_txtd' ).'</p>',
+						'id'   => wpgrade::prefix() . 'page_border_style',
+						'type'    => 'select',
+						'options' => array(
+							array(
+								'name'  => __( 'Simple', 'rosa_txtd' ),
+								'value' => 'simple',
+							),
+							array(
+								'name'  => __( 'Waves', 'rosa_txtd' ),
+								'value' => 'waves',
+							),
+						),
+						'std'     => 'simple',
 					),
+//					array(
+//						'name' => __( 'Inverse The Colors', 'rosa_txtd' ),
+//						'desc' => __( "This will make the content background black and the text white.", 'rosa_txtd' ),
+//						'id'   => wpgrade::prefix() . 'inverse_section_colors',
+//						'type' => 'checkbox',
+//					),
 				),
 			),
 			wpgrade::shortname() . '_page_header_area_slideshow'  => array(

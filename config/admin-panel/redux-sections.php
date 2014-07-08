@@ -869,12 +869,62 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
-		// array(
-		//     'id'=>'sidebar_title',
-		//     'title'=> '<h4>'.__('Sidebar', wpgrade::textdomain()).'</h4>',
-		//  'type' => 'customizer_info',
-		//  'customizer' => array()
-		// ),
+		array(
+			'id'         => 'sizes_border',
+			'title'      => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Border', wpgrade::textdomain() ) . '</span></label>',
+			'type'       => 'customizer_info',
+			'customizer' => array()
+		),
+		array(
+			'id'            => 'border_width',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'Border Width', wpgrade::textdomain() ),
+			'validate'      => 'numeric',
+			'default'       => 0,
+			'min'           => 0,
+			'step'          => 6,
+			'max'           => 72,
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'border-width'  => array(
+						'selector' => 'body',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					),
+					'border-top-width' => array(
+						'selector' => '.site-header',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					)
+				)
+			),
+			'compiler'      => true
+		),
+
+		array(
+			'id'              => 'options_title',
+			'title'           => '<h3>' . __( 'Options', wpgrade::textdomain() ) . '</h3>',
+			'type'            => 'customizer_info',
+			'customizer'      => array()
+		),
+
+		array(
+			'id'         => 'down_arrow_style',
+			'type'       => 'select',
+			'title'      => __( 'Down Arrow Style', wpgrade::textdomain() ),
+			'options'    => array(
+				'transparent' => 'Transparent',
+				'bubble'    => 'Bubble',
+			),
+			'default'    => 'transparent',
+			'select2'    => array( // here you can provide params for the select2 jquery call
+				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
+				'allowClear'              => false // don't allow a empty select
+			),
+			'customizer' => array()
+		),
 		
 		array(
 			'id'         => 'customizer_reset_button_section',
@@ -884,59 +934,59 @@ $sections[] = array(
 			'customizer' => array()
 		),
 
-		array(
-			'id'         => 'options_title',
-			'title'      => '<h3>' . __( 'Options', wpgrade::textdomain() ) . '</h3>',
-			'type'       => 'customizer_info',
-			'customizer' => array()
-		),
-		array(
-			'id'         => 'nav_always_show',
-			'type'       => 'checkbox',
-			'title'      => __( 'Always show nav', wpgrade::textdomain() ),
-			'default'    => '1',
-			'customizer' => array()
-		),
-		array(
-			'id'         => 'nav_placement',
-			'type'       => 'select',
-			'title'      => __( 'Navigation placement', wpgrade::textdomain() ),
-			// 'subtitle' => __('How should the header menu behave?', wpgrade::textdomain()),
-			'options'    => array(
-				'top'    => 'Top',
-				'bottom' => 'Bottom',
-			),
-			'default'    => 'bottom',
-			'select2'    => array( // here you can provide params for the select2 jquery call
-				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
-				'allowClear'              => false // don't allow a empty select
-			),
-			'customizer' => array()
-		),
-		array(
-			'id'         => 'nav_separators',
-			'type'       => 'select',
-			'title'      => __( 'Navigation separators', wpgrade::textdomain() ),
-			// 'subtitle' => __('How should the header menu behave?', wpgrade::textdomain()),
-			'options'    => array(
-				'none'    => 'None',
-				'default' => 'Default',
-			),
-			'default'    => 'default',
-			'select2'    => array( // here you can provide params for the select2 jquery call
-				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
-				'allowClear'              => false // don't allow a empty select
-			),
-			'customizer' => array()
-		),
-		array(
-			'id'         => 'nav_borders',
-			'type'       => 'checkbox',
-			'title'      => __( 'Borders', wpgrade::textdomain() ),
-			// 'subtitle' => __('Adds the social links you have configured in Theme Options > Social and SEO.', wpgrade::textdomain()),
-			'default'    => '1',
-			'customizer' => array()
-		),
+//		array(
+//			'id'         => 'options_title',
+//			'title'      => '<h3>' . __( 'Options', wpgrade::textdomain() ) . '</h3>',
+//			'type'       => 'customizer_info',
+//			'customizer' => array()
+//		),
+//		array(
+//			'id'         => 'nav_always_show',
+//			'type'       => 'checkbox',
+//			'title'      => __( 'Always show nav', wpgrade::textdomain() ),
+//			'default'    => '1',
+//			'customizer' => array()
+//		),
+//		array(
+//			'id'         => 'nav_placement',
+//			'type'       => 'select',
+//			'title'      => __( 'Navigation placement', wpgrade::textdomain() ),
+//			// 'subtitle' => __('How should the header menu behave?', wpgrade::textdomain()),
+//			'options'    => array(
+//				'top'    => 'Top',
+//				'bottom' => 'Bottom',
+//			),
+//			'default'    => 'bottom',
+//			'select2'    => array( // here you can provide params for the select2 jquery call
+//				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
+//				'allowClear'              => false // don't allow a empty select
+//			),
+//			'customizer' => array()
+//		),
+//		array(
+//			'id'         => 'nav_separators',
+//			'type'       => 'select',
+//			'title'      => __( 'Navigation separators', wpgrade::textdomain() ),
+//			// 'subtitle' => __('How should the header menu behave?', wpgrade::textdomain()),
+//			'options'    => array(
+//				'none'    => 'None',
+//				'default' => 'Default',
+//			),
+//			'default'    => 'default',
+//			'select2'    => array( // here you can provide params for the select2 jquery call
+//				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
+//				'allowClear'              => false // don't allow a empty select
+//			),
+//			'customizer' => array()
+//		),
+//		array(
+//			'id'         => 'nav_borders',
+//			'type'       => 'checkbox',
+//			'title'      => __( 'Borders', wpgrade::textdomain() ),
+//			// 'subtitle' => __('Adds the social links you have configured in Theme Options > Social and SEO.', wpgrade::textdomain()),
+//			'default'    => '1',
+//			'customizer' => array()
+//		),
 	)
 );
 

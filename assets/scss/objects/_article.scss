@@ -21,6 +21,47 @@
 	}
 }
 
+.article--page {
+    position: relative;
+    // contain children margins
+    padding: 1px 0;
+
+		&.border-waves {
+			&:before, &:after {
+				content: "";
+				display: block;
+				width: 100%;
+				height: 7px;
+				position: absolute;
+				left: 0;
+				background: url('../images/border.png') top left repeat-x;
+				z-index: 20;
+			}
+
+			&:before {
+				top: -7px;
+				background-position: top;
+			}
+
+			&:after {
+				bottom: -7px;
+				background-position: bottom;
+			}
+		}
+
+    &.article--arrow {
+        &:before {
+            display: none;
+        }
+    }
+
+    &:empty {
+        &:before, &:after {
+            display: none;
+        }
+    }
+}
+
 .article__content {
 
 }
@@ -34,6 +75,14 @@
 	//	padding: 200px 0;
 	background: #333;
 	overflow: hidden;
+
+    svg {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -96px;
+        margin-top: -50px;
+    }
 
 	@include media-query(palm) {
 		padding: 0 $_u2;
@@ -71,6 +120,14 @@
 		bottom: 0;
 		left: 0;
 	}
+}
+
+.blurp--top {
+    -webkit-transform-origin: 50% 100%;
+    -moz-transform-origin: 50% 100%;
+    -ms-transform-origin: 50% 100%;
+    -o-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
 }
 
 .article__parallax {
@@ -157,27 +214,43 @@
 	opacity: 0.7;
 	position: absolute;
 	left: 50%;
-	bottom: 10%;
 	margin-left: -40px;
 	cursor: pointer;
 	z-index: 10;
 
-	.arrow {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		margin-left: -1 * $_u2;
-		margin-top: -1 * $_u2;
-		z-index: 20;
+    .arrow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 20;
+        @include transform(rotate(45deg));
+    }
+}
 
-		height: $_u;
-		width: $_u;
+.down-arrow--bubble {
+    bottom: -16px;
 
-		border-right: 3px solid white;
-		border-bottom: 3px solid white;
+    .arrow {
+        width: $_u * 2/3;
+        height: $_u * 2/3;
+        margin-left: -1 * $_u2 * 2/3;
+        margin-top: -1 * $_u2 * 2/3;
+        border-right: 2px solid black;
+        border-bottom: 2px solid black;
+    }
+}
 
-		@include transform(rotate(45deg));
-	}
+.down-arrow--transparent {
+    bottom: 5%;
+
+    .arrow {
+        width: $_u;
+        height: $_u;
+        margin-left: -1 * $_u2;
+        margin-top: -1 * $_u2;
+        border-right: 3px solid white;
+        border-bottom: 3px solid white;
+    }
 }
 
 .down-arrow.down-arrow--inverse{

@@ -659,6 +659,7 @@ var DownArrow = {
     timeline:   null,
     start:      0,
     end:        0,
+    bubble:     false,
 
     initialize: function () {
 
@@ -680,7 +681,14 @@ var DownArrow = {
             this.nextHeight = this.$next.outerHeight();
         }
 
-        this.timeline.to(this.$arrow, 1, {y: 100, opacity: 0, ease: Linear.easeNone, overwrite: "none"});
+
+        if (this.$arrow.hasClass('down-arrow--bubble')) {
+            this.timeline.to(this.$arrow, .2, {y: 10, opacity: 0, ease: Linear.easeNone, overwrite: "none"});
+            this.timeline.to('.blurp--top', .3, {scaleY: 0, ease: Linear.easeNone, overwrite: "none"});
+            this.bubble = true;
+        } else {
+            this.timeline.to(this.$arrow, 1, {y: 100, opacity: 0, ease: Linear.easeNone, overwrite: "none"});
+        }
 
         this.$arrow.on('click', function (e) {
             e.preventDefault();
@@ -696,19 +704,11 @@ var DownArrow = {
             }
 
         });
-
-        this.$arrow.on('mouseenter', function () {
-            TweenMax.to(that.$arrow, 0.2, {opacity: 1, scale: 1.25, ease: Back.easeOut, overwrite: "none"});
-        });
-
-        this.$arrow.on('mouseleave', function () {
-            TweenMax.to(that.$arrow, 0.4, {scale: 1, ease: Strong.easeOut, overwrite: "none"});
-        });
     },
 
     update: function () {
 
-        if (empty(this.$arrow)) {
+        if (empty(this.$arrow) || this.bubble) {
             return;
         }
 
@@ -744,11 +744,15 @@ var ScrollToTop = {
         this.end        = this.start + windowHeight;
         this.timeline   = new TimelineMax({ paused: true });
 
-        this.timeline.fromTo(this.$button, .6, {
-            top:    32
+        this.timeline.fromTo('.blurp--bottom', .6, {
+            y:          40,
+            scale:      0.5
         }, {
-            top:    0,
-            ease:   Power3.easeOut
+            y:          0,
+            scale:      1,
+            ease:       Power3.easeOut,
+            force3D:    true
+
         });
 
         this.timeline.fromTo($('.btn__arrow--top'), .4, {
@@ -1144,46 +1148,45 @@ function stickyHeaderInit() {
 function niceScrollInit() {
     if (globalDebug) {console.log("NiceScroll Init");}
 
-    var smoothScroll = $('body').data('smoothscrolling') !== undefined;
-
-    if (smoothScroll && !is_OSX && !Modernizr.touch && !is_mobile_ie) {
-
-        var $window = $(window);		// Window object
-
-        $window.on("mousewheel DOMMouseScroll", function(event) {
-
-            var scrollTo,
-                scrollDistance  = 400,
-                delta;
-
-            if (event.type == 'mousewheel') {
-                delta    = event.originalEvent.wheelDelta / 120;
-            }
-            else if (event.type == 'DOMMouseScroll') {
-                delta    = - event.originalEvent.detail / 3;
-            }
-
-            scrollTo = latestKnownScrollY - delta * scrollDistance;
-
-            if (scrollTo) {
-
-                event.preventDefault();
-
-                TweenMax.to($window, .6, {
-                    scrollTo: {
-                        y:          scrollTo,
-                        autoKill:   true
-                    },
-                    ease:           Power1.easeOut,	// For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
-                    autoKill:       true,
-                    overwrite:      5
-                });
-
-            }
-
-        });
-
-    }
+//    var smoothScroll = $('body').data('smoothscrolling') !== undefined;
+//
+//    if (smoothScroll && !is_OSX && !Modernizr.touch && !is_mobile_ie) {
+//        var $window = $(window);		// Window object
+//
+//        $window.on("mousewheel DOMMouseScroll", function(event) {
+//
+//            var scrollTo,
+//                scrollDistance  = 400,
+//                delta;
+//
+//            if (event.type == 'mousewheel') {
+//                delta    = event.originalEvent.wheelDelta / 120;
+//            }
+//            else if (event.type == 'DOMMouseScroll') {
+//                delta    = - event.originalEvent.detail / 3;
+//            }
+//
+//            scrollTo = latestKnownScrollY - delta * scrollDistance;
+//
+//            if (scrollTo) {
+//
+//                event.preventDefault();
+//
+//                TweenMax.to($window, .6, {
+//                    scrollTo: {
+//                        y:          scrollTo,
+//                        autoKill:   true
+//                    },
+//                    ease:           Power1.easeOut,	// For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
+//                    autoKill:       true,
+//                    overwrite:      5
+//                });
+//
+//            }
+//
+//        });
+//
+//    }
 
 }
 
