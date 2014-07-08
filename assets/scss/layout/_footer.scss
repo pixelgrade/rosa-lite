@@ -136,11 +136,19 @@
 
 	&.copyright-area__light{
 		background-color: white;
+
+		svg path{
+			fill: white;
+		}
 	}
 
 	&.copyright-area__accent{
 		background-color: $accent;
 		color: white;
+
+		svg path{
+			fill: $accent;
+		}
 
 		a{
 			color: white;
