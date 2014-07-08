@@ -502,8 +502,6 @@ if ( ! class_exists( 'ReduxFramework_customizer_typography' ) ) {
 				'wp-color-picker'
 			), time(), true );
 
-			wp_enqueue_style( 'redux-field-color-css', ReduxFramework::$_url . 'inc/fields/color/field_color.css', time(), true );
-
 			wp_enqueue_script( 'redux-field-typography-js', $this->extension_url . 'field_customizer_typography.js', array(
 				'jquery',
 				'wp-color-picker',
