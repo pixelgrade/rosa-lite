@@ -147,7 +147,7 @@ $sections[] = array(
 					'background-color' => array(
 						'selector' => ".btn--primary, .shop-menu-item .shop-items-number, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover,
 						                .pagination li a:hover, form.shipping_calculator button.button:hover, .otreservations-submit:hover, .pixcode--icon.square:hover, .pixcode--icon.circle:hover,
-						                .sidebar--footer__accent, .copyright-area.copyright-area__accent",
+						                .sidebar--footer__accent, .copyright-area.copyright-area__accen, .menu-list__item-highlight-title",
 					),
 					'background'       => array(
 						'selector' => "body.woocommerce button.button.alt:hover, body.woocommerce-page #respond input#submit:hover,
@@ -160,7 +160,7 @@ $sections[] = array(
 						.btn--text.wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit.read-more-button,
 						.btn--text.otreservations-submit, .otreservations-submit, .read-more-button,
 						.widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button, blockquote, .article__content a:not([class]), .shop-categories a.active,
-						body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart",
+						body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart, .menu-list__item-highlight-wrapper:before",
 					),
 					'outline-color'    => array(
 						'selector' => ".test",
