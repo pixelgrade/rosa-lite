@@ -5,7 +5,7 @@
  * @since   Rosa 1.0
  **/
 
-global $is_gmap;
+global $is_gmap, $footer_needs_big_waves;
 
 if ( $is_gmap === true ) {
 	//we definitely need the Google Maps API
@@ -17,7 +17,7 @@ if ( ! is_404() ):
 	$footer_bottom_bar_style = 'copyright-area__' . wpgrade::option( 'footer_bottombar_style' );
 	?>
 
-	<footer class="site-footer">
+	<footer class="site-footer <?php echo $footer_needs_big_waves === true ? 'border-waves' : '' ?>">
 		<aside class="sidebar  sidebar--footer <?php echo $footer_sidebar_style ?>">
 			<div class="container">
 				<?php get_template_part( 'sidebar-footer' ); ?>
@@ -48,7 +48,7 @@ if ( ! is_404() ):
 			</div>
 		</div>
 		<!-- .copyright-area -->
-	</footer><!-- .site- -footer -->
+	</footer><!-- .site--footer -->
 
 <?php endif; ?>
 
