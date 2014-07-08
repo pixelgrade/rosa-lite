@@ -213,27 +213,43 @@
 	opacity: 0.7;
 	position: absolute;
 	left: 50%;
-	bottom: -16px;
 	margin-left: -40px;
 	cursor: pointer;
 	z-index: 10;
 
-	.arrow {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		margin-left: -1 * $_u2 * 2/3;
-		margin-top: -1 * $_u2 * 2/3;
-		z-index: 20;
+    .arrow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 20;
+        @include transform(rotate(45deg));
+    }
+}
 
-		height: $_u * 2/3;
-		width: $_u * 2/3;
+.down-arrow--bubble {
+    bottom: 10%;
 
-		border-right: 2px solid black;
-		border-bottom: 2px solid black;
+    .arrow {
+        width: $_u * 2/3;
+        height: $_u * 2/3;
+        margin-left: -1 * $_u2 * 2/3;
+        margin-top: -1 * $_u2 * 2/3;
+        border-right: 2px solid black;
+        border-bottom: 2px solid black;
+    }
+}
 
-		@include transform(rotate(45deg));
-	}
+.down-arrow--transparent {
+    bottom: -16px;
+
+    .arrow {
+        width: $_u;
+        height: $_u;
+        margin-left: -1 * $_u2;
+        margin-top: -1 * $_u2;
+        border-right: 3px solid white;
+        border-bottom: 3px solid white;
+    }
 }
 
 .article--page + .article--page {

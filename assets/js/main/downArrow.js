@@ -4,6 +4,7 @@ var DownArrow = {
     timeline:   null,
     start:      0,
     end:        0,
+    bubble:     false,
 
     initialize: function () {
 
@@ -13,6 +14,10 @@ var DownArrow = {
 
         if (empty(this.$arrow)) {
             return;
+        }
+
+        if (this.$arrow.hasClass('down-arrow--bubble')) {
+            this.bubble = true;
         }
 
         this.start      = 0;
@@ -45,16 +50,16 @@ var DownArrow = {
     },
 
     update: function () {
-//
-//        if (empty(this.$arrow)) {
-//            return;
-//        }
-//
-//        if (Modernizr.touch && is_OSX) {
-//            this.timeline.progress(0);
-//            return;
-//        }
-//
-//        setProgress(this.timeline, this.start, this.end);
+
+        if (empty(this.$arrow) || this.bubble) {
+            return;
+        }
+
+        if (Modernizr.touch && is_OSX) {
+            this.timeline.progress(0);
+            return;
+        }
+
+        setProgress(this.timeline, this.start, this.end);
     }
 }
