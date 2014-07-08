@@ -26,26 +26,28 @@
     // contain children margins
     padding: 1px 0;
 
-    &:before, &:after {
-        content: "";
-        display: block;
-        width: 100%;
-        height: 7px;
-        position: absolute;
-        left: 0;
-        background: url('../images/border.png') top left repeat-x;
-        z-index: 20;
-    }
+		&.border-waves {
+			&:before, &:after {
+				content: "";
+				display: block;
+				width: 100%;
+				height: 7px;
+				position: absolute;
+				left: 0;
+				background: url('../images/border.png') top left repeat-x;
+				z-index: 20;
+			}
 
-    &:before {
-        top: -7px;
-        background-position: top;
-    }
+			&:before {
+				top: -7px;
+				background-position: top;
+			}
 
-    &:after {
-        bottom: -7px;
-        background-position: bottom;
-    }
+			&:after {
+				bottom: -7px;
+				background-position: bottom;
+			}
+		}
 
     &.article--arrow {
         &:before {
