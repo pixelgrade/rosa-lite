@@ -938,7 +938,6 @@ $sections[] = array(
 			'id'         => 'customizer_reset_button_section',
 			'title'      => '<a class="btn" id="reset-style-defaults" href="#" data-ajax_nonce="' . wp_create_nonce( "reset-style-section" ) . '">' . __( 'Reset to Defaults', wpgrade::textdomain() ) . '</a>',
 			'type'       => 'customizer_info',
-			'default'    => 'Test',
 			'customizer' => array()
 		),
 		//		array(

@@ -132,3 +132,7 @@ html, body, #page {
 .article__header .btn {
     @include transition(none);
 }
+
+html body.woocommerce ul.products li.product {
+    margin-bottom: 78px;
+}
