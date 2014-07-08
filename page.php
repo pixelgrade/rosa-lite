@@ -27,12 +27,14 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 
 		get_template_part( 'templates/page/header' );
 
-		$class = "";
-		if ( $page_section_idx == 1 && $header_height == 'full-height' ) {
-			$class = " article--arrow";
+		$classes = "article--page  article--main" ;
+
+		$down_arrow_style = wpgrade::option('down_arrow_style');
+		if ( $page_section_idx == 1 && $header_height == 'full-height' && $down_arrow_style == 'bubble' ) {
+			$classes .= " article--arrow";
 		}
 
-		$classes = "article--page  article--main" . $class;
+
 //		$style = '';
 //		$inverse_colors = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'inverse_section_colors', true );
 //		if ($inverse_colors == 'on') {
@@ -51,7 +53,7 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 
 		if ( ! empty( $post->post_content ) ) : ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
-				<section class="article__content" <?php echo $style ?>>
+				<section class="article__content">
 					<div class="container">
 						<section class="page__content  js-post-gallery  cf">
 							<?php the_content(); ?>
