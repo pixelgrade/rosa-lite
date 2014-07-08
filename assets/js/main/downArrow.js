@@ -4,6 +4,7 @@ var DownArrow = {
     timeline:   null,
     start:      0,
     end:        0,
+    bubble:     false,
 
     initialize: function () {
 
@@ -25,8 +26,14 @@ var DownArrow = {
             this.nextHeight = this.$next.outerHeight();
         }
 
-        this.timeline.to(this.$arrow, .2, {y: 10, opacity: 0, ease: Linear.easeNone, overwrite: "none"});
-        this.timeline.to('.blurp--top', .3, {scaleY: 0, ease: Linear.easeNone, overwrite: "none"});
+
+        if (this.$arrow.hasClass('down-arrow--bubble')) {
+            this.timeline.to(this.$arrow, .2, {y: 10, opacity: 0, ease: Linear.easeNone, overwrite: "none"});
+            this.timeline.to('.blurp--top', .3, {scaleY: 0, ease: Linear.easeNone, overwrite: "none"});
+            this.bubble = true;
+        } else {
+            this.timeline.to(this.$arrow, 1, {y: 100, opacity: 0, ease: Linear.easeNone, overwrite: "none"});
+        }
 
         this.$arrow.on('click', function (e) {
             e.preventDefault();
@@ -45,16 +52,16 @@ var DownArrow = {
     },
 
     update: function () {
-//
-//        if (empty(this.$arrow)) {
-//            return;
-//        }
-//
-//        if (Modernizr.touch && is_OSX) {
-//            this.timeline.progress(0);
-//            return;
-//        }
-//
-//        setProgress(this.timeline, this.start, this.end);
+
+        if (empty(this.$arrow) || this.bubble) {
+            return;
+        }
+
+        if (Modernizr.touch && is_OSX) {
+            this.timeline.progress(0);
+            return;
+        }
+
+        setProgress(this.timeline, this.start, this.end);
     }
 }

@@ -27,35 +27,38 @@
     padding: 1px 0;
 
 		&.border-waves {
+
 			&:before, &:after {
 				content: "";
 				display: block;
 				width: 100%;
-				height: 7px;
+				height: 14px;
 				position: absolute;
 				left: 0;
-				background: url('../images/border.png') top left repeat-x;
+				background: url('../images/border-wave.svg') top left repeat-x;
 				z-index: 20;
 			}
 
 			&:before {
-				top: -7px;
+				top: -6px;
 				background-position: top;
 			}
 
 			&:after {
-				bottom: -7px;
+				bottom: -6px;
 				background-position: bottom;
 			}
 		}
 
     &.article--arrow {
+
         &:before {
             display: none;
         }
     }
 
     &:empty {
+
         &:before, &:after {
             display: none;
         }
@@ -99,6 +102,7 @@
 	}
 
 	&.full-height {
+//		height: 105%;
 		height: 100%;
 	}
 	&.half-height {
@@ -199,6 +203,10 @@
 		background-color: white;
 	}
 
+    .archive .article__content {
+        padding: 0;
+    }
+
 //	&.inverse-colors {
 //		.article__content {
 //			background-color: black;
@@ -213,26 +221,72 @@
 	opacity: 0.7;
 	position: absolute;
 	left: 50%;
-	bottom: -16px;
 	margin-left: -40px;
 	cursor: pointer;
 	z-index: 10;
 
-	.arrow {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		margin-left: -1 * $_u2 * 2/3;
-		margin-top: -1 * $_u2 * 2/3;
-		z-index: 20;
+    .arrow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 20;
+        @include transform(rotate(45deg));
+    }
+}
 
-		height: $_u * 2/3;
-		width: $_u * 2/3;
+.down-arrow--bubble {
+    bottom: -16px;
 
-		border-right: 2px solid black;
-		border-bottom: 2px solid black;
+    .arrow {
+        width: $_u * 2/3;
+        height: $_u * 2/3;
+        margin-left: -1 * $_u2 * 2/3;
+        margin-top: -1 * $_u2 * 2/3;
+        border-right: 2px solid black;
+        border-bottom: 2px solid black;
+    }
+}
 
-		@include transform(rotate(45deg));
+.down-arrow--transparent {
+    bottom: 5%;
+
+    .arrow {
+        width: $_u;
+        height: $_u;
+        margin-left: -1 * $_u2;
+        margin-top: -1 * $_u2;
+        border-right: 3px solid white;
+        border-bottom: 3px solid white;
+    }
+}
+
+.down-arrow.down-arrow--inverse{
+	bottom: -30px;
+
+	width: 60px;
+	height: 60px;
+	margin-left: -30px;
+
+	background: white;
+	opacity: 1;
+
+	border-radius: 18px;
+	border-top-right-radius: 0;
+	border-bottom-left-radius: 0;
+
+	@include transform(rotate(45deg));
+
+	.arrow{
+		top: 10px;
+		left: 10px;
+
+		width: 16px;
+		height: 16px;
+
+		margin: 0;
+
+		border-color: $dark;
+		@include transform(rotate(0));
 	}
 }
 
