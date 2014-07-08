@@ -27,35 +27,38 @@
     padding: 1px 0;
 
 		&.border-waves {
+
 			&:before, &:after {
 				content: "";
 				display: block;
 				width: 100%;
-				height: 7px;
+				height: 14px;
 				position: absolute;
 				left: 0;
-				background: url('../images/border.png') top left repeat-x;
+				background: url('../images/border-wave.svg') top left repeat-x;
 				z-index: 20;
 			}
 
 			&:before {
-				top: -7px;
+				top: -6px;
 				background-position: top;
 			}
 
 			&:after {
-				bottom: -7px;
+				bottom: -6px;
 				background-position: bottom;
 			}
 		}
 
     &.article--arrow {
+
         &:before {
             display: none;
         }
     }
 
     &:empty {
+
         &:before, &:after {
             display: none;
         }
@@ -198,6 +201,10 @@
 		padding: 50px 0;
 		background-color: white;
 	}
+
+    .archive .article__content {
+        padding: 0;
+    }
 
 //	&.inverse-colors {
 //		.article__content {
