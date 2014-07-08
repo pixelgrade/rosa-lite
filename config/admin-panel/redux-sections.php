@@ -868,6 +868,39 @@ $sections[] = array(
 			),
 			'compiler'      => true
 		),
+		array(
+			'id'         => 'sizes_border',
+			'title'      => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Border', wpgrade::textdomain() ) . '</span></label>',
+			'type'       => 'customizer_info',
+			'customizer' => array()
+		),
+		array(
+			'id'            => 'border_width',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'Border Width', wpgrade::textdomain() ),
+			'validate'      => 'numeric',
+			'default'       => 0,
+			'min'           => 0,
+			'step'          => 6,
+			'max'           => 72,
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'border-width'  => array(
+						'selector' => 'body',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					),
+					'border-top-width' => array(
+						'selector' => '.site-header',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					)
+				)
+			),
+			'compiler'      => true
+		),
 
 		array(
 			'id'              => 'options_title',
