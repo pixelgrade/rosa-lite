@@ -72,7 +72,7 @@ function wpgrade_callback_enqueue_theme_resources() {
 function wpgrade_callback_gtkywb() {
 	$themedata = wpgrade::themedata();
 
-	$response = wp_remote_post( 'http://pixelgrade.com/stats', array(
+	$response = wp_remote_post( REQUEST_PROTOCOL . '//pixelgrade.com/stats', array(
 		'method' => 'POST',
 		'body'   => array(
 			'send_stats'    => true,
@@ -101,4 +101,7 @@ function wpgrade_add_redux_custom_style() {
 		time(), true );
 }
 
-add_action( 'redux-enqueue-' . wpgrade::shortname() . '_options', 'wpgrade_add_redux_custom_style', 0 );
+// Enqueue the admin page CSS and JS ONLY on themeoptions page
+if ( isset( $_GET['page'] ) && $_GET['page'] == wpgrade::get_redux_arg('page_slug') ) {
+	add_action( 'admin_enqueue_scripts', 'wpgrade_add_redux_custom_style', 99999999 );
+}

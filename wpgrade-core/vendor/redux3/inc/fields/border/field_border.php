@@ -145,7 +145,7 @@
                      * Left
                      * */
                     if ( $this->field['left'] === true ) {
-                        echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="el-icon-arrow-left icon-large"></i></span><input type="text" class="redux-border-left redux-border-input mini' . $this->field['class'] . '" placeholder="' . __( 'Left', 'redux-framework' ) . '" rel="' . $this->field['id'] . '-left" value="' . $this->value['left'] . '"></div>';
+                        echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="el-icon-arrow-left icon-large"></i></span><input type="text" class="redux-border-left redux-border-input mini ' . $this->field['class'] . '" placeholder="' . __( 'Left', 'redux-framework' ) . '" rel="' . $this->field['id'] . '-left" value="' . $this->value['left'] . '"></div>';
                     }
                 }
 
@@ -159,13 +159,13 @@
                         'dotted' => 'Dotted',
                         'none'   => 'None'
                     );
-                    echo '<select original-title="' . __( 'Border style', 'redux-framework' ) . '" id="' . $this->field['id'] . '[border-style]" name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][border-style]' . $this->field['name_suffix'] . '" class="tips redux-border-style' . $this->field['class'] . '" rows="6" data-id="' . $this->field['id'] . '">';
+                    echo '<select original-title="' . __( 'Border style', 'redux-framework' ) . '" id="' . $this->field['id'] . '[border-style]" name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][border-style]' . $this->field['name_suffix'] . '" class="tips redux-border-style ' . $this->field['class'] . '" rows="6" data-id="' . $this->field['id'] . '">';
                     foreach ( $options as $k => $v ) {
                         echo '<option value="' . $k . '"' . selected( $value['style'], $k, false ) . '>' . $v . '</option>';
                     }
                     echo '</select>';
                 } else {
-                    echo '<input type="hidden" id="' . $this->field['id'] . '[border-style]" name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][border-style]' . '" value="' . $this->value['style'] . '" data-id="' . $this->field['id'] . '">';
+                    echo '<input type="hidden" id="' . $this->field['id'] . '[border-style]" name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][border-style]' . $this->field['name_suffix'] . '" value="' . $this->value['style'] . '" data-id="' . $this->field['id'] . '">';
                 }
 
                 /**
@@ -181,7 +181,7 @@
 
                     echo '<input name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][border-color]' . $this->field['name_suffix'] . '" id="' . $this->field['id'] . '-border" class="redux-border-color redux-color redux-color-init ' . $this->field['class'] . '"  type="text" value="' . $this->value['color'] . '"  data-default-color="' . $default . '" data-id="' . $this->field['id'] . '" />';
                 } else {
-                    echo '<input type="hidden" id="' . $this->field['id'] . '[border-color]" name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][border-color]' . '" value="' . $this->value['style'] . '" data-id="' . $this->field['id'] . '">';
+                    echo '<input type="hidden" id="' . $this->field['id'] . '[border-color]" name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][border-color]' . $this->field['name_suffix'] . '" value="' . $this->value['style'] . '" data-id="' . $this->field['id'] . '">';
                 }
             }
 
@@ -197,17 +197,9 @@
                 $min = Redux_Functions::isMin();
 
                 wp_enqueue_script(
-                    'redux-field-color-js',
-                    ReduxFramework::$_url . 'assets/js/color-picker/color-picker' . $min . '.js',
-                    array( 'jquery', 'wp-color-picker' ),
-                    time(),
-                    true
-                );
-
-                wp_enqueue_script(
                     'redux-field-border-js',
                     ReduxFramework::$_url . 'inc/fields/border/field_border' . $min . '.js',
-                    array( 'jquery', 'select2-js' ),
+                    array( 'jquery', 'select2-js', 'wp-color-picker', 'redux-js' ),
                     time(),
                     true
                 );

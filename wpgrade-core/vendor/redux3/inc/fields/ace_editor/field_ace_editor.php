@@ -33,7 +33,19 @@
             function __construct( $field = array(), $value = '', $parent ) {
                 $this->parent = $parent;
                 $this->field  = $field;
-                $this->value  = trim( $value );
+                $this->value  = $value;
+
+                if ( is_array($this->value)) {
+                    $this->value = '';
+                } else {
+                    $this->value = trim($this->value);
+                }
+                
+                if ( ! empty( $this->field['options'] ) ) {
+                    $this->field['args'] = $this->field['options'];
+                    unset( $this->field['options'] );
+                }                
+                
             }
 
             /**
@@ -94,10 +106,30 @@
                 wp_enqueue_script(
                     'redux-field-ace-editor-js',
                     ReduxFramework::$_url . 'inc/fields/ace_editor/field_ace_editor' . Redux_Functions::isMin() . '.js',
-                    array( 'jquery', 'ace-editor-js' ),
+                    array( 'jquery', 'ace-editor-js', 'redux-js' ),
                     time(),
                     true
                 );
+            }
+
+            /**
+             * Functions to pass data from the PHP to the JS at render time.
+             *
+             * @return array Params to be saved as a javascript object accessable to the UI.
+             * @since  Redux_Framework 3.1.1
+             */
+            function localize( $field, $value = "" ) {
+
+                $params = array(
+                    'minLines' => 10,
+                    'maxLines' => 30,
+                );
+
+                if ( isset( $field['args'] ) && ! empty( $field['args'] ) && is_array( $field['args'] ) ) {
+                    $params = wp_parse_args( $field['args'], $params );
+                }
+                
+                return $params;
             }
         }
     }

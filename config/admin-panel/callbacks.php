@@ -126,3 +126,24 @@ if ( ! function_exists( 'wpGrade_ajax_import_widgets' ) ) {
 	//hook into wordpress admin.php
 	add_action( 'wp_ajax_wpGrade_ajax_import_widgets', 'wpGrade_ajax_import_widgets' );
 }
+
+
+/**
+ * Validation callbacks
+ */
+
+
+/**
+ * Ensure users don't put @ before their username
+ *
+ * @param $field
+ * @param $value
+ * @param $existing_value
+ */
+function wpgrade_trim_twitter_username( $field, $value, $existing_value ){
+
+	$value = ltrim( $value, '@' );
+
+	return $value;
+
+}

@@ -1,0 +1,55 @@
+
+body .redux-container .redux-main {
+
+    tr.display-inline-block {
+        float: left;
+    }
+
+    tr.display-block {
+        display: block
+    }
+
+    tr.layout-item {
+        float: left;
+
+        .redux_field_th {
+            padding-right: 1em;
+        }
+
+        td {
+            padding-right: 1em;
+
+            input.regular-text {
+                max-wdith: 100%;
+            }
+        }
+    }
+
+    tr.one-half {
+        &, &.select2-container {
+            width: 50% !important;
+        }
+    }
+
+    tr.one-third {
+        &, &.select2-container {
+            width: 33.33% !important;
+        }
+    }
+
+    .clear-before {
+        clear: both;
+    }
+
+    .mr {
+        margin-right: 1em !important;
+    }
+
+    .mt-2 {
+        margin-top: -2em !important;
+    }
+
+    .mt-3 {
+        margin-top: -3em !important;
+    }
+}
