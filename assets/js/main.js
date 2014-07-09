@@ -1511,6 +1511,16 @@ $(window).on("scroll", function () {
     requestTick();
 });
 
+if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i) && window.innerHeight != document.documentElement.clientHeight) {
+
+    var fixViewportHeight = function() {
+        $('html, body').outerHeight(window.innerHeight);
+    };
+
+    window.addEventListener("scroll", fixViewportHeight, false);
+    window.addEventListener("orientationchange", fixViewportHeight, false);
+    fixViewportHeight();
+}
 /* --- 404 Page --- */
 gifImages = [
 	"http://i.imgur.com/ShiZM6m.gif",

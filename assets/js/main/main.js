@@ -367,3 +367,14 @@ $(window).on("scroll", function () {
     latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop();
     requestTick();
 });
+
+if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i) && window.innerHeight != document.documentElement.clientHeight) {
+
+    var fixViewportHeight = function() {
+        $('html, body').outerHeight(window.innerHeight);
+    };
+
+    window.addEventListener("scroll", fixViewportHeight, false);
+    window.addEventListener("orientationchange", fixViewportHeight, false);
+    fixViewportHeight();
+}
