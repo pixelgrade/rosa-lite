@@ -38,7 +38,13 @@ if ( rosa::page_has_children() ) {
 //				$style .= ' style="background-color: '.$text_color.'; color: '.$background_color.'" ';
 //			}
 
-			$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_border_style', true );
+			if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
+				//this is a gmap
+				$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_border_style', true );
+			} else {
+				$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_border_style', true );
+			}
+
 			if ( ! empty( $border_style ) ) {
 				$classes .= ' border-' . $border_style;
 			}
