@@ -904,6 +904,16 @@ $sections[] = array(
 						'unit'     => 'px',
 						'media'    => 'screen and (min-width: 900px)'
 					),
+                    'border-left-width' => array(
+                        'selector' => '.site-header',
+                        'unit'     => 'px',
+                        'media'    => 'screen and (min-width: 900px)'
+                    ),
+                    'border-right-width' => array(
+                        'selector' => '.site-header',
+                        'unit'     => 'px',
+                        'media'    => 'screen and (min-width: 900px)'
+                    ),
 					'border-bottom-width' => array(
 						'selector' => '.site-footer',
 						'unit'     => 'px',
