@@ -1002,7 +1002,6 @@ var Navigator = {
             return;
         }
 
-
         this.$sections.each(function (index, element) {
             var $section        = $(element),
                 sectionTop      = $section.offset().top,
