@@ -1,3 +1,5 @@
+[![Build Status](http://jenkins.pixelgrade.com:8080/job/rosa/badge/icon)](http://jenkins.pixelgrade.com:8080/job/rosa/)
+
 ## Coding guideline
 
  * Quick guide http://andrei-lupu.com/wordpress/wpgrade-coding-guideline/

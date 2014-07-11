@@ -581,12 +581,12 @@ if (!class_exists('ReduxFramework_typography')) {
                 }
                 $link.= $family;
 
-                if (!empty($font['font-style'])) {
+                if (!empty($font['font-style']) || !empty($font['all-styles'])) {
                     $link.= ':';
                     if (!empty($font['all-styles'])) {
-                        $link.= implode(',', $font['all-styles']);
+                        $link .= implode(',', $font['all-styles']);
                     } else if (!empty($font['font-style'])) {
-                        $link.= implode(',', $font['font-style']);
+                        $link .= implode(',', $font['font-style']);
                     }
                 }
 
@@ -623,7 +623,7 @@ if (!class_exists('ReduxFramework_typography')) {
                 }
                 $link.= $family;
 
-                if (!empty($font['font-style'])) {
+                if (!empty($font['font-style']) || !empty($font['all-styles'])) {
                     $link.= ':';
                     if (!empty($font['all-styles'])) {
                         $link.= implode(',', $font['all-styles']);
@@ -908,9 +908,9 @@ if (!class_exists('ReduxFramework_typography')) {
                 }
 
                 // Fallback if file_get_contents won't work for wordpress. MEDIATEMPLE
-                if (empty($fonts)) {
-                    $fonts = Redux_Helpers::curlRead($this->google_json);
-                }
+//                if (empty($fonts)) {
+//                    $fonts = Redux_Helpers::curlRead($this->google_json);
+//                }
 
                 if (isset($fonts) && !empty($fonts) && is_array($fonts) && $fonts != false) {
                     $this->parent->fonts['google'] = $fonts;

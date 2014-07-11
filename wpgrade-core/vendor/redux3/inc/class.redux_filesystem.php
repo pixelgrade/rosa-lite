@@ -32,7 +32,11 @@ if (!class_exists('Redux_Filesystem')){
             }
             
             $url = wp_nonce_url($base);
-            $creds = request_filesystem_credentials($url, '', false, false);
+            if ( is_admin() && isset( $_GET['page'] ) && $_GET['page'] == $this->parent->args['page_slug'] ) {
+                $creds = request_filesystem_credentials($url, '', false, false);    
+            } else {
+                return;
+            }
 
             if (false === $creds) {
                 if (!is_admin()) {
@@ -46,8 +50,12 @@ if (!class_exists('Redux_Filesystem')){
                 if (!is_admin()) {
                     return;
                 }
-                
-                request_filesystem_credentials($url, '', true, false);
+                // Never load this unless we're on the panel page.
+                if ( is_admin() && isset( $_GET['page'] ) && $_GET['page'] == $this->parent->args['page_slug'] ) {
+                    $creds = request_filesystem_credentials($url, '', false, false);    
+                } else {
+                    return;
+                }
                 return true;
             }   
             
@@ -55,7 +63,6 @@ if (!class_exists('Redux_Filesystem')){
             
             // Do unique stuff
             if ($action == 'mkdir') {
-                //echo $file;
                 $res = $wp_filesystem->$action($file, 0755 );
             } elseif ($action == 'copy') {
                 echo $wp_filesystem->copy($file, $destination, $overwrite, 0644 );
