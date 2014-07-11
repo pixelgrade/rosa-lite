@@ -26,7 +26,6 @@ var Navigator = {
             return;
         }
 
-
         this.$sections.each(function (index, element) {
             var $section        = $(element),
                 sectionTop      = $section.offset().top,
@@ -90,9 +89,10 @@ var Navigator = {
             }, stagger);
         });
 
-        TweenMax.to($navigator, 0.3, {
-            opacity: 1
-        });
+        if($navigator.hasClass('navigator--transparent'))
+            TweenMax.to($navigator, 2, {opacity: .2 });
+        else
+            TweenMax.to($navigator, .3, {opacity: 1 });
     },
 
     update: function () {

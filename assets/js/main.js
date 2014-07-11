@@ -1002,7 +1002,6 @@ var Navigator = {
             return;
         }
 
-
         this.$sections.each(function (index, element) {
             var $section        = $(element),
                 sectionTop      = $section.offset().top,
@@ -1066,9 +1065,10 @@ var Navigator = {
             }, stagger);
         });
 
-        TweenMax.to($navigator, 0.3, {
-            opacity: 1
-        });
+        if($navigator.hasClass('navigator--transparent'))
+            TweenMax.to($navigator, 2, {opacity: .2 });
+        else
+            TweenMax.to($navigator, .3, {opacity: 1 });
     },
 
     update: function () {
@@ -1511,6 +1511,16 @@ $(window).on("scroll", function () {
     requestTick();
 });
 
+if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i) && window.innerHeight != document.documentElement.clientHeight) {
+
+    var fixViewportHeight = function() {
+        $('html, body').outerHeight(window.innerHeight);
+    };
+
+    window.addEventListener("scroll", fixViewportHeight, false);
+    window.addEventListener("orientationchange", fixViewportHeight, false);
+    fixViewportHeight();
+}
 /* --- 404 Page --- */
 gifImages = [
 	"http://i.imgur.com/ShiZM6m.gif",

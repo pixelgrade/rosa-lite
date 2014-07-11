@@ -281,6 +281,23 @@ return array(
 						'id'   => wpgrade::prefix() . 'header_transparent_menu_bar_contact',
 						'type' => 'checkbox',
 					),
+					array(
+						'name' => __( 'Content Border Style', 'rosa_txtd' ),
+						'desc' => '<p class="cmb_metabox_description">'.__( 'Select the style of the top and bottom borders of the content.', 'rosa_txtd' ).'</p>',
+						'id'   => wpgrade::prefix() . 'gmap_border_style',
+						'type'    => 'select',
+						'options' => array(
+							array(
+								'name'  => __( 'Simple', 'rosa_txtd' ),
+								'value' => 'simple',
+							),
+							array(
+								'name'  => __( 'Waves', 'rosa_txtd' ),
+								'value' => 'waves',
+							),
+						),
+						'std'     => 'simple',
+					),
 				),
 			),
 		),
