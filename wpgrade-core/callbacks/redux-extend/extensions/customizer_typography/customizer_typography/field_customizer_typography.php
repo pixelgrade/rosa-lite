@@ -841,9 +841,9 @@ if ( ! class_exists( 'ReduxFramework_customizer_typography' ) ) {
 				$fonts = json_decode( $wp_filesystem->get_contents( $this->google_json ), true );
 
 				// Fallback if file_get_contents won't work for wordpress. MEDIATEMPLE
-				if ( empty( $fonts ) ) {
-					$fonts = Redux_Helpers::curlRead( $this->google_json );
-				}
+//				if ( empty( $fonts ) ) {
+//					$fonts = Redux_Helpers::curlRead( $this->google_json );
+//				}
 
 				if ( isset( $fonts ) && ! empty( $fonts ) && is_array( $fonts ) && $fonts != false ) {
 					$this->parent->fonts['google'] = $fonts;
