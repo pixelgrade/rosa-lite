@@ -3,12 +3,12 @@
 \*------------------------------------*/
 
 @include media-query(lap-and-up){
-	body.woocommerce ul.products{
+	.woocommerce ul.products{
 		margin: 0 -1.5%;
 	}
 }
 
-html body.woocommerce ul.products {
+html .woocommerce ul.products {
     text-align: center;
 
     li.product {
@@ -17,7 +17,7 @@ html body.woocommerce ul.products {
     }
 }
 
-body.woocommerce ul.products li.product{
+.woocommerce ul.products li.product{
 	position: relative;
 	float: none !important;
 	display: inline-block;
@@ -35,13 +35,12 @@ body.woocommerce ul.products li.product{
 	}
 
 	@media screen and (min-width: 481px) and (max-width: 768px){
-		width: 46%;
+		width: 46% !important;
 	}
 
 	@media screen and (min-width: 769px){
-		width: 30%;
+		width: 30% !important;
 	}
-
 
 	.product__title{
 		margin: 18px 0 3px;
@@ -146,11 +145,12 @@ body.woocommerce ul.products li.product{
 	}
 }
 
-body.woocommerce ul.products li.product a img, body.woocommerce-page ul.products li.product a img{
+
+.woocommerce ul.products li.product a img, .woocommerce-page ul.products li.product a img{
 	@include box-shadow(none !important);
 }
 
-body.woocommerce-page {
+.woocommerce-page ul.products li.product{
 	.pagination {
 		margin: 40px 0;
 	}

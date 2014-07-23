@@ -95,13 +95,13 @@
 	border: none;
 }
 
-body.woocommerce, body.woocommerce-page{
+.woocommerce, .woocommerce-page{
 	.table--striped tbody tr:nth-of-type(odd), table tbody tr:nth-of-type(odd){
 		background: transparent;
 	}
 }
 
-body.woocommerce, body.woocommerce-page{
+.woocommerce, .woocommerce-page{
 
 	.woocommerce-message, .woocommerce-info, .woocommerce-error{
 		margin-top: $_u !important;
@@ -133,10 +133,10 @@ body.woocommerce, body.woocommerce-page{
 
 
 #review-submit,
-body.woocommerce div.woocommerce-message .button,
+.woocommerce div.woocommerce-message .button,
 td.actions input.button,
 form.shipping_calculator button.button,
-body.woocommerce-page input.button{
+.woocommerce-page input.button{
 	// margin-top: $_u2;
 	padding: $_u4 $_u;
 
@@ -174,7 +174,7 @@ ul.payment_methods{
 	}
 }
 
-body.woocommerce-page #payment div.payment_box{
+.woocommerce-page #payment div.payment_box{
 	background: transparent;
 	border: 1px solid $borders;
 	@include box-shadow(none);
