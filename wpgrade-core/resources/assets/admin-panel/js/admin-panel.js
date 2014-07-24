@@ -552,11 +552,6 @@
 
 		$("#redux-intro-text .description").text(description);
 
-		$('.redux-main').css('height', '');
-
-		if ($tab.outerHeight() < sidebarHeight) {
-			$('.redux-main').height(sidebarHeight);
-		}
 
 		setTimeout(function () {
 			// change floating text
@@ -571,6 +566,14 @@
 			$bigIcon.attr('class', iconClass);
 
 		}, 100);
+
+        setTimeout(function(){
+            $('.redux-main').css('height', '');
+
+            if ($tab.outerHeight() < sidebarHeight) {
+                $('.redux-main').height(sidebarHeight);
+            }
+        }, 200)
 	});
 
 	// set top / bottom of fixed elements

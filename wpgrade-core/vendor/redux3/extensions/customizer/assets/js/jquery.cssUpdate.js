@@ -48,8 +48,10 @@
 				// simple object with css rules
 				// change them with new ones
 				$.each(css, function(i, rule){
-					var rule_name = rule.style[0];
-					css[i].style[rule_name] = self.updateCssRule(rule_name, self.settings, css[i].selectorText);
+					if ( rule.hasOwnProperty( 'style' ) ) {
+						var rule_name = rule.style[0];
+						css[i].style[rule_name] = self.updateCssRule(rule_name, self.settings, css[i].selectorText);
+					}
 				});
 			}
 
