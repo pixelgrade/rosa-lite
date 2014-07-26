@@ -11,7 +11,7 @@
 	}
 }
 
-body.woocommerce div.related.products ul.products{
+.woocommerce div.related.products ul.products{
 	position: relative;
 	z-index: 100;
 
@@ -26,14 +26,14 @@ body.woocommerce div.related.products ul.products{
 	}
 }
 
-body.woocommerce .woocommerce-product-rating .star-rating,
-body.woocommerce-page .woocommerce-product-rating .star-rating{
+.woocommerce .woocommerce-product-rating .star-rating,
+.woocommerce-page .woocommerce-product-rating .star-rating{
 	float: none;
 	margin: 0;
 	margin-left: $_u2;
 }
 
-body.woocommerce .woocommerce-product-rating{
+.woocommerce .woocommerce-product-rating{
 	.woocommerce-review-link, .star-rating{
 		vertical-align: middle;
 		display: inline-block;
@@ -47,10 +47,10 @@ body.woocommerce .woocommerce-product-rating{
 	}
 }
 
-body.woocommerce #content div.product div.images img,
-body.woocommerce div.product div.images img,
-body.woocommerce-page #content div.product div.images img,
-body.woocommerce-page div.product div.images img{
+.woocommerce #content div.product div.images img,
+.woocommerce div.product div.images img,
+.woocommerce-page #content div.product div.images img,
+.woocommerce-page div.product div.images img{
 	@include box-shadow(none);
 }
 
@@ -107,21 +107,21 @@ body.woocommerce-page div.product div.images img{
 	@include font-size(14px);
 }
 
-body.woocommerce #content .quantity,
-body.woocommerce .quantity,
-body.woocommerce-page #content .quantity,
-body.woocommerce-page .quantity{
+.woocommerce #content .quantity,
+.woocommerce .quantity,
+.woocommerce-page #content .quantity,
+.woocommerce-page .quantity{
 	width: 90px;
 }
 
-body.woocommerce #content .quantity .minus,
-body.woocommerce #content .quantity .plus,
-body.woocommerce .quantity .minus,
-body.woocommerce .quantity .plus,
-body.woocommerce-page #content .quantity .minus,
-body.woocommerce-page #content .quantity .plus,
-body.woocommerce-page .quantity .minus,
-body.woocommerce-page .quantity .plus{
+.woocommerce #content .quantity .minus,
+.woocommerce #content .quantity .plus,
+.woocommerce .quantity .minus,
+.woocommerce .quantity .plus,
+.woocommerce-page #content .quantity .minus,
+.woocommerce-page #content .quantity .plus,
+.woocommerce-page .quantity .minus,
+.woocommerce-page .quantity .plus{
 	height: 20px;
 	width: 40px;
 
@@ -140,24 +140,24 @@ body.woocommerce-page .quantity .plus{
 	}
 }
 
-body.woocommerce #content .quantity .minus,
-body.woocommerce .quantity .minus,
-body.woocommerce-page #content .quantity .minus,
-body.woocommerce-page .quantity .minus {
+.woocommerce #content .quantity .minus,
+.woocommerce .quantity .minus,
+.woocommerce-page #content .quantity .minus,
+.woocommerce-page .quantity .minus {
 	@include border-radius(0 0px 5px 0);
 }
 
-body.woocommerce .quantity .plus,
-body.woocommerce #content .quantity .plus,
-body.woocommerce-page .quantity .plus,
-body.woocommerce-page #content .quantity .plus, {
+.woocommerce .quantity .plus,
+.woocommerce #content .quantity .plus,
+.woocommerce-page .quantity .plus,
+.woocommerce-page #content .quantity .plus, {
 	border-bottom: 1px solid $dark;
 }
 
-body.woocommerce #content .quantity input.qty,
-body.woocommerce .quantity input.qty,
-body.woocommerce-page #content .quantity input.qty,
-body.woocommerce-page .quantity input.qty{
+.woocommerce #content .quantity input.qty,
+.woocommerce .quantity input.qty,
+.woocommerce-page #content .quantity input.qty,
+.woocommerce-page .quantity input.qty{
 	width: 50px;
 	height: 36px;
 
@@ -174,17 +174,17 @@ body.woocommerce-page .quantity input.qty{
 	border-bottom-left-radius: 5px;
 }
 
-body.woocommerce #content input.button.alt,
-body.woocommerce #respond input#submit.alt,
-body.woocommerce a.button.alt,
-body.woocommerce button.button.alt,
-body.woocommerce input.button.alt,
-body.woocommerce-page #content input.button.alt,
-body.woocommerce-page #respond input#submit.alt,
-body.woocommerce-page a.button.alt,
-body.woocommerce-page button.button.alt,
-body.woocommerce-page input.button.alt,
-body.woocommerce-page #respond input#submit{
+.woocommerce #content input.button.alt,
+.woocommerce #respond input#submit.alt,
+.woocommerce a.button.alt,
+.woocommerce button.button.alt,
+.woocommerce input.button.alt,
+.woocommerce-page #content input.button.alt,
+.woocommerce-page #respond input#submit.alt,
+.woocommerce-page a.button.alt,
+.woocommerce-page button.button.alt,
+.woocommerce-page input.button.alt,
+.woocommerce-page #respond input#submit{
 
 	@extend %btn;
 
@@ -212,11 +212,11 @@ body.woocommerce-page #respond input#submit{
 	content: none !important;
 }
 
-body.woocommerce #content div.product .woocommerce-tabs ul.tabs li:after{
+.woocommerce #content div.product .woocommerce-tabs ul.tabs li:after{
 	content: none !important;
 }
 
-body.woocommerce #content div.product .woocommerce-tabs ul.tabs li{
+.woocommerce #content div.product .woocommerce-tabs ul.tabs li{
 	background: none !important;
 	border: none !important;
 	box-shadow: none !important;
@@ -228,13 +228,13 @@ body.woocommerce #content div.product .woocommerce-tabs ul.tabs li{
 
 
 // Tabs
-body.woocommerce .woocommerce-tabs {
+.woocommerce .woocommerce-tabs {
 	> hr {
 		margin-bottom: 30px;
 	}
 }
 
-body.woocommerce .woocommerce-tabs li{
+.woocommerce .woocommerce-tabs li{
 	@include font-size(20px);
 	font-weight: 500;
 
@@ -297,14 +297,14 @@ body.woocommerce .woocommerce-tabs li{
 	}
 }
 
-body.woocommerce #page div.product form.cart .variations td.label{
+.woocommerce #page div.product form.cart .variations td.label{
 	padding: 1em;
 }
 
-body.woocommerce #page div.product div.thumbnails a{
+.woocommerce #page div.product div.thumbnails a{
 	margin-bottom: 3.8%;
 }
 
-body.woocommerce .star-rating span:before{
+.woocommerce .star-rating span:before{
 	color: $accent;
 }
