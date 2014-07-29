@@ -324,13 +324,7 @@ function sliderInit($slider) {
         var $mouseX = 0, $mouseY = 0;
         var $xp = 0, $yp =0;
 
-        $('.slider-arrows-header .rsArrowLeft').mouseenter(function(e){
-            $(this).addClass('visible');
-
-            moveArrow($(this));
-        });
-
-        $('.slider-arrows-header .rsArrowRight').mouseenter(function(e){
+        $('.slider-arrows-header .rsArrow').mouseenter(function(e){
             $(this).addClass('visible');
 
             moveArrow($(this));
@@ -347,7 +341,7 @@ function sliderInit($slider) {
             var $arrowIcn = $arrow.find('.rsArrowIcn');
 
             $loop = setInterval(function(){
-                TweenMax.to($arrowIcn, 0, {x: $mouseX-50, y: $mouseY-50, z: 0.01});
+                TweenMax.to($arrowIcn, 0, {x: $mouseX, y: $mouseY, z: 0.01});
             }, 10);
         }
 
