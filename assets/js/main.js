@@ -209,7 +209,8 @@ function sliderInit($slider) {
 		rs_autoPlay = typeof $slider.data('sliderautoplay') !== "undefined" ? true : false,
 		rs_delay = typeof $slider.data('sliderdelay') !== "undefined" && $slider.data('sliderdelay') != '' ? $slider.data('sliderdelay') : '1000',
 		rs_drag = true,
-		rs_globalCaption = typeof $slider.data('showcaptions') !== "undefined" ? true : false;
+		rs_globalCaption = typeof $slider.data('showcaptions') !== "undefined" ? true : false,
+        is_headerSlider = $slider.hasClass('header--slideshow') ? true : false;
 
     //console.log(rs_imageAlignCenter);
 	if (rs_autoheight) {
@@ -285,8 +286,13 @@ function sliderInit($slider) {
 	// create the markup for the customArrows
 	if (slidesNumber > 1) {
 		if (royalSlider && rs_customArrows) {
+
+            var classes = '';
+
+            if(is_headerSlider) classes = 'slider--header-arrows';
+
 			var $gallery_control = $(
-				'<div>' +
+				'<div class="' + classes + '">' +
 				'<div class="rsArrow rsArrowLeft js-arrow-left" style="display: block;"><div class="rsArrowIcn"></div></div>' +
 				'<div class="rsArrow rsArrowRight js-arrow-right" style="display: block;"><div class="rsArrowIcn"></div></div>' +
 				'</div>'
@@ -309,6 +315,23 @@ function sliderInit($slider) {
 			});
 		}
 	}
+
+//    if(is_headerSlider){
+//
+//        $('#page').on('mousemove', function(e) {
+//            $('.header-arrows').addClass('show');
+//
+//            if ((e.pageX - this.offsetLeft) < $(this).width() / 2) {
+//                $('.header-arrows').addClass('show-left').removeClass('show-right');
+//
+//            } else {
+//                $('.header-arrows').addClass('show-right').removeClass('show-left');
+//            }
+//
+//        }).on('mouseout', function(){
+//            $('.slider-arrows').removeClass('show');
+//        });
+//    }
 
 //	royalSlider.ev.on('rsVideoPlay', function () {
 //
