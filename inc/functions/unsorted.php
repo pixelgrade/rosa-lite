@@ -207,7 +207,7 @@ function wpgrade_comments( $comment, $args, $depth ) {
 
 	$GLOBALS['comment'] = $comment; ?>
 <li <?php comment_class(); ?>>
-	<article id="comment-<?php $comment->comment_ID; ?>" class="comment-article  media">
+	<article id="comment-<?php echo $comment->comment_ID; ?>" class="comment-article  media">
 		<?php if ( wpgrade::option( 'comments_show_numbering' ) ): ?>
 			<span class="comment-number"><?php echo $comment_number ?></span>
 		<?php endif; ?>
