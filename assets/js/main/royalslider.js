@@ -269,9 +269,12 @@ function hoverArrow($arrow){
     var $loop;
 
     function moveArrow($arrow){
+        var $mouseX;
+        var $mouseY;
+
         $arrow.mousemove(function(e){
-            $mouseX = e.pageX - $arrowW;
-            $mouseY = e.pageY - $arrowH;
+            $mouseX = e.pageX - $arrow.offset().left;
+            $mouseY = e.pageY - $arrow.offset().top;
         });
 
         var $arrowIcn = $arrow.find('.rsArrowIcn');
