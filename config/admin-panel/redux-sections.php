@@ -81,18 +81,6 @@ $sections[] = array(
 			'title'    => __( 'Metro Icon', wpgrade::textdomain() ),
 			'subtitle' => __( 'The size of this icon must be 144x144px.', wpgrade::textdomain() )
 		),
-
-		array(
-			'id'          => 'slideshow_arrows_style',
-			'type'        => 'select',
-			'title'       => __( 'Header slideshow arrows style', wpgrade::textdomain() ),
-			'subtitle'    => __( 'Select which type of arrows you want on page headers.', wpgrade::textdomain() ),
-			'options'     => array(
-				'static' => 'Static',
-				'hover'  => 'Hover'
-			),
-			'default'     => 'static'
-		),
 	)
 );
 
@@ -945,12 +933,28 @@ $sections[] = array(
 		array(
 			'id'         => 'down_arrow_style',
 			'type'       => 'select',
-			'title'      => __( 'Down Arrow Style', wpgrade::textdomain() ),
+			'title'      => __( 'Scroll Down Arrow Style', wpgrade::textdomain() ),
 			'options'    => array(
 				'transparent' => 'Transparent',
 				'bubble'      => 'Bubble',
 			),
 			'default'    => 'transparent',
+			'select2'    => array( // here you can provide params for the select2 jquery call
+				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
+				'allowClear'              => false // don't allow a empty select
+			),
+			'customizer' => array()
+		),
+		array(
+			'id'          => 'slideshow_arrows_style',
+			'type'        => 'select',
+			'title'       => __( 'Slideshow Arrows Style', wpgrade::textdomain() ),
+			'subtitle'    => __( 'Select which type of arrows you want on page headers.', wpgrade::textdomain() ),
+			'options'     => array(
+				'static' => 'Always Show',
+				'hover'  => 'On Hover'
+			),
+			'default'     => 'static',
 			'select2'    => array( // here you can provide params for the select2 jquery call
 				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
 				'allowClear'              => false // don't allow a empty select
