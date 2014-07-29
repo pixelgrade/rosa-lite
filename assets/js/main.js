@@ -319,37 +319,7 @@ function sliderInit($slider) {
 	}
 
     if(hoverArrows && !Modernizr.touch){
-
-
-        var $mouseX = 0, $mouseY = 0;
-        var $xp = 0, $yp =0;
-        var $arrowH = 35, $arrowW = 35;
-
-        $('.slider-arrows-header .rsArrow').mouseenter(function(e){
-            $(this).addClass('visible');
-
-            moveArrow($(this));
-        });
-
-        var $loop;
-
-        function moveArrow($arrow){
-            $arrow.mousemove(function(e){
-                $mouseX = e.pageX - $arrowW;
-                $mouseY = e.pageY - $arrowH;
-            });
-
-            var $arrowIcn = $arrow.find('.rsArrowIcn');
-
-            $loop = setInterval(function(){
-                TweenMax.to($arrowIcn, 0, {x: $mouseX, y: $mouseY, z: 0.01});
-            }, 10);
-        }
-
-        $('.slider-arrows-header .rsArrow').mouseleave(function(e){
-            $(this).removeClass('visible');
-            clearInterval($loop);
-        });
+        hoverArrow($('.slider-arrows-header .rsArrow'));
 
     }
 
@@ -445,6 +415,42 @@ function sliderMarkupGallery($gallery) {
 	})
 
 	$old_gallery.replaceWith($new_gallery);
+}
+
+/*
+    Get slider arrows to hover, following the cursor
+ */
+
+function hoverArrow($arrow){
+    var $mouseX = 0, $mouseY = 0;
+    var $arrowH = 35, $arrowW = 35;
+
+    $arrow.mouseenter(function(e){
+        $(this).addClass('visible');
+
+        moveArrow($(this));
+    });
+
+    var $loop;
+
+    function moveArrow($arrow){
+        $arrow.mousemove(function(e){
+            $mouseX = e.pageX - $arrowW;
+            $mouseY = e.pageY - $arrowH;
+        });
+
+        var $arrowIcn = $arrow.find('.rsArrowIcn');
+
+        $loop = setInterval(function(){
+            TweenMax.to($arrowIcn, 0, {x: $mouseX, y: $mouseY, z: 0.01});
+        }, 10);
+
+
+        $arrow.mouseleave(function(e){
+            $(this).removeClass('visible');
+            clearInterval($loop);
+        });
+    }
 }
 /* --- GMAP Init --- */
 
