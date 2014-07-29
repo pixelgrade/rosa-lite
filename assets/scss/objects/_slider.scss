@@ -40,3 +40,24 @@
 		}
 	}
 }
+
+.slider--header-arrows{
+	.rsArrow{
+		width: 25%;
+		height: 50%;
+
+		@include opacity(0);
+
+		cursor: default;
+
+		@include transition(all .3s linear);
+	}
+
+	.rsArrowLeft{
+		cursor: url(../images/chev-left.png), auto;
+	}
+
+	.rsArrowRight{
+		cursor: url(../images/chev-right.png), auto;
+	}
+}
