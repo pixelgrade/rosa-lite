@@ -210,7 +210,8 @@ function sliderInit($slider) {
 		rs_delay = typeof $slider.data('sliderdelay') !== "undefined" && $slider.data('sliderdelay') != '' ? $slider.data('sliderdelay') : '1000',
 		rs_drag = true,
 		rs_globalCaption = typeof $slider.data('showcaptions') !== "undefined" ? true : false,
-        is_headerSlider = $slider.hasClass('header--slideshow') ? true : false;
+        is_headerSlider = $slider.hasClass('header--slideshow') ? true : false,
+        hoverArrows = typeof $slider.data('hoverarrows') !== "undefined";
 
     //console.log(rs_imageAlignCenter);
 	if (rs_autoheight) {
@@ -289,7 +290,8 @@ function sliderInit($slider) {
 
             var classes = '';
 
-            if(is_headerSlider) classes = 'slider--header-arrows';
+            if(is_headerSlider) classes = 'slider-arrows-header';
+            if(hoverArrows && !Modernizr.touch) classes += ' arrows--hover ';
 
 			var $gallery_control = $(
 				'<div class="' + classes + '">' +
@@ -315,6 +317,46 @@ function sliderInit($slider) {
 			});
 		}
 	}
+
+    if(hoverArrows && !Modernizr.touch){
+
+
+        var $mouseX = 0, $mouseY = 0;
+        var $xp = 0, $yp =0;
+
+        $('.slider-arrows-header .rsArrowLeft').mouseenter(function(e){
+            $(this).addClass('visible');
+
+            moveArrow($(this));
+        });
+
+        $('.slider-arrows-header .rsArrowRight').mouseenter(function(e){
+            $(this).addClass('visible');
+
+            moveArrow($(this));
+        });
+
+        var $loop;
+
+        function moveArrow($arrow){
+            $arrow.mousemove(function(e){
+                $mouseX = e.pageX;
+                $mouseY = e.pageY;
+            });
+
+            var $arrowIcn = $arrow.find('.rsArrowIcn');
+
+            $loop = setInterval(function(){
+                TweenMax.to($arrowIcn, 0.1, {x: $mouseX-50, y: $mouseY-50, z: 0.01});
+            }, 30);
+        }
+
+        $('.slider-arrows-header .rsArrow').mouseleave(function(e){
+            $(this).removeClass('visible');
+            clearInterval($loop);
+        });
+
+    }
 
 //    if(is_headerSlider){
 //

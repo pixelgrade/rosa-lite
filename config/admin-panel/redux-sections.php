@@ -80,7 +80,19 @@ $sections[] = array(
 			'class'    => 'js-image--small',
 			'title'    => __( 'Metro Icon', wpgrade::textdomain() ),
 			'subtitle' => __( 'The size of this icon must be 144x144px.', wpgrade::textdomain() )
-		)
+		),
+
+		array(
+			'id'          => 'slideshow_arrows_style',
+			'type'        => 'select',
+			'title'       => __( 'Header slideshow arrows style', wpgrade::textdomain() ),
+			'subtitle'    => __( 'Select which type of arrows you want on page headers.', wpgrade::textdomain() ),
+			'options'     => array(
+				'static' => 'Static',
+				'hover'  => 'Hover'
+			),
+			'default'     => 'static'
+		),
 	)
 );
 

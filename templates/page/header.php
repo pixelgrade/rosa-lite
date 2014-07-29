@@ -115,6 +115,7 @@ else :
 				     data-imagescale="<?php echo $image_scale_mode; ?>"
 				     data-slidertransition="<?php echo $slider_transition; ?>"
 				     data-customArrows
+
 					<?php
 					if ( $slider_transition == 'move' ) echo 'data-slidertransitiondirection="horizontal"' . PHP_EOL;
 					if ( $slider_autoplay ) {
@@ -124,7 +125,10 @@ else :
 					if ( $slider_visiblenearby ) {
 						echo 'data-visiblenearby ' . PHP_EOL;
 					}
-					?> >
+
+					if( wpgrade::option('slideshow_arrows_style') == 'hover' ) echo ' data-hoverarrows ';
+					?>
+					>
 					<?php
 					$set_cover = false;
 
