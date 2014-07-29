@@ -158,6 +158,7 @@ function sliderInit($slider) {
 
         var $mouseX = 0, $mouseY = 0;
         var $xp = 0, $yp =0;
+        var $arrowH = 35, $arrowW = 35;
 
         $('.slider-arrows-header .rsArrow').mouseenter(function(e){
             $(this).addClass('visible');
@@ -169,8 +170,8 @@ function sliderInit($slider) {
 
         function moveArrow($arrow){
             $arrow.mousemove(function(e){
-                $mouseX = e.pageX;
-                $mouseY = e.pageY;
+                $mouseX = e.pageX - $arrowW;
+                $mouseY = e.pageY - $arrowH;
             });
 
             var $arrowIcn = $arrow.find('.rsArrowIcn');
