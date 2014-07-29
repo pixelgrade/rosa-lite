@@ -182,8 +182,8 @@ function sliderInit($slider) {
             var $arrowIcn = $arrow.find('.rsArrowIcn');
 
             $loop = setInterval(function(){
-                TweenMax.to($arrowIcn, 0.1, {x: $mouseX-50, y: $mouseY-50, z: 0.01});
-            }, 30);
+                TweenMax.to($arrowIcn, 0, {x: $mouseX-50, y: $mouseY-50, z: 0.01});
+            }, 10);
         }
 
         $('.slider-arrows-header .rsArrow').mouseleave(function(e){
