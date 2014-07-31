@@ -436,7 +436,8 @@
   color: #515151; }
 
 .field, .redux-container input[type="text"],
-.redux-container textarea, .redux-container .select2-container .select2-choice {
+.redux-container textarea,
+.redux-container .redux-main textarea, .redux-container .select2-container .select2-choice {
   background: none;
   box-shadow: none;
   border: 2px solid #d9d9d9;
@@ -458,11 +459,13 @@
     border-color: #919191; }
 
 .field--focus, .redux-container input[type="text"]:focus,
-.redux-container textarea:focus, .redux-container .select2-container.select2-dropdown-open .select2-choice {
+.redux-container textarea:focus,
+.redux-container .redux-main textarea:focus, .redux-container .select2-container.select2-dropdown-open .select2-choice {
   border-color: #0095ea; }
 
 .redux-container input[type="text"],
-.redux-container textarea {
+.redux-container textarea,
+.redux-container .redux-main textarea {
   font-size: 1em; }
 .redux-container .select2-container {
   border-radius: 0;

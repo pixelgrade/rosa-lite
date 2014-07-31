@@ -64,7 +64,7 @@
             // ATTENTION DEVS
             // Please update the build number with each push, no matter how small.
             // This will make for easier support when we ask users what version they are using.
-            public static $_version = '3.3.5.2';
+            public static $_version = '3.3.5.5';
             public static $_dir;
             public static $_url;
             public static $_upload_dir;
@@ -395,6 +395,7 @@
                     // Save defaults to the DB on it if empty
                     'footer_credit'      => '',
                     'async_typography'   => false,
+                    'google_fonts_link'  => false,
                     'class'              => '',
                     // Class that gets appended to all redux-containers
                     'admin_bar'          => true,
@@ -1398,13 +1399,6 @@
                         }
 
                         ?>
-                        <style>.wf-loading *, .wf-inactive * {
-                                visibility: hidden;
-                            }
-
-                            .wf-active * {
-                                visibility: visible;
-                            }</style>
                         <script>
                             /* You can add more configuration options to webfontloader by previously defining the WebFontConfig with your options */
                             if ( typeof WebFontConfig === "undefined" ) {
@@ -1414,7 +1408,7 @@
 
                             (function() {
                                 var wf = document.createElement( 'script' );
-                                wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.0/webfont.js';
+                                wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js';
                                 wf.type = 'text/javascript';
                                 wf.async = 'true';
                                 var s = document.getElementsByTagName( 'script' )[0];
@@ -1422,7 +1416,7 @@
                             })();
                         </script>
                     <?php
-                    } else {
+                    } elseif ( $this->args['google_fonts_link'] ) {
                         $protocol = ( ! empty( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443 ) ? "https:" : "http:";
 
                         //echo '<link rel="stylesheet" id="options-google-fonts" title="" href="'.$protocol.$typography->makeGoogleWebfontLink( $this->typography ).'&amp;v='.$version.'" type="text/css" media="all" />';
@@ -1603,13 +1597,16 @@
                 ) )
                 ) {
 
-                    wp_register_style(
-                        'color-picker-css',
+                    wp_enqueue_style(
+                        'redux-color-picker-css',
                         self::$_url . 'assets/css/color-picker/color-picker.css',
-                        array(),
+                        array( 'wp-color-picker' ),
                         filemtime( self::$_dir . 'assets/css/color-picker/color-picker.css' ),
                         'all'
                     );
+                    
+                    wp_enqueue_style( 'color-picker-css' );
+
 
                     wp_enqueue_script( 'wp-color-picker' );
                     wp_enqueue_style( 'wp-color-picker' );

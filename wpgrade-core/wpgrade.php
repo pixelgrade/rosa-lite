@@ -829,24 +829,22 @@ class wpgrade {
 
 		$returnString = '';
 
-		if ( self::option( $font ) ) {
-			$thefont = self::option( $font );
+		$thefont = self::option( $font );
 
-			if ( ! empty( $thefont ) && ! empty( $thefont['google'] ) && $thefont['google'] == 'true' ) {
-				if ( ! empty( $thefont['font-family'] ) ) {
-					$returnString = $thefont['font-family'];
+		if ( ! empty( $thefont ) && ( isset( $thefont['google'] ) && $thefont['google'] ) ) {
+			if ( ! empty( $thefont['font-family'] ) ) {
+				$returnString = $thefont['font-family'];
 
-					//put in the font weight
-					if ( ! empty( $thefont['font-weight'] ) ) {
-						$returnString .= ':' . $thefont['font-weight'];
-					} else if ( ! empty( $thefont['subsets'] ) ) {
-						//still needs the : so it will skip this when using subsets
-						$returnString .= ':';
-					}
+				//put in the font weight
+				if ( ! empty( $thefont['font-weight'] ) ) {
+					$returnString .= ':' . $thefont['font-weight'];
+				} else if ( ! empty( $thefont['subsets'] ) ) {
+					//still needs the : so it will skip this when using subsets
+					$returnString .= ':';
+				}
 
-					if ( ! empty( $thefont['subsets'] ) ) {
-						$returnString .= ':' . $thefont['subsets'];
-					}
+				if ( ! empty( $thefont['subsets'] ) ) {
+					$returnString .= ':' . $thefont['subsets'];
 				}
 			}
 		}
