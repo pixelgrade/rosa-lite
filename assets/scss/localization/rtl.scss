@@ -1,0 +1,356 @@
+@import "compass";
+@import "../vars";
+@import "../_vendor/inuit.css/defaults";
+@import "../_vendor/inuit.css/generic/mixins";
+@import "../_vendor/inuit.css/generic/clearfix";
+//@import "../_vendor/inuit.css/generic/shared";
+
+
+
+/*------------------------------*\
+               RTL SUPPORT
+\*------------------------------*/
+
+/*body*/.rtl {
+	direction: rtl;
+	unicode-bidi: embed;
+	text-align:right;
+}
+
+.grid{
+	margin-right: -$_u;
+	margin-left: 0;
+	@extend .cf;
+
+	.grid__item{
+		float: right;
+		padding-left: 0;
+		padding-right: $_u;
+	}
+}
+
+.pixcode--grid{
+	margin-right: -2 * $_u;
+}
+
+.pixcode--grid > .grid__item{
+	padding-right: 2 * $_u;
+}
+
+th, td{
+	text-align: right;
+}
+
+blockquote {
+	padding-right: 36px;
+	padding-left: 0;
+
+	border-left-width: 0;
+	border-right-width: 10px;
+	border-right-style: solid;
+}
+
+
+.page-numbers.prev{
+	left: auto;
+	right: 0;
+}
+
+.page-numbers.next{
+	right: auto;
+	left: 0;
+}
+
+.page-numbers.prev:before {
+	content: "\2192";
+	margin-right: 0;
+	margin-left: 12px;
+}
+
+.page-numbers.next:after{
+	content: "\2190";
+	margin-left: 0;
+	margin-right: 12px;
+}
+
+.media__img, .author__avatar, .latest-comments__avatar {
+	float: right;
+	margin-left: $_u;
+	margin-left: 1.5rem;
+
+	margin-right: 0;
+}
+
+.pixlikes-box{
+	float: right;
+}
+
+@include media-query(lap-and-up){
+	.add_this_list{
+		float: left;
+	}
+}
+
+
+/*------------------------------------*\
+	$NAVIGATION
+\*------------------------------------*/
+
+.navigation--main{
+	float: left;
+}
+
+.nav--items-social{
+	float: left;
+}
+
+.menu-item-has-children:after{
+	left: 6px;
+	right: auto;
+}
+
+
+
+
+.navigator{
+	right: auto;
+	left: 2 * $_u;
+}
+
+.archive-filter{
+	left: 0;
+	right: auto;
+}
+
+.pix-dropdown .dropdown__trigger:after {
+	top: -3px;
+	margin-right: 15px;
+}
+
+
+
+
+
+
+/*------------------------------------*\
+    $SIDEBAR
+\*------------------------------------*/
+
+.page-content {
+	@include media-query(lap-and-up) {
+		&.has-sidebar {
+			margin-left: -$sidebar-width;
+			margin-right: 0;
+
+			float: right;
+
+			&:after {
+				right: auto;
+				left: $sidebar-width;
+			}
+
+			.page-content__wrapper {
+				padding-left: 48px;
+				padding-right: 0;
+				margin-left: $sidebar-width;
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+.sidebar--main {
+	@include media-query(lap-and-up) {
+		& {
+			float: left;
+		}
+	}
+}
+
+.meta-list .list-head{
+	margin-right: 0;
+	margin-left: 12px;
+}
+
+.btn-list > .btn{
+	float: right;
+}
+
+
+
+/*------------------------------------*\
+    $COMMENTS
+\*------------------------------------*/
+
+.comments-area {
+	&:before {
+		left: auto;
+		right: 20px;
+	}
+}
+
+.commentlist > .comment, .commentlist > .pingback {
+	padding-left: 0;
+	padding-right: 60px;
+}
+
+.comment, .pingback {
+	.comment-number {
+		left: auto;
+		right: 0;
+
+		@include media-query(palm) {
+			left: auto;
+			right: -60px;
+		}
+	}
+}
+
+li.comment, li.pingback {
+
+	.children {
+		margin-left: 0;
+
+		li {
+			@include media-query(lap-and-up) {
+				padding-left: 0;
+				padding-right: 72px;
+			}
+		}
+	}
+}
+
+$first-padding-unit: 40px;
+$second-padding-unit: 72px;
+
+li.depth-2:before {
+	left: auto;
+	right: -$first-padding-unit;
+}
+
+@include media-query(lap-and-up) {
+	@for $i from 3 through 10 {
+		li.depth-#{$i}:before {
+			left: auto;
+			right: - ( $first-padding-unit + $second-padding-unit * ( $i - 2 ) );
+		}
+	}
+}
+
+.comment-number.total,
+.total.comment-number--dark,
+.comments-area-title .total.comment-number,
+.comment-reply-title .total.comment-number,
+.add-comment .total.add-comment__button{
+	margin-right: 0;
+	margin-left: $_u/2;
+}
+
+.comments-area-title .comments-title, .comment-reply-title .comments-title{
+	margin-right: 0;
+	margin-left: $_u/4;
+}
+
+.comment__meta > *{
+	display: inline-block;
+}
+
+
+
+
+
+
+/*------------------------------------*\
+    $MENUS
+\*------------------------------------*/
+
+.menu-list__title, .menu-list__item-title, p.menu-list__item-desc{
+	text-align: right;
+}
+
+.menu-list__item-title{
+	padding-right: 0;
+	padding-left: 72px;
+}
+
+.menu-list__item-price{
+	right: auto;
+	left: 0;
+}
+
+@include media-query(lap-and-up){
+	.menu-list__item-highlight-title{
+		left: auto;
+		right: -18px;
+	}
+}
+
+
+
+
+
+
+/*------------------------------------*\
+    $WOO
+\*------------------------------------*/
+
+a.shipping-calculator-button{
+	display: block;
+	text-align: right;
+}
+
+.woocommerce .cart-collaterals .cart_totals, .woocommerce-page .cart-collaterals .cart_totals{
+	float: none;
+	width: 100%;
+}
+
+.woocommerce #content div.product form.cart .button,
+.woocommerce div.product form.cart .button,
+.woocommerce-page #content div.product form.cart .button,
+.woocommerce-page div.product form.cart .button{
+	float: right;
+}
+
+.woocommerce #content div.product form.cart div.quantity,
+.woocommerce div.product form.cart div.quantity,
+.woocommerce-page #content div.product form.cart div.quantity,
+.woocommerce-page div.product form.cart div.quantity{
+	float: right;
+	margin-left: 12px;
+}
+
+.woocommerce #content div.product div.images,
+.woocommerce div.product div.images,
+.woocommerce-page #content div.product div.images,
+.woocommerce-page div.product div.images{
+	float: right;
+}
+
+.woocommerce #content div.product div.summary, 
+.woocommerce div.product div.summary, 
+.woocommerce-page #content div.product div.summary, 
+.woocommerce-page div.product div.summary{
+	float: left;
+}
+
+.product__badge{
+	left: auto;
+	right: -3px;
+}
+
+.woocommerce #reviews #comments ol.commentlist li img.avatar, 
+.woocommerce-page #reviews #comments ol.commentlist li img.avatar{
+	left: auto;
+	right: 0;
+}
+
+.woocommerce #reviews #comments ol.commentlist li .comment-text,
+.woocommerce-page #reviews #comments ol.commentlist li .comment-text{
+	margin-left: 0;
+	margin-right: 50px;
+}
+
+.woocommerce .star-rating, .woocommerce-page .star-rating{
+	float: none;
+	display: inline-block;
+}

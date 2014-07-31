@@ -276,8 +276,21 @@ li.depth-2:before {
 
 	@include media-query(lap-and-up) {
 		padding-left: 58px;
+
+		.comment &{
+			padding-left: 0;
+		}
+
 		.comment-reply-title {
 			margin-left: -58px;
+
+			.comment &{
+				margin-left: 0;
+			}
+		}
+
+		.comment & .comment-number{
+			display: none;
 		}
 	}
 }
