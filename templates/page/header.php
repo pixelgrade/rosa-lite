@@ -41,33 +41,32 @@ $description = wpgrade::filter_content( $description, 'default' );
 //get the Google Maps URL to test if empty
 $gmap_url = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_url', true );
 
-if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) :
-	if ( ! empty( $gmap_url ) ) :
+if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
+	if ( ! empty( $gmap_url ) ) {
 		//set the global so everybody knows that we are in dire need of the Google Maps API
 		$is_gmap = true;
 
 		$gmap_custom_style   = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_custom_style', true );
 		$gmap_marker_content = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_marker_content', true );
 		$gmap_height         = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_gmap_height', true );
-		if ( empty($gmap_height) ) {
+		if ( empty( $gmap_height ) ) {
 			$gmap_height = 'half-height'; //the default
 		}
 		$classes .= ' ' . $gmap_height;
 		?>
 		<header class="<?php echo $classes ?>">
 			<div id="gmap"
-			     data-url="<?php esc_attr_e( $gmap_url ); ?>" <?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
-			     data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>"></div>
+				data-url="<?php esc_attr_e( $gmap_url ); ?>" <?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
+				data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>"></div>
 		</header>
 	<?php
-	endif;
-else :
+	}
+} else {
 	/* THEN TEST FOR SLIDESHOW PAGE TEMPLATE */
 
 	$gallery_ids = get_post_meta( get_the_ID(), wpgrade::prefix() . 'main_gallery', true );
 
-	if ( get_page_template_slug( get_the_ID() ) == 'page-templates/slideshow.php' && ! empty( $gallery_ids ) ): ?>
-		<?php
+	if ( get_page_template_slug( get_the_ID() ) == 'page-templates/slideshow.php' && ! empty( $gallery_ids ) ) {
 		$gallery_ids = explode( ',', $gallery_ids );
 
 		if ( ! empty( $gallery_ids ) ) {
@@ -81,8 +80,8 @@ else :
 			$attachments = array();
 		}
 
-		if ( ! empty( $attachments ) ) :
-			//let's grab the info regarding the slider
+		if ( ! empty( $attachments ) ) { //let's grab the info regarding the slider
+
 			$image_scale_mode     = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_image_scale_mode', true );
 			$slider_visiblenearby = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_visiblenearby', true );
 			$slider_transition    = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_transition', true );
@@ -91,33 +90,34 @@ else :
 
 			if ( $slider_autoplay ) {
 				$slider_delay = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_delay', true );
-			}
-			?>
+			} ?>
 			<header class="<?php echo $classes ?>">
-				<?php if (! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description )) : ?>
-				<div class="flexbox">
-					<div class="flexbox__item">
-						<hgroup class="article__headline">
-							<?php if ( ! empty( $subtitle ) ) {
-								echo '<h2 class="headline__secondary">' . $subtitle . '</h2>' . PHP_EOL;
-							} ?>
-							<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
-							<?php if ( ! empty( $description ) ) {
-								echo '<span class="headline__description">' . $description . '</span>' . PHP_EOL;
-							} ?>
-						</hgroup>
+				<?php if ( ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) { ?>
+					<div class="flexbox">
+						<div class="flexbox__item">
+							<hgroup class="article__headline">
+								<?php if ( ! empty( $subtitle ) ) {
+									echo '<h2 class="headline__secondary">' . $subtitle . '</h2>' . PHP_EOL;
+								} ?>
+								<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
+								<?php if ( ! empty( $description ) ) {
+									echo '<span class="headline__description">' . $description . '</span>' . PHP_EOL;
+								} ?>
+							</hgroup>
+						</div>
 					</div>
-				</div>
-				<?php endif; ?>
+				<?php } ?>
 				<div class="article__parallax  header--slideshow  js-pixslider"
-				     data-autoHeight
-				     data-imagealigncenter
-				     data-imagescale="<?php echo $image_scale_mode; ?>"
-				     data-slidertransition="<?php echo $slider_transition; ?>"
-				     data-customArrows
+					data-autoHeight
+					data-imagealigncenter
+					data-imagescale="<?php echo $image_scale_mode; ?>"
+					data-slidertransition="<?php echo $slider_transition; ?>"
+					data-customArrows
 
 					<?php
-					if ( $slider_transition == 'move' ) echo 'data-slidertransitiondirection="horizontal"' . PHP_EOL;
+					if ( $slider_transition == 'move' ) {
+						echo 'data-slidertransitiondirection="horizontal"' . PHP_EOL;
+					}
 					if ( $slider_autoplay ) {
 						echo 'data-sliderautoplay="" ' . PHP_EOL;
 						echo 'data-sliderdelay="' . $slider_delay . '" ' . PHP_EOL;
@@ -126,13 +126,14 @@ else :
 						echo 'data-visiblenearby ' . PHP_EOL;
 					}
 
-					if( wpgrade::option('slideshow_arrows_style') == 'hover' ) echo ' data-hoverarrows ';
-					?>
+					if ( wpgrade::option( 'slideshow_arrows_style' ) == 'hover' ) {
+						echo ' data-hoverarrows ';
+					} ?>
 					>
 					<?php
 					$set_cover = false;
 
-					foreach ( $attachments as $attachment ) :
+					foreach ( $attachments as $attachment ) {
 
 						$full_img          = wp_get_attachment_image_src( $attachment->ID, 'full-size' );
 						$attachment_fields = get_post_custom( $attachment->ID );
@@ -143,91 +144,69 @@ else :
 						// should the video auto play?
 						$video_autoplay = ( isset( $attachment_fields['_video_autoplay'][0] ) && ! empty( $attachment_fields['_video_autoplay'][0] ) && $attachment_fields['_video_autoplay'][0] === 'on' ) ? $attachment_fields['_video_autoplay'][0] : '';
 
-						if ( true === $set_cover ) {
-							?>
+						if ( true === $set_cover ) { ?>
 							<div class="gallery-item cover" itemscope itemtype="http://schema.org/ImageObject"
-							     data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
-							     data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>">
+								data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
+								data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>">
 								<img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
-								     alt="<?php echo $attachment->post_excerpt; ?>" itemprop="contentURL"/>
+									alt="<?php echo $attachment->post_excerpt; ?>" itemprop="contentURL"/>
 							</div>
 							<?php
 							$set_cover = false;
-						} else {
-							?>
+						} else { ?>
 							<div class="gallery-item<?php echo( ! empty( $video_url ) ? ' video' : '' );
 							echo ( $video_autoplay == 'on' ) ? ' video_autoplay' : ''; ?>" itemscope
-							     itemtype="http://schema.org/ImageObject"
-							     data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
-							     data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>" <?php echo ( ! empty( $video_autoplay ) ) ? 'data-video_autoplay="' . $video_autoplay . '"' : ''; ?>>
+								itemtype="http://schema.org/ImageObject"
+								data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
+								data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>" <?php echo ( ! empty( $video_autoplay ) ) ? 'data-video_autoplay="' . $video_autoplay . '"' : ''; ?>>
 								<img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
-								     alt="<?php echo $attachment->post_excerpt; ?>"
-								     itemprop="contentURL" <?php echo ( ! empty( $video_url ) ) ? ' data-rsVideo="' . $video_url . '"' : ''; ?>  />
+									alt="<?php echo $attachment->post_excerpt; ?>"
+									itemprop="contentURL" <?php echo ( ! empty( $video_url ) ) ? ' data-rsVideo="' . $video_url . '"' : ''; ?>  />
 							</div>
-						<?php
-						}
-					endforeach; ?>
+						<?php }
+					} ?>
 				</div>
-				<?php if ( $page_section_idx == 1 && $header_height == 'full-height' ) {
-					//get the global option regarding down arrow style
-					$down_arrow_style = wpgrade::option('down_arrow_style');
-					if ( empty($down_arrow_style) ) {
-						$down_arrow_style = 'transparent'; //the default
-					}
-
-					if ( $down_arrow_style == 'bubble') {
-						echo '<svg class="blurp--top" width="192" height="61" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 160.7 61.5" enable-background="new 0 0 160.7 61.5" xml:space="preserve"><path fill="#FFFFFF" d="M80.3,61.5c0,0,22.1-2.7,43.1-5.4s41-5.4,36.6-5.4c-21.7,0-34.1-12.7-44.9-25.4S95.3,0,80.3,0c-15,0-24.1,12.7-34.9,25.4S22.3,50.8,0.6,50.8c-4.3,0-6.5,0,3.5,1.3S36.2,56.1,80.3,61.5z"/></svg>';
-					}
-					echo '<div class="down-arrow down-arrow--' . $down_arrow_style . '"><div class="arrow"></div></div>' . PHP_EOL;
-				} ?>
+				<?php display_header_down_arrow( $page_section_idx, $header_height ); ?>
 			</header>
-		<?php else : ?>
+		<?php } else { ?>
 			<div class="empty-slideshow">
 				<?php _e( 'Currently there are no images assigned to this slideshow', wpgrade::textdomain() ); ?>
 			</div>
-		<?php endif; ?>
-	<?php
-	else :
-		/* OR REGULAR PAGE */
-		if ( has_post_thumbnail() || ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) : ?>
+		<?php }
+
+	} else { /* OR REGULAR PAGE */
+		if ( has_post_thumbnail() || ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) { ?>
 			<header class="<?php echo $classes ?>" data-type="image">
-				<?php if ( has_post_thumbnail() ):
+				<?php if ( has_post_thumbnail() ) {
 					$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full-size' );
-					if ( ! empty( $image[0] ) ): ?>
+					if ( ! empty( $image[0] ) ) {
+						?>
 						<div class="article__parallax  article__parallax--img">
 							<img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
 						</div>
-					<?php endif;
-				endif;
-				if (! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description )) : ?>
-				<div class="flexbox">
-					<div class="flexbox__item">
-						<hgroup class="article__headline">
-							<?php if ( ! empty( $subtitle ) ) {
-								echo '<h2 class="headline__secondary">' . $subtitle . '</h2>' . PHP_EOL;
-							} ?>
-							<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
-							<?php if ( ! empty( $description ) ) {
-								echo '<div class="headline__description">' . $description . '</div>' . PHP_EOL;
-							} ?>
-						</hgroup>
-					</div>
-				</div>
-				<?php endif; ?>
-                <?php if ( $page_section_idx == 1 && $header_height == 'full-height' ) {
-	                //get the global option regarding down arrow style
-	                $down_arrow_style = wpgrade::option('down_arrow_style');
-	                if ( empty($down_arrow_style) ) {
-		                $down_arrow_style = 'transparent'; //the default
-	                }
+					<?php
+					}
+				}
 
-	                if ( $down_arrow_style == 'bubble') {
-                        echo '<svg class="blurp--top" width="192" height="61" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 160.7 61.5" enable-background="new 0 0 160.7 61.5" xml:space="preserve"><path fill="#FFFFFF" d="M80.3,61.5c0,0,22.1-2.7,43.1-5.4s41-5.4,36.6-5.4c-21.7,0-34.1-12.7-44.9-25.4S95.3,0,80.3,0c-15,0-24.1,12.7-34.9,25.4S22.3,50.8,0.6,50.8c-4.3,0-6.5,0,3.5,1.3S36.2,56.1,80.3,61.5z"/></svg>';
-	                }
-                    echo '<div class="down-arrow down-arrow--' . $down_arrow_style . '"><div class="arrow"></div></div>' . PHP_EOL;
-                } ?>
+				if ( ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) { ?>
+					<div class="flexbox">
+						<div class="flexbox__item">
+							<hgroup class="article__headline">
+								<?php if ( ! empty( $subtitle ) ) {
+									echo '<h2 class="headline__secondary">' . $subtitle . '</h2>' . PHP_EOL;
+								} ?>
+								<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
+								<?php if ( ! empty( $description ) ) {
+									echo '<div class="headline__description">' . $description . '</div>' . PHP_EOL;
+								} ?>
+							</hgroup>
+						</div>
+					</div>
+				<?php }
+
+				display_header_down_arrow( $page_section_idx, $header_height ); ?>
 			</header>
-		<?php endif;
-	endif;
-endif;?>
+		<?php }
+	}
+} ?>
 </header>
