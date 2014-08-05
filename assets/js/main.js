@@ -213,7 +213,6 @@ function sliderInit($slider) {
         is_headerSlider = $slider.hasClass('header--slideshow') ? true : false,
         hoverArrows = typeof $slider.data('hoverarrows') !== "undefined";
 
-    //console.log(rs_imageAlignCenter);
 	if (rs_autoheight) {
 		rs_autoScaleSlider = false
 	} else {
@@ -228,6 +227,7 @@ function sliderInit($slider) {
 		rs_keyboardNav = false;
 		rs_drag = false;
 		rs_transition = 'fade';
+        rs_customArrows = false;
 	}
 
 	// make sure default arrows won't appear if customArrows is set
@@ -279,117 +279,42 @@ function sliderInit($slider) {
 	var royalSlider = $slider.data('royalSlider');
 	var slidesNumber = royalSlider.numSlides;
 
-//	//trigger this so all the video initializations and others take place for the first slide
-//	setTimeout(function() {
-//		royalSlider.ev.trigger('rsAfterSlideChange');
-//	}, 1);
-
 	// create the markup for the customArrows
-	if (slidesNumber > 1) {
-		if (royalSlider && rs_customArrows) {
+    if (royalSlider && rs_customArrows) {
 
-            var classes = '';
+        var classes = '';
 
-            if(is_headerSlider) classes = 'slider-arrows-header';
-            if(hoverArrows && !Modernizr.touch) classes += ' arrows--hover ';
+        if(is_headerSlider) classes = 'slider-arrows-header';
+        if(hoverArrows && !Modernizr.touch) classes += ' arrows--hover ';
 
-			var $gallery_control = $(
-				'<div class="' + classes + '">' +
-				'<div class="rsArrow rsArrowLeft js-arrow-left" style="display: block;"><div class="rsArrowIcn"></div></div>' +
-				'<div class="rsArrow rsArrowRight js-arrow-right" style="display: block;"><div class="rsArrowIcn"></div></div>' +
-				'</div>'
-			);
+        var $gallery_control = $(
+            '<div class="' + classes + '">' +
+            '<div class="rsArrow rsArrowLeft js-arrow-left" style="display: block;"><div class="rsArrowIcn"></div></div>' +
+            '<div class="rsArrow rsArrowRight js-arrow-right" style="display: block;"><div class="rsArrowIcn"></div></div>' +
+            '</div>'
+        );
 
-			if ($slider.data('customarrows') == "left") {
-				$gallery_control.addClass('gallery-control--left');
-			}
+        if ($slider.data('customarrows') == "left") {
+            $gallery_control.addClass('gallery-control--left');
+        }
 
-			$gallery_control.insertBefore($slider);
+        $gallery_control.insertBefore($slider);
 
-			$gallery_control.on('click', '.js-arrow-left', function (event) {
-				event.preventDefault();
-				royalSlider.prev();
-			});
+        $gallery_control.on('click', '.js-arrow-left', function (event) {
+            event.preventDefault();
+            royalSlider.prev();
+        });
 
-			$gallery_control.on('click', '.js-arrow-right', function (event) {
-				event.preventDefault();
-				royalSlider.next();
-			});
-		}
-	}
+        $gallery_control.on('click', '.js-arrow-right', function (event) {
+            event.preventDefault();
+            royalSlider.next();
+        });
+    }
 
     if(hoverArrows && !Modernizr.touch){
         hoverArrow($('.slider-arrows-header .rsArrow'));
 
     }
-
-//    if(is_headerSlider){
-//
-//        $('#page').on('mousemove', function(e) {
-//            $('.header-arrows').addClass('show');
-//
-//            if ((e.pageX - this.offsetLeft) < $(this).width() / 2) {
-//                $('.header-arrows').addClass('show-left').removeClass('show-right');
-//
-//            } else {
-//                $('.header-arrows').addClass('show-right').removeClass('show-left');
-//            }
-//
-//        }).on('mouseout', function(){
-//            $('.slider-arrows').removeClass('show');
-//        });
-//    }
-
-//	royalSlider.ev.on('rsVideoPlay', function () {
-//
-//		if (rs_imageScale == 'fill') {
-//			var $frameHolder = $('.rsVideoFrameHolder');
-////			var top = Math.abs(royalSlider.height - $frameHolder.closest('.rsVideoContainer').height()) / 2;
-//
-//			$frameHolder.height(royalSlider.height);
-////			$frameHolder.css('margin-top', top + 'px');
-//
-//		} else {
-//			var $frameHolder = $('.rsVideoFrameHolder');
-//			var $videoContainer = $('.rsVideoFrameHolder').closest('.rsVideoContainer');
-//			var top = parseInt($frameHolder.closest('.rsVideoContainer').css('margin-top'), 10);
-//
-//			if (top < 0) {
-//				top = Math.abs(top);
-//				$frameHolder
-//					.height(royalSlider.height)
-//					.css('top', top + 'px');
-//			}
-//		}
-//	});
-//
-//	royalSlider.ev.on('rsBeforeAnimStart', function(event) {
-//		royalSlider.stopVideo();
-//	});
-//
-//	// auto play video sliders if is set so
-//	royalSlider.ev.on('rsAfterSlideChange', function(event) {
-//
-//		$slide_content = $( royalSlider.currSlide.content );
-//
-//		// triggers after slide change
-//		rs_videoAutoPlay = typeof $slide_content.data('video_autoplay') !== "undefined";
-//
-//		if ( rs_videoAutoPlay ) {
-//			royalSlider.stopVideo();
-//			royalSlider.playVideo();
-//		}
-//
-//	});
-//
-//	// after destroying a video remove the autoplay class (this way the image gets visible)
-//	royalSlider.ev.on('rsOnDestroyVideoElement', function(i ,el){
-//
-//		$slide_content = $( this.currSlide.content );
-//
-//		$($slide_content).removeClass('video_autoplay');
-//
-//	});
 
 	if (slidesNumber == 1) $slider.addClass('single-slide');
 
