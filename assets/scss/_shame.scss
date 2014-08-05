@@ -136,3 +136,5 @@ html, body, #page {
 html body.woocommerce ul.products li.product {
     margin-bottom: 78px;
 }
+
+.pixslider img { display: none; } .pixslider.slider--loaded img { display: block; }
