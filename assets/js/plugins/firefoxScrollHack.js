@@ -3,10 +3,13 @@
  */
 (function(doc) {
 
-    var root = doc.documentElement;
+    var root        = doc.documentElement,
+        ua          = navigator.userAgent,
+        is_OSX      = ua.match(/(iPad|iPhone|iPod|Macintosh)/g) ? true : false,
+        is_firefox  = ua.match(/gecko/i);
 
     // Not ideal, but better than UA sniffing.
-    if ("MozAppearance" in root.style) {
+    if (is_firefox && is_OSX && !Modernizr.touch) {
 
         // determine the vertical scrollbar width
         var scrollbarWidth = root.clientWidth;

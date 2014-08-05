@@ -29,7 +29,8 @@
 .redux-container {
 
 	input[type="text"],
-	textarea {
+	textarea,
+	.redux-main textarea {
 		@extend .field;
         font-size: 1em;
 

@@ -1144,7 +1144,7 @@ function niceScrollInit() {
 
     var smoothScroll = $('body').data('smoothscrolling') !== undefined;
 
-    if (smoothScroll && !is_OSX && !Modernizr.touch && !is_mobile_ie) {
+    if (smoothScroll  && (!is_OSX || is_firefox) && !Modernizr.touch && !is_mobile_ie) {
         var $window = $(window);		// Window object
 
         $window.on("mousewheel DOMMouseScroll", function(event) {
