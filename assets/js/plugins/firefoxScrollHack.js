@@ -9,7 +9,7 @@
         is_firefox  = ua.match(/gecko/i);
 
     // Not ideal, but better than UA sniffing.
-    if (is_firefox && is_OSX && !Modernizr.touch) {
+    if ("MozAppearance" in root.style && !Modernizr.touch && is_OSX) {
 
         // determine the vertical scrollbar width
         var scrollbarWidth = root.clientWidth;
@@ -23,7 +23,7 @@
 
         // event dispatcher
         function scrollHandler() {
-            doc.dispatchEvent(scrollEvent)
+            doc.dispatchEvent(scrollEvent);
         }
 
         // detect mouse events in the document scrollbar track

@@ -5,9 +5,11 @@
 function niceScrollInit() {
     if (globalDebug) {console.log("NiceScroll Init");}
 
-    var smoothScroll = $('body').data('smoothscrolling') !== undefined;
+    var smoothScroll    = $('body').data('smoothscrolling') !== undefined,
+        root            = document.documentElement;
 
-    if (smoothScroll  && (!is_OSX || is_firefox) && !Modernizr.touch && !is_mobile_ie) {
+    if (smoothScroll && !Modernizr.touch && !is_mobile_ie && !is_OSX) {
+
         var $window = $(window);		// Window object
 
         $window.on("mousewheel DOMMouseScroll", function(event) {
