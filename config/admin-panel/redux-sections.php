@@ -925,7 +925,12 @@ $sections[] = array(
 						'selector' => '.site-footer',
 						'unit'     => 'px',
 						'media'    => 'screen and (min-width: 900px)'
-					)
+					),
+                    'margin-right' => array (
+                        'selector' => '.navigator',
+                        'unit'     => 'px',
+                        'media'    => 'screen and (min-width: 900px)'
+                    )
 				)
 			),
 			'compiler'      => true
