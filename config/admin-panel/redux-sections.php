@@ -38,6 +38,12 @@ $sections[] = array(
 //			)
 		),
 		array(
+			'id'    => 'main_logo_dark',
+			'type'  => 'media',
+			'class'    => 'js-class-hook',
+			'title' => __( 'Main Logo Inversed', wpgrade::textdomain() ),
+		),
+		array(
 			'id'       => 'use_retina_logo',
 			'type'     => 'switch',
 			'title'    => __( '2x Retina Logo', wpgrade::textdomain() ),
@@ -46,38 +52,35 @@ $sections[] = array(
 		array(
 			'id'       => 'retina_main_logo_light',
 			'type'     => 'media',
+			'class'    => 'js-class-hook image--small',
 			'title'    => __( 'Retina Logo light', wpgrade::textdomain() ),
 			'required' => array( 'use_retina_logo', 'equals', 1 )
 		),
 		array(
-			'id'    => 'main_logo_dark',
-			'type'  => 'media',
-			'title' => __( 'Main Logo Inversed', wpgrade::textdomain() ),
-		),
-		array(
 			'id'       => 'retina_main_logo_dark',
 			'type'     => 'media',
+			'class'    => 'js-class-hook image--small',
 			'title'    => __( 'Retina Logo dark', wpgrade::textdomain() ),
 			'required' => array( 'use_retina_logo', 'equals', 1 )
 		),
 		array(
 			'id'       => 'favicon',
 			'type'     => 'media',
-			'class'    => 'js-image--small',
+			'class'    => 'js-class-hook image--small',
 			'title'    => __( 'Favicon', wpgrade::textdomain() ),
 			'subtitle' => __( 'Upload a 16 x 16px image that will be used as a favicon.', wpgrade::textdomain() ),
 		),
 		array(
 			'id'       => 'apple_touch_icon',
 			'type'     => 'media',
-			'class'    => 'js-image--small',
+			'class'    => 'js-class-hook image--small',
 			'title'    => __( 'Apple Touch Icon', wpgrade::textdomain() ),
 			'subtitle' => __( 'You can customize the icon for the Apple touch shortcut to your website. The size of this icon must be 77x77px.', wpgrade::textdomain() )
 		),
 		array(
 			'id'       => 'metro_icon',
 			'type'     => 'media',
-			'class'    => 'js-image--small',
+			'class'    => 'js-class-hook image--small',
 			'title'    => __( 'Metro Icon', wpgrade::textdomain() ),
 			'subtitle' => __( 'The size of this icon must be 144x144px.', wpgrade::textdomain() )
 		),
