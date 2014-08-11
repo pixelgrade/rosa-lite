@@ -155,7 +155,7 @@ $sections[] = array(
 					'background'       => array(
 						'selector' => "body.woocommerce button.button.alt:hover, body.woocommerce-page #respond input#submit:hover,
                                         body.woocommerce div.woocommerce-message .button:hover, td.actions input.button:hover, body.woocommerce-page input.button:hover,
-                                        body.woocommerce-page input.button.alt:hover"
+                                        body.woocommerce-page input.button.alt:hover, a:hover > .pixcode--icon.circle, a:hover > .pixcode--icon.square"
 					),
 					'border-color'     => array(
 						'selector' => ".tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button,
@@ -166,7 +166,12 @@ $sections[] = array(
 						body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart, .menu-list__item-highlight-wrapper:before",
 					),
 					'outline-color'    => array(
-						'selector' => ".test",
+						'selector' => 'select:focus, textarea:focus, input[type="text"]:focus,
+						input[type="password"]:focus, input[type="datetime"]:focus,
+						input[type="datetime-local"]:focus, input[type="date"]:focus,
+						input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus,
+						input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus,
+						input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .form-control:focus',
 					),
 					'fill' => array(
 						'selector' => '.copyright-area.copyright-area__accent svg path',
