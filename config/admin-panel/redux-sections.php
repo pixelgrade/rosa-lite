@@ -845,6 +845,18 @@ $sections[] = array(
 						'selector' => '.site-header',
 						'unit'     => 'px',
 						'media'    => 'screen and (min-width: 900px)'
+					),
+
+					//Blog Archive
+					'margin-top' => array(
+						'selector' => '#page',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					),
+					'top' => array(
+						'selector' => '#page',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
 					)
 				)
 			),
