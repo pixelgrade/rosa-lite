@@ -5595,7 +5595,7 @@ Failed to upload file. Error occurred.]]></content:encoded>
   [text* your-name placeholder "First Name"]
   </div>
   <div class="grid__item  six-twelfths palm-one-whole">
-  [email* last-name placeholder "Last Name"] 
+  [text* last-name placeholder "Last Name"]
   </div>
 </div>
 [email* your-email placeholder "Email"] [textarea your-message placeholder "Message"][submit "Send Message"]]]></wp:meta_value>
