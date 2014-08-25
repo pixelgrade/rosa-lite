@@ -3,7 +3,7 @@
 // using jsend format: http://labs.omniti.com/labs/jsend
 function wpgrade_ajax_upgradestep_check_marketplace_data() {
 
-	set_time_limit( 300 ); // 5min time limit
+	if (function_exists('set_time_limit')) set_time_limit(300); // 5min time limit
 
 	// Default Data Structure
 	// ----------------------
@@ -70,7 +70,7 @@ function wpgrade_ajax_upgradestep_check_marketplace_data() {
 // using jsend format: http://labs.omniti.com/labs/jsend
 function wpgrade_ajax_upgradestep_search_for_update() {
 
-	set_time_limit( 300 ); // 5min time limit
+	if (function_exists('set_time_limit')) set_time_limit(300); // 5min time limit
 
 	// Default Data Structure
 	// ----------------------
@@ -130,7 +130,7 @@ function wpgrade_ajax_upgradestep_search_for_update() {
 // using jsend format: http://labs.omniti.com/labs/jsend
 function wpgrade_ajax_upgradestep_backup_theme() {
 
-	set_time_limit( 300 ); // 5min time limit
+	if (function_exists('set_time_limit')) set_time_limit(300); // 5min time limit
 
 	// Default Data Structure
 	// ----------------------
@@ -189,7 +189,7 @@ function wpgrade_ajax_upgradestep_backup_theme() {
 // using jsend format: http://labs.omniti.com/labs/jsend
 function wpgrade_ajax_upgradestep_analyze_download_options() {
 
-	set_time_limit( 300 ); // 5min time limit
+	if (function_exists('set_time_limit')) set_time_limit(300); // 5min time limit
 
 	// @todo replace hardcoded path with tempfile
 	$uploads       = wp_upload_dir();
@@ -268,7 +268,7 @@ function wpgrade_ajax_upgradestep_analyze_download_options() {
 // using jsend format: http://labs.omniti.com/labs/jsend
 function wpgrade_ajax_upgradestep_download_package() {
 
-	set_time_limit( 300 ); // 5min time limit
+	if (function_exists('set_time_limit')) set_time_limit(300); // 5min time limit
 
 	// @todo replace hardcoded path with tempfile
 	$uploads       = wp_upload_dir();
@@ -351,7 +351,7 @@ function wpgrade_ajax_upgradestep_download_package() {
 // using jsend format: http://labs.omniti.com/labs/jsend
 function wpgrade_ajax_upgradestep_install_package() {
 
-	set_time_limit( 300 ); // 5min time limit
+	if (function_exists('set_time_limit')) set_time_limit(300); // 5min time limit
 
 	// @todo replace hardcoded path with tempfile
 	$uploads       = wp_upload_dir();
