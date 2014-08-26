@@ -109,6 +109,11 @@
 	}
 }
 
+//WPML Language switcher
+.menu-item-language {
+	@extend .menu-item-has-children;
+}
+
 
 
 
