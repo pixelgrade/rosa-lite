@@ -1,5 +1,5 @@
 <?php
-$categories = get_the_category();
+$categories = get_categories();
 if ( !is_wp_error( $categories ) ) : ?>
 	<div class="pix-dropdown  down  archive-filter">
 		<a class="dropdown__trigger" href="#"><?php _e('Categories', wpgrade::textdomain()) ?></a>
