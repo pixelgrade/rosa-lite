@@ -548,7 +548,7 @@ function wpgrade_custom_gallery_settings() {
 
 function display_header_down_arrow( $page_section_idx, $header_height ) {
 
-	if ( $page_section_idx !== 1 && $header_height !== 'full-height' ) {
+	if ( $page_section_idx !== 1 || $header_height !== 'full-height' ) {
 		return ;
 	}
 

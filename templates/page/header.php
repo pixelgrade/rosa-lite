@@ -179,8 +179,7 @@ if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
 			<header class="<?php echo $classes ?>" data-type="image">
 				<?php if ( has_post_thumbnail() ) {
 					$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full-size' );
-					if ( ! empty( $image[0] ) ) {
-						?>
+					if ( ! empty( $image[0] ) ) { ?>
 						<div class="article__parallax  article__parallax--img">
 							<img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
 						</div>
