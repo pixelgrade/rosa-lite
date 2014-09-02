@@ -45,7 +45,6 @@ function hasParent(e, id) {
 	return (el !== false);
 }
 
-// http://coveroverflow.com/a/11381730/989439
 function mobilecheck() {
 	var check = false;
 	(function (a) {
