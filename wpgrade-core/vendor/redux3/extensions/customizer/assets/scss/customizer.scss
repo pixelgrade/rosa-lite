@@ -130,6 +130,18 @@ h3.accordion-section-title, #customize-info {
 
 	}
 
+	.customize-controls-close {
+		@extend .button;
+
+		span {
+			position: relative;
+		}
+
+		&:before {
+			display: none;
+		}
+	}
+
 	.save {
 		background 	: $accent;
 		color 		:#fff;
