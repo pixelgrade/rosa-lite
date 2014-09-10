@@ -16,7 +16,8 @@ return array(
 
 	// if you want to use Google Webfonts, you MUST define the api key
 	'google_api_key'        => 'AIzaSyB7Yj842mK5ogSiDa3eRrZUIPTzgiGopls',
-	'async_typography'      => false, // Use a asynchronous font on the front end or font string
+	'async_typography'      => false,
+	// Use a asynchronous font on the front end or font string
 
 	// define the starting tab for the option panel
 	//'last_tab' => '0', # default: '0'
@@ -132,7 +133,8 @@ return array(
 	//'import_icon_type' => 'image',
 
 	// disable the panel sections showing as submenu items
-	'allow_sub_menu' => false, # default: true
+	'allow_sub_menu'        => false,
+	# default: true
 
 	// Set ANY custom page help tabs, displayed using the new help tab API.
 	// Tabs are shown in order of definition.
@@ -154,34 +156,39 @@ return array(
 
 	// Set the help sidebar for the options page.
 	// 'help_sidebar' => __('<p>This is the sidebar content, HTML is allowed.</p>', wpgrade::textdomain()),
-    'hints'    => array(
-        'icon'              => 'icon-question-sign',
-        'icon_position'     => 'right',
-        'icon_color'        => 'lightgray',
-        'icon_size'         => 'normal',
-
-        'tip_style'         => array(
-            'color'     => 'light',
-            'shadow'    => false,
-            'rounded'   => false,
-            'style'     => '',
-        ),
-        'tip_position'      => array(
-            'my' => 'bottom center',
-            'at' => 'top center',
-        ),
-        'tip_effect' => array(
-            'show' => array(
-                'effect'    => 'fade',
-                'duration'  => '50',
-                'event'     => 'mouseover',
-            ),
-            'hide' => array(
-                'effect'    => 'fade',
-                'duration'  => '50',
-                'event'     => 'click mouseleave',
-            ),
-        ),
-    )
+	'hints'                 => array(
+		'icon'          => 'icon-question-sign',
+		'icon_position' => 'right',
+		'icon_color'    => 'lightgray',
+		'icon_size'     => 'normal',
+		'tip_style'     => array(
+			'color'   => 'light',
+			'shadow'  => false,
+			'rounded' => false,
+			'style'   => '',
+		),
+		'tip_position'  => array(
+			'my' => 'bottom center',
+			'at' => 'top center',
+		),
+		'tip_effect'    => array(
+			'show' => array(
+				'effect'   => 'fade',
+				'duration' => '50',
+				'event'    => 'mouseover',
+			),
+			'hide' => array(
+				'effect'   => 'fade',
+				'duration' => '50',
+				'event'    => 'click mouseleave',
+			),
+		),
+	),
+	'remove_customizer_sections' => array(
+		'blogdescription',
+		'static_front_page',
+		'title_tagline',
+		'nav'
+	)
 
 ); # config

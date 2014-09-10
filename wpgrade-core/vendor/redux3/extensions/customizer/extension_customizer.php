@@ -611,21 +611,6 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 					$this->to_localize( $option['id'], $tlcs );
 				}
 			}
-
-			/*
-	title_tagline - Site Title & Tagline
-	colors - Colors
-	header_image - Header Image
-	background_image - Background Image
-	nav - Navigation
-	static_front_page - Static Front Page
-			  */
-
-			// @TODO do some options for removing sections
-			$wp_customize->remove_section( 'blogdescription' );
-			$wp_customize->remove_section( 'static_front_page' );
-			$wp_customize->remove_section( 'title_tagline' );
-			$wp_customize->remove_section( 'nav' );
 		}
 
 		public function customizer_save_before( $plugin_options ) {
