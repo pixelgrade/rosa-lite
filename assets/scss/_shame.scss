@@ -138,3 +138,13 @@ html body.woocommerce ul.products li.product {
 }
 
 .pixslider img { display: none; } .pixslider.slider--loaded img { display: block; }
+
+.ie9{
+	.article__parallax img{
+		opacity: 1;
+	}
+
+	.article__parallax--img img{
+		opacity: 1;
+	}
+}

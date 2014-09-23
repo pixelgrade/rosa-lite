@@ -273,8 +273,9 @@ $(window).load(function(){
     ScrollToTop.initialize();
     DownArrow.initialize();
     niceScrollInit();
-    requestTick();
-
+    //if(!$('html').is('.ie9, .lt-ie9') ){
+        requestTick();
+    //}
     // always
     royalSliderInit();
     magnificPopupInit();
@@ -367,7 +368,9 @@ function requestTick() {
 
 $(window).on("scroll", function () {
     latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop();
-    requestTick();
+    //if(!$('html').is('.ie9, .lt-ie9') ){
+        requestTick();
+    //}
 });
 
 if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i) && window.innerHeight != document.documentElement.clientHeight) {

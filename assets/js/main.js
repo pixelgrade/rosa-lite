@@ -1410,8 +1410,9 @@ $(window).load(function(){
     ScrollToTop.initialize();
     DownArrow.initialize();
     niceScrollInit();
-    requestTick();
-
+    //if(!$('html').is('.ie9, .lt-ie9') ){
+        requestTick();
+    //}
     // always
     royalSliderInit();
     magnificPopupInit();
@@ -1504,7 +1505,9 @@ function requestTick() {
 
 $(window).on("scroll", function () {
     latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop();
-    requestTick();
+    //if(!$('html').is('.ie9, .lt-ie9') ){
+        requestTick();
+    //}
 });
 
 if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i) && window.innerHeight != document.documentElement.clientHeight) {
@@ -1547,7 +1550,40 @@ $(window).keydown(function (e) {
 	}
 })
 /* === Functions that require jQuery but have no place on this Earth, yet === */
+// Adapted from https://gist.github.com/paulirish/1579671 which derived from
+// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+// http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
 
+// requestAnimationFrame polyfill by Erik Möller.
+// Fixes from Paul Irish, Tino Zijdel, Andrew Mao, Klemen Slavič, Darius Bacon
+
+// MIT license
+
+if (!Date.now)
+    Date.now = function() { return new Date().getTime(); };
+
+(function() {
+    'use strict';
+
+    var vendors = ['webkit', 'moz'];
+    for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
+        var vp = vendors[i];
+        window.requestAnimationFrame = window[vp+'RequestAnimationFrame'];
+        window.cancelAnimationFrame = (window[vp+'CancelAnimationFrame']
+        || window[vp+'CancelRequestAnimationFrame']);
+    }
+    if (/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent) // iOS6 is buggy
+        || !window.requestAnimationFrame || !window.cancelAnimationFrame) {
+        var lastTime = 0;
+        window.requestAnimationFrame = function(callback) {
+            var now = Date.now();
+            var nextTime = Math.max(lastTime + 16, now);
+            return setTimeout(function() { callback(lastTime = nextTime); },
+                nextTime - now);
+        };
+        window.cancelAnimationFrame = clearTimeout;
+    }
+}());
 
 //here we change the link of the Edit button in the Admin Bar
 //to make sure it reflects the current page
