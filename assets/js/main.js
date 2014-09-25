@@ -1200,17 +1200,23 @@ function smoothScrollTo(y, speed) {
 
 function menuTrigger(){
 
-    $(document).on('click', '.js-nav-trigger', function(e) {
+    $('.js-nav-trigger').on('click touchstart', function(e) {
 
         e.preventDefault();
         e.stopPropagation();
 
-        if($('html').hasClass('navigation--is-visible')){
+        var $html = $('html');
+
+        if($html.hasClass('navigation--is-visible')){
             $('body').css('overflow', '');
-            $('html').removeClass('navigation--is-visible');
+            $html.removeClass('navigation--is-visible');
         } else {
             $('body').css({'overflow': 'hidden'});
-            $('html').addClass('navigation--is-visible');
+            $html.addClass('navigation--is-visible');
+
+            if ($html.hasClass('is--ancient-android') || $html.hasClass('is--winmob')) {
+                $('.navigation--main').height(windowHeight);
+            }
         }
     });
 }
