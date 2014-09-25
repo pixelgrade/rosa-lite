@@ -2,7 +2,7 @@
 $categories = get_categories();
 if ( !is_wp_error( $categories ) ) : ?>
 	<div class="pix-dropdown  down  archive-filter">
-		<a class="dropdown__trigger" href="#"><?php _e('Categories', wpgrade::textdomain()) ?></a>
+		<a class="dropdown__trigger" href="#"><?php _e( 'Categories', wpgrade::textdomain() ) ?></a>
 		<ul class="dropdown__menu  nav  nav--banner">
 			<?php foreach ($categories as $category): ?>
 				<li>

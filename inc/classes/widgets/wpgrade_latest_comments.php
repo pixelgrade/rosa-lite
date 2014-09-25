@@ -72,7 +72,7 @@ class wpgrade_latest_comments extends WP_Widget {
 					<div class="media__body  latest-comments__body">
 						<div class="comment__meta">
 							<a class="latest-comments__author" href="<?php echo get_comment_author_url() ?>"><?php echo $comment->comment_author; ?></a>
-							on
+							<?php _e('on' , wpgrade::textdomain() ); ?>
 							<a class="latest-comments__title" href="<?php echo $comment->guid; ?>"><?php echo $comment->post_title; ?></a>
 						</div>
 						<div class="latest-comments__content">
