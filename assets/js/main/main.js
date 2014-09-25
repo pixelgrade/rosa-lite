@@ -31,12 +31,12 @@ function niceScrollInit() {
 
                 event.preventDefault();
 
-                TweenMax.to($window, .6, {
+                pixGS.TweenMax.to($window, .6, {
                     scrollTo: {
                         y:          scrollTo,
                         autoKill:   true
                     },
-                    ease:           Power1.easeOut,	// For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
+                    ease:           pixGS.Power1.easeOut,	// For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
                     autoKill:       true,
                     overwrite:      5
                 });
@@ -57,7 +57,7 @@ function smoothScrollTo(y, speed) {
     var distance = Math.abs(latestKnownScrollY - y),
         time     = speed * distance / 2000;
 
-    TweenMax.to($(window), time, {scrollTo: {y: y, autoKill: true, ease: Quint.easeInOut}});
+    pixGS.TweenMax.to($(window), time, {scrollTo: {y: y, autoKill: true, ease: pixGS.Quint.easeInOut}});
 }
 
 
