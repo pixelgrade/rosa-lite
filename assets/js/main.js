@@ -101,6 +101,9 @@ function magnificPopupInit() {
 
 	$('.js-post-gallery').each(function () { // the containers for all your galleries should have the class gallery
 		$(this).magnificPopup({
+			tPrev: objectl10n.tPrev,
+			tNext: objectl10n.tNext,
+			tCounter: objectl10n.tCounter,
 			delegate: 'a[href$=".jpg"], a[href$=".jpeg"], a[href$=".png"], a[href$=".gif"]', // the container for each your gallery items
 			type: 'image',
 			closeOnContentClick: false,
@@ -1259,7 +1262,7 @@ function init() {
 	// /* GLOBAL VARS */
 	touch = false;
 
-    if (typeof (is_ie) !== 'undefined' || (!(window.ActiveXObject) && "ActiveXObject" in window)) {
+    if (typeof (isIe) != 'undefined' || (!(window.ActiveXObject) && "ActiveXObject" in window)) {
         $('html').addClass('is--ie');
     }
 

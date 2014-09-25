@@ -130,7 +130,7 @@ function init() {
 	// /* GLOBAL VARS */
 	touch = false;
 
-    if (typeof (is_ie) !== 'undefined' || (!(window.ActiveXObject) && "ActiveXObject" in window)) {
+    if (typeof (isIe) != 'undefined' || (!(window.ActiveXObject) && "ActiveXObject" in window)) {
         $('html').addClass('is--ie');
     }
 
