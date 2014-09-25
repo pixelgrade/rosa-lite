@@ -183,3 +183,7 @@ ul.payment_methods{
 		content: none;
 	}
 }
+
+.woocommerce .article__parallax--img img {
+	max-width: none;
+}
