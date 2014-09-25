@@ -1520,6 +1520,26 @@ if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i) && window.innerHeight != d
     window.addEventListener("orientationchange", fixViewportHeight, false);
     fixViewportHeight();
 }
+
+// smooth scrolling to anchors
+$(function() {
+
+    var $header = $('.site-header'),
+        headerHeight = parseInt($header.outerHeight(), 10);
+
+    $('.site-header a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+                $('html,body').animate({
+                    scrollTop: target.offset().top - headerHeight
+                }, 1000);
+                return false;
+            }
+        }
+    });
+});
 /* --- 404 Page --- */
 gifImages = [
 	"http://i.imgur.com/ShiZM6m.gif",
