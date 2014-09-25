@@ -29,18 +29,12 @@
 		phone = (isiPhone > -1 || isiPod > -1 || isAndroidPhone > -1) ? true : false;
 		touch = $.support.touch ? true : false;
 		ltie9 = $.support.leadingWhitespace ? false : true;
-		lteie9 = typeof window.atob === 'undefined' ? true : false;
 
 		var $bod = $('body');
 
-
 		if (touch) $('html').addClass('touch');
-
 		if (ieMobile) $('html').addClass('is--winmob');
 		if (is_android) $('html').addClass('is--ancient-android');
-
-		if (lteie9) $('html').addClass('lteie9');
-
 		if (safari) $bod.addClass('safari');
 		if (phone) $bod.addClass('phone');
 

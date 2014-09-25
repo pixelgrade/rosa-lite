@@ -130,8 +130,8 @@ function init() {
 	// /* GLOBAL VARS */
 	touch = false;
 
-    if (isIE10) {
-        $('body').addClass('.ie10');
+    if (typeof (is_ie) !== 'undefined' || (!(window.ActiveXObject) && "ActiveXObject" in window)) {
+        $('html').addClass('is--ie');
     }
 
 	//  GET BROWSER DIMENSIONS
