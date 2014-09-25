@@ -12,7 +12,7 @@ var Navigator = {
     isWhite:            true,
     wasWhite:           true,
     initialized:        false,
-    timeline:           new TimelineMax({ paused: true }),
+    timeline:           new pixGS.TimelineMax({ paused: true }),
 
     initialize: function () {
 
@@ -49,23 +49,23 @@ var Navigator = {
         this.$selected          = $('<div class="navigator__item  navigator__item--selected"><div class="bullet"></div></div>').appendTo($navigator);
         this.$selectedBullet    = this.$selected.find('.bullet');
 
-        this.timeline.add(TweenMax.to(that.$selectedBullet, 0, {}));
+        this.timeline.add(pixGS.TweenMax.to(that.$selectedBullet, 0, {}));
 
-        this.timeline.add(TweenMax.to(that.$selectedBullet, 0.1, {
+        this.timeline.add(pixGS.TweenMax.to(that.$selectedBullet, 0.1, {
             'border-top-left-radius': 20,
             'border-top-right-radius': 20,
             'scaleY': 2,
             'scaleX': 0.6
         }));
 
-        this.timeline.add(TweenMax.to(that.$selectedBullet, 0.1, {
+        this.timeline.add(pixGS.TweenMax.to(that.$selectedBullet, 0.1, {
             'border-top-left-radius': 50,
             'border-top-right-radius': 50,
             'scaleY': 1,
             'scaleX': 1
         }));
 
-        this.timeline.add(TweenMax.to(that.$selectedBullet, 0, {
+        this.timeline.add(pixGS.TweenMax.to(that.$selectedBullet, 0, {
             'scale': 1.2
         }));
 
@@ -85,14 +85,14 @@ var Navigator = {
             }
 
             setTimeout(function () {
-                TweenMax.fromTo($obj, 1, {opacity: 0, scale: 0.7}, {opacity: 1.25, scale: 1, ease: Elastic.easeOut});
+                pixGS.TweenMax.fromTo($obj, 1, {opacity: 0, scale: 0.7}, {opacity: 1.25, scale: 1, ease: pixGS.Elastic.easeOut});
             }, stagger);
         });
 
         if($navigator.hasClass('navigator--transparent'))
-            TweenMax.to($navigator, 2, {opacity: .2 });
+            pixGS.TweenMax.to($navigator, 2, {opacity: .2 });
         else
-            TweenMax.to($navigator, .3, {opacity: 1 });
+            pixGS.TweenMax.to($navigator, .3, {opacity: 1 });
     },
 
     update: function () {
@@ -128,7 +128,7 @@ var Navigator = {
         // then move it accordingly and update state
         if (this.lastSelected != this.currentSelected) {
             this.lastSelected = this.currentSelected;
-            TweenMax.to(this.$selected, 0.3, {top: 24 * that.currentSelected});
+            pixGS.TweenMax.to(this.$selected, 0.3, {top: 24 * that.currentSelected});
             that.timeline.tweenFromTo(0, 0.3);
 //            that.timeline.play();
         }

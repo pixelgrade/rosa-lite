@@ -20,6 +20,12 @@
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+	<![if IE]>
+	<script type='text/javascript'>
+		if(/*@cc_on!@*/false)
+			var is_ie = 1;
+	</script>
+	<![endif]>
 	<?php
 	/**
 	 * One does not simply remove this and walk away alive!

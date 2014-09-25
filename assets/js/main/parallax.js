@@ -66,18 +66,18 @@ var Parallax = {
                     });
 
                     // fade image in
-                    TweenMax.to($image, 0.5, {opacity: 1});
+                    pixGS.TweenMax.to($image, 0.5, {opacity: 1});
                 });
             }
 
-            var timeline = new TimelineMax({ paused: true });
+            var timeline = new pixGS.TimelineMax({ paused: true });
 
             // create timeline for current image
-            timeline.append(TweenMax.fromTo($parallax, 1, {
+            timeline.append(pixGS.TweenMax.fromTo($parallax, 1, {
                 y: initialTop
             }, {
                 y: finalTop,
-                ease: Linear.easeNone
+                ease: pixGS.Linear.easeNone
             }));
 
             parallaxInfo.timeline = timeline;

@@ -81,18 +81,12 @@ var globalDebug = false,
 		phone = (isiPhone > -1 || isiPod > -1 || isAndroidPhone > -1) ? true : false;
 		touch = $.support.touch ? true : false;
 		ltie9 = $.support.leadingWhitespace ? false : true;
-		lteie9 = typeof window.atob === 'undefined' ? true : false;
 
 		var $bod = $('body');
 
-
 		if (touch) $('html').addClass('touch');
-
 		if (ieMobile) $('html').addClass('is--winmob');
 		if (is_android) $('html').addClass('is--ancient-android');
-
-		if (lteie9) $('html').addClass('lteie9');
-
 		if (safari) $bod.addClass('safari');
 		if (phone) $bod.addClass('phone');
 
@@ -370,7 +364,7 @@ function hoverArrow($arrow){
         var $arrowIcn = $arrow.find('.rsArrowIcn');
 
         $loop = setInterval(function(){
-            TweenMax.to($arrowIcn, 0, {x: $mouseX, y: $mouseY, z: 0.01});
+            pixGS.TweenMax.to($arrowIcn, 0, {x: $mouseX, y: $mouseY, z: 0.01});
         }, 10);
 
 
@@ -591,18 +585,18 @@ var Parallax = {
                     });
 
                     // fade image in
-                    TweenMax.to($image, 0.5, {opacity: 1});
+                    pixGS.TweenMax.to($image, 0.5, {opacity: 1});
                 });
             }
 
-            var timeline = new TimelineMax({ paused: true });
+            var timeline = new pixGS.TimelineMax({ paused: true });
 
             // create timeline for current image
-            timeline.append(TweenMax.fromTo($parallax, 1, {
+            timeline.append(pixGS.TweenMax.fromTo($parallax, 1, {
                 y: initialTop
             }, {
                 y: finalTop,
-                ease: Linear.easeNone
+                ease: pixGS.Linear.easeNone
             }));
 
             parallaxInfo.timeline = timeline;
@@ -667,7 +661,7 @@ var DownArrow = {
 
         this.start      = 0;
         this.end        = this.start + 300;
-        this.timeline   = new TimelineMax({ paused: true });
+        this.timeline   = new pixGS.TimelineMax({ paused: true });
         this.$next      = this.$arrow.closest('.article__header').nextAll('.article__header, .article--page').first();
 
         if (!empty(this.$next)) {
@@ -677,11 +671,11 @@ var DownArrow = {
 
 
         if (this.$arrow.hasClass('down-arrow--bubble')) {
-            this.timeline.to(this.$arrow, .2, {y: 10, opacity: 0, ease: Linear.easeNone, overwrite: "none"});
-            this.timeline.to('.blurp--top', .3, {scaleY: 0, ease: Linear.easeNone, overwrite: "none"});
+            this.timeline.to(this.$arrow, .2, {y: 10, opacity: 0, ease: pixGS.Linear.easeNone, overwrite: "none"});
+            this.timeline.to('.blurp--top', .3, {scaleY: 0, ease: pixGS.Linear.easeNone, overwrite: "none"});
             this.bubble = true;
         } else {
-            this.timeline.to(this.$arrow, 1, {y: 100, opacity: 0, ease: Linear.easeNone, overwrite: "none"});
+            this.timeline.to(this.$arrow, 1, {y: 100, opacity: 0, ease: pixGS.Linear.easeNone, overwrite: "none"});
         }
 
         this.$arrow.on('click', function (e) {
@@ -736,7 +730,7 @@ var ScrollToTop = {
         this.offsetTop  = this.$button.offset().top;
         this.start      = this.offsetTop - windowHeight + footerHeight * 3/4;
         this.end        = this.start + windowHeight;
-        this.timeline   = new TimelineMax({ paused: true });
+        this.timeline   = new pixGS.TimelineMax({ paused: true });
 
         this.timeline.fromTo('.blurp--bottom', .6, {
             y:          40,
@@ -744,7 +738,7 @@ var ScrollToTop = {
         }, {
             y:          0,
             scale:      1,
-            ease:       Power3.easeOut,
+            ease:       pixGS.Power3.easeOut,
             force3D:    true
 
         });
@@ -756,7 +750,7 @@ var ScrollToTop = {
             y: 0,
             scale: 1,
             opacity: 1,
-            ease: Back.easeOut
+            ease: pixGS.Back.easeOut
         }, '-=0.1');
 
         this.timeline.fromTo($('.btn__arrow--bottom'),.4, {
@@ -766,7 +760,7 @@ var ScrollToTop = {
             y: 0,
             scale: 1,
             opacity: 1,
-            ease: Back.easeOut
+            ease: pixGS.Back.easeOut
         }, '-=0.25');
 
         this.$button.on('click', function (e) {
@@ -824,7 +818,7 @@ var CoverAnimation = {
 
             var $header         = $(header),
                 $headline       = $header.find('.article__headline'),
-                timeline        = new TimelineMax(),
+                timeline        = new pixGS.TimelineMax(),
                 $title          = $headline.find('.headline__primary'),
                 $subtitle       = $headline.find('.headline__secondary'),
                 $description    = $headline.find('.headline__description'),
@@ -843,33 +837,33 @@ var CoverAnimation = {
 
             // ------ A
 
-            timeline.fromTo($title, 0.72, {'letter-spacing': '1em', 'margin-right': '-0.9em'}, {'letter-spacing': '0.2em', 'margin-right': '-0.1em', ease: Expo.easeOut});
-            timeline.fromTo($title, 0.89, {opacity: 0}, {opacity: 1, ease: Expo.easeOut}, '-=0.72');
-            timeline.fromTo($title, 1, {'y': 30}, {'y': 0, ease: Expo.easeOut}, '-=0.89');
-            timeline.fromTo($subtitle, 0.65, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.65');
-            timeline.fromTo($subtitle, 0.9, {y: 30}, {y: 0, ease: Quint.easeOut}, '-=0.65');
-            timeline.fromTo($star, 0.15, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.6');
-            timeline.fromTo($star, 0.55, {rotation: -270}, {rotation: 0, ease: Back.easeOut}, '-=0.5');
-            timeline.fromTo($lines, 0.6, {width: 0}, {width: '42%', opacity: 1, ease: Quint.easeOut}, '-=0.55');
-            timeline.fromTo($hr, 0.6, {width: 0}, {width: '100%', opacity: 1, ease: Quint.easeOut}, '-=0.6');
-            timeline.fromTo($arrows, 0.2, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.27');
-            timeline.fromTo($description, 0.5, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.28');
+            timeline.fromTo($title, 0.72, {'letter-spacing': '1em', 'margin-right': '-0.9em'}, {'letter-spacing': '0.2em', 'margin-right': '-0.1em', ease: pixGS.Expo.easeOut});
+            timeline.fromTo($title, 0.89, {opacity: 0}, {opacity: 1, ease: pixGS.Expo.easeOut}, '-=0.72');
+            timeline.fromTo($title, 1, {'y': 30}, {'y': 0, ease: pixGS.Expo.easeOut}, '-=0.89');
+            timeline.fromTo($subtitle, 0.65, {opacity: 0}, {opacity: 1, ease: pixGS.Quint.easeOut}, '-=0.65');
+            timeline.fromTo($subtitle, 0.9, {y: 30}, {y: 0, ease: pixGS.Quint.easeOut}, '-=0.65');
+            timeline.fromTo($star, 0.15, {opacity: 0}, {opacity: 1, ease: pixGS.Quint.easeOut}, '-=0.6');
+            timeline.fromTo($star, 0.55, {rotation: -270}, {rotation: 0, ease: pixGS.Back.easeOut}, '-=0.5');
+            timeline.fromTo($lines, 0.6, {width: 0}, {width: '42%', opacity: 1, ease: pixGS.Quint.easeOut}, '-=0.55');
+            timeline.fromTo($hr, 0.6, {width: 0}, {width: '100%', opacity: 1, ease: pixGS.Quint.easeOut}, '-=0.6');
+            timeline.fromTo($arrows, 0.2, {opacity: 0}, {opacity: 1, ease: pixGS.Quint.easeOut}, '-=0.27');
+            timeline.fromTo($description, 0.5, {opacity: 0}, {opacity: 1, ease: pixGS.Quint.easeOut}, '-=0.28');
             timeline.fromTo($description, 0.75, {y: -20}, {y: 0}, '-=0.5');
 
             // ------ B
             timeline.addLabel("animatedIn");
 
             if (i == 0) {
-                timeline.to($headline, 1.08, {y: 150, ease: Linear.easeNone});
-                timeline.to($title, 1.08, {opacity: 0, y: -60, ease: Quad.easeIn}, '-=1.08');
+                timeline.to($headline, 1.08, {y: 150, ease: pixGS.Linear.easeNone});
+                timeline.to($title, 1.08, {opacity: 0, y: -60, ease: pixGS.Quad.easeIn}, '-=1.08');
             } else {
-                timeline.to($title, 1.08, {opacity: 0, y: -60, ease: Quad.easeIn});
+                timeline.to($title, 1.08, {opacity: 0, y: -60, ease: pixGS.Quad.easeIn});
             }
 
-            timeline.to($description, 1.08, {y: 60, opacity: 0, ease: Quad.easeIn}, '-=1.08');
-            timeline.to($subtitle, 1.08, {opacity: 0, y: -90, ease: Quad.easeIn}, '-=1.08');
-            timeline.to($lines, 0.86, {width: 0, opacity: 0, ease: Quad.easeIn}, '-=0.94');
-            timeline.to($hr, 0.86, {width: 0, opacity: 0, ease: Quad.easeIn}, '-=0.86');
+            timeline.to($description, 1.08, {y: 60, opacity: 0, ease: pixGS.Quad.easeIn}, '-=1.08');
+            timeline.to($subtitle, 1.08, {opacity: 0, y: -90, ease: pixGS.Quad.easeIn}, '-=1.08');
+            timeline.to($lines, 0.86, {width: 0, opacity: 0, ease: pixGS.Quad.easeIn}, '-=0.94');
+            timeline.to($hr, 0.86, {width: 0, opacity: 0, ease: pixGS.Quad.easeIn}, '-=0.86');
             timeline.to($star, 1, {rotation: 180}, '-=1.08');
             timeline.to($star, 0.11, {opacity: 0}, '-=0.03');
             timeline.to($arrows, 0.14, {opacity: 0}, '-=1.08');
@@ -982,7 +976,7 @@ var Navigator = {
     isWhite:            true,
     wasWhite:           true,
     initialized:        false,
-    timeline:           new TimelineMax({ paused: true }),
+    timeline:           new pixGS.TimelineMax({ paused: true }),
 
     initialize: function () {
 
@@ -1019,23 +1013,23 @@ var Navigator = {
         this.$selected          = $('<div class="navigator__item  navigator__item--selected"><div class="bullet"></div></div>').appendTo($navigator);
         this.$selectedBullet    = this.$selected.find('.bullet');
 
-        this.timeline.add(TweenMax.to(that.$selectedBullet, 0, {}));
+        this.timeline.add(pixGS.TweenMax.to(that.$selectedBullet, 0, {}));
 
-        this.timeline.add(TweenMax.to(that.$selectedBullet, 0.1, {
+        this.timeline.add(pixGS.TweenMax.to(that.$selectedBullet, 0.1, {
             'border-top-left-radius': 20,
             'border-top-right-radius': 20,
             'scaleY': 2,
             'scaleX': 0.6
         }));
 
-        this.timeline.add(TweenMax.to(that.$selectedBullet, 0.1, {
+        this.timeline.add(pixGS.TweenMax.to(that.$selectedBullet, 0.1, {
             'border-top-left-radius': 50,
             'border-top-right-radius': 50,
             'scaleY': 1,
             'scaleX': 1
         }));
 
-        this.timeline.add(TweenMax.to(that.$selectedBullet, 0, {
+        this.timeline.add(pixGS.TweenMax.to(that.$selectedBullet, 0, {
             'scale': 1.2
         }));
 
@@ -1055,14 +1049,14 @@ var Navigator = {
             }
 
             setTimeout(function () {
-                TweenMax.fromTo($obj, 1, {opacity: 0, scale: 0.7}, {opacity: 1.25, scale: 1, ease: Elastic.easeOut});
+                pixGS.TweenMax.fromTo($obj, 1, {opacity: 0, scale: 0.7}, {opacity: 1.25, scale: 1, ease: pixGS.Elastic.easeOut});
             }, stagger);
         });
 
         if($navigator.hasClass('navigator--transparent'))
-            TweenMax.to($navigator, 2, {opacity: .2 });
+            pixGS.TweenMax.to($navigator, 2, {opacity: .2 });
         else
-            TweenMax.to($navigator, .3, {opacity: 1 });
+            pixGS.TweenMax.to($navigator, .3, {opacity: 1 });
     },
 
     update: function () {
@@ -1098,7 +1092,7 @@ var Navigator = {
         // then move it accordingly and update state
         if (this.lastSelected != this.currentSelected) {
             this.lastSelected = this.currentSelected;
-            TweenMax.to(this.$selected, 0.3, {top: 24 * that.currentSelected});
+            pixGS.TweenMax.to(this.$selected, 0.3, {top: 24 * that.currentSelected});
             that.timeline.tweenFromTo(0, 0.3);
 //            that.timeline.play();
         }
@@ -1127,11 +1121,9 @@ function stickyHeaderInit() {
         offset: offset - headerHeight - 1,
         // animate with GSAP
         onPin: function () {
-//            TweenMax.to($header, 0.1, {top: ''});
         },
         onUnpin: function () {
             if ($('html').hasClass('navigation--is-visible')) {return}
-//            TweenMax.to($header, 0.1, {top: -1 * headerHeight});
         }
     });
 }
@@ -1168,12 +1160,12 @@ function niceScrollInit() {
 
                 event.preventDefault();
 
-                TweenMax.to($window, .6, {
+                pixGS.TweenMax.to($window, .6, {
                     scrollTo: {
                         y:          scrollTo,
                         autoKill:   true
                     },
-                    ease:           Power1.easeOut,	// For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
+                    ease:           pixGS.Power1.easeOut,	// For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
                     autoKill:       true,
                     overwrite:      5
                 });
@@ -1194,23 +1186,29 @@ function smoothScrollTo(y, speed) {
     var distance = Math.abs(latestKnownScrollY - y),
         time     = speed * distance / 2000;
 
-    TweenMax.to($(window), time, {scrollTo: {y: y, autoKill: true, ease: Quint.easeInOut}});
+    pixGS.TweenMax.to($(window), time, {scrollTo: {y: y, autoKill: true, ease: pixGS.Quint.easeInOut}});
 }
 
 
 function menuTrigger(){
 
-    $(document).on('click', '.js-nav-trigger', function(e) {
+    $('.js-nav-trigger').on('click touchstart', function(e) {
 
         e.preventDefault();
         e.stopPropagation();
 
-        if($('html').hasClass('navigation--is-visible')){
+        var $html = $('html');
+
+        if($html.hasClass('navigation--is-visible')){
             $('body').css('overflow', '');
-            $('html').removeClass('navigation--is-visible');
+            $html.removeClass('navigation--is-visible');
         } else {
             $('body').css({'overflow': 'hidden'});
-            $('html').addClass('navigation--is-visible');
+            $html.addClass('navigation--is-visible');
+
+            if ($html.hasClass('is--ancient-android') || $html.hasClass('is--winmob')) {
+                $('.navigation--main').height(windowHeight);
+            }
         }
     });
 }
@@ -1260,6 +1258,10 @@ function init() {
 
 	// /* GLOBAL VARS */
 	touch = false;
+
+    if (typeof (is_ie) !== 'undefined' || (!(window.ActiveXObject) && "ActiveXObject" in window)) {
+        $('html').addClass('is--ie');
+    }
 
 	//  GET BROWSER DIMENSIONS
 	browserSize();
@@ -1410,8 +1412,9 @@ $(window).load(function(){
     ScrollToTop.initialize();
     DownArrow.initialize();
     niceScrollInit();
-    requestTick();
-
+    //if(!$('html').is('.ie9, .lt-ie9') ){
+        requestTick();
+    //}
     // always
     royalSliderInit();
     magnificPopupInit();
@@ -1504,7 +1507,9 @@ function requestTick() {
 
 $(window).on("scroll", function () {
     latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop();
-    requestTick();
+    //if(!$('html').is('.ie9, .lt-ie9') ){
+        requestTick();
+    //}
 });
 
 if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i) && window.innerHeight != document.documentElement.clientHeight) {
@@ -1517,6 +1522,26 @@ if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i) && window.innerHeight != d
     window.addEventListener("orientationchange", fixViewportHeight, false);
     fixViewportHeight();
 }
+
+// smooth scrolling to anchors
+$(function() {
+
+    var $header = $('.site-header'),
+        headerHeight = parseInt($header.outerHeight(), 10);
+
+    $('.site-header a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+                $('html,body').animate({
+                    scrollTop: target.offset().top - headerHeight
+                }, 1000);
+                return false;
+            }
+        }
+    });
+});
 /* --- 404 Page --- */
 gifImages = [
 	"http://i.imgur.com/ShiZM6m.gif",
@@ -1547,7 +1572,40 @@ $(window).keydown(function (e) {
 	}
 })
 /* === Functions that require jQuery but have no place on this Earth, yet === */
+// Adapted from https://gist.github.com/paulirish/1579671 which derived from
+// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+// http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
 
+// requestAnimationFrame polyfill by Erik Möller.
+// Fixes from Paul Irish, Tino Zijdel, Andrew Mao, Klemen Slavič, Darius Bacon
+
+// MIT license
+
+if (!Date.now)
+    Date.now = function() { return new Date().getTime(); };
+
+(function() {
+    'use strict';
+
+    var vendors = ['webkit', 'moz'];
+    for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
+        var vp = vendors[i];
+        window.requestAnimationFrame = window[vp+'RequestAnimationFrame'];
+        window.cancelAnimationFrame = (window[vp+'CancelAnimationFrame']
+        || window[vp+'CancelRequestAnimationFrame']);
+    }
+    if (/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent) // iOS6 is buggy
+        || !window.requestAnimationFrame || !window.cancelAnimationFrame) {
+        var lastTime = 0;
+        window.requestAnimationFrame = function(callback) {
+            var now = Date.now();
+            var nextTime = Math.max(lastTime + 16, now);
+            return setTimeout(function() { callback(lastTime = nextTime); },
+                nextTime - now);
+        };
+        window.cancelAnimationFrame = clearTimeout;
+    }
+}());
 
 //here we change the link of the Edit button in the Admin Bar
 //to make sure it reflects the current page

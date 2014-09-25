@@ -31,12 +31,12 @@ function niceScrollInit() {
 
                 event.preventDefault();
 
-                TweenMax.to($window, .6, {
+                pixGS.TweenMax.to($window, .6, {
                     scrollTo: {
                         y:          scrollTo,
                         autoKill:   true
                     },
-                    ease:           Power1.easeOut,	// For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
+                    ease:           pixGS.Power1.easeOut,	// For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
                     autoKill:       true,
                     overwrite:      5
                 });
@@ -57,23 +57,29 @@ function smoothScrollTo(y, speed) {
     var distance = Math.abs(latestKnownScrollY - y),
         time     = speed * distance / 2000;
 
-    TweenMax.to($(window), time, {scrollTo: {y: y, autoKill: true, ease: Quint.easeInOut}});
+    pixGS.TweenMax.to($(window), time, {scrollTo: {y: y, autoKill: true, ease: pixGS.Quint.easeInOut}});
 }
 
 
 function menuTrigger(){
 
-    $(document).on('click', '.js-nav-trigger', function(e) {
+    $('.js-nav-trigger').on('click touchstart', function(e) {
 
         e.preventDefault();
         e.stopPropagation();
 
-        if($('html').hasClass('navigation--is-visible')){
+        var $html = $('html');
+
+        if($html.hasClass('navigation--is-visible')){
             $('body').css('overflow', '');
-            $('html').removeClass('navigation--is-visible');
+            $html.removeClass('navigation--is-visible');
         } else {
             $('body').css({'overflow': 'hidden'});
-            $('html').addClass('navigation--is-visible');
+            $html.addClass('navigation--is-visible');
+
+            if ($html.hasClass('is--ancient-android') || $html.hasClass('is--winmob')) {
+                $('.navigation--main').height(windowHeight);
+            }
         }
     });
 }
@@ -123,6 +129,10 @@ function init() {
 
 	// /* GLOBAL VARS */
 	touch = false;
+
+    if (typeof (is_ie) !== 'undefined' || (!(window.ActiveXObject) && "ActiveXObject" in window)) {
+        $('html').addClass('is--ie');
+    }
 
 	//  GET BROWSER DIMENSIONS
 	browserSize();
@@ -273,8 +283,9 @@ $(window).load(function(){
     ScrollToTop.initialize();
     DownArrow.initialize();
     niceScrollInit();
-    requestTick();
-
+    //if(!$('html').is('.ie9, .lt-ie9') ){
+        requestTick();
+    //}
     // always
     royalSliderInit();
     magnificPopupInit();
@@ -367,7 +378,9 @@ function requestTick() {
 
 $(window).on("scroll", function () {
     latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop();
-    requestTick();
+    //if(!$('html').is('.ie9, .lt-ie9') ){
+        requestTick();
+    //}
 });
 
 if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i) && window.innerHeight != document.documentElement.clientHeight) {
@@ -380,3 +393,23 @@ if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i) && window.innerHeight != d
     window.addEventListener("orientationchange", fixViewportHeight, false);
     fixViewportHeight();
 }
+
+// smooth scrolling to anchors
+$(function() {
+
+    var $header = $('.site-header'),
+        headerHeight = parseInt($header.outerHeight(), 10);
+
+    $('.site-header a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+                $('html,body').animate({
+                    scrollTop: target.offset().top - headerHeight
+                }, 1000);
+                return false;
+            }
+        }
+    });
+});
