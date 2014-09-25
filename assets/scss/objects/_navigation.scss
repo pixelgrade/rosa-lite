@@ -363,6 +363,10 @@ $nav-width: 200px;
 
 	.is--winmob, .is--ancient-android {
 
+		.site-header {
+			position: absolute;
+		}
+
 		.navigation--main, .site-header, #page {
 			@include transition(none !important);
 		}

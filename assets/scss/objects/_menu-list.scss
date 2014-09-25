@@ -51,7 +51,7 @@
 
 	margin-top: 0;
 	margin-bottom: 0;
-	padding-right: $_3u;
+	padding-right: $_4u;
 
 	background-color: white;
 	text-align: left;
@@ -87,6 +87,7 @@ p.menu-list__item-desc {
 	top: 0;
 	right: 0;
 	z-index: 1;
+	max-width: $_4u;
 
 	background-color: white;
 
@@ -96,19 +97,9 @@ p.menu-list__item-desc {
 
 .menu-list__item-highlight-title{
 	position: absolute;
-
-	@include media-query(palm){
-		top: -21px;
-		left: 0;
-
-		padding: 0 $_u2;
-	}
-	@include media-query(lap-and-up){
-		top: -38px;
-		left: -18px;
-
-		padding: 0 18px;
-	}
+	top: -38px;
+	left: -18px;
+	padding: 0 18px;
 
 
 	font-size: 13px;
@@ -127,29 +118,11 @@ p.menu-list__item-desc {
 	&:before {
 		content: '';
 		position: absolute;
+		top: -18px;
+		left: -18px;
+		right: -18px;
+		bottom: -18px;
 
 		border: 2px solid $accent;
-	}
-
-	@include media-query(palm){
-		padding: $_u2;
-
-		&:before {
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-		}
-	}
-
-	@include media-query(lap-and-up){
-		&:before{
-			top: -18px;
-			left: -18px;
-			right: -18px;
-			bottom: -18px;
-
-			border: 2px solid $accent;
-		}
 	}
 }
