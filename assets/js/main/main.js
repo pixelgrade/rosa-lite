@@ -130,6 +130,10 @@ function init() {
 	// /* GLOBAL VARS */
 	touch = false;
 
+    if (isIE10) {
+        $('body').addClass('.ie10');
+    }
+
 	//  GET BROWSER DIMENSIONS
 	browserSize();
 

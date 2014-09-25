@@ -20,6 +20,14 @@
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+	<script type="text/javascript">
+		var isIE10 = false;
+		/*@cc_on
+		if (/^10/.test(@_jscript_version)) {
+			isIE10 = true;
+		}
+		@*/
+	</script>
 	<?php
 	/**
 	 * One does not simply remove this and walk away alive!
