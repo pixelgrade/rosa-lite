@@ -4,12 +4,15 @@
  *
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
- * @version     1.6.4
+ * @version     2.2.0
+ * @see         woocommerce_breadcrumb()
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
-global $post, $wp_query;
+global $post, $wp_query, $author;
 
 $prepend      = '';
 $permalinks   = get_option( 'woocommerce_permalinks' );
@@ -17,116 +20,202 @@ $shop_page_id = wc_get_page_id( 'shop' );
 $shop_page    = get_post( $shop_page_id );
 
 // If permalinks contain the shop page in the URI prepend the breadcrumb with shop
-if ( $shop_page_id && $shop_page && strstr( $permalinks['product_base'], '/' . $shop_page->post_name ) && get_option( 'page_on_front' ) !== $shop_page_id ) {
-    $prepend = $before . '<a href="' . get_permalink( $shop_page ) . '">' . $shop_page->post_title . '</a> ' . $after . $delimiter;
+if ( $shop_page_id && $shop_page && strstr( $permalinks['product_base'], '/' . $shop_page->post_name ) && get_option( 'page_on_front' ) != $shop_page_id ) {
+	$prepend = $before . '<a href="' . get_permalink( $shop_page ) . '">' . $shop_page->post_title . '</a> ' . $after . $delimiter;
 }
 
-if ( ( ! is_home() && ! is_front_page() && ! ( is_post_type_archive() && get_option( 'page_on_front' ) == wc_get_page_id( 'shop' ) ) ) || is_paged() ) {
+if ( ( ! is_front_page() && ! ( is_post_type_archive() && get_option( 'page_on_front' ) == wc_get_page_id( 'shop' ) ) ) || is_paged() ) {
 
-    echo $wrap_before;
+	echo $wrap_before;
 
-    if ( is_single() && ! is_attachment() ) {
+	if ( ! empty( $home ) ) {
+		echo $before . '<a class="home" href="' . apply_filters( 'woocommerce_breadcrumb_home_url', home_url() ) . '">' . $home . '</a>' . $after . $delimiter;
+	}
 
-        if ( get_post_type() == 'product' ) {
+	if ( is_home() ) {
 
-            echo $prepend;
+		echo $before . single_post_title('', false) . $after;
 
-            if ( $terms = wc_get_product_terms( $post->ID, 'product_cat', array( 'orderby' => 'parent', 'order' => 'DESC' ) ) ) {
+	} elseif ( is_category() ) {
 
-                $main_term = $terms[0];
+		$cat_obj = $wp_query->get_queried_object();
+		$this_category = get_category( $cat_obj->term_id );
 
-                $ancestors = get_ancestors( $main_term->term_id, 'product_cat' );
+		if ( 0 != $this_category->parent ) {
+			$parent_category = get_category( $this_category->parent );
+			if ( ( $parents = get_category_parents( $parent_category, TRUE, $after . $delimiter . $before ) ) && ! is_wp_error( $parents ) ) {
+				echo $before . rtrim( $parents, $after . $delimiter . $before ) . $after . $delimiter;
+			}
+		}
 
-                $ancestors = array_reverse( $ancestors );
+		echo $before . single_cat_title( '', false ) . $after;
 
-                foreach ( $ancestors as $ancestor ) {
-                    $ancestor = get_term( $ancestor, 'product_cat' );
+	} elseif ( is_tax( 'product_cat' ) ) {
 
-                    if ( ! is_wp_error( $ancestor ) && $ancestor )
-                        echo $before . '<a href="' . get_term_link( $ancestor->slug, 'product_cat' ) . '">' . $ancestor->name . '</a>' . $after . $delimiter;
-                }
+		echo $prepend;
 
-                echo $before . '<a href="' . get_term_link( $main_term->slug, 'product_cat' ) . '">' . $main_term->name . '</a>' . $after . $delimiter;
+		$current_term = $wp_query->get_queried_object();
 
-            }
+		$ancestors = array_reverse( get_ancestors( $current_term->term_id, 'product_cat' ) );
 
-            echo $before . get_the_title() . $after;
+		foreach ( $ancestors as $ancestor ) {
+			$ancestor = get_term( $ancestor, 'product_cat' );
 
-        } elseif ( get_post_type() != 'post' ) {
+			echo $before .  '<a href="' . get_term_link( $ancestor ) . '">' . esc_html( $ancestor->name ) . '</a>' . $after . $delimiter;
+		}
 
-            $post_type = get_post_type_object( get_post_type() );
-            $slug = $post_type->rewrite;
-            echo $before . '<a href="' . get_post_type_archive_link( get_post_type() ) . '">' . $post_type->labels->singular_name . '</a>' . $after . $delimiter;
-            echo $before . get_the_title() . $after;
+		echo $before . esc_html( $current_term->name ) . $after;
 
-        } else {
+	} elseif ( is_tax( 'product_tag' ) ) {
 
-            $cat = current( get_the_category() );
-            echo get_category_parents( $cat, true, $delimiter );
-            echo $before . get_the_title() . $after;
+		$queried_object = $wp_query->get_queried_object();
+		echo $prepend . $before . __( 'Products tagged &ldquo;', 'woocommerce' ) . $queried_object->name . '&rdquo;' . $after;
 
-        }
+	} elseif ( is_day() ) {
 
-    } elseif ( is_404() ) {
+		echo $before . '<a href="' . get_year_link( get_the_time( 'Y' ) ) . '">' . get_the_time( 'Y' ) . '</a>' . $after . $delimiter;
+		echo $before . '<a href="' . get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) . '">' . get_the_time( 'F' ) . '</a>' . $after . $delimiter;
+		echo $before . get_the_time( 'd' ) . $after;
 
-        echo $before . __( 'Error 404', 'woocommerce' ) . $after;
+	} elseif ( is_month() ) {
 
-    } elseif ( ! is_single() && ! is_page() && get_post_type() != 'post' ) {
+		echo $before . '<a href="' . get_year_link( get_the_time( 'Y' ) ) . '">' . get_the_time( 'Y' ) . '</a>' . $after . $delimiter;
+		echo $before . get_the_time( 'F' ) . $after;
 
-        $post_type = get_post_type_object( get_post_type() );
+	} elseif ( is_year() ) {
 
-        if ( $post_type )
-            echo $before . $post_type->labels->singular_name . $after;
+		echo $before . get_the_time( 'Y' ) . $after;
 
-    } elseif ( is_attachment() ) {
+	} elseif ( is_post_type_archive( 'product' ) && get_option( 'page_on_front' ) !== $shop_page_id ) {
 
-        $parent = get_post( $post->post_parent );
-        $cat = get_the_category( $parent->ID );
-        $cat = $cat[0];
-        echo get_category_parents( $cat, true, '' . $delimiter );
-        echo $before . '<a href="' . get_permalink( $parent ) . '">' . $parent->post_title . '</a>' . $after . $delimiter;
-        echo $before . get_the_title() . $after;
+		$_name = wc_get_page_id( 'shop' ) ? get_the_title( wc_get_page_id( 'shop' ) ) : '';
 
-    } elseif ( is_page() && !$post->post_parent ) {
+		if ( ! $_name ) {
+			$product_post_type = get_post_type_object( 'product' );
+			$_name = $product_post_type->labels->singular_name;
+		}
 
-        echo $before . get_the_title() . $after;
+		if ( is_search() ) {
 
-    } elseif ( is_page() && $post->post_parent ) {
+			echo $before . '<a href="' . get_post_type_archive_link( 'product' ) . '">' . $_name . '</a>' . $delimiter . __( 'Search results for &ldquo;', 'woocommerce' ) . get_search_query() . '&rdquo;' . $after;
 
-        $parent_id  = $post->post_parent;
-        $breadcrumbs = array();
+		} elseif ( is_paged() ) {
 
-        while ( $parent_id ) {
-            $page = get_page( $parent_id );
-            $breadcrumbs[] = '<a href="' . get_permalink($page->ID) . '">' . get_the_title( $page->ID ) . '</a>';
-            $parent_id  = $page->post_parent;
-        }
+			echo $before . '<a href="' . get_post_type_archive_link( 'product' ) . '">' . $_name . '</a>' . $after;
 
-        $breadcrumbs = array_reverse( $breadcrumbs );
+		} else {
 
-        foreach ( $breadcrumbs as $crumb )
-            echo $crumb . '' . $delimiter;
+			echo $before . $_name . $after;
 
-        echo $before . get_the_title() . $after;
+		}
 
-    } elseif ( is_search() ) {
+	} elseif ( is_single() && ! is_attachment() ) {
 
-        echo $before . __( 'Search results for &ldquo;', 'woocommerce' ) . get_search_query() . '&rdquo;' . $after;
+		if ( 'product' == get_post_type() ) {
 
-    } elseif ( is_tag() ) {
+			echo $prepend;
 
-        echo $before . __( 'Posts tagged &ldquo;', 'woocommerce' ) . single_tag_title('', false) . '&rdquo;' . $after;
+			if ( $terms = wc_get_product_terms( $post->ID, 'product_cat', array( 'orderby' => 'parent', 'order' => 'DESC' ) ) ) {
+				$main_term = $terms[0];
+				$ancestors = get_ancestors( $main_term->term_id, 'product_cat' );
+				$ancestors = array_reverse( $ancestors );
 
-    } elseif ( is_author() ) {
+				foreach ( $ancestors as $ancestor ) {
+					$ancestor = get_term( $ancestor, 'product_cat' );
 
-        $userdata = get_userdata($author);
-        echo $before . __( 'Author:', 'woocommerce' ) . ' ' . $userdata->display_name . $after;
+					if ( ! is_wp_error( $ancestor ) && $ancestor ) {
+						echo $before . '<a href="' . get_term_link( $ancestor ) . '">' . $ancestor->name . '</a>' . $after . $delimiter;
+					}
+				}
 
-    }
+				echo $before . '<a href="' . get_term_link( $main_term ) . '">' . $main_term->name . '</a>' . $after . $delimiter;
 
-    if ( get_query_var( 'paged' ) )
-        echo ' (' . __( 'Page', 'woocommerce' ) . ' ' . get_query_var( 'paged' ) . ')';
+			}
 
-    echo $wrap_after;
+			echo $before . get_the_title() . $after;
+
+		} elseif ( 'post' != get_post_type() ) {
+
+			$post_type = get_post_type_object( get_post_type() );
+			$slug = $post_type->rewrite;
+			echo $before . '<a href="' . get_post_type_archive_link( get_post_type() ) . '">' . $post_type->labels->singular_name . '</a>' . $after . $delimiter;
+			echo $before . get_the_title() . $after;
+
+		} else {
+
+			$cat = current( get_the_category() );
+			if ( ( $parents = get_category_parents( $cat, TRUE, $after . $delimiter . $before ) ) && ! is_wp_error( $parents ) ) {
+				echo $before . rtrim( $parents, $after . $delimiter . $before ) . $after . $delimiter;
+			}
+			echo $before . get_the_title() . $after;
+
+		}
+
+	} elseif ( is_404() ) {
+
+		echo $before . __( 'Error 404', 'woocommerce' ) . $after;
+
+	} elseif ( ! is_single() && ! is_page() && get_post_type() != 'post' ) {
+
+		$post_type = get_post_type_object( get_post_type() );
+
+		if ( $post_type ) {
+			echo $before . $post_type->labels->singular_name . $after;
+		}
+
+	} elseif ( is_attachment() ) {
+
+		$parent = get_post( $post->post_parent );
+		$cat = get_the_category( $parent->ID );
+		$cat = $cat[0];
+		if ( ( $parents = get_category_parents( $cat, TRUE, $after . $delimiter . $before ) ) && ! is_wp_error( $parents ) ) {
+			echo $before . rtrim( $parents, $after . $delimiter . $before ) . $after . $delimiter;
+		}
+		echo $before . '<a href="' . get_permalink( $parent ) . '">' . $parent->post_title . '</a>' . $after . $delimiter;
+		echo $before . get_the_title() . $after;
+
+	} elseif ( is_page() && ! $post->post_parent ) {
+
+		echo $before . get_the_title() . $after;
+
+	} elseif ( is_page() && $post->post_parent ) {
+
+		$parent_id  = $post->post_parent;
+		$breadcrumbs = array();
+
+		while ( $parent_id ) {
+			$page          = get_page( $parent_id );
+			$breadcrumbs[] = '<a href="' . get_permalink( $page->ID ) . '">' . get_the_title( $page->ID ) . '</a>';
+			$parent_id     = $page->post_parent;
+		}
+
+		$breadcrumbs = array_reverse( $breadcrumbs );
+
+		foreach ( $breadcrumbs as $crumb ) {
+			echo $before . $crumb . $after . $delimiter;
+		}
+
+		echo $before . get_the_title() . $after;
+
+	} elseif ( is_search() ) {
+
+		echo $before . __( 'Search results for &ldquo;', 'woocommerce' ) . get_search_query() . '&rdquo;' . $after;
+
+	} elseif ( is_tag() ) {
+
+		echo $before . __( 'Posts tagged &ldquo;', 'woocommerce' ) . single_tag_title( '', false ) . '&rdquo;' . $after;
+
+	} elseif ( is_author() ) {
+
+		$userdata = get_userdata( $author );
+		echo $before . __( 'Author:', 'woocommerce' ) . ' ' . $userdata->display_name . $after;
+
+	}
+
+	if ( get_query_var( 'paged' ) ) {
+		echo ' (' . __( 'Page', 'woocommerce' ) . ' ' . get_query_var( 'paged' ) . ')';
+	}
+
+	echo $wrap_after;
 
 }
