@@ -583,7 +583,7 @@
 			if ($tab.outerHeight() < sidebarHeight) {
 				$('.redux-main').height(sidebarHeight);
 			}
-		}, 200)
+		}, 500)
 	});
 
 
