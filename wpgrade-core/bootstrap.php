@@ -9,7 +9,10 @@ if ( ! defined( 'EXT' ) ) {
 	define( 'EXT', '.php' );
 }
 
+do_action('before_wpgrade_core');
+
 $basepath = dirname( __FILE__ ) . DIRECTORY_SEPARATOR;
+
 require $basepath . 'wpgrade' . EXT;
 
 // Setup translations
@@ -88,3 +91,5 @@ if ( is_admin() && basename( $_SERVER["PHP_SELF"] ) != 'update-core.php' ) {
 add_filter( 'upload_mimes', 'wpgrade_callback_custom_upload_mimes' );
 // remove the first gallery shortcode from the content
 add_filter( 'the_content', 'wpgrade_callback_gallery_slideshow_filter' );
+
+do_action('after_wpgrade_core');
