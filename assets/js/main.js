@@ -213,12 +213,6 @@ function sliderInit($slider) {
         is_headerSlider = $slider.hasClass('header--slideshow') ? true : false,
         hoverArrows = typeof $slider.data('hoverarrows') !== "undefined";
 
-	if (rs_autoheight) {
-		rs_autoScaleSlider = false
-	} else {
-		rs_autoScaleSlider = true
-	}
-
 	// Single slide case
 	if ($children.length == 1) {
 		rs_arrows = false;
@@ -256,7 +250,7 @@ function sliderInit($slider) {
 			delay: rs_delay
 		},
 		globalCaption: rs_globalCaption,
-		numImagesToPreload: 2
+		numImagesToPreload: 4
 	};
 
 	if (rs_visibleNearby) {

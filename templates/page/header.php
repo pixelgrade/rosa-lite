@@ -108,7 +108,6 @@ if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
 					</div>
 				<?php } ?>
 				<div class="article__parallax  header--slideshow  js-pixslider"
-					data-autoHeight
 					data-imagealigncenter
 					data-imagescale="<?php echo $image_scale_mode; ?>"
 					data-slidertransition="<?php echo $slider_transition; ?>"
