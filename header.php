@@ -23,7 +23,7 @@
 	<![if IE]>
 	<script type='text/javascript'>
 		if(/*@cc_on!@*/false)
-			var is_ie = 1;
+			var isIe = 1;
 	</script>
 	<![endif]>
 	<?php

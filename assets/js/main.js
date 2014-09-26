@@ -101,6 +101,9 @@ function magnificPopupInit() {
 
 	$('.js-post-gallery').each(function () { // the containers for all your galleries should have the class gallery
 		$(this).magnificPopup({
+			tPrev: objectl10n.tPrev,
+			tNext: objectl10n.tNext,
+			tCounter: objectl10n.tCounter,
 			delegate: 'a[href$=".jpg"], a[href$=".jpeg"], a[href$=".png"], a[href$=".gif"]', // the container for each your gallery items
 			type: 'image',
 			closeOnContentClick: false,
@@ -207,12 +210,6 @@ function sliderInit($slider) {
         is_headerSlider = $slider.hasClass('header--slideshow') ? true : false,
         hoverArrows = typeof $slider.data('hoverarrows') !== "undefined";
 
-	if (rs_autoheight) {
-		rs_autoScaleSlider = false
-	} else {
-		rs_autoScaleSlider = true
-	}
-
 	// Single slide case
 	if ($children.length == 1) {
 		rs_arrows = false;
@@ -250,7 +247,7 @@ function sliderInit($slider) {
 			delay: rs_delay
 		},
 		globalCaption: rs_globalCaption,
-		numImagesToPreload: 2
+		numImagesToPreload: 4
 	};
 
 	if (rs_visibleNearby) {
@@ -1259,7 +1256,7 @@ function init() {
 	// /* GLOBAL VARS */
 	touch = false;
 
-    if (typeof (is_ie) !== 'undefined' || (!(window.ActiveXObject) && "ActiveXObject" in window)) {
+    if (typeof (isIe) != 'undefined' || (!(window.ActiveXObject) && "ActiveXObject" in window)) {
         $('html').addClass('is--ie');
     }
 
