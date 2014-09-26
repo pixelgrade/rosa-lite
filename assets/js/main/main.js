@@ -77,7 +77,7 @@ function menuTrigger(){
             $('body').css({'overflow': 'hidden'});
             $html.addClass('navigation--is-visible');
 
-            if ($html.hasClass('is--ancient-android') || $html.hasClass('is--winmob')) {
+            if ($html.is('.is--ancient-android, .is--winmob, .is--ie')) {
                 $('.navigation--main').height(windowHeight);
             }
         }

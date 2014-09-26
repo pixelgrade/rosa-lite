@@ -320,7 +320,7 @@ $nav-width: 200px;
 	// I don't wanna be the reason why
 	// Every time I seed this kind of code
 	// I feel I die a little more inside
-	.mobile-ie.navigation--is-visible {
+	.ie--winmob.navigation--is-visible {
 
 		#page {
 			position: fixed;
@@ -363,6 +363,12 @@ $nav-width: 200px;
 
 	.is--winmob, .is--ancient-android, .is--ie {
 
+		.site-header,
+		.navigation--main,
+		#page {
+			@include transform(none !important);
+		}
+
 		.site-header {
 			position: absolute;
 		}
@@ -389,7 +395,7 @@ $nav-width: 200px;
 			}
 
 			.site-header {
-				left: $nav-width;
+				left: 0;
 			}
 		}
 	}
