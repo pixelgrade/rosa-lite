@@ -5,7 +5,7 @@
 		{
 			"repo": "git@github.com:pixelgrade/wpgrade-core.git",
 			"path": "wpgrade-core",
-			"version": "master",
+			"version": "3.6.6",
 			"features": {
 				"src": "features/available",
 				"local": "wpgrade-core/features/enabled",
