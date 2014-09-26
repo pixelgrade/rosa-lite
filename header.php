@@ -20,6 +20,12 @@
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+	<![if IE]>
+	<script type='text/javascript'>
+		if(/*@cc_on!@*/false)
+			var isIe = 1;
+	</script>
+	<![endif]>
 	<?php
 	/**
 	 * One does not simply remove this and walk away alive!
@@ -148,10 +154,10 @@ echo ' ' . $schema_org . ' ' . $data_smoothscrolling . ' ' . $data_main_color ?>
 												<span class="shop-menu-item__price"><?php echo $woocommerce->cart->get_cart_total(); ?></span>
 											</li>
 											<li>
-												<a href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><?php _e( 'View cart', 'woocommerce' ) ?></a>
+												<a href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><?php _e( 'View cart', wpgrade::textdomain() ) ?></a>
 											</li>
 											<li>
-												<a href="<?php echo $woocommerce->cart->get_checkout_url() ?>"><?php _e( 'Checkout', 'woocommerce' ) ?></a>
+												<a href="<?php echo $woocommerce->cart->get_checkout_url() ?>"><?php _e( 'Checkout', wpgrade::textdomain() ) ?></a>
 											</li>
 										</ul>
 									</div>

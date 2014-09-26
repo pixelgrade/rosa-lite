@@ -54,7 +54,7 @@ if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
 		}
 		$classes .= ' ' . $gmap_height;
 		?>
-		<header class="<?php echo $classes ?>">
+		<header id="post-<?php the_ID() ?>-title" class="<?php echo $classes ?>">
 			<div id="gmap"
 				data-url="<?php esc_attr_e( $gmap_url ); ?>" <?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
 				data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>"></div>
@@ -91,7 +91,7 @@ if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
 			if ( $slider_autoplay ) {
 				$slider_delay = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_delay', true );
 			} ?>
-			<header class="<?php echo $classes ?>">
+			<header id="post-<?php the_ID() ?>-title" class="<?php echo $classes ?>">
 				<?php if ( ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) { ?>
 					<div class="flexbox">
 						<div class="flexbox__item">
@@ -175,7 +175,7 @@ if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
 
 	} else { /* OR REGULAR PAGE */
 		if ( has_post_thumbnail() || ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) { ?>
-			<header class="<?php echo $classes ?>" data-type="image">
+			<header id="post-<?php the_ID() ?>-title" class="<?php echo $classes ?>" data-type="image">
 				<?php if ( has_post_thumbnail() ) {
 					$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full-size' );
 					if ( ! empty( $image[0] ) ) { ?>

@@ -354,22 +354,42 @@ $nav-width: 200px;
 	}
 
 
-	.navigation--is-visible{
+	.navigation--is-visible {
 
 		#page {
-//			position: fixed;
 			@include transform(translateX($nav-width));
 		}
+	}
 
-		&.is--winmob, &.is--ancient-android{
+	.is--winmob, .is--ancient-android, .is--ie {
+
+		.site-header {
+			position: absolute;
+		}
+
+		.navigation--main, .site-header, #page {
+			@include transition(none !important);
+		}
+
+		.navigation--main {
+			display: none;
+		}
+
+		&.navigation--is-visible {
 
 			#page {
-				@include transform(translateX(0));
+				@include transform(none);
 				left: $nav-width;
 			}
 
-			.navigation--main{
-				left: 0;
+			.navigation--main {
+				position: absolute;
+				display: block;
+				left: -1 * $nav-width;
+			}
+
+			.site-header {
+				left: $nav-width;
 			}
 		}
 	}
