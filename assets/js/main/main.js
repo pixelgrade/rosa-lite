@@ -63,7 +63,7 @@ function smoothScrollTo(y, speed) {
 
 function menuTrigger(){
 
-    $('.js-nav-trigger').on('click touchstart', function(e) {
+    $('.js-nav-trigger').on('click', function(e) {
 
         e.preventDefault();
         e.stopPropagation();
