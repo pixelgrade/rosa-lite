@@ -165,6 +165,14 @@
 	}
 }
 
+.touch .article__parallax {
+	-webkit-transform: none !important;
+	-moz-transform: none !important;
+	-o-transform: none !important;
+	-ms-transform: none !important;
+	transform: none !important;
+}
+
 .article__parallax--img {
 
 	img {

@@ -13,7 +13,7 @@
 
 .woocommerce div.related.products ul.products{
 	position: relative;
-	z-index: 100;
+	z-index: 50;
 
 	@include media-query(lap-and-up){
 		margin: 0 -1.5%;

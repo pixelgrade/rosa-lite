@@ -354,8 +354,8 @@ function hoverArrow($arrow){
         var $mouseY;
 
         $arrow.mousemove(function(e){
-            $mouseX = e.pageX - $arrow.offset().left;
-            $mouseY = e.pageY - $arrow.offset().top;
+            $mouseX = e.pageX - $arrow.offset().left - 40;
+            $mouseY = e.pageY - $arrow.offset().top - 40;
         });
 
         var $arrowIcn = $arrow.find('.rsArrowIcn');
