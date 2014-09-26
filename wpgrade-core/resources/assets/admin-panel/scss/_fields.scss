@@ -32,7 +32,7 @@
 	textarea,
 	.redux-main textarea {
 		@extend .field;
-        font-size: 1em;
+		font-size: 0.75em;
 
 		&:focus {
 			@extend .field--focus;
@@ -162,7 +162,7 @@ input.regular-text{
 
 .redux-main .redux-container-typography{
 	& {
-		
+
 	}
 
 	label{
@@ -204,7 +204,7 @@ input.regular-text{
 			border-radius: 0;
 
 			max-width: 50px;
-		} 
+		}
 
 		.add-on {
 			padding: 3px 8px;

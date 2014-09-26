@@ -466,7 +466,7 @@
 .redux-container input[type="text"],
 .redux-container textarea,
 .redux-container .redux-main textarea {
-  font-size: 1em; }
+  font-size: 0.75em; }
 .redux-container .select2-container {
   border-radius: 0;
   background: none;

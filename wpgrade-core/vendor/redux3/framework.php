@@ -53,7 +53,7 @@
         include_once( dirname( __FILE__ ) . '/inc/class.redux_functions.php' );
 
         include_once( dirname( __FILE__ ) . '/inc/class.redux_filesystem.php' );
-        
+
         /**
          * Main ReduxFramework class
          *
@@ -173,9 +173,9 @@
 //                        update_option( 'redux_version_upgraded_from', self::$_version );
 //
 //                        set_transient( '_redux_activation_redirect', true, 30 );
-//                    }                    
+//                    }
 //                }
-                
+
                 if ( empty( $this->args['transient_time'] ) ) {
                     $this->args['transient_time'] = 60 * MINUTE_IN_SECONDS;
                 }
@@ -274,7 +274,7 @@
                     // Set the default values
                     $this->_default_cleanup();
 
-                    // Internataionalization 
+                    // Internataionalization
                     $this->_internationalization();
 
                     // Register extra extensions
@@ -566,7 +566,7 @@
              * @return      mixed $default
              */
             public function _get_default( $opt_name, $default = null ) {
-                if ( $this->args['default_show'] == true ) {
+                if ( isset($this->args['default_show']) && $this->args['default_show'] == true ) {
 
                     if ( empty( $this->options_defaults ) ) {
                         $this->_default_values(); // fill cache
@@ -1604,7 +1604,7 @@
                         filemtime( self::$_dir . 'assets/css/color-picker/color-picker.css' ),
                         'all'
                     );
-                    
+
                     wp_enqueue_style( 'color-picker-css' );
 
 
@@ -1761,7 +1761,7 @@
                     $url = $base.urlencode('http://ads.reduxframework.com/api/index.php?js&g&1&v=2').'&proxy='.urlencode($base);
                     $this->localize_data['rAds'] = '<span data-id="1" class="mgv1_1"><script type="text/javascript">(function(){if (mysa_mgv1_1) return; var ma = document.createElement("script"); ma.type = "text/javascript"; ma.async = true; ma.src = "'.$url.'"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ma, s) })();var mysa_mgv1_1=true;</script></span>';
                 }
-                
+
                 $this->localize_data['fieldsHidden'] = $this->fieldsHidden;
                 $this->localize_data['options']      = $this->options;
                 $this->localize_data['defaults']     = $this->options_defaults;

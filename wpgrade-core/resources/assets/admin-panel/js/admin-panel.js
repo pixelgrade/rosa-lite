@@ -440,14 +440,12 @@
 	}
 
 	//Min-height of the container
-
 	var ensure_height_of_container = function () {
 		var min_height = $(window).height() - 32;
 		$('.redux-main').css({'min-height': min_height + 'px'});
 	}
 
 	// set top / bottom of fixed elements
-
 	var top = $('.redux-main').offset().top + 'px';
 
 	function sidebarPlace() {
@@ -591,6 +589,8 @@
 	$(window).resize(function () {
 		sidebarPlace();
 		ensure_height_of_container();
+
+		$('.redux-main').css('height', '');
 	});
 
 

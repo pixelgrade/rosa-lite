@@ -13,8 +13,8 @@ do_action('before_wpgrade_core');
 
 $basepath = dirname( __FILE__ ) . DIRECTORY_SEPARATOR;
 
-require $basepath . 'wpgrade' . EXT;
-
+//require $basepath . 'wpgrade' . EXT;
+get_template_part( 'wpgrade-core/wpgrade' );
 // Setup translations
 // ------------------
 
@@ -63,8 +63,8 @@ require wpgrade::themefilepath( wpgrade::confoption( 'theme-adminpanel-path', 't
 // Hooks
 // -----
 
-require 'hooks' . EXT;
-
+//require 'hooks' . EXT;
+get_template_part( 'wpgrade-core/hooks' );
 
 // Upgrade Notifier
 // ----------------
@@ -82,14 +82,5 @@ if ( is_admin() && basename( $_SERVER["PHP_SELF"] ) != 'update-core.php' ) {
 	add_action( 'admin_bar_menu', 'wpgrade_callback_update_notifier_bar_menu', 1000 );
 	add_action( 'admin_notices', 'wpgrade_callback_update_notifier_update_notice' );
 }
-
-
-// Media Handlers
-// --------------
-
-// make sure that WordPress allows the upload of our used mime types
-add_filter( 'upload_mimes', 'wpgrade_callback_custom_upload_mimes' );
-// remove the first gallery shortcode from the content
-add_filter( 'the_content', 'wpgrade_callback_gallery_slideshow_filter' );
 
 do_action('after_wpgrade_core');
