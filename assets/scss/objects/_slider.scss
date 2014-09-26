@@ -44,7 +44,7 @@
 .slider-arrows-header.arrows--hover{
 	.rsArrow{
 		cursor: none;
-		
+
 		width: 40%;
 		height: 70%;
 
@@ -52,7 +52,7 @@
 
 		background: transparent;
 
-		@include transform(none);
+		transform: none;
 	}
 
 	.rsArrowIcn{
@@ -60,11 +60,11 @@
 		top: 0;
 		left: 0;
 
-		display: none;
-		@include transition(opacity .3s linear);
+		opacity: 0;
+		transition: opacity .1s linear;
 	}
 
 	.visible .rsArrowIcn{
-		display: block;
+		opacity: 1;
 	}
 }

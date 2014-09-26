@@ -25,18 +25,18 @@ html .woocommerce ul.products {
 
 	text-align: center;
 
-	@media screen and (max-width: 480px){
-		width: 100%;
-	}
-
-	@media screen and (min-width: 481px){
+//	@media screen and (max-width: 480px){
+//		width: 100%;
+//	}
+//
+//	@media screen and (min-width: 481px){
 		margin: 0 1.5%;
 		margin-bottom: 78px;
-	}
+//	}
 
-	@media screen and (min-width: 481px) and (max-width: 768px){
+//	@media screen and (min-width: 481px) and (max-width: 768px){
 		width: 46% !important;
-	}
+//	}
 
 	@media screen and (min-width: 769px){
 		width: 30% !important;
@@ -157,6 +157,14 @@ html .woocommerce ul.products {
 }
 
 .shop-categories{
+	.woocommerce-page.archive &{
+		margin-top: 3*$_u;
+	}
+
+	.woocommerce-page.post-type-archive-product &{
+		margin-top: 0;
+	}
+
 	&.tabs__nav  {
 		margin-bottom: 70px;
 		margin-top: -12px;
@@ -172,5 +180,10 @@ html .woocommerce ul.products {
 			color: $accent;
 			border-bottom: 3px solid $accent;
 		}
+
+		@media screen and (max-width: 769px){
+			@include font-size(16px);
+		}
 	}
+
 }
