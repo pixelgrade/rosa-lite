@@ -1534,5 +1534,14 @@
 	content: '\e868';
 }
 
-/* '' */
+// Extra Icons from FontAwesome
+.icon-e-foursquare:before {
+	font-family: FontAwesome;
+	content: "\f180";
+}
+
+.icon-e-yelp:before {
+	font-family: FontAwesome;
+	content: "\f1e9";
+}
 
