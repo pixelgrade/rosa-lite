@@ -398,18 +398,32 @@ if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i) && window.innerHeight != d
 $(function() {
 
     var $header = $('.site-header'),
-        headerHeight = parseInt($header.outerHeight(), 10);
+        headerHeight = parseInt($header.outerHeight(), 10),
+        $html = $('html');
 
     $('.site-header a[href*=#]:not([href=#])').click(function() {
+
+        var timeout = 0;
+
+        if ($html.hasClass('navigation--is-visible')) {
+            $('body').css('overflow', '');
+            $html.removeClass('navigation--is-visible');
+            timeout = 600;
+        }
+
+
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
             var target = $(this.hash);
             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
             if (target.length) {
-                $('html,body').animate({
-                    scrollTop: target.offset().top - headerHeight
-                }, 1000);
+                setTimeout(function () {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top - headerHeight
+                    }, 1000);
+                }, timeout);
                 return false;
             }
         }
+
     });
 });
