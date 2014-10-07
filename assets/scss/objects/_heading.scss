@@ -49,6 +49,13 @@
 	margin: 0;
 	letter-spacing: 0.2em;
 	margin-right: -0.1em;
+
+	-ms-word-break: break-all;
+	word-break: break-all;
+
+	@include media-query(palm){
+		font-size: 20px;
+	}
 }
 
 .headline__secondary {
@@ -62,12 +69,19 @@
 	letter-spacing: 0;
 	text-transform: none;
 
-//	@include media-query(lap-and-up){
-		padding: 0 72px;
-		margin: 0 -72px;
-//	}
+	-ms-word-break: break-all;
+	word-break: break-all;
+
+	padding: 0 72px;
+	margin: 0 -72px;
 
 	color: $accent;
+
+	@include media-query(palm){
+		font-size: 75px;
+		margin: 0 -36px;
+		line-height: 0.75;
+	}
 
 	.first-letter {
 		position:relative;
