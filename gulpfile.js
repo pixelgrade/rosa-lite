@@ -117,12 +117,12 @@ gulp.task('browser-sync', ['watch'], function () {
 gulp.task('scripts-compressed', function () {
 	gulp.src('./assets/js/plugins/*.js')
 		.pipe(concat('plugins.js'))
-		.pipe(uglify({outSourceMap: true}))
+		.pipe(uglify({outSourceMap: false}))
 		.pipe(gulp.dest('./assets/js/'));
 
 	return gulp.src(jsFiles)
 		.pipe(concat('main.js'))
-		.pipe(uglify({outSourceMap: true}))
+		.pipe(uglify({outSourceMap: false}))
 		.pipe(gulp.dest('./assets/js/'))
 		.pipe(notify({message: 'Scripts task complete'}));
 });
