@@ -279,15 +279,21 @@ $(window).load(function(){
             CoverAnimation.initialize();
         }, 400);
     }
-    Navigator.initialize();
-    ScrollToTop.initialize();
-    DownArrow.initialize();
     niceScrollInit();
     //if(!$('html').is('.ie9, .lt-ie9') ){
         requestTick();
     //}
     // always
     royalSliderInit();
+
+    if ($('.js-pixslider').length) {
+        var slider = $('.js-pixslider').data('royalSlider');
+
+        slider.ev.on('rsAfterInit rsAfterContentSet rsAfterSlideChange', function () {
+            ScrollToTop.initialize();
+        });
+    }
+
     magnificPopupInit();
     initVideos();
     resizeVideos();
@@ -305,8 +311,13 @@ $(window).load(function(){
         picker.setDate(moment().format('MM/DD/YYYY'));
     }
 
-	$('.pixcode--tabs').organicTabs();
+    $('.pixcode--tabs').organicTabs();
+    DownArrow.initialize();
 
+    setTimeout(function () {
+        Navigator.initialize();
+        ScrollToTop.initialize();
+    }, 60);
 });
 
 
@@ -339,6 +350,7 @@ $(window).on("debouncedresize", function(e) {
 
     resizeVideos();
     royalSliderInit();
+    ScrollToTop.initialize();
 
     if (!$('html').is('.ie9, .lt-ie9') && !Modernizr.touch) {
         Parallax.initialize();

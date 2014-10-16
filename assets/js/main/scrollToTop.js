@@ -1,7 +1,4 @@
 var ScrollToTop = {
-    selector:   '.btn--top',
-    $button:    null,
-    offsetTop:  0,
     start:      0,
     end:        0,
     timeline:   null,
@@ -9,17 +6,17 @@ var ScrollToTop = {
 
     initialize: function () {
 
-        this.$button = $(this.selector);
+        var $button         = $('.btn--top'),
+            offsetTop       = $button.offset().top,
+            footerHeight    = $('.copyright-area').outerHeight(),
+            start           = offsetTop - windowHeight + footerHeight * 3 / 4;
 
-        if (empty(this.$button)) {
+        if (empty($button)) {
             return;
         }
 
-        var footerHeight = $('.copyright-area').outerHeight();
+        $button.data('offsetTop', offsetTop);
 
-        this.offsetTop  = this.$button.offset().top;
-        this.start      = this.offsetTop - windowHeight + footerHeight * 3/4;
-        this.end        = this.start + windowHeight;
         this.timeline   = new pixGS.TimelineMax({ paused: true });
 
         this.timeline.fromTo('.blurp--bottom', .6, {
@@ -53,7 +50,7 @@ var ScrollToTop = {
             ease: pixGS.Back.easeOut
         }, '-=0.25');
 
-        this.$button.on('click', function (e) {
+        $button.on('click', function (e) {
             e.preventDefault();
             smoothScrollTo(0);
         });
@@ -63,7 +60,13 @@ var ScrollToTop = {
 
     update: function () {
 
-        if (empty(this.$button)) {
+        var $button         = $('.btn--top'),
+            offsetTop       = $button.data('offsetTop'),
+            footerHeight    = $('.copyright-area').outerHeight(),
+            start           = offsetTop - windowHeight + footerHeight * 3 / 4,
+            end             = start + windowHeight;
+
+        if (empty($button) || this.timeline == null) {
             return;
         }
 
@@ -72,7 +75,7 @@ var ScrollToTop = {
             return;
         }
 
-        if (this.start < latestKnownScrollY && latestKnownScrollY <= this.end) {
+        if (start < latestKnownScrollY) {
             if (!this.played) {
                 this.timeline.play();
                 this.played = true;
@@ -83,6 +86,5 @@ var ScrollToTop = {
                 this.played = false;
             }
         }
-
     }
 }
