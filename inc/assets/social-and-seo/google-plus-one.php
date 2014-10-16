@@ -1,5 +1,5 @@
 <?php global $post; ?>
-<!-- google +1 tags -->
+<!-- google+ tags -->
 <?php if ( is_singular() ): ?>
 	<meta itemprop="name" content="<?php echo get_the_title() ?>">
 	<meta itemprop="description" content="<?php echo strip_tags( get_the_excerpt() ) ?>">
@@ -13,4 +13,4 @@
 <?php if ( is_front_page() && wpgrade::option( 'google_page_url' ) ): ?>
 	<link rel="publisher" href="http://plus.google.com/<?php echo wpgrade::option( 'google_page_url' ) ?>"/>
 <?php endif; ?>
-<!-- end google +1 tags -->
+<!-- end google+ tags -->

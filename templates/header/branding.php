@@ -5,7 +5,7 @@
 		<h1 class="site-title site-title--image">
 			<a class="site-logo  site-logo--image<?php if ( wpgrade::option( 'use_retina_logo' ) && ! empty( $retina_logo_light ) ) {
 				echo "  site-logo--image-2x";
-			} ?>" href="<?php echo home_url(); ?>" title="<?php bloginfo( 'name' ) ?>" rel="home"">
+			} ?>" href="<?php echo home_url(); ?>" title="<?php bloginfo( 'name' ) ?>" rel="home">
 			<?php $data_retina_logo_light = ( wpgrade::option( 'use_retina_logo' ) && ! empty( $retina_logo_light ) ) ? 'data-logo2x="' . $retina_logo_light . '"' : ''; ?>
 			<img class="site-logo-img--light" src="<?php echo wpgrade::image_src( 'main_logo_light' ); ?>" <?php echo $data_retina_logo_light; ?> rel="logo" alt="<?php echo get_bloginfo( 'name' ) ?>"/>
 

@@ -207,4 +207,3 @@ if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
 		<?php }
 	}
 } ?>
-</header>

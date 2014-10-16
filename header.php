@@ -1,14 +1,32 @@
-<!DOCTYPE html>
+<?php
+/**
+ * The Header for our theme
+ *
+ * Displays all of the <head> section and everything up till the main content
+ *
+ * @package Rosa
+ * @since   Rosa 1.0
+ */
+
+
+//detect what type of content are we displaying
+$schema_org = '';
+if ( is_single() ) {
+	$schema_org .= ' itemscope itemtype="http://schema.org/Article"';
+} else {
+	$schema_org .= ' itemscope itemtype="http://schema.org/WebPage"';
+}
+?><!DOCTYPE html>
 <!--[if lt IE 7]>
-<html class="lt-ie9 lt-ie8 lt-ie7" <?php language_attributes(); ?>> <![endif]-->
+<html class="lt-ie9 lt-ie8 lt-ie7" <?php language_attributes(); echo $schema_org; ?>> <![endif]-->
 <!--[if IE 7]>
-<html class="lt-ie9 lt-ie8" <?php language_attributes(); ?>> <![endif]-->
+<html class="lt-ie9 lt-ie8" <?php language_attributes(); echo $schema_org; ?>> <![endif]-->
 <!--[if IE 8]>
-<html class="lt-ie9" <?php language_attributes(); ?>> <![endif]-->
+<html class="lt-ie9" <?php language_attributes(); echo $schema_org; ?>> <![endif]-->
 <!--[if IE 9]>
-<html class="ie9" <?php language_attributes(); ?>> <![endif]-->
+<html class="ie9" <?php language_attributes(); echo $schema_org; ?>> <![endif]-->
 <!--[if gt IE 9]><!-->
-<html <?php language_attributes(); ?>> <!--<![endif]-->
+<html <?php language_attributes(); echo $schema_org; ?>> <!--<![endif]-->
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=<?php bloginfo( 'charset' ); ?>">
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -90,7 +108,7 @@ if ( is_single() ) {
 } ?>
 
 <body <?php body_class( $class_name );
-echo ' ' . $schema_org . ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
+echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
 	your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
