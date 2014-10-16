@@ -361,3 +361,27 @@ function wpgrade_pre_get_posts_sticky_posts( $query ) {
 }
 
 add_action( 'pre_get_posts', 'wpgrade_pre_get_posts_sticky_posts' );
+
+/**
+ * Extend the default WordPress post classes.
+ *
+ * @since Rosa 1.5.6
+ *
+ * @param array $classes A list of existing post class values.
+ * @return array The filtered post class list.
+ */
+function rosa_post_classes( $classes ) {
+	//only add this class for regular pages
+	if ( get_page_template_slug( get_the_ID() ) == '' ) {
+		$subtitle = trim( get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_subtitle', true ) );
+		$title = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_title', true );
+		$description = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_description', true );
+
+		if ( ! ( has_post_thumbnail() || ! empty( $subtitle ) || $title !== ' ' || ! empty( $description ) ) ) {
+			$classes[] = 'no-page-header';
+		}
+	}
+
+	return $classes;
+}
+add_filter( 'post_class', 'rosa_post_classes' );
