@@ -15,9 +15,15 @@ if ( is_shop() || is_cart() || is_checkout() || is_checkout_pay_page() || is_acc
 	get_template_part( 'templates/page/header' );
 }
 
+$classes = "article--page  article--main";
+
+$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_border_style', true );
+if ( ! empty( $border_style ) ) {
+	$classes .= ' border-' . $border_style;
+}
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( "article--page  article--main" ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
 	<section class="article__content">
 	<div class="container">
 <?php if ( is_product() ) {
