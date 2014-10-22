@@ -636,9 +636,10 @@ if ( ! class_exists( 'ReduxFramework_customizer_typography' ) ) {
 		 */
 		function makeGoogleWebfontString($fonts) {
 			$link       = "";
-			$subsets    = array();
 
 			foreach ($fonts as $family => $font) {
+				$subsets    = array();
+
 				if (!empty($link)) {
 					$link.= "', '"; // Append a new font to the string
 				}
@@ -660,11 +661,12 @@ if ( ! class_exists( 'ReduxFramework_customizer_typography' ) ) {
 						}
 					}
 				}
+
+				if (!empty($subsets)) {
+					$link.= ":" . implode(',', $subsets);
+				}
 			}
 
-			if (!empty($subsets)) {
-				$link.= "&amp;subset=" . implode(',', $subsets);
-			}
 
 			return "'" . $link . "'";
 		}

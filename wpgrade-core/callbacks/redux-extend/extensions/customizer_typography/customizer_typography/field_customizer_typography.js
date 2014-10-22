@@ -511,7 +511,7 @@
 				}
 
 				if (script) {
-					link += '&subset=' + script;
+					link += ':' + script;
 				}
 
 				if (typeof (WebFont) !== "undefined" && WebFont) {

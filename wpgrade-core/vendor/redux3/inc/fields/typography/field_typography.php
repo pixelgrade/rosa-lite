@@ -40,7 +40,7 @@ if (!class_exists('ReduxFramework_typography')) {
         );
 
         private $user_fonts = true;
-        
+
         /**
          * Field Constructor.
          *
@@ -55,9 +55,9 @@ if (!class_exists('ReduxFramework_typography')) {
 
             // Init wp_filesystem
             //Redux_Functions::initWpFilesystem();
-            
+
             //global $wp_filesystem;
-            
+
             // Set upload dir path for google fonts
             $this->font_dir =  ReduxFramework::$_upload_dir . 'google-fonts/';
 
@@ -76,7 +76,7 @@ if (!class_exists('ReduxFramework_typography')) {
                 $this->field['all-styles'] = $this->field['all_styles'];
                 unset ($this->field['all_styles']);
             }
-            
+
             // Set google font file variables
             $this->google_json = $this->font_dir . 'googlefonts.json';
 
@@ -94,7 +94,7 @@ if (!class_exists('ReduxFramework_typography')) {
             // Set field array defaults.  No errors please
             $defaults = array(
                 'font-family'       => true,
-                'font-size'         => true, 
+                'font-size'         => true,
                 'font-weight'       => true,
                 'font-style'        => true,
                 'font-backup'       => false,
@@ -106,7 +106,7 @@ if (!class_exists('ReduxFramework_typography')) {
                 'text-decoration'   => false,
                 'color'             => true,
                 'preview'           => true,
-                'line-height'       => true, 
+                'line-height'       => true,
                 'word-spacing'      => false,
                 'letter-spacing'    => false,
                 'google'            => true,
@@ -135,7 +135,7 @@ if (!class_exists('ReduxFramework_typography')) {
                 'font-size'         => '',
             );
             $this->value = wp_parse_args($this->value, $defaults);
-            
+
             // Get the google array
             $this->getGoogleArray();
 
@@ -146,7 +146,7 @@ if (!class_exists('ReduxFramework_typography')) {
 
             // Localize std fonts
             $this->localizeStdFonts();
-            
+
         }
 
         function localize($field, $value = "") {
@@ -157,7 +157,7 @@ if (!class_exists('ReduxFramework_typography')) {
             }
 
             return $params;
-        }    
+        }
 
 
         /**
@@ -205,19 +205,19 @@ if (!class_exists('ReduxFramework_typography')) {
 
             /* Font Family */
             if ($this->field['font-family'] === true) {
-                
+
                 //if (filter_var($this->value['google'], FILTER_VALIDATE_BOOLEAN)) {
                 if (filter_var($this->value['google'], FILTER_VALIDATE_BOOLEAN)) {
-                    
+
                     // Divide and conquer
                     $fontFamily = explode(', ', $this->value['font-family'], 2);
-                    
+
                     // If array 0 is empty and array 1 is not
                     if (empty($fontFamily[0]) && !empty($fontFamily[1])) {
-                        
+
                         // Make array 0 = array 1
                         $fontFamily[0] = $fontFamily[1];
-                        
+
                         // Clear array 1
                         $fontFamily[1] = "";
                     }
@@ -241,17 +241,17 @@ if (!class_exists('ReduxFramework_typography')) {
                 if ($isGoogleFont != '1') {
                     $fontFamily[0] = $this->value['font-family'];
                 }
-                
+
                 $userFonts = '0';
                 if (true == $this->user_fonts) {
                     $userFonts = '1';
                 }
-                
+
                 echo '<input type="hidden" class="redux-typography-font-family ' . $this->field['class'] . '" data-user-fonts="' . $userFonts . '" name="' .  $this->field['name'] . $this->field['name_suffix'] . '[font-family]' . '" value="' . $this->value['font-family'] . '" data-id="' . $this->field['id'] . '"  />';
                 echo '<input type="hidden" class="redux-typography-font-options ' . $this->field['class'] . '" name="' .  $this->field['name'] . $this->field['name_suffix'] . '[font-options]' . '" value="' . $this->value['font-options'] . '" data-id="' . $this->field['id'] . '"  />';
 
                 echo '<input type="hidden" class="redux-typography-google-font" value="' . $isGoogleFont . '" id="' . $this->field['id'] . '-google-font">';
-                
+
                 echo '<div class="select_wrapper typography-family" style="width: 220px; margin-right: 5px;">';
                 echo '<label>' . __('Font Family', 'redux-framework') . '</label>';
                 $placeholder = $fontFamily[0] ? $fontFamily[0] : __('Font family', 'redux-framework');
@@ -277,7 +277,7 @@ if (!class_exists('ReduxFramework_typography')) {
                     // Set a flag so we know to set a header style or not
                     echo '<input type="hidden" class="redux-typography-google' . $this->field['class'] . '" id="' . $this->field['id'] . '-google" name="' .  $this->field['name'] . $this->field['name_suffix'] . '[google]' . '" type="text" value="' . $this->field['google'] . '" data-id="' . $this->field['id'] . '"  />';
                 }
-                
+
                 if ($this->field['font-backup'] === true) {
                     echo '<div class="select_wrapper typography-family-backup" style="width: 220px; margin-right: 5px;">';
                     echo '<label>' . __('Backup Font Family', 'redux-framework') . '</label>';
@@ -294,7 +294,7 @@ if (!class_exists('ReduxFramework_typography')) {
 
             /* Font Style/Weight */
             if ($this->field['font-style'] === true || $this->field['font-weight'] === true){
-                
+
                 echo '<div class="select_wrapper typography-style" original-title="' . __('Font style', 'redux-framework') . '">';
                 echo '<label>' . __('Font Weight &amp; Style', 'redux-framework') . '</label>';
 
@@ -314,7 +314,7 @@ if (!class_exists('ReduxFramework_typography')) {
                     '700' => 'Bold',
                     '900' => 'Bolder'
                 );
-                
+
                 if (isset($gfonts[$this->value['font-family']])) {
                     foreach ($gfonts[$this->value['font-family']]['variants'] as $v) {
                         echo '<option value="' . $v['id'] . '" ' . selected($this->value['subset'], $v['id'], false) . '>' . $v['name'] . '</option>';
@@ -323,16 +323,16 @@ if (!class_exists('ReduxFramework_typography')) {
                     if (!isset($this->value['font-weight']) && isset($this->value['subset'])) {
                         $this->value['font-weight'] = $this->value['subset'];
                     }
-                    
+
                     foreach ($nonGStyles as $i => $style) {
                         if (!isset($this->value['font-weight'])) {
                             $this->value['font-weight'] = false;
                         }
-                        
+
                         if (!isset($this->value['subset'])) {
                             $this->value['subset'] = false;
                         }
-                        
+
                         echo '<option value="' . $i . '" ' . selected($this->value['font-weight'], $i, false) . '>' . $style . '</option>';
                     }
                 }
@@ -503,9 +503,9 @@ if (!class_exists('ReduxFramework_typography')) {
                 echo '<input data-default-color="' . $default . '" class="redux-color redux-typography-color' . $this->field['class'] . '" original-title="' . __('Font color', 'redux-framework') . '" id="' . $this->field['id'] . '-color" name="' .  $this->field['name'] . $this->field['name_suffix'] . '[color]' . '" type="text" value="' . $this->value['color'] . '" data-id="' . $this->field['id'] . '" />';
                 echo '</div>';
             }
-            
+
             echo '<div class="clearfix"></div>';
-            
+
             /* Font Preview */
             if (!isset($this->field['preview']) || $this->field['preview'] !== false){
                 if (isset($this->field['preview']['text'])) {
@@ -531,11 +531,11 @@ if (!class_exists('ReduxFramework_typography')) {
                             wp_register_style( 'redux-typography-preview', $protocol . $this->makeGoogleWebfontLink( $this->parent->typography_preview ), '', time() );
                             wp_enqueue_style( 'redux-typography-preview' );
                         }
-                        
+
                         $style = 'display: block; font-family: ' . $this->value['font-family'] . '; font-weight: ' . $this->value['font-weight'] . ';' ;
                     }
                 }
-                
+
                 if (isset($this->field['preview']['font-size'])) {
                     $style .= 'font-size: ' . $this->field['preview']['font-size'] . ';';
                     $inUse = '1';
@@ -559,18 +559,18 @@ if (!class_exists('ReduxFramework_typography')) {
         function enqueue() {
 
             wp_enqueue_script(
-                'redux-field-typography-js', 
+                'redux-field-typography-js',
                 ReduxFramework::$_url . 'inc/fields/typography/field_typography' . Redux_Functions::isMin() . '.js',
                 array( 'jquery', 'wp-color-picker', 'select2-js', 'redux-js' ),
                 time(),
                 true
             );
 
-            wp_localize_script( 
-                'redux-field-typography-js', 
-                'redux_ajax_script', 
-                array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) 
-            );        
+            wp_localize_script(
+                'redux-field-typography-js',
+                'redux_ajax_script',
+                array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) )
+            );
 
             wp_enqueue_style(
                 'redux-field-typography-css',
@@ -631,10 +631,11 @@ if (!class_exists('ReduxFramework_typography')) {
          */
         function makeGoogleWebfontString($fonts) {
             $link       = "";
-            $subsets    = array();
 
-            foreach ($fonts as $family => $font) {
-                if (!empty($link)) {
+	        foreach ($fonts as $family => $font) {
+		        $subsets    = array();
+
+		        if (!empty($link)) {
                     $link.= "', '"; // Append a new font to the string
                 }
                 $link.= $family;
@@ -655,13 +656,14 @@ if (!class_exists('ReduxFramework_typography')) {
                         }
                     }
                 }
+
+	            if (!empty($subsets)) {
+		            $link.= ":" . implode(',', $subsets);
+	            }
             }
 
-            if (!empty($subsets)) {
-                $link.= "&amp;subset=" . implode(',', $subsets);
-            }
 
-            return "'" . $link . "'";
+	        return "'" . $link . "'";
         }
 
         function output() {
@@ -671,8 +673,8 @@ if (!class_exists('ReduxFramework_typography')) {
             if (isset($this->field['all_styles']) && !empty($this->field['all_styles'])) {
                 $this->field['all-styles'] = $this->field['all_styles'];
                 unset ($this->field['all_styles']);
-            }            
-            
+            }
+
             // Check for font-backup.  If it's set, stick it on a variabhle for
             // later use.
             if (!empty($font['font-family']) && !empty($font['font-backup'])) {
@@ -770,14 +772,14 @@ if (!class_exists('ReduxFramework_typography')) {
                         $key = str_replace(', ', ',', $key);
                         $arr[$key] = $value;
                     }
-                    
+
                     $lcFonts = array_change_key_case($this->field['custom_fonts']);
                     foreach ($lcFonts as $group => $fontArr) {
                         foreach($fontArr as $key => $value) {
                             $arr[  strtolower($key)] = $key;
                         }
                     }
-                    
+
                     $lcFonts = $arr;
 
                     unset($arr);
@@ -855,7 +857,7 @@ if (!class_exists('ReduxFramework_typography')) {
             if (false == $this->user_fonts) {
                 if (isset($this->parent->fonts['std']) && !empty($this->parent->fonts['std'])) {
                     return;
-                }            
+                }
 
                 $this->parent->font_groups['std'] = array(
                     'text'      => __('Standard Fonts', 'redux-framework'),
@@ -870,15 +872,15 @@ if (!class_exists('ReduxFramework_typography')) {
                     );
                 }
             }
-            
+
             if ($this->field['custom_fonts'] !== false) {
                 $this->field['custom_fonts'] = apply_filters("redux/{$this->parent->args['opt_name']}/field/typography/custom_fonts", array());
-                
+
                  if (!empty($this->field['custom_fonts'])) {
                     foreach ($this->field['custom_fonts'] as $group => $fonts) {
                         $this->parent->font_groups['customfonts'] = array(
                             'text'      => $group,
-                            'children'  => array(),                            
+                            'children'  => array(),
                         );
 
                         foreach ($fonts as $family => $v) {
@@ -889,10 +891,10 @@ if (!class_exists('ReduxFramework_typography')) {
                             );
                         }
                     }
-                }    
-            }            
+                }
+            }
         }
-        
+
         /**
          *
          *   Construct the google array from the stored JSON/HTML
@@ -919,7 +921,7 @@ if (!class_exists('ReduxFramework_typography')) {
 
             // Initialize the Wordpress filesystem, no more using file_put_contents function
             //Redux_Functions::initWpFilesystem();
-            
+
             //global $wp_filesystem;
 
             if (!file_exists($this->google_json)) {
@@ -938,7 +940,7 @@ if (!class_exists('ReduxFramework_typography')) {
                         $param_array = array(
                             'content'   => json_encode($this->parent->googleArray)
                         );
-                        
+
                         if ($this->parent->filesystem->execute('put_contents', $this->google_json, $param_array )) {
                             return;
                         }
@@ -948,10 +950,10 @@ if (!class_exists('ReduxFramework_typography')) {
             }
 
             if (!isset($this->parent->fonts['google']) || empty($this->parent->fonts['google'])) {
-               
+
                 //$fonts = json_decode($wp_filesystem->get_contents($this->google_json), true);
                 $fonts = $this->parent->filesystem->execute('get_contents', $this->google_json );
-                
+
                 if ($fonts === true) {
                     $this->parent->fonts['google'] = false;
                     return;
