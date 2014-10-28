@@ -204,6 +204,8 @@ if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
 
 				display_header_down_arrow( $page_section_idx, $header_height ); ?>
 			</header>
+		<?php } else { ?>
+			<header id="post-<?php the_ID() ?>-title" class="<?php echo $classes ?>" style="display: none"></header>
 		<?php }
 	}
 } ?>
