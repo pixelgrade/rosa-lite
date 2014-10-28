@@ -14,6 +14,7 @@ var is_ie           = is_ancient_ie || is_older_ie || is_newer_ie;
 var is_mobile_ie    = navigator.userAgent.indexOf('IEMobile') !== -1;
 var is_mobile       = ua.match(/mobile/i);
 var is_OSX          = ua.match(/(iPad|iPhone|iPod|Macintosh)/g) ? true : false;
+var iOS 			= getIOSVersion(ua);
 
 
 var nua = navigator.userAgent;

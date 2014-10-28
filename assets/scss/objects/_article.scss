@@ -153,7 +153,7 @@
 }
 
 
-.lt-ie9, .touch {
+.lt-ie9 {
 
 	.article__parallax {
 		width: 100% !important;
@@ -165,7 +165,7 @@
 	}
 }
 
-.touch .article__parallax {
+.no-scroll-effect .article__parallax {
 	-webkit-transform: none !important;
 	-moz-transform: none !important;
 	-o-transform: none !important;
@@ -197,7 +197,7 @@
 	}
 }
 
-.touch .article__parallax--img img {
+.no-scroll-effect .article__parallax--img img {
 	top: 0;
 	@include transform(translateX(-50%));
 }

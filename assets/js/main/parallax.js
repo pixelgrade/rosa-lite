@@ -8,8 +8,8 @@ var Parallax = {
 
     initialize: function () {
 
-        if (Modernizr.touch) {
-            this.amount = 0;
+        if (Modernizr.touch && iOS && iOS < 8 || is_mobile_ie) {
+            $('html').addClass('no-scroll-effect');
         }
 
         this.prepare();
