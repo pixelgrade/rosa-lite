@@ -12,7 +12,7 @@
 
 (function( $ ) {
     "use strict";
-    
+
     redux.field_objects = redux.field_objects || {};
     redux.field_objects.typography = redux.field_objects.typography || {};
 
@@ -41,17 +41,17 @@
             function() {
                 var el = $( this );
                 var parent = el;
-                
+
                 if ( !el.hasClass( 'redux-field-container' ) ) {
                     parent = el.parents( '.redux-field-container:first' );
                 }
-                
+
                 if ( parent.hasClass( 'redux-field-init' ) ) {
                     parent.removeClass( 'redux-field-init' );
                 } else {
                     return;
                 }
-                
+
                 el.each(
                     function() {
                         // init each typography field
@@ -233,7 +233,7 @@
                         if (!xx.hasClass('redux-typography-family')) {
                             el.find( ".redux-typography-style").select2( default_params );
                         }
-                        
+
                         // Init select2 for indicated fields
                         el.find( ".redux-typography-family-backup, .redux-typography-align, .redux-typography-transform, .redux-typography-font-variant, .redux-typography-decoration" ).select2( default_params );
 
@@ -404,14 +404,14 @@
                     if (subset.id === script || redux.field_objects.typography.size(details.subsets) === 1) {
                         selected = ' selected="selected"';
                         script = subset.id;
-                        $('#' + mainID + ' input.typography-subsets').val(script);                        
+                        $('#' + mainID + ' input.typography-subsets').val(script);
                     } else {
                         selected = "";
                     }
 
                     html += '<option value="' + subset.id + '"' + selected + '>' + subset.name.replace(/\+/g, " ") + '</option>';
                 });
-                
+
                 //if (typeof (familyBackup) !== "undefined" && familyBackup !== "") {
                 //    output += ', ' + familyBackup;
                 //}
@@ -493,7 +493,7 @@
                 }
 
                 if (script) {
-                    link += '&subset=' + script;
+                    link += ':' + script;
                 }
 
                 if (typeof (WebFont) !== "undefined" && WebFont) {
@@ -539,7 +539,7 @@
         } else {
             $('#' + mainID + ' .typography-word-spacing').val(word + units);
         }
-        
+
         if (letter === ''){
             $('#' + mainID + ' .typography-letter-spacing').val('');
         } else {

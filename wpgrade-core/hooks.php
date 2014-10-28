@@ -20,7 +20,12 @@ foreach ( $themeincludepaths as $path ) {
 
 $themeincludefiles = wpgrade::confoption( 'include-files', array() );
 foreach ( $themeincludefiles as $file ) {
-	require wpgrade::themepath() . $file;
+
+	if ( file_exists( wpgrade::childpath() . $file ) ) {
+		require wpgrade::childpath() . $file;
+	} else {
+		require wpgrade::themepath() . $file;
+	}
 }
 
 

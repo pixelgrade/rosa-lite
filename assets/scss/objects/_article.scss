@@ -216,6 +216,10 @@
         padding: 0;
     }
 
+	.article--subpage.no-page-header .article__content {
+		padding-top: 0;
+	}
+
 //	&.inverse-colors {
 //		.article__content {
 //			background-color: black;

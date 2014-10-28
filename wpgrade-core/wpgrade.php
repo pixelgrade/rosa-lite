@@ -53,10 +53,14 @@ class wpgrade {
 		/**
 		 * this is the old path...keep it for legacy
 		 */
-		if ( file_exists( self::themepath() . 'wpgrade-config' . EXT ) ) {
-			self::$configuration = include self::themepath() . 'wpgrade-config' . EXT;
+		if ( file_exists( self::childpath() . 'config/wpgrade-config' . EXT ) ) {
+			self::$configuration = include self::childpath() . 'config/wpgrade-config' . EXT;
 		} elseif ( file_exists( self::themepath() . 'config/wpgrade-config' . EXT ) ) {
 			self::$configuration = include self::themepath() . 'config/wpgrade-config' . EXT;
+		} elseif ( file_exists( self::childpath() . 'wpgrade-config' . EXT ) ) {
+			self::$configuration = include self::childpath() . 'wpgrade-config' . EXT;
+		} elseif ( file_exists( self::themepath() . 'wpgrade-config' . EXT ) ) {
+			self::$configuration = include self::themepath() . 'wpgrade-config' . EXT;
 		}
 	}
 
@@ -620,6 +624,7 @@ class wpgrade {
 	 * @param string path
 	 */
 	static function require_all( $path ) {
+
 		$files = self::find_files( rtrim( $path, '\\/' ) );
 
 		$priority_list = array();
@@ -630,9 +635,9 @@ class wpgrade {
 		asort( $priority_list, SORT_ASC );
 
 		foreach ( $priority_list as $file => $priority ) {
-			if ( strpos( $file, EXT ) ) {
-				require $file;
-			}
+			$file = str_replace( EXT, '', $file  );
+			$file = str_replace( get_template_directory(), '', $file  );
+			get_template_part($file) ;
 		}
 	}
 
@@ -1050,7 +1055,7 @@ class wpgrade {
 		if ( $modulename == 'redux2' ) {
 			require self::corepath() . 'vendor/redux2/options/defaults' . EXT;
 		} elseif ( $modulename == 'redux3' ) {
-			require self::corepath() . 'vendor/redux3/framework' . EXT;
+			get_template_part( 'wpgrade-core/vendor/redux3/framework' );
 		} else { // unsupported module
 			die( 'Unsuported core module: ' . $modulename );
 		}
