@@ -4,7 +4,6 @@
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages and that other
  * 'pages' on your WordPress site will use a different template.
-
  */
 
 get_header();
@@ -21,9 +20,8 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 	get_template_part( 'templates/password-request-form' );
 
 } else {
-	?>
 
-	<?php while ( have_posts() ) : the_post();
+	while ( have_posts() ) : the_post();
 
 		get_template_part( 'templates/page/header' );
 

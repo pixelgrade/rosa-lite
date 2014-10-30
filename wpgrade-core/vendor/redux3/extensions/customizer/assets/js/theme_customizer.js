@@ -19,8 +19,13 @@
 		typographyInit();
 		spacingInit();
 
-		$(this).on('click', function () {
-			// $('.customize-control-background .redux-field').removeClass('active');
+		function closeAllPanles() {
+			$('.redux-field-container, .redux-typography-container, .dropdown-section-content').removeClass('active');
+		}
+
+		// ensure panels close on color when picker is opened
+		$('.wp-color-result').on('click', function(){
+			closeAllPanles();
 		});
 
 		function backgroundInit() {
@@ -41,7 +46,23 @@
 			$bg_control.on('click', '.customize-control-title button', function (e) {
 				e.stopPropagation();
 				e.preventDefault();
-				$(this).closest($('.customize-control-background')).find('.redux-field-container').toggleClass('active');
+
+				var the_container = $(this).closest($('.customize-control-background')).find('.redux-field-container');
+				// check if this is already opened
+				var is_opened = the_container.hasClass('active');
+
+				// ensure all other panels are closed
+				closeAllPanles();
+				// in case there is a color picker opened just close it
+				$('.wp-color-picker').each(function(){
+					$(this).parent().siblings('.wp-picker-open').trigger('click');
+				} );
+
+				if ( is_opened ) {
+					closeAllPanles();
+				} else {
+					the_container.addClass('active');
+				}
 			});
 
 			// Remove Icon Class '.active'
@@ -67,7 +88,22 @@
 			$typo_control.on('click', '.customize-control-title button', function (e) {
 				e.stopPropagation();
 				e.preventDefault();
-				$(this).closest($('.customize-control-typography')).find('.redux-typography-container').toggleClass('active');
+
+				var the_container = $(this).closest($('.customize-control-typography')).find('.redux-typography-container');
+				// check if this is already opened
+				var is_opened = the_container.hasClass('active');
+
+				closeAllPanles();
+				// in case there is a color picker opened just close it
+				$('.wp-color-picker').each(function(){
+					$(this).parent().siblings('.wp-picker-open').trigger('click');
+				} );
+
+				if ( is_opened ) {
+					closeAllPanles();
+				} else {
+					the_container.addClass('active');
+				}
 			});
 
 			// Remove Icon Class '.active'
@@ -103,7 +139,23 @@
 			$('.customize-dropdown-section').on('click', '.dropdown-section-trigger', function (e) {
 				e.stopPropagation();
 				e.preventDefault();
-				$(this).next().toggleClass('active');
+
+				var the_container = $(this).next();
+				// check if this is already opened
+				var is_opened = the_container.hasClass('active');
+
+				closeAllPanles();
+				// in case there is a color picker opened just close it
+				$('.wp-color-picker').each(function(){
+					$(this).parent().siblings('.wp-picker-open').trigger('click');
+				} );
+
+				if ( is_opened ) {
+					closeAllPanles();
+				} else {
+					the_container.addClass('active');
+				}
+
 			});
 
 			// Remove Icon Class '.active'
