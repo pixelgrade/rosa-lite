@@ -14,6 +14,7 @@ var is_ie           = is_ancient_ie || is_older_ie || is_newer_ie;
 var is_mobile_ie    = navigator.userAgent.indexOf('IEMobile') !== -1;
 var is_mobile       = ua.match(/mobile/i);
 var is_OSX          = ua.match(/(iPad|iPhone|iPod|Macintosh)/g) ? true : false;
+var iOS 			= getIOSVersion(ua);
 
 
 var nua = navigator.userAgent;
@@ -524,8 +525,8 @@ var Parallax = {
 
     initialize: function () {
 
-        if (Modernizr.touch) {
-            this.amount = 0;
+        if (Modernizr.touch && iOS && iOS < 8 || is_mobile_ie) {
+            $('html').addClass('no-scroll-effect');
         }
 
         this.prepare();
@@ -976,6 +977,7 @@ var Navigator = {
     wasWhite:           true,
     initialized:        false,
     timeline:           new pixGS.TimelineMax({ paused: true }),
+    nextTop:            0,
 
     initialize: function () {
 
@@ -989,11 +991,30 @@ var Navigator = {
             return;
         }
 
-        this.$sections.each(function (index, element) {
-            var $section        = $(element),
+
+        for (var index = 0; index < this.$sections.length; index++) {
+
+            var $section        = $(that.$sections[index]),
                 sectionTop      = $section.offset().top,
                 sectionHeight   = $section.outerHeight(),
                 $button         = $('<a href="#" class="navigator__item"><div class="bullet"></div></a>');
+
+            if ($section.css('display') == 'none') {
+
+                if (!$section.next().is('.article--page')) {
+                    that.$sections.splice(index, 1);
+                    index--;
+                    continue;
+                } else {
+                    sectionTop = that.nextTop;
+                }
+            } else {
+                that.nextTop += sectionHeight;
+            }
+
+            if ($section.next().is('.article--page')) {
+                that.nextTop += $section.next().outerHeight();
+            }
 
             $button.appendTo($navigator);
             $section.data('offsetTop', sectionTop);
@@ -1007,7 +1028,7 @@ var Navigator = {
                 return false;
             });
 
-        });
+        }
 
         this.$selected          = $('<div class="navigator__item  navigator__item--selected"><div class="bullet"></div></div>').appendTo($navigator);
         this.$selectedBullet    = this.$selected.find('.bullet');
@@ -1071,10 +1092,18 @@ var Navigator = {
         // loop through each header and find current state
         this.$sections.each(function(i, element) {
 
-            var $section        = $(element),
-                sectionTop      = $section.data('offsetTop'),
-                sectionBottom   = sectionTop + $section.outerHeight(),
-                navigatorMiddle = latestKnownScrollY + (windowHeight / 2);
+            var $section                = $(element),
+                sectionTop              = $section.data('offsetTop'),
+                sectionBottom           = sectionTop + $section.outerHeight(),
+                navigatorMiddle         = latestKnownScrollY + (windowHeight / 2);
+
+            // if there's no header
+            if ($section.css('display') == 'none') {
+                sectionBottom = sectionTop;
+                if (!$section.next().is('.article--page')) {
+                    return;
+                }
+            }
 
             if (navigatorMiddle > sectionTop) {
                 that.currentSelected = i;
@@ -1776,4 +1805,12 @@ function isElementInViewport (el) {
     rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
     rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
     );
+}
+
+function getIOSVersion(ua) {
+	ua = ua || navigator.userAgent;
+	return parseFloat(
+			('' + (/CPU.*OS ([0-9_]{1,5})|(CPU like).*AppleWebKit.*Mobile/i.exec(ua) || [0,''])[1])
+				.replace('undefined', '3_2').replace('_', '.').replace('_', '')
+		) || false;
 }

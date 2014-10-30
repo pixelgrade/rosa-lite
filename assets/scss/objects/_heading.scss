@@ -53,9 +53,9 @@
 	-ms-word-break: break-all;
 	word-break: break-all;
 
-//	@include media-query(palm){
-//		font-size: 20px;
-//	}
+	@include max-screen(900px) {
+		font-size: 20px;
+	}
 }
 
 .headline__secondary {
@@ -76,12 +76,17 @@
 	margin: 0 -72px;
 
 	color: $accent;
-//
-//	@include media-query(palm){
-//		font-size: 75px;
-//		margin: 0 -36px;
+
+	@include max-screen(900px) {
+		font-size: 75px;
+		padding: 0 36px;
+		margin: 0 -36px;
 //		line-height: 0.75;
-//	}
+
+		&.headline__secondary {
+			margin-bottom: -24px;
+		}
+	}
 
 	.first-letter {
 		position:relative;

@@ -82,3 +82,11 @@ function isElementInViewport (el) {
     rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
     );
 }
+
+function getIOSVersion(ua) {
+	ua = ua || navigator.userAgent;
+	return parseFloat(
+			('' + (/CPU.*OS ([0-9_]{1,5})|(CPU like).*AppleWebKit.*Mobile/i.exec(ua) || [0,''])[1])
+				.replace('undefined', '3_2').replace('_', '.').replace('_', '')
+		) || false;
+}

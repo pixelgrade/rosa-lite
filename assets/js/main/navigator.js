@@ -13,6 +13,7 @@ var Navigator = {
     wasWhite:           true,
     initialized:        false,
     timeline:           new pixGS.TimelineMax({ paused: true }),
+    nextTop:            0,
 
     initialize: function () {
 
@@ -26,11 +27,30 @@ var Navigator = {
             return;
         }
 
-        this.$sections.each(function (index, element) {
-            var $section        = $(element),
+
+        for (var index = 0; index < this.$sections.length; index++) {
+
+            var $section        = $(that.$sections[index]),
                 sectionTop      = $section.offset().top,
                 sectionHeight   = $section.outerHeight(),
                 $button         = $('<a href="#" class="navigator__item"><div class="bullet"></div></a>');
+
+            if ($section.css('display') == 'none') {
+
+                if (!$section.next().is('.article--page')) {
+                    that.$sections.splice(index, 1);
+                    index--;
+                    continue;
+                } else {
+                    sectionTop = that.nextTop;
+                }
+            } else {
+                that.nextTop += sectionHeight;
+            }
+
+            if ($section.next().is('.article--page')) {
+                that.nextTop += $section.next().outerHeight();
+            }
 
             $button.appendTo($navigator);
             $section.data('offsetTop', sectionTop);
@@ -44,7 +64,7 @@ var Navigator = {
                 return false;
             });
 
-        });
+        }
 
         this.$selected          = $('<div class="navigator__item  navigator__item--selected"><div class="bullet"></div></div>').appendTo($navigator);
         this.$selectedBullet    = this.$selected.find('.bullet');
@@ -108,10 +128,18 @@ var Navigator = {
         // loop through each header and find current state
         this.$sections.each(function(i, element) {
 
-            var $section        = $(element),
-                sectionTop      = $section.data('offsetTop'),
-                sectionBottom   = sectionTop + $section.outerHeight(),
-                navigatorMiddle = latestKnownScrollY + (windowHeight / 2);
+            var $section                = $(element),
+                sectionTop              = $section.data('offsetTop'),
+                sectionBottom           = sectionTop + $section.outerHeight(),
+                navigatorMiddle         = latestKnownScrollY + (windowHeight / 2);
+
+            // if there's no header
+            if ($section.css('display') == 'none') {
+                sectionBottom = sectionTop;
+                if (!$section.next().is('.article--page')) {
+                    return;
+                }
+            }
 
             if (navigatorMiddle > sectionTop) {
                 that.currentSelected = i;

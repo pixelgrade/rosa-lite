@@ -6,3 +6,71 @@
 		margin-bottom: $_u;
 	}
 }
+
+.form-password {
+	padding: $_3u 0;
+
+	.lock-icon {
+		text-align: center;
+		font-size: 3em;
+
+		@include min-screen(480px) {
+			font-size: 5em;
+		}
+	}
+
+	.protected-area-text {
+		text-align: center;
+		margin-bottom: $_u;
+
+		@include min-screen(480px) {
+			font-size: 1.5em;
+		}
+	}
+
+	.protected-form-container {
+		max-width: 600px;
+		margin: 0 auto;
+	}
+
+	.protected-password-field {
+		width: 100%;
+		margin-bottom: $_u;
+	}
+
+	.protected-submit-button {
+		text-align: center;
+
+		input {
+			display: block;
+			width: 100%;
+
+			@include min-screen(480px) {
+				display: inline-block;
+				width: auto;
+			}
+		}
+	}
+
+	@include media-query(lap-and-up) {
+		padding: $_8u 0 2*$_6u;
+
+		.protected-area-text {
+			font-size: 2em;
+		}
+
+		.protected-form-container {
+			display: table;
+			width: 100%;
+		}
+
+		.protected-password-field,
+		.protected-submit-button {
+			display: table-cell;
+		}
+
+		.protected-submit-button {
+			padding-left: $_u;
+		}
+	}
+}
