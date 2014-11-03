@@ -20,7 +20,7 @@ global $woocommerce;
 
         <a class="cart-icon-link" href="<?php echo WC()->cart->get_cart_url(); ?>">
             <i class="icon-shopping-cart"></i>
-            <span class="shop-items-number"><?php echo sprintf(_n('%d', WC()->cart->cart_contents_count, 'woothemes'), WC()->cart->cart_contents_count);?></span>
+            <span class="shop-items-number"><?php echo sprintf(_n('%d', WC()->cart->cart_contents_count, 'woocommerce'), WC()->cart->cart_contents_count);?></span>
         </a>
         <?php do_action( 'woocommerce_widget_shopping_cart_before_buttons' ); ?>
         <ul class="sub-menu">

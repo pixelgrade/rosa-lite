@@ -1169,6 +1169,19 @@ class wpgrade {
 		}
 	}
 
+	static function maybe_translate( $string = '', $name = '', $context = '' ) {
+
+		if ( empty( $context ) ) {
+			$context = wpgrade::textdomain();
+		}
+
+		if ( function_exists( 'icl_translate' ) ) {
+			return icl_translate( $context, $name, $string);
+		}
+
+		return $string;
+	}
+
 
 	//// Unit Test Helpers /////////////////////////////////////////////////////////
 

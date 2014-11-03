@@ -165,7 +165,7 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 									<div class="widget_shopping_cart_content">
 										<a class="cart-icon-link" href="<?php echo $woocommerce->cart->get_cart_url(); ?>">
 											<i class="icon-shopping-cart"></i>
-											<span class="shop-items-number"><?php echo sprintf( _n( '%d', $woocommerce->cart->cart_contents_count, 'woothemes' ), $woocommerce->cart->cart_contents_count ); ?></span>
+											<span class="shop-items-number"><?php echo sprintf( _n( '%d', $woocommerce->cart->cart_contents_count, 'woocommerce' ), $woocommerce->cart->cart_contents_count ); ?></span>
 										</a>
 										<ul class="sub-menu">
 											<li>
