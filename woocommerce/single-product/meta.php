@@ -23,11 +23,38 @@ $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
 		<span class="sku_wrapper"><?php _e( 'SKU:', 'woocommerce' ); ?> <span class="sku" itemprop="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : __( 'N/A', 'woocommerce' ); ?></span>.</span>
 
 	<?php endif; ?>
+	<div class="meta--categories btn-list meta-list">
+		<span class="btn  btn--small  btn--secondary  list-head">
+			<?php
+			printf(
+				_n(
+					wpgrade::maybe_translate( 'Category', 'category_singular', 'woocommerce'),
+					'%s ' . wpgrade::maybe_translate( 'Categories', 'category_plural', 'woocommerce'),
+					$cat_count,
+					'woocommerce'
+				),
+				$cat_count
+			); ?>
+		</span>
 
-	<?php echo $product->get_categories( '', '<div class="meta--categories btn-list meta-list"><span class="btn  btn--small  btn--secondary  list-head">' . _n( 'Category', 'Categories', $cat_count, 'woocommerce' ) . '</span>', '</div>' ); ?>
+		<?php echo $product->get_categories( '' ); ?>
+	</div>
 
-	<?php echo $product->get_tags( '', '<div class="meta--tags btn-list meta-list"><span class="btn  btn--small  btn--secondary  list-head">' . _n( 'Tag', 'Tags', $tag_count, 'woocommerce' ) . '</span>', '</div>' ); ?>
+	<div class="meta--tags btn-list meta-list">
+		<span class="btn  btn--small  btn--secondary  list-head">
+			<?php
+			printf(
+				_n(
+					wpgrade::maybe_translate( 'Tag', 'tag_singular', 'woocommerce'),
+					'%s ' . wpgrade::maybe_translate( 'Tags', 'tag_plural', 'woocommerce'),
+					$tag_count,
+					'woocommerce'
+				),
+				$tag_count
+			); ?>
+		</span>
+		<?php echo $product->get_tags( '' ); ?>
+	</div>
 
 	<?php do_action( 'woocommerce_product_meta_end' ); ?>
-
 </div>

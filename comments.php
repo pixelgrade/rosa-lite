@@ -22,8 +22,16 @@ if ( post_password_required() ) {
 		<div class="comments-area-title">
 			<h3 class="comments-title">
 				<?php
-				if ( have_comments() ):
-					printf( _n( '<span class="comment-number total">1</span> comment', '<span class="comment-number total">%1$s</span> Comments', get_comments_number(), wpgrade::textdomain() ), number_format_i18n( get_comments_number() ) );
+				if ( have_comments() ) :
+					printf(
+						_n(
+							'<span class="comment-number total">1</span>' . wpgrade::maybe_translate( 'Comment', 'comment_singular' ),
+							'<span class="comment-number total">%1$s</span>' . wpgrade::maybe_translate( 'Comments', 'comment_plural' ),
+							get_comments_number(),
+							wpgrade::textdomain()
+						),
+						number_format_i18n( get_comments_number() )
+					);
 				else:
 					_e( '<span class="comment-number total">+</span> There are no comments', wpgrade::textdomain() );
 				endif;
