@@ -101,7 +101,7 @@ if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
 								} ?>
 								<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
 								<?php if ( ! empty( $description ) ) {
-									echo '<span class="headline__description">' . $description . '</span>' . PHP_EOL;
+									echo '<div class="headline__description">' . $description . '</div>' . PHP_EOL;
 								} ?>
 							</hgroup>
 						</div>
