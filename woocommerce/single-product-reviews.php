@@ -20,8 +20,8 @@ if ( ! comments_open() )
 			if ( get_option( 'woocommerce_enable_review_rating' ) === 'yes' && ( $count = $product->get_rating_count() ) )
 				printf(
 					_n(
-						'%s ' . wpgrade::maybe_translate( 'review for', 'review_for_singular', 'woocommerce' ) . ' %s',
-						'%s ' . wpgrade::maybe_translate( 'reviews for', 'review_for_plural', 'woocommerce' ) . ' %s',
+						'%s review for %s',
+						'%s reviews for %s',
 						$count,
 						'woocommerce'
 					),

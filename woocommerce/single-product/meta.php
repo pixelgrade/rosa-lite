@@ -27,12 +27,7 @@ $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
 		<span class="btn  btn--small  btn--secondary  list-head">
 			<?php
 			printf(
-				_n(
-					wpgrade::maybe_translate( 'Category', 'category_singular', 'woocommerce'),
-					'%s ' . wpgrade::maybe_translate( 'Categories', 'category_plural', 'woocommerce'),
-					$cat_count,
-					'woocommerce'
-				),
+				_n( '%s Category', '%s Categories', $cat_count, 'woocommerce' ),
 				$cat_count
 			); ?>
 		</span>
@@ -44,12 +39,7 @@ $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
 		<span class="btn  btn--small  btn--secondary  list-head">
 			<?php
 			printf(
-				_n(
-					wpgrade::maybe_translate( 'Tag', 'tag_singular', 'woocommerce'),
-					'%s ' . wpgrade::maybe_translate( 'Tags', 'tag_plural', 'woocommerce'),
-					$tag_count,
-					'woocommerce'
-				),
+				_n( '%s Tag', '%s Tags', $tag_count, 'woocommerce' ),
 				$tag_count
 			); ?>
 		</span>

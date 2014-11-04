@@ -25,8 +25,8 @@ if ( post_password_required() ) {
 				if ( have_comments() ) :
 					printf(
 						_n(
-							'<span class="comment-number total">1</span>' . wpgrade::maybe_translate( 'Comment', 'comment_singular' ),
-							'<span class="comment-number total">%1$s</span>' . wpgrade::maybe_translate( 'Comments', 'comment_plural' ),
+							'<span class="comment-number total">1</span> Comment',
+							'<span class="comment-number total">%1$s</span>Comments',
 							get_comments_number(),
 							wpgrade::textdomain()
 						),

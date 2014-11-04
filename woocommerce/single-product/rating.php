@@ -25,12 +25,7 @@ if ( $count > 0 ) : ?>
 		<a href="#reviews" class="woocommerce-review-link" rel="nofollow">
 			<?php
 			printf(
-				_n(
-					'%s ' . wpgrade::maybe_translate( 'Review', 'review_singular', 'woocommerce' ),
-					'%s ' . wpgrade::maybe_translate( 'Reviews', 'review_plural', 'woocommerce' ),
-					$count,
-					'woocommerce'
-				),
+				_n( '%s Review', '%s Reviews', $count, 'woocommerce' ),
 				'<span itemprop="ratingCount" class="count">' . $count . '</span>'
 			); ?>
 		</a>

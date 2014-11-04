@@ -190,7 +190,7 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'color'        => array(
-						'selector' => " body, 
+						'selector' => " body,
 										.up-link"
 					),
 					'border-color' => array(
@@ -243,7 +243,7 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'color' => array(
-						'selector' => ".article__header .article__headline .headline__primary, 
+						'selector' => ".article__header .article__headline .headline__primary,
 										.article__header .article__headline .headline__description *"
 					),
 				)
@@ -1638,7 +1638,7 @@ $sections[] = array(
 			'type'     => 'ace_editor',
 			'title'    => __( 'Custom CSS', wpgrade::textdomain() ),
 			'subtitle' => __( 'Enter your custom CSS code. It will be included in the head section of the page and will overwrite the main CSS styling.', wpgrade::textdomain() ),
-			'desc'     => __( '', wpgrade::textdomain() ),
+//			'desc'     => __( '', wpgrade::textdomain() ),
 			'mode'     => 'css',
 			'theme'    => 'chrome',
 			//'validate' => 'html',
