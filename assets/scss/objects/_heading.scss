@@ -43,15 +43,21 @@
 	}
 }
 
+.break-words {
+	word-break: break-word;
+	word-wrap: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	hyphens: auto;
+}
+
 .headline__primary {
+	@extend .break-words;
 	position: relative;
 	z-index:1; //over .headline__secondary
 	margin: 0;
 	letter-spacing: 0.2em;
 	margin-right: -0.1em;
-
-	-ms-word-break: break-all;
-	word-break: break-all;
 
 	@include max-screen(900px) {
 		font-size: 20px;
@@ -59,18 +65,14 @@
 }
 
 .headline__secondary {
+	@extend .break-words;
 	position: relative;
-
-	margin: 0;
 
 	font-family: $alt-font-family;
 	font-size: 100px;
 	font-weight: normal;
 	letter-spacing: 0;
 	text-transform: none;
-
-	-ms-word-break: break-all;
-	word-break: break-all;
 
 	padding: 0 72px;
 	margin: 0 -72px;
