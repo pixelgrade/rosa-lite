@@ -125,9 +125,9 @@ function wpgrade_custom_post_gallery( $output, $attr ) {
 			<div class="content--gallery-slideshow">
 				<div class="pixslider  pixslider--gallery-slideshow  js-pixslider"
 				     data-arrows
-				     data-imagealigncenter
-				     data-imagescale="fill"
+				     data-imagescale="none"
 				     data-slidertransition="fade"
+				     data-autoheight
 				     >';
 		foreach ( $attachments as $id => $attachment ) :
 
