@@ -53,16 +53,20 @@ var Navigator = {
             }
 
             $button.appendTo($navigator);
+            $button.data('scrollTo', sectionTop - windowHeight/2 + sectionHeight/2);
             $section.data('offsetTop', sectionTop);
 
-            $button.on('click', function (event) {
-                event.preventDefault();
-                event.stopPropagation();
+            // closures
+            (function ($newButton) {
+                $newButton.on('click', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
 
-                smoothScrollTo(sectionTop - windowHeight/2 + sectionHeight/2);
+                    smoothScrollTo($newButton.data('scrollTo'));
 
-                return false;
-            });
+                    return false;
+                });
+            })($button);
 
         }
 
@@ -134,12 +138,15 @@ var Navigator = {
                 navigatorMiddle         = latestKnownScrollY + (windowHeight / 2);
 
             // if there's no header
+
             if ($section.css('display') == 'none') {
                 sectionBottom = sectionTop;
                 if (!$section.next().is('.article--page')) {
                     return;
                 }
             }
+
+            console.log(sectionTop, sectionBottom, navigatorMiddle);
 
             if (navigatorMiddle > sectionTop) {
                 that.currentSelected = i;
