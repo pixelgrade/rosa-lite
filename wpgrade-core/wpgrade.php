@@ -467,6 +467,13 @@ class wpgrade {
 	}
 
 	/**
+	 * @return string
+	 */
+	static function template_folder() {
+		return wpgrade::themedata()->Template;
+	}
+
+	/**
 	 * Reads theme configuration and returns resolved classes.
 	 * @return array|boolean classes or false
 	 */
@@ -642,11 +649,11 @@ class wpgrade {
 				// like "wpgrade-core/hooks"
 
 				// first time test if this is a linux based server path with backslash
-				$file = explode( 'themes/'. self::shortname(), $file);
+				$file = explode( 'themes/'. self::template_folder(), $file);
 				if ( isset( $file[1] ) ) {
 					$file = $file[1];
 				} else { // if not it must be a windows path with slash
-					$file = explode( 'themes\\'. self::shortname(), $file[0]);
+					$file = explode( 'themes\\'. self::template_folder(), $file[0]);
 					if ( isset( $file[1] ) ) {
 						$file = $file[1];
 					}
