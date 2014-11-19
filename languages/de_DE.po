@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ROSA - An Exquisite Restaurant Wordpress Theme\n"
-"POT-Creation-Date: 2014-11-04 11:16+0200\n"
-"PO-Revision-Date: 2014-11-04 11:16+0200\n"
+"POT-Creation-Date: 2014-11-19 12:19+0200\n"
+"PO-Revision-Date: 2014-11-19 12:19+0200\n"
 "Last-Translator: Vlad Olaru <vlad.olaru@pixelgrade.com>\n"
 "Language-Team: PixelGrade <contact@pixelgrade.com>\n"
 "Language: de_DE\n"
@@ -1533,7 +1533,6 @@ msgid "Primary Navigation"
 msgstr "Primär-Navigation"
 
 #: ../header.php:175 ../woocommerce/cart/mini-cart.php:28
-#, fuzzy
 msgid "View cart"
 msgstr "Alle anzeigen"
 
@@ -3818,7 +3817,7 @@ msgstr ""
 msgid "View %s"
 msgstr "Alle anzeigen im %s"
 
-#: ../wpgrade-core/wpgrade.php:1331
+#: ../wpgrade-core/wpgrade.php:1338
 #, fuzzy
 msgid "Invalid sidebar ID"
 msgstr "Ungültiger Dateityp"

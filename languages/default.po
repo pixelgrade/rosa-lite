@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ROSA - An Exquisite Restaurant Wordpress Theme\n"
-"POT-Creation-Date: 2014-11-04 11:13+0200\n"
-"PO-Revision-Date: 2014-11-04 11:15+0200\n"
+"POT-Creation-Date: 2014-11-19 12:19+0200\n"
+"PO-Revision-Date: 2014-11-19 12:19+0200\n"
 "Last-Translator: Vlad Olaru <vlad.olaru@pixelgrade.com>\n"
 "Language-Team: PixelGrade <contact@pixelgrade.com>\n"
 "Language: en\n"
@@ -3493,6 +3493,6 @@ msgstr ""
 msgid "View %s"
 msgstr ""
 
-#: ../wpgrade-core/wpgrade.php:1331
+#: ../wpgrade-core/wpgrade.php:1338
 msgid "Invalid sidebar ID"
 msgstr ""
