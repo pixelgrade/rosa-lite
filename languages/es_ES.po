@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ROSA - An Exquisite Restaurant Wordpress Theme\n"
 "POT-Creation-Date: 2014-11-19 12:21+0200\n"
-"PO-Revision-Date: 2014-11-19 12:23+0200\n"
+"PO-Revision-Date: 2014-11-19 13:13+0200\n"
 "Last-Translator: Vlad Olaru <vlad.olaru@pixelgrade.com>\n"
 "Language-Team: PixelGrade <contact@pixelgrade.com>\n"
 "Language: es\n"
@@ -2531,7 +2531,6 @@ msgid "Page"
 msgstr "Páginas"
 
 #: ../woocommerce/loop/orderby.php:27
-#, fuzzy
 msgid "All Products"
 msgstr "Todos los Proyectos"
 
