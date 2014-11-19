@@ -14,6 +14,8 @@ var Navigator = {
     initialized:        false,
     timeline:           new pixGS.TimelineMax({ paused: true }),
     nextTop:            0,
+    footer:             $('.sidebar--footer__dark'),
+    footerTop:          this.footer.length ? this.footer.offset().top : 0,
 
     initialize: function () {
 
@@ -146,8 +148,6 @@ var Navigator = {
                 }
             }
 
-            console.log(sectionTop, sectionBottom, navigatorMiddle);
-
             if (navigatorMiddle > sectionTop) {
                 that.currentSelected = i;
                 that.isWhite = true;
@@ -158,6 +158,12 @@ var Navigator = {
             }
 
         });
+
+        if (this.footer.top != 0) {
+            if (this.footer.top < latestKnownScrollY + (windowHeight / 2)) {
+                that.isWhite = true;
+            }
+        }
 
         // if the navigator's indicator has to be moved
         // then move it accordingly and update state

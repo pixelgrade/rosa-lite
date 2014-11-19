@@ -1110,8 +1110,6 @@ var Navigator = {
                 }
             }
 
-            console.log(sectionTop, sectionBottom, navigatorMiddle);
-
             if (navigatorMiddle > sectionTop) {
                 that.currentSelected = i;
                 that.isWhite = true;
@@ -1122,6 +1120,16 @@ var Navigator = {
             }
 
         });
+
+        // sidebar--footer sidebar--footer__dark"
+
+        var $footer     = $('.sidebar--footer__dark');
+
+        if ($footer.length) {
+            if ($footer.offset().top < latestKnownScrollY + (windowHeight / 2)) {
+                that.isWhite = true;
+            }
+        }
 
         // if the navigator's indicator has to be moved
         // then move it accordingly and update state
