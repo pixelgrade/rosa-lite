@@ -978,6 +978,8 @@ var Navigator = {
     initialized:        false,
     timeline:           new pixGS.TimelineMax({ paused: true }),
     nextTop:            0,
+    footer:             null,
+    footerTop:          0,
 
     initialize: function () {
 
@@ -986,6 +988,12 @@ var Navigator = {
 
         this.initialized    = true;
         this.$sections      = $(that.sectionSelector);
+
+        this.footer = $('.sidebar--footer__dark');
+
+        if (this.footer.length) {
+            this.footerTop = this.footer.offset().top;
+        }
 
         if (this.$sections.length < 2) {
             return;
@@ -1017,16 +1025,20 @@ var Navigator = {
             }
 
             $button.appendTo($navigator);
+            $button.data('scrollTo', sectionTop - windowHeight/2 + sectionHeight/2);
             $section.data('offsetTop', sectionTop);
 
-            $button.on('click', function (event) {
-                event.preventDefault();
-                event.stopPropagation();
+            // closures
+            (function ($newButton) {
+                $newButton.on('click', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
 
-                smoothScrollTo(sectionTop - windowHeight/2 + sectionHeight/2);
+                    smoothScrollTo($newButton.data('scrollTo'));
 
-                return false;
-            });
+                    return false;
+                });
+            })($button);
 
         }
 
@@ -1098,6 +1110,7 @@ var Navigator = {
                 navigatorMiddle         = latestKnownScrollY + (windowHeight / 2);
 
             // if there's no header
+
             if ($section.css('display') == 'none') {
                 sectionBottom = sectionTop;
                 if (!$section.next().is('.article--page')) {
@@ -1115,6 +1128,10 @@ var Navigator = {
             }
 
         });
+
+        if (this.footerTop != 0 && this.footerTop < latestKnownScrollY + (windowHeight / 2)) {
+            this.isWhite = true;
+        }
 
         // if the navigator's indicator has to be moved
         // then move it accordingly and update state
@@ -1355,11 +1372,13 @@ function eventHandlers() {
 
     if(ieMobile) filterHandler = 'click';
 
-    $('.pix-dropdown').on(filterHandler, function(e){
+    $('.dropdown__trigger').on(filterHandler, function(e){
+
         e.preventDefault();
         e.stopPropagation();
 
-        $(this).toggleClass('active');
+
+        $(this).closest('.pix-dropdown').toggleClass('active');
     });
 
 	if (globalDebug) {console.groupEnd();}
