@@ -978,6 +978,8 @@ var Navigator = {
     initialized:        false,
     timeline:           new pixGS.TimelineMax({ paused: true }),
     nextTop:            0,
+    footer:             null,
+    footerTop:          0,
 
     initialize: function () {
 
@@ -986,6 +988,12 @@ var Navigator = {
 
         this.initialized    = true;
         this.$sections      = $(that.sectionSelector);
+
+        this.footer = $('.sidebar--footer__dark');
+
+        if (this.footer.length) {
+            this.footer.offset().top;
+        }
 
         if (this.$sections.length < 2) {
             return;
@@ -1121,12 +1129,8 @@ var Navigator = {
 
         });
 
-        // sidebar--footer sidebar--footer__dark"
-
-        var $footer     = $('.sidebar--footer__dark');
-
-        if ($footer.length) {
-            if ($footer.offset().top < latestKnownScrollY + (windowHeight / 2)) {
+        if (this.footer.top != 0) {
+            if (this.footer.top < latestKnownScrollY + (windowHeight / 2)) {
                 that.isWhite = true;
             }
         }
@@ -1370,11 +1374,13 @@ function eventHandlers() {
 
     if(ieMobile) filterHandler = 'click';
 
-    $('.pix-dropdown').on(filterHandler, function(e){
+    $('.dropdown__trigger').on(filterHandler, function(e){
+
         e.preventDefault();
         e.stopPropagation();
 
-        $(this).toggleClass('active');
+
+        $(this).closest('.pix-dropdown').toggleClass('active');
     });
 
 	if (globalDebug) {console.groupEnd();}
