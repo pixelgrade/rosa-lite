@@ -308,6 +308,62 @@
                 <wp:meta_value><![CDATA[a:14:{s:9:"full-orig";a:3:{s:5:"width";i:1900;s:6:"height";i:1200;s:4:"file";s:22:"placeholder_image1.png";}s:14:"thumbnail-orig";a:4:{s:4:"file";s:30:"placeholder_image1-276x192.png";s:5:"width";i:276;s:6:"height";i:192;s:9:"mime-type";s:9:"image/png";}s:11:"medium-orig";a:4:{s:4:"file";s:30:"placeholder_image1-300x189.png";s:5:"width";i:300;s:6:"height";i:189;s:9:"mime-type";s:9:"image/png";}s:10:"large-orig";a:4:{s:4:"file";s:31:"placeholder_image1-1024x646.png";s:5:"width";i:1024;s:6:"height";i:646;s:9:"mime-type";s:9:"image/png";}s:15:"large-size-orig";a:4:{s:4:"file";s:31:"placeholder_image1-1200x757.png";s:5:"width";i:1200;s:6:"height";i:757;s:9:"mime-type";s:9:"image/png";}s:16:"medium-size-orig";a:4:{s:4:"file";s:30:"placeholder_image1-900x568.png";s:5:"width";i:900;s:6:"height";i:568;s:9:"mime-type";s:9:"image/png";}s:15:"small-size-orig";a:4:{s:4:"file";s:30:"placeholder_image1-400x252.png";s:5:"width";i:400;s:6:"height";i:252;s:9:"mime-type";s:9:"image/png";}s:18:"full-1401893990233";a:3:{s:5:"width";i:1420;s:6:"height";i:1026;s:4:"file";s:37:"placeholder_image1-e1401893099462.png";}s:23:"thumbnail-1401893990233";a:4:{s:4:"file";s:45:"placeholder_image1-e1401893099462-276x192.png";s:5:"width";i:276;s:6:"height";i:192;s:9:"mime-type";s:9:"image/png";}s:20:"medium-1401893990233";a:4:{s:4:"file";s:45:"placeholder_image1-e1401893099462-300x216.png";s:5:"width";i:300;s:6:"height";i:216;s:9:"mime-type";s:9:"image/png";}s:19:"large-1401893990233";a:4:{s:4:"file";s:46:"placeholder_image1-e1401893099462-1024x739.png";s:5:"width";i:1024;s:6:"height";i:739;s:9:"mime-type";s:9:"image/png";}s:24:"large-size-1401893990233";a:4:{s:4:"file";s:46:"placeholder_image1-e1401893099462-1200x867.png";s:5:"width";i:1200;s:6:"height";i:867;s:9:"mime-type";s:9:"image/png";}s:25:"medium-size-1401893990233";a:4:{s:4:"file";s:45:"placeholder_image1-e1401893099462-900x650.png";s:5:"width";i:900;s:6:"height";i:650;s:9:"mime-type";s:9:"image/png";}s:24:"small-size-1401893990233";a:4:{s:4:"file";s:45:"placeholder_image1-e1401893099462-400x289.png";s:5:"width";i:400;s:6:"height";i:289;s:9:"mime-type";s:9:"image/png";}}]]></wp:meta_value>
             </wp:postmeta>
         </item>
+
+        <item>
+            <title>Home</title>
+            <link>http://pixelgrade.com/demos/rosa2/uncategorized/home/</link>
+            <pubDate>Tue, 01 Jul 2014 05:46:02 +0000</pubDate>
+            <dc:creator><![CDATA[admin]]></dc:creator>
+            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa2/?p=410</guid>
+            <description></description>
+            <content:encoded><![CDATA[]]></content:encoded>
+            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+            <wp:post_id>410</wp:post_id>
+            <wp:post_date>2014-07-01 05:46:02</wp:post_date>
+            <wp:post_date_gmt>2014-07-01 05:46:02</wp:post_date_gmt>
+            <wp:comment_status>open</wp:comment_status>
+            <wp:ping_status>open</wp:ping_status>
+            <wp:post_name>home</wp:post_name>
+            <wp:status>publish</wp:status>
+            <wp:post_parent>0</wp:post_parent>
+            <wp:menu_order>1</wp:menu_order>
+            <wp:post_type>nav_menu_item</wp:post_type>
+            <wp:post_password></wp:post_password>
+            <wp:is_sticky>0</wp:is_sticky>
+            <category domain="nav_menu" nicename="main-menu"><![CDATA[Main Menu]]></category>
+            <wp:postmeta>
+                <wp:meta_key>_menu_item_classes</wp:meta_key>
+                <wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_menu_item_url</wp:meta_key>
+                <wp:meta_value><![CDATA[]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_menu_item_xfn</wp:meta_key>
+                <wp:meta_value><![CDATA[]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_menu_item_target</wp:meta_key>
+                <wp:meta_value><![CDATA[]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_menu_item_object</wp:meta_key>
+                <wp:meta_value><![CDATA[page]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_menu_item_object_id</wp:meta_key>
+                <wp:meta_value><![CDATA[5]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_menu_item_type</wp:meta_key>
+                <wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+            </wp:postmeta>
+            <wp:postmeta>
+                <wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
+                <wp:meta_value><![CDATA[0]]></wp:meta_value>
+            </wp:postmeta>
+        </item>
         <item>
             <title>Our Menu</title>
             <link>http://pixelgrade.com/demos/rosa2/uncategorized/115/</link>
@@ -1076,171 +1132,6 @@
             <wp:postmeta>
                 <wp:meta_key>_menu_item_url</wp:meta_key>
                 <wp:meta_value><![CDATA[]]></wp:meta_value>
-            </wp:postmeta>
-        </item>
-        <item>
-            <title>Discover</title>
-            <link>http://pixelgrade.com/demos/rosa2/uncategorized/top/</link>
-            <pubDate>Fri, 26 Sep 2014 10:17:32 +0000</pubDate>
-            <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa2/?p=484</guid>
-            <description></description>
-            <content:encoded><![CDATA[]]></content:encoded>
-            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-            <wp:post_id>484</wp:post_id>
-            <wp:post_date>2014-09-26 10:17:32</wp:post_date>
-            <wp:post_date_gmt>2014-09-26 10:17:32</wp:post_date_gmt>
-            <wp:comment_status>open</wp:comment_status>
-            <wp:ping_status>open</wp:ping_status>
-            <wp:post_name>top</wp:post_name>
-            <wp:status>publish</wp:status>
-            <wp:post_parent>0</wp:post_parent>
-            <wp:menu_order>1</wp:menu_order>
-            <wp:post_type>nav_menu_item</wp:post_type>
-            <wp:post_password></wp:post_password>
-            <wp:is_sticky>0</wp:is_sticky>
-            <category domain="nav_menu" nicename="one-page"><![CDATA[One Page]]></category>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_type</wp:meta_key>
-                <wp:meta_value><![CDATA[custom]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
-                <wp:meta_value><![CDATA[0]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_object_id</wp:meta_key>
-                <wp:meta_value><![CDATA[484]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_object</wp:meta_key>
-                <wp:meta_value><![CDATA[custom]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_target</wp:meta_key>
-                <wp:meta_value><![CDATA[]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_classes</wp:meta_key>
-                <wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_xfn</wp:meta_key>
-                <wp:meta_value><![CDATA[]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_url</wp:meta_key>
-                <wp:meta_value><![CDATA[#post-477]]></wp:meta_value>
-            </wp:postmeta>
-        </item>
-        <item>
-            <title>Menu</title>
-            <link>http://pixelgrade.com/demos/rosa2/uncategorized/menu/</link>
-            <pubDate>Fri, 26 Sep 2014 10:17:32 +0000</pubDate>
-            <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa2/?p=485</guid>
-            <description></description>
-            <content:encoded><![CDATA[]]></content:encoded>
-            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-            <wp:post_id>485</wp:post_id>
-            <wp:post_date>2014-09-26 10:17:32</wp:post_date>
-            <wp:post_date_gmt>2014-09-26 10:17:32</wp:post_date_gmt>
-            <wp:comment_status>open</wp:comment_status>
-            <wp:ping_status>open</wp:ping_status>
-            <wp:post_name>menu</wp:post_name>
-            <wp:status>publish</wp:status>
-            <wp:post_parent>0</wp:post_parent>
-            <wp:menu_order>2</wp:menu_order>
-            <wp:post_type>nav_menu_item</wp:post_type>
-            <wp:post_password></wp:post_password>
-            <wp:is_sticky>0</wp:is_sticky>
-            <category domain="nav_menu" nicename="one-page"><![CDATA[One Page]]></category>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_type</wp:meta_key>
-                <wp:meta_value><![CDATA[custom]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
-                <wp:meta_value><![CDATA[0]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_object_id</wp:meta_key>
-                <wp:meta_value><![CDATA[485]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_object</wp:meta_key>
-                <wp:meta_value><![CDATA[custom]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_target</wp:meta_key>
-                <wp:meta_value><![CDATA[]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_classes</wp:meta_key>
-                <wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_xfn</wp:meta_key>
-                <wp:meta_value><![CDATA[]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_url</wp:meta_key>
-                <wp:meta_value><![CDATA[#post-479]]></wp:meta_value>
-            </wp:postmeta>
-        </item>
-        <item>
-            <title>Reservation</title>
-            <link>http://pixelgrade.com/demos/rosa2/uncategorized/reservation/</link>
-            <pubDate>Fri, 26 Sep 2014 10:17:32 +0000</pubDate>
-            <dc:creator><![CDATA[admin]]></dc:creator>
-            <guid isPermaLink="false">http://pixelgrade.com/demos/rosa2/?p=486</guid>
-            <description></description>
-            <content:encoded><![CDATA[]]></content:encoded>
-            <excerpt:encoded><![CDATA[]]></excerpt:encoded>
-            <wp:post_id>486</wp:post_id>
-            <wp:post_date>2014-09-26 10:17:32</wp:post_date>
-            <wp:post_date_gmt>2014-09-26 10:17:32</wp:post_date_gmt>
-            <wp:comment_status>open</wp:comment_status>
-            <wp:ping_status>open</wp:ping_status>
-            <wp:post_name>reservation</wp:post_name>
-            <wp:status>publish</wp:status>
-            <wp:post_parent>0</wp:post_parent>
-            <wp:menu_order>3</wp:menu_order>
-            <wp:post_type>nav_menu_item</wp:post_type>
-            <wp:post_password></wp:post_password>
-            <wp:is_sticky>0</wp:is_sticky>
-            <category domain="nav_menu" nicename="one-page"><![CDATA[One Page]]></category>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_type</wp:meta_key>
-                <wp:meta_value><![CDATA[custom]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_menu_item_parent</wp:meta_key>
-                <wp:meta_value><![CDATA[0]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_object_id</wp:meta_key>
-                <wp:meta_value><![CDATA[486]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_object</wp:meta_key>
-                <wp:meta_value><![CDATA[custom]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_target</wp:meta_key>
-                <wp:meta_value><![CDATA[]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_classes</wp:meta_key>
-                <wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_xfn</wp:meta_key>
-                <wp:meta_value><![CDATA[]]></wp:meta_value>
-            </wp:postmeta>
-            <wp:postmeta>
-                <wp:meta_key>_menu_item_url</wp:meta_key>
-                <wp:meta_value><![CDATA[#post-481]]></wp:meta_value>
             </wp:postmeta>
         </item>
         <item>
