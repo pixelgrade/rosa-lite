@@ -14,8 +14,8 @@ var Navigator = {
     initialized:        false,
     timeline:           new pixGS.TimelineMax({ paused: true }),
     nextTop:            0,
-    footer:             $('.sidebar--footer__dark'),
-    footerTop:          this.footer.length ? this.footer.offset().top : 0,
+    footer:             null,
+    footerTop:          0,
 
     initialize: function () {
 
@@ -24,6 +24,12 @@ var Navigator = {
 
         this.initialized    = true;
         this.$sections      = $(that.sectionSelector);
+
+        this.footer = $('.sidebar--footer__dark');
+
+        if (this.footer.length) {
+            this.footer.offset().top;
+        }
 
         if (this.$sections.length < 2) {
             return;
