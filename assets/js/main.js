@@ -992,7 +992,7 @@ var Navigator = {
         this.footer = $('.sidebar--footer__dark');
 
         if (this.footer.length) {
-            this.footer.offset().top;
+            this.footerTop = this.footer.offset().top;
         }
 
         if (this.$sections.length < 2) {
@@ -1129,10 +1129,8 @@ var Navigator = {
 
         });
 
-        if (this.footer.top != 0) {
-            if (this.footer.top < latestKnownScrollY + (windowHeight / 2)) {
-                that.isWhite = true;
-            }
+        if (this.footerTop != 0 && this.footerTop < latestKnownScrollY + (windowHeight / 2)) {
+            this.isWhite = true;
         }
 
         // if the navigator's indicator has to be moved
