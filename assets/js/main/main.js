@@ -198,13 +198,10 @@ function eventHandlers() {
 
     if(ieMobile) filterHandler = 'click';
 
-    $('.dropdown__trigger').on(filterHandler, function(e){
-
-        e.preventDefault();
+    $('.pix-dropdown').on(filterHandler, function(e){
         e.stopPropagation();
 
-
-        $(this).closest('.pix-dropdown').toggleClass('active');
+        $(this).toggleClass('active');
     });
 
 	if (globalDebug) {console.groupEnd();}
