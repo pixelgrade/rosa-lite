@@ -1371,7 +1371,6 @@ function eventHandlers() {
     } else {
         filterHandler = 'hover';
     }
-    alert(filterHandler);
 
     if(ieMobile) filterHandler = 'click';
 
