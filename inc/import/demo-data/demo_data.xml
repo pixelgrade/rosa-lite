@@ -475,7 +475,7 @@
             </wp:postmeta>
         </item>
         <item>
-            <title>In The News</title>
+            <title>Blog</title>
             <link>http://pixelgrade.com/demos/rosa2/uncategorized/128/</link>
             <pubDate>Fri, 30 May 2014 14:28:43 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
@@ -915,8 +915,8 @@
             </wp:postmeta>
         </item>
         <item>
-            <title>Events</title>
-            <link>http://pixelgrade.com/demos/rosa2/uncategorized/events-2/</link>
+            <title>Reservations</title>
+            <link>http://pixelgrade.com/demos/rosa2/uncategorized/reservations/</link>
             <pubDate>Fri, 27 Jun 2014 09:15:11 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
             <guid isPermaLink="false">http://pixelgrade.com/demos/rosa2/?p=356</guid>
@@ -928,7 +928,7 @@
             <wp:post_date_gmt>2014-06-27 09:15:11</wp:post_date_gmt>
             <wp:comment_status>open</wp:comment_status>
             <wp:ping_status>open</wp:ping_status>
-            <wp:post_name>events-2</wp:post_name>
+            <wp:post_name>reservations</wp:post_name>
             <wp:status>publish</wp:status>
             <wp:post_parent>0</wp:post_parent>
             <wp:menu_order>6</wp:menu_order>
@@ -1135,7 +1135,7 @@
             </wp:postmeta>
         </item>
         <item>
-            <title>Sample Page</title>
+            <title>Sample Page</title>R
             <link>http://pixelgrade.com/demos/rosa2/sample-page/</link>
             <pubDate>Thu, 29 May 2014 06:36:37 +0000</pubDate>
             <dc:creator><![CDATA[admin]]></dc:creator>
