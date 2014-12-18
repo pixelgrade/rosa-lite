@@ -30,21 +30,26 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 		<div class="page-content  has-sidebar">
 			<?php if ( $has_sidebar ) {
 				echo '<div class="page-content__wrapper">';
-			} ?>
-			<article <?php post_class( 'article-single  single-post ' . $post_class_thumb ) ?>>
-				<?php get_template_part( 'templates/post/single-content/header' ); ?>
+			}
 
-				<section class="article__content  js-post-gallery">
-					<?php the_content(); ?>
-				</section>
-				<?php get_template_part( 'templates/post/single-content/footer' );
-				// If comments are open or we have at least one comment, load up the comment template
-				if ( comments_open() || '0' != get_comments_number() ) {
-					comments_template();
-				} ?>
+			while ( have_posts() ) : the_post(); ?>
+				<article <?php post_class( 'article-single  single-post ' . $post_class_thumb ) ?>>
+					<?php get_template_part( 'templates/post/single-content/header' ); ?>
 
-			</article>
-			<?php if ( $has_sidebar ) {
+					<section class="article__content  js-post-gallery">
+						<?php the_content(); ?>
+					</section>
+					<?php get_template_part( 'templates/post/single-content/footer' );
+					// If comments are open or we have at least one comment, load up the comment template
+					if ( comments_open() || '0' != get_comments_number() ) {
+						comments_template();
+					} ?>
+
+				</article>
+			<?php
+			endwhile;
+
+			if ( $has_sidebar ) {
 				echo '</div><!-- .page-content__wrapper -->';
 			} ?>
 		</div>
