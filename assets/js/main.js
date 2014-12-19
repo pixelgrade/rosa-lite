@@ -1378,6 +1378,12 @@ function eventHandlers() {
         $(this).toggleClass('active');
     });
 
+    $('.tabs__nav').find("li > a").click(function () {
+        setTimeout(function(){
+            Parallax.update();
+        }, 300);
+    });
+
 	if (globalDebug) {console.groupEnd();}
 }
 
