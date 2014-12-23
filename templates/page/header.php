@@ -18,7 +18,7 @@ if ( empty($header_height) ) {
 }
 $classes .= ' ' . $header_height;
 
-$subtitle = trim( get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_subtitle', true ) );
+$subtitle = trim( __(get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_subtitle', true ) ));
 //we need to mess with the subtitle a little bit - because it deserves it
 //we need to wrap the first subtitle letter in a span so we can control it - height wise
 if ( ! empty( $subtitle ) ) {
@@ -27,12 +27,12 @@ if ( ! empty( $subtitle ) ) {
 	$subtitle   = '<span class="first-letter">' . $first_char . '</span>' . mb_substr( $subtitle, 1 );
 }
 
-$title = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_title', true );
+$title = __(get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_title', true ));
 if ( empty( $title ) ) {
 	//use the page title if empty
 	$title = get_the_title();
 }
-$description = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_description', true );
+$description = __(get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_description', true ));
 //filter the content with some limitations to avoid having plugins doing nasty things to it
 $description = wpgrade::filter_content( $description, 'default' );
 
