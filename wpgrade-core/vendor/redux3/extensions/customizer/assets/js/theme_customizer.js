@@ -23,7 +23,6 @@
 
 		}, 1500);
 
-		moveResetButton();
 
 		function closeAllPanles() {
 			$('.redux-field-container, .redux-typography-container, .dropdown-section-content').removeClass('active');
@@ -176,14 +175,6 @@
 					$(this).hide();
 				}
 			})
-		}
-
-		// Move "Reset to Defaults" at the end of the options list
-		function moveResetButton() {
-			var resetButton = $('#accordion-section-resetoptions'),
-				container = resetButton.parent();
-
-			resetButton.appendTo(container);
 		}
 
 		// iterate thtough all settings and pick up ours

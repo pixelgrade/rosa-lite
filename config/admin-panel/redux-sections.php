@@ -1031,6 +1031,7 @@ $sections[] = array(
 	'class'           => 'has-customizer',
 	'title'           => __( 'Reset Options', 'rosa_txtd' ),
 	'customizer_only' => true,
+	'priority'		  => 9999,
 	'fields'          => array(
 		array(
 			'id'         => 'customizer_reset_button_section',
