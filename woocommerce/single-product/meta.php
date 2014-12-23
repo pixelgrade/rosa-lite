@@ -11,8 +11,16 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 global $post, $product;
 
-$cat_count = sizeof( get_the_terms( $post->ID, 'product_cat' ) );
-$tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
+if ( get_the_terms( $post->ID, 'product_cat' ) !== false ) {
+	$cat_count = sizeof( get_the_terms( $post->ID, 'product_cat' ) );
+} else {
+	$cat_count = 0;
+}
+if ( get_the_terms( $post->ID, 'product_tag' ) !== false ) {
+	$tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
+} else {
+	$tag_count = 0;
+}
 ?>
 <div class="product_meta">
 
@@ -23,6 +31,7 @@ $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
 		<span class="sku_wrapper"><?php _e( 'SKU:', 'woocommerce' ); ?> <span class="sku" itemprop="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : __( 'N/A', 'woocommerce' ); ?></span>.</span>
 
 	<?php endif; ?>
+	<?php if ( $cat_count > 0 ) : ?>
 	<div class="meta--categories btn-list meta-list">
 		<span class="btn  btn--small  btn--secondary  list-head">
 			<?php
@@ -34,7 +43,8 @@ $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
 
 		<?php echo $product->get_categories( '' ); ?>
 	</div>
-
+	<?php endif; ?>
+	<?php if ( $tag_count > 0 ) : ?>
 	<div class="meta--tags btn-list meta-list">
 		<span class="btn  btn--small  btn--secondary  list-head">
 			<?php
@@ -45,6 +55,6 @@ $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
 		</span>
 		<?php echo $product->get_tags( '' ); ?>
 	</div>
-
+	<?php endif; ?>
 	<?php do_action( 'woocommerce_product_meta_end' ); ?>
 </div>
