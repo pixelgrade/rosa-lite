@@ -57,8 +57,6 @@ var Parallax = {
                     if (Modernizr.touch) {
                         scaleY = (scaleY * imageHeight + 80) / imageHeight;
                         scale = Math.max(scaleX, scaleY);
-
-                        console.log(scaleY)
                     }
 
                     // scale image up to desired size
