@@ -104,6 +104,11 @@ h3.accordion-section-title, #customize-info {
 	}
 }
 
+// Description Text
+#customize-controls .description {
+	color: #b1b5b9;
+}
+
 /*------------------------------------*\
     ACCORDION SECTIONS
 \*------------------------------------*/
@@ -179,8 +184,19 @@ h3.accordion-section-title, #customize-info {
 #customize-theme-controls .control-section.open .accordion-section-title {
 	border-bottom-color: $lighter !important;
 }
+
+.accordion-section.control-section-default {
+	.accordion-section-title:after {
+		top: 0;
+	}
+}
+
 #customize-info.open, #customize-theme-controls .control-section.open {
-	border-bottom: none;
+	border-bottom-color: $lighter;
+
+	.accordion-section-content {
+		overflow: hidden;
+	}
 }
 
 
