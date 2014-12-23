@@ -22,7 +22,7 @@
 			removeEmptyLists();
 
 		}, 1500);
-		
+
 		moveResetButton();
 
 		function closeAllPanles() {
