@@ -13,26 +13,26 @@ if ( isset( $_GET['debug_mod'] ) && $_GET['debug_mod'] === 'true' ) {
 $sections[] = array(
 	'icon'       => 'icon-database-1',
 	'icon_class' => '',
-	'title'      => __( 'General', 'pile_txtd' ),
-	'desc'       => sprintf( '<p class="description">' . __( 'General settings contains options that have a site-wide reach like defining your site dynamics or branding (including logo and other icons).', 'pile_txtd' ) . '</p>', wpgrade::themename() ),
+	'title'      => __( 'General', 'rosa_txtd' ),
+	'desc'       => sprintf( '<p class="description">' . __( 'General settings contains options that have a site-wide reach like defining your site dynamics or branding (including logo and other icons).', 'rosa_txtd' ) . '</p>', wpgrade::themename() ),
 	'fields'     => array(
 		array(
 			'id'       => 'use_smooth_scroll',
 			'type'     => 'switch',
-			'title'    => __( 'Smooth Scrolling', 'pile_txtd' ),
-			'subtitle' => __( 'Enable / Disable smooth scrolling.', 'pile_txtd' ),
+			'title'    => __( 'Smooth Scrolling', 'rosa_txtd' ),
+			'subtitle' => __( 'Enable / Disable smooth scrolling.', 'rosa_txtd' ),
 			'default'  => '1'
 		),
 		array(
 			'id'   => 'branding-header-90821',
-			'desc' => '<h3>' . __( 'Branding', 'pile_txtd' ) . '</h3>',
+			'desc' => '<h3>' . __( 'Branding', 'rosa_txtd' ) . '</h3>',
 			'type' => 'info'
 		),
 		array(
 			'id'       => 'main_logo_light',
 			'type'     => 'media',
-			'title'    => __( 'Main Logo', 'pile_txtd' ),
-			'subtitle' => __( 'If there is no image uploaded, plain text will be used instead (generated from the site\'s name).', 'pile_txtd' ),
+			'title'    => __( 'Main Logo', 'rosa_txtd' ),
+			'subtitle' => __( 'If there is no image uploaded, plain text will be used instead (generated from the site\'s name).', 'rosa_txtd' ),
 //			'hint'     => array(
 //				'content' => 'This is the content of the tool-tip'
 //			)
@@ -41,48 +41,48 @@ $sections[] = array(
 			'id'    => 'main_logo_dark',
 			'type'  => 'media',
 			'class'    => 'js-class-hook',
-			'title' => __( 'Main Logo Inversed', 'pile_txtd' ),
+			'title' => __( 'Main Logo Inversed', 'rosa_txtd' ),
 		),
 		array(
 			'id'       => 'use_retina_logo',
 			'type'     => 'switch',
-			'title'    => __( '2x Retina Logo', 'pile_txtd' ),
-			'subtitle' => __( 'To be Retina-ready you need to add a 2x size logo image.', 'pile_txtd' ),
+			'title'    => __( '2x Retina Logo', 'rosa_txtd' ),
+			'subtitle' => __( 'To be Retina-ready you need to add a 2x size logo image.', 'rosa_txtd' ),
 		),
 		array(
 			'id'       => 'retina_main_logo_light',
 			'type'     => 'media',
 			'class'    => 'js-class-hook image--small',
-			'title'    => __( 'Retina Logo light', 'pile_txtd' ),
+			'title'    => __( 'Retina Logo light', 'rosa_txtd' ),
 			'required' => array( 'use_retina_logo', 'equals', 1 )
 		),
 		array(
 			'id'       => 'retina_main_logo_dark',
 			'type'     => 'media',
 			'class'    => 'js-class-hook image--small',
-			'title'    => __( 'Retina Logo dark', 'pile_txtd' ),
+			'title'    => __( 'Retina Logo dark', 'rosa_txtd' ),
 			'required' => array( 'use_retina_logo', 'equals', 1 )
 		),
 		array(
 			'id'       => 'favicon',
 			'type'     => 'media',
 			'class'    => 'js-class-hook image--small',
-			'title'    => __( 'Favicon', 'pile_txtd' ),
-			'subtitle' => __( 'Upload a 16 x 16px image that will be used as a favicon.', 'pile_txtd' ),
+			'title'    => __( 'Favicon', 'rosa_txtd' ),
+			'subtitle' => __( 'Upload a 16 x 16px image that will be used as a favicon.', 'rosa_txtd' ),
 		),
 		array(
 			'id'       => 'apple_touch_icon',
 			'type'     => 'media',
 			'class'    => 'js-class-hook image--small',
-			'title'    => __( 'Apple Touch Icon', 'pile_txtd' ),
-			'subtitle' => __( 'You can customize the icon for the Apple touch shortcut to your website. The size of this icon must be 77x77px.', 'pile_txtd' )
+			'title'    => __( 'Apple Touch Icon', 'rosa_txtd' ),
+			'subtitle' => __( 'You can customize the icon for the Apple touch shortcut to your website. The size of this icon must be 77x77px.', 'rosa_txtd' )
 		),
 		array(
 			'id'       => 'metro_icon',
 			'type'     => 'media',
 			'class'    => 'js-class-hook image--small',
-			'title'    => __( 'Metro Icon', 'pile_txtd' ),
-			'subtitle' => __( 'The size of this icon must be 144x144px.', 'pile_txtd' )
+			'title'    => __( 'Metro Icon', 'rosa_txtd' ),
+			'subtitle' => __( 'The size of this icon must be 144x144px.', 'rosa_txtd' )
 		),
 	)
 );
@@ -98,9 +98,9 @@ $sections[] = array(
 	'icon'            => "icon-params",
 	'icon_class'      => '',
 	'class'           => 'has-customizer',
-	'title'           => __( 'Colors', 'pile_txtd' ),
+	'title'           => __( 'Colors', 'rosa_txtd' ),
 	'id'              => 'colors',
-	'desc'            => '<p class="description">' . __( 'Using the color pickers you can change the colors of the most important elements. If you want to override the color of some elements you can always use Custom CSS code in Theme Options - Custom Code.', 'pile_txtd' ) . '</p>',
+	'desc'            => '<p class="description">' . __( 'Using the color pickers you can change the colors of the most important elements. If you want to override the color of some elements you can always use Custom CSS code in Theme Options - Custom Code.', 'rosa_txtd' ) . '</p>',
 	'customizer_only' => true,
 	'type'            => 'customizer_panel',
 	'fields'          => array( array('id' => 'legacy', 'title' => '', 'type' => 'info' ) )
@@ -109,8 +109,8 @@ $sections[] = array(
 	'icon'            => "icon-params",
 	'icon_class'      => '',
 	'class'           => 'has-customizer',
-	'title'           => __( 'Colors', 'pile_txtd' ),
-	'desc'            => '<p class="description">' . __( 'The style options control the general styling of the site, like accent color and Google Web Fonts. You can choose custom fonts for various typography elements with font weight, character set, size and/or line height. You also have a live preview for your chosen fonts.', 'pile_txtd' ) . '</p>',
+	'title'           => __( 'Colors', 'rosa_txtd' ),
+	'desc'            => '<p class="description">' . __( 'The style options control the general styling of the site, like accent color and Google Web Fonts. You can choose custom fonts for various typography elements with font weight, character set, size and/or line height. You also have a live preview for your chosen fonts.', 'rosa_txtd' ) . '</p>',
 	'customizer_only' => true,
 	'type' => 'customizer_section',
 	'in_panel'        => 'colors',
@@ -118,8 +118,8 @@ $sections[] = array(
 		array(
 			'id'         => 'main_color',
 			'type'       => 'color',
-			'title'      => __( 'Accent Color', 'pile_txtd' ),
-			'subtitle'   => __( 'Use the color picker to change the main color of the site to match your brand color.', 'pile_txtd' ),
+			'title'      => __( 'Accent Color', 'rosa_txtd' ),
+			'subtitle'   => __( 'Use the color picker to change the main color of the site to match your brand color.', 'rosa_txtd' ),
 			'default'    => '#c59d5f',
 			'validate'   => 'color',
 			'compiler'   => true,
@@ -178,7 +178,7 @@ $sections[] = array(
 		array(
 			'id'         => 'text_color',
 			'type'       => 'color',
-			'title'      => __( 'Text Color', 'pile_txtd' ),
+			'title'      => __( 'Text Color', 'rosa_txtd' ),
 			'default'    => '#515150',
 			'validate'   => 'color',
 			'compiler'   => true,
@@ -198,7 +198,7 @@ $sections[] = array(
 		array(
 			'id'         => 'headings_color',
 			'type'       => 'color',
-			'title'      => __( 'Headings color', 'pile_txtd' ),
+			'title'      => __( 'Headings color', 'rosa_txtd' ),
 			'default'    => '#262526',
 			'validate'   => 'color',
 			'compiler'   => true,
@@ -214,7 +214,7 @@ $sections[] = array(
 		array(
 			'id'         => 'cover_text',
 			'type'       => 'color',
-			'title'      => __( 'Cover Text', 'pile_txtd' ),
+			'title'      => __( 'Cover Text', 'rosa_txtd' ),
 			'default'    => '#fff',
 			'validate'   => 'color',
 			'compiler'   => true,
@@ -237,7 +237,7 @@ $sections[] = array(
 	'icon'            => "icon-params",
 	'icon_class'      => '',
 	'class'           => 'has-customizer',
-	'title'           => __( 'Backgrounds', 'pile_txtd' ),
+	'title'           => __( 'Backgrounds', 'rosa_txtd' ),
 	'id'              => 'backgrounds',
 	'customizer_only' => true,
 	'type' => 'customizer_panel',
@@ -247,7 +247,7 @@ $sections[] = array(
 	'icon'            => "icon-params",
 	'icon_class'      => '',
 	'class'           => 'has-customizer',
-	'title'           => __( 'Backgrounds', 'pile_txtd' ),
+	'title'           => __( 'Backgrounds', 'rosa_txtd' ),
 	'customizer_only' => true,
 	'type'            => 'customizer_section',
 	'in_panel'        => 'backgrounds',
@@ -255,7 +255,7 @@ $sections[] = array(
 		array(
 			'id'         => 'header_background_color',
 			'type'       => 'color',
-			'title'      => __( 'Header', 'pile_txtd' ),
+			'title'      => __( 'Header', 'rosa_txtd' ),
 			'default'    => '#ffffff',
 			'validate'   => 'color',
 			'compiler'   => true,
@@ -272,8 +272,8 @@ $sections[] = array(
 			'id'               => 'header_image_pattern',
 			'type'             => 'customizer_background',
 			'output'           => array( '.site-header' ),
-			'title'            => __( '<button></button>', 'pile_txtd' ),
-			'subtitle'         => __( 'Container background with image.', 'pile_txtd' ),
+			'title'            => __( '<button></button>', 'rosa_txtd' ),
+			'subtitle'         => __( 'Container background with image.', 'rosa_txtd' ),
 			'customizer'       => array(
 				'transport' => 'refresh',
 			),
@@ -295,7 +295,7 @@ $sections[] = array(
 		array(
 			'id'         => 'content_background_color',
 			'type'       => 'color',
-			'title'      => __( 'Content', 'pile_txtd' ),
+			'title'      => __( 'Content', 'rosa_txtd' ),
 			'default'    => '#ffffff',
 			'validate'   => 'color',
 			'compiler'   => true,
@@ -312,8 +312,8 @@ $sections[] = array(
 			'id'               => 'container_image_pattern',
 			'type'             => 'customizer_background',
 			'output'           => array( '.page .article__content' ),
-			'title'            => __( '<button></button>', 'pile_txtd' ),
-			'subtitle'         => __( 'Container background with image.', 'pile_txtd' ),
+			'title'            => __( '<button></button>', 'rosa_txtd' ),
+			'subtitle'         => __( 'Container background with image.', 'rosa_txtd' ),
 			'customizer'       => array(
 				'transport' => 'refresh',
 			),
@@ -334,14 +334,14 @@ $sections[] = array(
 		),
 		array(
 			'id'         => 'backgrounds_footer',
-			'title'      => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Footer', 'pile_txtd' ) . '</span></label>',
+			'title'      => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Footer', 'rosa_txtd' ) . '</span></label>',
 			'type'       => 'customizer_info',
 			'customizer' => array()
 		),
 		array(
 			'id'            => 'footer_sidebar_style',
 			'type'          => 'select',
-			'title'         => __( 'Footer Widget Area Style', 'pile_txtd' ),
+			'title'         => __( 'Footer Widget Area Style', 'rosa_txtd' ),
 			'display_value' => 'text',
 			'class'         => 'small-text',
 			'options'       => array(
@@ -361,7 +361,7 @@ $sections[] = array(
 		array(
 			'id'            => 'footer_bottombar_style',
 			'type'          => 'select',
-			'title'         => __( 'Footer Bottom Bar Style', 'pile_txtd' ),
+			'title'         => __( 'Footer Bottom Bar Style', 'rosa_txtd' ),
 			'display_value' => 'text',
 			'class'         => 'small-text',
 			'options'       => array(
@@ -387,7 +387,7 @@ $sections[] = array(
 	'icon'            => "icon-params",
 	'icon_class'      => '',
 	'class'           => 'has-customizer',
-	'title'           => __( 'Typography', 'pile_txtd' ),
+	'title'           => __( 'Typography', 'rosa_txtd' ),
 	'id'              => 'typography',
 	'customizer_only' => true,
 	'type' => 'customizer_panel',
@@ -397,7 +397,7 @@ $sections[] = array(
 	'icon'            => "icon-params",
 	'icon_class'      => '',
 	'class'           => 'has-customizer',
-	'title'           => __( 'Typography', 'pile_txtd' ),
+	'title'           => __( 'Typography', 'rosa_txtd' ),
 	'customizer_only' => true,
 	'type'            => 'customizer_section',
 	'in_panel'        => 'typography',
@@ -405,8 +405,8 @@ $sections[] = array(
 		array(
 			'id'       => 'use_google_fonts',
 			'type'     => 'switch',
-			'title'    => __( 'Do you need custom web fonts?', 'pile_txtd' ),
-			'subtitle' => __( 'Tap into the massive <a href="http://www.google.com/fonts/">Google Fonts</a> collection (with Live preview).', 'pile_txtd' ),
+			'title'    => __( 'Do you need custom web fonts?', 'rosa_txtd' ),
+			'subtitle' => __( 'Tap into the massive <a href="http://www.google.com/fonts/">Google Fonts</a> collection (with Live preview).', 'rosa_txtd' ),
 			'default'  => '1',
 			'compiler' => true,
 		),
@@ -422,8 +422,8 @@ $sections[] = array(
 			'text-align'     => false,
 			'preview'        => false,
 			'required'       => array( 'use_google_fonts', '=', 1 ),
-			'title'          => __( '<button></button> Headings', 'pile_txtd' ),
-			'subtitle'       => __( 'Font for titles and headings.', 'pile_txtd' ),
+			'title'          => __( '<button></button> Headings', 'rosa_txtd' ),
+			'subtitle'       => __( 'Font for titles and headings.', 'rosa_txtd' ),
 			'compiler'       => true,
 			'customizer'     => array(
 				'transport' => 'refresh',
@@ -447,8 +447,8 @@ $sections[] = array(
 			'text-align'     => false,
 			'preview'        => false,
 			'required'       => array( 'use_google_fonts', '=', 1 ),
-			'title'          => __( '<button></button> Sub Headings', 'pile_txtd' ),
-			'subtitle'       => __( 'Font for titles and headings.', 'pile_txtd' ),
+			'title'          => __( '<button></button> Sub Headings', 'rosa_txtd' ),
+			'subtitle'       => __( 'Font for titles and headings.', 'rosa_txtd' ),
 			'compiler'       => true,
 			'customizer'     => array(
 				'transport' => 'refresh',
@@ -462,7 +462,7 @@ $sections[] = array(
 		array(
 			'id'            => 'subheadings_bottom-spacing',
 			'type'          => 'customizer_slider',
-			'title'         => __( 'Bottom Spacing', 'pile_txtd' ),
+			'title'         => __( 'Bottom Spacing', 'rosa_txtd' ),
 			'validate'      => 'numeric',
 			'default'       => '-38',
 			'min'           => - 90,
@@ -483,7 +483,7 @@ $sections[] = array(
 		array(
 			'id'            => 'subheadings_first-letter',
 			'type'          => 'customizer_slider',
-			'title'         => __( 'First Letter Offset', 'pile_txtd' ),
+			'title'         => __( 'First Letter Offset', 'rosa_txtd' ),
 			'validate'      => 'numeric',
 			'default'       => '9',
 			'min'           => - 48,
@@ -513,8 +513,8 @@ $sections[] = array(
 			'text-align'     => false,
 			'preview'        => false,
 			'required'       => array( 'use_google_fonts', '=', 1 ),
-			'title'          => __( '<button></button> Navigation', 'pile_txtd' ),
-			'subtitle'       => __( 'Font for the navigation menu.', 'pile_txtd' ),
+			'title'          => __( '<button></button> Navigation', 'rosa_txtd' ),
+			'subtitle'       => __( 'Font for the navigation menu.', 'rosa_txtd' ),
 			'compiler'       => true,
 			'customizer'     => array(
 				'transport' => 'refresh',
@@ -529,7 +529,7 @@ $sections[] = array(
 		array(
 			'id'            => 'nav_font-size',
 			'type'          => 'customizer_slider',
-			'title'         => __( 'Font Size', 'pile_txtd' ),
+			'title'         => __( 'Font Size', 'rosa_txtd' ),
 			'validate'      => 'numeric',
 			'default'       => '13',
 			'min'           => 8,
@@ -550,7 +550,7 @@ $sections[] = array(
 		array(
 			'id'            => 'nav_letter-spacing',
 			'type'          => 'customizer_slider',
-			'title'         => __( 'Letter Spacing', 'pile_txtd' ),
+			'title'         => __( 'Letter Spacing', 'rosa_txtd' ),
 			'validate'      => 'numeric',
 			'default'       => '1',
 			'min'           => - 5,
@@ -571,7 +571,7 @@ $sections[] = array(
 		array(
 			'id'            => 'nav_text-transform',
 			'type'          => 'select',
-			'title'         => __( 'Text Transform', 'pile_txtd' ),
+			'title'         => __( 'Text Transform', 'rosa_txtd' ),
 			'options'       => array(
 				'none'       => 'None',
 				'capitalize' => 'Capitalize',
@@ -597,7 +597,7 @@ $sections[] = array(
 		array(
 			'id'            => 'nav_text-decoration',
 			'type'          => 'select',
-			'title'         => __( 'Text Decoration', 'pile_txtd' ),
+			'title'         => __( 'Text Decoration', 'rosa_txtd' ),
 			'options'       => array(
 				'none'      => 'None',
 				'underline' => 'Underline',
@@ -634,8 +634,8 @@ $sections[] = array(
 			'all-styles'     => true,
 			'preview'        => false,
 			'required'       => array( 'use_google_fonts', '=', 1 ),
-			'title'          => __( '<button></button> Body', 'pile_txtd' ),
-			'subtitle'       => __( 'Font for content and widget text.', 'pile_txtd' ),
+			'title'          => __( '<button></button> Body', 'rosa_txtd' ),
+			'subtitle'       => __( 'Font for content and widget text.', 'rosa_txtd' ),
 			'compiler'       => true,
 			'customizer'     => array(
 				'transport' => 'refresh',
@@ -649,7 +649,7 @@ $sections[] = array(
 		array(
 			'id'            => 'body-font-size',
 			'type'          => 'customizer_slider',
-			'title'         => __( 'Font Size', 'pile_txtd' ),
+			'title'         => __( 'Font Size', 'rosa_txtd' ),
 			'validate'      => 'numeric',
 			'default'       => '16',
 			'min'           => 8,
@@ -670,7 +670,7 @@ $sections[] = array(
 		array(
 			'id'            => 'body-line-height',
 			'type'          => 'customizer_slider',
-			'title'         => __( 'Line Height', 'pile_txtd' ),
+			'title'         => __( 'Line Height', 'rosa_txtd' ),
 			'validate'      => 'numeric',
 			'default'       => '1.7',
 			'min'           => 0,
@@ -698,7 +698,7 @@ $sections[] = array(
 	'icon'            => "icon-params",
 	'icon_class'      => '',
 	'class'           => 'has-customizer',
-	'title'           => __( 'Sizes and Spacing', 'pile_txtd' ),
+	'title'           => __( 'Sizes and Spacing', 'rosa_txtd' ),
 	'id'              => 'size-and-pacing',
 	'customizer_only' => true,
 	'type'            => 'customizer_panel',
@@ -708,22 +708,22 @@ $sections[] = array(
 	'icon'            => "icon-params",
 	'icon_class'      => '',
 	'class'           => 'has-customizer',
-	'title'           => __( 'Sizes and Spacing', 'pile_txtd' ),
+	'title'           => __( 'Sizes and Spacing', 'rosa_txtd' ),
 	'customizer_only' => true,
 	'type'            => 'customizer_section',
 	'in_panel'        => 'size-and-pacing',
 	'fields'          => array(
 		array(
 			'id'         => 'sizes_content',
-			'title'      => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Content', 'pile_txtd' ) . '</span></label>',
+			'title'      => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Content', 'rosa_txtd' ) . '</span></label>',
 			'type'       => 'customizer_info',
 			'customizer' => array()
 		),
 		array(
 			'id'            => 'content_width',
 			'type'          => 'customizer_slider',
-			'title'         => __( 'Site Container Width', 'pile_txtd' ),
-			'subtitle'      => __( 'Set the width of the container.', 'pile_txtd' ),
+			'title'         => __( 'Site Container Width', 'rosa_txtd' ),
+			'subtitle'      => __( 'Set the width of the container.', 'rosa_txtd' ),
 			'validate'      => 'numeric',
 			'default'       => '1250',
 			'min'           => 600,
@@ -744,7 +744,7 @@ $sections[] = array(
 		array(
 			'id'            => 'sections_vertical_margins',
 			'type'          => 'customizer_slider',
-			'title'         => __( 'Sections Vertical Margins', 'pile_txtd' ),
+			'title'         => __( 'Sections Vertical Margins', 'rosa_txtd' ),
 			'validate'      => 'numeric',
 			'default'       => '78',
 			'min'           => 0,
@@ -771,8 +771,8 @@ $sections[] = array(
 		array(
 			'id'            => 'sidebar_width',
 			'type'          => 'customizer_slider',
-			'title'         => __( 'Sidebar Width', 'pile_txtd' ),
-			'subtitle'      => __( 'Set the width of the sidebar.', 'pile_txtd' ),
+			'title'         => __( 'Sidebar Width', 'rosa_txtd' ),
+			'subtitle'      => __( 'Set the width of the sidebar.', 'rosa_txtd' ),
 			'validate'      => 'numeric',
 			'default'       => '300',
 			'min'           => 140,
@@ -805,14 +805,14 @@ $sections[] = array(
 		),
 		array(
 			'id'         => 'sizes_header',
-			'title'      => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Header', 'pile_txtd' ) . '</span></label>',
+			'title'      => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Header', 'rosa_txtd' ) . '</span></label>',
 			'type'       => 'customizer_info',
 			'customizer' => array()
 		),
 		array(
 			'id'            => 'header_logo_height',
 			'type'          => 'customizer_slider',
-			'title'         => __( 'Logo Height', 'pile_txtd' ),
+			'title'         => __( 'Logo Height', 'rosa_txtd' ),
 			'validate'      => 'numeric',
 			'default'       => '90',
 			'min'           => 25,
@@ -834,7 +834,7 @@ $sections[] = array(
 		array(
 			'id'            => 'header_vertical_margins',
 			'type'          => 'customizer_slider',
-			'title'         => __( 'Header Vertical Margins', 'pile_txtd' ),
+			'title'         => __( 'Header Vertical Margins', 'rosa_txtd' ),
 			'validate'      => 'numeric',
 			'default'       => '0',
 			'min'           => 0,
@@ -873,14 +873,14 @@ $sections[] = array(
 		),
 		array(
 			'id'         => 'sizes_nav',
-			'title'      => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Navigation', 'pile_txtd' ) . '</span></label>',
+			'title'      => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Navigation', 'rosa_txtd' ) . '</span></label>',
 			'type'       => 'customizer_info',
 			'customizer' => array()
 		),
 		array(
 			'id'            => 'navigation_menu_items_spacing',
 			'type'          => 'customizer_slider',
-			'title'         => __( 'Menu Items Spacing', 'pile_txtd' ),
+			'title'         => __( 'Menu Items Spacing', 'rosa_txtd' ),
 			'validate'      => 'numeric',
 			'default'       => 24,
 			'min'           => 12,
@@ -913,7 +913,7 @@ $sections[] = array(
 	'icon'            => "icon-params",
 	'icon_class'      => '',
 	'class'           => 'has-customizer',
-	'title'           => __( 'Other Options', 'pile_txtd' ),
+	'title'           => __( 'Other Options', 'rosa_txtd' ),
 	'id'              => 'general-options',
 	'customizer_only' => true,
 	'type' => 'customizer_panel',
@@ -924,14 +924,14 @@ $sections[] = array(
 	'icon'            => "icon-params",
 	'icon_class'      => '',
 	'class'           => 'has-customizer',
-	'title'           => __( 'General Options', 'pile_txtd' ),
+	'title'           => __( 'General Options', 'rosa_txtd' ),
 	'customizer_only' => true,
 	'type'            => 'customizer_section',
 	'in_panel'        => 'general-options',
 	'fields'          => array(
 		array(
 			'id'              => 'options_elements',
-			'title'           => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Elements', 'pile_txtd' ) . '</span></label>',
+			'title'           => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Elements', 'rosa_txtd' ) . '</span></label>',
 			'type'            => 'customizer_info',
 			//			'customizer_only' => true,
 			'customizer'      => array()
@@ -939,7 +939,7 @@ $sections[] = array(
 		array(
 			'id'            => 'border_width',
 			'type'          => 'customizer_slider',
-			'title'         => __( 'Border Width', 'pile_txtd' ),
+			'title'         => __( 'Border Width', 'rosa_txtd' ),
 			'validate'      => 'numeric',
 			'default'       => 0,
 			'min'           => 0,
@@ -986,7 +986,7 @@ $sections[] = array(
 		array(
 			'id'         => 'down_arrow_style',
 			'type'       => 'select',
-			'title'      => __( 'Scroll Down Arrow Style', 'pile_txtd' ),
+			'title'      => __( 'Scroll Down Arrow Style', 'rosa_txtd' ),
 			'options'    => array(
 				'transparent' => 'Transparent',
 				'bubble'      => 'Bubble',
@@ -1001,8 +1001,8 @@ $sections[] = array(
 		array(
 			'id'          => 'slideshow_arrows_style',
 			'type'        => 'select',
-			'title'       => __( 'Slideshow Arrows Style', 'pile_txtd' ),
-			'subtitle'    => __( 'Select which type of arrows you want on page headers.', 'pile_txtd' ),
+			'title'       => __( 'Slideshow Arrows Style', 'rosa_txtd' ),
+			'subtitle'    => __( 'Select which type of arrows you want on page headers.', 'rosa_txtd' ),
 			'options'     => array(
 				'static' => 'Always Show',
 				'hover'  => 'On Hover'
@@ -1016,7 +1016,7 @@ $sections[] = array(
 		),
 		array(
 			'id'         => 'customizer_reset_button_section',
-			'title'      => '<a class="btn" id="reset-style-defaults" href="#" data-ajax_nonce="' . wp_create_nonce( "reset-style-section" ) . '">' . __( 'Reset to Defaults', 'pile_txtd' ) . '</a>',
+			'title'      => '<a class="btn" id="reset-style-defaults" href="#" data-ajax_nonce="' . wp_create_nonce( "reset-style-section" ) . '">' . __( 'Reset to Defaults', 'rosa_txtd' ) . '</a>',
 			'type'       => 'customizer_info',
 			'customizer' => array()
 		),
@@ -1029,12 +1029,12 @@ $sections[] = array(
 	'icon'            => "icon-params",
 	'icon_class'      => '',
 	'class'           => 'has-customizer',
-	'title'           => __( 'Reset Options', 'pile_txtd' ),
+	'title'           => __( 'Reset Options', 'rosa_txtd' ),
 	'customizer_only' => true,
 	'fields'          => array(
 		array(
 			'id'         => 'customizer_reset_button_section',
-			'title'      => '<a class="btn" id="reset-style-defaults" href="#" data-ajax_nonce="' . wp_create_nonce( "reset-style-section" ) . '">' . __( 'Reset to Defaults', 'pile_txtd' ) . '</a>',
+			'title'      => '<a class="btn" id="reset-style-defaults" href="#" data-ajax_nonce="' . wp_create_nonce( "reset-style-section" ) . '">' . __( 'Reset to Defaults', 'rosa_txtd' ) . '</a>',
 			'type'       => 'customizer_info',
 			'customizer' => array()
 		)
@@ -1047,21 +1047,21 @@ $sections[] = array(
 
 //$sections[] = array(
 //	'icon'   => 'note-1',
-//	'title'  => __( 'Header', 'pile_txtd' ),
-//	'desc'   => '<p class="description">' . __( 'Header options allow you to control both the visual and functional aspects of the page header area.', 'pile_txtd' ) . '</p>',
+//	'title'  => __( 'Header', 'rosa_txtd' ),
+//	'desc'   => '<p class="description">' . __( 'Header options allow you to control both the visual and functional aspects of the page header area.', 'rosa_txtd' ) . '</p>',
 //	'fields' => array()
 //);
 
 $sections[] = array(
 	'icon'   => 'icon-note-1',
-	'title'  => __( 'Footer', 'pile_txtd' ),
-	'desc'   => '<p class="description">' . __( 'Footer options allow you to control both the visual and functional aspects of the page footer area.', 'pile_txtd' ) . '</p>',
+	'title'  => __( 'Footer', 'rosa_txtd' ),
+	'desc'   => '<p class="description">' . __( 'Footer options allow you to control both the visual and functional aspects of the page footer area.', 'rosa_txtd' ) . '</p>',
 	'fields' => array(
 		array(
 			'id'          => 'footer_number_of_columns',
 			'type'        => 'select',
-			'title'       => __( 'Widget Area Number of Columns', 'pile_txtd' ),
-			'subtitle'    => __( 'Select how many number of columns should the Footer widget area have.', 'pile_txtd' ),
+			'title'       => __( 'Widget Area Number of Columns', 'rosa_txtd' ),
+			'subtitle'    => __( 'Select how many number of columns should the Footer widget area have.', 'rosa_txtd' ),
 			'options'     => array(
 				'1' => '1',
 				'2' => '2',
@@ -1070,7 +1070,7 @@ $sections[] = array(
 				'6' => '6',
 			),
 			'default'     => '2',
-			'placeholder' => __( 'Select the number of columns', 'pile_txtd' ),
+			'placeholder' => __( 'Select the number of columns', 'rosa_txtd' ),
 			'select2'     => array( // here you can provide params for the select2 jquery call
 				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
 				'allowClear'              => false // don't allow a empty select
@@ -1079,14 +1079,14 @@ $sections[] = array(
 		array(
 			'id'          => 'footer_column_width',
 			'type'        => 'select',
-			'title'       => __( 'Widget Column width', 'pile_txtd' ),
+			'title'       => __( 'Widget Column width', 'rosa_txtd' ),
 			'options'     => array(
 				'one-third'  => 'One third',
 				'two-thirds' => 'Two thirds',
 				'one-whole'  => 'Whole',
 			),
 			'default'     => 'one_third',
-			'placeholder' => __( 'Select the widget width', 'pile_txtd' ),
+			'placeholder' => __( 'Select the widget width', 'rosa_txtd' ),
 			'select2'     => array( // here you can provide params for the select2 jquery call
 				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
 				'allowClear'              => false // don't allow a empty select
@@ -1096,8 +1096,8 @@ $sections[] = array(
 		array(
 			'id'       => 'copyright_text',
 			'type'     => 'editor',
-			'title'    => __( 'Copyright Text', 'pile_txtd' ),
-			'subtitle' => sprintf( __( 'Text that will appear in bottom left area (eg. Copyright 2014 %s | All Rights Reserved).', 'pile_txtd' ), wpgrade::themename() ),
+			'title'    => __( 'Copyright Text', 'rosa_txtd' ),
+			'subtitle' => sprintf( __( 'Text that will appear in bottom left area (eg. Copyright 2014 %s | All Rights Reserved).', 'rosa_txtd' ), wpgrade::themename() ),
 			'default'  => '2014 &copy; Handcrafted with love by <a href="#">PixelGrade</a> Team',
 			'rows'     => 3,
 		)
@@ -1110,47 +1110,47 @@ $sections[] = array(
 
 $sections[] = array(
 	'icon'   => 'icon-pencil-1',
-	'title'  => __( 'Blog - Archive', 'pile_txtd' ),
-	'desc'   => sprintf( '<p class="description">' . __( 'Archive options control the various aspects related to displaying posts in blog archives. You can control things like excerpt length and various layout aspects.', 'pile_txtd' ) . '</p>', wpgrade::themename() ),
+	'title'  => __( 'Blog - Archive', 'rosa_txtd' ),
+	'desc'   => sprintf( '<p class="description">' . __( 'Archive options control the various aspects related to displaying posts in blog archives. You can control things like excerpt length and various layout aspects.', 'rosa_txtd' ) . '</p>', wpgrade::themename() ),
 	'fields' => array(
 		array(
 			'id'       => 'blog_read_more_text',
 			'type'     => 'text',
-			'title'    => __( 'Read More Text', 'pile_txtd' ),
-			'subtitle' => __( 'Set the read more link text.', 'pile_txtd' ),
+			'title'    => __( 'Read More Text', 'rosa_txtd' ),
+			'subtitle' => __( 'Set the read more link text.', 'rosa_txtd' ),
 			'default'  => 'Read more',
 		),
 		array(
 			'id'       => 'blog_excerpt_more_text',
 			'type'     => 'text',
-			'title'    => __( 'Excerpt "More" Text', 'pile_txtd' ),
-			'subtitle' => __( 'Change the default [...] with something else.', 'pile_txtd' ),
+			'title'    => __( 'Excerpt "More" Text', 'rosa_txtd' ),
+			'subtitle' => __( 'Change the default [...] with something else.', 'rosa_txtd' ),
 			'default'  => '..',
 		),
 		array(
 			'id'       => 'blog_excerpt_length',
 			'type'     => 'text',
-			'title'    => __( 'Excerpt Length', 'pile_txtd' ),
-			'subtitle' => __( 'Set the number of characters for posts excerpt.', 'pile_txtd' ),
+			'title'    => __( 'Excerpt Length', 'rosa_txtd' ),
+			'subtitle' => __( 'Set the number of characters for posts excerpt.', 'rosa_txtd' ),
 			'default'  => '140',
 		),
 		array(
 			'id'   => 'posts_meta_data-218293204',
-			'desc' => '<h4>' . __( 'Posts Meta Informations', 'pile_txtd' ) . '</h4>',
+			'desc' => '<h4>' . __( 'Posts Meta Informations', 'rosa_txtd' ) . '</h4>',
 			'type' => 'info'
 		),
 		array(
 			'id'       => 'blog_show_date',
 			'type'     => 'checkbox',
-			'title'    => __( 'Date', 'pile_txtd' ),
-			'subtitle' => __( 'Display the post publish date.', 'pile_txtd' ),
+			'title'    => __( 'Date', 'rosa_txtd' ),
+			'subtitle' => __( 'Display the post publish date.', 'rosa_txtd' ),
 			'default'  => '1',
 		),
 		array(
 			'id'       => 'blog_custom_date_separator',
 			'type'     => 'checkbox',
-			'title'    => __( 'Dot Separator', 'pile_txtd' ),
-			'subtitle' => __( 'Change spaces, commas or slashes with a custom dot.', 'pile_txtd' ),
+			'title'    => __( 'Dot Separator', 'rosa_txtd' ),
+			'subtitle' => __( 'Change spaces, commas or slashes with a custom dot.', 'rosa_txtd' ),
 			'default'  => '1',
 			'required' => array( 'blog_show_date', '=', true )
 		),
@@ -1159,57 +1159,57 @@ $sections[] = array(
 
 $sections[] = array(
 	'icon'   => 'icon-pencil-1',
-	'title'  => __( 'Blog - Single', 'pile_txtd' ),
-	'desc'   => sprintf( '<p class="description">' . __( 'Post options control the various aspects related to the <b>single post page</b>.', 'pile_txtd' ) . '</p>', wpgrade::themename() ),
+	'title'  => __( 'Blog - Single', 'rosa_txtd' ),
+	'desc'   => sprintf( '<p class="description">' . __( 'Post options control the various aspects related to the <b>single post page</b>.', 'rosa_txtd' ) . '</p>', wpgrade::themename() ),
 	'fields' => array(
 		array(
 			'id'       => 'blog_single_show_author_box',
 			'type'     => 'switch',
-			'title'    => __( 'Show Author Info Box', 'pile_txtd' ),
-			'subtitle' => __( 'Do you want to show author info box with avatar and description bellow the post?', 'pile_txtd' ),
+			'title'    => __( 'Show Author Info Box', 'rosa_txtd' ),
+			'subtitle' => __( 'Do you want to show author info box with avatar and description bellow the post?', 'rosa_txtd' ),
 			'default'  => true,
 		),
 		array(
 			'id'   => 'posts_share-links-812329384',
-			'desc' => '<h4>' . __( 'Share Links', 'pile_txtd' ) . '</h4>',
+			'desc' => '<h4>' . __( 'Share Links', 'rosa_txtd' ) . '</h4>',
 			'type' => 'info'
 		),
 		array(
 			'id'       => 'blog_single_show_share_links',
 			'type'     => 'switch',
-			'title'    => __( 'Show Share Links', 'pile_txtd' ),
-			'subtitle' => __( 'Do you want to show share icon links in your articles?', 'pile_txtd' ),
+			'title'    => __( 'Show Share Links', 'rosa_txtd' ),
+			'subtitle' => __( 'Do you want to show share icon links in your articles?', 'rosa_txtd' ),
 			'default'  => true,
 		),
 		array(
 			'id'   => 'posts_comments-812329384',
-			'desc' => '<h4>' . __( 'Comments', 'pile_txtd' ) . '</h4>',
+			'desc' => '<h4>' . __( 'Comments', 'rosa_txtd' ) . '</h4>',
 			'type' => 'info'
 		),
 		array(
 			'id'       => 'comments_show_avatar',
 			'type'     => 'switch',
-			'title'    => __( 'Show Comments Avatars', 'pile_txtd' ),
-			'subtitle' => __( 'Do you want to show avatars in comments?', 'pile_txtd' ),
+			'title'    => __( 'Show Comments Avatars', 'rosa_txtd' ),
+			'subtitle' => __( 'Do you want to show avatars in comments?', 'rosa_txtd' ),
 			'default'  => false,
 		),
 		array(
 			'id'       => 'comments_show_numbering',
 			'type'     => 'switch',
-			'title'    => __( 'Show Comments Numbers', 'pile_txtd' ),
-			'subtitle' => __( 'Do you want to show numbers beside each comment?', 'pile_txtd' ),
+			'title'    => __( 'Show Comments Numbers', 'rosa_txtd' ),
+			'subtitle' => __( 'Do you want to show numbers beside each comment?', 'rosa_txtd' ),
 			'default'  => true,
 		),
 		array(
 			'id'   => 'posts_sidebar-812329384',
-			'desc' => '<h4>' . __( 'Sidebar', 'pile_txtd' ) . '</h4>',
+			'desc' => '<h4>' . __( 'Sidebar', 'rosa_txtd' ) . '</h4>',
 			'type' => 'info'
 		),
 		array(
 			'id'       => 'blog_single_show_sidebar',
 			'type'     => 'switch',
-			'title'    => __( 'Show Sidebar', 'pile_txtd' ),
-			'subtitle' => __( 'Show the main sidebar in the single post pages.', 'pile_txtd' ),
+			'title'    => __( 'Show Sidebar', 'rosa_txtd' ),
+			'subtitle' => __( 'Show the main sidebar in the single post pages.', 'rosa_txtd' ),
 			'default'  => '1',
 			'switch'   => true,
 		),
@@ -1226,19 +1226,19 @@ $sections[] = array(
 $sections[] = array(
 	'icon'       => "icon-thumbs-up-1",
 	'icon_class' => '',
-	'title'      => __( 'Social and SEO', 'pile_txtd' ),
-	'desc'       => '<p class="description">' . __( 'Social and SEO options allow you to display your social links and choose where to display them. Then you can set the social SEO related info added in the meta tags or used in various widgets.', 'pile_txtd' ) . '</p>',
+	'title'      => __( 'Social and SEO', 'rosa_txtd' ),
+	'desc'       => '<p class="description">' . __( 'Social and SEO options allow you to display your social links and choose where to display them. Then you can set the social SEO related info added in the meta tags or used in various widgets.', 'rosa_txtd' ) . '</p>',
 	'fields'     => array(
 		array(
 			'id'   => 'header_layout-218293203',
-			'desc' => '<h3>' . __( 'Sharing', 'pile_txtd' ) . '</h3>',
+			'desc' => '<h3>' . __( 'Sharing', 'rosa_txtd' ) . '</h3>',
 			'type' => 'info'
 		),
 		//		array(
 		//			'id' => 'share_buttons_settings',
 		//			'type' => 'select',
-		//			'title' => __('Share Services', 'pile_txtd'),
-		//			'subtitle' => __('Add here the share services you want to use, single comma delimited (no spaces). You can find the full list of services here: <a href="http://www.addthis.com/services/list">http://www.addthis.com/services/list</a>. Also you can use the <strong>more</strong> tag to show the plus sign and the <strong>counter</strong> tag to show a global share counter.<br/><br/>Important: If you want to allow AddThis to show your visitors personalized lists of share buttons you can use the <strong>preferred</strong> tag. More about this here: <a href="http://bit.ly/1fLP69i">http://bit.ly/1fLP69i</a>.', 'pile_txtd'),
+		//			'title' => __('Share Services', 'rosa_txtd'),
+		//			'subtitle' => __('Add here the share services you want to use, single comma delimited (no spaces). You can find the full list of services here: <a href="http://www.addthis.com/services/list">http://www.addthis.com/services/list</a>. Also you can use the <strong>more</strong> tag to show the plus sign and the <strong>counter</strong> tag to show a global share counter.<br/><br/>Important: If you want to allow AddThis to show your visitors personalized lists of share buttons you can use the <strong>preferred</strong> tag. More about this here: <a href="http://bit.ly/1fLP69i">http://bit.ly/1fLP69i</a>.', 'rosa_txtd'),
 		//			'default' => 'more,preferred,preferred,preferred,preferred',
 		//			'options'  => array(
 		//				'more' => 'More Button',
@@ -1452,166 +1452,166 @@ $sections[] = array(
 		array(
 			'id'       => 'share_buttons_settings',
 			'type'     => 'text',
-			'title'    => __( 'Share Services', 'pile_txtd' ),
-			'subtitle' => __( 'Add here the share services you want to use, single comma delimited (no spaces). You can find the full list of services here: <a href="http://www.addthis.com/services/list">http://www.addthis.com/services/list</a>. Also you can use the <strong>more</strong> tag to show the plus sign and the <strong>counter</strong> tag to show a global share counter.<br/><br/>Important: If you want to allow AddThis to show your visitors personalized lists of share buttons you can use the <strong>preferred</strong> tag. More about this here: <a href="http://bit.ly/1fLP69i">http://bit.ly/1fLP69i</a>.', 'pile_txtd' ),
+			'title'    => __( 'Share Services', 'rosa_txtd' ),
+			'subtitle' => __( 'Add here the share services you want to use, single comma delimited (no spaces). You can find the full list of services here: <a href="http://www.addthis.com/services/list">http://www.addthis.com/services/list</a>. Also you can use the <strong>more</strong> tag to show the plus sign and the <strong>counter</strong> tag to show a global share counter.<br/><br/>Important: If you want to allow AddThis to show your visitors personalized lists of share buttons you can use the <strong>preferred</strong> tag. More about this here: <a href="http://bit.ly/1fLP69i">http://bit.ly/1fLP69i</a>.', 'rosa_txtd' ),
 			'default'  => 'more,preferred,preferred,preferred,preferred',
 		),
 		array(
 			'id'       => 'share_buttons_enable_tracking',
 			'type'     => 'switch',
-			'title'    => __( 'Sharing Analytics', 'pile_txtd' ),
-			'subtitle' => __( 'Do you want to get analytics for your social shares?', 'pile_txtd' ),
+			'title'    => __( 'Sharing Analytics', 'rosa_txtd' ),
+			'subtitle' => __( 'Do you want to get analytics for your social shares?', 'rosa_txtd' ),
 			'default'  => '0',
 		),
 		array(
 			'id'       => 'share_buttons_enable_addthis_tracking',
 			'type'     => 'switch',
-			'title'    => __( 'AddThis Tracking', 'pile_txtd' ),
-			'subtitle' => __( 'Do you want to enable AddThis tracking? This will all you to see sharing analytics in your AddThis account (see more here: <a href="http://bit.ly/1oe5zad">bit.ly/1oe5zad</a>)', 'pile_txtd' ),
+			'title'    => __( 'AddThis Tracking', 'rosa_txtd' ),
+			'subtitle' => __( 'Do you want to enable AddThis tracking? This will all you to see sharing analytics in your AddThis account (see more here: <a href="http://bit.ly/1oe5zad">bit.ly/1oe5zad</a>)', 'rosa_txtd' ),
 			'default'  => '0',
 			'required' => array( 'share_buttons_enable_tracking', '=', 1 ),
 		),
 		array(
 			'id'       => 'share_buttons_addthis_username',
 			'type'     => 'text',
-			'title'    => __( 'AddThis Username', 'pile_txtd' ),
-			'subtitle' => __( 'Enter here your AddThis username so you will receive analytics data.', 'pile_txtd' ),
+			'title'    => __( 'AddThis Username', 'rosa_txtd' ),
+			'subtitle' => __( 'Enter here your AddThis username so you will receive analytics data.', 'rosa_txtd' ),
 			'default'  => '',
 			'required' => array( 'share_buttons_enable_addthis_tracking', '=', 1 ),
 		),
 		array(
 			'id'       => 'share_buttons_enable_ga_tracking',
 			'type'     => 'switch',
-			'title'    => __( 'Google Analytics Tracking', 'pile_txtd' ),
-			'subtitle' => __( 'Do you want to enable the AddThis - Google Analytics tracking integration? See more about this here: <a href="http://bit.ly/1kxPg7K">bit.ly/1kxPg7K</a>', 'pile_txtd' ),
+			'title'    => __( 'Google Analytics Tracking', 'rosa_txtd' ),
+			'subtitle' => __( 'Do you want to enable the AddThis - Google Analytics tracking integration? See more about this here: <a href="http://bit.ly/1kxPg7K">bit.ly/1kxPg7K</a>', 'rosa_txtd' ),
 			'default'  => '0',
 			'required' => array( 'share_buttons_enable_tracking', '=', 1 ),
 		),
 		array(
 			'id'       => 'share_buttons_ga_id',
 			'type'     => 'text',
-			'title'    => __( 'GA Property ID', 'pile_txtd' ),
-			'subtitle' => __( 'Enter here your GA property ID (generally a serial number of the form UA-xxxxxx-x).', 'pile_txtd' ),
+			'title'    => __( 'GA Property ID', 'rosa_txtd' ),
+			'subtitle' => __( 'Enter here your GA property ID (generally a serial number of the form UA-xxxxxx-x).', 'rosa_txtd' ),
 			'default'  => '',
 			'required' => array( 'share_buttons_enable_ga_tracking', '=', 1 ),
 		),
 		array(
 			'id'       => 'share_buttons_enable_ga_social_tracking',
 			'type'     => 'switch',
-			'title'    => __( 'GA Social Tracking', 'pile_txtd' ),
-			'subtitle' => __( 'If you are using the latest version of GA code, you can take advantage of Google\'s new <a href="http://bit.ly/1iVvkbk">social interaction analytics</a>.', 'pile_txtd' ),
+			'title'    => __( 'GA Social Tracking', 'rosa_txtd' ),
+			'subtitle' => __( 'If you are using the latest version of GA code, you can take advantage of Google\'s new <a href="http://bit.ly/1iVvkbk">social interaction analytics</a>.', 'rosa_txtd' ),
 			'default'  => '0',
 			'required' => array( 'share_buttons_enable_ga_tracking', '=', 1 ),
 		),
 		array(
 			'id'   => 'header_layout-218293203',
-			'desc' => '<h3>' . __( 'Social Links', 'pile_txtd' ) . '</h3>',
+			'desc' => '<h3>' . __( 'Social Links', 'rosa_txtd' ) . '</h3>',
 			'type' => 'info'
 		),
 		array(
 			'id'         => 'social_icons',
 			'type'       => 'text_sortable',
-			'title'      => __( 'Social Links', 'pile_txtd' ),
-			'subtitle'   => sprintf( __( 'Define and reorder your social pages links.<br /><b>Note:</b> These will be displayed in the "%s Social Links" widget so you can put them anywhere on your site. Only those filled will appear.<br /><br /><strong> You need to input the <strong>complete</strong> URL (ie. http://twitter.com/username)</strong>', 'pile_txtd' ), wpgrade::themename() ),
-			'desc'       => __( 'Icons provided by <strong>FontAwesome</strong> and <strong>Entypo</strong>.', 'pile_txtd' ),
+			'title'      => __( 'Social Links', 'rosa_txtd' ),
+			'subtitle'   => sprintf( __( 'Define and reorder your social pages links.<br /><b>Note:</b> These will be displayed in the "%s Social Links" widget so you can put them anywhere on your site. Only those filled will appear.<br /><br /><strong> You need to input the <strong>complete</strong> URL (ie. http://twitter.com/username)</strong>', 'rosa_txtd' ), wpgrade::themename() ),
+			'desc'       => __( 'Icons provided by <strong>FontAwesome</strong> and <strong>Entypo</strong>.', 'rosa_txtd' ),
 			'checkboxes' => array(
-				'widget' => __( 'Widget', 'pile_txtd' ),
-				'header' => __( 'Header', 'pile_txtd' )
+				'widget' => __( 'Widget', 'rosa_txtd' ),
+				'header' => __( 'Header', 'rosa_txtd' )
 			),
 			'options'    => array(
-				'flickr'        => __( 'Flickr', 'pile_txtd' ),
-				'tumblr'        => __( 'Tumblr', 'pile_txtd' ),
-				'pinterest'     => __( 'Pinterest', 'pile_txtd' ),
-				'instagram'     => __( 'Instagram', 'pile_txtd' ),
-				'foursquare'    => __( 'Foursquare', 'pile_txtd' ),
-				'yelp'     		=> __( 'Yelp', 'pile_txtd' ),
-				'behance'       => __( 'Behance', 'pile_txtd' ),
-				'fivehundredpx' => __( '500px', 'pile_txtd' ),
-				'deviantart'    => __( 'DeviantART', 'pile_txtd' ),
-				'dribbble'      => __( 'Dribbble', 'pile_txtd' ),
-				'twitter'       => __( 'Twitter', 'pile_txtd' ),
-				'facebook'      => __( 'Facebook', 'pile_txtd' ),
-				'gplus'         => __( 'Google+', 'pile_txtd' ),
-				'youtube'       => __( 'Youtube', 'pile_txtd' ),
-				'vimeo'         => __( 'Vimeo', 'pile_txtd' ),
-				'linkedin'      => __( 'LinkedIn', 'pile_txtd' ),
-				'skype'         => __( 'Skype', 'pile_txtd' ),
-				'soundcloud'    => __( 'SoundCloud', 'pile_txtd' ),
-				'digg'          => __( 'Digg', 'pile_txtd' ),
-				'lastfm'        => __( 'Last.FM', 'pile_txtd' ),
-				'rdio'          => __( 'Rdio', 'pile_txtd' ),
-				'sina-weibo'    => __( 'Sina Weibo', 'pile_txtd' ),
-				'vkontakte'     => __( 'VKontakte', 'pile_txtd' ),
-				'appnet'        => __( 'App.net', 'pile_txtd' ),
-				'rss'           => __( 'RSS Feed', 'pile_txtd' ),
+				'flickr'        => __( 'Flickr', 'rosa_txtd' ),
+				'tumblr'        => __( 'Tumblr', 'rosa_txtd' ),
+				'pinterest'     => __( 'Pinterest', 'rosa_txtd' ),
+				'instagram'     => __( 'Instagram', 'rosa_txtd' ),
+				'foursquare'    => __( 'Foursquare', 'rosa_txtd' ),
+				'yelp'     		=> __( 'Yelp', 'rosa_txtd' ),
+				'behance'       => __( 'Behance', 'rosa_txtd' ),
+				'fivehundredpx' => __( '500px', 'rosa_txtd' ),
+				'deviantart'    => __( 'DeviantART', 'rosa_txtd' ),
+				'dribbble'      => __( 'Dribbble', 'rosa_txtd' ),
+				'twitter'       => __( 'Twitter', 'rosa_txtd' ),
+				'facebook'      => __( 'Facebook', 'rosa_txtd' ),
+				'gplus'         => __( 'Google+', 'rosa_txtd' ),
+				'youtube'       => __( 'Youtube', 'rosa_txtd' ),
+				'vimeo'         => __( 'Vimeo', 'rosa_txtd' ),
+				'linkedin'      => __( 'LinkedIn', 'rosa_txtd' ),
+				'skype'         => __( 'Skype', 'rosa_txtd' ),
+				'soundcloud'    => __( 'SoundCloud', 'rosa_txtd' ),
+				'digg'          => __( 'Digg', 'rosa_txtd' ),
+				'lastfm'        => __( 'Last.FM', 'rosa_txtd' ),
+				'rdio'          => __( 'Rdio', 'rosa_txtd' ),
+				'sina-weibo'    => __( 'Sina Weibo', 'rosa_txtd' ),
+				'vkontakte'     => __( 'VKontakte', 'rosa_txtd' ),
+				'appnet'        => __( 'App.net', 'rosa_txtd' ),
+				'rss'           => __( 'RSS Feed', 'rosa_txtd' ),
 			)
 		),
 		array(
 			'id'       => 'social_icons_target_blank',
 			'type'     => 'switch',
-			'title'    => __( 'Open Social Links In a New Tab?', 'pile_txtd' ),
-			'subtitle' => __( 'Do you want to open social links in a new tab?', 'pile_txtd' ),
+			'title'    => __( 'Open Social Links In a New Tab?', 'rosa_txtd' ),
+			'subtitle' => __( 'Do you want to open social links in a new tab?', 'rosa_txtd' ),
 			'default'  => '1',
 		),
 		array(
 			'id'   => 'header_layout-218293203',
-			'desc' => '<h3>' . __( 'Social Metas', 'pile_txtd' ) . '</h3>',
+			'desc' => '<h3>' . __( 'Social Metas', 'rosa_txtd' ) . '</h3>',
 			'type' => 'info'
 		),
 		array(
 			'id'       => 'prepare_for_social_share',
 			'type'     => 'switch',
-			'title'    => __( 'Add Social Meta Tags', 'pile_txtd' ),
-			'subtitle' => __( 'Let us properly prepare your theme for the social sharing and discovery by adding the needed metatags in the <head> section. These include Open Graph (Facebook), Google+ and Twitter metas.', 'pile_txtd' ),
+			'title'    => __( 'Add Social Meta Tags', 'rosa_txtd' ),
+			'subtitle' => __( 'Let us properly prepare your theme for the social sharing and discovery by adding the needed metatags in the <head> section. These include Open Graph (Facebook), Google+ and Twitter metas.', 'rosa_txtd' ),
 			'default'  => '1',
 		),
 		array(
 			'id'       => 'facebook_id_app',
 			'type'     => 'text',
-			'title'    => __( 'Facebook Application ID', 'pile_txtd' ),
-			'subtitle' => __( 'Enter the Facebook Application ID of the Fan Page which is associated with this website. You can create one <a href="https://developers.facebook.com/apps">here</a>.', 'pile_txtd' ),
+			'title'    => __( 'Facebook Application ID', 'rosa_txtd' ),
+			'subtitle' => __( 'Enter the Facebook Application ID of the Fan Page which is associated with this website. You can create one <a href="https://developers.facebook.com/apps">here</a>.', 'rosa_txtd' ),
 			'required' => array( 'prepare_for_social_share', '=', 1 )
 		),
 		array(
 			'id'       => 'facebook_admin_id',
 			'type'     => 'text',
-			'title'    => __( 'Facebook Admin ID', 'pile_txtd' ),
-			'subtitle' => __( 'The id of the user that has administrative privileges to your Facebook App so you can access the <a href="https://www.facebook.com/insights/">Facebook Insights</a>.', 'pile_txtd' ),
+			'title'    => __( 'Facebook Admin ID', 'rosa_txtd' ),
+			'subtitle' => __( 'The id of the user that has administrative privileges to your Facebook App so you can access the <a href="https://www.facebook.com/insights/">Facebook Insights</a>.', 'rosa_txtd' ),
 			'required' => array( 'prepare_for_social_share', '=', 1 )
 		),
 		array(
 			'id'       => 'google_page_url',
 			'type'     => 'text',
-			'title'    => __( 'Google+ Publisher', 'pile_txtd' ),
-			'subtitle' => __( 'Enter your Google Plus page ID (example: https://plus.google.com/<b>105345678532237339285</b>) here if you have set up a "Google+ Page".', 'pile_txtd' ),
+			'title'    => __( 'Google+ Publisher', 'rosa_txtd' ),
+			'subtitle' => __( 'Enter your Google Plus page ID (example: https://plus.google.com/<b>105345678532237339285</b>) here if you have set up a "Google+ Page".', 'rosa_txtd' ),
 			'required' => array( 'prepare_for_social_share', '=', 1 )
 		),
 		array(
 			'id'                => 'twitter_card_site',
 			'type'              => 'text',
-			'title'             => __( 'Twitter Site Username', 'pile_txtd' ),
-			'subtitle'          => __( 'The Twitter username of the entire site. The username for the author will be taken from the author\'s profile', 'pile_txtd' ),
+			'title'             => __( 'Twitter Site Username', 'rosa_txtd' ),
+			'subtitle'          => __( 'The Twitter username of the entire site. The username for the author will be taken from the author\'s profile', 'rosa_txtd' ),
 			'required'          => array( 'prepare_for_social_share', '=', 1 ),
 			'validate_callback' => 'wpgrade_trim_twitter_username'
 		),
 		array(
 			'id'    => 'social_share_default_image',
 			'type'  => 'media',
-			'title' => __( 'Default Social Share Image', 'pile_txtd' ),
-			'desc'  => __( 'If an image is uploaded, this will be used for content sharing if you don\'t upload a custom image with your content (at least 200px wide recommended).', 'pile_txtd' ),
+			'title' => __( 'Default Social Share Image', 'rosa_txtd' ),
+			'desc'  => __( 'If an image is uploaded, this will be used for content sharing if you don\'t upload a custom image with your content (at least 200px wide recommended).', 'rosa_txtd' ),
 		),
 		array(
 			'id'       => 'remove_parameters_from_static_res',
 			'type'     => 'switch',
-			'title'    => __( 'Clean Static Files URL', 'pile_txtd' ),
-			'subtitle' => __( 'Do you want us to remove the version parameters from static resources so they can be cached better?', 'pile_txtd' ),
+			'title'    => __( 'Clean Static Files URL', 'rosa_txtd' ),
+			'subtitle' => __( 'Do you want us to remove the version parameters from static resources so they can be cached better?', 'rosa_txtd' ),
 			'default'  => '0',
 		),
 		//		array(
 		//			'id' => 'move_jquery_to_footer',
 		//			'type' => 'switch',
-		//			'title' => __('Move JS Files To Footer', 'pile_txtd'),
-		//			'subtitle' => __('This will force jQuery and all other files to be included just before the body closing tag. Please note that this can break some plugins so use it wisely.', 'pile_txtd'),
+		//			'title' => __('Move JS Files To Footer', 'rosa_txtd'),
+		//			'subtitle' => __('This will force jQuery and all other files to be included just before the body closing tag. Please note that this can break some plugins so use it wisely.', 'rosa_txtd'),
 		//			'default' => '0',
 		//		),
 	)
@@ -1623,15 +1623,15 @@ $sections[] = array(
 $sections[] = array(
 	'icon'       => "icon-database-1",
 	'icon_class' => '',
-	'title'      => __( 'Custom Code', 'pile_txtd' ),
-	'desc'       => '<p class="description">' . __( 'You can change the site style and behaviour by adding custom scripts to all pages within your site using the custom code areas below.', 'pile_txtd' ) . '</p>',
+	'title'      => __( 'Custom Code', 'rosa_txtd' ),
+	'desc'       => '<p class="description">' . __( 'You can change the site style and behaviour by adding custom scripts to all pages within your site using the custom code areas below.', 'rosa_txtd' ) . '</p>',
 	'fields'     => array(
 		array(
 			'id'       => 'custom_css',
 			'type'     => 'ace_editor',
-			'title'    => __( 'Custom CSS', 'pile_txtd' ),
-			'subtitle' => __( 'Enter your custom CSS code. It will be included in the head section of the page and will overwrite the main CSS styling.', 'pile_txtd' ),
-//			'desc'     => __( '', 'pile_txtd' ),
+			'title'    => __( 'Custom CSS', 'rosa_txtd' ),
+			'subtitle' => __( 'Enter your custom CSS code. It will be included in the head section of the page and will overwrite the main CSS styling.', 'rosa_txtd' ),
+//			'desc'     => __( '', 'rosa_txtd' ),
 			'mode'     => 'css',
 			'theme'    => 'chrome',
 			//'validate' => 'html',
@@ -1640,12 +1640,12 @@ $sections[] = array(
 		array(
 			'id'       => 'inject_custom_css',
 			'type'     => 'select',
-			'title'    => __( 'Apply Custom CSS', 'pile_txtd' ),
-			'subtitle' => sprintf( __( 'Select how to insert the custom CSS into your pages.', 'pile_txtd' ), wpgrade::themename() ),
+			'title'    => __( 'Apply Custom CSS', 'rosa_txtd' ),
+			'subtitle' => sprintf( __( 'Select how to insert the custom CSS into your pages.', 'rosa_txtd' ), wpgrade::themename() ),
 			'default'  => 'inline',
 			'options'  => array(
-				'inline' => __( 'Inline <em>(recommended)</em>', 'pile_txtd' ),
-				'file'   => __( 'Write To File (might require file permissions)', 'pile_txtd' )
+				'inline' => __( 'Inline <em>(recommended)</em>', 'rosa_txtd' ),
+				'file'   => __( 'Write To File (might require file permissions)', 'rosa_txtd' )
 			),
 			'select2'  => array( // here you can provide params for the select2 jquery call
 				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
@@ -1656,16 +1656,16 @@ $sections[] = array(
 		array(
 			'id'       => 'custom_js',
 			'type'     => 'ace_editor',
-			'title'    => __( 'Custom JavaScript (header)', 'pile_txtd' ),
-			'subtitle' => __( 'Enter your custom Javascript code. This code will be loaded in the head section of your pages.', 'pile_txtd' ),
+			'title'    => __( 'Custom JavaScript (header)', 'rosa_txtd' ),
+			'subtitle' => __( 'Enter your custom Javascript code. This code will be loaded in the head section of your pages.', 'rosa_txtd' ),
 			'mode'     => 'text',
 			'theme'    => 'chrome'
 		),
 		array(
 			'id'       => 'custom_js_footer',
 			'type'     => 'ace_editor',
-			'title'    => __( 'Custom JavaScript (footer)', 'pile_txtd' ),
-			'subtitle' => __( 'This javascript code will be loaded in the footer. You can paste here your <strong>Google Analytics tracking code</strong> (or for what matters any tracking code) and we will put it on every page.', 'pile_txtd' ),
+			'title'    => __( 'Custom JavaScript (footer)', 'rosa_txtd' ),
+			'subtitle' => __( 'This javascript code will be loaded in the footer. You can paste here your <strong>Google Analytics tracking code</strong> (or for what matters any tracking code) and we will put it on every page.', 'rosa_txtd' ),
 			'mode'     => 'text',
 			'theme'    => 'chrome'
 		),
@@ -1678,48 +1678,48 @@ $sections[] = array(
 $sections[] = array(
 	'icon'       => "icon-truck",
 	'icon_class' => '',
-	'title'      => __( 'Utilities', 'pile_txtd' ),
-	'desc'       => '<p class="description">' . __( 'Utilities help you keep up-to-date with new versions of the theme. Also you can import the demo data from here.', 'pile_txtd' ) . '</p>',
+	'title'      => __( 'Utilities', 'rosa_txtd' ),
+	'desc'       => '<p class="description">' . __( 'Utilities help you keep up-to-date with new versions of the theme. Also you can import the demo data from here.', 'rosa_txtd' ) . '</p>',
 	'fields'     => array(
 		array(
 			'id'   => 'theme-one-click-update-info',
 			'desc' => __( '<h3>Theme One-Click Update</h3>
-				<p class="description">' . __( 'Let us notify you when new versions of this theme are live on ThemeForest! Update with just one button click and forget about manual updates!</p><p> If you have any troubles with this system please refer to <a href="http://bit.ly/backend-update">Updating a theme</a> article.', 'pile_txtd' ) . '</p>', 'pile_txtd' ),
+				<p class="description">' . __( 'Let us notify you when new versions of this theme are live on ThemeForest! Update with just one button click and forget about manual updates!</p><p> If you have any troubles with this system please refer to <a href="http://bit.ly/backend-update">Updating a theme</a> article.', 'rosa_txtd' ) . '</p>', 'rosa_txtd' ),
 			'type' => 'info'
 		),
 		array(
 			'id'       => 'themeforest_upgrade',
 			'type'     => 'switch',
-			'title'    => __( 'One-Click Update', 'pile_txtd' ),
-			'subtitle' => __( 'Activate this to enter the info needed for the theme\'s one-click update to work.', 'pile_txtd' ),
+			'title'    => __( 'One-Click Update', 'rosa_txtd' ),
+			'subtitle' => __( 'Activate this to enter the info needed for the theme\'s one-click update to work.', 'rosa_txtd' ),
 			'default'  => true,
 		),
 		array(
 			'id'       => 'marketplace_username',
 			'type'     => 'text',
-			'title'    => __( 'ThemeForest Username', 'pile_txtd' ),
-			'subtitle' => __( 'Enter here your ThemeForest (or Envato) username account (i.e. pixelgrade).', 'pile_txtd' ),
+			'title'    => __( 'ThemeForest Username', 'rosa_txtd' ),
+			'subtitle' => __( 'Enter here your ThemeForest (or Envato) username account (i.e. pixelgrade).', 'rosa_txtd' ),
 			'required' => array( 'themeforest_upgrade', '=', 1 )
 		),
 		array(
 			'id'       => 'marketplace_api_key',
 			'type'     => 'text',
-			'title'    => __( 'ThemeForest Secret API Key', 'pile_txtd' ),
-			'subtitle' => __( 'Enter here the secret api key you\'ve created on ThemeForest. You can create a new one in the Settings > API Keys section of your profile.', 'pile_txtd' ),
+			'title'    => __( 'ThemeForest Secret API Key', 'rosa_txtd' ),
+			'subtitle' => __( 'Enter here the secret api key you\'ve created on ThemeForest. You can create a new one in the Settings > API Keys section of your profile.', 'rosa_txtd' ),
 			'required' => array( 'themeforest_upgrade', '=', 1 )
 		),
 		array(
 			'id'       => 'themeforest_upgrade_backup',
 			'type'     => 'switch',
-			'title'    => __( 'Backup Theme Before Upgrade?', 'pile_txtd' ),
-			'subtitle' => __( 'Check this if you want us to automatically save your theme as a ZIP archive before an upgrade. The directory those backups get saved to is <code>wp-content/envato-backups</code>. However, if you\'re experiencing problems while attempting to upgrade, it\'s likely to be a permissions issue and you may want to manually backup your theme before upgrading. Alternatively, if you don\'t want to backup your theme you can disable this.', 'pile_txtd' ),
+			'title'    => __( 'Backup Theme Before Upgrade?', 'rosa_txtd' ),
+			'subtitle' => __( 'Check this if you want us to automatically save your theme as a ZIP archive before an upgrade. The directory those backups get saved to is <code>wp-content/envato-backups</code>. However, if you\'re experiencing problems while attempting to upgrade, it\'s likely to be a permissions issue and you may want to manually backup your theme before upgrading. Alternatively, if you don\'t want to backup your theme you can disable this.', 'rosa_txtd' ),
 			'default'  => '0',
 			'required' => array( 'themeforest_upgrade', '=', 1 )
 		),
 		array(
 			'id'   => 'import-demo-data-info',
 			'desc' => __( '<h3>Import Demo Data</h3>
-				<p class="description">' . __( 'Here you can import the demo data and get on your way of setting up the site like the theme demo (images not included due to copyright).', 'pile_txtd' ) . '</p>', 'pile_txtd' ),
+				<p class="description">' . __( 'Here you can import the demo data and get on your way of setting up the site like the theme demo (images not included due to copyright).', 'rosa_txtd' ) . '</p>', 'rosa_txtd' ),
 			'type' => 'info'
 		),
 		array(
@@ -1732,13 +1732,13 @@ $sections[] = array(
 						<input type="hidden" name="wpGrade_import_ajax_url" value="' . admin_url( "admin-ajax.php" ) . '" />
 
 						<a href="#" class="button button-primary" id="wpGrade_import_demodata_button">
-							' . __( 'Import demo data', 'pile_txtd' ) . '
+							' . __( 'Import demo data', 'rosa_txtd' ) . '
 						</a>
 
 						<div class="wpGrade-loading-wrap hidden">
 							<span class="wpGrade-loading wpGrade-import-loading"></span>
 							<div class="wpGrade-import-wait">
-								' . __( 'Please wait a few minutes (between 1 and 3 minutes usually, but depending on your hosting it can take longer) and <strong>don\'t reload the page</strong>. You will be notified as soon as the import has finished!', 'pile_txtd' ) . '
+								' . __( 'Please wait a few minutes (between 1 and 3 minutes usually, but depending on your hosting it can take longer) and <strong>don\'t reload the page</strong>. You will be notified as soon as the import has finished!', 'rosa_txtd' ) . '
 							</div>
 						</div>
 
@@ -1749,8 +1749,8 @@ $sections[] = array(
 		array(
 			'id'       => 'admin_panel_options',
 			'type'     => 'switch',
-			'title'    => __( 'Admin Panel Options', 'pile_txtd' ),
-			'subtitle' => __( 'Here you can copy/download your current admin option settings. Keep this safe as you can use it as a backup should anything go wrong, or you can use it to restore your settings on this site (or any other site).', 'pile_txtd' ),
+			'title'    => __( 'Admin Panel Options', 'rosa_txtd' ),
+			'subtitle' => __( 'Here you can copy/download your current admin option settings. Keep this safe as you can use it as a backup should anything go wrong, or you can use it to restore your settings on this site (or any other site).', 'rosa_txtd' ),
 		),
 		array(
 			'id'       => 'theme_options_import',
@@ -1770,20 +1770,20 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 	$sections[] = array(
 		'icon'       => "icon-money",
 		'icon_class' => '',
-		'title'      => __( 'WooCommerce', 'pile_txtd' ),
-		'desc'       => '<p class="description">' . __( 'WooCommerce options!', 'pile_txtd' ) . '</p>',
+		'title'      => __( 'WooCommerce', 'rosa_txtd' ),
+		'desc'       => '<p class="description">' . __( 'WooCommerce options!', 'rosa_txtd' ) . '</p>',
 		'fields'     => array(
 			array(
 				'id'       => 'enable_woocommerce_support',
 				'type'     => 'switch',
-				'title'    => __( 'Enable WooCommerce Support', 'pile_txtd' ),
-				'subtitle' => __( 'Turn this off to avoid loading the WooCommerce assets (CSS and JS).', 'pile_txtd' ),
+				'title'    => __( 'Enable WooCommerce Support', 'rosa_txtd' ),
+				'subtitle' => __( 'Turn this off to avoid loading the WooCommerce assets (CSS and JS).', 'rosa_txtd' ),
 				'default'  => '1',
 			),
 			array(
 				'id'      => 'show_cart_menu',
 				'type'    => 'switch',
-				'title'   => __( 'Show cart menu in main navigation', 'pile_txtd' ),
+				'title'   => __( 'Show cart menu in main navigation', 'rosa_txtd' ),
 				'default' => '1',
 			),
 		)
@@ -1796,8 +1796,8 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 $sections[] = array(
 	'icon'       => "icon-cd-1",
 	'icon_class' => '',
-	'title'      => __( 'Help and Support', 'pile_txtd' ),
-	'desc'       => '<p class="description">' . __( 'If you had anything less than a great experience with this theme please contact us now. You can also find answers in our community site, or official articles and tutorials in our knowledge base.', 'pile_txtd' ) . '</p>
+	'title'      => __( 'Help and Support', 'rosa_txtd' ),
+	'desc'       => '<p class="description">' . __( 'If you had anything less than a great experience with this theme please contact us now. You can also find answers in our community site, or official articles and tutorials in our knowledge base.', 'rosa_txtd' ) . '</p>
 		<ul class="help-and-support">
 			<li>
 				<a href="http://bit.ly/19G56H1">
