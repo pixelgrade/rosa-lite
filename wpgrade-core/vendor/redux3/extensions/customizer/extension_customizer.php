@@ -314,7 +314,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 			foreach ( $this->parent->sections as $key => $section ) {
 
 				// Not a type that should go on the customizer
-				if ( empty( $section['fields'] ) || ( isset( $section['type'] ) && $section['type'] == "divide" ) ) {
+				if ( empty( $section['fields'] ) && ( isset( $section['type'] ) && ( $section['type'] !== "divide" || $section['type'] !== "customizer_panel" ) ) ) {
 					continue;
 				}
 
@@ -347,11 +347,66 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 					$order['heading'] ++;
 				}
 
-				$wp_customize->add_section( $section['id'], array(
-					'title'    => $section['title'],
-					'priority' => $section['priority'],
-					//					'description' => $section['desc']
-				) );
+				$priority = $section['priority'];
+				if ( isset( $section['customizer_panel_priority'] ) ) {
+					$priority = $section['customizer_panel_priority'];
+				}
+
+				$desc = '';
+				if ( isset( $section['desc'] ) ) {
+					$desc = $section['desc'];
+				}
+
+				if ( isset( $section['type'] ) ) {
+
+					switch ( $section['type'] ) :
+
+						case 'customizer_panel' : {
+
+							$panel_args = array(
+								'priority'    => $priority,
+								'capability'  => 'manage_options',
+								//'theme_supports' => '',
+								'title'       => $section['title'],
+								'description' => $desc,
+							);
+							$wp_customize->add_panel( $section['id'], $panel_args );
+
+							break;
+						}
+
+						case 'customizer_section' : {
+
+							$panel = '';
+
+							if ( isset( $section['in_panel'] ) ) {
+								$panel = $section['in_panel'];
+							}
+
+							$section_args = array(
+								'title'    => $section['title'],
+								'priority' => $priority,
+								'panel'    => $panel
+							);
+
+							$wp_customize->add_section( $section['id'], $section_args );
+							break;
+						}
+
+						default : {
+							break;
+						}
+
+					endswitch;
+
+				} else {
+					$wp_customize->add_section( $section['id'], array(
+						'title'    => $section['title'],
+						'priority' => $section['priority'],
+						//					'description' => $section['desc']
+					) );
+				}
+
 
 
 				foreach ( $section['fields'] as $skey => $option ) {
@@ -393,12 +448,16 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 						'capabilities'   => 'manage_theme_options',
 						'transport'      => $transport,
 						'theme_supports' => '',
-						//'sanitize_callback' => array( $this, '_field_validation' ),
-						//'sanitize_js_callback' =>array( &$parent, '_field_input' ),
+//						'sanitize_callback' => 'sanitize_text_field',
+//						'sanitize_js_callback' =>array( &$parent, '_field_input' ),
 					);
 
 					$option_name  = $option['id'];
 					$option['id'] = $this->parent->args['opt_name'] . '[' . $option['id'] . ']';
+
+//					if (  $option['type'] == 'color' ) {
+//						$customSetting['sanitize_callback'] = 'sanitize_hex_color';
+//					}
 
 					if ( $option['type'] != "heading" || ! empty( $option['type'] ) ) {
 						$wp_customize->add_setting( $option['id'], $customSetting );
@@ -565,7 +624,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 								'section'        => $section['id'],
 								'settings'       => $option['id'],
 								'priority'       => $option['priority'],
-								'type'           => 'background',
+								'type'           => 'customizer_bg',
 								'field'          => $option,
 								'option_key'     => $option_name,
 								'ReduxFramework' => $this->parent
@@ -796,7 +855,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 
 			if ( ! empty( $sections ) ) {
 				foreach ( $sections as $section ) {
-					if ( $section['id'] == 'style' && isset( $section['fields'] ) && ! empty( $section['fields'] ) ) {
+					if ( isset( $section['customizer_only'] ) && ! empty( $section['customizer_only'] ) && isset( $section['fields'] ) && ! empty( $section['fields'] ) ) {
 						foreach ( $section['fields'] as $field ) {
 							if ( isset( $field['id'] ) && isset( $defaults[ $field['id'] ] ) ) {
 								$default_value = $defaults[ $field['id'] ];

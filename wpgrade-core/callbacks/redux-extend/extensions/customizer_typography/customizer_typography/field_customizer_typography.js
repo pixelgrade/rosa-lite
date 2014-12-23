@@ -10,8 +10,12 @@
  * Date:                May 25, 2014
  */
 
+new_array = {};
 (function( $ ) {
+
 	"use strict";
+
+	new_array = {};
 
 	redux.field_objects = redux.field_objects || {};
 	redux.field_objects.typography = redux.field_objects.typography || {};
@@ -32,6 +36,8 @@
 	);
 
 	redux.field_objects.typography.init = function( selector ) {
+
+		this.customizer_settings = {};
 
 		if ( !selector ) {
 			selector = $( document ).find( '.redux-container-typography' );
@@ -477,7 +483,7 @@
 		} else if ($(selector).hasClass('redux-typography-family-backup') && familyBackup !== "") {
 			$('#' + mainID + ' .redux-typography-font-family-backup').val(familyBackup);
 		}
-		set_customizer_value(customizer_id, 'font-family', output);
+		this.set_customizer_value(customizer_id, 'font-family', output);
 		// Check if the selected value exists. If not, empty it. Else, apply it.
 		if ($('#' + mainID + " select.redux-typography-style option[value='" + style + "']").length === 0) {
 			style = "";
@@ -510,7 +516,12 @@
 					link += ':' + style.replace(/\-/g, " ");
 				}
 
-				if (script) {
+				if (script && script !== 'latin') {
+
+					if ( ! style) {
+						link += ':';
+					}
+
 					link += ':' + script;
 				}
 
@@ -529,11 +540,11 @@
 			$('#' + mainID + ' .typography-preview').css('font-style', 'italic');
 			$('#' + mainID + ' .typography-font-style').val('italic');
 			style = style.replace('italic', '');
-			set_customizer_value(customizer_id, 'font-style', 'italic');
+			this.set_customizer_value(customizer_id, 'font-style', 'italic');
 		} else {
 			$('#' + mainID + ' .typography-preview').css('font-style', "normal");
 			$('#' + mainID + ' .typography-font-style').val('');
-			set_customizer_value(customizer_id, 'font-style', '');
+			this.set_customizer_value(customizer_id, 'font-style', '');
 		}
 
 		$('#' + mainID + ' .typography-font-weight').val(style);
@@ -612,15 +623,26 @@
 				$('#' + mainID + ' .typography-preview').css('text-decoration', decoration);
 			}
 			$('#' + mainID + ' .typography-preview').slideDown();
-			set_customizer_value(customizer_id, 'font-options', details);
-			set_customizer_value(customizer_id, 'font-weight', style);
-			set_customizer_value(customizer_id, 'google', google);
-			set_customizer_value(customizer_id, 'subsets', script);
-			set_customizer_value(customizer_id, 'text-align', align);
+			this.set_customizer_value(customizer_id, 'font-options', details);
+			this.set_customizer_value(customizer_id, 'font-weight', style);
+			this.set_customizer_value(customizer_id, 'google', google);
+			this.set_customizer_value(customizer_id, 'subsets', script);
+			this.set_customizer_value(customizer_id, 'text-align', align);
 
 			if (typeof api !== "undefined") {
-				api.instance(customizer_id).previewer.refresh();
+
+				var setting = api.instance( customizer_id );
+
+				var current_val = setting.get();
+
+				var new_val = this.get_customizer_value(customizer_id);
+
+
+				//debugger;
+				setting.set( new_val );
+
 				api.trigger('change');
+				setting.previewer.refresh();
 			}
 		}
 		// end preview stuff
@@ -631,19 +653,39 @@
 		}
 
 		isSelecting = false;
-
 	};
+
+	redux.field_objects.typography.get_customizer_value = function( customizer_id ) {
+
+
+		if ( typeof this.customizer_settings[customizer_id] !== 'undefined' ) {
+			return this.customizer_settings[customizer_id];
+		}
+
+		return false;
+	};
+
+	redux.field_objects.typography.set_customizer_value = function (customizer_id, key, value) {
+		if ( typeof this.customizer_settings[customizer_id] === 'undefined' ) {
+			this.customizer_settings[customizer_id] = {};
+		}
+
+		this.customizer_settings[customizer_id][key] = value;
+
+		return;
+
+		//if (typeof window._wpCustomizeSettings === 'undefined') {
+		//	return;
+		//}
+		//
+		//if (window._wpCustomizeSettings.settings[customizer_id] === 'undefined' || window._wpCustomizeSettings.settings[customizer_id].value === 'undefined') {
+		//	return;
+		//}
+		//
+		//window._wpCustomizeSettings.settings[customizer_id].value[key] = value;
+	}
+
+
 })( jQuery );
 
-function set_customizer_value(customizer_id, key, value) {
 
-	if (typeof window._wpCustomizeSettings === 'undefined') {
-		return;
-	}
-
-	if (window._wpCustomizeSettings.settings[customizer_id] === 'undefined' || window._wpCustomizeSettings.settings[customizer_id].value === 'undefined') {
-		return;
-	}
-
-	window._wpCustomizeSettings.settings[customizer_id].value[key] = value;
-}
