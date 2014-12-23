@@ -17,14 +17,14 @@
 	 */
 	$.reduxBackground.init = function () {
 		// Remove the image button
-		$('.redux-container-background .remove-image, .redux-container-background .remove-file').unbind('click').on('click', function (e) {
+		$('.redux-container-customizer_bg .remove-image, .redux-container-customizer_bg .remove-file').unbind('click').on('click', function (e) {
 			$.reduxBackground.removeImage($(this).parents('fieldset.redux-field:first'));
 			$.reduxBackground.preview($(this));
 			return false;
 		});
 
 		// Upload media button
-		$('.redux-container-background .background_upload_button').unbind().on('click', function (event) {
+		$('.redux-container-customizer_bg .background_upload_button').unbind().on('click', function (event) {
 			$.reduxBackground.addImage(event, $(this).parents('fieldset.redux-field:first'));
 		});
 
@@ -32,7 +32,7 @@
 			$.reduxBackground.preview($(this));
 		});
 
-		$('.redux-container-background .redux-color').wpColorPicker({
+		$('.redux-container-customizer_bg .redux-color').wpColorPicker({
 			change: function (u, ui) {
 				redux_change($(this));
 				$('#' + u.target.id + '-transparency').removeAttr('checked');
@@ -44,51 +44,67 @@
 
 	};
 
+	if (typeof parent !== 'undefined' ) {
+		var api = parent.wp.customize;
+	} else {
+		var api = wp.customize;
+	}
+
+
 	// Update the background preview
 	$.reduxBackground.preview = function (selector) {
 
-		var parent = selector.parents('.redux-container-background:first');
-		var preview = $(parent).find('.background-preview');
+		var parent = selector.parents('.redux-container-customizer_bg:first');
+		var image_holder = $(parent).find('.background-preview');
 
-		if (!preview) { // No preview present
+		if (!image_holder) { // No preview present
 			return;
 		}
 
 		var split = parent.data('id') + '][';
-		var css = 'height:' + preview.height() + 'px;';
+		var css = 'height:' + image_holder.height() + 'px;';
 
 		var api = wp.customize,
 			the_id = parent.find('.upload-id').attr('name');
+
 		the_id = the_id.replace('[media][id]', '');
+
+		//var control = api.control( the_id ),
+		//	this_setting = api.instance(the_id);
+		//// get a default
+		//var default_default = control.setting();
+
+		var background_data = {};
 
 		$(parent).find('.redux-background-input').each(function () {
 			var data = $(this).serializeArray();
 
 			data = data[0];
-
 			if (data && data.name.indexOf('[background-') != -1) {
-				if (data.value !== "") {
+
 					data.name = data.name.split(split);
 					data.name = data.name[1].replace(']', '');
 
-					window._wpCustomizeSettings.settings[the_id].value[data.name] = data.value
+					background_data[ data.name ] = data.value;
 
+					//default_default[data.name] = data.value;
 					if (data.name == "background-image") {
 						css += data.name + ':url("' + data.value + '");';
 					} else {
 						css += data.name + ':' + data.value + ';';
 					}
-				}
 			}
 		});
 
-		preview.attr('style', css).fadeIn();
+		api.instance(the_id).set( background_data );
+		api.trigger('change');
+
+		//image_holder.attr('style', css).fadeIn();
 
 		// customizer preview
-		// Notify the customizer api about this change
-		api.trigger('change');
-		api.instance(the_id).previewer.refresh();
+		//// Notify the customizer api about this change
 
+		//this_setting.previewer.refresh();
 	};
 
 	// Add a file via the wp.media function
@@ -205,15 +221,26 @@
 
 		//$.reduxBackground.preview(selector);
 
-		if (typeof window._wpCustomizeSettings === 'undefined') {
-			return;
-		}
+		//if (typeof window._wpCustomizeSettings === 'undefined') {
+		//	return;
+		//}
+		//
+		//if (window._wpCustomizeSettings.settings[customizer_id] === 'undefined' || window._wpCustomizeSettings.settings[customizer_id].value === 'undefined') {
+		//	return;
+		//}
 
-		if (window._wpCustomizeSettings.settings[customizer_id] === 'undefined' || window._wpCustomizeSettings.settings[customizer_id].value === 'undefined') {
-			return;
-		}
+		var this_setting = api.control( customizer_id );
 
-		window._wpCustomizeSettings.settings[customizer_id].value['background-image'] = '';
+		var current_vals = this_setting.setting();
+
+		var to_array = $.map(current_vals, function(value, index) {
+			return [value];
+		});
+
+		to_array['background-image'] = '';
+
+		this_setting.setting(to_array);
+		//window._wpCustomizeSettings.settings[customizer_id].value['background-image'] = '';
 
 	};
 

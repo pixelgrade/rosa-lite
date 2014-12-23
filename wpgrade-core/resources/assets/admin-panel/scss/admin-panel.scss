@@ -268,7 +268,7 @@
                 }
 			}
 		}
-		
+
 		i#big-icon{
 			position: absolute;
 			right: 70px;
@@ -279,7 +279,7 @@
 
 			opacity: .1;
 		}
-		
+
 	} // .redux-main
 
 	.redux-field-container {
@@ -327,6 +327,11 @@
 					font-weight: 400;
 					text-transform: uppercase;
 					text-align: left;
+
+					&, &:active &:focus {
+						outline: 0;
+						box-shadow: none;
+					}
 				}
 
 				&.active a {
@@ -660,7 +665,7 @@
             box-sizing: content-box;
         }
     }
-    
+
     .wp-editor-area {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -752,12 +757,6 @@
     }
 
 } // .redux-container
-
-
-//very very important
-#toplevel_page_rosa_options a:after{
-	border-right-color: #47dad1 !important;
-}
 
 
 h1, h2, h3, h4, h5, h6, p, ul, ol, dl, li, th, td, tr {
@@ -1110,7 +1109,7 @@ body .redux-container .redux-main {
     -ms-transition: border-color .2s ease-in-out;
     -o-transition: border-color .2s ease-in-out;
     transition: border-color .2s ease-in-out;
-    
+
     &:hover {
         border-color: $light;
     }

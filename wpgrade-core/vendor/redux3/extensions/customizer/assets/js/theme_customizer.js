@@ -15,9 +15,13 @@
 			controls = api.settings.controls,
 			settings = api.settings.settings;
 
-		backgroundInit();
-		typographyInit();
-		spacingInit();
+		setTimeout(function(){
+			backgroundInit();
+			typographyInit();
+			spacingInit();
+			removeEmptyLists();
+
+		}, 1500);
 
 		function closeAllPanles() {
 			$('.redux-field-container, .redux-typography-container, .dropdown-section-content').removeClass('active');
@@ -29,7 +33,7 @@
 		});
 
 		function backgroundInit() {
-			var $bg_control = $('.customize-control-background');
+			var $bg_control = $('.customize-control-customizer_bg');
 			$bg_control.each(function () {
 				var _self = $(this),
 					label = $(this).find('label'),
@@ -47,7 +51,7 @@
 				e.stopPropagation();
 				e.preventDefault();
 
-				var the_container = $(this).closest($('.customize-control-background')).find('.redux-field-container');
+				var the_container = $(this).closest($('.customize-control-customizer_bg')).find('.redux-field-container');
 				// check if this is already opened
 				var is_opened = the_container.hasClass('active');
 
@@ -67,7 +71,7 @@
 
 			// Remove Icon Class '.active'
 			$bg_control.on('click', '.button.remove-image', function () {
-				$(this).closest($('.customize-control-background')).find('button.active').removeClass('active');
+				$(this).closest($('.customize-control-customizer_bg')).find('button.active').removeClass('active');
 			})
 		}
 
@@ -125,7 +129,7 @@
 				$('<div class="dropdown-section-content"></div>').appendTo(_container);
 
 				// Insert options into container
-				_parent.nextUntil('div').each(function(){
+				_container.nextUntil('ul').each(function(){
 					$(this).appendTo(_container.find('.dropdown-section-content'));
 				});
 
@@ -161,6 +165,14 @@
 			// Remove Icon Class '.active'
 			$('.customize-control-typography').on('click', '.button.remove-image', function () {
 				// $(this).closest($('.customize-control-typography')).find('button.active').removeClass('active');
+			})
+		}
+
+		function removeEmptyLists() {
+			$('.dropdown-section-content li').each(function(){
+				if($(this).text().length == 9) {
+					$(this).hide();
+				}
 			})
 		}
 
@@ -211,6 +223,7 @@
 
 				//let's reset the section style
 				var _ajax_nonce = $(this).data('ajax_nonce') || '';
+				console.log(_ajax_nonce);
 				jQuery.ajax({
 					type: "post",
 					url: exports.ajax.settings.url,

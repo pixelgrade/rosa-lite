@@ -1950,7 +1950,7 @@
                     $tab = array(
                         'id'      => 'redux-hint-tab',
                         'title'   => __( 'Hints', 'redux-framework-demo' ),
-                        'content' => __( '<p>' . $msg . '</p>', 'redux-framework-demo' )
+                        'content' => '<p>' . $msg . '</p>',
                     );
 
                     $screen->add_help_tab( $tab );

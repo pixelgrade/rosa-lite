@@ -598,7 +598,7 @@ if ( ! class_exists( 'ReduxFramework_customizer_typography' ) ) {
 
 			foreach ($fonts as $family => $font) {
 				if (!empty($link)) {
-					$link.= "%7C"; // Append a new font to the string
+					$link.= "|"; // Append a new font to the string
 				}
 				$link.= $family;
 
@@ -624,7 +624,7 @@ if ( ! class_exists( 'ReduxFramework_customizer_typography' ) ) {
 				$link.= "&amp;subset=" . implode(',', $subsets);
 			}
 
-			return '//fonts.googleapis.com/css?family=' . str_replace( '|','%7C', $link );
+			return '//fonts.googleapis.com/css?family=' . $link;
 		}
 
 		/**

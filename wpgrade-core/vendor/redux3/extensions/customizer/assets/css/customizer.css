@@ -7,60 +7,117 @@
 .wp-full-overlay-sidebar {
   border-right: 0;
 }
-.wp-full-overlay-sidebar .wp-full-overlay-sidebar-content {
-  background: #232527;
-  top: 0;
-}
 .wp-full-overlay-sidebar * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-#customize-theme-controls .accordion-section-content {
+ul.accordion-sub-container .control-subsection .accordion-section-title {
+  display: none;
+}
+ul.accordion-sub-container .control-subsection .accordion-section-content {
   display: block !important;
 }
 
-h3.accordion-section-title, #customize-info {
-  display: none;
-}
-
-#customize-theme-controls .accordion-section-content {
-  background: transparent;
+.control-section .accordion-section-title,
+.accordion-section-title {
+  padding: 18px 20px;
 }
 
 .accordion-section-content {
   overflow: visible;
 }
 
-.customize-control {
-  float: none;
-  display: block;
-}
-
 /*------------------------------------*\
     BASE
 \*------------------------------------*/
-#customize-theme-controls #accordion-section-style > ul.accordion-section-content {
-  border-top: 1px solid #3b3f45;
-}
-#customize-theme-controls #accordion-section-style > ul.accordion-section-content:nth-child(2) {
-  display: none !important;
-}
-#customize-theme-controls #accordion-section-style > ul.accordion-section-content:nth-child(3) {
-  background: #373a3e;
-}
-#customize-theme-controls #accordion-section-style > ul.accordion-section-content:nth-child(3) li:last-child {
-  display: none;
+.wp-full-overlay-sidebar {
+  background: #232527;
 }
 
+/*------------------------------------*\
+    ACCORDION SECTIONS
+\*------------------------------------*/
+#customize-info .accordion-section-title,
+#customize-info .accordion-section-content,
+#customize-theme-controls .accordion-section-title,
+#customize-theme-controls .accordion-section-content {
+  color: #cbcfd4;
+  background: #232527;
+  border-color: #3b3f45;
+  -moz-transition: background 0.2s;
+  -o-transition: background 0.2s;
+  -webkit-transition: background 0.2s;
+  transition: background 0.2s;
+}
+#customize-info .accordion-section-title:after,
+#customize-info .accordion-section-content:after,
+#customize-theme-controls .accordion-section-title:after,
+#customize-theme-controls .accordion-section-content:after {
+  background: none;
+  color: #cbcfd4;
+  border-left: transparent;
+  line-height: 70px;
+}
+#customize-info > ul > li > .accordion-section-title,
+#customize-info > ul > li > .accordion-section-content,
+#customize-theme-controls > ul > li > .accordion-section-title,
+#customize-theme-controls > ul > li > .accordion-section-content {
+  margin: 0;
+  padding: 24px 20px;
+}
+
+#customize-info .accordion-section-title:focus, #customize-info .accordion-section-title:hover, #customize-info.open .accordion-section-title, #customize-theme-controls .control-section .accordion-section-title:focus, #customize-theme-controls .control-section .accordion-section-title:hover, #customize-theme-controls .control-section.open .accordion-section-title, #customize-theme-controls .control-section:hover > .accordion-section-title {
+  color: #cbcfd4;
+  background: #303235;
+}
+
+#customize-theme-controls .control-section.control-panel > h3.accordion-section-title:focus:after, #customize-theme-controls .control-section.control-panel > h3.accordion-section-title:hover:after {
+  margin-top: -11px;
+  background: none;
+  color: #cbcfd4;
+  border: transparent;
+  line-height: 70px;
+}
+
+.customize-control-title {
+  margin-bottom: 0;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  color: #b1b5b9;
+}
+
+.customize-control {
+  margin: 0;
+  padding: 12px 0;
+  border-top: 1px solid #3b3f45;
+}
+.customize-control:first-child {
+  border-top-width: 0;
+}
+
+.current-panel > .accordion-section-title {
+  height: 70px;
+}
+
+#customize-theme-controls .control-section.open .accordion-section-title {
+  border-bottom-color: #3b3f45 !important;
+}
+
+#customize-info.open, #customize-theme-controls .control-section.open {
+  border-bottom: none;
+}
+
+/*------------------------------------*\
+    HEADER + FOOTER CONTROLS
+\*------------------------------------*/
 #customize-header-actions {
   height: auto;
-  bottom: 0;
   padding: 0;
   z-index: 55;
   background: #373a3e;
-  border-top: 1px solid #1a191a;
+  border-bottom: 1px solid #1a191a;
 }
 #customize-header-actions .button, #customize-header-actions .customize-controls-close {
   width: 50%;
@@ -81,19 +138,19 @@ h3.accordion-section-title, #customize-info {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-  -moz-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 #customize-header-actions .button:hover, #customize-header-actions .customize-controls-close:hover {
   background: #4d5157;
 }
-#customize-header-actions .customize-controls-close span {
-  position: relative;
+#customize-header-actions .customize-controls-close {
+  border-right: 1px solid #232527;
 }
 #customize-header-actions .customize-controls-close:before {
-  display: none;
+  left: 0;
 }
 #customize-header-actions .save {
   background: #3677bd;
@@ -107,29 +164,67 @@ h3.accordion-section-title, #customize-info {
   background: #3f87d5;
 }
 #customize-header-actions .spinner {
-  display: none !important;
   background: none;
 }
 
-.customize-control-title {
-  font-weight: 400;
-  letter-spacing: 0.2px;
+.control-panel-back {
   color: #b1b5b9;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 54px;
+  left: -150px;
+  width: 150px;
+  height: 53px;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.control-panel-back, .control-panel-back:focus {
+  background: #232527;
+  border: transparent;
+  color: #cbcfd4;
+}
+.control-panel-back:hover {
+  background: #373a3e;
+  border-right: 1px solid #232527;
+}
+.control-panel-back:before {
+  top: 5px;
+  left: -3px;
 }
 
-.customize-control {
-  margin: 0;
-  padding: 12px 0;
-  border-top: 1px solid #3b3f45;
+.control-panel-back .screen-reader-text, .customize-controls-close .screen-reader-text {
+  position: relative;
+  top: 1px;
+  margin: 2px;
+  padding: 0;
+  height: auto;
+  width: auto;
+  overflow: visible;
+  clip: auto;
+  border: 0;
 }
-.customize-control:last-child {
-  border-top-width: 0;
+
+#customize-footer-actions a.collapse-sidebar {
+  color: #cbcfd4;
+}
+#customize-footer-actions a.collapse-sidebar:hover {
+  color: #3677bd;
+}
+#customize-footer-actions a.collapse-sidebar:hover .collapse-sidebar-arrow:before {
+  color: #3677bd;
+}
+#customize-footer-actions a.collapse-sidebar .collapse-sidebar-arrow {
+  color: #232527;
 }
 
 /*------------------------------------*\
     OBJECTS
 \*------------------------------------*/
-.customize-control-background .redux-field-container:after, .customize-control-typography .redux-typography-container:after, .customize-dropdown-section .dropdown-section-content:after, .customize-control-color .wp-picker-container .wp-picker-open + .wp-picker-input-wrap:after {
+.customize-control-background .redux-field-container:after,
+.customize-control-customizer_bg .redux-field-container:after, .customize-control-typography .redux-typography-container:after, .customize-dropdown-section .dropdown-section-content:after, .customize-control-color .wp-picker-container .wp-picker-open + .wp-picker-input-wrap:after {
   content: "";
   position: absolute;
   bottom: 100%;
@@ -142,7 +237,8 @@ h3.accordion-section-title, #customize-info {
   border-color: transparent transparent #e2e2e2 transparent;
 }
 
-.customize-control-background .redux-field-container, .customize-control-typography .redux-typography-container, .customize-dropdown-section .dropdown-section-content {
+.customize-control-background .redux-field-container,
+.customize-control-customizer_bg .redux-field-container, .customize-control-typography .redux-typography-container, .customize-dropdown-section .dropdown-section-content {
   position: absolute;
   top: 60px;
   right: -6px;
@@ -155,15 +251,18 @@ h3.accordion-section-title, #customize-info {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-.customize-control-background .active.redux-field-container, .customize-control-typography .active.redux-typography-container, .customize-dropdown-section .active.dropdown-section-content {
+.customize-control-background .active.redux-field-container,
+.customize-control-customizer_bg .active.redux-field-container, .customize-control-typography .active.redux-typography-container, .customize-dropdown-section .active.dropdown-section-content {
   display: block;
 }
-.customize-control-background .redux-field-container:after, .customize-control-typography .redux-typography-container:after, .customize-dropdown-section .dropdown-section-content:after {
+.customize-control-background .redux-field-container:after,
+.customize-control-customizer_bg .redux-field-container:after, .customize-control-typography .redux-typography-container:after, .customize-dropdown-section .dropdown-section-content:after {
   right: 58px;
   border-color: transparent transparent #fff transparent;
 }
 
-.customize-control-background .customize-control-title button, .customize-control-typography .customize-control-title button, .customize-dropdown-section .dropdown-section-trigger .customize-control-title button {
+.customize-control-background .customize-control-title button,
+.customize-control-customizer_bg .customize-control-title button, .customize-control-typography .customize-control-title button, .customize-dropdown-section .dropdown-section-trigger .customize-control-title button {
   position: absolute;
   top: -36px;
   right: 45px;
@@ -186,14 +285,18 @@ h3.accordion-section-title, #customize-info {
   cursor: pointer;
   outline: none;
 }
-.customize-control-background .customize-control-title button:before, .customize-control-typography .customize-control-title button:before, .customize-dropdown-section .dropdown-section-trigger .customize-control-title button:before {
+.customize-control-background .customize-control-title button:before,
+.customize-control-customizer_bg .customize-control-title button:before, .customize-control-typography .customize-control-title button:before, .customize-dropdown-section .dropdown-section-trigger .customize-control-title button:before {
   font-family: 'Elusive-Icons';
   content: "\e669";
 }
-.customize-control-background .customize-control-title button:hover, .customize-control-typography .customize-control-title button:hover, .customize-dropdown-section .dropdown-section-trigger .customize-control-title button:hover, .customize-control-background .customize-control-title button.active, .customize-control-typography .customize-control-title button.active, .customize-dropdown-section .dropdown-section-trigger .customize-control-title button.active {
+.customize-control-background .customize-control-title button:hover,
+.customize-control-customizer_bg .customize-control-title button:hover, .customize-control-typography .customize-control-title button:hover, .customize-dropdown-section .dropdown-section-trigger .customize-control-title button:hover, .customize-control-background .customize-control-title button.active,
+.customize-control-customizer_bg .customize-control-title button.active, .customize-control-typography .customize-control-title button.active, .customize-dropdown-section .dropdown-section-trigger .customize-control-title button.active {
   background: #3b3f45;
 }
-.customize-control-background .customize-control-title button.active, .customize-control-typography .customize-control-title button.active, .customize-dropdown-section .dropdown-section-trigger .customize-control-title button.active {
+.customize-control-background .customize-control-title button.active,
+.customize-control-customizer_bg .customize-control-title button.active, .customize-control-typography .customize-control-title button.active, .customize-dropdown-section .dropdown-section-trigger .customize-control-title button.active {
   -moz-box-shadow: rgba(0, 0, 0, 0.4) 0 1px 1px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0 1px 1px;
   box-shadow: rgba(0, 0, 0, 0.4) 0 1px 1px;
@@ -293,7 +396,7 @@ h3.accordion-section-title, #customize-info {
   float: right;
 }
 .customize-control-color .wp-color-result {
-  top: -6px;
+  top: 0;
   height: 30px;
   width: 30px;
   margin: 0;
@@ -313,19 +416,24 @@ h3.accordion-section-title, #customize-info {
 /*
  * Background Picker
  */
-.customize-control-background {
+/*old*/
+.customize-control-background,
+.customize-control-customizer_bg {
   position: relative;
   border: none;
   padding: 0;
 }
-.customize-control-background .redux-field-container {
+.customize-control-background .customize-control-title button,
+.customize-control-customizer_bg .customize-control-title button {
+  top: -42px;
+}
+.customize-control-background .redux-field-container,
+.customize-control-customizer_bg .redux-field-container {
   top: 6px;
 }
-.customize-control-background .redux-field-container img {
+.customize-control-background .redux-field-container img,
+.customize-control-customizer_bg .redux-field-container img {
   max-width: 100%;
-}
-.customize-control-background .redux-field-container .screenshot {
-  display: none;
 }
 
 /*
@@ -333,7 +441,6 @@ h3.accordion-section-title, #customize-info {
  */
 .customize-control-typography {
   position: relative;
-  border-top: 1px solid #3b3f45 !important;
 }
 .customize-control-typography .customize-control-title {
   position: relative;
@@ -418,7 +525,7 @@ h3.accordion-section-title, #customize-info {
   background: #232527;
   width: 204px;
   height: 36px;
-  top: 10px;
+  top: 9px;
   left: 0;
   -moz-transition: all 0.2s;
   -o-transition: all 0.2s;
@@ -518,12 +625,14 @@ h3.accordion-section-title, #customize-info {
 .customize-dropdown-section {
   position: relative;
   padding: 0;
-  margin-left: 20px !important;
-  margin-right: 20px !important;
+  border-bottom: 1px solid #3b3f45;
+}
+.customize-dropdown-section:last-child {
+  border-bottom: 0;
 }
 .customize-dropdown-section .dropdown-section-trigger {
   margin: 0;
-  padding: 12px 0;
+  padding: 14px 0;
 }
 .customize-dropdown-section .dropdown-section-trigger .customize-control-title button {
   right: 0;
@@ -546,23 +655,28 @@ h3.accordion-section-title, #customize-info {
 .customize-dropdown-section .dropdown-section-content .customize-control:first-child {
   border-top: none;
 }
-.customize-dropdown-section .dropdown-section-content .customize-control-info {
-  display: none;
-}
 .customize-dropdown-section .dropdown-section-content:after {
-  right: 19px;
+  right: 12px;
 }
 
 .customize-dropdown-title {
   padding-bottom: 0;
 }
-.customize-dropdown-title li:last-child {
-  display: none;
+
+.customize-control-checkbox label {
+  color: #232527;
 }
 
 /*
  * Reset Button
  */
+#accordion-section-resetoptions .accordion-section-title {
+  display: none;
+}
+#accordion-section-resetoptions .accordion-section-content {
+  display: block !important;
+}
+
 #reset-style-defaults {
   text-align: center;
   display: block;
