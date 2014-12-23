@@ -133,7 +133,7 @@
 					$(this).appendTo(_container.find('.dropdown-section-content'));
 				});
 
-				// Clean up the title of the sections (eg. Sizes and Spacings)
+				// // Clean up the title of the sections (eg. Sizes and Spacings)
 				_container.first().prev().addClass('customize-dropdown-title');
 
 			});

@@ -45,7 +45,8 @@ ul.accordion-sub-container .control-subsection {
 	}
 
 	.accordion-section-content {
-		display: block !important;
+		display: inline-block !important;
+		width: 100%;
 		// overflow: visible;
 	}
 }
