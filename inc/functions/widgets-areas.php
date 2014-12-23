@@ -32,13 +32,3 @@ function wpgrade_register_sidebars() {
 }
 
 add_action( 'widgets_init', 'wpgrade_register_sidebars' );
-
-add_action( 'customize_register', 'wpgrade_remove_widgets_area_from_customizer' );
-function wpgrade_remove_widgets_area_from_customizer () {
-
-	global $wp_customize;
-	// remove these widgets areas from customizer
-	$wp_customize->remove_section('sidebar-widgets-sidebar-main');
-	$wp_customize->remove_section('sidebar-widgets-sidebar-footer');
-
-}

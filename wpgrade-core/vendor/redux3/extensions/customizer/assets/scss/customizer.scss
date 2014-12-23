@@ -26,28 +26,45 @@ $popup 		: 275px;
 	border-right: 0;
 
 	.wp-full-overlay-sidebar-content {
-		background: $dark;
-		top:0;
+
 	}
 
 	* {
-		-webkit-box-sizing 	: border-box; 
-		-moz-box-sizing 	: border-box; 
-		box-sizing 			: border-box;        
+		-webkit-box-sizing 	: border-box;
+		-moz-box-sizing 	: border-box;
+		box-sizing 			: border-box;
 	}
 }
 
-// Open all sections (disable accordion)
-#customize-theme-controls .accordion-section-content {
-	display: block !important;
+// Open all 2nd level sections (disable accordion)
+ul.accordion-sub-container .control-subsection {
+	
+	// Hide Sub Sections Title
+	.accordion-section-title {
+		display: none;
+	}
+
+	.accordion-section-content {
+		display: inline-block !important;
+		width: 100%;
+		// overflow: visible;
+	}
 }
+
+// Section Titles
+.control-section .accordion-section-title, 
+.accordion-section-title {
+	padding: 18px 20px;
+}
+
+
 
 h3.accordion-section-title, #customize-info {
-	display:none;
+	// display:none;
 }
 
 #customize-theme-controls .accordion-section-content {
-	background: transparent;
+	// background: transparent;
 }
 
 #accordion-section-style {
@@ -59,8 +76,8 @@ h3.accordion-section-title, #customize-info {
 }
 
 .customize-control {
-	float: none;
-	display:block;
+	// float: none;
+	// display:block;
 }
 
 
@@ -74,37 +91,131 @@ h3.accordion-section-title, #customize-info {
 /*------------------------------------*\
     BASE
 \*------------------------------------*/
+
+// Inverse the accordion sections colors
+.wp-full-overlay-sidebar {
+	background: $dark;
+}
+
+// Accordion Section Title
+#customize-info {
+	.accordion-section-title {
+
+	}
+}
+
+// Description Text
+#customize-controls .description {
+	color: #b1b5b9;
+}
+
+/*------------------------------------*\
+    ACCORDION SECTIONS
+\*------------------------------------*/
+
+// Inverse the accordion sections colors
+#customize-info,
 #customize-theme-controls {
-	& #accordion-section-style > ul.accordion-section-content  {
-		border-top: 1px solid $lighter;
+	.accordion-section-title,
+	.accordion-section-content {
+		color 		: $light;
+		background 	: $dark;
+		border-color: $lighter;
 
-		&:nth-child(2) {
-			display:none !important;
-		}
+		@include transition(background 0.2s);
 
-		&:nth-child(3) {
-			background: #373a3e;
-
-			li:last-child {
-				display: none;
-			}
-		}
-
-		& > li {
-
+		// Right Arrow
+		&:after {
+			background 	: none;
+			color 		: $light;
+			border-left : transparent;
+			line-height: 70px;
 		}
 	}
 
+	>ul>li> .accordion-section-title,
+	>ul>li> .accordion-section-content {
+		margin 		: 0;
+		padding 	: 24px 20px;
+	}
 }
 
+	// Accordion Sections:hover
+	#customize-info .accordion-section-title:focus, #customize-info .accordion-section-title:hover, #customize-info.open .accordion-section-title, #customize-theme-controls .control-section .accordion-section-title:focus, #customize-theme-controls .control-section .accordion-section-title:hover, #customize-theme-controls .control-section.open .accordion-section-title, #customize-theme-controls .control-section:hover>.accordion-section-title {
+		color: $light;
+		background: $gray;
+	}
+		// Right Arrow
+		#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:focus:after, #customize-theme-controls .control-section.control-panel>h3.accordion-section-title:hover:after {
+			margin-top: -11px;
+
+			background 	: none;
+			color 		: $light;
+			border : transparent;
+			line-height: 70px;
+		}
+
+
+.customize-control-title {
+	margin-bottom 	: 0;
+	font-weight 	: 400;
+	letter-spacing 	: 0.2px;
+	color 			: #b1b5b9;
+}
+
+.customize-control {
+	margin 		: 0;
+	padding 	: 12px 0;
+	border-top 	: 1px solid #3b3f45;
+
+	&:first-child {
+		border-top-width 	: 0;
+	}
+}
+
+// First Level Panels
+
+// Current Panel
+.current-panel>.accordion-section-title {
+	height: 70px;
+} 
+
+// Accordion case
+#customize-theme-controls .control-section.open .accordion-section-title {
+	border-bottom-color: $lighter !important;
+}
+
+.accordion-section.control-section-default {
+	.accordion-section-title:after {
+		top: 0;
+	}
+}
+
+#customize-info.open, #customize-theme-controls .control-section.open {
+	border-bottom-color: $lighter;
+
+	.accordion-section-content {
+		overflow: hidden;
+	}
+}
+
+
+
+
+/*------------------------------------*\
+    HEADER + FOOTER CONTROLS
+\*------------------------------------*/
+
+// Header – Close + Save Controls
 #customize-header-actions {
 	height 		: auto;
-	bottom 		: 0;
+	// bottom 		: 0;
 	padding 	: 0;
 	z-index 	: 55;
 	background 	: #373a3e;
-	border-top 	: 1px solid #1a191a;
-	
+	border-bottom : 1px solid #1a191a;
+	// border-bottom : 0;
+
 	.button {
 		width 			: 50%;
 		height 			: auto;
@@ -120,28 +231,26 @@ h3.accordion-section-title, #customize-info {
 		outline 		: none;
 		@include border-radius(0);
 		@include box-shadow(none);
-		@include transition(all 0.2s);
+		@include transition(all 0.3s);
 
 		&:hover {
 			background 	: #4d5157;
 		}
 	}
-	.back {
 
-	}
-
+	// Close X Button
 	.customize-controls-close {
 		@extend .button;
 
-		span {
-			position: relative;
-		}
+		// width: 53px;
+		border-right: 1px solid $dark;
 
 		&:before {
-			display: none;
+			left: 0;
 		}
 	}
 
+	// Save Button State
 	.save {
 		background 	: $accent;
 		color 		:#fff;
@@ -156,36 +265,91 @@ h3.accordion-section-title, #customize-info {
 		}
 	}
 	.spinner {
-		display 	: none !important;
+		// display 	: none !important;
 		background 	: none;
 	}
 
 }
+	
+	// Back button after opening a panel
+	.control-panel-back {
+		// @extend .button;
+		color 			: #b1b5b9;
+		font-size 		: 15px;
+		text-transform 	: uppercase;
+		text-align 		: center;
+		line-height 	: 54px;
 
-.customize-control-title {
-	font-weight 	: 400;
-	letter-spacing 	: 0.2px;
-	color 			: #b1b5b9;
-}
+		left: -150px;
 
-.customize-control {
-	margin 		: 0;
-	padding 	: 12px 0;
-	border-top 	: 1px solid #3b3f45;
+		// width: 53px;
+		width: 150px;
+		height: 53px;
 
-	&:last-child {
-		border-top-width 	: 0;
+		@include transition(all 0.3s);
+
+		&, &:focus {
+			background: $dark;
+			border: transparent;
+
+			color: $light;
+		}
+
+		&:hover {
+			background: #373a3e;
+			border-right: 1px solid $dark;
+		}
+
+		&:before {
+			top: 5px;
+			left: -3px;
+		}
+
+		// Opened
+		.in-sub-panel & {
+			// left: 0;
+		}
+
+	}
+
+		.screen-reader-text {
+			.control-panel-back &, .customize-controls-close & {
+				position: relative;
+				top: 1px;
+				margin: 2px;
+				padding: 0;
+				height: auto;
+				width: auto;
+				overflow: visible;
+				clip: auto;
+				border: 0;
+			}
+		}
+
+// Footer - Collapse Button
+#customize-footer-actions {
+	a.collapse-sidebar {
+		color: $light;
+
+		&:hover {
+			color: $accent;
+
+			.collapse-sidebar-arrow:before {
+				color: $accent;
+			}
+		}
+
+		.collapse-sidebar-arrow {
+			color: $dark;
+		}
 	}
 }
-
-
-
 
 
 
 /*------------------------------------*\
     OBJECTS
-\*------------------------------------*/ 
+\*------------------------------------*/
 %top-arrow {
 	&:after {
         content: "";
@@ -301,7 +465,7 @@ h3.accordion-section-title, #customize-info {
 		float:left;
 	}
 	.customize-control-content {
-		
+
 	}
 
 	.wp-picker-container {
@@ -318,7 +482,7 @@ h3.accordion-section-title, #customize-info {
 			@include border-radius(0 0 3px 3px);
 
 			.iris-picker-inner {
-				
+
 			}
 			.iris-square {
 				width 			: 215px !important;
@@ -352,7 +516,7 @@ h3.accordion-section-title, #customize-info {
 			background 	: #e2e2e2;
 			@include border-radius(3px 3px 0 0);
 			@extend %top-arrow;
-		
+
 			input {
 
 				&.wp-color-picker {
@@ -367,7 +531,7 @@ h3.accordion-section-title, #customize-info {
 	}
 
 	.wp-color-result{
-		top 		: -6px;
+		top 		: 0;
 		height 		: 30px;
 		width 		: 30px;
 		margin 		: 0;
@@ -385,7 +549,8 @@ h3.accordion-section-title, #customize-info {
 /*
  * Background Picker
  */
-.customize-control-background {
+/*old*/.customize-control-background,
+/*new*/.customize-control-customizer_bg {
 	position 	: relative;
 	border 		: none;
 	padding 	: 0;
@@ -393,6 +558,7 @@ h3.accordion-section-title, #customize-info {
 	.customize-control-title {
 		button {
 			@extend %icon-btn;
+			top: -42px;
 		}
 	}
 
@@ -405,7 +571,7 @@ h3.accordion-section-title, #customize-info {
 		}
 
 		.screenshot {
-			display: none;
+			// display: none;
 		}
 	}
 }
@@ -416,7 +582,7 @@ h3.accordion-section-title, #customize-info {
  */
 .customize-control-typography {
 	position : relative;
-	border-top: 1px solid $lighter !important;
+	// border-top: 1px solid $lighter !important;
 
 	.customize-control-title {
 		position 	: relative;
@@ -431,7 +597,7 @@ h3.accordion-section-title, #customize-info {
 
 	.redux-typography-container {
 		@extend %box-bg;
-		
+
 
 		.select_wrapper {
 			&, .select2-container {
@@ -527,9 +693,9 @@ h3.accordion-section-title, #customize-info {
 		position 	: absolute;
 		background 	: $dark;
 		width 		: 204px;
-		
+
 		height 		: 36px;
-		top 		: 10px;
+		top 		: 9px;
 		left 		: 0;
 
 		@include transition(all 0.2s);
@@ -579,11 +745,11 @@ h3.accordion-section-title, #customize-info {
 		@include border-radius(0 3px 3px 0);
 	}
 
-	.noUi-handle { 
+	.noUi-handle {
 		left 		: -9px;
 		width 		: 17px;
 		height 		: 17px;
-		cursor 		: pointer; 
+		cursor 		: pointer;
 		border 		: none;
 		border-radius: 100px;
 		@include box-shadow(rgba(0,0,0,0.75) 0 1px 1px);
@@ -618,7 +784,7 @@ h3.accordion-section-title, #customize-info {
 		border-top: none;
 
 		label span {
-			
+
 		}
 		.noUi-base {
 			background 	: #6d6d6d;
@@ -638,12 +804,19 @@ h3.accordion-section-title, #customize-info {
 .customize-dropdown-section {
 	position: relative;
 	padding: 0;
-	margin-left: 20px !important;
-	margin-right: 20px !important;
+	// margin-left: 20px !important;
+	// margin-right: 20px !important;
 
+	border-bottom : 1px solid $lighter;
+
+	&:last-child {
+		border-bottom: 0;
+	}
+	
 	.dropdown-section-trigger {
 		margin: 0;
-		padding: 12px 0;
+		padding: 14px 0;
+
 
 		.customize-control-title {
 			button {
@@ -679,11 +852,11 @@ h3.accordion-section-title, #customize-info {
 		}
 
 		.customize-control-info {
-			display: none;
+			// display: none;
 		}
 
 		&:after {
-			right: 19px;
+			right: 12px;
 		}
 	}
 }
@@ -692,13 +865,34 @@ h3.accordion-section-title, #customize-info {
 	padding-bottom:0;
 
 	li:last-child {
-		display:none;
+		// display:none;
+	}
+}
+
+
+.customize-control-checkbox {
+	label {
+		color: $dark;
 	}
 }
 
 /*
  * Reset Button
  */
+// Open The Panel by default
+#accordion-section-resetoptions {
+	
+	// Hide The Title
+	.accordion-section-title {
+		display: none;
+	}
+
+	.accordion-section-content {
+		display: block !important;
+	}
+}
+
+
 #reset-style-defaults {
 	text-align: center;
 	display: block;

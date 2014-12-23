@@ -1,10 +1,8 @@
 <?php
 
-// Replace {$redux_opt_name} with your opt_name.
-// Also be sure to change this function name!
-
-if ( ! function_exists( 'redux_register_custom_extension_loader' ) ) :
-	function redux_register_custom_extension_loader( $ReduxFramework ) {
+// register our redux estensions
+if ( ! function_exists( 'wpgrade_register_custom_extension_loader' ) ) {
+	function wpgrade_register_custom_extension_loader( $ReduxFramework ) {
 
 		$path    = dirname( __FILE__ ) . '/extensions/';
 		$folders = scandir( $path, 1 );
@@ -26,37 +24,25 @@ if ( ! function_exists( 'redux_register_custom_extension_loader' ) ) :
 	}
 
 	$redux_opt_name = wpgrade::confoption( 'shortname', 'redux' ) . '_options';
-	// Modify {$redux_opt_name} to match your opt_name
-	add_action( "redux/extensions/{$redux_opt_name}/before", 'redux_register_custom_extension_loader', 0 );
-endif;
 
-///**
-// * Hook into the panel's footer
-// */
-//
-//add_action('redux/page/rosa_options/form/after', 'wpgrade_extend_redux_footer');
-//
-//function wpgrade_extend_redux_footer() {
-//
-//}
+	add_action( "redux/extensions/{$redux_opt_name}/before", 'wpgrade_register_custom_extension_loader', 0 );
+}
 
-add_action('redux/page/' . wpgrade::$shortname . '_options/sections/after', 'wpgrade_hook_after_redux_sections');
+add_action( 'redux/page/' . wpgrade::$shortname . '_options/sections/after', 'wpgrade_hook_after_redux_sections' );
 function wpgrade_hook_after_redux_sections() {
 	echo '<h3 id="floating-title"></h3>';
 }
 
+add_action( 'redux/options/' . wpgrade::$shortname . '_options/settings/change', 'wpgrade_hook_after_redux_save_btn' );
 
-add_action('redux/options/' . wpgrade::$shortname . '_options/settings/change', 'wpgrade_hook_after_redux_save_btn');
+function wpgrade_hook_after_redux_save_btn() {
 
-function wpgrade_hook_after_redux_save_btn(){
-
-    echo '<div class="reset-menu_wrapper"><label class="reset-menu_cog" for="reset-menu_trigger"><i class="icon-cog-1"></i></label><input type="checkbox" id="reset-menu_trigger" />';
-
-    echo '<div class="reset-menu"><ul class="reset-menu_list"><li>';
+	echo '<div class="reset-menu_wrapper"><label class="reset-menu_cog" for="reset-menu_trigger"><i class="icon-cog-1"></i></label><input type="checkbox" id="reset-menu_trigger" />';
+	echo '<div class="reset-menu"><ul class="reset-menu_list"><li>';
 	submit_button( __( 'Reset Section', 'redux-framework' ), 'secondary', wpgrade::$shortname . '_options' . '[defaults-section]', false );
-    echo '</li><li>';
+	echo '</li><li>';
 	submit_button( __( 'Reset All', 'redux-framework' ), 'secondary', wpgrade::$shortname . '_options' . '[defaults]', false );
-    echo '</li></ul></div></div>';
+	echo '</li></ul></div></div>';
 
 }
 

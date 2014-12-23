@@ -1,4 +1,4 @@
-.redux-main .redux-container-background {
+.redux-main .redux-container-customizer_bg {
 	.background-position, .background-attachment, .background-clip, .background-origin, .background-size, .background-repeat {
 		width: 200px !important;
 		margin-right: 10px;
@@ -9,10 +9,18 @@
 			margin-bottom: 7px;
 		}
 	}
+
 	.background-preview {
 		display: block;
 		width: 100%;
 		margin: 5px 0 10px;
 		border: 1px dotted lightgray;
+	}
+}
+
+.redux-container-customizer_bg {
+
+	.hide {
+		display: none;
 	}
 }

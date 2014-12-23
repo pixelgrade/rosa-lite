@@ -38,6 +38,17 @@ if ( class_exists('WP_Customize_Control') ) {
 
 			$value = wpgrade::option($field['id'], $field['default']);
 
+			// get wordpress default labels
+			$this->json['button_labels'] = array(
+				'select'       => __( 'Select Image' ),
+				'change'       => __( 'Change Image' ),
+				'remove'       => __( 'Remove' ),
+				'default'      => __( 'Default' ),
+				'placeholder'  => __( 'No image selected' ),
+				'frame_title'  => __( 'Select Image' ),
+				'frame_button' => __( 'Choose Image' ),
+			);
+
 			if( class_exists( $field_class ) && method_exists( $field_class, 'render' ) ) {
 				$field_object = new $field_class( $field, $value, $this->ReduxFramework );
 //				$enqueue->enqueue();
