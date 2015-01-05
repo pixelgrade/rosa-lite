@@ -197,12 +197,6 @@
 	}
 }
 
-.no-scroll-effect .article__parallax--img img {
-	top: 0;
-	@include transform(translateX(-50%));
-}
-
-
 .page {
 
 	.article__content {
