@@ -198,13 +198,17 @@ function eventHandlers() {
 
     if(ieMobile) filterHandler = 'click';
 
-    $('.dropdown__trigger').on(filterHandler, function(e){
-
-        e.preventDefault();
+    $('.pix-dropdown').on(filterHandler, function(e){
         e.stopPropagation();
 
+        $(this).toggleClass('active');
+    });
 
-        $(this).closest('.pix-dropdown').toggleClass('active');
+
+    $('.tabs__nav').find("li > a").click(function () {
+        setTimeout(function(){
+            Parallax.update();
+        }, 300);
     });
 
 	if (globalDebug) {console.groupEnd();}

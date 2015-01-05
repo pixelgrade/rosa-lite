@@ -837,7 +837,7 @@ class Envato_Backup {
 	 */
 	public function error_handler( $type ) {
 
-		if ( ( defined( 'E_DEPRECATED' ) && $type == E_DEPRECATED ) || ( defined( 'E_STRICT' ) && $type == E_STRICT ) || error_reporting() === 0 ) {
+		if ( ( defined( 'E_DEPRECATED' ) && $type == E_DEPRECATED ) || ( defined( 'E_STRICT' ) && $type == E_STRICT ) ) {
 			return false;
 		}
 

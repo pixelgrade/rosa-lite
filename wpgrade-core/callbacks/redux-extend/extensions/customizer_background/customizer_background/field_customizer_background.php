@@ -43,7 +43,6 @@ if ( ! class_exists( 'ReduxFramework_customizer_background' ) ) {
 			$this->field  = $field;
 			$this->value  = $value;
 
-
 			if ( empty( $this->extension_dir ) ) {
 				$this->extension_dir = trailingslashit( str_replace( '\\', '/', dirname( __FILE__ ) ) );
 				$this->extension_url = site_url( str_replace( trailingslashit( str_replace( '\\', '/', ABSPATH ) ), '', $this->extension_dir ) );
@@ -122,7 +121,6 @@ if ( ! class_exists( 'ReduxFramework_customizer_background' ) ) {
 				}
 			}
 
-
 			if ( $this->field['background-repeat'] === true ) {
 				$array = array(
 					'no-repeat' => 'No Repeat',
@@ -131,7 +129,7 @@ if ( ! class_exists( 'ReduxFramework_customizer_background' ) ) {
 					'repeat-y'  => 'Repeat Vertically',
 					'inherit'   => 'Inherit',
 				);
-				echo '<select id="' . $this->field['id'] . '-repeat-select" data-placeholder="' . __( 'Background Repeat', 'redux-framework' ) . '" name="' . $this->field['name'] . '[background-repeat]' . $this->field['name_suffix'] . '" class="redux-select-item redux-background-input background-repeat ' . $this->field['class'] . '">';
+				echo '<select data-customize-setting-link="' . $this->field['name'] . '[background-repeat]' . $this->field['name_suffix'] . '" id="' . $this->field['id'] . '-repeat-select" data-placeholder="' . __( 'Background Repeat', 'redux-framework' ) . '" name="' . $this->field['name'] . '[background-repeat]' . $this->field['name_suffix'] . '" class="redux-select-item redux-background-input background-repeat ' . $this->field['class'] . '">';
 				echo '<option></option>';
 
 				foreach ( $array as $k => $v ) {
@@ -223,6 +221,7 @@ if ( ! class_exists( 'ReduxFramework_customizer_background' ) ) {
 			}
 
 			if ( $this->field['background-image'] === true ) {
+
 				echo '<br />';
 
 				if ( empty( $this->value ) && ! empty( $this->field['default'] ) ) { // If there are standard values and value is empty

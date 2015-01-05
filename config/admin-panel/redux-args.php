@@ -185,10 +185,10 @@ return array(
 		),
 	),
 	'remove_customizer_sections' => array(
-		'blogdescription',
-		'static_front_page',
-		'title_tagline',
-		'nav'
+		 // 'blogdescription',
+		 // 'static_front_page',
+		 // 'title_tagline',
+		 // 'nav'
 	)
 
 ); # config

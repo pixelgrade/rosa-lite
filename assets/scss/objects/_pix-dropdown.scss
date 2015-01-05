@@ -115,6 +115,7 @@
 
 		&.active .dropdown__menu {
 			display: block;
+			z-index: 9;
 		}
 //	}
 }
