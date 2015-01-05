@@ -308,3 +308,9 @@
 .woocommerce .star-rating span:before{
 	color: $accent;
 }
+
+
+.woocommerce #review_form #respond textarea, .woocommerce-page #review_form #respond textarea {
+	height: 131px !important;
+	overflow: scroll !important;
+}
