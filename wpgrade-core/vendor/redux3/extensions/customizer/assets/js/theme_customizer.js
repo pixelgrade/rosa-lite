@@ -85,7 +85,7 @@
 
 				// $(this).prepend(label);
 				$(this).nextUntil('.customize-control-typography').each(function () {
-					$(this).addClass('123').appendTo(_self.find('.redux-field-container .redux-typography-container'));
+					$(this).appendTo(_self.find('.redux-field-container .redux-typography-container'));
 				});
 			});
 
