@@ -22,13 +22,13 @@ $average = $product->get_average_rating();
 if ( $count > 0 ) : ?>
 
 	<div class="woocommerce-product-rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-		<a href="#reviews" class="woocommerce-review-link" rel="nofollow">
+		<span class="woocommerce-review-link">
 			<?php
 			printf(
 				_n( '%s Review', '%s Reviews', $count, 'woocommerce' ),
 				'<span itemprop="ratingCount" class="count">' . $count . '</span>'
 			); ?>
-		</a>
+		</span>
 
 		<div class="star-rating" title="<?php printf( __( 'Rated %s out of 5', 'woocommerce' ), $average ); ?>">
 			<span style="width:<?php echo( ( $average / 5 ) * 100 ); ?>%">
