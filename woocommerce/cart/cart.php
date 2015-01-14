@@ -122,9 +122,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 					</div>
 				<?php } ?>
 
-				<input type="submit" class="button" name="update_cart" value="<?php _e( 'Update Cart', 'woocommerce' ); ?>" /> <input type="submit" class="checkout-button button alt wc-forward" name="proceed" value="<?php _e( 'Proceed to Checkout', 'woocommerce' ); ?>" />
-
-				<?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
+				<input type="submit" class="button" name="update_cart" value="<?php _e( 'Update Cart', 'woocommerce' ); ?>" />
 
 				<?php wp_nonce_field( 'woocommerce-cart' ); ?>
 			</td>
@@ -139,17 +137,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 </form>
 
 <div class="cart-collaterals">
-	<div class="grid">
-		<div class="grid__item lap-and-up-one-half">
-			<?php woocommerce_shipping_calculator(); ?>
-		</div><!--
-		--><div class="grid__item lap-and-up-one-half">
-			<?php woocommerce_cart_totals(); ?>
-		</div>
-	</div>
-
-
-
+	<?php woocommerce_cart_totals(); ?>
 </div>
 
 <?php do_action( 'woocommerce_after_cart' ); ?>

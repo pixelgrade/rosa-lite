@@ -6,9 +6,9 @@
 .woocommerce-page .cart-collaterals .cart_totals,
 .woocommerce .cart-collaterals .shipping_calculator, 
 .woocommerce-page .cart-collaterals .shipping_calculator{
-	float: none;
+	float: none !important;
 	text-align: left;
-	width: 100%;
+	width: 100% !important;
 }
 
 td.actions input.button{
@@ -45,4 +45,26 @@ td.actions{
 
 .product-thumbnail-link{
 	color: $dark;
+}
+
+.wc-proceed-to-checkout {
+	max-width: 300px;
+	text-align: right;
+	float: right;
+
+	.button {
+		font-weight: bold !important;
+	}
+}
+
+.woocommerce-shipping-calculator {
+	margin-top: 20px;
+}
+
+.shipping-calculator-form {
+	margin-bottom: 20px;
+
+	button[type=submit] {
+		margin-top: 20px;
+	}
 }
