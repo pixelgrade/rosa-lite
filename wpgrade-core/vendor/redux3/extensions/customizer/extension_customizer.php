@@ -162,27 +162,32 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 		}
 
 		public function js_customizer_enqueue() {
+
+			$theme = wp_get_theme();
+			$theme_version = $theme->get( 'Version' );
 			wp_enqueue_style( 'redux-extension-customizer-css', $this->_extension_url . 'assets/css/customizer.css' );
 			wp_enqueue_script( 'redux-theme_customizer', wpgrade::coremoduleuri( 'redux3' ) . 'extensions/customizer/assets/js/theme_customizer.js', array(
 					'jquery',
 					'jquery-ui-slider'
-				), '', true //Put script in footer?
+				), $theme_version, true //Put script in footer?
 			);
 
 			wp_localize_script( 'redux-theme_customizer', 'theme_name', wpgrade::shortname() );
 		}
 
 		public function js_customizer_live_preview_enqueue() {
-			wp_register_script( 'CSSOM', wpgrade::coremoduleuri( 'redux3' ) . 'extensions/customizer/assets/js/CSSOM.js', array( 'jquery' ), '', true //Put script in footer?
+			$theme = wp_get_theme();
+			$theme_version = $theme->get( 'Version' );
+			wp_register_script( 'CSSOM', wpgrade::coremoduleuri( 'redux3' ) . 'extensions/customizer/assets/js/CSSOM.js', array( 'jquery' ), $theme_version, true //Put script in footer?
 			);
-			wp_register_script( 'cssUpdate', wpgrade::coremoduleuri( 'redux3' ) . 'extensions/customizer/assets/js/jquery.cssUpdate.js', array( 'jquery' ), '', true //Put script in footer?
+			wp_register_script( 'cssUpdate', wpgrade::coremoduleuri( 'redux3' ) . 'extensions/customizer/assets/js/jquery.cssUpdate.js', array( 'jquery' ), $theme_version, true //Put script in footer?
 			);
 			wp_enqueue_script( 'redux-theme_customizer_preview', wpgrade::coremoduleuri( 'redux3' ) . 'extensions/customizer/assets/js/theme_customizer_preview.js', array(
 					'jquery',
 					'customize-preview',
 					'CSSOM',
 					'cssUpdate'
-				), '', true //Put script in footer?
+				), $theme_version, true //Put script in footer?
 			);
 
 			$this->localize_settings( 'redux-theme_customizer_preview' );
@@ -855,7 +860,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 
 			if ( ! empty( $sections ) ) {
 				foreach ( $sections as $section ) {
-					if ( isset( $section['customizer_only'] ) && ! empty( $section['customizer_only'] ) && isset( $section['fields'] ) && ! empty( $section['fields'] ) ) {
+					if ( isset( $section['type'] ) && $section['type'] == 'customizer_section' && isset( $section['fields'] ) && ! empty( $section['fields'] ) ) {
 						foreach ( $section['fields'] as $field ) {
 							if ( isset( $field['id'] ) && isset( $defaults[ $field['id'] ] ) ) {
 								$default_value = $defaults[ $field['id'] ];
