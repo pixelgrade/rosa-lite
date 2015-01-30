@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ROSA - An Exquisite Restaurant Wordpress Theme\n"
 "POT-Creation-Date: 2015-01-30 11:14+0200\n"
-"PO-Revision-Date: 2015-01-30 11:15+0200\n"
+"PO-Revision-Date: 2015-01-30 12:18+0200\n"
 "Last-Translator: Vlad Olaru <vlad.olaru@pixelgrade.com>\n"
 "Language-Team: PixelGrade <contact@pixelgrade.com>\n"
 "Language: es\n"
@@ -1543,7 +1543,7 @@ msgstr "Navegación Primaria"
 
 #: ../header.php:175 ../woocommerce/cart/mini-cart.php:28
 msgid "View Cart"
-msgstr ""
+msgstr "Ver Carrito"
 
 #: ../header.php:178 ../woocommerce/cart/mini-cart.php:29
 msgid "Checkout"
