@@ -1,16 +1,17 @@
 <?php
-
-/* This file is property of Pixel Grade Media. You may NOT copy, or redistribute
- * it. Please see the license that came with your copy for more information.
- */
-
 /**
- * Theme utility functions.
- * @package        wpgrade
- * @category       core
- * @author         Pixel Grade Team
- * @copyright  (c) 2013, Pixel Grade Media
+ * util.php
+ *
+ * util.php is a library of helper functions for common tasks such as
+ * formatting bytes as a string or displaying a date in terms of how long ago
+ * it was in human readable terms (E.g. 4 minutes ago). The library is entirely
+ * contained within a single file and hosts no dependencies. The library is
+ * designed to avoid any possible conflicts.
+ *
+ * @author Brandon Wamboldt <brandon.wamboldt@gmail.com>
+ * @link   http://github.com/brandonwamboldt/utilphp/ Official Documentation
  */
+
 class util {
 	const SECONDS_IN_A_MINUTE = 60;
 	const SECONDS_IN_A_HOUR = 3600;
