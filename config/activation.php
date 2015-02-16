@@ -211,7 +211,7 @@ return array(
 					)
 				)
 			),
-			//for the Contact Page template
+			//for the Contact Page template - Classic
 			wpgrade::shortname() . '_gmap_settings' => array(
 				'id'         => wpgrade::shortname() . '_gmap_settings',
 				'title'      => __( 'Map Coordinates & Display Options', 'rosa_txtd' ),
@@ -255,6 +255,18 @@ return array(
 						'std'  => '',
 					),
 					array(
+						'name' => __( 'Google Maps Pins', 'mies_txtd' ),
+						'desc' => __( 'Paste here the Share URL you have taken from <a href="http://www.google.com/maps" target="_blank">Google Maps</a>.', 'mies_txtd' ),
+						'id'   => 'gmap_urls',
+						'type' => 'gmap_pins',
+						'std' => array(
+							1 => array(
+								'location_url' => "https://www.google.ro/maps/@51.5075586,-0.1284425,18z",
+								'name' => __('London', 'mies_txtd')
+							)
+						)
+					),
+					array(
 						'name' => __( 'Custom Colors', 'rosa_txtd' ),
 						'desc' => __( 'Allow us to change the map colors to better match your website.', 'rosa_txtd' ),
 						'id'   => wpgrade::prefix() . 'gmap_custom_style',
@@ -274,6 +286,86 @@ return array(
 							'tinymce'       => true,
 							'quicktags'     => true,
 						),
+					),
+					array(
+						'name' => __( 'Make Menu Bar Transparent', 'rosa_txtd' ),
+						'desc' => __( "This will remove the background from the menu and logo top bar.", 'rosa_txtd' ),
+						'id'   => wpgrade::prefix() . 'header_transparent_menu_bar_contact',
+						'type' => 'checkbox',
+					),
+					array(
+						'name' => __( 'Content Border Style', 'rosa_txtd' ),
+						'desc' => '<p class="cmb_metabox_description">'.__( 'Select the style of the top and bottom borders of the content.', 'rosa_txtd' ).'</p>',
+						'id'   => wpgrade::prefix() . 'gmap_border_style',
+						'type'    => 'select',
+						'options' => array(
+							array(
+								'name'  => __( 'Simple', 'rosa_txtd' ),
+								'value' => 'simple',
+							),
+							array(
+								'name'  => __( 'Waves', 'rosa_txtd' ),
+								'value' => 'waves',
+							),
+						),
+						'std'     => 'simple',
+					),
+				),
+			),
+			//for the Contact Page template - Multiple Pins
+			wpgrade::shortname() . '_gmap_multiple_settings' => array(
+				'id'         => wpgrade::shortname() . '_gmap_multiple_settings',
+				'title'      => __( 'Map Coordinates & Display Options', 'rosa_txtd' ),
+				'pages'      => array( 'page' ), // Post type
+				'context'    => 'normal',
+				'priority'   => 'high',
+				'hidden'     => true,
+				'show_on'    => array(
+					'key' => 'page-template',
+					'value' => array( 'page-templates/contact-multiple.php' ),
+//					'hide' => true, // make this true if you want to hide it
+				),
+				'show_names' => true, // Show field names on the left
+				'fields'     => array(
+					array(
+						'name' => __( 'Map Height', 'rosa_txtd' ),
+						'desc' => __( '<p class="cmb_metabox_description">Select the height of the Google Map area in relation to the browser window.</p>', 'rosa_txtd' ),
+						'id'   => wpgrade::prefix() . 'page_gmap_height',
+						'type'    => 'select',
+						'options' => array(
+							array(
+								'name'  => __( '&nbsp; &#9673;&#9711; &nbsp;Half', 'rosa_txtd' ),
+								'value' => 'half-height',
+							),
+							array(
+								'name'  => __( '&#9673;&#9673;&#9711; Two Thirds', 'rosa_txtd' ),
+								'value' => 'two-thirds-height',
+							),
+							array(
+								'name'  => __( '&#9673;&#9673;&#9673; Full Height', 'rosa_txtd' ),
+								'value' => 'full-height',
+							)
+						),
+						'std'     => 'half-height',
+					),
+					array(
+						'name' => __( 'Google Maps Pins', 'mies_txtd' ),
+						'desc' => __( 'Paste here the Share URL you have taken from <a href="http://www.google.com/maps" target="_blank">Google Maps</a>.', 'rosa_txtd' ),
+						'id'   => 'gmap_urls',
+						'type' => 'gmap_pins',
+						'std' => array(
+							1 => array(
+								'location_url' => "https://www.google.ro/maps/@51.5075586,-0.1284425,18z",
+								'name' => __('London', 'rosa_txtd')
+							)
+						)
+					),
+					array(
+						'name' => __( 'Custom Colors', 'rosa_txtd' ),
+						'desc' => __( 'Allow us to change the map colors to better match your website.', 'rosa_txtd' ),
+						'id'   => wpgrade::prefix() . 'gmap_custom_style',
+						'type' => 'checkbox',
+						'std'  => 'on',
 					),
 					array(
 						'name' => __( 'Make Menu Bar Transparent', 'rosa_txtd' ),

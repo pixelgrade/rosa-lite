@@ -1,142 +1,280 @@
 /* --- GMAP Init --- */
 
+// Overwrite Math.log to accept a second optional parameter as base for logarithm
+Math.log = (function () {
+	var log = Math.log;
+	return function (n, base) {
+		return log(n) / (base ? log(base) : 1);
+	};
+})();
+
+function get_url_parameter(needed_param, gmap_url) {
+	var sURLVariables = (gmap_url.split('?'))[1];
+	if (typeof sURLVariables === "undefined") {
+		return sURLVariables;
+	}
+	sURLVariables = sURLVariables.split('&');
+	for (var i = 0; i < sURLVariables.length; i++) {
+		var sParameterName = sURLVariables[i].split('=');
+		if (sParameterName[0] == needed_param) {
+			return sParameterName[1];
+		}
+	}
+}
+
+function get_newMap_oldUrl_coordinates(url) {
+	var coordinates = {},
+		split,
+		distance;
+
+	split = url.split('!3d');
+	coordinates.latitude = split[1];
+	split = split[0].split('!2d');
+	coordinates.longitude = split[1];
+	split = split[0].split('!1d');
+	distance = split[1];
+	coordinates.zoom = 21 - Math.round(Math.log(Math.round(distance / 218), 2));
+
+	return coordinates;
+}
+
+function get_newMap_newUrl_coordinates(url) {
+	var coordinates = {};
+
+	url = url.split('@')[1];
+	url = url.split('z/')[0];
+	url = url.split(',');
+
+	coordinates.latitude 	= url[0];
+	coordinates.longitude 	= url[1];
+	coordinates.zoom 		= url[2];
+
+	if (coordinates.zoom.indexOf('z') >= 0) {
+		coordinates.zoom = coordinates.zoom.substring(0, coordinates.zoom.length - 1);
+	}
+
+	return coordinates;
+}
+
+function get_oldMap_coordinates(url) {
+	var coordinates = {},
+		variables;
+
+	variables = get_url_parameter('ll', url);
+	if (typeof variables == "undefined") {
+		variables = get_url_parameter('sll', url);
+	}
+
+	if (typeof variables == "undefined") {
+		return variables;
+	}
+
+	variables = variables.split(',');
+	coordinates.latitude = variables[0];
+	coordinates.longitude = variables[1];
+
+	coordinates.zoom = get_url_parameter('z', url);
+	if (typeof coordinates.zoom === "undefined") {
+		coordinates.zoom = 10;
+	}
+
+	return coordinates;
+}
+
 function gmapInit() {
-	if ($('#gmap').length) {
+	var $gmaps = $('.gmap');
+
+	if ( $gmaps.length && typeof google !== 'undefined' ) {
 		if (globalDebug) {console.log("GMap Init");}
 
-		var gmap_link, gmap_variables, gmap_zoom, gmap_style;
-		gmap_link = $('#gmap').data('url');
-		gmap_style = typeof $('#gmap').data('customstyle') !== "undefined" ? "style1" : google.maps.MapTypeId.ROADMAP;
-		var gmap_markercontent = $('#gmap').data('markercontent');
+		$gmaps.each(function () {
 
-		// Overwrite Math.log to accept a second optional parameter as base for logarhitm
-		Math.log = (function () {
-			var log = Math.log;
-			return function (n, base) {
-				return log(n) / (base ? log(base) : 1);
-			};
-		})();
+			var $gmap = $( this ),
+				url = $gmap.data( 'url' ),
+				style = typeof $gmap.data( 'customstyle' ) !== "undefined" ? "style1" : google.maps.MapTypeId.ROADMAP,
+				coordinates,
+				pins 		= [],
+				gmap_markercontent = $gmap.data( 'markercontent' );
 
-		function get_url_parameter(needed_param, gmap_url) {
-			var sURLVariables = (gmap_url.split('?'))[1];
-			if (typeof sURLVariables === "undefined") {
-				return sURLVariables;
-			}
-			sURLVariables = sURLVariables.split('&');
-			for (var i = 0; i < sURLVariables.length; i++) {
-				var sParameterName = sURLVariables[i].split('=');
-				if (sParameterName[0] == needed_param) {
-					return sParameterName[1];
+			if ( url ) {
+				//Parse the URL and load variables (ll = latitude/longitude; z = zoom)
+				coordinates = get_oldMap_coordinates( url );
+				if ( typeof variables == "undefined" ) {
+					coordinates = url.split( '!3d' )[0] !== url ? get_newMap_oldUrl_coordinates( url ) : get_newMap_newUrl_coordinates( url );
+				}
+
+				if ( typeof coordinates !== "undefined" && coordinates.latitude && coordinates.longitude ) {
+					pins.push({
+						latLng: [coordinates.latitude, coordinates.longitude],
+						options: {
+							content: '<div class="map__marker-wrap"><div class="map__marker">' + gmap_markercontent + '</div></div>'
+						}
+					});
 				}
 			}
-		}
 
-		var gmap_coordinates = [],
-			gmap_zoom;
-
-		if (gmap_link) {
-			//Parse the URL and load variables (ll = latitude/longitude; z = zoom)
-			var gmap_variables = get_url_parameter('ll', gmap_link);
-			if (typeof gmap_variables === "undefined") {
-				gmap_variables = get_url_parameter('sll', gmap_link);
+			// if there were no pins we could handle get out
+			if (!pins.length) {
+				return;
 			}
-			// if gmap_variables is still undefined that means the url was pasted from the new version of google maps
-			if (typeof gmap_variables === "undefined") {
 
-				if (gmap_link.split('!3d') != gmap_link) {
-					//new google maps old link type
-
-					var split, lt, ln, dist, z;
-					split = gmap_link.split('!3d');
-					lt = split[1];
-					split = split[0].split('!2d');
-					ln = split[1];
-					split = split[0].split('!1d');
-					dist = split[1];
-					gmap_zoom = 21 - Math.round(Math.log(Math.round(dist / 218), 2));
-					gmap_coordinates = [lt, ln];
-
-				} else {
-					//new google maps new link type
-
-					var gmap_link_l;
-
-					gmap_link_l = gmap_link.split('@')[1];
-					gmap_link_l = gmap_link_l.split('z/')[0];
-
-					gmap_link_l = gmap_link_l.split(',');
-
-					var latitude = gmap_link_l[0];
-					var longitude = gmap_link_l[1];
-					var zoom = gmap_link_l[2];
-
-					if (zoom.indexOf('z') >= 0)
-						zoom = zoom.substring(0, zoom.length - 1);
-
-					gmap_coordinates[0] = latitude;
-					gmap_coordinates[1] = longitude;
-					gmap_zoom = zoom;
-				}
-
-
-			} else {
-				gmap_zoom = get_url_parameter('z', gmap_link);
-				if (typeof gmap_zoom === "undefined") {
-					gmap_zoom = 10;
-				}
-				gmap_coordinates = gmap_variables.split(',');
-			}
-		}
-
-		$("#gmap").gmap3({
-			map: {
-				options: {
-					center: new google.maps.LatLng(gmap_coordinates[0], gmap_coordinates[1]),
-					zoom: parseInt(gmap_zoom),
-					mapTypeId: gmap_style,
-					mapTypeControlOptions: {mapTypeIds: []},
-					scrollwheel: false
-				}
-			},
-			overlay: {
-				latLng: new google.maps.LatLng(gmap_coordinates[0], gmap_coordinates[1]),
-				options: {
-					content:
-                        '<div class="map__marker-wrap">' +
-                            '<div class="map__marker">' +
-                                    gmap_markercontent +
-                            '</div>' +
-                        '</div>'
-				}
-			},
-			styledmaptype: {
-				id: "style1",
-				options: {
-					name: "Style 1"
+			$gmap.gmap3( {
+				map: {
+					options: {
+						center: new google.maps.LatLng( coordinates.latitude, coordinates.longitude ),
+						zoom: parseInt( coordinates.zoom ),
+						mapTypeId: style,
+						mapTypeControlOptions: {mapTypeIds: []},
+						scrollwheel: false
+					}
 				},
-				styles: [
-                    {
-                        "stylers": [
-                            { "saturation": -100 },
-                            { "gamma": 2.45 },
-                            { "visibility": "simplified" }
-                        ]
-                    },{
-                        "featureType": "road",
-                        "stylers": [
-                            { "hue": $("body").data("color") ? $("body").data("color") : "#ffaa00" },
-                            { "saturation": 48 },
-                            { "gamma": 0.40 },
-                            { "visibility": "on" }
-                        ]
-                    },{
-                        "featureType": "administrative",
-                        "stylers": [
-                            { "visibility": "on" }
-                        ]
-                    }
-                ]
-			}
+				overlay: {
+					values: pins
+				},
+				styledmaptype: {
+					id: "style1",
+					options: {
+						name: "Style 1"
+					},
+					styles: [
+						{
+							"stylers": [
+								{"saturation": -100},
+								{"gamma": 2.45},
+								{"visibility": "simplified"}
+							]
+						}, {
+							"featureType": "road",
+							"stylers": [
+								{"hue": $( "body" ).data( "color" ) ? $( "body" ).data( "color" ) : "#ffaa00"},
+								{"saturation": 48},
+								{"gamma": 0.40},
+								{"visibility": "on"}
+							]
+						}, {
+							"featureType": "administrative",
+							"stylers": [
+								{"visibility": "on"}
+							]
+						}
+					]
+				}
+			});
+
 		});
-    }
+	}
+
+}
+
+function gmapMultiplePinsInit() {
+	var $gmaps = $('.gmap--multiple-pins' ),
+		$imageMarkup 	= $('.js-map-pin').html();
+
+	if ( $gmaps.length && typeof google !== 'undefined' ) {
+		if (globalDebug) {console.log("GMap Multiple Pins Init");}
+
+		$gmaps.each(function () {
+
+			var $gmap = $( this ),
+				links,
+				style = typeof $gmap.data( 'customstyle' ) !== "undefined" ? "style1" : google.maps.MapTypeId.ROADMAP,
+				pins 		= [],
+				zoom		= 10;
+
+			links = $gmap.data('pins');
+
+			$.each(links, function(label, url) {
+				var coordinates;
+				if (url) {
+					coordinates = get_oldMap_coordinates(url);
+					if (typeof variables == "undefined") {
+						coordinates = url.split('!3d')[0] !== url ? get_newMap_oldUrl_coordinates(url) : get_newMap_newUrl_coordinates(url);
+					}
+					if (typeof coordinates !== "undefined" && coordinates.latitude && coordinates.longitude) {
+						pins.push({
+							latLng: [coordinates.latitude, coordinates.longitude],
+							options: {
+								content: '<div class="gmap__marker"><div class="gmap__marker__btn">' + label + '</div>' + $imageMarkup + '</div>'
+							}
+						});
+					}
+				}
+			});
+
+			// if there were no pins we could handle get out
+			if (!pins.length) {
+				return;
+			}
+
+			$gmap.gmap3( {
+				map: {
+					options: {
+						zoom: zoom,
+						mapTypeId: style,
+						mapTypeControl: false,
+						panControl: true,
+						panControlOptions: {
+							position: google.maps.ControlPosition.LEFT_CENTER
+						},
+						zoomControl: true,
+						zoomControlOptions: {
+							style: google.maps.ZoomControlStyle.LARGE,
+							position: google.maps.ControlPosition.LEFT_CENTER
+						},
+						scaleControl: true,
+						streetViewControl: true,
+						streetViewControlOptions: {
+							position: google.maps.ControlPosition.LEFT_CENTER
+						},
+						scrollwheel: false
+					}
+				},
+				overlay: {
+					values: pins
+				},
+				styledmaptype: {
+					id: "style1",
+					options: {
+						name: "Style 1"
+					},
+					styles: [
+						{
+							"stylers": [
+								{"saturation": -100},
+								{"gamma": 2.45},
+								{"visibility": "simplified"}
+							]
+						}, {
+							"featureType": "road",
+							"stylers": [
+								{"hue": $( "body" ).data( "color" ) ? $( "body" ).data( "color" ) : "#ffaa00"},
+								{"saturation": 48},
+								{"gamma": 0.40},
+								{"visibility": "on"}
+							]
+						}, {
+							"featureType": "administrative",
+							"stylers": [
+								{"visibility": "on"}
+							]
+						}
+					]
+				}
+			}, "autofit");
+
+			var map = $gmap.gmap3("get");
+
+			google.maps.event.addListenerOnce(map, 'idle', function() {
+				if (typeof map == "undefined") return;
+
+				if (1 < pins.length) {
+					map.setZoom(map.getZoom() - 1);
+				} else {
+					map.setZoom(zoom);
+				}
+			});
+
+		});
+	}
+
 }

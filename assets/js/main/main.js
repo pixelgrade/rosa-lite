@@ -304,6 +304,7 @@ $(window).load(function(){
     initVideos();
     resizeVideos();
     gmapInit();
+    gmapMultiplePinsInit();
 
 
     if(!empty($('#date-otreservations'))){
@@ -356,6 +357,8 @@ $(window).on("debouncedresize", function(e) {
 
     resizeVideos();
     royalSliderInit();
+    gmapInit();
+    gmapMultiplePinsInit();
     ScrollToTop.initialize();
 
     if (!$('html').is('.ie9, .lt-ie9') && !Modernizr.touch) {

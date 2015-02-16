@@ -1,1941 +1,2543 @@
-/* --- $GMAP3 ---*/
+/*!
+ *  GMAP3 Plugin for jQuery
+ *  Version   : 6.0.0
+ *  Date      : 2014-04-25
+ *  Author    : DEMONTE Jean-Baptiste
+ *  Contact   : jbdemonte@gmail.com
+ *  Web site  : http://gmap3.net
+ *  Licence   : GPL v3 : http://www.gnu.org/licenses/gpl.html
+ *  
+ *  Copyright (c) 2010-2014 Jean-Baptiste DEMONTE
+ *  All rights reserved.
+ */
+;(function ($, undef) {
 
-// GMap 3 v5.1.1 by DEMONTE Jean-Baptiste
-// http://gmap3.net
-(function (y, t) {
-	var z, i = 0;
+	var defaults, gm,
+		gId = 0,
+		isFunction = $.isFunction,
+		isArray = $.isArray;
 
-	function J() {
-		if (!z) {
-			z = {
+	function isObject(m) {
+		return typeof m === "object";
+	}
+
+	function isString(m) {
+		return typeof m === "string";
+	}
+
+	function isNumber(m) {
+		return typeof m === "number";
+	}
+
+	function isUndefined(m) {
+		return m === undef;
+	}
+
+	/**
+	 * Initialize default values
+	 * defaults are defined at first gmap3 call to pass the rails asset pipeline and jasmine while google library is not yet loaded
+	 */
+	function initDefaults() {
+		gm = google.maps;
+		if (!defaults) {
+			defaults = {
 				verbose: false,
-				queryLimit: {attempt: 5, delay: 250, random: 250},
-				classes: {
-					Map: google.maps.Map,
-					Marker: google.maps.Marker,
-					InfoWindow: google.maps.InfoWindow,
-					Circle: google.maps.Circle,
-					Rectangle: google.maps.Rectangle,
-					OverlayView: google.maps.OverlayView,
-					StreetViewPanorama: google.maps.StreetViewPanorama,
-					KmlLayer: google.maps.KmlLayer,
-					TrafficLayer: google.maps.TrafficLayer,
-					BicyclingLayer: google.maps.BicyclingLayer,
-					GroundOverlay: google.maps.GroundOverlay,
-					StyledMapType: google.maps.StyledMapType,
-					ImageMapType: google.maps.ImageMapType
+				queryLimit: {
+					attempt: 5,
+					delay: 250, // setTimeout(..., delay + random);
+					random: 250
 				},
-				map: {mapTypeId: google.maps.MapTypeId.ROADMAP, center: [46.578498, 2.457275], zoom: 2},
-				overlay: {pane: "floatPane", content: "", offset: {x: 0, y: 0}},
-				geoloc: {getCurrentPosition: {maximumAge: 60000, timeout: 5000}}
+				classes: (function () {
+					var r = {};
+					$.each("Map Marker InfoWindow Circle Rectangle OverlayView StreetViewPanorama KmlLayer TrafficLayer BicyclingLayer GroundOverlay StyledMapType ImageMapType".split(" "), function (_, k) {
+						r[k] = gm[k];
+					});
+					return r;
+				}()),
+				map: {
+					mapTypeId : gm.MapTypeId.ROADMAP,
+					center: [46.578498, 2.457275],
+					zoom: 2
+				},
+				overlay: {
+					pane: "floatPane",
+					content: "",
+					offset: {
+						x: 0,
+						y: 0
+					}
+				},
+				geoloc: {
+					getCurrentPosition: {
+						maximumAge: 60000,
+						timeout: 5000
+					}
+				}
 			}
 		}
 	}
 
-	function k(M, L) {
-		return M !== t ? M : "gmap3_" + (L ? i + 1 : ++i)
+
+	/**
+	 * Generate a new ID if not defined
+	 * @param id {string} (optional)
+	 * @param simulate {boolean} (optional)
+	 * @returns {*}
+	 */
+	function globalId(id, simulate) {
+		return isUndefined(id) ? "gmap3_" + (simulate ? gId + 1 : ++gId) : id;
 	}
 
-	function d(L) {
-		var O = function (P) {
-			return parseInt(P, 10)
-		}, N = google.maps.version.split(".").map(O), M;
-		L = L.split(".").map(O);
-		for (M = 0; M < L.length; M++) {
-			if (N.hasOwnProperty(M)) {
-				if (N[M] < L[M]) {
-					return false
+
+	/**
+	 * Return true if current version of Google Maps is equal or above to these in parameter
+	 * @param version {string} Minimal version required
+	 * @return {Boolean}
+	 */
+	function googleVersionMin(version) {
+		var i,
+			gmVersion = gm.version.split(".");
+		version = version.split(".");
+		for (i = 0; i < gmVersion.length; i++) {
+			gmVersion[i] = parseInt(gmVersion[i], 10);
+		}
+		for (i = 0; i < version.length; i++) {
+			version[i] = parseInt(version[i], 10);
+			if (gmVersion.hasOwnProperty(i)) {
+				if (gmVersion[i] < version[i]) {
+					return false;
 				}
 			} else {
-				return false
+				return false;
 			}
 		}
-		return true
+		return true;
 	}
 
-	function n(P, L, N, Q, O) {
-		if (L.todo.events || L.todo.onces) {
-			var M = {id: Q, data: L.todo.data, tag: L.todo.tag};
-			if (L.todo.events) {
-				y.each(L.todo.events, function (R, U) {
-					var T = P, S = U;
-					if (y.isArray(U)) {
-						T = U[0];
-						S = U[1]
-					}
-					google.maps.event.addListener(N, R, function (V) {
-						S.apply(T, [O ? O : N, V, M])
-					})
-				})
-			}
-			if (L.todo.onces) {
-				y.each(L.todo.onces, function (R, U) {
-					var T = P, S = U;
-					if (y.isArray(U)) {
-						T = U[0];
-						S = U[1]
-					}
-					google.maps.event.addListenerOnce(N, R, function (V) {
-						S.apply(T, [O ? O : N, V, M])
-					})
-				})
-			}
-		}
-	}
 
-	function l() {
-		var L = [];
-		this.empty = function () {
-			return !L.length
-		};
-		this.add = function (M) {
-			L.push(M)
-		};
-		this.get = function () {
-			return L.length ? L[0] : false
-		};
-		this.ack = function () {
-			L.shift()
-		}
-	}
-
-	function w(T, L, N) {
-		var R = {}, P = this, Q, S = {
-			latLng: {
-				map: false,
-				marker: false,
-				infowindow: false,
-				circle: false,
-				overlay: false,
-				getlatlng: false,
-				getmaxzoom: false,
-				getelevation: false,
-				streetviewpanorama: false,
-				getaddress: true
-			}, geoloc: {getgeoloc: true}
-		};
-		if (typeof N === "string") {
-			N = M(N)
-		}
-		function M(V) {
-			var U = {};
-			U[V] = {};
-			return U
-		}
-
-		function O() {
-			var U;
-			for (U in N) {
-				if (U in R) {
-					continue
-				}
-				return U
-			}
-		}
-
-		this.run = function () {
-			var U, V;
-			while (U = O()) {
-				if (typeof T[U] === "function") {
-					Q = U;
-					V = y.extend(true, {}, z[U] || {}, N[U].options || {});
-					if (U in S.latLng) {
-						if (N[U].values) {
-							x(N[U].values, T, T[U], {todo: N[U], opts: V, session: R})
-						} else {
-							v(T, T[U], S.latLng[U], {todo: N[U], opts: V, session: R})
-						}
-					} else {
-						if (U in S.geoloc) {
-							o(T, T[U], {todo: N[U], opts: V, session: R})
-						} else {
-							T[U].apply(T, [
-								{todo: N[U], opts: V, session: R}
-							])
-						}
-					}
-					return
-				} else {
-					R[U] = null
-				}
-			}
-			L.apply(T, [N, R])
-		};
-		this.ack = function (U) {
-			R[Q] = U;
-			P.run.apply(P, [])
-		}
-	}
-
-	function c(N) {
-		var L, M = [];
-		for (L in N) {
-			M.push(L)
-		}
-		return M
-	}
-
-	function b(N, Q) {
-		var L = {};
-		if (N.todo) {
-			for (var M in N.todo) {
-				if ((M !== "options") && (M !== "values")) {
-					L[M] = N.todo[M]
-				}
-			}
-		}
-		var O, P = ["data", "tag", "id", "events", "onces"];
-		for (O = 0; O < P.length; O++) {
-			A(L, P[O], Q, N.todo)
-		}
-		L.options = y.extend({}, N.opts || {}, Q.options || {});
-		return L
-	}
-
-	function A(N, M) {
-		for (var L = 2; L < arguments.length; L++) {
-			if (M in arguments[L]) {
-				N[M] = arguments[L][M];
-				return
-			}
-		}
-	}
-
-	function r() {
-		var L = [];
-		this.get = function (S) {
-			if (L.length) {
-				var P, O, N, R, M, Q = c(S);
-				for (P = 0; P < L.length; P++) {
-					R = L[P];
-					M = Q.length == R.keys.length;
-					for (O = 0; (O < Q.length) && M; O++) {
-						N = Q[O];
-						M = N in R.request;
-						if (M) {
-							if ((typeof S[N] === "object") && ("equals" in S[N]) && (typeof S[N] === "function")) {
-								M = S[N].equals(R.request[N])
-							} else {
-								M = S[N] === R.request[N]
-							}
-						}
-					}
-					if (M) {
-						return R.results
-					}
-				}
-			}
-		};
-		this.store = function (N, M) {
-			L.push({request: N, keys: c(N), results: M})
-		}
-	}
-
-	function e(Q, P, O, L) {
-		var N = this, M = [];
-		z.classes.OverlayView.call(this);
-		this.setMap(Q);
-		this.onAdd = function () {
-			var R = this.getPanes();
-			if (P.pane in R) {
-				y(R[P.pane]).append(L)
-			}
-			y.each("dblclick click mouseover mousemove mouseout mouseup mousedown".split(" "), function (T, S) {
-				M.push(google.maps.event.addDomListener(L[0], S, function (U) {
-					y.Event(U).stopPropagation();
-					google.maps.event.trigger(N, S, [U]);
-					N.draw()
-				}))
-			});
-			M.push(google.maps.event.addDomListener(L[0], "contextmenu", function (S) {
-				y.Event(S).stopPropagation();
-				google.maps.event.trigger(N, "rightclick", [S]);
-				N.draw()
-			}))
-		};
-		this.getPosition = function () {
-			return O
-		};
-		this.draw = function () {
-			var R = this.getProjection().fromLatLngToDivPixel(O);
-			L.css("left", (R.x + P.offset.x) + "px").css("top", (R.y + P.offset.y) + "px")
-		};
-		this.onRemove = function () {
-			for (var R = 0; R < M.length; R++) {
-				google.maps.event.removeListener(M[R])
-			}
-			L.remove()
-		};
-		this.hide = function () {
-			L.hide()
-		};
-		this.show = function () {
-			L.show()
-		};
-		this.toggle = function () {
-			if (L) {
-				if (L.is(":visible")) {
-					this.show()
-				} else {
-					this.hide()
-				}
-			}
-		};
-		this.toggleDOM = function () {
-			if (this.getMap()) {
-				this.setMap(null)
-			} else {
-				this.setMap(Q)
-			}
-		};
-		this.getDOMElement = function () {
-			return L[0]
-		}
-	}
-
-	function f(O, L) {
-		function M() {
-			this.onAdd = function () {
+	/**
+	 * attach events from a container to a sender
+	 * td[
+	 *  events => { eventName => function, }
+	 *  onces  => { eventName => function, }
+	 *  data   => mixed data
+	 * ]
+	 **/
+	function attachEvents($container, args, sender, id, senders) {
+		var td = args.td || {},
+			context = {
+				id: id,
+				data: td.data,
+				tag: td.tag
 			};
-			this.onRemove = function () {
+		function bind(items, handler) {
+			if (items) {
+				$.each(items, function (name, f) {
+					var self = $container, fn = f;
+					if (isArray(f)) {
+						self = f[0];
+						fn = f[1];
+					}
+					handler(sender, name, function (event) {
+						fn.apply(self, [senders || sender, event, context]);
+					});
+				});
+			}
+		}
+		bind(td.events, gm.event.addListener);
+		bind(td.onces, gm.event.addListenerOnce);
+	}
+
+	/**
+	 * Extract keys from object
+	 * @param obj {object}
+	 * @returns {Array}
+	 */
+	function getKeys(obj) {
+		var k, keys = [];
+		for (k in obj) {
+			if (obj.hasOwnProperty(k)) {
+				keys.push(k);
+			}
+		}
+		return keys;
+	}
+
+	/**
+	 * copy a key content
+	 **/
+	function copyKey(target, key) {
+		var i,
+			args = arguments;
+		for (i = 2; i < args.length; i++) {
+			if (key in args[i]) {
+				if (args[i].hasOwnProperty(key)) {
+					target[key] = args[i][key];
+					return;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Build a tuple
+	 * @param args {object}
+	 * @param value {object}
+	 * @returns {object}
+	 */
+	function tuple(args, value) {
+		var k, i,
+			keys = ["data", "tag", "id", "events",  "onces"],
+			td = {};
+
+		// "copy" the common data
+		if (args.td) {
+			for (k in args.td) {
+				if (args.td.hasOwnProperty(k)) {
+					if ((k !== "options") && (k !== "values")) {
+						td[k] = args.td[k];
+					}
+				}
+			}
+		}
+		// "copy" some specific keys from value first else args.td
+		for (i = 0; i < keys.length; i++) {
+			copyKey(td, keys[i], value, args.td);
+		}
+
+		// create an extended options
+		td.options = $.extend({}, args.opts || {}, value.options || {});
+
+		return td;
+	}
+
+	/**
+	 * Log error
+	 */
+	function error() {
+		if (defaults.verbose) {
+			var i, err = [];
+			if (window.console && (isFunction(console.error))) {
+				for (i = 0; i < arguments.length; i++) {
+					err.push(arguments[i]);
+				}
+				console.error.apply(console, err);
+			} else {
+				err = "";
+				for (i = 0; i < arguments.length; i++) {
+					err += arguments[i].toString() + " ";
+				}
+				alert(err);
+			}
+		}
+	}
+
+	/**
+	 * return true if mixed is usable as number
+	 **/
+	function numeric(mixed) {
+		return (isNumber(mixed) || isString(mixed)) && mixed !== "" && !isNaN(mixed);
+	}
+
+	/**
+	 * convert data to array
+	 **/
+	function array(mixed) {
+		var k, a = [];
+		if (!isUndefined(mixed)) {
+			if (isObject(mixed)) {
+				if (isNumber(mixed.length)) {
+					a = mixed;
+				} else {
+					for (k in mixed) {
+						a.push(mixed[k]);
+					}
+				}
+			} else {
+				a.push(mixed);
+			}
+		}
+		return a;
+	}
+
+	/**
+	 * create a function to check a tag
+	 */
+	function ftag(tag) {
+		if (tag) {
+			if (isFunction(tag)) {
+				return tag;
+			}
+			tag = array(tag);
+			return function (val) {
+				var i;
+				if (isUndefined(val)) {
+					return false;
+				}
+				if (isObject(val)) {
+					for (i = 0; i < val.length; i++) {
+						if ($.inArray(val[i], tag) >= 0) {
+							return true;
+						}
+					}
+					return false;
+				}
+				return $.inArray(val, tag) >= 0;
 			};
-			this.draw = function () {
-			};
-			return z.classes.OverlayView.apply(this, [])
-		}
-
-		M.prototype = z.classes.OverlayView.prototype;
-		var N = new M();
-		N.setMap(O);
-		return N
-	}
-
-	function F(ae, ao, aa) {
-		var an = false, ai = false, af = false, Z = false, W = true, V = this, N = [], T = {}, ad = {}, U = {}, aj = [], ah = [], O = [], ak = f(ao, aa.radius), Y, ap, am, P, Q;
-		S();
-		function L(aq) {
-			if (!aj[aq]) {
-				delete ah[aq].options.map;
-				aj[aq] = new z.classes.Marker(ah[aq].options);
-				n(ae, {todo: ah[aq]}, aj[aq], ah[aq].id)
-			}
-		}
-
-		this.getById = function (aq) {
-			if (aq in ad) {
-				L(ad[aq]);
-				return aj[ad[aq]]
-			}
-			return false
-		};
-		this.rm = function (ar) {
-			var aq = ad[ar];
-			if (aj[aq]) {
-				aj[aq].setMap(null)
-			}
-			delete aj[aq];
-			aj[aq] = false;
-			delete ah[aq];
-			ah[aq] = false;
-			delete O[aq];
-			O[aq] = false;
-			delete ad[ar];
-			delete U[aq];
-			ai = true
-		};
-		this.clearById = function (aq) {
-			if (aq in ad) {
-				this.rm(aq);
-				return true
-			}
-		};
-		this.clear = function (az, av, aA) {
-			var ar, ay, at, aw, au, ax = [], aq = C(aA);
-			if (az) {
-				ar = ah.length - 1;
-				ay = -1;
-				at = -1
-			} else {
-				ar = 0;
-				ay = ah.length;
-				at = 1
-			}
-			for (aw = ar; aw != ay; aw += at) {
-				if (ah[aw]) {
-					if (!aq || aq(ah[aw].tag)) {
-						ax.push(U[aw]);
-						if (av || az) {
-							break
-						}
-					}
-				}
-			}
-			for (au = 0; au < ax.length; au++) {
-				this.rm(ax[au])
-			}
-		};
-		this.add = function (aq, ar) {
-			aq.id = k(aq.id);
-			this.clearById(aq.id);
-			ad[aq.id] = aj.length;
-			U[aj.length] = aq.id;
-			aj.push(null);
-			ah.push(aq);
-			O.push(ar);
-			ai = true
-		};
-		this.addMarker = function (ar, aq) {
-			aq = aq || {};
-			aq.id = k(aq.id);
-			this.clearById(aq.id);
-			if (!aq.options) {
-				aq.options = {}
-			}
-			aq.options.position = ar.getPosition();
-			n(ae, {todo: aq}, ar, aq.id);
-			ad[aq.id] = aj.length;
-			U[aj.length] = aq.id;
-			aj.push(ar);
-			ah.push(aq);
-			O.push(aq.data || {});
-			ai = true
-		};
-		this.todo = function (aq) {
-			return ah[aq]
-		};
-		this.value = function (aq) {
-			return O[aq]
-		};
-		this.marker = function (aq) {
-			if (aq in aj) {
-				L(aq);
-				return aj[aq]
-			}
-			return false
-		};
-		this.markerIsSet = function (aq) {
-			return Boolean(aj[aq])
-		};
-		this.setMarker = function (ar, aq) {
-			aj[ar] = aq
-		};
-		this.store = function (aq, ar, at) {
-			T[aq.ref] = {obj: ar, shadow: at}
-		};
-		this.free = function () {
-			for (var aq = 0; aq < N.length; aq++) {
-				google.maps.event.removeListener(N[aq])
-			}
-			N = [];
-			y.each(T, function (ar) {
-				ac(ar)
-			});
-			T = {};
-			y.each(ah, function (ar) {
-				ah[ar] = null
-			});
-			ah = [];
-			y.each(aj, function (ar) {
-				if (aj[ar]) {
-					aj[ar].setMap(null);
-					delete aj[ar]
-				}
-			});
-			aj = [];
-			y.each(O, function (ar) {
-				delete O[ar]
-			});
-			O = [];
-			ad = {};
-			U = {}
-		};
-		this.filter = function (aq) {
-			am = aq;
-			ag()
-		};
-		this.enable = function (aq) {
-			if (W != aq) {
-				W = aq;
-				ag()
-			}
-		};
-		this.display = function (aq) {
-			P = aq
-		};
-		this.error = function (aq) {
-			Q = aq
-		};
-		this.beginUpdate = function () {
-			an = true
-		};
-		this.endUpdate = function () {
-			an = false;
-			if (ai) {
-				ag()
-			}
-		};
-		this.autofit = function (ar) {
-			for (var aq = 0; aq < ah.length; aq++) {
-				if (ah[aq]) {
-					ar.extend(ah[aq].options.position)
-				}
-			}
-		};
-		function S() {
-			ap = ak.getProjection();
-			if (!ap) {
-				setTimeout(function () {
-					S.apply(V, [])
-				}, 25);
-				return
-			}
-			Z = true;
-			N.push(google.maps.event.addListener(ao, "zoom_changed", function () {
-				al()
-			}));
-			N.push(google.maps.event.addListener(ao, "bounds_changed", function () {
-				al()
-			}));
-			ag()
-		}
-
-		function ac(aq) {
-			if (typeof T[aq] === "object") {
-				if (typeof(T[aq].obj.setMap) === "function") {
-					T[aq].obj.setMap(null)
-				}
-				if (typeof(T[aq].obj.remove) === "function") {
-					T[aq].obj.remove()
-				}
-				if (typeof(T[aq].shadow.remove) === "function") {
-					T[aq].obj.remove()
-				}
-				if (typeof(T[aq].shadow.setMap) === "function") {
-					T[aq].shadow.setMap(null)
-				}
-				delete T[aq].obj;
-				delete T[aq].shadow
-			} else {
-				if (aj[aq]) {
-					aj[aq].setMap(null)
-				}
-			}
-			delete T[aq]
-		}
-
-		function M() {
-			var ay, ax, aw, au, av, at, ar, aq;
-			if (arguments[0] instanceof google.maps.LatLng) {
-				ay = arguments[0].lat();
-				aw = arguments[0].lng();
-				if (arguments[1] instanceof google.maps.LatLng) {
-					ax = arguments[1].lat();
-					au = arguments[1].lng()
-				} else {
-					ax = arguments[1];
-					au = arguments[2]
-				}
-			} else {
-				ay = arguments[0];
-				aw = arguments[1];
-				if (arguments[2] instanceof google.maps.LatLng) {
-					ax = arguments[2].lat();
-					au = arguments[2].lng()
-				} else {
-					ax = arguments[2];
-					au = arguments[3]
-				}
-			}
-			av = Math.PI * ay / 180;
-			at = Math.PI * aw / 180;
-			ar = Math.PI * ax / 180;
-			aq = Math.PI * au / 180;
-			return 1000 * 6371 * Math.acos(Math.min(Math.cos(av) * Math.cos(ar) * Math.cos(at) * Math.cos(aq) + Math.cos(av) * Math.sin(at) * Math.cos(ar) * Math.sin(aq) + Math.sin(av) * Math.sin(ar), 1))
-		}
-
-		function R() {
-			var aq = M(ao.getCenter(), ao.getBounds().getNorthEast()), ar = new google.maps.Circle({
-				center: ao.getCenter(),
-				radius: 1.25 * aq
-			});
-			return ar.getBounds()
-		}
-
-		function X() {
-			var ar = {}, aq;
-			for (aq in T) {
-				ar[aq] = true
-			}
-			return ar
-		}
-
-		function al() {
-			clearTimeout(Y);
-			Y = setTimeout(function () {
-				ag()
-			}, 25)
-		}
-
-		function ab(ar) {
-			var au = ap.fromLatLngToDivPixel(ar), at = ap.fromDivPixelToLatLng(new google.maps.Point(au.x + aa.radius, au.y - aa.radius)), aq = ap.fromDivPixelToLatLng(new google.maps.Point(au.x - aa.radius, au.y + aa.radius));
-			return new google.maps.LatLngBounds(aq, at)
-		}
-
-		function ag() {
-			if (an || af || !Z) {
-				return
-			}
-			var aE = [], aG = {}, aF = ao.getZoom(), aH = ("maxZoom" in aa) && (aF > aa.maxZoom), aw = X(), av, au, at, aA, ar = false, aq, aD, ay, az, aB, aC, ax;
-			ai = false;
-			if (aF > 3) {
-				aq = R();
-				ar = aq.getSouthWest().lng() < aq.getNorthEast().lng()
-			}
-			for (av = 0; av < ah.length; av++) {
-				if (ah[av] && (!ar || aq.contains(ah[av].options.position)) && (!am || am(O[av]))) {
-					aE.push(av)
-				}
-			}
-			while (1) {
-				av = 0;
-				while (aG[av] && (av < aE.length)) {
-					av++
-				}
-				if (av == aE.length) {
-					break
-				}
-				aA = [];
-				if (W && !aH) {
-					ax = 10;
-					do {
-						az = aA;
-						aA = [];
-						ax--;
-						if (az.length) {
-							ay = aq.getCenter()
-						} else {
-							ay = ah[aE[av]].options.position
-						}
-						aq = ab(ay);
-						for (au = av; au < aE.length; au++) {
-							if (aG[au]) {
-								continue
-							}
-							if (aq.contains(ah[aE[au]].options.position)) {
-								aA.push(au)
-							}
-						}
-					} while ((az.length < aA.length) && (aA.length > 1) && ax)
-				} else {
-					for (au = av; au < aE.length; au++) {
-						if (aG[au]) {
-							continue
-						}
-						aA.push(au);
-						break
-					}
-				}
-				aD = {indexes: [], ref: []};
-				aB = aC = 0;
-				for (at = 0; at < aA.length; at++) {
-					aG[aA[at]] = true;
-					aD.indexes.push(aE[aA[at]]);
-					aD.ref.push(aE[aA[at]]);
-					aB += ah[aE[aA[at]]].options.position.lat();
-					aC += ah[aE[aA[at]]].options.position.lng()
-				}
-				aB /= aA.length;
-				aC /= aA.length;
-				aD.latLng = new google.maps.LatLng(aB, aC);
-				aD.ref = aD.ref.join("-");
-				if (aD.ref in aw) {
-					delete aw[aD.ref]
-				} else {
-					if (aA.length === 1) {
-						T[aD.ref] = true
-					}
-					P(aD)
-				}
-			}
-			y.each(aw, function (aI) {
-				ac(aI)
-			});
-			af = false
 		}
 	}
 
-	function a(M, L) {
-		this.id = function () {
-			return M
-		};
-		this.filter = function (N) {
-			L.filter(N)
-		};
-		this.enable = function () {
-			L.enable(true)
-		};
-		this.disable = function () {
-			L.enable(false)
-		};
-		this.add = function (O, N, P) {
-			if (!P) {
-				L.beginUpdate()
-			}
-			L.addMarker(O, N);
-			if (!P) {
-				L.endUpdate()
-			}
-		};
-		this.getById = function (N) {
-			return L.getById(N)
-		};
-		this.clearById = function (P, O) {
-			var N;
-			if (!O) {
-				L.beginUpdate()
-			}
-			N = L.clearById(P);
-			if (!O) {
-				L.endUpdate()
-			}
-			return N
-		};
-		this.clear = function (P, Q, N, O) {
-			if (!O) {
-				L.beginUpdate()
-			}
-			L.clear(P, Q, N);
-			if (!O) {
-				L.endUpdate()
-			}
+
+	/**
+	 * convert mixed [ lat, lng ] objet to gm.LatLng
+	 **/
+	function toLatLng(mixed, emptyReturnMixed, noFlat) {
+		var empty = emptyReturnMixed ? mixed : null;
+		if (!mixed || (isString(mixed))) {
+			return empty;
 		}
+		// defined latLng
+		if (mixed.latLng) {
+			return toLatLng(mixed.latLng);
+		}
+		// gm.LatLng object
+		if (mixed instanceof gm.LatLng) {
+			return mixed;
+		}
+		// {lat:X, lng:Y} object
+		if (numeric(mixed.lat)) {
+			return new gm.LatLng(mixed.lat, mixed.lng);
+		}
+		// [X, Y] object
+		if (!noFlat && isArray(mixed)) {
+			if (!numeric(mixed[0]) || !numeric(mixed[1])) {
+				return empty;
+			}
+			return new gm.LatLng(mixed[0], mixed[1]);
+		}
+		return empty;
 	}
 
-	function D() {
-		var M = {}, N = {};
-
-		function L(P) {
-			return{id: P.id, name: P.name, object: P.obj, tag: P.tag, data: P.data}
+	/**
+	 * convert mixed [ sw, ne ] object by gm.LatLngBounds
+	 **/
+	function toLatLngBounds(mixed) {
+		var ne, sw;
+		if (!mixed || mixed instanceof gm.LatLngBounds) {
+			return mixed || null;
 		}
-
-		this.add = function (R, Q, T, S) {
-			var P = R.todo || {}, U = k(P.id);
-			if (!M[Q]) {
-				M[Q] = []
-			}
-			if (U in N) {
-				this.clearById(U)
-			}
-			N[U] = {obj: T, sub: S, name: Q, id: U, tag: P.tag, data: P.data};
-			M[Q].push(U);
-			return U
-		};
-		this.getById = function (R, Q, P) {
-			if (R in N) {
-				if (Q) {
-					return N[R].sub
-				} else {
-					if (P) {
-						return L(N[R])
-					}
-				}
-				return N[R].obj
-			}
-			return false
-		};
-		this.get = function (R, T, P, S) {
-			var V, U, Q = C(P);
-			if (!M[R] || !M[R].length) {
-				return null
-			}
-			V = M[R].length;
-			while (V) {
-				V--;
-				U = M[R][T ? V : M[R].length - V - 1];
-				if (U && N[U]) {
-					if (Q && !Q(N[U].tag)) {
-						continue
-					}
-					return S ? L(N[U]) : N[U].obj
-				}
-			}
-			return null
-		};
-		this.all = function (S, Q, T) {
-			var P = [], R = C(Q), U = function (X) {
-				var V, W;
-				for (V = 0; V < M[X].length; V++) {
-					W = M[X][V];
-					if (W && N[W]) {
-						if (R && !R(N[W].tag)) {
-							continue
-						}
-						P.push(T ? L(N[W]) : N[W].obj)
-					}
-				}
-			};
-			if (S in M) {
-				U(S)
-			} else {
-				if (S === t) {
-					for (S in M) {
-						U(S)
-					}
-				}
-			}
-			return P
-		};
-		function O(P) {
-			if (typeof(P.setMap) === "function") {
-				P.setMap(null)
-			}
-			if (typeof(P.remove) === "function") {
-				P.remove()
-			}
-			if (typeof(P.free) === "function") {
-				P.free()
-			}
-			P = null
-		}
-
-		this.rm = function (S, Q, R) {
-			var P, T;
-			if (!M[S]) {
-				return false
-			}
-			if (Q) {
-				if (R) {
-					for (P = M[S].length - 1; P >= 0; P--) {
-						T = M[S][P];
-						if (Q(N[T].tag)) {
-							break
-						}
-					}
-				} else {
-					for (P = 0; P < M[S].length; P++) {
-						T = M[S][P];
-						if (Q(N[T].tag)) {
-							break
-						}
-					}
-				}
-			} else {
-				P = R ? M[S].length - 1 : 0
-			}
-			if (!(P in M[S])) {
-				return false
-			}
-			return this.clearById(M[S][P], P)
-		};
-		this.clearById = function (S, P) {
-			if (S in N) {
-				var R, Q = N[S].name;
-				for (R = 0; P === t && R < M[Q].length; R++) {
-					if (S === M[Q][R]) {
-						P = R
-					}
-				}
-				O(N[S].obj);
-				if (N[S].sub) {
-					O(N[S].sub)
-				}
-				delete N[S];
-				M[Q].splice(P, 1);
-				return true
-			}
-			return false
-		};
-		this.objGetById = function (R) {
-			var Q;
-			if (M.clusterer) {
-				for (var P in M.clusterer) {
-					if ((Q = N[M.clusterer[P]].obj.getById(R)) !== false) {
-						return Q
-					}
-				}
-			}
-			return false
-		};
-		this.objClearById = function (Q) {
-			if (M.clusterer) {
-				for (var P in M.clusterer) {
-					if (N[M.clusterer[P]].obj.clearById(Q)) {
-						return true
-					}
-				}
-			}
-			return null
-		};
-		this.clear = function (V, U, W, P) {
-			var R, T, S, Q = C(P);
-			if (!V || !V.length) {
-				V = [];
-				for (R in M) {
-					V.push(R)
-				}
-			} else {
-				V = g(V)
-			}
-			for (T = 0; T < V.length; T++) {
-				S = V[T];
-				if (U) {
-					this.rm(S, Q, true)
-				} else {
-					if (W) {
-						this.rm(S, Q, false)
-					} else {
-						while (this.rm(S, Q, false)) {
-						}
-					}
-				}
-			}
-		};
-		this.objClear = function (S, R, T, Q) {
-			if (M.clusterer && (y.inArray("marker", S) >= 0 || !S.length)) {
-				for (var P in M.clusterer) {
-					N[M.clusterer[P]].obj.clear(R, T, Q)
-				}
-			}
-		}
-	}
-
-	var m = {}, H = new r();
-
-	function p() {
-		if (!m.geocoder) {
-			m.geocoder = new google.maps.Geocoder()
-		}
-		return m.geocoder
-	}
-
-	function G() {
-		if (!m.directionsService) {
-			m.directionsService = new google.maps.DirectionsService()
-		}
-		return m.directionsService
-	}
-
-	function h() {
-		if (!m.elevationService) {
-			m.elevationService = new google.maps.ElevationService()
-		}
-		return m.elevationService
-	}
-
-	function q() {
-		if (!m.maxZoomService) {
-			m.maxZoomService = new google.maps.MaxZoomService()
-		}
-		return m.maxZoomService
-	}
-
-	function B() {
-		if (!m.distanceMatrixService) {
-			m.distanceMatrixService = new google.maps.DistanceMatrixService()
-		}
-		return m.distanceMatrixService
-	}
-
-	function u() {
-		if (z.verbose) {
-			var L, M = [];
-			if (window.console && (typeof console.error === "function")) {
-				for (L = 0; L < arguments.length; L++) {
-					M.push(arguments[L])
-				}
-				console.error.apply(console, M)
-			} else {
-				M = "";
-				for (L = 0; L < arguments.length; L++) {
-					M += arguments[L].toString() + " "
-				}
-				alert(M)
-			}
-		}
-	}
-
-	function E(L) {
-		return(typeof(L) === "number" || typeof(L) === "string") && L !== "" && !isNaN(L)
-	}
-
-	function g(N) {
-		var M, L = [];
-		if (N !== t) {
-			if (typeof(N) === "object") {
-				if (typeof(N.length) === "number") {
-					L = N
-				} else {
-					for (M in N) {
-						L.push(N[M])
-					}
-				}
-			} else {
-				L.push(N)
-			}
-		}
-		return L
-	}
-
-	function C(L) {
-		if (L) {
-			if (typeof L === "function") {
-				return L
-			}
-			L = g(L);
-			return function (N) {
-				if (N === t) {
-					return false
-				}
-				if (typeof N === "object") {
-					for (var M = 0; M < N.length; M++) {
-						if (y.inArray(N[M], L) >= 0) {
-							return true
-						}
-					}
-					return false
-				}
-				return y.inArray(N, L) >= 0
-			}
-		}
-	}
-
-	function I(M, O, L) {
-		var N = O ? M : null;
-		if (!M || (typeof M === "string")) {
-			return N
-		}
-		if (M.latLng) {
-			return I(M.latLng)
-		}
-		if (M instanceof google.maps.LatLng) {
-			return M
-		} else {
-			if (E(M.lat)) {
-				return new google.maps.LatLng(M.lat, M.lng)
-			} else {
-				if (!L && y.isArray(M)) {
-					if (!E(M[0]) || !E(M[1])) {
-						return N
-					}
-					return new google.maps.LatLng(M[0], M[1])
-				}
-			}
-		}
-		return N
-	}
-
-	function j(M) {
-		var N, L;
-		if (!M || M instanceof google.maps.LatLngBounds) {
-			return M || null
-		}
-		if (y.isArray(M)) {
-			if (M.length == 2) {
-				N = I(M[0]);
-				L = I(M[1])
-			} else {
-				if (M.length == 4) {
-					N = I([M[0], M[1]]);
-					L = I([M[2], M[3]])
-				}
+		if (isArray(mixed)) {
+			if (mixed.length === 2) {
+				ne = toLatLng(mixed[0]);
+				sw = toLatLng(mixed[1]);
+			} else if (mixed.length === 4) {
+				ne = toLatLng([mixed[0], mixed[1]]);
+				sw = toLatLng([mixed[2], mixed[3]]);
 			}
 		} else {
-			if (("ne" in M) && ("sw" in M)) {
-				N = I(M.ne);
-				L = I(M.sw)
-			} else {
-				if (("n" in M) && ("e" in M) && ("s" in M) && ("w" in M)) {
-					N = I([M.n, M.e]);
-					L = I([M.s, M.w])
-				}
+			if (("ne" in mixed) && ("sw" in mixed)) {
+				ne = toLatLng(mixed.ne);
+				sw = toLatLng(mixed.sw);
+			} else if (("n" in mixed) && ("e" in mixed) && ("s" in mixed) && ("w" in mixed)) {
+				ne = toLatLng([mixed.n, mixed.e]);
+				sw = toLatLng([mixed.s, mixed.w]);
 			}
 		}
-		if (N && L) {
-			return new google.maps.LatLngBounds(L, N)
+		if (ne && sw) {
+			return new gm.LatLngBounds(sw, ne);
 		}
-		return null
+		return null;
 	}
 
-	function v(T, L, O, S, P) {
-		var N = O ? I(S.todo, false, true) : false, R = N ? {latLng: N} : (S.todo.address ? (typeof(S.todo.address) === "string" ? {address: S.todo.address} : S.todo.address) : false), M = R ? H.get(R) : false, Q = this;
-		if (R) {
-			P = P || 0;
-			if (M) {
-				S.latLng = M.results[0].geometry.location;
-				S.results = M.results;
-				S.status = M.status;
-				L.apply(T, [S])
+	/**
+	 * resolveLatLng
+	 **/
+	function resolveLatLng(ctx, method, runLatLng, args, attempt) {
+		var latLng = runLatLng ? toLatLng(args.td, false, true) : false,
+			conf = latLng ?  {latLng: latLng} : (args.td.address ? (isString(args.td.address) ? {address: args.td.address} : args.td.address) : false),
+			cache = conf ? geocoderCache.get(conf) : false,
+			self = this;
+		if (conf) {
+			attempt = attempt || 0; // convert undefined to int
+			if (cache) {
+				args.latLng = cache.results[0].geometry.location;
+				args.results = cache.results;
+				args.status = cache.status;
+				method.apply(ctx, [args]);
 			} else {
-				if (R.location) {
-					R.location = I(R.location)
+				if (conf.location) {
+					conf.location = toLatLng(conf.location);
 				}
-				if (R.bounds) {
-					R.bounds = j(R.bounds)
+				if (conf.bounds) {
+					conf.bounds = toLatLngBounds(conf.bounds);
 				}
-				p().geocode(R, function (V, U) {
-					if (U === google.maps.GeocoderStatus.OK) {
-						H.store(R, {results: V, status: U});
-						S.latLng = V[0].geometry.location;
-						S.results = V;
-						S.status = U;
-						L.apply(T, [S])
-					} else {
-						if ((U === google.maps.GeocoderStatus.OVER_QUERY_LIMIT) && (P < z.queryLimit.attempt)) {
-							setTimeout(function () {
-								v.apply(Q, [T, L, O, S, P + 1])
-							}, z.queryLimit.delay + Math.floor(Math.random() * z.queryLimit.random))
+				geocoder().geocode(
+					conf,
+					function (results, status) {
+						if (status === gm.GeocoderStatus.OK) {
+							geocoderCache.store(conf, {results: results, status: status});
+							args.latLng = results[0].geometry.location;
+							args.results = results;
+							args.status = status;
+							method.apply(ctx, [args]);
+						} else if ((status === gm.GeocoderStatus.OVER_QUERY_LIMIT) && (attempt < defaults.queryLimit.attempt)) {
+							setTimeout(
+								function () {
+									resolveLatLng.apply(self, [ctx, method, runLatLng, args, attempt + 1]);
+								},
+								defaults.queryLimit.delay + Math.floor(Math.random() * defaults.queryLimit.random)
+							);
 						} else {
-							u("geocode failed", U, R);
-							S.latLng = S.results = false;
-							S.status = U;
-							L.apply(T, [S])
+							error("geocode failed", status, conf);
+							args.latLng = args.results = false;
+							args.status = status;
+							method.apply(ctx, [args]);
 						}
 					}
-				})
+				);
 			}
 		} else {
-			S.latLng = I(S.todo, false, true);
-			L.apply(T, [S])
+			args.latLng = toLatLng(args.td, false, true);
+			method.apply(ctx, [args]);
 		}
 	}
 
-	function x(Q, L, R, M) {
-		var O = this, N = -1;
+	function resolveAllLatLng(list, ctx, method, args) {
+		var self = this, i = -1;
 
-		function P() {
+		function resolve() {
+			// look for next address to resolve
 			do {
-				N++
-			} while ((N < Q.length) && !("address" in Q[N]));
-			if (N >= Q.length) {
-				R.apply(L, [M]);
-				return
-			}
-			v(O, function (S) {
-				delete S.todo;
-				y.extend(Q[N], S);
-				P.apply(O, [])
-			}, true, {todo: Q[N]})
-		}
+				i++;
+			} while ((i < list.length) && !("address" in list[i]));
 
-		P()
+			// no address found, so run method
+			if (i >= list.length) {
+				method.apply(ctx, [args]);
+				return;
+			}
+
+			resolveLatLng(
+				self,
+				function (args) {
+					delete args.td;
+					$.extend(list[i], args);
+					resolve.apply(self, []); // resolve next (using apply avoid too much recursion)
+				},
+				true,
+				{td: list[i]}
+			);
+		}
+		resolve();
 	}
 
-	function o(L, O, M) {
-		var N = false;
+
+
+	/**
+	 * geolocalise the user and return a LatLng
+	 **/
+	function geoloc(ctx, method, args) {
+		var is_echo = false; // sometime, a kind of echo appear, this trick will notice once the first call is run to ignore the next one
 		if (navigator && navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function (P) {
-				if (N) {
-					return
-				}
-				N = true;
-				M.latLng = new google.maps.LatLng(P.coords.latitude, P.coords.longitude);
-				O.apply(L, [M])
-			}, function () {
-				if (N) {
-					return
-				}
-				N = true;
-				M.latLng = false;
-				O.apply(L, [M])
-			}, M.opts.getCurrentPosition)
+			navigator.geolocation.getCurrentPosition(
+				function (pos) {
+					if (!is_echo) {
+						is_echo = true;
+						args.latLng = new gm.LatLng(pos.coords.latitude, pos.coords.longitude);
+						method.apply(ctx, [args]);
+					}
+				},
+				function () {
+					if (!is_echo) {
+						is_echo = true;
+						args.latLng = false;
+						method.apply(ctx, [args]);
+					}
+				},
+				args.opts.getCurrentPosition
+			);
 		} else {
-			M.latLng = false;
-			O.apply(L, [M])
+			args.latLng = false;
+			method.apply(ctx, [args]);
 		}
 	}
 
-	function K(T) {
-		var S = this, U = new l(), V = new D(), N = null, P;
-		this._plan = function (Z) {
-			for (var Y = 0; Y < Z.length; Y++) {
-				U.add(new w(S, R, Z[Y]))
+	/**
+	 * Return true if get is a direct call
+	 * it means :
+	 *   - get is the only key
+	 *   - get has no callback
+	 * @param obj {Object} The request to check
+	 * @return {Boolean}
+	 */
+	function isDirectGet(obj) {
+		var k,
+			result = false;
+		if (isObject(obj) && obj.hasOwnProperty("get")) {
+			for (k in obj) {
+				if (k !== "get") {
+					return false;
+				}
 			}
-			Q()
-		};
-		function Q() {
-			if (!P && (P = U.get())) {
-				P.run()
-			}
+			result = !obj.get.hasOwnProperty("callback");
 		}
+		return result;
+	}
+	var services = {},
+		geocoderCache = new GeocoderCache();
 
-		function R() {
-			P = null;
-			U.ack();
-			Q.call(S)
+
+	function geocoder(){
+		if (!services.geocoder) {
+			services.geocoder = new gm.Geocoder();
 		}
+		return services.geocoder;
+	}
+	/**
+	 * Class GeocoderCache
+	 * @constructor
+	 */
+	function GeocoderCache() {
+		var cache = [];
 
-		function X(Y) {
-			if (Y.todo.callback) {
-				var Z = Array.prototype.slice.call(arguments, 1);
-				if (typeof Y.todo.callback === "function") {
-					Y.todo.callback.apply(T, Z)
-				} else {
-					if (y.isArray(Y.todo.callback)) {
-						if (typeof Y.todo.callback[1] === "function") {
-							Y.todo.callback[1].apply(Y.todo.callback[0], Z)
+		this.get = function (request) {
+			if (cache.length) {
+				var i, j, k, item, eq,
+					keys = getKeys(request);
+				for (i = 0; i < cache.length; i++) {
+					item = cache[i];
+					eq = keys.length === item.keys.length;
+					for (j = 0; (j < keys.length) && eq; j++) {
+						k = keys[j];
+						eq = k in item.request;
+						if (eq) {
+							if (isObject(request[k]) && ("equals" in request[k]) && isFunction(request[k])) {
+								eq = request[k].equals(item.request[k]);
+							} else {
+								eq = request[k] === item.request[k];
+							}
 						}
 					}
-				}
-			}
-		}
-
-		function O(Y, Z, aa) {
-			if (aa) {
-				n(T, Y, Z, aa)
-			}
-			X(Y, Z);
-			P.ack(Z)
-		}
-
-		function L(aa, Y) {
-			Y = Y || {};
-			if (N) {
-				if (Y.todo && Y.todo.options) {
-					if (Y.todo.options.center) {
-						Y.todo.options.center = I(Y.todo.options.center)
-					}
-					N.setOptions(Y.todo.options)
-				}
-			} else {
-				var Z = Y.opts || y.extend(true, {}, z.map, Y.todo && Y.todo.options ? Y.todo.options : {});
-				Z.center = aa || I(Z.center);
-				N = new z.classes.Map(T.get(0), Z)
-			}
-		}
-
-		this.map = function (Y) {
-			L(Y.latLng, Y);
-			n(T, Y, N);
-			O(Y, N)
-		};
-		this.destroy = function (Y) {
-			V.clear();
-			T.empty();
-			if (N) {
-				N = null
-			}
-			O(Y, true)
-		};
-		this.infowindow = function (Z) {
-			var aa = [], Y = "values" in Z.todo;
-			if (!Y) {
-				if (Z.latLng) {
-					Z.opts.position = Z.latLng
-				}
-				Z.todo.values = [
-					{options: Z.opts}
-				]
-			}
-			y.each(Z.todo.values, function (ac, ad) {
-				var af, ae, ab = b(Z, ad);
-				ab.options.position = ab.options.position ? I(ab.options.position) : I(ad.latLng);
-				if (!N) {
-					L(ab.options.position)
-				}
-				ae = new z.classes.InfoWindow(ab.options);
-				if (ae && ((ab.open === t) || ab.open)) {
-					if (Y) {
-						ae.open(N, ab.anchor ? ab.anchor : t)
-					} else {
-						ae.open(N, ab.anchor ? ab.anchor : (Z.latLng ? t : (Z.session.marker ? Z.session.marker : t)))
+					if (eq) {
+						return item.results;
 					}
 				}
-				aa.push(ae);
-				af = V.add({todo: ab}, "infowindow", ae);
-				n(T, {todo: ab}, ae, af)
-			});
-			O(Z, Y ? aa : aa[0])
-		};
-		this.circle = function (Z) {
-			var aa = [], Y = "values" in Z.todo;
-			if (!Y) {
-				Z.opts.center = Z.latLng || I(Z.opts.center);
-				Z.todo.values = [
-					{options: Z.opts}
-				]
 			}
-			if (!Z.todo.values.length) {
-				O(Z, false);
-				return
-			}
-			y.each(Z.todo.values, function (ac, ad) {
-				var af, ae, ab = b(Z, ad);
-				ab.options.center = ab.options.center ? I(ab.options.center) : I(ad);
-				if (!N) {
-					L(ab.options.center)
-				}
-				ab.options.map = N;
-				ae = new z.classes.Circle(ab.options);
-				aa.push(ae);
-				af = V.add({todo: ab}, "circle", ae);
-				n(T, {todo: ab}, ae, af)
-			});
-			O(Z, Y ? aa : aa[0])
 		};
-		this.overlay = function (aa, Z) {
-			var ab = [], Y = "values" in aa.todo;
-			if (!Y) {
-				aa.todo.values = [
-					{latLng: aa.latLng, options: aa.opts}
-				]
-			}
-			if (!aa.todo.values.length) {
-				O(aa, false);
-				return
-			}
-			if (!e.__initialised) {
-				e.prototype = new z.classes.OverlayView();
-				e.__initialised = true
-			}
-			y.each(aa.todo.values, function (ae, af) {
-				var ah, ag, ac = b(aa, af), ad = y(document.createElement("div")).css({
-					border: "none",
-					borderWidth: "0px",
-					position: "absolute"
-				});
-				ad.append(ac.options.content);
-				ag = new e(N, ac.options, I(ac) || I(af), ad);
-				ab.push(ag);
-				ad = null;
-				if (!Z) {
-					ah = V.add(aa, "overlay", ag);
-					n(T, {todo: ac}, ag, ah)
-				}
-			});
-			if (Z) {
-				return ab[0]
-			}
-			O(aa, Y ? ab : ab[0])
+
+		this.store = function (request, results) {
+			cache.push({request: request, keys: getKeys(request), results: results});
 		};
-		this.getaddress = function (Y) {
-			X(Y, Y.results, Y.status);
-			P.ack()
+	}
+	/**
+	 * Class Stack
+	 * @constructor
+	 */
+	function Stack() {
+		var st = [],
+			self = this;
+
+		self.empty = function () {
+			return !st.length;
 		};
-		this.getlatlng = function (Y) {
-			X(Y, Y.results, Y.status);
-			P.ack()
+
+		self.add = function (v) {
+			st.push(v);
 		};
-		this.getmaxzoom = function (Y) {
-			q().getMaxZoomAtLatLng(Y.latLng, function (Z) {
-				X(Y, Z.status === google.maps.MaxZoomStatus.OK ? Z.zoom : false, status);
-				P.ack()
-			})
+
+		self.get = function () {
+			return st.length ? st[0] : false;
 		};
-		this.getelevation = function (Z) {
-			var aa, Y = [], ab = function (ad, ac) {
-				X(Z, ac === google.maps.ElevationStatus.OK ? ad : false, ac);
-				P.ack()
+
+		self.ack = function () {
+			st.shift();
+		};
+	}
+	/**
+	 * Class Store
+	 * @constructor
+	 */
+	function Store() {
+		var store = {}, // name => [id, ...]
+			objects = {}, // id => object
+			self = this;
+
+		function normalize(res) {
+			return {
+				id: res.id,
+				name: res.name,
+				object: res.obj,
+				tag: res.tag,
+				data: res.data
 			};
-			if (Z.latLng) {
-				Y.push(Z.latLng)
-			} else {
-				Y = g(Z.todo.locations || []);
-				for (aa = 0; aa < Y.length; aa++) {
-					Y[aa] = I(Y[aa])
-				}
-			}
-			if (Y.length) {
-				h().getElevationForLocations({locations: Y}, ab)
-			} else {
-				if (Z.todo.path && Z.todo.path.length) {
-					for (aa = 0; aa < Z.todo.path.length; aa++) {
-						Y.push(I(Z.todo.path[aa]))
-					}
-				}
-				if (Y.length) {
-					h().getElevationAlongPath({path: Y, samples: Z.todo.samples}, ab)
-				} else {
-					P.ack()
-				}
-			}
-		};
-		this.defaults = function (Y) {
-			y.each(Y.todo, function (Z, aa) {
-				if (typeof z[Z] === "object") {
-					z[Z] = y.extend({}, z[Z], aa)
-				} else {
-					z[Z] = aa
-				}
-			});
-			P.ack(true)
-		};
-		this.rectangle = function (Z) {
-			var aa = [], Y = "values" in Z.todo;
-			if (!Y) {
-				Z.todo.values = [
-					{options: Z.opts}
-				]
-			}
-			if (!Z.todo.values.length) {
-				O(Z, false);
-				return
-			}
-			y.each(Z.todo.values, function (ac, ad) {
-				var af, ae, ab = b(Z, ad);
-				ab.options.bounds = ab.options.bounds ? j(ab.options.bounds) : j(ad);
-				if (!N) {
-					L(ab.options.bounds.getCenter())
-				}
-				ab.options.map = N;
-				ae = new z.classes.Rectangle(ab.options);
-				aa.push(ae);
-				af = V.add({todo: ab}, "rectangle", ae);
-				n(T, {todo: ab}, ae, af)
-			});
-			O(Z, Y ? aa : aa[0])
-		};
-		function M(Z, aa, ab) {
-			var ac = [], Y = "values" in Z.todo;
-			if (!Y) {
-				Z.todo.values = [
-					{options: Z.opts}
-				]
-			}
-			if (!Z.todo.values.length) {
-				O(Z, false);
-				return
-			}
-			L();
-			y.each(Z.todo.values, function (af, ah) {
-				var aj, ag, ae, ai, ad = b(Z, ah);
-				if (ad.options[ab]) {
-					if (ad.options[ab][0][0] && y.isArray(ad.options[ab][0][0])) {
-						for (ag = 0; ag < ad.options[ab].length; ag++) {
-							for (ae = 0; ae < ad.options[ab][ag].length; ae++) {
-								ad.options[ab][ag][ae] = I(ad.options[ab][ag][ae])
-							}
-						}
-					} else {
-						for (ag = 0; ag < ad.options[ab].length; ag++) {
-							ad.options[ab][ag] = I(ad.options[ab][ag])
-						}
-					}
-				}
-				ad.options.map = N;
-				ai = new google.maps[aa](ad.options);
-				ac.push(ai);
-				aj = V.add({todo: ad}, aa.toLowerCase(), ai);
-				n(T, {todo: ad}, ai, aj)
-			});
-			O(Z, Y ? ac : ac[0])
 		}
 
-		this.polyline = function (Y) {
-			M(Y, "Polyline", "path")
-		};
-		this.polygon = function (Y) {
-			M(Y, "Polygon", "paths")
-		};
-		this.trafficlayer = function (Y) {
-			L();
-			var Z = V.get("trafficlayer");
-			if (!Z) {
-				Z = new z.classes.TrafficLayer();
-				Z.setMap(N);
-				V.add(Y, "trafficlayer", Z)
+		/**
+		 * add a mixed to the store
+		 **/
+		self.add = function (args, name, obj, sub) {
+			var td = args.td || {},
+				id = globalId(td.id);
+			if (!store[name]) {
+				store[name] = [];
 			}
-			O(Y, Z)
-		};
-		this.bicyclinglayer = function (Y) {
-			L();
-			var Z = V.get("bicyclinglayer");
-			if (!Z) {
-				Z = new z.classes.BicyclingLayer();
-				Z.setMap(N);
-				V.add(Y, "bicyclinglayer", Z)
+			if (id in objects) { // object already exists: remove it
+				self.clearById(id);
 			}
-			O(Y, Z)
+			objects[id] = {obj: obj, sub: sub, name: name, id: id, tag: td.tag, data: td.data};
+			store[name].push(id);
+			return id;
 		};
-		this.groundoverlay = function (Y) {
-			Y.opts.bounds = j(Y.opts.bounds);
-			if (Y.opts.bounds) {
-				L(Y.opts.bounds.getCenter())
-			}
-			var aa, Z = new z.classes.GroundOverlay(Y.opts.url, Y.opts.bounds, Y.opts.opts);
-			Z.setMap(N);
-			aa = V.add(Y, "groundoverlay", Z);
-			O(Y, Z, aa)
-		};
-		this.streetviewpanorama = function (Y) {
-			if (!Y.opts.opts) {
-				Y.opts.opts = {}
-			}
-			if (Y.latLng) {
-				Y.opts.opts.position = Y.latLng
-			} else {
-				if (Y.opts.opts.position) {
-					Y.opts.opts.position = I(Y.opts.opts.position)
+
+		/**
+		 * return a stored object by its id
+		 **/
+		self.getById = function (id, sub, full) {
+			var result = false;
+			if (id in objects) {
+				if (sub) {
+					result = objects[id].sub;
+				} else if (full) {
+					result = normalize(objects[id]);
+				} else {
+					result = objects[id].obj;
 				}
 			}
-			if (Y.todo.divId) {
-				Y.opts.container = document.getElementById(Y.todo.divId)
-			} else {
-				if (Y.opts.container) {
-					Y.opts.container = y(Y.opts.container).get(0)
-				}
-			}
-			var aa, Z = new z.classes.StreetViewPanorama(Y.opts.container, Y.opts.opts);
-			if (Z) {
-				N.setStreetView(Z)
-			}
-			aa = V.add(Y, "streetviewpanorama", Z);
-			O(Y, Z, aa)
+			return result;
 		};
-		this.kmllayer = function (Z) {
-			var aa = [], Y = "values" in Z.todo;
-			if (!Y) {
-				Z.todo.values = [
-					{options: Z.opts}
-				]
+
+		/**
+		 * return a stored value
+		 **/
+		self.get = function (name, last, tag, full) {
+			var n, id, check = ftag(tag);
+			if (!store[name] || !store[name].length) {
+				return null;
 			}
-			if (!Z.todo.values.length) {
-				O(Z, false);
-				return
-			}
-			y.each(Z.todo.values, function (ad, ae) {
-				var ag, af, ac, ab = b(Z, ae);
-				if (!N) {
-					L()
-				}
-				ac = ab.options;
-				if (ab.options.opts) {
-					ac = ab.options.opts;
-					if (ab.options.url) {
-						ac.url = ab.options.url
+			n = store[name].length;
+			while (n) {
+				n--;
+				id = store[name][last ? n : store[name].length - n - 1];
+				if (id && objects[id]) {
+					if (check && !check(objects[id].tag)) {
+						continue;
 					}
+					return full ? normalize(objects[id]) : objects[id].obj;
 				}
-				ac.map = N;
-				if (d("3.10")) {
-					af = new z.classes.KmlLayer(ac)
-				} else {
-					af = new z.classes.KmlLayer(ac.url, ac)
-				}
-				aa.push(af);
-				ag = V.add({todo: ab}, "kmllayer", af);
-				n(T, {todo: ab}, af, ag)
-			});
-			O(Z, Y ? aa : aa[0])
+			}
+			return null;
 		};
-		this.panel = function (ab) {
-			L();
-			var ad, Y = 0, ac = 0, aa, Z = y(document.createElement("div"));
-			Z.css({position: "absolute", zIndex: 1000, visibility: "hidden"});
-			if (ab.opts.content) {
-				aa = y(ab.opts.content);
-				Z.append(aa);
-				T.first().prepend(Z);
-				if (ab.opts.left !== t) {
-					Y = ab.opts.left
-				} else {
-					if (ab.opts.right !== t) {
-						Y = T.width() - aa.width() - ab.opts.right
-					} else {
-						if (ab.opts.center) {
-							Y = (T.width() - aa.width()) / 2
+
+		/**
+		 * return all stored values
+		 **/
+		self.all = function (name, tag, full) {
+			var result = [],
+				check = ftag(tag),
+				find = function (n) {
+					var i, id;
+					for (i = 0; i < store[n].length; i++) {
+						id = store[n][i];
+						if (id && objects[id]) {
+							if (check && !check(objects[id].tag)) {
+								continue;
+							}
+							result.push(full ? normalize(objects[id]) : objects[id].obj);
 						}
 					}
+				};
+			if (name in store) {
+				find(name);
+			} else if (isUndefined(name)) { // internal use only
+				for (name in store) {
+					find(name);
 				}
-				if (ab.opts.top !== t) {
-					ac = ab.opts.top
-				} else {
-					if (ab.opts.bottom !== t) {
-						ac = T.height() - aa.height() - ab.opts.bottom
-					} else {
-						if (ab.opts.middle) {
-							ac = (T.height() - aa.height()) / 2
-						}
-					}
-				}
-				Z.css({top: ac, left: Y, visibility: "visible"})
 			}
-			ad = V.add(ab, "panel", Z);
-			O(ab, Z, ad);
-			Z = null
+			return result;
 		};
-		function W(aa) {
-			var af = new F(T, N, aa), Y = {}, ab = {}, ae = [], ad = /^[0-9]+$/, ac, Z;
-			for (Z in aa) {
-				if (ad.test(Z)) {
-					ae.push(1 * Z);
-					ab[Z] = aa[Z];
-					ab[Z].width = ab[Z].width || 0;
-					ab[Z].height = ab[Z].height || 0
-				} else {
-					Y[Z] = aa[Z]
-				}
+
+		/**
+		 * hide and remove an object
+		 **/
+		function rm(obj) {
+			// Google maps element
+			if (isFunction(obj.setMap)) {
+				obj.setMap(null);
 			}
-			ae.sort(function (ah, ag) {
-				return ah > ag
-			});
-			if (Y.calculator) {
-				ac = function (ag) {
-					var ah = [];
-					y.each(ag, function (aj, ai) {
-						ah.push(af.value(ai))
-					});
-					return Y.calculator.apply(T, [ah])
-				}
-			} else {
-				ac = function (ag) {
-					return ag.length
-				}
+			// jQuery
+			if (isFunction(obj.remove)) {
+				obj.remove();
 			}
-			af.error(function () {
-				u.apply(S, arguments)
-			});
-			af.display(function (ag) {
-				var ai, aj, am, ak, al, ah = ac(ag.indexes);
-				if (aa.force || ah > 1) {
-					for (ai = 0; ai < ae.length; ai++) {
-						if (ae[ai] <= ah) {
-							aj = ab[ae[ai]]
-						}
-					}
-				}
-				if (aj) {
-					al = aj.offset || [-aj.width / 2, -aj.height / 2];
-					am = y.extend({}, Y);
-					am.options = y.extend({
-						pane: "overlayLayer",
-						content: aj.content ? aj.content.replace("CLUSTER_COUNT", ah) : "",
-						offset: {x: ("x" in al ? al.x : al[0]) || 0, y: ("y" in al ? al.y : al[1]) || 0}
-					}, Y.options || {});
-					ak = S.overlay({todo: am, opts: am.options, latLng: I(ag)}, true);
-					am.options.pane = "floatShadow";
-					am.options.content = y(document.createElement("div")).width(aj.width + "px").height(aj.height + "px").css({cursor: "pointer"});
-					shadow = S.overlay({todo: am, opts: am.options, latLng: I(ag)}, true);
-					Y.data = {latLng: I(ag), markers: []};
-					y.each(ag.indexes, function (ao, an) {
-						Y.data.markers.push(af.value(an));
-						if (af.markerIsSet(an)) {
-							af.marker(an).setMap(null)
-						}
-					});
-					n(T, {todo: Y}, shadow, t, {main: ak, shadow: shadow});
-					af.store(ag, ak, shadow)
-				} else {
-					y.each(ag.indexes, function (ao, an) {
-						af.marker(an).setMap(N)
-					})
-				}
-			});
-			return af
+			// internal (cluster)
+			if (isFunction(obj.free)) {
+				obj.free();
+			}
+			obj = null;
 		}
 
-		this.marker = function (aa) {
-			var Y = "values" in aa.todo, ad = !N;
-			if (!Y) {
-				aa.opts.position = aa.latLng || I(aa.opts.position);
-				aa.todo.values = [
-					{options: aa.opts}
-				]
+		/**
+		 * remove one object from the store
+		 **/
+		self.rm = function (name, check, pop) {
+			var idx, id;
+			if (!store[name]) {
+				return false;
 			}
-			if (!aa.todo.values.length) {
-				O(aa, false);
-				return
-			}
-			if (ad) {
-				L()
-			}
-			if (aa.todo.cluster && !N.getBounds()) {
-				google.maps.event.addListenerOnce(N, "bounds_changed", function () {
-					S.marker.apply(S, [aa])
-				});
-				return
-			}
-			if (aa.todo.cluster) {
-				var Z, ab;
-				if (aa.todo.cluster instanceof a) {
-					Z = aa.todo.cluster;
-					ab = V.getById(Z.id(), true)
-				} else {
-					ab = W(aa.todo.cluster);
-					Z = new a(k(aa.todo.id, true), ab);
-					V.add(aa, "clusterer", Z, ab)
-				}
-				ab.beginUpdate();
-				y.each(aa.todo.values, function (af, ag) {
-					var ae = b(aa, ag);
-					ae.options.position = ae.options.position ? I(ae.options.position) : I(ag);
-					ae.options.map = N;
-					if (ad) {
-						N.setCenter(ae.options.position);
-						ad = false
+			if (check) {
+				if (pop) {
+					for (idx = store[name].length - 1; idx >= 0; idx--) {
+						id = store[name][idx];
+						if (check(objects[id].tag)) {
+							break;
+						}
 					}
-					ab.add(ae, ag)
-				});
-				ab.endUpdate();
-				O(aa, Z)
-			} else {
-				var ac = [];
-				y.each(aa.todo.values, function (af, ag) {
-					var ai, ah, ae = b(aa, ag);
-					ae.options.position = ae.options.position ? I(ae.options.position) : I(ag);
-					ae.options.map = N;
-					if (ad) {
-						N.setCenter(ae.options.position);
-						ad = false
-					}
-					ah = new z.classes.Marker(ae.options);
-					ac.push(ah);
-					ai = V.add({todo: ae}, "marker", ah);
-					n(T, {todo: ae}, ah, ai)
-				});
-				O(aa, Y ? ac : ac[0])
-			}
-		};
-		this.getroute = function (Y) {
-			Y.opts.origin = I(Y.opts.origin, true);
-			Y.opts.destination = I(Y.opts.destination, true);
-			G().route(Y.opts, function (aa, Z) {
-				X(Y, Z == google.maps.DirectionsStatus.OK ? aa : false, Z);
-				P.ack()
-			})
-		};
-		this.directionsrenderer = function (Y) {
-			Y.opts.map = N;
-			var aa, Z = new google.maps.DirectionsRenderer(Y.opts);
-			if (Y.todo.divId) {
-				Z.setPanel(document.getElementById(Y.todo.divId))
-			} else {
-				if (Y.todo.container) {
-					Z.setPanel(y(Y.todo.container).get(0))
-				}
-			}
-			aa = V.add(Y, "directionsrenderer", Z);
-			O(Y, Z, aa)
-		};
-		this.getgeoloc = function (Y) {
-			O(Y, Y.latLng)
-		};
-		this.styledmaptype = function (Y) {
-			L();
-			var Z = new z.classes.StyledMapType(Y.todo.styles, Y.opts);
-			N.mapTypes.set(Y.todo.id, Z);
-			O(Y, Z)
-		};
-		this.imagemaptype = function (Y) {
-			L();
-			var Z = new z.classes.ImageMapType(Y.opts);
-			N.mapTypes.set(Y.todo.id, Z);
-			O(Y, Z)
-		};
-		this.autofit = function (Y) {
-			var Z = new google.maps.LatLngBounds();
-			y.each(V.all(), function (aa, ab) {
-				if (ab.getPosition) {
-					Z.extend(ab.getPosition())
 				} else {
-					if (ab.getBounds) {
-						Z.extend(ab.getBounds().getNorthEast());
-						Z.extend(ab.getBounds().getSouthWest())
-					} else {
-						if (ab.getPaths) {
-							ab.getPaths().forEach(function (ac) {
-								ac.forEach(function (ad) {
-									Z.extend(ad)
-								})
-							})
-						} else {
-							if (ab.getPath) {
-								ab.getPath().forEach(function (ac) {
-									Z.extend(ac);
-									""
-								})
-							} else {
-								if (ab.getCenter) {
-									Z.extend(ab.getCenter())
-								} else {
-									if (ab instanceof a) {
-										ab = V.getById(ab.id(), true);
-										if (ab) {
-											ab.autofit(Z)
-										}
-									}
-								}
-							}
+					for (idx = 0; idx < store[name].length; idx++) {
+						id = store[name][idx];
+						if (check(objects[id].tag)) {
+							break;
 						}
 					}
 				}
-			});
-			if (!Z.isEmpty() && (!N.getBounds() || !N.getBounds().equals(Z))) {
-				if ("maxZoom" in Y.todo) {
-					google.maps.event.addListenerOnce(N, "bounds_changed", function () {
-						if (this.getZoom() > Y.todo.maxZoom) {
-							this.setZoom(Y.todo.maxZoom)
-						}
-					})
-				}
-				N.fitBounds(Z)
-			}
-			O(Y, true)
-		};
-		this.clear = function (Y) {
-			if (typeof Y.todo === "string") {
-				if (V.clearById(Y.todo) || V.objClearById(Y.todo)) {
-					O(Y, true);
-					return
-				}
-				Y.todo = {name: Y.todo}
-			}
-			if (Y.todo.id) {
-				y.each(g(Y.todo.id), function (Z, aa) {
-					V.clearById(aa) || V.objClearById(aa)
-				})
 			} else {
-				V.clear(g(Y.todo.name), Y.todo.last, Y.todo.first, Y.todo.tag);
-				V.objClear(g(Y.todo.name), Y.todo.last, Y.todo.first, Y.todo.tag)
+				idx = pop ? store[name].length - 1 : 0;
 			}
-			O(Y, true)
+			if (!(idx in store[name])) {
+				return false;
+			}
+			return self.clearById(store[name][idx], idx);
 		};
-		this.exec = function (Y) {
-			var Z = this;
-			y.each(g(Y.todo.func), function (aa, ab) {
-				y.each(Z.get(Y.todo, true, Y.todo.hasOwnProperty("full") ? Y.todo.full : true), function (ac, ad) {
-					ab.call(T, ad)
-				})
-			});
-			O(Y, true)
-		};
-		this.get = function (aa, ad, ac) {
-			var Z, ab, Y = ad ? aa : aa.todo;
-			if (!ad) {
-				ac = Y.full
-			}
-			if (typeof Y === "string") {
-				ab = V.getById(Y, false, ac) || V.objGetById(Y);
-				if (ab === false) {
-					Z = Y;
-					Y = {}
-				}
-			} else {
-				Z = Y.name
-			}
-			if (Z === "map") {
-				ab = N
-			}
-			if (!ab) {
-				ab = [];
-				if (Y.id) {
-					y.each(g(Y.id), function (ae, af) {
-						ab.push(V.getById(af, false, ac) || V.objGetById(af))
-					});
-					if (!y.isArray(Y.id)) {
-						ab = ab[0]
+
+		/**
+		 * remove object from the store by its id
+		 **/
+		self.clearById = function (id, idx) {
+			if (id in objects) {
+				var i, name = objects[id].name;
+				for (i = 0; isUndefined(idx) && i < store[name].length; i++) {
+					if (id === store[name][i]) {
+						idx = i;
 					}
-				} else {
-					y.each(Z ? g(Z) : [t], function (af, ag) {
-						var ae;
-						if (Y.first) {
-							ae = V.get(ag, false, Y.tag, ac);
-							if (ae) {
-								ab.push(ae)
-							}
-						} else {
-							if (Y.all) {
-								y.each(V.all(ag, Y.tag, ac), function (ai, ah) {
-									ab.push(ah)
-								})
-							} else {
-								ae = V.get(ag, true, Y.tag, ac);
-								if (ae) {
-									ab.push(ae)
-								}
-							}
-						}
-					});
-					if (!Y.all && !y.isArray(Z)) {
-						ab = ab[0]
+				}
+				rm(objects[id].obj);
+				if (objects[id].sub) {
+					rm(objects[id].sub);
+				}
+				delete objects[id];
+				store[name].splice(idx, 1);
+				return true;
+			}
+			return false;
+		};
+
+		/**
+		 * return an object from a container object in the store by its id
+		 * ! for now, only cluster manage this feature
+		 **/
+		self.objGetById = function (id) {
+			var result, idx;
+			if (store.clusterer) {
+				for (idx in store.clusterer) {
+					if ((result = objects[store.clusterer[idx]].obj.getById(id)) !== false) {
+						return result;
 					}
 				}
 			}
-			ab = y.isArray(ab) || !Y.all ? ab : [ab];
-			if (ad) {
-				return ab
-			} else {
-				O(aa, ab)
-			}
+			return false;
 		};
-		this.getdistance = function (Y) {
-			var Z;
-			Y.opts.origins = g(Y.opts.origins);
-			for (Z = 0; Z < Y.opts.origins.length; Z++) {
-				Y.opts.origins[Z] = I(Y.opts.origins[Z], true)
-			}
-			Y.opts.destinations = g(Y.opts.destinations);
-			for (Z = 0; Z < Y.opts.destinations.length; Z++) {
-				Y.opts.destinations[Z] = I(Y.opts.destinations[Z], true)
-			}
-			B().getDistanceMatrix(Y.opts, function (ab, aa) {
-				X(Y, aa === google.maps.DistanceMatrixStatus.OK ? ab : false, aa);
-				P.ack()
-			})
-		};
-		this.trigger = function (Z) {
-			if (typeof Z.todo === "string") {
-				google.maps.event.trigger(N, Z.todo)
-			} else {
-				var Y = [N, Z.todo.eventName];
-				if (Z.todo.var_args) {
-					y.each(Z.todo.var_args, function (ab, aa) {
-						Y.push(aa)
-					})
+
+		/**
+		 * remove object from a container object in the store by its id
+		 * ! for now, only cluster manage this feature
+		 **/
+		self.objClearById = function (id) {
+			var idx;
+			if (store.clusterer) {
+				for (idx in store.clusterer) {
+					if (objects[store.clusterer[idx]].obj.clearById(id)) {
+						return true;
+					}
 				}
-				google.maps.event.trigger.apply(google.maps.event, Y)
 			}
-			X(Z);
-			P.ack()
+			return null;
+		};
+
+		/**
+		 * remove objects from the store
+		 **/
+		self.clear = function (list, last, first, tag) {
+			var k, i, name,
+				check = ftag(tag);
+			if (!list || !list.length) {
+				list = [];
+				for (k in store) {
+					list.push(k);
+				}
+			} else {
+				list = array(list);
+			}
+			for (i = 0; i < list.length; i++) {
+				name = list[i];
+				if (last) {
+					self.rm(name, check, true);
+				} else if (first) {
+					self.rm(name, check, false);
+				} else { // all
+					while (self.rm(name, check, false)) {
+					}
+				}
+			}
+		};
+
+		/**
+		 * remove object from a container object in the store by its tags
+		 * ! for now, only cluster manage this feature
+		 **/
+		self.objClear = function (list, last, first, tag) {
+			var idx;
+			if (store.clusterer && ($.inArray("marker", list) >= 0 || !list.length)) {
+				for (idx in store.clusterer) {
+					objects[store.clusterer[idx]].obj.clear(last, first, tag);
+				}
+			}
+		};
+	}
+	/**
+	 * Class Task
+	 * @param ctx
+	 * @param onEnd
+	 * @param td
+	 * @constructor
+	 */
+	function Task(ctx, onEnd, td) {
+		var session = {},
+			self = this,
+			current,
+			resolve = {
+				latLng: { // function => bool (=> address = latLng)
+					map: false,
+					marker: false,
+					infowindow: false,
+					circle: false,
+					overlay: false,
+					getlatlng: false,
+					getmaxzoom: false,
+					getelevation: false,
+					streetviewpanorama: false,
+					getaddress: true
+				},
+				geoloc: {
+					getgeoloc: true
+				}
+			};
+
+		function unify(td) {
+			var result = {};
+			result[td] = {};
+			return result;
 		}
+
+		if (isString(td)) {
+			td =  unify(td);
+		}
+
+		function next() {
+			var k;
+			for (k in td) {
+				if (td.hasOwnProperty(k) && !session.hasOwnProperty(k)) {
+					return k;
+				}
+			}
+		}
+
+		self.run = function () {
+			var k, opts;
+			while (k = next()) {
+				if (isFunction(ctx[k])) {
+					current = k;
+					opts = $.extend(true, {}, defaults[k] || {}, td[k].options || {});
+					if (k in resolve.latLng) {
+						if (td[k].values) {
+							resolveAllLatLng(td[k].values, ctx, ctx[k], {td: td[k], opts: opts, session: session});
+						} else {
+							resolveLatLng(ctx, ctx[k], resolve.latLng[k], {td: td[k], opts: opts, session: session});
+						}
+					} else if (k in resolve.geoloc) {
+						geoloc(ctx, ctx[k], {td: td[k], opts: opts, session: session});
+					} else {
+						ctx[k].apply(ctx, [{td: td[k], opts: opts, session: session}]);
+					}
+					return; // wait until ack
+				} else {
+					session[k] = null;
+				}
+			}
+			onEnd.apply(ctx, [td, session]);
+		};
+
+		self.ack = function(result){
+			session[current] = result;
+			self.run.apply(self, []);
+		};
 	}
 
-	function s(M) {
-		var L;
-		if (!typeof M === "object" || !M.hasOwnProperty("get")) {
-			return false
+	function directionsService(){
+		if (!services.ds) {
+			services.ds = new gm.DirectionsService();
 		}
-		for (L in M) {
-			if (L !== "get") {
-				return false
-			}
-		}
-		return !M.get.hasOwnProperty("callback")
+		return services.ds;
 	}
 
-	y.fn.gmap3 = function () {
-		var M, O = [], N = true, L = [];
-		J();
-		for (M = 0; M < arguments.length; M++) {
-			if (arguments[M]) {
-				O.push(arguments[M])
+	function distanceMatrixService() {
+		if (!services.dms) {
+			services.dms = new gm.DistanceMatrixService();
+		}
+		return services.dms;
+	}
+
+	function maxZoomService() {
+		if (!services.mzs) {
+			services.mzs = new gm.MaxZoomService();
+		}
+		return services.mzs;
+	}
+
+	function elevationService() {
+		if (!services.es) {
+			services.es = new gm.ElevationService();
+		}
+		return services.es;
+	}
+
+	/**
+	 * Usefull to get a projection
+	 * => done in a function, to let dead-code analyser works without google library loaded
+	 **/
+	function newEmptyOverlay(map, radius) {
+		function Overlay() {
+			var self = this;
+			self.onAdd = function () {};
+			self.onRemove = function () {};
+			self.draw = function () {};
+			return defaults.classes.OverlayView.apply(self, []);
+		}
+		Overlay.prototype = defaults.classes.OverlayView.prototype;
+		var obj = new Overlay();
+		obj.setMap(map);
+		return obj;
+	}
+
+	/**
+	 * Class InternalClusterer
+	 * This class manage clusters thanks to "td" objects
+	 *
+	 * Note:
+	 * Individuals marker are created on the fly thanks to the td objects, they are
+	 * first set to null to keep the indexes synchronised with the td list
+	 * This is the "display" function, set by the gmap3 object, which uses theses data
+	 * to create markers when clusters are not required
+	 * To remove a marker, the objects are deleted and set not null in arrays
+	 *    markers[key]
+	 *      = null : marker exist but has not been displayed yet
+	 *      = false : marker has been removed
+	 **/
+	function InternalClusterer($container, map, raw) {
+		var timer, projection,
+			ffilter, fdisplay, ferror, // callback function
+			updating = false,
+			updated = false,
+			redrawing = false,
+			ready = false,
+			enabled = true,
+			self = this,
+			events =  [],
+			store = {},   // combin of index (id1-id2-...) => object
+			ids = {},     // unique id => index
+			idxs = {},    // index => unique id
+			markers = [], // index => marker
+			tds = [],   // index => td or null if removed
+			values = [],  // index => value
+			overlay = newEmptyOverlay(map, raw.radius);
+
+		main();
+
+		function prepareMarker(index) {
+			if (!markers[index]) {
+				delete tds[index].options.map;
+				markers[index] = new defaults.classes.Marker(tds[index].options);
+				attachEvents($container, {td: tds[index]}, markers[index], tds[index].id);
 			}
 		}
-		if (!O.length) {
-			O.push("map")
-		}
-		y.each(this, function () {
-			var P = y(this), Q = P.data("gmap3");
-			N = false;
-			if (!Q) {
-				Q = new K(P);
-				P.data("gmap3", Q)
+
+		/**
+		 * return a marker by its id, null if not yet displayed and false if no exist or removed
+		 **/
+		self.getById = function (id) {
+			if (id in ids) {
+				prepareMarker(ids[id]);
+				return  markers[ids[id]];
 			}
-			if (O.length === 1 && (O[0] === "get" || s(O[0]))) {
-				if (O[0] === "get") {
-					L.push(Q.get("map", true))
+			return false;
+		};
+
+		/**
+		 * remove one object from the store
+		 **/
+		self.rm = function (id) {
+			var index = ids[id];
+			if (markers[index]) { // can be null
+				markers[index].setMap(null);
+			}
+			delete markers[index];
+			markers[index] = false;
+
+			delete tds[index];
+			tds[index] = false;
+
+			delete values[index];
+			values[index] = false;
+
+			delete ids[id];
+			delete idxs[index];
+			updated = true;
+		};
+
+		/**
+		 * remove a marker by its id
+		 **/
+		self.clearById = function (id) {
+			if (id in ids){
+				self.rm(id);
+				return true;
+			}
+		};
+
+		/**
+		 * remove objects from the store
+		 **/
+		self.clear = function (last, first, tag) {
+			var start, stop, step, index, i,
+				list = [],
+				check = ftag(tag);
+			if (last) {
+				start = tds.length - 1;
+				stop = -1;
+				step = -1;
+			} else {
+				start = 0;
+				stop =  tds.length;
+				step = 1;
+			}
+			for (index = start; index !== stop; index += step) {
+				if (tds[index]) {
+					if (!check || check(tds[index].tag)) {
+						list.push(idxs[index]);
+						if (first || last) {
+							break;
+						}
+					}
+				}
+			}
+			for (i = 0; i < list.length; i++) {
+				self.rm(list[i]);
+			}
+		};
+
+		// add a "marker td" to the cluster
+		self.add = function (td, value) {
+			td.id = globalId(td.id);
+			self.clearById(td.id);
+			ids[td.id] = markers.length;
+			idxs[markers.length] = td.id;
+			markers.push(null); // null = marker not yet created / displayed
+			tds.push(td);
+			values.push(value);
+			updated = true;
+		};
+
+		// add a real marker to the cluster
+		self.addMarker = function (marker, td) {
+			td = td || {};
+			td.id = globalId(td.id);
+			self.clearById(td.id);
+			if (!td.options) {
+				td.options = {};
+			}
+			td.options.position = marker.getPosition();
+			attachEvents($container, {td: td}, marker, td.id);
+			ids[td.id] = markers.length;
+			idxs[markers.length] = td.id;
+			markers.push(marker);
+			tds.push(td);
+			values.push(td.data || {});
+			updated = true;
+		};
+
+		// return a "marker td" by its index
+		self.td = function (index) {
+			return tds[index];
+		};
+
+		// return a "marker value" by its index
+		self.value = function (index) {
+			return values[index];
+		};
+
+		// return a marker by its index
+		self.marker = function (index) {
+			if (index in markers) {
+				prepareMarker(index);
+				return  markers[index];
+			}
+			return false;
+		};
+
+		// return a marker by its index
+		self.markerIsSet = function (index) {
+			return Boolean(markers[index]);
+		};
+
+		// store a new marker instead if the default "false"
+		self.setMarker = function (index, marker) {
+			markers[index] = marker;
+		};
+
+		// link the visible overlay to the logical data (to hide overlays later)
+		self.store = function (cluster, obj, shadow) {
+			store[cluster.ref] = {obj: obj, shadow: shadow};
+		};
+
+		// free all objects
+		self.free = function () {
+			var i;
+			for(i = 0; i < events.length; i++) {
+				gm.event.removeListener(events[i]);
+			}
+			events = [];
+
+			$.each(store, function (key) {
+				flush(key);
+			});
+			store = {};
+
+			$.each(tds, function (i) {
+				tds[i] = null;
+			});
+			tds = [];
+
+			$.each(markers, function (i) {
+				if (markers[i]) { // false = removed
+					markers[i].setMap(null);
+					delete markers[i];
+				}
+			});
+			markers = [];
+
+			$.each(values, function (i) {
+				delete values[i];
+			});
+			values = [];
+
+			ids = {};
+			idxs = {};
+		};
+
+		// link the display function
+		self.filter = function (f) {
+			ffilter = f;
+			redraw();
+		};
+
+		// enable/disable the clustering feature
+		self.enable = function (value) {
+			if (enabled !== value) {
+				enabled = value;
+				redraw();
+			}
+		};
+
+		// link the display function
+		self.display = function (f) {
+			fdisplay = f;
+		};
+
+		// link the errorfunction
+		self.error = function (f) {
+			ferror = f;
+		};
+
+		// lock the redraw
+		self.beginUpdate = function () {
+			updating = true;
+		};
+
+		// unlock the redraw
+		self.endUpdate = function () {
+			updating = false;
+			if (updated) {
+				redraw();
+			}
+		};
+
+		// extends current bounds with internal markers
+		self.autofit = function (bounds) {
+			var i;
+			for (i = 0; i < tds.length; i++) {
+				if (tds[i]) {
+					bounds.extend(tds[i].options.position);
+				}
+			}
+		};
+
+		// bind events
+		function main() {
+			projection = overlay.getProjection();
+			if (!projection) {
+				setTimeout(function () { main.apply(self, []); }, 25);
+				return;
+			}
+			ready = true;
+			events.push(gm.event.addListener(map, "zoom_changed", delayRedraw));
+			events.push(gm.event.addListener(map, "bounds_changed", delayRedraw));
+			redraw();
+		}
+
+		// flush overlays
+		function flush(key) {
+			if (isObject(store[key])) { // is overlay
+				if (isFunction(store[key].obj.setMap)) {
+					store[key].obj.setMap(null);
+				}
+				if (isFunction(store[key].obj.remove)) {
+					store[key].obj.remove();
+				}
+				if (isFunction(store[key].shadow.remove)) {
+					store[key].obj.remove();
+				}
+				if (isFunction(store[key].shadow.setMap)) {
+					store[key].shadow.setMap(null);
+				}
+				delete store[key].obj;
+				delete store[key].shadow;
+			} else if (markers[key]) { // marker not removed
+				markers[key].setMap(null);
+				// don't remove the marker object, it may be displayed later
+			}
+			delete store[key];
+		}
+
+		/**
+		 * return the distance between 2 latLng couple into meters
+		 * Params :
+		 *  Lat1, Lng1, Lat2, Lng2
+		 *  LatLng1, Lat2, Lng2
+		 *  Lat1, Lng1, LatLng2
+		 *  LatLng1, LatLng2
+		 **/
+		function distanceInMeter() {
+			var lat1, lat2, lng1, lng2, e, f, g, h,
+				cos = Math.cos,
+				sin = Math.sin,
+				args = arguments;
+			if (args[0] instanceof gm.LatLng) {
+				lat1 = args[0].lat();
+				lng1 = args[0].lng();
+				if (args[1] instanceof gm.LatLng) {
+					lat2 = args[1].lat();
+					lng2 = args[1].lng();
 				} else {
-					L.push(Q.get(O[0].get, true, O[0].get.full))
+					lat2 = args[1];
+					lng2 = args[2];
 				}
 			} else {
-				Q._plan(O)
+				lat1 = args[0];
+				lng1 = args[1];
+				if (args[2] instanceof gm.LatLng) {
+					lat2 = args[2].lat();
+					lng2 = args[2].lng();
+				} else {
+					lat2 = args[2];
+					lng2 = args[3];
+				}
+			}
+			e = Math.PI * lat1 / 180;
+			f = Math.PI * lng1 / 180;
+			g = Math.PI * lat2 / 180;
+			h = Math.PI * lng2 / 180;
+			return 1000 * 6371 * Math.acos(Math.min(cos(e) * cos(g) * cos(f) * cos(h) + cos(e) * sin(f) * cos(g) * sin(h) + sin(e) * sin(g), 1));
+		}
+
+		// extend the visible bounds
+		function extendsMapBounds() {
+			var radius = distanceInMeter(map.getCenter(), map.getBounds().getNorthEast()),
+				circle = new gm.Circle({
+					center: map.getCenter(),
+					radius: 1.25 * radius // + 25%
+				});
+			return circle.getBounds();
+		}
+
+		// return an object where keys are store keys
+		function getStoreKeys() {
+			var k,
+				keys = {};
+			for (k in store) {
+				keys[k] = true;
+			}
+			return keys;
+		}
+
+		// async the delay function
+		function delayRedraw() {
+			clearTimeout(timer);
+			timer = setTimeout(redraw, 25);
+		}
+
+		// generate bounds extended by radius
+		function extendsBounds(latLng) {
+			var p = projection.fromLatLngToDivPixel(latLng),
+				ne = projection.fromDivPixelToLatLng(new gm.Point(p.x + raw.radius, p.y - raw.radius)),
+				sw = projection.fromDivPixelToLatLng(new gm.Point(p.x - raw.radius, p.y + raw.radius));
+			return new gm.LatLngBounds(sw, ne);
+		}
+
+		// run the clustering process and call the display function
+		function redraw() {
+			if (updating || redrawing || !ready) {
+				return;
+			}
+
+			var i, j, k, indexes, check = false, bounds, cluster, position, previous, lat, lng, loop,
+				keys = [],
+				used = {},
+				zoom = map.getZoom(),
+				forceDisabled = ("maxZoom" in raw) && (zoom > raw.maxZoom),
+				previousKeys = getStoreKeys();
+
+			// reset flag
+			updated = false;
+
+			if (zoom > 3) {
+				// extend the bounds of the visible map to manage clusters near the boundaries
+				bounds = extendsMapBounds();
+
+				// check contain only if boundaries are valid
+				check = bounds.getSouthWest().lng() < bounds.getNorthEast().lng();
+			}
+
+			// calculate positions of "visibles" markers (in extended bounds)
+			for (i = 0; i < tds.length; i++) {
+				if (tds[i] && (!check || bounds.contains(tds[i].options.position)) && (!ffilter || ffilter(values[i]))) {
+					keys.push(i);
+				}
+			}
+
+			// for each "visible" marker, search its neighbors to create a cluster
+			// we can't do a classical "for" loop, because, analysis can bypass a marker while focusing on cluster
+			while (1) {
+				i = 0;
+				while (used[i] && (i < keys.length)) { // look for the next marker not used
+					i++;
+				}
+				if (i === keys.length) {
+					break;
+				}
+
+				indexes = [];
+
+				if (enabled && !forceDisabled) {
+					loop = 10;
+					do {
+						previous = indexes;
+						indexes = [];
+						loop--;
+
+						if (previous.length) {
+							position = bounds.getCenter();
+						} else {
+							position = tds[keys[i]].options.position;
+						}
+						bounds = extendsBounds(position);
+
+						for (j = i; j < keys.length; j++) {
+							if (used[j]) {
+								continue;
+							}
+							if (bounds.contains(tds[keys[j]].options.position)) {
+								indexes.push(j);
+							}
+						}
+					} while ((previous.length < indexes.length) && (indexes.length > 1) && loop);
+				} else {
+					for (j = i; j < keys.length; j++) {
+						if (!used[j]) {
+							indexes.push(j);
+							break;
+						}
+					}
+				}
+
+				cluster = {indexes: [], ref: []};
+				lat = lng = 0;
+				for (k = 0; k < indexes.length; k++) {
+					used[indexes[k]] = true;
+					cluster.indexes.push(keys[indexes[k]]);
+					cluster.ref.push(keys[indexes[k]]);
+					lat += tds[keys[indexes[k]]].options.position.lat();
+					lng += tds[keys[indexes[k]]].options.position.lng();
+				}
+				lat /= indexes.length;
+				lng /= indexes.length;
+				cluster.latLng = new gm.LatLng(lat, lng);
+
+				cluster.ref = cluster.ref.join("-");
+
+				if (cluster.ref in previousKeys) { // cluster doesn't change
+					delete previousKeys[cluster.ref]; // remove this entry, these still in this array will be removed
+				} else { // cluster is new
+					if (indexes.length === 1) { // alone markers are not stored, so need to keep the key (else, will be displayed every time and marker will blink)
+						store[cluster.ref] = true;
+					}
+					fdisplay(cluster);
+				}
+			}
+
+			// flush the previous overlays which are not still used
+			$.each(previousKeys, function (key) {
+				flush(key);
+			});
+			redrawing = false;
+		}
+	}
+	/**
+	 * Class Clusterer
+	 * a facade with limited method for external use
+	 **/
+	function Clusterer(id, internalClusterer) {
+		var self = this;
+		self.id = function () {
+			return id;
+		};
+		self.filter = function (f) {
+			internalClusterer.filter(f);
+		};
+		self.enable = function () {
+			internalClusterer.enable(true);
+		};
+		self.disable = function () {
+			internalClusterer.enable(false);
+		};
+		self.add = function (marker, td, lock) {
+			if (!lock) {
+				internalClusterer.beginUpdate();
+			}
+			internalClusterer.addMarker(marker, td);
+			if (!lock) {
+				internalClusterer.endUpdate();
+			}
+		};
+		self.getById = function (id) {
+			return internalClusterer.getById(id);
+		};
+		self.clearById = function (id, lock) {
+			var result;
+			if (!lock) {
+				internalClusterer.beginUpdate();
+			}
+			result = internalClusterer.clearById(id);
+			if (!lock) {
+				internalClusterer.endUpdate();
+			}
+			return result;
+		};
+		self.clear = function (last, first, tag, lock) {
+			if (!lock) {
+				internalClusterer.beginUpdate();
+			}
+			internalClusterer.clear(last, first, tag);
+			if (!lock) {
+				internalClusterer.endUpdate();
+			}
+		};
+	}
+
+	/**
+	 * Class OverlayView
+	 * @constructor
+	 */
+	function OverlayView(map, opts, latLng, $div) {
+		var self = this,
+			listeners = [];
+
+		defaults.classes.OverlayView.call(self);
+		self.setMap(map);
+
+		self.onAdd = function () {
+			var panes = self.getPanes();
+			if (opts.pane in panes) {
+				$(panes[opts.pane]).append($div);
+			}
+			$.each("dblclick click mouseover mousemove mouseout mouseup mousedown".split(" "), function (i, name) {
+				listeners.push(
+					gm.event.addDomListener($div[0], name, function (e) {
+						$.Event(e).stopPropagation();
+						gm.event.trigger(self, name, [e]);
+						self.draw();
+					})
+				);
+			});
+			listeners.push(
+				gm.event.addDomListener($div[0], "contextmenu", function (e) {
+					$.Event(e).stopPropagation();
+					gm.event.trigger(self, "rightclick", [e]);
+					self.draw();
+				})
+			);
+		};
+
+		self.getPosition = function () {
+			return latLng;
+		};
+
+		self.setPosition = function (newLatLng) {
+			latLng = newLatLng;
+			self.draw();
+		};
+
+		self.draw = function () {
+			var ps = self.getProjection().fromLatLngToDivPixel(latLng);
+			$div
+				.css("left", (ps.x + opts.offset.x) + "px")
+				.css("top", (ps.y + opts.offset.y) + "px");
+		};
+
+		self.onRemove = function () {
+			var i;
+			for (i = 0; i < listeners.length; i++) {
+				gm.event.removeListener(listeners[i]);
+			}
+			$div.remove();
+		};
+
+		self.hide = function () {
+			$div.hide();
+		};
+
+		self.show = function () {
+			$div.show();
+		};
+
+		self.toggle = function () {
+			if ($div) {
+				if ($div.is(":visible")) {
+					self.show();
+				} else {
+					self.hide();
+				}
+			}
+		};
+
+		self.toggleDOM = function () {
+			self.setMap(self.getMap() ? null : map);
+		};
+
+		self.getDOMElement = function () {
+			return $div[0];
+		};
+	}
+
+	function Gmap3($this) {
+		var self = this,
+			stack = new Stack(),
+			store = new Store(),
+			map = null,
+			task;
+
+		/**
+		 * if not running, start next action in stack
+		 **/
+		function run() {
+			if (!task && (task = stack.get())) {
+				task.run();
+			}
+		}
+
+		/**
+		 * called when action in finished, to acknoledge the current in stack and start next one
+		 **/
+		function end() {
+			task = null;
+			stack.ack();
+			run.call(self); // restart to high level scope
+		}
+
+//-----------------------------------------------------------------------//
+// Tools
+//-----------------------------------------------------------------------//
+
+		/**
+		 * execute callback functions
+		 **/
+		function callback(args) {
+			var params,
+				cb = args.td.callback;
+			if (cb) {
+				params = Array.prototype.slice.call(arguments, 1);
+				if (isFunction(cb)) {
+					cb.apply($this, params);
+				} else if (isArray(cb)) {
+					if (isFunction(cb[1])) {
+						cb[1].apply(cb[0], params);
+					}
+				}
+			}
+		}
+
+		/**
+		 * execute ending functions
+		 **/
+		function manageEnd(args, obj, id) {
+			if (id) {
+				attachEvents($this, args, obj, id);
+			}
+			callback(args, obj);
+			task.ack(obj);
+		}
+
+		/**
+		 * initialize the map if not yet initialized
+		 **/
+		function newMap(latLng, args) {
+			args = args || {};
+			var opts = args.td && args.td.options ? args.td.options : 0;
+			if (map) {
+				if (opts) {
+					if (opts.center) {
+						opts.center = toLatLng(opts.center);
+					}
+					map.setOptions(opts);
+				}
+			} else {
+				opts = args.opts || $.extend(true, {}, defaults.map, opts || {});
+				opts.center = latLng || toLatLng(opts.center);
+				map = new defaults.classes.Map($this.get(0), opts);
+			}
+		}
+
+		/**
+		 * store actions to execute in a stack manager
+		 **/
+		self._plan = function (list) {
+			var k;
+			for (k = 0; k < list.length; k++) {
+				stack.add(new Task(self, end, list[k]));
+			}
+			run();
+		};
+
+		/**
+		 * Initialize gm.Map object
+		 **/
+		self.map = function (args) {
+			newMap(args.latLng, args);
+			attachEvents($this, args, map);
+			manageEnd(args, map);
+		};
+
+		/**
+		 * destroy an existing instance
+		 **/
+		self.destroy = function (args) {
+			store.clear();
+			$this.empty();
+			if (map) {
+				map = null;
+			}
+			manageEnd(args, true);
+		};
+
+		/**
+		 * add an overlay
+		 **/
+		self.overlay = function (args, internal) {
+			var objs = [],
+				multiple = "values" in args.td;
+			if (!multiple) {
+				args.td.values = [{latLng: args.latLng, options: args.opts}];
+			}
+			if (!args.td.values.length) {
+				manageEnd(args, false);
+				return;
+			}
+			if (!OverlayView.__initialised) {
+				OverlayView.prototype = new defaults.classes.OverlayView();
+				OverlayView.__initialised = true;
+			}
+			$.each(args.td.values, function (i, value) {
+				var id, obj, td = tuple(args, value),
+					$div = $(document.createElement("div")).css({
+						border: "none",
+						borderWidth: 0,
+						position: "absolute"
+					});
+				$div.append(td.options.content);
+				obj = new OverlayView(map, td.options, toLatLng(td) || toLatLng(value), $div);
+				objs.push(obj);
+				$div = null; // memory leak
+				if (!internal) {
+					id = store.add(args, "overlay", obj);
+					attachEvents($this, {td: td}, obj, id);
+				}
+			});
+			if (internal) {
+				return objs[0];
+			}
+			manageEnd(args, multiple ? objs : objs[0]);
+		};
+
+		/**
+		 * Create an InternalClusterer object
+		 **/
+		function createClusterer(raw) {
+			var internalClusterer = new InternalClusterer($this, map, raw),
+				td = {},
+				styles = {},
+				thresholds = [],
+				isInt = /^[0-9]+$/,
+				calculator,
+				k;
+
+			for (k in raw) {
+				if (isInt.test(k)) {
+					thresholds.push(1 * k); // cast to int
+					styles[k] = raw[k];
+					styles[k].width = styles[k].width || 0;
+					styles[k].height = styles[k].height || 0;
+				} else {
+					td[k] = raw[k];
+				}
+			}
+			thresholds.sort(function (a, b) { return a > b; });
+
+			// external calculator
+			if (td.calculator) {
+				calculator = function (indexes) {
+					var data = [];
+					$.each(indexes, function (i, index) {
+						data.push(internalClusterer.value(index));
+					});
+					return td.calculator.apply($this, [data]);
+				};
+			} else {
+				calculator = function (indexes) {
+					return indexes.length;
+				};
+			}
+
+			// set error function
+			internalClusterer.error(function () {
+				error.apply(self, arguments);
+			});
+
+			// set display function
+			internalClusterer.display(function (cluster) {
+				var i, style, atd, obj, offset, shadow,
+					cnt = calculator(cluster.indexes);
+
+				// look for the style to use
+				if (raw.force || cnt > 1) {
+					for (i = 0; i < thresholds.length; i++) {
+						if (thresholds[i] <= cnt) {
+							style = styles[thresholds[i]];
+						}
+					}
+				}
+
+				if (style) {
+					offset = style.offset || [-style.width/2, -style.height/2];
+					// create a custom overlay command
+					// nb: 2 extends are faster self a deeper extend
+					atd = $.extend({}, td);
+					atd.options = $.extend({
+							pane: "overlayLayer",
+							content: style.content ? style.content.replace("CLUSTER_COUNT", cnt) : "",
+							offset: {
+								x: ("x" in offset ? offset.x : offset[0]) || 0,
+								y: ("y" in offset ? offset.y : offset[1]) || 0
+							}
+						},
+						td.options || {});
+
+					obj = self.overlay({td: atd, opts: atd.options, latLng: toLatLng(cluster)}, true);
+
+					atd.options.pane = "floatShadow";
+					atd.options.content = $(document.createElement("div")).width(style.width + "px").height(style.height + "px").css({cursor: "pointer"});
+					shadow = self.overlay({td: atd, opts: atd.options, latLng: toLatLng(cluster)}, true);
+
+					// store data to the clusterer
+					td.data = {
+						latLng: toLatLng(cluster),
+						markers:[]
+					};
+					$.each(cluster.indexes, function(i, index){
+						td.data.markers.push(internalClusterer.value(index));
+						if (internalClusterer.markerIsSet(index)){
+							internalClusterer.marker(index).setMap(null);
+						}
+					});
+					attachEvents($this, {td: td}, shadow, undef, {main: obj, shadow: shadow});
+					internalClusterer.store(cluster, obj, shadow);
+				} else {
+					$.each(cluster.indexes, function (i, index) {
+						internalClusterer.marker(index).setMap(map);
+					});
+				}
+			});
+
+			return internalClusterer;
+		}
+
+		/**
+		 *  add a marker
+		 **/
+		self.marker = function (args) {
+			var objs,
+				clusterer, internalClusterer,
+				multiple = "values" in args.td,
+				init = !map;
+			if (!multiple) {
+				args.opts.position = args.latLng || toLatLng(args.opts.position);
+				args.td.values = [{options: args.opts}];
+			}
+			if (!args.td.values.length) {
+				manageEnd(args, false);
+				return;
+			}
+			if (init) {
+				newMap();
+			}
+			if (args.td.cluster && !map.getBounds()) { // map not initialised => bounds not available : wait for map if clustering feature is required
+				gm.event.addListenerOnce(map, "bounds_changed", function () { self.marker.apply(self, [args]); });
+				return;
+			}
+			if (args.td.cluster) {
+				if (args.td.cluster instanceof Clusterer) {
+					clusterer = args.td.cluster;
+					internalClusterer = store.getById(clusterer.id(), true);
+				} else {
+					internalClusterer = createClusterer(args.td.cluster);
+					clusterer = new Clusterer(globalId(args.td.id, true), internalClusterer);
+					store.add(args, "clusterer", clusterer, internalClusterer);
+				}
+				internalClusterer.beginUpdate();
+
+				$.each(args.td.values, function (i, value) {
+					var td = tuple(args, value);
+					td.options.position = td.options.position ? toLatLng(td.options.position) : toLatLng(value);
+					if (td.options.position) {
+						td.options.map = map;
+						if (init) {
+							map.setCenter(td.options.position);
+							init = false;
+						}
+						internalClusterer.add(td, value);
+					}
+				});
+
+				internalClusterer.endUpdate();
+				manageEnd(args, clusterer);
+
+			} else {
+				objs = [];
+				$.each(args.td.values, function (i, value) {
+					var id, obj,
+						td = tuple(args, value);
+					td.options.position = td.options.position ? toLatLng(td.options.position) : toLatLng(value);
+					if (td.options.position) {
+						td.options.map = map;
+						if (init) {
+							map.setCenter(td.options.position);
+							init = false;
+						}
+						obj = new defaults.classes.Marker(td.options);
+						objs.push(obj);
+						id = store.add({td: td}, "marker", obj);
+						attachEvents($this, {td: td}, obj, id);
+					}
+				});
+				manageEnd(args, multiple ? objs : objs[0]);
+			}
+		};
+
+		/**
+		 * return a route
+		 **/
+		self.getroute = function (args) {
+			args.opts.origin = toLatLng(args.opts.origin, true);
+			args.opts.destination = toLatLng(args.opts.destination, true);
+			directionsService().route(
+				args.opts,
+				function (results, status) {
+					callback(args, status === gm.DirectionsStatus.OK ? results : false, status);
+					task.ack();
+				}
+			);
+		};
+
+		/**
+		 * return the distance between an origin and a destination
+		 *
+		 **/
+		self.getdistance = function (args) {
+			var i;
+			args.opts.origins = array(args.opts.origins);
+			for (i = 0; i < args.opts.origins.length; i++) {
+				args.opts.origins[i] = toLatLng(args.opts.origins[i], true);
+			}
+			args.opts.destinations = array(args.opts.destinations);
+			for (i = 0; i < args.opts.destinations.length; i++) {
+				args.opts.destinations[i] = toLatLng(args.opts.destinations[i], true);
+			}
+			distanceMatrixService().getDistanceMatrix(
+				args.opts,
+				function (results, status) {
+					callback(args, status === gm.DistanceMatrixStatus.OK ? results : false, status);
+					task.ack();
+				}
+			);
+		};
+
+		/**
+		 * add an infowindow
+		 **/
+		self.infowindow = function (args) {
+			var objs = [],
+				multiple = "values" in args.td;
+			if (!multiple) {
+				if (args.latLng) {
+					args.opts.position = args.latLng;
+				}
+				args.td.values = [{options: args.opts}];
+			}
+			$.each(args.td.values, function (i, value) {
+				var id, obj,
+					td = tuple(args, value);
+				td.options.position = td.options.position ? toLatLng(td.options.position) : toLatLng(value.latLng);
+				if (!map) {
+					newMap(td.options.position);
+				}
+				obj = new defaults.classes.InfoWindow(td.options);
+				if (obj && (isUndefined(td.open) || td.open)) {
+					if (multiple) {
+						obj.open(map, td.anchor || undef);
+					} else {
+						obj.open(map, td.anchor || (args.latLng ? undef : (args.session.marker ? args.session.marker : undef)));
+					}
+				}
+				objs.push(obj);
+				id = store.add({td: td}, "infowindow", obj);
+				attachEvents($this, {td: td}, obj, id);
+			});
+			manageEnd(args, multiple ? objs : objs[0]);
+		};
+
+		/**
+		 * add a circle
+		 **/
+		self.circle = function (args) {
+			var objs = [],
+				multiple = "values" in args.td;
+			if (!multiple) {
+				args.opts.center = args.latLng || toLatLng(args.opts.center);
+				args.td.values = [{options: args.opts}];
+			}
+			if (!args.td.values.length) {
+				manageEnd(args, false);
+				return;
+			}
+			$.each(args.td.values, function (i, value) {
+				var id, obj,
+					td = tuple(args, value);
+				td.options.center = td.options.center ? toLatLng(td.options.center) : toLatLng(value);
+				if (!map) {
+					newMap(td.options.center);
+				}
+				td.options.map = map;
+				obj = new defaults.classes.Circle(td.options);
+				objs.push(obj);
+				id = store.add({td: td}, "circle", obj);
+				attachEvents($this, {td: td}, obj, id);
+			});
+			manageEnd(args, multiple ? objs : objs[0]);
+		};
+
+		/**
+		 * returns address structure from latlng
+		 **/
+		self.getaddress = function (args) {
+			callback(args, args.results, args.status);
+			task.ack();
+		};
+
+		/**
+		 * returns latlng from an address
+		 **/
+		self.getlatlng = function (args) {
+			callback(args, args.results, args.status);
+			task.ack();
+		};
+
+		/**
+		 * return the max zoom of a location
+		 **/
+		self.getmaxzoom = function (args) {
+			maxZoomService().getMaxZoomAtLatLng(
+				args.latLng,
+				function (result) {
+					callback(args, result.status === gm.MaxZoomStatus.OK ? result.zoom : false, status);
+					task.ack();
+				}
+			);
+		};
+
+		/**
+		 * return the elevation of a location
+		 **/
+		self.getelevation = function (args) {
+			var i,
+				locations = [],
+				f = function (results, status) {
+					callback(args, status === gm.ElevationStatus.OK ? results : false, status);
+					task.ack();
+				};
+
+			if (args.latLng) {
+				locations.push(args.latLng);
+			} else {
+				locations = array(args.td.locations || []);
+				for (i = 0; i < locations.length; i++) {
+					locations[i] = toLatLng(locations[i]);
+				}
+			}
+			if (locations.length) {
+				elevationService().getElevationForLocations({locations: locations}, f);
+			} else {
+				if (args.td.path && args.td.path.length) {
+					for (i = 0; i < args.td.path.length; i++) {
+						locations.push(toLatLng(args.td.path[i]));
+					}
+				}
+				if (locations.length) {
+					elevationService().getElevationAlongPath({path: locations, samples:args.td.samples}, f);
+				} else {
+					task.ack();
+				}
+			}
+		};
+
+		/**
+		 * define defaults values
+		 **/
+		self.defaults = function (args) {
+			$.each(args.td, function(name, value) {
+				if (isObject(defaults[name])) {
+					defaults[name] = $.extend({}, defaults[name], value);
+				} else {
+					defaults[name] = value;
+				}
+			});
+			task.ack(true);
+		};
+
+		/**
+		 * add a rectangle
+		 **/
+		self.rectangle = function (args) {
+			var objs = [],
+				multiple = "values" in args.td;
+			if (!multiple) {
+				args.td.values = [{options: args.opts}];
+			}
+			if (!args.td.values.length) {
+				manageEnd(args, false);
+				return;
+			}
+			$.each(args.td.values, function (i, value) {
+				var id, obj,
+					td = tuple(args, value);
+				td.options.bounds = td.options.bounds ? toLatLngBounds(td.options.bounds) : toLatLngBounds(value);
+				if (!map) {
+					newMap(td.options.bounds.getCenter());
+				}
+				td.options.map = map;
+
+				obj = new defaults.classes.Rectangle(td.options);
+				objs.push(obj);
+				id = store.add({td: td}, "rectangle", obj);
+				attachEvents($this, {td: td}, obj, id);
+			});
+			manageEnd(args, multiple ? objs : objs[0]);
+		};
+
+		/**
+		 * add a polygone / polyline
+		 **/
+		function poly(args, poly, path) {
+			var objs = [],
+				multiple = "values" in args.td;
+			if (!multiple) {
+				args.td.values = [{options: args.opts}];
+			}
+			if (!args.td.values.length) {
+				manageEnd(args, false);
+				return;
+			}
+			newMap();
+			$.each(args.td.values, function (_, value) {
+				var id, i, j, obj,
+					td = tuple(args, value);
+				if (td.options[path]) {
+					if (td.options[path][0][0] && isArray(td.options[path][0][0])) {
+						for (i = 0; i < td.options[path].length; i++) {
+							for (j = 0; j < td.options[path][i].length; j++) {
+								td.options[path][i][j] = toLatLng(td.options[path][i][j]);
+							}
+						}
+					} else {
+						for (i = 0; i < td.options[path].length; i++) {
+							td.options[path][i] = toLatLng(td.options[path][i]);
+						}
+					}
+				}
+				td.options.map = map;
+				obj = new gm[poly](td.options);
+				objs.push(obj);
+				id = store.add({td: td}, poly.toLowerCase(), obj);
+				attachEvents($this, {td: td}, obj, id);
+			});
+			manageEnd(args, multiple ? objs : objs[0]);
+		}
+
+		self.polyline = function (args) {
+			poly(args, "Polyline", "path");
+		};
+
+		self.polygon = function (args) {
+			poly(args, "Polygon", "paths");
+		};
+
+		/**
+		 * add a traffic layer
+		 **/
+		self.trafficlayer = function (args) {
+			newMap();
+			var obj = store.get("trafficlayer");
+			if (!obj) {
+				obj = new defaults.classes.TrafficLayer();
+				obj.setMap(map);
+				store.add(args, "trafficlayer", obj);
+			}
+			manageEnd(args, obj);
+		};
+
+		/**
+		 * add a bicycling layer
+		 **/
+		self.bicyclinglayer = function (args) {
+			newMap();
+			var obj = store.get("bicyclinglayer");
+			if (!obj) {
+				obj = new defaults.classes.BicyclingLayer();
+				obj.setMap(map);
+				store.add(args, "bicyclinglayer", obj);
+			}
+			manageEnd(args, obj);
+		};
+
+		/**
+		 * add a ground overlay
+		 **/
+		self.groundoverlay = function (args) {
+			args.opts.bounds = toLatLngBounds(args.opts.bounds);
+			if (args.opts.bounds){
+				newMap(args.opts.bounds.getCenter());
+			}
+			var id,
+				obj = new defaults.classes.GroundOverlay(args.opts.url, args.opts.bounds, args.opts.opts);
+			obj.setMap(map);
+			id = store.add(args, "groundoverlay", obj);
+			manageEnd(args, obj, id);
+		};
+
+		/**
+		 * set a streetview
+		 **/
+		self.streetviewpanorama = function (args) {
+			if (!args.opts.opts) {
+				args.opts.opts = {};
+			}
+			if (args.latLng) {
+				args.opts.opts.position = args.latLng;
+			} else if (args.opts.opts.position) {
+				args.opts.opts.position = toLatLng(args.opts.opts.position);
+			}
+			if (args.td.divId) {
+				args.opts.container = document.getElementById(args.td.divId);
+			} else if (args.opts.container) {
+				args.opts.container = $(args.opts.container).get(0);
+			}
+			var id, obj = new defaults.classes.StreetViewPanorama(args.opts.container, args.opts.opts);
+			if (obj) {
+				map.setStreetView(obj);
+			}
+			id = store.add(args, "streetviewpanorama", obj);
+			manageEnd(args, obj, id);
+		};
+
+		self.kmllayer = function (args) {
+			var objs = [],
+				multiple = "values" in args.td;
+			if (!multiple) {
+				args.td.values = [{options: args.opts}];
+			}
+			if (!args.td.values.length) {
+				manageEnd(args, false);
+				return;
+			}
+			$.each(args.td.values, function (i, value) {
+				var id, obj, options,
+					td = tuple(args, value);
+				if (!map) {
+					newMap();
+				}
+				options = td.options;
+				// compatibility 5.0-
+				if (td.options.opts) {
+					options = td.options.opts;
+					if (td.options.url) {
+						options.url = td.options.url;
+					}
+				}
+				// -- end --
+				options.map = map;
+				if (googleVersionMin("3.10")) {
+					obj = new defaults.classes.KmlLayer(options);
+				} else {
+					obj = new defaults.classes.KmlLayer(options.url, options);
+				}
+				objs.push(obj);
+				id = store.add({td: td}, "kmllayer", obj);
+				attachEvents($this, {td: td}, obj, id);
+			});
+			manageEnd(args, multiple ? objs : objs[0]);
+		};
+
+		/**
+		 * add a fix panel
+		 **/
+		self.panel = function (args) {
+			newMap();
+			var id, $content,
+				x = 0,
+				y = 0,
+				$div = $(document.createElement("div"));
+
+			$div.css({
+				position: "absolute",
+				zIndex: 1000,
+				visibility: "hidden"
+			});
+
+			if (args.opts.content) {
+				$content = $(args.opts.content);
+				$div.append($content);
+				$this.first().prepend($div);
+
+				if (!isUndefined(args.opts.left)) {
+					x = args.opts.left;
+				} else if (!isUndefined(args.opts.right)) {
+					x = $this.width() - $content.width() - args.opts.right;
+				} else if (args.opts.center) {
+					x = ($this.width() - $content.width()) / 2;
+				}
+
+				if (!isUndefined(args.opts.top)) {
+					y = args.opts.top;
+				} else if (!isUndefined(args.opts.bottom)) {
+					y = $this.height() - $content.height() - args.opts.bottom;
+				} else if (args.opts.middle) {
+					y = ($this.height() - $content.height()) / 2
+				}
+
+				$div.css({
+					top: y,
+					left: x,
+					visibility: "visible"
+				});
+			}
+
+			id = store.add(args, "panel", $div);
+			manageEnd(args, $div, id);
+			$div = null; // memory leak
+		};
+
+		/**
+		 * add a direction renderer
+		 **/
+		self.directionsrenderer = function (args) {
+			args.opts.map = map;
+			var id,
+				obj = new gm.DirectionsRenderer(args.opts);
+			if (args.td.divId) {
+				obj.setPanel(document.getElementById(args.td.divId));
+			} else if (args.td.container) {
+				obj.setPanel($(args.td.container).get(0));
+			}
+			id = store.add(args, "directionsrenderer", obj);
+			manageEnd(args, obj, id);
+		};
+
+		/**
+		 * returns latLng of the user
+		 **/
+		self.getgeoloc = function (args) {
+			manageEnd(args, args.latLng);
+		};
+
+		/**
+		 * add a style
+		 **/
+		self.styledmaptype = function (args) {
+			newMap();
+			var obj = new defaults.classes.StyledMapType(args.td.styles, args.opts);
+			map.mapTypes.set(args.td.id, obj);
+			manageEnd(args, obj);
+		};
+
+		/**
+		 * add an imageMapType
+		 **/
+		self.imagemaptype = function (args) {
+			newMap();
+			var obj = new defaults.classes.ImageMapType(args.opts);
+			map.mapTypes.set(args.td.id, obj);
+			manageEnd(args, obj);
+		};
+
+		/**
+		 * autofit a map using its overlays (markers, rectangles ...)
+		 **/
+		self.autofit = function (args) {
+			var bounds = new gm.LatLngBounds();
+			$.each(store.all(), function (i, obj) {
+				if (obj.getPosition) {
+					bounds.extend(obj.getPosition());
+				} else if (obj.getBounds) {
+					bounds.extend(obj.getBounds().getNorthEast());
+					bounds.extend(obj.getBounds().getSouthWest());
+				} else if (obj.getPaths) {
+					obj.getPaths().forEach(function (path) {
+						path.forEach(function (latLng) {
+							bounds.extend(latLng);
+						});
+					});
+				} else if (obj.getPath) {
+					obj.getPath().forEach(function (latLng) {
+						bounds.extend(latLng);
+					});
+				} else if (obj.getCenter) {
+					bounds.extend(obj.getCenter());
+				} else if (typeof Clusterer === "function" && obj instanceof Clusterer) {
+					obj = store.getById(obj.id(), true);
+					if (obj) {
+						obj.autofit(bounds);
+					}
+				}
+			});
+
+			if (!bounds.isEmpty() && (!map.getBounds() || !map.getBounds().equals(bounds))) {
+				if ("maxZoom" in args.td) {
+					// fitBouds Callback event => detect zoom level and check maxZoom
+					gm.event.addListenerOnce(
+						map,
+						"bounds_changed",
+						function () {
+							if (this.getZoom() > args.td.maxZoom) {
+								this.setZoom(args.td.maxZoom);
+							}
+						}
+					);
+				}
+				map.fitBounds(bounds);
+			}
+			manageEnd(args, true);
+		};
+
+		/**
+		 * remove objects from a map
+		 **/
+		self.clear = function (args) {
+			if (isString(args.td)) {
+				if (store.clearById(args.td) || store.objClearById(args.td)) {
+					manageEnd(args, true);
+					return;
+				}
+				args.td = {name: args.td};
+			}
+			if (args.td.id) {
+				$.each(array(args.td.id), function (i, id) {
+					store.clearById(id) || store.objClearById(id);
+				});
+			} else {
+				store.clear(array(args.td.name), args.td.last, args.td.first, args.td.tag);
+				store.objClear(array(args.td.name), args.td.last, args.td.first, args.td.tag);
+			}
+			manageEnd(args, true);
+		};
+
+		/**
+		 * return objects previously created
+		 **/
+		self.get = function (args, direct, full) {
+			var name, res,
+				td = direct ? args : args.td;
+			if (!direct) {
+				full = td.full;
+			}
+			if (isString(td)) {
+				res = store.getById(td, false, full) || store.objGetById(td);
+				if (res === false) {
+					name = td;
+					td = {};
+				}
+			} else {
+				name = td.name;
+			}
+			if (name === "map") {
+				res = map;
+			}
+			if (!res) {
+				res = [];
+				if (td.id) {
+					$.each(array(td.id), function (i, id) {
+						res.push(store.getById(id, false, full) || store.objGetById(id));
+					});
+					if (!isArray(td.id)) {
+						res = res[0];
+					}
+				} else {
+					$.each(name ? array(name) : [undef], function (i, aName) {
+						var result;
+						if (td.first) {
+							result = store.get(aName, false, td.tag, full);
+							if (result) {
+								res.push(result);
+							}
+						} else if (td.all) {
+							$.each(store.all(aName, td.tag, full), function (i, result) {
+								res.push(result);
+							});
+						} else {
+							result = store.get(aName, true, td.tag, full);
+							if (result) {
+								res.push(result);
+							}
+						}
+					});
+					if (!td.all && !isArray(name)) {
+						res = res[0];
+					}
+				}
+			}
+			res = isArray(res) || !td.all ? res : [res];
+			if (direct) {
+				return res;
+			} else {
+				manageEnd(args, res);
+			}
+		};
+
+		/**
+		 * run a function on each items selected
+		 **/
+		self.exec = function (args) {
+			$.each(array(args.td.func), function (i, func) {
+				$.each(self.get(args.td, true, args.td.hasOwnProperty("full") ? args.td.full : true), function (j, res) {
+					func.call($this, res);
+				});
+			});
+			manageEnd(args, true);
+		};
+
+		/**
+		 * trigger events on the map
+		 **/
+		self.trigger = function (args) {
+			if (isString(args.td)) {
+				gm.event.trigger(map, args.td);
+			} else {
+				var options = [map, args.td.eventName];
+				if (args.td.var_args) {
+					$.each(args.td.var_args, function (i, v) {
+						options.push(v);
+					});
+				}
+				gm.event.trigger.apply(gm.event, options);
+			}
+			callback(args);
+			task.ack();
+		};
+	}
+
+	$.fn.gmap3 = function () {
+		var i,
+			list = [],
+			empty = true,
+			results = [];
+
+		// init library
+		initDefaults();
+
+		// store all arguments in a td list
+		for (i = 0; i < arguments.length; i++) {
+			if (arguments[i]) {
+				list.push(arguments[i]);
+			}
+		}
+
+		// resolve empty call - run init
+		if (!list.length) {
+			list.push("map");
+		}
+
+		// loop on each jQuery object
+		$.each(this, function () {
+			var $this = $(this),
+				gmap3 = $this.data("gmap3");
+			empty = false;
+			if (!gmap3) {
+				gmap3 = new Gmap3($this);
+				$this.data("gmap3", gmap3);
+			}
+			if (list.length === 1 && (list[0] === "get" || isDirectGet(list[0]))) {
+				if (list[0] === "get") {
+					results.push(gmap3.get("map", true));
+				} else {
+					results.push(gmap3.get(list[0].get, true, list[0].get.full));
+				}
+			} else {
+				gmap3._plan(list);
 			}
 		});
-		if (L.length) {
-			if (L.length === 1) {
-				return L[0]
-			} else {
-				return L
+
+		// return for direct call only
+		if (results.length) {
+			if (results.length === 1) { // 1 css selector
+				return results[0];
 			}
+			return results;
 		}
-		return this
-	}
+
+		return this;
+	};
 })(jQuery);
