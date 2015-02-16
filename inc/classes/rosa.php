@@ -1,15 +1,9 @@
 <?php
-
-/* This file is property of Pixel Grade Media. You may NOT copy, or redistribute
- * it. Please see the license that came with your copy for more information.
- */
-
 /**
  * Theme utility functions.
  * @package        wpgrade
  * @category       core
  * @author         Pixel Grade Team
- * @copyright  (c) 2013, Pixel Grade Media
  */
 class rosa {
 
@@ -448,6 +442,18 @@ class rosa {
 		$pages = get_pages( 'child_of=' . $post->ID );
 
 		return count( $pages );
+	}
+
+	static function get_avatar_url( $email, $size = 32 ) {
+		$get_avatar = get_avatar( $email, $size );
+
+		preg_match( '/< *img[^>]*src *= *["\']?([^"\']*)/i', $get_avatar, $matches );
+		if ( isset( $matches[1] ) ) {
+			return $matches[1];
+		} else {
+			return '';
+		}
+
 	}
 
 }

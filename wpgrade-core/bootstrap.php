@@ -62,8 +62,6 @@ require wpgrade::themefilepath( wpgrade::confoption( 'theme-adminpanel-path', 't
 
 // Hooks
 // -----
-
-//require 'hooks' . EXT;
 get_template_part( 'wpgrade-core/hooks' );
 
 // Upgrade Notifier

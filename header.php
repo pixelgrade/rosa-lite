@@ -172,10 +172,10 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 												<span class="shop-menu-item__price"><?php echo $woocommerce->cart->get_cart_total(); ?></span>
 											</li>
 											<li>
-												<a href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><?php _e( 'View cart', wpgrade::textdomain() ) ?></a>
+												<a href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><?php _e( 'View Cart', 'woocommerce' ) ?></a>
 											</li>
 											<li>
-												<a href="<?php echo $woocommerce->cart->get_checkout_url() ?>"><?php _e( 'Checkout', wpgrade::textdomain() ) ?></a>
+												<a href="<?php echo $woocommerce->cart->get_checkout_url() ?>"><?php _e( 'Checkout', 'woocommerce' ) ?></a>
 											</li>
 										</ul>
 									</div>

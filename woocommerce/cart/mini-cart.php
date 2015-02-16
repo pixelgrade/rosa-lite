@@ -25,8 +25,8 @@ global $woocommerce;
         <?php do_action( 'woocommerce_widget_shopping_cart_before_buttons' ); ?>
         <ul class="sub-menu">
             <li><span class="shop-menu-item__price"><?php echo WC()->cart->get_cart_total(); ?></span></li>
-            <li><a href="<?php echo WC()->cart->get_cart_url(); ?>"><?php _e('View cart', wpgrade::textdomain() ) ?></a></li>
-            <li><a href="<?php echo WC()->cart->get_checkout_url()?>"><?php _e('Checkout', wpgrade::textdomain() ) ?></a></li>
+            <li><a href="<?php echo WC()->cart->get_cart_url(); ?>"><?php _e('View Cart', 'woocommerce' ) ?></a></li>
+            <li><a href="<?php echo WC()->cart->get_checkout_url()?>"><?php _e('Checkout', 'woocommerce' ) ?></a></li>
         </ul>
 
 <?php //endif; ?>
