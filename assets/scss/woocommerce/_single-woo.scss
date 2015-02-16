@@ -269,3 +269,12 @@
 	height: 131px !important;
 	overflow: scroll !important;
 }
+
+.woocommerce div.product p.price,
+.woocommerce div.product span.price {
+	color: gray;
+}
+
+.woocommerce button.single_add_to_cart_button {
+	font-weight: bold !important;
+}
