@@ -86,6 +86,10 @@
 				font-size:30px;
 				color: $dark;
 			}
+
+			del {
+				display: inline-block !important;
+			}
 		}
 
 		form.cart {
@@ -107,59 +111,13 @@
 	@include font-size(14px);
 }
 
-.woocommerce #content .quantity,
-.woocommerce .quantity,
-.woocommerce-page #content .quantity,
-.woocommerce-page .quantity{
-	width: 90px;
-}
-
-.woocommerce #content .quantity .minus,
-.woocommerce #content .quantity .plus,
-.woocommerce .quantity .minus,
-.woocommerce .quantity .plus,
-.woocommerce-page #content .quantity .minus,
-.woocommerce-page #content .quantity .plus,
-.woocommerce-page .quantity .minus,
-.woocommerce-page .quantity .plus{
-	height: 20px;
-	width: 40px;
-
-	border: none;
-
-	background: $gray;
-	color: $borders;
-	@include box-shadow(none);
-	@include text-shadow(none);
-
-	@include border-radius(0 5px 0px 0);
-
-	&:hover{
-		background: $dark;
-		color: white;
-	}
-}
-
-.woocommerce #content .quantity .minus,
-.woocommerce .quantity .minus,
-.woocommerce-page #content .quantity .minus,
-.woocommerce-page .quantity .minus {
-	@include border-radius(0 0px 5px 0);
-}
-
-.woocommerce .quantity .plus,
-.woocommerce #content .quantity .plus,
-.woocommerce-page .quantity .plus,
-.woocommerce-page #content .quantity .plus, {
-	border-bottom: 1px solid $dark;
-}
-
 .woocommerce #content .quantity input.qty,
 .woocommerce .quantity input.qty,
 .woocommerce-page #content .quantity input.qty,
 .woocommerce-page .quantity input.qty{
-	width: 50px;
+	width: 70px;
 	height: 36px;
+	padding: 0;
 
 	border: none;
 
@@ -168,10 +126,7 @@
 
 	@include box-shadow(none);
 
-	-webkit-border-top-left-radius: 5px;
-	-webkit-border-bottom-left-radius: 5px;
-	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
+	@include border-radius(5px);
 }
 
 .woocommerce #content input.button.alt,
@@ -313,4 +268,13 @@
 .woocommerce #review_form #respond textarea, .woocommerce-page #review_form #respond textarea {
 	height: 131px !important;
 	overflow: scroll !important;
+}
+
+.woocommerce div.product p.price,
+.woocommerce div.product span.price {
+	color: gray;
+}
+
+.woocommerce button.single_add_to_cart_button {
+	font-weight: bold !important;
 }
