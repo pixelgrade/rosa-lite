@@ -1540,6 +1540,7 @@ $sections[] = array(
 				'vkontakte'     => __( 'VKontakte', 'rosa_txtd' ),
 				'appnet'        => __( 'App.net', 'rosa_txtd' ),
 				'rss'           => __( 'RSS Feed', 'rosa_txtd' ),
+				'tripadvisor'   => __( 'Tripadvisor', 'rosa_txtd' ),
 			)
 		),
 		array(
