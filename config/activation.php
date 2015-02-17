@@ -255,18 +255,6 @@ return array(
 						'std'  => '',
 					),
 					array(
-						'name' => __( 'Google Maps Pins', 'mies_txtd' ),
-						'desc' => __( 'Paste here the Share URL you have taken from <a href="http://www.google.com/maps" target="_blank">Google Maps</a>.', 'mies_txtd' ),
-						'id'   => 'gmap_urls',
-						'type' => 'gmap_pins',
-						'std' => array(
-							1 => array(
-								'location_url' => "https://www.google.ro/maps/@51.5075586,-0.1284425,18z",
-								'name' => __('London', 'mies_txtd')
-							)
-						)
-					),
-					array(
 						'name' => __( 'Custom Colors', 'rosa_txtd' ),
 						'desc' => __( 'Allow us to change the map colors to better match your website.', 'rosa_txtd' ),
 						'id'   => wpgrade::prefix() . 'gmap_custom_style',
