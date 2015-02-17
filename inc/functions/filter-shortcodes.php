@@ -125,7 +125,7 @@ function wpgrade_callback_change_icon_params( $params ) {
 		'type'        => 'switch',
 		'name'        => 'Open in new window',
 		'options'     => array(),
-		'admin_class' => 'span3 push3'
+		'admin_class' => 'span5 push1'
 	) );
 
 	return $params;
