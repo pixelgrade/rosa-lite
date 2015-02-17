@@ -33,11 +33,12 @@ if ( empty( $title ) ) {
 	$title = get_the_title();
 }
 $description = __(get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_description', true ));
+$pin_type = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_gmap_pin_type', true );
 //filter the content with some limitations to avoid having plugins doing nasty things to it
 $description = wpgrade::filter_content( $description, 'default' );
 
 /* FIRST TEST FOR CONTACT PAGE TEMPLATE */
-if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
+if ( empty( $pin_type ) || $pin_type == 'single' ) {
 	//get the Google Maps URL to test if empty
 	$gmap_url = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_url', true );
 
@@ -56,11 +57,11 @@ if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
 		<header id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ); ?>">
 			<div id="gmap-<?php the_ID() ?>" class="gmap"
 				data-url="<?php esc_attr_e( $gmap_url ); ?>" <?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
-				data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>"></div>
+				data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>" data-pin_type="single"></div>
 		</header>
 	<?php
 	}
-} elseif ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact-multiple.php' ) {
+} elseif ( $pin_type == 'multiple' ) {
 	//get the Google Maps URL to test if empty
 	$gmap_urls = get_post_meta( wpgrade::lang_post_id( get_the_ID() ), 'gmap_urls', true );
 
@@ -92,7 +93,7 @@ if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
 		<header id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ) ?>">
 			<div class="gmap--multiple-pins" id="gmap-<?php the_ID() ?>"
 				<?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
-				 data-pins='<?php echo esc_attr( $pins ) ?>'></div>
+				 data-pins='<?php echo esc_attr( $pins ) ?>' data-pin_type="single"></div>
 		</header>
 	<?php
 	}
