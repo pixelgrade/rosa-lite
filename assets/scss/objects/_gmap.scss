@@ -69,6 +69,11 @@
 		color: $accent;
 		// background-color: $accent;
 	}
+
+	@include media-query(palm) {
+		font-size: rem(11px);
+		padding: rem(12px) rem(12px) rem(12px) rem(54px);
+	}
 }
 
 .gmap__marker__img {
