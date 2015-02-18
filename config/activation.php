@@ -248,8 +248,8 @@ return array(
 						'std'     => 'half-height',
 					),
 					array(
-						'name' => __( 'Pin type', 'rosa_txtd' ),
-						'desc' => __( '<p class="cmb_metabox_description">Chose if you want a single pin or more.</p>', 'rosa_txtd' ),
+						'name' => __( 'Location Type', 'rosa_txtd' ),
+						'desc' => __( '<p class="cmb_metabox_description">Select multiple if you want to display several pins on the map.</p>', 'rosa_txtd' ),
 						'id'   => wpgrade::prefix() . 'page_gmap_pin_type',
 						'type'    => 'select',
 						'options' => array(
