@@ -37,8 +37,12 @@ $pin_type = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefi
 //filter the content with some limitations to avoid having plugins doing nasty things to it
 $description = wpgrade::filter_content( $description, 'default' );
 
+if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' && empty( $pin_type ) ) {
+	$pin_type = 'single';
+}
+
 /* FIRST TEST FOR CONTACT PAGE TEMPLATE */
-if ( empty( $pin_type ) || $pin_type == 'single' ) {
+if ( $pin_type == 'single' ) {
 	//get the Google Maps URL to test if empty
 	$gmap_url = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_url', true );
 
