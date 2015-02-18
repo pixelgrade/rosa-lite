@@ -33,15 +33,19 @@ if ( empty( $title ) ) {
 	$title = get_the_title();
 }
 $description = __(get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_description', true ));
+$pin_type = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_gmap_pin_type', true );
 //filter the content with some limitations to avoid having plugins doing nasty things to it
 $description = wpgrade::filter_content( $description, 'default' );
 
+if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' && empty( $pin_type ) ) {
+	$pin_type = 'single';
+}
+
 /* FIRST TEST FOR CONTACT PAGE TEMPLATE */
+if ( $pin_type == 'single' ) {
+	//get the Google Maps URL to test if empty
+	$gmap_url = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_url', true );
 
-//get the Google Maps URL to test if empty
-$gmap_url = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_url', true );
-
-if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
 	if ( ! empty( $gmap_url ) ) {
 		//set the global so everybody knows that we are in dire need of the Google Maps API
 		$is_gmap = true;
@@ -54,13 +58,50 @@ if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
 		}
 		$classes .= ' ' . $gmap_height;
 		?>
-		<header id="post-<?php the_ID() ?>-title" class="<?php echo $classes ?>">
-			<div id="gmap"
+		<header id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ); ?>">
+			<div id="gmap-<?php the_ID() ?>" class="gmap"
 				data-url="<?php esc_attr_e( $gmap_url ); ?>" <?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
-				data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>"></div>
+				data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>" data-pin_type="single"></div>
 		</header>
 	<?php
 	}
+} elseif ( $pin_type == 'multiple' ) {
+	//get the Google Maps URL to test if empty
+	$gmap_urls = get_post_meta( wpgrade::lang_post_id( get_the_ID() ), 'gmap_urls', true );
+
+	// we really need $$gmap_urls to have a location_url
+	if ( ! empty( $gmap_urls ) && isset( $gmap_urls[1]['location_url'] ) && ! empty( $gmap_urls[1]['location_url'] ) ) {
+		//set the global so everybody knows that we are in dire need of the Google Maps API
+		$is_gmap = true;
+
+		$gmap_custom_style   = get_post_meta( wpgrade::lang_post_id( get_the_ID() ), wpgrade::prefix() . 'gmap_custom_style', true );
+		$gmap_marker_content = get_post_meta( wpgrade::lang_post_id( get_the_ID() ), wpgrade::prefix() . 'gmap_marker_content', true );
+		$gmap_height         = get_post_meta( wpgrade::lang_post_id( get_the_ID() ), wpgrade::prefix() . 'page_gmap_height', true );
+		if ( empty( $gmap_height ) ) {
+			$gmap_height = 'half-height'; //the default
+		}
+		$classes .= ' ' . $gmap_height;
+
+		//handle the pins
+		$pins = '{';
+		$count = count( $gmap_urls );
+		$comma = ',';
+		foreach ( $gmap_urls as $order => $pin ) {
+			if ( $count == $order ) {
+				$comma = '';
+			}
+			$pins .= '"' . $pin['name'] . '":"' . $pin['location_url'] . '"' . $comma;
+		}
+		$pins .= '}';
+		?>
+		<header id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ) ?>">
+			<div class="gmap--multiple-pins" id="gmap-<?php the_ID() ?>"
+				<?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
+				 data-pins='<?php echo esc_attr( $pins ) ?>' data-pin_type="single"></div>
+		</header>
+	<?php
+	}
+
 } else {
 	/* THEN TEST FOR SLIDESHOW PAGE TEMPLATE */
 

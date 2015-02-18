@@ -211,7 +211,7 @@ return array(
 					)
 				)
 			),
-			//for the Contact Page template
+			//for the Contact Page template - Classic
 			wpgrade::shortname() . '_gmap_settings' => array(
 				'id'         => wpgrade::shortname() . '_gmap_settings',
 				'title'      => __( 'Map Coordinates & Display Options', 'rosa_txtd' ),
@@ -248,18 +248,54 @@ return array(
 						'std'     => 'half-height',
 					),
 					array(
+						'name' => __( 'Location Type', 'rosa_txtd' ),
+						'desc' => __( '<p class="cmb_metabox_description">Select multiple if you want to display several pins on the map.</p>', 'rosa_txtd' ),
+						'id'   => wpgrade::prefix() . 'page_gmap_pin_type',
+						'type'    => 'select',
+						'options' => array(
+							array(
+								'name'  => __( 'Single', 'rosa_txtd' ),
+								'value' => 'single',
+							),
+							array(
+								'name'  => __( 'Multiple', 'rosa_txtd' ),
+								'value' => 'multiple',
+							)
+						),
+						'std'     => 'single',
+					),
+					array(
+						'name' => __( 'Google Maps Pins', 'mies_txtd' ),
+						'desc' => __( 'Paste here the Share URL you have taken from <a href="http://www.google.com/maps" target="_blank">Google Maps</a>.', 'rosa_txtd' ),
+						'id'   => 'gmap_urls',
+						'type' => 'gmap_pins',
+						'std' => array(
+							1 => array(
+								'location_url' => "https://www.google.ro/maps/@51.5075586,-0.1284425,18z",
+								'name' => __('London', 'rosa_txtd')
+							)
+						),
+						'display_on' => array(
+							'display' => true,
+							'on'      => array(
+								'field' => wpgrade::prefix() . 'page_gmap_pin_type',
+								'value' => 'multiple'
+							)
+						),
+					),
+					array(
 						'name' => __( 'Google Maps URL', 'rosa_txtd' ),
 						'desc' => __( 'Paste here the Share URL you have taken from <a href="http://www.google.com/maps" target="_blank">Google Maps</a>.', 'rosa_txtd' ),
 						'id'   => wpgrade::prefix() . 'gmap_url',
 						'type' => 'textarea_small',
 						'std'  => '',
-					),
-					array(
-						'name' => __( 'Custom Colors', 'rosa_txtd' ),
-						'desc' => __( 'Allow us to change the map colors to better match your website.', 'rosa_txtd' ),
-						'id'   => wpgrade::prefix() . 'gmap_custom_style',
-						'type' => 'checkbox',
-						'std'  => 'on',
+						'display_on' => array(
+							'display' => true,
+							'on'      => array(
+								'field' => wpgrade::prefix() . 'page_gmap_pin_type',
+								'value' => 'single'
+							)
+						),
 					),
 					array(
 						'name'    => __( 'Pin Content', 'rosa_txtd' ),
@@ -274,6 +310,20 @@ return array(
 							'tinymce'       => true,
 							'quicktags'     => true,
 						),
+						'display_on' => array(
+							'display' => true,
+							'on'      => array(
+								'field' => wpgrade::prefix() . 'page_gmap_pin_type',
+								'value' => 'single'
+							)
+						),
+					),
+					array(
+						'name' => __( 'Custom Colors', 'rosa_txtd' ),
+						'desc' => __( 'Allow us to change the map colors to better match your website.', 'rosa_txtd' ),
+						'id'   => wpgrade::prefix() . 'gmap_custom_style',
+						'type' => 'checkbox',
+						'std'  => 'on',
 					),
 					array(
 						'name' => __( 'Make Menu Bar Transparent', 'rosa_txtd' ),
@@ -299,7 +349,7 @@ return array(
 						'std'     => 'simple',
 					),
 				),
-			),
+			)
 		),
 	),
 );

@@ -117,7 +117,7 @@
 		padding: 0;
 	}
 
-	#gmap {
+	.gmap, .gmap--multiple-pins {
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -145,7 +145,7 @@
 		opacity: 0;
 	}
 
-	.rsOverflow, #gmap {
+	.rsOverflow, .gmap, .gmap--multiple-pins {
 		img {
 			opacity: 1;
 		}

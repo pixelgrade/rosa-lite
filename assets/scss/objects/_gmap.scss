@@ -38,6 +38,47 @@
 	bottom: 0; left: 0;
 }
 
-#gmap img {
+.gmap img, .gmap--multiple-pins img {
 	max-width: none;
+}
+
+/* Multiple Pins */
+.gmap__marker {
+	position: relative;
+	top: rem(-55px);
+	left: rem(-23px);
+}
+
+.gmap__marker__btn {
+	font-size: rem(13px);
+	line-height: 1;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+
+	@include transition(all .15s);
+	@include border-radius(40px);
+	padding: rem(14px) rem(16px);
+	padding-left: rem(56px);
+	min-width: 0;
+
+	color: $dark;
+	background-color: white;
+
+	&:hover {
+		color: $accent;
+		// background-color: $accent;
+	}
+
+	@include media-query(palm) {
+		font-size: rem(11px);
+		padding: rem(12px) rem(12px) rem(12px) rem(54px);
+	}
+}
+
+.gmap__marker__img {
+	width: rem(42px);
+	position: absolute;
+	top: rem(2px);
+	left: rem(1px);
 }
