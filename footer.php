@@ -52,10 +52,6 @@ if ( ! is_404() ):
 
 </div><!-- #page -->
 
-<div class="js-map-pin  hidden">
-	<img class="gmap__marker__img" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/map-pin.png' ) ?>"/>
-</div>
-
 <?php wp_footer(); ?>
 </body>
 </html>

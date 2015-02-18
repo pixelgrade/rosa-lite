@@ -33,7 +33,6 @@ while ( have_posts() ) : the_post(); ?>
 					</section>
 				</div>
 			</section>
-
 		</article>
 	<?php
 	endif;

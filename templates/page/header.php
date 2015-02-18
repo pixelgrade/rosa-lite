@@ -99,6 +99,9 @@ if ( $pin_type == 'single' ) {
 				<?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
 				 data-pins='<?php echo esc_attr( $pins ) ?>' data-pin_type="single"></div>
 		</header>
+		<div class="js-map-pin  hidden">
+			<img class="gmap__marker__img" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/map-pin.png' ) ?>"/>
+		</div>
 	<?php
 	}
 

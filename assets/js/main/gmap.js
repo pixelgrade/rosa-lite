@@ -168,7 +168,11 @@ function gmapInit() {
 
 function gmapMultiplePinsInit() {
 	var $gmaps = $('.gmap--multiple-pins' ),
-		$imageMarkup 	= $('.js-map-pin').html();
+		$imageMarkup 	= $('.js-map-pin');
+
+	if ( $imageMarkup.length > 0 ) {
+		$imageMarkup = $($imageMarkup[0]).html();
+	}
 
 	if ( $gmaps.length && typeof google !== 'undefined' ) {
 		if (globalDebug) {console.log("GMap Multiple Pins Init");}
