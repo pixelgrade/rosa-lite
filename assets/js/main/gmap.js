@@ -140,7 +140,7 @@ function gmapInit() {
 						{
 							"stylers": [
 								{"saturation": -100},
-								{"gamma": 2.45},
+								{"gamma": 3.00},
 								{"visibility": "simplified"}
 							]
 						}, {
@@ -241,7 +241,7 @@ function gmapMultiplePinsInit() {
 						{
 							"stylers": [
 								{"saturation": -100},
-								{"gamma": 2.45},
+								{"gamma": 3.00},
 								{"visibility": "simplified"}
 							]
 						}, {
@@ -255,7 +255,14 @@ function gmapMultiplePinsInit() {
 						}, {
 							"featureType": "administrative",
 							"stylers": [
+								{"saturation": -30},
+								{"gamma": 0.6},
 								{"visibility": "on"}
+							]
+						}, {
+							"featureType": "administrative.neighborhood",
+							"stylers": [
+								{"visibility": "off"}
 							]
 						}
 					]
