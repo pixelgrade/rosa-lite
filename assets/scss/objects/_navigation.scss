@@ -107,6 +107,10 @@
 	&:hover > .sub-menu {
 		display: block;
 	}
+
+	.is--ie & {
+		background-color: rgba(255, 255, 255, 0.01);
+	}
 }
 
 //WPML Language switcher
@@ -143,6 +147,10 @@
 	.lt-ie9 & {
 		left: 0;
 		@include transform(none);
+	}
+
+	.is--ie & {
+		background-color: rgba(255, 255, 255, 0.01) !important;
 	}
 
 	.header--transparent & {
@@ -454,7 +462,7 @@ $nav-width: 200px;
 		position: absolute;
 		right: 3px;
 		bottom: 3px;
-		
+
 		width: 16px;
 		height: 16px;
 
