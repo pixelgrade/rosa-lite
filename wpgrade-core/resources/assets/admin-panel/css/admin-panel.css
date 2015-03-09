@@ -5,7 +5,7 @@
 /*------------------------------------*\
     $FONTS
 \*------------------------------------*/
-@import url("http://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400|Open+Sans:400,600");
+@import url("//fonts.googleapis.com/css?family=Josefin+Sans:100,300,400|Open+Sans:400,600");
 .redux-container, .redux-container #redux-intro-text, .redux-container #redux-intro-text > *, .redux-container #redux-intro-text > p, .redux-container .redux-normal, .redux-container .redux-info-field, .redux-container .redux-field-info, .redux-container .field-desc, .redux-container .redux-info-desc {
   font-family: "Open Sans", sans-serif;
 }
@@ -2070,5 +2070,3 @@ body .redux-container .redux-main .mt-2 {
 body .redux-container .redux-main .mt-3 {
   margin-top: -3em !important;
 }
-
-/*# sourceMappingURL=admin-panel.css.map */
