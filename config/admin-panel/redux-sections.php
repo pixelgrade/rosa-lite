@@ -145,7 +145,7 @@ $sections[] = array(
 					'background-color' => array(
 						'selector' => ".btn--primary, .shop-menu-item .shop-items-number, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover,
 						                .pagination li a:hover, form.shipping_calculator button.button:hover, .otreservations-submit:hover, .pixcode--icon.square:hover, .pixcode--icon.circle:hover,
-						                .sidebar--footer__accent, .copyright-area.copyright-area__accen, .menu-list__item-highlight-title",
+						                .sidebar--footer__accent, .copyright-area.copyright-area__accent, .menu-list__item-highlight-title",
 					),
 					'background'       => array(
 						'selector' => "body.woocommerce button.button.alt:hover, body.woocommerce-page #respond input#submit:hover,

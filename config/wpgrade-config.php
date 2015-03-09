@@ -134,7 +134,7 @@ return array(
 					),
 				),
 				'google-maps-api'      => array(
-					'path'    => 'http://maps.google.com/maps/api/js?sensor=false&amp;language=en',
+					'path'    => '//maps.google.com/maps/api/js?sensor=false&amp;language=en',
 					'require' => array(
 						'jquery'
 					),
