@@ -53,7 +53,7 @@
 
     &.article--arrow {
 
-        &:before {
+        &:before { 
             display: none;
         }
     }
@@ -77,7 +77,7 @@
 .article__header.article__header--page {
 	position: relative;
 	//	padding: 200px 0;
-	background: #333;
+	// background: #333;
 	overflow: hidden;
 
     svg {
@@ -139,19 +139,34 @@
 	top: -100%; right: 0; bottom: -100%; left: 0;
 	background-attachment: fixed;
 	background-position: 50% 50%;
-//	@include transform(translate3d(0, 0, 0));
+	background-color: rgba(100,200,0,0.5);
+	opacity: 0;
 
-	img {
-		opacity: 0;
-	}
+	&, * { pointer-events: none; }
+	.flexbox__item * { pointer-events: auto; }
 
-	.rsOverflow, .gmap, .gmap--multiple-pins {
+	.covers & {
+		position: absolute;
+		top: 0; left: 0; right: 0; bottom: auto;
+		background: none;
+		overflow: hidden;
+		opacity: 1;
+
 		img {
 			opacity: 1;
 		}
 	}
 }
 
+.article__parallax__slider {
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+}
+
+.covers {
+	position: fixed;
+	top: 0; left: 0; right: 0; bottom: 0;
+}
 
 .lt-ie9 {
 

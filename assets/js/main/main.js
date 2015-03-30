@@ -2,6 +2,15 @@
 
 /* --- NICESCROLL --- */
 
+
+var $body               = $('body'),
+    $html               = $('html'),
+    $window             = $(window),
+    $document           = $(document),
+    documentHeight      = $document.height(),
+    aspectRatio         = windowWidth / windowHeight,
+    orientation         = windowWidth > windowHeight ? 'landscape' : 'portrait';
+
 function niceScrollInit() {
     if (globalDebug) {console.log("NiceScroll Init");}
 
