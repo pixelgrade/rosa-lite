@@ -312,7 +312,7 @@ $(window).load(function(){
     magnificPopupInit();
     initVideos();
     resizeVideos();
-    gmapInit();
+    // gmapInit();
     gmapMultiplePinsInit();
 
 

@@ -61,9 +61,11 @@ if ( $pin_type == 'single' ) {
 		$classes .= ' ' . $gmap_height;
 		?>
 		<header id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ); ?>">
-			<div id="gmap-<?php the_ID() ?>" class="gmap"
-				data-url="<?php esc_attr_e( $gmap_url ); ?>" <?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
-				data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>" data-pin_type="single"></div>
+			<div class="article__parallax">
+				<div id="gmap-<?php the_ID() ?>" class="gmap"
+					data-url="<?php esc_attr_e( $gmap_url ); ?>" <?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
+					data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>" data-pin_type="single"></div>
+			</div>
 		</header>
 	<?php
 	}

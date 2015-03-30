@@ -136,20 +136,20 @@ var Parallax = {
 
             // move the image for a parallax effect
             parallax.timeline.fromTo($cloneTarget, 1, {
-                y: '-=' + windowHeight * amount
+                y: '-=' + heroHeight * amount
             }, {
-                y: '+=' + windowHeight * amount * 2,
+                y: '+=' + heroHeight * amount * 2,
                 ease: pixGS.Linear.easeNone,
                 force3D: true
             });
 
-            parallax.timeline.fromTo($cloneSlider.find('.hero__content, .hero__caption'), 1, {
-                y: '+=' + windowHeight * amount
-            }, {
-                y: '-=' + windowHeight * amount * 2,
-                ease: pixGS.Linear.easeNone,
-                force3D: true
-            }, '-=1');
+            // parallax.timeline.fromTo($cloneSlider.find('.hero__content, .hero__caption'), 1, {
+            //     y: '+=' + windowHeight * amount
+            // }, {
+            //     y: '-=' + windowHeight * amount * 2,
+            //     ease: pixGS.Linear.easeNone,
+            //     force3D: true
+            // }, '-=1');
 
             // move the container to match scrolling
             parallax2.timeline.fromTo($clone, 1, {
@@ -181,7 +181,7 @@ var Parallax = {
     },
 
     update: function () {
-
+        // return;
         if (Modernizr.touch || is_ie || latestKnownScrollY > this.stop || latestKnownScrollY < this.start) {
             return;
         }

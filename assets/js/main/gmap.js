@@ -81,8 +81,16 @@ function get_oldMap_coordinates(url) {
 	return coordinates;
 }
 
-function gmapInit() {
-	var $gmaps = $('.gmap');
+function gmapInit($container) {
+	var $gmaps;
+
+	if (typeof $container !== "undefined") {
+		$gmaps = $container.find('.gmap');
+	} else {
+		$gmaps = $('.gmap');
+	}
+
+	console.trace();
 
 	if ( $gmaps.length && typeof google !== 'undefined' ) {
 		if (globalDebug) {console.log("GMap Init");}

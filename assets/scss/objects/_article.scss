@@ -116,14 +116,6 @@
 	&.header--slideshow {
 		padding: 0;
 	}
-
-	.gmap, .gmap--multiple-pins {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-	}
 }
 
 .blurp--top {
@@ -142,7 +134,7 @@
 	background-color: rgba(100,200,0,0.5);
 	opacity: 0;
 
-	&, * { pointer-events: none; }
+	// &, * { pointer-events: none; }
 	.flexbox__item * { pointer-events: auto; }
 
 	.covers & {
@@ -152,8 +144,26 @@
 		overflow: hidden;
 		opacity: 1;
 
-		img {
+		.article__parallax__img {
 			opacity: 1;
+			max-width: none;
+			min-width: 100%;
+			min-height: 100%;
+			position: absolute;
+			top: 50%; left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	.gmap, .gmap--multiple-pins {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		img {
+			max-width: none;
 		}
 	}
 }
