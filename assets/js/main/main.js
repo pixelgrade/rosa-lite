@@ -2,6 +2,15 @@
 
 /* --- NICESCROLL --- */
 
+
+var $body               = $('body'),
+    $html               = $('html'),
+    $window             = $(window),
+    $document           = $(document),
+    documentHeight      = $document.height(),
+    aspectRatio         = windowWidth / windowHeight,
+    orientation         = windowWidth > windowHeight ? 'landscape' : 'portrait';
+
 function niceScrollInit() {
     if (globalDebug) {console.log("NiceScroll Init");}
 
@@ -285,26 +294,27 @@ $(window).load(function(){
             CoverAnimation.initialize();
         }, 400);
     }
-    niceScrollInit();
+    // niceScrollInit();
     //if(!$('html').is('.ie9, .lt-ie9') ){
         requestTick();
     //}
     // always
-    royalSliderInit();
+    
+    royalSliderInit($('.js-pixslider').not('.article__parallax .js-pixslider'));
 
-    if ($('.js-pixslider').length) {
-        var slider = $('.js-pixslider').data('royalSlider');
+    // if ($('.js-pixslider').length) {
+    //     var slider = $('.js-pixslider').data('royalSlider');
 
-        slider.ev.on('rsAfterInit rsAfterContentSet rsAfterSlideChange', function () {
-            ScrollToTop.initialize();
-        });
-    }
+    //     slider.ev.on('rsAfterInit rsAfterContentSet rsAfterSlideChange', function () {
+    //         ScrollToTop.initialize();
+    //     });
+    // }
 
     magnificPopupInit();
     initVideos();
     resizeVideos();
-    gmapInit();
-    gmapMultiplePinsInit();
+    // gmapInit();
+    // gmapMultiplePinsInit();
 
 
     if(!empty($('#date-otreservations'))){
@@ -356,7 +366,7 @@ $(window).on("debouncedresize", function(e) {
     windowHeight    = $(window).height();
 
     resizeVideos();
-    royalSliderInit();
+    royalSliderInit($('.js-pixslider').not('.article__parallax .js-pixslider'));
     gmapInit();
     gmapMultiplePinsInit();
     ScrollToTop.initialize();

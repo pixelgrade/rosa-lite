@@ -43,8 +43,8 @@ if (useTransform) {
 	}
 }
 
-var windowWidth = window.innerWidth,
-    windowHeight = window.innerHeight;
+var windowWidth 		= window.innerWidth,
+    windowHeight 		= window.innerHeight;
 
 /* --- To enable verbose debug add to Theme Options > Custom Code footer -> globalDebug=true; --- */
 var globalDebug = false,

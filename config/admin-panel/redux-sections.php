@@ -970,7 +970,12 @@ $sections[] = array(
 						'media'    => 'screen and (min-width: 900px)'
 					),
                     'margin-right' => array (
-                        'selector' => '.navigator',
+                        'selector' => '.navigator, .covers',
+                        'unit'     => 'px',
+                        'media'    => 'screen and (min-width: 900px)'
+                    ),
+                    'margin-left' => array (
+                        'selector' => '.covers',
                         'unit'     => 'px',
                         'media'    => 'screen and (min-width: 900px)'
                     )
