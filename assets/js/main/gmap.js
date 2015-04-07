@@ -90,8 +90,6 @@ function gmapInit($container) {
 		$gmaps = $('.gmap');
 	}
 
-	console.trace();
-
 	if ( $gmaps.length && typeof google !== 'undefined' ) {
 		if (globalDebug) {console.log("GMap Init");}
 
@@ -174,9 +172,17 @@ function gmapInit($container) {
 
 }
 
-function gmapMultiplePinsInit() {
-	var $gmaps = $('.gmap--multiple-pins' ),
-		$imageMarkup 	= $('.js-map-pin');
+function gmapMultiplePinsInit($container) {
+
+	var $gmaps;
+
+	if (typeof $container !== "undefined") {
+		$gmaps = $container.find('.gmap--multiple-pins');
+	} else {
+		$gmaps = $('.gmap--multiple-pins');
+	}
+
+	$imageMarkup 	= $('.js-map-pin');
 
 	if ( $imageMarkup.length > 0 ) {
 		$imageMarkup = $($imageMarkup[0]).html();

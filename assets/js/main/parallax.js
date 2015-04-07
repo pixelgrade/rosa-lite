@@ -88,8 +88,6 @@ var Parallax = {
                     fixed:  1
                 };
 
-            console.log($hero[0], heroOffset.top);
-
             $cover.removeAttr('style');
             $clone.data('source', $cover).appendTo('.covers').show();
             $clone.css('height', heroHeight);
@@ -171,6 +169,7 @@ var Parallax = {
             // or the slider
             royalSliderInit($clone);
             gmapInit($clone);
+            gmapMultiplePinsInit($clone);
 
             if (that.initialized) {
                 pixGS.TweenMax.to($clone, .3, {'opacity': 1});

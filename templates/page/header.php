@@ -99,9 +99,11 @@ if ( $pin_type == 'single' ) {
 		$pins .= '}';
 		?>
 		<header id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ) ?>">
-			<div class="gmap--multiple-pins" id="gmap-<?php the_ID() ?>"
-				<?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
-				 data-pins='<?php echo esc_attr( $pins ) ?>' data-pin_type="single"></div>
+			<div class="article__parallax">
+				<div class="gmap--multiple-pins" id="gmap-<?php the_ID() ?>"
+					<?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
+					 data-pins='<?php echo esc_attr( $pins ) ?>' data-pin_type="multiple"></div>
+			</div>
 		</header>
 		<div class="js-map-pin  hidden">
 			<img class="gmap__marker__img" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/map-pin.png' ) ?>"/>
