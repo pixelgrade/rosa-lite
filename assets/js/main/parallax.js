@@ -113,7 +113,7 @@ var Parallax = {
             $cloneImage.css('width', newWidth);
 
             // if there's a slider we are working with we may have to set the height
-            $cloneSlider.css('height', heroHeight + distance);
+            $cloneTarget.css('height', heroHeight + distance);
 
             // align the clone to its surrogate
             // we use TweenMax cause it'll take care of the vendor prefixes
