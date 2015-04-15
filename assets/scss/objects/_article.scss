@@ -77,6 +77,7 @@
 .article__header {
 	pointer-events: none;
 
+	> *,
 	.covers &,
 	.is_iexplore & {
 		pointer-events: auto;

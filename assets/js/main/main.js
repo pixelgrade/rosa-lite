@@ -307,7 +307,7 @@ $(window).load(function(){
     //}
     // always
     
-    royalSliderInit($('.js-pixslider').not('.article__parallax .js-pixslider'));
+    royalSliderInit($('.article__content'));
 
     // if ($('.js-pixslider').length) {
     //     var slider = $('.js-pixslider').data('royalSlider');
