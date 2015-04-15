@@ -155,6 +155,12 @@ function init() {
 		$('html').addClass('android-browser').removeClass('no-android-browser');
 	}
 
+    var is_iexplore = detectIE();
+
+    if (is_iexplore) {
+        $('body').addClass('is_iexplore  no-scroll-effect');
+    }
+
 	var is_retina = (window.retina || window.devicePixelRatio > 1);
 	if (is_retina && $('.site-logo--image-2x').length) {
 
@@ -285,12 +291,13 @@ $(window).load(function(){
     $(".pixcode--tabs").organicTabs();
 
     if (!$('html').is('.ie9, .lt-ie9')) {
-        Parallax.initialize();
         setTimeout(function() {
+            Parallax.initialize();
             CoverAnimation.initialize();
         }, 600);
     } else {
         setTimeout(function() {
+            Parallax.initialize();
             CoverAnimation.initialize();
         }, 400);
     }
@@ -366,15 +373,14 @@ $(window).on("debouncedresize", function(e) {
     windowHeight    = $(window).height();
 
     resizeVideos();
+
     royalSliderInit($('.js-pixslider').not('.article__parallax .js-pixslider'));
+
     gmapInit();
     gmapMultiplePinsInit();
     ScrollToTop.initialize();
-
-    if (!$('html').is('.ie9, .lt-ie9') && !Modernizr.touch) {
-        Parallax.initialize();
-        CoverAnimation.initialize();
-    }
+    Parallax.initialize();
+    CoverAnimation.initialize();
 });
 
 $(window).on("orientationchange", function(e) {
@@ -390,11 +396,8 @@ var latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop(),
 function updateStuff() {
     ticking = false;
 
-    if (!$('html').is('.ie9, .lt-ie9')) {
-        Parallax.update();
-        CoverAnimation.update();
-    }
-
+    Parallax.update();
+    CoverAnimation.update();
     Navigator.update();
     ScrollToTop.update();
     DownArrow.update();
@@ -424,6 +427,33 @@ if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i) && window.innerHeight != d
     window.addEventListener("orientationchange", fixViewportHeight, false);
     fixViewportHeight();
 }
+
+function detectIE() {
+    var ua = window.navigator.userAgent;
+
+    var msie = ua.indexOf('MSIE ');
+    if (msie > 0) {
+        // IE 10 or older => return version number
+        return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+    }
+
+    var trident = ua.indexOf('Trident/');
+    if (trident > 0) {
+        // IE 11 => return version number
+        var rv = ua.indexOf('rv:');
+        return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+    }
+
+    var edge = ua.indexOf('Edge/');
+    if (edge > 0) {
+       // IE 12 => return version number
+       return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+    }
+
+    // other browser
+    return false;
+}
+
 
 // smooth scrolling to anchors
 $(function() {

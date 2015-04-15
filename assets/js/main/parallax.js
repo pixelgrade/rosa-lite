@@ -12,42 +12,55 @@ var Parallax = {
 
         // if this is a touch device initialize the slider and skip the complicated part
 
-        // if (Modernizr.touch && !this.initialized) {
+        if (detectIE() || Modernizr.touch && !this.initialized) {
 
-        //     $('.article__header').each(function (i, hero) {
+            $('.article__header').each(function (i, hero) {
 
-        //         var $hero   = $(hero),
-        //             $cover  = $hero.children('.article__parallax'), 
-        //             $image  = $cover.find('.article__parallax__img');
+                var $hero   = $(hero),
+                    $cover  = $hero.children('.article__parallax'), 
+                    $image  = $cover.find('.article__parallax__img');
 
-        //         $cover.show();
+                $cover.show();
 
-        //         if ( ! $image.length ) {
-        //             $image = $cover.children('picture').children('img');
-        //         }
+                // if ( ! $image.length ) {
+                //     $image = $cover.children('picture').children('img');
+                // }
 
-        //         if ( $image.length ) {
+                if ( $image.length ) {
 
-        //             var imageWidth  = $image.css('width', 'auto').outerWidth(),
-        //                 imageHeight = $image.outerHeight(),
-        //                 heroHeight  = $hero.outerHeight(),
-        //                 scaleX      = windowWidth / imageWidth;
-        //                 scaleY      = windowHeight / imageHeight;
-        //                 scale       = Math.max(scaleX, scaleY);
-        //                 newWidth    = parseInt(imageWidth * scale);
+                    var imageWidth  = $image.css('width', 'auto').outerWidth(),
+                        imageHeight = $image.outerHeight(),
+                        heroHeight  = $hero.outerHeight(),
+                        scaleX      = windowWidth / imageWidth;
+                        scaleY      = windowHeight / imageHeight;
+                        scale       = Math.max(scaleX, scaleY);
+                        newWidth    = parseInt(imageWidth * scale),
+                        newHeight   = scale * imageHeight;
 
-        //             $image.css('width', newWidth);
-        //         }
+                    $image.css({
+                        'max-width': 'none',
+                        width: newWidth,
+                        opacity: 1
+                    });
 
-        //         $hero.css('min-height', windowHeight);
-        //         gmapInit($hero);  
+                    $cover.css({
+                        top: 0,
+                        left: (windowWidth - newWidth) / 2
+                    });
+                }
 
-        //         // $hero.find('.hero__slider').data('imagescale', 'fill');
-        //         royalSliderInit($hero);
-        //     });
+                pixGS.TweenMax.to($cover, .3, {
+                    opacity: 1
+                });
 
-        //     return;
-        // }
+                $hero.css('min-height', windowHeight);
+                royalSliderInit($cover);
+                gmapInit($cover);
+                gmapMultiplePinsInit($cover);
+            });
+
+            return;
+        }
 
         this.stop           = documentHeight - windowHeight;
         this.amount         = $body.data('parallax-speed') || 0.5;
