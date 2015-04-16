@@ -11,7 +11,7 @@
 	word-wrap: break-word;
 }
 
-.post .article__title{
+.post .article__title{ 
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
 
@@ -30,7 +30,7 @@
 
 			&:before, &:after {
 				content: "";
-				display: block;
+				display: block; 
 				width: 100%;
 				height: 14px;
 				position: absolute;
@@ -53,7 +53,7 @@
 
     &.article--arrow {
 
-        &:before {
+        &:before { 
             display: none;
         }
     }
@@ -74,10 +74,24 @@
 
 }
 
+.article__header {
+	pointer-events: none;
+
+	> *,
+	.covers &,
+	.is_iexplore & {
+		pointer-events: auto;
+	}
+
+	&.has-no-image {
+		background: #333;
+	}
+}
+
 .article__header.article__header--page {
 	position: relative;
 	//	padding: 200px 0;
-	background: #333;
+	// background: #333;
 	overflow: hidden;
 
     svg {
@@ -116,14 +130,6 @@
 	&.header--slideshow {
 		padding: 0;
 	}
-
-	.gmap, .gmap--multiple-pins {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-	}
 }
 
 .blurp--top {
@@ -136,22 +142,59 @@
 
 .article__parallax {
 	position: absolute;
-	top: -100%; right: 0; bottom: -100%; left: 0;
-	background-attachment: fixed;
-	background-position: 50% 50%;
-//	@include transform(translate3d(0, 0, 0));
+	top: 0; right: 0; bottom: 0; left: 0;
+	opacity: 0;
 
-	img {
-		opacity: 0;
+	// &, * { pointer-events: none; }
+	.flexbox__item * { pointer-events: auto; }
+
+	.covers & {
+		position: absolute;
+		top: 0; left: 0; right: 0; bottom: auto;
+		background: none;
+		overflow: hidden;
+		opacity: 1;
+
+		.article__parallax__img {
+			opacity: 1;
+			max-width: none;
+			min-width: 100%;
+			min-height: 100%;
+			position: absolute;
+			top: 50%; left: 50%;
+			@include transform(translate(-50%, -50%));
+		}
 	}
 
-	.rsOverflow, .gmap, .gmap--multiple-pins {
+	.gmap,
+	.gmap--multiple-pins {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		@include transform(translate3d(0, -50%, 0));
+
 		img {
-			opacity: 1;
+			max-width: none;
 		}
 	}
 }
 
+.article__parallax__slider {
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+
+	img {
+		position: absolute;
+	}
+}
+
+.covers {
+	position: fixed;
+	top: 0; left: 0; right: 0;;
+	z-index: -1;
+}
 
 .lt-ie9 {
 
@@ -165,12 +208,12 @@
 	}
 }
 
-.no-scroll-effect .article__parallax {
-	-webkit-transform: none !important;
-	-moz-transform: none !important;
-	-o-transform: none !important;
-	-ms-transform: none !important;
-	transform: none !important;
+.no-scroll-effect {
+	.article__parallax,
+	.article__parallax__img,
+	.article__parallax__slider {
+		@include transform(none !important);
+	}
 }
 
 .article__parallax--img {

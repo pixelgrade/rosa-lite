@@ -1,123 +1,222 @@
-/* --- Parallax Init --- */
 
 var Parallax = {
-    selector:   '.article__parallax',
-    amount:     0.5,
-
-    $el:        $(this.selector),
+    selector: '.article__parallax',
+    covers: $([]),
+    amount: 0,
+    initialized: false,
+    start: 0,
+    stop: 0,
 
     initialize: function () {
-
-        if (Modernizr.touch && iOS && iOS < 8 || is_mobile_ie) {
-            $('html').addClass('no-scroll-effect');
-        }
-
-        this.prepare();
-        this.update(latestKnownScrollY, false);
-    },
-
-    prepare: function() {
-
         var that = this;
 
-        $(this.selector).each(function (i, element) {
+        // if this is a touch device initialize the slider and skip the complicated part
 
-            var $parallax           = $(element),
-                $container          = $parallax.parent(),
-                containerTop        = $container.offset().top,
-                containerWidth      = $container.outerWidth(),
-                containerHeight     = $container.outerHeight(),
-                parallaxInfo        = {
-                    start:          containerTop - windowHeight,
-                    end:            containerTop + containerHeight
-                },
-                initialTop          = -1 * (windowHeight + containerHeight) * that.amount / 2;
-                finalTop            = -1 * initialTop;
+        if (detectIE() || Modernizr.touch && !this.initialized) {
 
+            $('.article__header').each(function (i, hero) {
 
-            $parallax.css({
-                height: containerHeight + windowHeight * that.amount,
-                'top': -1 * windowHeight * that.amount / 2
-            });
+                var $hero   = $(hero),
+                    $cover  = $hero.children('.article__parallax'), 
+                    $image  = $cover.find('.article__parallax__img');
 
-            if ($parallax.hasClass('article__parallax--img') && $parallax.find('img').length) {
+                $cover.show();
 
-                $parallax.find('img').each(function (i, element) {
+                // if ( ! $image.length ) {
+                //     $image = $cover.children('picture').children('img');
+                // }
 
-                    var $image          = $(element),
-                        imageHeight     = $image.height(),
-                        imageWidth      = $image.width(),
-                        // find scale needed for the image to fit container and move desired amount
-                        scaleY          = ((windowHeight - containerHeight) * that.amount + containerHeight) / imageHeight,
-                        scaleX          = containerWidth / imageWidth,
-                        scale           = Math.max(scaleX, scaleY);
+                if ( $image.length ) {
 
-                    // header resizing on mobile makes image too small
-                    // 80 pixels should be enough
-                    if (Modernizr.touch) {
-                        scaleY = (scaleY * imageHeight + 80) / imageHeight;
-                        scale = Math.max(scaleX, scaleY);
-                    }
+                    var imageWidth  = $image.css('width', 'auto').outerWidth(),
+                        imageHeight = $image.outerHeight(),
+                        heroHeight  = $hero.outerHeight(),
+                        scaleX      = windowWidth / imageWidth;
+                        scaleY      = windowHeight / imageHeight;
+                        scale       = Math.max(scaleX, scaleY);
+                        newWidth    = parseInt(imageWidth * scale),
+                        newHeight   = scale * imageHeight;
 
-                    // scale image up to desired size
                     $image.css({
-                        width: parseInt(imageWidth * scale + 1, 10),
-                        height: parseInt(imageHeight * scale + 1, 10)
+                        'max-width': 'none',
+                        width: newWidth,
+                        opacity: 1
                     });
 
-                    // fade image in
-                    pixGS.TweenMax.to($image, 0.5, {opacity: 1});
+                    $cover.css({
+                        top: 0,
+                        left: (windowWidth - newWidth) / 2
+                    });
+                }
+
+                pixGS.TweenMax.to($cover, .3, {
+                    opacity: 1
                 });
-            }
 
-            var timeline = new pixGS.TimelineMax({ paused: true });
+                $hero.css('min-height', windowHeight);
+                royalSliderInit($cover);
+                gmapInit($cover);
+                gmapMultiplePinsInit($cover);
+            });
 
-            // create timeline for current image
-            timeline.append(pixGS.TweenMax.fromTo($parallax, 1, {
-                y: initialTop
-            }, {
-                y: finalTop,
-                ease: pixGS.Linear.easeNone
-            }));
-
-            parallaxInfo.timeline = timeline;
-
-            // bind sensible variables for tweening to the image using a data attribute
-            $parallax.data('parallax', parallaxInfo);
-
-        });
-    },
-
-    update: function() {
-
-        if (this.amount == 0 || !$(this.selector).length) {
             return;
         }
 
-        $(this.selector).each(function (i, element) {
+        this.stop           = documentHeight - windowHeight;
+        this.amount         = $body.data('parallax-speed') || 0.5;
+        this.initialized    = true;
 
-            var $parallax   = $(element),
-                options     = $parallax.data('parallax'),
-                progress    = 0;
+        // clean up
+        $('.covers').empty();
 
-            // some sanity check
-            // we wouldn't want to divide by 0 - the Universe might come to an end
-            if (! empty(options) && (options.end - options.start) !== 0) {
-                progress = (1 / (options.end - options.start)) * (latestKnownScrollY - options.start);
+        $('.article__parallax').each(function (i, cover) {
 
+            // grab all the variables we need
+            var $cover      = $(cover),
+                $hero       = $cover.parent(),
+                $clone      = $cover.clone().wrap("div.article__header"),
+                $cloneImage = $clone.find('.article__parallax__img'),
+                $cloneSlider = $clone.find('.article__parallax__slider'),
+                heroHeight  = $hero.outerHeight(),
+                heroOffset  = $hero.offset(),
+                $target     = $cover.children(),
+                $cloneTarget = $clone.children(),
+                imageWidth  = $target.outerWidth(),
+                imageHeight = $target.outerHeight(),
+                adminBar    = parseInt($html.css('marginTop')),
+                amount      = that.amount,
 
-                if (0 > progress) {
-                    options.timeline.progress(0);
-                    return;
-                }
+            // we may need to scale the image up or down
+            // so we need to find the max scale of both X and Y axis
+                scaleX,
+                scaleY,
+                scale,
+                newWidth,
+                distance,
+                speeds      = {
+                    static: 0,
+                    slow:   0.25,
+                    medium: 0.5,
+                    fast:   0.75,
+                    fixed:  1
+                };
 
-                if (1 < progress) {
-                    options.timeline.progress(1);
-                    return;
-                }
+            $cover.removeAttr('style');
+            $clone.data('source', $cover).appendTo('.covers').show();
+            $clone.css('height', heroHeight);
 
-                options.timeline.progress(progress);
+            // let's see if the user wants different speed for different whateva'
+            if (typeof parallax_speeds !== "undefined") {
+                $.each(speeds, function(speed, value) {
+                    if (typeof parallax_speeds[speed] !== "undefined") {
+                        if ($hero.is(parallax_speeds[speed])) {
+                            amount = value;
+                        }
+                    }
+                });
             }
+
+            scaleX      = windowWidth / imageWidth;
+            scaleY      = (heroHeight + (windowHeight - heroHeight) * amount) / imageHeight;
+            scale       = Math.max(scaleX, scaleY);
+            newWidth    = parseInt(imageWidth * scale);
+            distance    = (windowHeight - heroHeight) * amount;
+
+            // if there's a slider we are working with we may have to set the height
+            $cloneTarget.css('height', heroHeight + distance);
+
+            // set the new width, the image should have height: auto to scale properly
+            $cloneImage.css({
+                'width': newWidth,
+                'height': 'auto'
+            });
+
+            // align the clone to its surrogate
+            // we use TweenMax cause it'll take care of the vendor prefixes
+            pixGS.TweenMax.to($clone, 0, { top: - adminBar });
+
+            // prepare image / slider timeline
+            var parallax = {
+                    start:      heroOffset.top - windowHeight - distance / 2,
+                    end:        heroOffset.top + heroHeight + distance / 2,
+                    timeline:   new pixGS.TimelineMax({ paused: true })
+                },
+            // the container timeline
+                parallax2 = {
+                    start:      0,
+                    end:        documentHeight,
+                    timeline:   new pixGS.TimelineMax({ paused: true })
+                };
+
+            // move the image for a parallax effect
+            parallax.timeline.fromTo($cloneTarget, 1, {
+                y: '-=' + heroHeight * amount
+            }, {
+                y: '+=' + heroHeight * amount * 2,
+                ease: pixGS.Linear.easeNone,
+                force3D: true
+            });
+
+            // parallax.timeline.fromTo($cloneSlider.find('.hero__content, .hero__caption'), 1, {
+            //     y: '+=' + windowHeight * amount
+            // }, {
+            //     y: '-=' + windowHeight * amount * 2,
+            //     ease: pixGS.Linear.easeNone,
+            //     force3D: true
+            // }, '-=1');
+
+            // move the container to match scrolling
+            parallax2.timeline.fromTo($clone, 1, {
+                top: heroOffset.top
+            }, {
+                top: heroOffset.top - documentHeight,
+                ease: pixGS.Linear.easeNone,
+                force3D: true
+            });
+
+            // set the parallax info as data attributes on the clone to be used on update
+            $clone
+                .data('parallax', parallax)
+                .data('parallax2', parallax2);
+
+            // update progress on the timelines to match current scroll position
+            that.update();
+
+            // or the slider
+            royalSliderInit($clone);
+            gmapInit($clone);
+            gmapMultiplePinsInit($clone);
+
+            if (that.initialized) {
+                pixGS.TweenMax.to($clone, .3, {'opacity': 1});
+            }
+
         });
+
+    },
+
+    update: function () {
+        // return;
+        if (Modernizr.touch || is_ie || latestKnownScrollY > this.stop || latestKnownScrollY < this.start) {
+            return;
+        }
+
+        $('.covers .article__parallax').each(function (i, cover) {
+            var $cover      = $(cover),
+                parallax    = $cover.data('parallax'),
+                parallax2   = $cover.data('parallax2'),
+                progress    = (latestKnownScrollY - parallax.start) / (parallax.end - parallax.start),
+                progress2   = (latestKnownScrollY - parallax2.start) / (parallax2.end - parallax2.start);
+
+            progress = 0 > progress ? 0 : progress;
+            progress = 1 < progress ? 1 : progress;
+
+            progress2 = 0 > progress2 ? 0 : progress2;
+            progress2 = 1 < progress2 ? 1 : progress2;
+
+            parallax.timeline.progress(progress);
+            parallax2.timeline.progress(progress2);
+        });
+
     }
 };

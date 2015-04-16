@@ -61,9 +61,11 @@ if ( $pin_type == 'single' ) {
 		$classes .= ' ' . $gmap_height;
 		?>
 		<header id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ); ?>">
-			<div id="gmap-<?php the_ID() ?>" class="gmap"
-				data-url="<?php esc_attr_e( $gmap_url ); ?>" <?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
-				data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>" data-pin_type="single"></div>
+			<div class="article__parallax">
+				<div id="gmap-<?php the_ID() ?>" class="gmap"
+					data-url="<?php esc_attr_e( $gmap_url ); ?>" <?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
+					data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>" data-pin_type="single"></div>
+			</div>
 		</header>
 	<?php
 	}
@@ -97,9 +99,11 @@ if ( $pin_type == 'single' ) {
 		$pins .= '}';
 		?>
 		<header id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ) ?>">
-			<div class="gmap--multiple-pins" id="gmap-<?php the_ID() ?>"
-				<?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
-				 data-pins='<?php echo esc_attr( $pins ) ?>' data-pin_type="single"></div>
+			<div class="article__parallax">
+				<div class="gmap--multiple-pins" id="gmap-<?php the_ID() ?>"
+					<?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
+					 data-pins='<?php echo esc_attr( $pins ) ?>' data-pin_type="multiple"></div>
+			</div>
 		</header>
 		<div class="js-map-pin  hidden">
 			<img class="gmap__marker__img" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/map-pin.png' ) ?>"/>
@@ -153,64 +157,66 @@ if ( $pin_type == 'single' ) {
 						</div>
 					</div>
 				<?php } ?>
-				<div class="article__parallax  header--slideshow  js-pixslider"
-					data-imagealigncenter
-					data-imagescale="<?php echo $image_scale_mode; ?>"
-					data-slidertransition="<?php echo $slider_transition; ?>"
-					data-customArrows
+				<div class="article__parallax">
+					<div class="article__parallax__slider  header--slideshow  js-pixslider"
+						data-imagealigncenter
+						data-imagescale="<?php echo $image_scale_mode; ?>"
+						data-slidertransition="<?php echo $slider_transition; ?>"
+						data-customArrows
 
-					<?php
-					if ( $slider_transition == 'move' ) {
-						echo 'data-slidertransitiondirection="horizontal"' . PHP_EOL;
-					}
-					if ( $slider_autoplay ) {
-						echo 'data-sliderautoplay="" ' . PHP_EOL;
-						echo 'data-sliderdelay="' . $slider_delay . '" ' . PHP_EOL;
-					}
-					if ( $slider_visiblenearby ) {
-						echo 'data-visiblenearby ' . PHP_EOL;
-					}
+						<?php
+						if ( $slider_transition == 'move' ) {
+							echo 'data-slidertransitiondirection="horizontal"' . PHP_EOL;
+						}
+						if ( $slider_autoplay ) {
+							echo 'data-sliderautoplay="" ' . PHP_EOL;
+							echo 'data-sliderdelay="' . $slider_delay . '" ' . PHP_EOL;
+						}
+						if ( $slider_visiblenearby ) {
+							echo 'data-visiblenearby ' . PHP_EOL;
+						}
 
-					if ( wpgrade::option( 'slideshow_arrows_style' ) == 'hover' ) {
-						echo ' data-hoverarrows ';
-					} ?>
-					>
-					<?php
-					$set_cover = false;
+						if ( wpgrade::option( 'slideshow_arrows_style' ) == 'hover' ) {
+							echo ' data-hoverarrows ';
+						} ?>
+						>
+						<?php
+						$set_cover = false;
 
-					foreach ( $attachments as $attachment ) {
+						foreach ( $attachments as $attachment ) {
 
-						$full_img          = wp_get_attachment_image_src( $attachment->ID, 'full-size' );
-						$attachment_fields = get_post_custom( $attachment->ID );
+							$full_img          = wp_get_attachment_image_src( $attachment->ID, 'full-size' );
+							$attachment_fields = get_post_custom( $attachment->ID );
 
-						// prepare the video url if there is one
-						$video_url = ( isset( $attachment_fields['_video_url'][0] ) && ! empty( $attachment_fields['_video_url'][0] ) ) ? esc_url( $attachment_fields['_video_url'][0] ) : '';
+							// prepare the video url if there is one
+							$video_url = ( isset( $attachment_fields['_video_url'][0] ) && ! empty( $attachment_fields['_video_url'][0] ) ) ? esc_url( $attachment_fields['_video_url'][0] ) : '';
 
-						// should the video auto play?
-						$video_autoplay = ( isset( $attachment_fields['_video_autoplay'][0] ) && ! empty( $attachment_fields['_video_autoplay'][0] ) && $attachment_fields['_video_autoplay'][0] === 'on' ) ? $attachment_fields['_video_autoplay'][0] : '';
+							// should the video auto play?
+							$video_autoplay = ( isset( $attachment_fields['_video_autoplay'][0] ) && ! empty( $attachment_fields['_video_autoplay'][0] ) && $attachment_fields['_video_autoplay'][0] === 'on' ) ? $attachment_fields['_video_autoplay'][0] : '';
 
-						if ( true === $set_cover ) { ?>
-							<div class="gallery-item cover" itemscope itemtype="http://schema.org/ImageObject"
-								data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
-								data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>">
-								<img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
-									alt="<?php echo $attachment->post_excerpt; ?>" itemprop="contentURL"/>
-							</div>
-							<?php
-							$set_cover = false;
-						} else { ?>
-							<div class="gallery-item<?php echo( ! empty( $video_url ) ? ' video' : '' );
-							echo ( $video_autoplay == 'on' ) ? ' video_autoplay' : ''; ?>" itemscope
-								itemtype="http://schema.org/ImageObject"
-								data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
-								data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>" <?php echo ( ! empty( $video_autoplay ) ) ? 'data-video_autoplay="' . $video_autoplay . '"' : ''; ?>>
-								<img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
-									alt="<?php echo $attachment->post_excerpt; ?>"
-									itemprop="contentURL" <?php echo ( ! empty( $video_url ) ) ? ' data-rsVideo="' . $video_url . '"' : ''; ?>  />
-							</div>
-						<?php }
-					} ?>
-				</div>
+							if ( true === $set_cover ) { ?>
+								<div class="gallery-item cover" itemscope itemtype="http://schema.org/ImageObject"
+									data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
+									data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>">
+									<img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
+										alt="<?php echo $attachment->post_excerpt; ?>" itemprop="contentURL"/>
+								</div>
+								<?php
+								$set_cover = false;
+							} else { ?>
+								<div class="gallery-item<?php echo( ! empty( $video_url ) ? ' video' : '' );
+								echo ( $video_autoplay == 'on' ) ? ' video_autoplay' : ''; ?>" itemscope
+									itemtype="http://schema.org/ImageObject"
+									data-caption="<?php echo htmlspecialchars( $attachment->post_excerpt ) ?>"
+									data-description="<?php echo htmlspecialchars( $attachment->post_content ) ?>" <?php echo ( ! empty( $video_autoplay ) ) ? 'data-video_autoplay="' . $video_autoplay . '"' : ''; ?>>
+									<img src="<?php echo $full_img[0]; ?>" class="attachment-blog-big rsImg"
+										alt="<?php echo $attachment->post_excerpt; ?>"
+										itemprop="contentURL" <?php echo ( ! empty( $video_url ) ) ? ' data-rsVideo="' . $video_url . '"' : ''; ?>  />
+								</div>
+							<?php }
+						} ?>
+					</div>
+				</div>	
 				<?php display_header_down_arrow( $page_section_idx, $header_height ); ?>
 			</header>
 		<?php } else { ?>
@@ -220,13 +226,16 @@ if ( $pin_type == 'single' ) {
 		<?php }
 
 	} else { /* OR REGULAR PAGE */
-		if ( has_post_thumbnail() || ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) { ?>
+		if ( has_post_thumbnail() || ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) { 
+			if ( ! has_post_thumbnail() ) {
+				$classes .= ' has-no-image';
+			} ?>
 			<header id="post-<?php the_ID() ?>-title" class="<?php echo $classes ?>" data-type="image">
 				<?php if ( has_post_thumbnail() ) {
 					$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full-size' );
 					if ( ! empty( $image[0] ) ) { ?>
-						<div class="article__parallax  article__parallax--img">
-							<img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
+						<div class="article__parallax">
+							<img class="article__parallax__img" src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
 						</div>
 					<?php
 					}

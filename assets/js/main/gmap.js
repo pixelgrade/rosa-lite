@@ -81,8 +81,14 @@ function get_oldMap_coordinates(url) {
 	return coordinates;
 }
 
-function gmapInit() {
-	var $gmaps = $('.gmap');
+function gmapInit($container) {
+	var $gmaps;
+
+	if (typeof $container !== "undefined") {
+		$gmaps = $container.find('.gmap');
+	} else {
+		$gmaps = $('.gmap');
+	}
 
 	if ( $gmaps.length && typeof google !== 'undefined' ) {
 		if (globalDebug) {console.log("GMap Init");}
@@ -166,9 +172,17 @@ function gmapInit() {
 
 }
 
-function gmapMultiplePinsInit() {
-	var $gmaps = $('.gmap--multiple-pins' ),
-		$imageMarkup 	= $('.js-map-pin');
+function gmapMultiplePinsInit($container) {
+
+	var $gmaps;
+
+	if (typeof $container !== "undefined") {
+		$gmaps = $container.find('.gmap--multiple-pins');
+	} else {
+		$gmaps = $('.gmap--multiple-pins');
+	}
+
+	$imageMarkup 	= $('.js-map-pin');
 
 	if ( $imageMarkup.length > 0 ) {
 		$imageMarkup = $($imageMarkup[0]).html();

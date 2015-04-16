@@ -84,15 +84,19 @@ var Navigator = {
         this.timeline.add(pixGS.TweenMax.to(that.$selectedBullet, 0, {}));
 
         this.timeline.add(pixGS.TweenMax.to(that.$selectedBullet, 0.1, {
-            'border-top-left-radius': 20,
-            'border-top-right-radius': 20,
+            borderTopLeftRadius: 20,
+            borderTopRightRadius: 20,
+            borderBottomLeftRadius: 50,
+            borderBottomRightRadius: 50,
             'scaleY': 2,
             'scaleX': 0.6
         }));
 
         this.timeline.add(pixGS.TweenMax.to(that.$selectedBullet, 0.1, {
-            'border-top-left-radius': 50,
-            'border-top-right-radius': 50,
+            borderTopLeftRadius: 50,
+            borderTopRightRadius: 50,
+            borderBottomLeftRadius: 50,
+            borderBottomRightRadius: 50,
             'scaleY': 1,
             'scaleX': 1
         }));

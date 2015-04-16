@@ -11,7 +11,6 @@
 .nav--main {
 	@extend .cf;
 	display: inline-block;
-
 	margin-bottom: 0;
 
 	> li {
@@ -43,10 +42,9 @@
 
 	@include media-query(lap-and-up){
 
-		> .current-menu-item > a:after {
+		li[class*="current-menu"] > a:after {
 			content: "";
 			display: block;
-
 			border-bottom: 2px solid $dark;
 
 			.header--transparent & {
@@ -167,6 +165,10 @@
 
 	a {
 		padding: $_u2;
+	}
+
+	> li > a {
+		display: inline-block;
 	}
 
 	.menu-item-has-children {
