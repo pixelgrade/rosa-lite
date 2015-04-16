@@ -82,6 +82,10 @@
 	.is_iexplore & {
 		pointer-events: auto;
 	}
+
+	&.has-no-image {
+		background: #333;
+	}
 }
 
 .article__header.article__header--page {

@@ -226,7 +226,10 @@ if ( $pin_type == 'single' ) {
 		<?php }
 
 	} else { /* OR REGULAR PAGE */
-		if ( has_post_thumbnail() || ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) { ?>
+		if ( has_post_thumbnail() || ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) { 
+			if ( ! has_post_thumbnail() ) {
+				$classes .= ' has-no-image';
+			} ?>
 			<header id="post-<?php the_ID() ?>-title" class="<?php echo $classes ?>" data-type="image">
 				<?php if ( has_post_thumbnail() ) {
 					$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full-size' );
