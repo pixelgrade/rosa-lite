@@ -150,6 +150,7 @@
 	.flexbox__item * { pointer-events: auto; }
 
 	.is_iexplore &,
+	.touch &,
 	.covers & {
 		pointer-events: auto;
 	}
