@@ -144,9 +144,15 @@
 	position: absolute;
 	top: 0; right: 0; bottom: 0; left: 0;
 	opacity: 0;
+	pointer-events: none;
 
 	// &, * { pointer-events: none; }
 	.flexbox__item * { pointer-events: auto; }
+
+	.is_iexplore &,
+	.covers & {
+		pointer-events: auto;
+	}
 
 	.covers & {
 		position: absolute;
@@ -192,8 +198,7 @@
 
 .covers {
 	position: fixed;
-	top: 0; left: 0; right: 0;;
-	z-index: -1;
+	top: 0; left: 0; right: 0;
 }
 
 .lt-ie9 {

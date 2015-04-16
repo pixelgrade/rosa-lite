@@ -50,8 +50,8 @@ if ( ! is_404() ):
 
 <?php endif; ?>
 
-</div><!-- #page -->
 <div class="covers"></div>
+</div><!-- #page -->
 
 <?php wp_footer(); ?>
 </body>
