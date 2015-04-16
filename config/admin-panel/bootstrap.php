@@ -32,6 +32,8 @@ $redux_args               = include $currentpath . 'redux-args' . EXT;
 $redux_sections           = include $currentpath . 'redux-sections' . EXT;
 $redux_tabs               = include $currentpath . 'redux-tabs' . EXT;
 
+$redux_sections = apply_filters( wpgrade::$shortname . '_theme_options_config', $redux_sections);
+
 $redux = new ReduxFramework( $redux_sections, $redux_args, $redux_tabs );
 wpgrade::resolve( 'redux-instance', $redux );
 
