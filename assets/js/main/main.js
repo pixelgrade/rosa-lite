@@ -301,7 +301,7 @@ $(window).load(function(){
             CoverAnimation.initialize();
         }, 400);
     }
-    // niceScrollInit();
+    niceScrollInit();
     //if(!$('html').is('.ie9, .lt-ie9') ){
         requestTick();
     //}
