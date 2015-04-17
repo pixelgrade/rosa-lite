@@ -167,9 +167,9 @@ var Parallax = {
 
             // move the container to match scrolling
             parallax2.timeline.fromTo($clone, 1, {
-                top: heroOffset.top
+                y: heroOffset.top
             }, {
-                top: heroOffset.top - documentHeight,
+                y: heroOffset.top - documentHeight,
                 ease: pixGS.Linear.easeNone,
                 force3D: true
             });
