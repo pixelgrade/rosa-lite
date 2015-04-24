@@ -133,7 +133,7 @@ var Parallax = {
 
             // align the clone to its surrogate
             // we use TweenMax cause it'll take care of the vendor prefixes
-            pixGS.TweenMax.to($clone, 0, { top: - adminBar });
+            // pixGS.TweenMax.to($clone, 0, { top: 0 });
 
             // prepare image / slider timeline
             var parallax = {
