@@ -25,12 +25,8 @@ function wpgrade_register_required_plugins() {
 		array(
 			'name'               => 'PixTypes',
 			'slug'               => 'pixtypes',
-			'source'             => get_template_directory() . '/inc/required-plugins/plugins/pixtypes.zip',
 			'required'           => true,
-			'version'            => '1.2.10',
-			'force_activation'   => false,
-			'force_deactivation' => false,
-			'external_url'       => '',
+//			'version'            => '1.3.0',
 		),
 		array(
 			'name'               => 'PixLikes',
@@ -45,12 +41,7 @@ function wpgrade_register_required_plugins() {
 		array(
 			'name'               => 'PixCodes',
 			'slug'               => 'pixcodes',
-			'source'             => get_template_directory() . '/inc/required-plugins/plugins/pixcodes.zip',
-			'required'           => false,
-			'version'            => '2.3.0',
-			'force_activation'   => false,
-			'force_deactivation' => false,
-			'external_url'       => '',
+//			'version'            => '2.3.0'
 		),
 		//        array(
 		//            'name'      => 'Yet Another Related Posts Plugin (YARPP)',
