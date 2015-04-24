@@ -109,3 +109,7 @@ function custom_add_to_cart_message( $params ) {
 
     return $params;
 }
+
+remove_filter('woocommerce_cart_collaterals' , 'woocommerce_cross_sell_display');
+
+add_filter('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display', 15);
