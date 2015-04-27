@@ -64,7 +64,7 @@
             // ATTENTION DEVS
             // Please update the build number with each push, no matter how small.
             // This will make for easier support when we ask users what version they are using.
-            public static $_version = '3.3.5.5';
+            public static $_version = '3.5.4';
             public static $_dir;
             public static $_url;
             public static $_upload_dir;
@@ -162,19 +162,6 @@
                 // Set values
                 $this->set_default_args();
                 $this->args = wp_parse_args( $args, $this->args );
-
-//                logconsole('post', $_GET['page']);
-//                // Getting started page
-//                if (  is_admin () && $this->args['dev_mode'] ) {
-//                    if ($_GET['page'] != 'redux-about') {
-//                        logconsole('welcome');
-//                        include_once( dirname( __FILE__ ) . '/inc/welcome.php' );
-//
-//                        update_option( 'redux_version_upgraded_from', self::$_version );
-//
-//                        set_transient( '_redux_activation_redirect', true, 30 );
-//                    }
-//                }
 
                 if ( empty( $this->args['transient_time'] ) ) {
                     $this->args['transient_time'] = 60 * MINUTE_IN_SECONDS;
