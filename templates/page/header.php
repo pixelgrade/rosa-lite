@@ -162,7 +162,7 @@ if ( $pin_type == 'single' ) {
 						data-imagealigncenter
 						data-imagescale="<?php echo $image_scale_mode; ?>"
 						data-slidertransition="<?php echo $slider_transition; ?>"
-						data-customArrows
+						data-customArrows="true"
 
 						<?php
 						if ( $slider_transition == 'move' ) {
