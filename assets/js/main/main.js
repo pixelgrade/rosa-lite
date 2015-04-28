@@ -376,8 +376,6 @@ $(window).on("debouncedresize", function(e) {
 
     royalSliderInit($('.js-pixslider').not('.article__parallax .js-pixslider'));
 
-    gmapInit();
-    gmapMultiplePinsInit();
     ScrollToTop.initialize();
     Parallax.initialize();
     CoverAnimation.initialize();
