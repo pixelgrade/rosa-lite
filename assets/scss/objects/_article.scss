@@ -75,11 +75,16 @@
 }
 
 .article__header {
-	pointer-events: none;
 
-	> *,
+	&, * {
+		pointer-events: none;
+	}
+
+	.flexbox__item *,
 	.covers &,
-	.is_iexplore & {
+	.covers & *,
+	.is_iexplore &,
+	.is_iexplore & * {
 		pointer-events: auto;
 	}
 
