@@ -381,6 +381,12 @@ $(window).on("debouncedresize", function(e) {
     CoverAnimation.initialize();
 });
 
+$(window).on("organicTabsChange", function(e) {
+    ScrollToTop.initialize();
+    Parallax.initialize();
+    CoverAnimation.initialize();
+});
+
 $(window).on("orientationchange", function(e) {
     setTimeout(function () {
         Parallax.initialize();

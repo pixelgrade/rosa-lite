@@ -12,7 +12,7 @@ var Parallax = {
 
         // if this is a touch device initialize the slider and skip the complicated part
 
-        if (detectIE() || Modernizr.touch && !this.initialized) {
+        if (detectIE() && !this.initialized) {
 
             $('.article__header').each(function (i, hero) {
 
@@ -197,7 +197,7 @@ var Parallax = {
 
     update: function () {
         // return;
-        if (Modernizr.touch || is_ie || latestKnownScrollY > this.stop || latestKnownScrollY < this.start) {
+        if (is_ie || latestKnownScrollY > this.stop || latestKnownScrollY < this.start) {
             return;
         }
 

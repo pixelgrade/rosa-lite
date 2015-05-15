@@ -9,17 +9,11 @@ var CoverAnimation = {
 
         var that = this;
 
-        if (this.initialized) {
-            return;
-        }
-
-        this.initialized = true;
-
         $(this.selector).each(function(i, header) {
 
             var $header         = $(header),
                 $headline       = $header.find('.article__headline'),
-                timeline        = new pixGS.TimelineMax(),
+                timeline        = new pixGS.TimelineMax({ paused: true }),
                 $title          = $headline.find('.headline__primary'),
                 $subtitle       = $headline.find('.headline__secondary'),
                 $description    = $headline.find('.headline__description'),
@@ -87,26 +81,28 @@ var CoverAnimation = {
             ab = animatedInTime / animatedOutTime;
             bc = 1 - ab;
 
-            if (Modernizr.touch && is_OSX) {
-                timeline.tweenTo("animatedIn");
-                return;
-            }
-
-            timeline.tweenTo("animatedOut", {
-                onComplete: function () {
-                    $headline.data("animated", true);
-                },
-                onUpdate: function () {
-                    var progress        = (1 / (end - start)) * (latestKnownScrollY - start),
-                        partialProgress = progress < 0 ? ab : ab + bc * progress,
-                        currentProgress = timeline.progress();
-
-                    if (Math.abs(partialProgress - currentProgress) < 0.01) {
-                        $headline.data("animated", true);
-                        this.kill();
-                    }
+            if (!that.initialized) {
+                if (Modernizr.touch && is_OSX) {
+                    timeline.tweenTo("animatedIn");
+                    return;
                 }
-            });
+
+                timeline.tweenTo("animatedOut", {
+                    onComplete: function () {
+                        $headline.data("animated", true);
+                    },
+                    onUpdate: function () {
+                        var progress        = (1 / (end - start)) * (latestKnownScrollY - start),
+                            partialProgress = progress < 0 ? ab : ab + bc * progress,
+                            currentProgress = timeline.progress();
+
+                        if (Math.abs(partialProgress - currentProgress) < 0.01) {
+                            $headline.data("animated", true);
+                            this.kill();
+                        }
+                    }
+                });
+            }
 
             $headline.data('tween', {
                 timeline:       timeline,
@@ -118,8 +114,8 @@ var CoverAnimation = {
 
         });
 
-        this.update();
-
+        that.initialized = true;
+        that.update();
     },
 
     update: function () {
