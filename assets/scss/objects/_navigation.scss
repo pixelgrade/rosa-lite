@@ -231,6 +231,14 @@ $nav-width: 200px;
 		top: 0;
 		bottom: 0;
 
+		.admin-bar & {
+			padding-top: 32px;
+
+			@media screen and (max-width: 782px) {
+				padding-top: 46px;
+			}
+		}
+
 		-webkit-overflow-scrolling: touch;
 
 		overflow-y: scroll;
@@ -363,11 +371,28 @@ $nav-width: 200px;
 		}
 	}
 
+	body {
+
+		#page,
+		.navigation--main,
+		.covers {
+			@include transition(left .3s cubic-bezier(0.86, 0, 0.07, 1));
+		}
+	}
+
+	#page {
+		left: 0;
+	}
 
 	.navigation--is-visible {
 
-		#page {
-			@include transform(translateX($nav-width));
+		#page,
+		.covers {
+			left: $nav-width;
+		}
+
+		.navigation--main {
+			left: 0;
 		}
 	}
 
