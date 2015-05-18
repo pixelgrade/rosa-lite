@@ -9,6 +9,8 @@ var Parallax = {
 
     initialize: function () {
         var that = this;
+        
+        documentHeight = $(document).height();
 
         // if this is a touch device initialize the slider and skip the complicated part
 
