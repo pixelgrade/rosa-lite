@@ -9,7 +9,7 @@ var Parallax = {
 
     initialize: function () {
         var that = this;
-        
+
         documentHeight = $(document).height();
 
         // if this is a touch device initialize the slider and skip the complicated part
@@ -55,7 +55,14 @@ var Parallax = {
                     opacity: 1
                 });
 
-                $hero.css('min-height', windowHeight);
+                if ($hero.hasClass('half-height')) {
+                    $hero.css('min-height', windowHeight/2);
+                } else if ($hero.hasClass('two-thirds-height')) {
+                    $hero.css('min-height', windowHeight*2/3);
+                } else {
+                    $hero.css('min-height', windowHeight);
+                }
+
                 royalSliderInit($cover);
                 gmapInit($cover);
                 gmapMultiplePinsInit($cover);
