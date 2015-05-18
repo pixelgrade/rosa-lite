@@ -84,7 +84,9 @@
 	.covers &,
 	.covers & *,
 	.is_iexplore &,
-	.is_iexplore & * {
+	.is_iexplore & *,
+	.blurp--top,
+	.down-arrow {
 		pointer-events: auto;
 	}
 
