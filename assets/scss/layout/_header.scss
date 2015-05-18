@@ -11,8 +11,10 @@
 	background-color: white;
 	@include transition(color .3s cubic-bezier(0.86, 0, 0.07, 1), background-color .3s cubic-bezier(0.86, 0, 0.07, 1));
 
-	.admin-bar & {
-		position: absolute;
+	@include media-query(palm) {
+		.admin-bar & {
+			position: absolute;
+		}
 	}
 
 	.header--transparent & {
