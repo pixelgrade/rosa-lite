@@ -159,10 +159,10 @@ var Parallax = {
 
             // move the image for a parallax effect
             parallax.timeline.fromTo($cloneTarget, 1, {
-                y: '-=' + heroHeight * amount * 0
+                y: '-=' + heroHeight * amount
             }, {
-                y: '+=' + heroHeight * amount * 0 * 2,
-                ease: pixGS.Linear.easeNone,
+                y: '+=' + heroHeight * amount * 2,
+                ease: pixGS.Linear.easeNone, 
                 force3D: true
             });
 
@@ -172,7 +172,7 @@ var Parallax = {
                 y: '-=' + windowHeight * amount * 2,
                 ease: pixGS.Linear.easeNone,
                 force3D: true
-            }, '-=1');
+            }, '-=1'); 
 
             // move the container to match scrolling
             parallax2.timeline.fromTo($clone, 1, {

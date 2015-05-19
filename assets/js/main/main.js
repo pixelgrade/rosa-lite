@@ -421,9 +421,7 @@ function requestTick() {
 
 $(window).on("scroll", function () {
     latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop();
-    //if(!$('html').is('.ie9, .lt-ie9') ){
-        requestTick();
-    //}
+    requestTick();
 });
 
 if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i) && window.innerHeight != document.documentElement.clientHeight) {
