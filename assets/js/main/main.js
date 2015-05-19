@@ -208,6 +208,13 @@ function eventHandlers() {
 	$('body').off('click', '.js-arrow-popup-prev', magnificPrev).on('click', '.js-arrow-popup-prev', magnificPrev);
 	$('body').off('click', '.js-arrow-popup-next', magnificNext).on('click', '.js-arrow-popup-next', magnificNext);
 
+    $(document).on('spam.wpcf7 invalid.wpcf7 mailsent.wpcf7 mailfailed.wpcf7', function () {
+        setTimeout(function() {
+            Parallax.initialize();
+            CoverAnimation.initialize();
+        }, 100);
+    });
+
     var filterHandler;
 
     if(touch) {
