@@ -381,6 +381,10 @@ $nav-width: 200px;
 		.covers {
 			@include transition(left .3s cubic-bezier(0.86, 0, 0.07, 1));
 		}
+
+		.site-header {
+			@include transition(all .3s cubic-bezier(0.86, 0, 0.07, 1));
+		}
 	}
 
 	#page {
@@ -390,8 +394,13 @@ $nav-width: 200px;
 	.navigation--is-visible {
 
 		#page,
-		.covers {
+		.covers,
+		.site-header {
 			left: $nav-width;
+		}
+
+		.admin-bar .site-header {
+			left: 0;
 		}
 
 		.navigation--main {
