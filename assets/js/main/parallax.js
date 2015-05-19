@@ -14,7 +14,7 @@ var Parallax = {
 
         // if this is a touch device initialize the slider and skip the complicated part
 
-        if (detectIE() && !this.initialized) {
+        if ((Modernizr.touch || detectIE()) && !this.initialized) {
 
             $('.article__header').each(function (i, hero) {
 
@@ -159,28 +159,27 @@ var Parallax = {
 
             // move the image for a parallax effect
             parallax.timeline.fromTo($cloneTarget, 1, {
-                y: '-=' + heroHeight * amount
+                y: '-=' + heroHeight * amount * 0
             }, {
-                y: '+=' + heroHeight * amount * 2,
+                y: '+=' + heroHeight * amount * 0 * 2,
                 ease: pixGS.Linear.easeNone,
                 force3D: true
             });
 
-            // parallax.timeline.fromTo($cloneSlider.find('.hero__content, .hero__caption'), 1, {
-            //     y: '+=' + windowHeight * amount
-            // }, {
-            //     y: '-=' + windowHeight * amount * 2,
-            //     ease: pixGS.Linear.easeNone,
-            //     force3D: true
-            // }, '-=1');
+            parallax.timeline.fromTo($cloneSlider.find('.hero__content, .hero__caption'), 1, {
+                y: '+=' + windowHeight * amount
+            }, {
+                y: '-=' + windowHeight * amount * 2,
+                ease: pixGS.Linear.easeNone,
+                force3D: true
+            }, '-=1');
 
             // move the container to match scrolling
             parallax2.timeline.fromTo($clone, 1, {
-                y: heroOffset.top
+                y: '+=' + heroOffset.top
             }, {
-                y: heroOffset.top - documentHeight,
-                ease: pixGS.Linear.easeNone,
-                force3D: true
+                y: '-=' + documentHeight,
+                ease: pixGS.Linear.easeNone
             });
 
             // set the parallax info as data attributes on the clone to be used on update
@@ -206,7 +205,7 @@ var Parallax = {
 
     update: function () {
         // return;
-        if (is_ie || latestKnownScrollY > this.stop || latestKnownScrollY < this.start) {
+        if (Modernizr.touch || is_ie || latestKnownScrollY > this.stop || latestKnownScrollY < this.start) {
             return;
         }
 

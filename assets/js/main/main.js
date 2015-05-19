@@ -181,6 +181,11 @@ function init() {
 	/* INSTANTIATE EVENT HANDLERS */
 	eventHandlers();
 
+    var $waves = $('.border-waves')
+        $waves.removeClass('border-waves');
+        $waves.next().find('.article__parallax').addClass('border-waves-bottom');
+        $waves.prev().find('.article__parallax').addClass('border-waves-top');
+
 	if (globalDebug) {console.groupEnd();}
 }
 
