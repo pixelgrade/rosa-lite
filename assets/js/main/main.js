@@ -181,6 +181,11 @@ function init() {
 	/* INSTANTIATE EVENT HANDLERS */
 	eventHandlers();
 
+    var $waves = $('.border-waves')
+        $waves.removeClass('border-waves');
+        $waves.next().find('.article__parallax').addClass('border-waves-bottom');
+        $waves.prev().find('.article__parallax').addClass('border-waves-top');
+
 	if (globalDebug) {console.groupEnd();}
 }
 
@@ -416,9 +421,7 @@ function requestTick() {
 
 $(window).on("scroll", function () {
     latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop();
-    //if(!$('html').is('.ie9, .lt-ie9') ){
-        requestTick();
-    //}
+    requestTick();
 });
 
 if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i) && window.innerHeight != document.documentElement.clientHeight) {

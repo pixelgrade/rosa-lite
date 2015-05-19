@@ -49,10 +49,10 @@ var CoverAnimation = {
             timeline.addLabel("animatedIn");
 
             if (i == 0) {
-                timeline.to($headline, 1.08, {y: 150, ease: pixGS.Linear.easeNone});
-                timeline.to($title, 1.08, {opacity: 0, y: -60, ease: pixGS.Quad.easeIn}, '-=1.08');
+                timeline.fromTo($headline, 1.08, {y: 0}, {y: 150, ease: pixGS.Linear.easeNone});
+                timeline.fromTo($title, 1.08, {y: 0}, {opacity: 0, y: -60, ease: pixGS.Quad.easeIn}, '-=1.08');
             } else {
-                timeline.to($title, 1.08, {opacity: 0, y: -60, ease: pixGS.Quad.easeIn});
+                timeline.fromTo($title, 1.08, {y: 0}, {opacity: 0, y: -60, ease: pixGS.Quad.easeIn});
             }
 
             timeline.to($description, 1.08, {y: 60, opacity: 0, ease: pixGS.Quad.easeIn}, '-=1.08');

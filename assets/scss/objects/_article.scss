@@ -21,6 +21,29 @@
 	}
 }
 
+.border-waves-top:after,
+.border-waves-bottom:before {
+	content: "";
+	display: block; 
+	width: 100%;
+	height: 14px;
+	position: absolute;
+	left: 0;
+	background: url('../images/border-wave.svg') top left repeat-x;
+}
+
+.border-waves-top:after {
+    bottom: -6px;
+    background-position: top;
+    z-index: 20;
+}
+
+.border-waves-bottom:before {
+    top: -6px;
+    background-position: bottom;
+    z-index: 21;
+}
+
 .article--page {
     position: relative;
     // contain children margins
@@ -198,7 +221,8 @@
 
 .article__parallax__slider {
 	position: absolute;
-	top: 0; right: 0; bottom: 0; left: 0;
+	top: 50%; right: 0; bottom: 0; left: 0;
+	@include transform(translateY(-50%));
 
 	img {
 		position: absolute;
