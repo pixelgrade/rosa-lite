@@ -248,9 +248,12 @@
 
 .no-scroll-effect {
 	.article__parallax,
+	.article__parallax .gmap,
+	.article__parallax .gmap--multiple-pins,
 	.article__parallax__img,
 	.article__parallax__slider {
 		@include transform(none !important);
+		top: 0;
 	}
 }
 

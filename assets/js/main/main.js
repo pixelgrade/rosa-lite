@@ -157,7 +157,7 @@ function init() {
 
     var is_iexplore = detectIE();
 
-    if (is_iexplore) {
+    if (is_iexplore || Modernizr.touch) {
         $('body').addClass('is_iexplore  no-scroll-effect');
     }
 
