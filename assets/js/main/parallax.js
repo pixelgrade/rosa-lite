@@ -19,7 +19,7 @@ var Parallax = {
             $('.article__header').each(function (i, hero) {
 
                 var $hero   = $(hero),
-                    $cover  = $hero.children('.article__parallax'), 
+                    $cover  = $hero.children('.article__parallax'),
                     $image  = $cover.find('.article__parallax__img');
 
                 $cover.show();
@@ -40,14 +40,12 @@ var Parallax = {
                         newHeight   = scale * imageHeight;
 
                     $image.css({
+                        position: 'absolute',
                         'max-width': 'none',
                         width: newWidth,
+                        top: (heroHeight - newHeight) / 2,
+                        left: (windowWidth - newWidth) / 2,
                         opacity: 1
-                    });
-
-                    $cover.css({
-                        top: 0,
-                        left: (windowWidth - newWidth) / 2
                     });
                 }
 
@@ -162,7 +160,7 @@ var Parallax = {
                 y: '-=' + heroHeight * amount
             }, {
                 y: '+=' + heroHeight * amount * 2,
-                ease: pixGS.Linear.easeNone, 
+                ease: pixGS.Linear.easeNone,
                 force3D: true
             });
 
@@ -172,7 +170,7 @@ var Parallax = {
                 y: '-=' + windowHeight * amount * 2,
                 ease: pixGS.Linear.easeNone,
                 force3D: true
-            }, '-=1'); 
+            }, '-=1');
 
             // move the container to match scrolling
             parallax2.timeline.fromTo($clone, 1, {

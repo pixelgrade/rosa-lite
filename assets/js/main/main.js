@@ -183,8 +183,8 @@ function init() {
 
     var $waves = $('.border-waves')
         $waves.removeClass('border-waves');
-        $waves.next().find('.article__parallax').addClass('border-waves-bottom');
-        $waves.prev().find('.article__parallax').addClass('border-waves-top');
+        $waves.next('.article__header').find('.article__parallax').addClass('border-waves-bottom');
+        $waves.prev('.article__header').find('.article__parallax').addClass('border-waves-top');
 
 	if (globalDebug) {console.groupEnd();}
 }
@@ -311,7 +311,7 @@ $(window).load(function(){
         requestTick();
     //}
     // always
-    
+
     royalSliderInit($('.article__content'));
 
     // if ($('.js-pixslider').length) {
