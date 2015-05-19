@@ -212,7 +212,7 @@ function eventHandlers() {
         setTimeout(function() {
             Parallax.initialize();
             CoverAnimation.initialize();
-        }, 100);
+        }, 300);
     });
 
     var filterHandler;
