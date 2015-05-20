@@ -38,6 +38,11 @@
     z-index: 20;
 }
 
+.border-waves-top:last-child:after,
+.border-waves-bottom:first-child:after {
+    display: none;
+}
+
 .border-waves-bottom:before {
     top: -7px;
     background-position: bottom;
