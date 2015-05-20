@@ -258,7 +258,7 @@
 	.article__parallax__img,
 	.article__parallax__slider {
 		@include transform(none !important);
-		top: 0;
+		top: 0 !important;
 	}
 }
 
