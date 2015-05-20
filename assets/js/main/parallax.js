@@ -10,14 +10,16 @@ var Parallax = {
     initialize: function () {
         var that = this;
 
+        documentHeight = $(document).height();
+
         // if this is a touch device initialize the slider and skip the complicated part
 
-        if (detectIE() || Modernizr.touch && !this.initialized) {
+        if ((Modernizr.touch || detectIE()) && !this.initialized) {
 
-            $('.article__header').each(function (i, hero) {
+            $('.article__parallax').each(function (i, hero) {
 
-                var $hero   = $(hero),
-                    $cover  = $hero.children('.article__parallax'), 
+                var $hero   = $(hero).closest('.article__header'),
+                    $cover  = $hero.children('.article__parallax'),
                     $image  = $cover.find('.article__parallax__img');
 
                 $cover.show();
@@ -38,14 +40,12 @@ var Parallax = {
                         newHeight   = scale * imageHeight;
 
                     $image.css({
+                        position: 'absolute',
                         'max-width': 'none',
                         width: newWidth,
+                        top: (heroHeight - newHeight) / 2,
+                        left: (windowWidth - newWidth) / 2,
                         opacity: 1
-                    });
-
-                    $cover.css({
-                        top: 0,
-                        left: (windowWidth - newWidth) / 2
                     });
                 }
 
@@ -53,7 +53,14 @@ var Parallax = {
                     opacity: 1
                 });
 
-                $hero.css('min-height', windowHeight);
+                if ($hero.hasClass('half-height')) {
+                    $hero.css('min-height', windowHeight/2);
+                } else if ($hero.hasClass('two-thirds-height')) {
+                    $hero.css('min-height', windowHeight*2/3);
+                } else {
+                    $hero.css('min-height', windowHeight);
+                }
+
                 royalSliderInit($cover);
                 gmapInit($cover);
                 gmapMultiplePinsInit($cover);
@@ -133,7 +140,7 @@ var Parallax = {
 
             // align the clone to its surrogate
             // we use TweenMax cause it'll take care of the vendor prefixes
-            pixGS.TweenMax.to($clone, 0, { top: - adminBar });
+            // pixGS.TweenMax.to($clone, 0, { top: 0 });
 
             // prepare image / slider timeline
             var parallax = {
@@ -157,21 +164,20 @@ var Parallax = {
                 force3D: true
             });
 
-            // parallax.timeline.fromTo($cloneSlider.find('.hero__content, .hero__caption'), 1, {
-            //     y: '+=' + windowHeight * amount
-            // }, {
-            //     y: '-=' + windowHeight * amount * 2,
-            //     ease: pixGS.Linear.easeNone,
-            //     force3D: true
-            // }, '-=1');
+            parallax.timeline.fromTo($cloneSlider.find('.hero__content, .hero__caption'), 1, {
+                y: '+=' + windowHeight * amount
+            }, {
+                y: '-=' + windowHeight * amount * 2,
+                ease: pixGS.Linear.easeNone,
+                force3D: true
+            }, '-=1');
 
             // move the container to match scrolling
             parallax2.timeline.fromTo($clone, 1, {
-                top: heroOffset.top
+                y: '+=' + heroOffset.top
             }, {
-                top: heroOffset.top - documentHeight,
-                ease: pixGS.Linear.easeNone,
-                force3D: true
+                y: '-=' + documentHeight,
+                ease: pixGS.Linear.easeNone
             });
 
             // set the parallax info as data attributes on the clone to be used on update

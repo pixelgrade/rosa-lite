@@ -9,7 +9,13 @@
 	width: 100%;
 	z-index: 100;
 	background-color: white;
-	@include transition(all .3s cubic-bezier(0.86, 0, 0.07, 1));
+	@include transition(color .3s cubic-bezier(0.86, 0, 0.07, 1), background-color .3s cubic-bezier(0.86, 0, 0.07, 1));
+
+	@include media-query(palm) {
+		.admin-bar & {
+			position: absolute;
+		}
+	}
 
 	.header--transparent & {
 		background-color: transparent;

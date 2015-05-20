@@ -106,7 +106,7 @@ html, body, #page {
 @include media-query(palm) {
 
 	.admin-bar .page {
-		@include transform(translateX(0));
+		// @include transform(translateX(0));
 	}
 }
 

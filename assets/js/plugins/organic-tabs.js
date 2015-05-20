@@ -13,6 +13,7 @@
 			var $allListWrap = base.$el.find(".tabs__content"),
 				curList = base.$el.find("a.current").attr("href").substring(1);
 			$allListWrap.height(base.$el.find("#" + curList).height());
+			base.$nav.find("li > a").off('click');
 			base.$nav.find("li > a").click(function (event) {
 
 				var curList = base.$el.find("a.current").attr("href").substring(1),
@@ -37,6 +38,10 @@
 						$newList.addClass("current");
 					}, 250);
 				}
+
+				setTimeout(function () {
+					$(window).trigger('organicTabsChange');
+				}, 250);
 				event.preventDefault();
 			});
 		};

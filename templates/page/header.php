@@ -162,18 +162,18 @@ if ( $pin_type == 'single' ) {
 						data-imagealigncenter
 						data-imagescale="<?php echo $image_scale_mode; ?>"
 						data-slidertransition="<?php echo $slider_transition; ?>"
-						data-customArrows
+						data-customArrows="true"
 
 						<?php
 						if ( $slider_transition == 'move' ) {
-							echo 'data-slidertransitiondirection="horizontal"' . PHP_EOL;
+							echo ' data-slidertransitiondirection="horizontal" ' . PHP_EOL;
 						}
 						if ( $slider_autoplay ) {
-							echo 'data-sliderautoplay="" ' . PHP_EOL;
-							echo 'data-sliderdelay="' . $slider_delay . '" ' . PHP_EOL;
+							echo ' data-sliderautoplay="" ' . PHP_EOL;
+							echo ' data-sliderdelay="' . $slider_delay . '" ' . PHP_EOL;
 						}
 						if ( $slider_visiblenearby ) {
-							echo 'data-visiblenearby ' . PHP_EOL;
+							echo ' data-visiblenearby ' . PHP_EOL;
 						}
 
 						if ( wpgrade::option( 'slideshow_arrows_style' ) == 'hover' ) {

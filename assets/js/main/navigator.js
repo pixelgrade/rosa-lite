@@ -132,7 +132,6 @@ var Navigator = {
     },
 
     update: function () {
-
         var that        = this,
             $navigator  = this.$el;
 
