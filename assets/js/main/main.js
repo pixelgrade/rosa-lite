@@ -319,7 +319,7 @@ $(window).load(function(){
     //}
     // always
 
-    royalSliderInit($('.article__content'));
+    royalSliderInit($('.article__content'), true);
 
     // if ($('.js-pixslider').length) {
     //     var slider = $('.js-pixslider').data('royalSlider');
@@ -406,7 +406,7 @@ $(window).on("orientationchange", function(e) {
     }, 300)
 });
 
-var latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop(),
+var latestKnownScrollY = $('body').scrollTop() || $('html').scrollTop(),
     ticking = false;
 
 function updateStuff() {
@@ -427,7 +427,7 @@ function requestTick() {
 }
 
 $(window).on("scroll", function () {
-    latestKnownScrollY = $('html').scrollTop() || $('body').scrollTop();
+    latestKnownScrollY = $('body').scrollTop() || $('html').scrollTop();
     requestTick();
 });
 

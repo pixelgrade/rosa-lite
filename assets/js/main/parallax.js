@@ -16,9 +16,9 @@ var Parallax = {
 
         if ((Modernizr.touch || detectIE()) && !this.initialized) {
 
-            $('.article__header').each(function (i, hero) {
+            $('.article__parallax').each(function (i, hero) {
 
-                var $hero   = $(hero),
+                var $hero   = $(hero).closest('.article__header'),
                     $cover  = $hero.children('.article__parallax'),
                     $image  = $cover.find('.article__parallax__img');
 

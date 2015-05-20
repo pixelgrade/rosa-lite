@@ -107,10 +107,12 @@ function sliderInit($slider) {
 	var royalSlider = $slider.data('royalSlider');
 	var slidesNumber = royalSlider.numSlides;
 
-    royalSlider.ev.on('rsAfterSlideChange', function(event) {
-        Parallax.initialize();
-        CoverAnimation.initialize();
-    });
+    if ($slider.closest('.article__content').length) {
+        royalSlider.ev.on('rsAfterSlideChange', function(event) {
+            Parallax.initialize();
+            CoverAnimation.initialize();
+        });
+    }
 
 	// create the markup for the customArrows
     if (royalSlider && rs_customArrows) {

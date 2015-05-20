@@ -84,7 +84,7 @@ var CoverAnimation = {
             if (!that.initialized) {
                 if (Modernizr.touch && is_OSX) {
                     timeline.tweenTo("animatedIn");
-                    return;
+                    $headline.data("animated", true);
                 }
 
                 timeline.tweenTo("animatedOut", {
@@ -141,7 +141,7 @@ var CoverAnimation = {
 
                 $headline.data('progress', partialProgress);
 
-                if (!$headline.data("animated") || (Modernizr.touch && is_OSX)) {
+                if (!$headline.data("animated")) {
                     return;
                 }
 
