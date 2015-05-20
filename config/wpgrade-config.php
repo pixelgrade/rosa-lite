@@ -14,7 +14,7 @@ return array(
 	'textdomain'                   => 'rosa_txtd',
 	'language-path'                => 'languages',
 	'update-notifier'              => array(
-		'xml-source'       => 'http://pixelgrade.com/updates/',
+		'xml-source'       => REQUEST_PROTOCOL . '//pixelgrade.com/updates/',
 		//		'xml-file' => 'rosa.xml',
 		'cache-interval'   => 10800, # 3 hours
 		'update-page-name' => 'theme-update-notifier',
@@ -106,7 +106,7 @@ return array(
 					),
 				),
 				'webfont-script'       => array(
-					'path'    => '//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js',
+					'path'    => REQUEST_PROTOCOL . '//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js',
 					'require' => array(
 						'jquery'
 					),
@@ -128,13 +128,13 @@ return array(
 					),
 				),
 				'addthis-api'          => array(
-					'path'    => '//s7.addthis.com/js/300/addthis_widget.js#async=1',
+					'path'    => REQUEST_PROTOCOL . '//s7.addthis.com/js/300/addthis_widget.js#async=1',
 					'require' => array(
 						'jquery'
 					),
 				),
 				'google-maps-api'      => array(
-					'path'    => '//maps.google.com/maps/api/js?sensor=false&amp;language=en',
+					'path'    => REQUEST_PROTOCOL . '//maps.google.com/maps/api/js?sensor=false&amp;language=en',
 					'require' => array(
 						'jquery'
 					),
@@ -142,7 +142,7 @@ return array(
 			),
 			'styles'         => array(
 				'google-webfonts'    => array(
-					'path' => '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700,400italic,700italic|Herr+Von+Muellerhoff',
+					'path' => REQUEST_PROTOCOL . '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700,400italic,700italic|Herr+Von+Muellerhoff',
 				),
 				'wpgrade-main-style' => array(
 					'path'       => get_template_directory_uri() . '/assets/css/style.css',
