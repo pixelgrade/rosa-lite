@@ -181,10 +181,24 @@ function init() {
 	/* INSTANTIATE EVENT HANDLERS */
 	eventHandlers();
 
-    var $waves = jQuery('.border-waves')
-        $waves.removeClass('border-waves');
-        $waves.next('.article__header').not(':first-child').find('.article__parallax').addClass('border-waves-bottom');
-        $waves.prev('.article__header').not(':last-child').find('.article__parallax').addClass('border-waves-top');
+    // move waves in siblings so they keep up with the parallax
+    var $waves = jQuery('.border-waves');
+    $waves.removeClass('border-waves');
+    $waves.next('.article__header').not(':first-child').find('.article__parallax').addClass('border-waves-bottom');
+    $waves.prev('.article__header').not(':last-child').find('.article__parallax').addClass('border-waves-top');
+
+    // do the same for down arrow if it has bubble style
+    var $blurp = $('.blurp--top');
+
+    if ($blurp.length) {
+        var $blurpHeader = $blurp.parent(),
+            $blurpArrow = $blurpHeader.children('.down-arrow'),
+            $destination = $blurpHeader.next('.article--page');
+
+        if ($destination.length) {
+            $blurpArrow.add($blurp).prependTo($destination);
+        }
+    }
 
 	if (globalDebug) {console.groupEnd();}
 }
