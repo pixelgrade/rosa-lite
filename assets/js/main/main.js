@@ -351,14 +351,16 @@ $(window).load(function(){
 
 
     if(!empty($('#date-otreservations'))){
+				var dateFormat = $('#date-otreservations' ).closest('.otw-wrapper' ).children('.txtDateFormat' ).attr('value' ).toUpperCase();
 
         // Pikaday
         var picker = new Pikaday({
             field: document.getElementById('date-otreservations'),
-            format: 'MM/DD/YYYY',
-            minDate: moment().toDate()
+            format: dateFormat,
+            minDate: moment().toDate(),
+						defaultDate: moment().toDate(),
+						setDefaultDate: true
         });
-        picker.setDate(moment().format('MM/DD/YYYY'));
     }
 
     $('.pixcode--tabs').organicTabs();
