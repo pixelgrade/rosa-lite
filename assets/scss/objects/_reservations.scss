@@ -46,15 +46,18 @@
 		display: inline-block;
 	}
 
-	input, select{
-		width: 150px;
-		height: 40px;
-		padding: $_u4;
+	&, .widget & {
 
-		background: none;
+		input, select{
+			width: 150px;
+			height: 40px;
+			padding: $_u4;
 
-		border: 1px solid $borders;
-		@include border-radius(3px);
+			background: none;
+
+			border: 1px solid $borders;
+			@include border-radius(3px);
+		}
 	}
 }
 

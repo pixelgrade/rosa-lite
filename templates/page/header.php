@@ -216,8 +216,8 @@ if ( $pin_type == 'single' ) {
 							<?php }
 						} ?>
 					</div>
-				</div>	
-				<?php display_header_down_arrow( $page_section_idx, $header_height ); ?>
+					<?php display_header_down_arrow( $page_section_idx, $header_height ); ?>
+				</div>
 			</header>
 		<?php } else { ?>
 			<div class="empty-slideshow">
@@ -226,7 +226,7 @@ if ( $pin_type == 'single' ) {
 		<?php }
 
 	} else { /* OR REGULAR PAGE */
-		if ( has_post_thumbnail() || ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) { 
+		if ( has_post_thumbnail() || ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) {
 			if ( ! has_post_thumbnail() ) {
 				$classes .= ' has-no-image';
 			} ?>
@@ -236,6 +236,7 @@ if ( $pin_type == 'single' ) {
 					if ( ! empty( $image[0] ) ) { ?>
 						<div class="article__parallax">
 							<img class="article__parallax__img" src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
+							<?php display_header_down_arrow( $page_section_idx, $header_height ); ?>
 						</div>
 					<?php
 					}
@@ -255,9 +256,7 @@ if ( $pin_type == 'single' ) {
 							</hgroup>
 						</div>
 					</div>
-				<?php }
-
-				display_header_down_arrow( $page_section_idx, $header_height ); ?>
+				<?php } ?>
 			</header>
 		<?php } else { ?>
 			<header id="post-<?php the_ID() ?>-title" class="<?php echo $classes ?>" style="display: none"></header>

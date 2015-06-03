@@ -131,7 +131,21 @@ function gmapInit($container) {
 						zoom: parseInt( coordinates.zoom ),
 						mapTypeId: style,
 						mapTypeControlOptions: {mapTypeIds: []},
-						scrollwheel: false
+						scrollwheel: false,
+						panControl: true,
+						panControlOptions: {
+							position: google.maps.ControlPosition.LEFT_CENTER
+						},
+						zoomControl: true,
+						zoomControlOptions: {
+							style: google.maps.ZoomControlStyle.LARGE,
+							position: google.maps.ControlPosition.LEFT_CENTER
+						},
+						scaleControl: true,
+						streetViewControl: true,
+						streetViewControlOptions: {
+							position: google.maps.ControlPosition.LEFT_CENTER
+						}
 					}
 				},
 				overlay: {
@@ -182,6 +196,8 @@ function gmapMultiplePinsInit($container) {
 		$gmaps = $('.gmap--multiple-pins');
 	}
 
+	$gmaps.empty();
+
 	$imageMarkup 	= $('.js-map-pin');
 
 	if ( $imageMarkup.length > 0 ) {
@@ -223,6 +239,12 @@ function gmapMultiplePinsInit($container) {
 			if (!pins.length) {
 				return;
 			}
+
+			// if ($gmap.data('initialized') == true) {
+			// 	$gmap.gmap3('destroy').empty();
+			// }
+
+			$gmap.data('initialized', true);
 
 			$gmap.gmap3( {
 				map: {

@@ -181,10 +181,18 @@ function init() {
 	/* INSTANTIATE EVENT HANDLERS */
 	eventHandlers();
 
-    var $waves = jQuery('.border-waves')
-        $waves.removeClass('border-waves');
-        $waves.next('.article__header').not(':first-child').find('.article__parallax').addClass('border-waves-bottom');
-        $waves.prev('.article__header').not(':last-child').find('.article__parallax').addClass('border-waves-top');
+    // move waves in siblings so they keep up with the parallax
+    var $waves = jQuery('.border-waves').not('.site-footer');
+    $waves.removeClass('border-waves');
+
+    $waves.each(function(i, obj) {
+        var $wave = $(obj);
+        $wave.prevAll('.article__header').first().find('.article__parallax').addClass('border-waves-top');
+        $wave.nextAll('.article__header').first().find('.article__parallax').addClass('border-waves-bottom');
+        $wave.next('.site-footer').addClass('border-waves-bottom');
+    });
+
+    $('.site-footer.border-waves').prevAll('article__header').first().find('.article__parallax').addClass('border-waves-top border-waves-top--dark');
 
 	if (globalDebug) {console.groupEnd();}
 }

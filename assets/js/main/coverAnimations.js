@@ -48,12 +48,12 @@ var CoverAnimation = {
             // ------ B
             timeline.addLabel("animatedIn");
 
-            if (i == 0) {
-                timeline.fromTo($headline, 1.08, {y: 0}, {y: 150, ease: pixGS.Linear.easeNone});
-                timeline.fromTo($title, 1.08, {y: 0}, {opacity: 0, y: -60, ease: pixGS.Quad.easeIn}, '-=1.08');
-            } else {
+            // if (i == 0) {
+            //     timeline.fromTo($headline, 1.08, {y: 0}, {y: 150, ease: pixGS.Linear.easeNone});
+            //     timeline.fromTo($title, 1.08, {y: 0}, {opacity: 0, y: -60, ease: pixGS.Quad.easeIn}, '-=1.08');
+            // } else {
                 timeline.fromTo($title, 1.08, {y: 0}, {opacity: 0, y: -60, ease: pixGS.Quad.easeIn});
-            }
+            // }
 
             timeline.to($description, 1.08, {y: 60, opacity: 0, ease: pixGS.Quad.easeIn}, '-=1.08');
             timeline.to($subtitle, 1.08, {opacity: 0, y: -90, ease: pixGS.Quad.easeIn}, '-=1.08');
@@ -82,26 +82,32 @@ var CoverAnimation = {
             bc = 1 - ab;
 
             if (!that.initialized) {
-                if (Modernizr.touch && is_OSX) {
-                    timeline.tweenTo("animatedIn");
-                    $headline.data("animated", true);
-                }
 
-                timeline.tweenTo("animatedOut", {
+                timeline.tweenTo("animatedIn", {
                     onComplete: function () {
-                        $headline.data("animated", true);
-                    },
-                    onUpdate: function () {
-                        var progress        = (1 / (end - start)) * (latestKnownScrollY - start),
-                            partialProgress = progress < 0 ? ab : ab + bc * progress,
-                            currentProgress = timeline.progress();
-
-                        if (Math.abs(partialProgress - currentProgress) < 0.01) {
+                        if (Modernizr.touch) {
                             $headline.data("animated", true);
-                            this.kill();
                         }
                     }
                 });
+
+                if (!Modernizr.touch) {
+                    timeline.tweenTo("animatedOut", {
+                        onComplete: function () {
+                            $headline.data("animated", true);
+                        },
+                        onUpdate: function () {
+                            var progress        = (1 / (end - start)) * (latestKnownScrollY - start),
+                                partialProgress = progress < 0 ? ab : ab + bc * progress,
+                                currentProgress = timeline.progress();
+
+                            if (Math.abs(partialProgress - currentProgress) < 0.01) {
+                                $headline.data("animated", true);
+                                this.kill();
+                            }
+                        }
+                    });
+                }
             }
 
             $headline.data('tween', {
