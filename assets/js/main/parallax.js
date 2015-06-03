@@ -81,7 +81,7 @@ var Parallax = {
             // grab all the variables we need
             var $cover      = $(cover),
                 $hero       = $cover.parent(),
-                $clone      = $cover.clone().wrap("div.article__header"),
+                $clone      = $cover.clone(true).wrap("div.article__header"),
                 $cloneImage = $clone.find('.article__parallax__img'),
                 $cloneSlider = $clone.find('.article__parallax__slider'),
                 heroHeight  = $hero.outerHeight(),

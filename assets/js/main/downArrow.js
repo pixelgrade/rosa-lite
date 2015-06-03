@@ -35,7 +35,7 @@ var DownArrow = {
             this.timeline.to(this.$arrow, 1, {y: 100, opacity: 0, ease: pixGS.Linear.easeNone, overwrite: "none"});
         }
 
-        this.$arrow.closest('.article__header').on('click', function (e) {
+        this.$arrow.on('click', function (e) {
             e.preventDefault();
 
             if (empty(that.$next)) {
