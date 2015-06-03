@@ -182,24 +182,13 @@ function init() {
 	eventHandlers();
 
     // move waves in siblings so they keep up with the parallax
-    var $waves = jQuery('.border-waves');
+    var $waves = jQuery('.border-waves').not('.site-footer');
     $waves.removeClass('border-waves');
-    $waves.nextAll('.article__header').first().find('.article__parallax').addClass('border-waves-bottom');
+    $waves.nextAll('.article__header').last().find('.article__parallax').addClass('border-waves-bottom');
     $waves.prevAll('.article__header').first().find('.article__parallax').addClass('border-waves-top');
     $waves.next('.site-footer').addClass('border-waves-bottom');
 
-    // do the same for down arrow if it has bubble style
-    // var $blurp = $('.blurp--top');
-
-    // if ($blurp.length) {
-    //     var $blurpHeader = $blurp.parent(),
-    //         $blurpArrow = $blurpHeader.children('.down-arrow'),
-    //         $destination = $blurpHeader.next('.article--page');
-
-    //     if ($destination.length) {
-    //         $blurpArrow.add($blurp).prependTo($destination);
-    //     }
-    // }
+    $('.site-footer.border-waves').prevAll('article__header').first().find('.article__parallax').addClass('border-waves-top border-waves-top--dark');
 
 	if (globalDebug) {console.groupEnd();}
 }
