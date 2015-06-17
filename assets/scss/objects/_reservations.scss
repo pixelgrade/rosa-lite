@@ -74,7 +74,7 @@
 
 
 
-.promo-box__container{
+.promo-box__container {
 	padding: 36px 54px;
 	background-color: $accent;
 	color: white;
@@ -91,8 +91,15 @@
 	p:last-child{
 		margin-bottom: 0;
 	}
+}
 
+html .promo-box__container.promo-box__container {
 	a {
 		color: white;
+		text-decoration: underline;
+
+		&:hover {
+			color: inherit !important;
+		}
 	}
 }
