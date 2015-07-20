@@ -194,6 +194,10 @@ function init() {
 
     $('.site-footer.border-waves').prevAll('article__header').first().find('.article__parallax').addClass('border-waves-top border-waves-top--dark');
 
+    $('.js-pixslider').not('.article__parallax .js-pixslider').each(function(i, slider) {
+        sliderInit($(slider));
+    });
+
 	if (globalDebug) {console.groupEnd();}
 }
 
