@@ -55,10 +55,15 @@ if ( $pin_type == 'single' ) {
 		$gmap_custom_style   = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_custom_style', true );
 		$gmap_marker_content = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_marker_content', true );
 		$gmap_height         = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_gmap_height', true );
+
 		if ( empty( $gmap_height ) ) {
 			$gmap_height = 'half-height'; //the default
 		}
+
+		// remove classes coming from default template's header height option
+		$classes = str_replace(array('half-height', 'two-thirds-height', 'full-height'), '', $classes);
 		$classes .= ' ' . $gmap_height;
+
 		?>
 		<header id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ); ?>">
 			<div class="article__parallax">
@@ -81,9 +86,13 @@ if ( $pin_type == 'single' ) {
 		$gmap_custom_style   = get_post_meta( wpgrade::lang_post_id( get_the_ID() ), wpgrade::prefix() . 'gmap_custom_style', true );
 		$gmap_marker_content = get_post_meta( wpgrade::lang_post_id( get_the_ID() ), wpgrade::prefix() . 'gmap_marker_content', true );
 		$gmap_height         = get_post_meta( wpgrade::lang_post_id( get_the_ID() ), wpgrade::prefix() . 'page_gmap_height', true );
+
 		if ( empty( $gmap_height ) ) {
 			$gmap_height = 'half-height'; //the default
 		}
+
+		// remove classes coming from default template's header height option
+		$classes = str_replace(array('half-height', 'two-thirds-height', 'full-height'), '', $classes);
 		$classes .= ' ' . $gmap_height;
 
 		//handle the pins
