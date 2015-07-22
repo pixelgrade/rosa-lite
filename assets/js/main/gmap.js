@@ -240,9 +240,9 @@ function gmapMultiplePinsInit($container) {
 				return;
 			}
 
-			// if ($gmap.data('initialized') == true) {
-			// 	$gmap.gmap3('destroy').empty();
-			// }
+			if ($gmap.data('initialized') == true) {
+				$gmap.gmap3('destroy').empty();
+			}
 
 			$gmap.data('initialized', true);
 
