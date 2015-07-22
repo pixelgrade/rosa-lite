@@ -26,34 +26,19 @@ function wpgrade_register_required_plugins() {
 			'name'               => 'PixTypes',
 			'slug'               => 'pixtypes',
 			'required'           => true,
-//			'version'            => '1.3.0',
 		),
 		array(
 			'name'               => 'PixLikes',
 			'slug'               => 'pixlikes',
 			'source'             => get_template_directory() . '/inc/required-plugins/plugins/pixlikes.zip',
-			'required'           => false,
-			'version'            => '1.1.2',
-			'force_activation'   => false,
-			'force_deactivation' => false,
-			'external_url'       => '',
 		),
 		array(
 			'name'               => 'PixCodes',
 			'slug'               => 'pixcodes',
-//			'version'            => '2.3.0'
 		),
-		//        array(
-		//            'name'      => 'Yet Another Related Posts Plugin (YARPP)',
-		//            'slug'      => 'yet-another-related-posts-plugin',
-		//            'required'  => false,
-		//            'version'   => ''
-		//        ),
 		array(
 			'name'     => 'Contact Form 7',
 			'slug'     => 'contact-form-7',
-			'required' => false,
-			'version'  => ''
 		),
 	);
 	// Change this to your theme text domain, used for internationalising strings
@@ -62,8 +47,6 @@ function wpgrade_register_required_plugins() {
 	$config = array(
 		'domain'           => $theme_text_domain, // Text domain - likely want to be the same as your theme.
 		'default_path'     => '', // Default absolute path to pre-packaged plugins
-		'parent_menu_slug' => 'themes.php', // Default parent menu slug
-		'parent_url_slug'  => 'themes.php', // Default parent URL slug
 		'menu'             => 'install-required-plugins', // Menu slug
 		'has_notices'      => true, // Show admin notices or not
 		'is_automatic'     => false, // Automatically activate plugins after installation or not
@@ -102,5 +85,3 @@ function wpgrade_register_required_plugins() {
 	tgmpa( $plugins, $config );
 
 }
-
-?>
