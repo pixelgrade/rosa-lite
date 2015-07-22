@@ -20,6 +20,10 @@
 	.header--transparent & {
 		background-color: transparent;
 
+		.is--ie & {
+			background-color: rgba(255,255,255,0.01);
+		}
+
 		a.nav-trigger {
 			color: white;
 		}
@@ -34,7 +38,10 @@
 	}
 
 	&.headroom--not-top {
-		background-color: white;
+
+		&, .is--ie & {
+			background-color: white;
+		}
 
 		.site-logo-img--dark{
 			display: block;

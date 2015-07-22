@@ -106,9 +106,13 @@
 		display: block;
 	}
 
-	// .is--ie & {
-	// 	background-color: rgba(255, 255, 255, 0.01);
-	// }
+	.is--ie & {
+		background-color: rgba(255, 255, 255, 0.01);
+	}
+
+	.lt-ie9 &, .ie9 & {
+		background-color: white;
+	}
 }
 
 //WPML Language switcher
