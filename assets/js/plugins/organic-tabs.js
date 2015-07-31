@@ -34,7 +34,7 @@
 						base.$el.find("#" + listID).css({
 							opacity: 1,
 							"z-index": 100,
-							"pointer-events": auto
+							"pointer-events": "auto"
 						});
 						base.$el.find(".tabs__nav li a").removeClass("current");
 						$newList.addClass("current");
