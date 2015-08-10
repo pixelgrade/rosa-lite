@@ -1802,21 +1802,21 @@ $sections[] = array(
 	'desc'       => '<p class="description">' . __( 'If you had anything less than a great experience with this theme please contact us now. You can also find answers in our community site, or official articles and tutorials in our knowledge base.', 'rosa_txtd' ) . '</p>
 		<ul class="help-and-support">
 			<li>
-				<a href="http://bit.ly/19G56H1">
+				<a href="http://pxg.to/rosa-forum">
 					<span class="community-img"></span>
 					<h4>Community Answers</h4>
 					<span class="description">Get Help from other people that are using this theme.</span>
 				</a>
 			</li>
 			<li>
-				<a href="http://bit.ly/19G5cyl">
+				<a href="http://pxg.to/rosa-help">
 					<span class="knowledge-img"></span>
 					<h4>Knowledge Base</h4>
 					<span class="description">Getting started guides and useful articles to better help you with this theme.</span>
 				</a>
 			</li>
 			<li>
-				<a href="http://bit.ly/new-ticket">
+				<a href="http://pxg.to/rosa-new-ticket">
 					<span class="community-img"></span>
 					<h4>Submit a Ticket</h4>
 					<span class="description">File a ticket for a personal response from our support team.</span>
