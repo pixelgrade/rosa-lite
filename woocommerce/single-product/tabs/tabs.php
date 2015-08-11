@@ -2,12 +2,14 @@
 /**
  * Single Product tabs
  *
- * @author 		WooThemes
- * @package 	WooCommerce/Templates
- * @version     2.0.0
+ * @author  WooThemes
+ * @package WooCommerce/Templates
+ * @version 2.4.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Filter tabs and allow third parties to add their own
@@ -52,7 +54,7 @@ if ( ! empty( $tabs ) ) : ?>
                     }
             ?>
 
-                <div class="tabs__pane <?php echo $classname ?>" id="tab-<?php echo $key ?>">
+                <div class="tabs__pane <?php echo $classname ?>" id="tab-<?php echo esc_attr( $key ) ?>">
                     <?php call_user_func( $tab['callback'], $key, $tab ) ?>
                 </div>
 
