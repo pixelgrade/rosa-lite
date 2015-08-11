@@ -208,9 +208,12 @@
 
 			// Insert options into container
 			_container.nextUntil('ul').each(function(){
-
-				$(this).appendTo(_container.find('.dropdown-section-content'));
+				var to_Append = _container.find('.dropdown-section-content');
+				console.log(to_Append);
+				$(this).appendTo(to_Append);
 			});
+
+			console.log('one size');
 
 			// // Clean up the title of the sections (eg. Sizes and Spacings)
 			_container.first().prev().addClass('customize-dropdown-title');

@@ -27,8 +27,8 @@
 #customize-info .accordion-section-content,
 #customize-theme-controls .accordion-section-title,
 #customize-theme-controls .accordion-section-content {
-  color: #cbcfd4;
-  background: #232527;
+  color: #cbcfd4 !important;
+  background-color: #232527 !important;
   border-color: #3b3f45;
   -moz-transition: background 0.2s;
   -o-transition: background 0.2s;
@@ -42,14 +42,17 @@
     color: #cbcfd4;
     border-left: transparent;
     line-height: 70px; }
-#customize-info > ul > li > .accordion-section-title,
-#customize-info > ul > li > .accordion-section-content,
+#customize-info > ul > li > .accordion-section-title, #customize-info > ul > li > .accordion-section-content,
 #customize-theme-controls > ul > li > .accordion-section-title,
 #customize-theme-controls > ul > li > .accordion-section-content {
   margin: 0;
   padding: 24px 20px; }
 
-#customize-info .accordion-section-title:focus, #customize-info .accordion-section-title:hover, #customize-info.open .accordion-section-title, #customize-theme-controls .control-section .accordion-section-title:focus, #customize-theme-controls .control-section .accordion-section-title:hover, #customize-theme-controls .control-section.open .accordion-section-title, #customize-theme-controls .control-section:hover > .accordion-section-title {
+#customize-info .accordion-section-title:focus, #customize-info .accordion-section-title:hover,
+#customize-info.open .accordion-section-title, #customize-theme-controls .control-section .accordion-section-title:focus,
+#customize-theme-controls .control-section .accordion-section-title:hover,
+#customize-theme-controls .control-section.open .accordion-section-title,
+#customize-theme-controls .control-section:hover > .accordion-section-title, .customize-section-title, button.customize-section-back {
   color: #cbcfd4;
   background: #303235; }
 
@@ -59,6 +62,21 @@
   color: #cbcfd4;
   border: transparent;
   line-height: 70px; }
+
+.customize-section-title {
+  border-bottom: 1px solid #232527; }
+  .customize-section-title button.customize-section-back {
+    background: #303235;
+    border: 0;
+    height: 78px;
+    border-right: 1px solid #232527;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s; }
+    .customize-section-title button.customize-section-back:hover {
+      background: #373a3e;
+      border-right: 1px solid #232527; }
 
 .customize-control-title {
   margin-bottom: 0;
@@ -557,6 +575,11 @@
 #accordion-section-resetoptions .accordion-section-content {
   display: block !important;
   left: 0; }
+
+.customize-themes-panel {
+  color: #cbcfd4 !important;
+  background-color: #232527 !important;
+  border-color: #3b3f45; }
 
 #reset-style-defaults {
   text-align: center;

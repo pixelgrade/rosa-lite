@@ -14,20 +14,11 @@ $unit 		: 24px;
 $popup 		: 275px;
 
 
-
-
-
-
 /*------------------------------------*\
     RESETS
 \*------------------------------------*/
 .wp-full-overlay-sidebar {
-
 	border-right: 0;
-
-	.wp-full-overlay-sidebar-content {
-
-	}
 
 	* {
 		-webkit-box-sizing 	: border-box;
@@ -35,10 +26,6 @@ $popup 		: 275px;
 		box-sizing 			: border-box;
 	}
 }
-
-
-
-
 
 
 
@@ -52,11 +39,6 @@ $popup 		: 275px;
 }
 
 // Accordion Section Title
-#customize-info {
-	.accordion-section-title {
-
-	}
-}
 
 // Description Text
 #customize-controls .description {
@@ -72,8 +54,8 @@ $popup 		: 275px;
 #customize-theme-controls {
 	.accordion-section-title,
 	.accordion-section-content {
-		color 		: $light;
-		background 	: $dark;
+		color : $light !important;
+		background-color : $dark !important;
 		border-color: $lighter;
 
 		@include transition(background 0.2s);
@@ -87,28 +69,51 @@ $popup 		: 275px;
 		}
 	}
 
-	>ul>li> .accordion-section-title,
-	>ul>li> .accordion-section-content {
+	& > ul > li > .accordion-section-title,
+	& > ul > li > .accordion-section-content {
 		margin 		: 0;
 		padding 	: 24px 20px;
 	}
 }
 
 	// Accordion Sections:hover
-	#customize-info .accordion-section-title:focus, #customize-info .accordion-section-title:hover, #customize-info.open .accordion-section-title, #customize-theme-controls .control-section .accordion-section-title:focus, #customize-theme-controls .control-section .accordion-section-title:hover, #customize-theme-controls .control-section.open .accordion-section-title, #customize-theme-controls .control-section:hover>.accordion-section-title {
-		color: $light;
+#customize-info .accordion-section-title:focus, #customize-info .accordion-section-title:hover,
+#customize-info.open .accordion-section-title, #customize-theme-controls .control-section .accordion-section-title:focus,
+#customize-theme-controls .control-section .accordion-section-title:hover,
+#customize-theme-controls .control-section.open .accordion-section-title,
+#customize-theme-controls .control-section:hover>.accordion-section-title, .customize-section-title, button.customize-section-back{
+	color: $light;
+	background: $gray;
+}
+
+// Right Arrow
+#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:focus:after, #customize-theme-controls .control-section.control-panel>h3.accordion-section-title:hover:after {
+	margin-top: -11px;
+
+	background 	: none;
+	color 		: $light;
+	border : transparent;
+	line-height: 70px;
+}
+
+.customize-section-title {
+
+	border-bottom: 1px solid $dark;
+
+	button.customize-section-back {
 		background: $gray;
-	}
-		// Right Arrow
-		#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:focus:after, #customize-theme-controls .control-section.control-panel>h3.accordion-section-title:hover:after {
-			margin-top: -11px;
+		border: 0;
+		height: 78px;
+		border-right: 1px solid $dark;
 
-			background 	: none;
-			color 		: $light;
-			border : transparent;
-			line-height: 70px;
+		@include transition(all 0.3s);
+
+		&:hover {
+			background: #373a3e;
+			border-right: 1px solid $dark;
 		}
-
+	}
+}
 
 .customize-control-title {
 	margin-bottom 	: 0;
@@ -635,7 +640,6 @@ $popup 		: 275px;
 		z-index: 1000000;
 	}
 
-
 /*
  * Slider
  */
@@ -749,9 +753,6 @@ $popup 		: 275px;
 	}
 }
 
-
-
-
 /*
  * Dropdown Section
  */
@@ -823,7 +824,6 @@ $popup 		: 275px;
 	}
 }
 
-
 .customize-control-checkbox {
 	label {
 		color: $dark;
@@ -847,6 +847,12 @@ $popup 		: 275px;
 	}
 }
 
+// themne switcher
+.customize-themes-panel {
+	color : $light !important;
+	background-color : $dark !important;
+	border-color: $lighter;
+}
 
 #reset-style-defaults {
 	text-align: center;
@@ -858,12 +864,12 @@ $popup 		: 275px;
 	//margin-top: 100px;
 }
 
-/*
- * Options (disabled)
- */
-#customize-theme-controls .accordion-section-content:last-child {
-
-}
+///*
+// * Options (disabled)
+// */
+//#customize-theme-controls .accordion-section-content:last-child {
+//
+//}
 
 
 
