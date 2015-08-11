@@ -208,6 +208,7 @@
 
 			// Insert options into container
 			_container.nextUntil('ul').each(function(){
+
 				$(this).appendTo(_container.find('.dropdown-section-content'));
 			});
 
