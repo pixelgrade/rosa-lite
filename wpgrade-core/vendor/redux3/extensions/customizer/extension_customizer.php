@@ -138,11 +138,6 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 			//			add_action('customize_save', array($this, 'save_options_defaults'), 100);
 
 			add_action( 'wp_ajax_reset_style_section', array( $this, 'reset_style_section' ) );
-			add_action( 'customize_controls_print_scripts', array( $this, 'my_class_names' ) );
-		}
-
-		function my_class_names( $classes ) {
-
 		}
 
 		public function _override_values( $data ) {
@@ -158,9 +153,6 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 		}
 
 		function save_options_defaults( $wp_customize ) {
-			//			checkCSSRegen(); // Checks if I need to regen and does so
-			//			set_theme_mod('regen-css', time()+3); // Waits 3 seconds until everything is saved
-
 			$redux = new $this->parent;
 
 			$redux->_set_options();

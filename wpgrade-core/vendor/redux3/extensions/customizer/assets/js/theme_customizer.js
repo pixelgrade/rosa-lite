@@ -14,10 +14,6 @@
 		if ( typeof wp_version === "string" ) {
 			$(document).find('body').addClass('wp-version-' + wp_version.slice(0, -2) );
 		}
-
-		//api.previewer.channel.bind( 'change', function() {
-		//	render_custom_customizer( false );
-		//});
 	});
 
 	 render_custom_customizer = function ( first_load ) {
@@ -42,35 +38,6 @@
 		$('.wp-color-result').on('click', function(){
 			closeAllPanles();
 		});
-
-		// iterate thtough all settings and pick up ours
-//		$.each(controls, function (settingId, val) {
-//
-//			if (settingId.indexOf(theme_name) === -1) {
-//				return;
-//			}
-//
-//			var setting = settings[settingId],
-//				type = val.type,
-//				transport = setting.transport;
-//
-////			if ( type === 'color' && transport === 'postMessage'  ) {
-////
-////				api( settingId, function( setting ) {
-////
-////					setting.bind( function( to ){
-////
-////						var selector = $( '.article__title' );
-////
-////					});
-////
-//////					value.on('change', '#customize-control-heap_options-main_color .wp-color-picker', function( newval ) {
-//////						console.log(newval);
-//////						$( 'body .article--blog .article__categories a' ).css({color: '#111'} );
-//////					} );
-////				});
-////			}
-//		});
 
 		// If the customizer has saved things remove the save confirmation confirm
 		api.bind('saved', function () {
