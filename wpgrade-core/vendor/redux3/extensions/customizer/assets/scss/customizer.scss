@@ -830,6 +830,14 @@ $popup 		: 275px;
 	}
 }
 
+// wp43+ dropdown break
+.dropdown_info_section_break {
+	position: relative;
+	display: inline-block;
+	float: left;
+	width: 100%;
+}
+
 /*
  * Reset Button
  */
@@ -863,13 +871,6 @@ $popup 		: 275px;
 	text-transform: uppercase;
 	//margin-top: 100px;
 }
-
-///*
-// * Options (disabled)
-// */
-//#customize-theme-controls .accordion-section-content:last-child {
-//
-//}
 
 
 

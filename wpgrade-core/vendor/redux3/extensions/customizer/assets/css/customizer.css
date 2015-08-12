@@ -567,6 +567,12 @@
 .customize-control-checkbox label {
   color: #232527; }
 
+.dropdown_info_section_break {
+  position: relative;
+  display: inline-block;
+  float: left;
+  width: 100%; }
+
 /*
  * Reset Button
  */
@@ -588,7 +594,3 @@
   padding: 12px;
   color: #b1b5b9;
   text-transform: uppercase; }
-
-/*
- * Options (disabled)
- */
