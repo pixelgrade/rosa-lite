@@ -384,7 +384,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 
 							$panel = '';
 
-							if ( isset( $section['in_panel'] ) ) {
+							if ( isset( $section['in_panel'] ) && ! empty( $section['in_panel'] ) ) {
 								$panel = $section['in_panel'];
 							}
 
