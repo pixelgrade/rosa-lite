@@ -26,9 +26,20 @@ if ( class_exists('WP_Customize_Control') ) {
 
 			$field['custom_data'] = $this->get_link();
 
+			$manager = $this->manager;
+			$ul_class = 'accordion-section-content';
+			// add another class for wp 4.3+
+			if ( method_exists( $manager, 'register_section_type' ) ) {
+				$ul_class = 'dropdown_info_section_break';
+			}
+
 			echo '</fieldset></li></ul>';
-			echo '<ul class="accordion-section-content bottom" ><li><fieldset>';
-			if ( isset($field['title']) ) {
+			echo '<ul class="' . $ul_class . '" ><li><fieldset>';
+
+//			echo '</fieldset></li></ul>';
+//			echo '<ul class="myul"><li class="thiscustomli"><fieldset class="fieldinfoset">';
+
+			if ( isset( $field['title'] ) ) {
 				echo $field['title'];
 			}
 		}
