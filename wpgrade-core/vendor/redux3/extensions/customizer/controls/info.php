@@ -27,7 +27,7 @@ if ( class_exists('WP_Customize_Control') ) {
 			$field['custom_data'] = $this->get_link();
 
 			$manager = $this->manager;
-			$ul_class = 'accordion-section-content';
+			$ul_class = 'accordion-section-content bottom';
 			// add another class for wp 4.3+
 			if ( method_exists( $manager, 'register_section_type' ) ) {
 				$ul_class = 'dropdown_info_section_break';
