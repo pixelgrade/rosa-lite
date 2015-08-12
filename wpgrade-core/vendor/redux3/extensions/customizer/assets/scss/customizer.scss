@@ -14,20 +14,11 @@ $unit 		: 24px;
 $popup 		: 275px;
 
 
-
-
-
-
 /*------------------------------------*\
     RESETS
 \*------------------------------------*/
 .wp-full-overlay-sidebar {
-
 	border-right: 0;
-
-	.wp-full-overlay-sidebar-content {
-
-	}
 
 	* {
 		-webkit-box-sizing 	: border-box;
@@ -36,56 +27,28 @@ $popup 		: 275px;
 	}
 }
 
-// Open all 2nd level sections (disable accordion)
-ul.accordion-sub-container .control-subsection {
-	
-	// Hide Sub Sections Title
+.wp-version-4-2,  .wp-version-4-1 {
+	// Open all 2nd level sections (disable accordion)
+	ul.accordion-sub-container .control-subsection {
+
+		// Hide Sub Sections Title
+		.accordion-section-title {
+			display: none;
+		}
+
+		.accordion-section-content {
+			display: inline-block !important;
+			width: 100%;
+			// overflow: visible;
+		}
+	}
+
+	// Section Titles
+	.control-section .accordion-section-title,
 	.accordion-section-title {
-		display: none;
-	}
-
-	.accordion-section-content {
-		display: inline-block !important;
-		width: 100%;
-		// overflow: visible;
+		padding: 18px 20px;
 	}
 }
-
-// Section Titles
-.control-section .accordion-section-title, 
-.accordion-section-title {
-	padding: 18px 20px;
-}
-
-
-
-h3.accordion-section-title, #customize-info {
-	// display:none;
-}
-
-#customize-theme-controls .accordion-section-content {
-	// background: transparent;
-}
-
-#accordion-section-style {
-	// padding-bottom:150px;
-}
-
-.accordion-section-content {
-	overflow:visible;
-}
-
-.customize-control {
-	// float: none;
-	// display:block;
-}
-
-
-
-
-
-
-
 
 
 /*------------------------------------*\
@@ -98,11 +61,6 @@ h3.accordion-section-title, #customize-info {
 }
 
 // Accordion Section Title
-#customize-info {
-	.accordion-section-title {
-
-	}
-}
 
 // Description Text
 #customize-controls .description {
@@ -118,8 +76,8 @@ h3.accordion-section-title, #customize-info {
 #customize-theme-controls {
 	.accordion-section-title,
 	.accordion-section-content {
-		color 		: $light;
-		background 	: $dark;
+		color : $light !important;
+		background-color : $dark !important;
 		border-color: $lighter;
 
 		@include transition(background 0.2s);
@@ -127,34 +85,57 @@ h3.accordion-section-title, #customize-info {
 		// Right Arrow
 		&:after {
 			background 	: none;
-			color 		: $light;
+			color 		: $light !important;
 			border-left : transparent;
 			line-height: 70px;
 		}
 	}
 
-	>ul>li> .accordion-section-title,
-	>ul>li> .accordion-section-content {
+	& > ul > li > .accordion-section-title,
+	& > ul > li > .accordion-section-content {
 		margin 		: 0;
 		padding 	: 24px 20px;
 	}
 }
 
 	// Accordion Sections:hover
-	#customize-info .accordion-section-title:focus, #customize-info .accordion-section-title:hover, #customize-info.open .accordion-section-title, #customize-theme-controls .control-section .accordion-section-title:focus, #customize-theme-controls .control-section .accordion-section-title:hover, #customize-theme-controls .control-section.open .accordion-section-title, #customize-theme-controls .control-section:hover>.accordion-section-title {
-		color: $light;
+#customize-info .accordion-section-title:focus, #customize-info .accordion-section-title:hover,
+#customize-info.open .accordion-section-title, #customize-theme-controls .control-section .accordion-section-title:focus,
+#customize-theme-controls .control-section .accordion-section-title:hover,
+#customize-theme-controls .control-section.open .accordion-section-title,
+#customize-theme-controls .control-section:hover>.accordion-section-title, .customize-section-title, button.customize-section-back{
+	color: $light;
+	background: $gray;
+}
+
+// Right Arrow
+#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:focus:after, #customize-theme-controls .control-section.control-panel>h3.accordion-section-title:hover:after {
+	margin-top: -11px;
+
+	background 	: none;
+	color 		: $light;
+	border : transparent;
+	line-height: 70px;
+}
+
+.customize-section-title {
+
+	border-bottom: 1px solid $dark;
+
+	button.customize-section-back {
 		background: $gray;
-	}
-		// Right Arrow
-		#customize-theme-controls .control-section.control-panel>h3.accordion-section-title:focus:after, #customize-theme-controls .control-section.control-panel>h3.accordion-section-title:hover:after {
-			margin-top: -11px;
+		border: 0;
+		height: 78px;
+		border-right: 1px solid $dark;
 
-			background 	: none;
-			color 		: $light;
-			border : transparent;
-			line-height: 70px;
+		@include transition(all 0.3s);
+
+		&:hover {
+			background: #373a3e;
+			border-right: 1px solid $dark;
 		}
-
+	}
+}
 
 .customize-control-title {
 	margin-bottom 	: 0;
@@ -178,7 +159,7 @@ h3.accordion-section-title, #customize-info {
 // Current Panel
 .current-panel>.accordion-section-title {
 	height: 70px;
-} 
+}
 
 // Accordion case
 #customize-theme-controls .control-section.open .accordion-section-title {
@@ -195,11 +176,9 @@ h3.accordion-section-title, #customize-info {
 	border-bottom-color: $lighter;
 
 	.accordion-section-content {
-		overflow: hidden;
+		overflow: scroll;
 	}
 }
-
-
 
 
 /*------------------------------------*\
@@ -270,7 +249,7 @@ h3.accordion-section-title, #customize-info {
 	}
 
 }
-	
+
 	// Back button after opening a panel
 	.control-panel-back {
 		// @extend .button;
@@ -681,7 +660,6 @@ h3.accordion-section-title, #customize-info {
 		z-index: 1000000;
 	}
 
-
 /*
  * Slider
  */
@@ -795,9 +773,6 @@ h3.accordion-section-title, #customize-info {
 	}
 }
 
-
-
-
 /*
  * Dropdown Section
  */
@@ -812,7 +787,7 @@ h3.accordion-section-title, #customize-info {
 	&:last-child {
 		border-bottom: 0;
 	}
-	
+
 	.dropdown-section-trigger {
 		margin: 0;
 		padding: 14px 0;
@@ -869,11 +844,18 @@ h3.accordion-section-title, #customize-info {
 	}
 }
 
-
 .customize-control-checkbox {
 	label {
 		color: $dark;
 	}
+}
+
+// wp43+ dropdown break
+.dropdown_info_section_break {
+	position: relative;
+	display: inline-block;
+	float: left;
+	width: 100%;
 }
 
 /*
@@ -881,17 +863,24 @@ h3.accordion-section-title, #customize-info {
  */
 // Open The Panel by default
 #accordion-section-resetoptions {
-	
+
 	// Hide The Title
-	.accordion-section-title {
+	.accordion-section-title, .customize-section-description-container {
 		display: none;
 	}
 
 	.accordion-section-content {
 		display: block !important;
+		left: 0;
 	}
 }
 
+// themne switcher
+.customize-themes-panel {
+	color : $light !important;
+	background-color : $dark !important;
+	border-color: $lighter;
+}
 
 #reset-style-defaults {
 	text-align: center;
@@ -900,15 +889,27 @@ h3.accordion-section-title, #customize-info {
 	padding: 12px;
 	color: #b1b5b9;
 	text-transform: uppercase;
-	margin-top: 100px;
+	//margin-top: 100px;
 }
 
-/*
- * Options (disabled)
- */
-#customize-theme-controls .accordion-section-content:last-child {
+// fix arrow for menu section only
 
+#customize-theme-controls #accordion-panel-nav_menus {
+
+	h3.accordion-section-title {
+
+		&:hover {
+			&:after {
+				margin-top:0;
+			}
+		}
+
+		&:after {
+			top:0;
+		}
+	}
+
+	& > ul .accordion-section-title:after {
+		line-height: 25px;
+	}
 }
-
-
-

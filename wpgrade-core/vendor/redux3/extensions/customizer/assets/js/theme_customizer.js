@@ -11,9 +11,9 @@
 		var api =  exports.customize;
 		render_custom_customizer( true );
 
-		//api.previewer.channel.bind( 'change', function() {
-		//	render_custom_customizer( false );
-		//});
+		if ( typeof wp_version === "string" ) {
+			$(document).find('body').addClass('wp-version-' + wp_version.slice(0, -2) );
+		}
 	});
 
 	 render_custom_customizer = function ( first_load ) {
@@ -39,35 +39,6 @@
 			closeAllPanles();
 		});
 
-		// iterate thtough all settings and pick up ours
-//		$.each(controls, function (settingId, val) {
-//
-//			if (settingId.indexOf(theme_name) === -1) {
-//				return;
-//			}
-//
-//			var setting = settings[settingId],
-//				type = val.type,
-//				transport = setting.transport;
-//
-////			if ( type === 'color' && transport === 'postMessage'  ) {
-////
-////				api( settingId, function( setting ) {
-////
-////					setting.bind( function( to ){
-////
-////						var selector = $( '.article__title' );
-////
-////					});
-////
-//////					value.on('change', '#customize-control-heap_options-main_color .wp-color-picker', function( newval ) {
-//////						console.log(newval);
-//////						$( 'body .article--blog .article__categories a' ).css({color: '#111'} );
-//////					} );
-////				});
-////			}
-//		});
-
 		// If the customizer has saved things remove the save confirmation confirm
 		api.bind('saved', function () {
 			window.onbeforeunload = null;
@@ -86,7 +57,7 @@
 
 				//let's reset the section style
 				var _ajax_nonce = $(this).data('ajax_nonce') || '';
-				console.log(_ajax_nonce);
+
 				jQuery.ajax({
 					type: "post",
 					url: exports.ajax.settings.url,
@@ -208,7 +179,8 @@
 
 			// Insert options into container
 			_container.nextUntil('ul').each(function(){
-				$(this).appendTo(_container.find('.dropdown-section-content'));
+				var to_Append = _container.find('.dropdown-section-content');
+				$(this).appendTo(to_Append);
 			});
 
 			// // Clean up the title of the sections (eg. Sizes and Spacings)

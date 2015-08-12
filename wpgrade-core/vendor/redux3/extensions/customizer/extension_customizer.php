@@ -153,9 +153,6 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 		}
 
 		function save_options_defaults( $wp_customize ) {
-			//			checkCSSRegen(); // Checks if I need to regen and does so
-			//			set_theme_mod('regen-css', time()+3); // Waits 3 seconds until everything is saved
-
 			$redux = new $this->parent;
 
 			$redux->_set_options();
@@ -173,6 +170,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 			);
 
 			wp_localize_script( 'redux-theme_customizer', 'theme_name', wpgrade::shortname() );
+			wp_localize_script( 'redux-theme_customizer', 'wp_version', str_replace('.', '-', get_bloginfo('version') ) );
 		}
 
 		public function js_customizer_live_preview_enqueue() {
@@ -384,7 +382,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 
 							$panel = '';
 
-							if ( isset( $section['in_panel'] ) ) {
+							if ( isset( $section['in_panel'] ) && ! empty( $section['in_panel'] ) ) {
 								$panel = $section['in_panel'];
 							}
 

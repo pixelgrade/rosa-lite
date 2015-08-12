@@ -1,4 +1,10 @@
 <?php
+$this_wp_version = get_bloginfo('version');
+$this_wp_version = explode( '.', $this_wp_version );
+$is_wp43 = false;
+if ( (int) $this_wp_version[1] > 2 ) {
+	$is_wp43 = true;
+}
 
 $sections = array();
 $debug    = '';
@@ -33,9 +39,9 @@ $sections[] = array(
 			'type'     => 'media',
 			'title'    => __( 'Main Logo', 'rosa_txtd' ),
 			'subtitle' => __( 'If there is no image uploaded, plain text will be used instead (generated from the site\'s name).', 'rosa_txtd' ),
-//			'hint'     => array(
-//				'content' => 'This is the content of the tool-tip'
-//			)
+			//			'hint'     => array(
+			//				'content' => 'This is the content of the tool-tip'
+			//			)
 		),
 		array(
 			'id'    => 'main_logo_dark',
@@ -87,24 +93,77 @@ $sections[] = array(
 	)
 );
 
-
 // ------------------------------------------------------------------------
 // CUSTOMIZER
 // ------------------------------------------------------------------------
 
+// Legacy: for older wp versions keep the panels
+if ( ! $is_wp43 ) {
+	$sections[] = array(
+		'icon'            => "icon-params",
+		'icon_class'      => '',
+		'class'           => 'has-customizer',
+		'title'           => __( 'Colors', 'rosa_txtd' ),
+		'id'              => 'colors',
+		'desc'            => '<p class="description">' . __( 'Using the color pickers you can change the colors of the most important elements. If you want to override the color of some elements you can always use Custom CSS code in Theme Options - Custom Code.', 'rosa_txtd' ) . '</p>',
+		'customizer_only' => true,
+		'type'            => 'customizer_panel',
+		'priority'        => 5,
+		'fields'          => array( array('id' => 'legacy', 'title' => '', 'type' => 'info' ) )
+	);
+	$sections[] = array(
+		'icon'            => "icon-params",
+		'icon_class'      => '',
+		'class'           => 'has-customizer',
+		'title'           => __( 'Backgrounds', 'rosa_txtd' ),
+		'id'              => 'backgrounds',
+		'customizer_only' => true,
+		'type' => 'customizer_panel',
+		'priority'        => 6,
+		'fields'          => array( array('id' => 'legacy', 'title' => '', 'type' => 'info' ) )
+	);
+	$sections[] = array(
+		'icon'            => "icon-params",
+		'icon_class'      => '',
+		'class'           => 'has-customizer',
+		'title'           => __( 'Typography', 'rosa_txtd' ),
+		'id'              => 'typography',
+		'customizer_only' => true,
+		'type' => 'customizer_panel',
+		'priority'        => 7,
+		'fields'          => array( array('id' => 'legacy', 'title' => '', 'type' => 'info' ) )
+	);
+	$sections[] = array(
+		'icon'            => "icon-params",
+		'icon_class'      => '',
+		'class'           => 'has-customizer',
+		'title'           => __( 'Sizes and Spacing', 'rosa_txtd' ),
+		'id'              => 'size-and-pacing',
+		'customizer_only' => true,
+		'type'            => 'customizer_panel',
+		'priority'        => 8,
+		'fields'          => array( array('id' => 'legacy', 'title' => '', 'type' => 'info' ) )
+	);
+	$sections[] = array(
+		'icon'            => "icon-params",
+		'icon_class'      => '',
+		'class'           => 'has-customizer',
+		'title'           => __( 'Other Options', 'rosa_txtd' ),
+		'id'              => 'general-options',
+		'customizer_only' => true,
+		'type' => 'customizer_panel',
+		'priority'        => 9,
+		'fields'          => array( array('id' => 'legacy', 'title' => '', 'type' => 'info' ) )
+	);
+}
+
 // Colors
 // ------------------------------------------------------------------------
-$sections[] = array(
-	'icon'            => "icon-params",
-	'icon_class'      => '',
-	'class'           => 'has-customizer',
-	'title'           => __( 'Colors', 'rosa_txtd' ),
-	'id'              => 'colors',
-	'desc'            => '<p class="description">' . __( 'Using the color pickers you can change the colors of the most important elements. If you want to override the color of some elements you can always use Custom CSS code in Theme Options - Custom Code.', 'rosa_txtd' ) . '</p>',
-	'customizer_only' => true,
-	'type'            => 'customizer_panel',
-	'fields'          => array( array('id' => 'legacy', 'title' => '', 'type' => 'info' ) )
-);
+$sections_panel = '';
+if ( ! $is_wp43 ) {
+	$sections_panel = 'colors';
+}
+
 $sections[] = array(
 	'icon'            => "icon-params",
 	'icon_class'      => '',
@@ -112,7 +171,8 @@ $sections[] = array(
 	'title'           => __( 'Colors', 'rosa_txtd' ),
 	'desc'            => '<p class="description">' . __( 'The style options control the general styling of the site, like accent color and Google Web Fonts. You can choose custom fonts for various typography elements with font weight, character set, size and/or line height. You also have a live preview for your chosen fonts.', 'rosa_txtd' ) . '</p>',
 	'type' => 'customizer_section',
-	'in_panel'        => 'colors',
+	'in_panel'        => $sections_panel,
+	'priority'        => 5,
 	'fields'          => array(
 		array(
 			'id'         => 'main_color',
@@ -230,25 +290,21 @@ $sections[] = array(
 	)
 );
 
+
 // Backgrounds
 // ------------------------------------------------------------------------
-$sections[] = array(
-	'icon'            => "icon-params",
-	'icon_class'      => '',
-	'class'           => 'has-customizer',
-	'title'           => __( 'Backgrounds', 'rosa_txtd' ),
-	'id'              => 'backgrounds',
-	'customizer_only' => true,
-	'type' => 'customizer_panel',
-	'fields'          => array( array('id' => 'legacy', 'title' => '', 'type' => 'info' ) )
-);
+$sections_panel = '';
+if ( ! $is_wp43 ) {
+	$sections_panel = 'backgrounds';
+}
 $sections[] = array(
 	'icon'            => "icon-params",
 	'icon_class'      => '',
 	'class'           => 'has-customizer customizer-only',
 	'title'           => __( 'Backgrounds', 'rosa_txtd' ),
 	'type'            => 'customizer_section',
-	'in_panel'        => 'backgrounds',
+	'in_panel'        => $sections_panel,
+	'priority'        => 6,
 	'fields'          => array(
 		array(
 			'id'         => 'header_background_color',
@@ -381,23 +437,18 @@ $sections[] = array(
 
 // Typography
 // ------------------------------------------------------------------------
-$sections[] = array(
-	'icon'            => "icon-params",
-	'icon_class'      => '',
-	'class'           => 'has-customizer',
-	'title'           => __( 'Typography', 'rosa_txtd' ),
-	'id'              => 'typography',
-	'customizer_only' => true,
-	'type' => 'customizer_panel',
-	'fields'          => array( array('id' => 'legacy', 'title' => '', 'type' => 'info' ) )
-);
+$sections_panel = '';
+if ( ! $is_wp43 ) {
+	$sections_panel = 'typography';
+}
 $sections[] = array(
 	'icon'            => "icon-params",
 	'icon_class'      => '',
 	'class'           => 'has-customizer customizer-only',
 	'title'           => __( 'Typography', 'rosa_txtd' ),
 	'type'            => 'customizer_section',
-	'in_panel'        => 'typography',
+	'in_panel'        => $sections_panel,
+	'priority'        => 7,
 	'fields'          => array(
 		array(
 			'id'       => 'use_google_fonts',
@@ -691,23 +742,18 @@ $sections[] = array(
 
 // Sizes and Spacing
 // ------------------------------------------------------------------------
-$sections[] = array(
-	'icon'            => "icon-params",
-	'icon_class'      => '',
-	'class'           => 'has-customizer',
-	'title'           => __( 'Sizes and Spacing', 'rosa_txtd' ),
-	'id'              => 'size-and-pacing',
-	'customizer_only' => true,
-	'type'            => 'customizer_panel',
-	'fields'          => array( array('id' => 'legacy', 'title' => '', 'type' => 'info' ) )
-);
+$sections_panel = '';
+if ( ! $is_wp43 ) {
+	$sections_panel = 'size-and-pacing';
+}
 $sections[] = array(
 	'icon'            => "icon-params",
 	'icon_class'      => '',
 	'class'           => 'has-customizer customizer-only',
 	'title'           => __( 'Sizes and Spacing', 'rosa_txtd' ),
 	'type'            => 'customizer_section',
-	'in_panel'        => 'size-and-pacing',
+	'in_panel'        => $sections_panel,
+	'priority'        => 8,
 	'fields'          => array(
 		array(
 			'id'         => 'sizes_content',
@@ -905,24 +951,18 @@ $sections[] = array(
 
 // Other Options
 // ------------------------------------------------------------------------
-$sections[] = array(
-	'icon'            => "icon-params",
-	'icon_class'      => '',
-	'class'           => 'has-customizer',
-	'title'           => __( 'Other Options', 'rosa_txtd' ),
-	'id'              => 'general-options',
-	'customizer_only' => true,
-	'type' => 'customizer_panel',
-	'fields'          => array( array('id' => 'legacy', 'title' => '', 'type' => 'info' ) )
-);
-
+$sections_panel = '';
+if ( ! $is_wp43 ) {
+	$sections_panel = 'general-options';
+}
 $sections[] = array(
 	'icon'            => "icon-params",
 	'icon_class'      => '',
 	'class'           => 'has-customizer customizer-only',
 	'title'           => __( 'General Options', 'rosa_txtd' ),
 	'type'            => 'customizer_section',
-	'in_panel'        => 'general-options',
+	'in_panel'        => $sections_panel,
+	'priority'        => 9,
 	'fields'          => array(
 		array(
 			'id'              => 'options_elements',
@@ -954,31 +994,31 @@ $sections[] = array(
 						'unit'     => 'px',
 						'media'    => 'screen and (min-width: 900px)'
 					),
-                    'border-left-width' => array(
-                        'selector' => '.site-header',
-                        'unit'     => 'px',
-                        'media'    => 'screen and (min-width: 900px)'
-                    ),
-                    'border-right-width' => array(
-                        'selector' => '.site-header',
-                        'unit'     => 'px',
-                        'media'    => 'screen and (min-width: 900px)'
-                    ),
+					'border-left-width' => array(
+						'selector' => '.site-header',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					),
+					'border-right-width' => array(
+						'selector' => '.site-header',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					),
 					'border-bottom-width' => array(
 						'selector' => '.site-footer',
 						'unit'     => 'px',
 						'media'    => 'screen and (min-width: 900px)'
 					),
-                    'margin-right' => array (
-                        'selector' => '.navigator, .covers',
-                        'unit'     => 'px',
-                        'media'    => 'screen and (min-width: 900px)'
-                    ),
-                    'margin-left' => array (
-                        'selector' => '.covers',
-                        'unit'     => 'px',
-                        'media'    => 'screen and (min-width: 900px)'
-                    )
+					'margin-right' => array (
+						'selector' => '.navigator, .covers',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					),
+					'margin-left' => array (
+						'selector' => '.covers',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					)
 				)
 			),
 			'compiler'      => true
@@ -1633,7 +1673,7 @@ $sections[] = array(
 			'type'     => 'ace_editor',
 			'title'    => __( 'Custom CSS', 'rosa_txtd' ),
 			'subtitle' => __( 'Enter your custom CSS code. It will be included in the head section of the page and will overwrite the main CSS styling.', 'rosa_txtd' ),
-//			'desc'     => __( '', 'rosa_txtd' ),
+			//			'desc'     => __( '', 'rosa_txtd' ),
 			'mode'     => 'css',
 			'theme'    => 'chrome',
 			//'validate' => 'html',
