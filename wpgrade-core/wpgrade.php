@@ -910,6 +910,10 @@ class wpgrade {
 		if ( isset( $font_args['color'] ) && ! empty( $font_args['color'] ) ) {
 			echo 'color: ' . $font_args['color'] . ";\n\t";
 		}
+
+		if ( isset( $font_args['text-transform'] ) && ! empty( $font_args['text-transform'] ) ) {
+			echo 'text-transform: ' . $font_args['text-transform'] . ";\n\t";
+		}
 	}
 
 	/**

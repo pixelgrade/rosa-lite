@@ -622,12 +622,15 @@ new_array = {};
 			if (decoration) {
 				$('#' + mainID + ' .typography-preview').css('text-decoration', decoration);
 			}
+
 			$('#' + mainID + ' .typography-preview').slideDown();
 			this.set_customizer_value(customizer_id, 'font-options', details);
 			this.set_customizer_value(customizer_id, 'font-weight', style);
 			this.set_customizer_value(customizer_id, 'google', google);
 			this.set_customizer_value(customizer_id, 'subsets', script);
 			this.set_customizer_value(customizer_id, 'text-align', align);
+			this.set_customizer_value(customizer_id, 'text-transform', transform);
+			this.set_customizer_value(customizer_id, 'text-decoration', decoration);
 
 			if (typeof api !== "undefined") {
 

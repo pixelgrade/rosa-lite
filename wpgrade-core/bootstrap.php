@@ -15,10 +15,6 @@ $basepath = dirname( __FILE__ ) . DIRECTORY_SEPARATOR;
 
 //require $basepath . 'wpgrade' . EXT;
 get_template_part( 'wpgrade-core/wpgrade' );
-// Setup translations
-// ------------------
-
-load_theme_textdomain( wpgrade::textdomain(), wpgrade::themefilepath( wpgrade::confoption( 'language-path', 'languages' ) ) );
 
 // Dynamically load in all classes
 // -------------------------------

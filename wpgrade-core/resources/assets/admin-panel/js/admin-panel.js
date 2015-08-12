@@ -574,14 +574,6 @@
 			$bigIcon.attr('class', iconClass);
 
 		}, 100);
-
-		setTimeout(function(){
-			$('.redux-main').css('height', '');
-
-			if ($tab.outerHeight() < sidebarHeight) {
-				$('.redux-main').height(sidebarHeight);
-			}
-		}, 500)
 	});
 
 
