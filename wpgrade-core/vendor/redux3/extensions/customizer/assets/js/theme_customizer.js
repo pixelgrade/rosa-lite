@@ -11,6 +11,10 @@
 		var api =  exports.customize;
 		render_custom_customizer( true );
 
+		if ( typeof wp_version === "string" ) {
+			$(document).find('body').addClass('wp-version-' + wp_version.slice(0, -2) );
+		}
+
 		//api.previewer.channel.bind( 'change', function() {
 		//	render_custom_customizer( false );
 		//});
@@ -86,7 +90,7 @@
 
 				//let's reset the section style
 				var _ajax_nonce = $(this).data('ajax_nonce') || '';
-				console.log(_ajax_nonce);
+
 				jQuery.ajax({
 					type: "post",
 					url: exports.ajax.settings.url,
@@ -209,11 +213,8 @@
 			// Insert options into container
 			_container.nextUntil('ul').each(function(){
 				var to_Append = _container.find('.dropdown-section-content');
-				console.log(to_Append);
 				$(this).appendTo(to_Append);
 			});
-
-			console.log('one size');
 
 			// // Clean up the title of the sections (eg. Sizes and Spacings)
 			_container.first().prev().addClass('customize-dropdown-title');

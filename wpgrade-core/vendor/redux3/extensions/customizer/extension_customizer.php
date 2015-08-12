@@ -138,6 +138,11 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 			//			add_action('customize_save', array($this, 'save_options_defaults'), 100);
 
 			add_action( 'wp_ajax_reset_style_section', array( $this, 'reset_style_section' ) );
+			add_action( 'customize_controls_print_scripts', array( $this, 'my_class_names' ) );
+		}
+
+		function my_class_names( $classes ) {
+
 		}
 
 		public function _override_values( $data ) {
@@ -173,6 +178,7 @@ if ( ! class_exists( 'ReduxFramework_extension_customizer' ) ) {
 			);
 
 			wp_localize_script( 'redux-theme_customizer', 'theme_name', wpgrade::shortname() );
+			wp_localize_script( 'redux-theme_customizer', 'wp_version', str_replace('.', '-', get_bloginfo('version') ) );
 		}
 
 		public function js_customizer_live_preview_enqueue() {
