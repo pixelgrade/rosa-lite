@@ -48,31 +48,6 @@ $popup 		: 275px;
 	.accordion-section-title {
 		padding: 18px 20px;
 	}
-
-
-
-	h3.accordion-section-title, #customize-info {
-		// display:none;
-	}
-
-	#customize-theme-controls .accordion-section-content {
-		// background: transparent;
-	}
-
-	#accordion-section-style {
-		// padding-bottom:150px;
-	}
-
-	.accordion-section-content {
-		overflow:visible;
-	}
-
-	.customize-control {
-		// float: none;
-		// display:block;
-	}
-
-
 }
 
 
@@ -110,7 +85,7 @@ $popup 		: 275px;
 		// Right Arrow
 		&:after {
 			background 	: none;
-			color 		: $light;
+			color 		: $light !important;
 			border-left : transparent;
 			line-height: 70px;
 		}
@@ -919,8 +894,22 @@ $popup 		: 275px;
 
 // fix arrow for menu section only
 
-#accordion-panel-nav_menus {
-	.accordion-section-title:after {
+#customize-theme-controls #accordion-panel-nav_menus {
+
+	h3.accordion-section-title {
+
+		&:hover {
+			&:after {
+				margin-top:0;
+			}
+		}
+
+		&:after {
+			top:0;
+		}
+	}
+
+	& > ul .accordion-section-title:after {
 		line-height: 25px;
 	}
 }

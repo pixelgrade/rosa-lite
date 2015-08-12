@@ -20,8 +20,6 @@
 .wp-version-4-2 .accordion-section-title, .wp-version-4-1 .control-section .accordion-section-title,
 .wp-version-4-1 .accordion-section-title {
   padding: 18px 20px; }
-.wp-version-4-2 .accordion-section-content, .wp-version-4-1 .accordion-section-content {
-  overflow: visible; }
 
 /*------------------------------------*\
     BASE
@@ -51,7 +49,7 @@
   #customize-theme-controls .accordion-section-title:after,
   #customize-theme-controls .accordion-section-content:after {
     background: none;
-    color: #cbcfd4;
+    color: #cbcfd4 !important;
     border-left: transparent;
     line-height: 70px; }
 #customize-info > ul > li > .accordion-section-title, #customize-info > ul > li > .accordion-section-content,
@@ -607,5 +605,9 @@
   color: #b1b5b9;
   text-transform: uppercase; }
 
-#accordion-panel-nav_menus .accordion-section-title:after {
+#customize-theme-controls #accordion-panel-nav_menus h3.accordion-section-title:hover:after {
+  margin-top: 0; }
+#customize-theme-controls #accordion-panel-nav_menus h3.accordion-section-title:after {
+  top: 0; }
+#customize-theme-controls #accordion-panel-nav_menus > ul .accordion-section-title:after {
   line-height: 25px; }
