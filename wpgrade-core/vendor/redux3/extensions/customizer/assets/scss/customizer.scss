@@ -119,10 +119,11 @@ $popup 		: 275px;
 }
 
 .customize-section-title {
-
 	border-bottom: 1px solid $dark;
+}
 
-	button.customize-section-back {
+#customize-theme-controls {
+	button.customize-panel-back, button.customize-section-back {
 		background: $gray;
 		border: 0;
 		height: 78px;
@@ -134,6 +135,13 @@ $popup 		: 275px;
 			background: #373a3e;
 			border-right: 1px solid $dark;
 		}
+	}
+}
+
+#customize-controls .panel-meta {
+	border-bottom: 1px solid #111;
+	.accordion-section-title {
+		height: 78px;
 	}
 }
 

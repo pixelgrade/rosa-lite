@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ROSA - An Exquisite Restaurant Wordpress Theme\n"
-"POT-Creation-Date: 2015-08-04 12:14+0300\n"
-"PO-Revision-Date: 2015-08-04 12:15+0300\n"
+"POT-Creation-Date: 2015-08-12 18:18+0300\n"
+"PO-Revision-Date: 2015-08-12 18:18+0300\n"
 "Last-Translator: Vlad Olaru <vlad.olaru@pixelgrade.com>\n"
 "Language-Team: PixelGrade <contact@pixelgrade.com>\n"
 "Language: it_IT\n"
@@ -373,11 +373,11 @@ msgstr "Opzioni tema"
 msgid "Options"
 msgstr "Opzioni"
 
-#: config/admin-panel/redux-sections.php:16
+#: config/admin-panel/redux-sections.php:22
 msgid "General"
 msgstr "Generale"
 
-#: config/admin-panel/redux-sections.php:17
+#: config/admin-panel/redux-sections.php:23
 msgid ""
 "General settings contains options that have a site-wide reach like defining "
 "your site dynamics or branding (including logo and other icons)."
@@ -386,23 +386,23 @@ msgstr ""
 "sito come definire vostre dinamiche del sito o di branding (compresi logo e "
 "altre icone)."
 
-#: config/admin-panel/redux-sections.php:22
+#: config/admin-panel/redux-sections.php:28
 msgid "Smooth Scrolling"
 msgstr "Smooth Scrolling"
 
-#: config/admin-panel/redux-sections.php:23
+#: config/admin-panel/redux-sections.php:29
 msgid "Enable / Disable smooth scrolling."
 msgstr "Abilita / Disabilita smooth scrolling."
 
-#: config/admin-panel/redux-sections.php:28
+#: config/admin-panel/redux-sections.php:34
 msgid "Branding"
 msgstr "Branding"
 
-#: config/admin-panel/redux-sections.php:34
+#: config/admin-panel/redux-sections.php:40
 msgid "Main Logo"
 msgstr "Logo principale"
 
-#: config/admin-panel/redux-sections.php:35
+#: config/admin-panel/redux-sections.php:41
 msgid ""
 "If there is no image uploaded, plain text will be used instead (generated "
 "from the site's name)."
@@ -410,41 +410,41 @@ msgstr ""
 "Se non c'è immagine caricata, testo in chiaro sarà utilizzato invece "
 "(generato dal nome del sito)."
 
-#: config/admin-panel/redux-sections.php:44
+#: config/admin-panel/redux-sections.php:50
 msgid "Main Logo Inversed"
 msgstr "Logo principale"
 
-#: config/admin-panel/redux-sections.php:49
+#: config/admin-panel/redux-sections.php:55
 msgid "2x Retina Logo"
 msgstr "2x Retina Logo"
 
-#: config/admin-panel/redux-sections.php:50
+#: config/admin-panel/redux-sections.php:56
 msgid "To be Retina-ready you need to add a 2x size logo image."
 msgstr ""
 "Per essere Retina-ready è necessario aggiungere un'immagine di dimensione "
 "logo 2x."
 
-#: config/admin-panel/redux-sections.php:56
+#: config/admin-panel/redux-sections.php:62
 msgid "Retina Logo light"
 msgstr "2x Retina Logo"
 
-#: config/admin-panel/redux-sections.php:63
+#: config/admin-panel/redux-sections.php:69
 msgid "Retina Logo dark"
 msgstr "2x Retina Logo"
 
-#: config/admin-panel/redux-sections.php:70
+#: config/admin-panel/redux-sections.php:76
 msgid "Favicon"
 msgstr "Favicon"
 
-#: config/admin-panel/redux-sections.php:71
+#: config/admin-panel/redux-sections.php:77
 msgid "Upload a 16 x 16px image that will be used as a favicon."
 msgstr "Carica un'immagine 16 x 16px che verrà utilizzata come favicon."
 
-#: config/admin-panel/redux-sections.php:77
+#: config/admin-panel/redux-sections.php:83
 msgid "Apple Touch Icon"
 msgstr "Apple Touch Icon"
 
-#: config/admin-panel/redux-sections.php:78
+#: config/admin-panel/redux-sections.php:84
 msgid ""
 "You can customize the icon for the Apple touch shortcut to your website. The "
 "size of this icon must be 77x77px."
@@ -452,27 +452,46 @@ msgstr ""
 "È possibile personalizzare l'icona per il Apple touch shortcut al tuo sito "
 "web. Le dimensioni di questa icona devono essere 77x77px."
 
-#: config/admin-panel/redux-sections.php:84
+#: config/admin-panel/redux-sections.php:90
 msgid "Metro Icon"
 msgstr "Metro Icon"
 
-#: config/admin-panel/redux-sections.php:85
+#: config/admin-panel/redux-sections.php:91
 msgid "The size of this icon must be 144x144px."
 msgstr "Le dimensioni di questa icona devono essere 144x144px."
 
-#: config/admin-panel/redux-sections.php:101
-#: config/admin-panel/redux-sections.php:112
+#: config/admin-panel/redux-sections.php:106
+#: config/admin-panel/redux-sections.php:171
 msgid "Colors"
 msgstr "Colore principale"
 
-#: config/admin-panel/redux-sections.php:103
+#: config/admin-panel/redux-sections.php:108
 msgid ""
 "Using the color pickers you can change the colors of the most important "
 "elements. If you want to override the color of some elements you can always "
 "use Custom CSS code in Theme Options - Custom Code."
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:113
+#: config/admin-panel/redux-sections.php:118
+#: config/admin-panel/redux-sections.php:304
+msgid "Backgrounds"
+msgstr ""
+
+#: config/admin-panel/redux-sections.php:129
+#: config/admin-panel/redux-sections.php:448
+msgid "Typography"
+msgstr "Typography"
+
+#: config/admin-panel/redux-sections.php:140
+#: config/admin-panel/redux-sections.php:753
+msgid "Sizes and Spacing"
+msgstr ""
+
+#: config/admin-panel/redux-sections.php:151
+msgid "Other Options"
+msgstr ""
+
+#: config/admin-panel/redux-sections.php:172
 msgid ""
 "The style options control the general styling of the site, like accent color "
 "and Google Web Fonts. You can choose custom fonts for various typography "
@@ -484,11 +503,11 @@ msgstr ""
 "tipografia con font weight, set di caratteri, dimensioni e / o altezza della "
 "linea. Hai anche un'anteprima in tempo reale per i font scelti."
 
-#: config/admin-panel/redux-sections.php:120
+#: config/admin-panel/redux-sections.php:180
 msgid "Accent Color"
 msgstr "Colore principale"
 
-#: config/admin-panel/redux-sections.php:121
+#: config/admin-panel/redux-sections.php:181
 msgid ""
 "Use the color picker to change the main color of the site to match your "
 "brand color."
@@ -496,67 +515,57 @@ msgstr ""
 "Utilizzare il selettore colore per cambiare il colore principale del sito "
 "per abbinare il colore del marchio."
 
-#: config/admin-panel/redux-sections.php:180
+#: config/admin-panel/redux-sections.php:240
 msgid "Text Color"
 msgstr "Colore principale"
 
-#: config/admin-panel/redux-sections.php:200
+#: config/admin-panel/redux-sections.php:260
 msgid "Headings color"
 msgstr "Font per headings"
 
-#: config/admin-panel/redux-sections.php:216
+#: config/admin-panel/redux-sections.php:276
 msgid "Cover Text"
 msgstr "Cover Title Style"
 
-#: config/admin-panel/redux-sections.php:239
-#: config/admin-panel/redux-sections.php:249
-msgid "Backgrounds"
-msgstr ""
-
-#: config/admin-panel/redux-sections.php:256
-#: config/admin-panel/redux-sections.php:804
-#: config/admin-panel/redux-sections.php:1520
+#: config/admin-panel/redux-sections.php:312
+#: config/admin-panel/redux-sections.php:850
+#: config/admin-panel/redux-sections.php:1560
 msgid "Header"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:273
-#: config/admin-panel/redux-sections.php:313
+#: config/admin-panel/redux-sections.php:329
+#: config/admin-panel/redux-sections.php:369
 msgid "<button></button>"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:274
-#: config/admin-panel/redux-sections.php:314
+#: config/admin-panel/redux-sections.php:330
+#: config/admin-panel/redux-sections.php:370
 msgid "Container background with image."
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:296
-#: config/admin-panel/redux-sections.php:714
+#: config/admin-panel/redux-sections.php:352
+#: config/admin-panel/redux-sections.php:760
 msgid "Content"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:335
-#: config/admin-panel/redux-sections.php:1058
+#: config/admin-panel/redux-sections.php:391
+#: config/admin-panel/redux-sections.php:1098
 msgid "Footer"
 msgstr "Footer"
 
-#: config/admin-panel/redux-sections.php:342
+#: config/admin-panel/redux-sections.php:398
 msgid "Footer Widget Area Style"
 msgstr "Border Area"
 
-#: config/admin-panel/redux-sections.php:362
+#: config/admin-panel/redux-sections.php:418
 msgid "Footer Bottom Bar Style"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:388
-#: config/admin-panel/redux-sections.php:398
-msgid "Typography"
-msgstr "Typography"
-
-#: config/admin-panel/redux-sections.php:405
+#: config/admin-panel/redux-sections.php:456
 msgid "Do you need custom web fonts?"
 msgstr "Avete bisogno di fonti web personalizzati?"
 
-#: config/admin-panel/redux-sections.php:406
+#: config/admin-panel/redux-sections.php:457
 msgid ""
 "Tap into the massive <a href=\"http://www.google.com/fonts/\">Google Fonts</"
 "a> collection (with Live preview)."
@@ -564,37 +573,37 @@ msgstr ""
 "Entra l'enorme collezione <a href=\"http://www.google.com/fonts/\">Google "
 "Fonts</a> (con Live Preview)."
 
-#: config/admin-panel/redux-sections.php:422
+#: config/admin-panel/redux-sections.php:473
 msgid "<button></button> Headings"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:423
-#: config/admin-panel/redux-sections.php:448
+#: config/admin-panel/redux-sections.php:474
+#: config/admin-panel/redux-sections.php:499
 msgid "Font for titles and headings."
 msgstr "Font per i titoli e headings"
 
-#: config/admin-panel/redux-sections.php:447
+#: config/admin-panel/redux-sections.php:498
 msgid "<button></button> Sub Headings"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:462
+#: config/admin-panel/redux-sections.php:513
 msgid "Bottom Spacing"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:483
+#: config/admin-panel/redux-sections.php:534
 msgid "First Letter Offset"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:513
+#: config/admin-panel/redux-sections.php:564
 msgid "<button></button> Navigation"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:514
+#: config/admin-panel/redux-sections.php:565
 msgid "Font for the navigation menu."
 msgstr "Font per il menu di navigazione."
 
-#: config/admin-panel/redux-sections.php:529
-#: config/admin-panel/redux-sections.php:649
+#: config/admin-panel/redux-sections.php:580
+#: config/admin-panel/redux-sections.php:700
 #: wpgrade-core/callbacks/redux-extend/extensions/customizer_typography/customizer_typography/field_customizer_typography.php:460
 #: wpgrade-core/callbacks/redux-extend/extensions/customizer_typography/customizer_typography/field_customizer_typography.php:461
 #: wpgrade-core/vendor/redux3/inc/fields/typography/field_typography.php:455
@@ -602,7 +611,7 @@ msgstr "Font per il menu di navigazione."
 msgid "Font Size"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:550
+#: config/admin-panel/redux-sections.php:601
 #: wpgrade-core/callbacks/redux-extend/extensions/customizer_typography/customizer_typography/field_customizer_typography.php:487
 #: wpgrade-core/callbacks/redux-extend/extensions/customizer_typography/customizer_typography/field_customizer_typography.php:488
 #: wpgrade-core/vendor/redux3/inc/fields/typography/field_typography.php:482
@@ -610,7 +619,7 @@ msgstr ""
 msgid "Letter Spacing"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:571
+#: config/admin-panel/redux-sections.php:622
 #: wpgrade-core/callbacks/redux-extend/extensions/customizer_typography/customizer_typography/field_customizer_typography.php:393
 #: wpgrade-core/callbacks/redux-extend/extensions/customizer_typography/customizer_typography/field_customizer_typography.php:394
 #: wpgrade-core/callbacks/redux-extend/extensions/customizer_typography/customizer_typography/field_customizer_typography.php:395
@@ -620,7 +629,7 @@ msgstr ""
 msgid "Text Transform"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:597
+#: config/admin-panel/redux-sections.php:648
 #: wpgrade-core/callbacks/redux-extend/extensions/customizer_typography/customizer_typography/field_customizer_typography.php:436
 #: wpgrade-core/callbacks/redux-extend/extensions/customizer_typography/customizer_typography/field_customizer_typography.php:437
 #: wpgrade-core/callbacks/redux-extend/extensions/customizer_typography/customizer_typography/field_customizer_typography.php:438
@@ -630,15 +639,15 @@ msgstr ""
 msgid "Text Decoration"
 msgstr "Informazioni Tema"
 
-#: config/admin-panel/redux-sections.php:634
+#: config/admin-panel/redux-sections.php:685
 msgid "<button></button> Body"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:635
+#: config/admin-panel/redux-sections.php:686
 msgid "Font for content and widget text."
 msgstr "Font per i contenuti e widget di testo."
 
-#: config/admin-panel/redux-sections.php:670
+#: config/admin-panel/redux-sections.php:721
 #: wpgrade-core/callbacks/redux-extend/extensions/customizer_typography/customizer_typography/field_customizer_typography.php:469
 #: wpgrade-core/callbacks/redux-extend/extensions/customizer_typography/customizer_typography/field_customizer_typography.php:470
 #: wpgrade-core/vendor/redux3/inc/fields/typography/field_typography.php:464
@@ -646,85 +655,76 @@ msgstr "Font per i contenuti e widget di testo."
 msgid "Line Height"
 msgstr "Auto height"
 
-#: config/admin-panel/redux-sections.php:698
-#: config/admin-panel/redux-sections.php:708
-msgid "Sizes and Spacing"
-msgstr ""
-
-#: config/admin-panel/redux-sections.php:721
+#: config/admin-panel/redux-sections.php:767
 msgid "Site Container Width"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:722
+#: config/admin-panel/redux-sections.php:768
 msgid "Set the width of the container."
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:743
+#: config/admin-panel/redux-sections.php:789
 msgid "Sections Vertical Margins"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:770
+#: config/admin-panel/redux-sections.php:816
 msgid "Sidebar Width"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:771
+#: config/admin-panel/redux-sections.php:817
 msgid "Set the width of the sidebar."
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:811
+#: config/admin-panel/redux-sections.php:857
 msgid "Logo Height"
 msgstr "Auto height"
 
-#: config/admin-panel/redux-sections.php:833
+#: config/admin-panel/redux-sections.php:879
 msgid "Header Vertical Margins"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:872
+#: config/admin-panel/redux-sections.php:918
 msgid "Navigation"
 msgstr "Navigazione Font"
 
-#: config/admin-panel/redux-sections.php:879
+#: config/admin-panel/redux-sections.php:925
 msgid "Menu Items Spacing"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:912
-msgid "Other Options"
-msgstr ""
-
-#: config/admin-panel/redux-sections.php:923
+#: config/admin-panel/redux-sections.php:962
 msgid "General Options"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:929
+#: config/admin-panel/redux-sections.php:969
 msgid "Elements"
 msgstr "Commento"
 
-#: config/admin-panel/redux-sections.php:937
+#: config/admin-panel/redux-sections.php:977
 msgid "Border Width"
 msgstr "Border Area"
 
-#: config/admin-panel/redux-sections.php:989
+#: config/admin-panel/redux-sections.php:1029
 msgid "Scroll Down Arrow Style"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1004
+#: config/admin-panel/redux-sections.php:1044
 msgid "Slideshow Arrows Style"
 msgstr "Presentazione"
 
-#: config/admin-panel/redux-sections.php:1005
+#: config/admin-panel/redux-sections.php:1045
 msgid "Select which type of arrows you want on page headers."
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1019
-#: config/admin-panel/redux-sections.php:1038
+#: config/admin-panel/redux-sections.php:1059
+#: config/admin-panel/redux-sections.php:1078
 msgid "Reset to Defaults"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1032
+#: config/admin-panel/redux-sections.php:1072
 msgid "Reset Options"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1059
+#: config/admin-panel/redux-sections.php:1099
 msgid ""
 "Footer options allow you to control both the visual and functional aspects "
 "of the page footer area."
@@ -732,31 +732,31 @@ msgstr ""
 "Opzioni di zona di frontiera consentono di controllare gli aspetti visivi e "
 "funzionali della zona di frontiera."
 
-#: config/admin-panel/redux-sections.php:1064
+#: config/admin-panel/redux-sections.php:1104
 msgid "Widget Area Number of Columns"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1065
+#: config/admin-panel/redux-sections.php:1105
 msgid "Select how many number of columns should the Footer widget area have."
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1074
+#: config/admin-panel/redux-sections.php:1114
 msgid "Select the number of columns"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1083
+#: config/admin-panel/redux-sections.php:1123
 msgid "Widget Column width"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1090
+#: config/admin-panel/redux-sections.php:1130
 msgid "Select the widget width"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1100
+#: config/admin-panel/redux-sections.php:1140
 msgid "Copyright Text"
 msgstr "Copyright Text"
 
-#: config/admin-panel/redux-sections.php:1101
+#: config/admin-panel/redux-sections.php:1141
 #, php-format
 msgid ""
 "Text that will appear in bottom left area (eg. Copyright 2014 %s | All "
@@ -765,11 +765,11 @@ msgstr ""
 "Il testo che apparirà nella zona in basso a sinistra (eg. Copyright 2014 %s "
 "| All Rights Reserved)."
 
-#: config/admin-panel/redux-sections.php:1114
+#: config/admin-panel/redux-sections.php:1154
 msgid "Blog - Archive"
 msgstr "Blog Archive"
 
-#: config/admin-panel/redux-sections.php:1115
+#: config/admin-panel/redux-sections.php:1155
 msgid ""
 "Archive options control the various aspects related to displaying posts in "
 "blog archives. You can control things like excerpt length and various layout "
@@ -779,121 +779,121 @@ msgstr ""
 "post, in archivi e pagine singole. È possibile controllare le cose come "
 "lunghezza estratto e layout di pagina."
 
-#: config/admin-panel/redux-sections.php:1120
+#: config/admin-panel/redux-sections.php:1160
 msgid "Read More Text"
 msgstr "Continua"
 
-#: config/admin-panel/redux-sections.php:1121
+#: config/admin-panel/redux-sections.php:1161
 msgid "Set the read more link text."
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1127
+#: config/admin-panel/redux-sections.php:1167
 msgid "Excerpt \"More\" Text"
 msgstr "Excerpt \"More\" Text"
 
-#: config/admin-panel/redux-sections.php:1128
+#: config/admin-panel/redux-sections.php:1168
 msgid "Change the default [...] with something else."
 msgstr ""
 "Cambiare il default [...] con qualcos'altro (lasciare vuoto se si desidera "
 "rimuoverla)."
 
-#: config/admin-panel/redux-sections.php:1134
+#: config/admin-panel/redux-sections.php:1174
 msgid "Excerpt Length"
 msgstr "Excerpt Length"
 
-#: config/admin-panel/redux-sections.php:1135
+#: config/admin-panel/redux-sections.php:1175
 msgid "Set the number of characters for posts excerpt."
 msgstr "Impostare il numero di caratteri per post estratto."
 
-#: config/admin-panel/redux-sections.php:1140
+#: config/admin-panel/redux-sections.php:1180
 msgid "Posts Meta Informations"
 msgstr "Informazioni Tema"
 
-#: config/admin-panel/redux-sections.php:1146
+#: config/admin-panel/redux-sections.php:1186
 msgid "Date"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1147
+#: config/admin-panel/redux-sections.php:1187
 msgid "Display the post publish date."
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1153
+#: config/admin-panel/redux-sections.php:1193
 msgid "Dot Separator"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1154
+#: config/admin-panel/redux-sections.php:1194
 msgid "Change spaces, commas or slashes with a custom dot."
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1163
+#: config/admin-panel/redux-sections.php:1203
 msgid "Blog - Single"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1164
+#: config/admin-panel/redux-sections.php:1204
 msgid ""
 "Post options control the various aspects related to the <b>single post page</"
 "b>."
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1169
+#: config/admin-panel/redux-sections.php:1209
 msgid "Show Author Info Box"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1170
+#: config/admin-panel/redux-sections.php:1210
 msgid ""
 "Do you want to show author info box with avatar and description bellow the "
 "post?"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1175
+#: config/admin-panel/redux-sections.php:1215
 msgid "Share Links"
 msgstr "Links sociali"
 
-#: config/admin-panel/redux-sections.php:1181
+#: config/admin-panel/redux-sections.php:1221
 msgid "Show Share Links"
 msgstr "Mostra Share Buttons"
 
-#: config/admin-panel/redux-sections.php:1182
+#: config/admin-panel/redux-sections.php:1222
 msgid "Do you want to show share icon links in your articles?"
 msgstr "Vuoi visualizzare i pulsanti di condivisione nei vostri progetti?"
 
-#: config/admin-panel/redux-sections.php:1187
+#: config/admin-panel/redux-sections.php:1227
 msgid "Comments"
 msgstr "Commento"
 
-#: config/admin-panel/redux-sections.php:1193
+#: config/admin-panel/redux-sections.php:1233
 msgid "Show Comments Avatars"
 msgstr "Commenti più recenti &rarr;"
 
-#: config/admin-panel/redux-sections.php:1194
+#: config/admin-panel/redux-sections.php:1234
 msgid "Do you want to show avatars in comments?"
 msgstr "Vuoi visualizzare i pulsanti di condivisione nei vostri progetti?"
 
-#: config/admin-panel/redux-sections.php:1200
+#: config/admin-panel/redux-sections.php:1240
 msgid "Show Comments Numbers"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1201
+#: config/admin-panel/redux-sections.php:1241
 msgid "Do you want to show numbers beside each comment?"
 msgstr "Vuoi visualizzare i pulsanti di condivisione nei vostri progetti?"
 
-#: config/admin-panel/redux-sections.php:1206
+#: config/admin-panel/redux-sections.php:1246
 msgid "Sidebar"
 msgstr "Blog Sidebar"
 
-#: config/admin-panel/redux-sections.php:1212
+#: config/admin-panel/redux-sections.php:1252
 msgid "Show Sidebar"
 msgstr "Blog Sidebar"
 
-#: config/admin-panel/redux-sections.php:1213
+#: config/admin-panel/redux-sections.php:1253
 msgid "Show the main sidebar in the single post pages."
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1230
+#: config/admin-panel/redux-sections.php:1270
 msgid "Social and SEO"
 msgstr "Sociale e SEO"
 
-#: config/admin-panel/redux-sections.php:1231
+#: config/admin-panel/redux-sections.php:1271
 msgid ""
 "Social and SEO options allow you to display your social links and choose "
 "where to display them. Then you can set the social SEO related info added in "
@@ -903,15 +903,15 @@ msgstr ""
 "scegliere dove visualizzarli. Quindi è possibile impostare gli  informazioni "
 "sociali correlate SEO aggiunti negli meta tag o utilizzati in vari widget."
 
-#: config/admin-panel/redux-sections.php:1235
+#: config/admin-panel/redux-sections.php:1275
 msgid "Sharing"
 msgstr "Condividi"
 
-#: config/admin-panel/redux-sections.php:1456
+#: config/admin-panel/redux-sections.php:1496
 msgid "Share Services"
 msgstr "Condividi Servizi"
 
-#: config/admin-panel/redux-sections.php:1457
+#: config/admin-panel/redux-sections.php:1497
 msgid ""
 "Add here the share services you want to use, single comma delimited (no "
 "spaces). You can find the full list of services here: <a href=\"http://www."
@@ -933,19 +933,19 @@ msgstr ""
 "<strong> preferito </ strong> tag. Di più su questo qui: <a href=\"http://"
 "bit.ly/1fLP69i\"> http://bit.ly/1fLP69i </ a>."
 
-#: config/admin-panel/redux-sections.php:1463
+#: config/admin-panel/redux-sections.php:1503
 msgid "Sharing Analytics"
 msgstr "Condivisione Analytics"
 
-#: config/admin-panel/redux-sections.php:1464
+#: config/admin-panel/redux-sections.php:1504
 msgid "Do you want to get analytics for your social shares?"
 msgstr "Vuoi ottenere analisi per le vostre azioni sociali?"
 
-#: config/admin-panel/redux-sections.php:1470
+#: config/admin-panel/redux-sections.php:1510
 msgid "AddThis Tracking"
 msgstr "AddThis inseguimento"
 
-#: config/admin-panel/redux-sections.php:1471
+#: config/admin-panel/redux-sections.php:1511
 msgid ""
 "Do you want to enable AddThis tracking? This will all you to see sharing "
 "analytics in your AddThis account (see more here: <a href=\"http://bit."
@@ -955,20 +955,20 @@ msgstr ""
 "condivisione di analisi nel tuo account AddThis (vedere di più qui: <a href="
 "\"http://bit.ly/1oe5zad\"> bit.ly/1oe5zad </ a>)"
 
-#: config/admin-panel/redux-sections.php:1478
+#: config/admin-panel/redux-sections.php:1518
 msgid "AddThis Username"
 msgstr "AddThis Nome utente"
 
-#: config/admin-panel/redux-sections.php:1479
+#: config/admin-panel/redux-sections.php:1519
 msgid "Enter here your AddThis username so you will receive analytics data."
 msgstr ""
 "Inserisci qui il tuo username AddThis in modo da ricevere dati di analisi."
 
-#: config/admin-panel/redux-sections.php:1486
+#: config/admin-panel/redux-sections.php:1526
 msgid "Google Analytics Tracking"
 msgstr "Google Analytics monitoraggio"
 
-#: config/admin-panel/redux-sections.php:1487
+#: config/admin-panel/redux-sections.php:1527
 msgid ""
 "Do you want to enable the AddThis - Google Analytics tracking integration? "
 "See more about this here: <a href=\"http://bit.ly/1kxPg7K\">bit.ly/1kxPg7K</"
@@ -977,11 +977,11 @@ msgstr ""
 "Vuoi attivare le AddThis - Google Analytics integrazione di monitoraggio? "
 "Vedi di più qui: <a href=\"http://bit.ly/1kxPg7K\"> bit.ly/1kxPg7K </ a>"
 
-#: config/admin-panel/redux-sections.php:1494
+#: config/admin-panel/redux-sections.php:1534
 msgid "GA Property ID"
 msgstr "GA Codice immobile"
 
-#: config/admin-panel/redux-sections.php:1495
+#: config/admin-panel/redux-sections.php:1535
 msgid ""
 "Enter here your GA property ID (generally a serial number of the form UA-"
 "xxxxxx-x)."
@@ -989,11 +989,11 @@ msgstr ""
 "Inserisci qui il tuo ID proprietà GA (in genere un numero di serie del "
 "modulo UA-xxxxxx-x)."
 
-#: config/admin-panel/redux-sections.php:1502
+#: config/admin-panel/redux-sections.php:1542
 msgid "GA Social Tracking"
 msgstr "GA Social Tracking"
 
-#: config/admin-panel/redux-sections.php:1503
+#: config/admin-panel/redux-sections.php:1543
 msgid ""
 "If you are using the latest version of GA code, you can take advantage of "
 "Google's new <a href=\"http://bit.ly/1iVvkbk\">social interaction analytics</"
@@ -1003,13 +1003,13 @@ msgstr ""
 "della nuova <a href=\"http://bit.ly/1iVvkbk\"> interazione sociale analytics "
 "</ a> di Google."
 
-#: config/admin-panel/redux-sections.php:1509
-#: config/admin-panel/redux-sections.php:1515
+#: config/admin-panel/redux-sections.php:1549
+#: config/admin-panel/redux-sections.php:1555
 #: inc/classes/widgets/wpgrade_social_links_widget.php:10
 msgid "Social Links"
 msgstr "Links sociali"
 
-#: config/admin-panel/redux-sections.php:1516
+#: config/admin-panel/redux-sections.php:1556
 #, php-format
 msgid ""
 "Define and reorder your social pages links.<br /><b>Note:</b> These will be "
@@ -1024,137 +1024,137 @@ msgstr ""
 "necessario inserire il URL<strong> completo </strong> (es. http://twitter."
 "com/username) </ strong>"
 
-#: config/admin-panel/redux-sections.php:1517
+#: config/admin-panel/redux-sections.php:1557
 msgid ""
 "Icons provided by <strong>FontAwesome</strong> and <strong>Entypo</strong>."
 msgstr ""
 "Icone fornite da <strong>FontAwesome</strong> e <strong>Entypo</strong>."
 
-#: config/admin-panel/redux-sections.php:1519
+#: config/admin-panel/redux-sections.php:1559
 msgid "Widget"
 msgstr "Widget"
 
-#: config/admin-panel/redux-sections.php:1523
+#: config/admin-panel/redux-sections.php:1563
 msgid "Flickr"
 msgstr "Flickr"
 
-#: config/admin-panel/redux-sections.php:1524
+#: config/admin-panel/redux-sections.php:1564
 msgid "Tumblr"
 msgstr "Tumblr"
 
-#: config/admin-panel/redux-sections.php:1525
+#: config/admin-panel/redux-sections.php:1565
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: config/admin-panel/redux-sections.php:1526
+#: config/admin-panel/redux-sections.php:1566
 msgid "Instagram"
 msgstr "Instagram"
 
-#: config/admin-panel/redux-sections.php:1527
+#: config/admin-panel/redux-sections.php:1567
 msgid "Foursquare"
 msgstr "Quadrato"
 
-#: config/admin-panel/redux-sections.php:1528
+#: config/admin-panel/redux-sections.php:1568
 msgid "Yelp"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1529
+#: config/admin-panel/redux-sections.php:1569
 msgid "Behance"
 msgstr "Behance"
 
-#: config/admin-panel/redux-sections.php:1530
+#: config/admin-panel/redux-sections.php:1570
 msgid "500px"
 msgstr "500px"
 
-#: config/admin-panel/redux-sections.php:1531
+#: config/admin-panel/redux-sections.php:1571
 msgid "DeviantART"
 msgstr "DeviantART"
 
-#: config/admin-panel/redux-sections.php:1532
+#: config/admin-panel/redux-sections.php:1572
 msgid "Dribbble"
 msgstr "Dribbble"
 
-#: config/admin-panel/redux-sections.php:1533
+#: config/admin-panel/redux-sections.php:1573
 msgid "Twitter"
 msgstr "Twitter"
 
-#: config/admin-panel/redux-sections.php:1534
+#: config/admin-panel/redux-sections.php:1574
 msgid "Facebook"
 msgstr "Facebook"
 
-#: config/admin-panel/redux-sections.php:1535
+#: config/admin-panel/redux-sections.php:1575
 msgid "Google+"
 msgstr "Google+"
 
-#: config/admin-panel/redux-sections.php:1536
+#: config/admin-panel/redux-sections.php:1576
 msgid "Youtube"
 msgstr "Youtube"
 
-#: config/admin-panel/redux-sections.php:1537
+#: config/admin-panel/redux-sections.php:1577
 msgid "Vimeo"
 msgstr "Vimeo"
 
-#: config/admin-panel/redux-sections.php:1538
+#: config/admin-panel/redux-sections.php:1578
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: config/admin-panel/redux-sections.php:1539
+#: config/admin-panel/redux-sections.php:1579
 msgid "Skype"
 msgstr "Skype"
 
-#: config/admin-panel/redux-sections.php:1540
+#: config/admin-panel/redux-sections.php:1580
 msgid "SoundCloud"
 msgstr "SoundCloud"
 
-#: config/admin-panel/redux-sections.php:1541
+#: config/admin-panel/redux-sections.php:1581
 msgid "Digg"
 msgstr "Digg"
 
-#: config/admin-panel/redux-sections.php:1542
+#: config/admin-panel/redux-sections.php:1582
 msgid "Last.FM"
 msgstr "Last.FM"
 
-#: config/admin-panel/redux-sections.php:1543
+#: config/admin-panel/redux-sections.php:1583
 msgid "Rdio"
 msgstr "Rdio"
 
-#: config/admin-panel/redux-sections.php:1544
+#: config/admin-panel/redux-sections.php:1584
 msgid "Sina Weibo"
 msgstr "Sina Weibo"
 
-#: config/admin-panel/redux-sections.php:1545
+#: config/admin-panel/redux-sections.php:1585
 msgid "VKontakte"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1546
+#: config/admin-panel/redux-sections.php:1586
 msgid "App.net"
 msgstr "App.net"
 
-#: config/admin-panel/redux-sections.php:1547
+#: config/admin-panel/redux-sections.php:1587
 msgid "RSS Feed"
 msgstr "Feed RSS"
 
-#: config/admin-panel/redux-sections.php:1548
+#: config/admin-panel/redux-sections.php:1588
 msgid "Tripadvisor"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1554
+#: config/admin-panel/redux-sections.php:1594
 msgid "Open Social Links In a New Tab?"
 msgstr "Apre i link sociali in una nuova scheda?"
 
-#: config/admin-panel/redux-sections.php:1555
+#: config/admin-panel/redux-sections.php:1595
 msgid "Do you want to open social links in a new tab?"
 msgstr "Vuoi aprire i link sociali in una nuovo Tab?"
 
-#: config/admin-panel/redux-sections.php:1560
+#: config/admin-panel/redux-sections.php:1600
 msgid "Social Metas"
 msgstr "Social Metas"
 
-#: config/admin-panel/redux-sections.php:1566
+#: config/admin-panel/redux-sections.php:1606
 msgid "Add Social Meta Tags"
 msgstr "Aggiungi Meta Tag Sociali"
 
-#: config/admin-panel/redux-sections.php:1567
+#: config/admin-panel/redux-sections.php:1607
 msgid ""
 "Let us properly prepare your theme for the social sharing and discovery by "
 "adding the needed metatags in the <head> section. These include Open Graph "
@@ -1164,11 +1164,11 @@ msgstr ""
 "la scoperta aggiungendo i metatag necessari nella sezione <head>. Questi "
 "includono Open Graph (Facebook), Google+ e Twitter metas."
 
-#: config/admin-panel/redux-sections.php:1573
+#: config/admin-panel/redux-sections.php:1613
 msgid "Facebook Application ID"
 msgstr "Facebook Application ID"
 
-#: config/admin-panel/redux-sections.php:1574
+#: config/admin-panel/redux-sections.php:1614
 msgid ""
 "Enter the Facebook Application ID of the Fan Page which is associated with "
 "this website. You can create one <a href=\"https://developers.facebook.com/"
@@ -1178,11 +1178,11 @@ msgstr ""
 "questo sito. È possibile creare un <a href=\"https://developers.facebook.com/"
 "apps\"> qui </ a>."
 
-#: config/admin-panel/redux-sections.php:1580
+#: config/admin-panel/redux-sections.php:1620
 msgid "Facebook Admin ID"
 msgstr "Facebook Admin ID"
 
-#: config/admin-panel/redux-sections.php:1581
+#: config/admin-panel/redux-sections.php:1621
 msgid ""
 "The id of the user that has administrative privileges to your Facebook App "
 "so you can access the <a href=\"https://www.facebook.com/insights/"
@@ -1192,11 +1192,11 @@ msgstr ""
 "Facebook per poter accedere ai <a href=\"https://www.facebook.com/insights/"
 "\"> Facebook Insights </ a>."
 
-#: config/admin-panel/redux-sections.php:1587
+#: config/admin-panel/redux-sections.php:1627
 msgid "Google+ Publisher"
 msgstr "Google+ Publisher"
 
-#: config/admin-panel/redux-sections.php:1588
+#: config/admin-panel/redux-sections.php:1628
 msgid ""
 "Enter your Google Plus page ID (example: https://plus.google.com/"
 "<b>105345678532237339285</b>) here if you have set up a \"Google+ Page\"."
@@ -1204,11 +1204,11 @@ msgstr ""
 "Inserisci il tuo Google Plus page ID (esempio: https://plus.google.com/"
 "<b>105345678532237339285</b>) qui se hai creato un \"pagina Google+\"."
 
-#: config/admin-panel/redux-sections.php:1594
+#: config/admin-panel/redux-sections.php:1634
 msgid "Twitter Site Username"
 msgstr "Twitter Site Username"
 
-#: config/admin-panel/redux-sections.php:1595
+#: config/admin-panel/redux-sections.php:1635
 msgid ""
 "The Twitter username of the entire site. The username for the author will be "
 "taken from the author's profile"
@@ -1216,11 +1216,11 @@ msgstr ""
 "Il nome utente Twitter di tutto il sito. Il nome utente per l'autore sarà "
 "preso dal profilo dell'autore (senza @)"
 
-#: config/admin-panel/redux-sections.php:1602
+#: config/admin-panel/redux-sections.php:1642
 msgid "Default Social Share Image"
 msgstr "Default Social Share Image"
 
-#: config/admin-panel/redux-sections.php:1603
+#: config/admin-panel/redux-sections.php:1643
 msgid ""
 "If an image is uploaded, this will be used for content sharing if you don't "
 "upload a custom image with your content (at least 200px wide recommended)."
@@ -1229,21 +1229,21 @@ msgstr ""
 "di contenuti, se non caricare un'immagine personalizzata con i contenuti "
 "(almeno 200px larghezza consigliato)."
 
-#: config/admin-panel/redux-sections.php:1608
+#: config/admin-panel/redux-sections.php:1648
 msgid "Clean Static Files URL"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1609
+#: config/admin-panel/redux-sections.php:1649
 msgid ""
 "Do you want us to remove the version parameters from static resources so "
 "they can be cached better?"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1628
+#: config/admin-panel/redux-sections.php:1668
 msgid "Custom Code"
 msgstr "Custom codes"
 
-#: config/admin-panel/redux-sections.php:1629
+#: config/admin-panel/redux-sections.php:1669
 msgid ""
 "You can change the site style and behaviour by adding custom scripts to all "
 "pages within your site using the custom code areas below."
@@ -1252,11 +1252,11 @@ msgstr ""
 "di script personalizzati per tutte le pagine all'interno del tuo sito, "
 "utilizzando le aree di codice personalizzato qui sotto."
 
-#: config/admin-panel/redux-sections.php:1634
+#: config/admin-panel/redux-sections.php:1674
 msgid "Custom CSS"
 msgstr "CSS personalizzato"
 
-#: config/admin-panel/redux-sections.php:1635
+#: config/admin-panel/redux-sections.php:1675
 msgid ""
 "Enter your custom CSS code. It will be included in the head section of the "
 "page and will overwrite the main CSS styling."
@@ -1264,27 +1264,27 @@ msgstr ""
 "Inserisci il tuo codice CSS personalizzato. Sarà inclusa nella sezione head "
 "della pagina e sovrascrive lo stile CSS principale."
 
-#: config/admin-panel/redux-sections.php:1645
+#: config/admin-panel/redux-sections.php:1685
 msgid "Apply Custom CSS"
 msgstr "Applicare CSS personalizzato"
 
-#: config/admin-panel/redux-sections.php:1646
+#: config/admin-panel/redux-sections.php:1686
 msgid "Select how to insert the custom CSS into your pages."
 msgstr "Selezionare come inserire il CSS personalizzato nelle vostre pagine."
 
-#: config/admin-panel/redux-sections.php:1649
+#: config/admin-panel/redux-sections.php:1689
 msgid "Inline <em>(recommended)</em>"
 msgstr "Inline <em>(consigliato)</em>"
 
-#: config/admin-panel/redux-sections.php:1650
+#: config/admin-panel/redux-sections.php:1690
 msgid "Write To File (might require file permissions)"
 msgstr "Scrivere su file (potrebbe richiedere permessi dei file)"
 
-#: config/admin-panel/redux-sections.php:1661
+#: config/admin-panel/redux-sections.php:1701
 msgid "Custom JavaScript (header)"
 msgstr "JavaScript personalizzato (header)"
 
-#: config/admin-panel/redux-sections.php:1662
+#: config/admin-panel/redux-sections.php:1702
 msgid ""
 "Enter your custom Javascript code. This code will be loaded in the head "
 "section of your pages."
@@ -1292,11 +1292,11 @@ msgstr ""
 "Inserisci il tuo codice Javascript personalizzato. Questo codice verrà "
 "caricato nella sezione head delle pagine."
 
-#: config/admin-panel/redux-sections.php:1669
+#: config/admin-panel/redux-sections.php:1709
 msgid "Custom JavaScript (footer)"
 msgstr "JavaScript personalizzato (footer)"
 
-#: config/admin-panel/redux-sections.php:1670
+#: config/admin-panel/redux-sections.php:1710
 msgid ""
 "This javascript code will be loaded in the footer. You can paste here your "
 "<strong>Google Analytics tracking code</strong> (or for what matters any "
@@ -1306,11 +1306,11 @@ msgstr ""
 "incollare qui il tuo <strong> Google Analytics tracking code </ strong> (o "
 "qualsiasi tracking code) e lo metteremo in ogni pagina."
 
-#: config/admin-panel/redux-sections.php:1683
+#: config/admin-panel/redux-sections.php:1723
 msgid "Utilities"
 msgstr "Utilities"
 
-#: config/admin-panel/redux-sections.php:1684
+#: config/admin-panel/redux-sections.php:1724
 msgid ""
 "Utilities help you keep up-to-date with new versions of the theme. Also you "
 "can import the demo data from here."
@@ -1318,7 +1318,7 @@ msgstr ""
 "Utilities aiutano a mantenervi up-to-date con le nuove versioni del tema. "
 "Inoltre è possibile importare i dati demo da qui."
 
-#: config/admin-panel/redux-sections.php:1689
+#: config/admin-panel/redux-sections.php:1729
 msgid ""
 "Let us notify you when new versions of this theme are live on ThemeForest! "
 "Update with just one button click and forget about manual updates!</p><p> If "
@@ -1329,7 +1329,7 @@ msgstr ""
 "ThemeForest! Aggiornare con un solo clic. Dimenticate gli aggiornamenti "
 "manuali!"
 
-#: config/admin-panel/redux-sections.php:1688
+#: config/admin-panel/redux-sections.php:1728
 msgid ""
 "<h3>Theme One-Click Update</h3>\n"
 "\t\t\t\t<p class=\"description\">"
@@ -1337,11 +1337,11 @@ msgstr ""
 "<h3>Theme One-Click Update</h3>\n"
 "\t\t\t\t<p class=\"description\">"
 
-#: config/admin-panel/redux-sections.php:1695
+#: config/admin-panel/redux-sections.php:1735
 msgid "One-Click Update"
 msgstr "One-Click aggiornamento"
 
-#: config/admin-panel/redux-sections.php:1696
+#: config/admin-panel/redux-sections.php:1736
 msgid ""
 "Activate this to enter the info needed for the theme's one-click update to "
 "work."
@@ -1349,21 +1349,21 @@ msgstr ""
 "Attivare questa opzione per immettere le informazioni necessarie per un solo "
 "clic aggiornamento del tema al lavoro."
 
-#: config/admin-panel/redux-sections.php:1702
+#: config/admin-panel/redux-sections.php:1742
 msgid "ThemeForest Username"
 msgstr "ThemeForest Username"
 
-#: config/admin-panel/redux-sections.php:1703
+#: config/admin-panel/redux-sections.php:1743
 msgid ""
 "Enter here your ThemeForest (or Envato) username account (i.e. pixelgrade)."
 msgstr ""
 "Inserisci qui il tuo ThemeForest (o Envato) conto username (cioè pixelgrade)."
 
-#: config/admin-panel/redux-sections.php:1709
+#: config/admin-panel/redux-sections.php:1749
 msgid "ThemeForest Secret API Key"
 msgstr "ThemeForest Secret API Key"
 
-#: config/admin-panel/redux-sections.php:1710
+#: config/admin-panel/redux-sections.php:1750
 msgid ""
 "Enter here the secret api key you've created on ThemeForest. You can create "
 "a new one in the Settings > API Keys section of your profile."
@@ -1371,11 +1371,11 @@ msgstr ""
 "Inserisci qui la chiave API segreta che hai creato su ThemeForest. È "
 "possibile creare una nuova qui Settings > API Keys."
 
-#: config/admin-panel/redux-sections.php:1716
+#: config/admin-panel/redux-sections.php:1756
 msgid "Backup Theme Before Upgrade?"
 msgstr "Backup per il tema prima dell'aggiornamento?"
 
-#: config/admin-panel/redux-sections.php:1717
+#: config/admin-panel/redux-sections.php:1757
 msgid ""
 "Check this if you want us to automatically save your theme as a ZIP archive "
 "before an upgrade. The directory those backups get saved to is <code>wp-"
@@ -1392,7 +1392,7 @@ msgstr ""
 "prima di aggiornare. In alternativa, se non si desidera effettuare il backup "
 "del tema è possibile disattivare questa opzione."
 
-#: config/admin-panel/redux-sections.php:1724
+#: config/admin-panel/redux-sections.php:1764
 msgid ""
 "Here you can import the demo data and get on your way of setting up the site "
 "like the theme demo (images not included due to copyright)."
@@ -1400,7 +1400,7 @@ msgstr ""
 "Qui è possibile importare i dati demo e andare avanti il ​​modo di impostare "
 "il sito come demo tema (immagini non inclusi a causa di copyright)."
 
-#: config/admin-panel/redux-sections.php:1723
+#: config/admin-panel/redux-sections.php:1763
 msgid ""
 "<h3>Import Demo Data</h3>\n"
 "\t\t\t\t<p class=\"description\">"
@@ -1408,11 +1408,11 @@ msgstr ""
 "<h3>Import Demo Data</h3>\n"
 "\t\t\t\t<p class=\"description\">"
 
-#: config/admin-panel/redux-sections.php:1737
+#: config/admin-panel/redux-sections.php:1777
 msgid "Import demo data"
 msgstr "Importare dati demo"
 
-#: config/admin-panel/redux-sections.php:1743
+#: config/admin-panel/redux-sections.php:1783
 msgid ""
 "Please wait a few minutes (between 1 and 3 minutes usually, but depending on "
 "your hosting it can take longer) and <strong>don't reload the page</strong>. "
@@ -1423,11 +1423,11 @@ msgstr ""
 "ricaricare la pagina </ strong>. Verrete informati non appena l'importazione "
 "è terminata!"
 
-#: config/admin-panel/redux-sections.php:1754
+#: config/admin-panel/redux-sections.php:1794
 msgid "Admin Panel Options"
 msgstr "Opzioni pannello Admin"
 
-#: config/admin-panel/redux-sections.php:1755
+#: config/admin-panel/redux-sections.php:1795
 msgid ""
 "Here you can copy/download your current admin option settings. Keep this "
 "safe as you can use it as a backup should anything go wrong, or you can use "
@@ -1438,31 +1438,31 @@ msgstr ""
 "backup se qualcosa dovesse andare storto, oppure è possibile utilizzare per "
 "ripristinare le impostazioni su questo sito (o qualsiasi altro sito)."
 
-#: config/admin-panel/redux-sections.php:1775
+#: config/admin-panel/redux-sections.php:1815
 msgid "WooCommerce"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1776
+#: config/admin-panel/redux-sections.php:1816
 msgid "WooCommerce options!"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1781
+#: config/admin-panel/redux-sections.php:1821
 msgid "Enable WooCommerce Support"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1782
+#: config/admin-panel/redux-sections.php:1822
 msgid "Turn this off to avoid loading the WooCommerce assets (CSS and JS)."
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1788
+#: config/admin-panel/redux-sections.php:1828
 msgid "Show cart menu in main navigation"
 msgstr ""
 
-#: config/admin-panel/redux-sections.php:1801
+#: config/admin-panel/redux-sections.php:1841
 msgid "Help and Support"
 msgstr "Guida e supporto tecnico"
 
-#: config/admin-panel/redux-sections.php:1802
+#: config/admin-panel/redux-sections.php:1842
 msgid ""
 "If you had anything less than a great experience with this theme please "
 "contact us now. You can also find answers in our community site, or official "
@@ -2540,13 +2540,13 @@ msgstr "Applicare CSS personalizzato"
 msgid "Update Cart"
 msgstr ""
 
-#: woocommerce/checkout/cart-errors.php:16
+#: woocommerce/checkout/cart-errors.php:18
 msgid ""
 "There are some issues with the items in your cart (shown above). Please go "
 "back to the cart page and resolve these issues before checking out."
 msgstr ""
 
-#: woocommerce/checkout/cart-errors.php:20
+#: woocommerce/checkout/cart-errors.php:22
 msgid "Return To Cart"
 msgstr ""
 
@@ -3066,17 +3066,17 @@ msgstr ""
 msgid "Choose Image"
 msgstr ""
 
-#: wpgrade-core/vendor/redux3/extensions/customizer/extension_customizer.php:704
+#: wpgrade-core/vendor/redux3/extensions/customizer/extension_customizer.php:702
 #: wpgrade-core/vendor/redux3/framework.php:1762
 msgid "You have changes that are not saved. Would you like to save them now?"
 msgstr ""
 
-#: wpgrade-core/vendor/redux3/extensions/customizer/extension_customizer.php:705
+#: wpgrade-core/vendor/redux3/extensions/customizer/extension_customizer.php:703
 #: wpgrade-core/vendor/redux3/framework.php:1770
 msgid "Are you sure? Resetting will lose all custom values."
 msgstr ""
 
-#: wpgrade-core/vendor/redux3/extensions/customizer/extension_customizer.php:706
+#: wpgrade-core/vendor/redux3/extensions/customizer/extension_customizer.php:704
 #: wpgrade-core/vendor/redux3/framework.php:1786
 msgid ""
 "Your current options will be replaced with the values of this preset. Would "
@@ -3526,7 +3526,7 @@ msgstr ""
 msgid "You must provide a valid URL for this option."
 msgstr ""
 
-#: wpgrade-core/wpgrade.php:1338
+#: wpgrade-core/wpgrade.php:1342
 msgid "Invalid sidebar ID"
 msgstr "Tipo di file non valido"
 

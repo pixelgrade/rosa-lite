@@ -75,18 +75,24 @@
 
 .customize-section-title {
   border-bottom: 1px solid #232527; }
-  .customize-section-title button.customize-section-back {
-    background: #303235;
-    border: 0;
-    height: 78px;
-    border-right: 1px solid #232527;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s; }
-    .customize-section-title button.customize-section-back:hover {
-      background: #373a3e;
-      border-right: 1px solid #232527; }
+
+#customize-theme-controls button.customize-panel-back, #customize-theme-controls button.customize-section-back {
+  background: #303235;
+  border: 0;
+  height: 78px;
+  border-right: 1px solid #232527;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s; }
+  #customize-theme-controls button.customize-panel-back:hover, #customize-theme-controls button.customize-section-back:hover {
+    background: #373a3e;
+    border-right: 1px solid #232527; }
+
+#customize-controls .panel-meta {
+  border-bottom: 1px solid #111; }
+  #customize-controls .panel-meta .accordion-section-title {
+    height: 78px; }
 
 .customize-control-title {
   margin-bottom: 0;

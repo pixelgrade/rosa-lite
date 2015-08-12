@@ -57,7 +57,6 @@
 
 				//let's reset the section style
 				var _ajax_nonce = $(this).data('ajax_nonce') || '';
-
 				jQuery.ajax({
 					type: "post",
 					url: exports.ajax.settings.url,

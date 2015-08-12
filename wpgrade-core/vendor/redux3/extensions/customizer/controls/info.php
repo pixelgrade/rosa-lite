@@ -36,9 +36,6 @@ if ( class_exists('WP_Customize_Control') ) {
 			echo '</fieldset></li></ul>';
 			echo '<ul class="' . $ul_class . '" ><li><fieldset>';
 
-//			echo '</fieldset></li></ul>';
-//			echo '<ul class="myul"><li class="thiscustomli"><fieldset class="fieldinfoset">';
-
 			if ( isset( $field['title'] ) ) {
 				echo $field['title'];
 			}
