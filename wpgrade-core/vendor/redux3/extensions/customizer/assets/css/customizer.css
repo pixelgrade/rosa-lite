@@ -15,7 +15,8 @@
   display: none; }
 .wp-version-4-2 ul.accordion-sub-container .control-subsection .accordion-section-content, .wp-version-4-1 ul.accordion-sub-container .control-subsection .accordion-section-content {
   display: inline-block !important;
-  width: 100%; }
+  width: 100%;
+  overflow: visible; }
 .wp-version-4-2 .control-section .accordion-section-title,
 .wp-version-4-2 .accordion-section-title, .wp-version-4-1 .control-section .accordion-section-title,
 .wp-version-4-1 .accordion-section-title {
