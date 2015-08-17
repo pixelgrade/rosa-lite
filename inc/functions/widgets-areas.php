@@ -38,7 +38,7 @@ function wpgrade_remove_widgets_area_from_customizer () {
 
 	global $wp_customize;
 	// remove these widgets areas from customizer
-	$wp_customize->remove_section('sidebar-widgets-sidebar-main');
-	$wp_customize->remove_section('sidebar-widgets-sidebar-footer');
+	$wp_customize->remove_panel('widgets');
+//	$wp_customize->remove_section('sidebar-widgets-sidebar-footer');
 
 }
