@@ -159,9 +159,14 @@
                 // Pass parent pointer to function helper.
                 Redux_Functions::$_parent = $this;
 
+
                 // Set values
                 $this->set_default_args();
                 $this->args = wp_parse_args( $args, $this->args );
+
+                if ( isset( $this->args['opt_name'] ) && ! empty(  $this->args['opt_name'] ) ) {
+                    add_filter( 'redux/extension/' . $this->args['opt_name'] . '/customizer', array( $this, 'maybe_add_customizer_style' ) );
+                }
 
                 if ( empty( $this->args['transient_time'] ) ) {
                     $this->args['transient_time'] = 60 * MINUTE_IN_SECONDS;
@@ -392,6 +397,7 @@
                     'database'           => '',
                     // possible: options, theme_mods, theme_mods_expanded, transient, network
                     'customizer'         => false,
+                    'customizer_style'   => false,
                     // setting to true forces get_theme_mod_expanded
                     'global_variable'    => '',
                     // Changes global variable from $GLOBALS['YOUR_OPT_NAME'] to whatever you set here. false disables the global variable
@@ -534,6 +540,13 @@
                 //self::$_instance = $this;
                 return self::$instance;
             } // get_instance()
+
+            function maybe_add_customizer_style( $path ) {
+                if ( ! $this->args['customizer_style'] ) {
+                    return false;
+                }
+                return $path;
+            }
 
             private function _tracking() {
                 include_once( dirname( __FILE__ ) . '/inc/tracking.php' );

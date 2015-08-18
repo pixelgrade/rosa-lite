@@ -245,8 +245,7 @@ $sections[] = array(
 				'transport' => 'postMessage',
 				'css_rules' => array(
 					'color'        => array(
-						'selector' => " body,
-										.up-link"
+						'selector' => " body, .up-link"
 					),
 					'border-color' => array(
 						'selector' => ".up-link:before"
@@ -282,7 +281,7 @@ $sections[] = array(
 				'css_rules' => array(
 					'color' => array(
 						'selector' => ".article__header .article__headline .headline__primary,
-										.article__header .article__headline .headline__description *"
+							.article__header .article__headline .headline__description *"
 					),
 				)
 			)
