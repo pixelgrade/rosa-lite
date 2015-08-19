@@ -53,6 +53,7 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 			 */
 			'colors_section' => array(
 				'title'    => __( 'Colors', 'customify_txtd' ),
+				'description'            => __( 'Using the color pickers you can change the colors of the most important elements. If you want to override the color of some elements you can always use Custom CSS code in Theme Options - Custom Code.', 'rosa_txtd' ),
 				'options' => array(
 					'main_color'   => array(
 						'type'      => 'color',
@@ -199,7 +200,6 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 						'type'      => 'custom_background',
 						'label'     => __( 'Header Background', 'customify_txtd' ),
 						'desc'         => __( 'Container background with image.', 'rosa_txtd' ),
-						//'output'           => array( '.page .article__content' ),
 					),
 
 					'footer_sidebar_style' => array(
@@ -232,53 +232,49 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 			 * FONTS - This section will handle different elements fonts (eg. headings, body)
 			 */
 			'typography_section' => array(
-				'title'    => __( 'Fonts', 'customify_txtd' ),
+				'title'    => __( 'Typography', 'customify_txtd' ),
 				'options' => array(
-					'headings_font' => array(
+					'use_google_fonts' => array(
+						'type' => 'checkbox',
+						'label'    => __( 'Do you need custom web fonts?', 'customify_txtd' ),
+						'default'  => '1',
+					),
+					'google_titles_font' => array(
 						'type'     => 'typography',
 						'label'    => __( 'Headings', 'customify_txtd' ),
-						'default'  => 'Playfair Display',
-						'selector' => '.site-title a, h1, h2, h3, h4, h5, h6,
-										h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
-										.widget-title',
-						'font_weight' => true,
+						'desc'       => __( 'Font for titles and headings.', 'rosa_txtd' ),
+						'default'  => 'Source Sans Pro',
+//						'selector' => '.site-title a, h1, h2, h3, h4, h5, h6,
+//										h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
+//										.widget-title',
+//						'font_weight' => true,
 						'subsets' => true,
-						'recommended' => array(
-							'Playfair Display',
-							'Oswald',
-							'Lato',
-							'Open Sans',
-							'Exo',
-							'PT Sans',
-							'Ubuntu',
-							'Vollkorn',
-							'Lora',
-							'Arvo',
-							'Josefin Slab',
-							'Crete Round',
-							'Kreon',
-							'Bubblegum Sans',
-							'The Girl Next Door',
-							'Pacifico',
-							'Handlee',
-							'Satify',
-							'Pompiere'
-						)
 					),
-					'body_font'     => array(
+					'google_subtitles_font'     => array(
 						'type'    => 'typography',
-						'label'   => __( 'Body Text', 'customify_txtd' ),
-						'default' => 'Lato',
-						'selector' => 'html body',
-						'load_all_weights' => true,
-						'recommended' => array(
-							'Lato',
-							'Open Sans',
-							'PT Sans',
-							'Cabin',
-							'Gentium Book Basic',
-							'PT Serif',
-							'Droid Serif'
+						'label'   => __( 'Sub Headings', 'customify_txtd' ),
+						'desc'       => __( 'Font for titles and headings.', 'rosa_txtd' ),
+						'default' => 'Herr Von Muellerhoff',
+//						'selector' => 'html body',
+//						'load_all_weights' => true,
+					),
+					'subheadings_bottom-spacing' => array(
+						'type' => 'range',
+						'label' => __( 'Bottom Spacing', 'rosa_txtd' ),
+						'live' => true,
+						'default'       => '-38',
+						'input_attrs' => array(
+							'min'   => -90,
+							'max'   => 48,
+							'step'  => 1,
+							'data-preview' => true
+						),
+						'css' => array(
+							array(
+								'property' => 'margin-bottom',
+								'selector' => '.headline__secondary',
+								'unit' => 'px',
+							)
 						)
 					)
 				)

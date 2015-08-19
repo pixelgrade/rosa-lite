@@ -195,4 +195,4 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 
 <?php
 
-var_dump( wpgrade::option( 'body_font' ) );
+//var_dump( wpgrade::option( 'header_image_pattern' ) );
