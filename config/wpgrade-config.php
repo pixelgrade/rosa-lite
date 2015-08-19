@@ -174,7 +174,6 @@ return array(
 		// calls function to perform extra enqueue's on theme setup
 		// handlers should be placed in theme's functions.php
 		'script-enqueue-handlers' => array(
-			'google-web-fonts'=> 'wpgrade_callback_enqueue_google_fonts_rosa',
 			'thread-comments' => 'wpgrade_callback_thread_comments_scripts',
 			'addthis'         => 'wpgrade_callback_addthis',
 		),

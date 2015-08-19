@@ -988,6 +988,7 @@ $sections[] = array(
 						'unit'     => 'px',
 						'media'    => 'screen and (min-width: 900px)'
 					),
+
 					'border-top-width' => array(
 						'selector' => '.site-header',
 						'unit'     => 'px',
@@ -1008,6 +1009,7 @@ $sections[] = array(
 						'unit'     => 'px',
 						'media'    => 'screen and (min-width: 900px)'
 					),
+
 					'margin-right' => array (
 						'selector' => '.navigator, .covers',
 						'unit'     => 'px',
