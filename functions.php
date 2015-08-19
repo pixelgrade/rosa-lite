@@ -53,6 +53,7 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 			 */
 			'colors_section' => array(
 				'title'    => __( 'Colors', 'customify_txtd' ),
+				'priority' => 1,
 				'description'            => __( 'Using the color pickers you can change the colors of the most important elements. If you want to override the color of some elements you can always use Custom CSS code in Theme Options - Custom Code.', 'rosa_txtd' ),
 				'options' => array(
 					'main_color'   => array(
@@ -160,441 +161,6 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 				)
 			),
 
-			/**
-			 * BACKGROUNDS - This section will handle different elements colors (eg. links, headings)
-			 */
-			'backgrounds_section' => array(
-				'title'    => __( 'Backgrounds', 'customify_txtd' ),
-				'options' => array(
-					'header_background_color'   => array(
-						'type'      => 'color',
-						'label'     => __( 'Header Color', 'customify_txtd' ),
-						'live' => true,
-						'default'   => '#ffffff',
-						'css'  => array(
-							array(
-								'property'     => 'background-color',
-								'selector' => '.site-header, .site-header.headroom--not-top, .sub-menu, .headroom--not-top .sub-menu',
-							)
-						)
-					),
-					'header_image_pattern'   => array(
-						'type'      => 'custom_background',
-						'label'     => __( 'Header Background', 'customify_txtd' ),
-						'desc'         => __( 'Container background with image.', 'rosa_txtd' ),
-					),
-					'content_background_color'   => array(
-						'type'      => 'color',
-						'label'     => __( 'Content Color', 'customify_txtd' ),
-						'live' => true,
-						'default'   => '#ffffff',
-						'css'  => array(
-							array(
-								'property'     => 'background-color',
-								'selector' => '.page .article__content, .up-link, html, .menu-list__item-title .item_title, .menu-list__item-price, .desc__content',
-							)
-						)
-					),
-
-					'container_image_pattern'   => array(
-						'type'      => 'custom_background',
-						'label'     => __( 'Header Background', 'customify_txtd' ),
-						'desc'         => __( 'Container background with image.', 'rosa_txtd' ),
-					),
-
-					'footer_sidebar_style' => array(
-						'type'          => 'select',
-						'label'         => __( 'Footer Widget Area Style', 'rosa_txtd' ),
-						'choices'       => array(
-							'light'  => 'Light',
-							'dark'   => 'Dark',
-							'accent' => 'Accent Color',
-						),
-						'default'       => 'dark',
-					),
-					'footer_bottombar_style' => array(
-						'type'          => 'select',
-						'label'         => __( 'Footer Bottom Bar Style', 'rosa_txtd' ),
-						'choices'       => array(
-							'light'  => 'Light',
-							'dark'   => 'Dark',
-							'accent' => 'Accent Color',
-						),
-						'default'       => 'dark',
-					),
-
-				)
-			),
-
-			/**
-			 * FONTS - This section will handle different elements fonts (eg. headings, body)
-			 */
-			'typography_section' => array(
-				'title'    => __( 'Typography', 'customify_txtd' ),
-				'options' => array(
-					'google_titles_font' => array(
-						'type'     => 'typography',
-						'label'    => __( 'Headings', 'customify_txtd' ),
-						'desc'       => __( 'Font for titles and headings.', 'rosa_txtd' ),
-						'default'  => 'Source Sans Pro',
-						'selector' => 'h1, h2, h3, h4, h5, h6, hgroup, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
-							blockquote, .tabs__nav, .popular-posts__time, .pagination li a, .pagination li span'
-					),
-					'google_subtitles_font'     => array(
-						'type'    => 'typography',
-						'label'   => __( 'Sub Headings', 'customify_txtd' ),
-						'desc'       => __( 'Font for titles and headings.', 'rosa_txtd' ),
-						'default' => 'Herr Von Muellerhoff',
-						'selector' => '.headline__secondary',
-					),
-					'subheadings_bottom-spacing' => array(
-						'type' => 'range',
-						'label' => __( 'Bottom Spacing', 'rosa_txtd' ),
-						'live' => true,
-						'default'       => '-38',
-						'input_attrs' => array(
-							'min'   => -90,
-							'max'   => 48,
-							'step'  => 1,
-							'data-preview' => true
-						),
-						'css' => array(
-							array(
-								'property' => 'margin-bottom',
-								'selector' => '.headline__secondary',
-								'unit' => 'px',
-							)
-						)
-					),
-					'subheadings_first-letter' => array(
-						'type' => 'range',
-						'label'         => __( 'First Letter Offset', 'rosa_txtd' ),
-						'live' => true,
-						'default'       => 9,
-						'input_attrs' => array(
-							'min'   => -48,
-							'max'   => 90,
-							'step'  => 1,
-							'data-preview' => true
-						),
-						'css' => array(
-							array(
-								'property' => 'top',
-								'selector' => '.headline__secondary .first-letter',
-								'unit' => 'px',
-							)
-						)
-					),
-					'google_nav_font'     => array(
-						'type'    => 'typography',
-						'label'   => __( 'Navigation', 'customify_txtd' ),
-						'desc'       => __( 'Font for the navigation menu.', 'rosa_txtd' ),
-						'default' => 'Cabin',
-						'selector' => '.navigation a'
-					),
-					'nav_font-size' => array(
-						'type' => 'range',
-						'label'         => __( 'Font Size', 'rosa_txtd' ),
-						'live' => true,
-						'default'       => 13,
-						'input_attrs' => array(
-							'min'   => 8,
-							'max'   => 30,
-							'step'  => 1,
-							'data-preview' => true
-						),
-						'css' => array(
-							array(
-								'property' => 'font-size',
-								'selector' => '.navigation a',
-								'unit' => 'px',
-							)
-						)
-					),
-					'nav_letter-spacing' => array(
-						'type' => 'range',
-						'label'         => __( 'Letter Spacing', 'rosa_txtd' ),
-						'live' => true,
-						'default'       => 1,
-						'input_attrs' => array(
-							'min'   => -5,
-							'max'   => 20,
-							'step'  => 1,
-							'data-preview' => true
-						),
-						'css' => array(
-							array(
-								'property' => 'letter-spacing',
-								'selector' => '.navigation a',
-								'unit' => 'px',
-							)
-						)
-					),
-					'nav_text-transform' => array(
-						'type'          => 'select',
-						'label'         => __( 'Text Transform', 'rosa_txtd' ),
-						'choices'       => array(
-							'none'       => 'None',
-							'capitalize' => 'Capitalize',
-							'uppercase'  => 'Uppercase',
-							'lowercase'  => 'Lowercase',
-						),
-						'default'       => 'uppercase',
-						'css' => array(
-							array(
-								'property' => 'text-transform',
-								'selector' => '.nav--main > .menu-item > a',
-							)
-						)
-					),
-					'nav_text-decoration' => array(
-						'type'          => 'select',
-						'label'         => __( 'Text Decoration', 'rosa_txtd' ),
-						'choices'       => array(
-							'none'      => 'None',
-							'underline' => 'Underline',
-							'overline'  => 'Overline',
-						),
-						'default'       => 'none',
-						'css' => array(
-							array(
-								'property' => 'text-transform',
-								'selector' => '.nav--main > .menu-item > a',
-							)
-						)
-					),
-
-					'google_body_font'     => array(
-						'type'    => 'typography',
-						'label'   => __( 'Body', 'customify_txtd' ),
-						'desc'       => __( 'Font for content and widget text.', 'rosa_txtd' ),
-						'default' => 'Cabin',
-						'selector' => 'html, .wp-caption-text, .small-link,	.post-nav-link__label, .author__social-link,
-							.comment__links, .score__desc',
-						'load_all_weights' => true,
-					),
-					'body-font-size' => array(
-						'type' => 'range',
-						'label'         => __( 'Font Size', 'rosa_txtd' ),
-						'live' => true,
-						'default'       => 16,
-						'input_attrs' => array(
-							'min'   => 8,
-							'max'   => 72,
-							'step'  => 1,
-							'data-preview' => true
-						),
-						'css' => array(
-							array(
-								'property' => 'font-size',
-								'selector' => 'body',
-								'unit' => 'px',
-							)
-						)
-					),
-					'body-line-height' => array(
-						'type' => 'range',
-						'label'         => __( 'Line Height', 'rosa_txtd' ),
-						'live' => true,
-						'default'       => '1.7',
-						'input_attrs' => array(
-							'min'   => 0,
-							'max'   => 3,
-							'step'  => 0.1,
-							'data-preview' => true
-						),
-						'css' => array(
-							array(
-								'property' => 'line-height',
-								'selector' => 'body',
-							)
-						)
-					),
-				)
-			),
-
-
-			'sizes_section' => array(
-				'title'    => __( 'Sizes and Spacing', 'customify_txtd' ),
-				'options' => array(
-
-					'content_width' => array(
-						'type' => 'range',
-						'label' => __( 'Site Container Width', 'rosa_txtd' ),
-						'desc'      => __( 'Set the width of the container.', 'rosa_txtd' ),
-						'live' => true,
-						'default'       => 1250,
-						'input_attrs' => array(
-							'min'   => 600,
-							'max'   => 2700,
-							'step'  => 1,
-							'data-preview' => true
-						),
-						'css' => array(
-							array(
-								'property' => 'max-width',
-								'selector' => '.container, .search__container, .site-header__container, .header--sticky .site-header__container',
-								'unit' => 'px',
-							)
-						)
-					),
-
-					'sections_vertical_margins' => array(
-						'type' => 'range',
-						'label' => __( 'Sections Vertical Margins', 'rosa_txtd' ),
-						'desc'      => __( 'Set the width of the container.', 'rosa_txtd' ),
-						'live' => true,
-						'default'       => 78,
-						'input_attrs' => array(
-							'min'   => 0,
-							'max'   => 120,
-							'step'  => 6,
-							'data-preview' => true
-						),
-						'css' => array(
-							array(
-								'property' => 'padding-top',
-								'selector' => '.page .type-page .article__content',
-								'unit' => 'px',
-								'media'    => 'only screen and (min-width: 900px)',
-							),
-							array(
-								'property' => 'padding-bottom',
-								'selector' => '.page .type-page .article__content',
-								'unit' => 'px',
-								'media'    => 'only screen and (min-width: 900px)',
-							)
-						)
-					),
-
-					'sidebar_width' => array(
-						'type' => 'range',
-						'label' => __( 'Sidebar Width', 'rosa_txtd' ),
-						'desc'      => __( 'Set the width of the sidebar.', 'rosa_txtd' ),
-						'live' => true,
-						'default'       => 300,
-						'input_attrs' => array(
-							'min'   => 140,
-							'max'   => 500,
-							'step'  => 10,
-							'data-preview' => true
-						),
-						'css' => array(
-							array(
-								'property' => 'width',
-								'selector' => '.sidebar--main',
-								'unit' => 'px',
-								'media'    => 'only screen and (min-width: 900px)',
-							),
-							array(
-								'property' => 'right',
-								'selector' => '.page-content.has-sidebar:after',
-								'unit' => 'px',
-								'media'    => 'only screen and (min-width: 900px)',
-							),
-							array(
-								'property' => 'margin-right',
-								'selector' => '.page-content.has-sidebar .page-content__wrapper',
-								'unit' => 'px',
-								'media'    => 'only screen and (min-width: 900px)',
-							),
-							array( // @TODO make this work with live preview
-								'property' => 'margin-right',
-								'selector' => '.page-content.has-sidebar',
-								'callback_filter' => 'rosa_range_negative_value',
-								'unit' => 'px',
-								'media'    => 'only screen and (min-width: 900px)',
-							),
-						)
-					),
-
-					'header_logo_height' => array(
-						'type' => 'range',
-						'title'         => __( 'Logo Height', 'rosa_txtd' ),
-						'default'       => 90,
-						'input_attrs' => array(
-							'min'   => 25,
-							'max'   => 125,
-							'step'  => 1,
-							'data-preview' => true
-						),
-						'css' => array(
-							array(
-								'property' => 'max-height',
-								'selector' => '.site-title--image img',
-								'unit' => 'px'
-							),
-						)
-					),
-
-					'header_vertical_margins' => array(
-						'type' => 'range',
-						'title'         => __( 'Header Vertical Margins', 'rosa_txtd' ),
-						'default'       => 0,
-						'input_attrs' => array(
-							'min'   => 0,
-							'max'   => 100,
-							'step'  => 1,
-							'data-preview' => true
-						),
-						'css' => array(
-							array(
-								'property' => 'padding-top',
-								'selector' => '.site-header',
-								'unit' => 'px',
-								'media'    => 'screen and (min-width: 900px)'
-							),
-							array(
-								'property' => 'padding-bottom',
-								'selector' => '.site-header',
-								'unit' => 'px',
-								'media'    => 'screen and (min-width: 900px)'
-							),
-
-							array(
-								'property' => 'margin-top',
-								'selector' => '#page',
-								'unit' => 'px',
-								'media'    => 'screen and (min-width: 900px)'
-							),
-
-							array(
-								'property' => 'top',
-								'selector' => '#page',
-								'unit' => 'px',
-								'media'    => 'screen and (min-width: 900px)'
-							),
-						)
-					),
-
-					'navigation_menu_items_spacing' => array(
-						'type' => 'range',
-						'title'         => __( 'Menu Items Spacing', 'rosa_txtd' ),
-						'default'       => 24,
-						'input_attrs' => array(
-							'min'   => 12,
-							'max'   => 75,
-							'step'  => 1,
-							'data-preview' => true
-						),
-						'css' => array(
-							array(
-								'property' => 'padding-left',
-								'selector' => '.nav--main > .menu-item > a',
-								'unit' => 'px',
-								'media'    => 'screen and (min-width: 900px)'
-							),
-							array(
-								'property' => 'padding-right',
-								'selector' => '.nav--main > .menu-item > a',
-								'unit' => 'px',
-								'media'    => 'screen and (min-width: 900px)'
-							)
-						)
-					)
-				)
-			),
-
 			'others_section' => array(
 				'title'    => __( 'General Options', 'customify_txtd' ),
 				'options' => array(
@@ -614,7 +180,7 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 								'property' => 'border-width',
 								'selector' => 'body',
 								'unit'     => 'px',
-//								'media'    => 'screen and (min-width: 900px)'
+								'media'    => 'screen and (min-width: 900px)'
 							),
 							array(
 								'property' => 'border-top-width',
@@ -677,82 +243,485 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 					),
 				)
 			)
-			/**
-			 * LAYOUTS - This section will handle different elements colors (eg. links, headings)
-			 */
-//			'layout_options' => array(
-//				'title'    => __( 'Layout', 'customify_txtd' ),
-//				'options' => array(
-//					'site_title_size' => array(
-//						'type'  => 'range',
-//						'label' => 'Site Title Size',
-//						'live' => true,
-//						'input_attrs' => array(
-//							'min'   => 24,
-//							'max'   => 100,
-//							'step'  => 1,
-//							'data-preview' => true
-//						),
-//						'default' => 24,
-//						'css' => array(
-//							array(
-//								'property' => 'font-size',
-//								'selector' => '.site-title',
-//								'media' => 'screen and (min-width: 1000px)',
-//								'unit' => 'px',
-//							)
-//						)
-//					),
-//					'page_content_spacing' => array(
-//						'type'  => 'range',
-//						'label' => 'Page Content Spacing',
-//						'live' => true,
-//						'input_attrs' => array(
-//							'min'   => 0,
-//							'max'   => 100,
-//							'step'  => 1,
-//						),
-//						'default' => 18,
-//						'css' => array(
-//							array(
-//								'property' => 'padding',
-//								'selector' => '.site-content',
-//								'media' => 'screen and (min-width: 1000px)',
-//								'unit' => 'px',
-//							)
-//						)
-//					)
-//				)
-//			)
 		);
 
-		/**
-		 * A self explanatory example of panels **
-		 **/
-		//		$config['panels'] = array(
-		//			'panel_id' => array(
-		//				'title'    => __( 'Panel Title', 'customify_txtd' ),
-		//				'sections' => array(
-		//					'panel_section' => array(
-		//						'title'    => __( 'Section Title', 'customify_txtd' ),
-		//						'options' => array(
-		//							'setting_id'   => array(
-		//								'type'      => 'color',
-		//								'label'     => __( 'Label', 'customify_txtd' ),
-		//								'live' => true, // or false
-		//								'default'   => '#6c6e70',
-		//								'css'  => array(
-		//									array(
-		//										'property'     => 'color',
-		//										'selector' => 'a, .entry-meta a',
-		//									),
-		//								)
-		//							),
-		//						)
-		//					)
-		//				)
-		//			)
-		//		);
+		$config['panels'] = array(
+
+			/**
+			 * BACKGROUNDS - This section will handle different elements backgrounds
+			 */
+			'background_panel' => array(
+				'title'    => __( 'Backgrounds', 'customify_txtd' ),
+				'sections' => array(
+					'header_backgrounds_section' => array(
+						'title'    => __( 'Header', 'customify_txtd' ),
+						'options' => array(
+							'header_background_color'   => array(
+								'type'      => 'color',
+								'label'     => __( 'Header Color', 'customify_txtd' ),
+								'live' => true,
+								'default'   => '#ffffff',
+								'css'  => array(
+									array(
+										'property'     => 'background-color',
+										'selector' => '.site-header, .site-header.headroom--not-top, .sub-menu, .headroom--not-top .sub-menu',
+									)
+								)
+							),
+							'header_image_pattern'   => array(
+								'type'      => 'custom_background',
+								'label'     => __( 'Header Background', 'customify_txtd' ),
+								'desc'         => __( 'Container background with image.', 'rosa_txtd' ),
+							),
+						)
+					),
+					'content_backgrounds_section' => array(
+						'title'    => __( 'Content', 'customify_txtd' ),
+						'options' => array(
+							'content_background_color'   => array(
+								'type'      => 'color',
+								'label'     => __( 'Content Color', 'customify_txtd' ),
+								'live' => true,
+								'default'   => '#ffffff',
+								'css'  => array(
+									array(
+										'property'     => 'background-color',
+										'selector' => '.page .article__content, .up-link, html, .menu-list__item-title .item_title, .menu-list__item-price, .desc__content',
+									)
+								)
+							),
+
+							'container_image_pattern'   => array(
+								'type'      => 'custom_background',
+								'label'     => __( 'Header Background', 'customify_txtd' ),
+								'desc'         => __( 'Container background with image.', 'rosa_txtd' ),
+							),
+						),
+					),
+					'footer_backgrounds_section' => array(
+						'title'    => __( 'Footer', 'customify_txtd' ),
+						'options' => array(
+							'footer_sidebar_style' => array(
+								'type'          => 'select',
+								'label'         => __( 'Footer Widget Area Style', 'rosa_txtd' ),
+								'choices'       => array(
+									'light'  => 'Light',
+									'dark'   => 'Dark',
+									'accent' => 'Accent Color',
+								),
+								'default'       => 'dark',
+							),
+							'footer_bottombar_style' => array(
+								'type'          => 'select',
+								'label'         => __( 'Footer Bottom Bar Style', 'rosa_txtd' ),
+								'choices'       => array(
+									'light'  => 'Light',
+									'dark'   => 'Dark',
+									'accent' => 'Accent Color',
+								),
+								'default'       => 'dark',
+							),
+						)
+					),
+				)
+			),
+
+			/**
+			 * FONTS - This section will handle different elements fonts (eg. headings, body)
+			 */
+			'typography_panel' => array(
+				'title'    => __( 'Typography', 'customify_txtd' ),
+				'sections' => array(
+
+					'headers_typography_section' => array(
+						'title'    => __( 'Headers', 'customify_txtd' ),
+						'options' => array(
+							'google_titles_font' => array(
+								'type'     => 'typography',
+								'label'    => __( 'Headings', 'customify_txtd' ),
+								'desc'       => __( 'Font for titles and headings.', 'rosa_txtd' ),
+								'default'  => 'Source Sans Pro',
+								'selector' => 'h1, h2, h3, h4, h5, h6, hgroup, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
+									blockquote, .tabs__nav, .popular-posts__time, .pagination li a, .pagination li span'
+							),
+							'google_subtitles_font'     => array(
+								'type'    => 'typography',
+								'label'   => __( 'Sub Headings', 'customify_txtd' ),
+								'desc'       => __( 'Font for titles and headings.', 'rosa_txtd' ),
+								'default' => 'Herr Von Muellerhoff',
+								'selector' => '.headline__secondary',
+							),
+							'subheadings_bottom-spacing' => array(
+								'type' => 'range',
+								'label' => __( 'Bottom Spacing', 'rosa_txtd' ),
+								'live' => true,
+								'default'       => '-38',
+								'input_attrs' => array(
+									'min'   => -90,
+									'max'   => 48,
+									'step'  => 1,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'margin-bottom',
+										'selector' => '.headline__secondary',
+										'unit' => 'px',
+									)
+								)
+							),
+							'subheadings_first-letter' => array(
+								'type' => 'range',
+								'label'         => __( 'First Letter Offset', 'rosa_txtd' ),
+								'live' => true,
+								'default'       => 9,
+								'input_attrs' => array(
+									'min'   => -48,
+									'max'   => 90,
+									'step'  => 1,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'top',
+										'selector' => '.headline__secondary .first-letter',
+										'unit' => 'px',
+									)
+								)
+							),
+						)
+					),
+
+					'nav_typography_section' => array(
+						'title'    => __( 'Menu', 'customify_txtd' ),
+						'options' => array(
+							'google_nav_font'     => array(
+								'type'    => 'typography',
+								'label'   => __( 'Navigation', 'customify_txtd' ),
+								'desc'       => __( 'Font for the navigation menu.', 'rosa_txtd' ),
+								'default' => 'Cabin',
+								'selector' => '.navigation a'
+							),
+							'nav_font-size' => array(
+								'type' => 'range',
+								'label'         => __( 'Font Size', 'rosa_txtd' ),
+								'live' => true,
+								'default'       => 13,
+								'input_attrs' => array(
+									'min'   => 8,
+									'max'   => 30,
+									'step'  => 1,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'font-size',
+										'selector' => '.navigation a',
+										'unit' => 'px',
+									)
+								)
+							),
+							'nav_letter-spacing' => array(
+								'type' => 'range',
+								'label'         => __( 'Letter Spacing', 'rosa_txtd' ),
+								'live' => true,
+								'default'       => 1,
+								'input_attrs' => array(
+									'min'   => -5,
+									'max'   => 20,
+									'step'  => 1,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'letter-spacing',
+										'selector' => '.navigation a',
+										'unit' => 'px',
+									)
+								)
+							),
+							'nav_text-transform' => array(
+								'type'          => 'select',
+								'label'         => __( 'Text Transform', 'rosa_txtd' ),
+								'choices'       => array(
+									'none'       => 'None',
+									'capitalize' => 'Capitalize',
+									'uppercase'  => 'Uppercase',
+									'lowercase'  => 'Lowercase',
+								),
+								'default'       => 'uppercase',
+								'css' => array(
+									array(
+										'property' => 'text-transform',
+										'selector' => '.nav--main > .menu-item > a',
+									)
+								)
+							),
+							'nav_text-decoration' => array(
+								'type'          => 'select',
+								'label'         => __( 'Text Decoration', 'rosa_txtd' ),
+								'choices'       => array(
+									'none'      => 'None',
+									'underline' => 'Underline',
+									'overline'  => 'Overline',
+								),
+								'default'       => 'none',
+								'css' => array(
+									array(
+										'property' => 'text-transform',
+										'selector' => '.nav--main > .menu-item > a',
+									)
+								)
+							),
+						)
+					),
+
+					'content_typography_section' => array(
+						'title'    => __( 'Body', 'customify_txtd' ),
+						'options' => array(
+							'google_body_font'     => array(
+								'type'    => 'typography',
+								'label'   => __( 'Body', 'customify_txtd' ),
+								'desc'       => __( 'Font for content and widget text.', 'rosa_txtd' ),
+								'default' => 'Cabin',
+								'selector' => 'html, .wp-caption-text, .small-link,	.post-nav-link__label, .author__social-link,
+							.comment__links, .score__desc',
+								'load_all_weights' => true,
+							),
+							'body-font-size' => array(
+								'type' => 'range',
+								'label'         => __( 'Font Size', 'rosa_txtd' ),
+								'live' => true,
+								'default'       => 16,
+								'input_attrs' => array(
+									'min'   => 8,
+									'max'   => 72,
+									'step'  => 1,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'font-size',
+										'selector' => 'body',
+										'unit' => 'px',
+									)
+								)
+							),
+							'body-line-height' => array(
+								'type' => 'range',
+								'label'         => __( 'Line Height', 'rosa_txtd' ),
+								'live' => true,
+								'default'       => '1.7',
+								'input_attrs' => array(
+									'min'   => 0,
+									'max'   => 3,
+									'step'  => 0.1,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'line-height',
+										'selector' => 'body',
+									)
+								)
+							),
+						)
+					),
+				)
+			),
+
+			'sizes_panel' => array(
+				'title'    => __( 'Sizes and Spacing', 'customify_txtd' ),
+				'sections' => array(
+
+					'header_sizes_section' => array(
+						'title'    => __( 'Header', 'customify_txtd' ),
+						'options' => array(
+
+							'header_logo_height' => array(
+								'type' => 'range',
+								'label'         => __( 'Logo Height', 'rosa_txtd' ),
+								'default'       => 90,
+								'input_attrs' => array(
+									'min'   => 25,
+									'max'   => 125,
+									'step'  => 1,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'max-height',
+										'selector' => '.site-title--image img',
+										'unit' => 'px'
+									),
+								)
+							),
+
+							'header_vertical_margins' => array(
+								'type' => 'range',
+								'label'         => __( 'Header Vertical Margins', 'rosa_txtd' ),
+								'default'       => 0,
+								'input_attrs' => array(
+									'min'   => 0,
+									'max'   => 100,
+									'step'  => 1,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'padding-top',
+										'selector' => '.site-header',
+										'unit' => 'px',
+										'media'    => 'screen and (min-width: 900px)'
+									),
+									array(
+										'property' => 'padding-bottom',
+										'selector' => '.site-header',
+										'unit' => 'px',
+										'media'    => 'screen and (min-width: 900px)'
+									),
+
+									array(
+										'property' => 'margin-top',
+										'selector' => '#page',
+										'unit' => 'px',
+										'media'    => 'screen and (min-width: 900px)'
+									),
+
+									array(
+										'property' => 'top',
+										'selector' => '#page',
+										'unit' => 'px',
+										'media'    => 'screen and (min-width: 900px)'
+									),
+								)
+							),
+
+							'navigation_menu_items_spacing' => array(
+								'type' => 'range',
+								'label'         => __( 'Menu Items Spacing', 'rosa_txtd' ),
+								'default'       => 24,
+								'input_attrs' => array(
+									'min'   => 12,
+									'max'   => 75,
+									'step'  => 1,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'padding-left',
+										'selector' => '.nav--main > .menu-item > a',
+										'unit' => 'px',
+										'media'    => 'screen and (min-width: 900px)'
+									),
+									array(
+										'property' => 'padding-right',
+										'selector' => '.nav--main > .menu-item > a',
+										'unit' => 'px',
+										'media'    => 'screen and (min-width: 900px)'
+									)
+								)
+							)
+						)
+					),
+
+					'content_sizes_section' => array(
+						'title'    => __( 'Sizes and Spacing', 'customify_txtd' ),
+						'options' => array(
+
+							'content_width' => array(
+								'type' => 'range',
+								'label' => __( 'Site Container Width', 'rosa_txtd' ),
+								'desc'      => __( 'Set the width of the container.', 'rosa_txtd' ),
+								'live' => true,
+								'default'       => 1250,
+								'input_attrs' => array(
+									'min'   => 600,
+									'max'   => 2700,
+									'step'  => 1,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'max-width',
+										'selector' => '.container, .search__container, .site-header__container, .header--sticky .site-header__container',
+										'unit' => 'px',
+									)
+								)
+							),
+
+							'sections_vertical_margins' => array(
+								'type' => 'range',
+								'label' => __( 'Sections Vertical Margins', 'rosa_txtd' ),
+								'live' => true,
+								'default'       => 78,
+								'input_attrs' => array(
+									'min'   => 0,
+									'max'   => 120,
+									'step'  => 6,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'padding-top',
+										'selector' => '.page .type-page .article__content',
+										'unit' => 'px',
+										'media'    => 'only screen and (min-width: 900px)',
+									),
+									array(
+										'property' => 'padding-bottom',
+										'selector' => '.page .type-page .article__content',
+										'unit' => 'px',
+										'media'    => 'only screen and (min-width: 900px)',
+									)
+								)
+							),
+
+							'sidebar_width' => array(
+								'type' => 'range',
+								'label' => __( 'Sidebar Width', 'rosa_txtd' ),
+								'desc'      => __( 'Set the width of the sidebar.', 'rosa_txtd' ),
+								'live' => true,
+								'default'       => 300,
+								'input_attrs' => array(
+									'min'   => 140,
+									'max'   => 500,
+									'step'  => 10,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'width',
+										'selector' => '.sidebar--main',
+										'unit' => 'px',
+										'media'    => 'only screen and (min-width: 900px)',
+									),
+									array(
+										'property' => 'right',
+										'selector' => '.page-content.has-sidebar:after',
+										'unit' => 'px',
+										'media'    => 'only screen and (min-width: 900px)',
+									),
+									array(
+										'property' => 'margin-right',
+										'selector' => '.page-content.has-sidebar .page-content__wrapper',
+										'unit' => 'px',
+										'media'    => 'only screen and (min-width: 900px)',
+									),
+									array( // @TODO make this work with live preview
+										'property' => 'margin-right',
+										'selector' => '.page-content.has-sidebar',
+										'callback_filter' => 'rosa_range_negative_value',
+										'unit' => 'px',
+										'media'    => 'only screen and (min-width: 900px)',
+									),
+								)
+							),
+						)
+					),
+				)
+			)
+		);
 
 		return $config;
 	}

@@ -8,29 +8,6 @@
 
 $redux_sections = wpgrade::get_redux_sections();
 
-/**
- *======= TYPOGRAPHY
- */
-
-$fonts = array();
-
-if ( isset( $fonts['google_body_font'] ) ) {
-	// this needs a default
-	$font_size = '14px';
-	if ( isset( $fonts['google_body_font']['font-size'] ) ) {
-		$font_size = $fonts['google_body_font']['font-size'];
-		unset( $fonts['google_body_font']['font-size'] ); ?>
-		/* Size Classes */
-		.article, .single .main, .page .main,
-		.comment__content,
-		.footer__widget-area  {
-		font-size: <?php echo $font_size ?>;
-		}
-
-	<?php
-	}
-}
-
 //handle the complicated logic of the footer waves that keeps changing color
 $footer_sidebar_style    = wpgrade::option( 'footer_sidebar_style' );
 $waves_fill_color = '#121212';
