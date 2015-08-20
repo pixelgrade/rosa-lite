@@ -87,6 +87,145 @@ $sections[] = array(
 	)
 );
 
+// this is a shim for backgorunds
+$sections[] = array(
+	'icon'            => "icon-params",
+	'icon_class'      => '',
+	'class'           => 'has-customizer customizer-only',
+	'title'           => __( 'Backgrounds', 'rosa_txtd' ),
+	'type'            => 'customizer_section',
+	'priority'        => 6,
+	'fields'          => array(
+		array(
+			'id'         => 'header_background_color',
+			'type'       => 'color',
+			'title'      => __( 'Header', 'rosa_txtd' ),
+			'default'    => '#ffffff',
+			'validate'   => 'color',
+			'compiler'   => true,
+			'customizer' => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'background-color' => array(
+						'selector' => ".site-header, .site-header.headroom--not-top, .sub-menu, .headroom--not-top .sub-menu"
+					),
+				)
+			)
+		),
+		array(
+			'id'               => 'header_image_pattern',
+			'type'             => 'customizer_background',
+			'output'           => array( '.site-header' ),
+			'title'            => __( '<button></button>', 'rosa_txtd' ),
+			'subtitle'         => __( 'Container background with image.', 'rosa_txtd' ),
+			'customizer'       => array(
+				'transport' => 'refresh',
+			),
+			'background-color' => false,
+			'default'          => array(
+				'background-repeat'     => '',
+				'background-size'       => '',
+				'background-attachment' => '',
+				'background-position'   => '',
+				'background-image'      => '',
+				'media'                 => array(
+					'id'        => '',
+					'height'    => '',
+					'width'     => '',
+					'thumbnail' => '',
+				)
+			),
+		),
+		array(
+			'id'         => 'content_background_color',
+			'type'       => 'color',
+			'title'      => __( 'Content', 'rosa_txtd' ),
+			'default'    => '#ffffff',
+			'validate'   => 'color',
+			'compiler'   => true,
+			'customizer' => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'background-color' => array(
+						'selector' => ".page .article__content, .up-link, html, .menu-list__item-title .item_title, .menu-list__item-price, .desc__content"
+					),
+				)
+			)
+		),
+		array(
+			'id'               => 'container_image_pattern',
+			'type'             => 'customizer_background',
+			'output'           => array( '.page .article__content' ),
+			'title'            => __( '<button></button>', 'rosa_txtd' ),
+			'subtitle'         => __( 'Container background with image.', 'rosa_txtd' ),
+			'customizer'       => array(
+				'transport' => 'refresh',
+			),
+			'background-color' => false,
+			'default'          => array(
+				'background-repeat'     => '',
+				'background-size'       => '',
+				'background-attachment' => '',
+				'background-position'   => '',
+				'background-image'      => '',
+				'media'                 => array(
+					'id'        => '',
+					'height'    => '',
+					'width'     => '',
+					'thumbnail' => '',
+				)
+			),
+		),
+		array(
+			'id'         => 'backgrounds_footer',
+			'title'      => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Footer', 'rosa_txtd' ) . '</span></label>',
+			'type'       => 'customizer_info',
+			'customizer' => array()
+		),
+		array(
+			'id'            => 'footer_sidebar_style',
+			'type'          => 'select',
+			'title'         => __( 'Footer Widget Area Style', 'rosa_txtd' ),
+			'display_value' => 'text',
+			'class'         => 'small-text',
+			'options'       => array(
+				'light'  => 'Light',
+				'dark'   => 'Dark',
+				'accent' => 'Accent Color',
+			),
+			'default'       => 'dark',
+			'select2'       => array( // here you can provide params for the select2 jquery call
+				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
+				'allowClear'              => false // don't allow a empty select
+			),
+			'customizer'    => array(
+				'transport' => 'refresh',
+			),
+		),
+		array(
+			'id'            => 'footer_bottombar_style',
+			'type'          => 'select',
+			'title'         => __( 'Footer Bottom Bar Style', 'rosa_txtd' ),
+			'display_value' => 'text',
+			'class'         => 'small-text',
+			'options'       => array(
+				'light'  => 'Light',
+				'dark'   => 'Dark',
+				'accent' => 'Accent Color',
+			),
+			'default'       => 'dark',
+			'select2'       => array( // here you can provide params for the select2 jquery call
+				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
+				'allowClear'              => false // don't allow a empty select
+			),
+			'customizer'    => array(
+				'transport' => 'refresh',
+			),
+		),
+	)
+);
+
+
 // Reset Button
 // ------------------------------------------------------------------------
 $sections[] = array(

@@ -522,6 +522,7 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 								'type' => 'range',
 								'label'         => __( 'Logo Height', 'rosa_txtd' ),
 								'default'       => 90,
+								'live' => true,
 								'input_attrs' => array(
 									'min'   => 25,
 									'max'   => 125,
@@ -541,6 +542,7 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 								'type' => 'range',
 								'label'         => __( 'Header Vertical Margins', 'rosa_txtd' ),
 								'default'       => 0,
+								'live' => true,
 								'input_attrs' => array(
 									'min'   => 0,
 									'max'   => 100,
@@ -581,6 +583,7 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 								'type' => 'range',
 								'label'         => __( 'Menu Items Spacing', 'rosa_txtd' ),
 								'default'       => 24,
+								'live' => true,
 								'input_attrs' => array(
 									'min'   => 12,
 									'max'   => 75,
@@ -726,14 +729,14 @@ function convert_rosa_for_wp_43_once (){
 		return;
 	}
 
-	$is_not_old = wpgrade::option('converted_to_43');
+	$is_not_old = get_option('wpgrade_converted_to_43');
 
 	$this_wp_version = get_bloginfo('version');
 	$this_wp_version = explode( '.', $this_wp_version );
 	$is_wp43 = false;
 	if ( ! $is_not_old && (int) $this_wp_version[0] >= 4 && (int) $this_wp_version[1] >= 3 ) {
 		$is_wp43 = true;
-		wpgrade::setoption('converted_to_43', true);
+		update_option('wpgrade_converted_to_43', true);
 		header( 'Location: '.admin_url().'customize.php?save_customizer_once=true');
 		die();
 	}
