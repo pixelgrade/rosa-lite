@@ -736,3 +736,28 @@ function rosa_range_negative_value( $value, $selector, $property, $unit ) {
 
 	return $output;
 }
+
+
+
+function aftehr_my_theme (){
+	global $pagenow;
+	// this handles redirect on activating the theme (can be amended for plugin of course)
+
+	$ceva = wpgrade::option('converted_to_43');
+
+	var_dump($ceva);
+
+	$this_wp_version = get_bloginfo('version');
+	$this_wp_version = explode( '.', $this_wp_version );
+	$is_wp43 = false;
+	if ( (int) $this_wp_version[0] >= 4 && (int) $this_wp_version[1] >= 3 ) {
+		$is_wp43 = true;
+	}
+
+	if (is_admin() ) {
+		header( 'Location: '.admin_url().'customize.php');
+	}
+}
+
+//add_action('admin_init', 'aftehr_my_theme');
+

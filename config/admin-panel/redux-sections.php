@@ -1,10 +1,4 @@
 <?php
-$this_wp_version = get_bloginfo('version');
-$this_wp_version = explode( '.', $this_wp_version );
-$is_wp43 = false;
-if ( (int) $this_wp_version[1] > 2 ) {
-	$is_wp43 = true;
-}
 
 $sections = array();
 $debug    = '';
