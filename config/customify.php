@@ -300,6 +300,11 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 								'label'    => '',//__( '', 'customify_txtd' ),
 								'desc'       => __( 'Font for titles and headings.', 'rosa_txtd' ),
 								'default'  => 'Source Sans Pro',
+								'recommended' => array(
+									'Source Sans Pro',
+									'Herr Von Muellerhoff',
+									'Cabin',
+								),
 								'selector' => 'h1, h2, h3, h4, h5, h6, hgroup, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
 									blockquote, .tabs__nav, .popular-posts__time, .pagination li a, .pagination li span'
 							),
@@ -308,6 +313,11 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 								'label'   => __( 'Sub Headings', 'customify_txtd' ),
 								'desc'       => __( 'Font for titles and headings.', 'rosa_txtd' ),
 								'default' => 'Herr Von Muellerhoff',
+								'recommended' => array(
+									'Herr Von Muellerhoff',
+									'Source Sans Pro',
+									'Cabin',
+								),
 								'selector' => '.headline__secondary',
 							),
 							'subheadings_bottom-spacing' => array(
@@ -359,6 +369,11 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 								'label'   => __( 'Navigation', 'customify_txtd' ),
 								'desc'       => __( 'Font for the navigation menu.', 'rosa_txtd' ),
 								'default' => 'Cabin',
+								'recommended' => array(
+									'Cabin',
+									'Source Sans Pro',
+									'Herr Von Muellerhoff',
+								),
 								'selector' => '.navigation a'
 							),
 							'nav_font-size' => array(
@@ -443,6 +458,11 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 								'label'   => __( 'Body', 'customify_txtd' ),
 								'desc'       => __( 'Font for content and widget text.', 'rosa_txtd' ),
 								'default' => 'Cabin',
+								'recommended' => array(
+									'Cabin',
+									'Source Sans Pro',
+									'Herr Von Muellerhoff',
+								),
 								'selector' => 'html, .wp-caption-text, .small-link,	.post-nav-link__label, .author__social-link,
 							.comment__links, .score__desc',
 								'load_all_weights' => true,
