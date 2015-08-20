@@ -742,8 +742,7 @@ function rosa_range_negative_value( $value, $selector, $property, $unit ) {
  * for the old options to work in the new customizer
  */
 function convert_rosa_for_wp_43_once (){
-
-	if ( ! is_admin() || ! function_exists( 'is_plugin_active' ) || ! is_plugin_active('customify/customify.php') ) {
+	if ( ! is_admin() || ! function_exists( 'is_plugin_active' ) || ! is_plugin_active('customify/customify.php') || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 		return;
 	}
 
