@@ -553,27 +553,27 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 										'property' => 'padding-top',
 										'selector' => '.site-header',
 										'unit' => 'px',
-										'media'    => 'screen and (min-width: 900px)'
+										'media'    => ' screen and (min-width: 900px)'
 									),
 									array(
 										'property' => 'padding-bottom',
 										'selector' => '.site-header',
 										'unit' => 'px',
-										'media'    => 'screen and (min-width: 900px)'
+										'media'    => 'screen and (min-width: 900px) '
 									),
 
 									array(
 										'property' => 'margin-top',
 										'selector' => '#page',
 										'unit' => 'px',
-										'media'    => 'screen and (min-width: 900px)'
+										'media'    => ' screen and (min-width: 900px) '
 									),
 
 									array(
 										'property' => 'top',
 										'selector' => '#page',
 										'unit' => 'px',
-										'media'    => 'screen and (min-width: 900px)'
+										'media'    => ' screen and (min-width : 900px)'
 									),
 								)
 							),
@@ -594,13 +594,13 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 										'property' => 'padding-left',
 										'selector' => '.nav--main > .menu-item > a',
 										'unit' => 'px',
-										'media'    => 'screen and (min-width: 900px)'
+										'media'    => ' screen and (min-width: 900px)'
 									),
 									array(
 										'property' => 'padding-right',
 										'selector' => '.nav--main > .menu-item > a',
 										'unit' => 'px',
-										'media'    => 'screen and (min-width: 900px)'
+										'media'    => 'screen and (min-width: 900px) '
 									)
 								)
 							)
@@ -648,13 +648,13 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 										'property' => 'padding-top',
 										'selector' => '.page .type-page .article__content',
 										'unit' => 'px',
-										'media'    => 'only screen and (min-width: 900px)',
+										'media'    => ' only screen and (min-width: 900px)',
 									),
 									array(
 										'property' => 'padding-bottom',
 										'selector' => '.page .type-page .article__content',
 										'unit' => 'px',
-										'media'    => 'only screen and (min-width: 900px)',
+										'media'    => 'only screen and (min-width: 900px) ',
 									)
 								)
 							),
@@ -676,26 +676,26 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 										'property' => 'width',
 										'selector' => '.sidebar--main',
 										'unit' => 'px',
-										'media'    => 'only screen and (min-width: 900px)',
+										'media'    => ' only screen and (min-width: 900px)',
 									),
 									array(
 										'property' => 'right',
 										'selector' => '.page-content.has-sidebar:after',
 										'unit' => 'px',
-										'media'    => 'only screen and (min-width: 900px)',
+										'media'    => 'only screen and (min-width: 900px) ',
 									),
 									array(
 										'property' => 'margin-right',
 										'selector' => '.page-content.has-sidebar .page-content__wrapper',
 										'unit' => 'px',
-										'media'    => 'only screen and (min-width: 900px)',
+										'media'    => 'only screen and (min-width : 900px)',
 									),
 									array( // @TODO make this work with live preview
 										'property' => 'margin-right',
 										'selector' => '.page-content.has-sidebar',
 										'callback_filter' => 'rosa_range_negative_value',
 										'unit' => 'px',
-										'media'    => 'only screen and (min-width: 900px)',
+										'media'    => ' only screen and (min-width : 900px)',
 									),
 								)
 							),
