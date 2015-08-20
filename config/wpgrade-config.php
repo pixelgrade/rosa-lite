@@ -34,6 +34,7 @@ return array(
 	'include-files'                => array(
 		// main theme class
 		'inc/required-plugins/required-plugins.php',
+		'config/customify.php',
 	),
 	// the path where overwrites on the core partials are stored, any files
 	// placed in the partial overwrites will be loaded instead of the core
