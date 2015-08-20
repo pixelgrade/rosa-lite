@@ -144,40 +144,39 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 							),
 							array(
 								'property' => 'border-top-width',
-								'selector' => '.site-header',
+								'selector' => 'body .site-header',
 								'unit'     => 'px',
-								'media'    => 'screen and (min-width: 900px)'
+								'media'    => ' screen and (min-width: 900px) '
 							),
 							array(
 								'property' => 'border-left-width',
-								'selector' => '.site-header',
+								'selector' => 'body .site-header',
 								'unit'     => 'px',
-								'media'    => 'screen and (min-width: 900px)'
+								'media'    => ' screen and (min-width : 900px)'
 							),
 							array(
 								'property' => 'border-right-width',
-								'selector' => '.site-header',
+								'selector' => 'body .site-header',
 								'unit'     => 'px',
-								'media'    => 'screen and (min-width: 900px)'
+								'media'    => 'screen and (min-width : 900px) '
 							),
 							array(
 								'property' => 'border-bottom-width',
-								'selector' => '.site-footer',
+								'selector' => 'body .site-footer',
 								'unit'     => 'px',
-								'media'    => 'screen and (min-width: 900px)'
+								'media'    => 'screen and (min-width: 900px) '
 							),
-
 							array(
 								'property' => 'margin-right',
-								'selector' => '.navigator, .covers',
+								'selector' => 'body .navigator, body .covers',
 								'unit'     => 'px',
-								'media'    => 'screen and (min-width: 900px)'
+								'media'    => ' screen and (min-width: 900px)'
 							),
 							array(
 								'property' => 'margin-left',
-								'selector' => '.covers',
+								'selector' => 'body .covers',
 								'unit'     => 'px',
-								'media'    => 'screen and (min-width: 900px)'
+								'media'    => 'screen and (min-width : 900px)'
 							),
 						)
 					),
