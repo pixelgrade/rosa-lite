@@ -124,62 +124,6 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 			'others_section' => array(
 				'title'    => __( 'General Options', 'customify_txtd' ),
 				'options' => array(
-					'border_width' => array(
-						'type' => 'range',
-						'label'         => __( 'Border Width', 'rosa_txtd' ),
-						'live' => true,
-						'default'       => '0',
-						'input_attrs' => array(
-							'min'   => 0,
-							'max'   => 72,
-							'step'  => 6,
-							'data-preview' => true
-						),
-						'css' => array(
-							array(
-								'property' => 'border-width',
-								'selector' => 'body',
-								'unit'     => 'px',
-								'media'    => 'screen and (min-width: 900px)'
-							),
-							array(
-								'property' => 'border-top-width',
-								'selector' => 'body .site-header',
-								'unit'     => 'px',
-								'media'    => ' screen and (min-width: 900px) '
-							),
-							array(
-								'property' => 'border-left-width',
-								'selector' => 'body .site-header',
-								'unit'     => 'px',
-								'media'    => ' screen and (min-width : 900px)'
-							),
-							array(
-								'property' => 'border-right-width',
-								'selector' => 'body .site-header',
-								'unit'     => 'px',
-								'media'    => 'screen and (min-width : 900px) '
-							),
-							array(
-								'property' => 'border-bottom-width',
-								'selector' => 'body .site-footer',
-								'unit'     => 'px',
-								'media'    => 'screen and (min-width: 900px) '
-							),
-							array(
-								'property' => 'margin-right',
-								'selector' => 'body .navigator, body .covers',
-								'unit'     => 'px',
-								'media'    => ' screen and (min-width: 900px)'
-							),
-							array(
-								'property' => 'margin-left',
-								'selector' => 'body .covers',
-								'unit'     => 'px',
-								'media'    => 'screen and (min-width : 900px)'
-							),
-						)
-					),
 					'down_arrow_style' => array(
 						'type'          => 'select',
 						'label'         => __( 'Scroll Down Arrow Style', 'rosa_txtd' ),
@@ -611,6 +555,64 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 						'title'    => __( 'Content', 'customify_txtd' ),
 						'options' => array(
 
+
+							'border_width' => array(
+								'type' => 'range',
+								'label'         => __( 'Border Width', 'rosa_txtd' ),
+								'live' => true,
+								'default'       => '0',
+								'input_attrs' => array(
+									'min'   => 0,
+									'max'   => 72,
+									'step'  => 6,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'border-width',
+										'selector' => 'body',
+										'unit'     => 'px',
+										'media'    => 'screen and (min-width: 900px)'
+									),
+									array(
+										'property' => 'border-top-width',
+										'selector' => 'body .site-header',
+										'unit'     => 'px',
+										'media'    => ' screen and (min-width: 900px) '
+									),
+									array(
+										'property' => 'border-left-width',
+										'selector' => 'body .site-header',
+										'unit'     => 'px',
+										'media'    => ' screen and (min-width : 900px)'
+									),
+									array(
+										'property' => 'border-right-width',
+										'selector' => 'body .site-header',
+										'unit'     => 'px',
+										'media'    => 'screen and (min-width : 900px) '
+									),
+									array(
+										'property' => 'border-bottom-width',
+										'selector' => 'body .site-footer',
+										'unit'     => 'px',
+										'media'    => 'screen and (min-width: 900px) '
+									),
+									array(
+										'property' => 'margin-right',
+										'selector' => 'body .navigator, body .covers',
+										'unit'     => 'px',
+										'media'    => ' screen and (min-width: 900px)'
+									),
+									array(
+										'property' => 'margin-left',
+										'selector' => 'body .covers',
+										'unit'     => 'px',
+										'media'    => 'screen and (min-width : 900px)'
+									),
+								)
+							),
+
 							'content_width' => array(
 								'type' => 'range',
 								'label' => __( 'Site Container Width', 'rosa_txtd' ),
@@ -631,7 +633,6 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 									)
 								)
 							),
-
 							'sections_vertical_margins' => array(
 								'type' => 'range',
 								'label' => __( 'Sections Vertical Margins', 'rosa_txtd' ),

@@ -1,4 +1,10 @@
 <?php
+$this_wp_version = get_bloginfo('version');
+$this_wp_version = explode( '.', $this_wp_version );
+$is_wp43 = false;
+if ( (int) $this_wp_version[1] > 2 ) {
+	$is_wp43 = true;
+}
 
 $sections = array();
 $debug    = '';
@@ -87,7 +93,211 @@ $sections[] = array(
 	)
 );
 
-// this is a shim for backgorunds
+// ------------------------------------------------------------------------
+// CUSTOMIZER
+// This is a customizer section now, but keep this for legacy
+// ------------------------------------------------------------------------
+
+// Legacy: for older wp versions keep the panels
+if ( ! $is_wp43 ) {
+	$sections[] = array(
+		'icon'            => "icon-params",
+		'icon_class'      => '',
+		'class'           => 'has-customizer',
+		'title'           => __( 'Colors', 'rosa_txtd' ),
+		'id'              => 'colors',
+		'desc'            => '<p class="description">' . __( 'Using the color pickers you can change the colors of the most important elements. If you want to override the color of some elements you can always use Custom CSS code in Theme Options - Custom Code.', 'rosa_txtd' ) . '</p>',
+		'customizer_only' => true,
+		'type'            => 'customizer_panel',
+		'priority'        => 5,
+		'fields'          => array( array('id' => 'legacy', 'title' => '', 'type' => 'info' ) )
+	);
+	$sections[] = array(
+		'icon'            => "icon-params",
+		'icon_class'      => '',
+		'class'           => 'has-customizer',
+		'title'           => __( 'Backgrounds', 'rosa_txtd' ),
+		'id'              => 'backgrounds',
+		'customizer_only' => true,
+		'type' => 'customizer_panel',
+		'priority'        => 6,
+		'fields'          => array( array('id' => 'legacy', 'title' => '', 'type' => 'info' ) )
+	);
+	$sections[] = array(
+		'icon'            => "icon-params",
+		'icon_class'      => '',
+		'class'           => 'has-customizer',
+		'title'           => __( 'Typography', 'rosa_txtd' ),
+		'id'              => 'typography',
+		'customizer_only' => true,
+		'type' => 'customizer_panel',
+		'priority'        => 7,
+		'fields'          => array( array('id' => 'legacy', 'title' => '', 'type' => 'info' ) )
+	);
+	$sections[] = array(
+		'icon'            => "icon-params",
+		'icon_class'      => '',
+		'class'           => 'has-customizer',
+		'title'           => __( 'Sizes and Spacing', 'rosa_txtd' ),
+		'id'              => 'size-and-pacing',
+		'customizer_only' => true,
+		'type'            => 'customizer_panel',
+		'priority'        => 8,
+		'fields'          => array( array('id' => 'legacy', 'title' => '', 'type' => 'info' ) )
+	);
+	$sections[] = array(
+		'icon'            => "icon-params",
+		'icon_class'      => '',
+		'class'           => 'has-customizer',
+		'title'           => __( 'Other Options', 'rosa_txtd' ),
+		'id'              => 'general-options',
+		'customizer_only' => true,
+		'type' => 'customizer_panel',
+		'priority'        => 9,
+		'fields'          => array( array('id' => 'legacy', 'title' => '', 'type' => 'info' ) )
+	);
+}
+
+// Colors
+// ------------------------------------------------------------------------
+$sections_panel = '';
+if ( ! $is_wp43 ) {
+	$sections_panel = 'colors';
+}
+
+$sections[] = array(
+	'icon'            => "icon-params",
+	'icon_class'      => '',
+	'class'           => 'has-customizer customizer-only',
+	'title'           => __( 'Colors', 'rosa_txtd' ),
+	'desc'            => '<p class="description">' . __( 'The style options control the general styling of the site, like accent color and Google Web Fonts. You can choose custom fonts for various typography elements with font weight, character set, size and/or line height. You also have a live preview for your chosen fonts.', 'rosa_txtd' ) . '</p>',
+	'type' => 'customizer_section',
+	'in_panel'        => $sections_panel,
+	'priority'        => 5,
+	'fields'          => array(
+		array(
+			'id'         => 'main_color',
+			'type'       => 'color',
+			'title'      => __( 'Accent Color', 'rosa_txtd' ),
+			'subtitle'   => __( 'Use the color picker to change the main color of the site to match your brand color.', 'rosa_txtd' ),
+			'default'    => '#c59d5f',
+			'validate'   => 'color',
+			'compiler'   => true,
+			'customizer' => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'color'            => array(
+						'selector' => "	a, a:hover, .nav--main a:hover, .headline__secondary, .separator--line-flower,
+										.tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment,
+										.comments_add-comment.read-more-button, .form-submit .btn--text#comment-submit,
+										.form-submit #comment-submit.read-more-button, .btn--text.wpcf7-form-control.wpcf7-submit,
+										.wpcf7-form-control.wpcf7-submit.read-more-button, .btn--text.otreservations-submit,
+										.otreservations-submit.read-more-button, .widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button,
+										a:hover > .pixcode--icon, .widget a:hover, blockquote, .meta-list a.btn:hover,
+										.meta-list a.comments_add-comment:hover, .meta-list .form-submit a#comment-submit:hover,
+										.form-submit .meta-list a#comment-submit:hover, .meta-list a.wpcf7-form-control.wpcf7-submit:hover,
+										.meta-list a.otreservations-submit:hover, .meta-list .widget_tag_cloud a:hover, .widget_tag_cloud .meta-list a:hover, .btn.btn--text:hover,
+										.article__content a:not([class]), .article__content a:hover:not([class]):hover,
+										.article__header .article__headline .headline__description .star, .read-more-button, .read-more-button:hover, .shop-categories a.active,
+										body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart,
+										body.woocommerce ul.products li.product a.added_to_cart, body.woocommerce ul.products li.product .price ins,
+										.single-product .entry-summary .price span, body.woocommerce .star-rating span:before, .comment-reply-link"
+					),
+					'background-color' => array(
+						'selector' => ".btn--primary, .shop-menu-item .shop-items-number, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover,
+						                .pagination li a:hover, form.shipping_calculator button.button:hover, .otreservations-submit:hover, .pixcode--icon.square:hover, .pixcode--icon.circle:hover,
+						                .sidebar--footer__accent, .copyright-area.copyright-area__accent, .menu-list__item-highlight-title",
+					),
+					'background'       => array(
+						'selector' => "body.woocommerce button.button.alt:hover, body.woocommerce-page #respond input#submit:hover,
+                                        body.woocommerce div.woocommerce-message .button:hover, td.actions input.button:hover, body.woocommerce-page input.button:hover,
+                                        body.woocommerce-page input.button.alt:hover, a:hover > .pixcode--icon.circle, a:hover > .pixcode--icon.square"
+					),
+					'border-color'     => array(
+						'selector' => ".tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button,
+						.form-submit .btn--text#comment-submit, .form-submit #comment-submit.read-more-button,
+						.btn--text.wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit.read-more-button,
+						.btn--text.otreservations-submit, .otreservations-submit, .read-more-button,
+						.widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button, blockquote, .article__content a:not([class]), .shop-categories a.active,
+						body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart, .menu-list__item-highlight-wrapper:before",
+					),
+					'outline-color'    => array(
+						'selector' => 'select:focus, textarea:focus, input[type="text"]:focus,
+						input[type="password"]:focus, input[type="datetime"]:focus,
+						input[type="datetime-local"]:focus, input[type="date"]:focus,
+						input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus,
+						input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus,
+						input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .form-control:focus',
+					),
+					'fill' => array(
+						'selector' => '.copyright-area.copyright-area__accent svg path',
+					),
+				)
+			)
+		),
+		array(
+			'id'         => 'text_color',
+			'type'       => 'color',
+			'title'      => __( 'Text Color', 'rosa_txtd' ),
+			'default'    => '#515150',
+			'validate'   => 'color',
+			'compiler'   => true,
+			'customizer' => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'color'        => array(
+						'selector' => " body,
+										.up-link"
+					),
+					'border-color' => array(
+						'selector' => ".up-link:before"
+					)
+				)
+			)
+		),
+		array(
+			'id'         => 'headings_color',
+			'type'       => 'color',
+			'title'      => __( 'Headings color', 'rosa_txtd' ),
+			'default'    => '#262526',
+			'validate'   => 'color',
+			'compiler'   => true,
+			'customizer' => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'color' => array(
+						'selector' => "h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, .article-archive .article__title a, .article-archive .article__title a:hover"
+					),
+				)
+			)
+		),
+		array(
+			'id'         => 'cover_text',
+			'type'       => 'color',
+			'title'      => __( 'Cover Text', 'rosa_txtd' ),
+			'default'    => '#fff',
+			'validate'   => 'color',
+			'compiler'   => true,
+			'customizer' => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'color' => array(
+						'selector' => ".article__header .article__headline .headline__primary,
+										.article__header .article__headline .headline__description *"
+					),
+				)
+			)
+		),
+	)
+);
+
+
+// Backgrounds
+// ------------------------------------------------------------------------
+$sections_panel = '';
+if ( ! $is_wp43 ) {
+	$sections_panel = 'backgrounds';
+}
 $sections[] = array(
 	'icon'            => "icon-params",
 	'icon_class'      => '',
@@ -225,6 +435,633 @@ $sections[] = array(
 	)
 );
 
+// Typography
+// ------------------------------------------------------------------------
+$sections_panel = '';
+if ( ! $is_wp43 ) {
+	$sections_panel = 'typography';
+}
+$sections[] = array(
+	'icon'            => "icon-params",
+	'icon_class'      => '',
+	'class'           => 'has-customizer customizer-only',
+	'title'           => __( 'Typography', 'rosa_txtd' ),
+	'type'            => 'customizer_section',
+	'in_panel'        => $sections_panel,
+	'priority'        => 7,
+	'fields'          => array(
+		array(
+			'id'       => 'use_google_fonts',
+			'type'     => 'switch',
+			'title'    => __( 'Do you need custom web fonts?', 'rosa_txtd' ),
+			'subtitle' => __( 'Tap into the massive <a href="http://www.google.com/fonts/">Google Fonts</a> collection (with Live preview).', 'rosa_txtd' ),
+			'default'  => '1',
+			'compiler' => true,
+		),
+		// Headings Font
+		array(
+			'id'             => 'google_titles_font',
+			'type'           => 'customizer_typography',
+			'color'          => false,
+			'font-size'      => false,
+			'line-height'    => false,
+			'text-transform' => false,
+			'letter-spacing' => false,
+			'text-align'     => false,
+			'preview'        => false,
+			'required'       => array( 'use_google_fonts', '=', 1 ),
+			'title'          => __( '<button></button> Headings', 'rosa_txtd' ),
+			'subtitle'       => __( 'Font for titles and headings.', 'rosa_txtd' ),
+			'compiler'       => true,
+			'customizer'     => array(
+				'transport' => 'refresh',
+			),
+			'default'        => array(
+				'font-family' => 'Source Sans Pro',
+				'google'      => true,
+			),
+			//			'output'         => array( 'h1, h2, h3, h4, h5, h6' ),
+
+		),
+		// SubHeadings Font
+		array(
+			'id'             => 'google_subtitles_font',
+			'type'           => 'customizer_typography',
+			'color'          => false,
+			'font-size'      => false,
+			'line-height'    => false,
+			'text-transform' => false,
+			'letter-spacing' => false,
+			'text-align'     => false,
+			'preview'        => false,
+			'required'       => array( 'use_google_fonts', '=', 1 ),
+			'title'          => __( '<button></button> Sub Headings', 'rosa_txtd' ),
+			'subtitle'       => __( 'Font for titles and headings.', 'rosa_txtd' ),
+			'compiler'       => true,
+			'customizer'     => array(
+				'transport' => 'refresh',
+			),
+			'default'        => array(
+				'font-family' => 'Herr Von Muellerhoff',
+				'google'      => true,
+			),
+			//			'output'         => array( '.headline__secondary' ),
+		),
+		array(
+			'id'            => 'subheadings_bottom-spacing',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'Bottom Spacing', 'rosa_txtd' ),
+			'validate'      => 'numeric',
+			'default'       => '-38',
+			'min'           => - 90,
+			'step'          => 1,
+			'max'           => 48,
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'margin-bottom' => array(
+						'selector' => '.headline__secondary',
+						'unit'     => 'px',
+					)
+				)
+			),
+			'compiler'      => true
+		),
+		array(
+			'id'            => 'subheadings_first-letter',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'First Letter Offset', 'rosa_txtd' ),
+			'validate'      => 'numeric',
+			'default'       => '9',
+			'min'           => - 48,
+			'step'          => 1,
+			'max'           => 90,
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'top' => array(
+						'selector' => '.headline__secondary .first-letter',
+						'unit'     => 'px',
+					)
+				)
+			),
+			'compiler'      => true
+		),
+		// Navigation Font
+		array(
+			'id'             => 'google_nav_font',
+			'type'           => 'customizer_typography',
+			'color'          => false,
+			'font-size'      => false,
+			'line-height'    => false,
+			'text-transform' => false,
+			'letter-spacing' => false,
+			'text-align'     => false,
+			'preview'        => false,
+			'required'       => array( 'use_google_fonts', '=', 1 ),
+			'title'          => __( '<button></button> Navigation', 'rosa_txtd' ),
+			'subtitle'       => __( 'Font for the navigation menu.', 'rosa_txtd' ),
+			'compiler'       => true,
+			'customizer'     => array(
+				'transport' => 'refresh',
+			),
+			'default'        => array(
+				'font-family' => 'Cabin',
+				'google'      => true,
+			),
+			//			'output'         => array( '.navigation--main' ),
+
+		),
+		array(
+			'id'            => 'nav_font-size',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'Font Size', 'rosa_txtd' ),
+			'validate'      => 'numeric',
+			'default'       => '13',
+			'min'           => 8,
+			'step'          => 1,
+			'max'           => 30,
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'font-size' => array(
+						'selector' => '.navigation a',
+						'unit'     => 'px',
+					)
+				)
+			),
+			'compiler'      => true
+		),
+		array(
+			'id'            => 'nav_letter-spacing',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'Letter Spacing', 'rosa_txtd' ),
+			'validate'      => 'numeric',
+			'default'       => '1',
+			'min'           => - 5,
+			'step'          => 1,
+			'max'           => 20,
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'letter-spacing' => array(
+						'selector' => '.navigation a',
+						'unit'     => 'px',
+					)
+				)
+			),
+			'compiler'      => true
+		),
+		array(
+			'id'            => 'nav_text-transform',
+			'type'          => 'select',
+			'title'         => __( 'Text Transform', 'rosa_txtd' ),
+			'options'       => array(
+				'none'       => 'None',
+				'capitalize' => 'Capitalize',
+				'uppercase'  => 'Uppercase',
+				'lowercase'  => 'Lowercase',
+			),
+			'default'       => 'uppercase',
+			'select2'       => array( // here you can provide params for the select2 jquery call
+				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
+				'allowClear'              => false // don't allow a empty select
+			),
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'text-transform' => array(
+						'selector' => '.nav--main > .menu-item > a',
+					)
+				)
+			),
+			'compiler'      => true
+		),
+		array(
+			'id'            => 'nav_text-decoration',
+			'type'          => 'select',
+			'title'         => __( 'Text Decoration', 'rosa_txtd' ),
+			'options'       => array(
+				'none'      => 'None',
+				'underline' => 'Underline',
+				'overline'  => 'Overline',
+			),
+			'default'       => 'none',
+			'select2'       => array( // here you can provide params for the select2 jquery call
+				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
+				'allowClear'              => true // don't allow a empty select
+			),
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'text-decoration' => array(
+						'selector' => '.nav--main > .menu-item > a',
+					)
+				)
+			),
+			'compiler'      => true
+		),
+		// Body Font
+		array(
+			'id'             => 'google_body_font',
+			'type'           => 'customizer_typography',
+			'color'          => false,
+			'font-size'      => false,
+			'font-style'     => false,
+			'font-weight'    => false,
+			'line-height'    => false,
+			'text-transform' => false,
+			'letter-spacing' => false,
+			'text-align'     => false,
+			'all-styles'     => true,
+			'preview'        => false,
+			'required'       => array( 'use_google_fonts', '=', 1 ),
+			'title'          => __( '<button></button> Body', 'rosa_txtd' ),
+			'subtitle'       => __( 'Font for content and widget text.', 'rosa_txtd' ),
+			'compiler'       => true,
+			'customizer'     => array(
+				'transport' => 'refresh',
+			),
+			'default'        => array(
+				'font-family' => 'Cabin',
+				'google'      => true,
+			),
+			//			'output'         => array( 'body' ),
+		),
+		array(
+			'id'            => 'body-font-size',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'Font Size', 'rosa_txtd' ),
+			'validate'      => 'numeric',
+			'default'       => '16',
+			'min'           => 8,
+			'step'          => 1,
+			'max'           => 72,
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'font-size' => array(
+						'selector' => 'body',
+						'unit'     => 'px',
+					)
+				)
+			),
+			'compiler'      => true
+		),
+		array(
+			'id'            => 'body-line-height',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'Line Height', 'rosa_txtd' ),
+			'validate'      => 'numeric',
+			'default'       => '1.7',
+			'min'           => 0,
+			'max'           => 3,
+			'step'          => .1,
+			'resolution'    => 0.1,
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'line-height' => array(
+						'selector' => 'body',
+						'unit'     => '',
+					)
+				)
+			),
+			'compiler'      => true
+		),
+	)
+);
+
+// Sizes and Spacing
+// ------------------------------------------------------------------------
+$sections_panel = '';
+if ( ! $is_wp43 ) {
+	$sections_panel = 'size-and-pacing';
+}
+$sections[] = array(
+	'icon'            => "icon-params",
+	'icon_class'      => '',
+	'class'           => 'has-customizer customizer-only',
+	'title'           => __( 'Sizes and Spacing', 'rosa_txtd' ),
+	'type'            => 'customizer_section',
+	'in_panel'        => $sections_panel,
+	'priority'        => 8,
+	'fields'          => array(
+		array(
+			'id'         => 'sizes_content',
+			'title'      => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Content', 'rosa_txtd' ) . '</span></label>',
+			'type'       => 'customizer_info',
+			'customizer' => array()
+		),
+		array(
+			'id'            => 'content_width',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'Site Container Width', 'rosa_txtd' ),
+			'subtitle'      => __( 'Set the width of the container.', 'rosa_txtd' ),
+			'validate'      => 'numeric',
+			'default'       => '1250',
+			'min'           => 600,
+			'step'          => 1,
+			'max'           => 2700,
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'max-width' => array(
+						'selector' => '.container, .search__container, .site-header__container, .header--sticky .site-header__container',
+						'unit'     => 'px',
+					)
+				)
+			),
+			'compiler'      => true
+		),
+		array(
+			'id'            => 'sections_vertical_margins',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'Sections Vertical Margins', 'rosa_txtd' ),
+			'validate'      => 'numeric',
+			'default'       => '78',
+			'min'           => 0,
+			'step'          => 6,
+			'max'           => 120,
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'padding-top'    => array(
+						'selector' => '.page .type-page .article__content',
+						'unit'     => 'px',
+						'media'    => 'only screen and (min-width: 900px)',
+					),
+					'padding-bottom' => array(
+						'selector' => '.page .type-page .article__content',
+						'unit'     => 'px',
+						'media'    => 'only screen and (min-width: 900px)',
+					)
+				)
+			),
+			'compiler'      => true
+		),
+		array(
+			'id'            => 'sidebar_width',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'Sidebar Width', 'rosa_txtd' ),
+			'subtitle'      => __( 'Set the width of the sidebar.', 'rosa_txtd' ),
+			'validate'      => 'numeric',
+			'default'       => '300',
+			'min'           => 140,
+			'step'          => 10,
+			'max'           => 500,
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'width'        => array(
+						'selector' => '.sidebar--main',
+						'unit'     => 'px',
+						'media'    => 'only screen and (min-width: 900px)'
+					),
+					'right'        => array(
+						'selector' => '.page-content.has-sidebar:after',
+						'unit'     => 'px',
+						'media'    => 'only screen and (min-width: 900px)',
+					),
+					'margin-right' => array(
+						'selector'          => '.page-content.has-sidebar .page-content__wrapper',
+						'negative_selector' => '.page-content.has-sidebar',
+						'unit'              => 'px',
+						'media'             => 'only screen and (min-width: 900px)'
+					),
+
+				)
+			),
+			'compiler'      => true
+		),
+		array(
+			'id'         => 'sizes_header',
+			'title'      => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Header', 'rosa_txtd' ) . '</span></label>',
+			'type'       => 'customizer_info',
+			'customizer' => array()
+		),
+		array(
+			'id'            => 'header_logo_height',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'Logo Height', 'rosa_txtd' ),
+			'validate'      => 'numeric',
+			'default'       => '90',
+			'min'           => 25,
+			'step'          => 1,
+			'max'           => 125,
+			'display_value' => 'text',
+			'class'         => 'small-text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'max-height' => array(
+						'selector' => '.site-title--image img',
+						'unit'     => 'px',
+					)
+				)
+			),
+			'compiler'      => true
+		),
+		array(
+			'id'            => 'header_vertical_margins',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'Header Vertical Margins', 'rosa_txtd' ),
+			'validate'      => 'numeric',
+			'default'       => '0',
+			'min'           => 0,
+			'step'          => 1,
+			'max'           => 100,
+			'display_value' => 'text',
+			'class'         => 'small-text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'padding-top'    => array(
+						'selector' => '.site-header',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					),
+					'padding-bottom' => array(
+						'selector' => '.site-header',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					),
+
+					//Blog Archive
+					'margin-top' => array(
+						'selector' => '#page',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					),
+					'top' => array(
+						'selector' => '#page',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					)
+				)
+			),
+			'compiler'      => true
+		),
+		array(
+			'id'         => 'sizes_nav',
+			'title'      => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Navigation', 'rosa_txtd' ) . '</span></label>',
+			'type'       => 'customizer_info',
+			'customizer' => array()
+		),
+		array(
+			'id'            => 'navigation_menu_items_spacing',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'Menu Items Spacing', 'rosa_txtd' ),
+			'validate'      => 'numeric',
+			'default'       => 24,
+			'min'           => 12,
+			'step'          => 1,
+			'max'           => 75,
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'padding-left'  => array(
+						'selector' => '.nav--main > .menu-item > a',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					),
+					'padding-right' => array(
+						'selector' => '.nav--main > .menu-item > a',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					)
+				)
+			),
+			'compiler'      => true
+		),
+	)
+);
+
+// Other Options
+// ------------------------------------------------------------------------
+$sections_panel = '';
+if ( ! $is_wp43 ) {
+	$sections_panel = 'general-options';
+}
+$sections[] = array(
+	'icon'            => "icon-params",
+	'icon_class'      => '',
+	'class'           => 'has-customizer customizer-only',
+	'title'           => __( 'General Options', 'rosa_txtd' ),
+	'type'            => 'customizer_section',
+	'in_panel'        => $sections_panel,
+	'priority'        => 9,
+	'fields'          => array(
+		array(
+			'id'              => 'options_elements',
+			'title'           => '<label><span class="customize-control-title sizes_section"><button></button>' . __( 'Elements', 'rosa_txtd' ) . '</span></label>',
+			'type'            => 'customizer_info',
+			//			'customizer_only' => true,
+			'customizer'      => array()
+		),
+		array(
+			'id'            => 'border_width',
+			'type'          => 'customizer_slider',
+			'title'         => __( 'Border Width', 'rosa_txtd' ),
+			'validate'      => 'numeric',
+			'default'       => 0,
+			'min'           => 0,
+			'step'          => 6,
+			'max'           => 72,
+			'display_value' => 'text',
+			'customizer'    => array(
+				'transport' => 'postMessage',
+				'css_rules' => array(
+					'border-width'     => array(
+						'selector' => 'body',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					),
+					'border-top-width' => array(
+						'selector' => '.site-header',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					),
+					'border-left-width' => array(
+						'selector' => '.site-header',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					),
+					'border-right-width' => array(
+						'selector' => '.site-header',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					),
+					'border-bottom-width' => array(
+						'selector' => '.site-footer',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					),
+					'margin-right' => array (
+						'selector' => '.navigator, .covers',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					),
+					'margin-left' => array (
+						'selector' => '.covers',
+						'unit'     => 'px',
+						'media'    => 'screen and (min-width: 900px)'
+					)
+				)
+			),
+			'compiler'      => true
+		),
+		array(
+			'id'         => 'down_arrow_style',
+			'type'       => 'select',
+			'title'      => __( 'Scroll Down Arrow Style', 'rosa_txtd' ),
+			'options'    => array(
+				'transparent' => 'Transparent',
+				'bubble'      => 'Bubble',
+			),
+			'default'    => 'transparent',
+			'select2'    => array( // here you can provide params for the select2 jquery call
+				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
+				'allowClear'              => false // don't allow a empty select
+			),
+			'customizer' => array()
+		),
+		array(
+			'id'          => 'slideshow_arrows_style',
+			'type'        => 'select',
+			'title'       => __( 'Slideshow Arrows Style', 'rosa_txtd' ),
+			'subtitle'    => __( 'Select which type of arrows you want on page headers.', 'rosa_txtd' ),
+			'options'     => array(
+				'static' => 'Always Show',
+				'hover'  => 'On Hover'
+			),
+			'default'     => 'static',
+			'select2'    => array( // here you can provide params for the select2 jquery call
+				'minimumResultsForSearch' => - 1, // this way the search box will be disabled
+				'allowClear'              => false // don't allow a empty select
+			),
+			'customizer' => array()
+		),
+		array(
+			'id'         => 'customizer_reset_button_section',
+			'title'      => '<a class="btn" id="reset-style-defaults" href="#" data-ajax_nonce="' . wp_create_nonce( "reset-style-section" ) . '">' . __( 'Reset to Defaults', 'rosa_txtd' ) . '</a>',
+			'type'       => 'customizer_info',
+			'customizer' => array()
+		),
+	)
+);
 
 // Reset Button
 // ------------------------------------------------------------------------
