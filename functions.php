@@ -737,27 +737,28 @@ function rosa_range_negative_value( $value, $selector, $property, $unit ) {
 	return $output;
 }
 
+/**
+ * With the new wp 43 version we've made some big changes in customizer, so we really need a first time save
+ * for the old options to work in the new customizer
+ */
+function convert_rosa_for_wp_43_once (){
 
+	if ( ! is_admin() || ! function_exists( 'is_plugin_active' ) || ! is_plugin_active('customify/customify.php') ) {
+		return;
+	}
 
-function aftehr_my_theme (){
-	global $pagenow;
-	// this handles redirect on activating the theme (can be amended for plugin of course)
-
-	$ceva = wpgrade::option('converted_to_43');
-
-	var_dump($ceva);
+	$is_not_old = wpgrade::option('converted_to_43');
 
 	$this_wp_version = get_bloginfo('version');
 	$this_wp_version = explode( '.', $this_wp_version );
 	$is_wp43 = false;
-	if ( (int) $this_wp_version[0] >= 4 && (int) $this_wp_version[1] >= 3 ) {
+	if ( ! $is_not_old && (int) $this_wp_version[0] >= 4 && (int) $this_wp_version[1] >= 3 ) {
 		$is_wp43 = true;
-	}
-
-	if (is_admin() ) {
-		header( 'Location: '.admin_url().'customize.php');
+		wpgrade::setoption('converted_to_43', true);
+		header( 'Location: '.admin_url().'customize.php?save_customizer_once=true');
+		die();
 	}
 }
 
-//add_action('admin_init', 'aftehr_my_theme');
+add_action('admin_init', 'convert_rosa_for_wp_43_once');
 
