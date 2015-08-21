@@ -159,9 +159,14 @@
                 // Pass parent pointer to function helper.
                 Redux_Functions::$_parent = $this;
 
+
                 // Set values
                 $this->set_default_args();
                 $this->args = wp_parse_args( $args, $this->args );
+
+                if ( isset( $this->args['opt_name'] ) && ! empty(  $this->args['opt_name'] ) ) {
+                    add_filter( 'redux/extension/' . $this->args['opt_name'] . '/customizer', array( $this, 'maybe_add_customizer_style' ) );
+                }
 
                 if ( empty( $this->args['transient_time'] ) ) {
                     $this->args['transient_time'] = 60 * MINUTE_IN_SECONDS;
@@ -259,7 +264,7 @@
                     $this->set_redux_content();
 
                     // Set the default values
-                    $this->_default_cleanup();
+//                    $this->_default_cleanup();
 
                     // Internataionalization
                     $this->_internationalization();
@@ -392,6 +397,7 @@
                     'database'           => '',
                     // possible: options, theme_mods, theme_mods_expanded, transient, network
                     'customizer'         => false,
+                    'customizer_style'   => false,
                     // setting to true forces get_theme_mod_expanded
                     'global_variable'    => '',
                     // Changes global variable from $GLOBALS['YOUR_OPT_NAME'] to whatever you set here. false disables the global variable
@@ -534,6 +540,13 @@
                 //self::$_instance = $this;
                 return self::$instance;
             } // get_instance()
+
+            function maybe_add_customizer_style( $path ) {
+                if ( ! $this->args['customizer_style'] ) {
+                    return false;
+                }
+                return $path;
+            }
 
             private function _tracking() {
                 include_once( dirname( __FILE__ ) . '/inc/tracking.php' );
@@ -1054,13 +1067,13 @@
              * @access      public
              * @return      void
              */
-            private function _default_cleanup() {
-
-                // Fix the global variable name
-                if ( $this->args['global_variable'] == "" && $this->args['global_variable'] !== false ) {
-                    $this->args['global_variable'] = str_replace( '-', '_', $this->args['opt_name'] );
-                }
-            }
+//            private function _default_cleanup() {
+//
+//                // Fix the global variable name
+//                if ( $this->args['global_variable'] == "" && $this->args['global_variable'] !== false ) {
+//                    $this->args['global_variable'] = str_replace( '-', '_', $this->args['opt_name'] );
+//                }
+//            }
 
             /**
              * Class Add Sub Menu Function, creates options submenu in Wordpress admin area.
@@ -1375,6 +1388,10 @@
                     return;
                 }
 
+
+                /**
+                 * Not needed since wp 43, this is in customify now
+                 *
                 if ( ! empty( $this->typography ) && ! empty( $this->typography ) && filter_var( $this->args['output'], FILTER_VALIDATE_BOOLEAN ) ) {
                     $version    = ! empty( $this->transients['last_save'] ) ? $this->transients['last_save'] : '';
                     $typography = new ReduxFramework_customizer_typography( null, null, $this );
@@ -1387,7 +1404,7 @@
 
                         ?>
                         <script>
-                            /* You can add more configuration options to webfontloader by previously defining the WebFontConfig with your options */
+                            /* You can add more configuration options to webfontloader by previously defining the WebFontConfig with your options
                             if ( typeof WebFontConfig === "undefined" ) {
                                 WebFontConfig = new Object();
                             }
@@ -1410,8 +1427,7 @@
                         wp_register_style( 'redux-google-fonts', $protocol . $typography->makeGoogleWebfontLink( $this->typography ), '', $version );
                         wp_enqueue_style( 'redux-google-fonts' );
                     }
-                }
-
+                } */
             } // _enqueue_output()
 
             /**

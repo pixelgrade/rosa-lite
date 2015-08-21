@@ -34,6 +34,7 @@ return array(
 	'include-files'                => array(
 		// main theme class
 		'inc/required-plugins/required-plugins.php',
+		'config/customify.php',
 	),
 	// the path where overwrites on the core partials are stored, any files
 	// placed in the partial overwrites will be loaded instead of the core
@@ -174,7 +175,6 @@ return array(
 		// calls function to perform extra enqueue's on theme setup
 		// handlers should be placed in theme's functions.php
 		'script-enqueue-handlers' => array(
-			'google-web-fonts'=> 'wpgrade_callback_enqueue_google_fonts_rosa',
 			'thread-comments' => 'wpgrade_callback_thread_comments_scripts',
 			'addthis'         => 'wpgrade_callback_addthis',
 		),

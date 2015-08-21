@@ -28,6 +28,11 @@ function wpgrade_register_required_plugins() {
 			'required'           => true,
 		),
 		array(
+			'name'               => 'Customify',
+			'slug'               => 'customify',
+			'required'           => true,
+		),
+		array(
 			'name'               => 'PixLikes',
 			'slug'               => 'pixlikes',
 			'source'             => get_template_directory() . '/inc/required-plugins/plugins/pixlikes.zip',

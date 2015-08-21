@@ -145,12 +145,14 @@ class wpgrade {
 	 */
 	static function option( $option, $default = null ) {
 		global $pagenow;
+		global $pixcustomify_plugin;
 
 		// if there is set an key in url force that value
 		if ( isset( $_GET[ $option ] ) && ! empty( $option ) ) {
-
 			return $_GET[ $option ];
-
+		} elseif ( $pixcustomify_plugin !== null && $pixcustomify_plugin->has_option( $option ) ) {
+			// if this is a customify value get it here
+			return $pixcustomify_plugin->get_option( $option, $default );
 		} elseif ( isset( $_POST['customized'] ) && self::customizer_option_exists( $option ) ) {
 			// so we are on the customizer page
 			// overwrite every option if we have one

@@ -139,7 +139,7 @@ if ( ! class_exists( 'ReduxFramework_customizer_typography' ) ) {
 				'color'             => '',
 				'font-size'         => '',
 			);
-			$this->value = wp_parse_args($this->value, $defaults);
+//			$this->value = wp_parse_args($this->value, $defaults);
 
 			// Get the google array
 			$this->getGoogleArray();
@@ -173,6 +173,12 @@ if ( ! class_exists( 'ReduxFramework_customizer_typography' ) ) {
 		 * @since ReduxFramework 1.0.0
 		 */
 		function render() {
+
+			if ( isset( $this->value ) ) {
+				echo '<input type="hiddeen" name="' . $this->field['name'] . '" id="' . $this->field['name'] . '" value=\'' . $this->value . '\'/>';
+			}
+			return;
+
 			// Since fonts declared is CSS (@font-face) are not rendered in the preview,
 			// they can be declared in a CSS file and passed here so they DO display in
 			// font preview.  Do NOT pass style.css in your theme, as that will mess up

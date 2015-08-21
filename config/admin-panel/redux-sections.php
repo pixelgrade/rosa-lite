@@ -95,6 +95,7 @@ $sections[] = array(
 
 // ------------------------------------------------------------------------
 // CUSTOMIZER
+// This is a customizer section now, but keep this for legacy
 // ------------------------------------------------------------------------
 
 // Legacy: for older wp versions keep the panels
@@ -303,7 +304,6 @@ $sections[] = array(
 	'class'           => 'has-customizer customizer-only',
 	'title'           => __( 'Backgrounds', 'rosa_txtd' ),
 	'type'            => 'customizer_section',
-	'in_panel'        => $sections_panel,
 	'priority'        => 6,
 	'fields'          => array(
 		array(
@@ -472,7 +472,7 @@ $sections[] = array(
 			'required'       => array( 'use_google_fonts', '=', 1 ),
 			'title'          => __( '<button></button> Headings', 'rosa_txtd' ),
 			'subtitle'       => __( 'Font for titles and headings.', 'rosa_txtd' ),
-			'compiler'       => true,
+			'compiler'       => false,
 			'customizer'     => array(
 				'transport' => 'refresh',
 			),
@@ -497,7 +497,7 @@ $sections[] = array(
 			'required'       => array( 'use_google_fonts', '=', 1 ),
 			'title'          => __( '<button></button> Sub Headings', 'rosa_txtd' ),
 			'subtitle'       => __( 'Font for titles and headings.', 'rosa_txtd' ),
-			'compiler'       => true,
+			'compiler'       => false,
 			'customizer'     => array(
 				'transport' => 'refresh',
 			),
@@ -563,7 +563,7 @@ $sections[] = array(
 			'required'       => array( 'use_google_fonts', '=', 1 ),
 			'title'          => __( '<button></button> Navigation', 'rosa_txtd' ),
 			'subtitle'       => __( 'Font for the navigation menu.', 'rosa_txtd' ),
-			'compiler'       => true,
+			'compiler'       => false,
 			'customizer'     => array(
 				'transport' => 'refresh',
 			),
@@ -684,7 +684,7 @@ $sections[] = array(
 			'required'       => array( 'use_google_fonts', '=', 1 ),
 			'title'          => __( '<button></button> Body', 'rosa_txtd' ),
 			'subtitle'       => __( 'Font for content and widget text.', 'rosa_txtd' ),
-			'compiler'       => true,
+			'compiler'       => false,
 			'customizer'     => array(
 				'transport' => 'refresh',
 			),

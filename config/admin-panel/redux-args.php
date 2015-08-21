@@ -184,11 +184,14 @@ return array(
 			),
 		),
 	),
+	'customizer_style' => false,
+	'customizer' => false,
 	'remove_customizer_sections' => array(
 		 // 'blogdescription',
 		 // 'static_front_page',
 		 // 'title_tagline',
 		 // 'nav'
-	)
+	),
+//	'save_defaults' => false
 
 ); # config
