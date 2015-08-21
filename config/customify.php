@@ -8,38 +8,21 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 		$config['opt-name'] = 'rosa_options';
 
 		$config['sections'] = array(
-
-//			'others_section' => array(
-//				'title'    => __( 'General Options', 'customify_txtd' ),
-//				'options' => array(
-//
-//				)
-//			)
-		);
-
-		$config['panels'] = array(
-
-			'style_panel' => array(
-				'title'    => __( 'Style', 'customify_txtd' ),
-				'sections' => array(
-					/**
-					 * COLORS - This section will handle different elements colors (eg. links, headings)
-					 */
-					'colors_section' => array(
-						'title'    => __( 'Colors', 'customify_txtd' ),
-						'priority' => 1,
-						'description'            => __( 'Using the color pickers you can change the colors of the most important elements. If you want to override the color of some elements you can always use Custom CSS code in Theme Options - Custom Code.', 'rosa_txtd' ),
-						'options' => array(
-							'main_color'   => array(
-								'type'      => 'color',
-								'label'     => __( 'Accent Color', 'rosa_txtd' ),
-								//'desc'   => __( 'Use the color picker to change the main color of the site to match your brand color.', 'rosa_txtd' ),
-								'live' => true,
-								'default'   => '#c59d5f',
-								'css'  => array(
-									array(
-										'property'     => 'color',
-										'selector' => 'a, a:hover, .nav--main a:hover, .headline__secondary, .separator--line-flower,
+			'colors_section' => array(
+				'title'    => __( 'Colors', 'customify_txtd' ),
+				'priority' => 1,
+				'description'            => __( 'Using the color pickers you can change the colors of the most important elements. If you want to override the color of some elements you can always use Custom CSS code in Theme Options - Custom Code.', 'rosa_txtd' ),
+				'options' => array(
+					'main_color'   => array(
+						'type'      => 'color',
+						'label'     => __( 'Accent Color', 'rosa_txtd' ),
+						//'desc'   => __( 'Use the color picker to change the main color of the site to match your brand color.', 'rosa_txtd' ),
+						'live' => true,
+						'default'   => '#c59d5f',
+						'css'  => array(
+							array(
+								'property'     => 'color',
+								'selector' => 'a, a:hover, .nav--main a:hover, .headline__secondary, .separator--line-flower,
 										.tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment,
 										.comments_add-comment.read-more-button, .form-submit .btn--text#comment-submit,
 										.form-submit #comment-submit.read-more-button, .btn--text.wpcf7-form-control.wpcf7-submit,
@@ -54,90 +37,89 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 										body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart,
 										body.woocommerce ul.products li.product a.added_to_cart, body.woocommerce ul.products li.product .price ins,
 										.single-product .entry-summary .price span, body.woocommerce .star-rating span:before, .comment-reply-link',
-									),
-									array(
-										'property'     => 'background-color',
-										'selector' => '.btn--primary, .shop-menu-item .shop-items-number, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover,
+							),
+							array(
+								'property'     => 'background-color',
+								'selector' => '.btn--primary, .shop-menu-item .shop-items-number, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover,
 									.pagination li a:hover, form.shipping_calculator button.button:hover, .otreservations-submit:hover, .pixcode--icon.square:hover, .pixcode--icon.circle:hover,
 									.sidebar--footer__accent, .copyright-area.copyright-area__accent, .menu-list__item-highlight-title'
-									),
-									array(
-										'property'     => 'background',
-										'selector' => 'body.woocommerce button.button.alt:hover, body.woocommerce-page #respond input#submit:hover,
+							),
+							array(
+								'property'     => 'background',
+								'selector' => 'body.woocommerce button.button.alt:hover, body.woocommerce-page #respond input#submit:hover,
 									body.woocommerce div.woocommerce-message .button:hover, td.actions input.button:hover, body.woocommerce-page input.button:hover,
 									body.woocommerce-page input.button.alt:hover, a:hover > .pixcode--icon.circle, a:hover > .pixcode--icon.square'
-									),
-									array(
-										'property'     => 'border-color',
-										'selector' => '.tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button,
+							),
+							array(
+								'property'     => 'border-color',
+								'selector' => '.tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button,
 									.form-submit .btn--text#comment-submit, .form-submit #comment-submit.read-more-button,
 									.btn--text.wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit.read-more-button,
 									.btn--text.otreservations-submit, .otreservations-submit, .read-more-button,
 									.widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button, blockquote, .article__content a:not([class]), .shop-categories a.active,
 									body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart, .menu-list__item-highlight-wrapper:before'
-									),
-									array(
-										'property'     => 'outline-color',
-										'selector' => 'select:focus, textarea:focus, input[type="text"]:focus,
+							),
+							array(
+								'property'     => 'outline-color',
+								'selector' => 'select:focus, textarea:focus, input[type="text"]:focus,
 									input[type="password"]:focus, input[type="datetime"]:focus,
 									input[type="datetime-local"]:focus, input[type="date"]:focus,
 									input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus,
 									input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus,
 									input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .form-control:focus'
-									),
-									array(
-										'property'     => 'fill',
-										'selector' => '.copyright-area.copyright-area__accent svg path'
-									)
-								)
 							),
-							'text_color' => array(
-								'type'      => 'color',
-								'label'     => __( 'Text Color', 'customify_txtd' ),
-								'live' => true,
-								'default'   => '#515150',
-								'css'  => array(
-									array(
-										'property'     => 'color',
-										'selector' => 'body, .up-link'
-									),
-									array(
-										'property'     => 'border-color',
-										'selector' => '.up-link:before'
-									)
-								)
-							),
-							'headings_color'     => array(
-								'type'      => 'color',
-								'label'     => __( 'Headings Color', 'customify_txtd' ),
-								'live' => true,
-								'default'   => '#262526',
-								'css'  => array(
-									array(
-										'property'     => 'color',
-										'selector' => 'h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, .article-archive .article__title a, .article-archive .article__title a:hover',
-									)
-								)
-							),
-							'cover_text'     => array(
-								'type'      => 'color',
-								'label'     => __( 'Cover Color', 'customify_txtd' ),
-								'live' => true,
-								'default'   => '#ffffff',
-								'css'  => array(
-									array(
-										'property'     => 'color',
-										'selector' => '.article__header .article__headline .headline__primary,
-									.article__header .article__headline .headline__description *',
-									)
-								)
+							array(
+								'property'     => 'fill',
+								'selector' => '.copyright-area.copyright-area__accent svg path'
 							)
 						)
 					),
-
-
+					'text_color' => array(
+						'type'      => 'color',
+						'label'     => __( 'Text Color', 'customify_txtd' ),
+						'live' => true,
+						'default'   => '#515150',
+						'css'  => array(
+							array(
+								'property'     => 'color',
+								'selector' => 'body, .up-link'
+							),
+							array(
+								'property'     => 'border-color',
+								'selector' => '.up-link:before'
+							)
+						)
+					),
+					'headings_color'     => array(
+						'type'      => 'color',
+						'label'     => __( 'Headings Color', 'customify_txtd' ),
+						'live' => true,
+						'default'   => '#262526',
+						'css'  => array(
+							array(
+								'property'     => 'color',
+								'selector' => 'h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, .article-archive .article__title a, .article-archive .article__title a:hover',
+							)
+						)
+					),
+					'cover_text'     => array(
+						'type'      => 'color',
+						'label'     => __( 'Cover Color', 'customify_txtd' ),
+						'live' => true,
+						'default'   => '#ffffff',
+						'css'  => array(
+							array(
+								'property'     => 'color',
+								'selector' => '.article__header .article__headline .headline__primary,
+									.article__header .article__headline .headline__description *',
+							)
+						)
+					)
 				)
 			),
+		);
+
+		$config['panels'] = array(
 
 			/**
 			 * BACKGROUNDS - This section will handle different elements backgrounds
@@ -705,27 +687,6 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 					),
 				)
 			),
-
-//			'sizes_panel' => array(
-//				'title'    => __( 'Sizes and Spacing', 'customify_txtd' ),
-//				'sections' => array(
-//
-//					'header_sizes_section' => array(
-//						'title'    => __( 'Header', 'customify_txtd' ),
-//						'options' => array(
-//
-//						)
-//					),
-//
-//					'content_sizes_section' => array(
-//						'title'    => __( 'Content', 'customify_txtd' ),
-//						'options' => array(
-//
-//
-//						)
-//					),
-//				)
-//			)
 		);
 
 		return $config;
