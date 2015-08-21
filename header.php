@@ -194,5 +194,3 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 	<!-- .site-header -->
 
 <?php
-
-//var_dump( wpgrade::option( 'header_image_pattern' ) );

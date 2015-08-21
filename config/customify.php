@@ -242,7 +242,7 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 								'type'     => 'typography',
 								'label'    => '',//__( '', 'customify_txtd' ),
 								'desc'       => __( 'Font for titles and headings.', 'rosa_txtd' ),
-								'default'  => 'Source Sans Pro',
+//								'default'  => 'Source Sans Pro',
 								'recommended' => array(
 									'Source Sans Pro',
 									'Herr Von Muellerhoff',
@@ -256,7 +256,7 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 								'type'    => 'typography',
 								'label'   => __( 'Sub Headings', 'customify_txtd' ),
 								'desc'       => __( 'Font for titles and headings.', 'rosa_txtd' ),
-								'default' => 'Herr Von Muellerhoff',
+//								'default' => 'Herr Von Muellerhoff',
 								'recommended' => array(
 									'Herr Von Muellerhoff',
 									'Source Sans Pro',
@@ -312,7 +312,7 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 								'type'    => 'typography',
 								'label'   => __( 'Navigation', 'customify_txtd' ),
 								'desc'       => __( 'Font for the navigation menu.', 'rosa_txtd' ),
-								'default' => 'Cabin',
+//								'default' => 'Cabin',
 								'recommended' => array(
 									'Cabin',
 									'Source Sans Pro',
@@ -386,7 +386,7 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 								'default'       => 'none',
 								'css' => array(
 									array(
-										'property' => 'text-transform',
+										'property' => 'text-decoration',
 										'selector' => '.nav--main > .menu-item > a',
 									)
 								)
@@ -401,7 +401,7 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 								'type'    => 'typography',
 								'label'   => __( 'Body', 'customify_txtd' ),
 								'desc'       => __( 'Font for content and widget text.', 'rosa_txtd' ),
-								'default' => 'Cabin',
+//								'default' => 'Cabin',
 								'recommended' => array(
 									'Cabin',
 									'Source Sans Pro',

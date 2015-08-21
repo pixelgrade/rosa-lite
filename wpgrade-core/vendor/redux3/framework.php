@@ -264,7 +264,7 @@
                     $this->set_redux_content();
 
                     // Set the default values
-                    $this->_default_cleanup();
+//                    $this->_default_cleanup();
 
                     // Internataionalization
                     $this->_internationalization();
@@ -1067,13 +1067,13 @@
              * @access      public
              * @return      void
              */
-            private function _default_cleanup() {
-
-                // Fix the global variable name
-                if ( $this->args['global_variable'] == "" && $this->args['global_variable'] !== false ) {
-                    $this->args['global_variable'] = str_replace( '-', '_', $this->args['opt_name'] );
-                }
-            }
+//            private function _default_cleanup() {
+//
+//                // Fix the global variable name
+//                if ( $this->args['global_variable'] == "" && $this->args['global_variable'] !== false ) {
+//                    $this->args['global_variable'] = str_replace( '-', '_', $this->args['opt_name'] );
+//                }
+//            }
 
             /**
              * Class Add Sub Menu Function, creates options submenu in Wordpress admin area.
@@ -1388,6 +1388,10 @@
                     return;
                 }
 
+
+                /**
+                 * Not needed since wp 43, this is in customify now
+                 *
                 if ( ! empty( $this->typography ) && ! empty( $this->typography ) && filter_var( $this->args['output'], FILTER_VALIDATE_BOOLEAN ) ) {
                     $version    = ! empty( $this->transients['last_save'] ) ? $this->transients['last_save'] : '';
                     $typography = new ReduxFramework_customizer_typography( null, null, $this );
@@ -1400,7 +1404,7 @@
 
                         ?>
                         <script>
-                            /* You can add more configuration options to webfontloader by previously defining the WebFontConfig with your options */
+                            /* You can add more configuration options to webfontloader by previously defining the WebFontConfig with your options
                             if ( typeof WebFontConfig === "undefined" ) {
                                 WebFontConfig = new Object();
                             }
@@ -1423,8 +1427,7 @@
                         wp_register_style( 'redux-google-fonts', $protocol . $typography->makeGoogleWebfontLink( $this->typography ), '', $version );
                         wp_enqueue_style( 'redux-google-fonts' );
                     }
-                }
-
+                } */
             } // _enqueue_output()
 
             /**
