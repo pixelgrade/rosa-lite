@@ -134,7 +134,7 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 			 * BACKGROUNDS - This section will handle different elements backgrounds
 			 */
 			'layouts_panel' => array(
-				'title'    => __( 'Layouts', 'customify_txtd' ),
+				'title'    => __( 'Layout Elements', 'customify_txtd' ),
 				'sections' => array(
 					'header_layouts_section' => array(
 						'title'    => __( 'Header', 'customify_txtd' ),
