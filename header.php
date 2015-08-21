@@ -192,5 +192,3 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 		<!-- .container -->
 	</div>
 	<!-- .site-header -->
-
-<?php

@@ -120,42 +120,23 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 					)
 				)
 			),
-
-			'others_section' => array(
-				'title'    => __( 'General Options', 'customify_txtd' ),
-				'options' => array(
-					'down_arrow_style' => array(
-						'type'          => 'select',
-						'label'         => __( 'Scroll Down Arrow Style', 'rosa_txtd' ),
-						'choices'       => array(
-							'transparent' => 'Transparent',
-							'bubble'      => 'Bubble',
-						),
-						'default'       => 'transparent',
-					),
-
-					'slideshow_arrows_style' => array(
-						'type'          => 'select',
-						'label'         => __( 'Slideshow Arrows Style', 'rosa_txtd' ),
-						'desc'    => __( 'Select which type of arrows you want on page headers.', 'rosa_txtd' ),
-						'choices'       => array(
-							'static' => 'Always Show',
-							'hover'  => 'On Hover'
-						),
-						'default'       => 'static',
-					),
-				)
-			)
+//
+//			'others_section' => array(
+//				'title'    => __( 'General Options', 'customify_txtd' ),
+//				'options' => array(
+//
+//				)
+//			)
 		);
 
 		$config['panels'] = array(
 			/**
 			 * BACKGROUNDS - This section will handle different elements backgrounds
 			 */
-			'background_panel' => array(
-				'title'    => __( 'Backgrounds', 'customify_txtd' ),
+			'layouts_panel' => array(
+				'title'    => __( 'Layouts', 'customify_txtd' ),
 				'sections' => array(
-					'header_backgrounds_section' => array(
+					'header_layouts_section' => array(
 						'title'    => __( 'Header', 'customify_txtd' ),
 						'options' => array(
 							'header_background_color'   => array(
@@ -175,11 +156,160 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 								'label'     => __( 'Header Background', 'customify_txtd' ),
 								'desc'         => __( 'Container background with image.', 'rosa_txtd' ),
 							),
+
+
+							'header_logo_height' => array(
+								'type' => 'range',
+								'label'         => __( 'Logo Height', 'rosa_txtd' ),
+								'default'       => 90,
+								'live' => true,
+								'input_attrs' => array(
+									'min'   => 25,
+									'max'   => 125,
+									'step'  => 1,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'max-height',
+										'selector' => '.site-title--image img',
+										'unit' => 'px'
+									),
+								)
+							),
+
+							'header_vertical_margins' => array(
+								'type' => 'range',
+								'label'         => __( 'Header Vertical Margins', 'rosa_txtd' ),
+								'default'       => 0,
+								'live' => true,
+								'input_attrs' => array(
+									'min'   => 0,
+									'max'   => 100,
+									'step'  => 1,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'padding-top',
+										'selector' => '.site-header',
+										'unit' => 'px',
+										'media'    => ' screen and (min-width: 900px)'
+									),
+									array(
+										'property' => 'padding-bottom',
+										'selector' => '.site-header',
+										'unit' => 'px',
+										'media'    => 'screen and (min-width: 900px) '
+									),
+
+									array(
+										'property' => 'margin-top',
+										'selector' => '#page',
+										'unit' => 'px',
+										'media'    => ' screen and (min-width: 900px) '
+									),
+
+									array(
+										'property' => 'top',
+										'selector' => '#page',
+										'unit' => 'px',
+										'media'    => ' screen and (min-width : 900px)'
+									),
+								)
+							),
+
+							'navigation_menu_items_spacing' => array(
+								'type' => 'range',
+								'label'         => __( 'Menu Items Spacing', 'rosa_txtd' ),
+								'default'       => 24,
+								'live' => true,
+								'input_attrs' => array(
+									'min'   => 12,
+									'max'   => 75,
+									'step'  => 1,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'padding-left',
+										'selector' => '.nav--main > .menu-item > a',
+										'unit' => 'px',
+										'media'    => ' screen and (min-width: 900px)'
+									),
+									array(
+										'property' => 'padding-right',
+										'selector' => '.nav--main > .menu-item > a',
+										'unit' => 'px',
+										'media'    => 'screen and (min-width: 900px) '
+									)
+								)
+							)
 						)
 					),
-					'content_backgrounds_section' => array(
+
+					'content_layouts_section' => array(
 						'title'    => __( 'Content', 'customify_txtd' ),
 						'options' => array(
+
+							'border_width' => array(
+								'type' => 'range',
+								'label'         => __( 'Site Border Width', 'rosa_txtd' ),
+								'desc'         => __( 'Set the border width of the overall site', 'rosa_txtd' ),
+								'live' => true,
+								'default'       => '0',
+								'input_attrs' => array(
+									'min'   => 0,
+									'max'   => 72,
+									'step'  => 6,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'border-width',
+										'selector' => 'body',
+										'unit'     => 'px',
+										'media'    => 'screen and (min-width: 900px)'
+									),
+									array(
+										'property' => 'border-top-width',
+										'selector' => 'body .site-header',
+										'unit'     => 'px',
+										'media'    => ' screen and (min-width: 900px) '
+									),
+									array(
+										'property' => 'border-left-width',
+										'selector' => 'body .site-header',
+										'unit'     => 'px',
+										'media'    => ' screen and (min-width : 900px)'
+									),
+									array(
+										'property' => 'border-right-width',
+										'selector' => 'body .site-header',
+										'unit'     => 'px',
+										'media'    => 'screen and (min-width : 900px) '
+									),
+									array(
+										'property' => 'border-bottom-width',
+										'selector' => 'body .site-footer',
+										'unit'     => 'px',
+										'media'    => 'screen and (min-width: 900px) '
+									),
+									array(
+										'property' => 'margin-right',
+										'selector' => 'body .navigator, body .covers',
+										'unit'     => 'px',
+										'media'    => ' screen and (min-width: 900px)'
+									),
+									array(
+										'property' => 'margin-left',
+										'selector' => 'body .covers',
+										'unit'     => 'px',
+										'media'    => 'screen and (min-width : 900px)'
+									),
+								)
+							),
+
 							'content_background_color'   => array(
 								'type'      => 'color',
 								'label'     => __( 'Content Color', 'customify_txtd' ),
@@ -197,6 +327,116 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 								'type'      => 'custom_background',
 								'label'     => __( 'Header Background', 'customify_txtd' ),
 								'desc'         => __( 'Container background with image.', 'rosa_txtd' ),
+							),
+
+							'content_width' => array(
+								'type' => 'range',
+								'label' => __( 'Container Width', 'rosa_txtd' ),
+								'desc'      => __( 'Set the width of the container.', 'rosa_txtd' ),
+								'live' => true,
+								'default'       => 1250,
+								'input_attrs' => array(
+									'min'   => 600,
+									'max'   => 2700,
+									'step'  => 1,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'max-width',
+										'selector' => '.container, .search__container, .site-header__container, .header--sticky .site-header__container',
+										'unit' => 'px',
+									)
+								)
+							),
+							'sections_vertical_margins' => array(
+								'type' => 'range',
+								'label' => __( 'Sections Vertical Margins', 'rosa_txtd' ),
+								'live' => true,
+								'default'       => 78,
+								'input_attrs' => array(
+									'min'   => 0,
+									'max'   => 120,
+									'step'  => 6,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'padding-top',
+										'selector' => '.page .type-page .article__content',
+										'unit' => 'px',
+										'media'    => ' only screen and (min-width: 900px)',
+									),
+									array(
+										'property' => 'padding-bottom',
+										'selector' => '.page .type-page .article__content',
+										'unit' => 'px',
+										'media'    => 'only screen and (min-width: 900px) ',
+									)
+								)
+							),
+
+							'sidebar_width' => array(
+								'type' => 'range',
+								'label' => __( 'Sidebar Width', 'rosa_txtd' ),
+								'desc'      => __( 'Set the width of the sidebar.', 'rosa_txtd' ),
+								'live' => true,
+								'default'       => 300,
+								'input_attrs' => array(
+									'min'   => 140,
+									'max'   => 500,
+									'step'  => 10,
+									'data-preview' => true
+								),
+								'css' => array(
+									array(
+										'property' => 'width',
+										'selector' => '.sidebar--main',
+										'unit' => 'px',
+										'media'    => ' only screen and (min-width: 900px)',
+									),
+									array(
+										'property' => 'right',
+										'selector' => '.page-content.has-sidebar:after',
+										'unit' => 'px',
+										'media'    => 'only screen and (min-width: 900px) ',
+									),
+									array(
+										'property' => 'margin-right',
+										'selector' => '.page-content.has-sidebar .page-content__wrapper',
+										'unit' => 'px',
+										'media'    => 'only screen and (min-width : 900px)',
+									),
+									array( // @TODO make this work with live preview
+										'property' => 'margin-right',
+										'selector' => '.page-content.has-sidebar',
+										'callback_filter' => 'rosa_range_negative_value',
+										'unit' => 'px',
+										'media'    => ' only screen and (min-width : 900px)',
+									),
+								)
+							),
+
+
+							'down_arrow_style' => array(
+								'type'          => 'select',
+								'label'         => __( 'Scroll Down Arrow Style', 'rosa_txtd' ),
+								'choices'       => array(
+									'transparent' => 'Transparent',
+									'bubble'      => 'Bubble',
+								),
+								'default'       => 'transparent',
+							),
+
+							'slideshow_arrows_style' => array(
+								'type'          => 'select',
+								'label'         => __( 'Slideshow Arrows Style', 'rosa_txtd' ),
+								'desc'    => __( 'Select which type of arrows you want on page headers.', 'rosa_txtd' ),
+								'choices'       => array(
+									'static' => 'Always Show',
+									'hover'  => 'On Hover'
+								),
+								'default'       => 'static',
 							),
 						),
 					),
@@ -453,257 +693,26 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 				)
 			),
 
-			'sizes_panel' => array(
-				'title'    => __( 'Sizes and Spacing', 'customify_txtd' ),
-				'sections' => array(
-
-					'header_sizes_section' => array(
-						'title'    => __( 'Header', 'customify_txtd' ),
-						'options' => array(
-
-							'header_logo_height' => array(
-								'type' => 'range',
-								'label'         => __( 'Logo Height', 'rosa_txtd' ),
-								'default'       => 90,
-								'live' => true,
-								'input_attrs' => array(
-									'min'   => 25,
-									'max'   => 125,
-									'step'  => 1,
-									'data-preview' => true
-								),
-								'css' => array(
-									array(
-										'property' => 'max-height',
-										'selector' => '.site-title--image img',
-										'unit' => 'px'
-									),
-								)
-							),
-
-							'header_vertical_margins' => array(
-								'type' => 'range',
-								'label'         => __( 'Header Vertical Margins', 'rosa_txtd' ),
-								'default'       => 0,
-								'live' => true,
-								'input_attrs' => array(
-									'min'   => 0,
-									'max'   => 100,
-									'step'  => 1,
-									'data-preview' => true
-								),
-								'css' => array(
-									array(
-										'property' => 'padding-top',
-										'selector' => '.site-header',
-										'unit' => 'px',
-										'media'    => ' screen and (min-width: 900px)'
-									),
-									array(
-										'property' => 'padding-bottom',
-										'selector' => '.site-header',
-										'unit' => 'px',
-										'media'    => 'screen and (min-width: 900px) '
-									),
-
-									array(
-										'property' => 'margin-top',
-										'selector' => '#page',
-										'unit' => 'px',
-										'media'    => ' screen and (min-width: 900px) '
-									),
-
-									array(
-										'property' => 'top',
-										'selector' => '#page',
-										'unit' => 'px',
-										'media'    => ' screen and (min-width : 900px)'
-									),
-								)
-							),
-
-							'navigation_menu_items_spacing' => array(
-								'type' => 'range',
-								'label'         => __( 'Menu Items Spacing', 'rosa_txtd' ),
-								'default'       => 24,
-								'live' => true,
-								'input_attrs' => array(
-									'min'   => 12,
-									'max'   => 75,
-									'step'  => 1,
-									'data-preview' => true
-								),
-								'css' => array(
-									array(
-										'property' => 'padding-left',
-										'selector' => '.nav--main > .menu-item > a',
-										'unit' => 'px',
-										'media'    => ' screen and (min-width: 900px)'
-									),
-									array(
-										'property' => 'padding-right',
-										'selector' => '.nav--main > .menu-item > a',
-										'unit' => 'px',
-										'media'    => 'screen and (min-width: 900px) '
-									)
-								)
-							)
-						)
-					),
-
-					'content_sizes_section' => array(
-						'title'    => __( 'Content', 'customify_txtd' ),
-						'options' => array(
-
-
-							'border_width' => array(
-								'type' => 'range',
-								'label'         => __( 'Border Width', 'rosa_txtd' ),
-								'live' => true,
-								'default'       => '0',
-								'input_attrs' => array(
-									'min'   => 0,
-									'max'   => 72,
-									'step'  => 6,
-									'data-preview' => true
-								),
-								'css' => array(
-									array(
-										'property' => 'border-width',
-										'selector' => 'body',
-										'unit'     => 'px',
-										'media'    => 'screen and (min-width: 900px)'
-									),
-									array(
-										'property' => 'border-top-width',
-										'selector' => 'body .site-header',
-										'unit'     => 'px',
-										'media'    => ' screen and (min-width: 900px) '
-									),
-									array(
-										'property' => 'border-left-width',
-										'selector' => 'body .site-header',
-										'unit'     => 'px',
-										'media'    => ' screen and (min-width : 900px)'
-									),
-									array(
-										'property' => 'border-right-width',
-										'selector' => 'body .site-header',
-										'unit'     => 'px',
-										'media'    => 'screen and (min-width : 900px) '
-									),
-									array(
-										'property' => 'border-bottom-width',
-										'selector' => 'body .site-footer',
-										'unit'     => 'px',
-										'media'    => 'screen and (min-width: 900px) '
-									),
-									array(
-										'property' => 'margin-right',
-										'selector' => 'body .navigator, body .covers',
-										'unit'     => 'px',
-										'media'    => ' screen and (min-width: 900px)'
-									),
-									array(
-										'property' => 'margin-left',
-										'selector' => 'body .covers',
-										'unit'     => 'px',
-										'media'    => 'screen and (min-width : 900px)'
-									),
-								)
-							),
-
-							'content_width' => array(
-								'type' => 'range',
-								'label' => __( 'Site Container Width', 'rosa_txtd' ),
-								'desc'      => __( 'Set the width of the container.', 'rosa_txtd' ),
-								'live' => true,
-								'default'       => 1250,
-								'input_attrs' => array(
-									'min'   => 600,
-									'max'   => 2700,
-									'step'  => 1,
-									'data-preview' => true
-								),
-								'css' => array(
-									array(
-										'property' => 'max-width',
-										'selector' => '.container, .search__container, .site-header__container, .header--sticky .site-header__container',
-										'unit' => 'px',
-									)
-								)
-							),
-							'sections_vertical_margins' => array(
-								'type' => 'range',
-								'label' => __( 'Sections Vertical Margins', 'rosa_txtd' ),
-								'live' => true,
-								'default'       => 78,
-								'input_attrs' => array(
-									'min'   => 0,
-									'max'   => 120,
-									'step'  => 6,
-									'data-preview' => true
-								),
-								'css' => array(
-									array(
-										'property' => 'padding-top',
-										'selector' => '.page .type-page .article__content',
-										'unit' => 'px',
-										'media'    => ' only screen and (min-width: 900px)',
-									),
-									array(
-										'property' => 'padding-bottom',
-										'selector' => '.page .type-page .article__content',
-										'unit' => 'px',
-										'media'    => 'only screen and (min-width: 900px) ',
-									)
-								)
-							),
-
-							'sidebar_width' => array(
-								'type' => 'range',
-								'label' => __( 'Sidebar Width', 'rosa_txtd' ),
-								'desc'      => __( 'Set the width of the sidebar.', 'rosa_txtd' ),
-								'live' => true,
-								'default'       => 300,
-								'input_attrs' => array(
-									'min'   => 140,
-									'max'   => 500,
-									'step'  => 10,
-									'data-preview' => true
-								),
-								'css' => array(
-									array(
-										'property' => 'width',
-										'selector' => '.sidebar--main',
-										'unit' => 'px',
-										'media'    => ' only screen and (min-width: 900px)',
-									),
-									array(
-										'property' => 'right',
-										'selector' => '.page-content.has-sidebar:after',
-										'unit' => 'px',
-										'media'    => 'only screen and (min-width: 900px) ',
-									),
-									array(
-										'property' => 'margin-right',
-										'selector' => '.page-content.has-sidebar .page-content__wrapper',
-										'unit' => 'px',
-										'media'    => 'only screen and (min-width : 900px)',
-									),
-									array( // @TODO make this work with live preview
-										'property' => 'margin-right',
-										'selector' => '.page-content.has-sidebar',
-										'callback_filter' => 'rosa_range_negative_value',
-										'unit' => 'px',
-										'media'    => ' only screen and (min-width : 900px)',
-									),
-								)
-							),
-						)
-					),
-				)
-			)
+//			'sizes_panel' => array(
+//				'title'    => __( 'Sizes and Spacing', 'customify_txtd' ),
+//				'sections' => array(
+//
+//					'header_sizes_section' => array(
+//						'title'    => __( 'Header', 'customify_txtd' ),
+//						'options' => array(
+//
+//						)
+//					),
+//
+//					'content_sizes_section' => array(
+//						'title'    => __( 'Content', 'customify_txtd' ),
+//						'options' => array(
+//
+//
+//						)
+//					),
+//				)
+//			)
 		);
 
 		return $config;
