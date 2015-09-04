@@ -1,6 +1,7 @@
 <wpml-config>
     <admin-texts>
         <key name="rosa_options">
+            <key name="social_icons"/>
             <key name="copyright_text"/>
             <key name="blog_read_more_text"/>
             <key name="blog_excerpt_more_text"/>

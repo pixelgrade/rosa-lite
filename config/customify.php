@@ -479,7 +479,6 @@ if ( ! function_exists('add_customify_rosa_options') ) {
 									'Herr Von Muellerhoff',
 									'Cabin',
 								),
-								'load_all_weights' => true,
 								'selector' => 'h1, h2, h3, h4, h5, h6, hgroup, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
 									blockquote, .tabs__nav, .popular-posts__time, .pagination li a, .pagination li span'
 							),
