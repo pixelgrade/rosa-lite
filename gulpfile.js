@@ -231,6 +231,7 @@ gulp.task('build', ['txtdomain-replace'], function () {
 		'build',
 		'css',
 		'.idea',
+		'.travis.yml',
 		'**/*.css.map',
 		'**/.sass*',
 		'.sass*',
