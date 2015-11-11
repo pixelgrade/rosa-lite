@@ -30,6 +30,8 @@
 	position: absolute;
 	left: 0;
 	background: url('../images/border-wave.svg') top left repeat-x;
+
+	@include transform(translate3d(0, 0, 0.1px));
 }
 
 .border-waves-top:after {
