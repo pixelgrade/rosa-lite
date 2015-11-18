@@ -173,6 +173,7 @@ function wpgrade_custom_post_gallery( $output, $attr ) {
 		$float     = is_rtl() ? 'right' : 'left';
 
 		$selector = "gallery-{$instance}";
+		$instance = $instance + 1;
 
 		$gallery_style = $gallery_div = '';
 
