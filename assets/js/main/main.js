@@ -2,7 +2,6 @@
 
 /* --- NICESCROLL --- */
 
-
 var $body               = $('body'),
     $html               = $('html'),
     $window             = $(window),
@@ -17,7 +16,7 @@ function niceScrollInit() {
     var smoothScroll    = $('body').data('smoothscrolling') !== undefined,
         root            = document.documentElement;
 
-    if (smoothScroll && !Modernizr.touch && !is_mobile_ie && !is_OSX) {
+    if (smoothScroll && !is_EDGE && !Modernizr.touch && !is_mobile_ie && !is_OSX) {
 
         var $window = $(window);		// Window object
 
