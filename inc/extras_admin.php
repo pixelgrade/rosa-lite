@@ -54,3 +54,12 @@ function rosa_callback_help_pointers_setup() {
 	$myPointers->setup( $pointers );
 }
 add_action( 'admin_enqueue_scripts', 'rosa_callback_help_pointers_setup' );
+
+function rosa_remove_wptextpattern_tinymce_plugin( $plugins ) {
+	if ( $key = array_search( 'wptextpattern', $plugins ) ) {
+		unset( $plugins[ $key ] );
+	}
+
+	return $plugins;
+}
+add_filter( 'tiny_mce_plugins', 'rosa_remove_wptextpattern_tinymce_plugin', 10, 1 );
