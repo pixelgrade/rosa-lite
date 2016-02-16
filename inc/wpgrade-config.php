@@ -21,41 +21,11 @@ return array(
 		'inc/classes',
 		'inc/functions',
 	),
-	// same as include-paths only instead of files you specify files, to be
-	// used with vendor dependencies to avoid multiple include/requires
-	// happening due to the files in question adding subfiles relative to
-	// their directory (also avoids problems with php configuration files)
-	'include-files'                => array(
-		// main theme class
-		'inc/required-plugins/required-plugins.php',
-		'config/customify.php',
-	),
+
 	// the path where overwrites on the core partials are stored, any files
 	// placed in the partial overwrites will be loaded instead of the core
 	// equivalent view files
 	'core-partials-overwrite-path' => 'templates/core',
-	// the directory where css and other media files are located; used by
-	// wpgrade::resourceuri; utility allows for easy migration of files to
-	// new structures
-	'resource-path'                => '/assets',
-	// use theme-options to add any non-customizable options with out going
-	// though any of the backend code; all options added here are available
-	// though the WPGradeOptions driver manager. ie. the  wpgrade::option
-	// shorthand. Support for backend customization may be added at any
-	// time later with out requiring any alterations; the options you add
-	// here will have the lowest priority
-	'theme-options'                => array( // empty
-	),
-	// Usage: body_class(wpgrade::body_class()) in header-classic.php
-	// Syntax: class => callback or boolean; eg. 'myclass' => true,
-	// 'myclass' => false, 'myclass' => 'class_check_function'. All
-	// callbacks are executed once if more classes refer the same callback.
-	'body-classes'                 => array( // empty
-	),
-	// overwrites the inline css class to allow for full control; you may
-	// also leave this null, which will invoke an internal handler and work
-	// with the core partial inline-custom-css
-	'custom-css-handler'           => null,
 	// filter functions will recieve content as a parameter and must return
 	// content; all functions are ordered by priority and executed from
 	// lowest to highest. If a filter is assigned false as a priority it
@@ -68,8 +38,7 @@ return array(
 			'rosa_callback_paragraph_filters'     => 400,
 		),
 	),
-	'post-formats'                 => array( // empty - see functions.php
-	),
+
 	'shortcodes'                   => array(
 		'Columns',
 		'Button',
