@@ -51,7 +51,7 @@
 .woocommerce div.product div.images img,
 .woocommerce-page #content div.product div.images img,
 .woocommerce-page div.product div.images img{
-	@include box-shadow(none);
+	box-shadow: none;
 }
 
 
@@ -124,9 +124,9 @@
 	background: $dark;
 	color: white;
 
-	@include box-shadow(none);
+	box-shadow: none;
 
-	@include border-radius(5px);
+	border-radius: 5px;
 }
 
 .woocommerce #content input.button.alt,

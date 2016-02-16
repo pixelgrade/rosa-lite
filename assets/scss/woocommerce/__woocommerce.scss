@@ -1,13 +1,4 @@
 /*------------------------------------*\
-    $WOOCOMMERCE
-\*------------------------------------*/
-
-@import "archive-woo";
-@import "single-woo";
-@import "cart";
-
-
-/*------------------------------------*\
     $EXTENDS
 \*------------------------------------*/
 
@@ -23,8 +14,8 @@
 	background-color: $dark;
 	color: white;
 
-	@include transition(all .15s);
-	@include border-radius(3px);
+	transition: all .15s;
+	border-radius: 3px;
 
 	&:hover {
 		background-color: $accent;
@@ -61,7 +52,7 @@
 
 	border: 0;
 	border-bottom: 2px solid $accent;
-	@include border-radius(0);
+	border-radius: 0;
 
 	font-size: 15px;
 	line-height: 1;
@@ -112,8 +103,8 @@
 
 		background: none;
 
-		@include border-radius(0);
-		@include box-shadow(none);
+		border-radius: 0;
+		box-shadow: none;
 
 		&:before{
 			content: none;
@@ -150,8 +141,8 @@ form.shipping_calculator button.button,
 	background: $dark;
 	color: white;
 
-	@include transition(all .15s);
-	@include border-radius(5px);
+	transition: all .15s;
+	border-radius: 5px;
 
 
 
@@ -177,7 +168,7 @@ ul.payment_methods{
 .woocommerce-page #payment div.payment_box{
 	background: transparent;
 	border: 1px solid $borders;
-	@include box-shadow(none);
+	box-shadow: none;
 
 	&:after{
 		content: none;
@@ -191,3 +182,8 @@ ul.payment_methods{
 .woocommerce .header--slideshow img {
 	max-width: none;
 }
+
+
+@import "archive-woo";
+@import "single-woo";
+@import "cart";

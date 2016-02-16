@@ -354,7 +354,7 @@ img.rsImg {
 	height: auto;
 	overflow: hidden;
 	margin: 0;
-	@include transform(translateZ(0));
+	transform: translateZ(0);
 
 	img {
 		width: 100%;
@@ -394,7 +394,7 @@ img.rsImg {
 
 	.rsArrowIcn {
 		border-left: 2px solid white;
-		@include rotate(45deg);
+		transform: rotate(45deg);
 	}
 }
 
@@ -403,7 +403,7 @@ img.rsImg {
 
 	.rsArrowIcn {
 		border-right: 2px solid white;
-		@include rotate(-45deg);
+		transform: rotate(-45deg);
 	}
 }
 
@@ -482,10 +482,10 @@ img.rsImg {
 \*------------------------------------*/
 
 .royalSlider{
-	@include opacity(0);
+	opacity: 0;
 
 	&.slider--loaded{
-		@include opacity(1);
+		opacity: 1;
 	}
 }
 
@@ -495,7 +495,7 @@ img.rsImg {
 
 	background: rgba(0, 0, 0, 0.5);
 
-	@include transform(translateY(-50%));
+	transform: translateY(-50%);
 }
 
 .rsArrowLeft .rsArrowIcn {

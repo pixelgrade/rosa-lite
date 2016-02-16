@@ -643,45 +643,44 @@ button::-moz-focus-inner {
 
 /* overlay at start */
 .mfp-fade.mfp-bg {
-	@include transform(translate3d(0, 0, 0));
-	@include backface-visibility(hidden);
-	@include perspective(1000px);
-
-	@include opacity(0);
-	@include transition(all .2s ease-in-out);
+	transform: translate3d(0, 0, 0);
+	backface-visibility: hidden;
+	perspective: 1000px;
+	opacity: 0;
+	transition: all .2s ease-in-out;
 }
 
 /* overlay animate in */
 .mfp-fade.mfp-bg.mfp-ready {
-	@include opacity(.8);
+	opacity: .8;
 }
 
 /* overlay animate out */
 .mfp-fade.mfp-bg.mfp-removing {
-	@include transition(all .2s .1s ease-in-out);
-	@include opacity(0);
+	transition: all .2s .1s ease-in-out;
+	opacity: 0;
 }
 
 /* content at start */
 .mfp-fade.mfp-wrap .mfp-content {
-	@include transform(translate3d(0, 0, 0));
-	@include backface-visibility(hidden);
-	@include perspective(1000px);
+	transform: translate3d(0, 0, 0);
+	backface-visibility: hidden;
+	perspective: 1000px;
 
-	@include scale(.75);
-	@include opacity(0);
-	@include transition(all .2s .1s ease-in-out);
+	transform: scale(.75);
+	opacity: 0;
+	transition: all .2s .1s ease-in-out;
 }
 
 /* content animate it */
 .mfp-fade.mfp-wrap.mfp-ready .mfp-content {
-	@include scale(1);
-	@include opacity(1);
+	transform: scale(1);
+	opacity: 1;
 }
 
 /* content animate out */
 .mfp-fade.mfp-wrap.mfp-removing .mfp-content {
-	@include transition(all .2s ease-in-out);
-	@include scale(.75);
-	@include opacity(0);
+	transition: all .2s ease-in-out;
+	transform: scale(.75);
+	opacity: 0;
 }

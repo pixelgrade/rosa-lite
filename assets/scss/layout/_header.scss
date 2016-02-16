@@ -9,7 +9,7 @@
 	width: 100%;
 	z-index: 110;
 	background-color: white;
-	@include transition(color .3s cubic-bezier(0.86, 0, 0.07, 1), background-color .3s cubic-bezier(0.86, 0, 0.07, 1));
+	transition: color .3s cubic-bezier(0.86, 0, 0.07, 1), background-color .3s cubic-bezier(0.86, 0, 0.07, 1);
 
 	@include media-query(palm) {
 		.admin-bar & {
@@ -123,7 +123,7 @@ a.site-logo--text{
 	font-weight: 700;
 	color: $dark;
 
-	@include transition(color .2s linear);
+	transition: color .2s linear;
 
 	.header--transparent & {
 		color: white;

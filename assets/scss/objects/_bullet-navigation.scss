@@ -19,7 +19,7 @@
 		border-top-left-radius: 10px;
 		border-bottom-left-radius: 10px;
 
-		@include transition(opacity .3s ease-out);
+		transition: opacity .3s ease-out;
 
 		&:hover{
 			opacity: 1 !important;
@@ -37,7 +37,7 @@
 		height: $_u2;
 		border-radius: 50%;
 		border: 2px solid white;
-		@include transition(background-color, border-color .1s ease-in-out);
+		transition: background-color, border-color .1s ease-in-out;
 		cursor: pointer;
 
 		.navigator--transparent &{
@@ -45,7 +45,7 @@
 		}
 	}
 
-	@include transform(scale(0.7));
+	transform: scale(0.7);
 	opacity: 0;
 }
 
@@ -64,7 +64,7 @@
 		}
 	}
 
-	@include transform(scale(0.7));
+	transform: scale(0.7);
 	opacity: 0;
 }
 

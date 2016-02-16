@@ -30,7 +30,7 @@
 			color: $light;
 			background: white;
 
-			@include transition(all .15s linear);
+			transition: all .15s linear;
 		}
 
 		a:hover {

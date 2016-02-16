@@ -56,7 +56,7 @@
 			background: none;
 
 			border: 1px solid $borders;
-			@include border-radius(3px);
+			border-radius: 3px;
 		}
 	}
 }

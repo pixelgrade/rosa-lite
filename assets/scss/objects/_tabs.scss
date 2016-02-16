@@ -42,21 +42,21 @@
 .tabs__content {
 	position: relative;
 	min-height: 1px;
-	@include transition(height .2s ease-in-out);
+	transition: height .2s ease-in-out;
 	// overflow: hidden;
 }
 
 .tabs__pane {
 	width: 100%;
 	position: absolute;
-	@include transition(opacity .2s ease-in-out);
+	transition: opacity .2s ease-in-out;
 	-webkit-backface-visibility: hidden;
-	@include transform(translate3d(0, 0, 0));
+	transform: translate3d(0, 0, 0);
 	// @include rem(margin-right, $_u);
 	z-index: 20;
 
 	&.hide {
-		@include opacity(0);
+		opacity: 0;
 		z-index: 5;
 		pointer-events: none;
 	}

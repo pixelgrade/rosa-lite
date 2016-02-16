@@ -1,0 +1,1012 @@
+@charset 'UTF-8';
+/*------------------------------------*\
+    WOOCOMMERCE.CSS
+\*------------------------------------*/
+/**
+ * WooCommerce Plugin Styling
+ */
+/*------------------------------------*\
+    $SETUP
+\*------------------------------------*/
+/*------------------------------------*\
+    VARS.SCSS
+\*------------------------------------*/
+/**
+ * Any variables you find set in inuit.css’ `_vars.scss` that you do not wish to
+ * keep, simply redefine here. This means that if inuit.css, for example, sets
+ * your `$base-font-size` at 16px and you wish it to be 14px, simply redeclare
+ * that variable in this file. inuit.css ignores its own variables in favour of
+ * using your own, so you can completely modify how inuit.css works without ever
+ * having to alter the framework itself.
+ */
+/*------------------------------------*\
+    $OBJECTS-AND-ABSTRACTIONS
+\*------------------------------------*/
+/**
+ * All of inuit.css’ objects and abstractions are initially turned off by
+ * default. This means that you start any project with as little as possible,
+ * and introducing objects and abstractions is as simple as switching the
+ * following variables to `true`.
+ */
+/*-----------------------------------------------*\
+     $STYLE GUIDE
+\*-----------------------------------------------*/
+/*
+ * Colors
+ */
+/* Font sizes */
+/*
+ * Spacing Units
+ */
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+/**
+ * Create a fully formed type style (sizing and vertical rhythm) by passing in a
+ * single value, e.g.:
+ *
+   `@include font-size(10px);`
+ *
+ * Thanks to @redclov3r for the `line-height` Sass:
+ * twitter.com/redclov3r/status/250301539321798657
+ */
+/**
+ * Convert basic px measurements into rem units
+ */
+/**
+ * Style any number of headings in one fell swoop, e.g.:
+ *
+   .foo{
+       @include headings(1, 3){
+           color:#BADA55;
+       }
+    }
+ *
+ * With thanks to @lar_zzz, @paranoida and @rowanmanning for refining and
+ * improving my initial mixin.
+ */
+/**/
+/**
+ * Create vendor-prefixed CSS in one go, e.g.
+ *
+   `@include vendor(border-radius, 4px);`
+ *
+ */
+/**
+ * Create CSS keyframe animations for all vendors in one go, e.g.:
+ *
+   .foo{
+       @include vendor(animation, shrink 3s);
+   }
+
+   @include keyframe(shrink){
+       from{
+           font-size:5em;
+       }
+   }
+ *
+ * Courtesy of @integralist: twitter.com/integralist/status/260484115315437569
+ */
+/**
+ * Force overly long spans of text to truncate, e.g.:
+ *
+   `@include truncate(100%);`
+ *
+ * Where `$truncation-boundary` is a united measurement.
+ */
+/**
+ * CSS arrows!!! But... before you read on, you might want to grab a coffee...
+ *
+ * This mixin creates a CSS arrow on a given element. We can have the arrow
+ * appear in one of 12 locations, thus:
+ *
+ *       01    02    03
+ *    +------------------+
+ * 12 |                  | 04
+ *    |                  |
+ * 11 |                  | 05
+ *    |                  |
+ * 10 |                  | 06
+ *    +------------------+
+ *       09    08    07
+ *
+ * You pass this position in along with a desired arrow color and optional
+ * border color, for example:
+ *
+ * `@include arrow(top, left, red)`
+ *
+ * for just a single, red arrow, or:
+ *
+ * `@include arrow(bottom, center, red, black)`
+ *
+ * which will create a red triangle with a black border which sits at the bottom
+ * center of the element. Call the mixin thus:
+ *
+   .foo{
+       background-color:#BADA55;
+       border:1px solid #ACE;
+       @include arrow(top, left, #BADA55, #ACE);
+   }
+ *
+ */
+/**
+ * Media query mixin.
+ *
+ * It’s not great practice to define solid breakpoints up-front, preferring to
+ * modify your design when it needs it, rather than assuming you’ll want a
+ * change at ‘mobile’. However, as inuit.css is required to take a hands off
+ * approach to design decisions, this is the closest we can get to baked-in
+ * responsiveness. It’s flexible enough to allow you to set your own breakpoints
+ * but solid enough to be frameworkified.
+ *
+ * We define some broad breakpoints in our vars file that are picked up here
+ * for use in a simple media query mixin. Our options are:
+ *
+ * palm
+ * lap
+ * lap-and-up
+ * portable
+ * desk
+ * desk-wide
+ *
+ * Not using a media query will, naturally, serve styles to all devices.
+ *
+ * `@include media-query(palm){ [styles here] }`
+ *
+ * We work out your end points for you:
+ */
+/*------------------------------------*\
+    $CLEARFIX
+\*------------------------------------*/
+/**
+ * Micro clearfix, as per: css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
+ * Extend the clearfix class with Sass to avoid the `.cf` class appearing over
+ * and over in your markup.
+ */
+.cf:after
+{
+    display: table;
+    clear: both;
+
+    content: '';
+}
+
+/*------------------------------------*\
+    $EXTENDS
+\*------------------------------------*/
+.product__badge,
+.woocommerce ul.products li.product .product__button,
+.woocommerce ul.products li.product .added_to_cart,
+.woocommerce ul.products li.product a.added_to_cart,
+.woocommerce #content input.button.alt,
+.woocommerce #respond input#submit.alt,
+.woocommerce a.button.alt,
+.woocommerce button.button.alt,
+.woocommerce input.button.alt,
+.woocommerce-page #content input.button.alt,
+.woocommerce-page #respond input#submit.alt,
+.woocommerce-page a.button.alt,
+.woocommerce-page button.button.alt,
+.woocommerce-page input.button.alt,
+.woocommerce-page #respond input#submit
+{
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1;
+
+    padding: 12px 30px;
+
+    transition: all .15s;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+
+    color: white;
+    border-radius: 3px;
+    background-color: #262526;
+}
+.product__badge:hover,
+.woocommerce ul.products li.product .product__button:hover,
+.woocommerce ul.products li.product .added_to_cart:hover,
+.woocommerce #content input.button.alt:hover,
+.woocommerce #respond input#submit.alt:hover,
+.woocommerce a.button.alt:hover,
+.woocommerce button.button.alt:hover,
+.woocommerce input.button.alt:hover,
+.woocommerce-page #content input.button.alt:hover,
+.woocommerce-page a.button.alt:hover,
+.woocommerce-page button.button.alt:hover,
+.woocommerce-page input.button.alt:hover,
+.woocommerce-page #respond input#submit:hover
+{
+    color: white;
+    background-color: #c59d5f;
+}
+.a.product__badge,
+.woocommerce ul.products li.product .a.product__button,
+.woocommerce ul.products li.product .a.added_to_cart,
+.woocommerce #content input.a.button.alt,
+.woocommerce #respond input.a#submit.alt,
+.woocommerce a.a.button.alt,
+.woocommerce button.a.button.alt,
+.woocommerce input.a.button.alt,
+.woocommerce-page #content input.a.button.alt,
+.woocommerce-page a.a.button.alt,
+.woocommerce-page button.a.button.alt,
+.woocommerce-page input.a.button.alt,
+.woocommerce-page #respond input.a#submit
+{
+    border-bottom: none;
+}
+
+.product__badge.on-sale
+{
+    color: white;
+    background-color: #c59d5f;
+}
+.product__badge.on-sale:hover
+{
+    background-color: #262526 !important;
+}
+
+.product__badge
+{
+    padding: 9px 18px;
+}
+
+.woocommerce ul.products li.product .product__button,
+.woocommerce ul.products li.product .added_to_cart,
+.woocommerce ul.products li.product a.added_to_cart
+{
+    font-size: 15px;
+    line-height: 1;
+
+    padding: 3px 0;
+
+    text-decoration: none;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+
+    color: #c59d5f;
+    border: 0;
+    border-bottom: 2px solid #c59d5f;
+    border-radius: 0;
+    background: transparent !important;
+}
+.woocommerce ul.products li.product .product__button:hover,
+.woocommerce ul.products li.product .added_to_cart:hover
+{
+    color: #262526 !important;
+    border-color: #262526 !important;
+}
+
+.product__badge
+{
+    position: absolute;
+    top: -3px;
+    left: -3px;
+}
+
+.woocommerce ins
+{
+    border: none;
+}
+
+.woocommerce .table--striped tbody tr:nth-of-type(odd),
+.woocommerce table tbody tr:nth-of-type(odd),
+.woocommerce-page .table--striped tbody tr:nth-of-type(odd),
+.woocommerce-page table tbody tr:nth-of-type(odd)
+{
+    background: transparent;
+}
+
+.woocommerce .woocommerce-message,
+.woocommerce .woocommerce-info,
+.woocommerce .woocommerce-error,
+.woocommerce-page .woocommerce-message,
+.woocommerce-page .woocommerce-info,
+.woocommerce-page .woocommerce-error
+{
+    margin-top: 24px !important;
+    padding-left: 1em !important;
+
+    border: none;
+    border: 1px solid #d8d8d8;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+}
+.woocommerce .woocommerce-message:before,
+.woocommerce .woocommerce-info:before,
+.woocommerce .woocommerce-error:before,
+.woocommerce-page .woocommerce-message:before,
+.woocommerce-page .woocommerce-info:before,
+.woocommerce-page .woocommerce-error:before
+{
+    content: none;
+}
+.woocommerce .woocommerce-message .button:after,
+.woocommerce .woocommerce-info .button:after,
+.woocommerce .woocommerce-error .button:after,
+.woocommerce-page .woocommerce-message .button:after,
+.woocommerce-page .woocommerce-info .button:after,
+.woocommerce-page .woocommerce-error .button:after
+{
+    content: none;
+}
+.woocommerce .woocommerce-error,
+.woocommerce-page .woocommerce-error
+{
+    border: 1px solid red;
+}
+
+#review-submit,
+.woocommerce div.woocommerce-message .button,
+td.actions input.button,
+form.shipping_calculator button.button,
+.woocommerce-page input.button
+{
+    font-size: 14px;
+    font-size: .875rem;
+    font-weight: 300;
+    line-height: 1.86657;
+
+    padding: 6px 24px;
+
+    transition: all .15s;
+    letter-spacing: .0625em;
+    text-transform: uppercase;
+
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background: #262526;
+}
+#review-submit:hover,
+.woocommerce div.woocommerce-message .button:hover,
+td.actions input.button:hover,
+form.shipping_calculator button.button:hover,
+.woocommerce-page input.button:hover
+{
+    color: white;
+    background: #c59d5f;
+}
+
+#ship-to-different-address *
+{
+    display: inline-block;
+
+    margin: 0;
+    padding: 0;
+}
+
+ul.payment_methods li *
+{
+    display: inline-block;
+}
+
+.woocommerce-page #payment div.payment_box
+{
+    border: 1px solid #d8d8d8;
+    background: transparent;
+    box-shadow: none;
+}
+.woocommerce-page #payment div.payment_box:after
+{
+    content: none;
+}
+
+.woocommerce-page .article__parallax--img img
+{
+    max-width: none;
+}
+
+.woocommerce .header--slideshow img
+{
+    max-width: none;
+}
+
+/*------------------------------------*\
+    $WOOCOMMERCE ARCHIVE
+\*------------------------------------*/
+@media only screen and (min-width: 900px)
+{
+    .woocommerce ul.products
+    {
+        margin: 0 -1.5%;
+    }
+}
+html .woocommerce ul.products
+{
+    text-align: center;
+}
+html .woocommerce ul.products li.product
+{
+    margin-right: 1.25%;
+    margin-left: 1.25%;
+}
+
+.woocommerce ul.products li.product
+{
+    position: relative;
+
+    display: inline-block;
+    float: none !important;
+
+    width: 46% !important;
+    margin: 0 1.5%;
+    margin-bottom: 78px;
+
+    text-align: center;
+    vertical-align: top;
+}
+@media screen and (min-width: 769px)
+{
+    .woocommerce ul.products li.product
+    {
+        width: 30% !important;
+    }
+}
+.woocommerce ul.products li.product .product__title
+{
+    margin: 18px 0 3px;
+}
+.woocommerce ul.products li.product .product__button
+{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+
+    transition: opacity .2s linear;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+
+    opacity: 0;
+    color: #c59d5f;
+    background: white !important;
+}
+.woocommerce ul.products li.product:hover .product__button
+{
+    opacity: 1;
+}
+.woocommerce ul.products li.product:hover .price
+{
+    opacity: 0;
+}
+.woocommerce ul.products li.product .price
+{
+    font-family: 'Source Sans Pro', Georgia, serif;
+    font-size: 19px !important;
+
+    margin-bottom: 0 !important;
+
+    transition: opacity .2s linear;
+
+    color: #262526 !important;
+}
+.woocommerce ul.products li.product .price ins
+{
+    color: #c59d5f;
+    border-bottom: 0;
+}
+.woocommerce ul.products li.product .price del
+{
+    font-size: 19px !important;
+
+    display: inline-block;
+}
+.woocommerce ul.products li.product hr
+{
+    margin: 12px 0;
+}
+.woocommerce ul.products li.product .product__cat
+{
+    font-size: 13px;
+    font-weight: normal;
+
+    padding: 0 6px;
+
+    text-transform: uppercase;
+
+    color: #b3b3b3;
+    border: 0;
+}
+.woocommerce ul.products li.product .added_to_cart
+{
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    left: 50%;
+
+    margin-top: 12px;
+
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+}
+.woocommerce ul.products li.product .added_to_cart:after
+{
+    content: none;
+}
+.woocommerce ul.products li.product .added_to_cart:before
+{
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 30px;
+
+    content: '';
+
+    background: white;
+}
+.woocommerce ul.products li.product a.added_to_cart
+{
+    font-size: 15px !important;
+
+    padding: 0 !important;
+    padding-bottom: 3px !important;
+}
+
+.woocommerce ul.products li.product a img,
+.woocommerce-page ul.products li.product a img
+{
+    box-shadow: none !important;
+}
+
+.woocommerce-page ul.products li.product .pagination
+{
+    margin: 40px 0;
+}
+
+.woocommerce-page.archive .shop-categories
+{
+    margin-top: 72px;
+}
+.woocommerce-page.post-type-archive-product .shop-categories
+{
+    margin-top: 0;
+}
+.shop-categories.tabs__nav
+{
+    margin-top: -12px;
+    margin-bottom: 70px;
+}
+.shop-categories a
+{
+    font-size: 24px;
+    font-size: 1.5rem;
+    line-height: 1.51;
+
+    margin: 0 12px;
+
+    transition: all .2s;
+}
+.shop-categories a.active
+{
+    color: #c59d5f;
+    border-bottom: 3px solid #c59d5f;
+}
+@media screen and (max-width: 769px)
+{
+    .shop-categories a
+    {
+        font-size: 16px;
+        font-size: 1rem;
+        line-height: 1.51;
+    }
+}
+
+/*------------------------------------*\
+    $SINGLE PRODUCT
+\*------------------------------------*/
+.single-product .product .pixcode--tabs
+{
+    clear: both;
+}
+
+.woocommerce div.related.products ul.products
+{
+    position: relative;
+    z-index: 50;
+}
+@media only screen and (min-width: 900px)
+{
+    .woocommerce div.related.products ul.products
+    {
+        margin: 0 -1.5%;
+    }
+    .woocommerce div.related.products ul.products li.product
+    {
+        width: 30%;
+        margin: 0 1.5%;
+        margin-bottom: 48px;
+    }
+}
+
+.woocommerce .woocommerce-product-rating .star-rating,
+.woocommerce-page .woocommerce-product-rating .star-rating
+{
+    float: none;
+
+    margin: 0;
+    margin-left: 12px;
+}
+
+.woocommerce .woocommerce-product-rating .woocommerce-review-link,
+.woocommerce .woocommerce-product-rating .star-rating
+{
+    display: inline-block;
+
+    vertical-align: middle;
+}
+.woocommerce .woocommerce-product-rating .woocommerce-review-link
+{
+    font-size: 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.51;
+
+    color: #262526;
+}
+
+.woocommerce #content div.product div.images img,
+.woocommerce div.product div.images img,
+.woocommerce-page #content div.product div.images img,
+.woocommerce-page div.product div.images img
+{
+    box-shadow: none;
+}
+
+.single-product .entry-summary .price
+{
+    line-height: 1;
+
+    display: block;
+
+    margin-top: 24px;
+    margin-bottom: 36px;
+}
+.single-product .entry-summary .price span
+{
+    font-size: 40px;
+    font-weight: bold;
+
+    color: #c59d5f;
+}
+.single-product .entry-summary .price del span
+{
+    font-size: 30px;
+    font-weight: normal;
+
+    margin-right: 9px;
+
+    color: #b3b3b3;
+}
+.single-product .entry-summary .price ins,
+.single-product .entry-summary .price ins span
+{
+    font-size: 30px;
+
+    color: #262526;
+}
+.single-product .entry-summary .price del
+{
+    display: inline-block !important;
+}
+.single-product .entry-summary form.cart
+{
+    margin-top: 6px;
+    margin-bottom: 60px !important;
+}
+.single-product .entry-summary .woocommerce-breadcrumb
+{
+    font-size: 12px;
+}
+.single-product .entry-summary .woocommerce-breadcrumb,
+.single-product .entry-summary .woocommerce-breadcrumb a
+{
+    color: #b3b3b3;
+}
+
+.single-product-description
+{
+    font-size: 14px;
+    font-size: .875rem;
+    line-height: 1.72429;
+}
+
+.woocommerce #content .quantity input.qty,
+.woocommerce .quantity input.qty,
+.woocommerce-page #content .quantity input.qty,
+.woocommerce-page .quantity input.qty
+{
+    width: 70px;
+    height: 36px;
+    padding: 0;
+
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background: #262526;
+    box-shadow: none;
+}
+
+.woocommerce #content input.button.alt,
+.woocommerce #respond input#submit.alt,
+.woocommerce a.button.alt,
+.woocommerce button.button.alt,
+.woocommerce input.button.alt,
+.woocommerce-page #content input.button.alt,
+.woocommerce-page #respond input#submit.alt,
+.woocommerce-page a.button.alt,
+.woocommerce-page button.button.alt,
+.woocommerce-page input.button.alt,
+.woocommerce-page #respond input#submit
+{
+    margin-left: 12px;
+
+    border: none;
+    background: #262526;
+    box-shadow: none;
+    text-shadow: none;
+}
+.woocommerce #content input.button.alt:hover,
+.woocommerce #respond input#submit.alt:hover,
+.woocommerce a.button.alt:hover,
+.woocommerce button.button.alt:hover,
+.woocommerce input.button.alt:hover,
+.woocommerce-page #content input.button.alt:hover,
+.woocommerce-page #respond input#submit.alt:hover,
+.woocommerce-page a.button.alt:hover,
+.woocommerce-page button.button.alt:hover,
+.woocommerce-page input.button.alt:hover,
+.woocommerce-page #respond input#submit:hover
+{
+    color: white;
+    background: #c59d5f;
+}
+
+.woocommerce #content div.product .woocommerce-tabs ul.tabs li:after,
+.woocommerce #content div.product .woocommerce-tabs ul.tabs li:before,
+.woocommerce div.product .woocommerce-tabs ul.tabs li:after,
+.woocommerce div.product .woocommerce-tabs ul.tabs li:before,
+.woocommerce-page #content div.product .woocommerce-tabs ul.tabs li:after,
+.woocommerce-page #content div.product .woocommerce-tabs ul.tabs li:before,
+.woocommerce-page div.product .woocommerce-tabs ul.tabs li:after,
+.woocommerce-page div.product .woocommerce-tabs ul.tabs li:before
+{
+    content: none !important;
+}
+
+.woocommerce #content div.product .woocommerce-tabs ul.tabs li:after
+{
+    content: none !important;
+}
+
+.woocommerce #content div.product .woocommerce-tabs ul.tabs li
+{
+    border: none !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+.woocommerce #content div.product .woocommerce-tabs ul.tabs:before
+{
+    content: none !important;
+}
+
+.woocommerce .woocommerce-tabs > hr
+{
+    margin-bottom: 30px;
+}
+
+.woocommerce .woocommerce-tabs li
+{
+    font-size: 20px;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.21;
+}
+.woocommerce .woocommerce-tabs li.active a
+{
+    padding-bottom: 3px;
+
+    border-bottom: 2px solid #262526;
+}
+
+#review_form .comment-form-rating
+{
+    display: inline-block;
+
+    width: 100%;
+    margin: 12px 0 !important;
+    padding-left: 24px;
+    padding-left: 1.5rem;
+
+    vertical-align: top;
+}
+#review_form .comment-reply-title
+{
+    margin-bottom: 24px;
+}
+
+#reviews .description
+{
+    font-size: 14px;
+    font-size: .875rem;
+    line-height: 1.72429;
+}
+
+.related__title
+{
+    margin: 48px 0;
+
+    text-align: center;
+}
+
+.related-separator
+{
+    margin: 72px 0;
+}
+
+.product_title
+{
+    margin-bottom: 24px;
+}
+
+.product__tabs a
+{
+    font-size: 24px;
+    font-size: 1.5rem;
+    line-height: 1.51;
+
+    margin: 0 12px;
+}
+
+.woocommerce-breadcrumb
+{
+    font-size: 13px;
+    font-size: .8125rem;
+    line-height: 1.85615;
+
+    text-transform: uppercase;
+
+    color: #b3b3b3;
+}
+.woocommerce-breadcrumb a
+{
+    border: 0 !important;
+}
+.woocommerce-breadcrumb a:after
+{
+    margin: 0 6px;
+
+    content: '\00BB';
+}
+
+.woocommerce #page div.product form.cart .variations td.label
+{
+    padding: 1em;
+}
+
+.woocommerce #page div.product div.thumbnails a
+{
+    margin-bottom: 3.8%;
+}
+
+.woocommerce .star-rating span:before
+{
+    color: #c59d5f;
+}
+
+.woocommerce #review_form #respond textarea,
+.woocommerce-page #review_form #respond textarea
+{
+    overflow: scroll !important;
+
+    height: 131px !important;
+}
+
+.woocommerce div.product p.price,
+.woocommerce div.product span.price
+{
+    color: gray;
+}
+
+.woocommerce button.single_add_to_cart_button
+{
+    font-weight: bold !important;
+}
+
+/*------------------------------------*\
+    $CART
+\*------------------------------------*/
+.woocommerce .cart-collaterals .cart_totals,
+.woocommerce-page .cart-collaterals .cart_totals,
+.woocommerce .cart-collaterals .shipping_calculator,
+.woocommerce-page .cart-collaterals .shipping_calculator
+{
+    float: none !important;
+
+    width: 100% !important;
+
+    text-align: left;
+}
+
+td.actions input.button
+{
+    line-height: 1.6345 !important;
+}
+
+td.actions
+{
+    padding: 12px 6px !important;
+}
+
+.woocommerce #content .quantity,
+.woocommerce .quantity,
+.woocommerce-page #content .quantity,
+.woocommerce-page .quantity
+{
+    margin-left: 0;
+}
+
+.woocommerce table.shop_table,
+.woocommerce-page table.shop_table
+{
+    border-radius: 0;
+}
+
+.woocommerce #content table.cart td.actions .coupon .input-text,
+.woocommerce table.cart td.actions .coupon .input-text,
+.woocommerce-page #content table.cart td.actions .coupon .input-text,
+.woocommerce-page table.cart td.actions .coupon .input-text
+{
+    width: 120px;
+    height: 38px;
+
+    box-shadow: none;
+}
+
+.shipping-calculator-button:after
+{
+    content: none !important;
+}
+
+.product-thumbnail-link
+{
+    color: #262526;
+}
+
+.wc-proceed-to-checkout
+{
+    float: right;
+
+    max-width: 300px;
+
+    text-align: right;
+}
+.wc-proceed-to-checkout .button
+{
+    font-weight: bold !important;
+}
+
+.woocommerce-shipping-calculator
+{
+    margin-top: 20px;
+}
+
+.shipping-calculator-form
+{
+    margin-bottom: 20px;
+}
+.shipping-calculator-form button[type=submit]
+{
+    margin-top: 20px;
+}
+
+.container .woocommerce .cart-collaterals .cross-sells
+{
+    width: 100%;
+}

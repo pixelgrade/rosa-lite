@@ -49,7 +49,7 @@
 	top: -12px;
 	left: 50%;
 
-	@include transform(translateX(-50%));
+	transform: translateX(-50%);
 }
 
 
@@ -83,7 +83,7 @@
 //	margin-left: 2px;
 	color: white;
 
-	@include transform(translateX(-50%) translateY(-30%));
+	transform: translateX(-50%) translateY(-30%);
 
 	.btn__arrow {
 		display: block;
@@ -96,7 +96,7 @@
 		border-left: 2px solid white;
 		border-top: 2px solid white;
 
-		@include transform(translateX(-50%) rotate(45deg));
+		transform: translateX(-50%) rotate(45deg);
 
 		.copyright-area__light &{
 			border-color: $dark;

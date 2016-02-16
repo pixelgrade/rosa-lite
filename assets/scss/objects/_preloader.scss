@@ -7,13 +7,13 @@
 
 @-webkit-keyframes clockwise {
 	to {
-		-webkit-transform: rotate(360deg) translatez(0);
+		-webkit-transform: rotate(360deg) translateZ(0);
 	}
 }
 
 @keyframes clockwise {
 	to {
-		@include transform(rotate(360deg) translatez(0));
+		transform: rotate(360deg) translateZ(0);
 	}
 }
 

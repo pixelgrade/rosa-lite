@@ -27,7 +27,7 @@ td.actions{
 }
 
 .woocommerce table.shop_table, .woocommerce-page table.shop_table{
-	@include border-radius(0);
+	border-radius: 0;
 }
 
 .woocommerce #content table.cart td.actions .coupon .input-text,
@@ -36,7 +36,7 @@ td.actions{
 .woocommerce-page table.cart td.actions .coupon .input-text{
 	width: 120px;
 	height: 38px;
-	@include box-shadow(none);
+	box-shadow: none;
 }
 
 .shipping-calculator-button:after{

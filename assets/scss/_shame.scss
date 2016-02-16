@@ -33,7 +33,7 @@ html, body, #page {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	@include transform(translate3d(-50%, -50%, 0));
+	transform: translate3d(-50%, -50%, 0);
 }
 
 .pixslider--gallery-slideshow{
@@ -130,7 +130,7 @@ html, body, #page {
 }
 
 .article__header .btn {
-    @include transition(none);
+    transition: none;
 }
 
 html body.woocommerce ul.products li.product {

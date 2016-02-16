@@ -56,8 +56,8 @@
 	text-transform: uppercase;
 	letter-spacing: .2em;
 
-	@include transition(all .15s);
-	@include border-radius(40px);
+	transition: all .15s;
+	border-radius: 40px;
 	padding: rem(14px) rem(16px);
 	padding-left: rem(56px);
 	min-width: 0;

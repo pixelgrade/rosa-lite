@@ -25,16 +25,16 @@
 				border: 1px solid $borders;
 				border-top: 0;
 
-				@include border-bottom-left-radius(5px);
-				@include border-bottom-right-radius(5px);
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 5px;
 
 			}
 
 			.dropdown__trigger {
 				border-bottom: 1px solid transparent;
 
-				@include border-bottom-left-radius(0);
-				@include border-bottom-right-radius(0);
+				border-bottom-left-radius: 0;
+				border-bottom-right-radius: 0;
 			}
 		}
 
@@ -44,7 +44,7 @@
 
 			border: 1px solid $borders;
 			background: none;
-			@include border-radius(5px);
+			border-radius: 5px;
 
 			color: $dark;
 
@@ -67,7 +67,7 @@
 				border-right: 2px solid $dark;
 				border-bottom: 2px solid $dark;
 
-				@include transform(rotate(45deg));
+				transform: rotate(45deg);
 			}
 		}
 

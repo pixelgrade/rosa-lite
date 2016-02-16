@@ -25,7 +25,7 @@
 		color: $dark;
 		@include font-size(14px);
 
-		@include transition(color .2s linear);
+		transition: color .2s linear;
 
 		&:hover {
 			color: $accent;
@@ -99,7 +99,7 @@
 			border-color: $dark;
 		}
 
-		@include transform(translateY(-50%) rotate(45deg));
+		transform: translateY(-50%) rotate(45deg);
 	}
 
 	&:hover > .sub-menu {
@@ -144,11 +144,11 @@
 
 	background: white;
 
-	@include transform(translateX(-50%));
+	transform: translateX(-50%);
 
 	.lt-ie9 & {
 		left: 0;
-		@include transform(none);
+		transform: none;
 	}
 
 	.header--transparent & {
@@ -184,7 +184,7 @@
 		&:after {
 			right: $_u;
 
-			@include transform(rotate(-45deg));
+			transform: rotate(-45deg);
 		}
 	}
 
@@ -192,7 +192,7 @@
 		left: 100%;
 		top: 0;
 
-		@include transform(translateX(0));
+		transform: translateX(0);
 	}
 }
 
@@ -208,7 +208,7 @@ a.nav-trigger{
 	position: absolute;
 	top: 36px;
 	left: $_u2;
-	@include transform(translateY(-50%));
+	transform: translateY(-50%);
 
 	padding: 0 $_u2;
 
@@ -311,7 +311,7 @@ $nav-width: 200px;
 					border-right: 1px solid #cccccc;
 					border-bottom: 1px solid #cccccc;
 
-					@include transform(translateY(-50%) rotate(45deg));
+					transform: translateY(-50%) rotate(45deg);
 				}
 			}
 		}
@@ -325,7 +325,7 @@ $nav-width: 200px;
 			border: 0;
 			background: transparent;
 
-			@include transform(translateX(0));
+			transform: translateX(0);
 
 			@include media-query(palm) {
 				background: transparent !important;
@@ -338,7 +338,7 @@ $nav-width: 200px;
 	}
 
 	#page {
-		@include transition(transform .3s cubic-bezier(0.86, 0, 0.07, 1));
+		transition: transform .3s cubic-bezier(0.86, 0, 0.07, 1);
 	}
 
 	// I don't wanna do this anymore
@@ -350,14 +350,14 @@ $nav-width: 200px;
 		#page {
 			position: fixed;
 			left: $nav-width;
-			@include transform(none);
+			transform: none;
 		}
 
 		.site-header {
 			position: fixed;
 			left: $nav-width;
 			top: 0;
-			@include transform(none);
+			transform: none;
 		}
 
 		.navigation {
@@ -374,7 +374,7 @@ $nav-width: 200px;
 
 	.mobile-ie {
 		#page, .site-header {
-			@include transition(none);
+			transition: none;
 		}
 	}
 
@@ -383,11 +383,11 @@ $nav-width: 200px;
 		#page,
 		.navigation--main,
 		.covers {
-			@include transition(left .3s cubic-bezier(0.86, 0, 0.07, 1));
+			transition: left .3s cubic-bezier(0.86, 0, 0.07, 1);
 		}
 
 		.site-header {
-			@include transition(all .3s cubic-bezier(0.86, 0, 0.07, 1));
+			transition: all .3s cubic-bezier(0.86, 0, 0.07, 1);
 		}
 	}
 
@@ -417,7 +417,7 @@ $nav-width: 200px;
 		.site-header,
 		.navigation--main,
 		#page {
-			@include transform(none !important);
+			transform: none !important;
 		}
 
 		.site-header {
@@ -425,7 +425,7 @@ $nav-width: 200px;
 		}
 
 		.navigation--main, .site-header, #page {
-			@include transition(none !important);
+			transition: none !important;
 		}
 
 		.navigation--main {
@@ -435,7 +435,7 @@ $nav-width: 200px;
 		&.navigation--is-visible {
 
 			#page {
-				@include transform(none);
+				transform: none;
 				left: $nav-width;
 			}
 
@@ -515,7 +515,7 @@ $nav-width: 200px;
 
 		color: white;
 		background-color: $accent;
-		@include border-radius(50%);
+		border-radius: 50%;
 	}
 
 	.shop-menu-item__price{

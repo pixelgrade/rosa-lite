@@ -2,14 +2,13 @@
     404 Page
 \*------------------------------------*/
 @charset "UTF-8";
-@import "compass";
 
 /*body*/
 .error404 {
 	background-repeat: no-repeat;
 	background-position: center center;
-	@include background-size(cover);
 	background-color: black;
+	background-size: cover;
 
 	.overlay {
 		position: fixed;
@@ -42,7 +41,7 @@
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		@include translate(-50%, -50%);
+		translate: -50%, -50%;
 		max-width: 440px;
 		padding: 20px;
 		color: white;
