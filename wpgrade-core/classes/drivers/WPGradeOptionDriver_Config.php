@@ -20,7 +20,7 @@ class WPGradeOptionDriver_Config extends WPGradeOptionDriver {
 	/**
 	 * ...
 	 */
-	function __construct( $config ) {
+	function __construct( $config = '' ) {
 		$this->config = $config;
 	}
 

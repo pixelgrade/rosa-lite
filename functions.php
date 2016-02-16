@@ -180,6 +180,8 @@ if ( is_admin() ) {
 }
 
 require get_template_directory() . '/inc/integrations.php';
+require get_template_directory() . '/inc/customify.php';
+require get_template_directory() . '/inc/required-plugins/required-plugins.php';
 
 #
 # Please perform any initialization via options in wpgrade-config and

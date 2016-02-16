@@ -4,11 +4,6 @@
 # This file performs initial environment setup.
 #
 
-// ensure EXT is defined
-if ( ! defined( 'EXT' ) ) {
-	define( 'EXT', '.php' );
-}
-
 do_action('before_wpgrade_core');
 
 $basepath = dirname( __FILE__ ) . DIRECTORY_SEPARATOR;
@@ -34,8 +29,8 @@ wpgrade::options_handler( new WPGradeOptions() );
 # [!!] driver priority works like a LIFO stack, last in = highest priority
 
 // register basic configuration driver
-$config = wpgrade::config();
-wpgrade::options()->add_optiondriver( new WPGradeOptionDriver_Config( $config['theme-options'] ) );
+$config = wpgrade::get_config();
+wpgrade::options()->add_optiondriver( new WPGradeOptionDriver_Config() );
 
 // Hooks
 // -----

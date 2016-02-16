@@ -18,16 +18,6 @@ foreach ( $themeincludepaths as $path ) {
 	}
 }
 
-$themeincludefiles = wpgrade::confoption( 'include-files', array() );
-foreach ( $themeincludefiles as $file ) {
-
-	if ( file_exists( wpgrade::childpath() . $file ) ) {
-		require wpgrade::childpath() . $file;
-	} else {
-		require wpgrade::themepath() . $file;
-	}
-}
-
 
 // Include core specific callbacks
 // ------------------------------------------------------------------------

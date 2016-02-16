@@ -21,23 +21,11 @@ return array(
 		'inc/classes',
 		'inc/functions',
 	),
-	// same as include-paths only instead of files you specify files, to be
-	// used with vendor dependencies to avoid multiple include/requires
-	// happening due to the files in question adding subfiles relative to
-	// their directory (also avoids problems with php configuration files)
-	'include-files'                => array(
-		// main theme class
-		'inc/required-plugins/required-plugins.php',
-		'config/customify.php',
-	),
+
 	// the path where overwrites on the core partials are stored, any files
 	// placed in the partial overwrites will be loaded instead of the core
 	// equivalent view files
 	'core-partials-overwrite-path' => 'templates/core',
-	// the directory where css and other media files are located; used by
-	// wpgrade::resourceuri; utility allows for easy migration of files to
-	// new structures
-	'resource-path'                => '/assets',
 	// filter functions will recieve content as a parameter and must return
 	// content; all functions are ordered by priority and executed from
 	// lowest to highest. If a filter is assigned false as a priority it
