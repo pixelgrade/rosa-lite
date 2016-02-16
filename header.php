@@ -133,7 +133,7 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 						$has_main_menu = true;
 					} ?>
 					<nav class="navigation  navigation--main<?php echo ( ! $has_main_menu ) ? "  no-menu" : ""; ?>" id="js-navigation--main">
-						<h2 class="accessibility"><?php _e( 'Primary Navigation', wpgrade::textdomain() ) ?></h2>
+						<h2 class="accessibility"><?php _e( 'Primary Navigation', 'rosa' ) ?></h2>
 						<ul class="nav  nav--main  nav--items-social">
 							<?php
 

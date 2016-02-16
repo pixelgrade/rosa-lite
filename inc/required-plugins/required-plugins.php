@@ -47,7 +47,7 @@ function wpgrade_register_required_plugins() {
 		),
 	);
 	// Change this to your theme text domain, used for internationalising strings
-	$theme_text_domain = wpgrade::textdomain();
+	$theme_text_domain = 'rosa';
 
 	$config = array(
 		'domain'           => $theme_text_domain, // Text domain - likely want to be the same as your theme.

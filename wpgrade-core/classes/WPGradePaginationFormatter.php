@@ -120,15 +120,15 @@ class WPGradePaginationFormatter {
 		# requesting the translation when not required
 
 		if ( empty( $conf['prev_text'] ) ) {
-			$conf['prev_text'] = __( '&laquo; Previous', wpgrade::textdomain() );
+			$conf['prev_text'] = __( '&laquo; Previous', 'rosa' );
 		} else { // exists; translate
-			$conf['prev_text'] = __( $conf['prev_text'], wpgrade::textdomain() );
+			$conf['prev_text'] = __( $conf['prev_text'], 'rosa' );
 		}
 
 		if ( empty( $conf['next_text'] ) ) {
-			$conf['next_text'] = __( 'Next &raquo;', wpgrade::textdomain() );
+			$conf['next_text'] = __( 'Next &raquo;', 'rosa' );
 		} else { // exists; translate
-			$conf['next_text'] = __( $conf['next_text'], wpgrade::textdomain() );
+			$conf['next_text'] = __( $conf['next_text'], 'rosa' );
 		}
 
 		// is the pager sorted?

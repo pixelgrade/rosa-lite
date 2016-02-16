@@ -13,8 +13,8 @@ global $post_format;
 					'before'           => '<ol class="nav  pagination--single">',
 					'after'            => '</ol>',
 					'next_or_number'   => 'next_and_number',
-					'previouspagelink' => __( '&laquo;', wpgrade::textdomain() ),
-					'nextpagelink'     => __( '&raquo;', wpgrade::textdomain() )
+					'previouspagelink' => __( '&laquo;', 'rosa' ),
+					'nextpagelink'     => __( '&raquo;', 'rosa' )
 				);
 				wp_link_pages( $args );
 				?>
@@ -24,10 +24,10 @@ global $post_format;
 		$categories = get_the_category();
 		if ( ! is_wp_error( $categories ) && ! empty( $categories ) ): ?>
 			<div class="meta--categories btn-list  meta-list">
-				<span class="btn  btn--small  btn--secondary  list-head"><?php _e( 'Categories', wpgrade::textdomain() ) ?></span>
+				<span class="btn  btn--small  btn--secondary  list-head"><?php _e( 'Categories', 'rosa' ) ?></span>
 				<?php
 				foreach ( $categories as $category ) {
-					echo '<a class="btn  btn--small  btn--tertiary" href="' . get_category_link( $category->term_id ) . '" title="' . esc_attr( sprintf( __( "View all posts in %s", wpgrade::textdomain() ), $category->name ) ) . '" rel="tag">' . $category->name . '</a>';
+					echo '<a class="btn  btn--small  btn--tertiary" href="' . get_category_link( $category->term_id ) . '" title="' . esc_attr( sprintf( __( "View all posts in %s", 'rosa' ), $category->name ) ) . '" rel="tag">' . $category->name . '</a>';
 				}; ?>
 			</div>
 		<?php endif;
@@ -35,10 +35,10 @@ global $post_format;
 		$tags = get_the_tags();
 		if ( ! empty( $tags ) ): ?>
 			<div class="meta--tags  btn-list  meta-list">
-				<span class="btn  btn--small  btn--secondary  list-head"><?php _e( 'Tags', wpgrade::textdomain() ) ?></span>
+				<span class="btn  btn--small  btn--secondary  list-head"><?php _e( 'Tags', 'rosa' ) ?></span>
 				<?php
 				foreach ( $tags as $tag ) {
-					echo '<a class="btn  btn--small  btn--tertiary" href="' . get_tag_link( $tag->term_id ) . '" title="' . esc_attr( sprintf( __( "View all posts tagged %s", wpgrade::textdomain() ), $tag->name ) ) . '" rel="tag">' . $tag->name . '</a>';
+					echo '<a class="btn  btn--small  btn--tertiary" href="' . get_tag_link( $tag->term_id ) . '" title="' . esc_attr( sprintf( __( "View all posts tagged %s", 'rosa' ), $tag->name ) ) . '" rel="tag">' . $tag->name . '</a>';
 				}; ?>
 			</div>
 		<?php endif; ?>

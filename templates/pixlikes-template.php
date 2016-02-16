@@ -21,7 +21,7 @@
 <div id="pixlikes" class="share-item  pixlikes-box  <?php echo $display_only . ' ' . $class ?>"  <?php echo $data_id ?>>
 	<span class="like-link"><i class="icon-e-heart"></i>
 	<span class="likes-text">
-		<span class="likes-count"><?php echo $likes_number ?></span>&nbsp;<?php _e( 'likes', wpgrade::textdomain() ) ?>
+		<span class="likes-count"><?php echo $likes_number ?></span>&nbsp;<?php _e( 'likes', 'rosa' ) ?>
 	</span>
 	</span>
 </div>

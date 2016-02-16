@@ -8,13 +8,13 @@ function wpgrade_callback_the_password_form( $form ) {
 	$postID = wpgrade::lang_post_id( $post->ID );
 	$label  = 'pwbox-' . ( empty( $postID ) ? rand() : $postID );
 	$form   = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">
-		<p>' . __( "This post is password protected. To view it please enter your password below:", wpgrade::textdomain() ) . '</p>
+		<p>' . __( "This post is password protected. To view it please enter your password below:", 'rosa' ) . '</p>
 		<div class="row">
 			<div class="column  span-12  hand-span-10">
-				<input name="post_password" id="' . $label . '" type="password" size="20" placeholder="' . __( "Password", wpgrade::textdomain() ) . '"/>
+				<input name="post_password" id="' . $label . '" type="password" size="20" placeholder="' . __( "Password", 'rosa' ) . '"/>
 			</div>
 			<div class="column  span-12  hand-span-2">
-				<input type="submit" name="Access" value="' . esc_attr__( "Access", wpgrade::textdomain() ) . '" class="btn post-password-submit"/>
+				<input type="submit" name="Access" value="' . esc_attr__( "Access", 'rosa' ) . '" class="btn post-password-submit"/>
 			</div>
 		</div>
 	</form>';
@@ -40,7 +40,7 @@ function wpgrade_callback_the_password_form( $form ) {
 	if ( ! $hasher->CheckPassword( $post->post_password, $hash ) ) {
 
 		// We have a cookie, but it does not match the password.
-		$msg  = '<span class="wrong-password-message">' . __( 'Sorry, your password did not match', wpgrade::textdomain() ) . '</span>';
+		$msg  = '<span class="wrong-password-message">' . __( 'Sorry, your password did not match', 'rosa' ) . '</span>';
 		$form = $msg . $form;
 	}
 

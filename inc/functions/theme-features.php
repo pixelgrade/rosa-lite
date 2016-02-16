@@ -340,10 +340,10 @@ function wpgrade_register_attachments_custom_fields() {
 		function add_video_url_field_to_attachments( $form_fields, $post ) {
 			if ( ! isset( $form_fields["video_url"] ) ) {
 				$form_fields["video_url"] = array(
-					"label" => __( "Video URL", wpgrade::textdomain() ),
+					"label" => __( "Video URL", 'rosa' ),
 					"input" => "text", // this is default if "input" is omitted
 					"value" => esc_url( get_post_meta( $post->ID, "_video_url", true ) ),
-					"helps" => __( "<p class='desc'>Attach a video to this image <span class='small'>(YouTube or Vimeo)</span>.</p>", wpgrade::textdomain() ),
+					"helps" => __( "<p class='desc'>Attach a video to this image <span class='small'>(YouTube or Vimeo)</span>.</p>", 'rosa' ),
 				);
 			}
 
@@ -358,19 +358,19 @@ function wpgrade_register_attachments_custom_fields() {
 				}
 
 				$form_fields["video_autoplay"] = array(
-					"label" => __( "Video  Autoplay", wpgrade::textdomain() ),
+					"label" => __( "Video  Autoplay", 'rosa' ),
 					"input" => "html",
-					"html"  => '<input' . $checked . ' type="checkbox" name="attachments[' . $post->ID . '][video_autoplay]" id="attachments[' . $post->ID . '][video_autoplay]" /><label for="attachments[' . $post->ID . '][video_autoplay]">' . __( 'Enable Video Autoplay?', wpgrade::textdomain() ) . '</label>'
+					"html"  => '<input' . $checked . ' type="checkbox" name="attachments[' . $post->ID . '][video_autoplay]" id="attachments[' . $post->ID . '][video_autoplay]" /><label for="attachments[' . $post->ID . '][video_autoplay]">' . __( 'Enable Video Autoplay?', 'rosa' ) . '</label>'
 
 				);
 			}
 
 //			if ( ! isset( $form_fields["external_url"] ) ) {
 //				$form_fields["external_url"] = array(
-//					"label" => __( "External URL", wpgrade::textdomain() ),
+//					"label" => __( "External URL", 'rosa' ),
 //					"input" => "text",
 //					"value" => esc_url( get_post_meta( $post->ID, "_external_url", true ) ),
-//					"helps" => __( "<p class='desc'>Set this image to link to an external website.</p>", wpgrade::textdomain() ),
+//					"helps" => __( "<p class='desc'>Set this image to link to an external website.</p>", 'rosa' ),
 //				);
 //			}
 
@@ -491,7 +491,7 @@ function wpgrade_custom_gallery_settings() {
 	?>
 	<script type="text/html" id="tmpl-mkslideshow">
 		<label class="setting">
-			<span><?php _e( 'Make this gallery a slideshow', wpgrade::textdomain() ) ?></span>
+			<span><?php _e( 'Make this gallery a slideshow', 'rosa' ) ?></span>
 			<input type="checkbox" data-setting="mkslideshow">
 		</label>
 	</script>

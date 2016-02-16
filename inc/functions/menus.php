@@ -65,6 +65,6 @@ function wpgrade_footer_nav($before = '', $after = '') {
 function wpgrade_please_select_a_menu() {
 	echo '
 		<ul class="nav  nav--main sub-menu" >
-			<li><a href="' . admin_url( 'nav-menus.php?action=locations' ) . '">' . __( 'Please select a menu in this location', wpgrade::textdomain() ) . '</a></li>
+			<li><a href="' . admin_url( 'nav-menus.php?action=locations' ) . '">' . __( 'Please select a menu in this location', 'rosa' ) . '</a></li>
 		</ul>';
 }

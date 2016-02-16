@@ -175,13 +175,13 @@ class rosa {
 
 		if ( is_home() ) { ?>
 			<h1 class="hN  archive__title">
-                <?php  if( isset($object->post_title)) echo $object->post_title; else _e( 'News', wpgrade::textdomain() ); ?></h1>
+                <?php  if( isset($object->post_title)) echo $object->post_title; else _e( 'News', 'rosa' ); ?></h1>
             <hr class="separator"/>
 		<?php
 		} elseif ( is_search() ) {
 			?>
 			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php _e( 'Search Results for: ', wpgrade::textdomain() ) ?></span>
+				<span class="archive__side-title beta"><?php _e( 'Search Results for: ', 'rosa' ) ?></span>
 
 				<h1 class="hN  archive__title"><?php echo get_search_query(); ?></h1>
 			</div>
@@ -191,39 +191,39 @@ class rosa {
 			?>
 			<div class="heading headin--main">
 				<h1 class="archive__title"><?php echo single_tag_title( '', false ); ?></h1>
-				<span class="archive__side-title beta"><?php _e( 'Tag', wpgrade::textdomain() ) ?></span>
+				<span class="archive__side-title beta"><?php _e( 'Tag', 'rosa' ) ?></span>
 			</div>
 			<hr class="separator"/>
 		<?php } elseif ( ! empty( $object ) && isset( $object->term_id ) ) { ?>
 			<div class="heading headin--main">
 				<h1 class="archive__title"><?php echo $object->name; ?></h1>
-				<span class="archive__side-title beta"><?php _e( 'Category', wpgrade::textdomain() ) ?></span>
+				<span class="archive__side-title beta"><?php _e( 'Category', 'rosa' ) ?></span>
 			</div>
 			<hr class="separator"/>
 		<?php } elseif ( is_day() ) { ?>
 			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php _e( 'Daily Archives: ', wpgrade::textdomain() ) ?></span>
+				<span class="archive__side-title beta"><?php _e( 'Daily Archives: ', 'rosa' ) ?></span>
 
 				<h1 class="archive__title"><?php echo get_the_date(); ?></h1>
 			</div>
 			<hr class="separator"/>
 		<?php } elseif ( is_month() ) { ?>
 			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php _e( 'Monthly Archives: ', wpgrade::textdomain() ) ?></span>
+				<span class="archive__side-title beta"><?php _e( 'Monthly Archives: ', 'rosa' ) ?></span>
 
-				<h1 class="archive__title"><?php echo get_the_date( _x( 'F Y', 'monthly archives date format', wpgrade::textdomain() ) ); ?></h1>
+				<h1 class="archive__title"><?php echo get_the_date( _x( 'F Y', 'monthly archives date format', 'rosa' ) ); ?></h1>
 			</div>
 			<hr class="separator"/>
 		<?php } elseif ( is_year() ) { ?>
 			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php _e( 'Yearly Archives: ', wpgrade::textdomain() ) ?></span>
+				<span class="archive__side-title beta"><?php _e( 'Yearly Archives: ', 'rosa' ) ?></span>
 
-				<h1 class="archive__title"><?php echo get_the_date( _x( 'Y', 'yearly archives date format', wpgrade::textdomain() ) ); ?></h1>
+				<h1 class="archive__title"><?php echo get_the_date( _x( 'Y', 'yearly archives date format', 'rosa' ) ); ?></h1>
 			</div>
 			<hr class="separator"/>
 		<?php } else { ?>
 			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php _e( 'Archives', wpgrade::textdomain() ) ?></span>
+				<span class="archive__side-title beta"><?php _e( 'Archives', 'rosa' ) ?></span>
 			</div>
 			<hr class="separator"/>
 		<?php
@@ -246,16 +246,16 @@ class rosa {
 				<div class="flexbox__item">
 					<?php if ( $style == 'dropdown' ) : ?>
 						<div class="pix-dropdown  up  border-menu">
-							<a class="dropdown__trigger" href="#"><?php echo __( 'Filter', wpgrade::textdomain() ) ?>
+							<a class="dropdown__trigger" href="#"><?php echo __( 'Filter', 'rosa' ) ?>
 								<span class="arrow"></span></a>
 							<ul class="dropdown__menu  nav  nav--banner  archive-categories-list  border-menu">
 								<?php foreach ( $filter_categories as $key => $category ) { ?>
 									<li class="category-item archive__filter-item">
-										<a href="#" title="<?php echo sprintf( __( "View all in %s", wpgrade::textdomain() ), $category->name ); ?>" data-filter="<?php echo '.cat-' . $category->slug; ?>"><?php echo $category->name; ?></a>
+										<a href="#" title="<?php echo sprintf( __( "View all in %s", 'rosa' ), $category->name ); ?>" data-filter="<?php echo '.cat-' . $category->slug; ?>"><?php echo $category->name; ?></a>
 									</li>
 								<?php } ?>
 								<li class="category-item archive__filter-item" data-filter="all">
-									<a href="#" title="<?php echo __( 'View all', wpgrade::textdomain() ) ?>" data-filter="*"><?php _e( 'View All', wpgrade::textdomain() ); ?></a>
+									<a href="#" title="<?php echo __( 'View all', 'rosa' ) ?>" data-filter="*"><?php _e( 'View All', 'rosa' ); ?></a>
 								</li>
 							</ul>
 						</div>
@@ -263,11 +263,11 @@ class rosa {
 						<ul class="dropdown__menu  nav  nav--banner  archive-categories-list  border-menu">
 							<?php foreach ( $filter_categories as $key => $category ) { ?>
 								<li class="category-item archive__filter-item">
-									<a href="#" title="<?php echo sprintf( __( "View all in %s", wpgrade::textdomain() ), $category->name ); ?>" data-filter="<?php echo '.cat-' . $category->slug; ?>"><?php echo $category->name; ?></a>
+									<a href="#" title="<?php echo sprintf( __( "View all in %s", 'rosa' ), $category->name ); ?>" data-filter="<?php echo '.cat-' . $category->slug; ?>"><?php echo $category->name; ?></a>
 								</li>
 							<?php } ?>
 							<li class="category-item archive__filter-item" data-filter="all">
-								<a href="#" title="<?php echo __( 'View all', wpgrade::textdomain() ) ?>" data-filter="*"><?php _e( 'View All', wpgrade::textdomain() ); ?></a>
+								<a href="#" title="<?php echo __( 'View all', 'rosa' ) ?>" data-filter="*"><?php _e( 'View All', 'rosa' ); ?></a>
 							</li>
 						</ul>
 					<?php endif; ?>
@@ -425,7 +425,7 @@ class rosa {
 		if ( ! is_object( $authordata ) ) {
 			return false;
 		}
-		$link = sprintf( '<a href="%1$s" title="%2$s">%3$s</a>', esc_url( get_author_posts_url( $authordata->ID, $authordata->user_nicename ) ), esc_attr( sprintf( __( 'Posts by %s', wpgrade::textdomain() ), get_the_author() ) ), get_the_author() );
+		$link = sprintf( '<a href="%1$s" title="%2$s">%3$s</a>', esc_url( get_author_posts_url( $authordata->ID, $authordata->user_nicename ) ), esc_attr( sprintf( __( 'Posts by %s', 'rosa' ), get_the_author() ) ), get_the_author() );
 
 		/**
 		 * Filter the link to the author page of the author of the current post.

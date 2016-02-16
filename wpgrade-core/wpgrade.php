@@ -1282,7 +1282,7 @@ class wpgrade {
 	static function count_sidebar_widgets( $sidebar_id, $echo = true ) {
 		$the_sidebars = wp_get_sidebars_widgets();
 		if ( ! isset( $the_sidebars[ $sidebar_id ] ) ) {
-			return __( 'Invalid sidebar ID', wpgrade::textdomain() );
+			return __( 'Invalid sidebar ID', 'rosa' );
 		}
 		if ( $echo ) {
 			echo count( $the_sidebars[ $sidebar_id ] );

@@ -230,7 +230,7 @@ if ( $pin_type == 'single' ) {
 			</header>
 		<?php } else { ?>
 			<div class="empty-slideshow">
-				<?php _e( 'Currently there are no images assigned to this slideshow', wpgrade::textdomain() ); ?>
+				<?php _e( 'Currently there are no images assigned to this slideshow', 'rosa' ); ?>
 			</div>
 		<?php }
 

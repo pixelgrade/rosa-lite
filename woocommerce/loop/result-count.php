@@ -25,7 +25,7 @@ if ( !empty($terms ) /*&& wpgrade::option('display_product_filters', '0')*/ ) {
 	// display the shop link first if there is one
 	if ( !empty($all_link) ) {
 		// also if the current_term doesn't have a term_id it means we are quering the shop and the "all categories" should be active
-		echo '<li><a href="', $all_link ,'"', ( !isset( $current_term->term_id ) ) ? ' class="active"' : ' class="inactive"' ,'>', __('All Products', wpgrade::textdomain() ) , '</a></li>';
+		echo '<li><a href="', $all_link ,'"', ( !isset( $current_term->term_id ) ) ? ' class="active"' : ' class="inactive"' ,'>', __('All Products', 'rosa' ) , '</a></li>';
 	}
 
 	// display a link for each product category

@@ -222,11 +222,11 @@ function wpgrade_comments( $comment, $args, $depth ) {
 			<header class="comment__meta comment-author">
 				<?php printf( '<span class="comment__author-name">%s</span>', get_comment_author_link() ) ?>
 				<time class="comment__time" datetime="<?php comment_time( 'c' ); ?>">
-					<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>" class="comment__timestamp"><?php printf( __( 'on %s at %s', wpgrade::textdomain() ), get_comment_date(), get_comment_time() ); ?> </a>
+					<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>" class="comment__timestamp"><?php printf( __( 'on %s at %s', 'rosa' ), get_comment_date(), get_comment_time() ); ?> </a>
 				</time>
 				<div class="comment__links">
 					<?php
-					edit_comment_link( __( 'Edit', wpgrade::textdomain() ), '  ', '' );
+					edit_comment_link( __( 'Edit', 'rosa' ), '  ', '' );
 					comment_reply_link( array_merge( $args, array( 'depth'     => $depth,
 					                                               'max_depth' => $args['max_depth']
 							) ) );
@@ -236,7 +236,7 @@ function wpgrade_comments( $comment, $args, $depth ) {
 			<!-- .comment-meta -->
 			<?php if ( $comment->comment_approved == '0' ) : ?>
 				<div class="alert info">
-					<p><?php _e( 'Your comment is awaiting moderation.', wpgrade::textdomain() ) ?></p>
+					<p><?php _e( 'Your comment is awaiting moderation.', 'rosa' ) ?></p>
 				</div>
 			<?php endif; ?>
 			<section class="comment__content comment">
@@ -291,7 +291,7 @@ function wpgrade_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary.
 	if ( $paged >= 2 || $page >= 2 )
-		$title = "$title $sep " . sprintf( __( 'Page %s', wpgrade::textdomain() ), max( $paged, $page ) );
+		$title = "$title $sep " . sprintf( __( 'Page %s', 'rosa' ), max( $paged, $page ) );
 
 	return $title;
 }
@@ -305,7 +305,7 @@ function wpgrade_fix_yoast_page_number( $title ) {
 	if ( is_home() || is_front_page() ) {
 		// Add a page number if necessary.
 		if ( $paged >= 2 || $page >= 2 )
-			$title = "$title $sep " . sprintf( __( 'Page %s', wpgrade::textdomain() ), max( $paged, $page ) );
+			$title = "$title $sep " . sprintf( __( 'Page %s', 'rosa' ), max( $paged, $page ) );
 	}
 
 	return $title;
