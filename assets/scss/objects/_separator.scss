@@ -48,7 +48,7 @@ hr, .separator {
 		top: 50%;
 		width: 42%;
 		border: 1px solid $borders;
-		@include transform(translateY(-50%));
+		transform: translateY(-50%);
 	}
 
 	&.separator_color--white .line {
@@ -75,7 +75,7 @@ hr, .separator {
 
 		border: 5px solid transparent;
 
-		@include transform(translateY(-50%));
+		transform: translateY(-50%);
 	}
 
 	.arrow--left {

@@ -99,8 +99,8 @@ function wpgrade_callback_geting_active() {
 	 * Get the config from /config/activation.php
 	 */
 	$activation_settings = array();
-	if ( file_exists( wpgrade::themepath() . 'config/activation.php' ) ) {
-		$activation_settings = include wpgrade::themepath() . 'config/activation.php';
+	if ( file_exists( wpgrade::themepath() . 'inc/activation.php' ) ) {
+		$activation_settings = include wpgrade::themepath() . 'inc/activation.php';
 	}
 
 	/**

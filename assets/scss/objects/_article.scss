@@ -31,7 +31,7 @@
 	left: 0;
 	background: url('../images/border-wave.svg') top left repeat-x;
 
-	@include transform(translate3d(0, 0, 0.1px));
+	transform: translate3d(0, 0, 0.1px);
 }
 
 .border-waves-top:after {
@@ -207,7 +207,7 @@
 			min-height: 100%;
 			position: absolute;
 			top: 50%; left: 50%;
-			@include transform(translate(-50%, -50%));
+			transform: translate(-50%, -50%);
 		}
 	}
 
@@ -218,7 +218,7 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
-		@include transform(translate3d(0, -50%, 0));
+		transform: translate3d(0, -50%, 0);
 
 		img {
 			max-width: none;
@@ -229,7 +229,7 @@
 .article__parallax__slider {
 	position: absolute;
 	top: 50%; right: 0; bottom: 0; left: 0;
-	@include transform(translateY(-50%));
+	transform: translateY(-50%);
 
 	img {
 		position: absolute;
@@ -249,7 +249,7 @@
 		top: 0 !important;
 		bottom: auto !important;
 		left: 0 !important;
-		@include transform(translate(-50%, -50%));
+		transform: translate(-50%, -50%);
 	}
 }
 
@@ -259,7 +259,7 @@
 	.article__parallax .gmap--multiple-pins,
 	.article__parallax__img,
 	.article__parallax__slider {
-		@include transform(none !important);
+		transform: none !important;
 		top: 0 !important;
 	}
 }
@@ -271,7 +271,7 @@
 		top: 50%; left: 50%;
 		opacity: 0;
 		max-width: none;
-		@include transform(translate(-50%, -50%));
+		transform: translate(-50%, -50%);
 	}
 }
 
@@ -283,7 +283,7 @@
 			width: 100% !important;
 			top: 0 !important;
 			left: 0 !important;
-			@include transform(none);
+			transform: none;
 		}
 	}
 }
@@ -328,7 +328,7 @@
         top: 50%;
         left: 50%;
         z-index: 20;
-        @include transform(rotate(45deg));
+        transform: rotate(45deg);
     }
 }
 
@@ -372,7 +372,7 @@
 	border-top-right-radius: 0;
 	border-bottom-left-radius: 0;
 
-	@include transform(rotate(45deg));
+	transform: rotate(45deg);
 
 	.arrow{
 		top: 10px;
@@ -384,7 +384,7 @@
 		margin: 0;
 
 		border-color: $dark;
-		@include transform(rotate(0));
+		transform: rotate(0);
 	}
 }
 

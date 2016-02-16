@@ -33,11 +33,6 @@ class wpgrade {
 	 * @return array theme configuration
 	 */
 	static function config() {
-		//		if (self::$configuration === null) {
-		//			self::$configuration = include self::themepath().'wpgrade-config'.EXT;
-		//		}
-		//
-		//		return self::$configuration;
 		return self::get_config();
 	}
 
@@ -50,18 +45,12 @@ class wpgrade {
 	}
 
 	static function set_config() {
-		/**
-		 * this is the old path...keep it for legacy
-		 */
-		if ( file_exists( self::childpath() . 'config/wpgrade-config.php' ) ) {
-			self::$configuration = include self::childpath() . 'config/wpgrade-config.php';
-		} elseif ( file_exists( self::themepath() . 'config/wpgrade-config.php' ) ) {
-			self::$configuration = include self::themepath() . 'config/wpgrade-config.php';
-		} elseif ( file_exists( self::childpath() . 'wpgrade-config.php' ) ) {
-			self::$configuration = include self::childpath() . 'wpgrade-config.php';
-		} elseif ( file_exists( self::themepath() . 'wpgrade-config.php' ) ) {
-			self::$configuration = include self::themepath() . 'wpgrade-config.php';
+		if ( file_exists( self::childpath() . 'inc/wpgrade-config.php' ) ) {
+			self::$configuration = include self::childpath() . '/inc/wpgrade-config.php';
+		} elseif ( file_exists( self::themepath() . 'inc/wpgrade-config.php' ) ) {
+			self::$configuration = include self::themepath() . '/inc/wpgrade-config.php';
 		}
+		return false;
 	}
 
 	static function has_config() {
@@ -96,7 +85,7 @@ class wpgrade {
 	 * @return mixed
 	 */
 	static function confoption( $key, $default = null ) {
-		$config = self::config();
+		$config = self::get_config();
 
 		return isset( $config[ $key ] ) ? $config[ $key ] : $default;
 	}
@@ -612,7 +601,7 @@ class wpgrade {
 		asort( $priority_list, SORT_ASC );
 
 		foreach ( $priority_list as $file => $priority ) {
-			if ( strpos( $file, EXT ) ) {
+			if ( strpos( $file, '.php' ) ) {
 
 				// we need to prepare the get_template_part param
 				// which should be a relative path but without the extension
@@ -628,7 +617,7 @@ class wpgrade {
 						$file = $file[1];
 					}
 				}
-				$file = str_replace( EXT, '', $file  );
+				$file = str_replace( '.php', '', $file  );
 			}
 
 			get_template_part($file) ;
@@ -921,49 +910,6 @@ class wpgrade {
 		return $rgb; // returns an array with the rgb values
 	}
 
-
-	// Upgrade Notifier
-	// ------------------------------------------------------------------------
-
-	/**
-	 * @return string xml file url
-	 */
-	static function updade_notifier_xml() {
-		$config   = self::config();
-		$notifier = $config['update-notifier'];
-
-		$baseurl = rtrim( $notifier['xml-source'], '/' ) . '/';
-
-		if ( isset( $notifier['xml-file'] ) ) {
-			$xmlfile = $notifier['xml-file'];
-		} else { // no custom xml filename specified
-			$xmlfile = self::shortname() . '.xml';
-		}
-
-		return $baseurl . $xmlfile;
-	}
-
-	/**
-	 * @return int seconds
-	 */
-	static function update_notifier_cacheinterval() {
-		$config   = self::config();
-		$notifier = $config['update-notifier'];
-
-		return $notifier['cache-interval'];
-	}
-
-	/**
-	 * @return string
-	 */
-	static function update_notifier_pagename() {
-		$config   = self::config();
-		$notifier = $config['update-notifier'];
-
-		return $notifier['update-page-name'];
-	}
-
-
 	//// Media Handlers & Helpers //////////////////////////////////////////////////
 
 	#
@@ -1136,159 +1082,4 @@ class wpgrade {
 			self::$configuration = null;
 		}
 	}
-
-	//// Behavior Testing Helpers //////////////////////////////////////////////////
-
-	/**
-	 * This method is used to return the base path to the wordpress test
-	 * instance.
-	 */
-	static function features_testurl() {
-		$feature_test_path   = self::corepath() . 'features/.test.path';
-		$theme_features_path = self::corepath() . '../.test.path';
-		if ( file_exists( $feature_test_path ) ) {
-			$path = file_get_contents( $feature_test_path );
-			$path = trim( $path );
-
-			return rtrim( $path, '/' ) . '/';
-		} else if ( file_exists( $theme_features_path ) ) {
-			$path = file_get_contents( $theme_features_path );
-			$path = trim( $path );
-
-			return rtrim( $path, '/' ) . '/';
-		} else { # the file does not exist
-			throw new Exception( 'Please create the file wpgrade-core/features/.test.path and place the url to your wordpress inside it.' );
-		}
-	}
-
-	// == Customizer overridden helpers ==
-
-	/**
-	 * Check if an option exists in customizer's post
-	 *
-	 * @param $option
-	 *
-	 * @return bool
-	 */
-	static function customizer_option_exists( $option ) {
-
-		// cache this json so we don't scramble it every time
-		if ( ! self::has_customizer_options() && isset( $_POST['customized'] ) ) {
-			self::set_customizer_options( $_POST['customized'] );
-		}
-		$options = self::get_customizer_options();
-		if ( isset( $options[ $option ] ) ) {
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Get an options from our static customizer options array
-	 *
-	 * @param $option
-	 *
-	 * @return mixed
-	 */
-	static function get_customizer_option( $option ) {
-		$options = self::get_customizer_options();
-
-		return $options[ $option ];
-	}
-
-	/**
-	 * Check we we have cached our customizer options
-	 * @return bool
-	 */
-	static function has_customizer_options() {
-		if ( ! empty( self::$customizer_options ) ) {
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Get our static customizer options or false if they don't exist
-	 * @return bool|null
-	 */
-	static function get_customizer_options() {
-		if ( ! empty( self::$customizer_options ) ) {
-			return self::$customizer_options;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Cache the customizer's options in a static array (converted from an given json)
-	 *
-	 * @param $json
-	 */
-	static function set_customizer_options( $json ) {
-		if ( empty( self::$customizer_options ) ) {
-			$options = json_decode( wp_unslash( $json ), true );
-
-			$theme_key = self::shortname() . '_options';
-
-			$options[ $theme_key ] = array();
-			foreach ( $options as $key => $opt ) {
-				$new_key = '';
-				if ( stripos( $key, $theme_key ) === 0 && stripos( $key, $theme_key ) !== false ) {
-					$new_key                           = str_replace( $theme_key . '[', '', $key );
-					$new_key                           = rtrim( $new_key, ']' );
-					$options[ $theme_key ][ $new_key ] = $opt;
-				}
-			}
-			self::$customizer_options = $options[ $theme_key ];
-		}
-	}
-
-	static function display_dynamic_css_rule( $rule, $key, $option_value, $important = false ) {
-
-		if ( isset( $rule['media'] ) ) {
-			echo '@media ' . $rule['media'] . " {\n";
-		}
-
-		if ( $important ) {
-			$important = ' !important';
-		} else {
-			$important = '';
-		}
-
-		if ( isset( $rule['unit'] ) ) {
-			$option_value .= $rule['unit'];
-		}
-
-		if ( isset( $rule['selector'] ) ) {
-			echo $rule['selector'] . " {\n";
-			echo "\t" . $key . ": " . $option_value . $important . "; \n";
-			echo "\n}\n";
-		}
-
-		if ( isset( $rule['negative_selector'] ) ) {
-			echo $rule['negative_selector'] . " {\n";
-			echo "\t" . $key . ": -" . $option_value . $important . "; \n";
-			echo "\n}\n";
-		}
-
-		if ( isset( $rule['media'] ) ) {
-			echo "\n}\n";
-		}
-
-	}
-
-	static function count_sidebar_widgets( $sidebar_id, $echo = true ) {
-		$the_sidebars = wp_get_sidebars_widgets();
-		if ( ! isset( $the_sidebars[ $sidebar_id ] ) ) {
-			return __( 'Invalid sidebar ID', 'rosa' );
-		}
-		if ( $echo ) {
-			echo count( $the_sidebars[ $sidebar_id ] );
-		} else {
-			return count( $the_sidebars[ $sidebar_id ] );
-		}
-	}
-
 } # class

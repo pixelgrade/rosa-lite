@@ -1,198 +1,185 @@
-/*
- * Variables
- */
 var theme = 'rosa',
+	gulp = require('gulp'),
+	prefix 		= require('gulp-autoprefixer'),
+	sass 		= require('gulp-ruby-sass'),
+	jshint = require('gulp-jshint'),
+	clean = require('gulp-clean'),
+	zip = require('gulp-zip'),
+	cache = require('gulp-cache'),
+	lr = require('tiny-lr'),
+	server = lr(),
+	exec 		= require('gulp-exec'),
+	replace 	= require('gulp-replace'),
+	minify 		= require('gulp-minify-css'),
+	concat 		= require('gulp-concat'),
+	notify 		= require('gulp-notify'),
+	beautify 	= require('gulp-beautify'),
+	uglify 		= require('gulp-uglify'),
+	csscomb 	= require('gulp-csscomb'),
+	chmod 		= require('gulp-chmod'),
+	fs          = require('fs'),
+	rtlcss 		= require('rtlcss'),
+	postcss 	= require('gulp-postcss'),
+	del         = require('del'),
+	rename 		= require('gulp-rename');
+
+require('es6-promise').polyfill();
+
+var
 	themeTextDomain = '\'rosa\'',
-	cssPath = './assets/css/',
-	scssPath = './assets/scss/',
 	jsPath = './assets/js/',
-	jsMainPath = jsPath + 'main/';
-jsFiles = [
-	'shared_vars',
-	'wrapper_start',
-	'magnific-popup',
-	'royalslider',
-	'gmap',
-	'parallax',
-	'downArrow',
-    'scrollToTop',
-	'coverAnimations',
-	'navigator',
-    'stickyHeader',
-	'main',
-	'404',
-	'unsorted',
-	'wrapper_end',
-	'functions'
-];
+	jsMainPath = jsPath + 'main/',
+	jsFiles = [
+		'shared_vars',
+		'wrapper_start',
+		'magnific-popup',
+		'royalslider',
+		'gmap',
+		'parallax',
+		'downArrow',
+	    'scrollToTop',
+		'coverAnimations',
+		'navigator',
+	    'stickyHeader',
+		'main',
+		'404',
+		'unsorted',
+		'wrapper_end',
+		'functions'
+	];
 
 // Prepare js paths
 jsFiles.forEach(function (e, k) {
 	jsFiles[k] = jsMainPath + e + ".js";
 });
 
+var options = {
+	silent: true,
+	continueOnError: true // default: false
+};
 
-/*
- * Load Plugins
+
+
+
+/**
+ *   #STYLES
  */
-var gulp = require('gulp'),
-	compass = require('gulp-compass'),
-	exec = require('gulp-exec'),
-	sass = require('gulp-sass'),
-	autoprefixer = require('gulp-autoprefixer'),
-	minifycss = require('gulp-minify-css'),
-	jshint = require('gulp-jshint'),
-	uglify = require('gulp-uglify'),
-	imagemin = require('gulp-imagemin'),
-	rename = require('gulp-rename'),
-	clean = require('gulp-clean'),
-	zip = require('gulp-zip'),
-	concat = require('gulp-concat'),
-	notify = require('gulp-notify'),
-	cache = require('gulp-cache'),
-	livereload = require('gulp-livereload'),
-	browserSync = require('browser-sync'),
-	replace = require('gulp-replace'),
-	gutil = require('gulp-util'), //Error Handler
-	lr = require('tiny-lr'),
-	server = lr();
 
-
-/*
- * watch
- * ------------------------------------------------
- * Main Task for compiling both SASS and JavaScript
- */
-gulp.task('watch', function () {
-	// Watch .scss files
-	gulp.watch('./assets/scss/**/*.scss', ['styles']);
-
-	// Watch .js files
-	gulp.watch('./assets/js/**/*.js', ['scripts']);
+gulp.task('styles-dev', function () {
+	return gulp.src(['assets/scss/**/*.scss', '!assets/scss/admin/*.scss', '!assets/scss/login-with-ajax.scss'] )
+			.pipe(sass({'sourcemap=auto': true, style: 'compact'}))
+			.on('error', function (e) {
+				console.log(e.message);
+			})
+			.pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
+			.pipe(gulp.dest('./'));
+	// .pipe(postcss([
+	//     require('rtlcss')({ /* options */ })
+	// ]))
+	// .pipe(rename("rtl.css"))
+	// .pipe(gulp.dest('./'))
 });
 
-
-/*
- * styles
- * ----------------------------------
- * Compile SASS files with SourceMaps
- */
 gulp.task('styles', function () {
-	gulp.src('./')
-		.pipe(exec('sass --force --update --compass --sourcemap assets/scss:assets/css --style expanded -E utf-8  2> /dev/null'))
-		.on('error', gutil.log);
+	return gulp.src(['assets/scss/**/*.scss', '!assets/scss/admin/*.scss', '!assets/scss/login-with-ajax.scss'])
+			.pipe(sass({'sourcemap=none': true, style: 'expanded'}))
+			.pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
+			// .pipe(cmq())
+			.pipe(csscomb())
+			.pipe(chmod(644))
+			.pipe(gulp.dest('./'))
+	// .pipe(postcss([
+	//     require('rtlcss')({ /* options */ })
+	// ]))
+	// .pipe(rename("rtl.css"))
+	// .pipe(gulp.dest('./'));
+});
+
+gulp.task('styles-admin', function () {
+	return gulp.src('./assets/scss/admin/*.scss')
+			.pipe(sass({'sourcemap=auto': true, style: 'expanded'}))
+			.on('error', function (e) {
+				console.log(e.message);
+			})
+			.pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
+			.pipe(chmod(644))
+			.pipe(gulp.dest('./assets/css/admin/'));
+});
+
+gulp.task('styles-login-ajax', function () {
+	return gulp.src(['assets/scss/login-with-ajax.scss'])
+			.pipe(sass({'sourcemap=none': true, style: 'expanded'}))
+			.pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
+			// .pipe(cmq())
+			.pipe(csscomb())
+			.pipe(chmod(644))
+			.pipe(gulp.dest('./assets/css/'));
+});
+
+gulp.task('styles-watch', function () {
+	return gulp.watch('assets/scss/**/*.scss', ['styles']);
 });
 
 
-/*
- * scripts
- * ------------------------
- * Compile JavaScript files
+
+
+
+/**
+ *   #SCRIPTS
  */
+
 gulp.task('scripts', function () {
 	gulp.src('./assets/js/plugins/*.js')
-		.pipe(concat('plugins.js'))
-		.pipe(gulp.dest('./assets/js/'));
+			.pipe(concat('plugins.js'))
+			.pipe(gulp.dest('./assets/js/'));
 
 	return gulp.src(jsFiles)
-		.pipe(concat('main.js'))
-		.pipe(gulp.dest('./assets/js/'))
-		.pipe(notify({message: 'Scripts task complete'}));
+			.pipe(concat('main.js'))
+			.pipe(gulp.dest('./assets/js/'))
+			.pipe(notify({message: 'Scripts task complete'}));
 });
 
-
-/*
- * browser-sync
- * ------------------------
- * Synchronised browser testing
- * http://browsersync.io/
- */
-gulp.task('browser-sync', ['watch'], function () {
-	browserSync.init([cssPath + "*.css", jsPath + "main.js"], {
-		proxy: 'localhost/' + theme
-	});
+gulp.task('scripts-watch', function () {
+	return gulp.watch('assets/js/**/*.js', ['scripts']);
 });
 
-
-gulp.task('scripts-compressed', function () {
-	gulp.src('./assets/js/plugins/*.js')
-		.pipe(concat('plugins.js'))
-		.pipe(uglify({outSourceMap: false}))
-		.pipe(gulp.dest('./assets/js/'));
-
+gulp.task('scripts-server', function () {
 	return gulp.src(jsFiles)
-		.pipe(concat('main.js'))
-		.pipe(uglify({outSourceMap: false}))
-		.pipe(gulp.dest('./assets/js/'))
-		.pipe(notify({message: 'Scripts task complete'}));
+			.pipe(concat('main.js'))
+			.pipe(uglify())
+			.pipe(chmod(644))
+			.pipe(gulp.dest('./assets/js/'));
 });
 
 
-gulp.task('dev', function () {
-	gulp.src('./')
-		.pipe(
-		exec('sass --force --update --compass --sourcemap content/scss:content/css --style expanded -E utf-8')
-	)
+
+
+gulp.task('watch', function () {
+	gulp.watch('assets/scss/**/*.scss', ['styles-dev']);
+	gulp.watch('assets/js/**/*.js', ['scripts']);
 });
 
-gulp.task('watch-win', function () {
-
-	// Watch .scss files
-	gulp.watch('./assets/scss/**/*.scss', ['dev']);
-
-	// Watch .js files
-	gulp.watch('./assets/js/**/*.js', ['scripts']);
-
+gulp.task('watch-admin', function () {
+	gulp.watch('assets/scss/admin/*.scss', ['styles-admin']);
 });
 
-gulp.task('watch-scripts', function () {
-
-	// Watch .js files
-	gulp.watch('./assets/js/**/*.js', ['scripts']);
-
-});
-
-gulp.task('watch-styles', function () {
-
-	// Watch .js files
-	gulp.watch('./assets/scss/**/*.scss', ['styles']);
-	gulp.watch('./wpgrade-core/resources/assets/admin-panel/scss/**/*.scss', ['styles']);
-
-});
-
-gulp.task('default', ['help'], function () {
-
+// usually there is a default task for lazy people who just wanna type gulp
+gulp.task('start', ['styles', 'scripts'], function () {
 	// silence
 });
 
-/**
- * Cleanup the css folder and recreate the css files
- */
-gulp.task('styles-nested', function () {
-	return gulp.src('./')
-		.pipe(exec('rm -Rf ./assets/css/* ; ruby assets/+production-nested.rb'));
-});
-
-/**
- * Cleanup the css folder and recreate the css files compressed
- */
-gulp.task('styles-compressed', function () {
-	return gulp.src('./')
-		.pipe(exec('rm -Rf ./assets/css/* ; ruby assets/+production-compressed.rb'));
-});
-
-gulp.task('start', ['styles-nested', 'scripts'], function () {
-	console.log('theme should be ready');
-});
-
-gulp.task('server', ['styles-compressed', 'scripts-compressed'], function () {
+gulp.task('server', ['styles', 'scripts-server'], function () {
 	console.log('The styles and scripts have been compiled for production! Go and clear the caches!');
 });
+
+
+
+
 
 /**
  * Copy theme folder outside in a build folder, recreate styles before that
  */
-gulp.task('copy-folder', ['styles-nested', 'scripts'], function () {
+gulp.task('copy-folder', ['styles', 'scripts'], function () {
 
 	return gulp.src('./')
 		.pipe(exec("rm -Rf ./../build; mkdir -p ./../build/rosa; rsync -aq --exclude='node_modules' ./* ./../build/rosa/"));

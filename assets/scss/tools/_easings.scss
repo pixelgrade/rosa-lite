@@ -103,117 +103,117 @@
 }
 
 %linear {
-	@include transition(all .3s bezier(linear))
+	transition: all .3s bezier(linear);
 }
 
 %ease {
-	@include transition(all .3s bezier(ease))
+	transition: all .3s bezier(ease);
 }
 
 %ease-in {
-	@include transition(all .3s bezier(ease-in))
+	transition: all .3s bezier(ease-in);
 }
 
 %ease-out {
-	@include transition(all .3s bezier(ease-out))
+	transition: all .3s bezier(ease-out);
 }
 
 %ease-in-out {
-	@include transition(all .3s bezier(ease-in-out))
+	transition: all .3s bezier(ease-in-out);
 }
 
 %easeInQuad {
-	@include transition(all .3s bezier(easeInQuad))
+	transition: all .3s bezier(easeInQuad);
 }
 
 %easeInCubic {
-	@include transition(all .3s bezier(easeInCubic))
+	transition: all .3s bezier(easeInCubic);
 }
 
 %easeInQuart {
-	@include transition(all .3s bezier(easeInQuart))
+	transition: all .3s bezier(easeInQuart);
 }
 
 %easeInQuint {
-	@include transition(all .3s bezier(easeInQuint))
+	transition: all .3s bezier(easeInQuint);
 }
 
 %easeInSine {
-	@include transition(all .3s bezier(easeInSine))
+	transition: all .3s bezier(easeInSine);
 }
 
 %easeInExpo {
-	@include transition(all .3s bezier(easeInExpo))
+	transition: all .3s bezier(easeInExpo);
 }
 
 %easeInCirc {
-	@include transition(all .3s bezier(easeInCirc))
+	transition: all .3s bezier(easeInCirc);
 }
 
 %easeInBack {
-	@include transition(all .3s bezier(easeInBack))
+	transition: all .3s bezier(easeInBack);
 }
 
 %easeOutQuad {
-	@include transition(all .3s bezier(easeOutQuad))
+	transition: all .3s bezier(easeOutQuad);
 }
 
 %easeOutCubic {
-	@include transition(all .3s bezier(easeOutCubic))
+	transition: all .3s bezier(easeOutCubic);
 }
 
 %easeOutQuart {
-	@include transition(all .3s bezier(easeOutQuart))
+	transition: all .3s bezier(easeOutQuart);
 }
 
 %easeOutQuint {
-	@include transition(all .3s bezier(easeOutQuint))
+	transition: all .3s bezier(easeOutQuint);
 }
 
 %easeOutSine {
-	@include transition(all .3s bezier(easeOutSine))
+	transition: all .3s bezier(easeOutSine);
 }
 
 %easeOutExpo {
-	@include transition(all .3s bezier(easeOutExpo))
+	transition: all .3s bezier(easeOutExpo);
 }
 
 %easeOutCirc {
-	@include transition(all .3s bezier(easeOutCirc))
+	transition: all .3s bezier(easeOutCirc);
 }
 
 %easeOutBack {
-	@include transition(all .3s bezier(easeOutBack))
+	transition: all .3s bezier(easeOutBack);
 }
 
 %easeInOutQuad {
-	@include transition(all .3s bezier(easeInOutQuad))
+	transition: all .3s bezier(easeInOutQuad);
 }
 
 %easeInOutCubic {
-	@include transition(all .3s bezier(easeInOutCubic))
+	transition: all .3s bezier(easeInOutCubic);
 }
 
 %easeInOutQuart {
-	@include transition(all .3s bezier(easeInOutQuart))
+	transition: all .3s bezier(easeInOutQuart);
 }
 
 %easeInOutQuint {
-	@include transition(all .3s bezier(easeInOutQuint))
+	transition: all .3s bezier(easeInOutQuint);
 }
 
 %easeInOutSine {
-	@include transition(all .3s bezier(easeInOutSine))
+	transition: all .3s bezier(easeInOutSine);
 }
 
 %easeInOutExpo {
-	@include transition(all .3s bezier(easeInOutExpo))
+	transition: all .3s bezier(easeInOutExpo);
 }
 
 %easeInOutCirc {
-	@include transition(all .3s bezier(easeInOutCirc))
+	transition: all .3s bezier(easeInOutCirc);
 }
 
 %easeInOutBack {
-	@include transition(all .3s bezier(easeInOutBack))
+	transition: all .3s bezier(easeInOutBack);
 }

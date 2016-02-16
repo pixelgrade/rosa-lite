@@ -34,7 +34,7 @@ input[type="color"],
 	border: 1px solid $borders;
 	outline: 0;
 
-	@include border-radius(5px);
+	border-radius: 5px;
 
 	&:focus {
 		outline: 1px solid $accent;

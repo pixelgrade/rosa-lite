@@ -253,8 +253,8 @@ li.depth-2:before {
 	color: $light;
 	opacity: 0;
 	@include rem(margin-right, $_u2);
-	@include transition(opacity .15s ease-in-out);
-	@include transform(translateZ(0));
+	transition: opacity .15s ease-in-out;
+	transform: translateZ(0);
 }
 
 .comment-reply-link {
@@ -325,7 +325,7 @@ li.depth-2:before {
 		@include font-size(14px);
 		font-weight: 300;
 
-		@include border-radius(0);
+		border-radius: 0;
 	}
 }
 

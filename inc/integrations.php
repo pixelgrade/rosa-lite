@@ -12,3 +12,7 @@
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/integrations/woocommerce.php';
 }
+
+if ( class_exists( 'WpGradeShortcodes' ) ) {
+	require get_template_directory() . '/inc/integrations/pixcodes.php';
+}
