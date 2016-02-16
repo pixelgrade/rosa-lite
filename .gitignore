@@ -20,3 +20,4 @@ build
 *-ck.js
 *.css.map
 *.js.map
+npm-debug.log
