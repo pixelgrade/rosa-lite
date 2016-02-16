@@ -4958,7 +4958,7 @@ html.site-title
 *   ICONS FONTS
 \*----------------------------------------*/
 /*!
- *  Font Awesome 4.2.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 /* FONT PATH
@@ -4969,12 +4969,10 @@ html.site-title
     font-weight: normal;
     font-style: normal;
 
-    src: url('../fonts/icon-fonts/fontawesome/fontawesome-webfont.eot?v=4.2.0');
-    src: url('../fonts/icon-fonts/fontawesome/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('../fonts/icon-fonts/fontawesome/fontawesome-webfont.woff?v=4.2.0') format('woff'), url('../fonts/icon-fonts/fontawesome/fontawesome-webfont.ttf?v=4.2.0') format('truetype'), url('../fonts/icon-fonts/fontawesome/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
+    src: url('../fonts/icon-fonts/fontawesome/fontawesome-webfont.eot?v=4.5.0');
+    src: url('../fonts/icon-fonts/fontawesome/fontawesome-webfont.eot?#iefix&v=4.5.0') format('embedded-opentype'), url('../fonts/icon-fonts/fontawesome/fontawesome-webfont.woff2?v=4.5.0') format('woff2'), url('../fonts/icon-fonts/fontawesome/fontawesome-webfont.woff?v=4.5.0') format('woff'), url('../fonts/icon-fonts/fontawesome/fontawesome-webfont.ttf?v=4.5.0') format('truetype'), url('../fonts/icon-fonts/fontawesome/fontawesome-webfont.svg?v=4.5.0#fontawesomeregular') format('svg');
 }
-.icon,
-[class^='icon-']:before,
-[class*=' icon-']:before
+.icon
 {
     font: normal normal normal 14px/1 FontAwesome;
     font-size: inherit;
@@ -5057,6 +5055,26 @@ html.site-title
     border-radius: .1em;
 }
 
+.icon-pull-left
+{
+    float: left;
+}
+
+.icon-pull-right
+{
+    float: right;
+}
+
+.icon.icon-pull-left
+{
+    margin-right: .3em;
+}
+.icon.icon-pull-right
+{
+    margin-left: .3em;
+}
+
+/* Deprecated as of 4.4.0 */
 .pull-right
 {
     float: right;
@@ -5080,6 +5098,12 @@ html.site-title
 {
     -webkit-animation: fa-spin 2s infinite linear;
             animation: fa-spin 2s infinite linear;
+}
+
+.icon-pulse
+{
+    -webkit-animation: fa-spin 1s infinite steps(8);
+            animation: fa-spin 1s infinite steps(8);
 }
 
 @-webkit-keyframes fa-spin
@@ -5937,6 +5961,7 @@ html.site-title
     content: '';
 }
 
+.icon-facebook-f:before,
 .icon-facebook:before
 {
     content: '';
@@ -5957,6 +5982,7 @@ html.site-title
     content: '';
 }
 
+.icon-feed:before,
 .icon-rss:before
 {
     content: '';
@@ -6996,7 +7022,8 @@ html.site-title
     content: '';
 }
 
-.icon-gittip:before
+.icon-gittip:before,
+.icon-gratipay:before
 {
     content: '';
 }
@@ -7389,6 +7416,8 @@ html.site-title
     content: '';
 }
 
+.icon-y-combinator-square:before,
+.icon-yc-square:before,
 .icon-hacker-news:before
 {
     content: '';
@@ -7663,6 +7692,650 @@ html.site-title
 .icon-meanpath:before
 {
     content: '';
+}
+
+.icon-buysellads:before
+{
+    content: '';
+}
+
+.icon-connectdevelop:before
+{
+    content: '';
+}
+
+.icon-dashcube:before
+{
+    content: '';
+}
+
+.icon-forumbee:before
+{
+    content: '';
+}
+
+.icon-leanpub:before
+{
+    content: '';
+}
+
+.icon-sellsy:before
+{
+    content: '';
+}
+
+.icon-shirtsinbulk:before
+{
+    content: '';
+}
+
+.icon-simplybuilt:before
+{
+    content: '';
+}
+
+.icon-skyatlas:before
+{
+    content: '';
+}
+
+.icon-cart-plus:before
+{
+    content: '';
+}
+
+.icon-cart-arrow-down:before
+{
+    content: '';
+}
+
+.icon-diamond:before
+{
+    content: '';
+}
+
+.icon-ship:before
+{
+    content: '';
+}
+
+.icon-user-secret:before
+{
+    content: '';
+}
+
+.icon-motorcycle:before
+{
+    content: '';
+}
+
+.icon-street-view:before
+{
+    content: '';
+}
+
+.icon-heartbeat:before
+{
+    content: '';
+}
+
+.icon-venus:before
+{
+    content: '';
+}
+
+.icon-mars:before
+{
+    content: '';
+}
+
+.icon-mercury:before
+{
+    content: '';
+}
+
+.icon-intersex:before,
+.icon-transgender:before
+{
+    content: '';
+}
+
+.icon-transgender-alt:before
+{
+    content: '';
+}
+
+.icon-venus-double:before
+{
+    content: '';
+}
+
+.icon-mars-double:before
+{
+    content: '';
+}
+
+.icon-venus-mars:before
+{
+    content: '';
+}
+
+.icon-mars-stroke:before
+{
+    content: '';
+}
+
+.icon-mars-stroke-v:before
+{
+    content: '';
+}
+
+.icon-mars-stroke-h:before
+{
+    content: '';
+}
+
+.icon-neuter:before
+{
+    content: '';
+}
+
+.icon-genderless:before
+{
+    content: '';
+}
+
+.icon-facebook-official:before
+{
+    content: '';
+}
+
+.icon-pinterest-p:before
+{
+    content: '';
+}
+
+.icon-whatsapp:before
+{
+    content: '';
+}
+
+.icon-server:before
+{
+    content: '';
+}
+
+.icon-user-plus:before
+{
+    content: '';
+}
+
+.icon-user-times:before
+{
+    content: '';
+}
+
+.icon-hotel:before,
+.icon-bed:before
+{
+    content: '';
+}
+
+.icon-viacoin:before
+{
+    content: '';
+}
+
+.icon-train:before
+{
+    content: '';
+}
+
+.icon-subway:before
+{
+    content: '';
+}
+
+.icon-medium:before
+{
+    content: '';
+}
+
+.icon-yc:before,
+.icon-y-combinator:before
+{
+    content: '';
+}
+
+.icon-optin-monster:before
+{
+    content: '';
+}
+
+.icon-opencart:before
+{
+    content: '';
+}
+
+.icon-expeditedssl:before
+{
+    content: '';
+}
+
+.icon-battery-4:before,
+.icon-battery-full:before
+{
+    content: '';
+}
+
+.icon-battery-3:before,
+.icon-battery-three-quarters:before
+{
+    content: '';
+}
+
+.icon-battery-2:before,
+.icon-battery-half:before
+{
+    content: '';
+}
+
+.icon-battery-1:before,
+.icon-battery-quarter:before
+{
+    content: '';
+}
+
+.icon-battery-0:before,
+.icon-battery-empty:before
+{
+    content: '';
+}
+
+.icon-mouse-pointer:before
+{
+    content: '';
+}
+
+.icon-i-cursor:before
+{
+    content: '';
+}
+
+.icon-object-group:before
+{
+    content: '';
+}
+
+.icon-object-ungroup:before
+{
+    content: '';
+}
+
+.icon-sticky-note:before
+{
+    content: '';
+}
+
+.icon-sticky-note-o:before
+{
+    content: '';
+}
+
+.icon-cc-jcb:before
+{
+    content: '';
+}
+
+.icon-cc-diners-club:before
+{
+    content: '';
+}
+
+.icon-clone:before
+{
+    content: '';
+}
+
+.icon-balance-scale:before
+{
+    content: '';
+}
+
+.icon-hourglass-o:before
+{
+    content: '';
+}
+
+.icon-hourglass-1:before,
+.icon-hourglass-start:before
+{
+    content: '';
+}
+
+.icon-hourglass-2:before,
+.icon-hourglass-half:before
+{
+    content: '';
+}
+
+.icon-hourglass-3:before,
+.icon-hourglass-end:before
+{
+    content: '';
+}
+
+.icon-hourglass:before
+{
+    content: '';
+}
+
+.icon-hand-grab-o:before,
+.icon-hand-rock-o:before
+{
+    content: '';
+}
+
+.icon-hand-stop-o:before,
+.icon-hand-paper-o:before
+{
+    content: '';
+}
+
+.icon-hand-scissors-o:before
+{
+    content: '';
+}
+
+.icon-hand-lizard-o:before
+{
+    content: '';
+}
+
+.icon-hand-spock-o:before
+{
+    content: '';
+}
+
+.icon-hand-pointer-o:before
+{
+    content: '';
+}
+
+.icon-hand-peace-o:before
+{
+    content: '';
+}
+
+.icon-trademark:before
+{
+    content: '';
+}
+
+.icon-registered:before
+{
+    content: '';
+}
+
+.icon-creative-commons:before
+{
+    content: '';
+}
+
+.icon-gg:before
+{
+    content: '';
+}
+
+.icon-gg-circle:before
+{
+    content: '';
+}
+
+.icon-tripadvisor:before
+{
+    content: '';
+}
+
+.icon-odnoklassniki:before
+{
+    content: '';
+}
+
+.icon-odnoklassniki-square:before
+{
+    content: '';
+}
+
+.icon-get-pocket:before
+{
+    content: '';
+}
+
+.icon-wikipedia-w:before
+{
+    content: '';
+}
+
+.icon-safari:before
+{
+    content: '';
+}
+
+.icon-chrome:before
+{
+    content: '';
+}
+
+.icon-firefox:before
+{
+    content: '';
+}
+
+.icon-opera:before
+{
+    content: '';
+}
+
+.icon-internet-explorer:before
+{
+    content: '';
+}
+
+.icon-tv:before,
+.icon-television:before
+{
+    content: '';
+}
+
+.icon-contao:before
+{
+    content: '';
+}
+
+.icon-500px:before
+{
+    content: '';
+}
+
+.icon-amazon:before
+{
+    content: '';
+}
+
+.icon-calendar-plus-o:before
+{
+    content: '';
+}
+
+.icon-calendar-minus-o:before
+{
+    content: '';
+}
+
+.icon-calendar-times-o:before
+{
+    content: '';
+}
+
+.icon-calendar-check-o:before
+{
+    content: '';
+}
+
+.icon-industry:before
+{
+    content: '';
+}
+
+.icon-map-pin:before
+{
+    content: '';
+}
+
+.icon-map-signs:before
+{
+    content: '';
+}
+
+.icon-map-o:before
+{
+    content: '';
+}
+
+.icon-map:before
+{
+    content: '';
+}
+
+.icon-commenting:before
+{
+    content: '';
+}
+
+.icon-commenting-o:before
+{
+    content: '';
+}
+
+.icon-houzz:before
+{
+    content: '';
+}
+
+.icon-vimeo:before
+{
+    content: '';
+}
+
+.icon-black-tie:before
+{
+    content: '';
+}
+
+.icon-fonticons:before
+{
+    content: '';
+}
+
+.icon-reddit-alien:before
+{
+    content: '';
+}
+
+.icon-edge:before
+{
+    content: '';
+}
+
+.icon-credit-card-alt:before
+{
+    content: '';
+}
+
+.icon-codiepie:before
+{
+    content: '';
+}
+
+.icon-modx:before
+{
+    content: '';
+}
+
+.icon-fort-awesome:before
+{
+    content: '';
+}
+
+.icon-usb:before
+{
+    content: '';
+}
+
+.icon-product-hunt:before
+{
+    content: '';
+}
+
+.icon-mixcloud:before
+{
+    content: '';
+}
+
+.icon-scribd:before
+{
+    content: '';
+}
+
+.icon-pause-circle:before
+{
+    content: '';
+}
+
+.icon-pause-circle-o:before
+{
+    content: '';
+}
+
+.icon-stop-circle:before
+{
+    content: '';
+}
+
+.icon-stop-circle-o:before
+{
+    content: '';
+}
+
+.icon-shopping-bag:before
+{
+    content: '';
+}
+
+.icon-shopping-basket:before
+{
+    content: '';
+}
+
+.icon-hashtag:before
+{
+    content: '';
+}
+
+.icon-bluetooth:before
+{
+    content: '';
+}
+
+.icon-bluetooth-b:before
+{
+    content: '';
+}
+
+.icon-percent:before
+{
+    content: '';
 }
 
 /* FONT PATH
