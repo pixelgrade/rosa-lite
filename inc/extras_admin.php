@@ -188,3 +188,12 @@ add_filter( 'pixcodes_filter_params_for_icon', 'rosa_callback_change_icon_params
 /**
  * End Hook PixCodes params
  */
+
+function rosa_remove_wptextpattern_tinymce_plugin( $plugins ) {
+	if ( $key = array_search( 'wptextpattern', $plugins ) ) {
+		unset( $plugins[ $key ] );
+	}
+
+	return $plugins;
+}
+add_filter( 'tiny_mce_plugins', 'rosa_remove_wptextpattern_tinymce_plugin', 10, 1 );
