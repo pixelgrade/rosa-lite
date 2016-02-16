@@ -152,7 +152,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 				'import_demo_data' => array(
 					'title'       => esc_html__( 'Demo Data', 'rosa' ),
 					'priority'    => 999999,
-					'description' => esc_html__( 'If you would like to have a "ready to go" website as the Lens\'s demo page here is the button', 'rosa' ),
+					'description' => esc_html__( 'If you would like to have a "ready to go" website as the Rosa\'s demo site, this is the button', 'rosa' ),
 					'options'     => array(
 						'import_demodata_button' => array(
 							'title' => 'Import',
