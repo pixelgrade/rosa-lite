@@ -2,7 +2,7 @@
  * Variables
  */
 var theme = 'rosa',
-	themeTextDomain = '\'rosa_txtd\'',
+	themeTextDomain = '\'rosa\'',
 	cssPath = './assets/css/',
 	scssPath = './assets/scss/',
 	jsPath = './assets/js/',
@@ -231,6 +231,7 @@ gulp.task('build', ['txtdomain-replace'], function () {
 		'build',
 		'css',
 		'.idea',
+		'.travis.yml',
 		'**/*.css.map',
 		'**/.sass*',
 		'.sass*',

@@ -1,23 +1,23 @@
 <?php
 /*=========== SANITIZE UPLOADED FILE NAMES ==========*/
 
-add_filter( 'sanitize_file_name', 'wpgrade_sanitize_file_name', 10 );
+add_filter( 'sanitize_file_name', 'rosa_sanitize_file_name', 10 );
 
 /**
  * Clean up uploaded file names
  * @author toscho
  * @url    https://github.com/toscho/Germanix-WordPress-Plugin
  */
-function wpgrade_sanitize_file_name( $filename ) {
+function rosa_sanitize_file_name( $filename ) {
 	$filename = html_entity_decode( $filename, ENT_QUOTES, 'utf-8' );
-	$filename = wpgrade_translit( $filename );
-	$filename = wpgrade_lower_ascii( $filename );
-	$filename = wpgrade_remove_doubles( $filename );
+	$filename = rosa_translit( $filename );
+	$filename = rosa_lower_ascii( $filename );
+	$filename = rosa_remove_doubles( $filename );
 
 	return $filename;
 }
 
-function wpgrade_lower_ascii( $str ) {
+function rosa_lower_ascii( $str ) {
 	$str   = strtolower( $str );
 	$regex = array(
 		'pattern'     => '~([^a-z\d_.-])~',
@@ -31,7 +31,7 @@ function wpgrade_lower_ascii( $str ) {
 /**
  * Reduces repeated meta characters (-=+.) to one.
  */
-function wpgrade_remove_doubles( $str ) {
+function rosa_remove_doubles( $str ) {
 	$regex = apply_filters( 'germanix_remove_doubles_regex', array(
 		'pattern'     => '~([=+.-])\\1+~',
 		'replacement' => "\\1"
@@ -43,7 +43,7 @@ function wpgrade_remove_doubles( $str ) {
 /**
  * Replaces non ASCII chars.
  */
-function wpgrade_translit( $str ) {
+function rosa_translit( $str ) {
 	$utf8 = array(
 		'Ä'  => 'Ae',
 		'ä'  => 'ae',

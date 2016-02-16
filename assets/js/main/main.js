@@ -2,7 +2,6 @@
 
 /* --- NICESCROLL --- */
 
-
 var $body               = $('body'),
     $html               = $('html'),
     $window             = $(window),
@@ -17,7 +16,7 @@ function niceScrollInit() {
     var smoothScroll    = $('body').data('smoothscrolling') !== undefined,
         root            = document.documentElement;
 
-    if (smoothScroll && !Modernizr.touch && !is_mobile_ie && !is_OSX) {
+    if (smoothScroll && !is_EDGE && !Modernizr.touch && !is_mobile_ie && !is_OSX) {
 
         var $window = $(window);		// Window object
 
@@ -160,20 +159,6 @@ function init() {
     if (is_iexplore || Modernizr.touch) {
         $('body').addClass('is_iexplore  no-scroll-effect');
     }
-
-	var is_retina = (window.retina || window.devicePixelRatio > 1);
-	if (is_retina && $('.site-logo--image-2x').length) {
-
-	    $('.site-logo--image-2x').children('img').each(function(){
-
-            if (typeof $(this).data('logo2x') !== "undefined") {
-                $(this).attr('src', $(this).data('logo2x'));
-                $('.site-logo--image-2x').addClass('using-retina-logo');
-            }
-        });
-	}
-
-//	stickyHeader();
 
 	/* ONE TIME EVENT HANDLERS */
 	eventHandlersOnce();

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This callback is invoked by wpgrade_callback_themesetup.
+ * This callback is invoked by rosa_callback_themesetup.
  * The function is executed on wp_head
  */
-function wpgrade_callback_inlined_custom_style() {
+function rosa_callback_inlined_custom_style() {
 
 	ob_start();
-	include wpgrade::corepartial( 'inline-custom-css' . EXT );
+	include wpgrade::corepartial( 'inline-custom-css.php' );
 	$custom_css = ob_get_clean();
 	$style      = 'wpgrade-main-style';
 

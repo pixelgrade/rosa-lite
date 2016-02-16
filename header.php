@@ -133,7 +133,7 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 						$has_main_menu = true;
 					} ?>
 					<nav class="navigation  navigation--main<?php echo ( ! $has_main_menu ) ? "  no-menu" : ""; ?>" id="js-navigation--main">
-						<h2 class="accessibility"><?php _e( 'Primary Navigation', wpgrade::textdomain() ) ?></h2>
+						<h2 class="accessibility"><?php _e( 'Primary Navigation', 'rosa' ) ?></h2>
 						<ul class="nav  nav--main  nav--items-social">
 							<?php
 
@@ -183,7 +183,17 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 
 							<?php } ?>
 						</ul>
-						<?php wpgrade_main_nav(); ?>
+						<?php
+						wp_nav_menu( array(
+							'theme_location' => 'main_menu',
+							'menu'           => '',
+							'container'      => '',
+							'container_id'   => '',
+							'menu_class'     => 'nav  nav--main  nav--items-menu',
+							'menu_id'        => '',
+							'fallback_cb'    => 'rosa_please_select_a_menu_fallback',
+							'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+						) ); ?>
 					</nav>
 				</div>
 			</div>
@@ -192,5 +202,3 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 		<!-- .container -->
 	</div>
 	<!-- .site-header -->
-
-<?php

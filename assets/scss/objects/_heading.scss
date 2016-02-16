@@ -93,7 +93,7 @@
 	.first-letter {
 		position:relative;
 		top: 10px;
-		
+
 		font-size: 1.22em;
 		padding-left: 72px;
 		margin: 0 -72px;
@@ -108,5 +108,17 @@
 
 	h1, h2, h3, h4, h5, h6 {
 		margin-bottom: $_u2;
+	}
+}
+
+.is-edge {
+	.headline__primary,
+	.headline__secondary,
+	.headline__description,
+	.article__headline .star,
+	.article__headline .line,
+	.article__headline .arrow,
+	.article__headline .btn {
+		opacity: 1 !important;
 	}
 }

@@ -17,7 +17,7 @@ if ( ! $has_thumb ) {
 	<div class="article__body">
 		<?php get_template_part( 'templates/post/loop-content/header-classic' ); ?>
 		<section class="article__content">
-			<?php echo wpgrade_better_excerpt(); ?>
+			<?php echo rosa_better_excerpt(); ?>
 		</section>
 		<?php
 		$read_more = wpgrade::option( 'blog_read_more_text' );

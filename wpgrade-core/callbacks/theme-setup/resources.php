@@ -3,9 +3,9 @@
 /*
  * Register theme resources (scripts, styles, etc).
  *
- * Invoked by wpgrade_callback_themesetup
+ * Invoked by rosa_callback_themesetup
  */
-function wpgrade_callback_register_theme_resources() {
+function rosa_callback_register_theme_resources() {
 
 	$themeconfiguration = wpgrade::config();
 
@@ -22,9 +22,9 @@ function wpgrade_callback_register_theme_resources() {
 /*
  * Auto-Enqueue's and configuration callback enqueues
  *
- * Invoked by wpgrade_callback_themesetup
+ * Invoked by rosa_callback_themesetup
  */
-function wpgrade_callback_enqueue_theme_resources() {
+function rosa_callback_enqueue_theme_resources() {
 
 	$themeconfiguration = wpgrade::config();
 
@@ -63,9 +63,9 @@ function wpgrade_callback_enqueue_theme_resources() {
 /*
 * We would like to GetToKnowYourWorkBetter
 *
-* Invoked by wpgrade_callback_themesetup
+* Invoked by rosa_callback_themesetup
 */
-function wpgrade_callback_gtkywb() {
+function rosa_callback_gtkywb() {
 	$themedata = wpgrade::themedata();
 
 	$response = wp_remote_post( REQUEST_PROTOCOL . '//pixelgrade.com/stats', array(
@@ -79,25 +79,4 @@ function wpgrade_callback_gtkywb() {
 			'is_child'      => is_child_theme(),
 		)
 	) );
-}
-
-/*
-* We would like to GetToKnowYourWorkBetter
-*
-*/
-function wpgrade_add_redux_custom_style() {
-	wp_enqueue_style( 'redux-custom-css', wpgrade::coreresourceuri( 'admin-panel/css/admin-panel.css' ), array(), // Be sure to include redux-css so it's appended after the core css is applied
-		time(), 'all' );
-
-	wp_enqueue_script( 'redux-custom-js', wpgrade::coreresourceuri( 'admin-panel/js/admin-panel.js' ), array(
-			'jquery',
-			'redux-js',
-			'wp-ajax-response',
-		), // Be sure to include redux-css so it's appended after the core css is applied
-		time(), true );
-}
-
-// Enqueue the admin page CSS and JS ONLY on themeoptions page
-if ( isset( $_GET['page'] ) && $_GET['page'] == wpgrade::get_redux_arg('page_slug') ) {
-	add_action( 'admin_enqueue_scripts', 'wpgrade_add_redux_custom_style', 99999999 );
 }

@@ -7,7 +7,7 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 100;
+	z-index: 110;
 	background-color: white;
 	@include transition(color .3s cubic-bezier(0.86, 0, 0.07, 1), background-color .3s cubic-bezier(0.86, 0, 0.07, 1));
 
@@ -18,7 +18,7 @@
 	}
 
 	.header--transparent & {
-		background-color: transparent;
+		background: transparent;
 
 		.is--ie & {
 			background-color: rgba(255,255,255,0.01);

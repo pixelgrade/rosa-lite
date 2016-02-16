@@ -28,7 +28,7 @@ if ( get_the_terms( $post->ID, 'product_tag' ) !== false ) {
 
 	<?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
 
-		<span class="sku_wrapper"><?php _e( 'SKU:', 'rosa_txtd' ); ?> <span class="sku" itemprop="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : __( 'N/A', 'rosa_txtd' ); ?></span>.</span>
+		<span class="sku_wrapper"><?php _e( 'SKU:', 'rosa' ); ?> <span class="sku" itemprop="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : __( 'N/A', 'rosa' ); ?></span>.</span>
 
 	<?php endif; ?>
 	<?php if ( $cat_count > 0 ) : ?>
@@ -36,7 +36,7 @@ if ( get_the_terms( $post->ID, 'product_tag' ) !== false ) {
 		<span class="btn  btn--small  btn--secondary  list-head">
 			<?php
 			printf(
-				_n( '%s Category', '%s Categories', $cat_count, 'rosa_txtd' ),
+				_n( '%s Category', '%s Categories', $cat_count, 'rosa' ),
 				$cat_count
 			); ?>
 		</span>
@@ -49,7 +49,7 @@ if ( get_the_terms( $post->ID, 'product_tag' ) !== false ) {
 		<span class="btn  btn--small  btn--secondary  list-head">
 			<?php
 			printf(
-				_n( '%s Tag', '%s Tags', $tag_count, 'rosa_txtd' ),
+				_n( '%s Tag', '%s Tags', $tag_count, 'rosa' ),
 				$tag_count
 			); ?>
 		</span>

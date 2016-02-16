@@ -15,6 +15,11 @@ var is_mobile_ie    = navigator.userAgent.indexOf('IEMobile') !== -1;
 var is_mobile       = ua.match(/mobile/i);
 var is_OSX          = ua.match(/(iPad|iPhone|iPod|Macintosh)/g) ? true : false;
 var iOS 			= getIOSVersion(ua);
+var is_EDGE 		= /Edge\/12./i.test(navigator.userAgent);
+
+if (is_EDGE) {
+	jQuery('body').addClass('is-edge');
+}
 
 
 var nua = navigator.userAgent;

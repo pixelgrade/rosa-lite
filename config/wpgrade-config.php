@@ -11,15 +11,9 @@ return array(
 	'name'                         => 'Rosa',
 	'shortname'                    => 'rosa',
 	'prefix'                       => '_rosa_',
-	'textdomain'                   => 'rosa_txtd',
+	'textdomain'                   => 'rosa',
 	'language-path'                => 'languages',
-	'update-notifier'              => array(
-		'xml-source'       => REQUEST_PROTOCOL . '//pixelgrade.com/updates/',
-		//		'xml-file' => 'rosa.xml',
-		'cache-interval'   => 10800, # 3 hours
-		'update-page-name' => 'theme-update-notifier',
-	),
-	'theme-adminpanel-path'        => 'config/admin-panel',
+
 	// additional file includes (classes, functions, etc), files are loaded
 	// via wpgrade::require_all and entries should be directories; if the
 	// path does not exist it is automatically ignored
@@ -34,6 +28,7 @@ return array(
 	'include-files'                => array(
 		// main theme class
 		'inc/required-plugins/required-plugins.php',
+		'config/customify.php',
 	),
 	// the path where overwrites on the core partials are stored, any files
 	// placed in the partial overwrites will be loaded instead of the core
@@ -43,38 +38,19 @@ return array(
 	// wpgrade::resourceuri; utility allows for easy migration of files to
 	// new structures
 	'resource-path'                => '/assets',
-	// use theme-options to add any non-customizable options with out going
-	// though any of the backend code; all options added here are available
-	// though the WPGradeOptions driver manager. ie. the  wpgrade::option
-	// shorthand. Support for backend customization may be added at any
-	// time later with out requiring any alterations; the options you add
-	// here will have the lowest priority
-	'theme-options'                => array( // empty
-	),
-	// Usage: body_class(wpgrade::body_class()) in header-classic.php
-	// Syntax: class => callback or boolean; eg. 'myclass' => true,
-	// 'myclass' => false, 'myclass' => 'class_check_function'. All
-	// callbacks are executed once if more classes refer the same callback.
-	'body-classes'                 => array( // empty
-	),
-	// overwrites the inline css class to allow for full control; you may
-	// also leave this null, which will invoke an internal handler and work
-	// with the core partial inline-custom-css
-	'custom-css-handler'           => null,
 	// filter functions will recieve content as a parameter and must return
 	// content; all functions are ordered by priority and executed from
 	// lowest to highest. If a filter is assigned false as a priority it
 	// will be ignored in processing
 	'content-filters'              => array(
 		'default' => array(
-			'wpgrade_callback_theme_general_filters' => 100,
-			'wpgrade_callback_shortcode_filters'     => 200,
-			'wpgrade_callback_attachment_filters'    => 300,
-			'wpgrade_callback_paragraph_filters'     => 400,
+			'rosa_callback_theme_general_filters' => 100,
+			'rosa_callback_shortcode_filters'     => 200,
+			'rosa_callback_attachment_filters'    => 300,
+			'rosa_callback_paragraph_filters'     => 400,
 		),
 	),
-	'post-formats'                 => array( // empty - see functions.php
-	),
+
 	'shortcodes'                   => array(
 		'Columns',
 		'Button',
@@ -154,18 +130,16 @@ return array(
 
 		// auto invoke scripts previously registered on theme setup
 		'auto-enqueue-scripts'    => array(
-//			'google-maps-api',
 			'wpgrade-main-scripts',
-//			'webfont-script',
 		),
 		// enqueue's script and localizes
 		'auto-localize-scripts'   => array(
 			'wpgrade-main-scripts' => array(
 				'ajaxurl'    => admin_url( 'admin-ajax.php' ),
 				'objectl10n' => array(
-					'tPrev'             => __( 'Previous (Left arrow key)', 'rosa_txtd' ),
-					'tNext'             => __( 'Next (Right arrow key)', 'rosa_txtd' ),
-					'tCounter'          => __( 'of', 'rosa_txtd' ),
+					'tPrev'             => __( 'Previous (Left arrow key)', 'rosa' ),
+					'tNext'             => __( 'Next (Right arrow key)', 'rosa' ),
+					'tCounter'          => __( 'of', 'rosa' ),
 					'infscrLoadingText' => "",
 					'infscrReachedEnd'  => "",
 				),
@@ -174,24 +148,12 @@ return array(
 		// calls function to perform extra enqueue's on theme setup
 		// handlers should be placed in theme's functions.php
 		'script-enqueue-handlers' => array(
-			'google-web-fonts'=> 'wpgrade_callback_enqueue_google_fonts_rosa',
-			'thread-comments' => 'wpgrade_callback_thread_comments_scripts',
-			'addthis'         => 'wpgrade_callback_addthis',
+			'addthis'         => 'rosa_callback_addthis',
 		),
 		// auto invoke styles previously registered on theme setup
 		'auto-enqueue-styles'     => array(
 			'google-webfonts',
 			'wpgrade-main-style',
-		),
-		// calls function to perform extra enqueue's on theme setup
-		// handlers should be placed in theme's functions.php
-		'style-enqueue-handlers'  => array(
-			'dynamic-css' => array(
-				'handler'  => 'wpgrade_callback_enqueue_dynamic_css_rosa',
-				'priority' => 9999,
-			),
-			'rtl-support' => 'wpgrade_callback_enqueue_rtl_support',
-			'404-page' => 'wpgrade_callback_enqueue_404_css',
 		),
 
 	), # end resource
@@ -203,12 +165,12 @@ return array(
 		// formatter to process the links; null if none needed
 		// the formatter should return a string and accept links and
 		// the resulting configuration
-		'formatter'     => 'wpgrade_callback_pagination_formatter',
+		'formatter'     => 'rosa_callback_pagination_formatter',
 		// show prev/next links?
 		'prev_next'     => true,
 		// pagination text
-		'prev_text'     => __( 'Prev', 'rosa_txtd' ),
-		'next_text'     => __( 'Next', 'rosa_txtd' ),
+		'prev_text'     => __( 'Prev', 'rosa' ),
+		'next_text'     => __( 'Next', 'rosa' ),
 		// are the terms used for paging relative to the sort order?
 		// ie. older/newer instead of sorting agnostic previous/next
 		'sorted_paging' => false,
@@ -239,8 +201,8 @@ return array(
 		//				'gallery' => array
 		//					(
 		//						'formatter' => null,
-		//						'prev_text' => __('Prev Images', 'rosa_txtd'),
-		//						'next_text' => __('Next Images', 'rosa_txtd'),
+		//						'prev_text' => __('Prev Images', 'rosa'),
+		//						'next_text' => __('Next Images', 'rosa'),
 		//					)
 	),
 

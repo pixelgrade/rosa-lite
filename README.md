@@ -1,4 +1,4 @@
-[![Build Status](http://jenkins.pixelgrade.com:8080/job/rosa/badge/icon)](http://jenkins.pixelgrade.com:8080/job/rosa/)
+[![Build Status](https://magnum.travis-ci.com/pixelgrade/rosa.svg?token=cfrNucuYPiMifuQyUdGG)](https://magnum.travis-ci.com/pixelgrade/rosa)
 
 ## Coding guideline
 

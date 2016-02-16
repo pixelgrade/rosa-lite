@@ -53,14 +53,14 @@ class wpgrade {
 		/**
 		 * this is the old path...keep it for legacy
 		 */
-		if ( file_exists( self::childpath() . 'config/wpgrade-config' . EXT ) ) {
-			self::$configuration = include self::childpath() . 'config/wpgrade-config' . EXT;
-		} elseif ( file_exists( self::themepath() . 'config/wpgrade-config' . EXT ) ) {
-			self::$configuration = include self::themepath() . 'config/wpgrade-config' . EXT;
-		} elseif ( file_exists( self::childpath() . 'wpgrade-config' . EXT ) ) {
-			self::$configuration = include self::childpath() . 'wpgrade-config' . EXT;
-		} elseif ( file_exists( self::themepath() . 'wpgrade-config' . EXT ) ) {
-			self::$configuration = include self::themepath() . 'wpgrade-config' . EXT;
+		if ( file_exists( self::childpath() . 'config/wpgrade-config.php' ) ) {
+			self::$configuration = include self::childpath() . 'config/wpgrade-config.php';
+		} elseif ( file_exists( self::themepath() . 'config/wpgrade-config.php' ) ) {
+			self::$configuration = include self::themepath() . 'config/wpgrade-config.php';
+		} elseif ( file_exists( self::childpath() . 'wpgrade-config.php' ) ) {
+			self::$configuration = include self::childpath() . 'wpgrade-config.php';
+		} elseif ( file_exists( self::themepath() . 'wpgrade-config.php' ) ) {
+			self::$configuration = include self::themepath() . 'wpgrade-config.php';
 		}
 	}
 
@@ -145,47 +145,17 @@ class wpgrade {
 	 */
 	static function option( $option, $default = null ) {
 		global $pagenow;
+		global $pixcustomify_plugin;
 
 		// if there is set an key in url force that value
 		if ( isset( $_GET[ $option ] ) && ! empty( $option ) ) {
-
 			return $_GET[ $option ];
-
-		} elseif ( isset( $_POST['customized'] ) && self::customizer_option_exists( $option ) ) {
-			// so we are on the customizer page
-			// overwrite every option if we have one
-			return self::get_customizer_option( $option );
-
-		} else {
-			return self::options()->get( $option, $default );
+		} elseif ( $pixcustomify_plugin !== null && $pixcustomify_plugin->has_option( $option ) ) {
+			// if this is a customify value get it here
+			return $pixcustomify_plugin->get_option( $option, $default );
 		}
-	}
 
-	/**
-	 * Get a redux config argument
-	 * @param $arg
-	 *
-	 * @return bool
-	 */
-	static function get_redux_arg( $arg ) {
-		$args = self::get_redux_args();
-
-		if (!empty($arg) && isset($args[$arg]) ) {
-			return $args[$arg];
-		}
-		return false;
-	}
-
-	static function get_redux_args() {
-		return self::options()->get_args();
-	}
-
-	static function get_redux_sections() {
-		return self::options()->get_sections();
-	}
-
-	static function get_redux_defaults() {
-		return self::options()->get_defaults();
+		return $default;
 	}
 
 	/**
@@ -519,7 +489,7 @@ class wpgrade {
 	 * @return string uri to resource file
 	 */
 	static function resourceuri( $file ) {
-		return wpgrade::uri( wpgrade::confoption( 'resource-path', 'theme-content' ) . '/' . ltrim( $file, '/' ) );
+		return wpgrade::uri( '/assets/' . ltrim( $file, '/' ) );
 	}
 
 	/**
@@ -1009,7 +979,7 @@ class wpgrade {
 		$audio_oga    = get_post_meta( $postID, wpgrade::prefix() . 'audio_ogg', true );
 		$audio_poster = get_post_meta( $postID, wpgrade::prefix() . 'audio_poster', true );
 
-		include wpgrade::corepartial( 'audio-selfhosted' . EXT );
+		include wpgrade::corepartial( 'audio-selfhosted.php' );
 	}
 
 	#
@@ -1025,7 +995,7 @@ class wpgrade {
 		$video_ogv    = get_post_meta( $postID, wpgrade::prefix() . 'video_ogv', true );
 		$video_poster = get_post_meta( $postID, wpgrade::prefix() . 'video_poster', true );
 
-		include wpgrade::corepartial( 'video-selfhosted' . EXT );
+		include wpgrade::corepartial( 'video-selfhosted.php' );
 	}
 
 	/**
@@ -1074,33 +1044,6 @@ class wpgrade {
 
 
 	//// Internal Bootstrapping Helpers ////////////////////////////////////////////
-
-	/**
-	 * Loads in core dependency.
-	 */
-	static function require_coremodule( $modulename ) {
-
-		if ( $modulename == 'redux2' ) {
-			require self::corepath() . 'vendor/redux2/options/defaults' . EXT;
-		} elseif ( $modulename == 'redux3' ) {
-			get_template_part( 'wpgrade-core/vendor/redux3/framework' );
-		} else { // unsupported module
-			die( 'Unsuported core module: ' . $modulename );
-		}
-	}
-
-	/**
-	 * @return string partial uri path to core module
-	 */
-	static function coremoduleuri( $modulename ) {
-		if ( $modulename == 'redux2' ) {
-			return wpgrade::coreuri() . 'vendor/redux2/';
-		} elseif ( $modulename == 'redux3' ) {
-			return wpgrade::coreuri() . 'vendor/redux3/';
-		} else { // unsupported module
-			die( 'Unsuported core module: ' . $modulename );
-		}
-	}
 
 
 	//// WPML Related Functions ////////////////////////////////////////////////////
@@ -1339,7 +1282,7 @@ class wpgrade {
 	static function count_sidebar_widgets( $sidebar_id, $echo = true ) {
 		$the_sidebars = wp_get_sidebars_widgets();
 		if ( ! isset( $the_sidebars[ $sidebar_id ] ) ) {
-			return __( 'Invalid sidebar ID', wpgrade::textdomain() );
+			return __( 'Invalid sidebar ID', 'rosa' );
 		}
 		if ( $echo ) {
 			echo count( $the_sidebars[ $sidebar_id ] );

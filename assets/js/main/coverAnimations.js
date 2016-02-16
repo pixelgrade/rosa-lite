@@ -7,6 +7,10 @@ var CoverAnimation = {
 
     initialize: function () {
 
+        if (is_EDGE) {
+            return;
+        }
+
         var that = this;
 
         $(this.selector).each(function(i, header) {
@@ -125,6 +129,10 @@ var CoverAnimation = {
     },
 
     update: function () {
+
+        if (is_EDGE) {
+            return;
+        }
 
         var that = this;
 

@@ -113,7 +113,7 @@ class wpGrade_import extends WPGrade_WP_Import {
 			$post = apply_filters( 'wp_import_post_data_raw', $post );
 
 			if ( ! post_type_exists( $post['post_type'] ) ) {
-				printf( __( 'Failed to import "%s": Invalid post type %s', wpgrade::textdomain() ), esc_html( $post['post_title'] ), esc_html( $post['post_type'] ) );
+				printf( __( 'Failed to import "%s": Invalid post type %s', 'rosa' ), esc_html( $post['post_title'] ), esc_html( $post['post_type'] ) );
 				echo '<br />';
 				do_action( 'wp_import_post_exists', $post );
 				continue;
@@ -137,7 +137,7 @@ class wpGrade_import extends WPGrade_WP_Import {
 
 			$post_exists = post_exists( $post['post_title'], '', $post['post_date'] );
 			if ( $post_exists && get_post_type( $post_exists ) == $post['post_type'] ) {
-				//printf( __('%s &#8220;%s&#8221; already exists.', wpgrade::textdomain()), $post_type_object->labels->singular_name, esc_html($post['post_title']) );
+				//printf( __('%s &#8220;%s&#8221; already exists.', 'rosa'), $post_type_object->labels->singular_name, esc_html($post['post_title']) );
 				//echo '<br />';
 
 				//save it for later check if it exists - it may be unattached to it's parent
@@ -221,7 +221,7 @@ class wpGrade_import extends WPGrade_WP_Import {
 				}
 
 				if ( is_wp_error( $post_id ) ) {
-					printf( __( 'Failed to import %s "%s"', wpgrade::textdomain() ), $post_type_object->labels->singular_name, esc_html( $post['post_title'] ) );
+					printf( __( 'Failed to import %s "%s"', 'rosa' ), $post_type_object->labels->singular_name, esc_html( $post['post_title'] ) );
 					if ( defined( 'IMPORT_DEBUG' ) && IMPORT_DEBUG ) {
 						echo ': ' . $post_id->get_error_message();
 					}
@@ -257,7 +257,7 @@ class wpGrade_import extends WPGrade_WP_Import {
 							$term_id = $t['term_id'];
 							do_action( 'wp_import_insert_term', $t, $term, $post_id, $post );
 						} else {
-							printf( __( 'Failed to import %s %s', wpgrade::textdomain() ), esc_html( $taxonomy ), esc_html( $term['name'] ) );
+							printf( __( 'Failed to import %s %s', 'rosa' ), esc_html( $taxonomy ), esc_html( $term['name'] ) );
 							if ( defined( 'IMPORT_DEBUG' ) && IMPORT_DEBUG ) {
 								echo ': ' . $t->get_error_message();
 							}
@@ -383,8 +383,8 @@ class wpGrade_import extends WPGrade_WP_Import {
 		wp_defer_term_counting( false );
 		wp_defer_comment_counting( false );
 
-		//echo '<p>' . __( 'All done.', wpgrade::textdomain() ) . ' <a href="' . admin_url() . '">' . __( 'Have fun!', wpgrade::textdomain() ) . '</a>' . '</p>';
-		//echo '<p>' . __( 'Remember to update the passwords and roles of imported users.', wpgrade::textdomain() ) . '</p>';
+		//echo '<p>' . __( 'All done.', 'rosa' ) . ' <a href="' . admin_url() . '">' . __( 'Have fun!', 'rosa' ) . '</a>' . '</p>';
+		//echo '<p>' . __( 'Remember to update the passwords and roles of imported users.', 'rosa' ) . '</p>';
 
 		do_action( 'import_end' );
 	}
@@ -402,7 +402,7 @@ class wpGrade_import extends WPGrade_WP_Import {
 			$post = apply_filters( 'wp_import_post_data_raw', $post );
 
 			//			if ( ! post_type_exists( $post['post_type'] ) ) {
-			//				printf( __( 'Failed to import &#8220;%s&#8221;: Invalid post type %s', wpgrade::textdomain() ),
+			//				printf( __( 'Failed to import &#8220;%s&#8221;: Invalid post type %s', 'rosa' ),
 			//					esc_html($post['post_title']), esc_html($post['post_type']) );
 			//				echo '<br />';
 			//				do_action( 'wp_import_post_exists', $post );
@@ -446,20 +446,6 @@ class wpGrade_import extends WPGrade_WP_Import {
 			$imported_options = json_decode( htmlspecialchars_decode( base64_decode( $theme_options ) ), true );
 			echo 'Success: ';
 			var_export( update_option( wpgrade::shortname() . "_options", $imported_options ) );
-		}
-
-		//		if( !empty( $imported_options ) && is_array( $imported_options ) && isset( $imported_options['redux-backup'] ) && $imported_options['redux-backup'] == '1' ) {
-		//
-		//			$imported_options['REDUX_imported'] = 1;
-		//			foreach($imported_options as $key => $value) {
-		//				$plugin_options[$key] = $value;
-		//			}
-		//			update_option(wpgrade::shortname()."_options", $plugin_options);
-		//		}
-
-		// Remove the import/export tab cookie.
-		if ( $_COOKIE['redux_current_tab'] == 'import_export_default' ) {
-			setcookie( 'redux_current_tab', '', 1, '/' );
 		}
 
 		//Ensure the $wp_rewrite global is loaded
@@ -511,7 +497,7 @@ class wpGrade_import extends WPGrade_WP_Import {
 			return false;
 		}
 
-		//first let's remove all the widgets in the sidebars to avoid a big mess		
+		//first let's remove all the widgets in the sidebars to avoid a big mess
 		$sidebars_widgets = wp_get_sidebars_widgets();
 		foreach ( $sidebars_widgets as $sidebarID => $widgets ) {
 			if ( $sidebarID != 'wp_inactive_widgets' ) {

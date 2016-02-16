@@ -60,14 +60,14 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 						global $numpages;
 						if ( $numpages > 1 ): ?>
 							<div class="entry__meta-box  meta-box--pagination">
-								<span class="meta-box__title"><?php _e( 'Pages', wpgrade::textdomain() ) ?></span>
+								<span class="meta-box__title"><?php _e( 'Pages', 'rosa' ) ?></span>
 								<?php
 								$args = array(
 									'before'           => '<ol class="nav  pagination--single">',
 									'after'            => '</ol>',
 									'next_or_number'   => 'next_and_number',
-									'previouspagelink' => __( '&laquo;', wpgrade::textdomain() ),
-									'nextpagelink'     => __( '&raquo;', wpgrade::textdomain() )
+									'previouspagelink' => __( '&laquo;', 'rosa' ),
+									'nextpagelink'     => __( '&raquo;', 'rosa' )
 								);
 								wp_link_pages( $args ); ?>
 							</div>
