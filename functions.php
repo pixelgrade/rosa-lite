@@ -1,15 +1,5 @@
 <?php
 
-// ensure EXT is defined
-if ( ! defined( 'EXT' ) ) {
-	define( 'EXT', '.php' );
-}
-
-#
-# See: wpgrade-config.php -> include-paths for additional theme specific
-# function and class includes
-#
-
 // ensure REQUEST_PROTOCOL is defined
 if ( ! defined('REQUEST_PROTOCOL')) {
 	if (is_ssl()) {
@@ -22,19 +12,176 @@ if ( ! defined('REQUEST_PROTOCOL')) {
 // Loads the theme's translated strings
 load_theme_textdomain( 'rosa', get_template_directory() . '/languages' );
 
-// Theme specific settings
-// -----------------------
-
-// add theme support for post formats
-// child themes note: use the after_setup_theme hook with a callback
-// right now no post formats
-//$formats = array( 'video', 'audio', 'gallery', 'image', 'quote', 'link', 'chat', 'aside', );
-//add_theme_support( 'post-formats', $formats );
 
 // Initialize system core
 // ----------------------
+// @todo remove
+require_once 'wpgrade-core/bootstrap.php';
 
-require_once 'wpgrade-core/bootstrap' . EXT;
+
+
+
+
+
+
+
+
+if ( ! function_exists(' rosa_theme_setup' ) ) {
+
+	function rosa_theme_setup () {
+
+
+		//add theme support for RSS feed links automatically generated in the head section
+		add_theme_support( 'automatic-feed-links' );
+
+		//tell galleries and captions to behave nicely and use HTML5 markup
+		add_theme_support( 'html5', array( 'gallery', 'caption' ) );
+
+		// Add theme support for Featured Images
+		add_theme_support( 'post-thumbnails' );
+
+		$sizes = wpgrade::confoption( 'thumbnails_sizes' );
+
+		if ( ! empty( $sizes ) ) {
+			foreach ( $sizes as $size_key => $values ) {
+
+				$width = 0;
+				if ( isset( $values['width'] ) ) {
+					$width = $values['width'];
+				}
+
+				$height = 0;
+				if ( isset( $values['height'] ) ) {
+					$height = $values['height'];
+				}
+
+				$hard_crop = false;
+				if ( isset( $values['hard_crop'] ) ) {
+					$hard_crop = $values['hard_crop'];
+				}
+
+				add_image_size( $size_key, $width, $height, $hard_crop );
+
+			}
+		}
+
+		// add theme support for post formats
+		$post_formats = wpgrade::confoption( 'post-formats', array() );
+		if ( ! empty( $post_formats ) ) {
+			add_theme_support( 'post-formats', $post_formats );
+		}
+
+	}
+	add_action( 'after_setup_theme', 'rosa_theme_setup' );
+}
+
+/**
+ * Set the content width in pixels, based on the theme's design and stylesheet.
+ *
+ * Priority 0 to make it available to lower priority callbacks.
+ *
+ * @global int $content_width
+ */
+function rosa_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'rosa_content_width', 960, 0 );
+}
+
+add_action( 'after_setup_theme', 'rosa_content_width', 0 );
+
+
+
+
+/// load assets
+if ( ! function_exists( 'rosa_load_assets' ) ) {
+	function rosa_load_assets(){
+
+		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+			wp_enqueue_script( 'comment-reply' );
+		}
+
+		if ( is_rtl() ) {
+			wp_enqueue_style( 'rtl-support', wpgrade::resourceuri( 'css/localization/rtl.css' ) );
+		}
+
+		if (is_404()) {
+			wp_enqueue_style( wpgrade::shortname() . '-404-style', get_template_directory_uri() . '/assets/css/pages/404.css', array(), time(), 'all' );
+		}
+
+	}
+	add_action( 'wp_enqueue_scripts', 'rosa_load_assets' );
+}
+
+
+if ( ! function_exists( 'rosa_load_admin_assets' ) ) {
+
+	function rosa_load_admin_assets() {
+
+		wp_enqueue_script(
+			'rosa_admin_general_script', //unique handle
+			get_template_directory_uri().'/assets/js/admin/admin-general.js', //location
+			array('jquery')  //dependencies
+		);
+
+	}
+	add_action( 'admin_enqueue_scripts', 'rosa_load_admin_assets' );
+}
+
+// Media Handlers
+// --------------
+
+function rosa_media_handlers() {
+	// make sure that WordPress allows the upload of our used mime types
+	add_filter( 'upload_mimes', 'rosa_callback_custom_upload_mimes' );
+}
+
+add_action( 'after_wpgrade_core', 'rosa_media_handlers');
+
+
+/**
+ * Make sure wordpress allows our mime types.
+ * @return array
+ */
+function rosa_callback_custom_upload_mimes( $existing_mimes = null ) {
+	if ( $existing_mimes === null ) {
+		$existing_mimes = array();
+	}
+
+	$existing_mimes['mp3']  = 'audio/mpeg3';
+	$existing_mimes['oga']  = 'audio/ogg';
+	$existing_mimes['ogv']  = 'video/ogg';
+	$existing_mimes['mp4a'] = 'audio/mp4';
+	$existing_mimes['mp4']  = 'video/mp4';
+	$existing_mimes['weba'] = 'audio/webm';
+	$existing_mimes['webm'] = 'video/webm';
+
+	// allow svg files only for admins
+	if ( is_admin() ) {
+		//and some more
+		$existing_mimes['svg'] = 'image/svg+xml';
+	}
+
+	return $existing_mimes;
+}
+
+
+/**
+ * Custom template tags for this theme.
+ */
+require get_template_directory() . '/inc/template-tags.php';
+
+/**
+ * Custom functions that act independently of the theme templates.
+ */
+require get_template_directory() . '/inc/extras.php';
+
+/**
+ * For admin also
+ */
+if ( is_admin() ) {
+	require get_template_directory() . '/inc/extras_admin.php';
+}
+
+require get_template_directory() . '/inc/integrations.php';
 
 #
 # Please perform any initialization via options in wpgrade-config and

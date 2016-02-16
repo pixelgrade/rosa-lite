@@ -1,9 +1,9 @@
 <?php
 
 require_once dirname( __FILE__ ) . '/class-tgm-plugin-activation.php';
-add_action( 'tgmpa_register', 'wpgrade_register_required_plugins', 999 );
+add_action( 'tgmpa_register', 'rosa_register_required_plugins', 999 );
 
-function wpgrade_register_required_plugins() {
+function rosa_register_required_plugins() {
 
 	/**
 	 * Array of plugin arrays. Required keys are name and slug.

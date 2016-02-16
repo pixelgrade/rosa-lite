@@ -57,7 +57,7 @@ global $post_format;
             --><div class="grid__item  lap-and-up-one-half">
 				<?php if ( wpgrade::option( 'blog_single_show_share_links' ) ): ?>
 					<div class="addthis_toolbox addthis_default_style addthis_32x32_style  add_this_list"
-						addthis:url="<?php echo wpgrade_get_current_canonical_url(); ?>"
+						addthis:url="<?php echo rosa_get_current_canonical_url(); ?>"
 						addthis:title="<?php wp_title( '|', true, 'right' ); ?>"
 						addthis:description="<?php echo trim( strip_tags( get_the_excerpt() ) ) ?>">
 						<?php get_template_part( 'templates/core/addthis-social-buttons' ); ?>

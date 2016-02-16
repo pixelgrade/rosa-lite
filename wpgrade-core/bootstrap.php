@@ -13,7 +13,7 @@ do_action('before_wpgrade_core');
 
 $basepath = dirname( __FILE__ ) . DIRECTORY_SEPARATOR;
 
-//require $basepath . 'wpgrade' . EXT;
+//require $basepath . 'wpgrade.php';
 get_template_part( 'wpgrade-core/wpgrade' );
 
 // Dynamically load in all classes

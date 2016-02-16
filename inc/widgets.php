@@ -2,8 +2,7 @@
 /*
  * Register Widgets areas.
  */
-
-function wpgrade_register_sidebars() {
+function rosa_register_sidebars() {
 
 	register_sidebar( array(
 		'id'            => 'sidebar-main',
@@ -31,4 +30,4 @@ function wpgrade_register_sidebars() {
 
 }
 
-add_action( 'widgets_init', 'wpgrade_register_sidebars' );
+add_action( 'widgets_init', 'rosa_register_sidebars' );

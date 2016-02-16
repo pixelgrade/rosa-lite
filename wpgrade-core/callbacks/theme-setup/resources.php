@@ -3,9 +3,9 @@
 /*
  * Register theme resources (scripts, styles, etc).
  *
- * Invoked by wpgrade_callback_themesetup
+ * Invoked by rosa_callback_themesetup
  */
-function wpgrade_callback_register_theme_resources() {
+function rosa_callback_register_theme_resources() {
 
 	$themeconfiguration = wpgrade::config();
 
@@ -22,9 +22,9 @@ function wpgrade_callback_register_theme_resources() {
 /*
  * Auto-Enqueue's and configuration callback enqueues
  *
- * Invoked by wpgrade_callback_themesetup
+ * Invoked by rosa_callback_themesetup
  */
-function wpgrade_callback_enqueue_theme_resources() {
+function rosa_callback_enqueue_theme_resources() {
 
 	$themeconfiguration = wpgrade::config();
 
@@ -63,9 +63,9 @@ function wpgrade_callback_enqueue_theme_resources() {
 /*
 * We would like to GetToKnowYourWorkBetter
 *
-* Invoked by wpgrade_callback_themesetup
+* Invoked by rosa_callback_themesetup
 */
-function wpgrade_callback_gtkywb() {
+function rosa_callback_gtkywb() {
 	$themedata = wpgrade::themedata();
 
 	$response = wp_remote_post( REQUEST_PROTOCOL . '//pixelgrade.com/stats', array(

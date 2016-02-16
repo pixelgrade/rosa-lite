@@ -1,17 +1,17 @@
 <?php
 /**
- * Invoked by wpgrade_callback_themesetup
+ * Invoked by rosa_callback_themesetup
  */
-function wpgrade_callback_custom_theme_features() {
+function rosa_callback_custom_theme_features() {
 
 	// @todo CLEANUP consider options for spliting editor style out of main style
 //	add_editor_style( get_template_directory_uri() . '/assets/css/style.css' );
 }
 
 //use different image sizes depending on the number of columns
-add_filter( 'shortcode_atts_gallery', 'wpgrade_overwrite_gallery_atts', 10, 3 );
+add_filter( 'shortcode_atts_gallery', 'rosa_overwrite_gallery_atts', 10, 3 );
 
-function wpgrade_overwrite_gallery_atts( $out, $pairs, $atts ) {
+function rosa_overwrite_gallery_atts( $out, $pairs, $atts ) {
 
 	//if we need to make a slideshow then output full size images
 	if ( isset( $atts['mkslideshow'] ) && $atts['mkslideshow'] == true ) {
@@ -27,16 +27,15 @@ function wpgrade_overwrite_gallery_atts( $out, $pairs, $atts ) {
 		}
 
 	}
-
 	return $out;
 }
 
 /*
  * Add custom filter for gallery shortcode output
  */
-add_filter( 'post_gallery', 'wpgrade_custom_post_gallery', 10, 2 );
+add_filter( 'post_gallery', 'rosa_custom_post_gallery', 10, 2 );
 
-function wpgrade_custom_post_gallery( $output, $attr ) {
+function rosa_custom_post_gallery( $output, $attr ) {
 	global $post, $wp_locale;
 	static $instance = 0;
 
@@ -260,31 +259,6 @@ function wpgrade_custom_post_gallery( $output, $attr ) {
 	return $output;
 }
 
-// Hook into the 'after_setup_theme' action
-//add_action( 'after_setup_theme', 'wpgrade_custom_backgrounds_support' );
-
-function wpgrade_custom_backgrounds_support() {
-
-	$background_args = array(
-		'default-color'          => '1a1717',
-		'default-image'          => '',
-		'wp-head-callback'       => '_custom_background_cb',
-		'admin-head-callback'    => '',
-		'admin-preview-callback' => '',
-	);
-
-	add_theme_support( 'custom-background', $background_args );
-}
-
-add_action( 'wp', 'wpgrade_prepare_password_for_custom_post_types' );
-
-function wpgrade_prepare_password_for_custom_post_types() {
-
-	global $wpgrade_private_post;
-	$wpgrade_private_post = rosa::is_password_protected();
-
-}
-
 add_filter( 'mce_buttons', 'add_next_page_button' );
 // Add "Next page" button to TinyMCE
 function add_next_page_button( $mce_buttons ) {
@@ -330,9 +304,9 @@ function add_next_and_number( $args ) {
 /*
  * Add custom fields to attachments
  */
-add_action( 'init', 'wpgrade_register_attachments_custom_fields' );
+add_action( 'init', 'rosa_register_attachments_custom_fields' );
 
-function wpgrade_register_attachments_custom_fields() {
+function rosa_register_attachments_custom_fields() {
 
 	//add video support for attachments
 	if ( ! function_exists( 'add_video_url_field_to_attachments' ) ) {
@@ -419,9 +393,9 @@ function wpgrade_register_attachments_custom_fields() {
 /*
  * Add custom styling for the media popup
  */
-add_action( 'print_media_templates', 'wpgrade_custom_style_for_mediabox' );
+add_action( 'print_media_templates', 'rosa_custom_style_for_mediabox' );
 
-function wpgrade_custom_style_for_mediabox() {
+function rosa_custom_style_for_mediabox() {
 	?>
 	<style>
 		.media-sidebar {
@@ -480,9 +454,9 @@ function wpgrade_custom_style_for_mediabox() {
 /*
  * Add custom settings to the gallery popup interface
  */
-add_action( 'print_media_templates', 'wpgrade_custom_gallery_settings' );
+add_action( 'print_media_templates', 'rosa_custom_gallery_settings' );
 
-function wpgrade_custom_gallery_settings() {
+function rosa_custom_gallery_settings() {
 
 	// define your backbone template;
 	// the "tmpl-" prefix is required,
@@ -537,5 +511,4 @@ function display_header_down_arrow( $page_section_idx, $header_height ) {
 		echo '<svg class="blurp--top" width="192" height="61" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 160.7 61.5" enable-background="new 0 0 160.7 61.5" xml:space="preserve"><path fill="#FFFFFF" d="M80.3,61.5c0,0,22.1-2.7,43.1-5.4s41-5.4,36.6-5.4c-21.7,0-34.1-12.7-44.9-25.4S95.3,0,80.3,0c-15,0-24.1,12.7-34.9,25.4S22.3,50.8,0.6,50.8c-4.3,0-6.5,0,3.5,1.3S36.2,56.1,80.3,61.5z"/></svg>';
 	}
 	echo '<div class="down-arrow down-arrow--' . $down_arrow_style . '"><div class="arrow"></div></div>' . PHP_EOL;
-
 }

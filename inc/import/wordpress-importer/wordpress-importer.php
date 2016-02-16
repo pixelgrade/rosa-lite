@@ -906,8 +906,8 @@ if ( class_exists( 'WP_Importer' ) ) {
 			if ( $id && ! is_wp_error( $id ) ) {
 
 				if ( isset( $wpgrade_megamenu_layout ) ) {
-					$args['wpgrade_megamenu_layout'] = $wpgrade_megamenu_layout;
-					update_post_meta( $id, 'wpgrade_megamenu_layout', $args['wpgrade_megamenu_layout'] );
+					$args['rosa_megamenu_layout'] = $wpgrade_megamenu_layout;
+					update_post_meta( $id, 'rosa_megamenu_layout', $args['rosa_megamenu_layout'] );
 				}
 
 				$this->processed_menu_items[ intval( $item['post_id'] ) ] = (int) $id;

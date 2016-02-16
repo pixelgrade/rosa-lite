@@ -129,7 +129,7 @@ function truncate( $text, $length = 100, $options = array() ) {
 }
 
 //@todo CLEANUP refactor function
-function wpgrade_better_excerpt( $text = '' ) {
+function rosa_better_excerpt( $text = '' ) {
 	global $post;
 	$raw_excerpt = '';
 
@@ -197,7 +197,7 @@ function wpgrade_better_excerpt( $text = '' ) {
 /*
  * COMMENT LAYOUT
  */
-function wpgrade_comments( $comment, $args, $depth ) {
+function rosa_comments( $comment, $args, $depth ) {
 	static $comment_number;
 
 	if ( ! isset( $comment_number ) )
@@ -266,15 +266,15 @@ function remove_more_link_scroll( $link ) {
 add_filter( 'the_content_more_link', 'remove_more_link_scroll' );
 
 //fix the canonical url of YOAST because on the front page it ignores the pagination
-add_filter( 'wpseo_canonical', 'wpgrade_get_current_canonical_url' );
+add_filter( 'wpseo_canonical', 'rosa_get_current_canonical_url' );
 //fix the canonical url of AIOSEOP because on the front page it breaks the pagination
-add_filter( 'aioseop_canonical_url', 'wpgrade_get_current_canonical_url' );
+add_filter( 'aioseop_canonical_url', 'rosa_get_current_canonical_url' );
 
 /**
  * Filter the page title so that plugins can unhook this
 
  */
-function wpgrade_wp_title( $title, $sep ) {
+function rosa_wp_title( $title, $sep ) {
 
 	global $paged, $page;
 
@@ -296,9 +296,9 @@ function wpgrade_wp_title( $title, $sep ) {
 	return $title;
 }
 
-add_filter( 'wp_title', 'wpgrade_wp_title', 10, 2 );
+add_filter( 'wp_title', 'rosa_wp_title', 10, 2 );
 
-function wpgrade_fix_yoast_page_number( $title ) {
+function rosa_fix_yoast_page_number( $title ) {
 
 	global $paged, $page, $sep;
 
@@ -312,10 +312,10 @@ function wpgrade_fix_yoast_page_number( $title ) {
 }
 
 //filter the YOAST title so we can correct the page number missing on frontpage
-add_filter( 'wpseo_title', 'wpgrade_fix_yoast_page_number' );
+add_filter( 'wpseo_title', 'rosa_fix_yoast_page_number' );
 
 //get the first image in a gallery or portfolio
-function wpgrade_get_first_gallery_image_src( $post_ID, $image_size ) {
+function rosa_get_first_gallery_image_src( $post_ID, $image_size ) {
 
 	$gallery_ids = array();
 
@@ -327,7 +327,7 @@ function wpgrade_get_first_gallery_image_src( $post_ID, $image_size ) {
 }
 
 //fix the sticky posts logic by preventing them to appear again
-function wpgrade_pre_get_posts_sticky_posts( $query ) {
+function rosa_pre_get_posts_sticky_posts( $query ) {
 
 	// Do nothing if not home or not main query.
 	if ( ! $query->is_home() || ! $query->is_main_query() ) {
@@ -360,7 +360,7 @@ function wpgrade_pre_get_posts_sticky_posts( $query ) {
 
 }
 
-add_action( 'pre_get_posts', 'wpgrade_pre_get_posts_sticky_posts' );
+add_action( 'pre_get_posts', 'rosa_pre_get_posts_sticky_posts' );
 
 /**
  * Extend the default WordPress post classes.

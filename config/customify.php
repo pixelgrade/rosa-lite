@@ -1188,14 +1188,14 @@ function convert_rosa_for_wp_43_once() {
 		return;
 	}
 
-	$is_not_old = get_option( 'wpgrade_converted_to_43' );
+	$is_not_old = get_option( 'rosa_converted_to_43' );
 
 	$this_wp_version = get_bloginfo( 'version' );
 	$this_wp_version = explode( '.', $this_wp_version );
 	$is_wp43         = false;
 	if ( ! $is_not_old && (int) $this_wp_version[0] >= 4 && (int) $this_wp_version[1] >= 3 ) {
 		$is_wp43 = true;
-		update_option( 'wpgrade_converted_to_43', true );
+		update_option( 'rosa_converted_to_43', true );
 		header( 'Location: ' . admin_url() . 'customize.php?save_customizer_once=true' );
 		die();
 	}

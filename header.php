@@ -183,7 +183,7 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 
 							<?php } ?>
 						</ul>
-						<?php wpgrade_main_nav(); ?>
+						<?php rosa_main_nav(); ?>
 					</nav>
 				</div>
 			</div>

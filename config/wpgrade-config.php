@@ -62,10 +62,10 @@ return array(
 	// will be ignored in processing
 	'content-filters'              => array(
 		'default' => array(
-			'wpgrade_callback_theme_general_filters' => 100,
-			'wpgrade_callback_shortcode_filters'     => 200,
-			'wpgrade_callback_attachment_filters'    => 300,
-			'wpgrade_callback_paragraph_filters'     => 400,
+			'rosa_callback_theme_general_filters' => 100,
+			'rosa_callback_shortcode_filters'     => 200,
+			'rosa_callback_attachment_filters'    => 300,
+			'rosa_callback_paragraph_filters'     => 400,
 		),
 	),
 	'post-formats'                 => array( // empty - see functions.php
@@ -149,9 +149,7 @@ return array(
 
 		// auto invoke scripts previously registered on theme setup
 		'auto-enqueue-scripts'    => array(
-//			'google-maps-api',
 			'wpgrade-main-scripts',
-//			'webfont-script',
 		),
 		// enqueue's script and localizes
 		'auto-localize-scripts'   => array(
@@ -169,19 +167,12 @@ return array(
 		// calls function to perform extra enqueue's on theme setup
 		// handlers should be placed in theme's functions.php
 		'script-enqueue-handlers' => array(
-			'thread-comments' => 'wpgrade_callback_thread_comments_scripts',
-			'addthis'         => 'wpgrade_callback_addthis',
+			'addthis'         => 'rosa_callback_addthis',
 		),
 		// auto invoke styles previously registered on theme setup
 		'auto-enqueue-styles'     => array(
 			'google-webfonts',
 			'wpgrade-main-style',
-		),
-		// calls function to perform extra enqueue's on theme setup
-		// handlers should be placed in theme's functions.php
-		'style-enqueue-handlers'  => array(
-			'rtl-support' => 'wpgrade_callback_enqueue_rtl_support',
-			'404-page' => 'wpgrade_callback_enqueue_404_css',
 		),
 
 	), # end resource
@@ -193,7 +184,7 @@ return array(
 		// formatter to process the links; null if none needed
 		// the formatter should return a string and accept links and
 		// the resulting configuration
-		'formatter'     => 'wpgrade_callback_pagination_formatter',
+		'formatter'     => 'rosa_callback_pagination_formatter',
 		// show prev/next links?
 		'prev_next'     => true,
 		// pagination text

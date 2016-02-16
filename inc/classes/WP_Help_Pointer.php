@@ -109,7 +109,7 @@ class WP_Help_Pointer {
 
 		$pointers = json_encode( $pointers );
 
-		include wpgrade::themefilepath( 'inc/assets/wp-help-pointer' . EXT );
+		rosa_admin_get_pointer_help_template ( $pointers );
 	}
 
 } # class

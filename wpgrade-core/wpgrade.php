@@ -53,14 +53,14 @@ class wpgrade {
 		/**
 		 * this is the old path...keep it for legacy
 		 */
-		if ( file_exists( self::childpath() . 'config/wpgrade-config' . EXT ) ) {
-			self::$configuration = include self::childpath() . 'config/wpgrade-config' . EXT;
-		} elseif ( file_exists( self::themepath() . 'config/wpgrade-config' . EXT ) ) {
-			self::$configuration = include self::themepath() . 'config/wpgrade-config' . EXT;
-		} elseif ( file_exists( self::childpath() . 'wpgrade-config' . EXT ) ) {
-			self::$configuration = include self::childpath() . 'wpgrade-config' . EXT;
-		} elseif ( file_exists( self::themepath() . 'wpgrade-config' . EXT ) ) {
-			self::$configuration = include self::themepath() . 'wpgrade-config' . EXT;
+		if ( file_exists( self::childpath() . 'config/wpgrade-config.php' ) ) {
+			self::$configuration = include self::childpath() . 'config/wpgrade-config.php';
+		} elseif ( file_exists( self::themepath() . 'config/wpgrade-config.php' ) ) {
+			self::$configuration = include self::themepath() . 'config/wpgrade-config.php';
+		} elseif ( file_exists( self::childpath() . 'wpgrade-config.php' ) ) {
+			self::$configuration = include self::childpath() . 'wpgrade-config.php';
+		} elseif ( file_exists( self::themepath() . 'wpgrade-config.php' ) ) {
+			self::$configuration = include self::themepath() . 'wpgrade-config.php';
 		}
 	}
 
@@ -489,7 +489,7 @@ class wpgrade {
 	 * @return string uri to resource file
 	 */
 	static function resourceuri( $file ) {
-		return wpgrade::uri( wpgrade::confoption( 'resource-path', 'theme-content' ) . '/' . ltrim( $file, '/' ) );
+		return wpgrade::uri( '/assets/' . ltrim( $file, '/' ) );
 	}
 
 	/**
@@ -979,7 +979,7 @@ class wpgrade {
 		$audio_oga    = get_post_meta( $postID, wpgrade::prefix() . 'audio_ogg', true );
 		$audio_poster = get_post_meta( $postID, wpgrade::prefix() . 'audio_poster', true );
 
-		include wpgrade::corepartial( 'audio-selfhosted' . EXT );
+		include wpgrade::corepartial( 'audio-selfhosted.php' );
 	}
 
 	#
@@ -995,7 +995,7 @@ class wpgrade {
 		$video_ogv    = get_post_meta( $postID, wpgrade::prefix() . 'video_ogv', true );
 		$video_poster = get_post_meta( $postID, wpgrade::prefix() . 'video_poster', true );
 
-		include wpgrade::corepartial( 'video-selfhosted' . EXT );
+		include wpgrade::corepartial( 'video-selfhosted.php' );
 	}
 
 	/**

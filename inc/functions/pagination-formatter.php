@@ -20,7 +20,7 @@
  *
  * @return string
  */
-function wpgrade_callback_pagination_formatter( $links, $conf ) {
+function rosa_callback_pagination_formatter( $links, $conf ) {
 	$linkcount = count( $links );
 
 	//don't show anything when no pagination is needed
@@ -69,7 +69,7 @@ function wpgrade_callback_pagination_formatter( $links, $conf ) {
 
 /** Do the same thing on single post pagination */
 
-function wpgrade_pagination_custom_markup( $link, $key ) {
+function rosa_pagination_custom_markup( $link, $key ) {
 	global $wp_query;
 	$current = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : '1';
 	$class   = '';
@@ -93,7 +93,6 @@ function wpgrade_pagination_custom_markup( $link, $key ) {
 	$link = '<li ' . $class . '>' . $link . '</li>';
 
 	return $link;
-
 }
 
-add_filter( 'wp_link_pages_link', 'wpgrade_pagination_custom_markup', 10, 2 );
+add_filter( 'wp_link_pages_link', 'rosa_pagination_custom_markup', 10, 2 );
