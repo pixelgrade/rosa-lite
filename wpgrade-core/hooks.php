@@ -90,12 +90,6 @@ function rosa_callback_themesetup() {
 
 add_action( 'after_setup_theme', 'rosa_callback_themesetup', 16 );
 
-// the callback rosa_callback_custom_theme_features should be placed
-// in functions.php and contain theme specific settings
-if ( function_exists( 'rosa_callback_custom_theme_features' ) ) {
-	// register theme features
-	add_action( 'after_setup_theme', 'rosa_callback_custom_theme_features' );
-}
 
 /**
  * ...

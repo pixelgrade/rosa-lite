@@ -20,17 +20,9 @@ require_once 'wpgrade-core/bootstrap.php';
 
 
 
-
-
-
-
-
-
 if ( ! function_exists(' rosa_theme_setup' ) ) {
 
 	function rosa_theme_setup () {
-
-
 		//add theme support for RSS feed links automatically generated in the head section
 		add_theme_support( 'automatic-feed-links' );
 
@@ -71,6 +63,15 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 			add_theme_support( 'post-formats', $post_formats );
 		}
 
+		/*
+		 * Register custom menus.
+		 * This works on 3.1+
+		 */
+		add_theme_support( 'menus' );
+		$menus = wpgrade::confoption( 'import_nav_menu' );
+		foreach ( $menus as $key => $value ) {
+			register_nav_menu( $key, $value );
+		}
 	}
 	add_action( 'after_setup_theme', 'rosa_theme_setup' );
 }
@@ -87,9 +88,6 @@ function rosa_content_width() {
 }
 
 add_action( 'after_setup_theme', 'rosa_content_width', 0 );
-
-
-
 
 /// load assets
 if ( ! function_exists( 'rosa_load_assets' ) ) {

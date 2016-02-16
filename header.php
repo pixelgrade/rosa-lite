@@ -183,7 +183,17 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 
 							<?php } ?>
 						</ul>
-						<?php rosa_main_nav(); ?>
+						<?php
+						wp_nav_menu( array(
+							'theme_location' => 'main_menu',
+							'menu'           => '',
+							'container'      => '',
+							'container_id'   => '',
+							'menu_class'     => 'nav  nav--main  nav--items-menu',
+							'menu_id'        => '',
+							'fallback_cb'    => 'rosa_please_select_a_menu_fallback',
+							'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+						) ); ?>
 					</nav>
 				</div>
 			</div>

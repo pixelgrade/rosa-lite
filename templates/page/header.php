@@ -225,12 +225,12 @@ if ( $pin_type == 'single' ) {
 							<?php }
 						} ?>
 					</div>
-					<?php display_header_down_arrow( $page_section_idx, $header_height ); ?>
+					<?php rosa_display_header_down_arrow( $page_section_idx, $header_height ); ?>
 				</div>
 			</header>
 		<?php } else { ?>
 			<div class="empty-slideshow">
-				<?php _e( 'Currently there are no images assigned to this slideshow', 'rosa' ); ?>
+				<?php esc_attr_e( 'Currently there are no images assigned to this slideshow', 'rosa' ); ?>
 			</div>
 		<?php }
 
@@ -245,7 +245,7 @@ if ( $pin_type == 'single' ) {
 					if ( ! empty( $image[0] ) ) { ?>
 						<div class="article__parallax">
 							<img class="article__parallax__img" src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
-							<?php display_header_down_arrow( $page_section_idx, $header_height ); ?>
+							<?php rosa_display_header_down_arrow( $page_section_idx, $header_height ); ?>
 						</div>
 					<?php
 					}
