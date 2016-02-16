@@ -186,6 +186,7 @@ require get_template_directory() . '/inc/integrations.php';
 # calls in wpgrade-core/bootstrap. Required for testing.
 #
 
+//Automagical updates
 function wupdates_check_vexXr( $transient ) {
 	// Nothing to do here if the checked transient entry is empty
 	if ( empty( $transient->checked ) ) {
@@ -326,7 +327,7 @@ function wupdates_process_purchase_code_vexXr() {
 			$raw_response = wp_remote_post( 'https://wupdates.com/wp-json/wup/v1/front/check_envato_purchase_code/vexXr', $http_args );
 			// In case the server hasn't responded properly, show error
 			if ( is_wp_error( $raw_response ) || $raw_response['response']['code'] !== 200 ) {
-				$errors[] = esc_html__( 'Bummer... We couldn\'t connect to the verification server. Please try again later.' );
+				$errors[] = __( 'We are sorry but we couldn\'t connect to the verification server. Please try again later.<span class="hidden">' . $raw_response['body'] . '</span>' );
 			} else {
 				$response = json_decode( $raw_response['body'], true );
 				if ( ! empty( $response ) ) {
