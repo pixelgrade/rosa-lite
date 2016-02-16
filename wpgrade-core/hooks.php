@@ -93,15 +93,13 @@ function wpgrade_callback_themesetup() {
 	add_action( 'wp_head', 'wpgrade_callback_load_custom_js', 999 );
 	add_action( 'wp_footer', 'wpgrade_callback_load_custom_js_footer', 999 );
 
-	if ( wpgrade::option( 'inject_custom_css' ) == 'inline' ) {
-		$handler = wpgrade::confoption( 'custom-css-handler', null );
+	$handler = wpgrade::confoption( 'custom-css-handler', null );
 
-		if ( empty( $handler ) ) {
-			$handler = 'wpgrade_callback_inlined_custom_style';
-		}
-
-		add_action( 'wp_enqueue_scripts', $handler, 999999 );
+	if ( empty( $handler ) ) {
+		$handler = 'wpgrade_callback_inlined_custom_style';
 	}
+
+	add_action( 'wp_enqueue_scripts', $handler, 999999 );
 }
 
 add_action( 'after_setup_theme', 'wpgrade_callback_themesetup', 16 );

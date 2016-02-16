@@ -2,7 +2,7 @@
  * Variables
  */
 var theme = 'rosa',
-	themeTextDomain = '\'rosa_txtd\'',
+	themeTextDomain = '\'rosa\'',
 	cssPath = './assets/css/',
 	scssPath = './assets/scss/',
 	jsPath = './assets/js/',

@@ -28,10 +28,6 @@ wpgrade::require_all( $classpath );
 // Setup Option Drivers
 // --------------------
 
-if ( wpgrade::confoption('wpml_separate_options', false ) ) {
-	$wpgrade_redux = new wpGrade_Redux();
-}
-
 // the handler is the main object responsible for managing the drivers
 wpgrade::options_handler( new WPGradeOptions() );
 
@@ -41,40 +37,8 @@ wpgrade::options_handler( new WPGradeOptions() );
 $config = wpgrade::config();
 wpgrade::options()->add_optiondriver( new WPGradeOptionDriver_Config( $config['theme-options'] ) );
 
-// we register redux as option driver via a resolver
-
-function wpgrade_callback_bootstrap_redux_instance( $redux ) {
-	$reduxdriver = new WPGradeOptionDriver_Redux( $redux );
-	wpgrade::options()->add_optiondriver( $reduxdriver );
-}
-
-wpgrade::register_resolver( 'redux-instance', 'wpgrade_callback_bootstrap_redux_instance' );
-
-
-// Plugins & Resolvable Dependencies
-// ---------------------------------
-require wpgrade::themefilepath( wpgrade::confoption( 'theme-adminpanel-path', 'theme-content/admin-panel' ) . '/bootstrap' . EXT );
-
-
 // Hooks
 // -----
 get_template_part( 'wpgrade-core/hooks' );
-
-// Upgrade Notifier
-// ----------------
-
-add_action( 'wp_ajax_wpgrade_upgradestep_check_marketplace_data', 'wpgrade_ajax_upgradestep_check_marketplace_data' );
-add_action( 'wp_ajax_wpgrade_upgradestep_search_for_update', 'wpgrade_ajax_upgradestep_search_for_update' );
-add_action( 'wp_ajax_wpgrade_upgradestep_backup_theme', 'wpgrade_ajax_upgradestep_backup_theme' );
-add_action( 'wp_ajax_wpgrade_upgradestep_analyze_download_options', 'wpgrade_ajax_upgradestep_analyze_download_options' );
-add_action( 'wp_ajax_wpgrade_upgradestep_download_package', 'wpgrade_ajax_upgradestep_download_package' );
-add_action( 'wp_ajax_wpgrade_upgradestep_install_package', 'wpgrade_ajax_upgradestep_install_package' );
-
-if ( is_admin() && basename( $_SERVER["PHP_SELF"] ) != 'update-core.php' ) {
-	add_action( 'admin_enqueue_scripts', 'wpgrade_callback_update_notifier_admin_initialization' );
-	add_action( 'admin_menu', 'wpgrade_callback_update_notifier_menu' );
-	add_action( 'admin_bar_menu', 'wpgrade_callback_update_notifier_bar_menu', 1000 );
-	add_action( 'admin_notices', 'wpgrade_callback_update_notifier_update_notice' );
-}
 
 do_action('after_wpgrade_core');

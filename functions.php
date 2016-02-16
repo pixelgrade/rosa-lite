@@ -20,7 +20,7 @@ if ( ! defined('REQUEST_PROTOCOL')) {
 }
 
 // Loads the theme's translated strings
-load_theme_textdomain( 'rosa_txtd', get_template_directory() . '/languages' );
+load_theme_textdomain( 'rosa', get_template_directory() . '/languages' );
 
 // Theme specific settings
 // -----------------------

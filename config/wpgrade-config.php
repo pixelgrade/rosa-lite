@@ -11,15 +11,9 @@ return array(
 	'name'                         => 'Rosa',
 	'shortname'                    => 'rosa',
 	'prefix'                       => '_rosa_',
-	'textdomain'                   => 'rosa_txtd',
+	'textdomain'                   => 'rosa',
 	'language-path'                => 'languages',
-	'update-notifier'              => array(
-		'xml-source'       => REQUEST_PROTOCOL . '//pixelgrade.com/updates/',
-		//		'xml-file' => 'rosa.xml',
-		'cache-interval'   => 10800, # 3 hours
-		'update-page-name' => 'theme-update-notifier',
-	),
-	'theme-adminpanel-path'        => 'config/admin-panel',
+
 	// additional file includes (classes, functions, etc), files are loaded
 	// via wpgrade::require_all and entries should be directories; if the
 	// path does not exist it is automatically ignored
@@ -164,9 +158,9 @@ return array(
 			'wpgrade-main-scripts' => array(
 				'ajaxurl'    => admin_url( 'admin-ajax.php' ),
 				'objectl10n' => array(
-					'tPrev'             => __( 'Previous (Left arrow key)', 'rosa_txtd' ),
-					'tNext'             => __( 'Next (Right arrow key)', 'rosa_txtd' ),
-					'tCounter'          => __( 'of', 'rosa_txtd' ),
+					'tPrev'             => __( 'Previous (Left arrow key)', 'rosa' ),
+					'tNext'             => __( 'Next (Right arrow key)', 'rosa' ),
+					'tCounter'          => __( 'of', 'rosa' ),
 					'infscrLoadingText' => "",
 					'infscrReachedEnd'  => "",
 				),
@@ -186,10 +180,6 @@ return array(
 		// calls function to perform extra enqueue's on theme setup
 		// handlers should be placed in theme's functions.php
 		'style-enqueue-handlers'  => array(
-			'dynamic-css' => array(
-				'handler'  => 'wpgrade_callback_enqueue_dynamic_css_rosa',
-				'priority' => 9999,
-			),
 			'rtl-support' => 'wpgrade_callback_enqueue_rtl_support',
 			'404-page' => 'wpgrade_callback_enqueue_404_css',
 		),
@@ -207,8 +197,8 @@ return array(
 		// show prev/next links?
 		'prev_next'     => true,
 		// pagination text
-		'prev_text'     => __( 'Prev', 'rosa_txtd' ),
-		'next_text'     => __( 'Next', 'rosa_txtd' ),
+		'prev_text'     => __( 'Prev', 'rosa' ),
+		'next_text'     => __( 'Next', 'rosa' ),
 		// are the terms used for paging relative to the sort order?
 		// ie. older/newer instead of sorting agnostic previous/next
 		'sorted_paging' => false,
@@ -239,8 +229,8 @@ return array(
 		//				'gallery' => array
 		//					(
 		//						'formatter' => null,
-		//						'prev_text' => __('Prev Images', 'rosa_txtd'),
-		//						'next_text' => __('Next Images', 'rosa_txtd'),
+		//						'prev_text' => __('Prev Images', 'rosa'),
+		//						'next_text' => __('Next Images', 'rosa'),
 		//					)
 	),
 

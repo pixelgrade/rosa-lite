@@ -153,41 +153,9 @@ class wpgrade {
 		} elseif ( $pixcustomify_plugin !== null && $pixcustomify_plugin->has_option( $option ) ) {
 			// if this is a customify value get it here
 			return $pixcustomify_plugin->get_option( $option, $default );
-		} elseif ( isset( $_POST['customized'] ) && self::customizer_option_exists( $option ) ) {
-			// so we are on the customizer page
-			// overwrite every option if we have one
-			return self::get_customizer_option( $option );
-
-		} else {
-			return self::options()->get( $option, $default );
 		}
-	}
 
-	/**
-	 * Get a redux config argument
-	 * @param $arg
-	 *
-	 * @return bool
-	 */
-	static function get_redux_arg( $arg ) {
-		$args = self::get_redux_args();
-
-		if (!empty($arg) && isset($args[$arg]) ) {
-			return $args[$arg];
-		}
-		return false;
-	}
-
-	static function get_redux_args() {
-		return self::options()->get_args();
-	}
-
-	static function get_redux_sections() {
-		return self::options()->get_sections();
-	}
-
-	static function get_redux_defaults() {
-		return self::options()->get_defaults();
+		return $default;
 	}
 
 	/**
@@ -1076,33 +1044,6 @@ class wpgrade {
 
 
 	//// Internal Bootstrapping Helpers ////////////////////////////////////////////
-
-	/**
-	 * Loads in core dependency.
-	 */
-	static function require_coremodule( $modulename ) {
-
-		if ( $modulename == 'redux2' ) {
-			require self::corepath() . 'vendor/redux2/options/defaults' . EXT;
-		} elseif ( $modulename == 'redux3' ) {
-			get_template_part( 'wpgrade-core/vendor/redux3/framework' );
-		} else { // unsupported module
-			die( 'Unsuported core module: ' . $modulename );
-		}
-	}
-
-	/**
-	 * @return string partial uri path to core module
-	 */
-	static function coremoduleuri( $modulename ) {
-		if ( $modulename == 'redux2' ) {
-			return wpgrade::coreuri() . 'vendor/redux2/';
-		} elseif ( $modulename == 'redux3' ) {
-			return wpgrade::coreuri() . 'vendor/redux3/';
-		} else { // unsupported module
-			die( 'Unsuported core module: ' . $modulename );
-		}
-	}
 
 
 	//// WPML Related Functions ////////////////////////////////////////////////////

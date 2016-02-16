@@ -78,7 +78,7 @@ function wpgrade_woocommerce_breadcrumbs() {
         'wrap_after'  => '</nav>',
         'before'      => '',
         'after'       => '',
-        'home'        => _x( 'Shop', 'breadcrumb', 'rosa_txtd' )
+        'home'        => _x( 'Shop', 'breadcrumb', 'rosa' )
     );
 }
 
@@ -105,7 +105,7 @@ add_action('woocommerce_single_product_summary', 'woocommerce_breadcrumb', 3, 0 
  **/
 add_filter( 'wc_add_to_cart_params', 'custom_add_to_cart_message' );
 function custom_add_to_cart_message( $params ) {
-    $params['i18n_view_cart'] = __( 'Product Added', 'rosa_txtd' );
+    $params['i18n_view_cart'] = __( 'Product Added', 'rosa' );
 
     return $params;
 }

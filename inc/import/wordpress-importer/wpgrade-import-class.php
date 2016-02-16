@@ -448,20 +448,6 @@ class wpGrade_import extends WPGrade_WP_Import {
 			var_export( update_option( wpgrade::shortname() . "_options", $imported_options ) );
 		}
 
-		//		if( !empty( $imported_options ) && is_array( $imported_options ) && isset( $imported_options['redux-backup'] ) && $imported_options['redux-backup'] == '1' ) {
-		//
-		//			$imported_options['REDUX_imported'] = 1;
-		//			foreach($imported_options as $key => $value) {
-		//				$plugin_options[$key] = $value;
-		//			}
-		//			update_option(wpgrade::shortname()."_options", $plugin_options);
-		//		}
-
-		// Remove the import/export tab cookie.
-		if ( $_COOKIE['redux_current_tab'] == 'import_export_default' ) {
-			setcookie( 'redux_current_tab', '', 1, '/' );
-		}
-
 		//Ensure the $wp_rewrite global is loaded
 		global $wp_rewrite;
 		//Call flush_rules() as a method of the $wp_rewrite object
@@ -511,7 +497,7 @@ class wpGrade_import extends WPGrade_WP_Import {
 			return false;
 		}
 
-		//first let's remove all the widgets in the sidebars to avoid a big mess		
+		//first let's remove all the widgets in the sidebars to avoid a big mess
 		$sidebars_widgets = wp_get_sidebars_widgets();
 		foreach ( $sidebars_widgets as $sidebarID => $widgets ) {
 			if ( $sidebarID != 'wp_inactive_widgets' ) {
