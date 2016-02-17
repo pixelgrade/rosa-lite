@@ -63,3 +63,111 @@ function rosa_remove_wptextpattern_tinymce_plugin( $plugins ) {
 	return $plugins;
 }
 add_filter( 'tiny_mce_plugins', 'rosa_remove_wptextpattern_tinymce_plugin', 10, 1 );
+
+/**
+ * Subpages edit links in the admin bar in the backend (edit/new page)
+ *
+ * @TODO move this inside a plugin
+ *
+ * @param WP_Admin_Bar $wp_admin_bar
+ */
+function rosa_subpages_admin_bar_edit_links_backend( $wp_admin_bar ) {
+	global $post, $pagenow;
+
+	$is_edit_page = in_array( $pagenow, array( 'post.php',  ) );
+
+	if ( ! $is_edit_page ) //check for new post page
+		$is_edit_page = in_array( $pagenow, array( 'post-new.php' ) );
+	elseif ( ! $is_edit_page )  //check for either new or edit
+		$is_edit_page = in_array( $pagenow, array( 'post.php', 'post-new.php' ) );
+
+
+	if ( $is_edit_page && isset( $post->post_parent ) && ! empty( $post->post_parent ) ) {
+
+		$wp_admin_bar->add_node( array(
+			'id'    => 'edit_parent',
+			'title' => __( 'Edit Parent', 'rosa' ),
+			'href'  => get_edit_post_link( $post->post_parent ),
+			'meta'  => array( 'class' => 'edit_parent_button' )
+		) );
+
+		$siblings = get_children(
+			array(
+				'post_parent' => $post->post_parent,
+				'orderby' => 'menu_order title', //this is the exact ordering used on the All Pages page - order included
+				'order' => 'ASC',
+				'post_type' => 'page',
+			)
+		);
+
+		$siblings = array_values($siblings);
+		$current_pos = 0;
+		foreach ( $siblings as $key => $sibling ) {
+
+			if ( $sibling->ID == $post->ID ) {
+				$current_pos = $key;
+			}
+		}
+
+		if ( isset($siblings[ $current_pos - 1 ] ) ){
+
+			$prev_post = $siblings[ $current_pos - 1 ];
+
+			$wp_admin_bar->add_node( array(
+				'id'    => 'edit_prev_child',
+				'title' => __( 'Edit Prev Child', 'rosa' ),
+				'href'  => get_edit_post_link( $prev_post->ID ),
+				'meta'  => array( 'class' => 'edit_prev_child_button' )
+			) );
+		}
+
+		if ( isset($siblings[ $current_pos + 1 ] ) ) {
+
+			$next_post =  $siblings[ $current_pos + 1 ];
+
+			$wp_admin_bar->add_node( array(
+				'id'    => 'edit_next_child',
+				'title' => __( 'Edit Next Child', 'rosa' ),
+				'href'  => get_edit_post_link( $next_post->ID ),
+				'meta'  => array( 'class' => 'edit_next_child_button' )
+			) );
+		}
+
+	} elseif ( $is_edit_page ) {
+
+
+		$kids = get_children(
+			array(
+				'post_parent' => $post->ID,
+				'orderby' => 'menu_order title', //this is the exact ordering used on the All Pages page - order included
+				'order' => 'ASC',
+				'post_type' => 'page',
+			)
+		);
+
+		if ( !empty($kids) ) {
+
+			$args = array(
+				'id'    => 'edit_children',
+				'title' => __( 'Edit Children', 'rosa' ),
+				'href'  => '#',
+				'meta'  => array( 'class' => 'edit_children_button' )
+			);
+
+			$wp_admin_bar->add_node( $args );
+
+			foreach ( $kids as $kid ) {
+				$kid_args = array(
+					'parent' => 'edit_children',
+					'id'    => 'edit_child_' . $kid->post_name,
+					'title' => __( 'Edit', 'rosa' ) . ': ' . $kid->post_title,
+					'href'  => get_edit_post_link( $kid->ID ),
+					'meta'  => array( 'class' => 'edit_child_button' )
+				);
+				$wp_admin_bar->add_node( $kid_args );
+			}
+		}
+	}
+}
+
+add_action( 'admin_bar_menu', 'rosa_subpages_admin_bar_edit_links_backend', 999 );

@@ -91,24 +91,11 @@ class wpgrade {
 	}
 
 	/**
-	 * @return string theme textdomain
-	 */
-	static function textdomain() {
-		$conf = self::config();
-		if ( isset( $conf['textdomain'] ) && $conf['textdomain'] !== null ) {
-			return $conf['textdomain'];
-		} else { // no custom text domain, fallback to default pattern
-			return $conf['name'] . '_txtd';
-		}
-	}
-
-	/**
 	 * @return string http or https based on is_ssl()
 	 */
 	static function protocol() {
 		return is_ssl() ? 'https' : 'http';
 	}
-
 
 	//// Options ///////////////////////////////////////////////////////////////////
 
@@ -257,26 +244,23 @@ class wpgrade {
 	 * @return string $content after being filtered
 	 */
 	static function filter_content( $content, $filtergroup ) {
-		$config = self::config();
+		// since we cannot apply "the_content" filter on some content blocks
+		// we should apply at least these bellow
+		$wptexturize     = apply_filters( 'wptexturize', $content );
+		$convert_smilies = apply_filters( 'convert_smilies', $wptexturize );
+		$convert_chars   = apply_filters( 'convert_chars', $convert_smilies );
+		$content         = wpautop( $convert_chars );
 
-		if ( ! isset( $config['content-filters'] ) || ! isset( $config['content-filters'][ $filtergroup ] ) ) {
-			return $content;
+		// including Wordpress plugin.php for is_plugin_active function
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+		if ( is_plugin_active( 'pixcodes/pixcodes.php' ) ) {
+			$content = wpgrade_remove_spaces_around_shortcodes( $content );
 		}
 
-		$enabled_filters = array();
-		foreach ( $config['content-filters'][ $filtergroup ] as $filterfunc => $priority ) {
-			if ( $priority !== false && $priority !== null ) {
-				$enabled_filters[ $filterfunc ] = $priority;
-			}
-		}
+		$content = apply_filters( 'prepend_attachment', $content );
 
-		asort( $enabled_filters );
-
-		foreach ( $enabled_filters as $filterfunc => $priority ) {
-			$content = call_user_func( $filterfunc, $content );
-		}
-
-		return $content;
+		return do_shortcode( $content );
 	}
 
 	/**
@@ -382,7 +366,7 @@ class wpgrade {
 	 * @return string theme prefix
 	 */
 	static function prefix() {
-		$config = self::config();
+		$config = self::get_config();
 		if ( isset( $config['prefix'] ) ) {
 			return $config['prefix'];
 		} else { // use shortname to determine apropriate shortname
@@ -394,7 +378,7 @@ class wpgrade {
 	 * @return string theme name, in presentable format
 	 */
 	static function themename() {
-		$config = self::config();
+		$config = self::get_config();
 
 		return ucfirst( $config['name'] );
 	}
@@ -437,7 +421,7 @@ class wpgrade {
 	 * @return array|boolean classes or false
 	 */
 	static function body_class() {
-		$config = self::config();
+		$config = self::get_config();
 
 		if ( ! empty( $config['body-classes'] ) ) {
 			$classes          = array();
@@ -1076,7 +1060,7 @@ class wpgrade {
 	 */
 	static function overwrite_configuration( $conf ) {
 		if ( $conf !== null ) {
-			$current_config      = self::config();
+			$current_config      = self::get_config();
 			self::$configuration = array_merge( $current_config, $conf );
 		} else { // null passed; delete configuration
 			self::$configuration = null;
