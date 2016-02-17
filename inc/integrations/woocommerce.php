@@ -11,10 +11,10 @@ add_theme_support( 'woocommerce' );
  */
 function rosa_callback_load_woocommerce_assets() {
 	global $woocommerce;
-	if ( ! wpgrade::option( 'enable_woocommerce_support', '0' ) ) {
+	if ( ! rosa::option( 'enable_woocommerce_support', '0' ) ) {
 		return;
 	}
-	wp_enqueue_style( 'wpgrade-woocommerce', get_template_directory_uri() . '/assets/css/woocommerce.css', array( 'woocommerce-general' ), wpgrade::cachebust_string( wpgrade::themefilepath( 'assets/css/woocommerce.css' ) ) );
+	wp_enqueue_style( 'wpgrade-woocommerce', get_template_directory_uri() . '/assets/css/woocommerce.css', array( 'woocommerce-general' ), rosa::cachebust_string( rosa::themefilepath( 'assets/css/woocommerce.css' ) ) );
 }
 
 add_action( 'wp_enqueue_scripts', 'rosa_callback_load_woocommerce_assets', 1 );

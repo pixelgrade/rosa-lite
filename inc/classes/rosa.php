@@ -96,7 +96,6 @@ class rosa {
 		return $private_post;
 	}
 
-
 	/** Limit words for a string */
 
 	static function limit_words( $string, $word_limit, $more_text = ' [&hellip;]' ) {
@@ -111,7 +110,6 @@ class rosa {
 		return $output;
 	}
 
-
 	static function get_post_format_first_image_src() {
 		global $post;
 		$first_img = '';
@@ -121,12 +119,11 @@ class rosa {
 		$first_img = $matches[1][0];
 
 		if ( empty( $first_img ) ) { //Defines a default image
-			$first_img = wpgrade::uri( "/assets/img/default.jpg" );
+			$first_img = rosa::uri( "/assets/img/default.jpg" );
 		}
 
 		return $first_img;
 	}
-
 
 	/**
 	 * Returns the URL from the post.
@@ -158,12 +155,12 @@ class rosa {
 
 	static function get_gallery_type( $post_id ) {
 
-		$template = get_post_meta( $post_id, wpgrade::prefix() . 'gallery_template', true );
+		$template = get_post_meta( $post_id, rosa::prefix() . 'gallery_template', true );
 
 		if ( $template == 'slideshow' ) {
 			return $template;
 		} else {
-			return get_post_meta( $post_id, wpgrade::prefix() . 'grid_thumbnails', true );
+			return get_post_meta( $post_id, rosa::prefix() . 'grid_thumbnails', true );
 		}
 
 		return '';
@@ -321,7 +318,6 @@ class rosa {
 		return '';
 	}
 
-
 	/**
 	 * We check if there is a gallery meta data, then a gallery shortcode in the content, extract it and
 	 * display it in the form of a slideshow.
@@ -329,12 +325,12 @@ class rosa {
 	static function gallery_slideshow( $current_post, $template = null, $size = 'medium-size' ) {
 		if ( $template === null ) {
 
-			$image_scale_mode     = get_post_meta( $current_post->ID, wpgrade::prefix() . 'post_image_scale_mode', true );
-			$slider_visiblenearby = get_post_meta( $current_post->ID, wpgrade::prefix() . 'post_slider_visiblenearby', true );
-			$slider_transition    = get_post_meta( $current_post->ID, wpgrade::prefix() . 'post_slider_transition', true );
-			$slider_autoplay      = get_post_meta( $current_post->ID, wpgrade::prefix() . 'post_slider_autoplay', true );
+			$image_scale_mode     = get_post_meta( $current_post->ID, rosa::prefix() . 'post_image_scale_mode', true );
+			$slider_visiblenearby = get_post_meta( $current_post->ID, rosa::prefix() . 'post_slider_visiblenearby', true );
+			$slider_transition    = get_post_meta( $current_post->ID, rosa::prefix() . 'post_slider_transition', true );
+			$slider_autoplay      = get_post_meta( $current_post->ID, rosa::prefix() . 'post_slider_autoplay', true );
 			if ( $slider_autoplay ) {
-				$slider_delay = get_post_meta( $current_post->ID, wpgrade::prefix() . 'post_slider_delay', true );
+				$slider_delay = get_post_meta( $current_post->ID, rosa::prefix() . 'post_slider_delay', true );
 			}
 			$template = '<div class="wp-gallery" data-royalslider data-autoHeight data-customarrows data-sliderpauseonhover data-slidertransition="' . $slider_transition . '" ';
 			$template .= ' data-imagescale="' . $image_scale_mode . '" ';
@@ -349,14 +345,14 @@ class rosa {
 			if ( $image_scale_mode != 'fill' ) {
 				$template .= ' data-imagealigncenter ';
 			}
-			if ( wpgrade::option( 'show_title_caption_popup' ) == 1 ) {
+			if ( rosa::option( 'show_title_caption_popup' ) == 1 ) {
 				$template .= ' data-enable_caption=""';
 			}
 			$template .= '>:gallery</div>';
 		}
 
 		// first check if we have a meta with a gallery
-		$gallery_ids = get_post_meta( $current_post->ID, wpgrade::prefix() . 'main_gallery', true );
+		$gallery_ids = get_post_meta( $current_post->ID, rosa::prefix() . 'main_gallery', true );
 
 		if ( ! empty( $gallery_ids ) ) {
 			//recreate the gallery shortcode
@@ -456,8 +452,421 @@ class rosa {
 
 	}
 
-}
+	// all methods below are merged from wpgrade
 
-function custom_warning_handler( $errno, $errstr ) {
-	// do something - nothing right now
+	/** @var array */
+	protected static $configuration = null;
+
+	/**
+	 * The theme configuration as read by the system is defined in
+	 * wpgrade-config.php
+	 * @deprecated
+	 * @return array theme configuration
+	 */
+	static function config() {
+		return self::get_config();
+	}
+
+	static function get_config() {
+		if ( ! self::has_config() ) {
+			self::set_config();
+		}
+
+		return self::$configuration;
+	}
+
+	static function set_config() {
+		if ( file_exists( self::childpath() . 'inc/wpgrade-config.php' ) ) {
+			self::$configuration = include self::childpath() . '/inc/wpgrade-config.php';
+		} elseif ( file_exists( self::themepath() . 'inc/wpgrade-config.php' ) ) {
+			self::$configuration = include self::themepath() . '/inc/wpgrade-config.php';
+		}
+		return false;
+	}
+
+	static function has_config() {
+		if ( self::$configuration === null ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	static $shortname = null;
+
+	/**
+	 * @return mixed
+	 */
+	static function confoption( $key, $default = null ) {
+		$config = self::get_config();
+
+		return isset( $config[ $key ] ) ? $config[ $key ] : $default;
+	}
+
+	/**
+	 * @return string http or https based on is_ssl()
+	 */
+	static function protocol() {
+		return is_ssl() ? 'https' : 'http';
+	}
+
+	//// Options ///////////////////////////////////////////////////////////////////
+
+	/**
+	 * @return mixed
+	 */
+	static function option( $option, $default = null ) {
+		global $pagenow;
+		global $pixcustomify_plugin;
+
+		// if there is set an key in url force that value
+		if ( isset( $_GET[ $option ] ) && ! empty( $option ) ) {
+			return $_GET[ $option ];
+		} elseif ( $pixcustomify_plugin !== null && $pixcustomify_plugin->has_option( $option ) ) {
+			// if this is a customify value get it here
+			return $pixcustomify_plugin->get_option( $option, $default );
+		}
+
+		return $default;
+	}
+
+	/**
+	 * Get the image src attribute.
+	 * Target should be a valid option accessible via WPGradeOptions interface.
+	 * @return string|false
+	 */
+	static function image_src( $target ) {
+		if ( isset( $_GET[ $target ] ) && ! empty( $target ) ) {
+			return $_GET[ $target ];
+		} else { // empty target, or no query
+			$image = self::option( $target, array() );
+			if ( isset( $image['url'] ) ) {
+				return $image['url'];
+			}
+		}
+
+		return false;
+	}
+
+	//// Wordpress Defferred Helpers ///////////////////////////////////////////////
+
+	/**
+	 * Filter content based on settings in wpgrade-config.php
+	 * Filters may be disabled by setting priority to false or null.
+	 * @return string $content after being filtered
+	 */
+	static function display_content( $content, $filtergroup ) {
+		// since we cannot apply "the_content" filter on some content blocks
+		// we should apply at least these bellow
+		$wptexturize     = apply_filters( 'wptexturize', $content );
+		$convert_smilies = apply_filters( 'convert_smilies', $wptexturize );
+		$convert_chars   = apply_filters( 'convert_chars', $convert_smilies );
+		$content         = wpautop( $convert_chars );
+
+		// including Wordpress plugin.php for is_plugin_active function
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+		if ( is_plugin_active( 'pixcodes/pixcodes.php' ) ) {
+			$content = wpgrade_remove_spaces_around_shortcodes( $content );
+		}
+
+		$content = apply_filters( 'prepend_attachment', $content );
+
+		return do_shortcode( $content );
+	}
+
+	/**
+	 * @return string template path WITH TRAILING SLASH
+	 */
+	static function themepath() {
+		return get_template_directory() . DIRECTORY_SEPARATOR;
+	}
+
+	/**
+	 * @return string theme path (it may be a child theme) WITH TRAILING SLASH
+	 */
+	static function childpath() {
+		return get_stylesheet_directory() . DIRECTORY_SEPARATOR;
+	}
+
+	/**
+	 * @return string core uri path
+	 */
+	static function coreuri() {
+		return get_template_directory_uri() . '/' . basename( dirname( __FILE__ ) ) . '/';
+	}
+
+	/**
+	 * @return string resource uri
+	 */
+	static function coreresourceuri( $file ) {
+		return self::coreuri() . 'resources/assets/' . $file;
+	}
+
+	/**
+	 * @return string file path
+	 */
+	static function themefilepath( $file ) {
+		return self::themepath() . $file;
+	}
+
+	/**
+	 * @return string path
+	 */
+	static function corepartial( $file ) {
+
+		$templatepath = self::themepath() . rtrim( 'template-parts/core', '/' ) . '/' . $file;
+		$childpath    = self::childpath() . rtrim( 'template-parts/core', '/' ) . '/' . $file;
+
+		if ( file_exists( $childpath ) ) {
+			return $childpath;
+		} elseif ( file_exists( $templatepath ) ) {
+			return $templatepath;
+		}
+	}
+
+	/**
+	 * @return string the lowercase version of the name
+	 */
+	static function shortname() {
+		return self::get_shortname();
+	}
+
+	static function get_shortname() {
+		if ( self::$shortname === null ) {
+			$config = self::get_config();
+			if ( isset( $config['shortname'] ) ) {
+				self::$shortname = $config['shortname'];
+			} else { // use name to determine apropriate shortname
+				self::$shortname = str_replace( ' ', '_', strtolower( $config['name'] ) );
+			}
+		}
+
+		return self::$shortname;
+	}
+
+	/**
+	 * @return string theme prefix
+	 */
+	static function prefix() {
+		$config = self::get_config();
+		if ( isset( $config['prefix'] ) ) {
+			return $config['prefix'];
+		} else { // use shortname to determine apropriate shortname
+			return '_' . self::shortname() . '_';
+		}
+	}
+
+	/**
+	 * @return string theme name, in presentable format
+	 */
+	static function themename() {
+		$config = self::get_config();
+
+		return ucfirst( $config['name'] );
+	}
+
+	/** @var WP_Theme */
+	protected static $theme_data = null;
+
+	/**
+	 * @return WP_Theme
+	 */
+	static function themedata() {
+		if ( self::$theme_data === null ) {
+			if ( is_child_theme() ) {
+				$theme_name       = get_template();
+				self::$theme_data = wp_get_theme( $theme_name );
+			} else {
+				self::$theme_data = wp_get_theme();
+			}
+		}
+
+		return self::$theme_data;
+	}
+
+	/**
+	 * @return string uri to file
+	 */
+	static function uri( $file ) {
+		$file = '/' . ltrim( $file, '/' );
+
+		return get_template_directory_uri() . $file;
+	}
+
+	/**
+	 * @return string uri to resource file
+	 */
+	static function resourceuri( $file ) {
+		return rosa::uri( '/assets/' . ltrim( $file, '/' ) );
+	}
+
+	/**
+	 * @return string
+	 */
+	static function pagination( $query = null, $target = null ) {
+		if ( $query === null ) {
+			global $wp_query;
+			$query = $wp_query;
+		}
+
+		$target_settings = null;
+		if ( $target !== null ) {
+			$targets = self::confoption( 'pagination-targets', array() );
+			if ( isset( $targets[ $target ] ) ) {
+				$target_settings = $targets[ $target ];
+			}
+		}
+
+		if ( ! class_exists( 'WPGradePaginationFormatter' ) ) {
+			include 'WPGradePaginationFormatter.php';
+		}
+		$pager = new WPGradePaginationFormatter( $query, $target_settings );
+
+		return $pager->render();
+	}
+
+	//// Helpers ///////////////////////////////////////////////////////////////////
+
+	/**
+	 * Hirarchical array merge. Will always return an array.
+	 *
+	 * @param  ... arrays
+	 *
+	 * @return array
+	 */
+	static function merge() {
+		$base = array();
+		$args = func_get_args();
+
+		foreach ( $args as $arg ) {
+			self::array_merge( $base, $arg );
+		}
+
+		return $base;
+	}
+
+	/**
+	 * Overwrites base array with overwrite array.
+	 *
+	 * @param array base
+	 * @param array overwrite
+	 */
+	protected static function array_merge( array &$base, array $overwrite ) {
+		foreach ( $overwrite as $key => &$value ) {
+			if ( is_int( $key ) ) {
+				// add only if it doesn't exist
+				if ( ! in_array( $overwrite[ $key ], $base ) ) {
+					$base[] = $overwrite[ $key ];
+				}
+			} else if ( is_array( $value ) ) {
+				if ( isset( $base[ $key ] ) && is_array( $base[ $key ] ) ) {
+					self::array_merge( $base[ $key ], $value );
+				} else { // does not exist or it's a non-array
+					$base[ $key ] = $value;
+				}
+			} else { // not an array and not numeric key
+				$base[ $key ] = $value;
+			}
+		}
+	}
+
+	/**
+	 * Helper function for safely calculating cachebust string. The filemtime is
+	 * prone to failure.
+	 *
+	 * @param  string file path to test
+	 *
+	 * @return string cache bust based on filemtime or monthly
+	 */
+	static function cachebust_string( $filepath ) {
+		$filemtime = @filemtime( $filepath );
+
+		if ( $filemtime == null ) {
+			$filemtime = @filemtime( utf8_decode( $filepath ) );
+		}
+
+		if ( $filemtime != null ) {
+			return date( 'YmdHi', $filemtime );
+		} else { // can't get filemtime, fallback to cachebust every month
+			return date( 'Ym' );
+		}
+	}
+
+	//// WPML Related Functions ////////////////////////////////////////////////////
+
+	static function lang_post_id( $id ) {
+		if ( function_exists( 'icl_object_id' ) ) {
+			global $post;
+			// make this work for any post type
+			if ( isset( $post->post_type ) ) {
+				$post_type = $post->post_type;
+			} else {
+				$post_type = 'post';
+			}
+
+			return icl_object_id( $id, $post_type, true );
+		} else {
+			return $id;
+		}
+	}
+
+	static function lang_page_id( $id ) {
+		if ( function_exists( 'icl_object_id' ) ) {
+			return icl_object_id( $id, 'page', true );
+		} else {
+			return $id;
+		}
+	}
+
+	static function lang_category_id( $id ) {
+		if ( function_exists( 'icl_object_id' ) ) {
+			return icl_object_id( $id, 'category', true );
+		} else {
+			return $id;
+		}
+	}
+
+	// a dream
+	static function lang_portfolio_tax_id( $id ) {
+		if ( function_exists( 'icl_object_id' ) ) {
+			return icl_object_id( $id, 'portfolio_cat', true );
+		} else {
+			return $id;
+		}
+	}
+
+	static function lang_post_tag_id( $id ) {
+		if ( function_exists( 'icl_object_id' ) ) {
+			return icl_object_id( $id, 'post_tag', true );
+		} else {
+			return $id;
+		}
+	}
+
+	static function lang_original_post_id( $id ) {
+		if ( function_exists( 'icl_object_id' ) ) {
+			global $post;
+
+			// make this work with custom post types
+			if ( isset( $post->post_type ) ) {
+				$post_type = $post->post_type;
+			} else {
+				$post_type = 'post';
+			}
+
+			return icl_object_id( $id, $post_type, true, self::get_short_defaultwp_language() );
+		} else {
+			return $id;
+		}
+	}
+
+	static function get_short_defaultwp_language() {
+		global $sitepress;
+		if ( isset( $sitepress ) ) {
+			return $sitepress->get_default_language();
+		} else {
+			return substr( get_bloginfo( 'language' ), 0, 2 );
+		}
+	}
 }

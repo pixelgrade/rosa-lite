@@ -2,6 +2,8 @@
 
 function rosa_callback_help_pointers_setup() {
 
+	require get_template_directory() . '/inc/classes/WP_Help_Pointer.php';
+
 	// Define our pointers
 	// -------------------
 
@@ -171,3 +173,41 @@ function rosa_subpages_admin_bar_edit_links_backend( $wp_admin_bar ) {
 }
 
 add_action( 'admin_bar_menu', 'rosa_subpages_admin_bar_edit_links_backend', 999 );
+
+/**
+ * Custom template tags for this theme.
+ *
+ * Eventually, some of the functionality here could be replaced by core features.
+ *
+ * @package Rosa
+ */
+
+function rosa_admin_get_pointer_help_template ( $pointers ) { ?>
+	<script>
+		jQuery(document).ready(function ($) {
+			var WPHelpPointer = <?php echo $pointers; ?>;
+
+			$.each(WPHelpPointer.pointers, function (i) {
+				wp_help_pointer_open(i);
+			});
+
+			function wp_help_pointer_open(i) {
+				pointer = WPHelpPointer.pointers[i];
+				options = $.extend(pointer.options, {
+					close: function () {
+						$.post(ajaxurl, {
+							pointer: pointer.pointer_id,
+							action: 'dismiss-wp-pointer'
+						});
+					}
+				});
+
+				$(pointer.target)
+					.pointer(options)
+					.pointer('open');
+
+				console.log(pointer.target);
+			}
+		});
+	</script>
+<?php }

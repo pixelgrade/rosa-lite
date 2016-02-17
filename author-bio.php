@@ -1,7 +1,6 @@
 <?php
 /**
  * The template for displaying Author bios.
-
  */
 ?>
 <hr class="separator"/>

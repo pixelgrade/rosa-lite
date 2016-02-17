@@ -1,26 +1,26 @@
 @charset "UTF-8";
-/*------------------------------------*\
-    EDITOR-STYLE.CSS
-\*------------------------------------*/
-/*------------------------------------*\
-    $SETUP
-\*------------------------------------*/
+/*
+Theme Name: Rosa
+Description: Used to style the TinyMCE editor.
+*/
+
 @import "vars";
 @import "_vendor/inuit.css/inuit";
-/*------------------------------------*\
-    $IMPORTS
-\*------------------------------------*/
+
 // TOOLS
-@import "tools/__tools";
+@import "tools/mixins";
+
 // BASE
-@import "base/__base";
+@import "base/core";
+@import "base/typography";
+
 
 html {
     padding: 24px;
 }
 
-body {
-	max-width: 1104px;
+body.mce-content-body {
+    max-width: 1104px;
     margin: 0 auto;
     font-family: inherit;
     font-weight: inherit;

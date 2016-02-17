@@ -36,7 +36,7 @@ function rosa_get_current_canonical_url() {
 		}
 	} elseif ( ( $wp_query->is_single || $wp_query->is_page ) && $haspost ) {
 		$post = $wp_query->posts[0];
-		$link = get_permalink( wpgrade::lang_post_id( $post->ID ) );
+		$link = get_permalink( rosa::lang_post_id( $post->ID ) );
 	} elseif ( $wp_query->is_author && $haspost ) {
 		$author = get_userdata( get_query_var( 'author' ) );
 		if ( $author === false ) {
@@ -99,8 +99,8 @@ function wpgrade_callback_geting_active() {
 	 * Get the config from /config/activation.php
 	 */
 	$activation_settings = array();
-	if ( file_exists( wpgrade::themepath() . 'inc/activation.php' ) ) {
-		$activation_settings = include wpgrade::themepath() . 'inc/activation.php';
+	if ( file_exists( rosa::themepath() . 'inc/activation.php' ) ) {
+		$activation_settings = include rosa::themepath() . 'inc/activation.php';
 	}
 
 	/**
@@ -126,7 +126,7 @@ function wpgrade_callback_geting_active() {
 			$types_options = array();
 		}
 
-		$theme_key                   = wpgrade::shortname() . '_pixtypes_theme';
+		$theme_key                   = rosa::shortname() . '_pixtypes_theme';
 		$types_options[ $theme_key ] = $pixtypes_conf_settings;
 
 		update_option( 'pixtypes_themes_settings', $types_options );
@@ -141,9 +141,7 @@ function wpgrade_callback_geting_active() {
 add_action( 'after_switch_theme', 'wpgrade_callback_geting_active' );
 
 // Start password protected stuff
-
 add_action( 'wp', 'rosa_prepare_password_for_custom_post_types' );
-
 function rosa_prepare_password_for_custom_post_types() {
 
 	global $wpgrade_private_post;
@@ -155,7 +153,7 @@ if ( ! function_exists( 'rosa_callback_the_password_form' ) ) {
 	function rosa_callback_the_password_form( $form ) {
 		global $post;
 		$post   = get_post( $post );
-		$postID = wpgrade::lang_post_id( $post->ID );
+		$postID = rosa::lang_post_id( $post->ID );
 		$label  = 'pwbox-' . ( empty( $postID ) ? rand() : $postID );
 		$form   = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">
 		<p>' . __( "This post is password protected. To view it please enter your password below:", 'rosa' ) . '</p>
@@ -242,6 +240,31 @@ function rosa_overwrite_gallery_atts( $out, $pairs, $atts ) {
 	return $out;
 }
 add_filter( 'shortcode_atts_gallery', 'rosa_overwrite_gallery_atts', 10, 3 );
+
+
+/*
+* We would like to GetToKnowYourWorkBetter
+*
+* Invoked by rosa_callback_themesetup
+*/
+function rosa_callback_gtkywb() {
+	$themedata = rosa::themedata();
+
+	$response = wp_remote_post( REQUEST_PROTOCOL . '//pixelgrade.com/stats', array(
+		'method' => 'POST',
+		'body'   => array(
+			'send_stats'    => true,
+			'theme_name'    => rosa::shortname(),
+			'theme_version' => $themedata->get('Version'),
+			'domain'        => $_SERVER['HTTP_HOST'],
+			'permalink'     => get_permalink( 1 ),
+			'is_child'      => is_child_theme(),
+		)
+	) );
+}
+
+// some info
+add_action( 'after_switch_theme', 'rosa_callback_gtkywb' );
 
 /*
  * Add custom filter for gallery shortcode output
@@ -586,7 +609,7 @@ add_action( 'init', 'rosa_register_attachments_custom_fields' );
  * Load custom javascript set by theme options
  */
 function rosa_callback_load_custom_js() {
-	$custom_js = wpgrade::option( 'custom_js' );
+	$custom_js = rosa::option( 'custom_js' );
 	if ( ! empty( $custom_js ) ) {
 		//first lets test is the js code is clean or has <script> tags and such
 		//if we have <script> tags than we will not enclose it in anything - raw output
@@ -600,7 +623,7 @@ function rosa_callback_load_custom_js() {
 add_action( 'wp_head', 'rosa_callback_load_custom_js', 999 );
 
 function rosa_callback_load_custom_js_footer() {
-	$custom_js = wpgrade::option( 'custom_js_footer' );
+	$custom_js = rosa::option( 'custom_js_footer' );
 	if ( ! empty( $custom_js ) ) {
 		//first lets test is the js code is clean or has <script> tags and such
 		//if we have <script> tags than we will not enclose it in anything - raw output
@@ -625,7 +648,7 @@ add_action( 'wp_footer', 'rosa_callback_load_custom_js_footer', 999 );
  */
 function short_text( $text, $cut_length, $limit, $echo = true ) {
 	$char_count = mb_strlen( $text );
-	$text       = ( $char_count > $limit ) ? mb_substr( $text, 0, $cut_length ) . wpgrade::option( 'blog_excerpt_more_text' ) : $text;
+	$text       = ( $char_count > $limit ) ? mb_substr( $text, 0, $cut_length ) . rosa::option( 'blog_excerpt_more_text' ) : $text;
 	if ( $echo ) {
 		echo $text;
 	} else {
@@ -786,8 +809,8 @@ function rosa_better_excerpt( $text = '' ) {
 		$text         = strip_tags( $text, $allowed_tags );
 
 		// Set custom excerpt length - number of characters to be shown in excerpts
-		if ( wpgrade::option( 'blog_excerpt_length' ) ) {
-			$excerpt_length = absint( wpgrade::option( 'blog_excerpt_length' ) );
+		if ( rosa::option( 'blog_excerpt_length' ) ) {
+			$excerpt_length = absint( rosa::option( 'blog_excerpt_length' ) );
 		} else {
 			$excerpt_length = 180;
 		}
@@ -823,10 +846,10 @@ function rosa_comments( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment; ?>
 <li <?php comment_class(); ?>>
 	<article id="comment-<?php echo $comment->comment_ID; ?>" class="comment-article  media">
-		<?php if ( wpgrade::option( 'comments_show_numbering' ) ): ?>
+		<?php if ( rosa::option( 'comments_show_numbering' ) ): ?>
 			<span class="comment-number"><?php echo $comment_number ?></span>
 		<?php endif; ?>
-		<?php if ( wpgrade::option( 'comments_show_avatar' ) && get_comment_type( $comment->comment_ID ) == 'comment' ): ?>
+		<?php if ( rosa::option( 'comments_show_avatar' ) && get_comment_type( $comment->comment_ID ) == 'comment' ): ?>
 			<aside class="comment__avatar  media__img">
 				<!-- custom gravatar call -->
 				<?php $bgauthemail = get_comment_author_email(); ?>
@@ -867,7 +890,7 @@ function rosa_comments( $comment, $args, $depth ) {
  * Replace the [...] wordpress puts in when using the the_excerpt() method.
  */
 function new_excerpt_more( $excerpt ) {
-	return wpgrade::option( 'blog_excerpt_more_text' );
+	return rosa::option( 'blog_excerpt_more_text' );
 }
 
 add_filter( 'excerpt_more', 'new_excerpt_more' );
@@ -988,9 +1011,9 @@ add_action( 'pre_get_posts', 'rosa_pre_get_posts_sticky_posts' );
 function rosa_post_classes( $classes ) {
 	//only add this class for regular pages
 	if ( get_page_template_slug( get_the_ID() ) == '' ) {
-		$subtitle = trim( get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_subtitle', true ) );
-		$title = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_title', true );
-		$description = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_description', true );
+		$subtitle = trim( get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_cover_subtitle', true ) );
+		$title = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_cover_title', true );
+		$description = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_cover_description', true );
 
 		if ( ! ( has_post_thumbnail() || ! empty( $subtitle ) || $title !== ' ' || ! empty( $description ) ) ) {
 			$classes[] = 'no-page-header';
@@ -1108,3 +1131,273 @@ function rosa_subpages_admin_bar_edit_links_frontend( $wp_admin_bar ) {
 }
 
 add_action( 'admin_bar_menu', 'rosa_subpages_admin_bar_edit_links_frontend', 999 );
+
+
+
+/**
+ * Very extras
+ */
+
+/*=========== SANITIZE UPLOADED FILE NAMES ==========*/
+
+add_filter( 'sanitize_file_name', 'rosa_sanitize_file_name', 10 );
+
+/**
+ * Clean up uploaded file names
+ * @author toscho
+ * @url    https://github.com/toscho/Germanix-WordPress-Plugin
+ */
+function rosa_sanitize_file_name( $filename ) {
+	$filename = html_entity_decode( $filename, ENT_QUOTES, 'utf-8' );
+	$filename = rosa_translit( $filename );
+	$filename = rosa_lower_ascii( $filename );
+	$filename = rosa_remove_doubles( $filename );
+
+	return $filename;
+}
+
+function rosa_lower_ascii( $str ) {
+	$str   = strtolower( $str );
+	$regex = array(
+		'pattern'     => '~([^a-z\d_.-])~',
+		'replacement' => ''
+	);
+	// Leave underscores, otherwise the taxonomy tag cloud in the
+	// backend won’t work anymore.
+	return preg_replace( $regex['pattern'], $regex['replacement'], $str );
+}
+
+/**
+ * Reduces repeated meta characters (-=+.) to one.
+ */
+function rosa_remove_doubles( $str ) {
+	$regex = apply_filters( 'germanix_remove_doubles_regex', array(
+		'pattern'     => '~([=+.-])\\1+~',
+		'replacement' => "\\1"
+	) );
+
+	return preg_replace( $regex['pattern'], $regex['replacement'], $str );
+}
+
+/**
+ * Replaces non ASCII chars.
+ */
+function rosa_translit( $str ) {
+	$utf8 = array(
+		'Ä'  => 'Ae',
+		'ä'  => 'ae',
+		'Æ'  => 'Ae',
+		'æ'  => 'ae',
+		'À'  => 'A',
+		'à'  => 'a',
+		'Á'  => 'A',
+		'á'  => 'a',
+		'Â'  => 'A',
+		'â'  => 'a',
+		'Ã'  => 'A',
+		'ã'  => 'a',
+		'Å'  => 'A',
+		'å'  => 'a',
+		'ª'  => 'a',
+		'ₐ'  => 'a',
+		'ā'  => 'a',
+		'Ć'  => 'C',
+		'ć'  => 'c',
+		'Ç'  => 'C',
+		'ç'  => 'c',
+		'Ð'  => 'D',
+		'đ'  => 'd',
+		'È'  => 'E',
+		'è'  => 'e',
+		'É'  => 'E',
+		'é'  => 'e',
+		'Ê'  => 'E',
+		'ê'  => 'e',
+		'Ë'  => 'E',
+		'ë'  => 'e',
+		'ₑ'  => 'e',
+		'ƒ'  => 'f',
+		'ğ'  => 'g',
+		'Ğ'  => 'G',
+		'Ì'  => 'I',
+		'ì'  => 'i',
+		'Í'  => 'I',
+		'í'  => 'i',
+		'Î'  => 'I',
+		'î'  => 'i',
+		'Ï'  => 'Ii',
+		'ï'  => 'ii',
+		'ī'  => 'i',
+		'ı'  => 'i',
+		'I'  => 'I' // turkish, correct?
+	,
+		'Ñ'  => 'N',
+		'ñ'  => 'n',
+		'ⁿ'  => 'n',
+		'Ò'  => 'O',
+		'ò'  => 'o',
+		'Ó'  => 'O',
+		'ó'  => 'o',
+		'Ô'  => 'O',
+		'ô'  => 'o',
+		'Õ'  => 'O',
+		'õ'  => 'o',
+		'Ø'  => 'O',
+		'ø'  => 'o',
+		'ₒ'  => 'o',
+		'Ö'  => 'Oe',
+		'ö'  => 'oe',
+		'Œ'  => 'Oe',
+		'œ'  => 'oe',
+		'ß'  => 'ss',
+		'Š'  => 'S',
+		'š'  => 's',
+		'ş'  => 's',
+		'Ş'  => 'S',
+		'™'  => 'TM',
+		'Ù'  => 'U',
+		'ù'  => 'u',
+		'Ú'  => 'U',
+		'ú'  => 'u',
+		'Û'  => 'U',
+		'û'  => 'u',
+		'Ü'  => 'Ue',
+		'ü'  => 'ue',
+		'Ý'  => 'Y',
+		'ý'  => 'y',
+		'ÿ'  => 'y',
+		'Ž'  => 'Z',
+		'ž'  => 'z' // misc
+	,
+		'¢'  => 'Cent',
+		'€'  => 'Euro',
+		'‰'  => 'promille',
+		'№'  => 'Nr',
+		'$'  => 'Dollar',
+		'℃'  => 'Grad Celsius',
+		'°C' => 'Grad Celsius',
+		'℉'  => 'Grad Fahrenheit',
+		'°F' => 'Grad Fahrenheit' // Superscripts
+	,
+		'⁰'  => '0',
+		'¹'  => '1',
+		'²'  => '2',
+		'³'  => '3',
+		'⁴'  => '4',
+		'⁵'  => '5',
+		'⁶'  => '6',
+		'⁷'  => '7',
+		'⁸'  => '8',
+		'⁹'  => '9' // Subscripts
+	,
+		'₀'  => '0',
+		'₁'  => '1',
+		'₂'  => '2',
+		'₃'  => '3',
+		'₄'  => '4',
+		'₅'  => '5',
+		'₆'  => '6',
+		'₇'  => '7',
+		'₈'  => '8',
+		'₉'  => '9' // Operators, punctuation
+	,
+		'±'  => 'plusminus',
+		'×'  => 'x',
+		'₊'  => 'plus',
+		'₌'  => '=',
+		'⁼'  => '=',
+		'⁻'  => '-' // sup minus
+	,
+		'₋'  => '-' // sub minus
+	,
+		'–'  => '-' // ndash
+	,
+		'—'  => '-' // mdash
+	,
+		'‑'  => '-' // non breaking hyphen
+	,
+		'․'  => '.' // one dot leader
+	,
+		'‥'  => '..' // two dot leader
+	,
+		'…'  => '...' // ellipsis
+	,
+		'‧'  => '.' // hyphenation point
+	,
+		' '  => '-' // nobreak space
+	,
+		' '  => '-' // normal space
+		// Russian
+	,
+		'А'  => 'A',
+		'Б'  => 'B',
+		'В'  => 'V',
+		'Г'  => 'G',
+		'Д'  => 'D',
+		'Е'  => 'E',
+		'Ё'  => 'YO',
+		'Ж'  => 'ZH',
+		'З'  => 'Z',
+		'И'  => 'I',
+		'Й'  => 'Y',
+		'К'  => 'K',
+		'Л'  => 'L',
+		'М'  => 'M',
+		'Н'  => 'N',
+		'О'  => 'O',
+		'П'  => 'P',
+		'Р'  => 'R',
+		'С'  => 'S',
+		'Т'  => 'T',
+		'У'  => 'U',
+		'Ф'  => 'F',
+		'Х'  => 'H',
+		'Ц'  => 'TS',
+		'Ч'  => 'CH',
+		'Ш'  => 'SH',
+		'Щ'  => 'SCH',
+		'Ъ'  => '',
+		'Ы'  => 'YI',
+		'Ь'  => '',
+		'Э'  => 'E',
+		'Ю'  => 'YU',
+		'Я'  => 'YA',
+		'а'  => 'a',
+		'б'  => 'b',
+		'в'  => 'v',
+		'г'  => 'g',
+		'д'  => 'd',
+		'е'  => 'e',
+		'ё'  => 'yo',
+		'ж'  => 'zh',
+		'з'  => 'z',
+		'и'  => 'i',
+		'й'  => 'y',
+		'к'  => 'k',
+		'л'  => 'l',
+		'м'  => 'm',
+		'н'  => 'n',
+		'о'  => 'o',
+		'п'  => 'p',
+		'р'  => 'r',
+		'с'  => 's',
+		'т'  => 't',
+		'у'  => 'u',
+		'ф'  => 'f',
+		'х'  => 'h',
+		'ц'  => 'ts',
+		'ч'  => 'ch',
+		'ш'  => 'sh',
+		'щ'  => 'sch',
+		'ъ'  => '',
+		'ы'  => 'yi',
+		'ь'  => '',
+		'э'  => 'e',
+		'ю'  => 'yu',
+		'я'  => 'ya'
+	);
+
+	$str = strtr( $str, $utf8 );
+
+	return trim( $str, '-' );
+}
