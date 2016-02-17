@@ -205,6 +205,11 @@ if ( is_admin() ) {
  */
 require get_template_directory() . '/inc/customizer.php';
 
+/**
+ * MB string functions for when the MB library is not available
+ */
+require get_template_directory() . '/inc/mb_compat.php';
+
 require get_template_directory() . '/inc/integrations.php';
 require get_template_directory() . '/inc/customify.php';
 require get_template_directory() . '/inc/required-plugins/required-plugins.php';

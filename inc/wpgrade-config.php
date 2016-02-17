@@ -26,18 +26,6 @@ return array(
 	// placed in the partial overwrites will be loaded instead of the core
 	// equivalent view files
 	'core-partials-overwrite-path' => 'templates/core',
-	// filter functions will recieve content as a parameter and must return
-	// content; all functions are ordered by priority and executed from
-	// lowest to highest. If a filter is assigned false as a priority it
-	// will be ignored in processing
-	'content-filters'              => array(
-		'default' => array(
-			'rosa_callback_theme_general_filters' => 100,
-			'rosa_callback_shortcode_filters'     => 200,
-			'rosa_callback_attachment_filters'    => 300,
-			'rosa_callback_paragraph_filters'     => 400,
-		),
-	),
 
 	'shortcodes'                   => array(
 		'Columns',
