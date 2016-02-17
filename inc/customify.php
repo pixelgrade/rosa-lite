@@ -706,6 +706,13 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								'accent' => 'Accent Color',
 							),
 							'default' => 'dark',
+							'css' => array(
+								array(
+									'selector' => '.site-footer.border-waves:before, .border-waves-top.border-waves-top--dark:before',
+									'property' => 'background-image',
+									'callback_filter' => 'rosa_footer_style_select'
+								)
+							)
 						),
 						'footer_bottombar_style' => array(
 							'type'    => 'select',
@@ -993,7 +1000,27 @@ function rosa_range_negative_value( $value, $selector, $property, $unit ) {
 	return $output;
 }
 
+function rosa_footer_style_select( $value, $selector, $property, $unit ) {
+	$waves_fill_color = '#121212';
 
+	switch ($value) {
+		case 'light' :
+			$waves_fill_color = '#ffffff';
+			break;
+		case 'dark' :
+			$waves_fill_color = '#121212';
+			break;
+		case 'accent' :
+			$waves_fill_color = '#'.rosa::option('main-color');
+			break;
+
+	}
+
+	$output = $selector . '{
+		' . $property . ': url("data:image/svg+xml;utf8,<svg version=\'1.1\' xmlns=\'http://www.w3.org/2000/svg\' xmlns:xlink=\'http://www.w3.org/1999/xlink\' x=\'0px\' y=\'0px\' viewBox=\'0 0 19 14\' width=\'19\' height=\'14\' enable-background=\'new 0 0 19 14\' xml:space=\'preserve\' preserveAspectRatio=\'none slice\'><g><path fill=\'' . $waves_fill_color . '\' d=\'M0,0c4,0,6.5,5.9,9.5,5.9S15,0,19,0v7H0V0z\'/><path fill=\'' . $waves_fill_color . '\' d=\'M19,14c-4,0-6.5-5.9-9.5-5.9S4,14,0,14l0-7h19V14z\'/></g></svg>");' . "}\n";
+
+	return $output;
+}
 
 // some conversions to customify
 function convert_redux_options_to_customify() {
@@ -1014,7 +1041,6 @@ function convert_redux_options_to_customify() {
 
 	update_option( 'rosa_options', $current_options );
 
-	//rosa_convert_fonts();
 	rosa_convert_social_links();
 
 	update_option( 'convert_options_to_customify', 1 );
@@ -1113,70 +1139,6 @@ function rosa_convert_social_links() {
 	// save the new options
 	update_option( 'rosa_options', $current_options );
 }
-
-function rosa_convert_fonts() {
-	$current_options = get_option( 'rosa_options' );
-
-	$fonts_keys_list = array(
-		'google_titles_font',
-		'google_nav_font',
-		'google_body_font',
-		'gallery_cover_title_font_style1',
-		'gallery_cover_subtitle_font_style1',
-		'gallery_cover_title_font_style2',
-		'gallery_cover_subtitle_font_style2',
-		'gallery_cover_title_font_style3',
-		'gallery_cover_subtitle_font_style3'
-	);
-
-	foreach ( $fonts_keys_list as $font_key ) {
-		if ( ! isset( $current_options[ $font_key ] ) || empty( $current_options[ $font_key ] ) ) {
-			continue;
-		}
-
-		$this_font = $current_options[ $font_key ];
-		// this is what we want:
-		//{"type":"google","font_family":"Merriweather","variants":{"0":"300","1":"300italic","2":"regular","3":"italic","4":"700","5":"700italic","6":"900","7":"900italic"},"selected_variants":{"0":"300"},"subsets":{"0":"latin-ext","1":"latin"},"selected_subsets":{"0":"latin-ext"}}
-
-		// build a new font array
-		// in the past, we could only select google fonts, so now we force google as type
-		$new = array(
-			'type' => 'google',
-			'variants' => array(),
-			'subsets' => array(),
-		);
-		// get the font name
-		if ( isset( $this_font['font-family'] ) && ! empty( $this_font['font-family'] ) ) {
-			$new['font_family'] = $this_font['font-family'];
-		}
-		// get the font weight
-		if ( isset( $this_font['font-weight'] ) && ! empty( $this_font['font-weight'] ) ) {
-			$new['selected_variants'] = array($this_font['font-weight']);
-		}
-		// get the font subsets
-		if ( isset( $this_font['subsets'] ) && ! empty( $this_font['subsets'] ) ) {
-			$new['selected_subsets'] = array($this_font['subsets']);
-		}
-
-		// get the font size
-		if ( isset( $this_font['font-size'] ) && ! empty( $this_font['font-size'] ) ) {
-			$current_options[$font_key . '_size'] = str_replace( 'em', '', $this_font['font-size'] );
-		}
-
-		// get the line-height
-		if ( isset( $this_font['line-height'] ) && ! empty( $this_font['line-height'] ) ) {
-			$current_options[$font_key . '_line_height'] = str_replace( 'em', '', $this_font['line-height'] );
-		}
-
-		$current_options[ $font_key ] = json_encode( $new );
-	}
-
-	// save the new options
-	update_option( 'rosa_options', $current_options );
-}
-
-
-
 
 
 /**
