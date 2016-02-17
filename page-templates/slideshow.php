@@ -14,34 +14,34 @@ $page_section_idx       = 0;
 
 get_header();
 
-while ( have_posts() ) : the_post(); ?>
-	<?php get_template_part( 'templates/page/header' );
+while ( have_posts() ) : the_post();
+
+	get_template_part( 'template-parts/header', 'page' );
 
 	$classes      = "article--page  article--main";
-	$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_border_style', true );
+	$border_style = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_border_style', true );
 	if ( ! empty( $border_style ) ) {
 		$classes .= ' border-' . $border_style;
 	}
 
-	if ( ! empty( $post->post_content ) ) :?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
+	if ( ! empty( $post->post_content ) ) : ?>
 
+		<article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
 			<section class="article__content">
 				<div class="container">
 					<section class="page__content  js-post-gallery  cf">
 						<?php the_content(); ?>
 					</section>
 				</div>
-			</section>
-
+			</section><!-- .article__content -->
 		</article>
-	<?php
-	endif;
 
-	get_template_part( 'templates/subpages' );
+	<?php endif;
+
+	get_template_part( 'template-parts/subpages' );
 
 	//comments
-	if ( comments_open() || '0' != get_comments_number() ): ?>
+	if ( comments_open() || '0' != get_comments_number() ) : ?>
 		<div class="container">
 			<?php comments_template(); ?>
 		</div>

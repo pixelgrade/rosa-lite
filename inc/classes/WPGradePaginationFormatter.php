@@ -1,8 +1,5 @@
 <?php
 
-/* This file is property of Pixel Grade Media. You may NOT copy, or redistribute
- * it. Please see the license that came with your copy for more information.
- */
 
 /**
  * @package        wpgrade
@@ -36,7 +33,7 @@ class WPGradePaginationFormatter {
 
 		$this->query = $query;
 
-		$config          = wpgrade::config();
+		$config          = rosa::config();
 		$config_defaults = $config['pagination'];
 
 		// the pager determines what we're paginating (ie. "paged" for listing
@@ -54,7 +51,7 @@ class WPGradePaginationFormatter {
 			}
 		}
 
-		$this->conf = wpgrade::merge( $config_defaults, $conf );
+		$this->conf = rosa::merge( $config_defaults, $conf );
 	}
 
 	/**
@@ -114,7 +111,7 @@ class WPGradePaginationFormatter {
 			'add_fragment'  => null,
 		);
 
-		$conf = wpgrade::merge( $defaults, $this->conf );
+		$conf = rosa::merge( $defaults, $this->conf );
 
 		# we're filling in prev_text and next_text seperatly to avoid
 		# requesting the translation when not required
@@ -164,3 +161,4 @@ class WPGradePaginationFormatter {
 	}
 
 } # class
+

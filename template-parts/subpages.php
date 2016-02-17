@@ -21,7 +21,7 @@ if ( rosa::page_has_children() ) {
 	foreach ( $pages as $post ) : setup_postdata( $post );
 		if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 			// password protection
-			get_template_part( 'templates/password-request-form' );
+			get_template_part( 'template-parts/password-request-form' );
 
 		} else {
 			$classes = "article--page article--main article--subpage";
@@ -31,13 +31,13 @@ if ( rosa::page_has_children() ) {
 			if ( get_page_template_slug( get_the_ID() ) == 'page-templates/page-no-title.php' ) {
 				//do nothing right now
 			} else {
-				get_template_part( 'templates/page/header' );
+				get_template_part( 'template-parts/header', 'page' );
 
 				if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
 					//this is a gmap
-					$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_border_style', true );
+					$border_style = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'gmap_border_style', true );
 				} else {
-					$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_border_style', true );
+					$border_style = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_border_style', true );
 				}
 
 				if ( ! empty( $border_style ) ) {

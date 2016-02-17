@@ -14,18 +14,10 @@ return array(
 	'textdomain'                   => 'rosa',
 	'language-path'                => 'languages',
 
-	// additional file includes (classes, functions, etc), files are loaded
-	// via wpgrade::require_all and entries should be directories; if the
-	// path does not exist it is automatically ignored
-	'include-paths'                => array(
-		'inc/classes',
-		'inc/functions',
-	),
-
 	// the path where overwrites on the core partials are stored, any files
 	// placed in the partial overwrites will be loaded instead of the core
 	// equivalent view files
-	'core-partials-overwrite-path' => 'templates/core',
+	'core-partials-overwrite-path' => 'template-parts/core',
 
 	'shortcodes'                   => array(
 		'Columns',
@@ -47,92 +39,6 @@ return array(
 		'main_menu'   => 'Main Menu',
 		'footer_menu' => 'Footer Menu',
 	),
-	'resources'                    => array(
-		// script declarations; scripts must be enqueue'ed to appear
-		'register'                => array(
-			'head-scripts'   => array(
-				'modernizr' => array(
-					'path'    => get_template_directory_uri() . '/assets/js/vendor/modernizr.min.js',
-					'require' => array(
-						'jquery'
-					),
-				),
-				'webfont-script'       => array(
-					'path'    => REQUEST_PROTOCOL . '//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js',
-					'require' => array(
-						'jquery'
-					),
-				),
-			),
-			'footer-scripts' => array(
-				'wpgrade-plugins'      => array(
-					'path'    => get_template_directory_uri() . '/assets/js/plugins.js',
-					'require' => array(
-						'jquery',
-						'modernizr'
-					),
-				),
-				'wpgrade-main-scripts' => array(
-					'path'       => get_template_directory_uri() . '/assets/js/main.js',
-					'cache_bust' => wpgrade::cachebust_string( wpgrade::themefilepath( 'assets/js/main.js' ) ),
-					'require'    => array(
-						'wpgrade-plugins',
-					),
-				),
-				'addthis-api'          => array(
-					'path'    => REQUEST_PROTOCOL . '//s7.addthis.com/js/300/addthis_widget.js#async=1',
-					'require' => array(
-						'jquery'
-					),
-				),
-				'google-maps-api'      => array(
-					'path'    => REQUEST_PROTOCOL . '//maps.google.com/maps/api/js?sensor=false&amp;language=en',
-					'require' => array(
-						'jquery'
-					),
-				),
-			),
-			'styles'         => array(
-				'google-webfonts'    => array(
-					'path' => REQUEST_PROTOCOL . '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700,400italic,700italic|Herr+Von+Muellerhoff',
-				),
-				'wpgrade-main-style' => array(
-					'path'       => get_template_directory_uri() . '/style.css',
-					'cache_bust' => wpgrade::cachebust_string( wpgrade::themefilepath( 'style.css' ) ),
-				),
-			)
-
-		), # end register
-
-		// auto invoke scripts previously registered on theme setup
-		'auto-enqueue-scripts'    => array(
-			'wpgrade-main-scripts',
-		),
-		// enqueue's script and localizes
-		'auto-localize-scripts'   => array(
-			'wpgrade-main-scripts' => array(
-				'ajaxurl'    => admin_url( 'admin-ajax.php' ),
-				'objectl10n' => array(
-					'tPrev'             => __( 'Previous (Left arrow key)', 'rosa' ),
-					'tNext'             => __( 'Next (Right arrow key)', 'rosa' ),
-					'tCounter'          => __( 'of', 'rosa' ),
-					'infscrLoadingText' => "",
-					'infscrReachedEnd'  => "",
-				),
-			),
-		),
-		// calls function to perform extra enqueue's on theme setup
-		// handlers should be placed in theme's functions.php
-		'script-enqueue-handlers' => array(
-			'addthis'         => 'rosa_callback_addthis',
-		),
-		// auto invoke styles previously registered on theme setup
-		'auto-enqueue-styles'     => array(
-			'google-webfonts',
-			'wpgrade-main-style',
-		),
-
-	), # end resource
 
 	// defaults for pagination; you may customize the values at any time
 	// when invoking a pagination formatter, the following defaults will be
@@ -167,7 +73,7 @@ return array(
 		'add_fragment'  => null,
 	),
 	// allows you to create special pagination instances by providing a key
-	// to wpgrade::pagination; the settings defined in the key will be used
+	// to rosa::pagination; the settings defined in the key will be used
 	// to overwrite the defaults defined in pagination above; if the key
 	// is not avilable the pagination system will ignore the request so you
 	// can use the template names while developing and customize at any

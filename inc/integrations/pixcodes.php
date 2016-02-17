@@ -131,7 +131,7 @@ add_filter( 'pixcodes_filter_params_for_icon', 'rosa_callback_change_icon_params
 function rosa_callbacks_setup_shortcodes_plugin() {
 	$current_options = get_option( 'rosa_shortcodes_list' );
 
-	$config     = wpgrade::get_config();
+	$config     = rosa::get_config();
 	$shortcodes = $config['shortcodes'];
 
 	// create an array with shortcodes which are needed by the
@@ -150,7 +150,7 @@ function rosa_callbacks_setup_shortcodes_plugin() {
 	// by the shortcodes plugin
 	$current_prefix = get_option( 'rosa_metaboxes_prefix' );
 	if ( empty( $current_prefix ) ) {
-		update_option( 'rosa_metaboxes_prefix', wpgrade::prefix() );
+		update_option( 'rosa_metaboxes_prefix', rosa::prefix() );
 	}
 }
 add_action( 'admin_head', 'rosa_callbacks_setup_shortcodes_plugin' );

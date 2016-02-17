@@ -14,16 +14,15 @@ Description: Used to style the TinyMCE editor.
 @import "base/core";
 @import "base/typography";
 
-// LAYOUT
-@import "layout/content";
 
-// SHORTCODES
-@import "shortcodes/grid";
+html {
+    padding: 24px;
+}
 
 body.mce-content-body {
-	max-width: $content-width - 60px;
-	padding: 0 30px;
-	margin: 0 auto;
-
-	font: #{($base-font-size/16px)*1em}/#{$line-height-ratio} $base-font-family;
+    max-width: 1104px;
+    margin: 0 auto;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: inherit;
 }
