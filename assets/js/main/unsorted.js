@@ -75,31 +75,50 @@ function addThisInit() {
 	}
 }
 
-(function handleSubmenusOnTouch() {
-	// Make sure there are no open menu items
-	$('.menu-item-has-children').removeClass('hover');
+var HandleSubmenusOnTouch = (function() {
 
-	// Add a class so we know the items to handle
-	$('.menu-item-has-children > a').each(function () {
-		$(this).addClass('prevent-one');
-	});
+	var isInitiated = false;
 
-	$('a.prevent-one').on('click touchstart', function (e) {
-		e.preventDefault();
-		e.stopPropagation();
+	function init() {
+		if( isInitiated ) return;
 
-		if ($(this).hasClass('active')) {
-			window.location.href = $(this).attr('href');
-		}
+		// Make sure there are no open menu items
+		$('.menu-item-has-children').removeClass('hover');
 
-		$('a.prevent-one').removeClass('active');
-		$(this).addClass('active');
+		// Add a class so we know the items to handle
+		$('.menu-item-has-children > a').each(function () {
+			$(this).addClass('prevent-one');
+		});
 
-		// When a parent menu item is activated,
-		// close other menu items on the same level
-		$(this).parent().siblings().removeClass('hover');
+		$('a.prevent-one').on('click touchstart', function (e) {
+			e.preventDefault();
+			e.stopPropagation();
 
-		// Open the sub menu of this parent item
-		$(this).parent().addClass('hover');
-	});
-})();
+			if ($(this).hasClass('active')) {
+				window.location.href = $(this).attr('href');
+			}
+
+			$('a.prevent-one').removeClass('active');
+			$(this).addClass('active');
+
+			// When a parent menu item is activated,
+			// close other menu items on the same level
+			$(this).parent().siblings().removeClass('hover');
+
+			// Open the sub menu of this parent item
+			$(this).parent().addClass('hover');
+		});
+
+		isInitiated = true;
+	}
+
+	function release() {
+		$('a.prevent-one').unbind();
+		isInitiated = false;
+	}
+
+	return {
+		init: init,
+		release: release
+	}
+}());

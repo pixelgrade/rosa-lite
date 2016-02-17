@@ -214,11 +214,14 @@ function eventHandlers() {
 
     var filterHandler;
 
-    if(touch) {
+    if( touch ) {
         filterHandler = 'click';
     } else {
         filterHandler = 'hover';
     }
+
+    if( touch && windowWidth < 900 )
+        HandleSubmenusOnTouch.init();
 
     if(ieMobile) filterHandler = 'click';
 
@@ -390,6 +393,11 @@ $(window).on("debouncedresize", function(e) {
     ScrollToTop.initialize();
     Parallax.initialize();
     CoverAnimation.initialize();
+
+    if( touch && windowWidth < 900 )
+        HandleSubmenusOnTouch.init();
+    else
+        HandleSubmenusOnTouch.release();
 });
 
 $(window).on("organicTabsChange", function(e) {
