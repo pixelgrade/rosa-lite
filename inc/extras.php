@@ -1000,3 +1000,111 @@ function rosa_post_classes( $classes ) {
 	return $classes;
 }
 add_filter( 'post_class', 'rosa_post_classes' );
+
+
+/**
+ * Subpages edit links in the admin bar in the frontend (top parent page view)
+ *
+ * @TODO move this inside a plugin
+ *
+ * @param WP_Admin_Bar $wp_admin_bar
+ */
+function rosa_subpages_admin_bar_edit_links_frontend( $wp_admin_bar ) {
+	global $post;
+
+	//we are only interested in pages, not posts or something else
+	if ( is_page() ) {
+		//we assume this is the king of all pages
+		$top_level_page_ID = $post->ID;
+
+		//what if this is a child page of some group?
+		//well we will start from it's parent, just like we do in the actual content
+		if ( ! empty( $post->post_parent ) ) {
+			$top_level_page_ID = $post->post_parent;
+		}
+
+		$top_level_page = get_post( $top_level_page_ID );
+		if ( ! empty( $top_level_page ) ) {
+
+			$kids = get_children(
+				array(
+					'post_parent' => $top_level_page->ID,
+					'orderby'     => 'menu_order title',
+					//this is the exact ordering used on the All Pages page - order included
+					'order'       => 'ASC',
+					'post_type'   => 'page',
+				)
+			);
+
+			//so we have children - this means this is a top parent page
+			if ( ! empty( $kids ) ) {
+				//so we are on a page that has children
+
+				//first we replace the default "Edit Page" admin bar item with "Edit pages"
+				$wp_admin_bar->add_node( array(
+					'id'    => 'edit', //by passing the same ID, WordPress will do a merge
+					'title' => esc_html__( 'Edit Pages', 'rosa' ),
+					'href'  => get_edit_post_link( $top_level_page->ID ),
+				) );
+
+				//add the parent edit once more for clarity
+				$wp_admin_bar->add_node( array(
+					'parent' => 'edit',
+					'id'     => 'edit_' . $top_level_page->post_name,
+					'title'  => sprintf( esc_html__( 'Parent: %s', 'rosa' ), trim( strip_tags( $top_level_page->post_title ) ) ),
+					'href'   => get_edit_post_link( $top_level_page->ID ),
+					'meta'   => array( 'class' => 'edit_parent_link' )
+				) );
+
+				foreach ( $kids as $kid ) {
+					$kid_args = array(
+						'parent' => 'edit',
+						'id'     => 'edit_child_' . $kid->post_name,
+						'title'  => sprintf( esc_html__( 'Child: %s', 'rosa' ), trim( strip_tags( $kid->post_title ) ) ),
+						'href'   => get_edit_post_link( $kid->ID ),
+						'meta'   => array( 'class' => 'edit_child_link' )
+					);
+
+					if ( $post->ID == $kid->ID ) {
+						//this is the current page
+						$kid_args['meta']['class'] .= ' current_page';
+					}
+
+					$wp_admin_bar->add_node( $kid_args );
+
+					//let's do one more effort and go one level deeper
+					$subkids = get_children(
+						array(
+							'post_parent' => $kid->ID,
+							'orderby'     => 'menu_order title',
+							//this is the exact ordering used on the All Pages page - order included
+							'order'       => 'ASC',
+							'post_type'   => 'page',
+						)
+					);
+
+					if ( ! empty( $subkids ) ) {
+						foreach ( $subkids as $subkid ) {
+							$subkid_args = array(
+								'parent' => 'edit_child_' . $kid->post_name,
+								'id'     => 'edit_subchild_' . $subkid->post_name,
+								'title'  => trim( strip_tags( $subkid->post_title ) ),
+								'href'   => get_edit_post_link( $subkid->ID ),
+								'meta'   => array( 'class' => 'edit_child_link edit_subchild_link' )
+							);
+
+							if ( $post->ID == $subkid->ID ) {
+								//this is the current page
+								$kid_args['meta']['class'] .= ' current_page';
+							}
+
+							$wp_admin_bar->add_node( $subkid_args );
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+add_action( 'admin_bar_menu', 'rosa_subpages_admin_bar_edit_links_frontend', 999 );
