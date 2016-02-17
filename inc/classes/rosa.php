@@ -27,35 +27,6 @@ class rosa {
 		return get_comments_number(); // get_comments_number returns only a numeric value
 	}
 
-
-	/**
-	 * get youtube video ID from URL
-	 *
-	 * @param string $url
-	 *
-	 * @return string Youtube video id or FALSE if none found.
-	 */
-	static function youtube_id_from_url( $url ) {
-		$pattern = '#(?:https?://)?(?:www\.)?(?:youtu\.be/|youtube\.com(?:/embed/|/v/|/watch\?v=|/watch\?.+&v=))([\w-]{11})(?:.+)?#x';
-		$result  = preg_match( $pattern, $url, $matches );
-
-		if ( false != $result ) {
-			return $matches[1];
-		}
-
-		return false;
-	}
-
-	static function vimeo_id_from_url( $url ) {
-		$pattern = '/\/\/(www\.)?vimeo.com\/(\d+)($|\/)/';
-		preg_match( $pattern, $url, $matches );
-		if ( count( $matches ) ) {
-			return $matches[2];
-		}
-
-		return '';
-	}
-
 	/**
 	 * Checks if a post type object needs password aproval
 	 * @return if the form was submited it returns an array with the success status and a message
@@ -164,67 +135,6 @@ class rosa {
 		}
 
 		return '';
-	}
-
-	static function the_archive_title() {
-
-		$object = get_queried_object();
-
-		if ( is_home() ) { ?>
-			<h1 class="hN  archive__title">
-                <?php  if( isset($object->post_title)) echo $object->post_title; else _e( 'News', 'rosa' ); ?></h1>
-            <hr class="separator"/>
-		<?php
-		} elseif ( is_search() ) {
-			?>
-			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php _e( 'Search Results for: ', 'rosa' ) ?></span>
-
-				<h1 class="hN  archive__title"><?php echo get_search_query(); ?></h1>
-			</div>
-			<hr class="separator"/>
-		<?php
-		} elseif ( is_tag() ) {
-			?>
-			<div class="heading headin--main">
-				<h1 class="archive__title"><?php echo single_tag_title( '', false ); ?></h1>
-				<span class="archive__side-title beta"><?php _e( 'Tag', 'rosa' ) ?></span>
-			</div>
-			<hr class="separator"/>
-		<?php } elseif ( ! empty( $object ) && isset( $object->term_id ) ) { ?>
-			<div class="heading headin--main">
-				<h1 class="archive__title"><?php echo $object->name; ?></h1>
-				<span class="archive__side-title beta"><?php _e( 'Category', 'rosa' ) ?></span>
-			</div>
-			<hr class="separator"/>
-		<?php } elseif ( is_day() ) { ?>
-			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php _e( 'Daily Archives: ', 'rosa' ) ?></span>
-
-				<h1 class="archive__title"><?php echo get_the_date(); ?></h1>
-			</div>
-			<hr class="separator"/>
-		<?php } elseif ( is_month() ) { ?>
-			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php _e( 'Monthly Archives: ', 'rosa' ) ?></span>
-
-				<h1 class="archive__title"><?php echo get_the_date( _x( 'F Y', 'monthly archives date format', 'rosa' ) ); ?></h1>
-			</div>
-			<hr class="separator"/>
-		<?php } elseif ( is_year() ) { ?>
-			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php _e( 'Yearly Archives: ', 'rosa' ) ?></span>
-
-				<h1 class="archive__title"><?php echo get_the_date( _x( 'Y', 'yearly archives date format', 'rosa' ) ); ?></h1>
-			</div>
-			<hr class="separator"/>
-		<?php } else { ?>
-			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php _e( 'Archives', 'rosa' ) ?></span>
-			</div>
-			<hr class="separator"/>
-		<?php
-		}
 	}
 
 	/**
@@ -699,31 +609,6 @@ class rosa {
 	 */
 	static function resourceuri( $file ) {
 		return rosa::uri( '/assets/' . ltrim( $file, '/' ) );
-	}
-
-	/**
-	 * @return string
-	 */
-	static function pagination( $query = null, $target = null ) {
-		if ( $query === null ) {
-			global $wp_query;
-			$query = $wp_query;
-		}
-
-		$target_settings = null;
-		if ( $target !== null ) {
-			$targets = self::confoption( 'pagination-targets', array() );
-			if ( isset( $targets[ $target ] ) ) {
-				$target_settings = $targets[ $target ];
-			}
-		}
-
-		if ( ! class_exists( 'WPGradePaginationFormatter' ) ) {
-			include 'WPGradePaginationFormatter.php';
-		}
-		$pager = new WPGradePaginationFormatter( $query, $target_settings );
-
-		return $pager->render();
 	}
 
 	//// Helpers ///////////////////////////////////////////////////////////////////

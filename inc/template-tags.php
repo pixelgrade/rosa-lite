@@ -1,4 +1,72 @@
 <?php
+if( ! function_exists('rosa_the_archive_title' ) ) {
+
+	function rosa_the_archive_title() {
+
+		$object = get_queried_object();
+
+		if ( is_home() ) { ?>
+			<h1 class="hN  archive__title">
+				<?php if ( isset( $object->post_title ) ) {
+					echo $object->post_title;
+				} else {
+					_e( 'News', 'rosa' );
+				} ?></h1>
+			<hr class="separator"/>
+			<?php
+		} elseif ( is_search() ) {
+			?>
+			<div class="heading headin--main">
+				<span class="archive__side-title beta"><?php _e( 'Search Results for: ', 'rosa' ) ?></span>
+
+				<h1 class="hN  archive__title"><?php echo get_search_query(); ?></h1>
+			</div>
+			<hr class="separator"/>
+			<?php
+		} elseif ( is_tag() ) {
+			?>
+			<div class="heading headin--main">
+				<h1 class="archive__title"><?php echo single_tag_title( '', false ); ?></h1>
+				<span class="archive__side-title beta"><?php _e( 'Tag', 'rosa' ) ?></span>
+			</div>
+			<hr class="separator"/>
+		<?php } elseif ( ! empty( $object ) && isset( $object->term_id ) ) { ?>
+			<div class="heading headin--main">
+				<h1 class="archive__title"><?php echo $object->name; ?></h1>
+				<span class="archive__side-title beta"><?php _e( 'Category', 'rosa' ) ?></span>
+			</div>
+			<hr class="separator"/>
+		<?php } elseif ( is_day() ) { ?>
+			<div class="heading headin--main">
+				<span class="archive__side-title beta"><?php _e( 'Daily Archives: ', 'rosa' ) ?></span>
+
+				<h1 class="archive__title"><?php echo get_the_date(); ?></h1>
+			</div>
+			<hr class="separator"/>
+		<?php } elseif ( is_month() ) { ?>
+			<div class="heading headin--main">
+				<span class="archive__side-title beta"><?php _e( 'Monthly Archives: ', 'rosa' ) ?></span>
+
+				<h1 class="archive__title"><?php echo get_the_date( _x( 'F Y', 'monthly archives date format', 'rosa' ) ); ?></h1>
+			</div>
+			<hr class="separator"/>
+		<?php } elseif ( is_year() ) { ?>
+			<div class="heading headin--main">
+				<span class="archive__side-title beta"><?php _e( 'Yearly Archives: ', 'rosa' ) ?></span>
+
+				<h1 class="archive__title"><?php echo get_the_date( _x( 'Y', 'yearly archives date format', 'rosa' ) ); ?></h1>
+			</div>
+			<hr class="separator"/>
+		<?php } else { ?>
+			<div class="heading headin--main">
+				<span class="archive__side-title beta"><?php _e( 'Archives', 'rosa' ) ?></span>
+			</div>
+			<hr class="separator"/>
+			<?php
+		}
+	}
+}
+
 if( ! function_exists('rosa_callback_inlined_custom_style' ) ) {
 
 	function rosa_callback_inlined_custom_style() {
@@ -31,48 +99,6 @@ if( ! function_exists('rosa_callback_inlined_custom_style' ) ) {
 		wp_add_inline_style( $style, $custom_css );
 	}
 }
-
-if ( ! function_exists( 'rosa_callback_addthis' ) ) {
-	function rosa_callback_addthis() {
-		//lets determine if we need the addthis script at all
-		if ( is_single() && rosa::option( 'blog_single_show_share_links' ) ):
-			wp_enqueue_script( 'addthis-api' );
-
-			//here we will configure the AddThis sharing globally
-			global $post;
-			if ( empty( $post ) ) {
-				return;
-			} ?>
-			<script type="text/javascript">
-				addthis_config = {
-					<?php if (rosa::option('share_buttons_enable_tracking') && rosa::option('share_buttons_enable_addthis_tracking')):
-					echo 'username : "'.rosa::option('share_buttons_addthis_username').'",';
-				endif; ?>
-					ui_click: false,
-					ui_delay: 100,
-					ui_offset_top: 42,
-					ui_use_css: true,
-					data_track_addressbar: false,
-					data_track_clickback: false
-					<?php if (rosa::option('share_buttons_enable_tracking') && rosa::option('share_buttons_enable_ga_tracking')):
-					echo ', data_ga_property: "'.rosa::option('share_buttons_ga_id').'"';
-					if (rosa::option('share_buttons_enable_ga_social_tracking')):
-						echo ', data_ga_social : true';
-					endif;
-				endif; ?>
-				};
-
-				addthis_share = {
-					url: "<?php echo rosa_get_current_canonical_url(); ?>",
-					title: "<?php wp_title('|', true, 'right'); ?>",
-					description: "<?php echo trim(strip_tags(get_the_excerpt())) ?>"
-				};
-			</script>
-			<?php
-		endif;
-	}
-}
-add_action( 'wp_enqueue_scripts', 'rosa_callback_addthis' );
 
 function rosa_please_select_a_menu_fallback() {
 	echo '
@@ -207,100 +233,144 @@ if ( ! function_exists( 'rosa_custom_gallery_settings' ) ) {
 }
 add_action( 'print_media_templates', 'rosa_custom_gallery_settings' );
 
+if ( ! function_exists( 'rosa_the_posts_navigation' ) ) :
+
+	/**
+	 * Prints the HTML of the posts navigation
+	 * It will display both prev/next and page numbers (i.e « Prev 1 … 3 4 5 6 7 … 9 Next » )
+	 *
+	 * @since Rosa 2.0.0
+	 */
+	function rosa_the_posts_navigation() {
+		global $wp_query;
+
+		$big = 999999999; // need an unlikely integer
+		$a11y_text = __( 'Page', 'rosa' ); // Accessibility improvement
+
+		$links = paginate_links( array(
+			'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+			'format' => '?paged=%#%',
+			'current' => max( 1, get_query_var('paged') ),
+			'total' => $wp_query->max_num_pages,
+			'prev_next' => false,
+			'before_page_number' => '<span class="screen-reader-text">' . $a11y_text . ' </span>',
+		) );
+
+		$links = rosa_get_prev_posts_link() . $links . rosa_get_next_posts_link();
+
+		//wrap the links in a standard navigational markup
+		$screen_reader_text = esc_html__( 'Posts navigation', 'rosa' );
+		$template = '
+		<nav class="nav nav--banner pagination" role="navigation">
+			<h2 class="screen-reader-text">%1$s</h2>
+			<div class="nav-links">%2$s</div>
+		</nav>';
+
+		echo sprintf( $template, esc_html( $screen_reader_text ), $links );
+	}
+endif;
 
 /**
- * Note: next_text and prev_text are already flipped as per sorted_paging
- * in the configuration passed to this function.
- * The formatter is designed to generate the following structure:
- *    <div class="wpgrade_pagination">
- *        <a class="prev disabled page-numbers">Previous Page</a>
- *        <div class="pages">
- *            <span class="page">Page</span>
- *            <span class="page-numbers current">1</span>
- *            <span class="dots-of">of</span>
- *            <a class="page-numbers" href="/page/8/">8</a>
- *        </div>
- *        <a class="next page-numbers" href="/page/2/">Newer posts</a>
- *    </div>
+ * Return the next posts page link.
  *
- * @param array pagination links
- * @param array pagination configuration
+ * --Customized version of the function in core get_next_posts_link()
  *
- * @return string
+ * @since 2.7.0
+ *
+ * @global int      $paged
+ * @global WP_Query $wp_query
+ *
+ * @param string $label    Content for link text.
+ * @return string|void HTML-formatted next posts page link.
  */
-function rosa_callback_pagination_formatter( $links, $conf ) {
-	$linkcount = count( $links );
+function rosa_get_next_posts_link( $label = null ) {
+	global $paged, $wp_query;
 
-	//don't show anything when no pagination is needed
-	if ( $linkcount == 0 ) {
-		return '';
-	}
-	$prefix = '';
-	$suffix = '<!--';
+	$max_page = $wp_query->max_num_pages;
 
-	$current = $conf['current'];
-	foreach ( $links as $key => &$link ) {
+	if ( ! $paged )
+		$paged = 1;
 
-		//some SEO shit
-		//prevent pagination parameters for the links to the first page
-		if ( $key == 0 && $current == 2 && strpos( $link, 'prev' ) ) {
-			//the first link - should be prev and since we are on page 2 it will hold the link to the first page
-			$link = preg_replace( '/href=(["\'])(http:\/\/)?([^"\']+)(["\'])/', 'href="' . get_pagenum_link( 1 ) . '"', $link );
+	$nextpage = intval($paged) + 1;
+
+	if ( null === $label )
+		$label = esc_html__( 'Next', 'rosa' );
+
+	if ( ! is_single() ) {
+		if ( $nextpage <= $max_page ) {
+			/**
+			 * Filter the anchor tag attributes for the next posts page link.
+			 *
+			 * @since 2.7.0
+			 *
+			 * @param string $attributes Attributes for the anchor tag.
+			 */
+			$attr = apply_filters( 'next_posts_link_attributes', 'class="next page-numbers"' );
+
+			return '<a href="' . next_posts( $max_page, false ) . '" ' . $attr . '>' . $label . '</a>';
+		} else {
+			//put in a disabled next link
+			/**
+			 * Filter the anchor tag attributes for the next posts page link.
+			 *
+			 * @since 2.7.0
+			 *
+			 * @param string $attributes Attributes for the anchor tag.
+			 */
+			$attr = apply_filters( 'next_posts_link_attributes', 'class="next page-numbers  disabled"' );
+			return '<span ' . $attr . '>' . $label . '</span>';
 		}
-
-		//change the link of the first page to be more SEO friendly
-		$link_text = strip_tags( $link );
-		if ( $current != 1 && $link_text == "1" ) {
-			$link = preg_replace( '/href=(["\'])(http:\/\/)?([^"\']+)(["\'])/', 'href="' . get_pagenum_link( 1 ) . '"', $link );
-		}
-
-		if ( $key == $linkcount - 1 ) {
-			$suffix = '';
-		}
-
-		$link   = $prefix . '<li>' . $link . '</li>' . $suffix;
-		$prefix = "\n-->";
 	}
 
-	//if we are on the first page we should have a disabled prev text
-	if ( $current == 1 ) {
-		array_unshift( $links, '<li><span class="prev  page-numbers  disabled">' . $conf['prev_text'] . '</span></li>' );
-	}
-	//if we are on the last page we should have a disabled next text
-	if ( $current == $conf['total'] ) {
-		array_push( $links, '<li><span class="next page-numbers  disabled">' . $conf['next_text'] . '</span></li>' );
-	}
-
-	return '<ol class="nav nav--banner pagination">' . implode( '', $links ) . '</ol>';
+	return '';
 }
 
-if ( ! function_exists('rosa_pagination_custom_markup') ) {
-	/** Do the same thing on single post pagination */
-	function rosa_pagination_custom_markup( $link, $key ) {
-		global $wp_query;
-		$current = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : '1';
-		$class   = '';
-		$prefix  = '-->';
-		$suffix  = '<!--';
-		switch ( $key ) {
-			case $current:
-				$class .= 'class="pagination-item pagination-item--current"';
-				$link = '<span>' . $link . '</span>';
-				break;
-			case 'prev':
-				$class .= 'class="pagination-item pagination-item--prev"';
-				break;
-			case 'next':
-				$class .= 'class="pagination-item pagination-item--next"';
-				break;
-			default:
-				break;
+/**
+ * Return the previous posts page link.
+ *
+ * --Customized version of the function in core get_prev_posts_link()
+ *
+ * @since 2.7.0
+ *
+ * @global int      $paged
+ *
+ * @param string $label    Content for link text.
+ * @return string|void HTML-formatted next posts page link.
+ */
+function rosa_get_prev_posts_link( $label = null ) {
+	global $paged;
+
+	if ( ! $paged )
+		$paged = 1;
+
+	if ( null === $label )
+		$label = esc_html__( 'Prev', 'rosa' );
+
+	if ( ! is_single() ) {
+		if ( $paged > 1 ) {
+			/**
+			 * Filter the anchor tag attributes for the prev posts page link.
+			 *
+			 * @since 2.7.0
+			 *
+			 * @param string $attributes Attributes for the anchor tag.
+			 */
+			$attr = apply_filters( 'previous_posts_link_attributes', 'class="prev page-numbers"' );
+
+			return '<a href="' . previous_posts( false ) . '" ' . $attr . '>' . $label . '</a>';
+		} else {
+			//put in a disabled prev link
+			/**
+			 * Filter the anchor tag attributes for the prev posts page link.
+			 *
+			 * @since 2.7.0
+			 *
+			 * @param string $attributes Attributes for the anchor tag.
+			 */
+			$attr = apply_filters( 'previous_posts_link_attributes', 'class="prev page-numbers  disabled"' );
+			return '<span ' . $attr . '>' . $label . '</span>';
 		}
-
-		$link = '<li ' . $class . '>' . $link . '</li>';
-
-		return $link;
 	}
-}
-add_filter( 'wp_link_pages_link', 'rosa_pagination_custom_markup', 10, 2 );
 
+	return '';
+}

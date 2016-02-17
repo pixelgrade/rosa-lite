@@ -12,37 +12,34 @@
 		content: none;
 	}
 
-	li {
-		margin-bottom: 0;
 
-		a, span {
-			position: relative;
-			z-index: 2;
+	a, span {
+		position: relative;
+		z-index: 2;
 
-			display: inline-block;
+		display: inline-block;
 
-			@include rem(padding, $_u4 $_u2);
-			border: 1px solid transparent;
+		@include rem(padding, $_u4 $_u2);
+		border: 1px solid transparent;
 
-			@include font-size(16px);
-			text-transform: uppercase;
+		@include font-size(16px);
+		text-transform: uppercase;
 
-			color: $light;
-			background: white;
+		color: $light;
+		background: white;
 
-			transition: all .15s linear;
-		}
+		transition: all .15s linear;
+	}
 
-		a:hover {
-			color: white !important;
-			background-color: $accent;
-			border-bottom: 1px solid transparent;
-		}
+	a:hover {
+		color: white !important;
+		background-color: $accent;
+		border-bottom: 1px solid transparent;
+	}
 
-		span.current {
-			color: $dark;
-			border: 1px solid $borders;
-		}
+	span.current {
+		color: $dark;
+		border: 1px solid $borders;
 	}
 
 	.inf_scroll & {
