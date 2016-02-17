@@ -102,8 +102,10 @@
 		transform: translateY(-50%) rotate(45deg);
 	}
 
-	&:hover > .sub-menu {
-		display: block;
+	&:hover, &.hover {
+		& > .sub-menu {
+			display: block;
+		}
 	}
 
 	.is--ie & {
@@ -220,7 +222,7 @@ a.nav-trigger{
 	}
 }
 
-$nav-width: 200px;
+$nav-width: 315px;
 
 @include media-query(lap-and-up) {
 
@@ -251,7 +253,7 @@ $nav-width: 200px;
 		overflow-y: scroll;
 
 		width: $nav-width;
-		padding: $_u4 $_u2;
+		padding: 44px;
 
 		border: 0;
 
@@ -260,28 +262,32 @@ $nav-width: 200px;
 
 		background: $dark;
 
+		.nav--main {
+			width: 100%;
+		}
+
+		.nav--items-menu {
+			padding: 26px 0;
+
+			border-top: 1px solid #41403d;
+			border-bottom: 1px solid #41403d;
+		}
+
 		.nav--main li {
 			display: list-item;
 			padding: 0;
-
-			border-bottom: 1px solid #41403d;
 
 			&:last-child{
 				border-bottom: 0;
 			}
 
-			&.menu-item-has-children > a{
-				border-bottom: 1px solid #41403d;
-			}
-
 			text-align: left;
 
 			a{
-				padding: $_u2 0;
+				padding: 14px 0;
 				display: block;
 
-				@include font-size(18px);
-				text-transform: none;
+				@include font-size(16px);
 
 				color: #cccccc;
 
@@ -295,23 +301,28 @@ $nav-width: 200px;
 					content: none;
 				}
 
-				> a{
+				& > a{
 					position: relative;
+
+					&:after{
+						content: "";
+						position: relative;
+						top: -2px;
+
+						display: inline-block;
+						width: 8px;
+						height: 8px;
+						margin-left: 15px;
+
+						border-right: 2px solid #cccccc;
+						border-bottom: 2px solid #cccccc;
+
+						transform: rotate(45deg);
+					}
 				}
 
-				> a:after{
-					content: "";
-					position: absolute;
-					top: 50%;
-					right: 5px;
-
-					width: 10px;
-					height: 10px;
-
-					border-right: 1px solid #cccccc;
-					border-bottom: 1px solid #cccccc;
-
-					transform: translateY(-50%) rotate(45deg);
+				&.hover > a:after {
+					transform: rotate(-45deg);
 				}
 			}
 		}
@@ -319,17 +330,22 @@ $nav-width: 200px;
 		.sub-menu{
 			position: static;
 
-			display: block;
-			padding-left: $_u2;
+			display: none;
+			padding: 4px 0;
 
 			border: 0;
 			background: transparent;
 
 			transform: translateX(0);
+			opacity: .5;
 
 			@include media-query(palm) {
 				background: transparent !important;
 			}
+		}
+
+		.nav--main .sub-menu li a {
+			padding: 10px 0;
 		}
 
 		.sub-menu .sub-menu{
