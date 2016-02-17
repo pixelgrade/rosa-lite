@@ -31,7 +31,7 @@ if ( rosa::page_has_children() ) {
 			if ( get_page_template_slug( get_the_ID() ) == 'page-templates/page-no-title.php' ) {
 				//do nothing right now
 			} else {
-				get_template_part( 'template-parts/page/header' );
+				get_template_part( 'template-parts/header', 'page' );
 
 				if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
 					//this is a gmap
