@@ -38,8 +38,7 @@ global $wp_query;
 				wp_reset_query();
 			}
 		}
-		?>
-		<?php
+
 		if ( have_posts() ):
 			while ( have_posts() ) : the_post();
 				get_template_part( 'template-parts/post/loop-content/classic' );

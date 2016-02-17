@@ -68,8 +68,8 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 
 		add_filter( 'upload_mimes', 'rosa_callback_custom_upload_mimes' );
 	}
-	add_action( 'after_setup_theme', 'rosa_theme_setup' );
 }
+add_action( 'after_setup_theme', 'rosa_theme_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -130,8 +130,8 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 			'infscrReachedEnd'  => "",
 		) );
 	}
-	add_action( 'wp_enqueue_scripts', 'rosa_load_assets' );
 }
+add_action( 'wp_enqueue_scripts', 'rosa_load_assets' );
 
 
 if ( ! function_exists( 'rosa_load_admin_assets' ) ) {

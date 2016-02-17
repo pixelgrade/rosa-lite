@@ -96,7 +96,6 @@ class rosa {
 		return $private_post;
 	}
 
-
 	/** Limit words for a string */
 
 	static function limit_words( $string, $word_limit, $more_text = ' [&hellip;]' ) {
@@ -110,7 +109,6 @@ class rosa {
 
 		return $output;
 	}
-
 
 	static function get_post_format_first_image_src() {
 		global $post;
@@ -126,7 +124,6 @@ class rosa {
 
 		return $first_img;
 	}
-
 
 	/**
 	 * Returns the URL from the post.
@@ -320,7 +317,6 @@ class rosa {
 
 		return '';
 	}
-
 
 	/**
 	 * We check if there is a gallery meta data, then a gallery shortcode in the content, extract it and
@@ -730,7 +726,6 @@ class rosa {
 		return $pager->render();
 	}
 
-
 	//// Helpers ///////////////////////////////////////////////////////////////////
 
 	/**
@@ -874,8 +869,4 @@ class rosa {
 			return substr( get_bloginfo( 'language' ), 0, 2 );
 		}
 	}
-}
-
-function custom_warning_handler( $errno, $errstr ) {
-	// do something - nothing right now
 }

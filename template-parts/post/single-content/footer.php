@@ -60,7 +60,7 @@ global $post_format;
 						addthis:url="<?php echo rosa_get_current_canonical_url(); ?>"
 						addthis:title="<?php wp_title( '|', true, 'right' ); ?>"
 						addthis:description="<?php echo trim( strip_tags( get_the_excerpt() ) ) ?>">
-						<?php get_template_part( 'template-parts/core/addthis-social-buttons' ); ?>
+						<?php get_template_part( 'template-parts/addthis-social-buttons' ); ?>
 					</div>
 				<?php endif; ?>
 			</div>
