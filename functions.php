@@ -65,7 +65,6 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 		}
 
 		add_editor_style( 'editor-style.css' );
-
 		add_filter( 'upload_mimes', 'rosa_callback_custom_upload_mimes' );
 	}
 }
