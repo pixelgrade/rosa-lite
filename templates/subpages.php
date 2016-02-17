@@ -24,29 +24,25 @@ if ( rosa::page_has_children() ) {
 			get_template_part( 'templates/password-request-form' );
 
 		} else {
-			get_template_part( 'templates/page/header' );
-
 			$classes = "article--page article--main article--subpage";
 			$style   = '';
-//			$inverse_colors = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'inverse_section_colors', true );
-//			if ($inverse_colors == 'on') {
-//				$classes .= ' inverse-colors';
-//
-//				$text_color = wpgrade::option('text_color');
-//				$background_color = wpgrade::option('content_background_color');
-//
-//				$style .= ' style="background-color: '.$text_color.'; color: '.$background_color.'" ';
-//			}
+			$border_style = '';
 
-			if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
-				//this is a gmap
-				$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_border_style', true );
+			if ( get_page_template_slug( get_the_ID() ) == 'page-templates/page-no-title.php' ) {
+				//do nothing right now
 			} else {
-				$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_border_style', true );
-			}
+				get_template_part( 'templates/page/header' );
 
-			if ( ! empty( $border_style ) ) {
-				$classes .= ' border-' . $border_style;
+				if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
+					//this is a gmap
+					$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_border_style', true );
+				} else {
+					$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_border_style', true );
+				}
+
+				if ( ! empty( $border_style ) ) {
+					$classes .= ' border-' . $border_style;
+				}
 			}
 			//make sure that no waves go unaccounted for
 			$footer_needs_big_waves = false;
