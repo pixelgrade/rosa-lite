@@ -94,7 +94,7 @@ var HandleSubmenusOnTouch = (function() {
 			e.preventDefault();
 			e.stopPropagation();
 
-			if ($(this).hasClass('active')) {
+			if( $(this).hasClass('active') ) {
 				window.location.href = $(this).attr('href');
 			}
 

@@ -206,16 +206,98 @@
     $MOBILE NAVIGATION
 \*------------------------------------*/
 
-a.nav-trigger{
+button.nav-trigger{
 	position: absolute;
 	top: 36px;
 	left: $_u2;
+	z-index: 20;
 	transform: translateY(-50%);
 
+	height: 50px;
+	width: 50px;
 	padding: 0 $_u2;
 
-	font-size: 28px;
-	color: $dark;
+	background: transparent;
+	border: 0;
+
+	outline: 0;
+
+	@include media-query(lap-and-up) {
+		display: none;
+	}
+}
+
+.nav-icon {
+	position: relative;
+	top: 2px;
+	right: inherit;
+	display: block;
+	width: 26px;
+	height: 2px;
+
+	background: white;
+
+	border-radius: 2.5rem;
+	transition: all .3s;
+
+	&:after, &:before {
+		content: "";
+
+		position: absolute;
+		z-index: -1;
+
+		display: block;
+		height: 2px;
+		width: 100%;
+		border-radius: 2.5rem;
+
+		background: white;
+		transition: all .3s;
+	}
+
+	&:after {
+		top: -7px;
+	}
+
+	&:before {
+		top: 7px;
+	}
+
+	.navigation--is-visible & {
+		background:transparent;
+
+		&:after{
+			transform: rotate(45deg);
+			top: 0;
+		}
+
+		&:before{
+			transform: rotate(-45deg);
+			top: 0;
+		}
+	}
+}
+
+.nav-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+
+	width: 100vw;
+	height: 100vh;
+
+	background: rgba(0,0,0,0.60);
+
+	opacity: 0;
+	pointer-events: none;
+
+	transition: opacity .3s linear;
+
+	.navigation--is-visible & {
+		opacity: 1;
+		pointer-events: auto;
+	}
 
 	@include media-query(lap-and-up) {
 		display: none;
@@ -239,6 +321,8 @@ $nav-width: 315px;
 		left: -$nav-width;
 		top: 0;
 		bottom: 0;
+
+		z-index: 20;
 
 		.admin-bar & {
 			padding-top: 32px;

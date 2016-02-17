@@ -119,7 +119,9 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 		<div class="container">
 			<div class="flexbox">
 				<div class="flexbox__item">
-					<a href="#" class="js-nav-trigger  nav-trigger"><i class="icon-reorder"></i></a>
+					<button class="nav-trigger  js-nav-trigger">
+						<span class="nav-icon icon--lines"></span>
+					</button>
 				</div>
 				<div class="flexbox__item  branding-container">
 					<?php get_template_part( 'template-parts/branding' ); ?>
@@ -195,6 +197,7 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 							'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 						) ); ?>
 					</nav>
+					<div class="nav-overlay"></div>
 				</div>
 			</div>
 			<!-- .flexbox -->
