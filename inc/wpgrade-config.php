@@ -109,8 +109,8 @@ return array(
 					'path' => REQUEST_PROTOCOL . '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700,400italic,700italic|Herr+Von+Muellerhoff',
 				),
 				'wpgrade-main-style' => array(
-					'path'       => get_template_directory_uri() . '/assets/css/style.css',
-					'cache_bust' => wpgrade::cachebust_string( wpgrade::themefilepath( 'assets/css/style.css' ) ),
+					'path'       => get_template_directory_uri() . '/style.css',
+					'cache_bust' => wpgrade::cachebust_string( wpgrade::themefilepath( 'style.css' ) ),
 				),
 			)
 

@@ -21,3 +21,4 @@ build
 *.css.map
 *.js.map
 npm-debug.log
+style.css
