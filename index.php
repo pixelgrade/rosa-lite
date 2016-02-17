@@ -15,7 +15,7 @@ get_header(); ?>
 	<section class="container  container--archive">
 		<div class="page-content  archive">
 
-			<?php rosa::the_archive_title(); ?>
+			<?php rosa_the_archive_title(); ?>
 
 			<?php
 			//the categories dropdown
@@ -71,7 +71,7 @@ get_header(); ?>
 					get_template_part( 'template-parts/content', get_post_format() );
 				endwhile;
 
-				rosa::pagination();
+				rosa_the_posts_navigation();
 
 			else :
 

@@ -22,3 +22,4 @@ build
 *.js.map
 npm-debug.log
 style.css
+editor-style.css
