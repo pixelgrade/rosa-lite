@@ -122,7 +122,7 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 					<a href="#" class="js-nav-trigger  nav-trigger"><i class="icon-reorder"></i></a>
 				</div>
 				<div class="flexbox__item  branding-container">
-					<?php get_template_part( 'template-parts/header/branding' ); ?>
+					<?php get_template_part( 'template-parts/branding' ); ?>
 				</div>
 				<div class="flexbox__item">
 					<?php

@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 } // Exit if accessed directly
 
 if ( is_shop() || is_cart() || is_checkout() || is_checkout_pay_page() || is_account_page() || is_order_received_page() ) {
-	get_template_part( 'template-parts/page/header' );
+	get_template_part( 'template-parts/header', 'page' );
 }
 
 $classes = "article--page  article--main";
@@ -25,13 +25,13 @@ if ( ! empty( $border_style ) ) {
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
 	<section class="article__content">
-	<div class="container">
-<?php if ( is_product() ) {
-	echo '<hr />';
-} ?>
-	<section class="page__content  js-post-gallery  cf">
+		<div class="container">
+		<?php if ( is_product() ) {
+			echo '<hr />';
+		} ?>
+		<section class="page__content  js-post-gallery  cf">
 
-<?php
-	if ( is_shop() || is_cart() || is_checkout() || is_checkout_pay_page() || is_account_page() || is_order_received_page() ) {
-		wp_reset_postdata();
-	}
+		<?php
+		if ( is_shop() || is_cart() || is_checkout() || is_checkout_pay_page() || is_account_page() || is_order_received_page() ) {
+			wp_reset_postdata();
+		}

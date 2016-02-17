@@ -23,7 +23,7 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 
 	while ( have_posts() ) : the_post();
 
-		get_template_part( 'template-parts/page/header' );
+		get_template_part( 'template-parts/header', 'page' );
 
 		$classes = "article--page  article--main" ;
 
