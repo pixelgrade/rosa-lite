@@ -76,6 +76,8 @@ function rosa_callback_themesetup() {
 	}
 
 	add_action( 'wp_enqueue_scripts', $handler, 999999 );
+
+	add_editor_style( 'editor-style.css' );
 }
 
 add_action( 'after_setup_theme', 'rosa_callback_themesetup', 16 );

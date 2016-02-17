@@ -1,0 +1,29 @@
+@charset "UTF-8";
+/*
+Theme Name: Rosa
+Description: Used to style the TinyMCE editor.
+*/
+
+@import "vars";
+@import "_vendor/inuit.css/inuit";
+
+// TOOLS
+@import "tools/mixins";
+
+// BASE
+@import "base/core";
+@import "base/typography";
+
+// LAYOUT
+@import "layout/content";
+
+// SHORTCODES
+@import "shortcodes/grid";
+
+body.mce-content-body {
+	max-width: $content-width - 60px;
+	padding: 0 30px;
+	margin: 0 auto;
+
+	font: #{($base-font-size/16px)*1em}/#{$line-height-ratio} $base-font-family;
+}
