@@ -117,7 +117,7 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 
 
 		wp_enqueue_script( 'addthis-api', REQUEST_PROTOCOL . '//s7.addthis.com/js/300/addthis_widget.js#async=1', array( 'jquery' ), null, true );
-		wp_enqueue_script( 'google-maps-api', REQUEST_PROTOCOL . '//maps.google.com/maps/api/js?sensor=false&amp;language=en', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'google-maps-api', REQUEST_PROTOCOL . '//maps.google.com/maps/api/js?language=en', array( 'jquery' ), null, true );
 
 		wp_localize_script( 'wpgrade-main-scripts', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
 		// localize the theme_name, we are gonna need it

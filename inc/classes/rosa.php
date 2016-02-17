@@ -798,38 +798,6 @@ class rosa {
 		}
 	}
 
-	//// Media Handlers & Helpers //////////////////////////////////////////////////
-
-	#
-	# Audio
-	#
-	/**
-	 * ...
-	 */
-	static function audio_selfhosted( $postID ) {
-		$audio_mp3    = get_post_meta( $postID, rosa::prefix() . 'audio_mp3', true );
-		$audio_m4a    = get_post_meta( $postID, rosa::prefix() . 'audio_m4a', true );
-		$audio_oga    = get_post_meta( $postID, rosa::prefix() . 'audio_ogg', true );
-		$audio_poster = get_post_meta( $postID, rosa::prefix() . 'audio_poster', true );
-
-		include rosa::corepartial( 'audio-selfhosted.php' );
-	}
-
-	#
-	# Video
-	#
-	/**
-	 * ...
-	 */
-	static function video_selfhosted( $postID ) {
-		$video_m4v    = get_post_meta( $postID, rosa::prefix() . 'video_m4v', true );
-		$video_webm   = get_post_meta( $postID, rosa::prefix() . 'video_webm', true );
-		$video_ogv    = get_post_meta( $postID, rosa::prefix() . 'video_ogv', true );
-		$video_poster = get_post_meta( $postID, rosa::prefix() . 'video_poster', true );
-
-		include rosa::corepartial( 'video-selfhosted.php' );
-	}
-
 	//// WPML Related Functions ////////////////////////////////////////////////////
 
 	static function lang_post_id( $id ) {
