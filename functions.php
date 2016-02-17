@@ -72,6 +72,9 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 		foreach ( $menus as $key => $value ) {
 			register_nav_menu( $key, $value );
 		}
+
+		add_editor_style( array( 'editor-style.css' ) );
+
 	}
 	add_action( 'after_setup_theme', 'rosa_theme_setup' );
 }

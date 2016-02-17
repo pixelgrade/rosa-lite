@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/*------------------------------------*\
+    EDITOR-STYLE.CSS
+\*------------------------------------*/
+/*------------------------------------*\
+    $SETUP
+\*------------------------------------*/
+@import "vars";
+@import "_vendor/inuit.css/inuit";
+/*------------------------------------*\
+    $IMPORTS
+\*------------------------------------*/
+// TOOLS
+@import "tools/__tools";
+// BASE
+@import "base/__base";
+
+html {
+    padding: 24px;
+}
+
+body {
+	max-width: 1104px;
+    margin: 0 auto;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
