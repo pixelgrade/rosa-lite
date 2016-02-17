@@ -40,7 +40,7 @@ class wpgrade_latest_comments extends WP_Widget {
 		$widget_ops = array( 'classname'   => 'widget--latest-comments',
 		                     'description' => __( 'The latest comments', 'rosa' )
 		);
-		parent::__construct( 'recent-comments', wpgrade::themename() . ' ' . __( 'Latest Comments', 'rosa' ), $widget_ops );
+		parent::__construct( 'recent-comments', rosa::themename() . ' ' . __( 'Latest Comments', 'rosa' ), $widget_ops );
 		$this->alt_option_name = 'widget_recent_comments';
 
 		add_action( 'comment_post', array( $this, 'flush_widget_cache' ) );

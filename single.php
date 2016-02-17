@@ -10,11 +10,11 @@ global $wpgrade_private_post;
 
 if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 	// password protection
-	get_template_part( 'templates/password-request-form' );
+	get_template_part( 'template-parts/password-request-form' );
 
 } else {
 	$has_sidebar = false;
-	if ( wpgrade::option( 'blog_single_show_sidebar' ) ) {
+	if ( rosa::option( 'blog_single_show_sidebar' ) ) {
 		$has_sidebar = true;
 	}
 
@@ -34,12 +34,12 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 
 			while ( have_posts() ) : the_post(); ?>
 				<article <?php post_class( 'article-single  single-post ' . $post_class_thumb ) ?>>
-					<?php get_template_part( 'templates/post/single-content/header' ); ?>
+					<?php get_template_part( 'template-parts/post/single-content/header' ); ?>
 
 					<section class="article__content  js-post-gallery">
 						<?php the_content(); ?>
 					</section>
-					<?php get_template_part( 'templates/post/single-content/footer' );
+					<?php get_template_part( 'template-parts/post/single-content/footer' );
 					// If comments are open or we have at least one comment, load up the comment template
 					if ( comments_open() || '0' != get_comments_number() ) {
 						comments_template();

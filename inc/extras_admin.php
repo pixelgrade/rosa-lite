@@ -2,6 +2,8 @@
 
 function rosa_callback_help_pointers_setup() {
 
+	require get_template_directory() . '/inc/classes/WP_Help_Pointer.php';
+
 	// Define our pointers
 	// -------------------
 

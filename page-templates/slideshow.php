@@ -15,10 +15,10 @@ $page_section_idx       = 0;
 get_header();
 
 while ( have_posts() ) : the_post(); ?>
-	<?php get_template_part( 'templates/page/header' );
+	<?php get_template_part( 'template-parts/page/header' );
 
 	$classes      = "article--page  article--main";
-	$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_border_style', true );
+	$border_style = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_border_style', true );
 	if ( ! empty( $border_style ) ) {
 		$classes .= ' border-' . $border_style;
 	}
@@ -38,7 +38,7 @@ while ( have_posts() ) : the_post(); ?>
 	<?php
 	endif;
 
-	get_template_part( 'templates/subpages' );
+	get_template_part( 'template-parts/subpages' );
 
 	//comments
 	if ( comments_open() || '0' != get_comments_number() ): ?>

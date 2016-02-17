@@ -1633,7 +1633,7 @@ msgstr ""
 "votre mot de passe ci-dessous:"
 
 #: inc/functions/password-protection.php:14
-#: templates/password-request-form.php:24
+#: template-parts/password-request-form.php:24
 #: wpgrade-core/vendor/redux3/inc/fields/password/field_password.php:62
 msgid "Password"
 msgstr "Mot de passe"
@@ -2445,11 +2445,11 @@ msgstr "Il semble que nous ne pouvons pas trouver ce que vous recherchez."
 msgid "Pages"
 msgstr "Page"
 
-#: page.php:69 templates/post/single-content/footer.php:16
+#: page.php:69 template-parts/post/single-content/footer.php:16
 msgid "&laquo;"
 msgstr "&laquo;"
 
-#: page.php:70 templates/post/single-content/footer.php:17
+#: page.php:70 template-parts/post/single-content/footer.php:17
 msgid "&raquo;"
 msgstr "&raquo;"
 
@@ -2457,46 +2457,46 @@ msgstr "&raquo;"
 msgid "Search..."
 msgstr "Recherche..."
 
-#: templates/page/header.php:233
+#: template-parts/page/header.php:233
 msgid "Currently there are no images assigned to this slideshow"
 msgstr "Actuellement, il n'ya pas d'images affectés à cette galerie"
 
-#: templates/password-request-form.php:10
+#: template-parts/password-request-form.php:10
 msgid "This is a protected area."
 msgstr "Il s'agit d'une zone protégée."
 
-#: templates/password-request-form.php:14
+#: template-parts/password-request-form.php:14
 msgid "Please enter your password again."
 msgstr "S'il vous plaît entrer de nouveau votre mot de passe."
 
-#: templates/password-request-form.php:16
+#: template-parts/password-request-form.php:16
 msgid "Please enter your password to continue."
 msgstr "S'il vous plaît, entrez votre mot de passe pour continuer."
 
-#: templates/password-request-form.php:27
+#: template-parts/password-request-form.php:27
 msgid "Authenticate"
 msgstr "Authentifier"
 
-#: templates/pixlikes-template.php:24
+#: template-parts/pixlikes-template.php:24
 msgid "likes"
 msgstr ""
 
-#: templates/post/loop/categories-dropdown.php:5
-#: templates/post/single-content/footer.php:27
+#: template-parts/post/loop/categories-dropdown.php:5
+#: template-parts/post/single-content/footer.php:27
 msgid "Categories"
 msgstr "Catégories "
 
-#: templates/post/loop/categories-dropdown.php:9
-#: templates/post/single-content/footer.php:30
+#: template-parts/post/loop/categories-dropdown.php:9
+#: template-parts/post/single-content/footer.php:30
 #, php-format
 msgid "View all posts in %s"
 msgstr "Voir tous les articles dans %s"
 
-#: templates/post/single-content/footer.php:38
+#: template-parts/post/single-content/footer.php:38
 msgid "Tags"
 msgstr ""
 
-#: templates/post/single-content/footer.php:41
+#: template-parts/post/single-content/footer.php:41
 #, php-format
 msgid "View all posts tagged %s"
 msgstr "Voir tous les messages marqués %s"

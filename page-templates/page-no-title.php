@@ -15,7 +15,7 @@ $page_section_idx       = 0;
 
 if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 	// password protection
-	get_template_part( 'templates/password-request-form' );
+	get_template_part( 'template-parts/password-request-form' );
 
 } else {
 
@@ -23,7 +23,7 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 
 		$classes = "article--page  article--main" ;
 
-		$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_border_style', true );
+		$border_style = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_border_style', true );
 		if ( ! empty( $border_style ) ) {
 			$classes .= ' border-' . $border_style;
 		}
@@ -56,7 +56,7 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 			</article>
 		<?php endif;
 
-		get_template_part( 'templates/subpages' );
+		get_template_part( 'template-parts/subpages' );
 
 		//comments
 		if ( comments_open() || '0' != get_comments_number() ): ?>

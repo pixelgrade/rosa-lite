@@ -12,16 +12,7 @@ if ( ! defined('REQUEST_PROTOCOL')) {
 // Loads the theme's translated strings
 load_theme_textdomain( 'rosa', get_template_directory() . '/languages' );
 
-
-// Initialize system core
-// ----------------------
-// @todo remove
-require_once 'wpgrade-core/bootstrap.php';
-
-
-
 if ( ! function_exists(' rosa_theme_setup' ) ) {
-
 	function rosa_theme_setup () {
 		//add theme support for RSS feed links automatically generated in the head section
 		add_theme_support( 'automatic-feed-links' );
@@ -32,7 +23,7 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 		// Add theme support for Featured Images
 		add_theme_support( 'post-thumbnails' );
 
-		$sizes = wpgrade::confoption( 'thumbnails_sizes' );
+		$sizes = rosa::confoption( 'thumbnails_sizes' );
 
 		if ( ! empty( $sizes ) ) {
 			foreach ( $sizes as $size_key => $values ) {
@@ -58,7 +49,7 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 		}
 
 		// add theme support for post formats
-		$post_formats = wpgrade::confoption( 'post-formats', array() );
+		$post_formats = rosa::confoption( 'post-formats', array() );
 		if ( ! empty( $post_formats ) ) {
 			add_theme_support( 'post-formats', $post_formats );
 		}
@@ -68,10 +59,14 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 		 * This works on 3.1+
 		 */
 		add_theme_support( 'menus' );
-		$menus = wpgrade::confoption( 'import_nav_menu' );
+		$menus = rosa::confoption( 'import_nav_menu' );
 		foreach ( $menus as $key => $value ) {
 			register_nav_menu( $key, $value );
 		}
+
+		add_editor_style( 'editor-style.css' );
+
+		add_filter( 'upload_mimes', 'rosa_callback_custom_upload_mimes' );
 	}
 	add_action( 'after_setup_theme', 'rosa_theme_setup' );
 }
@@ -93,18 +88,47 @@ add_action( 'after_setup_theme', 'rosa_content_width', 0 );
 if ( ! function_exists( 'rosa_load_assets' ) ) {
 	function rosa_load_assets(){
 
+		// Styles
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
 
 		if ( is_rtl() ) {
-			wp_enqueue_style( 'rtl-support', wpgrade::resourceuri( 'css/localization/rtl.css' ) );
+			wp_enqueue_style( 'rtl-support', rosa::resourceuri( 'css/localization/rtl.css' ) );
 		}
 
 		if (is_404()) {
-			wp_enqueue_style( wpgrade::shortname() . '-404-style', get_template_directory_uri() . '/assets/css/pages/404.css', array(), time(), 'all' );
+			wp_enqueue_style( rosa::shortname() . '-404-style', get_template_directory_uri() . '/assets/css/pages/404.css', array(), time(), 'all' );
 		}
 
+		// @todo maybe load from customify???
+
+//		wp_enqueue_script( 'google-webfonts', REQUEST_PROTOCOL . '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700,400italic,700italic|Herr+Von+Muellerhoff' );
+
+		wp_enqueue_style( 'wpgrade-main-style', get_template_directory_uri() . '/style.css', array(), rosa::cachebust_string( rosa::themefilepath( 'style.css' ) ) );
+
+		// Scripts
+
+		wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr.min.js', array( 'jquery' ) );
+		wp_enqueue_script( 'webfont-script', REQUEST_PROTOCOL . '//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js', array( 'jquery' ) );
+
+		wp_enqueue_script( 'wpgrade-plugins', get_template_directory_uri() . '/assets/js/plugins.js', array( 'jquery', 'modernizr' ), null, true );
+		wp_enqueue_script( 'wpgrade-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'wpgrade-plugins' ), rosa::cachebust_string( rosa::themefilepath( 'assets/js/main.js' ) ), true );
+
+
+		wp_enqueue_script( 'addthis-api', REQUEST_PROTOCOL . '//s7.addthis.com/js/300/addthis_widget.js#async=1', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'google-maps-api', REQUEST_PROTOCOL . '//maps.google.com/maps/api/js?sensor=false&amp;language=en', array( 'jquery' ), null, true );
+
+		wp_localize_script( 'wpgrade-main-scripts', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
+		// localize the theme_name, we are gonna need it
+		wp_localize_script( 'wpgrade-main-scripts', 'theme_name', rosa::shortname() );
+		wp_localize_script( 'wpgrade-main-scripts', 'objectl10n', array(
+			'tPrev'             => __( 'Previous (Left arrow key)', 'rosa' ),
+			'tNext'             => __( 'Next (Right arrow key)', 'rosa' ),
+			'tCounter'          => __( 'of', 'rosa' ),
+			'infscrLoadingText' => "",
+			'infscrReachedEnd'  => "",
+		) );
 	}
 	add_action( 'wp_enqueue_scripts', 'rosa_load_assets' );
 }
@@ -114,11 +138,7 @@ if ( ! function_exists( 'rosa_load_admin_assets' ) ) {
 
 	function rosa_load_admin_assets() {
 
-		wp_enqueue_script(
-			'rosa_admin_general_script', //unique handle
-			get_template_directory_uri().'/assets/js/admin/admin-general.js', //location
-			array('jquery')  //dependencies
-		);
+		wp_enqueue_script( 'rosa_admin_general_script', get_template_directory_uri().'/assets/js/admin/admin-general.js', array('jquery') );
 
 		$translation_array = array
 		(
@@ -140,20 +160,12 @@ if ( ! function_exists( 'rosa_load_admin_assets' ) ) {
 			'import_try_reload' =>  __( "You can reload the page and try again.", 'rosa'),
 		);
 		wp_localize_script( 'rosa_admin_general_script', 'rosa_admin_js_texts', $translation_array );
-
 	}
-	add_action( 'admin_enqueue_scripts', 'rosa_load_admin_assets' );
 }
+add_action( 'admin_enqueue_scripts', 'rosa_load_admin_assets' );
 
 // Media Handlers
 // --------------
-
-function rosa_media_handlers() {
-	// make sure that WordPress allows the upload of our used mime types
-	add_filter( 'upload_mimes', 'rosa_callback_custom_upload_mimes' );
-}
-
-add_action( 'after_wpgrade_core', 'rosa_media_handlers');
 
 
 /**
@@ -182,6 +194,8 @@ function rosa_callback_custom_upload_mimes( $existing_mimes = null ) {
 	return $existing_mimes;
 }
 
+require get_template_directory() . '/inc/classes/util.php';
+require get_template_directory() . '/inc/classes/rosa.php';
 
 /**
  * Custom template tags for this theme.
@@ -214,10 +228,7 @@ require get_template_directory() . '/inc/integrations.php';
 require get_template_directory() . '/inc/customify.php';
 require get_template_directory() . '/inc/required-plugins/required-plugins.php';
 
-#
-# Please perform any initialization via options in wpgrade-config and
-# calls in wpgrade-core/bootstrap. Required for testing.
-#
+
 
 //Automagical updates
 function wupdates_check_vexXr( $transient ) {

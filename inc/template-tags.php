@@ -1,4 +1,37 @@
 <?php
+
+
+function rosa_callback_inlined_custom_style() {
+
+	ob_start();
+	//handle the complicated logic of the footer waves that keeps changing color
+	$footer_sidebar_style    = rosa::option( 'footer_sidebar_style' );
+	$waves_fill_color = '#121212';
+	switch ($footer_sidebar_style) {
+		case 'light' :
+			$waves_fill_color = '#ffffff';
+			break;
+		case 'dark' :
+			$waves_fill_color = '#121212';
+			break;
+		case 'accent' :
+			$waves_fill_color = '#'.rosa::option('main-color');
+			break;
+
+	}
+	?>
+	.site-footer.border-waves:before,
+	.border-waves-top.border-waves-top--dark:before {
+	background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 19 14' width='19' height='14' enable-background='new 0 0 19 14' xml:space='preserve' preserveAspectRatio='none slice'><g><path fill='<?php echo $waves_fill_color ?>' d='M0,0c4,0,6.5,5.9,9.5,5.9S15,0,19,0v7H0V0z'/><path fill='<?php echo $waves_fill_color ?>' d='M19,14c-4,0-6.5-5.9-9.5-5.9S4,14,0,14l0-7h19V14z'/></g></svg>");
+	}
+	<?php
+
+	$custom_css = ob_get_clean();
+	$style      = 'wpgrade-main-style';
+
+	wp_add_inline_style( $style, $custom_css );
+}
+
 /**
  * Custom template tags for this theme.
  *
@@ -40,7 +73,7 @@ function rosa_admin_get_pointer_help_template ( $pointers ) { ?>
 
 function rosa_callback_addthis() {
 	//lets determine if we need the addthis script at all
-	if ( is_single() && wpgrade::option( 'blog_single_show_share_links' ) ):
+	if ( is_single() && rosa::option( 'blog_single_show_share_links' ) ):
 		wp_enqueue_script( 'addthis-api' );
 
 		//here we will configure the AddThis sharing globally
@@ -50,8 +83,8 @@ function rosa_callback_addthis() {
 		} ?>
 		<script type="text/javascript">
 			addthis_config = {
-				<?php if (wpgrade::option('share_buttons_enable_tracking') && wpgrade::option('share_buttons_enable_addthis_tracking')):
-				echo 'username : "'.wpgrade::option('share_buttons_addthis_username').'",';
+				<?php if (rosa::option('share_buttons_enable_tracking') && rosa::option('share_buttons_enable_addthis_tracking')):
+				echo 'username : "'.rosa::option('share_buttons_addthis_username').'",';
 			endif; ?>
 				ui_click: false,
 				ui_delay: 100,
@@ -59,9 +92,9 @@ function rosa_callback_addthis() {
 				ui_use_css: true,
 				data_track_addressbar: false,
 				data_track_clickback: false
-				<?php if (wpgrade::option('share_buttons_enable_tracking') && wpgrade::option('share_buttons_enable_ga_tracking')):
-				echo ', data_ga_property: "'.wpgrade::option('share_buttons_ga_id').'"';
-				if (wpgrade::option('share_buttons_enable_ga_social_tracking')):
+				<?php if (rosa::option('share_buttons_enable_tracking') && rosa::option('share_buttons_enable_ga_tracking')):
+				echo ', data_ga_property: "'.rosa::option('share_buttons_ga_id').'"';
+				if (rosa::option('share_buttons_enable_ga_social_tracking')):
 					echo ', data_ga_social : true';
 				endif;
 			endif; ?>
@@ -76,6 +109,7 @@ function rosa_callback_addthis() {
 		<?php
 	endif;
 }
+add_action( 'wp_enqueue_scripts', 'rosa_callback_addthis' );
 
 function rosa_please_select_a_menu_fallback() {
 	echo '
@@ -91,7 +125,7 @@ function rosa_display_header_down_arrow( $page_section_idx, $header_height ) {
 	}
 
 	//get the global option regarding down arrow style
-	$down_arrow_style = wpgrade::option('down_arrow_style');
+	$down_arrow_style = rosa::option('down_arrow_style');
 	if ( empty($down_arrow_style) ) {
 		$down_arrow_style = 'transparent'; //the default
 	}
@@ -302,3 +336,31 @@ function rosa_pagination_custom_markup( $link, $key ) {
 }
 
 add_filter( 'wp_link_pages_link', 'rosa_pagination_custom_markup', 10, 2 );
+
+/**
+ * @todo, replace the corepartial method
+ * The function is executed on the_content
+ *
+ * @param string content
+ *
+ * @return string
+ */
+function rosa_callback_cleanup_excerpt( $more ) {
+	global $post;
+
+	return include rosa::corepartial( 'read-more.php' );
+}
+
+/**
+ * Invoked by rosa_callback_themesetup
+ * The function is executed on the_content_more_link
+ *
+ * @param string content
+ *
+ * @return string
+ */
+function rosa_callback_cleanup_readmore_content( $more_link, $more_link_text ) {
+	global $post;
+
+	return include rosa::corepartial( 'read-more-content.php' );
+}

@@ -12,12 +12,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 } // Exit if accessed directly
 
 if ( is_shop() || is_cart() || is_checkout() || is_checkout_pay_page() || is_account_page() || is_order_received_page() ) {
-	get_template_part( 'templates/page/header' );
+	get_template_part( 'template-parts/page/header' );
 }
 
 $classes = "article--page  article--main";
 
-$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_border_style', true );
+$border_style = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_border_style', true );
 if ( ! empty( $border_style ) ) {
 	$classes .= ' border-' . $border_style;
 }

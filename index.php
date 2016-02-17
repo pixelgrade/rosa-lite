@@ -12,8 +12,8 @@
 
 get_header();
 
-$blog_style = wpgrade::option( 'blog_layout', 'classic' );
+$blog_style = rosa::option( 'blog_layout', 'classic' );
 
-get_template_part( 'templates/post/loop/' . $blog_style );
+get_template_part( 'template-parts/post/loop/' . $blog_style );
 
 get_footer();
