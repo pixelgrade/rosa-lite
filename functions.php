@@ -82,7 +82,6 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 			}
 
 			add_image_size( $size_key, $width, $height, $hard_crop );
-
 		}
 
 		/*
@@ -94,8 +93,7 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 		$menus = array(
 			'main_menu'   => 'Main Menu',
 			'footer_menu' => 'Footer Menu',
-			'header_social_links' => 'Header Social Links',
-			'footer_social_links' => 'Footer Social Links',
+			'social_menu' => 'Social Links'
 		);
 		foreach ( $menus as $key => $value ) {
 			register_nav_menu( $key, $value );

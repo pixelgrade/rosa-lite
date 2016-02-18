@@ -139,25 +139,20 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 						<ul class="nav  nav--main  nav--items-social">
 							<?php
 
-							$social_links = rosa::option( 'social_icons' );
-
-							$target = '';
-							if ( rosa::option( 'social_icons_target_blank' ) ) {
-								$target = 'target="_blank"';
-							}
-
-							if ( ! empty( $social_links ) ) {
-								foreach ( $social_links as $domain => $icon ) {
-									if ( isset( $icon['value'] ) && isset( $icon['checkboxes']['header'] ) ) {
-										$value = $icon['value']; ?>
-										<li>
-											<a class="social-icon" href="<?php echo $value ?>" <?php echo $target ?>>
-												<i class="icon-e-<?php echo $domain; ?>"></i>
-											</a>
-										</li>
-									<?php
-									}
-								}
+							$theme_locations = get_nav_menu_locations();
+							if ( isset( $theme_locations["social_menu"] ) && ( $theme_locations["social_menu"] != 0 ) ) {
+								wp_nav_menu( array(
+									'theme_location' => 'social_menu',
+									'menu'           => '',
+									'container'      => '',
+									'container_id'   => '',
+									//                    'menu_class'      => 'site-navigation site-navigation--footer site-navigation--secondary flush--bottom',
+									'menu_class'     => 'nav--social',
+									'fallback_cb'    => false,
+									'menu_id'        => '',
+									'depth'          => 1,
+									'items_wrap'     => '<nav class="navigation  navigation--social"><ul id="%1$s" class="%2$s  nav">%3$s</ul></nav>',
+								) );
 							}
 
 							if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && rosa::option( 'show_cart_menu' ) ) {

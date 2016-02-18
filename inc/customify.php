@@ -1062,7 +1062,7 @@ function rosa_convert_social_links() {
 	}
 
 	$target = '';
-	$footer_links = array();
+	$header_links = array();
 	$widget_links = array();
 	$social_links = $current_options['social_icons'];
 
@@ -1079,8 +1079,8 @@ function rosa_convert_social_links() {
 
 			$checkboxes = $link['checkboxes'];
 
-			if ( isset( $checkboxes['footer'] ) ) {
-				$footer_links[ $key ] = $link['value'];
+			if ( isset( $checkboxes['header'] ) ) {
+				$header_links[ $key ] = $link['value'];
 			}
 
 			if ( isset( $checkboxes['widget'] ) ) {
@@ -1089,14 +1089,14 @@ function rosa_convert_social_links() {
 		}
 	}
 
-	if ( ! empty( $footer_links ) ) {
+	if ( ! empty( $header_links ) ) {
 		// create a widget menu and import links
 
 		$menu_id = wp_create_nav_menu( 'Social Links' );
 		//then get the menu object by its name
 		$menu = get_term_by( 'name', 'Social Links', 'nav_menu' );
 
-		foreach ( $footer_links as $key => $link ) {
+		foreach ( $header_links as $key => $link ) {
 			//then add the actuall link/ menu item and you do this for each item you want to add
 			wp_update_nav_menu_item( $menu->term_id, 0, array(
 					'menu-item-title'  => $key,
@@ -1115,9 +1115,9 @@ function rosa_convert_social_links() {
 	if ( ! empty( $widget_links ) ) {
 		// create a widget menu and import links
 
-		$menu_id = wp_create_nav_menu( 'Widget Social Menu' );
+		$menu_id = wp_create_nav_menu( 'Widget Social Links' );
 		//then get the menu object by its name
-		$menu = get_term_by( 'name', 'Widget Social Menu', 'nav_menu' );
+		$menu = get_term_by( 'name', 'Widget Social Links', 'nav_menu' );
 
 		foreach ( $widget_links as $key => $link ) {
 			//then add the actuall link/ menu item and you do this for each item you want to add
@@ -1130,9 +1130,9 @@ function rosa_convert_social_links() {
 			);
 		}
 		//then you set the wanted theme  location
-		$locations                = get_theme_mod( 'nav_menu_locations' );
-		$locations['widget_social_menu'] = $menu->term_id;
-		set_theme_mod( 'nav_menu_locations', $locations );
+//		$locations                = get_theme_mod( 'nav_menu_locations' );
+//		$locations['widget_social_menu'] = $menu->term_id;
+//		set_theme_mod( 'nav_menu_locations', $locations );
 	}
 
 	unset(  $current_options['social_icons'] );
