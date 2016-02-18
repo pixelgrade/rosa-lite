@@ -399,14 +399,29 @@ class rosa {
 	 * Target should be a valid option accessible via WPGradeOptions interface.
 	 * @return string|false
 	 */
-	static function image_src( $target ) {
+	static function image_src( $target, $size = null ) {
 		if ( isset( $_GET[ $target ] ) && ! empty( $target ) ) {
-			return $_GET[ $target ];
+			return self::get_attachment_image( $_GET[ $target ], $size );
 		} else { // empty target, or no query
-			$image = self::option( $target, array() );
-			if ( isset( $image['url'] ) ) {
-				return $image['url'];
+			$image = self::option( $target );
+			if ( is_numeric( $image ) ) {
+				return self::get_attachment_image( $image, $size );
 			}
+		}
+
+		return false;
+	}
+
+	static function get_attachment_image( $id, $size = null ) {
+
+		if ( empty( $id ) || ! is_numeric( $id ) ) {
+			return false;
+		}
+
+		$array = wp_get_attachment_image_src( $id, $size );
+
+		if ( isset( $array[0] ) ) {
+			return $array[0];
 		}
 
 		return false;
