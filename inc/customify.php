@@ -308,7 +308,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 										.article__header .article__headline .headline__description .star, .read-more-button, .read-more-button:hover, .shop-categories a.active,
 										body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart,
 										body.woocommerce ul.products li.product a.added_to_cart, body.woocommerce ul.products li.product .price ins,
-										.single-product .entry-summary .price span, body.woocommerce .star-rating span:before, .comment-reply-link',
+										.single-product .entry-summary .price span, body.woocommerce .star-rating span:before, .comment-reply-link,
+										.nav.nav--items-social a:hover:before',
 								),
 								array(
 									'property' => 'background-color',

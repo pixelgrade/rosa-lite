@@ -90,7 +90,7 @@ var HandleSubmenusOnTouch = (function() {
 			$(this).addClass('prevent-one');
 		});
 
-		$('a.prevent-one').on('click touchstart', function (e) {
+		$('a.prevent-one').on('click', function (e) {
 			e.preventDefault();
 			e.stopPropagation();
 
