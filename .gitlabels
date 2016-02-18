@@ -1,0 +1,70 @@
+[
+  {
+    "name": "[Alert] Now Broken",
+    "color": "e11d21"
+  },
+  {
+    "name": "Backend",
+    "color": "eb6420"
+  },
+  {
+    "name": "Check",
+    "color": "207de5"
+  },
+  {
+    "name": "Development",
+    "color": "000000"
+  },
+  {
+    "name": "Documentation",
+    "color": "009800"
+  },
+  {
+    "name": "duplicate",
+    "color": "cccccc"
+  },
+  {
+    "name": "Frontend",
+    "color": "fbca04"
+  },
+  {
+    "name": "invalid",
+    "color": "cccccc"
+  },
+  {
+    "name": "Mobile",
+    "color": "006B74"
+  },
+  {
+    "name": "Plugin Territory",
+    "color": "c7def8"
+  },
+  {
+    "name": "[Status] Needs Design",
+    "color": "207de5"
+  },
+  {
+    "name": "[Type] Bug",
+    "color": "fc2929"
+  },
+  {
+    "name": "[Type] Enhancement",
+    "color": "009800"
+  },
+  {
+    "name": "[Type] Feature",
+    "color": "009800"
+  },
+  {
+    "name": "[Type] Question",
+    "color": "cc317c"
+  },
+  {
+    "name": "UI/UX",
+    "color": "009800"
+  },
+  {
+    "name": "wontfix",
+    "color": "cccccc"
+  }
+]
