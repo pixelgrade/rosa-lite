@@ -37,8 +37,6 @@ var Parallax = {
                         position: 'absolute',
                         'max-width': 'none',
                         width: newWidth,
-                        top: (heroHeight - newHeight) / 2,
-                        left: (windowWidth - newWidth) / 2,
                         opacity: 1
                     });
                 }
@@ -154,16 +152,14 @@ var Parallax = {
                 y: '-=' + heroHeight * amount
             }, {
                 y: '+=' + heroHeight * amount * 2,
-                ease: pixGS.Linear.easeNone,
-                force3D: true
+                ease: pixGS.Linear.easeNone
             });
 
             parallax.timeline.fromTo($cloneSlider.find('.hero__content, .hero__caption'), 1, {
                 y: '+=' + windowHeight * amount
             }, {
                 y: '-=' + windowHeight * amount * 2,
-                ease: pixGS.Linear.easeNone,
-                force3D: true
+                ease: pixGS.Linear.easeNone
             }, '-=1');
 
             // move the container to match scrolling
@@ -209,13 +205,22 @@ var Parallax = {
                 progress2   = (latestKnownScrollY - parallax2.start) / (parallax2.end - parallax2.start);
 
             if (force) {
-                progress = progress < 0 ? 0 : progress > 1 ? 1 : progress;
-                progress2 = progress2 < 0 ? 0 : progress2 > 1 ? 1 : progress2;
-            }
-
-            if (0 <= progress && 1 >= progress) {
                 parallax.timeline.progress(progress);
                 parallax2.timeline.progress(progress2);
+            }
+
+            if (0 < progress && 1 > progress) {
+                parallax.timeline.progress(progress);
+                parallax2.timeline.progress(progress2);
+            } else {
+                if (0 > progress) {
+                    parallax.timeline.progress(0);
+                    parallax2.timeline.progress(progress2);
+                }
+                if (1 < progress) {
+                    parallax.timeline.progress(1);
+                    parallax2.timeline.progress(progress2);
+                }
             }
         });
 

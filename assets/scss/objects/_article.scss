@@ -186,10 +186,11 @@
 	}
 
 	.covers & {
-		position: absolute;
+		position: fixed;
 		top: 0; left: 0; right: 0; bottom: auto;
 		background: none;
 		overflow: hidden;
+		will-change: transform;
 
 		.article__parallax__img {
 			opacity: 1;
@@ -198,7 +199,8 @@
 			min-height: 100%;
 			position: absolute;
 			top: 50%; left: 50%;
-			transform: translate(-50%, -50%);
+			transform: translateX(-50%) translateY(-50%);
+			will-change: transform;
 		}
 	}
 
@@ -209,7 +211,7 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
-		transform: translate3d(0, -50%, 0);
+		transform: translateY(-50%);
 
 		img {
 			max-width: none;
@@ -221,15 +223,11 @@
 	position: absolute;
 	top: 50%; right: 0; bottom: 0; left: 0;
 	transform: translateY(-50%);
+	will-change: transform;
 
 	img {
 		position: absolute;
 	}
-}
-
-.covers {
-	position: fixed;
-	top: 0; left: 0; right: 0;
 }
 
 .lt-ie9 {

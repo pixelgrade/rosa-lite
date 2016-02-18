@@ -557,10 +557,22 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 									'media'    => ' screen and (min-width: 900px)'
 								),
 								array(
+									'property' => 'right',
+									'selector' => 'body .covers .article__parallax',
+									'unit'     => 'px',
+									'media'    => '  screen and (min-width: 900px)'
+								),
+								array(
 									'property' => 'margin-left',
 									'selector' => 'body .covers',
 									'unit'     => 'px',
 									'media'    => 'screen and (min-width : 900px)'
+								),
+								array(
+									'property' => 'left',
+									'selector' => 'body .covers .article__parallax',
+									'unit'     => 'px',
+									'media'    => ' screen and (min-width: 900px)'
 								),
 							)
 						),
