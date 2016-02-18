@@ -60,6 +60,21 @@ html, body, #page {
 	& > .grid__item{
 		padding-left: 48px;
 	}
+
+	@include media-query(palm) {
+		&.mobile-first {
+			display: flex;
+			flex-direction: column;
+
+			.grid__item {
+				order: 2;
+			}
+
+			.grid__item:last-child {
+				order: 1;
+			}
+		}
+	}
 }
 
 // this will be used as
