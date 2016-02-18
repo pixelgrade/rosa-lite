@@ -208,7 +208,7 @@
 
 button.nav-trigger{
 	position: absolute;
-	top: 36px;
+	top: 33px;
 	left: $_u2;
 	z-index: 20;
 	transform: translateY(-50%);
@@ -235,7 +235,7 @@ button.nav-trigger{
 	width: 26px;
 	height: 2px;
 
-	background: white;
+	background-color: black;
 
 	border-radius: 2.5rem;
 	transition: all .3s;
@@ -251,7 +251,7 @@ button.nav-trigger{
 		width: 100%;
 		border-radius: 2.5rem;
 
-		background: white;
+		background-color: black;
 		transition: all .3s;
 	}
 
@@ -264,7 +264,11 @@ button.nav-trigger{
 	}
 
 	.navigation--is-visible & {
-		background:transparent;
+		background-color: transparent !important;
+
+		&:after, &:before {
+			background-color: white !important;
+		}
 
 		&:after{
 			transform: rotate(45deg);
@@ -274,6 +278,26 @@ button.nav-trigger{
 		&:before{
 			transform: rotate(-45deg);
 			top: 0;
+		}
+	}
+}
+
+.header--transparent {
+	.nav-icon {
+		&,
+		&:before,
+		&:after {
+			background-color: white;
+		}
+	}
+}
+
+.site-header.headroom--not-top {
+	.nav-icon {
+		&,
+		&:before,
+		&:after {
+			background-color: black;
 		}
 	}
 }
