@@ -14,7 +14,7 @@ function rosa_callback_load_woocommerce_assets() {
 	if ( ! rosa::option( 'enable_woocommerce_support', '0' ) ) {
 		return;
 	}
-	wp_enqueue_style( 'wpgrade-woocommerce', get_template_directory_uri() . '/assets/css/woocommerce.css', array( 'woocommerce-general' ), rosa::cachebust_string( rosa::themefilepath( 'assets/css/woocommerce.css' ) ) );
+	wp_enqueue_style( 'rosa-woocommerce', get_template_directory_uri() . '/woocommerce.css', array( 'woocommerce-general' ), rosa::cachebust_string( rosa::themefilepath( 'woocommerce.css' ) ) );
 }
 
 add_action( 'wp_enqueue_scripts', 'rosa_callback_load_woocommerce_assets', 1 );
