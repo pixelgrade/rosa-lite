@@ -128,35 +128,31 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
 
-		if ( is_rtl() ) {
-			wp_enqueue_style( 'rtl-support', rosa::resourceuri( 'rtl.css' ) );
-		}
-
-		if (is_404()) {
-			wp_enqueue_style( rosa::shortname() . '-404-style', get_template_directory_uri() . '/assets/css/pages/404.css', array(), time(), 'all' );
+		if ( is_404() ) {
+			wp_enqueue_style( 'rosa-404-style', get_template_directory_uri() . '/404.css', array(), time(), 'all' );
 		}
 
 		// @todo maybe load from customify???
 
 //		wp_enqueue_script( 'google-webfonts', REQUEST_PROTOCOL . '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700,400italic,700italic|Herr+Von+Muellerhoff' );
-		wp_enqueue_style( 'wpgrade-main-style', get_template_directory_uri() . '/style.css', array(), rosa::cachebust_string( rosa::themefilepath( 'style.css' ) ) );
+		wp_enqueue_style( 'rosa-main-style', get_stylesheet_uri(), array(), rosa::cachebust_string( rosa::themefilepath( 'style.css' ) ) );
 
 		// Scripts
 
 		wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr.min.js', array( 'jquery' ) );
-		wp_enqueue_script( 'webfont-script', REQUEST_PROTOCOL . '//ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js', array( 'jquery' ) );
+		wp_enqueue_script( 'webfont-script', '//ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js', array( 'jquery' ) );
 
-		wp_enqueue_script( 'wpgrade-plugins', get_template_directory_uri() . '/assets/js/plugins.js', array( 'jquery', 'modernizr' ), null, true );
-		wp_enqueue_script( 'wpgrade-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'wpgrade-plugins' ), rosa::cachebust_string( rosa::themefilepath( 'assets/js/main.js' ) ), true );
+		wp_enqueue_script( 'rosa-plugins-scripts', get_template_directory_uri() . '/assets/js/plugins.js', array( 'jquery', 'modernizr' ), null, true );
+		wp_enqueue_script( 'rosa-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'wpgrade-plugins' ), rosa::cachebust_string( rosa::themefilepath( 'assets/js/main.js' ) ), true );
 
 
-		wp_enqueue_script( 'addthis-api', REQUEST_PROTOCOL . '//s7.addthis.com/js/300/addthis_widget.js#async=1', array( 'jquery' ), null, true );
-		wp_enqueue_script( 'google-maps-api', REQUEST_PROTOCOL . '//maps.google.com/maps/api/js?language=en', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'addthis-api', '//s7.addthis.com/js/300/addthis_widget.js#async=1', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'google-maps', '//maps.google.com/maps/api/js?language=en', array( 'jquery' ), null, true );
 
-		wp_localize_script( 'wpgrade-main-scripts', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
+		wp_localize_script( 'rosa-main-scripts', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
 		// localize the theme_name, we are gonna need it
-		wp_localize_script( 'wpgrade-main-scripts', 'theme_name', rosa::shortname() );
-		wp_localize_script( 'wpgrade-main-scripts', 'objectl10n', array(
+		wp_localize_script( 'rosa-main-scripts', 'theme_name', rosa::shortname() );
+		wp_localize_script( 'rosa-main-scripts', 'objectl10n', array(
 			'tPrev'             => __( 'Previous (Left arrow key)', 'rosa' ),
 			'tNext'             => __( 'Next (Right arrow key)', 'rosa' ),
 			'tCounter'          => __( 'of', 'rosa' ),
@@ -172,7 +168,7 @@ if ( ! function_exists( 'rosa_load_admin_assets' ) ) {
 
 	function rosa_load_admin_assets() {
 
-		wp_enqueue_script( 'rosa_admin_general_script', get_template_directory_uri().'/assets/js/admin/admin-general.js', array('jquery') );
+		wp_enqueue_script( 'rosa_admin_general_script', get_template_directory_uri() . '/assets/js/admin/admin-general.js', array('jquery') );
 
 		$translation_array = array
 		(
@@ -242,7 +238,7 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/extras.php';
 
 /**
- * For admin also
+ * Custom functions for the WordPress admin area
  */
 if ( is_admin() ) {
 	require get_template_directory() . '/inc/extras_admin.php';
@@ -258,8 +254,19 @@ require get_template_directory() . '/inc/customizer.php';
  */
 require get_template_directory() . '/inc/mb_compat.php';
 
+/**
+ * Load various plugin integrations
+ */
 require get_template_directory() . '/inc/integrations.php';
+
+/**
+ * Load theme's configuration file (via Customify plugin)
+ */
 require get_template_directory() . '/inc/customify.php';
+
+/**
+ * Load Recommended/Required plugins notification
+ */
 require get_template_directory() . '/inc/required-plugins/required-plugins.php';
 
 //Automagical updates
