@@ -131,8 +131,17 @@ add_filter( 'pixcodes_filter_params_for_icon', 'rosa_callback_change_icon_params
 function rosa_callbacks_setup_shortcodes_plugin() {
 	$current_options = get_option( 'rosa_shortcodes_list' );
 
-	$config     = rosa::get_config();
-	$shortcodes = $config['shortcodes'];
+	$shortcodes = array(
+		'Columns',
+		'Button',
+		'Icon',
+		'Tabs',
+		'Heading',
+		'Separator',
+		'Slider',
+		'OpenTableReservations',
+		'RestaurantMenu',
+	);
 
 	// create an array with shortcodes which are needed by the
 	// current theme

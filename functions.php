@@ -23,35 +23,66 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 		// Add theme support for Featured Images
 		add_theme_support( 'post-thumbnails' );
 
-		$sizes = rosa::confoption( 'thumbnails_sizes' );
+		$sizes = array(
 
-		if ( ! empty( $sizes ) ) {
-			foreach ( $sizes as $size_key => $values ) {
+			/**
+			 * MAXIMUM SIZE
+			 * Maximum Full Image Size
+			 * - Sliders
+			 * - Lightbox
+			 */
+			'full-size'         => array(
+				'width' => 2048
+			),
 
-				$width = 0;
-				if ( isset( $values['width'] ) ) {
-					$width = $values['width'];
-				}
+			/**
+			 * LARGE SIZE
+			 * - Single post without sidebar
+			 */
+			'large-size'         => array(
+				'width' => 1200
+			),
 
-				$height = 0;
-				if ( isset( $values['height'] ) ) {
-					$height = $values['height'];
-				}
+			/**
+			 * MEDIUM SIZE
+			 * - Tablet Sliders
+			 * - Archive Featured Image
+			 * - Single Featured Image
+			 */
+			'medium-size'       => array(
+				'width' => 900,
+			),
 
-				$hard_crop = false;
-				if ( isset( $values['hard_crop'] ) ) {
-					$hard_crop = $values['hard_crop'];
-				}
+			/**
+			 * SMALL SIZE
+			 * - Masonry Grid
+			 * - Mobile Sliders
+			 */
+			'small-size'        => array(
+				'width' => 400,
+			),
 
-				add_image_size( $size_key, $width, $height, $hard_crop );
+		);
 
+		foreach ( $sizes as $size_key => $values ) {
+
+			$width = 0;
+			if ( isset( $values['width'] ) ) {
+				$width = $values['width'];
 			}
-		}
 
-		// add theme support for post formats
-		$post_formats = rosa::confoption( 'post-formats', array() );
-		if ( ! empty( $post_formats ) ) {
-			add_theme_support( 'post-formats', $post_formats );
+			$height = 0;
+			if ( isset( $values['height'] ) ) {
+				$height = $values['height'];
+			}
+
+			$hard_crop = false;
+			if ( isset( $values['hard_crop'] ) ) {
+				$hard_crop = $values['hard_crop'];
+			}
+
+			add_image_size( $size_key, $width, $height, $hard_crop );
+
 		}
 
 		/*
@@ -59,12 +90,17 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 		 * This works on 3.1+
 		 */
 		add_theme_support( 'menus' );
-		$menus = rosa::confoption( 'import_nav_menu' );
+
+		$menus = array(
+			'main_menu'   => 'Main Menu',
+			'footer_menu' => 'Footer Menu',
+		);
 		foreach ( $menus as $key => $value ) {
 			register_nav_menu( $key, $value );
 		}
 
 		add_editor_style( 'editor-style.css' );
+
 		add_filter( 'upload_mimes', 'rosa_callback_custom_upload_mimes' );
 	}
 }
@@ -225,8 +261,6 @@ require get_template_directory() . '/inc/mb_compat.php';
 require get_template_directory() . '/inc/integrations.php';
 require get_template_directory() . '/inc/customify.php';
 require get_template_directory() . '/inc/required-plugins/required-plugins.php';
-
-
 
 //Automagical updates
 function wupdates_check_vexXr( $transient ) {

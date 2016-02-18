@@ -7,6 +7,9 @@
  */
 class rosa {
 
+	static protected $prefix = '_rosa_';
+	static protected $shortname = 'rosa';
+
 	/**
 	 * Display the comments number
 	 */
@@ -364,55 +367,6 @@ class rosa {
 
 	// all methods below are merged from wpgrade
 
-	/** @var array */
-	protected static $configuration = null;
-
-	/**
-	 * The theme configuration as read by the system is defined in
-	 * wpgrade-config.php
-	 * @deprecated
-	 * @return array theme configuration
-	 */
-	static function config() {
-		return self::get_config();
-	}
-
-	static function get_config() {
-		if ( ! self::has_config() ) {
-			self::set_config();
-		}
-
-		return self::$configuration;
-	}
-
-	static function set_config() {
-		if ( file_exists( self::childpath() . 'inc/wpgrade-config.php' ) ) {
-			self::$configuration = include self::childpath() . '/inc/wpgrade-config.php';
-		} elseif ( file_exists( self::themepath() . 'inc/wpgrade-config.php' ) ) {
-			self::$configuration = include self::themepath() . '/inc/wpgrade-config.php';
-		}
-		return false;
-	}
-
-	static function has_config() {
-		if ( self::$configuration === null ) {
-			return false;
-		}
-
-		return true;
-	}
-
-	static $shortname = null;
-
-	/**
-	 * @return mixed
-	 */
-	static function confoption( $key, $default = null ) {
-		$config = self::get_config();
-
-		return isset( $config[ $key ] ) ? $config[ $key ] : $default;
-	}
-
 	/**
 	 * @return string http or https based on is_ssl()
 	 */
@@ -461,7 +415,7 @@ class rosa {
 	//// Wordpress Defferred Helpers ///////////////////////////////////////////////
 
 	/**
-	 * Filter content based on settings in wpgrade-config.php
+	 * Filter content
 	 * Filters may be disabled by setting priority to false or null.
 	 * @return string $content after being filtered
 	 */
@@ -543,15 +497,6 @@ class rosa {
 	}
 
 	static function get_shortname() {
-		if ( self::$shortname === null ) {
-			$config = self::get_config();
-			if ( isset( $config['shortname'] ) ) {
-				self::$shortname = $config['shortname'];
-			} else { // use name to determine apropriate shortname
-				self::$shortname = str_replace( ' ', '_', strtolower( $config['name'] ) );
-			}
-		}
-
 		return self::$shortname;
 	}
 
@@ -559,21 +504,15 @@ class rosa {
 	 * @return string theme prefix
 	 */
 	static function prefix() {
-		$config = self::get_config();
-		if ( isset( $config['prefix'] ) ) {
-			return $config['prefix'];
-		} else { // use shortname to determine apropriate shortname
-			return '_' . self::shortname() . '_';
-		}
+		return self::$prefix;
 	}
 
 	/**
 	 * @return string theme name, in presentable format
 	 */
 	static function themename() {
-		$config = self::get_config();
 
-		return ucfirst( $config['name'] );
+		return 'rosa';
 	}
 
 	/** @var WP_Theme */
