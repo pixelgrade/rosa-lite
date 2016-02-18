@@ -23,3 +23,5 @@ build
 npm-debug.log
 style.css
 editor-style.css
+rtl.css
+woocommerce.css

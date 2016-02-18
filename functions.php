@@ -93,7 +93,7 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 		}
 
 		if ( is_rtl() ) {
-			wp_enqueue_style( 'rtl-support', rosa::resourceuri( 'css/localization/rtl.css' ) );
+			wp_enqueue_style( 'rtl-support', rosa::resourceuri( 'rtl.css' ) );
 		}
 
 		if (is_404()) {
@@ -103,7 +103,6 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 		// @todo maybe load from customify???
 
 //		wp_enqueue_script( 'google-webfonts', REQUEST_PROTOCOL . '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700,400italic,700italic|Herr+Von+Muellerhoff' );
-
 		wp_enqueue_style( 'wpgrade-main-style', get_template_directory_uri() . '/style.css', array(), rosa::cachebust_string( rosa::themefilepath( 'style.css' ) ) );
 
 		// Scripts
