@@ -35,7 +35,7 @@ else :
 			while ( have_posts() ) : the_post(); ?>
 				<article <?php post_class( 'article-single  single-post ' . $post_class_thumb ) ?>>
 					<header class="article__header">
-						<h1 class="article__title"><?php the_title(); ?></h1>
+						<h1 class="article__title" itemprop="name"><?php the_title(); ?></h1>
 						<hr class="separator"/>
 
 						<?php
@@ -46,7 +46,7 @@ else :
 								$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large-size' );
 							}
 							if ( ! empty( $image[0] ) ) : ?>
-								<div class="article__featured-image">
+								<div class="article__featured-image" itemprop="image">
 									<img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
 								</div>
 							<?php endif;
@@ -54,7 +54,7 @@ else :
 
 					</header><!-- .article__header -->
 
-					<section class="article__content  js-post-gallery">
+					<section class="article__content  js-post-gallery" itemprop="articleBody">
 						<?php the_content(); ?>
 					</section><!-- .article__content -->
 
@@ -63,11 +63,14 @@ else :
 						global $multipage;
 						if ( $multipage ): ?>
 
-							<div class="entry__meta-box  meta-box--pagination">
+							<div class="entry__meta-box  meta-box--pagination" role="navigation">
+								<h2 class="screen-reader-text"><?php esc_html_e( 'Pages: ', 'rosa' ); ?></h2>
 								<?php
 								$args = array(
-									'before'           => '<ol class="nav  pagination--single">',
-									'after'            => '</ol>',
+									'before'           => '<nav class="nav pagination--single">',
+									'after'            => '</nav>',
+									'link_before'      => '<span>',
+									'link_after'       => '</span>',
 									'next_or_number'   => 'next_and_number',
 									'previouspagelink' => __( '&laquo;', 'rosa' ),
 									'nextpagelink'     => __( '&raquo;', 'rosa' )

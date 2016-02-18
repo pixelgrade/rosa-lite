@@ -47,6 +47,48 @@
 	}
 }
 
+.pagination--single {
+	border: none;
+	text-align: center;
+	@include rem(margin, 0 0 $_u 0);
+	padding-left: 0;
+	position: relative;
+
+	&:after {
+		content: none;
+	}
+
+
+	& > a, & > span {
+		position: relative;
+		z-index: 2;
+
+		display: inline-block;
+
+		@include rem(padding, $_u4 $_u2);
+		border: 1px solid transparent;
+
+		@include font-size(16px);
+		text-transform: uppercase;
+
+		color: $light;
+		background: white;
+
+		transition: all .15s linear;
+	}
+	
+	a:hover {
+		color: white !important;
+		background-color: $accent;
+		border-bottom: 1px solid transparent;
+	}
+
+	& > span {
+		color: $dark;
+		border: 1px solid $borders;
+	}
+}
+
 .page-numbers.prev, .page-numbers.next {
 	position: absolute;
 	top: 0;
