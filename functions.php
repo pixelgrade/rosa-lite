@@ -228,7 +228,6 @@ function rosa_callback_custom_upload_mimes( $existing_mimes = null ) {
 	return $existing_mimes;
 }
 
-require get_template_directory() . '/inc/classes/util.php';
 require get_template_directory() . '/inc/classes/rosa.php';
 
 /**
