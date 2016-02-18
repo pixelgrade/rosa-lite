@@ -375,3 +375,59 @@ function rosa_get_prev_posts_link( $label = null ) {
 
 	return '';
 }
+
+if ( ! function_exists('rosa_comments') ) {
+	/*
+	 * COMMENT LAYOUT
+	 */
+	function rosa_comments( $comment, $args, $depth ) {
+		static $comment_number;
+
+		if ( ! isset( $comment_number ) )
+			$comment_number = $args['per_page'] * ( $args['page'] - 1 ) + 1; else {
+			$comment_number ++;
+		}
+
+		$GLOBALS['comment'] = $comment; ?>
+	<li <?php comment_class(); ?>>
+		<article id="comment-<?php echo $comment->comment_ID; ?>" class="comment-article  media">
+			<?php if ( rosa::option( 'comments_show_numbering' ) ): ?>
+				<span class="comment-number"><?php echo $comment_number ?></span>
+			<?php endif; ?>
+			<?php if ( rosa::option( 'comments_show_avatar' ) && get_comment_type( $comment->comment_ID ) == 'comment' ): ?>
+				<aside class="comment__avatar  media__img">
+					<!-- custom gravatar call -->
+					<?php $bgauthemail = get_comment_author_email(); ?>
+					<img src="http://www.gravatar.com/avatar/<?php echo md5( $bgauthemail ); ?>?s=60" class="comment__avatar-image" height="60" width="60" style="background-image: <?php echo get_template_directory_uri() . '/library/images/nothing.gif'; ?>; background-size: 100% 100%"/>
+				</aside>
+			<?php endif; ?>
+			<div class="media__body">
+				<header class="comment__meta comment-author">
+					<?php printf( '<span class="comment__author-name">%s</span>', get_comment_author_link() ) ?>
+					<time class="comment__time" datetime="<?php comment_time( 'c' ); ?>">
+						<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>" class="comment__timestamp"><?php printf( __( 'on %s at %s', 'rosa' ), get_comment_date(), get_comment_time() ); ?> </a>
+					</time>
+					<div class="comment__links">
+						<?php
+						edit_comment_link( __( 'Edit', 'rosa' ), '  ', '' );
+						comment_reply_link( array_merge( $args, array( 'depth'     => $depth,
+						                                               'max_depth' => $args['max_depth']
+						) ) );
+						?>
+					</div>
+				</header>
+				<!-- .comment-meta -->
+				<?php if ( $comment->comment_approved == '0' ) : ?>
+					<div class="alert info">
+						<p><?php _e( 'Your comment is awaiting moderation.', 'rosa' ) ?></p>
+					</div>
+				<?php endif; ?>
+				<section class="comment__content comment">
+					<?php comment_text() ?>
+				</section>
+			</div>
+		</article>
+		<!-- </li> is added by WordPress automatically -->
+		<?php
+	} // don't remove this bracket!
+}
