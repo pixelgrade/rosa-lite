@@ -136,9 +136,10 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 			wp_enqueue_style( rosa::shortname() . '-404-style', get_template_directory_uri() . '/assets/css/pages/404.css', array(), time(), 'all' );
 		}
 
-		// @todo maybe load from customify???
+		if ( ! class_exists( 'PixCustomifyPlugin' ) ) {
+			wp_enqueue_style( 'rosa-default-fonts', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700,400italic,700italic|Herr+Von+Muellerhoff' );
+		}
 
-//		wp_enqueue_script( 'google-webfonts', REQUEST_PROTOCOL . '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700,400italic,700italic|Herr+Von+Muellerhoff' );
 		wp_enqueue_style( 'wpgrade-main-style', get_template_directory_uri() . '/style.css', array(), rosa::cachebust_string( rosa::themefilepath( 'style.css' ) ) );
 
 		// Scripts
@@ -234,6 +235,7 @@ require get_template_directory() . '/inc/classes/rosa.php';
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
+require get_template_directory() . '/inc/widgets.php';
 
 /**
  * Custom functions that act independently of the theme templates.
