@@ -22,12 +22,6 @@ var Parallax = {
                     $cover  = $hero.children('.article__parallax'),
                     $image  = $cover.find('.article__parallax__img');
 
-                $cover.show();
-
-                // if ( ! $image.length ) {
-                //     $image = $cover.children('picture').children('img');
-                // }
-
                 if ( $image.length ) {
 
                     var imageWidth  = $image.css('width', 'auto').outerWidth(),
@@ -109,7 +103,7 @@ var Parallax = {
                 };
 
             $cover.removeAttr('style');
-            $clone.data('source', $cover).appendTo('.covers').show();
+            $clone.data('source', $cover).appendTo('.covers');
             $clone.css('height', heroHeight);
 
             // let's see if the user wants different speed for different whateva'
@@ -185,27 +179,27 @@ var Parallax = {
                 .data('parallax', parallax)
                 .data('parallax2', parallax2);
 
-            // update progress on the timelines to match current scroll position
-            that.update();
-
             // or the slider
             royalSliderInit($clone);
             gmapInit($clone);
             gmapMultiplePinsInit($clone);
-
-            if (that.initialized) {
-                pixGS.TweenMax.to($clone, .3, {'opacity': 1});
-            }
-
         });
 
+        // update progress on the timelines to match current scroll position
+        that.update(true);
+
+        if (that.initialized) {
+            pixGS.TweenMax.to($('.covers .article__parallax'), .3, {'opacity': 1});
+        }
     },
 
-    update: function () {
+    update: function (force) {
         // return;
         if (Modernizr.touch || is_ie || latestKnownScrollY > this.stop || latestKnownScrollY < this.start) {
             return;
         }
+
+        force = (typeof force == "undefined") ? false : !!force;
 
         $('.covers .article__parallax').each(function (i, cover) {
             var $cover      = $(cover),
@@ -214,14 +208,15 @@ var Parallax = {
                 progress    = (latestKnownScrollY - parallax.start) / (parallax.end - parallax.start),
                 progress2   = (latestKnownScrollY - parallax2.start) / (parallax2.end - parallax2.start);
 
-            progress = 0 > progress ? 0 : progress;
-            progress = 1 < progress ? 1 : progress;
+            if (force) {
+                progress = progress < 0 ? 0 : progress > 1 ? 1 : progress;
+                progress2 = progress2 < 0 ? 0 : progress2 > 1 ? 1 : progress2;
+            }
 
-            progress2 = 0 > progress2 ? 0 : progress2;
-            progress2 = 1 < progress2 ? 1 : progress2;
-
-            parallax.timeline.progress(progress);
-            parallax2.timeline.progress(progress2);
+            if (0 <= progress && 1 >= progress) {
+                parallax.timeline.progress(progress);
+                parallax2.timeline.progress(progress2);
+            }
         });
 
     }
