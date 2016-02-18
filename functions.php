@@ -94,6 +94,8 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 		$menus = array(
 			'main_menu'   => 'Main Menu',
 			'footer_menu' => 'Footer Menu',
+			'header_social_links' => 'Header Social Links',
+			'footer_social_links' => 'Footer Social Links',
 		);
 		foreach ( $menus as $key => $value ) {
 			register_nav_menu( $key, $value );
