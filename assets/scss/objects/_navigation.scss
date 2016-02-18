@@ -12,6 +12,7 @@
 	@extend .cf;
 	display: inline-block;
 	margin-bottom: 0;
+	vertical-align: middle;
 
 	> li {
 
@@ -209,7 +210,7 @@
 button.nav-trigger{
 	position: absolute;
 	top: 33px;
-	left: $_u2;
+	left: 5px;
 	z-index: 20;
 	transform: translateY(-50%);
 
@@ -370,12 +371,10 @@ $nav-width: 315px;
 
 		background: $dark;
 
-		.nav--main {
-			width: 100%;
-		}
-
 		.nav--items-menu {
+			width: 100%;
 			padding: 26px 0;
+			margin-bottom: 14px;
 
 			border-top: 1px solid #41403d;
 			border-bottom: 1px solid #41403d;
@@ -427,10 +426,35 @@ $nav-width: 315px;
 
 						transform: rotate(45deg);
 					}
+
+					&:before {
+						content: "";
+
+						position: absolute;
+						top: 3px;
+						bottom: 3px;
+						left: -5px;
+						right: -5px;
+						z-index: -1;
+
+						display: block;
+
+						opacity: 0;
+						pointer-events: none;
+
+						border-radius: 4px;
+						background-color: rgba(0, 0 ,0, .5);
+					}
 				}
 
-				&.hover > a:after {
-					transform: rotate(-45deg);
+				&:hover, &.hover {
+					& > a:after {
+						transform: rotate(-45deg);
+					}
+
+					& > a:before {
+						opacity: 1;
+					}
 				}
 			}
 		}
@@ -458,6 +482,10 @@ $nav-width: 315px;
 
 		.sub-menu .sub-menu{
 			border: 0;
+		}
+
+		.cart-icon-link {
+			@include rem(padding, 8px 18px !important);
 		}
 	}
 
@@ -585,9 +613,9 @@ $nav-width: 315px;
     $ICONS, SHOP MENU ITEM
 \*------------------------------------*/
 
-.nav--items-social{
+.nav--items-social {
 
-	a{
+	a {
 		padding-left: $_u2 !important;
 		padding-right: $_u2 !important;
 	}
@@ -596,28 +624,30 @@ $nav-width: 315px;
 		font-size: 14px;
 	}
 
-	@include media-query(palm){
+	@include media-query(palm) {
 		margin-bottom: $_u;
 
-		.navigation--main & li{
+		.navigation--main & li {
 			display: inline-block;
 			border-bottom: 0;
 
-			&.menu-item-has-children > a{
+			&.menu-item-has-children > a {
 				border-bottom: 0;
 			}
 		}
 
-		ul.sub-menu{
+		ul.sub-menu {
 			display: none !important;
 		}
 	}
+}
 
-	@include media-query(lap-and-up){
-		// margin-left: $_u2;
-		float: right;
+.nav--items-social, .nav--woocommerce {
+	@include media-query(palm) {
+		width: auto;
+		display: inline-block;
+		vertical-align: middle;
 	}
-
 }
 
 .shop-menu-item{
@@ -660,11 +690,12 @@ $nav-width: 315px;
 	}
 
 	.cart-icon-link{
-		@include rem(padding, $_u2 $_u);
+		@include rem(padding, $_u2 10px);
 		display: block;
 	}
 
 	.widget_shopping_cart_content{
+		position: relative;
 		display: inline-block;
 	}
 

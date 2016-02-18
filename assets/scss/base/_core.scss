@@ -223,14 +223,24 @@ img[width], img[height] {
 // wordpress gallery
 .gallery {
 	@extend .cf;
-	margin-left: -$_u !important;
-	margin-bottom: -$_u !important;
+
+	margin-left: -$_u2 !important;
+	margin-bottom: -$_u2 !important;
 
 	.gallery-item {
 		margin-bottom: 0;
+		border-left: $_u2 solid transparent;
+		border-bottom: $_u2 solid transparent;
+	}
 
-		border-left: $_u solid transparent;
-		border-bottom: $_u solid transparent;
+	@include media-query(lap-and-up) {
+		margin-left: -$_u !important;
+		margin-bottom: -$_u !important;
+
+		.gallery-item {
+			border-left: $_u solid transparent;
+			border-bottom: $_u solid transparent;
+		}
 	}
 
 	.gallery-icon {

@@ -136,28 +136,38 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 					} ?>
 					<nav class="navigation  navigation--main<?php echo ( ! $has_main_menu ) ? "  no-menu" : ""; ?>" id="js-navigation--main">
 						<h2 class="accessibility"><?php _e( 'Primary Navigation', 'rosa' ) ?></h2>
-						<ul class="nav  nav--main  nav--items-social">
-							<?php
 
-							$theme_locations = get_nav_menu_locations();
-							if ( isset( $theme_locations["social_menu"] ) && ( $theme_locations["social_menu"] != 0 ) ) {
-								wp_nav_menu( array(
-									'theme_location' => 'social_menu',
-									'menu'           => '',
-									'container'      => '',
-									'container_id'   => '',
-									//                    'menu_class'      => 'site-navigation site-navigation--footer site-navigation--secondary flush--bottom',
-									'menu_class'     => 'nav--social',
-									'fallback_cb'    => false,
-									'menu_id'        => '',
-									'depth'          => 1,
-									'items_wrap'     => '<nav class="navigation  navigation--social"><ul id="%1$s" class="%2$s  nav">%3$s</ul></nav>',
-								) );
-							}
+						<?php
+						wp_nav_menu( array(
+							'theme_location' => 'main_menu',
+							'menu'           => '',
+							'container'      => '',
+							'container_id'   => '',
+							'menu_class'     => 'nav  nav--main  nav--items-menu',
+							'menu_id'        => '',
+							'fallback_cb'    => 'rosa_please_select_a_menu_fallback',
+							'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+						) );
 
-							if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && rosa::option( 'show_cart_menu' ) ) {
-								global $woocommerce; ?>
+						$theme_locations = get_nav_menu_locations();
+						if ( isset( $theme_locations["social_menu"] ) && ( $theme_locations["social_menu"] != 0 ) ) {
+							wp_nav_menu( array(
+								'theme_location' => 'social_menu',
+								'menu'           => '',
+								'container'      => '',
+								'container_id'   => '',
+								//                    'menu_class'      => 'site-navigation site-navigation--footer site-navigation--secondary flush--bottom',
+								'menu_class'     => 'nav--main  nav--items-social',
+								'fallback_cb'    => false,
+								'menu_id'        => '',
+								'depth'          => 1,
+								'items_wrap'     => '<ul id="%1$s" class="%2$s  nav">%3$s</ul>',
+							) );
+						}
 
+						if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && rosa::option( 'show_cart_menu' ) ) :
+							global $woocommerce; ?>
+							<ul class="nav  nav--main  nav--woocommerce">
 								<li class="shop-menu-item  menu-item-has-children">
 									<div class="widget_shopping_cart_content">
 										<a class="cart-icon-link" href="<?php echo $woocommerce->cart->get_cart_url(); ?>">
@@ -177,20 +187,8 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 										</ul>
 									</div>
 								</li>
-
-							<?php } ?>
-						</ul>
-						<?php
-						wp_nav_menu( array(
-							'theme_location' => 'main_menu',
-							'menu'           => '',
-							'container'      => '',
-							'container_id'   => '',
-							'menu_class'     => 'nav  nav--main  nav--items-menu',
-							'menu_id'        => '',
-							'fallback_cb'    => 'rosa_please_select_a_menu_fallback',
-							'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-						) ); ?>
+							</ul>
+						<?php endif; ?>
 					</nav>
 					<div class="nav-overlay"></div>
 				</div>

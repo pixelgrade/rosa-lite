@@ -198,7 +198,6 @@ add_action( 'admin_enqueue_scripts', 'rosa_load_admin_assets' );
 // Media Handlers
 // --------------
 
-
 /**
  * Make sure wordpress allows our mime types.
  * @return array
