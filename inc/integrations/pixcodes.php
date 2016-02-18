@@ -16,7 +16,7 @@ function rosa_callback_change_separator_params( $params ) {
 	}
 
 	//add new params in the right order
-	$params = util::array_insert_after( 'color', $params, 'type', array(
+	$params = rosa_array_insert_after( 'color', $params, 'type', array(
 		'type'        => 'select',
 		'name'        => 'Type',
 		'options'     => array(
@@ -60,7 +60,7 @@ function rosa_callback_change_button_params( $params ) {
 	}
 
 	//add new params in the right order
-	$params = util::array_insert_before( 'size', $params, 'type', array(
+	$params = rosa_array_insert_before( 'size', $params, 'type', array(
 		'type'        => 'select',
 		'name'        => 'Type',
 		'options'     => array(
@@ -110,14 +110,14 @@ add_filter( 'pixcodes_filter_params_for_columns', 'rosa_callback_remove_columns_
 function rosa_callback_change_icon_params( $params ) {
 
 	//add new params in the right order
-	$params = util::array_insert_after( 'size', $params, 'link', array(
+	$params = rosa_array_insert_after( 'size', $params, 'link', array(
 		'type'        => 'text',
 		'name'        => 'Link',
 		'options'     => array(),
 		'admin_class' => 'span6'
 	) );
 
-	$params = util::array_insert_after( 'link', $params, 'link_target_blank', array(
+	$params = rosa_array_insert_after( 'link', $params, 'link_target_blank', array(
 		'type'        => 'switch',
 		'name'        => 'Open in new window',
 		'options'     => array(),
