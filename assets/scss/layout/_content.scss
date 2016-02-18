@@ -7,7 +7,7 @@
 	@extend .cf;
 
 	@include media-query(palm) {
-		margin: 0 $_u2;
+		margin: 0 22px;
 		padding: 0;
 	}
 }

@@ -4,9 +4,9 @@
 
 // Font Awesome 4.5.0
 $fa-css-prefix: icon;
-$fa-font-path: "../fonts/icon-fonts/fontawesome";
+$fa-font-path: "assets/fonts/icon-fonts/fontawesome";
 // Entyo 2.0
-$EntypoPath: "../fonts/icon-fonts/entypo2";
+$EntypoPath: "assets/fonts/icon-fonts/entypo2";
 
 @import "font-awesome/_font-awesome",
 "font-entypo/_font-entypo";

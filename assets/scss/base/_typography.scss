@@ -51,7 +51,7 @@ h2, h3, h4 {
 
 h5, h6 {
 	font-weight: 400;
-	letter-spacing:6px;
+	letter-spacing: 0.323em;
 }
 
 .article__title, .article__title .hN, .widget__title .hN, .heading .hN {
@@ -159,6 +159,12 @@ a {
 .article__content {
 	a[href$=".jpg"], a[href$=".jpeg"], a[href$=".png"], a[href$=".gif"], a[href$=".bmp"] {
 		border: 0;
+		display: block;
+		padding-bottom: 0;
+
+		img {
+			display: block;
+		}
 	}
 }
 

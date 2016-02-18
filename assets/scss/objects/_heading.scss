@@ -60,7 +60,7 @@
 	margin-right: -0.1em;
 
 	@include max-screen(900px) {
-		font-size: 20px;
+		font-size: 37px;
 	}
 }
 
@@ -80,7 +80,7 @@
 	color: $accent;
 
 	@include max-screen(900px) {
-		font-size: 75px;
+		font-size: 85px;
 		padding: 0 36px;
 		margin: 0 -36px;
 //		line-height: 0.75;

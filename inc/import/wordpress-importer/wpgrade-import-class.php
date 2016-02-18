@@ -20,20 +20,17 @@ class wpGrade_import extends WPGrade_WP_Import {
 		if ( $stepNumber == $numberOfSteps ) {
 			//set the front and blog page
 			// Use a static front page
-			if ( wpgrade::confoption( 'import_homepage_name' ) ) {
-				update_option( 'show_on_front', 'page' );
-				$home = get_page_by_title( wpgrade::confoption( 'import_homepage_name' ) );
-				if ( ! empty( $home ) ) {
-					update_option( 'page_on_front', $home->ID );
-				}
+
+			update_option( 'show_on_front', 'page' );
+			$home = get_page_by_title( 'Home Page' );
+			if ( ! empty( $home ) ) {
+				update_option( 'page_on_front', $home->ID );
 			}
 
 			// Set the blog page
-			if ( wpgrade::confoption( 'import_blogpage_name' ) ) {
-				$blog = get_page_by_title( wpgrade::confoption( 'import_blogpage_name' ) );
-				if ( ! empty( $blog ) ) {
-					update_option( 'page_for_posts', $blog->ID );
-				}
+			$blog = get_page_by_title( 'News' );
+			if ( ! empty( $blog ) ) {
+				update_option( 'page_for_posts', $blog->ID );
 			}
 		}
 
@@ -445,7 +442,7 @@ class wpGrade_import extends WPGrade_WP_Import {
 		if ( ! empty( $theme_options ) ) {
 			$imported_options = json_decode( htmlspecialchars_decode( base64_decode( $theme_options ) ), true );
 			echo 'Success: ';
-			var_export( update_option( wpgrade::shortname() . "_options", $imported_options ) );
+			var_export( update_option( rosa::shortname() . "_options", $imported_options ) );
 		}
 
 		//Ensure the $wp_rewrite global is loaded
@@ -463,8 +460,10 @@ class wpGrade_import extends WPGrade_WP_Import {
 		//get all created menus
 		$wpGrade_menus = wp_get_nav_menus();
 
-		//get the configuration
-		$menu_conf = wpgrade::confoption( 'import_nav_menu' );
+		$menu_conf = array(
+			'main_menu'   => 'Main Menu',
+			'footer_menu' => 'Footer Menu',
+		);
 
 		if ( ! empty( $wpGrade_menus ) && ! empty( $menu_conf ) ) {
 			foreach ( $wpGrade_menus as $wpGrade_menu ) {

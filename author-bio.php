@@ -1,13 +1,12 @@
 <?php
 /**
  * The template for displaying Author bios.
-
  */
 ?>
 <hr class="separator"/>
 <aside class="author" itemscope itemtype="http://schema.org/Person">
 	<div class="author__avatar">
-		<?php echo '<img src="' . util::get_avatar_url( get_the_author_meta( 'email' ), '80' ) . '" itemprop="image" alt="avatar" />'; ?>
+		<?php echo '<img src="' . rosa_get_avatar_url( get_the_author_meta( 'email' ), '80' ) . '" itemprop="image" alt="avatar" />'; ?>
 	</div>
 	<div class="author__text">
 		<div class="author__title">

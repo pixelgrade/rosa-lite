@@ -36,7 +36,7 @@ function rosa_get_current_canonical_url() {
 		}
 	} elseif ( ( $wp_query->is_single || $wp_query->is_page ) && $haspost ) {
 		$post = $wp_query->posts[0];
-		$link = get_permalink( wpgrade::lang_post_id( $post->ID ) );
+		$link = get_permalink( rosa::lang_post_id( $post->ID ) );
 	} elseif ( $wp_query->is_author && $haspost ) {
 		$author = get_userdata( get_query_var( 'author' ) );
 		if ( $author === false ) {
@@ -99,8 +99,8 @@ function wpgrade_callback_geting_active() {
 	 * Get the config from /config/activation.php
 	 */
 	$activation_settings = array();
-	if ( file_exists( wpgrade::themepath() . 'inc/activation.php' ) ) {
-		$activation_settings = include wpgrade::themepath() . 'inc/activation.php';
+	if ( file_exists( rosa::themepath() . 'inc/activation.php' ) ) {
+		$activation_settings = include rosa::themepath() . 'inc/activation.php';
 	}
 
 	/**
@@ -126,7 +126,7 @@ function wpgrade_callback_geting_active() {
 			$types_options = array();
 		}
 
-		$theme_key                   = wpgrade::shortname() . '_pixtypes_theme';
+		$theme_key                   = rosa::shortname() . '_pixtypes_theme';
 		$types_options[ $theme_key ] = $pixtypes_conf_settings;
 
 		update_option( 'pixtypes_themes_settings', $types_options );
@@ -141,9 +141,7 @@ function wpgrade_callback_geting_active() {
 add_action( 'after_switch_theme', 'wpgrade_callback_geting_active' );
 
 // Start password protected stuff
-
 add_action( 'wp', 'rosa_prepare_password_for_custom_post_types' );
-
 function rosa_prepare_password_for_custom_post_types() {
 
 	global $wpgrade_private_post;
@@ -155,7 +153,7 @@ if ( ! function_exists( 'rosa_callback_the_password_form' ) ) {
 	function rosa_callback_the_password_form( $form ) {
 		global $post;
 		$post   = get_post( $post );
-		$postID = wpgrade::lang_post_id( $post->ID );
+		$postID = rosa::lang_post_id( $post->ID );
 		$label  = 'pwbox-' . ( empty( $postID ) ? rand() : $postID );
 		$form   = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">
 		<p>' . __( "This post is password protected. To view it please enter your password below:", 'rosa' ) . '</p>
@@ -222,6 +220,49 @@ if ( ! function_exists( 'rosa_add_title_caption_to_attachment' ) ) {
 	add_filter( 'wp_get_attachment_link', 'rosa_add_title_caption_to_attachment', 10, 5 );
 }
 
+if ( ! function_exists( 'rosa_callback_addthis' ) ) {
+
+	function rosa_callback_addthis() {
+		//lets determine if we need the addthis script at all
+		if ( is_single() && rosa::option( 'blog_single_show_share_links' ) ):
+			wp_enqueue_script( 'addthis-api' );
+
+			//here we will configure the AddThis sharing globally
+			global $post;
+			if ( empty( $post ) ) {
+				return;
+			} ?>
+			<script type="text/javascript">
+				addthis_config = {
+					<?php if (rosa::option('share_buttons_enable_tracking') && rosa::option('share_buttons_enable_addthis_tracking')):
+					echo 'username : "'.rosa::option('share_buttons_addthis_username').'",';
+				endif; ?>
+					ui_click: false,
+					ui_delay: 100,
+					ui_offset_top: 42,
+					ui_use_css: true,
+					data_track_addressbar: false,
+					data_track_clickback: false
+					<?php if (rosa::option('share_buttons_enable_tracking') && rosa::option('share_buttons_enable_ga_tracking')):
+					echo ', data_ga_property: "'.rosa::option('share_buttons_ga_id').'"';
+					if (rosa::option('share_buttons_enable_ga_social_tracking')):
+						echo ', data_ga_social : true';
+					endif;
+				endif; ?>
+				};
+
+				addthis_share = {
+					url: "<?php echo rosa_get_current_canonical_url(); ?>",
+					title: "<?php wp_title('|', true, 'right'); ?>",
+					description: "<?php echo trim(strip_tags(get_the_excerpt())) ?>"
+				};
+			</script>
+			<?php
+		endif;
+	}
+}
+add_action( 'wp_enqueue_scripts', 'rosa_callback_addthis' );
+
 //use different image sizes depending on the number of columns
 function rosa_overwrite_gallery_atts( $out, $pairs, $atts ) {
 
@@ -242,6 +283,31 @@ function rosa_overwrite_gallery_atts( $out, $pairs, $atts ) {
 	return $out;
 }
 add_filter( 'shortcode_atts_gallery', 'rosa_overwrite_gallery_atts', 10, 3 );
+
+
+/*
+* We would like to GetToKnowYourWorkBetter
+*
+* Invoked by rosa_callback_themesetup
+*/
+function rosa_callback_gtkywb() {
+	$themedata = rosa::themedata();
+
+	$response = wp_remote_post( REQUEST_PROTOCOL . '//pixelgrade.com/stats', array(
+		'method' => 'POST',
+		'body'   => array(
+			'send_stats'    => true,
+			'theme_name'    => rosa::shortname(),
+			'theme_version' => $themedata->get('Version'),
+			'domain'        => $_SERVER['HTTP_HOST'],
+			'permalink'     => get_permalink( 1 ),
+			'is_child'      => is_child_theme(),
+		)
+	) );
+}
+
+// some info
+add_action( 'after_switch_theme', 'rosa_callback_gtkywb' );
 
 /*
  * Add custom filter for gallery shortcode output
@@ -581,3 +647,874 @@ function rosa_register_attachments_custom_fields() {
 	}
 }
 add_action( 'init', 'rosa_register_attachments_custom_fields' );
+
+/**
+ * Load custom javascript set by theme options
+ */
+function rosa_callback_load_custom_js() {
+	$custom_js = rosa::option( 'custom_js' );
+	if ( ! empty( $custom_js ) ) {
+		//first lets test is the js code is clean or has <script> tags and such
+		//if we have <script> tags than we will not enclose it in anything - raw output
+		if ( strpos( $custom_js, '</script>' ) !== false ) {
+			echo $custom_js . "\n";
+		} else {
+			echo "<script type=\"text/javascript\">\n;(function($){\n" . $custom_js . "\n})(jQuery);\n</script>\n";
+		}
+	}
+}
+add_action( 'wp_head', 'rosa_callback_load_custom_js', 999 );
+
+function rosa_callback_load_custom_js_footer() {
+	$custom_js = rosa::option( 'custom_js_footer' );
+	if ( ! empty( $custom_js ) ) {
+		//first lets test is the js code is clean or has <script> tags and such
+		//if we have <script> tags than we will not enclose it in anything - raw output
+		if ( strpos( $custom_js, '</script>' ) !== false ) {
+			echo $custom_js . "\n";
+		} else {
+			echo "<script type=\"text/javascript\">\n;(function($){\n" . $custom_js . "\n})(jQuery);\n</script>\n";
+		}
+	}
+}
+add_action( 'wp_footer', 'rosa_callback_load_custom_js_footer', 999 );
+
+
+/**
+ * Cutting the titles and adding '...' after
+ *
+ * @param  [string] $text       [description]
+ * @param  [int] $cut_length [description]
+ * @param  [int] $limit      [description]
+ *
+ * @return [type]             [description]
+ */
+function short_text( $text, $cut_length, $limit, $echo = true ) {
+	$char_count = mb_strlen( $text );
+	$text       = ( $char_count > $limit ) ? mb_substr( $text, 0, $cut_length ) . rosa::option( 'blog_excerpt_more_text' ) : $text;
+	if ( $echo ) {
+		echo $text;
+	} else {
+		return $text;
+	}
+}
+
+/**
+ * Borrowed from CakePHP
+ * Truncates text.
+ * Cuts a string to the length of $length and replaces the last characters
+ * with the ending if the text is longer than length.
+ * ### Options:
+ * - `ending` Will be used as Ending and appended to the trimmed string
+ * - `exact` If false, $text will not be cut mid-word
+ * - `html` If true, HTML tags would be handled correctly
+ *
+ * @param string  $text    String to truncate.
+ * @param integer $length  Length of returned string, including ellipsis.
+ * @param array   $options An array of html attributes and options.
+ *
+ * @return string Trimmed string.
+ * @access public
+ * @link   http://book.cakephp.org/view/1469/Text#truncate-1625
+ */
+
+function truncate( $text, $length = 100, $options = array() ) {
+	$default = array(
+		'ending' => '...',
+		'exact'  => true,
+		'html'   => false
+	);
+	$options = array_merge( $default, $options );
+	extract( $options );
+
+	if ( $html ) {
+		if ( mb_strlen( preg_replace( '/<.*?>/', '', $text ) ) <= $length ) {
+			return $text;
+		}
+		$totalLength = mb_strlen( strip_tags( $ending ) );
+		$openTags    = array();
+		$truncate    = '';
+
+		preg_match_all( '/(<\/?([\w+]+)[^>]*>)?([^<>]*)/', $text, $tags, PREG_SET_ORDER );
+		foreach ( $tags as $tag ) {
+			if ( ! preg_match( '/img|br|input|hr|area|base|basefont|col|frame|isindex|link|meta|param/s', $tag[2] ) ) {
+				if ( preg_match( '/<[\w]+[^>]*>/s', $tag[0] ) ) {
+					array_unshift( $openTags, $tag[2] );
+				} else if ( preg_match( '/<\/([\w]+)[^>]*>/s', $tag[0], $closeTag ) ) {
+					$pos = array_search( $closeTag[1], $openTags );
+					if ( $pos !== false ) {
+						array_splice( $openTags, $pos, 1 );
+					}
+				}
+			}
+			$truncate .= $tag[1];
+
+			$contentLength = mb_strlen( preg_replace( '/&[0-9a-z]{2,8};|&#[0-9]{1,7};|&#x[0-9a-f]{1,6};/i', ' ', $tag[3] ) );
+			if ( $contentLength + $totalLength > $length ) {
+				$left           = $length - $totalLength;
+				$entitiesLength = 0;
+				if ( preg_match_all( '/&[0-9a-z]{2,8};|&#[0-9]{1,7};|&#x[0-9a-f]{1,6};/i', $tag[3], $entities, PREG_OFFSET_CAPTURE ) ) {
+					foreach ( $entities[0] as $entity ) {
+						if ( $entity[1] + 1 - $entitiesLength <= $left ) {
+							$left --;
+							$entitiesLength += mb_strlen( $entity[0] );
+						} else {
+							break;
+						}
+					}
+				}
+
+				$truncate .= mb_substr( $tag[3], 0, $left + $entitiesLength );
+				break;
+			} else {
+				$truncate .= $tag[3];
+				$totalLength += $contentLength;
+			}
+			if ( $totalLength >= $length ) {
+				break;
+			}
+		}
+	} else {
+		if ( mb_strlen( $text ) <= $length ) {
+			return $text;
+		} else {
+			$truncate = mb_substr( $text, 0, $length - mb_strlen( $ending ) );
+		}
+	}
+	if ( ! $exact ) {
+		$spacepos = mb_strrpos( $truncate, ' ' );
+		if ( isset( $spacepos ) ) {
+			if ( $html ) {
+				$bits = mb_substr( $truncate, $spacepos );
+				preg_match_all( '/<\/([a-z]+)>/', $bits, $droppedTags, PREG_SET_ORDER );
+				if ( ! empty( $droppedTags ) ) {
+					foreach ( $droppedTags as $closingTag ) {
+						if ( ! in_array( $closingTag[1], $openTags ) ) {
+							array_unshift( $openTags, $closingTag[1] );
+						}
+					}
+				}
+			}
+			$truncate = mb_substr( $truncate, 0, $spacepos );
+		}
+	}
+	$truncate .= $ending;
+
+	if ( $html ) {
+		foreach ( $openTags as $tag ) {
+			$truncate .= '</' . $tag . '>';
+		}
+	}
+
+	return $truncate;
+}
+
+//@todo CLEANUP refactor function
+function rosa_better_excerpt( $text = '' ) {
+	global $post;
+	$raw_excerpt = '';
+
+	//if the post has a manual excerpt ignore the content given
+	if ( $text == '' && function_exists( 'has_excerpt' ) && has_excerpt() ) {
+		$text        = get_the_excerpt();
+		$raw_excerpt = $text;
+
+		$text = strip_shortcodes( $text );
+		$text = apply_filters( 'the_content', $text );
+		$text = str_replace( ']]>', ']]&gt;', $text );
+
+		// Removes any JavaScript in posts (between <script> and </script> tags)
+		$text = preg_replace( '@<script[^>]*?>.*?</script>@si', '', $text );
+
+		// Enable formatting in excerpts - Add HTML tags that you want to be parsed in excerpts
+		$allowed_tags = '<p><a><strong><i><br><h1><h2><h3><h4><h5><h6><blockquote><ul><li><ol>';
+		$text         = strip_tags( $text, $allowed_tags );
+		//		$excerpt_more = apply_filters('excerpt_more', ' ' . '[...]');
+		//		$text .= $excerpt_more;
+
+	} else {
+
+		if ( empty( $text ) ) {
+			//need to grab the content
+			$text = get_the_content();
+		}
+
+		$raw_excerpt = $text;
+		$text        = strip_shortcodes( $text );
+		$text        = apply_filters( 'the_content', $text );
+		$text        = str_replace( ']]>', ']]&gt;', $text );
+
+		// Removes any JavaScript in posts (between <script> and </script> tags)
+		$text = preg_replace('@<script[^>]*?>.*?</script>@si', '', $text);
+
+		// Enable formatting in excerpts - Add HTML tags that you want to be parsed in excerpts
+		$allowed_tags = '<p><a><em><strong><i><br><h1><h2><h3><h4><h5><h6><blockquote><ul><li><ol><iframe><embed><object><script>';
+		$text         = strip_tags( $text, $allowed_tags );
+
+		// Set custom excerpt length - number of characters to be shown in excerpts
+		if ( rosa::option( 'blog_excerpt_length' ) ) {
+			$excerpt_length = absint( rosa::option( 'blog_excerpt_length' ) );
+		} else {
+			$excerpt_length = 180;
+		}
+
+		$excerpt_more = apply_filters( 'excerpt_more', ' ' . '[...]' );
+
+		$options = array(
+			'ending' => $excerpt_more,
+			'exact'  => false,
+			'html'   => true
+		);
+		$text    = truncate( $text, $excerpt_length, $options );
+
+	}
+
+	// IMPORTANT! Prevents tags cutoff by excerpt (i.e. unclosed tags) from breaking formatting
+	$text = force_balance_tags( $text );
+
+	return apply_filters( 'wp_trim_excerpt', $text, $raw_excerpt );
+}
+
+/*
+ * COMMENT LAYOUT
+ */
+function rosa_comments( $comment, $args, $depth ) {
+	static $comment_number;
+
+	if ( ! isset( $comment_number ) )
+		$comment_number = $args['per_page'] * ( $args['page'] - 1 ) + 1; else {
+		$comment_number ++;
+	}
+
+	$GLOBALS['comment'] = $comment; ?>
+<li <?php comment_class(); ?>>
+	<article id="comment-<?php echo $comment->comment_ID; ?>" class="comment-article  media">
+		<?php if ( rosa::option( 'comments_show_numbering' ) ): ?>
+			<span class="comment-number"><?php echo $comment_number ?></span>
+		<?php endif; ?>
+		<?php if ( rosa::option( 'comments_show_avatar' ) && get_comment_type( $comment->comment_ID ) == 'comment' ): ?>
+			<aside class="comment__avatar  media__img">
+				<!-- custom gravatar call -->
+				<?php $bgauthemail = get_comment_author_email(); ?>
+				<img src="http://www.gravatar.com/avatar/<?php echo md5( $bgauthemail ); ?>?s=60" class="comment__avatar-image" height="60" width="60" style="background-image: <?php echo get_template_directory_uri() . '/library/images/nothing.gif'; ?>; background-size: 100% 100%"/>
+			</aside>
+		<?php endif; ?>
+		<div class="media__body">
+			<header class="comment__meta comment-author">
+				<?php printf( '<span class="comment__author-name">%s</span>', get_comment_author_link() ) ?>
+				<time class="comment__time" datetime="<?php comment_time( 'c' ); ?>">
+					<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>" class="comment__timestamp"><?php printf( __( 'on %s at %s', 'rosa' ), get_comment_date(), get_comment_time() ); ?> </a>
+				</time>
+				<div class="comment__links">
+					<?php
+					edit_comment_link( __( 'Edit', 'rosa' ), '  ', '' );
+					comment_reply_link( array_merge( $args, array( 'depth'     => $depth,
+					                                               'max_depth' => $args['max_depth']
+					) ) );
+					?>
+				</div>
+			</header>
+			<!-- .comment-meta -->
+			<?php if ( $comment->comment_approved == '0' ) : ?>
+				<div class="alert info">
+					<p><?php _e( 'Your comment is awaiting moderation.', 'rosa' ) ?></p>
+				</div>
+			<?php endif; ?>
+			<section class="comment__content comment">
+				<?php comment_text() ?>
+			</section>
+		</div>
+	</article>
+	<!-- </li> is added by WordPress automatically -->
+	<?php
+} // don't remove this bracket!
+
+/**
+ * Replace the [...] wordpress puts in when using the the_excerpt() method.
+ */
+function new_excerpt_more( $excerpt ) {
+	return rosa::option( 'blog_excerpt_more_text' );
+}
+
+add_filter( 'excerpt_more', 'new_excerpt_more' );
+
+function remove_more_link_scroll( $link ) {
+	$link = preg_replace( '|#more-[0-9]+|', '', $link );
+
+	return $link;
+}
+
+add_filter( 'the_content_more_link', 'remove_more_link_scroll' );
+
+//fix the canonical url of YOAST because on the front page it ignores the pagination
+add_filter( 'wpseo_canonical', 'rosa_get_current_canonical_url' );
+//fix the canonical url of AIOSEOP because on the front page it breaks the pagination
+add_filter( 'aioseop_canonical_url', 'rosa_get_current_canonical_url' );
+
+/**
+ * Filter the page title so that plugins can unhook this
+
+ */
+function rosa_wp_title( $title, $sep ) {
+
+	global $paged, $page;
+
+	if ( is_feed() )
+		return $title;
+
+	// Add the site name.
+	$title .= get_bloginfo( 'name' );
+
+	// Add the site description for the home/front page.
+	$site_description = get_bloginfo( 'description', 'display' );
+	if ( $site_description && ( is_home() || is_front_page() ) )
+		$title = "$title $sep $site_description";
+
+	// Add a page number if necessary.
+	if ( $paged >= 2 || $page >= 2 )
+		$title = "$title $sep " . sprintf( __( 'Page %s', 'rosa' ), max( $paged, $page ) );
+
+	return $title;
+}
+
+add_filter( 'wp_title', 'rosa_wp_title', 10, 2 );
+
+function rosa_fix_yoast_page_number( $title ) {
+
+	global $paged, $page, $sep;
+
+	if ( is_home() || is_front_page() ) {
+		// Add a page number if necessary.
+		if ( $paged >= 2 || $page >= 2 )
+			$title = "$title $sep " . sprintf( __( 'Page %s', 'rosa' ), max( $paged, $page ) );
+	}
+
+	return $title;
+}
+
+//filter the YOAST title so we can correct the page number missing on frontpage
+add_filter( 'wpseo_title', 'rosa_fix_yoast_page_number' );
+
+//get the first image in a gallery or portfolio
+function rosa_get_first_gallery_image_src( $post_ID, $image_size ) {
+
+	$gallery_ids = array();
+
+	if ( ! empty( $gallery_ids[0] ) ) {
+		return wp_get_attachment_image_src( $gallery_ids[0], $image_size );
+	} else {
+		return null;
+	}
+}
+
+//fix the sticky posts logic by preventing them to appear again
+function rosa_pre_get_posts_sticky_posts( $query ) {
+
+	// Do nothing if not home or not main query.
+	if ( ! $query->is_home() || ! $query->is_main_query() ) {
+		return;
+	}
+
+	$page_on_front = get_option( 'page_on_front' );
+
+	// Do nothing if the blog page is not the front page
+	if ( ! empty( $page_on_front ) ) {
+		return;
+	}
+
+	$sticky = get_option( 'sticky_posts' );
+
+	// Do nothing if no sticky posts
+	if ( empty( $sticky ) ) {
+		return;
+	}
+
+	// We need to respect post ids already in the blacklist of hell
+	$post__not_in = $query->get( 'post__not_in' );
+
+	if ( ! empty( $post__not_in ) ) {
+		$sticky = array_merge( (array) $post__not_in, $sticky );
+		$sticky = array_unique( $sticky );
+	}
+
+	$query->set( 'post__not_in', $sticky );
+
+}
+
+add_action( 'pre_get_posts', 'rosa_pre_get_posts_sticky_posts' );
+
+/**
+ * Extend the default WordPress post classes.
+ *
+ * @since Rosa 1.5.6
+ *
+ * @param array $classes A list of existing post class values.
+ * @return array The filtered post class list.
+ */
+function rosa_post_classes( $classes ) {
+	//only add this class for regular pages
+	if ( get_page_template_slug( get_the_ID() ) == '' ) {
+		$subtitle = trim( get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_cover_subtitle', true ) );
+		$title = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_cover_title', true );
+		$description = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_cover_description', true );
+
+		if ( ! ( has_post_thumbnail() || ! empty( $subtitle ) || $title !== ' ' || ! empty( $description ) ) ) {
+			$classes[] = 'no-page-header';
+		}
+	}
+
+	return $classes;
+}
+add_filter( 'post_class', 'rosa_post_classes' );
+
+
+/**
+ * Subpages edit links in the admin bar in the frontend (top parent page view)
+ *
+ * @TODO move this inside a plugin
+ *
+ * @param WP_Admin_Bar $wp_admin_bar
+ */
+function rosa_subpages_admin_bar_edit_links_frontend( $wp_admin_bar ) {
+	global $post;
+
+	//we are only interested in pages, not posts or something else
+	if ( is_page() ) {
+		//we assume this is the king of all pages
+		$top_level_page_ID = $post->ID;
+
+		//what if this is a child page of some group?
+		//well we will start from it's parent, just like we do in the actual content
+		if ( ! empty( $post->post_parent ) ) {
+			$top_level_page_ID = $post->post_parent;
+		}
+
+		$top_level_page = get_post( $top_level_page_ID );
+		if ( ! empty( $top_level_page ) ) {
+
+			$kids = get_children(
+				array(
+					'post_parent' => $top_level_page->ID,
+					'orderby'     => 'menu_order title',
+					//this is the exact ordering used on the All Pages page - order included
+					'order'       => 'ASC',
+					'post_type'   => 'page',
+				)
+			);
+
+			//so we have children - this means this is a top parent page
+			if ( ! empty( $kids ) ) {
+				//so we are on a page that has children
+
+				//first we replace the default "Edit Page" admin bar item with "Edit pages"
+				$wp_admin_bar->add_node( array(
+					'id'    => 'edit', //by passing the same ID, WordPress will do a merge
+					'title' => esc_html__( 'Edit Pages', 'rosa' ),
+					'href'  => get_edit_post_link( $top_level_page->ID ),
+				) );
+
+				//add the parent edit once more for clarity
+				$wp_admin_bar->add_node( array(
+					'parent' => 'edit',
+					'id'     => 'edit_' . $top_level_page->post_name,
+					'title'  => sprintf( esc_html__( 'Parent: %s', 'rosa' ), trim( strip_tags( $top_level_page->post_title ) ) ),
+					'href'   => get_edit_post_link( $top_level_page->ID ),
+					'meta'   => array( 'class' => 'edit_parent_link' )
+				) );
+
+				foreach ( $kids as $kid ) {
+					$kid_args = array(
+						'parent' => 'edit',
+						'id'     => 'edit_child_' . $kid->post_name,
+						'title'  => sprintf( esc_html__( 'Child: %s', 'rosa' ), trim( strip_tags( $kid->post_title ) ) ),
+						'href'   => get_edit_post_link( $kid->ID ),
+						'meta'   => array( 'class' => 'edit_child_link' )
+					);
+
+					if ( $post->ID == $kid->ID ) {
+						//this is the current page
+						$kid_args['meta']['class'] .= ' current_page';
+					}
+
+					$wp_admin_bar->add_node( $kid_args );
+
+					//let's do one more effort and go one level deeper
+					$subkids = get_children(
+						array(
+							'post_parent' => $kid->ID,
+							'orderby'     => 'menu_order title',
+							//this is the exact ordering used on the All Pages page - order included
+							'order'       => 'ASC',
+							'post_type'   => 'page',
+						)
+					);
+
+					if ( ! empty( $subkids ) ) {
+						foreach ( $subkids as $subkid ) {
+							$subkid_args = array(
+								'parent' => 'edit_child_' . $kid->post_name,
+								'id'     => 'edit_subchild_' . $subkid->post_name,
+								'title'  => trim( strip_tags( $subkid->post_title ) ),
+								'href'   => get_edit_post_link( $subkid->ID ),
+								'meta'   => array( 'class' => 'edit_child_link edit_subchild_link' )
+							);
+
+							if ( $post->ID == $subkid->ID ) {
+								//this is the current page
+								$kid_args['meta']['class'] .= ' current_page';
+							}
+
+							$wp_admin_bar->add_node( $subkid_args );
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+add_action( 'admin_bar_menu', 'rosa_subpages_admin_bar_edit_links_frontend', 999 );
+
+
+
+/**
+ * Very extras
+ */
+
+/*=========== SANITIZE UPLOADED FILE NAMES ==========*/
+
+add_filter( 'sanitize_file_name', 'rosa_sanitize_file_name', 10 );
+
+/**
+ * Clean up uploaded file names
+ * @author toscho
+ * @url    https://github.com/toscho/Germanix-WordPress-Plugin
+ */
+function rosa_sanitize_file_name( $filename ) {
+	$filename = html_entity_decode( $filename, ENT_QUOTES, 'utf-8' );
+	$filename = rosa_translit( $filename );
+	$filename = rosa_lower_ascii( $filename );
+	$filename = rosa_remove_doubles( $filename );
+
+	return $filename;
+}
+
+function rosa_lower_ascii( $str ) {
+	$str   = strtolower( $str );
+	$regex = array(
+		'pattern'     => '~([^a-z\d_.-])~',
+		'replacement' => ''
+	);
+	// Leave underscores, otherwise the taxonomy tag cloud in the
+	// backend won’t work anymore.
+	return preg_replace( $regex['pattern'], $regex['replacement'], $str );
+}
+
+/**
+ * Reduces repeated meta characters (-=+.) to one.
+ */
+function rosa_remove_doubles( $str ) {
+	$regex = apply_filters( 'germanix_remove_doubles_regex', array(
+		'pattern'     => '~([=+.-])\\1+~',
+		'replacement' => "\\1"
+	) );
+
+	return preg_replace( $regex['pattern'], $regex['replacement'], $str );
+}
+
+/**
+ * Replaces non ASCII chars.
+ */
+function rosa_translit( $str ) {
+	$utf8 = array(
+		'Ä'  => 'Ae',
+		'ä'  => 'ae',
+		'Æ'  => 'Ae',
+		'æ'  => 'ae',
+		'À'  => 'A',
+		'à'  => 'a',
+		'Á'  => 'A',
+		'á'  => 'a',
+		'Â'  => 'A',
+		'â'  => 'a',
+		'Ã'  => 'A',
+		'ã'  => 'a',
+		'Å'  => 'A',
+		'å'  => 'a',
+		'ª'  => 'a',
+		'ₐ'  => 'a',
+		'ā'  => 'a',
+		'Ć'  => 'C',
+		'ć'  => 'c',
+		'Ç'  => 'C',
+		'ç'  => 'c',
+		'Ð'  => 'D',
+		'đ'  => 'd',
+		'È'  => 'E',
+		'è'  => 'e',
+		'É'  => 'E',
+		'é'  => 'e',
+		'Ê'  => 'E',
+		'ê'  => 'e',
+		'Ë'  => 'E',
+		'ë'  => 'e',
+		'ₑ'  => 'e',
+		'ƒ'  => 'f',
+		'ğ'  => 'g',
+		'Ğ'  => 'G',
+		'Ì'  => 'I',
+		'ì'  => 'i',
+		'Í'  => 'I',
+		'í'  => 'i',
+		'Î'  => 'I',
+		'î'  => 'i',
+		'Ï'  => 'Ii',
+		'ï'  => 'ii',
+		'ī'  => 'i',
+		'ı'  => 'i',
+		'I'  => 'I' // turkish, correct?
+	,
+		'Ñ'  => 'N',
+		'ñ'  => 'n',
+		'ⁿ'  => 'n',
+		'Ò'  => 'O',
+		'ò'  => 'o',
+		'Ó'  => 'O',
+		'ó'  => 'o',
+		'Ô'  => 'O',
+		'ô'  => 'o',
+		'Õ'  => 'O',
+		'õ'  => 'o',
+		'Ø'  => 'O',
+		'ø'  => 'o',
+		'ₒ'  => 'o',
+		'Ö'  => 'Oe',
+		'ö'  => 'oe',
+		'Œ'  => 'Oe',
+		'œ'  => 'oe',
+		'ß'  => 'ss',
+		'Š'  => 'S',
+		'š'  => 's',
+		'ş'  => 's',
+		'Ş'  => 'S',
+		'™'  => 'TM',
+		'Ù'  => 'U',
+		'ù'  => 'u',
+		'Ú'  => 'U',
+		'ú'  => 'u',
+		'Û'  => 'U',
+		'û'  => 'u',
+		'Ü'  => 'Ue',
+		'ü'  => 'ue',
+		'Ý'  => 'Y',
+		'ý'  => 'y',
+		'ÿ'  => 'y',
+		'Ž'  => 'Z',
+		'ž'  => 'z' // misc
+	,
+		'¢'  => 'Cent',
+		'€'  => 'Euro',
+		'‰'  => 'promille',
+		'№'  => 'Nr',
+		'$'  => 'Dollar',
+		'℃'  => 'Grad Celsius',
+		'°C' => 'Grad Celsius',
+		'℉'  => 'Grad Fahrenheit',
+		'°F' => 'Grad Fahrenheit' // Superscripts
+	,
+		'⁰'  => '0',
+		'¹'  => '1',
+		'²'  => '2',
+		'³'  => '3',
+		'⁴'  => '4',
+		'⁵'  => '5',
+		'⁶'  => '6',
+		'⁷'  => '7',
+		'⁸'  => '8',
+		'⁹'  => '9' // Subscripts
+	,
+		'₀'  => '0',
+		'₁'  => '1',
+		'₂'  => '2',
+		'₃'  => '3',
+		'₄'  => '4',
+		'₅'  => '5',
+		'₆'  => '6',
+		'₇'  => '7',
+		'₈'  => '8',
+		'₉'  => '9' // Operators, punctuation
+	,
+		'±'  => 'plusminus',
+		'×'  => 'x',
+		'₊'  => 'plus',
+		'₌'  => '=',
+		'⁼'  => '=',
+		'⁻'  => '-' // sup minus
+	,
+		'₋'  => '-' // sub minus
+	,
+		'–'  => '-' // ndash
+	,
+		'—'  => '-' // mdash
+	,
+		'‑'  => '-' // non breaking hyphen
+	,
+		'․'  => '.' // one dot leader
+	,
+		'‥'  => '..' // two dot leader
+	,
+		'…'  => '...' // ellipsis
+	,
+		'‧'  => '.' // hyphenation point
+	,
+		' '  => '-' // nobreak space
+	,
+		' '  => '-' // normal space
+		// Russian
+	,
+		'А'  => 'A',
+		'Б'  => 'B',
+		'В'  => 'V',
+		'Г'  => 'G',
+		'Д'  => 'D',
+		'Е'  => 'E',
+		'Ё'  => 'YO',
+		'Ж'  => 'ZH',
+		'З'  => 'Z',
+		'И'  => 'I',
+		'Й'  => 'Y',
+		'К'  => 'K',
+		'Л'  => 'L',
+		'М'  => 'M',
+		'Н'  => 'N',
+		'О'  => 'O',
+		'П'  => 'P',
+		'Р'  => 'R',
+		'С'  => 'S',
+		'Т'  => 'T',
+		'У'  => 'U',
+		'Ф'  => 'F',
+		'Х'  => 'H',
+		'Ц'  => 'TS',
+		'Ч'  => 'CH',
+		'Ш'  => 'SH',
+		'Щ'  => 'SCH',
+		'Ъ'  => '',
+		'Ы'  => 'YI',
+		'Ь'  => '',
+		'Э'  => 'E',
+		'Ю'  => 'YU',
+		'Я'  => 'YA',
+		'а'  => 'a',
+		'б'  => 'b',
+		'в'  => 'v',
+		'г'  => 'g',
+		'д'  => 'd',
+		'е'  => 'e',
+		'ё'  => 'yo',
+		'ж'  => 'zh',
+		'з'  => 'z',
+		'и'  => 'i',
+		'й'  => 'y',
+		'к'  => 'k',
+		'л'  => 'l',
+		'м'  => 'm',
+		'н'  => 'n',
+		'о'  => 'o',
+		'п'  => 'p',
+		'р'  => 'r',
+		'с'  => 's',
+		'т'  => 't',
+		'у'  => 'u',
+		'ф'  => 'f',
+		'х'  => 'h',
+		'ц'  => 'ts',
+		'ч'  => 'ch',
+		'ш'  => 'sh',
+		'щ'  => 'sch',
+		'ъ'  => '',
+		'ы'  => 'yi',
+		'ь'  => '',
+		'э'  => 'e',
+		'ю'  => 'yu',
+		'я'  => 'ya'
+	);
+
+	$str = strtr( $str, $utf8 );
+
+	return trim( $str, '-' );
+}
+
+/*
+ * Inserts a new key/value after the key in the array.
+ *
+ * @param $key
+ *   The key to insert after.
+ * @param $array
+ *   An array to insert in to.
+ * @param $new_key
+ *   The key to insert.
+ * @param $new_value
+ *   An value to insert.
+ *
+ * @return
+ *   The new array if the key exists, FALSE otherwise.
+ *
+ * @see array_insert_before()
+ */
+function rosa_array_insert_after($key, array &$array, $new_key, $new_value) {
+	if (array_key_exists($key, $array)) {
+		$new = array();
+		foreach ($array as $k => $value) {
+			$new[$k] = $value;
+			if ($k === $key) {
+				$new[$new_key] = $new_value;
+			}
+		}
+		return $new;
+	}
+	return FALSE;
+}
+
+/*
+ * Inserts a new key/value before the key in the array.
+ *
+ * @param $key
+ *   The key to insert before.
+ * @param $array
+ *   An array to insert in to.
+ * @param $new_key
+ *   The key to insert.
+ * @param $new_value
+ *   An value to insert.
+ *
+ * @return
+ *   The new array if the key exists, FALSE otherwise.
+ *
+ * @see array_insert_after()
+ */
+function rosa_array_insert_before( $key, array &$array, $new_key, $new_value ) {
+	if (array_key_exists($key, $array)) {
+		$new = array();
+		foreach ($array as $k => $value) {
+			if ($k === $key) {
+				$new[$new_key] = $new_value;
+			}
+			$new[$k] = $value;
+		}
+		return $new;
+	}
+	return FALSE;
+}
+
+function rosa_get_avatar_url( $email, $size = 32 ) {
+	$get_avatar = get_avatar( $email, $size );
+
+	preg_match( '/< *img[^>]*src *= *["\']?([^"\']*)/i', $get_avatar, $matches );
+	if ( isset( $matches[1] ) ) {
+		return $matches[1];
+	} else {
+		return '';
+	}
+
+}

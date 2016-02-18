@@ -29,7 +29,7 @@
 	height: 14px;
 	position: absolute;
 	left: 0;
-	background: url('../images/border-wave.svg') top left repeat-x;
+	background: url('./assets/images/border-wave.svg') top left repeat-x;
 
 	transform: translate3d(0, 0, 0.1px);
 }
@@ -60,7 +60,7 @@
         height: 14px;
         position: absolute;
         left: 0;
-        background: url('../images/border-wave.svg') top left repeat-x;
+        background: url('./assets/images/border-wave.svg') top left repeat-x;
     }
 
     &:before {
@@ -89,14 +89,6 @@
             display: none;
         }
     }
-}
-
-.article__content {
-
-}
-
-.article__meta {
-
 }
 
 .article__header {
@@ -198,7 +190,6 @@
 		top: 0; left: 0; right: 0; bottom: auto;
 		background: none;
 		overflow: hidden;
-		opacity: 1;
 
 		.article__parallax__img {
 			opacity: 1;
@@ -293,7 +284,7 @@
 	.article__content {
 		position: relative;
 		width: 100%;
-		padding: 50px 0;
+		padding: 35px 0;
 		background-color: white;
 	}
 

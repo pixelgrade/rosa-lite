@@ -53,14 +53,14 @@ if ( is_single() ) {
 <?php
 $class_name = 'header--sticky';
 
-if ( wpgrade::option( 'nav_always_show' ) ) {
+if ( rosa::option( 'nav_always_show' ) ) {
 	$class_name .= '  nav-scroll-show';
 } else {
 	$class_name .= '  nav-scroll-hide';
 }
 
-$data_smoothscrolling = ( wpgrade::option( 'use_smooth_scroll' ) == 1 ) ? 'data-smoothscrolling' : '';
-$data_main_color      = ( wpgrade::option( 'main_color' ) ) ? 'data-color="' . wpgrade::option( 'main_color' ) . '"' : '';
+$data_smoothscrolling = ( rosa::option( 'use_smooth_scroll' ) == 1 ) ? 'data-smoothscrolling' : '';
+$data_main_color      = ( rosa::option( 'main_color' ) ) ? 'data-color="' . rosa::option( 'main_color' ) . '"' : '';
 
 //first let's test if we are in woocommerce
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
@@ -75,7 +75,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 			setup_postdata( $post );
 
-			$make_transparent_menu_bar = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'header_transparent_menu_bar', true );
+			$make_transparent_menu_bar = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'header_transparent_menu_bar', true );
 
 			if ( $make_transparent_menu_bar == 'on' ) {
 				$class_name .= '  header--transparent';
@@ -90,9 +90,9 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 if ( is_page() ) {
 
 	if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
-		$make_transparent_menu_bar = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'header_transparent_menu_bar_contact', true );
+		$make_transparent_menu_bar = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'header_transparent_menu_bar_contact', true );
 	} else {
-		$make_transparent_menu_bar = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'header_transparent_menu_bar', true );
+		$make_transparent_menu_bar = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'header_transparent_menu_bar', true );
 	}
 
 	if ( $make_transparent_menu_bar == 'on' ) {
@@ -119,10 +119,12 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 		<div class="container">
 			<div class="flexbox">
 				<div class="flexbox__item">
-					<a href="#" class="js-nav-trigger  nav-trigger"><i class="icon-reorder"></i></a>
+					<button class="nav-trigger  js-nav-trigger">
+						<span class="nav-icon icon--lines"></span>
+					</button>
 				</div>
 				<div class="flexbox__item  branding-container">
-					<?php get_template_part( 'templates/header/branding' ); ?>
+					<?php get_template_part( 'template-parts/branding' ); ?>
 				</div>
 				<div class="flexbox__item">
 					<?php
@@ -137,28 +139,23 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 						<ul class="nav  nav--main  nav--items-social">
 							<?php
 
-							$social_links = wpgrade::option( 'social_icons' );
-
-							$target = '';
-							if ( wpgrade::option( 'social_icons_target_blank' ) ) {
-								$target = 'target="_blank"';
+							$theme_locations = get_nav_menu_locations();
+							if ( isset( $theme_locations["social_menu"] ) && ( $theme_locations["social_menu"] != 0 ) ) {
+								wp_nav_menu( array(
+									'theme_location' => 'social_menu',
+									'menu'           => '',
+									'container'      => '',
+									'container_id'   => '',
+									//                    'menu_class'      => 'site-navigation site-navigation--footer site-navigation--secondary flush--bottom',
+									'menu_class'     => 'nav--social',
+									'fallback_cb'    => false,
+									'menu_id'        => '',
+									'depth'          => 1,
+									'items_wrap'     => '<nav class="navigation  navigation--social"><ul id="%1$s" class="%2$s  nav">%3$s</ul></nav>',
+								) );
 							}
 
-							if ( ! empty( $social_links ) ) {
-								foreach ( $social_links as $domain => $icon ) {
-									if ( isset( $icon['value'] ) && isset( $icon['checkboxes']['header'] ) ) {
-										$value = $icon['value']; ?>
-										<li>
-											<a class="social-icon" href="<?php echo $value ?>" <?php echo $target ?>>
-												<i class="icon-e-<?php echo $domain; ?>"></i>
-											</a>
-										</li>
-									<?php
-									}
-								}
-							}
-
-							if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && wpgrade::option( 'show_cart_menu' ) ) {
+							if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && rosa::option( 'show_cart_menu' ) ) {
 								global $woocommerce; ?>
 
 								<li class="shop-menu-item  menu-item-has-children">
@@ -195,6 +192,7 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 							'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 						) ); ?>
 					</nav>
+					<div class="nav-overlay"></div>
 				</div>
 			</div>
 			<!-- .flexbox -->

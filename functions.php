@@ -12,16 +12,7 @@ if ( ! defined('REQUEST_PROTOCOL')) {
 // Loads the theme's translated strings
 load_theme_textdomain( 'rosa', get_template_directory() . '/languages' );
 
-
-// Initialize system core
-// ----------------------
-// @todo remove
-require_once 'wpgrade-core/bootstrap.php';
-
-
-
 if ( ! function_exists(' rosa_theme_setup' ) ) {
-
 	function rosa_theme_setup () {
 		//add theme support for RSS feed links automatically generated in the head section
 		add_theme_support( 'automatic-feed-links' );
@@ -32,35 +23,65 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 		// Add theme support for Featured Images
 		add_theme_support( 'post-thumbnails' );
 
-		$sizes = wpgrade::confoption( 'thumbnails_sizes' );
+		$sizes = array(
 
-		if ( ! empty( $sizes ) ) {
-			foreach ( $sizes as $size_key => $values ) {
+			/**
+			 * MAXIMUM SIZE
+			 * Maximum Full Image Size
+			 * - Sliders
+			 * - Lightbox
+			 */
+			'full-size'         => array(
+				'width' => 2048
+			),
 
-				$width = 0;
-				if ( isset( $values['width'] ) ) {
-					$width = $values['width'];
-				}
+			/**
+			 * LARGE SIZE
+			 * - Single post without sidebar
+			 */
+			'large-size'         => array(
+				'width' => 1200
+			),
 
-				$height = 0;
-				if ( isset( $values['height'] ) ) {
-					$height = $values['height'];
-				}
+			/**
+			 * MEDIUM SIZE
+			 * - Tablet Sliders
+			 * - Archive Featured Image
+			 * - Single Featured Image
+			 */
+			'medium-size'       => array(
+				'width' => 900,
+			),
 
-				$hard_crop = false;
-				if ( isset( $values['hard_crop'] ) ) {
-					$hard_crop = $values['hard_crop'];
-				}
+			/**
+			 * SMALL SIZE
+			 * - Masonry Grid
+			 * - Mobile Sliders
+			 */
+			'small-size'        => array(
+				'width' => 400,
+			),
 
-				add_image_size( $size_key, $width, $height, $hard_crop );
+		);
 
+		foreach ( $sizes as $size_key => $values ) {
+
+			$width = 0;
+			if ( isset( $values['width'] ) ) {
+				$width = $values['width'];
 			}
-		}
 
-		// add theme support for post formats
-		$post_formats = wpgrade::confoption( 'post-formats', array() );
-		if ( ! empty( $post_formats ) ) {
-			add_theme_support( 'post-formats', $post_formats );
+			$height = 0;
+			if ( isset( $values['height'] ) ) {
+				$height = $values['height'];
+			}
+
+			$hard_crop = false;
+			if ( isset( $values['hard_crop'] ) ) {
+				$hard_crop = $values['hard_crop'];
+			}
+
+			add_image_size( $size_key, $width, $height, $hard_crop );
 		}
 
 		/*
@@ -68,13 +89,22 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 		 * This works on 3.1+
 		 */
 		add_theme_support( 'menus' );
-		$menus = wpgrade::confoption( 'import_nav_menu' );
+
+		$menus = array(
+			'main_menu'   => 'Main Menu',
+			'footer_menu' => 'Footer Menu',
+			'social_menu' => 'Social Links'
+		);
 		foreach ( $menus as $key => $value ) {
 			register_nav_menu( $key, $value );
 		}
+
+		add_editor_style( 'editor-style.css' );
+
+		add_filter( 'upload_mimes', 'rosa_callback_custom_upload_mimes' );
 	}
-	add_action( 'after_setup_theme', 'rosa_theme_setup' );
 }
+add_action( 'after_setup_theme', 'rosa_theme_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -93,46 +123,80 @@ add_action( 'after_setup_theme', 'rosa_content_width', 0 );
 if ( ! function_exists( 'rosa_load_assets' ) ) {
 	function rosa_load_assets(){
 
+		// Styles
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
 
-		if ( is_rtl() ) {
-			wp_enqueue_style( 'rtl-support', wpgrade::resourceuri( 'css/localization/rtl.css' ) );
+		if ( is_404() ) {
+			wp_enqueue_style( 'rosa-404-style', get_template_directory_uri() . '/404.css', array(), time(), 'all' );
 		}
 
-		if (is_404()) {
-			wp_enqueue_style( wpgrade::shortname() . '-404-style', get_template_directory_uri() . '/assets/css/pages/404.css', array(), time(), 'all' );
+		if ( ! class_exists( 'PixCustomifyPlugin' ) ) {
+			wp_enqueue_style( 'rosa-default-fonts', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700,400italic,700italic|Herr+Von+Muellerhoff' );
 		}
+		
+		wp_enqueue_style( 'rosa-main-style', get_stylesheet_uri(), array(), rosa::cachebust_string( rosa::themefilepath( 'style.css' ) ) );
 
+		// Scripts
+
+		wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr.min.js', array( 'jquery' ) );
+		wp_enqueue_script( 'webfont-script', '//ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js', array( 'jquery' ) );
+
+		wp_enqueue_script( 'rosa-plugins-scripts', get_template_directory_uri() . '/assets/js/plugins.js', array( 'jquery', 'modernizr' ), null, true );
+		wp_enqueue_script( 'rosa-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'wpgrade-plugins' ), rosa::cachebust_string( rosa::themefilepath( 'assets/js/main.js' ) ), true );
+
+
+		wp_enqueue_script( 'addthis-api', '//s7.addthis.com/js/300/addthis_widget.js#async=1', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'google-maps', '//maps.google.com/maps/api/js?language=en', array( 'jquery' ), null, true );
+
+		wp_localize_script( 'rosa-main-scripts', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
+		// localize the theme_name, we are gonna need it
+		wp_localize_script( 'rosa-main-scripts', 'theme_name', rosa::shortname() );
+		wp_localize_script( 'rosa-main-scripts', 'objectl10n', array(
+			'tPrev'             => __( 'Previous (Left arrow key)', 'rosa' ),
+			'tNext'             => __( 'Next (Right arrow key)', 'rosa' ),
+			'tCounter'          => __( 'of', 'rosa' ),
+			'infscrLoadingText' => "",
+			'infscrReachedEnd'  => "",
+		) );
 	}
-	add_action( 'wp_enqueue_scripts', 'rosa_load_assets' );
 }
+add_action( 'wp_enqueue_scripts', 'rosa_load_assets' );
 
 
 if ( ! function_exists( 'rosa_load_admin_assets' ) ) {
 
 	function rosa_load_admin_assets() {
 
-		wp_enqueue_script(
-			'rosa_admin_general_script', //unique handle
-			get_template_directory_uri().'/assets/js/admin/admin-general.js', //location
-			array('jquery')  //dependencies
-		);
+		wp_enqueue_script( 'rosa_admin_general_script', get_template_directory_uri() . '/assets/js/admin/admin-general.js', array('jquery') );
 
+		$translation_array = array
+		(
+			'import_failed' => __( 'The import didn\'t work completely! <br/> Check out the errors given. You might want to try reloading the page and then try again.', 'rosa'),
+			'import_confirm' => __( 'Importing the demo data will overwrite your current Theme Options settings. Proceed anyway?', 'rosa'),
+			'import_phew' => __( 'Phew...that was a hard one!', 'rosa'),
+			'import_success_note' => __( 'The demo data was imported without a glitch! Awesome! <br/><br/><b style="color:red">Remember to update the passwords and roles of imported users. </b><br/><br/><i>We will now reload the page so you can see the brand new data!</i>', 'rosa'),
+			'import_all_done' => __( "All done!", 'rosa'),
+			'import_working' => __( "Working...", 'rosa'),
+			'import_widgets_failed' => __( "The setting up of the demo widgets failed...", 'rosa'),
+			'import_widgets_error' => __( 'The setting up of the demo widgets failed</i><br />(The script returned the following message', 'rosa'),
+			'import_widgets_done' => __( 'Finished setting up the demo widgets...', 'rosa'),
+			'import_theme_options_failed' => __( "The importing of the theme options has failed...", 'rosa'),
+			'import_theme_options_error' => __( 'The importing of the theme options has failed</i><br />(The script returned the following message', 'rosa'),
+			'import_theme_options_done' => __( 'Finished importing the demo theme options...', 'rosa'),
+			'import_posts_failed' => __( "The importing of the theme options has failed...", 'rosa'),
+			'import_posts_step' => __( 'Importing posts | Step', 'rosa'),
+			'import_error' =>  __( "Error:", 'rosa'),
+			'import_try_reload' =>  __( "You can reload the page and try again.", 'rosa'),
+		);
+		wp_localize_script( 'rosa_admin_general_script', 'rosa_admin_js_texts', $translation_array );
 	}
-	add_action( 'admin_enqueue_scripts', 'rosa_load_admin_assets' );
 }
+add_action( 'admin_enqueue_scripts', 'rosa_load_admin_assets' );
 
 // Media Handlers
 // --------------
-
-function rosa_media_handlers() {
-	// make sure that WordPress allows the upload of our used mime types
-	add_filter( 'upload_mimes', 'rosa_callback_custom_upload_mimes' );
-}
-
-add_action( 'after_wpgrade_core', 'rosa_media_handlers');
 
 
 /**
@@ -161,11 +225,13 @@ function rosa_callback_custom_upload_mimes( $existing_mimes = null ) {
 	return $existing_mimes;
 }
 
+require get_template_directory() . '/inc/classes/rosa.php';
 
 /**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
+require get_template_directory() . '/inc/widgets.php';
 
 /**
  * Custom functions that act independently of the theme templates.
@@ -173,20 +239,36 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/extras.php';
 
 /**
- * For admin also
+ * Custom functions for the WordPress admin area
  */
 if ( is_admin() ) {
 	require get_template_directory() . '/inc/extras_admin.php';
 }
 
-require get_template_directory() . '/inc/integrations.php';
-require get_template_directory() . '/inc/customify.php';
-require get_template_directory() . '/inc/required-plugins/required-plugins.php';
+/**
+ * Customizer additions.
+ */
+require get_template_directory() . '/inc/customizer.php';
 
-#
-# Please perform any initialization via options in wpgrade-config and
-# calls in wpgrade-core/bootstrap. Required for testing.
-#
+/**
+ * MB string functions for when the MB library is not available
+ */
+require get_template_directory() . '/inc/mb_compat.php';
+
+/**
+ * Load various plugin integrations
+ */
+require get_template_directory() . '/inc/integrations.php';
+
+/**
+ * Load theme's configuration file (via Customify plugin)
+ */
+require get_template_directory() . '/inc/customify.php';
+
+/**
+ * Load Recommended/Required plugins notification
+ */
+require get_template_directory() . '/inc/required-plugins/required-plugins.php';
 
 //Automagical updates
 function wupdates_check_vexXr( $transient ) {

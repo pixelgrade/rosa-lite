@@ -32,15 +32,15 @@
      * Other folders that are present here should be added only if they represent a big, separated part of the theme's functionality, like demo data import
  * The __/languages__ folder will hold all the .po and .mo files required for translation
  * The __/licensing__ folder holds the GPL v2 license files
- * The __/page-templates__ folder holds the custom page templates files - the default page.php will not be here (WordPress will autoload the files in this folder)
- * The __/templates__ folder contains view parts / html blocks which should be used in WordPress's main files or in our functions/callbacks.
-     * The __/templates/core__ folders will contain any partials that are related to wpgrade-core callbacks
-     * The __/templates/shortcodes__ folder will contain any PixCodes partials that are overwritten by the theme
-     * The __/templates/header__ folder will contain any partials related to the header section of the overall theme
+ * The __/page-template-parts__ folder holds the custom page template-parts files - the default page.php will not be here (WordPress will autoload the files in this folder)
+ * The __/template-parts__ folder contains view parts / html blocks which should be used in WordPress's main files or in our functions/callbacks.
+     * The __/template-parts/core__ folders will contain any partials that are related to wpgrade-core callbacks
+     * The __/template-parts/shortcodes__ folder will contain any PixCodes partials that are overwritten by the theme
+     * The __/template-parts/header__ folder will contain any partials related to the header section of the overall theme
      * The folders with the name of the post type (including post for the default one) will contain the partials related to the archives and the single view of that post type. Under each of these folders there will be 3 folders:
-         * The __/templates/post-type/loop__ folder will contain the partials related to the main archives loop (not the actual content of each item)
-         * The __/templates/post-type/loop-content__ folder will contain the partials that render each item from the archive loop
-         * The __/templates/post-type/single-content__ folder will contain the partials that render the single item
+         * The __/template-parts/post-type/loop__ folder will contain the partials related to the main archives loop (not the actual content of each item)
+         * The __/template-parts/post-type/loop-content__ folder will contain the partials that render each item from the archive loop
+         * The __/template-parts/post-type/single-content__ folder will contain the partials that render the single item
  * The __/woocommerce__ folder holds the WooCommerce template files that are overwritten by the theme
  * The __/wpgrade-core__ folder is the framework core - not to be touched in any way
 

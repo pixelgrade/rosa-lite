@@ -57,20 +57,18 @@ html, body, #page {
 .pixcode--grid {
 	margin-left: -48px;
 
-	> .grid__item{
+	& > .grid__item{
 		padding-left: 48px;
 	}
-
-//	@include media-query(palm) {
-//		.aligncenter{
-//			margin: 0;
-//		}
-//	}
 }
 
 // this will be used as
 // .island.grid__item on homepage
 .grid__item.island {
+
+	.article__content &:first-child {
+		padding-top: 0;
+	}
 
 	// reset the default .grid__item padding-left
 	// because .island has it's own padding
@@ -147,4 +145,13 @@ html body.woocommerce ul.products li.product {
 	.article__parallax--img img{
 		opacity: 1;
 	}
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
 }
