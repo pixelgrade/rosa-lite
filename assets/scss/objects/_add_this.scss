@@ -55,6 +55,14 @@
 	}
 }
 
+.addthis_toolbox a {
+	margin-bottom: 0 !important;
+
+	& > .at-icon-wrapper {
+		display: block;
+	}
+}
+
 .addthis_32x32_style .addthis_counter.addthis_bubble_style {
 	background: none !important;
 }
