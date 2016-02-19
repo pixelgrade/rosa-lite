@@ -291,7 +291,7 @@ $(window).load(function(){
 
 	if (globalDebug) {console.group("OnWindowLoad");}
 
-    stickyHeaderInit();
+    // stickyHeaderInit();
 
     if (is_mobile_ie) {
         $("html").addClass("mobile-ie");
@@ -413,7 +413,7 @@ $(window).on("orientationchange", function(e) {
     }, 300)
 });
 
-var latestKnownScrollY = $('body').scrollTop() || $('html').scrollTop(),
+var latestKnownScrollY = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop,
     ticking = false;
 
 function updateStuff() {
