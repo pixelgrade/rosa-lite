@@ -210,7 +210,7 @@
 button.nav-trigger{
 	position: absolute;
 	top: 33px;
-	left: 5px;
+	left: 1.4vw;
 	z-index: 20;
 	transform: translateY(-50%);
 
@@ -329,7 +329,7 @@ button.nav-trigger{
 	}
 }
 
-$nav-width: 315px;
+$nav-width: 84vw;
 
 @include media-query(lap-and-up) {
 
