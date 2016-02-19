@@ -40,7 +40,10 @@ while ( have_posts() ) : the_post();
 
 	<?php endif;
 
-	get_template_part( 'template-parts/subpages' );
+	$show_subpages = apply_filters( 'rosa_display_subpages', true );
+	if ( $show_subpages ) {
+		get_template_part( 'template-parts/subpages' );
+	}
 
 	//comments
 	if ( comments_open() || '0' != get_comments_number() ) : ?>
