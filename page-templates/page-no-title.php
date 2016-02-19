@@ -28,7 +28,9 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 			$classes .= ' border-' . $border_style;
 		}
 
-		if ( ! empty( $post->post_content ) ) : ?>
+		$show_main_content = apply_filters( 'rosa_avoid_empty_markup_if_no_page_content', ( ! empty( $post->post_content ) ) );
+
+		if ( $show_main_content ) : ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
 				<section class="article__content">
 					<div class="container">

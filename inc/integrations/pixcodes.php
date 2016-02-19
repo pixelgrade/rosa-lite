@@ -1,4 +1,10 @@
 <?php
+/**
+ * Custom functions that deal with various plugin integrations of PixCodes.
+ *
+ * @package Rosa
+ * @since 2.0.0
+ */
 
 /**
  * Start Hook PixCodes params

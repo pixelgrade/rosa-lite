@@ -1,9 +1,15 @@
 <?php
 /**
+ * Custom functions that deal with various plugin integrations of WooCommerce.
+ *
+ * @package Rosa
+ * @since 2.0.0
+ */
+
+/**
  * Woocommerce support
  * If woocommerce is active and is required woo support then load them all
  */
-
 add_theme_support( 'woocommerce' );
 
 /**
