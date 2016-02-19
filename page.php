@@ -32,24 +32,14 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 			$classes .= " article--arrow";
 		}
 
-
-//		$style = '';
-//		$inverse_colors = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'inverse_section_colors', true );
-//		if ($inverse_colors == 'on') {
-//			$classes .= ' inverse-colors';
-//
-//			$text_color = rosa::option('text_color');
-//			$background_color = rosa::option('content_background_color');
-//
-//			$style .= ' style="background-color: '.$text_color.'; color: '.$background_color.'" ';
-//		}
-
 		$border_style = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_border_style', true );
 		if ( ! empty( $border_style ) ) {
 			$classes .= ' border-' . $border_style;
 		}
 
-		if ( ! empty( $post->post_content ) ) : ?>
+		$show_main_content = apply_filters( 'rosa_avoid_empty_markup_if_no_page_content', ( ! empty( $post->post_content ) ) );
+
+		if ( $show_main_content ) : ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
 				<section class="article__content">
 					<div class="container">
