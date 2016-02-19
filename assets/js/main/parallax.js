@@ -213,11 +213,11 @@ var Parallax = {
                 parallax.timeline.progress(progress);
                 parallax2.timeline.progress(progress2);
             } else {
-                if (0 > progress) {
+                if (0 > progress && 0 < parallax.timeline.progress()) {
                     parallax.timeline.progress(0);
                     parallax2.timeline.progress(progress2);
                 }
-                if (1 < progress) {
+                if (1 < progress && 1 > parallax.timeline.progress()) {
                     parallax.timeline.progress(1);
                     parallax2.timeline.progress(progress2);
                 }

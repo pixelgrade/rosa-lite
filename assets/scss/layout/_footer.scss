@@ -120,7 +120,7 @@
 	@extend .cf;
 	position: relative;
 
-	padding: 30px 0;
+	padding: 35px 0;
 
 	@include media-query(lap-and-up) {
 		padding: $_25u 0 $_2u 0;

@@ -62,7 +62,7 @@ var Navigator = {
 
             $button.appendTo($navigator);
             $button.data('scrollTo', sectionTop - windowHeight/2 + sectionHeight/2);
-            $section.data('offsetTop', sectionTop);
+            $section.data('offsetTop', sectionTop).data('height', sectionHeight);
 
             // closures
             (function ($newButton) {
@@ -145,7 +145,7 @@ var Navigator = {
 
             var $section                = $(element),
                 sectionTop              = $section.data('offsetTop'),
-                sectionBottom           = sectionTop + $section.outerHeight(),
+                sectionBottom           = sectionTop + $section.data('height'),
                 navigatorMiddle         = latestKnownScrollY + (windowHeight / 2);
 
             // if there's no header
