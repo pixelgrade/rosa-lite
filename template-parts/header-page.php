@@ -225,7 +225,6 @@ if ( $pin_type == 'single' ) {
 							<?php }
 						} ?>
 					</div>
-					<?php rosa_display_header_down_arrow( $page_section_idx, $header_height ); ?>
 				</div>
 			</header>
 		<?php } else { ?>
@@ -245,7 +244,6 @@ if ( $pin_type == 'single' ) {
 					if ( ! empty( $image[0] ) ) { ?>
 						<div class="article__parallax">
 							<img class="article__parallax__img" src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
-							<?php rosa_display_header_down_arrow( $page_section_idx, $header_height ); ?>
 						</div>
 					<?php
 					}

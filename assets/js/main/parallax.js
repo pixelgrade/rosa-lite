@@ -6,6 +6,7 @@ var Parallax = {
     initialized: false,
     start: 0,
     stop: 0,
+    bleed: 200,
 
     initialize: function () {
         var that = this;
@@ -102,7 +103,10 @@ var Parallax = {
 
             $cover.removeAttr('style');
             $clone.data('source', $cover).appendTo('.covers');
-            $clone.css('height', heroHeight);
+            $clone.css({
+                height: heroHeight + 2 * that.bleed,
+                marginTop: -that.bleed
+            });
 
             // let's see if the user wants different speed for different whateva'
             if (typeof parallax_speeds !== "undefined") {
@@ -136,8 +140,8 @@ var Parallax = {
 
             // prepare image / slider timeline
             var parallax = {
-                    start:      heroOffset.top - windowHeight - distance / 2,
-                    end:        heroOffset.top + heroHeight + distance / 2,
+                    start:      heroOffset.top - windowHeight - distance / 2 - that.bleed,
+                    end:        heroOffset.top + heroHeight + distance / 2 + that.bleed,
                     timeline:   new pixGS.TimelineMax({ paused: true })
                 },
             // the container timeline

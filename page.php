@@ -33,6 +33,7 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 		}
 
 
+
 //		$style = '';
 //		$inverse_colors = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'inverse_section_colors', true );
 //		if ($inverse_colors == 'on') {
