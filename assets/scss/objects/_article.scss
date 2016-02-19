@@ -175,7 +175,6 @@
 	top: 0; right: 0; bottom: 0; left: 0;
 	opacity: 0;
 	pointer-events: none;
-	transition: transform .10s cubic-bezier(easeOutQuad);
 
 	// &, * { pointer-events: none; }
 	.flexbox__item * { pointer-events: auto; }
@@ -202,8 +201,16 @@
 			position: absolute;
 			top: 50%; left: 50%;
 			transform: translateX(-50%) translateY(-50%);
-			will-change: transform;
 		}
+	}
+
+	.gmap,
+	.gmap--multiple-pins,
+	.article__parallax__img,
+	.article__parallax__slider {
+		will-change: transform;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
 	}
 
 	.gmap,

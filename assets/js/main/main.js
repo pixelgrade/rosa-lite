@@ -435,7 +435,6 @@ function requestTick() {
 
 $(window).on("scroll", function () {
     latestKnownScrollY = $('body').scrollTop() || $('html').scrollTop();
-    console.log(latestKnownScrollY);
     requestTick();
 });
 
