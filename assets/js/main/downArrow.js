@@ -19,7 +19,7 @@ var DownArrow = {
         this.start      = 0;
         this.end        = this.start + 300;
         this.timeline   = new pixGS.TimelineMax({ paused: true });
-        this.$next      = this.$arrow.closest('.article__header').nextAll('.article__header, .article--page').first();
+        this.$next      = this.$arrow.closest('.article--page');
 
         if (!empty(this.$next)) {
             this.nextTop    = this.$next.offset().top;

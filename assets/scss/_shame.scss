@@ -170,3 +170,15 @@ html body.woocommerce ul.products li.product {
 	width: 1px;
 	overflow: hidden;
 }
+
+.page > * {
+	z-index: 20;
+}
+
+.page > .covers {
+	z-index: 1;
+}
+
+.site-header.site-header {
+	z-index: 110;
+}

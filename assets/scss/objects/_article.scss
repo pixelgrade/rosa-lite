@@ -48,8 +48,6 @@
 
 .article--page {
     position: relative;
-    // contain children margins
-    padding: 1px 0;
 
     &.border-waves {
 
@@ -119,10 +117,10 @@
 
 .blurp--top {
     position: absolute;
-    top: 100%;
+    bottom: 100%;
     left: 50%;
     margin-left: -96px;
-    margin-top: -50px;
+    margin-bottom: -12px;
     z-index: 10;
 }
 
@@ -200,8 +198,16 @@
 			position: absolute;
 			top: 50%; left: 50%;
 			transform: translateX(-50%) translateY(-50%);
-			will-change: transform;
 		}
+	}
+
+	.gmap,
+	.gmap--multiple-pins,
+	.article__parallax__img,
+	.article__parallax__slider {
+		will-change: transform;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
 	}
 
 	.gmap,
@@ -253,27 +259,18 @@
 	}
 }
 
-.article__parallax--img {
+.article__parallax__img {
+	position: absolute;
+	top: 50%; left: 50%;
+	opacity: 0;
+	max-width: none;
+	transform: translate(-50%, -50%);
 
-	img {
-		position: absolute;
-		top: 50%; left: 50%;
-		opacity: 0;
-		max-width: none;
-		transform: translate(-50%, -50%);
-	}
-}
-
-.lt-ie9 {
-
-	.article__parallax--img {
-
-		img {
-			width: 100% !important;
-			top: 0 !important;
-			left: 0 !important;
-			transform: none;
-		}
+	.lt-ie9 & {
+		width: 100% !important;
+		top: 0 !important;
+		left: 0 !important;
+		transform: none;
 	}
 }
 
@@ -322,7 +319,8 @@
 }
 
 .down-arrow--bubble {
-    bottom: -16px;
+    bottom: 100%;
+    margin-bottom: -16px;
 
     .arrow {
         width: $_u * 2/3;
@@ -335,7 +333,7 @@
 }
 
 .down-arrow--transparent {
-    bottom: 5%;
+    bottom: 105%;
 
     .arrow {
         width: $_u;

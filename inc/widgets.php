@@ -38,9 +38,9 @@ class wpgrade_latest_comments extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array( 'classname'   => 'widget--latest-comments',
-		                     'description' => __( 'The latest comments', 'rosa' )
+		                     'description' => esc_html__( 'The latest comments', 'rosa' )
 		);
-		parent::__construct( 'recent-comments', rosa::themename() . ' ' . __( 'Latest Comments', 'rosa' ), $widget_ops );
+		parent::__construct( 'recent-comments', 'Rosa ' . esc_html__( 'Latest Comments', 'rosa' ), $widget_ops );
 		$this->alt_option_name = 'widget_recent_comments';
 
 		add_action( 'comment_post', array( $this, 'flush_widget_cache' ) );
@@ -108,7 +108,7 @@ class wpgrade_latest_comments extends WP_Widget {
 						</div>
 						<div class="latest-comments__content">
 							<a href="<?php echo $comment->guid; ?>">
-								<p><?php echo rosa::limit_words( strip_tags( get_comment_text( $comment->comment_ID ) ), 25, ' [&hellip;]' ); ?></p>
+								<p><?php echo self::limit_words( strip_tags( get_comment_text( $comment->comment_ID ) ), 25, ' [&hellip;]' ); ?></p>
 							</a>
 						</div>
 					</div>
@@ -122,6 +122,18 @@ class wpgrade_latest_comments extends WP_Widget {
 		echo $output;
 		$cache[ $args['widget_id'] ] = $output;
 		wp_cache_set( 'widget_recent_comments', $cache, 'widget' );
+	}
+
+	static function limit_words( $string, $word_limit, $more_text = ' [&hellip;]' ) {
+		$words  = explode( " ", $string );
+		$output = implode( " ", array_splice( $words, 0, $word_limit ) );
+
+		//check fi we actually cut something
+		if ( count( $words ) > $word_limit ) {
+			$output .= $more_text;
+		}
+
+		return $output;
 	}
 
 	function update( $new_instance, $old_instance ) {

@@ -19,12 +19,14 @@ while ( have_posts() ) : the_post();
 	get_template_part( 'template-parts/header', 'page' );
 
 	$classes      = "article--page  article--main";
-	$border_style = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'gmap_border_style', true );
+	$border_style = get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_border_style', true );
 	if ( ! empty( $border_style ) ) {
 		$classes .= ' border-' . $border_style;
 	}
 
-	if ( ! empty( $post->post_content ) ) : ?>
+	$show_main_content = apply_filters( 'rosa_avoid_empty_markup_if_no_page_content', ( ! empty( $post->post_content ) ) );
+
+	if ( $show_main_content ) : ?>
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
 
@@ -39,7 +41,10 @@ while ( have_posts() ) : the_post();
 
 	<?php endif;
 
-	get_template_part( 'template-parts/subpages' );
+	$show_subpages = apply_filters( 'rosa_display_subpages', true );
+	if ( $show_subpages ) {
+		get_template_part( 'template-parts/subpages' );
+	}
 
 	//comments
 	if ( comments_open() || '0' != get_comments_number() ) : ?>

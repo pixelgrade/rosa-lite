@@ -73,7 +73,7 @@ if( ! function_exists('rosa_callback_inlined_custom_style' ) ) {
 	function rosa_callback_inlined_custom_style() {
 		ob_start();
 		//handle the complicated logic of the footer waves that keeps changing color
-		$footer_sidebar_style    = rosa::option( 'footer_sidebar_style' );
+		$footer_sidebar_style    = rosa_option( 'footer_sidebar_style' );
 		$waves_fill_color = '#121212';
 		switch ($footer_sidebar_style) {
 			case 'light' :
@@ -83,7 +83,7 @@ if( ! function_exists('rosa_callback_inlined_custom_style' ) ) {
 				$waves_fill_color = '#121212';
 				break;
 			case 'accent' :
-				$waves_fill_color = '#'.rosa::option('main-color');
+				$waves_fill_color = '#'.rosa_option('main-color');
 				break;
 
 		}
@@ -116,7 +116,7 @@ if ( ! function_exists( 'rosa_display_header_down_arrow' ) ) {
 		}
 
 		//get the global option regarding down arrow style
-		$down_arrow_style = rosa::option('down_arrow_style');
+		$down_arrow_style = rosa_option('down_arrow_style');
 		if ( empty($down_arrow_style) ) {
 			$down_arrow_style = 'transparent'; //the default
 		}
@@ -391,10 +391,10 @@ if ( ! function_exists('rosa_comments') ) {
 		$GLOBALS['comment'] = $comment; ?>
 	<li <?php comment_class(); ?>>
 		<article id="comment-<?php echo $comment->comment_ID; ?>" class="comment-article  media">
-			<?php if ( rosa::option( 'comments_show_numbering' ) ): ?>
+			<?php if ( rosa_option( 'comments_show_numbering' ) ): ?>
 				<span class="comment-number"><?php echo $comment_number ?></span>
 			<?php endif; ?>
-			<?php if ( rosa::option( 'comments_show_avatar' ) && get_comment_type( $comment->comment_ID ) == 'comment' ): ?>
+			<?php if ( rosa_option( 'comments_show_avatar' ) && get_comment_type( $comment->comment_ID ) == 'comment' ): ?>
 				<aside class="comment__avatar  media__img">
 					<!-- custom gravatar call -->
 					<?php $bgauthemail = get_comment_author_email(); ?>

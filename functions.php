@@ -136,7 +136,7 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 			wp_enqueue_style( 'rosa-default-fonts', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700,400italic,700italic|Herr+Von+Muellerhoff' );
 		}
 
-		wp_enqueue_style( 'rosa-main-style', get_stylesheet_uri(), array(), rosa::cachebust_string( rosa::themefilepath( 'style.css' ) ) );
+		wp_enqueue_style( 'rosa-main-style', get_stylesheet_uri(), array(), rosa_cachebust_string( wpgrade::themefilepath( 'style.css' ) ) );
 
 		// Scripts
 
@@ -144,7 +144,7 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 		wp_enqueue_script( 'webfont-script', '//ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js', array( 'jquery' ) );
 
 		wp_enqueue_script( 'rosa-plugins-scripts', get_template_directory_uri() . '/assets/js/plugins.js', array( 'jquery', 'modernizr' ), null, true );
-		wp_enqueue_script( 'rosa-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'rosa-plugins-scripts' ), rosa::cachebust_string( rosa::themefilepath( 'assets/js/main.js' ) ), true );
+		wp_enqueue_script( 'rosa-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'rosa-plugins-scripts' ), rosa_cachebust_string( wpgrade::themefilepath( 'assets/js/main.js' ) ), true );
 
 
 		wp_enqueue_script( 'addthis-api', '//s7.addthis.com/js/300/addthis_widget.js#async=1', array( 'jquery' ), null, true );
@@ -152,7 +152,7 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 
 		wp_localize_script( 'rosa-main-scripts', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
 		// localize the theme_name, we are gonna need it
-		wp_localize_script( 'rosa-main-scripts', 'theme_name', rosa::shortname() );
+		wp_localize_script( 'rosa-main-scripts', 'theme_name', wpgrade::shortname() );
 		wp_localize_script( 'rosa-main-scripts', 'objectl10n', array(
 			'tPrev'             => __( 'Previous (Left arrow key)', 'rosa' ),
 			'tNext'             => __( 'Next (Right arrow key)', 'rosa' ),
@@ -163,7 +163,6 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'rosa_load_assets' );
-
 
 if ( ! function_exists( 'rosa_load_admin_assets' ) ) {
 
@@ -224,7 +223,7 @@ function rosa_callback_custom_upload_mimes( $existing_mimes = null ) {
 	return $existing_mimes;
 }
 
-require get_template_directory() . '/inc/classes/rosa.php';
+require get_template_directory() . '/inc/classes/wpgrade.php';
 
 /**
  * Custom template tags for this theme.

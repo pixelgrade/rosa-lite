@@ -1,9 +1,7 @@
 <?php
 /**
  * Custom functions that act independently of the theme templates.
- *
  * Eventually, some of the functionality here could be replaced by core features.
- *
  * @package Rosa
  */
 
@@ -36,7 +34,7 @@ function rosa_get_current_canonical_url() {
 		}
 	} elseif ( ( $wp_query->is_single || $wp_query->is_page ) && $haspost ) {
 		$post = $wp_query->posts[0];
-		$link = get_permalink( rosa::lang_post_id( $post->ID ) );
+		$link = get_permalink( $post->ID );
 	} elseif ( $wp_query->is_author && $haspost ) {
 		$author = get_userdata( get_query_var( 'author' ) );
 		if ( $author === false ) {
@@ -99,8 +97,8 @@ function wpgrade_callback_geting_active() {
 	 * Get the config from /config/activation.php
 	 */
 	$activation_settings = array();
-	if ( file_exists( rosa::themepath() . 'inc/activation.php' ) ) {
-		$activation_settings = include rosa::themepath() . 'inc/activation.php';
+	if ( file_exists( get_template_directory() . '/inc/activation.php' ) ) {
+		$activation_settings = include get_template_directory() . '/inc/activation.php';
 	}
 
 	/**
@@ -126,7 +124,7 @@ function wpgrade_callback_geting_active() {
 			$types_options = array();
 		}
 
-		$theme_key                   = rosa::shortname() . '_pixtypes_theme';
+		$theme_key                   = wpgrade::shortname() . '_pixtypes_theme';
 		$types_options[ $theme_key ] = $pixtypes_conf_settings;
 
 		update_option( 'pixtypes_themes_settings', $types_options );
@@ -138,31 +136,68 @@ function wpgrade_callback_geting_active() {
 	delete_option( 'rewrite_rules' );
 }
 
-add_action( 'after_switch_theme', 'wpgrade_callback_geting_active' );
+add_action( 'init', 'wpgrade_callback_geting_active' );
 
 // Start password protected stuff
 add_action( 'wp', 'rosa_prepare_password_for_custom_post_types' );
 function rosa_prepare_password_for_custom_post_types() {
 
 	global $wpgrade_private_post;
-	$wpgrade_private_post = rosa::is_password_protected();
+	$wpgrade_private_post = rosa_is_password_protected();
+}
 
+/**
+ * Checks if a post type object needs password aproval
+ * @return if the form was submited it returns an array with the success status and a message
+ */
+function rosa_is_password_protected() {
+	global $post;
+	$private_post = array( 'allowed' => false, 'error' => '' );
+
+	if ( isset( $_POST['submit_password'] ) ) { // when we have a submision check the password and its submision
+		if ( isset( $_POST['submit_password_nonce'] ) && wp_verify_nonce( $_POST['submit_password_nonce'], 'password_protection' ) ) {
+			if ( isset ( $_POST['post_password'] ) && ! empty( $_POST['post_password'] ) ) { // some simple checks on password
+				// finally test if the password submitted is correct
+				if ( $post->post_password === $_POST['post_password'] ) {
+					$private_post['allowed'] = true;
+
+					// ok if we have a correct password we should inform wordpress too
+					// otherwise the mad dog will put the password form again in the_content() and other filters
+					global $wp_hasher;
+					if ( empty( $wp_hasher ) ) {
+						require_once( ABSPATH . 'wp-includes/class-phpass.php' );
+						$wp_hasher = new PasswordHash( 8, true );
+					}
+					setcookie( 'wp-postpass_' . COOKIEHASH, $wp_hasher->HashPassword( stripslashes( $_POST['post_password'] ) ), 0, COOKIEPATH );
+
+				} else {
+					$private_post['error'] = '<h4 class="text--error">' . esc_html__( 'Wrong Password', 'rosa' ) . '</h4>';
+				}
+			}
+		}
+	}
+
+	if ( isset( $_COOKIE[ 'wp-postpass_' . COOKIEHASH ] ) && get_permalink() == wp_get_referer() ) {
+		$private_post['error'] = '<h4 class="text--error">' . esc_html__( 'Wrong Password', 'rosa' ) . '</h4>';
+	}
+
+	return $private_post;
 }
 
 if ( ! function_exists( 'rosa_callback_the_password_form' ) ) {
 	function rosa_callback_the_password_form( $form ) {
 		global $post;
 		$post   = get_post( $post );
-		$postID = rosa::lang_post_id( $post->ID );
+		$postID = $post->ID;
 		$label  = 'pwbox-' . ( empty( $postID ) ? rand() : $postID );
 		$form   = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">
 		<p>' . __( "This post is password protected. To view it please enter your password below:", 'rosa' ) . '</p>
 		<div class="row">
 			<div class="column  span-12  hand-span-10">
-				<input name="post_password" id="' . $label . '" type="password" size="20" placeholder="' . __( "Password", 'rosa' ) . '"/>
+				<input name="post_password" id="' . $label . '" type="password" size="20" placeholder="' . esc_html__( "Password", 'rosa' ) . '"/>
 			</div>
 			<div class="column  span-12  hand-span-2">
-				<input type="submit" name="Access" value="' . esc_attr__( "Access", 'rosa' ) . '" class="btn post-password-submit"/>
+				<input type="submit" name="' . esc_attr__( "Access", 'rosa' ) . '" value="' . esc_attr__( "Access", 'rosa' ) . '" class="btn post-password-submit"/>
 			</div>
 		</div>
 	</form>';
@@ -188,13 +223,14 @@ if ( ! function_exists( 'rosa_callback_the_password_form' ) ) {
 		if ( ! $hasher->CheckPassword( $post->post_password, $hash ) ) {
 
 			// We have a cookie, but it does not match the password.
-			$msg  = '<span class="wrong-password-message">' . __( 'Sorry, your password did not match', 'rosa' ) . '</span>';
+			$msg  = '<span class="wrong-password-message">' . esc_html__( 'Sorry, your password did not match', 'rosa' ) . '</span>';
 			$form = $msg . $form;
 		}
 
 		return $form;
 
 	}
+
 	add_action( 'the_password_form', 'rosa_callback_the_password_form' );
 }
 // Start password protected form
@@ -224,7 +260,7 @@ if ( ! function_exists( 'rosa_callback_addthis' ) ) {
 
 	function rosa_callback_addthis() {
 		//lets determine if we need the addthis script at all
-		if ( is_single() && rosa::option( 'blog_single_show_share_links' ) ):
+		if ( is_single() && rosa_option( 'blog_single_show_share_links' ) ):
 			wp_enqueue_script( 'addthis-api' );
 
 			//here we will configure the AddThis sharing globally
@@ -234,8 +270,8 @@ if ( ! function_exists( 'rosa_callback_addthis' ) ) {
 			} ?>
 			<script type="text/javascript">
 				addthis_config = {
-					<?php if (rosa::option('share_buttons_enable_tracking') && rosa::option('share_buttons_enable_addthis_tracking')):
-					echo 'username : "'.rosa::option('share_buttons_addthis_username').'",';
+					<?php if ( rosa_option( 'share_buttons_enable_tracking' ) && rosa_option( 'share_buttons_enable_addthis_tracking' ) ):
+					echo 'username : "' . rosa_option( 'share_buttons_addthis_username' ) . '",';
 				endif; ?>
 					ui_click: false,
 					ui_delay: 100,
@@ -243,9 +279,9 @@ if ( ! function_exists( 'rosa_callback_addthis' ) ) {
 					ui_use_css: true,
 					data_track_addressbar: false,
 					data_track_clickback: false
-					<?php if (rosa::option('share_buttons_enable_tracking') && rosa::option('share_buttons_enable_ga_tracking')):
-					echo ', data_ga_property: "'.rosa::option('share_buttons_ga_id').'"';
-					if (rosa::option('share_buttons_enable_ga_social_tracking')):
+					<?php if ( rosa_option( 'share_buttons_enable_tracking' ) && rosa_option( 'share_buttons_enable_ga_tracking' ) ):
+					echo ', data_ga_property: "' . rosa_option( 'share_buttons_ga_id' ) . '"';
+					if ( rosa_option( 'share_buttons_enable_ga_social_tracking' ) ):
 						echo ', data_ga_social : true';
 					endif;
 				endif; ?>
@@ -253,8 +289,8 @@ if ( ! function_exists( 'rosa_callback_addthis' ) ) {
 
 				addthis_share = {
 					url: "<?php echo rosa_get_current_canonical_url(); ?>",
-					title: "<?php wp_title('|', true, 'right'); ?>",
-					description: "<?php echo trim(strip_tags(get_the_excerpt())) ?>"
+					title: "<?php wp_title( '|', true, 'right' ); ?>",
+					description: "<?php echo trim( strip_tags( get_the_excerpt() ) ) ?>"
 				};
 			</script>
 			<?php
@@ -278,10 +314,11 @@ function rosa_overwrite_gallery_atts( $out, $pairs, $atts ) {
 				$out['size'] = 'medium';
 				break;
 		}
-
 	}
+
 	return $out;
 }
+
 add_filter( 'shortcode_atts_gallery', 'rosa_overwrite_gallery_atts', 10, 3 );
 
 
@@ -291,14 +328,14 @@ add_filter( 'shortcode_atts_gallery', 'rosa_overwrite_gallery_atts', 10, 3 );
 * Invoked by rosa_callback_themesetup
 */
 function rosa_callback_gtkywb() {
-	$themedata = rosa::themedata();
+	$themedata = wpgrade::themedata();
 
 	$response = wp_remote_post( REQUEST_PROTOCOL . '//pixelgrade.com/stats', array(
 		'method' => 'POST',
 		'body'   => array(
 			'send_stats'    => true,
-			'theme_name'    => rosa::shortname(),
-			'theme_version' => $themedata->get('Version'),
+			'theme_name'    => wpgrade::shortname(),
+			'theme_version' => $themedata->get( 'Version' ),
 			'domain'        => $_SERVER['HTTP_HOST'],
 			'permalink'     => get_permalink( 1 ),
 			'is_child'      => is_child_theme(),
@@ -455,7 +492,6 @@ function rosa_custom_post_gallery( $output, $attr ) {
 
 		/**
 		 * Filter whether to print default gallery styles.
-		 *
 		 * @since 3.1.0
 		 *
 		 * @param bool $print Whether to print default gallery styles.
@@ -482,11 +518,10 @@ function rosa_custom_post_gallery( $output, $attr ) {
 
 		/**
 		 * Filter the default gallery shortcode CSS styles.
-		 *
 		 * @since 2.5.0
 		 *
 		 * @param string $gallery_style Default gallery shortcode CSS styles.
-		 * @param string $gallery_div Opening HTML div container for the gallery shortcode output.
+		 * @param string $gallery_div   Opening HTML div container for the gallery shortcode output.
 		 */
 		$output = apply_filters( 'gallery_style', $gallery_style . $gallery_div );
 
@@ -519,7 +554,7 @@ function rosa_custom_post_gallery( $output, $attr ) {
 				</{$captiontag}>";
 			}
 			$output .= "</{$itemtag}>";
-			if ( ! $html5 && $columns > 0 && ++$i % $columns == 0 ) {
+			if ( ! $html5 && $columns > 0 && ++ $i % $columns == 0 ) {
 				$output .= '<br style="clear: both" />';
 			}
 		}
@@ -535,6 +570,7 @@ function rosa_custom_post_gallery( $output, $attr ) {
 
 	return $output;
 }
+
 add_filter( 'post_gallery', 'rosa_custom_post_gallery', 10, 2 );
 
 add_filter( 'mce_buttons', 'rosa_add_next_page_button' );
@@ -614,6 +650,7 @@ function rosa_register_attachments_custom_fields() {
 
 				);
 			}
+
 			return $form_fields;
 		}
 	}
@@ -646,13 +683,14 @@ function rosa_register_attachments_custom_fields() {
 		}
 	}
 }
+
 add_action( 'init', 'rosa_register_attachments_custom_fields' );
 
 /**
  * Load custom javascript set by theme options
  */
 function rosa_callback_load_custom_js() {
-	$custom_js = rosa::option( 'custom_js' );
+	$custom_js = rosa_option( 'custom_js' );
 	if ( ! empty( $custom_js ) ) {
 		//first lets test is the js code is clean or has <script> tags and such
 		//if we have <script> tags than we will not enclose it in anything - raw output
@@ -663,10 +701,11 @@ function rosa_callback_load_custom_js() {
 		}
 	}
 }
+
 add_action( 'wp_head', 'rosa_callback_load_custom_js', 999 );
 
 function rosa_callback_load_custom_js_footer() {
-	$custom_js = rosa::option( 'custom_js_footer' );
+	$custom_js = rosa_option( 'custom_js_footer' );
 	if ( ! empty( $custom_js ) ) {
 		//first lets test is the js code is clean or has <script> tags and such
 		//if we have <script> tags than we will not enclose it in anything - raw output
@@ -677,6 +716,7 @@ function rosa_callback_load_custom_js_footer() {
 		}
 	}
 }
+
 add_action( 'wp_footer', 'rosa_callback_load_custom_js_footer', 999 );
 
 
@@ -691,7 +731,7 @@ add_action( 'wp_footer', 'rosa_callback_load_custom_js_footer', 999 );
  */
 function short_text( $text, $cut_length, $limit, $echo = true ) {
 	$char_count = mb_strlen( $text );
-	$text       = ( $char_count > $limit ) ? mb_substr( $text, 0, $cut_length ) . rosa::option( 'blog_excerpt_more_text' ) : $text;
+	$text       = ( $char_count > $limit ) ? mb_substr( $text, 0, $cut_length ) . rosa_option( 'blog_excerpt_more_text' ) : $text;
 	if ( $echo ) {
 		echo $text;
 	} else {
@@ -845,15 +885,15 @@ function rosa_better_excerpt( $text = '' ) {
 		$text        = str_replace( ']]>', ']]&gt;', $text );
 
 		// Removes any JavaScript in posts (between <script> and </script> tags)
-		$text = preg_replace('@<script[^>]*?>.*?</script>@si', '', $text);
+		$text = preg_replace( '@<script[^>]*?>.*?</script>@si', '', $text );
 
 		// Enable formatting in excerpts - Add HTML tags that you want to be parsed in excerpts
 		$allowed_tags = '<p><a><em><strong><i><br><h1><h2><h3><h4><h5><h6><blockquote><ul><li><ol><iframe><embed><object><script>';
 		$text         = strip_tags( $text, $allowed_tags );
 
 		// Set custom excerpt length - number of characters to be shown in excerpts
-		if ( rosa::option( 'blog_excerpt_length' ) ) {
-			$excerpt_length = absint( rosa::option( 'blog_excerpt_length' ) );
+		if ( rosa_option( 'blog_excerpt_length' ) ) {
+			$excerpt_length = absint( rosa_option( 'blog_excerpt_length' ) );
 		} else {
 			$excerpt_length = 180;
 		}
@@ -879,7 +919,7 @@ function rosa_better_excerpt( $text = '' ) {
  * Replace the [...] wordpress puts in when using the the_excerpt() method.
  */
 function new_excerpt_more( $excerpt ) {
-	return rosa::option( 'blog_excerpt_more_text' );
+	return rosa_option( 'blog_excerpt_more_text' );
 }
 
 add_filter( 'excerpt_more', 'new_excerpt_more' );
@@ -899,26 +939,28 @@ add_filter( 'aioseop_canonical_url', 'rosa_get_current_canonical_url' );
 
 /**
  * Filter the page title so that plugins can unhook this
-
  */
 function rosa_wp_title( $title, $sep ) {
 
 	global $paged, $page;
 
-	if ( is_feed() )
+	if ( is_feed() ) {
 		return $title;
+	}
 
 	// Add the site name.
 	$title .= get_bloginfo( 'name' );
 
 	// Add the site description for the home/front page.
 	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) )
+	if ( $site_description && ( is_home() || is_front_page() ) ) {
 		$title = "$title $sep $site_description";
+	}
 
 	// Add a page number if necessary.
-	if ( $paged >= 2 || $page >= 2 )
+	if ( $paged >= 2 || $page >= 2 ) {
 		$title = "$title $sep " . sprintf( __( 'Page %s', 'rosa' ), max( $paged, $page ) );
+	}
 
 	return $title;
 }
@@ -931,8 +973,9 @@ function rosa_fix_yoast_page_number( $title ) {
 
 	if ( is_home() || is_front_page() ) {
 		// Add a page number if necessary.
-		if ( $paged >= 2 || $page >= 2 )
+		if ( $paged >= 2 || $page >= 2 ) {
 			$title = "$title $sep " . sprintf( __( 'Page %s', 'rosa' ), max( $paged, $page ) );
+		}
 	}
 
 	return $title;
@@ -991,18 +1034,18 @@ add_action( 'pre_get_posts', 'rosa_pre_get_posts_sticky_posts' );
 
 /**
  * Extend the default WordPress post classes.
- *
  * @since Rosa 1.5.6
  *
  * @param array $classes A list of existing post class values.
+ *
  * @return array The filtered post class list.
  */
 function rosa_post_classes( $classes ) {
 	//only add this class for regular pages
 	if ( get_page_template_slug( get_the_ID() ) == '' ) {
-		$subtitle = trim( get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_cover_subtitle', true ) );
-		$title = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_cover_title', true );
-		$description = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_cover_description', true );
+		$subtitle    = trim( get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_subtitle', true ) );
+		$title       = get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_title', true );
+		$description = get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_description', true );
 
 		if ( ! ( has_post_thumbnail() || ! empty( $subtitle ) || $title !== ' ' || ! empty( $description ) ) ) {
 			$classes[] = 'no-page-header';
@@ -1011,12 +1054,12 @@ function rosa_post_classes( $classes ) {
 
 	return $classes;
 }
+
 add_filter( 'post_class', 'rosa_post_classes' );
 
 
 /**
  * Subpages edit links in the admin bar in the frontend (top parent page view)
- *
  * @TODO move this inside a plugin
  *
  * @param WP_Admin_Bar $wp_admin_bar
@@ -1038,15 +1081,13 @@ function rosa_subpages_admin_bar_edit_links_frontend( $wp_admin_bar ) {
 		$top_level_page = get_post( $top_level_page_ID );
 		if ( ! empty( $top_level_page ) ) {
 
-			$kids = get_children(
-				array(
+			$kids = get_children( array(
 					'post_parent' => $top_level_page->ID,
 					'orderby'     => 'menu_order title',
 					//this is the exact ordering used on the All Pages page - order included
 					'order'       => 'ASC',
 					'post_type'   => 'page',
-				)
-			);
+				) );
 
 			//so we have children - this means this is a top parent page
 			if ( ! empty( $kids ) ) {
@@ -1085,15 +1126,13 @@ function rosa_subpages_admin_bar_edit_links_frontend( $wp_admin_bar ) {
 					$wp_admin_bar->add_node( $kid_args );
 
 					//let's do one more effort and go one level deeper
-					$subkids = get_children(
-						array(
+					$subkids = get_children( array(
 							'post_parent' => $kid->ID,
 							'orderby'     => 'menu_order title',
 							//this is the exact ordering used on the All Pages page - order included
 							'order'       => 'ASC',
 							'post_type'   => 'page',
-						)
-					);
+						) );
 
 					if ( ! empty( $subkids ) ) {
 						foreach ( $subkids as $subkid ) {
@@ -1121,11 +1160,135 @@ function rosa_subpages_admin_bar_edit_links_frontend( $wp_admin_bar ) {
 
 add_action( 'admin_bar_menu', 'rosa_subpages_admin_bar_edit_links_frontend', 999 );
 
+/**
+ * Echo author page link
+ * @return bool|string
+ */
+function rosa_the_author_posts_link() {
+	global $authordata;
+	if ( ! is_object( $authordata ) ) {
+		return false;
+	}
+	$link = sprintf( '<a href="%1$s" title="%2$s">%3$s</a>', esc_url( get_author_posts_url( $authordata->ID, $authordata->user_nicename ) ), esc_attr( sprintf( __( 'Posts by %s', 'rosa' ), get_the_author() ) ), get_the_author() );
 
+	/**
+	 * Filter the link to the author page of the author of the current post.
+	 * @since 2.9.0
+	 *
+	 * @param string $link HTML link.
+	 */
+	echo apply_filters( 'the_author_posts_link', $link );
+}
+
+function rosa_page_has_children() {
+	global $post;
+
+	$pages = get_pages( 'child_of=' . $post->ID );
+
+	return count( $pages );
+}
+
+function rosa_option( $option, $default = null ) {
+	global $pagenow;
+	global $pixcustomify_plugin;
+
+	// if there is set an key in url force that value
+	if ( isset( $_GET[ $option ] ) && ! empty( $option ) ) {
+		return $_GET[ $option ];
+	} elseif ( $pixcustomify_plugin !== null && $pixcustomify_plugin->has_option( $option ) ) {
+		// if this is a customify value get it here
+		return $pixcustomify_plugin->get_option( $option, $default );
+	}
+
+	return $default;
+}
+
+
+/**
+ * Get the image src attribute.
+ * Target should be a valid option accessible via WPGradeOptions interface.
+ * @return string|false
+ */
+function rosa_image_src( $target, $size = null ) {
+	if ( isset( $_GET[ $target ] ) && ! empty( $target ) ) {
+		return rosa_get_attachment_image( $_GET[ $target ], $size );
+	} else { // empty target, or no query
+		$image = rosa_option( $target );
+		if ( is_numeric( $image ) ) {
+			return rosa_get_attachment_image( $image, $size );
+		}
+	}
+
+	return false;
+}
+
+/**
+ * Filter content
+ * Filters may be disabled by setting priority to false or null.
+ * @return string $content after being filtered
+ */
+function rosa_display_content( $content, $filtergroup ) {
+	// since we cannot apply "the_content" filter on some content blocks
+	// we should apply at least these bellow
+	$wptexturize     = apply_filters( 'wptexturize', $content );
+	$convert_smilies = apply_filters( 'convert_smilies', $wptexturize );
+	$convert_chars   = apply_filters( 'convert_chars', $convert_smilies );
+	$content         = wpautop( $convert_chars );
+
+	// including Wordpress plugin.php for is_plugin_active function
+	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+	if ( is_plugin_active( 'pixcodes/pixcodes.php' ) ) {
+		$content = wpgrade_remove_spaces_around_shortcodes( $content );
+	}
+
+	$content = apply_filters( 'prepend_attachment', $content );
+
+	return do_shortcode( $content );
+}
+
+
+function rosa_get_attachment_image( $id, $size = null ) {
+
+	if ( empty( $id ) || ! is_numeric( $id ) ) {
+		return false;
+	}
+
+	$array = wp_get_attachment_image_src( $id, $size );
+
+	if ( isset( $array[0] ) ) {
+		return $array[0];
+	}
+
+	return false;
+}
 
 /**
  * Very extras
  */
+
+
+/**
+ * Helper function for safely calculating cachebust string. The filemtime is
+ * prone to failure.
+ *
+ * @param  string file path to test
+ *
+ * @return string cache bust based on filemtime or monthly
+ */
+function rosa_cachebust_string( $filepath ) {
+	$filemtime = @filemtime( $filepath );
+
+	if ( $filemtime == null ) {
+		$filemtime = @filemtime( utf8_decode( $filepath ) );
+	}
+
+	if ( $filemtime != null ) {
+		return date( 'YmdHi', $filemtime );
+	} else { // can't get filemtime, fallback to cachebust every month
+		return date( 'Ym' );
+	}
+}
 
 /*=========== SANITIZE UPLOADED FILE NAMES ==========*/
 
@@ -1408,18 +1571,20 @@ function rosa_translit( $str ) {
  *
  * @see array_insert_before()
  */
-function rosa_array_insert_after($key, array &$array, $new_key, $new_value) {
-	if (array_key_exists($key, $array)) {
+function rosa_array_insert_after( $key, array &$array, $new_key, $new_value ) {
+	if ( array_key_exists( $key, $array ) ) {
 		$new = array();
-		foreach ($array as $k => $value) {
-			$new[$k] = $value;
-			if ($k === $key) {
-				$new[$new_key] = $new_value;
+		foreach ( $array as $k => $value ) {
+			$new[ $k ] = $value;
+			if ( $k === $key ) {
+				$new[ $new_key ] = $new_value;
 			}
 		}
+
 		return $new;
 	}
-	return FALSE;
+
+	return false;
 }
 
 /*
@@ -1440,17 +1605,19 @@ function rosa_array_insert_after($key, array &$array, $new_key, $new_value) {
  * @see array_insert_after()
  */
 function rosa_array_insert_before( $key, array &$array, $new_key, $new_value ) {
-	if (array_key_exists($key, $array)) {
+	if ( array_key_exists( $key, $array ) ) {
 		$new = array();
-		foreach ($array as $k => $value) {
-			if ($k === $key) {
-				$new[$new_key] = $new_value;
+		foreach ( $array as $k => $value ) {
+			if ( $k === $key ) {
+				$new[ $new_key ] = $new_value;
 			}
-			$new[$k] = $value;
+			$new[ $k ] = $value;
 		}
+
 		return $new;
 	}
-	return FALSE;
+
+	return false;
 }
 
 function rosa_get_avatar_url( $email, $size = 32 ) {

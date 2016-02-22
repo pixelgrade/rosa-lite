@@ -167,17 +167,17 @@ function init() {
 	eventHandlers();
 
     // move waves in siblings so they keep up with the parallax
-    var $waves = jQuery('.border-waves').not('.site-footer');
-    $waves.removeClass('border-waves');
+    // var $waves = jQuery('.border-waves').not('.site-footer');
+    // $waves.removeClass('border-waves');
 
-    $waves.each(function(i, obj) {
-        var $wave = $(obj);
-        $wave.prevAll('.article__header').first().find('.article__parallax').addClass('border-waves-top');
-        $wave.nextAll('.article__header').first().find('.article__parallax').addClass('border-waves-bottom');
-        $wave.next('.site-footer').addClass('border-waves-bottom');
-    });
+    // $waves.each(function(i, obj) {
+    //     var $wave = $(obj);
+    //     $wave.prevAll('.article__header').first().find('.article__parallax').addClass('border-waves-top');
+    //     $wave.nextAll('.article__header').first().find('.article__parallax').addClass('border-waves-bottom');
+    //     $wave.next('.site-footer').addClass('border-waves-bottom');
+    // });
 
-    $('.site-footer.border-waves').prevAll('article__header').first().find('.article__parallax').addClass('border-waves-top border-waves-top--dark');
+    // $('.site-footer.border-waves').prevAll('article__header').first().find('.article__parallax').addClass('border-waves-top border-waves-top--dark');
 
     $('.js-pixslider').not('.article__parallax .js-pixslider').each(function(i, slider) {
         sliderInit($(slider));
@@ -413,7 +413,7 @@ $(window).on("orientationchange", function(e) {
     }, 300)
 });
 
-var latestKnownScrollY = $('body').scrollTop() || $('html').scrollTop(),
+var latestKnownScrollY = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop,
     ticking = false;
 
 function updateStuff() {

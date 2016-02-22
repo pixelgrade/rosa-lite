@@ -14,7 +14,7 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) :
 
 else :
 	$has_sidebar = false;
-	if ( rosa::option( 'blog_single_show_sidebar' ) ) {
+	if ( rosa_option( 'blog_single_show_sidebar' ) ) {
 		$has_sidebar = true;
 	}
 
@@ -40,7 +40,7 @@ else :
 
 						<?php
 						if ( has_post_thumbnail() ):
-							if ( rosa::option( 'blog_single_show_sidebar' ) ) { //use a smaller image size
+							if ( rosa_option( 'blog_single_show_sidebar' ) ) { //use a smaller image size
 								$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'medium-size' );
 							} else { //use a larger image size
 								$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large-size' );
@@ -117,7 +117,7 @@ else :
 							</div><!--
                          --><div class="grid__item  lap-and-up-one-half">
 
-								<?php if ( rosa::option( 'blog_single_show_share_links' ) ): ?>
+								<?php if ( rosa_option( 'blog_single_show_share_links' ) ): ?>
 
 									<div class="addthis_toolbox addthis_default_style addthis_32x32_style  add_this_list"
 									     addthis:url="<?php echo rosa_get_current_canonical_url(); ?>"
@@ -133,7 +133,7 @@ else :
 							</div>
 						</div><!-- .grid -->
 
-						<?php if ( rosa::option( 'blog_single_show_author_box' ) ) {
+						<?php if ( rosa_option( 'blog_single_show_author_box' ) ) {
 							get_template_part( 'author-bio' );
 						} ?>
 

@@ -1,4 +1,10 @@
 <?php
+/**
+ * Custom functions that deal with various plugin integrations of PixCodes.
+ *
+ * @package Rosa
+ * @since 2.0.0
+ */
 
 /**
  * Start Hook PixCodes params
@@ -159,7 +165,7 @@ function rosa_callbacks_setup_shortcodes_plugin() {
 	// by the shortcodes plugin
 	$current_prefix = get_option( 'rosa_metaboxes_prefix' );
 	if ( empty( $current_prefix ) ) {
-		update_option( 'rosa_metaboxes_prefix', rosa::prefix() );
+		update_option( 'rosa_metaboxes_prefix', wpgrade::prefix() );
 	}
 }
 add_action( 'admin_head', 'rosa_callbacks_setup_shortcodes_plugin' );

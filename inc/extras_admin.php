@@ -135,8 +135,10 @@ function rosa_subpages_admin_bar_edit_links_backend( $wp_admin_bar ) {
 			) );
 		}
 
-	} elseif ( $is_edit_page ) {
+	}
 
+	//this way we allow for pages that have both a parent and children
+	if ( $is_edit_page ) {
 
 		$kids = get_children(
 			array(

@@ -16,3 +16,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 if ( class_exists( 'WpGradeShortcodes' ) ) {
 	require get_template_directory() . '/inc/integrations/pixcodes.php';
 }
+
+if ( class_exists( 'Vc_Manager' ) ) {
+	require get_template_directory() . '/inc/integrations/visual-composer.php';
+}

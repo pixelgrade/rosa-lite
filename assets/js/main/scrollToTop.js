@@ -1,15 +1,18 @@
-var ScrollToTop = {
-    start:      0,
-    end:        0,
-    timeline:   null,
-    played:     false,
+var ScrollToTop = (function() {
 
-    initialize: function () {
+    var start = 0,
+        end = 0,
+        timeline = null,
+        played = false,
+        footerHeight;
+
+    function initialize() {
 
         var $button         = $('.btn--top'),
-            offsetTop,
-            footerHeight    = $('.copyright-area').outerHeight(),
+            offsetTop       = 0,
             start           = offsetTop - windowHeight + footerHeight * 3 / 4;
+
+        footerHeight = $('.copyright-area').outerHeight();
 
         if (empty($button)) {
             return;
@@ -57,13 +60,12 @@ var ScrollToTop = {
         });
 
         this.update();
-    },
+    }
 
-    update: function () {
+    function update() {
 
         var $button         = $('.btn--top'),
             offsetTop       = $button.data('offsetTop'),
-            footerHeight    = $('.copyright-area').outerHeight(),
             start           = offsetTop - windowHeight + footerHeight * 3 / 4,
             end             = start + windowHeight;
 
@@ -88,4 +90,10 @@ var ScrollToTop = {
             }
         }
     }
-}
+
+    return {
+        initialize: initialize,
+        update: update
+    }
+
+})();
