@@ -7,7 +7,7 @@ var ScrollToTop = {
     initialize: function () {
 
         var $button         = $('.btn--top'),
-            offsetTop       = $button.offset().top,
+            offsetTop,
             footerHeight    = $('.copyright-area').outerHeight(),
             start           = offsetTop - windowHeight + footerHeight * 3 / 4;
 
@@ -15,6 +15,7 @@ var ScrollToTop = {
             return;
         }
 
+        offsetTop = $button.offset().top;
         $button.data('offsetTop', offsetTop);
 
         this.timeline   = new pixGS.TimelineMax({ paused: true });
