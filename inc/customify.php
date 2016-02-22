@@ -1024,7 +1024,7 @@ function rosa_footer_style_select( $value, $selector, $property, $unit ) {
 			$waves_fill_color = '#121212';
 			break;
 		case 'accent' :
-			$waves_fill_color = '#'.rosa::option('main-color');
+			$waves_fill_color = '#'.rosa_option('main-color');
 			break;
 
 	}
@@ -1055,6 +1055,8 @@ function convert_redux_options_to_customify() {
 	update_option( 'rosa_options', $current_options );
 
 	rosa_convert_social_links();
+
+	rosa_migrate_gmap_page_general_metas();
 
 	update_option( 'convert_options_to_customify', 1 );
 
@@ -1151,6 +1153,29 @@ function rosa_convert_social_links() {
 	unset(  $current_options['social_icons'] );
 	// save the new options
 	update_option( 'rosa_options', $current_options );
+}
+
+//Move the meta data from the gmap specific metas to the general ones (they have their own separate meta box shown on all pages)
+function rosa_migrate_gmap_page_general_metas() {
+	$pages = get_pages( array(
+		'meta_key' => '_wp_page_template',
+		'meta_value' => 'page-templates/contact.php'
+	) );
+	foreach( $pages as $page ) {
+		//handle the header_transparent_menu_bar_contact meta
+		$old_meta = get_post_meta( $page->ID, wpgrade::prefix() . 'header_transparent_menu_bar_contact', true );
+		if ( ! empty( $old_meta ) ) {
+			update_post_meta( $page->ID, wpgrade::prefix() . 'header_transparent_menu_bar', $old_meta );
+			delete_post_meta( $page->ID, wpgrade::prefix() . 'header_transparent_menu_bar_contact' );
+		}
+
+		//handle the border_style meta
+		$old_meta = get_post_meta( $page->ID, wpgrade::prefix() . 'gmap_border_style', true );
+		if ( ! empty( $old_meta ) ) {
+			update_post_meta( $page->ID, wpgrade::prefix() . 'page_border_style', $old_meta );
+			delete_post_meta( $page->ID, wpgrade::prefix() . 'gmap_border_style' );
+		}
+	}
 }
 
 

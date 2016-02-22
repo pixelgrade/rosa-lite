@@ -11,7 +11,7 @@
 	<div class="author__text">
 		<div class="author__title">
 			<h3 class="accessibility"><?php _e( 'Author', 'rosa' ); ?></h3>
-			<h4><span itemprop="name"><?php rosa::the_author_posts_link(); ?></span></h4>
+			<h4><span itemprop="name"><?php rosa_the_author_posts_link(); ?></span></h4>
 		</div>
 		<p class="author__bio" itemprop="description"><?php the_author_meta( 'description' ); ?></p>
 		<ul class="author__social-links">

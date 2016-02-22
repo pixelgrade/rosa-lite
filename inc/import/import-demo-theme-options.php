@@ -8,7 +8,7 @@ require_once ABSPATH . 'wp-admin/includes/import.php';
 //no errors yet :)
 $wpGrade_importerError = false;
 //the path to the demo files including the file name without the extension
-$import_filepath = rosa::themefilepath( 'inc/import/demo-data/demo_data' );
+$import_filepath = wpgrade::themefilepath( 'inc/import/demo-data/demo_data' );
 
 //check if wp_importer, the base importer class is available, otherwise include it
 if ( ! class_exists( 'WP_Importer' ) ) {
@@ -22,7 +22,7 @@ if ( ! class_exists( 'WP_Importer' ) ) {
 
 //check if the wp import class is available, this class handles the wordpress XML files. If not, include it
 if ( ! class_exists( 'WPGrade_WP_Import' ) ) {
-	$class_wp_import = rosa::themefilepath( 'inc/import/wordpress-importer/wordpress-importer.php' );
+	$class_wp_import = wpgrade::themefilepath( 'inc/import/wordpress-importer/wordpress-importer.php' );
 	if ( file_exists( $class_wp_import ) ) {
 		require_once( $class_wp_import );
 	} else {
@@ -37,7 +37,7 @@ if ( $wpGrade_importerError !== false ) {
 		include_once( 'wordpress-importer/wpgrade-import-class.php' );
 	}
 	if ( ! is_file( $import_filepath . '.php' ) ) {
-		$response['id'] = new WP_Error( 'import_theme_options_nofile', 'The PHP file containing the theme options data could not be found or could not be read in <pre>' . rosa::themefilepath( 'inc/import/demo-data' ) . '</pre><br/> You might want to try to set the file permission to 777.<br/>If this doesn\'t work please use the Theme Options Import/Export and import the .txt file provided in the archive you\'ve received on purchase manually.' );
+		$response['id'] = new WP_Error( 'import_theme_options_nofile', 'The PHP file containing the theme options data could not be found or could not be read in <pre>' . wpgrade::themefilepath( 'inc/import/demo-data' ) . '</pre><br/> You might want to try to set the file permission to 777.<br/>If this doesn\'t work please use the Theme Options Import/Export and import the .txt file provided in the archive you\'ve received on purchase manually.' );
 	} else {
 		ob_start();
 

@@ -7,7 +7,7 @@
 global $post, $wpgrade_private_post, $footer_needs_big_waves;
 
 //test if the current page has child pages
-if ( rosa::page_has_children() ) {
+if ( rosa_page_has_children() ) {
 	//get only the next level pages
 	$args = array(
 		'hierarchical' => 0,
@@ -35,9 +35,9 @@ if ( rosa::page_has_children() ) {
 
 				if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
 					//this is a gmap
-					$border_style = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'gmap_border_style', true );
+					$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_border_style', true );
 				} else {
-					$border_style = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_border_style', true );
+					$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_border_style', true );
 				}
 
 				if ( ! empty( $border_style ) ) {

@@ -12,13 +12,13 @@ $page_section_idx++;
 $classes = "article__header  article__header--page";
 
 //first lets get to know this page a little better
-$header_height = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_header_height', true );
+$header_height = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_header_height', true );
 if ( empty($header_height) ) {
 	$header_height = 'half-height'; //the default
 }
 $classes .= ' ' . $header_height;
 
-$subtitle = trim( __(get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_cover_subtitle', true ) ));
+$subtitle = trim( __(get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_subtitle', true ) ));
 //we need to mess with the subtitle a little bit - because it deserves it
 //we need to wrap the first subtitle letter in a span so we can control it - height wise
 if ( ! empty( $subtitle ) ) {
@@ -27,15 +27,15 @@ if ( ! empty( $subtitle ) ) {
 	$subtitle   = '<span class="first-letter">' . $first_char . '</span>' . mb_substr( $subtitle, 1 );
 }
 
-$title = __(get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_cover_title', true ));
+$title = __(get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_title', true ));
 if ( empty( $title ) ) {
 	//use the page title if empty
 	$title = get_the_title();
 }
-$description = __(get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_cover_description', true ));
-$pin_type = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_gmap_pin_type', true );
+$description = __(get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_cover_description', true ));
+$pin_type = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_gmap_pin_type', true );
 //filter the content with some limitations to avoid having plugins doing nasty things to it
-$description = rosa::display_content( $description, 'default' );
+$description = rosa_display_content( $description, 'default' );
 
 if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
 	if ( empty( $pin_type ) ) {
@@ -46,15 +46,15 @@ if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
 /* FIRST TEST FOR CONTACT PAGE TEMPLATE */
 if ( $pin_type == 'single' ) {
 	//get the Google Maps URL to test if empty
-	$gmap_url = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'gmap_url', true );
+	$gmap_url = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_url', true );
 
 	if ( ! empty( $gmap_url ) ) {
 		//set the global so everybody knows that we are in dire need of the Google Maps API
 		$is_gmap = true;
 
-		$gmap_custom_style   = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'gmap_custom_style', true );
-		$gmap_marker_content = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'gmap_marker_content', true );
-		$gmap_height         = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_gmap_height', true );
+		$gmap_custom_style   = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_custom_style', true );
+		$gmap_marker_content = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'gmap_marker_content', true );
+		$gmap_height         = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_gmap_height', true );
 
 		if ( empty( $gmap_height ) ) {
 			$gmap_height = 'half-height'; //the default
@@ -76,16 +76,16 @@ if ( $pin_type == 'single' ) {
 	}
 } elseif ( $pin_type == 'multiple' ) {
 	//get the Google Maps URL to test if empty
-	$gmap_urls = get_post_meta( rosa::lang_post_id( get_the_ID() ), 'gmap_urls', true );
+	$gmap_urls = get_post_meta( wpgrade::lang_post_id( get_the_ID() ), 'gmap_urls', true );
 
 	// we really need $$gmap_urls to have a location_url
 	if ( ! empty( $gmap_urls ) && isset( $gmap_urls[1]['location_url'] ) && ! empty( $gmap_urls[1]['location_url'] ) ) {
 		//set the global so everybody knows that we are in dire need of the Google Maps API
 		$is_gmap = true;
 
-		$gmap_custom_style   = get_post_meta( rosa::lang_post_id( get_the_ID() ), rosa::prefix() . 'gmap_custom_style', true );
-		$gmap_marker_content = get_post_meta( rosa::lang_post_id( get_the_ID() ), rosa::prefix() . 'gmap_marker_content', true );
-		$gmap_height         = get_post_meta( rosa::lang_post_id( get_the_ID() ), rosa::prefix() . 'page_gmap_height', true );
+		$gmap_custom_style   = get_post_meta( wpgrade::lang_post_id( get_the_ID() ), wpgrade::prefix() . 'gmap_custom_style', true );
+		$gmap_marker_content = get_post_meta( wpgrade::lang_post_id( get_the_ID() ), wpgrade::prefix() . 'gmap_marker_content', true );
+		$gmap_height         = get_post_meta( wpgrade::lang_post_id( get_the_ID() ), wpgrade::prefix() . 'page_gmap_height', true );
 
 		if ( empty( $gmap_height ) ) {
 			$gmap_height = 'half-height'; //the default
@@ -123,7 +123,7 @@ if ( $pin_type == 'single' ) {
 } else {
 	/* THEN TEST FOR SLIDESHOW PAGE TEMPLATE */
 
-	$gallery_ids = get_post_meta( get_the_ID(), rosa::prefix() . 'main_gallery', true );
+	$gallery_ids = get_post_meta( get_the_ID(), wpgrade::prefix() . 'main_gallery', true );
 
 	if ( get_page_template_slug( get_the_ID() ) == 'page-templates/slideshow.php' && ! empty( $gallery_ids ) ) {
 		$gallery_ids = explode( ',', $gallery_ids );
@@ -141,14 +141,14 @@ if ( $pin_type == 'single' ) {
 
 		if ( ! empty( $attachments ) ) { //let's grab the info regarding the slider
 
-			$image_scale_mode     = get_post_meta( get_the_ID(), rosa::prefix() . 'post_slider_image_scale_mode', true );
-			$slider_visiblenearby = get_post_meta( get_the_ID(), rosa::prefix() . 'post_slider_visiblenearby', true );
-			$slider_transition    = get_post_meta( get_the_ID(), rosa::prefix() . 'post_slider_transition', true );
-			$slider_autoplay      = get_post_meta( get_the_ID(), rosa::prefix() . 'post_slider_autoplay', true );
+			$image_scale_mode     = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_image_scale_mode', true );
+			$slider_visiblenearby = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_visiblenearby', true );
+			$slider_transition    = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_transition', true );
+			$slider_autoplay      = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_autoplay', true );
 
 
 			if ( $slider_autoplay ) {
-				$slider_delay = get_post_meta( get_the_ID(), rosa::prefix() . 'post_slider_delay', true );
+				$slider_delay = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_delay', true );
 			} ?>
 			<header id="post-<?php the_ID() ?>-title" class="<?php echo $classes ?>">
 				<?php if ( ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) { ?>
@@ -185,7 +185,7 @@ if ( $pin_type == 'single' ) {
 							echo ' data-visiblenearby ' . PHP_EOL;
 						}
 
-						if ( rosa::option( 'slideshow_arrows_style' ) == 'hover' ) {
+						if ( rosa_option( 'slideshow_arrows_style' ) == 'hover' ) {
 							echo ' data-hoverarrows ';
 						} ?>
 						>
