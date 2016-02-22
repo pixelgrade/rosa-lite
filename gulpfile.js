@@ -107,20 +107,6 @@ gulp.task('styles-admin', function () {
 			.pipe(gulp.dest('./assets/css/admin/'));
 });
 
-gulp.task('styles-login-ajax', function () {
-	return gulp.src(['assets/scss/login-with-ajax.scss'])
-			.pipe(sass({'sourcemap': true, style: 'expanded'}))
-			.pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
-			// .pipe(cmq())
-			.pipe(csscomb())
-			.pipe(chmod(644))
-			.pipe(gulp.dest('./assets/css/'));
-});
-
-gulp.task('styles-watch', function () {
-	return gulp.watch('assets/scss/**/*.scss', ['styles']);
-});
-
 
 
 
