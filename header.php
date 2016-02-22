@@ -75,7 +75,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 			setup_postdata( $post );
 
-			$make_transparent_menu_bar = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'header_transparent_menu_bar', true );
+			$make_transparent_menu_bar = get_post_meta( get_the_ID(), wpgrade::prefix() . 'header_transparent_menu_bar', true );
 
 			if ( $make_transparent_menu_bar == 'on' ) {
 				$class_name .= '  header--transparent';
@@ -90,9 +90,9 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 if ( is_page() ) {
 
 	if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
-		$make_transparent_menu_bar = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'header_transparent_menu_bar_contact', true );
+		$make_transparent_menu_bar = get_post_meta( get_the_ID(), wpgrade::prefix() . 'header_transparent_menu_bar_contact', true );
 	} else {
-		$make_transparent_menu_bar = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'header_transparent_menu_bar', true );
+		$make_transparent_menu_bar = get_post_meta( get_the_ID(), wpgrade::prefix() . 'header_transparent_menu_bar', true );
 	}
 
 	if ( $make_transparent_menu_bar == 'on' ) {
