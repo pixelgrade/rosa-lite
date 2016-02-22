@@ -2,7 +2,7 @@
 /*
  * Get the comma delimited string from Theme Options and generate the a tags that are needed to make AddThis sharing work
  */
-$share_buttons_types = rosa::option( 'share_buttons_settings' );
+$share_buttons_types = rosa_option( 'share_buttons_settings' );
 
 if ( ! empty( $share_buttons_types ) || $share_buttons_types !== 'false' ) {
 	//lets go through each button type and create the needed markup

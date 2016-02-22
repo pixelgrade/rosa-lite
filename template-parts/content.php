@@ -29,7 +29,7 @@ if ( ! $has_thumb ) {
 		<?php
 		$date = get_the_time( get_option( 'date_format' ) );
 
-		if ( rosa::option( 'blog_custom_date_separator' ) ) {
+		if ( rosa_option( 'blog_custom_date_separator' ) ) {
 			//we need to replace separators with our custom markup
 			$date = str_replace( ', ', ' ', $date );
 			$date = str_replace( '/ ', ' ', $date );
@@ -40,7 +40,7 @@ if ( ! $has_thumb ) {
 
 		<header>
 
-			<?php if ( rosa::option( 'blog_show_date' ) ) : ?>
+			<?php if ( rosa_option( 'blog_show_date' ) ) : ?>
 
 				<div class="article__date">
 					<time class="published" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo $date ?></time>
@@ -57,7 +57,7 @@ if ( ! $has_thumb ) {
 		</section>
 
 		<?php
-		$read_more = rosa::option( 'blog_read_more_text' );
+		$read_more = rosa_option( 'blog_read_more_text' );
 		if ( ! empty( $read_more ) ) : ?>
 			<a href="<?php the_permalink(); ?>" class="read-more-button"><?php echo $read_more ?></a>
 		<?php endif; ?>

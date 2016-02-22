@@ -22,8 +22,8 @@ return array(
 		//		'taxonomies' => array(),
 		'metaboxes' => array(
 			//for the Page Header Covers
-			rosa::shortname() . '_page_header_area_cover'       => array(
-				'id'         => rosa::shortname() . '_page_header_area_cover',
+			wpgrade::shortname() . '_page_header_area_cover'       => array(
+				'id'         => wpgrade::shortname() . '_page_header_area_cover',
 				'title'      => __( 'Featured Header Area', 'rosa' ),
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
@@ -38,7 +38,7 @@ return array(
 					array(
 						'name' => __( 'Header Height', 'rosa' ),
 						'desc' => '<p class="cmb_metabox_description">' . __( 'Select the height of the header area in relation to the browser window.', 'rosa' ).'</p>',
-						'id'   => rosa::prefix() . 'page_header_height',
+						'id'   => wpgrade::prefix() . 'page_header_height',
 						'type'    => 'select',
 						'options' => array(
 							array(
@@ -59,19 +59,19 @@ return array(
 					array(
 						'name' => __( 'Subtitle', 'rosa' ),
 						// 'desc' => __( "This is optional. Leave empty to remove the subtitle.", 'rosa' ),
-						'id'   => rosa::prefix() . 'page_cover_subtitle',
+						'id'   => wpgrade::prefix() . 'page_cover_subtitle',
 						'type' => 'text',
 					),
 					array(
 						'name' => __( 'Title', 'rosa' ),
 						'desc' => __( "If left empty we will use the page title. Tip: put a space if you don't want any cover text.", 'rosa' ),
-						'id'   => rosa::prefix() . 'page_cover_title',
+						'id'   => wpgrade::prefix() . 'page_cover_title',
 						'type' => 'text',
 					),
 					array(
 						'name'    => __( 'Description', 'rosa' ),
 						'desc'    => __( "You can use shortcodes (like the Separator) or even images to further embellish this.", 'rosa' ),
-						'id'      => rosa::prefix() . 'page_cover_description',
+						'id'      => wpgrade::prefix() . 'page_cover_description',
 						'type'    => 'wysiwyg',
 						'options' => array(
 							'media_buttons' => true,
@@ -84,13 +84,13 @@ return array(
 					array(
 						'name' => __( 'Make Menu Bar Transparent', 'rosa' ),
 						'desc' => __( "This will remove the background from the menu and logo top bar.", 'rosa' ),
-						'id'   => rosa::prefix() . 'header_transparent_menu_bar',
+						'id'   => wpgrade::prefix() . 'header_transparent_menu_bar',
 						'type' => 'checkbox',
 					),
 					array(
 						'name' => __( 'Content Border Style', 'rosa' ),
 						'desc' => '<p class="cmb_metabox_description">'.__( 'Select the style of the top and bottom borders of the content.', 'rosa' ).'</p>',
-						'id'   => rosa::prefix() . 'page_border_style',
+						'id'   => wpgrade::prefix() . 'page_border_style',
 						'type'    => 'select',
 						'options' => array(
 							array(
@@ -107,13 +107,13 @@ return array(
 //					array(
 //						'name' => __( 'Inverse The Colors', 'rosa' ),
 //						'desc' => __( "This will make the content background black and the text white.", 'rosa' ),
-//						'id'   => rosa::prefix() . 'inverse_section_colors',
+//						'id'   => wpgrade::prefix() . 'inverse_section_colors',
 //						'type' => 'checkbox',
 //					),
 				),
 			),
-			rosa::shortname() . '_page_header_area_slideshow'  => array(
-				'id'         => rosa::shortname() . '_page_header_area_slideshow',
+			wpgrade::shortname() . '_page_header_area_slideshow'  => array(
+				'id'         => wpgrade::shortname() . '_page_header_area_slideshow',
 				'title'      => __( 'Slideshow Settings', 'rosa' ),
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
@@ -127,7 +127,7 @@ return array(
 				'fields'     => array(
 					array(
 						'name' => __( 'Images', 'rosa' ),
-						'id'   => rosa::prefix() . 'main_gallery',
+						'id'   => wpgrade::prefix() . 'main_gallery',
 						'type' => 'gallery',
 					),
 					array(
@@ -136,7 +136,7 @@ return array(
 <p class="cmb_metabox_description"><strong>Fit</strong> scales image to fit the container (recommended for portrait images)</p>
 <p class="cmb_metabox_description"><strong>Fit if Smaller</strong> scales image to fit only if size of slider container is less than size of image.</p>
 <p class="cmb_metabox_description"><a target="_blank" href="http://bit.ly/slider-image-scaling">Visual explanation</a></p>', 'rosa' ),
-						'id'      => rosa::prefix() . 'post_slider_image_scale_mode',
+						'id'      => wpgrade::prefix() . 'post_slider_image_scale_mode',
 						'type'    => 'select',
 						'options' => array(
 							array(
@@ -157,7 +157,7 @@ return array(
 					array(
 						'name'    => __( 'Show Nearby Images', 'rosa' ),
 						'desc'    => __( 'Enable this if you want to avoid having empty space on the sides of the image when using mostly portrait images.', 'rosa' ),
-						'id'      => rosa::prefix() . 'post_slider_visiblenearby',
+						'id'      => wpgrade::prefix() . 'post_slider_visiblenearby',
 						'type'    => 'select',
 						'options' => array(
 							array(
@@ -173,7 +173,7 @@ return array(
 					),
 					array(
 						'name'    => __( 'Slider transition', 'rosa' ),
-						'id'      => rosa::prefix() . 'post_slider_transition',
+						'id'      => wpgrade::prefix() . 'post_slider_transition',
 						'type'    => 'select',
 						'options' => array(
 							array(
@@ -189,7 +189,7 @@ return array(
 					),
 					array(
 						'name'    => __( 'Slider autoplay', 'rosa' ),
-						'id'      => rosa::prefix() . 'post_slider_autoplay',
+						'id'      => wpgrade::prefix() . 'post_slider_autoplay',
 						'type'    => 'select',
 						'options' => array(
 							array(
@@ -205,15 +205,15 @@ return array(
 					),
 					array(
 						'name' => __( 'Autoplay delay between slides (in milliseconds)', 'rosa' ),
-						'id'   => rosa::prefix() . 'post_slider_delay',
+						'id'   => wpgrade::prefix() . 'post_slider_delay',
 						'type' => 'text_small',
 						'std'  => '1000'
 					)
 				)
 			),
 			//for the Contact Page template - Classic
-			rosa::shortname() . '_gmap_settings' => array(
-				'id'         => rosa::shortname() . '_gmap_settings',
+			wpgrade::shortname() . '_gmap_settings' => array(
+				'id'         => wpgrade::shortname() . '_gmap_settings',
 				'title'      => __( 'Map Coordinates & Display Options', 'rosa' ),
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
@@ -229,7 +229,7 @@ return array(
 					array(
 						'name' => __( 'Map Height', 'rosa' ),
 						'desc' => __( '<p class="cmb_metabox_description">Select the height of the Google Map area in relation to the browser window.</p>', 'rosa' ),
-						'id'   => rosa::prefix() . 'page_gmap_height',
+						'id'   => wpgrade::prefix() . 'page_gmap_height',
 						'type'    => 'select',
 						'options' => array(
 							array(
@@ -250,7 +250,7 @@ return array(
 					array(
 						'name' => __( 'Location Type', 'rosa' ),
 						'desc' => __( '<p class="cmb_metabox_description">Select multiple if you want to display several pins on the map.</p>', 'rosa' ),
-						'id'   => rosa::prefix() . 'page_gmap_pin_type',
+						'id'   => wpgrade::prefix() . 'page_gmap_pin_type',
 						'type'    => 'select',
 						'options' => array(
 							array(
@@ -278,7 +278,7 @@ return array(
 						'display_on' => array(
 							'display' => true,
 							'on'      => array(
-								'field' => rosa::prefix() . 'page_gmap_pin_type',
+								'field' => wpgrade::prefix() . 'page_gmap_pin_type',
 								'value' => 'multiple'
 							)
 						),
@@ -286,13 +286,13 @@ return array(
 					array(
 						'name' => __( 'Google Maps URL', 'rosa' ),
 						'desc' => __( 'Paste here the Share URL you have taken from <a href="http://www.google.com/maps" target="_blank">Google Maps</a>.', 'rosa' ),
-						'id'   => rosa::prefix() . 'gmap_url',
+						'id'   => wpgrade::prefix() . 'gmap_url',
 						'type' => 'textarea_small',
 						'std'  => '',
 						'display_on' => array(
 							'display' => true,
 							'on'      => array(
-								'field' => rosa::prefix() . 'page_gmap_pin_type',
+								'field' => wpgrade::prefix() . 'page_gmap_pin_type',
 								'value' => 'single'
 							)
 						),
@@ -300,7 +300,7 @@ return array(
 					array(
 						'name'    => __( 'Pin Content', 'rosa' ),
 						'desc'    => __( 'Insert here the content of the location marker - leave empty for no custom marker.', 'rosa' ),
-						'id'      => rosa::prefix() . 'gmap_marker_content',
+						'id'      => wpgrade::prefix() . 'gmap_marker_content',
 						'type'    => 'wysiwyg',
 						'std'     => '',
 						'options' => array(
@@ -313,7 +313,7 @@ return array(
 						'display_on' => array(
 							'display' => true,
 							'on'      => array(
-								'field' => rosa::prefix() . 'page_gmap_pin_type',
+								'field' => wpgrade::prefix() . 'page_gmap_pin_type',
 								'value' => 'single'
 							)
 						),
@@ -321,20 +321,20 @@ return array(
 					array(
 						'name' => __( 'Custom Colors', 'rosa' ),
 						'desc' => __( 'Allow us to change the map colors to better match your website.', 'rosa' ),
-						'id'   => rosa::prefix() . 'gmap_custom_style',
+						'id'   => wpgrade::prefix() . 'gmap_custom_style',
 						'type' => 'checkbox',
 						'std'  => 'on',
 					),
 					array(
 						'name' => __( 'Make Menu Bar Transparent', 'rosa' ),
 						'desc' => __( "This will remove the background from the menu and logo top bar.", 'rosa' ),
-						'id'   => rosa::prefix() . 'header_transparent_menu_bar_contact',
+						'id'   => wpgrade::prefix() . 'header_transparent_menu_bar_contact',
 						'type' => 'checkbox',
 					),
 					array(
 						'name' => __( 'Content Border Style', 'rosa' ),
 						'desc' => '<p class="cmb_metabox_description">'.__( 'Select the style of the top and bottom borders of the content.', 'rosa' ).'</p>',
-						'id'   => rosa::prefix() . 'gmap_border_style',
+						'id'   => wpgrade::prefix() . 'gmap_border_style',
 						'type'    => 'select',
 						'options' => array(
 							array(

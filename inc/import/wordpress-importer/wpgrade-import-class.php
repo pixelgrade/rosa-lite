@@ -442,7 +442,7 @@ class wpGrade_import extends WPGrade_WP_Import {
 		if ( ! empty( $theme_options ) ) {
 			$imported_options = json_decode( htmlspecialchars_decode( base64_decode( $theme_options ) ), true );
 			echo 'Success: ';
-			var_export( update_option( rosa::shortname() . "_options", $imported_options ) );
+			var_export( update_option( wpgrade::shortname() . "_options", $imported_options ) );
 		}
 
 		//Ensure the $wp_rewrite global is loaded

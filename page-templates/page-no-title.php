@@ -23,7 +23,7 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 
 		$classes = "article--page  article--main" ;
 
-		$border_style = get_post_meta( rosa::lang_page_id( get_the_ID() ), rosa::prefix() . 'page_border_style', true );
+		$border_style = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'page_border_style', true );
 		if ( ! empty( $border_style ) ) {
 			$classes .= ' border-' . $border_style;
 		}

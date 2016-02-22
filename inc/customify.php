@@ -1024,7 +1024,7 @@ function rosa_footer_style_select( $value, $selector, $property, $unit ) {
 			$waves_fill_color = '#121212';
 			break;
 		case 'accent' :
-			$waves_fill_color = '#'.rosa::option('main-color');
+			$waves_fill_color = '#'.rosa_option('main-color');
 			break;
 
 	}
