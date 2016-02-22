@@ -464,19 +464,3 @@ function wupdates_send_purchase_code_vexXr( $optional_data, $slug ) {
 add_filter( 'wupdates_call_data_request', 'wupdates_send_purchase_code_vexXr', 10, 2 );
 
 /* End of Envato checkup code */
-
-function rosa_add_pixcodes_editor_family_select( $current ) {
-	return true;
-}
-add_filter( 'pixcodes_editor_add_family_selector', 'rosa_add_pixcodes_editor_family_select' );
-
-
-function rosa_add_pixcodes_editor_font_sizes( $current ) {
-	$sizes =  '10px 11px 12px 14px 16px 18px 20px 22px 24px 27px 32px 44px 56px 72px';
-	return $sizes;
-}
-add_filter( 'pixcodes_editor_font_sizes_list', 'rosa_add_pixcodes_editor_font_sizes', 1, 1 );
-function add_to_admin(){
-	add_filter( 'pixcodes_editor_font_sizes_list', 'rosa_add_pixcodes_editor_font_sizes', 1, 1 );
-}
-add_action('muplugins_loaded', 'add_to_admin');
