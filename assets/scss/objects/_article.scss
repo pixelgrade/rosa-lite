@@ -48,8 +48,6 @@
 
 .article--page {
     position: relative;
-    // contain children margins
-    padding: 1px 0;
 
     &.border-waves {
 
@@ -261,27 +259,18 @@
 	}
 }
 
-.article__parallax--img {
+.article__parallax__img {
+	position: absolute;
+	top: 50%; left: 50%;
+	opacity: 0;
+	max-width: none;
+	transform: translate(-50%, -50%);
 
-	img {
-		position: absolute;
-		top: 50%; left: 50%;
-		opacity: 0;
-		max-width: none;
-		transform: translate(-50%, -50%);
-	}
-}
-
-.lt-ie9 {
-
-	.article__parallax--img {
-
-		img {
-			width: 100% !important;
-			top: 0 !important;
-			left: 0 !important;
-			transform: none;
-		}
+	.lt-ie9 & {
+		width: 100% !important;
+		top: 0 !important;
+		left: 0 !important;
+		transform: none;
 	}
 }
 
