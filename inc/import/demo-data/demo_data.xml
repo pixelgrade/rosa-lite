@@ -2491,7 +2491,7 @@ Here is where the beauty lies. We’ve taken that extra-mile and crafted an adva
 
 Use the <strong>Slider shortcode</strong> to slide any type of content: images, blocks of text, testimonials etc.
 
-[slider navigation_style="arrows"]
+[slider navigation_style="arrows"]
 
 [slide]
 
@@ -3933,7 +3933,7 @@ We just need to listen]]></wp:meta_value>
 
 [col size="6"]
 
-[restaurantmenu  type="dotted"]
+[restaurantmenu type="dotted"]
 
 ##Campo Lindo Chicken
 **Fava beans, artchokes, farro &amp; black current gastrique
@@ -4047,7 +4047,7 @@ We just need to listen]]></wp:meta_value>
 
 [col size="6"]
 
-[restaurantmenu  type="dotted"]
+[restaurantmenu type="dotted"]
 
 ##Campo Lindo Chicken
 **Fava beans, artchokes, farro &amp; black current gastrique
@@ -4079,7 +4079,7 @@ We just need to listen]]></wp:meta_value>
 
 [col size="6"]
 
-[restaurantmenu  type="dotted"]
+[restaurantmenu type="dotted"]
 
 ##Crispy
 **Smoked quail, crispy egg, spelt, girolles, parsley
