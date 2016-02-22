@@ -99,7 +99,7 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 			register_nav_menu( $key, $value );
 		}
 
-		add_editor_style( 'style.css' );
+		add_editor_style( 'editor-style.css' );
 
 		add_filter( 'upload_mimes', 'rosa_callback_custom_upload_mimes' );
 	}
@@ -163,7 +163,6 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'rosa_load_assets' );
-
 
 if ( ! function_exists( 'rosa_load_admin_assets' ) ) {
 

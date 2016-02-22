@@ -75,7 +75,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 
 			setup_postdata( $post );
 
-			$make_transparent_menu_bar = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'header_transparent_menu_bar', true );
+			$make_transparent_menu_bar = get_post_meta( get_the_ID(), wpgrade::prefix() . 'header_transparent_menu_bar', true );
 
 			if ( $make_transparent_menu_bar == 'on' ) {
 				$class_name .= '  header--transparent';
@@ -88,7 +88,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 //make the header menu bar transparent
 //only for static pages
 if ( is_page() ) {
-	$make_transparent_menu_bar = get_post_meta( wpgrade::lang_page_id( get_the_ID() ), wpgrade::prefix() . 'header_transparent_menu_bar', true );
+	$make_transparent_menu_bar = get_post_meta( get_the_ID(), wpgrade::prefix() . 'header_transparent_menu_bar', true );
 
 	if ( $make_transparent_menu_bar == 'on' ) {
 		$class_name .= '  header--transparent';
@@ -187,9 +187,6 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 					</nav>
 					<div class="nav-overlay"></div>
 				</div>
-			</div>
-			<!-- .flexbox -->
-		</div>
-		<!-- .container -->
-	</div>
-	<!-- .site-header -->
+			</div><!-- .flexbox -->
+		</div><!-- .container -->
+	</div><!-- .site-header -->
