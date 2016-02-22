@@ -21,6 +21,51 @@ return array(
 		//		'post_types' => array(),
 		//		'taxonomies' => array(),
 		'metaboxes' => array(
+			//General page settings
+			rosa::shortname() . '_page_general'       => array(
+				'id'         => rosa::shortname() . '_page_general',
+				'title'      => __( 'General', 'rosa' ),
+				'pages'      => array( 'page' ), // Post type
+				'context'    => 'normal',
+				'priority'   => 'high',
+				'hidden'     => true,
+				'show_on'    => array(
+					'key' => 'page-template',
+					'value' => array( 'default', 'page-templates/slideshow.php', 'page-templates/page-no-title.php' ),
+				),
+				'show_names' => true, // Show field names on the left
+				'fields'     => array(
+					array(
+						'name' => __( 'Make Menu Bar Transparent', 'rosa' ),
+						'desc' => __( "This will remove the background from the menu and logo top bar.", 'rosa' ),
+						'id'   => rosa::prefix() . 'header_transparent_menu_bar',
+						'type' => 'checkbox',
+					),
+					array(
+						'name' => __( 'Content Border Style', 'rosa' ),
+						'desc' => '<p class="cmb_metabox_description">'.__( 'Select the style of the top and bottom borders of the content.', 'rosa' ).'</p>',
+						'id'   => rosa::prefix() . 'page_border_style',
+						'type'    => 'select',
+						'options' => array(
+							array(
+								'name'  => __( 'Simple', 'rosa' ),
+								'value' => 'simple',
+							),
+							array(
+								'name'  => __( 'Waves', 'rosa' ),
+								'value' => 'waves',
+							),
+						),
+						'std'     => 'simple',
+					),
+//					array(
+//						'name' => __( 'Inverse The Colors', 'rosa' ),
+//						'desc' => __( "This will make the content background black and the text white.", 'rosa' ),
+//						'id'   => rosa::prefix() . 'inverse_section_colors',
+//						'type' => 'checkbox',
+//					),
+				),
+			),
 			//for the Page Header Covers
 			rosa::shortname() . '_page_header_area_cover'       => array(
 				'id'         => rosa::shortname() . '_page_header_area_cover',
@@ -81,35 +126,6 @@ return array(
 							'quicktags'     => true,
 						),
 					),
-					array(
-						'name' => __( 'Make Menu Bar Transparent', 'rosa' ),
-						'desc' => __( "This will remove the background from the menu and logo top bar.", 'rosa' ),
-						'id'   => rosa::prefix() . 'header_transparent_menu_bar',
-						'type' => 'checkbox',
-					),
-					array(
-						'name' => __( 'Content Border Style', 'rosa' ),
-						'desc' => '<p class="cmb_metabox_description">'.__( 'Select the style of the top and bottom borders of the content.', 'rosa' ).'</p>',
-						'id'   => rosa::prefix() . 'page_border_style',
-						'type'    => 'select',
-						'options' => array(
-							array(
-								'name'  => __( 'Simple', 'rosa' ),
-								'value' => 'simple',
-							),
-							array(
-								'name'  => __( 'Waves', 'rosa' ),
-								'value' => 'waves',
-							),
-						),
-						'std'     => 'simple',
-					),
-//					array(
-//						'name' => __( 'Inverse The Colors', 'rosa' ),
-//						'desc' => __( "This will make the content background black and the text white.", 'rosa' ),
-//						'id'   => rosa::prefix() . 'inverse_section_colors',
-//						'type' => 'checkbox',
-//					),
 				),
 			),
 			rosa::shortname() . '_page_header_area_slideshow'  => array(
