@@ -136,7 +136,7 @@ var Parallax = (function() {
             newHeight   = scale * imageHeight;
 
         pixGS.TweenMax.to($image, 0, {
-            width: newWidth,
+            scale: scale,
             x: '-50%',
             y: '-50%',
             z: '0',
