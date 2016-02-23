@@ -165,20 +165,3 @@ html body.woocommerce ul.products li.product {
 	width: 1px;
 	overflow: hidden;
 }
-
-#page > * {
-	z-index: 20;
-}
-
-#page > .article--main {
-	z-index: 30;
-}
-
-#page > .covers {
-	z-index: 1;
-}
-
-#page > .site-header,
-#page > .navigator {
-	z-index: 110;
-}
