@@ -142,13 +142,13 @@
 
 	&.full-height {
 //		height: 105%;
-		height: 100%;
+		height: 100vh;
 	}
 	&.half-height {
-		height: 50%;
+		height: 50vh;
 	}
 	&.two-thirds-height {
-		height: 66%;
+		height: 66vh;
 	}
 
 	&.header--slideshow {
@@ -190,6 +190,7 @@
 			opacity: 1;
 			max-width: none;
 			min-width: 100%;
+			min-height: 100%;
 			position: absolute;
 		}
 	}

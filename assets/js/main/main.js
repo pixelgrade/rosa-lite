@@ -391,13 +391,15 @@ $(window).on("debouncedresize", function(e) {
     royalSliderInit($('.js-pixslider').not('.article__parallax .js-pixslider'));
 
     ScrollToTop.initialize();
-    Parallax.initialize();
-    CoverAnimation.initialize();
 
-    if( touch && windowWidth < 900 )
+
+    if ( touch && windowWidth < 900 ) {
         HandleSubmenusOnTouch.init();
-    else
+    } else {
+        Parallax.initialize();
+        CoverAnimation.initialize();
         HandleSubmenusOnTouch.release();
+    }
 });
 
 $(window).on("organicTabsChange", function(e) {
@@ -417,11 +419,8 @@ var latestKnownScrollY = window.pageYOffset,
     newScrollY = latestKnownScrollY,
     ticking = false;
 
-$window.on('scroll', function() {
-    newScrollY = window.pageYOffset;
-});
-
 new rafscroll(function(e) {
+    newScrollY = window.pageYOffset;
     // Avoid calculations if not needed
     if (latestKnownScrollY == newScrollY) {
         return false;
