@@ -87,24 +87,24 @@
 
 .article__header {
 
-	// &, * {
-	// 	pointer-events: none;
-	// }
+	&, * {
+		pointer-events: none;
+	}
 
-	// .flexbox__item *,
-	// .covers &,
-	// .covers & *,
-	// .is_iexplore &,
-	// .is_iexplore & *,
-	// .blurp--top,
-	// .down-arrow {
-	// 	pointer-events: auto;
-	// }
+	.flexbox__item *,
+	.covers &,
+	.covers & *,
+	.is_iexplore &,
+	.is_iexplore & *,
+	.blurp--top,
+	.down-arrow {
+		pointer-events: auto;
+	}
 
- //    .is_iexplore {
- //        .flexbox, .flexbox__item { pointer-events: none; }
- //        .flexbox__item * { pointer-events: auto; }
- //    }
+    .is_iexplore {
+        .flexbox, .flexbox__item { pointer-events: none; }
+        .flexbox__item * { pointer-events: auto; }
+    }
 
 	&.has-no-image {
 		background: #333;
@@ -182,6 +182,7 @@
 	.covers & {
 		position: fixed;
 		top: 0; left: 0; right: 0; bottom: auto;
+		z-index: -1;
 		background: none;
 		overflow: hidden;
 		will-change: transform;

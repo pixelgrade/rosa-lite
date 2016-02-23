@@ -7,7 +7,7 @@ var Parallax = (function() {
         initialized = false,
         start = 0,
         stop = 0,
-        bleed = 0;
+        bleed = 100;
 
     function initialize() {
 
@@ -51,10 +51,12 @@ var Parallax = (function() {
                 };
 
 
+
+            $hero.parent().height(heroHeight);
+
             $hero = $clone;
 
             $hero.data('parallax', parallax).data('height', heroHeight + distance);
-
             $covers = $covers.add($hero);
 
             // or the slider
