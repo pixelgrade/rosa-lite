@@ -221,9 +221,7 @@
          * @return {Number} pixels the page has scrolled along the Y-axis
          */
         getScrollY : function() {
-            return (window.pageYOffset !== undefined)
-                ? window.pageYOffset
-                : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+            return window.latestKnownScrollY;
         },
 
         /**

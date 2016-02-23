@@ -38,7 +38,9 @@ var Parallax = (function() {
             amount          = computeAmountValue($hero);
             distance        = (windowHeight - heroHeight) * amount;
 
-            scaleImage($image, amount);
+            $hero.imagesLoaded(function() {
+                scaleImage($image, amount);
+            });
 
             // if there's a slider we are working with we may have to set the height
             $target.filter('.article__parallax__slider, .gmap--multiple-pins, .gmap').css('height', heroHeight + distance);
@@ -78,6 +80,8 @@ var Parallax = (function() {
             return;
         }
 
+        $covers.css({transform: 'translate3d(0, ' + -latestKnownScrollY + 'px, 0)'});
+
         $covers.each(function (i, hero) {
             var $hero       = $(hero),
                 parallax    = $hero.data('parallax');
@@ -88,7 +92,6 @@ var Parallax = (function() {
                 return;
             }
 
-            pixGS.TweenMax.to($hero, 0, {y: -latestKnownScrollY});
             if (parallax.start < latestKnownScrollY && parallax.end > latestKnownScrollY) {
                 var progress = (latestKnownScrollY - parallax.start) / (parallax.end - parallax.start),
                     moveY = (progress - 0.5) * windowHeight;

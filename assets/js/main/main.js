@@ -415,18 +415,32 @@ $(window).on("orientationchange", function(e) {
     }, 300)
 });
 
-var latestKnownScrollY = window.pageYOffset,
-    newScrollY = latestKnownScrollY,
+window.latestKnownScrollY = window.pageYOffset;
+
+var newScrollY = latestKnownScrollY,
     ticking = false;
 
-new rafscroll(function(e) {
+$window.scroll(function() {
     newScrollY = window.pageYOffset;
-    // Avoid calculations if not needed
-    if (latestKnownScrollY == newScrollY) {
-        return false;
-    } else latestKnownScrollY = newScrollY;
-    updateStuff();
 });
+
+// new rafscroll(function(e) {
+//     // Avoid calculations if not needed
+//     if (latestKnownScrollY == newScrollY) {
+//         return false;
+//     } else latestKnownScrollY = newScrollY;
+//     updateStuff();
+// });
+
+function loop() {
+    // Avoid calculations if not needed
+    if (latestKnownScrollY !== newScrollY) {
+        latestKnownScrollY = newScrollY
+        Parallax.update();
+    }
+    requestAnimationFrame(loop);
+}
+loop();
 
 function updateStuff() {
     Parallax.update();
