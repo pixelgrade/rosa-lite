@@ -221,9 +221,7 @@
          * @return {Number} pixels the page has scrolled along the Y-axis
          */
         getScrollY : function() {
-            return (window.pageYOffset !== undefined)
-                ? window.pageYOffset
-                : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+            return window.latestKnownScrollY;
         },
 
         /**
@@ -232,9 +230,7 @@
          * @return {int} the height of the viewport in pixels
          */
         getViewportHeight : function () {
-            return window.innerHeight
-                || document.documentElement.clientHeight
-                || document.body.clientHeight;
+            return windowHeight;
         },
 
         /**

@@ -1,10 +1,6 @@
 /*---------------------------------*\
                ARTICLE
 \*---------------------------------*/
-// cand mai pun una de asta sper sa pun si un comentariu cu motivul
-//.article--page {
-//	overflow: hidden;
-//}
 
 .article__title a {
 	-ms-word-wrap: break-word;
@@ -51,28 +47,28 @@
 
     &.border-waves {
 
-     &:before, &:after {
-        content: "";
-        display: block;
-        width: 100%;
-        height: 14px;
-        position: absolute;
-        left: 0;
-        background: url('./assets/images/border-wave.svg') top left repeat-x;
-    }
+		&:before, &:after {
+			content: "";
+			display: block;
+			width: 100%;
+			height: 14px;
+			position: absolute;
+			left: 0;
+			background: url('./assets/images/border-wave.svg') top left repeat-x;
+		}
 
-    &:before {
-        top: -7px;
-        background-position: top;
-        z-index: 20;
-    }
+	    &:before {
+	        top: -7px;
+	        background-position: top;
+	        z-index: 20;
+	    }
 
-    &:after {
-        bottom: -7px;
-        background-position: bottom;
-        z-index: 21;
-    }
-}
+	    &:after {
+	        bottom: -7px;
+	        background-position: bottom;
+	        z-index: 21;
+	    }
+	}
 
     &.article--arrow {
 
@@ -91,24 +87,24 @@
 
 .article__header {
 
-	&, * {
-		pointer-events: none;
-	}
+	// &, * {
+	// 	pointer-events: none;
+	// }
 
-	.flexbox__item *,
-	.covers &,
-	.covers & *,
-	.is_iexplore &,
-	.is_iexplore & *,
-	.blurp--top,
-	.down-arrow {
-		pointer-events: auto;
-	}
+	// .flexbox__item *,
+	// .covers &,
+	// .covers & *,
+	// .is_iexplore &,
+	// .is_iexplore & *,
+	// .blurp--top,
+	// .down-arrow {
+	// 	pointer-events: auto;
+	// }
 
-    .is_iexplore {
-        .flexbox, .flexbox__item { pointer-events: none; }
-        .flexbox__item * { pointer-events: auto; }
-    }
+ //    .is_iexplore {
+ //        .flexbox, .flexbox__item { pointer-events: none; }
+ //        .flexbox__item * { pointer-events: auto; }
+ //    }
 
 	&.has-no-image {
 		background: #333;
@@ -194,10 +190,7 @@
 			opacity: 1;
 			max-width: none;
 			min-width: 100%;
-			min-height: 100%;
 			position: absolute;
-			top: 50%; left: 50%;
-			transform: translateX(-50%) translateY(-50%);
 		}
 	}
 
@@ -291,11 +284,6 @@
 		padding-top: 0;
 	}
 
-//	&.inverse-colors {
-//		.article__content {
-//			background-color: black;
-//		}
-//	}
 }
 
 .down-arrow {
@@ -373,12 +361,4 @@
 		border-color: $dark;
 		transform: rotate(0);
 	}
-}
-
-.article--page + .article--page {
-
-}
-
-.article--page + .article--page.has-post-thumbnail {
-
 }

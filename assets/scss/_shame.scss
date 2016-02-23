@@ -171,14 +171,19 @@ html body.woocommerce ul.products li.product {
 	overflow: hidden;
 }
 
-.page > * {
+#page > * {
 	z-index: 20;
 }
 
-.page > .covers {
+#page > .article--main {
+	z-index: 30;
+}
+
+#page > .covers {
 	z-index: 1;
 }
 
-.site-header.site-header {
+#page > .site-header,
+#page > .navigator {
 	z-index: 110;
 }

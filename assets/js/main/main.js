@@ -156,7 +156,7 @@ function init() {
 
     var is_iexplore = detectIE();
 
-    if (is_iexplore || Modernizr.touch) {
+    if (is_iexplore) {
         $('body').addClass('is_iexplore  no-scroll-effect');
     }
 
@@ -291,7 +291,7 @@ $(window).load(function(){
 
 	if (globalDebug) {console.group("OnWindowLoad");}
 
-    stickyHeaderInit();
+    // stickyHeaderInit();
 
     if (is_mobile_ie) {
         $("html").addClass("mobile-ie");
@@ -315,7 +315,7 @@ $(window).load(function(){
     }
     niceScrollInit();
     //if(!$('html').is('.ie9, .lt-ie9') ){
-        requestTick();
+        // requestTick();
     //}
     // always
 
@@ -413,30 +413,29 @@ $(window).on("orientationchange", function(e) {
     }, 300)
 });
 
-var latestKnownScrollY = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop,
+var latestKnownScrollY = window.pageYOffset,
+    newScrollY = latestKnownScrollY,
     ticking = false;
+
+$window.on('scroll', function() {
+    newScrollY = window.pageYOffset;
+});
+
+new rafscroll(function(e) {
+    // Avoid calculations if not needed
+    if (latestKnownScrollY == newScrollY) {
+        return false;
+    } else latestKnownScrollY = newScrollY;
+    updateStuff();
+});
 
 function updateStuff() {
-    ticking = false;
-
     Parallax.update();
     CoverAnimation.update();
     Navigator.update();
     ScrollToTop.update();
     DownArrow.update();
 }
-
-function requestTick() {
-    if (!ticking) {
-        requestAnimationFrame(updateStuff);
-    }
-    ticking = true;
-}
-
-$(window).on("scroll", function () {
-    latestKnownScrollY = $('body').scrollTop() || $('html').scrollTop();
-    requestTick();
-});
 
 if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i) && window.innerHeight != document.documentElement.clientHeight) {
 
