@@ -88,19 +88,12 @@ var Parallax = (function() {
                 return;
             }
 
+            pixGS.TweenMax.to($hero, 0, {y: -latestKnownScrollY});
             if (parallax.start < latestKnownScrollY && parallax.end > latestKnownScrollY) {
                 var progress = (latestKnownScrollY - parallax.start) / (parallax.end - parallax.start),
                     moveY = (progress - 0.5) * windowHeight;
 
-                pixGS.TweenMax.to($hero, 0, {
-                    y: -latestKnownScrollY,
-                    opacity: 1
-                });
                 pixGS.TweenMax.to(parallax.target, 0, {y: moveY});
-            } else {
-                $hero.css({
-                    opacity: 0
-                });
             }
         });
     }
