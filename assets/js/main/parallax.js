@@ -136,9 +136,10 @@ var Parallax = (function() {
             newHeight   = scale * imageHeight;
 
         pixGS.TweenMax.to($image, 0, {
-            scale: scale,
+            width: newWidth,
             x: '-50%',
             y: '-50%',
+            z: '0',
             force3D: true
         });
     }
