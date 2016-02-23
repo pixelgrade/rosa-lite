@@ -345,7 +345,8 @@ $nav-width: 84vw;
 		position: fixed;
 		left: -$nav-width;
 		top: 0;
-		bottom: 0;
+		min-height: 100vh;
+		// bottom: 0;
 
 		z-index: 20;
 
@@ -535,7 +536,7 @@ $nav-width: 84vw;
 		#page,
 		.navigation--main,
 		.covers {
-			transition: left .3s cubic-bezier(0.86, 0, 0.07, 1);
+			transition: transform .3s cubic-bezier(0.86, 0, 0.07, 1);
 		}
 
 		.site-header {
@@ -549,18 +550,18 @@ $nav-width: 84vw;
 
 	.navigation--is-visible {
 
-		#page,
-		.covers,
+		// #page,
+		// .covers,
 		.site-header {
-			left: $nav-width;
+			transform: translate3d($nav-width, 0, 0);
 		}
 
-		.admin-bar .site-header {
-			left: 0;
-		}
+		// .admin-bar .site-header {
+		// 	transform: translate3d(0, 0, 0);
+		// }
 
 		.navigation--main {
-			left: 0;
+			transform: translate3d(0, 0, 0);
 		}
 	}
 
