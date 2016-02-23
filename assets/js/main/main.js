@@ -291,7 +291,7 @@ $(window).load(function(){
 
 	if (globalDebug) {console.group("OnWindowLoad");}
 
-    // stickyHeaderInit();
+    stickyHeaderInit();
 
     if (is_mobile_ie) {
         $("html").addClass("mobile-ie");

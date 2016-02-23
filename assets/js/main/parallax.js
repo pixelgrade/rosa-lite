@@ -41,7 +41,7 @@ var Parallax = (function() {
             scaleImage($image, amount);
 
             // if there's a slider we are working with we may have to set the height
-            $slider.css('height', heroHeight + distance);
+            $target.filter('.article__parallax__slider, .gmap--multiple-pins, .gmap').css('height', heroHeight + distance);
 
             // prepare image / slider timeline
             var parallax = {
