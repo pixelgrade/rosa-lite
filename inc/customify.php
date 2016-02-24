@@ -325,8 +325,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 									'media'    => 'screen and (min-width : 900px) '
 								),
 								array(
-									'property' => 'border-bottom-width',
-									'selector' => 'body .site-footer',
+									'property' => 'height',
+									'selector' => 'body:after',
 									'unit'     => 'px',
 									'media'    => 'screen and (min-width: 900px) '
 								),

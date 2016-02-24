@@ -319,7 +319,7 @@ $(window).load(function(){
 
 	if (globalDebug) {console.group("OnWindowLoad");}
 
-    stickyHeaderInit();
+    StickyHeader.init();
 
     if (is_mobile_ie) {
         $("html").addClass("mobile-ie");
@@ -464,7 +464,7 @@ function loop() {
     // Avoid calculations if not needed
     if (latestKnownScrollY !== newScrollY) {
         latestKnownScrollY = newScrollY
-        Parallax.update();
+        updateStuff();
     }
     requestAnimationFrame(loop);
 }
@@ -472,6 +472,7 @@ loop();
 
 function updateStuff() {
     Parallax.update();
+    StickyHeader.update();
     CoverAnimation.update();
     Navigator.update();
     ScrollToTop.update();

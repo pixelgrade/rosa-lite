@@ -165,3 +165,18 @@ html body.woocommerce ul.products li.product {
 	width: 1px;
 	overflow: hidden;
 }
+
+body:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    height: 48px;
+    background: white;
+    z-index: 10;
+    width: 100%;
+}
+
+body.admin-bar:after {
+	top: 32px;
+}
