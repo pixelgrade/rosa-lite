@@ -142,7 +142,6 @@ function rosa_callbacks_setup_shortcodes_plugin() {
 		'Button',
 		'Icon',
 		'Tabs',
-		'PixFields',
 		'Heading',
 		'Separator',
 		'Slider',
