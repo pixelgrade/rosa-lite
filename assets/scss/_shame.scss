@@ -168,13 +168,17 @@ html body.woocommerce ul.products li.product {
 
 body:after {
     content: "";
-    display: block;
+    display: none;
     position: absolute;
     top: 0;
     height: 48px;
     background: white;
     z-index: 10;
     width: 100%;
+
+	@include query-above($lap) {
+		display: block;
+	}
 }
 
 body.admin-bar:after {
