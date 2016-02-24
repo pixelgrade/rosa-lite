@@ -176,7 +176,7 @@ body:after {
     z-index: 10;
     width: 100%;
 
-	@include query-above($lap) {
+	@include media-query(lap-and-up) {
 		display: block;
 	}
 }
