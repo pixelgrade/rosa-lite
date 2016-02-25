@@ -177,7 +177,494 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 			)
 		);
 
+		/**
+		 * BACKGROUNDS - This section will handle different elements backgrounds
+		 */
+		$config['panels']['layouts_panel'] = array(
+			'title'    => __( '&#x1f4bb; Layout', 'rosa' ),
+			'priority'    => 2,
+			'sections' => array(
+
+				'header_layouts_section' => array(
+					'title'   => __( 'Header', 'rosa' ),
+					'options' => array(
+
+						'header_logo_height' => array(
+							'type'        => 'range',
+							'label'       => __( 'Logo Height', 'rosa' ),
+							'default'     => 32,
+							'live'        => true,
+							'input_attrs' => array(
+								'min'          => 20,
+								'max'          => 100,
+								'step'         => 1,
+								'data-preview' => true
+							),
+							'css'         => array(
+								array(
+									'property' => 'max-height',
+									'selector' => '.site-title--image img',
+									'unit'     => 'px'
+								),
+								array(
+									'property' => 'font-size',
+									'selector' => '.site-logo',
+								)
+							)
+						),
+
+						'header_vertical_margins' => array(
+							'type'        => 'range',
+							'label'       => __( 'Header Vertical Margins', 'rosa' ),
+							'default'     => 0,
+							'live'        => true,
+							'input_attrs' => array(
+								'min'          => 0,
+								'max'          => 100,
+								'step'         => 1,
+								'data-preview' => true
+							),
+							'css'         => array(
+								array(
+									'property' => 'padding-top',
+									'selector' => '.site-header',
+									'unit'     => 'px',
+									'media'    => ' screen and (min-width: 900px)'
+								),
+								array(
+									'property' => 'padding-bottom',
+									'selector' => '.site-header',
+									'unit'     => 'px',
+									'media'    => 'screen and (min-width: 900px) '
+								),
+
+								array(
+									'property' => 'margin-top',
+									'selector' => '#page',
+									'unit'     => 'px',
+									'media'    => ' screen and (min-width: 900px) '
+								),
+
+								array(
+									'property' => 'top',
+									'selector' => '#page',
+									'unit'     => 'px',
+									'media'    => ' screen and (min-width : 900px)'
+								),
+							)
+						),
+
+						'navigation_menu_items_spacing' => array(
+							'type'        => 'range',
+							'label'       => __( 'Menu Items Spacing', 'rosa' ),
+							'default'     => 24,
+							'live'        => true,
+							'input_attrs' => array(
+								'min'          => 12,
+								'max'          => 75,
+								'step'         => 1,
+								'data-preview' => true
+							),
+							'css'         => array(
+								array(
+									'property' => 'padding-left',
+									'selector' => '.nav--main > .menu-item > a',
+									'unit'     => 'px',
+									'media'    => ' screen and (min-width: 900px)'
+								),
+								array(
+									'property' => 'padding-right',
+									'selector' => '.nav--main > .menu-item > a',
+									'unit'     => 'px',
+									'media'    => 'screen and (min-width: 900px) '
+								)
+							)
+						)
+					)
+				),
+
+				'content_layouts_section'    => array(
+					'title'   => __( 'Content', 'rosa' ),
+					'options' => array(
+
+						'border_width' => array(
+							'type'        => 'range',
+							'label'       => __( 'Site Border Width', 'rosa' ),
+							// 'desc'        => __( 'Set the border width of the overall site', 'rosa' ),
+							'live'        => true,
+							'default'     => '0',
+							'input_attrs' => array(
+								'min'          => 0,
+								'max'          => 72,
+								'step'         => 6,
+								'data-preview' => true
+							),
+							'css'         => array(
+								array(
+									'property' => 'border-width',
+									'selector' => 'body',
+									'unit'     => 'px',
+									'media'    => 'screen and (min-width: 900px)'
+								),
+								array(
+									'property' => 'border-top-width',
+									'selector' => 'body .site-header',
+									'unit'     => 'px',
+									'media'    => ' screen and (min-width: 900px) '
+								),
+								array(
+									'property' => 'border-left-width',
+									'selector' => 'body .site-header',
+									'unit'     => 'px',
+									'media'    => ' screen and (min-width : 900px)'
+								),
+								array(
+									'property' => 'border-right-width',
+									'selector' => 'body .site-header',
+									'unit'     => 'px',
+									'media'    => 'screen and (min-width : 900px) '
+								),
+								array(
+									'property' => 'height',
+									'selector' => 'body:after',
+									'unit'     => 'px',
+									'media'    => 'screen and (min-width: 900px) '
+								),
+								array(
+									'property' => 'margin-right',
+									'selector' => 'body .navigator, body .covers',
+									'unit'     => 'px',
+									'media'    => ' screen and (min-width: 900px)'
+								),
+								array(
+									'property' => 'right',
+									'selector' => 'body .covers .article__parallax',
+									'unit'     => 'px',
+									'media'    => '  screen and (min-width: 900px)'
+								),
+								array(
+									'property' => 'margin-left',
+									'selector' => 'body .covers',
+									'unit'     => 'px',
+									'media'    => 'screen and (min-width : 900px)'
+								),
+								array(
+									'property' => 'left',
+									'selector' => 'body .covers .article__parallax',
+									'unit'     => 'px',
+									'media'    => ' screen and (min-width: 900px)'
+								),
+							)
+						),
+						'content_width'             => array(
+							'type'        => 'range',
+							'label'       => __( 'Container Width', 'rosa' ),
+							// 'desc'        => __( 'Set the width of the container.', 'rosa' ),
+							'live'        => true,
+							'default'     => 1250,
+							'input_attrs' => array(
+								'min'          => 600,
+								'max'          => 2700,
+								'step'         => 1,
+								'data-preview' => true
+							),
+							'css'         => array(
+								array(
+									'property' => 'max-width',
+									'selector' => '.container, .search__container, .site-header__container, .header--sticky .site-header__container',
+									'unit'     => 'px',
+								)
+							)
+						),
+						'sections_vertical_margins' => array(
+							'type'        => 'range',
+							'label'       => __( 'Sections Vertical Margins', 'rosa' ),
+							'live'        => true,
+							'default'     => 78,
+							'input_attrs' => array(
+								'min'          => 0,
+								'max'          => 120,
+								'step'         => 6,
+								'data-preview' => true
+							),
+							'css'         => array(
+								array(
+									'property' => 'padding-top',
+									'selector' => '.page .type-page .article__content',
+									'unit'     => 'px',
+									'media'    => ' only screen and (min-width: 900px)',
+								),
+								array(
+									'property' => 'padding-bottom',
+									'selector' => '.page .type-page .article__content',
+									'unit'     => 'px',
+									'media'    => 'only screen and (min-width: 900px) ',
+								)
+							)
+						),
+
+						'sidebar_width' => array(
+							'type'        => 'range',
+							'label'       => __( 'Sidebar Width', 'rosa' ),
+							// 'desc'        => __( 'Set the width of the sidebar.', 'rosa' ),
+							'live'        => true,
+							'default'     => 300,
+							'input_attrs' => array(
+								'min'          => 140,
+								'max'          => 500,
+								'step'         => 10,
+								'data-preview' => true
+							),
+							'css'         => array(
+								array(
+									'property' => 'width',
+									'selector' => '.sidebar--main',
+									'unit'     => 'px',
+									'media'    => ' only screen and (min-width: 900px)',
+								),
+								array(
+									'property' => 'right',
+									'selector' => '.page-content.has-sidebar:after',
+									'unit'     => 'px',
+									'media'    => 'only screen and (min-width: 900px) ',
+								),
+								array(
+									'property' => 'margin-right',
+									'selector' => '.page-content.has-sidebar .page-content__wrapper',
+									'unit'     => 'px',
+									'media'    => 'only screen and (min-width : 900px)',
+								),
+								array( // @TODO make this work with live preview
+									'property'        => 'margin-right',
+									'selector'        => '.page-content.has-sidebar',
+									'callback_filter' => 'rosa_range_negative_value',
+									'unit'            => 'px',
+									'media'           => ' only screen and (min-width : 900px)',
+								),
+							)
+						),
+
+
+						'down_arrow_style' => array(
+							'type'    => 'select',
+							'label'   => __( 'Scroll Down Arrow Style', 'rosa' ),
+							'choices' => array(
+								'transparent' => 'Transparent',
+								'bubble'      => 'Bubble',
+							),
+							'default' => 'transparent',
+						),
+
+						'slideshow_arrows_style' => array(
+							'type'    => 'select',
+							'label'   => __( 'Slideshow Arrows', 'rosa' ),
+							// 'desc'    => __( 'Select which type of arrows you want on page headers.', 'rosa' ),
+							'choices' => array(
+								'static' => 'Always Show',
+								'hover'  => 'Show On Hover'
+							),
+							'default' => 'static',
+						),
+					),
+				),
+				'footer_backgrounds_section' => array(
+					'title'   => __( 'Footer', 'rosa' ),
+					'options' => array(
+						'footer_sidebar_style'   => array(
+							'type'    => 'select',
+							'label'   => __( 'Footer Widget Area Style', 'rosa' ),
+							'choices' => array(
+								'light'  => 'Light',
+								'dark'   => 'Dark',
+								'accent' => 'Accent Color',
+							),
+							'default' => 'dark',
+							'css' => array(
+								array(
+									'selector' => '.site-footer.border-waves:before, .border-waves-top.border-waves-top--dark:before',
+									'property' => 'background-image',
+									'callback_filter' => 'rosa_footer_style_select'
+								)
+							)
+						),
+						'footer_bottombar_style' => array(
+							'type'    => 'select',
+							'label'   => __( 'Footer Bottom Bar Style', 'rosa' ),
+							'choices' => array(
+								'light'  => 'Light',
+								'dark'   => 'Dark',
+								'accent' => 'Accent Color',
+							),
+							'default' => 'dark',
+						),
+					)
+				),
+			)
+		);
+
+
 		$config['sections'] = array(
+			'colors_section' => array(
+				'title'       => '&#x1f3a8; ' . esc_html__( 'Colors', 'customify_txtd' ),
+				'priority'    => 3,
+				'description' => esc_html__( 'Use the color picker to change the main color of the site to match your brand color. If you want to override the color of some elements you can always use CSS editor panel.', 'rosa' ),
+				'options'     => array(
+					'main_color'     => array(
+						'type'    => 'color',
+						'label'   => __( 'Accent Color', 'rosa' ),
+						'live'    => true,
+						'default' => '#c59d5f',
+						'css'     => array(
+							array(
+								'property' => 'color',
+								'selector' => 'a, a:hover, .nav--main a:hover, .headroom--not-top .nav--main a:hover, .headline__secondary, .separator--line-flower,
+									.tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment,
+									.comments_add-comment.read-more-button, .form-submit .btn--text#comment-submit,
+									.form-submit #comment-submit.read-more-button, .btn--text.wpcf7-form-control.wpcf7-submit,
+									.wpcf7-form-control.wpcf7-submit.read-more-button, .btn--text.otreservations-submit,
+									.otreservations-submit.read-more-button, .widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button,
+									a:hover > .pixcode--icon, .widget a:hover, blockquote, .meta-list a.btn:hover,
+									.meta-list a.comments_add-comment:hover, .meta-list .form-submit a#comment-submit:hover,
+									.form-submit .meta-list a#comment-submit:hover, .meta-list a.wpcf7-form-control.wpcf7-submit:hover,
+									.meta-list a.otreservations-submit:hover, .meta-list .widget_tag_cloud a:hover, .widget_tag_cloud .meta-list a:hover, .btn.btn--text:hover,
+									.article__content a:not([class]), .article__content a:hover:not([class]):hover,
+									.article__header .article__headline .headline__description .star, .read-more-button, .read-more-button:hover, .shop-categories a.active,
+									body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart,
+									body.woocommerce ul.products li.product a.added_to_cart, body.woocommerce ul.products li.product .price ins,
+									.single-product .entry-summary .price span, body.woocommerce .star-rating span:before, .comment-reply-link,
+									.nav.nav--items-social a:hover:before',
+							),
+							array(
+								'property' => 'background-color',
+								'selector' => '.btn--primary, .shop-menu-item .shop-items-number, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover,
+								.pagination li a:hover, form.shipping_calculator button.button:hover, .otreservations-submit:hover, .pixcode--icon.square:hover, .pixcode--icon.circle:hover,
+								.sidebar--footer__accent, .copyright-area.copyright-area__accent, .menu-list__item-highlight-title'
+							),
+							array(
+								'property' => 'background',
+								'selector' => 'body.woocommerce button.button.alt:hover, body.woocommerce-page #respond input#submit:hover,
+								body.woocommerce div.woocommerce-message .button:hover, td.actions input.button:hover, body.woocommerce-page input.button:hover,
+								body.woocommerce-page input.button.alt:hover, a:hover > .pixcode--icon.circle, a:hover > .pixcode--icon.square'
+							),
+							array(
+								'property' => 'border-color',
+								'selector' => '.tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button,
+								.form-submit .btn--text#comment-submit, .form-submit #comment-submit.read-more-button,
+								.btn--text.wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit.read-more-button,
+								.btn--text.otreservations-submit, .otreservations-submit, .read-more-button,
+								.widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button, blockquote, .article__content a:not([class]), .shop-categories a.active,
+								body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart, .menu-list__item-highlight-wrapper:before'
+							),
+							array(
+								'property' => 'outline-color',
+								'selector' => 'select:focus, textarea:focus, input[type="text"]:focus,
+								input[type="password"]:focus, input[type="datetime"]:focus,
+								input[type="datetime-local"]:focus, input[type="date"]:focus,
+								input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus,
+								input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus,
+								input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .form-control:focus'
+							),
+							array(
+								'property' => 'fill',
+								'selector' => '.copyright-area.copyright-area__accent svg path'
+							)
+						)
+					),
+					'text_color'     => array(
+						'type'    => 'color',
+						'label'   => __( 'Text Color', 'rosa' ),
+						'live'    => true,
+						'default' => '#515150',
+						'css'     => array(
+							array(
+								'property' => 'color',
+								'selector' => 'body, .up-link'
+							),
+							array(
+								'property' => 'border-color',
+								'selector' => '.up-link:before'
+							)
+						)
+					),
+					'headings_color' => array(
+						'type'    => 'color',
+						'label'   => __( 'Headings Color', 'rosa' ),
+						'live'    => true,
+						'default' => '#262526',
+						'css'     => array(
+							array(
+								'property' => 'color',
+								'selector' => 'h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, .article-archive .article__title a, .article-archive .article__title a:hover',
+							)
+						)
+					),
+					'navlink_color' => array(
+						'type'    => 'color',
+						'label'   => __( 'Nav Links Color', 'rosa' ),
+						'live'    => true,
+						'default' => '#262526',
+						'css'     => array(
+							array(
+								'property' => 'color',
+								'selector' => '.nav--main a, .headroom--not-top .nav--main a',
+							)
+						)
+					),
+					'cover_text'     => array(
+						'type'    => 'color',
+						'label'   => __( 'Cover Color', 'rosa' ),
+						'live'    => true,
+						'default' => '#ffffff',
+						'css'     => array(
+							array(
+								'property' => 'color',
+								'selector' => '.article__header .article__headline .headline__primary,
+								.article__header .article__headline .headline__description *',
+							)
+						)
+					),
+
+					'header_background_color' => array(
+						'type'    => 'color',
+						'label'   => __( 'Header Color', 'rosa' ),
+						'live'    => true,
+						'default' => '#ffffff',
+						'css'     => array(
+							array(
+								'property' => 'background-color',
+								'selector' => '.site-header, .site-header.headroom--not-top, .sub-menu, .headroom--not-top .sub-menu',
+							)
+						)
+					),
+					'header_image_pattern'    => array(
+						'type'  => 'custom_background',
+						'label' => __( 'Header Background', 'rosa' ),
+						'desc'  => __( 'Container background with image.', 'rosa' ),
+						'output' => array( ".site-header, .site-header.headroom--not-top" ),
+					),
+
+
+					'content_background_color' => array(
+						'type'    => 'color',
+						'label'   => __( 'Content Color', 'rosa' ),
+						'live'    => true,
+						'default' => '#ffffff',
+						'css'     => array(
+							array(
+								'property' => 'background-color',
+								'selector' => '.page .article__content, .up-link, html, .menu-list__item-title .item_title, .menu-list__item-price, .desc__content',
+							)
+						)
+					),
+					'container_image_pattern' => array(
+						'type'  => 'custom_background',
+						'label' => __( 'Header Background', 'rosa' ),
+						'desc'  => __( 'Container background with image.', 'rosa' ),
+						'output' => array( '.page .article__content, html' ),
+					),
+
+				)
+			),
 			'blog' => array(
 				'title'    => '&#x1f4d4; ' . esc_html__( 'Blog', 'rosa' ),
 				'priority' => 6,
@@ -274,476 +761,10 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 			),
 		);
 
-		/**
-		 * BACKGROUNDS - This section will handle different elements backgrounds
-		 */
-		$config['panels']['layouts_panel'] = array(
-			'title'    => __( 'Layout Elements', 'rosa' ),
-			'sections' => array(
-
-				'colors_section' => array(
-					'title'       => '&#x1f3a8; ' . esc_html__( 'Colors', 'customify_txtd' ),
-					'priority'    => 1,
-					'description' => esc_html__( 'Use the color picker to change the main color of the site to match your brand color. If you want to override the color of some elements you can always use CSS editor panel.', 'rosa' ),
-					'options'     => array(
-						'main_color'     => array(
-							'type'    => 'color',
-							'label'   => __( 'Accent Color', 'rosa' ),
-							'live'    => true,
-							'default' => '#c59d5f',
-							'css'     => array(
-								array(
-									'property' => 'color',
-									'selector' => 'a, a:hover, .nav--main a:hover, .headline__secondary, .separator--line-flower,
-										.tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment,
-										.comments_add-comment.read-more-button, .form-submit .btn--text#comment-submit,
-										.form-submit #comment-submit.read-more-button, .btn--text.wpcf7-form-control.wpcf7-submit,
-										.wpcf7-form-control.wpcf7-submit.read-more-button, .btn--text.otreservations-submit,
-										.otreservations-submit.read-more-button, .widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button,
-										a:hover > .pixcode--icon, .widget a:hover, blockquote, .meta-list a.btn:hover,
-										.meta-list a.comments_add-comment:hover, .meta-list .form-submit a#comment-submit:hover,
-										.form-submit .meta-list a#comment-submit:hover, .meta-list a.wpcf7-form-control.wpcf7-submit:hover,
-										.meta-list a.otreservations-submit:hover, .meta-list .widget_tag_cloud a:hover, .widget_tag_cloud .meta-list a:hover, .btn.btn--text:hover,
-										.article__content a:not([class]), .article__content a:hover:not([class]):hover,
-										.article__header .article__headline .headline__description .star, .read-more-button, .read-more-button:hover, .shop-categories a.active,
-										body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart,
-										body.woocommerce ul.products li.product a.added_to_cart, body.woocommerce ul.products li.product .price ins,
-										.single-product .entry-summary .price span, body.woocommerce .star-rating span:before, .comment-reply-link,
-										.nav.nav--items-social a:hover:before',
-								),
-								array(
-									'property' => 'background-color',
-									'selector' => '.btn--primary, .shop-menu-item .shop-items-number, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover,
-									.pagination li a:hover, form.shipping_calculator button.button:hover, .otreservations-submit:hover, .pixcode--icon.square:hover, .pixcode--icon.circle:hover,
-									.sidebar--footer__accent, .copyright-area.copyright-area__accent, .menu-list__item-highlight-title'
-								),
-								array(
-									'property' => 'background',
-									'selector' => 'body.woocommerce button.button.alt:hover, body.woocommerce-page #respond input#submit:hover,
-									body.woocommerce div.woocommerce-message .button:hover, td.actions input.button:hover, body.woocommerce-page input.button:hover,
-									body.woocommerce-page input.button.alt:hover, a:hover > .pixcode--icon.circle, a:hover > .pixcode--icon.square'
-								),
-								array(
-									'property' => 'border-color',
-									'selector' => '.tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button,
-									.form-submit .btn--text#comment-submit, .form-submit #comment-submit.read-more-button,
-									.btn--text.wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit.read-more-button,
-									.btn--text.otreservations-submit, .otreservations-submit, .read-more-button,
-									.widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button, blockquote, .article__content a:not([class]), .shop-categories a.active,
-									body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart, .menu-list__item-highlight-wrapper:before'
-								),
-								array(
-									'property' => 'outline-color',
-									'selector' => 'select:focus, textarea:focus, input[type="text"]:focus,
-									input[type="password"]:focus, input[type="datetime"]:focus,
-									input[type="datetime-local"]:focus, input[type="date"]:focus,
-									input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus,
-									input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus,
-									input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .form-control:focus'
-								),
-								array(
-									'property' => 'fill',
-									'selector' => '.copyright-area.copyright-area__accent svg path'
-								)
-							)
-						),
-						'text_color'     => array(
-							'type'    => 'color',
-							'label'   => __( 'Text Color', 'rosa' ),
-							'live'    => true,
-							'default' => '#515150',
-							'css'     => array(
-								array(
-									'property' => 'color',
-									'selector' => 'body, .up-link'
-								),
-								array(
-									'property' => 'border-color',
-									'selector' => '.up-link:before'
-								)
-							)
-						),
-						'headings_color' => array(
-							'type'    => 'color',
-							'label'   => __( 'Headings Color', 'rosa' ),
-							'live'    => true,
-							'default' => '#262526',
-							'css'     => array(
-								array(
-									'property' => 'color',
-									'selector' => 'h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, .article-archive .article__title a, .article-archive .article__title a:hover',
-								)
-							)
-						),
-						'cover_text'     => array(
-							'type'    => 'color',
-							'label'   => __( 'Cover Color', 'rosa' ),
-							'live'    => true,
-							'default' => '#ffffff',
-							'css'     => array(
-								array(
-									'property' => 'color',
-									'selector' => '.article__header .article__headline .headline__primary,
-									.article__header .article__headline .headline__description *',
-								)
-							)
-						)
-					)
-				),
-
-				'header_layouts_section' => array(
-					'title'   => __( 'Header', 'rosa' ),
-					'options' => array(
-						'header_background_color' => array(
-							'type'    => 'color',
-							'label'   => __( 'Header Color', 'rosa' ),
-							'live'    => true,
-							'default' => '#ffffff',
-							'css'     => array(
-								array(
-									'property' => 'background-color',
-									'selector' => '.site-header, .site-header.headroom--not-top, .sub-menu, .headroom--not-top .sub-menu',
-								)
-							)
-						),
-						'header_image_pattern'    => array(
-							'type'  => 'custom_background',
-							'label' => __( 'Header Background', 'rosa' ),
-							'desc'  => __( 'Container background with image.', 'rosa' ),
-						),
-
-
-						'header_logo_height' => array(
-							'type'        => 'range',
-							'label'       => __( 'Logo Height', 'rosa' ),
-							'default'     => 90,
-							'live'        => true,
-							'input_attrs' => array(
-								'min'          => 25,
-								'max'          => 125,
-								'step'         => 1,
-								'data-preview' => true
-							),
-							'css'         => array(
-								array(
-									'property' => 'max-height',
-									'selector' => '.site-title--image img',
-									'unit'     => 'px'
-								),
-							)
-						),
-
-						'header_vertical_margins' => array(
-							'type'        => 'range',
-							'label'       => __( 'Header Vertical Margins', 'rosa' ),
-							'default'     => 0,
-							'live'        => true,
-							'input_attrs' => array(
-								'min'          => 0,
-								'max'          => 100,
-								'step'         => 1,
-								'data-preview' => true
-							),
-							'css'         => array(
-								array(
-									'property' => 'padding-top',
-									'selector' => '.site-header',
-									'unit'     => 'px',
-									'media'    => ' screen and (min-width: 900px)'
-								),
-								array(
-									'property' => 'padding-bottom',
-									'selector' => '.site-header',
-									'unit'     => 'px',
-									'media'    => 'screen and (min-width: 900px) '
-								),
-
-								array(
-									'property' => 'margin-top',
-									'selector' => '#page',
-									'unit'     => 'px',
-									'media'    => ' screen and (min-width: 900px) '
-								),
-
-								array(
-									'property' => 'top',
-									'selector' => '#page',
-									'unit'     => 'px',
-									'media'    => ' screen and (min-width : 900px)'
-								),
-							)
-						),
-
-						'navigation_menu_items_spacing' => array(
-							'type'        => 'range',
-							'label'       => __( 'Menu Items Spacing', 'rosa' ),
-							'default'     => 24,
-							'live'        => true,
-							'input_attrs' => array(
-								'min'          => 12,
-								'max'          => 75,
-								'step'         => 1,
-								'data-preview' => true
-							),
-							'css'         => array(
-								array(
-									'property' => 'padding-left',
-									'selector' => '.nav--main > .menu-item > a',
-									'unit'     => 'px',
-									'media'    => ' screen and (min-width: 900px)'
-								),
-								array(
-									'property' => 'padding-right',
-									'selector' => '.nav--main > .menu-item > a',
-									'unit'     => 'px',
-									'media'    => 'screen and (min-width: 900px) '
-								)
-							)
-						)
-					)
-				),
-
-				'content_layouts_section'    => array(
-					'title'   => __( 'Content', 'rosa' ),
-					'options' => array(
-
-						'border_width' => array(
-							'type'        => 'range',
-							'label'       => __( 'Site Border Width', 'rosa' ),
-							'desc'        => __( 'Set the border width of the overall site', 'rosa' ),
-							'live'        => true,
-							'default'     => '0',
-							'input_attrs' => array(
-								'min'          => 0,
-								'max'          => 72,
-								'step'         => 6,
-								'data-preview' => true
-							),
-							'css'         => array(
-								array(
-									'property' => 'border-width',
-									'selector' => 'body',
-									'unit'     => 'px',
-									'media'    => 'screen and (min-width: 900px)'
-								),
-								array(
-									'property' => 'border-top-width',
-									'selector' => 'body .site-header',
-									'unit'     => 'px',
-									'media'    => ' screen and (min-width: 900px) '
-								),
-								array(
-									'property' => 'border-left-width',
-									'selector' => 'body .site-header',
-									'unit'     => 'px',
-									'media'    => ' screen and (min-width : 900px)'
-								),
-								array(
-									'property' => 'border-right-width',
-									'selector' => 'body .site-header',
-									'unit'     => 'px',
-									'media'    => 'screen and (min-width : 900px) '
-								),
-								array(
-									'property' => 'border-bottom-width',
-									'selector' => 'body .site-footer',
-									'unit'     => 'px',
-									'media'    => 'screen and (min-width: 900px) '
-								),
-								array(
-									'property' => 'margin-right',
-									'selector' => 'body .navigator, body .covers',
-									'unit'     => 'px',
-									'media'    => ' screen and (min-width: 900px)'
-								),
-								array(
-									'property' => 'right',
-									'selector' => 'body .covers .article__parallax',
-									'unit'     => 'px',
-									'media'    => '  screen and (min-width: 900px)'
-								),
-								array(
-									'property' => 'margin-left',
-									'selector' => 'body .covers',
-									'unit'     => 'px',
-									'media'    => 'screen and (min-width : 900px)'
-								),
-								array(
-									'property' => 'left',
-									'selector' => 'body .covers .article__parallax',
-									'unit'     => 'px',
-									'media'    => ' screen and (min-width: 900px)'
-								),
-							)
-						),
-
-						'content_background_color' => array(
-							'type'    => 'color',
-							'label'   => __( 'Content Color', 'rosa' ),
-							'live'    => true,
-							'default' => '#ffffff',
-							'css'     => array(
-								array(
-									'property' => 'background-color',
-									'selector' => '.page .article__content, .up-link, html, .menu-list__item-title .item_title, .menu-list__item-price, .desc__content',
-								)
-							)
-						),
-
-						'container_image_pattern' => array(
-							'type'  => 'custom_background',
-							'label' => __( 'Header Background', 'rosa' ),
-							'desc'  => __( 'Container background with image.', 'rosa' ),
-						),
-
-						'content_width'             => array(
-							'type'        => 'range',
-							'label'       => __( 'Container Width', 'rosa' ),
-							'desc'        => __( 'Set the width of the container.', 'rosa' ),
-							'live'        => true,
-							'default'     => 1250,
-							'input_attrs' => array(
-								'min'          => 600,
-								'max'          => 2700,
-								'step'         => 1,
-								'data-preview' => true
-							),
-							'css'         => array(
-								array(
-									'property' => 'max-width',
-									'selector' => '.container, .search__container, .site-header__container, .header--sticky .site-header__container',
-									'unit'     => 'px',
-								)
-							)
-						),
-						'sections_vertical_margins' => array(
-							'type'        => 'range',
-							'label'       => __( 'Sections Vertical Margins', 'rosa' ),
-							'live'        => true,
-							'default'     => 78,
-							'input_attrs' => array(
-								'min'          => 0,
-								'max'          => 120,
-								'step'         => 6,
-								'data-preview' => true
-							),
-							'css'         => array(
-								array(
-									'property' => 'padding-top',
-									'selector' => '.page .type-page .article__content',
-									'unit'     => 'px',
-									'media'    => ' only screen and (min-width: 900px)',
-								),
-								array(
-									'property' => 'padding-bottom',
-									'selector' => '.page .type-page .article__content',
-									'unit'     => 'px',
-									'media'    => 'only screen and (min-width: 900px) ',
-								)
-							)
-						),
-
-						'sidebar_width' => array(
-							'type'        => 'range',
-							'label'       => __( 'Sidebar Width', 'rosa' ),
-							'desc'        => __( 'Set the width of the sidebar.', 'rosa' ),
-							'live'        => true,
-							'default'     => 300,
-							'input_attrs' => array(
-								'min'          => 140,
-								'max'          => 500,
-								'step'         => 10,
-								'data-preview' => true
-							),
-							'css'         => array(
-								array(
-									'property' => 'width',
-									'selector' => '.sidebar--main',
-									'unit'     => 'px',
-									'media'    => ' only screen and (min-width: 900px)',
-								),
-								array(
-									'property' => 'right',
-									'selector' => '.page-content.has-sidebar:after',
-									'unit'     => 'px',
-									'media'    => 'only screen and (min-width: 900px) ',
-								),
-								array(
-									'property' => 'margin-right',
-									'selector' => '.page-content.has-sidebar .page-content__wrapper',
-									'unit'     => 'px',
-									'media'    => 'only screen and (min-width : 900px)',
-								),
-								array( // @TODO make this work with live preview
-									'property'        => 'margin-right',
-									'selector'        => '.page-content.has-sidebar',
-									'callback_filter' => 'rosa_range_negative_value',
-									'unit'            => 'px',
-									'media'           => ' only screen and (min-width : 900px)',
-								),
-							)
-						),
-
-
-						'down_arrow_style' => array(
-							'type'    => 'select',
-							'label'   => __( 'Scroll Down Arrow Style', 'rosa' ),
-							'choices' => array(
-								'transparent' => 'Transparent',
-								'bubble'      => 'Bubble',
-							),
-							'default' => 'transparent',
-						),
-
-						'slideshow_arrows_style' => array(
-							'type'    => 'select',
-							'label'   => __( 'Slideshow Arrows Style', 'rosa' ),
-							'desc'    => __( 'Select which type of arrows you want on page headers.', 'rosa' ),
-							'choices' => array(
-								'static' => 'Always Show',
-								'hover'  => 'On Hover'
-							),
-							'default' => 'static',
-						),
-					),
-				),
-				'footer_backgrounds_section' => array(
-					'title'   => __( 'Footer', 'rosa' ),
-					'options' => array(
-						'footer_sidebar_style'   => array(
-							'type'    => 'select',
-							'label'   => __( 'Footer Widget Area Style', 'rosa' ),
-							'choices' => array(
-								'light'  => 'Light',
-								'dark'   => 'Dark',
-								'accent' => 'Accent Color',
-							),
-							'default' => 'dark',
-							'css' => array(
-								array(
-									'selector' => '.site-footer.border-waves:before, .border-waves-top.border-waves-top--dark:before',
-									'property' => 'background-image',
-									'callback_filter' => 'rosa_footer_style_select'
-								)
-							)
-						),
-						'footer_bottombar_style' => array(
-							'type'    => 'select',
-							'label'   => __( 'Footer Bottom Bar Style', 'rosa' ),
-							'choices' => array(
-								'light'  => 'Light',
-								'dark'   => 'Dark',
-								'accent' => 'Accent Color',
-							),
-							'default' => 'dark',
-						),
-					)
-				),
-			)
-		);
 
 		$config['panels']['typography_panel'] = array(
 			'title'    => '&#x1f4dd; ' . esc_html__( 'Fonts', 'rosa' ),
+			'priority'    => 4,
 			'sections' => array(
 
 				'headers_typography_section' => array(
@@ -752,7 +773,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'google_titles_font'         => array(
 							'type'             => 'typography',
 							'label'            => __( 'Headings', 'rosa' ),
-							'desc'             => __( 'Font for titles and headings.', 'rosa' ),
+							// 'desc'             => __( 'Font for titles and headings.', 'rosa' ),
 							'default'          => array( 'Source Sans Pro' ),
 							'recommended'      => array(
 								'Source Sans Pro',
@@ -763,14 +784,11 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							'selector'         => 'h1, h2, h3, h4, h5, h6, hgroup, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
 									blockquote, .tabs__nav, .popular-posts__time, .pagination li a, .pagination li span'
 						),
-						'this_divider_5349'          => array(
-							'type' => 'html',
-							'html' => '<span class="separator" style="border:1px solid #ccc; display: block; width: 100%; height: 0; margin:25px 0 -20px 0; padding: 0; "></span>'
-						),
+
 						'google_subtitles_font'      => array(
 							'type'        => 'typography',
 							'label'       => __( 'Sub Headings', 'rosa' ),
-							'desc'        => __( 'Font for titles and headings.', 'rosa' ),
+							// 'desc'        => __( 'Font for titles and headings.', 'rosa' ),
 							'default'     => array( 'Herr Von Muellerhoff' ),
 							'recommended' => array(
 								'Herr Von Muellerhoff',

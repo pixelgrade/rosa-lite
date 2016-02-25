@@ -18,11 +18,6 @@ body, .site-header, .site-footer {
     border: 0 solid transparent;
 }
 
-html, body, #page {
-	width: 100%;
-	height: 100%;
-}
-
 .noscroll {
 	position: relative;
 	overflow: hidden;
@@ -171,14 +166,21 @@ html body.woocommerce ul.products li.product {
 	overflow: hidden;
 }
 
-.page > * {
-	z-index: 20;
+body:after {
+    content: "";
+    display: none;
+    position: absolute;
+    top: 0;
+    height: 48px;
+    background: white;
+    z-index: 10;
+    width: 100%;
+
+	@include media-query(lap-and-up) {
+		display: block;
+	}
 }
 
-.page > .covers {
-	z-index: 1;
-}
-
-.site-header.site-header {
-	z-index: 110;
+body.admin-bar:after {
+	top: 32px;
 }

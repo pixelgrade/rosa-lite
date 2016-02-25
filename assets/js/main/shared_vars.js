@@ -48,8 +48,8 @@ if (useTransform) {
 	}
 }
 
-var windowWidth 		= window.innerWidth,
-    windowHeight 		= window.innerHeight;
+var windowWidth 		= window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+    windowHeight 		= window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
 /* --- To enable verbose debug add to Theme Options > Custom Code footer -> globalDebug=true; --- */
 var globalDebug = false,

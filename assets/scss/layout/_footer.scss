@@ -169,15 +169,18 @@
 	//	margin: $_u2 0;
 	//}
 
-	//li:after{
-	//	content: "\2022";
-	//
-	//	margin: 0 $_u4;
-	//}
+	@include media-query(lap-and-up) {
+		li:after{
+			content: "\2022";
 
-	li:last-child:after{
-		content: none;
+			margin: 0 $_u4;
+		}
+
+		li:last-child:after{
+			content: none;
+		}
 	}
+
 
 	.menu-item-has-children:after{
 		content: none;
