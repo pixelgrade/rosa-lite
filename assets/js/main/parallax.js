@@ -1,5 +1,6 @@
-
 var Parallax = (function() {
+
+    var detectIE = false;
 
     var selector = '.article__parallax',
         $covers = $(),
@@ -11,7 +12,7 @@ var Parallax = (function() {
 
     function initialize() {
 
-        if (detectIE() && !initialized) {
+        if (detectIE && !initialized) {
             fallback();
             return;
         }
@@ -76,11 +77,11 @@ var Parallax = (function() {
 
     function update() {
 
-        if ( is_ie || latestKnownScrollY > stop || latestKnownScrollY < start) {
+        if ( detectIE || latestKnownScrollY > stop || latestKnownScrollY < start) {
             return;
         }
 
-        $covers.css({transform: 'translate3d(0, ' + -latestKnownScrollY + 'px, 0)'});
+        pixGS.TweenMax.to($covers, 0, {y: -latestKnownScrollY});
 
         $covers.each(function (i, hero) {
             var $hero       = $(hero),
@@ -125,7 +126,8 @@ var Parallax = (function() {
     }
 
     function scaleImage($image, amount) {
-        amount = typeof amount !== "unedfined" ? amount: 0.5;
+        amount = (typeof amount == "undefined") ? 1 : amount;
+
         $image.removeAttr('style');
 
         var imageWidth  = $image.outerWidth(),
@@ -143,6 +145,7 @@ var Parallax = (function() {
             x: '-50%',
             y: '-50%',
             z: '0',
+            opacity: 1,
             force3D: true
         });
     }
@@ -178,10 +181,14 @@ var Parallax = (function() {
                 $hero.css('min-height', windowHeight);
             }
 
+            scaleImage($image);
+
             royalSliderInit($cover);
             gmapInit($cover);
             gmapMultiplePinsInit($cover);
         });
+
+        pixGS.TweenMax.to($('.article__parallax'), .3, {'opacity': 1});
 
         return;
     }

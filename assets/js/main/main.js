@@ -156,9 +156,9 @@ function init() {
 
     var is_iexplore = detectIE();
 
-    if (is_iexplore) {
-        $('body').addClass('is_iexplore  no-scroll-effect');
-    }
+    // if (is_iexplore) {
+    //     $('body').addClass('is_iexplore  no-scroll-effect');
+    // }
 
 	/* ONE TIME EVENT HANDLERS */
 	eventHandlersOnce();

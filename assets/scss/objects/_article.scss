@@ -11,7 +11,7 @@
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
 
-	@include media-query(lap-and-up){
+	@include media-query(lap-and-up) {
 		margin-top: 42px;
 		margin-bottom: 36px;
 	}
@@ -229,17 +229,17 @@
 	}
 }
 
-.lt-ie9 {
+// .lt-ie9 {
 
-	.article__parallax {
-		width: 100% !important;
-		height: 100% !important;
-		top: 0 !important;
-		bottom: auto !important;
-		left: 0 !important;
-		transform: translate(-50%, -50%);
-	}
-}
+// 	.article__parallax {
+// 		width: 100% !important;
+// 		height: 100% !important;
+// 		top: 0 !important;
+// 		bottom: auto !important;
+// 		left: 0 !important;
+// 		transform: translate(-50%, -50%);
+// 	}
+// }
 
 .no-scroll-effect {
 	.article__parallax,
@@ -259,12 +259,12 @@
 	max-width: none;
 	transform: translate(-50%, -50%);
 
-	.lt-ie9 & {
-		width: 100% !important;
-		top: 0 !important;
-		left: 0 !important;
-		transform: none;
-	}
+	// .lt-ie9 & {
+	// 	width: 100% !important;
+	// 	top: 0 !important;
+	// 	left: 0 !important;
+	// 	transform: none;
+	// }
 }
 
 .page {
