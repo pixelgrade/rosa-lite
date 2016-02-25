@@ -66,7 +66,7 @@ var options = {
  */
 
 gulp.task('styles-dev', function () {
-	return gulp.src(['assets/scss/**/*.scss', '!assets/scss/admin/*.scss', '!assets/scss/login-with-ajax.scss'] )
+	return gulp.src(['assets/scss/**/*.scss', '!assets/scss/admin/*.scss'])
 			.pipe(sass({'sourcemap': true, style: 'compact'}))
 			.on('error', function (e) {
 				console.log(e.message);
@@ -82,13 +82,14 @@ gulp.task('styles-dev', function () {
 });
 
 gulp.task('styles', function () {
-	return gulp.src(['assets/scss/**/*.scss', '!assets/scss/admin/*.scss', '!assets/scss/login-with-ajax.scss'])
+	return gulp.src(['assets/scss/**/*.scss', '!assets/scss/admin/*.scss'])
 			.pipe(sass({'sourcemap': true, style: 'expanded'}))
 			.pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
 			// .pipe(cmq())
 			.pipe(csscomb())
 			.pipe(chmod(644))
 			.pipe(gulp.dest('./'))
+			.pipe(notify({message: 'Styles task complete'}));
 	// .pipe(postcss([
 	//     require('rtlcss')({ /* options */ })
 	// ]))
