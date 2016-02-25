@@ -35,3 +35,17 @@ function rosa_do_not_display_subpages_when_frontend_bb( $display ) {
 	return $display;
 }
 add_filter( 'rosa_display_subpages', 'rosa_do_not_display_subpages_when_frontend_bb', 10, 1 );
+
+function rosa_custom_css_for_bb() {
+	//since someone is adding an inline height: auto on the body we need to take things one step further
+	if( FLBuilderModel::is_builder_active() ) : ?>
+		
+		<style id="rosa_bb_custom_style">
+			body.fl-builder {
+				height: 100% !important;
+			}
+		</style>
+
+	<?php endif;
+}
+add_action( 'wp_head', 'rosa_custom_css_for_bb', 999 );
