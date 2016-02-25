@@ -3,6 +3,15 @@
 \*------------------------------------*/
 .navigation--main {
 	float: right;
+
+
+	@include media-query(lap-and-up) {
+		display: flex;
+
+		& > .nav--main {
+			flex: 1 0 auto;
+		}
+	}
 }
 
 /**
