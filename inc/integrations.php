@@ -24,3 +24,7 @@ if ( class_exists( 'Vc_Manager' ) ) {
 if ( class_exists( 'FLBuilderModel' ) ) {
 	require get_template_directory() . '/inc/integrations/beaver-builder.php';
 }
+
+if ( function_exists( 'siteorigin_panels_render' ) ) {
+	require get_template_directory() . '/inc/integrations/page-builder-siteorigin.php';
+}

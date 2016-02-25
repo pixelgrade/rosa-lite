@@ -47,7 +47,9 @@ if ( rosa_page_has_children() ) {
 			//make sure that no waves go unaccounted for
 			$footer_needs_big_waves = false;
 
-			if ( ! empty( $post->post_content ) ):
+			$show_main_content = apply_filters( 'rosa_avoid_empty_subpage_markup_if_no_page_content', ( ! empty( $post->post_content ) ), $post );
+
+			if ( $show_main_content ) :
 				//if the section has content, the footer definitely doesn't need waves
 				$footer_needs_big_waves = false;
 				?>

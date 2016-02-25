@@ -12,7 +12,7 @@
  * @return bool
  */
 function rosa_allow_empty_page_markup_when_frontend_bb( $allow ) {
-	//for VC frontend editor to function properly it needs the wrapper markup
+	//for BB frontend editor to function properly it needs the wrapper markup
 	if ( FLBuilderModel::is_builder_active() ) {
 		return true;
 	}
@@ -27,7 +27,7 @@ add_filter( 'rosa_avoid_empty_markup_if_no_page_content', 'rosa_allow_empty_page
  * @return bool
  */
 function rosa_do_not_display_subpages_when_frontend_bb( $display ) {
-	//for VC frontend editor to function properly it needs the wrapper markup
+	//for BB frontend editor to function properly it needs the wrapper markup
 	if ( FLBuilderModel::is_builder_active() ) {
 		return false;
 	}
@@ -39,7 +39,7 @@ add_filter( 'rosa_display_subpages', 'rosa_do_not_display_subpages_when_frontend
 function rosa_custom_css_for_bb() {
 	//since someone is adding an inline height: auto on the body we need to take things one step further
 	if( FLBuilderModel::is_builder_active() ) : ?>
-		
+
 		<style id="rosa_bb_custom_style">
 			body.fl-builder {
 				height: 100% !important;
