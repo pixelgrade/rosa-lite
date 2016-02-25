@@ -518,7 +518,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							array(
 								'property' => 'color',
 								'selector' => 'a, a:hover, .nav--main a:hover, .headroom--not-top .nav--main a:hover, .headline__secondary, .separator--line-flower,
-									.tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment,
+									.tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment, .headroom--not-top .nav.nav--items-social a:hover:before,
 									.comments_add-comment.read-more-button, .form-submit .btn--text#comment-submit,
 									.form-submit #comment-submit.read-more-button, .btn--text.wpcf7-form-control.wpcf7-submit,
 									.wpcf7-form-control.wpcf7-submit.read-more-button, .btn--text.otreservations-submit,
@@ -606,7 +606,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'css'     => array(
 							array(
 								'property' => 'color',
-								'selector' => '.nav--main a, .headroom--not-top .nav--main a',
+								'selector' => '.nav--main a, .headroom--not-top .nav--main a,
+												.headroom--not-top .nav.nav--items-social a:before',
 							)
 						)
 					),
