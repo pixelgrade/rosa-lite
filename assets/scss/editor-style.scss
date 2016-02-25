@@ -6,6 +6,7 @@ Description: Used to style the TinyMCE editor.
 
 @import "vars";
 @import "_vendor/inuit.css/inuit";
+@import "_vendor/icon-fonts/icon-fonts";
 
 // TOOLS
 @import "tools/mixins";
@@ -13,6 +14,10 @@ Description: Used to style the TinyMCE editor.
 // BASE
 @import "base/core";
 @import "base/typography";
+
+@import "shortcodes/__shortcodes";
+@import "objects/beautons";
+@import "objects/heading";
 
 
 html {
