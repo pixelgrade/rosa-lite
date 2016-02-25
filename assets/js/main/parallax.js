@@ -157,8 +157,7 @@ var Parallax = (function() {
 
         $clone.css({
             top: heroOffset.top,
-            height: heroHeight + 2 * bleed,
-            marginTop: -bleed
+            height: heroHeight
         });
 
         return $clone;
