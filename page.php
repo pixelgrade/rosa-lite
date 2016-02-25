@@ -64,6 +64,7 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 						<?php endif; ?>
 					</div>
 				</section>
+				<?php rosa_display_header_down_arrow( $page_section_idx, $header_height ); ?>
 			</article>
 		<?php endif;
 

@@ -111,8 +111,8 @@ function rosa_please_select_a_menu_fallback() {
 if ( ! function_exists( 'rosa_display_header_down_arrow' ) ) {
 	function rosa_display_header_down_arrow( $page_section_idx, $header_height ) {
 
-		if ( $page_section_idx !== 1 || $header_height !== 'full-height' ) {
-			return ;
+		if ( !is_front_page() || $page_section_idx !== 1 || $header_height !== 'full-height' ) {
+			return;
 		}
 
 		//get the global option regarding down arrow style

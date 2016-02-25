@@ -5,7 +5,7 @@
  * It is a page with additional controls for the Google Maps section
  */
 
-global $post;
+global $post, $wpgrade_private_post, $page_section_idx, $header_height;
 
 //some global variables that we use in our page sections
 $is_gmap                = false;
@@ -37,6 +37,7 @@ while ( have_posts() ) : the_post();
 					</section>
 				</div>
 			</section>
+			<?php rosa_display_header_down_arrow( $page_section_idx, $header_height ); ?>
 		</article>
 
 	<?php endif;
