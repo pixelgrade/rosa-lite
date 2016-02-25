@@ -20,3 +20,7 @@ if ( class_exists( 'WpGradeShortcodes' ) ) {
 if ( class_exists( 'Vc_Manager' ) ) {
 	require get_template_directory() . '/inc/integrations/visual-composer.php';
 }
+
+if ( class_exists( 'FLBuilderModel' ) ) {
+	require get_template_directory() . '/inc/integrations/beaver-builder.php';
+}
