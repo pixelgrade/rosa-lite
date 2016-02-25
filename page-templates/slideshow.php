@@ -24,7 +24,7 @@ while ( have_posts() ) : the_post();
 		$classes .= ' border-' . $border_style;
 	}
 
-	$show_main_content = apply_filters( 'rosa_avoid_empty_markup_if_no_page_content', ( ! empty( $post->post_content ) ) );
+	$show_main_content = apply_filters( 'rosa_avoid_empty_markup_if_no_page_content', ( ! empty( $post->post_content ) ), $post );
 
 	if ( $show_main_content ) : ?>
 
