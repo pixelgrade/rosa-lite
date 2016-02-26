@@ -45,7 +45,7 @@ var DownArrow = {
             if (that.$next.is('.article__header')) {
                 smoothScrollTo(that.nextTop - windowHeight/2 + that.nextHeight/2);
             } else {
-                smoothScrollTo(that.nextTop - $('.site-header').outerHeight());
+                smoothScrollTo(that.nextTop - $('.site-header').height());
             }
 
         });

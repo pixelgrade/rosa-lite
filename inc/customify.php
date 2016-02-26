@@ -301,52 +301,17 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							),
 							'css'         => array(
 								array(
-									'property' => 'border-bottom-width',
-									'selector' => 'body',
-									'unit'     => 'px',
-									'media'    => 'screen and (min-width: 900px)'
-								),
-								array(
 									'property' => 'border-width',
-									'selector' => 'body:after',
+									'selector' => 'body > .page, .site-header, .site-footer',
 									'unit'     => 'px',
 									'media'    => 'screen and (min-width: 900px)'
 								),
 								array(
-									'property' => 'height',
-									'selector' => '.article__header.article__header--page.full-height',
-									'callback_filter' => 'rosa_full_height_value',
-									'unit'     => 'px'
-								),
-								array(
-									'property' => 'height',
-									'selector' => '.article__header.article__header--page.half-height',
-									'callback_filter' => 'rosa_half_height_value',
-									'unit'     => 'px'
-								),
-								array(
-									'property' => 'height',
-									'selector' => '.article__header.article__header--page.two-thirds-height',
-									'callback_filter' => 'rosa_two_thirds_height_value',
-									'unit'     => 'px'
-								),
-								array(
-									'property' => 'border-top-width',
-									'selector' => 'body .site-header',
+									'property' => 'margin-top',
+									'selector' => '.article__header + .article--page',
 									'unit'     => 'px',
+									'callback_filter' => 'rosa_range_negative_value',
 									'media'    => ' screen and (min-width: 900px) '
-								),
-								array(
-									'property' => 'border-left-width',
-									'selector' => 'body .site-header',
-									'unit'     => 'px',
-									'media'    => ' screen and (min-width : 900px)'
-								),
-								array(
-									'property' => 'border-right-width',
-									'selector' => 'body .site-header',
-									'unit'     => 'px',
-									'media'    => 'screen and (min-width : 900px) '
 								),
 								array(
 									'property' => 'margin-right',
@@ -1046,30 +1011,6 @@ function rosa_range_negative_value( $value, $selector, $property, $unit ) {
 
 	$output = $selector . '{
 		' . $property . ': -' . $value . '' . $unit . ";\n" . "}\n";
-
-	return $output;
-}
-
-function rosa_half_height_value( $value, $selector, $property, $unit ) {
-
-	$output = $selector . '{
-		' . $property . ': calc(50vh - ' . $value . '' . $unit . ");\n" . "}\n";
-
-	return $output;
-}
-
-function rosa_two_thirds_height_value( $value, $selector, $property, $unit ) {
-
-	$output = $selector . '{
-		' . $property . ': calc(100vh*2/3 - ' . $value . '' . $unit . ");\n" . "}\n";
-
-	return $output;
-}
-
-function rosa_full_height_value( $value, $selector, $property, $unit ) {
-
-	$output = $selector . '{
-		' . $property . ': calc(100vh - ' . $value . '' . $unit . ");\n" . "}\n";
 
 	return $output;
 }
