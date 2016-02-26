@@ -37,7 +37,7 @@ var Parallax = (function() {
             heroHeight      = $hero.outerHeight();
             heroOffset      = $hero.offset();
             amount          = computeAmountValue($hero);
-            distance        = windowHeight * amount;
+            distance        = (windowHeight + heroHeight) * amount;
 
             $hero.imagesLoaded(function() {
                 scaleImage($image, amount);
