@@ -77,7 +77,7 @@ var Parallax = (function() {
 
     function update() {
 
-        if ( detectIE || latestKnownScrollY > stop || latestKnownScrollY < start) {
+        if ( detectIE ) {
             return;
         }
 
@@ -152,16 +152,29 @@ var Parallax = (function() {
 
     function cloneHero($hero) {
         var $clone      = $hero.clone(true).wrap("div.article__header"),
+            $slider     = $clone.find('.article__parallax__slider'),
             heroOffset  = $hero.offset(),
             heroHeight  = $hero.outerHeight();
 
         $clone.removeAttr('style');
         $clone.data('source', $hero).appendTo('.covers');
 
-        $clone.css({
-            top: heroOffset.top,
-            height: heroHeight
-        });
+        if ( $slider.length ) {
+            $slider.css({
+                top: heroOffset.top - bleed,
+                height: heroHeight + 2 * bleed
+            });
+
+            $clone.css({
+                top: heroOffset.top,
+                height: heroHeight
+            });
+        } else {
+            $clone.css({
+                top: heroOffset.top - bleed,
+                height: heroHeight + 2 * bleed
+            });
+        }
 
         return $clone;
     }

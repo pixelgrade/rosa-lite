@@ -70,13 +70,6 @@
 	    }
 	}
 
-    &.article--arrow {
-
-        &:before {
-            display: none;
-        }
-    }
-
     &:empty {
 
         &:before, &:after {

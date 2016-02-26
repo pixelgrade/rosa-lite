@@ -301,10 +301,34 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							),
 							'css'         => array(
 								array(
-									'property' => 'border-width',
+									'property' => 'border-bottom-width',
 									'selector' => 'body',
 									'unit'     => 'px',
 									'media'    => 'screen and (min-width: 900px)'
+								),
+								array(
+									'property' => 'border-width',
+									'selector' => 'body:after',
+									'unit'     => 'px',
+									'media'    => 'screen and (min-width: 900px)'
+								),
+								array(
+									'property' => 'height',
+									'selector' => '.article__header.article__header--page.full-height',
+									'callback_filter' => 'rosa_full_height_value',
+									'unit'     => 'px'
+								),
+								array(
+									'property' => 'height',
+									'selector' => '.article__header.article__header--page.half-height',
+									'callback_filter' => 'rosa_half_height_value',
+									'unit'     => 'px'
+								),
+								array(
+									'property' => 'height',
+									'selector' => '.article__header.article__header--page.two-thirds-height',
+									'callback_filter' => 'rosa_two_thirds_height_value',
+									'unit'     => 'px'
 								),
 								array(
 									'property' => 'border-top-width',
@@ -323,12 +347,6 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 									'selector' => 'body .site-header',
 									'unit'     => 'px',
 									'media'    => 'screen and (min-width : 900px) '
-								),
-								array(
-									'property' => 'height',
-									'selector' => 'body:after',
-									'unit'     => 'px',
-									'media'    => 'screen and (min-width: 900px) '
 								),
 								array(
 									'property' => 'margin-right',
@@ -1028,6 +1046,30 @@ function rosa_range_negative_value( $value, $selector, $property, $unit ) {
 
 	$output = $selector . '{
 		' . $property . ': -' . $value . '' . $unit . ";\n" . "}\n";
+
+	return $output;
+}
+
+function rosa_half_height_value( $value, $selector, $property, $unit ) {
+
+	$output = $selector . '{
+		' . $property . ': calc(50vh - ' . $value . '' . $unit . ");\n" . "}\n";
+
+	return $output;
+}
+
+function rosa_two_thirds_height_value( $value, $selector, $property, $unit ) {
+
+	$output = $selector . '{
+		' . $property . ': calc(100vh*2/3 - ' . $value . '' . $unit . ");\n" . "}\n";
+
+	return $output;
+}
+
+function rosa_full_height_value( $value, $selector, $property, $unit ) {
+
+	$output = $selector . '{
+		' . $property . ': calc(100vh - ' . $value . '' . $unit . ");\n" . "}\n";
 
 	return $output;
 }
