@@ -87,7 +87,10 @@ var Parallax = (function() {
             return;
         }
 
-        pixGS.TweenMax.to($covers, 0, {y: -latestKnownScrollY});
+        pixGS.TweenMax.to($covers, 0, {
+            y: -latestKnownScrollY,
+            force3D: true
+        });
 
         $covers.each(function (i, hero) {
             var $hero       = $(hero),
