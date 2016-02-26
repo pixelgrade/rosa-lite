@@ -418,12 +418,14 @@ $(window).on("debouncedresize", function(e) {
 
     ScrollToTop.initialize();
 
+    if (!Modernizr.touch) {
+        Parallax.initialize();
+        CoverAnimation.initialize();
+    }
 
     if ( touch && windowWidth < 900 ) {
         HandleSubmenusOnTouch.init();
     } else {
-        Parallax.initialize();
-        CoverAnimation.initialize();
         HandleSubmenusOnTouch.release();
     }
 });
@@ -447,7 +449,7 @@ var newScrollY = latestKnownScrollY,
     ticking = false;
 
 $window.scroll(function() {
-    newScrollY = window.pageYOffset;
+    ticking = true;
 });
 
 // new rafscroll(function(e) {
@@ -459,6 +461,12 @@ $window.scroll(function() {
 // });
 
 function loop() {
+
+    if (ticking) {
+        newScrollY = window.pageYOffset;
+        ticking = false;
+    }
+
     // Avoid calculations if not needed
     if (latestKnownScrollY !== newScrollY) {
         latestKnownScrollY = newScrollY

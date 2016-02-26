@@ -35,7 +35,6 @@ var Navigator = {
             return;
         }
 
-
         for (var index = 0; index < this.$sections.length; index++) {
 
             var $section        = $(that.$sections[index]),
@@ -63,6 +62,8 @@ var Navigator = {
             $button.appendTo($navigator);
             $button.data('scrollTo', sectionTop - windowHeight/2 + sectionHeight/2);
             $section.data('offsetTop', sectionTop).data('height', sectionHeight);
+
+            $section.data('display', $section.css('display'));
 
             // closures
             (function ($newButton) {
@@ -150,7 +151,7 @@ var Navigator = {
 
             // if there's no header
 
-            if ($section.css('display') == 'none') {
+            if ($section.data('display') == 'none') {
                 sectionBottom = sectionTop;
                 if (!$section.next().is('.article--page')) {
                     return;

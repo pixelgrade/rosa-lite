@@ -8,7 +8,7 @@ var Parallax = (function() {
         initialized = false,
         start = 0,
         stop = 0,
-        bleed = 0;
+        bleed = 50;
 
     function initialize() {
 
