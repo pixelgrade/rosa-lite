@@ -79,10 +79,8 @@ function menuTrigger(){
         var $html = $('html');
 
         if($html.hasClass('navigation--is-visible')){
-            $('body').css('overflow', '');
             $html.removeClass('navigation--is-visible');
         } else {
-            $('body').css({'overflow': 'hidden'});
             $html.addClass('navigation--is-visible');
 
             if ($html.is('.is--ancient-android, .is--winmob, .is--ie')) {
@@ -443,7 +441,7 @@ $(window).on("orientationchange", function(e) {
     }, 300)
 });
 
-window.latestKnownScrollY = window.pageYOffset;
+window.latestKnownScrollY = -1;
 
 var newScrollY = latestKnownScrollY,
     ticking = false;

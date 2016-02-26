@@ -352,12 +352,13 @@ $nav-width: 84vw;
 
 	.navigation--main {
 		position: fixed;
-		left: -$nav-width;
+		left: 0;
 		top: 0;
-		min-height: 100vh;
-		// bottom: 0;
+		bottom: 0;
 
 		z-index: 20;
+
+		transform: translate3d(-$nav-width, 0, 0);
 
 		.admin-bar & {
 			padding-top: 32px;
@@ -542,14 +543,9 @@ $nav-width: 84vw;
 
 	body {
 
-		#page,
 		.navigation--main,
-		.covers {
+		.nav-trigger {
 			transition: transform .3s cubic-bezier(0.86, 0, 0.07, 1);
-		}
-
-		.site-header {
-			transition: all .3s cubic-bezier(0.86, 0, 0.07, 1);
 		}
 	}
 
@@ -559,19 +555,14 @@ $nav-width: 84vw;
 
 	.navigation--is-visible {
 
-		// #page,
-		// .covers,
-		.site-header {
-			transform: translate3d($nav-width, 0, 0);
+		.nav-trigger {
+			transform: translate3d($nav-width, -50%, 0);
 		}
-
-		// .admin-bar .site-header {
-		// 	transform: translate3d(0, 0, 0);
-		// }
 
 		.navigation--main {
-			transform: translate3d(0, 0, 0);
+			transform: none;
 		}
+
 	}
 
 	.is--winmob, .is--ancient-android, .is--ie {

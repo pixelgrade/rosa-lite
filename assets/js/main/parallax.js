@@ -8,7 +8,7 @@ var Parallax = (function() {
         initialized = false,
         start = 0,
         stop = 0,
-        bleed = 100;
+        bleed = 0;
 
     function initialize() {
 
@@ -37,19 +37,23 @@ var Parallax = (function() {
             heroHeight      = $hero.outerHeight();
             heroOffset      = $hero.offset();
             amount          = computeAmountValue($hero);
-            distance        = (windowHeight - heroHeight) * amount;
+            distance        = windowHeight * amount;
 
             $hero.imagesLoaded(function() {
                 scaleImage($image, amount);
             });
 
             // if there's a slider we are working with we may have to set the height
-            $target.filter('.article__parallax__slider, .gmap--multiple-pins, .gmap').css('height', heroHeight + distance);
+            $target.filter('.article__parallax__slider, .gmap--multiple-pins, .gmap').css({
+                'top': distance * -0.5,
+                'height': heroHeight + distance
+            });
 
             // prepare image / slider timeline
             var parallax = {
-                    start:      heroOffset.top - windowHeight - distance / 2,
-                    end:        heroOffset.top + heroHeight + distance / 2,
+                    start:      heroOffset.top - windowHeight,
+                    end:        heroOffset.top + heroHeight,
+                    distance:   distance,
                     target:     $target
                 };
 
@@ -70,14 +74,16 @@ var Parallax = (function() {
 
         // update progress on the timelines to match current scroll position
 
-        initialized = true;
-        update();
-        pixGS.TweenMax.to($covers, .3, {'opacity': 1});
+        $covers.imagesLoaded(function() {
+            initialized = true;
+            update();
+            pixGS.TweenMax.to($covers, .3, {'opacity': 1});
+        });
     }
 
     function update() {
 
-        if ( detectIE ) {
+        if ( !initialized ) {
             return;
         }
 
@@ -95,9 +101,12 @@ var Parallax = (function() {
 
             if (parallax.start < latestKnownScrollY && parallax.end > latestKnownScrollY) {
                 var progress = (latestKnownScrollY - parallax.start) / (parallax.end - parallax.start),
-                    moveY = (progress - 0.5) * windowHeight;
+                    moveY = (progress - 0.5) * parallax.distance;
 
-                pixGS.TweenMax.to(parallax.target, 0, {y: moveY});
+                pixGS.TweenMax.to(parallax.target, 0, {
+                    y: moveY,
+                    force3D: true
+                });
             }
         });
     }
@@ -146,7 +155,6 @@ var Parallax = (function() {
             y: '-50%',
             z: '0',
             opacity: 1,
-            force3D: true
         });
     }
 
