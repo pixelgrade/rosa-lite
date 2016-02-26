@@ -445,11 +445,10 @@ $(window).on("orientationchange", function(e) {
 
 window.latestKnownScrollY = -1;
 
-var newScrollY = latestKnownScrollY,
-    ticking = false;
+var newScrollY = latestKnownScrollY;
 
 $window.scroll(function() {
-    ticking = true;
+    newScrollY = window.pageYOffset;
 });
 
 // new rafscroll(function(e) {
@@ -461,11 +460,6 @@ $window.scroll(function() {
 // });
 
 function loop() {
-
-    if (ticking) {
-        newScrollY = window.pageYOffset;
-        ticking = false;
-    }
 
     // Avoid calculations if not needed
     if (latestKnownScrollY !== newScrollY) {
