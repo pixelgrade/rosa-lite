@@ -447,28 +447,15 @@ window.latestKnownScrollY = -1;
 
 var newScrollY = latestKnownScrollY;
 
-$window.scroll(function() {
+
+new rafscroll(function(e) {
     newScrollY = window.pageYOffset;
-});
-
-// new rafscroll(function(e) {
-//     // Avoid calculations if not needed
-//     if (latestKnownScrollY == newScrollY) {
-//         return false;
-//     } else latestKnownScrollY = newScrollY;
-//     updateStuff();
-// });
-
-function loop() {
-
     // Avoid calculations if not needed
-    if (latestKnownScrollY !== newScrollY) {
-        latestKnownScrollY = newScrollY
-        updateStuff();
-    }
-    requestAnimationFrame(loop);
-}
-loop();
+    if (latestKnownScrollY == newScrollY) {
+        return false;
+    } else latestKnownScrollY = newScrollY;
+    updateStuff();
+});
 
 function updateStuff() {
     Parallax.update();
