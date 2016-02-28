@@ -76,9 +76,10 @@ body, .site-header, .site-footer {
 // .island.grid__item on homepage
 .grid__item.island {
 
+	// Removed unnecessary padding from island on mobile devices
 	@include media-query(palm) {
 		.article__content &:first-child {
-			padding-top: 0; // Removed for backward compatibility
+			padding-top: 0;
 		}
 	}
 
