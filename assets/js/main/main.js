@@ -432,11 +432,11 @@ function refreshStuff() {
 
 function updateStuff() {
     Parallax.update();
-    CoverAnimation.update();
     ScrollToTop.update();
     DownArrow.update();
 
     if (!Modernizr.touch && windowWidth >= 900) {
+        CoverAnimation.update();
         StickyHeader.update();
         Navigator.update();
     }

@@ -8,7 +8,7 @@ var Parallax = (function() {
         initialized = false,
         start = 0,
         stop = 0,
-        bleed = 0;
+        bleed = 50;
 
     function initialize() {
 
@@ -62,10 +62,10 @@ var Parallax = (function() {
             $hero.data('parallax', parallax).data('height', heroHeight + distance);
             $covers = $covers.add($hero);
 
-
             $hero.imagesLoaded(function() {
                 scaleImage($image, amount);
             });
+
             royalSliderInit($hero);
             gmapInit($hero);
             gmapMultiplePinsInit($hero);
