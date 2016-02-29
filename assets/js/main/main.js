@@ -340,6 +340,7 @@ $(window).load(function(){
         }, 400);
     }
     niceScrollInit();
+
     //if(!$('html').is('.ie9, .lt-ie9') ){
         // requestTick();
     //}
@@ -382,6 +383,8 @@ $(window).load(function(){
         Navigator.initialize();
         ScrollToTop.initialize();
     }, 60);
+
+    loop();
 });
 
 
@@ -443,19 +446,23 @@ $(window).on("orientationchange", function(e) {
     }, 300)
 });
 
-window.latestKnownScrollY = -1;
+window.latestKnownScrollY = window.pageYOffset;
 
-var newScrollY = latestKnownScrollY;
+var newScrollY = latestKnownScrollY,
+    ticking = false;
 
-
-new rafscroll(function(e) {
+$window.scroll(function() {
     newScrollY = window.pageYOffset;
-    // Avoid calculations if not needed
-    if (latestKnownScrollY == newScrollY) {
-        return false;
-    } else latestKnownScrollY = newScrollY;
-    updateStuff();
 });
+
+function loop() {
+    // Avoid calculations if not needed
+    if (latestKnownScrollY !== newScrollY) {
+        latestKnownScrollY = newScrollY
+        updateStuff();
+    }
+    requestAnimationFrame(loop);
+}
 
 function updateStuff() {
     Parallax.update();
