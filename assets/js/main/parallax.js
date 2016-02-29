@@ -41,10 +41,12 @@ var Parallax = (function() {
             amount          = computeAmountValue($hero);
             distance        = (windowHeight + heroHeight) * amount;
 
+            var newHeight   = heroHeight + (windowHeight - heroHeight) * amount;
+
             // if there's a slider we are working with we may have to set the height
             $target.filter('.article__parallax__slider, .gmap--multiple-pins, .gmap').css({
-                'top': distance * -0.5,
-                'height': heroHeight + distance
+                'top': (heroHeight - newHeight) * 0.5,
+                'height': newHeight
             });
 
             // prepare image / slider timeline
@@ -112,26 +114,28 @@ var Parallax = (function() {
     }
 
     function computeAmountValue($hero) {
-        var speeds = {
-            static: 0,
-            slow:   0.25,
-            medium: 0.5,
-            fast:   0.75,
-            fixed:  1
-        };
+        var myAmount = 0.5,
+            speeds = {
+                static: 0,
+                slow:   0.25,
+                medium: 0.5,
+                fast:   0.75,
+                fixed:  1
+            };
 
         // let's see if the user wants different speed for different whateva'
         if (typeof parallax_speeds !== "undefined") {
             $.each(speeds, function(speed, value) {
                 if (typeof parallax_speeds[speed] !== "undefined") {
                     if ($hero.is(parallax_speeds[speed])) {
-                        return value;
+                        myAmount = value;
+                        return;
                     }
                 }
             });
         }
 
-        return 0.5;
+        return myAmount;
     }
 
     function scaleImage($image, amount) {
