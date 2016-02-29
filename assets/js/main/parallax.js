@@ -29,6 +29,8 @@ var Parallax = (function() {
             var $hero = $(hero),
                 $clone, $target, $image, $slider, amount, distance, heroHeight, heroOffset;
 
+            $hero.parent().css('height','');
+
             $clone          = cloneHero($hero);
             $target         = $clone.children('.article__parallax__img, .article__parallax__slider, .gmap--multiple-pins, .gmap');
 
@@ -38,10 +40,6 @@ var Parallax = (function() {
             heroOffset      = $hero.offset();
             amount          = computeAmountValue($hero);
             distance        = (windowHeight + heroHeight) * amount;
-
-            $hero.imagesLoaded(function() {
-                scaleImage($image, amount);
-            });
 
             // if there's a slider we are working with we may have to set the height
             $target.filter('.article__parallax__slider, .gmap--multiple-pins, .gmap').css({
@@ -57,8 +55,6 @@ var Parallax = (function() {
                     target:     $target
                 };
 
-
-
             $hero.parent().height(heroHeight);
 
             $hero = $clone;
@@ -66,7 +62,10 @@ var Parallax = (function() {
             $hero.data('parallax', parallax).data('height', heroHeight + distance);
             $covers = $covers.add($hero);
 
-            // or the slider
+
+            $hero.imagesLoaded(function() {
+                scaleImage($image, amount);
+            });
             royalSliderInit($hero);
             gmapInit($hero);
             gmapMultiplePinsInit($hero);
