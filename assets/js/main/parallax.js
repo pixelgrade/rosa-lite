@@ -151,7 +151,7 @@ var Parallax = (function() {
         pixGS.TweenMax.to($image, 0, {
             width: newWidth,
             left: (windowWidth - newWidth) / 2,
-            top: (windowHeight - newHeight) / 2
+            top: (heroHeight - newHeight) / 2
         });
     }
 
