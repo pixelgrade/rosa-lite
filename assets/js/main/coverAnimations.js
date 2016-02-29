@@ -125,7 +125,6 @@ var CoverAnimation = {
         });
 
         that.initialized = true;
-        that.update();
     },
 
     update: function () {

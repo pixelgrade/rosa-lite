@@ -87,8 +87,7 @@ var Parallax = (function() {
         }
 
         pixGS.TweenMax.to($covers, 0, {
-            y: -latestKnownScrollY,
-            force3D: true
+            y: -latestKnownScrollY
         });
 
         $covers.each(function (i, hero) {
@@ -106,8 +105,7 @@ var Parallax = (function() {
                     moveY = (progress - 0.5) * parallax.distance;
 
                 pixGS.TweenMax.to(parallax.target, 0, {
-                    y: moveY,
-                    force3D: true
+                    y: moveY
                 });
             }
         });
@@ -138,7 +136,6 @@ var Parallax = (function() {
 
     function scaleImage($image, amount) {
         amount = (typeof amount == "undefined") ? 1 : amount;
-
         $image.removeAttr('style');
 
         var imageWidth  = $image.outerWidth(),
@@ -152,11 +149,9 @@ var Parallax = (function() {
             newHeight   = scale * imageHeight;
 
         pixGS.TweenMax.to($image, 0, {
-            scale: scale,
-            x: '-50%',
-            y: '-50%',
-            z: '0',
-            opacity: 1,
+            width: newWidth,
+            left: (windowWidth - newWidth) / 2,
+            top: (windowHeight - newHeight) / 2
         });
     }
 
