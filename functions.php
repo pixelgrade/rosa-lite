@@ -439,6 +439,8 @@ function wupdates_process_purchase_code_vexXr() {
 					if ( isset( $response['purchase_code'] ) && 'valid' == $response['purchase_code'] ) {
 						//all is good, update the purchase code option
 						update_option( $slug . '_wup_purchase_code', $purchase_code );
+						//delete the update_themes transient so we force a recheck
+						set_site_transient('update_themes', null);
 					} else {
 						if ( isset( $response['reason'] ) && ! empty( $response['reason'] ) && 'out_of_support' == $response['reason'] ) {
 							$errors[] = esc_html__( 'Your purchase\'s support period has ended. Please extend it to receive automatic updates.' );
