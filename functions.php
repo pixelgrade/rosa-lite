@@ -279,13 +279,18 @@ function wupdates_check_vexXr( $transient ) {
 	// Let's start gathering data about the theme
 	// First get the theme directory name (the theme slug - unique)
 	$slug = basename( get_template_directory() );
+	// Then WordPress version
+	include( ABSPATH . WPINC . '/version.php' );
 	$http_args = array (
 		'body' => array(
 			'slug' => $slug,
 			'url' => home_url(), //the site's home URL
 			'version' => 0,
+			'locale' => get_locale(),
+			'phpv' => phpversion(),
 			'data' => null, //no optional data is sent by default
-		)
+		),
+		'user-agent' => 'WordPress/' . $wp_version . '; ' . home_url()
 	);
 
 	// If the theme has been checked for updates before, get the checked version
@@ -300,23 +305,30 @@ function wupdates_check_vexXr( $transient ) {
 	// Encrypting optional data with private key, just to keep your data a little safer
 	// You should not edit the code bellow
 	$optional_data = json_encode( $optional_data );
-	$w=array();$re="";$s=array();$sa=md5(str_rot13('0aad90f61af7dca48f99ac9f6fc7ac4219649a20'));
-	$l=strlen($sa);$d=str_rot13($optional_data);$ii=-1;
+	$w=array();$re="";$s=array();$sa=md5('0aad90f61af7dca48f99ac9f6fc7ac4219649a20');
+	$l=strlen($sa);$d=$optional_data;$ii=-1;
 	while(++$ii<256){$w[$ii]=ord(substr($sa,(($ii%$l)+1),1));$s[$ii]=$ii;} $ii=-1;$j=0;
 	while(++$ii<256){$j=($j+$w[$ii]+$s[$ii])%255;$t=$s[$j];$s[$ii]=$s[$j];$s[$j]=$t;}
 	$l=strlen($d);$ii=-1;$j=0;$k=0;
 	while(++$ii<$l){$j=($j+1)%256;$k=($k+$s[$j])%255;$t=$w[$j];$s[$j]=$s[$k];$s[$k]=$t;
 		$x=$s[(($s[$j]+$s[$k])%255)];$re.=chr(ord($d[$ii])^$x);}
-	$optional_data=base64_encode($re);
+	$optional_data=bin2hex($re);
 
 	// Save the encrypted optional data so it can be sent to the updates server
 	$http_args['body']['data'] = $optional_data;
 
 	// Check for an available update
-	$raw_response = wp_remote_post( 'https://wupdates.com/wp-json/wup/v1/themes/check_version/vexXr', $http_args );
+	$url = $http_url = set_url_scheme( 'https://wupdates.com/wp-json/wup/v1/themes/check_version/vexXr', 'http' );
+	if ( $ssl = wp_http_supports( array( 'ssl' ) ) ) {
+		$url = set_url_scheme( $url, 'https' );
+	}
 
+	$raw_response = wp_remote_post( $url, $http_args );
+	if ( $ssl && is_wp_error( $raw_response ) ) {
+		$raw_response = wp_remote_post( $http_url, $http_args );
+	}
 	// We stop in case we haven't received a proper response
-	if ( is_wp_error( $raw_response ) || $raw_response['response']['code'] !== 200 ) {
+	if ( is_wp_error( $raw_response ) || 200 != wp_remote_retrieve_response_code( $raw_response ) ) {
 		return $transient;
 	}
 
@@ -406,11 +418,19 @@ function wupdates_process_purchase_code_vexXr() {
 				)
 			);
 
+			//make sure that we use a protocol that this hosting is capable of
+			$url = $http_url = set_url_scheme( 'https://wupdates.com/wp-json/wup/v1/front/check_envato_purchase_code/vexXr', 'http' );
+			if ( $ssl = wp_http_supports( array( 'ssl' ) ) ) {
+				$url = set_url_scheme( $url, 'https' );
+			}
 			//make the call to the purchase code check API
-			$raw_response = wp_remote_post( 'https://wupdates.com/wp-json/wup/v1/front/check_envato_purchase_code/vexXr', $http_args );
+			$raw_response = wp_remote_post( $url, $http_args );
+			if ( $ssl && is_wp_error( $raw_response ) ) {
+				$raw_response = wp_remote_post( $http_url, $http_args );
+			}
 			// In case the server hasn't responded properly, show error
-			if ( is_wp_error( $raw_response ) || $raw_response['response']['code'] !== 200 ) {
-				$errors[] = __( 'We are sorry but we couldn\'t connect to the verification server. Please try again later.<span class="hidden">' . $raw_response['body'] . '</span>' );
+			if ( is_wp_error( $raw_response ) || 200 != wp_remote_retrieve_response_code( $raw_response ) ) {
+				$errors[] = __( 'We are sorry but we couldn\'t connect to the verification server. Please try again later.<span class="hidden">' . print_r( $raw_response, true ) . '</span>' );
 			} else {
 				$response = json_decode( $raw_response['body'], true );
 				if ( ! empty( $response ) ) {
