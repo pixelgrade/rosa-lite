@@ -72,42 +72,47 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 				),
 
 				'share_settings' => array(
-					'title'    => __( 'Share Settings', 'lens' ),
+					'title'    => __( 'Sharing', 'lens' ),
 					'options' => array(
-						'share_buttons_settings' => array(
-							'type'	=> 'text',
+						'share_buttons_settings'        => array(
+							'type'    => 'textarea',
+							'label'   => esc_html__( 'Share Services', 'border' ),
 							'default' => 'more,preferred,preferred,preferred,preferred',
-							'label' => __( 'Share Services', 'lens' ),
-							'desc' => __( 'Add here the share services you want to use, single comma delimited (no spaces). You can find the full <a href="http://www.addthis.com/services/list" target="_blank">list of services</a>. Also you can use the more tag to show the plus sign and the counter tag to show a global share counter.More about this here: <a href="http://bit.ly/1fLP69i">http://bit.ly/1fLP69i</a>.', 'rosa' ),
+							'desc'    => __( '<p>Add the share services, delimited by a single comma (no spaces). You can find the full list of services <a href="http://www.addthis.com/services/list">here</a>.</p>
+								Notes:
+								<ul>
+								<li>— use the <span style="text-decoration:underline;"><strong>more</strong></span> tag to show the plus sign</li>
+								<li>— use the <span style="text-decoration:underline;"><strong>counter</strong></span> for a global share counter</li>
+								<li>— use the <span style="text-decoration:underline;"><strong>preferred</strong></span> tag&nbsp;to show your visitors a personalized lists of buttons (read <a href="http://www.addthis.com/academy/preferred-services-personalization/">more</a>)</li>
+								</ul>')
 						),
-
-						'share_buttons_enable_tracking'        => array(
+						'share_buttons_enable_tracking' => array(
 							'type'    => 'checkbox',
-							'label'   => esc_html__( 'Sharing Analytics.', 'rosa' ),
-							'desc'   => esc_html__( 'Do you want to get analytics for your social shares?', 'rosa' ),
+							'label'   => esc_html__( 'Enable AddThis Sharing Analytics', 'border' ),
 							'default' => 0,
 						),
 
-						'share_buttons_enable_addthis_tracking'        => array(
+
+
+						'share_buttons_enable_addthis_tracking'   => array(
 							'type'    => 'checkbox',
-							'label'   => esc_html__( 'AddThis Tracking.', 'rosa' ),
-							'desc' => __( 'Do you want to enable AddThis tracking? This will all you to see sharing analytics in your AddThis account (see more here: <a href="http://bit.ly/1oe5zad">bit.ly/1oe5zad</a>)', 'rosa' ),
+							'label'   => esc_html__( 'Enable AddThis Tracking', 'border' ),
 							'default' => 0,
 							//'required' => array( 'share_buttons_enable_tracking', '=', 1 ),
 						),
 
-						'share_buttons_addthis_username'        => array(
+						'share_buttons_addthis_username'          => array(
 							'type'    => 'text',
-							'label'   => esc_html__( 'AddThis Username.', 'rosa' ),
-							'desc'   => esc_html__( 'Enter here your AddThis username so you will receive analytics data.', 'rosa' ),
-							'default' => '',
+							'label'   => esc_html__( 'AddThis Username', 'border' ),
+							'default' => 'more,preferred,preferred,preferred,preferred',
+							'desc'    => esc_html__( 'Enter here your AddThis username so you will receive analytics data.', 'border' ),
 							//'required' => array( 'share_buttons_enable_addthis_tracking', '=', 1 ),
 						),
 
 						'share_buttons_enable_ga_tracking'        => array(
 							'type'    => 'checkbox',
-							'label'   => esc_html__( 'Google Analytics Tracking', 'rosa' ),
-							'desc' => __( 'Do you want to enable the AddThis - Google Analytics tracking integration? See more about this here: <a href="http://bit.ly/1kxPg7K">bit.ly/1kxPg7K</a>', 'rosa' ),
+							'label'   => esc_html__( 'AddThis Google Analytics Tracking', 'border' ),
+							'desc'    => __( 'Read more on <a href="http://bit.ly/1kxPg7K">Integrating with Google Analytics</a> article.'),
 							'default' => 0,
 							//'required' => array( 'share_buttons_enable_tracking', '=', 1 ),
 						),
