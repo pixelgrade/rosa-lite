@@ -1,4 +1,5 @@
-.nav.nav--items-social {
+.nav.nav--items-social,
+.widget [class*="social"] > ul {
     display: inline-block;
     margin-bottom: 0;
     line-height: 1;
@@ -89,4 +90,26 @@
             &[href*="tripadvisor"]:before   {content: $fa-var-tripadvisor;}
             &[href*="500"]:before           {content: $fa-var-500px; }
     }
+}
+
+.header--transparent .nav.nav--items-social a:before {
+    color: white;
+}
+
+.widget [class*="social"] > ul {
+    display: block;
+
+    li {
+        display: inline-block;
+        width: auto;
+        float: none;
+    }
+}
+
+.footer-widget-area .widget [class*="social"] > ul a {
+    font-size: 24px;
+}
+
+.sidebar--main .widget [class*="social"] > ul a:before {
+    color: $dark;
 }

@@ -515,7 +515,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 									body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart,
 									body.woocommerce ul.products li.product a.added_to_cart, body.woocommerce ul.products li.product .price ins,
 									.single-product .entry-summary .price span, body.woocommerce .star-rating span:before, .comment-reply-link,
-									.nav.nav--items-social a:hover:before',
+									.nav.nav--items-social a:hover:before, .sidebar--main .widget [class*="social"] > ul a:hover:before',
 							),
 							array(
 								'property' => 'background-color',
@@ -589,7 +589,9 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'css'     => array(
 							array(
 								'property' => 'color',
-								'selector' => '.nav--main a, .headroom--not-top .nav--main a,
+								'selector' => '.nav--main a,
+												.headroom--not-top .nav--main a,
+												.nav.nav--items-social a:before,
 												.headroom--not-top .nav.nav--items-social a:before',
 							)
 						)
