@@ -3,7 +3,7 @@
 	top: 50%;
 	right: 48px;
 	z-index: 999;
-
+	transform: translateY(-50%);
 	opacity: 0;
 
 	@include media-query(palm) {
