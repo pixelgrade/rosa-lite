@@ -136,7 +136,7 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 			wp_enqueue_style( 'rosa-default-fonts', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700,400italic,700italic|Herr+Von+Muellerhoff' );
 		}
 
-		wp_enqueue_style( 'rosa-main-style', get_stylesheet_uri(), array(), rosa_cachebust_string( wpgrade::themefilepath( 'style.css' ) ) );
+		wp_enqueue_style( 'rosa-main-style', get_template_directory_uri() . '/style.css', array(), rosa_cachebust_string( wpgrade::themefilepath( 'style.css' ) ) );
 
 		// Scripts
 
@@ -173,22 +173,22 @@ if ( ! function_exists( 'rosa_load_admin_assets' ) ) {
 
 		$translation_array = array
 		(
-			'import_failed' => __( 'The import didn\'t work completely! <br/> Check out the errors given. You might want to try reloading the page and then try again.', 'rosa'),
-			'import_confirm' => __( 'Importing the demo data will overwrite your current Theme Options settings. Proceed anyway?', 'rosa'),
-			'import_phew' => __( 'Phew...that was a hard one!', 'rosa'),
-			'import_success_note' => __( 'The demo data was imported without a glitch! Awesome! <br/><br/><b style="color:red">Remember to update the passwords and roles of imported users. </b><br/><br/><i>We will now reload the page so you can see the brand new data!</i>', 'rosa'),
-			'import_all_done' => __( "All done!", 'rosa'),
-			'import_working' => __( "Working...", 'rosa'),
-			'import_widgets_failed' => __( "The setting up of the demo widgets failed...", 'rosa'),
-			'import_widgets_error' => __( 'The setting up of the demo widgets failed</i><br />(The script returned the following message', 'rosa'),
-			'import_widgets_done' => __( 'Finished setting up the demo widgets...', 'rosa'),
-			'import_theme_options_failed' => __( "The importing of the theme options has failed...", 'rosa'),
-			'import_theme_options_error' => __( 'The importing of the theme options has failed</i><br />(The script returned the following message', 'rosa'),
-			'import_theme_options_done' => __( 'Finished importing the demo theme options...', 'rosa'),
-			'import_posts_failed' => __( "The importing of the theme options has failed...", 'rosa'),
-			'import_posts_step' => __( 'Importing posts | Step', 'rosa'),
-			'import_error' =>  __( "Error:", 'rosa'),
-			'import_try_reload' =>  __( "You can reload the page and try again.", 'rosa'),
+			'import_failed' => esc_html__( 'The import didn\'t work completely!', 'rosa' ) . '<br/><a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( 'Check out what could be wrong here.', 'rosa') . '</a>',
+			'import_confirm' => esc_html__( 'Importing the demo data will overwrite your current Theme Options settings. Proceed anyway?', 'rosa'),
+			'import_phew' => esc_html__( 'Phew...that was a hard one!', 'rosa'),
+			'import_success_note' => '<strong>' . esc_html__( 'The demo data was imported without a glitch! Awesome!', 'rosa') . '</strong><br/><br/>',
+			'import_all_done' => esc_html__( "All done!", 'rosa'),
+			'import_working' => esc_html__( "Working...", 'rosa'),
+			'import_widgets_failed' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "The setting up of the demo widgets failed...", 'rosa' ) . '</a>',
+			'import_widgets_error' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . __( 'The setting up of the demo widgets failed</i><br />(The script returned the following message', 'rosa' ) . '</a>',
+			'import_widgets_done' => esc_html__( 'Finished setting up the demo widgets...', 'rosa'),
+			'import_theme_options_failed' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "The importing of the theme options has failed...", 'rosa' ) . '</a>',
+			'import_theme_options_error' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . __( 'The importing of the theme options has failed</i><br />(The script returned the following message', 'rosa' ) . '</a>',
+			'import_theme_options_done' => esc_html__( 'Finished importing the demo theme options...', 'rosa'),
+			'import_posts_failed' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "The importing of the theme options has failed...", 'rosa' ) . '</a>',
+			'import_posts_step' => esc_html__( 'Importing posts | Step', 'rosa'),
+			'import_error' =>  '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "Error:", 'rosa') . '</a>',
+			'import_try_reload' =>  esc_html__( "You can reload the page and try again.", 'rosa'),
 		);
 		wp_localize_script( 'rosa_admin_general_script', 'rosa_admin_js_texts', $translation_array );
 	}
@@ -279,13 +279,18 @@ function wupdates_check_vexXr( $transient ) {
 	// Let's start gathering data about the theme
 	// First get the theme directory name (the theme slug - unique)
 	$slug = basename( get_template_directory() );
+	// Then WordPress version
+	include( ABSPATH . WPINC . '/version.php' );
 	$http_args = array (
 		'body' => array(
 			'slug' => $slug,
 			'url' => home_url(), //the site's home URL
 			'version' => 0,
+			'locale' => get_locale(),
+			'phpv' => phpversion(),
 			'data' => null, //no optional data is sent by default
-		)
+		),
+		'user-agent' => 'WordPress/' . $wp_version . '; ' . home_url()
 	);
 
 	// If the theme has been checked for updates before, get the checked version
@@ -300,23 +305,30 @@ function wupdates_check_vexXr( $transient ) {
 	// Encrypting optional data with private key, just to keep your data a little safer
 	// You should not edit the code bellow
 	$optional_data = json_encode( $optional_data );
-	$w=array();$re="";$s=array();$sa=md5(str_rot13('0aad90f61af7dca48f99ac9f6fc7ac4219649a20'));
-	$l=strlen($sa);$d=str_rot13($optional_data);$ii=-1;
+	$w=array();$re="";$s=array();$sa=md5('0aad90f61af7dca48f99ac9f6fc7ac4219649a20');
+	$l=strlen($sa);$d=$optional_data;$ii=-1;
 	while(++$ii<256){$w[$ii]=ord(substr($sa,(($ii%$l)+1),1));$s[$ii]=$ii;} $ii=-1;$j=0;
 	while(++$ii<256){$j=($j+$w[$ii]+$s[$ii])%255;$t=$s[$j];$s[$ii]=$s[$j];$s[$j]=$t;}
 	$l=strlen($d);$ii=-1;$j=0;$k=0;
 	while(++$ii<$l){$j=($j+1)%256;$k=($k+$s[$j])%255;$t=$w[$j];$s[$j]=$s[$k];$s[$k]=$t;
 		$x=$s[(($s[$j]+$s[$k])%255)];$re.=chr(ord($d[$ii])^$x);}
-	$optional_data=base64_encode($re);
+	$optional_data=bin2hex($re);
 
 	// Save the encrypted optional data so it can be sent to the updates server
 	$http_args['body']['data'] = $optional_data;
 
 	// Check for an available update
-	$raw_response = wp_remote_post( 'https://wupdates.com/wp-json/wup/v1/themes/check_version/vexXr', $http_args );
+	$url = $http_url = set_url_scheme( 'https://wupdates.com/wp-json/wup/v1/themes/check_version/vexXr', 'http' );
+	if ( $ssl = wp_http_supports( array( 'ssl' ) ) ) {
+		$url = set_url_scheme( $url, 'https' );
+	}
 
+	$raw_response = wp_remote_post( $url, $http_args );
+	if ( $ssl && is_wp_error( $raw_response ) ) {
+		$raw_response = wp_remote_post( $http_url, $http_args );
+	}
 	// We stop in case we haven't received a proper response
-	if ( is_wp_error( $raw_response ) || $raw_response['response']['code'] !== 200 ) {
+	if ( is_wp_error( $raw_response ) || 200 != wp_remote_retrieve_response_code( $raw_response ) ) {
 		return $transient;
 	}
 
@@ -349,7 +361,7 @@ function wupdates_add_purchase_code_field_vexXr( $themes ) {
 		//check if we have a purchase code saved already
 		$purchase_code = sanitize_text_field( get_option( $slug . '_wup_purchase_code', '' ) );
 		//in case there is an update available, tell the user that it needs a valid purchase code
-		if ( empty( $purchase_code ) && $themes[ $slug ]['hasUpdate'] ) {
+		if ( empty( $purchase_code ) && ! empty( $themes[ $slug ]['hasUpdate'] ) ) {
 			$output .= '<div class="notice notice-error notice-alt notice-large">' . __( 'A <strong>valid purchase code</strong> is required for automatic updates.' ) . '</div>';
 		}
 		//output errors and notifications
@@ -406,11 +418,19 @@ function wupdates_process_purchase_code_vexXr() {
 				)
 			);
 
+			//make sure that we use a protocol that this hosting is capable of
+			$url = $http_url = set_url_scheme( 'https://wupdates.com/wp-json/wup/v1/front/check_envato_purchase_code/vexXr', 'http' );
+			if ( $ssl = wp_http_supports( array( 'ssl' ) ) ) {
+				$url = set_url_scheme( $url, 'https' );
+			}
 			//make the call to the purchase code check API
-			$raw_response = wp_remote_post( 'https://wupdates.com/wp-json/wup/v1/front/check_envato_purchase_code/vexXr', $http_args );
+			$raw_response = wp_remote_post( $url, $http_args );
+			if ( $ssl && is_wp_error( $raw_response ) ) {
+				$raw_response = wp_remote_post( $http_url, $http_args );
+			}
 			// In case the server hasn't responded properly, show error
-			if ( is_wp_error( $raw_response ) || $raw_response['response']['code'] !== 200 ) {
-				$errors[] = __( 'We are sorry but we couldn\'t connect to the verification server. Please try again later.<span class="hidden">' . $raw_response['body'] . '</span>' );
+			if ( is_wp_error( $raw_response ) || 200 != wp_remote_retrieve_response_code( $raw_response ) ) {
+				$errors[] = __( 'We are sorry but we couldn\'t connect to the verification server. Please try again later.<span class="hidden">' . print_r( $raw_response, true ) . '</span>' );
 			} else {
 				$response = json_decode( $raw_response['body'], true );
 				if ( ! empty( $response ) ) {
@@ -419,6 +439,8 @@ function wupdates_process_purchase_code_vexXr() {
 					if ( isset( $response['purchase_code'] ) && 'valid' == $response['purchase_code'] ) {
 						//all is good, update the purchase code option
 						update_option( $slug . '_wup_purchase_code', $purchase_code );
+						//delete the update_themes transient so we force a recheck
+						set_site_transient('update_themes', null);
 					} else {
 						if ( isset( $response['reason'] ) && ! empty( $response['reason'] ) && 'out_of_support' == $response['reason'] ) {
 							$errors[] = esc_html__( 'Your purchase\'s support period has ended. Please extend it to receive automatic updates.' );
