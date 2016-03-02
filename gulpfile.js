@@ -226,8 +226,7 @@ gulp.task('build', ['txtdomain-replace'], function () {
 
 		'assets/scss',
 		'assets/js/main',
-		'assets/js/plugins',
-		'assets/js/vendor'
+		'assets/js/plugins'
 	];
 
 	files_to_remove.forEach(function (e, k) {

@@ -173,22 +173,22 @@ if ( ! function_exists( 'rosa_load_admin_assets' ) ) {
 
 		$translation_array = array
 		(
-			'import_failed' => __( 'The import didn\'t work completely! <br/> Check out the errors given. You might want to try reloading the page and then try again.', 'rosa'),
-			'import_confirm' => __( 'Importing the demo data will overwrite your current Theme Options settings. Proceed anyway?', 'rosa'),
-			'import_phew' => __( 'Phew...that was a hard one!', 'rosa'),
-			'import_success_note' => __( 'The demo data was imported without a glitch! Awesome! <br/><br/><b style="color:red">Remember to update the passwords and roles of imported users. </b><br/><br/><i>We will now reload the page so you can see the brand new data!</i>', 'rosa'),
-			'import_all_done' => __( "All done!", 'rosa'),
-			'import_working' => __( "Working...", 'rosa'),
-			'import_widgets_failed' => __( "The setting up of the demo widgets failed...", 'rosa'),
-			'import_widgets_error' => __( 'The setting up of the demo widgets failed</i><br />(The script returned the following message', 'rosa'),
-			'import_widgets_done' => __( 'Finished setting up the demo widgets...', 'rosa'),
-			'import_theme_options_failed' => __( "The importing of the theme options has failed...", 'rosa'),
-			'import_theme_options_error' => __( 'The importing of the theme options has failed</i><br />(The script returned the following message', 'rosa'),
-			'import_theme_options_done' => __( 'Finished importing the demo theme options...', 'rosa'),
-			'import_posts_failed' => __( "The importing of the theme options has failed...", 'rosa'),
-			'import_posts_step' => __( 'Importing posts | Step', 'rosa'),
-			'import_error' =>  __( "Error:", 'rosa'),
-			'import_try_reload' =>  __( "You can reload the page and try again.", 'rosa'),
+			'import_failed' => esc_html__( 'The import didn\'t work completely!', 'rosa' ) . '<br/><a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( 'Check out what could be wrong here.', 'rosa') . '</a>',
+			'import_confirm' => esc_html__( 'Importing the demo data will overwrite your current Theme Options settings. Proceed anyway?', 'rosa'),
+			'import_phew' => esc_html__( 'Phew...that was a hard one!', 'rosa'),
+			'import_success_note' => '<strong>' . esc_html__( 'The demo data was imported without a glitch! Awesome!', 'rosa') . '</strong><br/><br/>',
+			'import_all_done' => esc_html__( "All done!", 'rosa'),
+			'import_working' => esc_html__( "Working...", 'rosa'),
+			'import_widgets_failed' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "The setting up of the demo widgets failed...", 'rosa' ) . '</a>',
+			'import_widgets_error' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . __( 'The setting up of the demo widgets failed</i><br />(The script returned the following message', 'rosa' ) . '</a>',
+			'import_widgets_done' => esc_html__( 'Finished setting up the demo widgets...', 'rosa'),
+			'import_theme_options_failed' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "The importing of the theme options has failed...", 'rosa' ) . '</a>',
+			'import_theme_options_error' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . __( 'The importing of the theme options has failed</i><br />(The script returned the following message', 'rosa' ) . '</a>',
+			'import_theme_options_done' => esc_html__( 'Finished importing the demo theme options...', 'rosa'),
+			'import_posts_failed' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "The importing of the theme options has failed...", 'rosa' ) . '</a>',
+			'import_posts_step' => esc_html__( 'Importing posts | Step', 'rosa'),
+			'import_error' =>  '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "Error:", 'rosa') . '</a>',
+			'import_try_reload' =>  esc_html__( "You can reload the page and try again.", 'rosa'),
 		);
 		wp_localize_script( 'rosa_admin_general_script', 'rosa_admin_js_texts', $translation_array );
 	}
