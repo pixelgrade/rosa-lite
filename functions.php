@@ -361,7 +361,7 @@ function wupdates_add_purchase_code_field_vexXr( $themes ) {
 		//check if we have a purchase code saved already
 		$purchase_code = sanitize_text_field( get_option( $slug . '_wup_purchase_code', '' ) );
 		//in case there is an update available, tell the user that it needs a valid purchase code
-		if ( empty( $purchase_code ) && $themes[ $slug ]['hasUpdate'] ) {
+		if ( empty( $purchase_code ) && ! empty( $themes[ $slug ]['hasUpdate'] ) ) {
 			$output .= '<div class="notice notice-error notice-alt notice-large">' . __( 'A <strong>valid purchase code</strong> is required for automatic updates.' ) . '</div>';
 		}
 		//output errors and notifications
