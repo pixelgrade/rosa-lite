@@ -90,3 +90,20 @@ function getIOSVersion(ua) {
 				.replace('undefined', '3_2').replace('_', '.').replace('_', '')
 		) || false;
 }
+
+function setProgress(timeline, start, end) {
+
+    var progress = (latestKnownScrollY - start) / (end - start);
+
+    if (0 > progress) {
+        timeline.progress(0);
+        return;
+    }
+
+    if (1 < progress) {
+        timeline.progress(1);
+        return;
+    }
+
+    timeline.progress(progress);
+}
