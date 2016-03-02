@@ -132,6 +132,11 @@ gulp.task('scripts-watch', function () {
 });
 
 gulp.task('scripts-server', function () {
+
+	gulp.src('./assets/js/plugins/*.js')
+			.pipe(concat('plugins.js'))
+			.pipe(gulp.dest('./assets/js/'));
+
 	return gulp.src(jsFiles)
 			.pipe(concat('main.js'))
 			.pipe(uglify())
