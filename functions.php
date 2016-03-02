@@ -136,7 +136,7 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 			wp_enqueue_style( 'rosa-default-fonts', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700,400italic,700italic|Herr+Von+Muellerhoff' );
 		}
 
-		wp_enqueue_style( 'rosa-main-style', get_stylesheet_uri(), array(), rosa_cachebust_string( wpgrade::themefilepath( 'style.css' ) ) );
+		wp_enqueue_style( 'rosa-main-style', get_template_directory_uri() . '/style.css', array(), rosa_cachebust_string( wpgrade::themefilepath( 'style.css' ) ) );
 
 		// Scripts
 
