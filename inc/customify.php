@@ -1061,6 +1061,14 @@ function convert_redux_options_to_customify() {
 		update_option( 'live_css_edit', trim( $current_options['custom_css'] ) );
 	}
 
+	if ( isset( $current_options['custom_js'] ) && ! empty( $current_options['custom_js'] ) ) {
+		$current_options['custom_js'] = trim( $current_options['custom_js'] );
+	}
+
+	if ( isset( $current_options['custom_js_footer'] ) && ! empty( $current_options['custom_js_footer'] ) ) {
+		$current_options['custom_js_footer'] = trim( $current_options['custom_js_footer'] );
+	}
+
 	update_option( 'rosa_options', $current_options );
 
 	rosa_convert_social_links();
