@@ -8,7 +8,7 @@ var Parallax = (function() {
         initialized = false,
         start = 0,
         stop = 0,
-        bleed = 0;
+        bleed = 50;
 
     function initialize() {
 
@@ -29,6 +29,8 @@ var Parallax = (function() {
             var $hero = $(hero),
                 $clone, $target, $image, $slider, amount, distance, heroHeight, heroOffset;
 
+            $hero.parent().css('height','');
+
             $clone          = cloneHero($hero);
             $target         = $clone.children('.article__parallax__img, .article__parallax__slider, .gmap--multiple-pins, .gmap');
 
@@ -39,14 +41,12 @@ var Parallax = (function() {
             amount          = computeAmountValue($hero);
             distance        = (windowHeight + heroHeight) * amount;
 
-            $hero.imagesLoaded(function() {
-                scaleImage($image, amount);
-            });
+            var newHeight   = heroHeight + (windowHeight - heroHeight) * amount;
 
             // if there's a slider we are working with we may have to set the height
             $target.filter('.article__parallax__slider, .gmap--multiple-pins, .gmap').css({
-                'top': distance * -0.5,
-                'height': heroHeight + distance
+                'top': (heroHeight - newHeight) * 0.5,
+                'height': newHeight
             });
 
             // prepare image / slider timeline
@@ -57,8 +57,6 @@ var Parallax = (function() {
                     target:     $target
                 };
 
-
-
             $hero.parent().height(heroHeight);
 
             $hero = $clone;
@@ -66,7 +64,10 @@ var Parallax = (function() {
             $hero.data('parallax', parallax).data('height', heroHeight + distance);
             $covers = $covers.add($hero);
 
-            // or the slider
+            $hero.imagesLoaded(function() {
+                scaleImage($image, amount);
+            });
+
             royalSliderInit($hero);
             gmapInit($hero);
             gmapMultiplePinsInit($hero);
@@ -88,8 +89,7 @@ var Parallax = (function() {
         }
 
         pixGS.TweenMax.to($covers, 0, {
-            y: -latestKnownScrollY,
-            force3D: true
+            y: -latestKnownScrollY
         });
 
         $covers.each(function (i, hero) {
@@ -107,39 +107,39 @@ var Parallax = (function() {
                     moveY = (progress - 0.5) * parallax.distance;
 
                 pixGS.TweenMax.to(parallax.target, 0, {
-                    y: moveY,
-                    force3D: true
+                    y: moveY
                 });
             }
         });
     }
 
     function computeAmountValue($hero) {
-        var speeds = {
-            static: 0,
-            slow:   0.25,
-            medium: 0.5,
-            fast:   0.75,
-            fixed:  1
-        };
+        var myAmount = 0.5,
+            speeds = {
+                static: 0,
+                slow:   0.25,
+                medium: 0.5,
+                fast:   0.75,
+                fixed:  1
+            };
 
         // let's see if the user wants different speed for different whateva'
         if (typeof parallax_speeds !== "undefined") {
             $.each(speeds, function(speed, value) {
                 if (typeof parallax_speeds[speed] !== "undefined") {
                     if ($hero.is(parallax_speeds[speed])) {
-                        return value;
+                        myAmount = value;
+                        return;
                     }
                 }
             });
         }
 
-        return 0.5;
+        return myAmount;
     }
 
     function scaleImage($image, amount) {
         amount = (typeof amount == "undefined") ? 1 : amount;
-
         $image.removeAttr('style');
 
         var imageWidth  = $image.outerWidth(),
@@ -153,11 +153,9 @@ var Parallax = (function() {
             newHeight   = scale * imageHeight;
 
         pixGS.TweenMax.to($image, 0, {
-            scale: scale,
-            x: '-50%',
-            y: '-50%',
-            z: '0',
-            opacity: 1,
+            width: newWidth,
+            left: (windowWidth - newWidth) / 2,
+            top: (heroHeight - newHeight) / 2
         });
     }
 

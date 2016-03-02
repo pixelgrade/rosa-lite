@@ -76,8 +76,11 @@ body, .site-header, .site-footer {
 // .island.grid__item on homepage
 .grid__item.island {
 
-	.article__content &:first-child {
-		padding-top: 0;
+	// Removed unnecessary padding from island on mobile devices
+	@include media-query(palm) {
+		.article__content &:first-child {
+			padding-top: 0;
+		}
 	}
 
 	// reset the default .grid__item padding-left

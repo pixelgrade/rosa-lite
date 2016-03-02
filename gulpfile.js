@@ -212,10 +212,17 @@ gulp.task('build', ['txtdomain-replace'], function () {
 		'.sass*',
 		'**/.git*',
 		'*.sublime-project',
+		'*.sublime-workspace',
 		'.DS_Store',
 		'**/.DS_Store',
 		'__MACOSX',
-		'**/__MACOSX'
+		'**/__MACOSX',
+		'README.md',
+
+		'assets/scss',
+		'assets/js/main',
+		'assets/js/plugins',
+		'assets/js/vendor'
 	];
 
 	files_to_remove.forEach(function (e, k) {

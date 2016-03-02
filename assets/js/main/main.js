@@ -8,7 +8,8 @@ var $body               = $('body'),
     $document           = $(document),
     documentHeight      = $document.height(),
     aspectRatio         = windowWidth / windowHeight,
-    orientation         = windowWidth > windowHeight ? 'landscape' : 'portrait';
+    orientation         = windowWidth > windowHeight ? 'landscape' : 'portrait',
+    orientationchange   = false;
 
 function niceScrollInit() {
     if (globalDebug) {console.log("NiceScroll Init");}
@@ -340,10 +341,6 @@ $(window).load(function(){
         }, 400);
     }
     niceScrollInit();
-    //if(!$('html').is('.ie9, .lt-ie9') ){
-        // requestTick();
-    //}
-    // always
 
     royalSliderInit($('.article__content'), true);
 
@@ -382,45 +379,39 @@ $(window).load(function(){
         Navigator.initialize();
         ScrollToTop.initialize();
     }, 60);
+
+    loop();
 });
-
-
-function setProgress(timeline, start, end) {
-
-    var progress = (latestKnownScrollY - start) / (end - start);
-
-    if (0 > progress) {
-        timeline.progress(0);
-        return;
-    }
-
-    if (1 < progress) {
-        timeline.progress(1);
-        return;
-    }
-
-    timeline.progress(progress);
-}
 
 
 /* ====== ON RESIZE ====== */
 
-$(window).on("debouncedresize", function(e) {
+$(window).on("debouncedresize", onResize);
 
-	if (globalDebug) {console.group("OnResize");}
+function onResize(e) {
+    if (globalDebug) {console.group("OnResize");}
 
     windowWidth     = $(window).width();
     windowHeight    = $(window).height();
+
+    newOrientation  = windowWidth > windowHeight ? 'landscape' : 'portrait';
+    if (newOrientation !== orientation) {
+        orientationchange = true;
+        orientation = newOrientation;
+    }
 
     resizeVideos();
 
     royalSliderInit($('.js-pixslider').not('.article__parallax .js-pixslider'));
 
-    ScrollToTop.initialize();
-
     if (!Modernizr.touch) {
-        Parallax.initialize();
-        CoverAnimation.initialize();
+        requestAnimationFrame(refreshStuff);
+    } else {
+        if (orientationchange) {
+            setTimeout(function() {
+                requestAnimationFrame(refreshStuff);
+            }, 300);
+        }
     }
 
     if ( touch && windowWidth < 900 ) {
@@ -428,42 +419,47 @@ $(window).on("debouncedresize", function(e) {
     } else {
         HandleSubmenusOnTouch.release();
     }
-});
 
-$(window).on("organicTabsChange", function(e) {
-    ScrollToTop.initialize();
+    orientationchange = false;
+}
+
+function refreshStuff() {
     Parallax.initialize();
     CoverAnimation.initialize();
-});
+    ScrollToTop.initialize();
+}
 
-$(window).on("orientationchange", function(e) {
-    setTimeout(function () {
-        Parallax.initialize();
-        CoverAnimation.initialize();
-    }, 300)
-});
-
-window.latestKnownScrollY = -1;
-
-var newScrollY = latestKnownScrollY;
-
-
-new rafscroll(function(e) {
-    newScrollY = window.pageYOffset;
-    // Avoid calculations if not needed
-    if (latestKnownScrollY == newScrollY) {
-        return false;
-    } else latestKnownScrollY = newScrollY;
-    updateStuff();
-});
 
 function updateStuff() {
     Parallax.update();
-    StickyHeader.update();
-    CoverAnimation.update();
-    Navigator.update();
     ScrollToTop.update();
     DownArrow.update();
+
+    if (!Modernizr.touch && windowWidth >= 900) {
+        CoverAnimation.update();
+        StickyHeader.update();
+        Navigator.update();
+    }
+}
+
+$(window).on("organicTabsChange", refreshStuff);
+
+window.latestKnownScrollY = window.pageYOffset;
+
+var newScrollY = latestKnownScrollY,
+    ticking = false;
+
+$window.scroll(function() {
+    newScrollY = window.pageYOffset;
+});
+
+function loop() {
+    // Avoid calculations if not needed
+    if (latestKnownScrollY !== newScrollY) {
+        latestKnownScrollY = newScrollY
+        updateStuff();
+    }
+    requestAnimationFrame(loop);
 }
 
 if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i) && window.innerHeight != document.documentElement.clientHeight) {
