@@ -617,6 +617,7 @@ $nav-width: 84vw;
 .nav--items-social {
 
 	a {
+		white-space: nowrap;
 		padding-left: $_u2 !important;
 		padding-right: $_u2 !important;
 	}
