@@ -139,7 +139,7 @@ gulp.task('scripts-server', function () {
 
 	return gulp.src(jsFiles)
 			.pipe(concat('main.js'))
-			.pipe(uglify())
+			// .pipe(uglify())
 			.pipe(chmod(644))
 			.pipe(gulp.dest('./assets/js/'));
 });
