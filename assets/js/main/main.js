@@ -507,7 +507,7 @@ $(function() {
         headerHeight = parseInt($header.outerHeight(), 10),
         $html = $('html');
 
-    $('.site-header a[href*=#]:not([href=#])').click(function() {
+    $('.site-header a[href*="#"]:not([href="#"])').click(function() {
 
         var timeout = 0;
 
