@@ -1,8 +1,8 @@
-@import "../vars";
-@import "../_vendor/inuit.css/defaults";
-@import "../_vendor/inuit.css/generic/mixins";
-@import "../_vendor/inuit.css/generic/clearfix";
-//@import "../_vendor/inuit.css/generic/shared";
+@import "vars";
+@import "_vendor/inuit.css/defaults";
+@import "_vendor/inuit.css/generic/mixins";
+@import "_vendor/inuit.css/generic/clearfix";
+//@import "_vendor/inuit.css/generic/shared";
 
 
 
@@ -325,9 +325,9 @@ a.shipping-calculator-button{
 	float: right;
 }
 
-.woocommerce #content div.product div.summary, 
-.woocommerce div.product div.summary, 
-.woocommerce-page #content div.product div.summary, 
+.woocommerce #content div.product div.summary,
+.woocommerce div.product div.summary,
+.woocommerce-page #content div.product div.summary,
 .woocommerce-page div.product div.summary{
 	float: left;
 }
@@ -337,7 +337,7 @@ a.shipping-calculator-button{
 	right: -3px;
 }
 
-.woocommerce #reviews #comments ol.commentlist li img.avatar, 
+.woocommerce #reviews #comments ol.commentlist li img.avatar,
 .woocommerce-page #reviews #comments ol.commentlist li img.avatar{
 	left: auto;
 	right: 0;

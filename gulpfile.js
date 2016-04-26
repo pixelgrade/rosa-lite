@@ -1,7 +1,7 @@
 var theme = 'rosa',
 	gulp = require('gulp'),
 	prefix 		= require('gulp-autoprefixer'),
-	sass 		= require('gulp-ruby-sass'),
+	sass 		= require('gulp-sass'),
 	jshint = require('gulp-jshint'),
 	clean = require('gulp-clean'),
 	zip = require('gulp-zip'),
@@ -67,7 +67,7 @@ var options = {
 
 gulp.task('styles-dev', function () {
 	return gulp.src(['assets/scss/**/*.scss', '!assets/scss/admin/*.scss'])
-			.pipe(sass({'sourcemap=auto': true, style: 'compact'}))
+			.pipe(sass({'sourcemap': true, style: 'compact'}))
 			.on('error', function (e) {
 				console.log(e.message);
 			})
@@ -83,7 +83,7 @@ gulp.task('styles-dev', function () {
 
 gulp.task('styles', function () {
 	return gulp.src(['assets/scss/**/*.scss', '!assets/scss/admin/*.scss'])
-			.pipe(sass({'sourcemap=none': true, style: 'expanded'}))
+			.pipe(sass({'sourcemap': true, style: 'expanded'}))
 			.pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
 			// .pipe(cmq())
 			.pipe(csscomb())
@@ -99,7 +99,7 @@ gulp.task('styles', function () {
 
 gulp.task('styles-admin', function () {
 	return gulp.src('./assets/scss/admin/*.scss')
-			.pipe(sass({'sourcemap=auto': true, style: 'expanded'}))
+			.pipe(sass({'sourcemap': true, style: 'expanded'}))
 			.on('error', function (e) {
 				console.log(e.message);
 			})
