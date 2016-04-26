@@ -356,7 +356,9 @@
 .icon-e-logo-db:before { content: '\f603'; } /* '' */
 
 .icon-e-tripadvisor:before {
-    content: "\e600";
+	font-family: FontAwesome;
+	content: "\f262";
+	width: auto;
 }
 
 // Extra Icons from FontAwesome
