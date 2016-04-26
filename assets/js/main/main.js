@@ -404,7 +404,7 @@ function onResize(e) {
 
     royalSliderInit($('.js-pixslider').not('.article__parallax .js-pixslider'));
 
-    if (!Modernizr.touch) {
+    if ( ! Modernizr.touch ) {
         requestAnimationFrame(refreshStuff);
     } else {
         if (orientationchange) {
