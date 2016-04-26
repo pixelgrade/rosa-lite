@@ -118,7 +118,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 
 						'share_buttons_ga_id'        => array(
-							'type'    => 'checkbox',
+							'type'    => 'text',
 							'label'   => esc_html__( 'GA Property ID', 'rosa' ),
 							'desc' => esc_html__( 'Enter here your GA property ID (generally a serial number of the form UA-xxxxxx-x).', 'rosa' ),
 							'default' => '',
