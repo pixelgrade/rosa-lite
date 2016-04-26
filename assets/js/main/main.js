@@ -434,9 +434,9 @@ function updateStuff() {
     Parallax.update();
     ScrollToTop.update();
     DownArrow.update();
+    CoverAnimation.update();
 
     if (!Modernizr.touch && windowWidth >= 900) {
-        CoverAnimation.update();
         StickyHeader.update();
         Navigator.update();
     }
