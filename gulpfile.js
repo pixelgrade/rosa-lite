@@ -1,13 +1,14 @@
-var theme = 'rosa',
-	gulp = require('gulp'),
+var theme 		= 'rosa',
+	gulp 		= require('gulp'),
 	prefix 		= require('gulp-autoprefixer'),
 	sass 		= require('gulp-sass'),
-	jshint = require('gulp-jshint'),
-	clean = require('gulp-clean'),
-	zip = require('gulp-zip'),
-	cache = require('gulp-cache'),
-	lr = require('tiny-lr'),
-	server = lr(),
+	sourcemaps	= require('gulp-sourcemaps'),
+	jshint 		= require('gulp-jshint'),
+	clean 		= require('gulp-clean'),
+	zip 		= require('gulp-zip'),
+	cache 		= require('gulp-cache'),
+	lr 			= require('tiny-lr'),
+	server 		= lr(),
 	exec 		= require('gulp-exec'),
 	replace 	= require('gulp-replace'),
 	minify 		= require('gulp-minify-css'),
@@ -22,8 +23,6 @@ var theme = 'rosa',
 	postcss 	= require('gulp-postcss'),
 	del         = require('del'),
 	rename 		= require('gulp-rename');
-
-require('es6-promise').polyfill();
 
 var
 	themeTextDomain = '\'rosa\'',
@@ -64,48 +63,30 @@ var options = {
 /**
  *   #STYLES
  */
-
 gulp.task('styles-dev', function () {
 	return gulp.src(['assets/scss/**/*.scss', '!assets/scss/admin/*.scss'])
-			.pipe(sass({'sourcemap': true, style: 'compact'}))
-			.on('error', function (e) {
-				console.log(e.message);
-			})
-			.pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
-			.pipe(gulp.dest('./'))
-			.pipe(notify({message: 'Styles task complete'}));
-	// .pipe(postcss([
-	//     require('rtlcss')({ /* options */ })
-	// ]))
-	// .pipe(rename("rtl.css"))
-	// .pipe(gulp.dest('./'))
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
+        .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
+        .pipe(chmod(644))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('.'));
 });
 
 gulp.task('styles', function () {
 	return gulp.src(['assets/scss/**/*.scss', '!assets/scss/admin/*.scss'])
-			.pipe(sass({'sourcemap': true, style: 'expanded'}))
-			.pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
-			// .pipe(cmq())
-			.pipe(csscomb())
-			.pipe(chmod(644))
-			.pipe(gulp.dest('./'))
-			.pipe(notify({message: 'Styles task complete'}));
-	// .pipe(postcss([
-	//     require('rtlcss')({ /* options */ })
-	// ]))
-	// .pipe(rename("rtl.css"))
-	// .pipe(gulp.dest('./'));
+        .pipe(sass().on('error', sass.logError))
+        .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
+        .pipe(chmod(644))
+        .pipe(gulp.dest('.'));
 });
 
 gulp.task('styles-admin', function () {
 	return gulp.src('./assets/scss/admin/*.scss')
-			.pipe(sass({'sourcemap': true, style: 'expanded'}))
-			.on('error', function (e) {
-				console.log(e.message);
-			})
-			.pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
-			.pipe(chmod(644))
-			.pipe(gulp.dest('./assets/css/admin/'));
+        .pipe(sass().on('error', sass.logError))
+        .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
+        .pipe(chmod(644))
+		.pipe(gulp.dest('./assets/css/admin/'));
 });
 
 
@@ -147,7 +128,7 @@ gulp.task('scripts-server', function () {
 
 
 
-gulp.task('watch', function () {
+gulp.task('watch', ['styles-dev', 'scripts'], function () {
 	gulp.watch('assets/scss/**/*.scss', ['styles-dev']);
 	gulp.watch('assets/js/**/*.js', ['scripts']);
 });

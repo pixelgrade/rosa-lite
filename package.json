@@ -2,7 +2,8 @@
   "name": "rosa",
   "devDependencies": {
     "gulp": "*",
-    "gulp-ruby-sass": "~0.7.1",
+    "gulp-sass": "*",
+    "gulp-sourcemaps": "*",
     "gulp-autoprefixer": "~1.0.1",
     "gulp-minify-css": "*",
     "gulp-notify": "*",
