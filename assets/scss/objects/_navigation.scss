@@ -55,15 +55,7 @@
 		li[class*="current-menu"] > a:after {
 			content: "";
 			display: block;
-			border-bottom: 2px solid $dark;
-
-			.header--transparent & {
-				border-color: white;
-			}
-
-			.headroom--not-top &{
-				border-color: $dark;
-			}
+			border-bottom: 2px solid currentColor;
 		}
 	}
 }
