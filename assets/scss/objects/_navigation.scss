@@ -50,7 +50,7 @@
 		}
 	}
 
-	@include media-query(lap-and-up){
+	@include media-query(lap-and-up) {
 
 		li[class*="current-menu"] > a:after {
 			content: "";

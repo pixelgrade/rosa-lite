@@ -19,7 +19,7 @@ var theme 		= 'rosa',
 	csscomb 	= require('gulp-csscomb'),
 	chmod 		= require('gulp-chmod'),
 	fs          = require('fs'),
-	rtlcss 		= require('rtlcss'),
+	rtlcss 		= require('gulp-rtlcss'),
 	postcss 	= require('gulp-postcss'),
 	del         = require('del'),
 	rename 		= require('gulp-rename');
@@ -63,8 +63,15 @@ var options = {
 /**
  *   #STYLES
  */
-gulp.task('styles-dev', function () {
-	return gulp.src(['assets/scss/**/*.scss', '!assets/scss/admin/*.scss'])
+gulp.task('styles', ['style.css'], function () {
+    return gulp.src('style.css')
+        .pipe(rtlcss())
+        .pipe(rename('rtl.css'))
+        .pipe(gulp.dest('.'));
+});
+
+gulp.task('style.css', ['assets/css'], function () {
+    return gulp.src(['assets/scss/style.scss', 'assets/scss/editor-style.scss'])
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
@@ -73,20 +80,14 @@ gulp.task('styles-dev', function () {
         .pipe(gulp.dest('.'));
 });
 
-gulp.task('styles', function () {
-	return gulp.src(['assets/scss/**/*.scss', '!assets/scss/admin/*.scss'])
+gulp.task('assets/css', function () {
+    return gulp.src(['assets/scss/**/*.scss', '!assets/scss/style.scss', '!assets/scss/editor-style.scss'])
+        .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
-        .pipe(chmod(644))
-        .pipe(gulp.dest('.'));
-});
-
-gulp.task('styles-admin', function () {
-	return gulp.src('./assets/scss/admin/*.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
-        .pipe(chmod(644))
-		.pipe(gulp.dest('./assets/css/admin/'));
+		.pipe(chmod(644))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('./assets/css'));
 });
 
 
@@ -128,8 +129,8 @@ gulp.task('scripts-server', function () {
 
 
 
-gulp.task('watch', ['styles-dev', 'scripts'], function () {
-	gulp.watch('assets/scss/**/*.scss', ['styles-dev']);
+gulp.task('watch', ['styles', 'scripts'], function () {
+	gulp.watch('assets/scss/**/*.scss', ['styles']);
 	gulp.watch('assets/js/**/*.js', ['scripts']);
 });
 

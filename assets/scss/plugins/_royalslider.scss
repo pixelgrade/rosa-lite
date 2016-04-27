@@ -1,5 +1,7 @@
 /* v1.0.5 */
 /* Core RS CSS file. 95% of time you shouldn't change anything here. */
+
+/*rtl:begin:ignore*/
 .royalSlider {
 	width: 600px;
 	height: 400px;
@@ -183,15 +185,6 @@
 }
 
 .rsVideoContainer {
-	/*left: 0;
-	top: 0;
-	position: absolute;*/
-	/*width: 100%;
-	height: 100%;
-	position: absolute;
-	left: 0;
-	top: 0;
-	float: left;*/
 	width: auto;
 	height: auto;
 	line-height: 0;
@@ -376,7 +369,6 @@ img.rsImg {
 \*----------------------------------------*/
 
 .rsArrow {
-	// @include rem(margin, $_u2 $_u 0 $_u);
 	display: block;
 	color: white;
 	position: absolute;
@@ -384,8 +376,6 @@ img.rsImg {
 
 	.rsArrowIcn {
 		border-bottom: 2px solid white;
-//		@include rem(width, $_u2);
-//		@include rem(height, $_u2);
 	}
 }
 
@@ -404,40 +394,13 @@ img.rsImg {
 	.rsArrowIcn {
 		border-right: 2px solid white;
 		transform: rotate(-45deg);
+		float: left;
 	}
 }
 
 .full-width-slider {
 	width: 100%;
 }
-
-// .rsArrow{
-//     @include rem(width, $_2u);
-//     @include rem(height, $_2u);
-//     @include rem(margin, $_u2 $_u 0 $_u);
-//     display: block;
-//     color: white;
-//     border-bottom: 1px solid $dark;
-//     position: absolute;
-//     top: 50%;
-//     @include rem(margin-top, -$_u);
-// }
-
-// .rsArrowLeft{
-//     @include rem(left, -$_4u);
-//     border-left: 1px solid $dark;
-//     @include rotate(45deg);
-// }
-
-// .rsArrowRight{
-//     @include rem(right, -$_4u);
-//     border-right: 1px solid $dark;
-//     @include rotate(-45deg);
-// }
-
-// .full-width-slider{
-//     width: 100%;
-// }
 
 /*----------------------------------------*\
     $BULLETS CUSTOM STYLING
@@ -446,13 +409,6 @@ img.rsImg {
 .rsBullets {
 	@extend .nav;
 	@include rem(margin-left, -6px);
-	// display: block;
-	// margin: 0;
-	// float: left;
-	// position: absolute;
-	// @include rem(bottom, $_u2);
-	// left: 0;
-	// float: left;
 }
 
 .rsBullet {
@@ -525,4 +481,4 @@ img.rsImg {
 		padding: 0 50px;
 	}
 }
-
+/*rtl:end:ignore*/

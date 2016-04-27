@@ -129,14 +129,16 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 		}
 
 		if ( is_404() ) {
-			wp_enqueue_style( 'rosa-404-style', get_template_directory_uri() . '/404.css', array(), time(), 'all' );
+			wp_enqueue_style( 'rosa-404-style', get_template_directory_uri() . '/assets/css/404.css', array(), time(), 'all' );
 		}
 
 		if ( ! class_exists( 'PixCustomifyPlugin' ) ) {
 			wp_enqueue_style( 'rosa-default-fonts', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700,400italic,700italic|Herr+Von+Muellerhoff' );
 		}
 
-		wp_enqueue_style( 'rosa-main-style', get_template_directory_uri() . '/style.css', array(), rosa_cachebust_string( wpgrade::themefilepath( 'style.css' ) ) );
+		if ( ! is_rtl() ) {
+			wp_enqueue_style( 'rosa-main-style', get_template_directory_uri() . '/style.css', array(), rosa_cachebust_string( wpgrade::themefilepath( 'style.css' ) ) );
+		}
 
 		// Scripts
 
