@@ -126,9 +126,6 @@ gulp.task('scripts-server', function () {
 			.pipe(gulp.dest('./assets/js/'));
 });
 
-
-
-
 gulp.task('watch', ['styles', 'scripts'], function () {
 	gulp.watch('assets/scss/**/*.scss', ['styles']);
 	gulp.watch('assets/js/**/*.js', ['scripts']);

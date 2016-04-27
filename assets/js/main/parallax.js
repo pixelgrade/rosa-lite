@@ -44,9 +44,13 @@ var Parallax = (function() {
             var newHeight   = heroHeight + (windowHeight - heroHeight) * amount;
 
             // if there's a slider we are working with we may have to set the height
-            $target.filter('.article__parallax__slider, .gmap--multiple-pins, .gmap').css({
-                'top': (heroHeight - newHeight) * 0.5,
-                'height': newHeight
+            $target.filter('.article__parallax__slider').css({
+                top: (heroHeight - newHeight) * 0.5,
+                height: newHeight
+            });
+
+            $target.filter('.gmap--multiple-pins, .gmap').css({
+                height: newHeight
             });
 
             // prepare image / slider timeline
