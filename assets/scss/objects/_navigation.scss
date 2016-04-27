@@ -203,8 +203,7 @@
 	.sub-menu {
 		left: 100%;
 		top: 0;
-
-		transform: translateX(0);
+		transform: none;
 	}
 }
 
@@ -401,17 +400,19 @@ $nav-width: 84vw;
 
 			text-align: left;
 
-			a{
+			a {
 				padding: 14px 0;
 				display: block;
 
 				@include font-size(16px);
 
-				color: #cccccc;
-
-				&:before{
+				&:before {
 					content: none;
 				}
+			}
+
+			a, a:before {
+				color: #cccccc;
 			}
 
 			&.menu-item-has-children{
@@ -479,7 +480,7 @@ $nav-width: 84vw;
 			border: 0;
 			background: transparent;
 
-			transform: translateX(0);
+			transform: none;
 			opacity: .5;
 
 			@include media-query(palm) {
