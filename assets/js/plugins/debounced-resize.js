@@ -3,6 +3,7 @@
 /* debouncedresize: special jQuery event that happens once after a window resize
  * https://github.com/louisremi/jquery-smartresize
  * Copyright 2012 @louis_remi
+ * MIT License
  */
 (function ($) {
 	var $event = $.event, $special, resizeTimeout;
