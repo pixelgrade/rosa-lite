@@ -8,7 +8,7 @@ var Parallax = (function() {
         initialized = false,
         start = 0,
         stop = 0,
-        bleed = 50;
+        bleed = 20;
 
     function initialize() {
 
@@ -45,8 +45,8 @@ var Parallax = (function() {
 
             // if there's a slider we are working with we may have to set the height
             $target.filter('.article__parallax__slider, .gmap--multiple-pins, .gmap').css({
-                'top': (heroHeight - newHeight) * 0.5,
-                'height': newHeight
+                top: (heroHeight - newHeight) * 0.5,
+                height: newHeight
             });
 
             // prepare image / slider timeline
@@ -161,15 +161,15 @@ var Parallax = (function() {
 
     function cloneHero($hero) {
         var $clone      = $hero.clone(true).wrap("div.article__header"),
-            $slider     = $clone.find('.article__parallax__slider'),
+            $target     = $clone.find('.article__parallax__slider, .gmap--multiple-pins, .gmap'),
             heroOffset  = $hero.offset(),
             heroHeight  = $hero.outerHeight();
 
         $clone.removeAttr('style');
         $clone.data('source', $hero).appendTo('.covers');
 
-        if ( $slider.length ) {
-            $slider.css({
+        if ( $target.length ) {
+            $target.css({
                 top: heroOffset.top - bleed,
                 height: heroHeight + 2 * bleed
             });

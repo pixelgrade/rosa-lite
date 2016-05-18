@@ -10,7 +10,6 @@
 	z-index: 110;
 	background-color: white;
 	transition: color .3s cubic-bezier(0.86, 0, 0.07, 1), background-color .3s cubic-bezier(0.86, 0, 0.07, 1);
-	background-image: linear-gradient(-180deg, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.00) 52%);
 
 	@include media-query(lap-and-up) {
 		position: fixed;
@@ -18,10 +17,6 @@
 
 	.header--transparent & {
 		background-color: transparent;
-
-		@include media-query(palm) {
-			background-image: linear-gradient(-180deg, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.00) 52%);
-		}
 
 		.is--ie & {
 			background-color: rgba(255,255,255,0.01);

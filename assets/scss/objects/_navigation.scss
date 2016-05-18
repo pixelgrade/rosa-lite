@@ -50,20 +50,12 @@
 		}
 	}
 
-	@include media-query(lap-and-up){
+	@include media-query(lap-and-up) {
 
 		li[class*="current-menu"] > a:after {
 			content: "";
 			display: block;
-			border-bottom: 2px solid $dark;
-
-			.header--transparent & {
-				border-color: white;
-			}
-
-			.headroom--not-top &{
-				border-color: $dark;
-			}
+			border-bottom: 2px solid currentColor;
 		}
 	}
 }
@@ -203,8 +195,7 @@
 	.sub-menu {
 		left: 100%;
 		top: 0;
-
-		transform: translateX(0);
+		transform: none;
 	}
 }
 
@@ -401,17 +392,19 @@ $nav-width: 84vw;
 
 			text-align: left;
 
-			a{
+			a {
 				padding: 14px 0;
 				display: block;
 
 				@include font-size(16px);
 
-				color: #cccccc;
-
-				&:before{
+				&:before {
 					content: none;
 				}
+			}
+
+			a, a:before {
+				color: #cccccc;
 			}
 
 			&.menu-item-has-children{
@@ -479,7 +472,7 @@ $nav-width: 84vw;
 			border: 0;
 			background: transparent;
 
-			transform: translateX(0);
+			transform: none;
 			opacity: .5;
 
 			@include media-query(palm) {
@@ -504,43 +497,6 @@ $nav-width: 84vw;
 		transition: transform .3s cubic-bezier(0.86, 0, 0.07, 1);
 	}
 
-	// I don't wanna do this anymore
-	// I don't wanna be the reason why
-	// Every time I seed this kind of code
-	// I feel I die a little more inside
-	.ie--winmob.navigation--is-visible {
-
-		#page {
-			position: fixed;
-			left: $nav-width;
-			transform: none;
-		}
-
-		.site-header {
-			position: fixed;
-			left: $nav-width;
-			top: 0;
-			transform: none;
-		}
-
-		.navigation {
-			position: fixed;
-		}
-
-		.navigation {
-			-ms-touch-action: pan-y;
-			overflow-y: auto;
-			height: 100%;
-			bottom: auto;
-		}
-	}
-
-	.mobile-ie {
-		#page, .site-header {
-			transition: none;
-		}
-	}
-
 	body {
 
 		.navigation--main,
@@ -563,45 +519,6 @@ $nav-width: 84vw;
 			transform: none;
 		}
 
-	}
-
-	.is--winmob, .is--ancient-android, .is--ie {
-
-		.site-header,
-		.navigation--main,
-		#page {
-			transform: none !important;
-		}
-
-		.site-header {
-			position: absolute;
-		}
-
-		.navigation--main, .site-header, #page {
-			transition: none !important;
-		}
-
-		.navigation--main {
-			display: none;
-		}
-
-		&.navigation--is-visible {
-
-			#page {
-				transform: none;
-				left: $nav-width;
-			}
-
-			.navigation--main {
-				position: absolute;
-				display: block;
-				left: -1 * $nav-width;
-			}
-
-			.site-header {
-				left: 0;
-			}
-		}
 	}
 }
 

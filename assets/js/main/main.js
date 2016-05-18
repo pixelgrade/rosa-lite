@@ -404,7 +404,7 @@ function onResize(e) {
 
     royalSliderInit($('.js-pixslider').not('.article__parallax .js-pixslider'));
 
-    if (!Modernizr.touch) {
+    if ( ! Modernizr.touch ) {
         requestAnimationFrame(refreshStuff);
     } else {
         if (orientationchange) {
@@ -434,9 +434,9 @@ function updateStuff() {
     Parallax.update();
     ScrollToTop.update();
     DownArrow.update();
+    CoverAnimation.update();
 
     if (!Modernizr.touch && windowWidth >= 900) {
-        CoverAnimation.update();
         StickyHeader.update();
         Navigator.update();
     }

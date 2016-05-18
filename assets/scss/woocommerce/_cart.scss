@@ -76,3 +76,41 @@ td.actions{
 	}
 
 }
+
+@include media-query(palm) {
+
+	.nav.nav--woocommerce {
+		width: 100%;
+		display: block;
+	}
+
+	.shop-menu-item {
+		color: white;
+		width: 100%;
+	}
+
+	.shop-menu-item__price {
+		position: absolute;
+		top: 7px;
+		right: 20px;
+	}
+
+	.widget_shopping_cart_content {
+	    width: 100%;
+	    padding: 10px 20px;
+	    background: rgba(255,255,255,0.1);
+	    border-radius: 3px;
+
+	    .sub-menu {
+	    	display: block !important;
+	    	margin-bottom: 0;
+	    	min-width: 0;
+	    }
+
+		a.cart-icon-link {
+			position: relative;
+		    display: inline-block !important;
+	    	padding-left: 0 !important;
+		}
+	}
+}

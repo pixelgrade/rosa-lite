@@ -83,28 +83,26 @@
 		font-size: 85px;
 		padding: 0 36px;
 		margin: 0 -36px;
-//		line-height: 0.75;
 
 		&.headline__secondary {
 			margin-bottom: -24px;
 		}
 	}
-
-	.first-letter {
-		position:relative;
-		top: 10px;
-
-		font-size: 1.22em;
-		padding-left: 72px;
-		margin: 0 -72px;
-		letter-spacing: 72px;
-	}
 }
 
+/*rtl:begin:ignore*/
+.headline__secondary .first-letter {
+	position: relative;
+	top: 10px;
+
+	font-size: 1.22em;
+	padding-left: 72px;
+	margin: 0 -72px;
+	letter-spacing: 72px;
+}
+/*rtl:end:ignore*/
+
 .headline__description {
-	// font-size: 15px;
-	// letter-spacing: 0.348em;
-	// text-transform: uppercase;
 
 	h1, h2, h3, h4, h5, h6 {
 		margin-bottom: $_u2;
