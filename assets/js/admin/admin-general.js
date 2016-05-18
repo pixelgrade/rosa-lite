@@ -23,7 +23,7 @@
 	};
 
 	var hide_options_on_child_pages = function () {
-		var $option_container = $('#_rosa_header_transparent_menu_bar').parent().parent();
+		var $option_container = $('#_rosa_header_transparent_menu_bar').parent();
 		if ($('#parent_id').val() == '') {
 			$option_container.show();
 		} else {
