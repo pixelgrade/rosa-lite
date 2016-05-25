@@ -33,13 +33,8 @@ if ( rosa_page_has_children() ) {
 			} else {
 				get_template_part( 'template-parts/header', 'page' );
 
-				if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
-					//this is a gmap
-					$border_style = get_post_meta( get_the_ID(), wpgrade::prefix() . 'gmap_border_style', true );
-				} else {
-					$border_style = get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_border_style', true );
-				}
-
+				$border_style = get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_border_style', true );
+				
 				if ( ! empty( $border_style ) ) {
 					$classes .= ' border-' . $border_style;
 				}

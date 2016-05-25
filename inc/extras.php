@@ -1629,5 +1629,4 @@ function rosa_get_avatar_url( $email, $size = 32 ) {
 	} else {
 		return '';
 	}
-
 }
