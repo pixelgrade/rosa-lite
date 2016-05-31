@@ -437,8 +437,11 @@ function updateStuff() {
     CoverAnimation.update();
 
     if (!Modernizr.touch && windowWidth >= 900) {
-        StickyHeader.update();
         Navigator.update();
+    }
+
+    if ( windowWidth >= 900 ) {
+        StickyHeader.update();
     }
 }
 
