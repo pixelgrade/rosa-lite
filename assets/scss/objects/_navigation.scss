@@ -349,7 +349,12 @@ $nav-width: 84vw;
 
 		z-index: 20;
 
-		transform: translate3d(-$nav-width, 0, 0);
+		transform: translateX(-$nav-width);
+
+		.android-browser & {
+			width: 300px;
+			transform: translateX(-300px);
+		}
 
 		.admin-bar & {
 			padding-top: 32px;
@@ -519,6 +524,12 @@ $nav-width: 84vw;
 			transform: none;
 		}
 
+	}
+
+	.navigation--is-visible.android-browser {
+		.nav-trigger {
+			transform: translate3d(300px, -50%, 0);
+		}
 	}
 }
 
