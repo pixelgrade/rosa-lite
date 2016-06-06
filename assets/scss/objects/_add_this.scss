@@ -69,16 +69,29 @@ div.addthis_toolbox a {
 
 	.at-icon-wrapper {
 		display: block;
+
 		background-color: transparent !important;
 		filter: invert(1) grayscale(1) contrast(.1) brightness(1.5);
+
+		&:hover {
+			filter: invert(1) grayscale(0) contrast(1) brightness(1);
+		}
+
+		html[class*="is--ie"] & {
+			svg path {
+				fill: #D2D2D2;
+			}
+
+			&:hover {
+				svg path {
+					fill: #000000;
+				}
+			}
+		}
 
 		&, svg {
 			width: 27px !important;
 			height: 28px !important;
-		}
-
-		&:hover {
-			filter: invert(1) grayscale(0) contrast(1) brightness(1);
 		}
 	}
 }

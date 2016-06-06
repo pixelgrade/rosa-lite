@@ -141,6 +141,10 @@ function init() {
         $('html').addClass('is--ie');
     }
 
+    if ( is_EDGE ) {
+        $('html').addClass('is--ie-edge');
+    }
+
 	//  GET BROWSER DIMENSIONS
 	browserSize();
 
@@ -152,12 +156,6 @@ function init() {
 	if (is_android || window.opera) {
 		$('html').addClass('android-browser').removeClass('no-android-browser');
 	}
-
-    var is_iexplore = detectIE();
-
-    // if (is_iexplore) {
-    //     $('body').addClass('is_iexplore  no-scroll-effect');
-    // }
 
 	/* ONE TIME EVENT HANDLERS */
 	eventHandlersOnce();
