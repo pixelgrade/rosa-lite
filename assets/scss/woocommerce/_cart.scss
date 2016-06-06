@@ -12,7 +12,7 @@
 }
 
 td.actions input.button{
-	line-height: 1.6345 !important;
+	line-height: 1.9 !important;
 }
 
 td.actions{
@@ -106,19 +106,21 @@ td.actions{
 	}
 }
 
-.woocommerce-page.woocommerce-cart table.cart td.actions {
-	input.button,
-	input.input-text {
-		width: 100%;
-		float: none;
-	}
+@include media-query(portable) {
+	.woocommerce-page.woocommerce-cart table.cart td.actions {
+		input.button,
+		input.input-text {
+			width: 100%;
+			float: none;
+		}
 
-	input.input-text {
-		margin-bottom: 5px;
-	}
+		input.input-text {
+			margin-bottom: 5px;
+		}
 
-	.coupon {
-		margin-bottom: 15px;
+		.coupon {
+			margin-bottom: 15px;
+		}
 	}
 }
 
@@ -141,7 +143,7 @@ td.actions{
 		font-weight: bold !important;
 	}
 
-	@media screen and (max-width: 900px) {
+	@include media-query(portable) {
 		a.button.alt {
 			margin-left: 0;
 		}
@@ -206,7 +208,7 @@ td.actions{
 	}
 }
 
-@media screen and (max-width: 900px) {
+@include media-query(portable) {
 	.woocommerce-page #payment #place_order {
 		margin-left: 0;
 	}
