@@ -122,7 +122,7 @@ add_action( 'after_setup_theme', 'rosa_content_width', 0 );
 /// load assets
 if ( ! function_exists( 'rosa_load_assets' ) ) {
 	function rosa_load_assets(){
-
+		$theme = wp_get_theme();
 		// Styles
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
@@ -137,7 +137,7 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 		}
 
 		if ( ! is_rtl() ) {
-			wp_enqueue_style( 'rosa-main-style', get_template_directory_uri() . '/style.css', array(), rosa_cachebust_string( wpgrade::themefilepath( 'style.css' ) ) );
+			wp_enqueue_style( 'rosa-main-style', get_template_directory_uri() . '/style.css', array(), $theme->get( 'Version' ) );
 		}
 
 		// Scripts
@@ -146,7 +146,7 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 		wp_enqueue_script( 'webfont-script', '//ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js', array( 'jquery' ) );
 
 		wp_enqueue_script( 'rosa-plugins-scripts', get_template_directory_uri() . '/assets/js/plugins.js', array( 'jquery', 'modernizr' ), null, true );
-		wp_enqueue_script( 'rosa-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'rosa-plugins-scripts' ), rosa_cachebust_string( wpgrade::themefilepath( 'assets/js/main.js' ) ), true );
+		wp_enqueue_script( 'rosa-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'rosa-plugins-scripts' ), $theme->get( 'Version' ), true );
 
 		if ( is_single() ) {
 			wp_enqueue_script( 'addthis-api', '//s7.addthis.com/js/300/addthis_widget.js#async=1', array( 'jquery' ), null, true );
@@ -170,8 +170,8 @@ add_action( 'wp_enqueue_scripts', 'rosa_load_assets' );
 if ( ! function_exists( 'rosa_load_admin_assets' ) ) {
 
 	function rosa_load_admin_assets() {
-
-		wp_enqueue_script( 'rosa_admin_general_script', get_template_directory_uri() . '/assets/js/admin/admin-general.js', array('jquery') );
+		$theme = wp_get_theme();
+		wp_enqueue_script( 'rosa_admin_general_script', get_template_directory_uri() . '/assets/js/admin/admin-general.js', array('jquery'), $theme->get( 'Version' ) );
 
 		$translation_array = array
 		(

@@ -20,7 +20,9 @@ function rosa_callback_load_woocommerce_assets() {
 	if ( ! rosa_option( 'enable_woocommerce_support', '0' ) ) {
 		return;
 	}
-	wp_enqueue_style( 'rosa-woocommerce', get_template_directory_uri() . '/assets/css/woocommerce.css', array( 'woocommerce-general' ), rosa_cachebust_string( wpgrade::themefilepath( 'woocommerce.css' ) ) );
+
+	$theme = wp_get_theme();
+	wp_enqueue_style( 'rosa-woocommerce', get_template_directory_uri() . '/assets/css/woocommerce.css', array( 'woocommerce-general' ), $theme->get( 'Version' ) );
 }
 
 add_action( 'wp_enqueue_scripts', 'rosa_callback_load_woocommerce_assets', 1 );
