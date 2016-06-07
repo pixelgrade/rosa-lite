@@ -1,4 +1,4 @@
-.add_this_list {
+.add_this_list{
 
 	@include media-query(palm) {
 		float: left;
@@ -11,9 +11,9 @@
 
 	border: 1px solid $borders;
 
-	a, .totals {
+	a, .totals{
 		display: inline-block;
-		float: none !important;
+		float:none !important;
 		padding: $_u4;
 		vertical-align: top;
 		border-left: 1px solid $borders;
@@ -22,52 +22,101 @@
 		text-align: center;
 	}
 
-	a {
-		padding: 4px !important;
+	a{
+		padding: 6px !important;
 
-		&:first-child {
+		&:first-child{
 			border-left: 0;
 		}
 	}
 
-	.totals {
+	.totals{
 		height: 40px;
 		padding: $_u4 $_u2;
 	}
 
-	.totals-text {
+	.totals-text{
 		@include font-size(12px);
 	}
 
-	a:hover {
+	a:hover{
 		color: $accent;
 		& > span {
-			opacity: 1;
+			opacity:1;
 		}
 	}
 
-	li {
+	li{
 		border-right: 1px solid $borders;
 	}
 
-	li:last-child {
+	li:last-child{
 		border: none;
 	}
 }
 
-.addthis_toolbox a {
-	margin-bottom: 0 !important;
-
-	& > .at-icon-wrapper {
-		display: block;
-	}
-}
-
 .addthis_32x32_style .addthis_counter.addthis_bubble_style {
-	background: none !important;
+	background:none !important;
 }
 
 .addthis_32x32_style .dummy .at300bs, .addthis_32x32_style .at300bs, .addthis_32x32_style .at15t {
 	background: url(../images/addThis_32x32_pxg.png) no-repeat left;
-	opacity: 0.3;
+	opacity:0.3;
+}
+
+div.addthis_toolbox a {
+	margin-bottom: 0;
+
+	.at-icon-wrapper {
+		display: block;
+
+		background-color: transparent !important;
+		filter: invert(1) grayscale(1) contrast(.1) brightness(1.5);
+
+		&:hover {
+			filter: invert(1) grayscale(0) contrast(1) brightness(1);
+		}
+
+		html[class*="is--ie"] & {
+			svg path {
+				fill: #D2D2D2;
+			}
+
+			&:hover {
+				svg path {
+					fill: #000000;
+				}
+			}
+		}
+
+		&, svg {
+			width: 27px !important;
+			height: 28px !important;
+		}
+	}
+}
+
+body {
+	.addthis_32x32_style .addthis_counter.addthis_bubble_style,
+	.addthis_32x32_white_style .addthis_counter.addthis_bubble_style{
+		height: 28px;
+		line-height: 28px;
+	}
+
+	.addthis_32x32_style .addthis_counter.addthis_bubble_style a.addthis_button_expanded,
+	.addthis_32x32_white_style .addthis_counter.addthis_bubble_style a.addthis_button_expanded {
+		line-height: 28px;
+		height: 28px;
+
+		filter: invert(1) grayscale(1) contrast(.1) brightness(1);
+		font-weight: 200;
+		font-size: 13px;
+
+		&:before {
+			content: $fa-var-share-alt;
+			float: left;
+			margin: 0 12px;
+			font-family: FontAwesome;
+		}
+	}
 }
