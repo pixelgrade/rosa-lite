@@ -281,6 +281,18 @@ button.nav-trigger{
 			top: 0;
 		}
 	}
+
+	.navigation--is-visible.android-browser & {
+		&:after{
+			transform: none;
+			top: -7px;
+		}
+
+		&:before{
+			transform: none;
+			top: 7px;
+		}
+	}
 }
 
 .header--transparent {
@@ -353,7 +365,8 @@ $nav-width: 84vw;
 
 		.android-browser & {
 			width: 300px;
-			transform: translateX(-300px);
+			left: -300px;
+			//transform: translateX(-300px);
 		}
 
 		.admin-bar & {
@@ -521,7 +534,8 @@ $nav-width: 84vw;
 		}
 
 		.navigation--main {
-			transform: none;
+			left: 0;
+			//transform: none;
 		}
 
 	}
