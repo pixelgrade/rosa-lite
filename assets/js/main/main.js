@@ -312,7 +312,7 @@ $(document).ready(function(){
 
 /* ====== ON WINDOW LOAD ====== */
 
-$(window).load(function(){
+$(window).load(function() {
 
 	if (globalDebug) {console.group("OnWindowLoad");}
 
@@ -379,6 +379,8 @@ $(window).load(function(){
     }, 60);
 
     loop();
+
+    $html.addClass('is--loaded');
 });
 
 

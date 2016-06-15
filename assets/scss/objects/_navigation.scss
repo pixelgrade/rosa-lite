@@ -360,9 +360,15 @@ $nav-width: 84vw;
 		top: 0;
 		bottom: 0;
 
+		display: none;
+
 		z-index: 20;
 
 		transform: translateX(-$nav-width);
+
+		.is--loaded & {
+			display: block;
+		}
 
 		.android-browser &,
 		.is--winmob & {
