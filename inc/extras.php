@@ -1263,33 +1263,6 @@ function rosa_get_attachment_image( $id, $size = null ) {
 	return false;
 }
 
-/**
- * Very extras
- */
-
-
-/**
- * Helper function for safely calculating cachebust string. The filemtime is
- * prone to failure.
- *
- * @param  string file path to test
- *
- * @return string cache bust based on filemtime or monthly
- */
-function rosa_cachebust_string( $filepath ) {
-	$filemtime = @filemtime( $filepath );
-
-	if ( $filemtime == null ) {
-		$filemtime = @filemtime( utf8_decode( $filepath ) );
-	}
-
-	if ( $filemtime != null ) {
-		return date( 'YmdHi', $filemtime );
-	} else { // can't get filemtime, fallback to cachebust every month
-		return date( 'Ym' );
-	}
-}
-
 /*=========== SANITIZE UPLOADED FILE NAMES ==========*/
 
 add_filter( 'sanitize_file_name', 'rosa_sanitize_file_name', 10 );

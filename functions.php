@@ -122,7 +122,7 @@ add_action( 'after_setup_theme', 'rosa_content_width', 0 );
 /// load assets
 if ( ! function_exists( 'rosa_load_assets' ) ) {
 	function rosa_load_assets(){
-
+		$theme = wp_get_theme();
 		// Styles
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
@@ -137,7 +137,7 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 		}
 
 		if ( ! is_rtl() ) {
-			wp_enqueue_style( 'rosa-main-style', get_template_directory_uri() . '/style.css', array(), rosa_cachebust_string( wpgrade::themefilepath( 'style.css' ) ) );
+			wp_enqueue_style( 'rosa-main-style', get_template_directory_uri() . '/style.css', array(), $theme->get( 'Version' ) );
 		}
 
 		// Scripts
@@ -146,7 +146,7 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 		wp_enqueue_script( 'webfont-script', '//ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js', array( 'jquery' ) );
 
 		wp_enqueue_script( 'rosa-plugins-scripts', get_template_directory_uri() . '/assets/js/plugins.js', array( 'jquery', 'modernizr' ), null, true );
-		wp_enqueue_script( 'rosa-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'rosa-plugins-scripts' ), rosa_cachebust_string( wpgrade::themefilepath( 'assets/js/main.js' ) ), true );
+		wp_enqueue_script( 'rosa-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'rosa-plugins-scripts' ), $theme->get( 'Version' ), true );
 
 		if ( is_single() ) {
 			wp_enqueue_script( 'addthis-api', '//s7.addthis.com/js/300/addthis_widget.js#async=1', array( 'jquery' ), null, true );
@@ -170,8 +170,8 @@ add_action( 'wp_enqueue_scripts', 'rosa_load_assets' );
 if ( ! function_exists( 'rosa_load_admin_assets' ) ) {
 
 	function rosa_load_admin_assets() {
-
-		wp_enqueue_script( 'rosa_admin_general_script', get_template_directory_uri() . '/assets/js/admin/admin-general.js', array('jquery') );
+		$theme = wp_get_theme();
+		wp_enqueue_script( 'rosa_admin_general_script', get_template_directory_uri() . '/assets/js/admin/admin-general.js', array('jquery'), $theme->get( 'Version' ) );
 
 		$translation_array = array
 		(
@@ -358,11 +358,11 @@ function wupdates_add_purchase_code_field_vexXr( $themes ) {
 		$output .= "<br/><br/>"; //put a little space above
 
 		//get errors so we can show them
-		$errors = get_option( $slug . '_wup_errors', array() );
-		delete_option( $slug . '_wup_errors' ); //delete existing errors as we will handle them next
+		$errors = get_option( strtolower( $slug ) . '_wup_errors', array() );
+		delete_option( strtolower( $slug ) . '_wup_errors' ); //delete existing errors as we will handle them next
 
 		//check if we have a purchase code saved already
-		$purchase_code = sanitize_text_field( get_option( $slug . '_wup_purchase_code', '' ) );
+		$purchase_code = sanitize_text_field( get_option( strtolower( $slug ) . '_wup_purchase_code', '' ) );
 		//in case there is an update available, tell the user that it needs a valid purchase code
 		if ( empty( $purchase_code ) && ! empty( $themes[ $slug ]['hasUpdate'] ) ) {
 			$output .= '<div class="notice notice-error notice-alt notice-large">' . __( 'A <strong>valid purchase code</strong> is required for automatic updates.' ) . '</div>';
@@ -384,9 +384,9 @@ function wupdates_add_purchase_code_field_vexXr( $themes ) {
 		}
 
 		$output .= '<form class="wupdates_purchase_code" action="" method="post">' .
-		           '<input type="hidden" name="wupdates_pc_theme" value="' . $slug . '" />' .
-		           '<input type="text" id="' . sanitize_title( $slug ) . '_wup_purchase_code" name="' . sanitize_title( $slug ) . '_wup_purchase_code"
-	            value="' . $purchase_code . '" placeholder="Purchase code ( e.g. 9g2b13fa-10aa-2267-883a-9201a94cf9b5 )" style="width:100%"/>' .
+		           '<input type="hidden" name="wupdates_pc_theme" value="' . esc_attr( $slug ) . '" />' .
+		           '<input type="text" id="' . esc_attr( strtolower( $slug ) ) . '_wup_purchase_code" name="' . esc_attr( strtolower( $slug ) ) . '_wup_purchase_code"
+	            value="' . esc_attr( $purchase_code ) . '" placeholder="Purchase code ( e.g. 9g2b13fa-10aa-2267-883a-9201a94cf9b5 )" style="width:100%"/>' .
 		           '<p>' . __( 'Enter your purchase code and <strong>hit return/enter</strong>.' ) . '</p>' .
 		           '<p class="theme-description">' .
 		           __( 'Find out how to <a href="https://help.market.envato.com/hc/en-us/articles/202822600-Where-Is-My-Purchase-Code-" target="_blank">get your purchase code</a>.' ) .
@@ -408,11 +408,11 @@ function wupdates_ms_theme_list_purchase_code_field_vexXr( $theme, $r ) {
 	$output = '<br/>';
 	$slug = $theme->get_template();
 	//get errors so we can show them
-	$errors = get_option( $slug . '_wup_errors', array() );
-	delete_option( $slug . '_wup_errors' ); //delete existing errors as we will handle them next
+	$errors = get_option( strtolower( $slug ) . '_wup_errors', array() );
+	delete_option( strtolower( $slug ) . '_wup_errors' ); //delete existing errors as we will handle them next
 
 	//check if we have a purchase code saved already
-	$purchase_code = sanitize_text_field( get_option( $slug . '_wup_purchase_code', '' ) );
+	$purchase_code = sanitize_text_field( get_option( strtolower( $slug ) . '_wup_purchase_code', '' ) );
 	//in case there is an update available, tell the user that it needs a valid purchase code
 	if ( empty( $purchase_code ) ) {
 		$output .=  '<p>' . __( 'A <strong>valid purchase code</strong> is required for automatic updates.' ) . '</p>';
@@ -435,8 +435,8 @@ function wupdates_ms_theme_list_purchase_code_field_vexXr( $theme, $r ) {
 
 	$output .= '<form class="wupdates_purchase_code" action="" method="post">' .
 	           '<input type="hidden" name="wupdates_pc_theme" value="' . esc_attr( $slug ) . '" />' .
-	           '<input type="text" id="' . sanitize_title( $slug ) . '_wup_purchase_code" name="' . sanitize_title( $slug ) . '_wup_purchase_code"
-		        value="' . $purchase_code . '" placeholder="Purchase code ( e.g. 9g2b13fa-10aa-2267-883a-9201a94cf9b5 )"/>' . ' ' .
+	           '<input type="text" id="' . esc_attr( strtolower( $slug ) ) . '_wup_purchase_code" name="' . esc_attr( strtolower( $slug ) ) . '_wup_purchase_code"
+		        value="' . esc_attr( $purchase_code ) . '" placeholder="Purchase code ( e.g. 9g2b13fa-10aa-2267-883a-9201a94cf9b5 )"/>' . ' ' .
 	           __( 'Enter your purchase code and <strong>hit return/enter</strong>.' ) . ' ' .
 	           __( 'Find out how to <a href="https://help.market.envato.com/hc/en-us/articles/202822600-Where-Is-My-Purchase-Code-" target="_blank">get your purchase code</a>.' ) .
 	           '</form>';
@@ -451,7 +451,7 @@ function wupdates_purchase_code_needed_notice_vexXr() {
 	$output = '';
 	$slug = basename( get_template_directory() );
 	//check if we have a purchase code saved already
-	$purchase_code = sanitize_text_field( get_option( $slug . '_wup_purchase_code', '' ) );
+	$purchase_code = sanitize_text_field( get_option( strtolower( $slug ) . '_wup_purchase_code', '' ) );
 	//if the purchase code doesn't pass the prevalidation, show notice
 	if ( in_array( $current_screen->id, array( 'update-core', 'update-core-network') ) && true !== wupdates_prevalidate_purchase_code_vexXr( $purchase_code ) ) {
 		$output .= '<div class="updated"><p>' . sprintf( '<a href="%s">Please enter your purchase code</a> to get automatic updates for <b>%s</b>.', network_admin_url( 'themes.php?theme=' . $slug ), wp_get_theme( $slug ) ) . '</p></div>';
@@ -467,10 +467,11 @@ function wupdates_process_purchase_code_vexXr() {
 	if ( ! empty( $_POST['wupdates_pc_theme'] ) ) {
 		$errors = array();
 		$slug = sanitize_text_field( $_POST['wupdates_pc_theme'] ); // get the theme's slug
+		$purchase_code_key = esc_attr( strtolower( $slug ) ) . '_wup_purchase_code';
 		$purchase_code = false;
-		if ( ! empty( $_POST[ $slug . '_wup_purchase_code' ] ) ) {
+		if ( ! empty( $_POST[ $purchase_code_key ] ) ) {
 			//get the submitted purchase code and sanitize it
-			$purchase_code = sanitize_text_field( $_POST[ $slug . '_wup_purchase_code' ] );
+			$purchase_code = sanitize_text_field( $_POST[ $purchase_code_key ] );
 			//do a prevalidation; no need to make the API call if the format is not right
 			if ( true !== wupdates_prevalidate_purchase_code_vexXr( $purchase_code ) ) {
 				$purchase_code = false;
@@ -506,7 +507,7 @@ function wupdates_process_purchase_code_vexXr() {
 					//this way we keep existing valid purchase codes
 					if ( isset( $response['purchase_code'] ) && 'valid' == $response['purchase_code'] ) {
 						//all is good, update the purchase code option
-						update_option( $slug . '_wup_purchase_code', $purchase_code );
+						update_option( strtolower( $slug ) . '_wup_purchase_code', $purchase_code );
 						//delete the update_themes transient so we force a recheck
 						set_site_transient('update_themes', null);
 					} else {
@@ -525,10 +526,10 @@ function wupdates_process_purchase_code_vexXr() {
 
 		if ( count( $errors ) > 0 ) {
 			//if we do have errors, save them in the database so we can display them to the user
-			update_option( $slug . '_wup_errors', $errors );
+			update_option( strtolower( $slug ) . '_wup_errors', $errors );
 		} else {
 			//since there are no errors, delete the option
-			delete_option( $slug . '_wup_errors' );
+			delete_option( strtolower( $slug ) . '_wup_errors' );
 		}
 
 		//redirect back to the themes page and open popup
@@ -540,7 +541,7 @@ add_action( 'admin_init', 'wupdates_process_purchase_code_vexXr' );
 
 function wupdates_send_purchase_code_vexXr( $optional_data, $slug ) {
 	//get the saved purchase code
-	$purchase_code = sanitize_text_field( get_option( $slug . '_wup_purchase_code', '' ) );
+	$purchase_code = sanitize_text_field( get_option( strtolower( $slug ) . '_wup_purchase_code', '' ) );
 
 	if ( null === $optional_data ) { //if there is no optional data, initialize it
 		$optional_data = array();
