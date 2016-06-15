@@ -282,7 +282,8 @@ button.nav-trigger{
 		}
 	}
 
-	.navigation--is-visible.android-browser & {
+	.navigation--is-visible.android-browser &,
+	.navigation--is-visible.is--winmob & {
 		&:after{
 			transform: none;
 			top: -7px;
@@ -363,7 +364,8 @@ $nav-width: 84vw;
 
 		transform: translateX(-$nav-width);
 
-		.android-browser & {
+		.android-browser &,
+		.is--winmob & {
 			width: 300px;
 			left: -300px;
 			//transform: translateX(-300px);
@@ -528,25 +530,27 @@ $nav-width: 84vw;
 	}
 
 	.navigation--is-visible {
-
 		.nav-trigger {
 			transform: translate3d($nav-width, -50%, 0);
 		}
 
 		.navigation--main {
-			left: 0;
-			//transform: none;
+			transform: none;
 		}
 
 	}
 
-	.navigation--is-visible.android-browser {
+	.navigation--is-visible.android-browser,
+	.navigation--is-visible.is--winmob {
 		.nav-trigger {
 			transform: translate3d(300px, -50%, 0);
 		}
-	}
-}
 
+		.navigation--main {
+			left: 0;
+		}
+	}
+} // media-query(palm)
 
 
 
