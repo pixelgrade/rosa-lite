@@ -145,10 +145,11 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 		wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr.min.js', array( 'jquery' ), '3.3.1' );
 		wp_enqueue_script( 'webfont-script', '//ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js', array( 'jquery' ) );
 		wp_enqueue_script( 'tween-max', '//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js', array( 'jquery' ) );
+		wp_enqueue_script( 'ease-pack', '//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/easing/EasePack.min.js', array( 'jquery' ) );
 		wp_enqueue_script( 'scroll-to-plugin', '//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/plugins/ScrollToPlugin.min.js', array( 'jquery' ) );
 		wp_enqueue_script( 'rosa-rs', '//pxgcdn.com/js/rs/9.5.7/index.js', array( 'jquery' ) );
 
-		wp_enqueue_script( 'rosa-plugins-scripts', get_template_directory_uri() . '/assets/js/plugins.js', array( 'jquery', 'modernizr', 'rosa-rs', 'scroll-to-plugin', 'tween-max' ), $theme->get( 'Version' ), true );
+		wp_enqueue_script( 'rosa-plugins-scripts', get_template_directory_uri() . '/assets/js/plugins.js', array( 'jquery', 'modernizr', 'rosa-rs', 'scroll-to-plugin', 'tween-max', 'ease-pack' ), $theme->get( 'Version' ), true );
 		wp_enqueue_script( 'rosa-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'rosa-plugins-scripts' ), $theme->get( 'Version' ), true );
 
 		if ( is_single() ) {

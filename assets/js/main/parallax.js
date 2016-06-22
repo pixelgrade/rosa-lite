@@ -78,7 +78,7 @@ var Parallax = (function() {
         $covers.imagesLoaded(function() {
             initialized = true;
             update();
-            pixGS.TweenMax.to($covers, .3, {'opacity': 1});
+            TweenMax.to($covers, .3, {'opacity': 1});
         });
     }
 
@@ -88,7 +88,7 @@ var Parallax = (function() {
             return;
         }
 
-        pixGS.TweenMax.to($covers, 0, {
+        TweenMax.to($covers, 0, {
             y: -latestKnownScrollY
         });
 
@@ -106,7 +106,7 @@ var Parallax = (function() {
                 var progress = (latestKnownScrollY - parallax.start) / (parallax.end - parallax.start),
                     moveY = (progress - 0.5) * parallax.distance;
 
-                pixGS.TweenMax.to(parallax.target, 0, {
+                TweenMax.to(parallax.target, 0, {
                     y: moveY
                 });
             }
@@ -152,7 +152,7 @@ var Parallax = (function() {
             newWidth    = parseInt(imageWidth * scale),
             newHeight   = scale * imageHeight;
 
-        pixGS.TweenMax.to($image, 0, {
+        TweenMax.to($image, 0, {
             width: newWidth,
             left: (windowWidth - newWidth) / 2,
             top: (heroHeight - newHeight) / 2
@@ -210,7 +210,7 @@ var Parallax = (function() {
             gmapMultiplePinsInit($cover);
         });
 
-        pixGS.TweenMax.to($('.article__parallax'), .3, {'opacity': 1});
+        TweenMax.to($('.article__parallax'), .3, {'opacity': 1});
 
         return;
     }

@@ -18,7 +18,7 @@ var DownArrow = {
 
         this.start      = 0;
         this.end        = this.start + 300;
-        this.timeline   = new pixGS.TimelineMax({ paused: true });
+        this.timeline   = new TimelineMax({ paused: true });
         this.$next      = this.$arrow.closest('.article--page');
 
         if (!empty(this.$next)) {
@@ -28,11 +28,11 @@ var DownArrow = {
 
 
         if (this.$arrow.hasClass('down-arrow--bubble')) {
-            this.timeline.to(this.$arrow, .2, {y: 10, opacity: 0, ease: pixGS.Linear.easeNone, overwrite: "none"});
-            this.timeline.to('.blurp--top', .3, {scaleY: 0, ease: pixGS.Linear.easeNone, overwrite: "none"});
+            this.timeline.to(this.$arrow, .2, {y: 10, opacity: 0, ease: Linear.easeNone, overwrite: "none"});
+            this.timeline.to('.blurp--top', .3, {scaleY: 0, ease: Linear.easeNone, overwrite: "none"});
             this.bubble = true;
         } else {
-            this.timeline.to(this.$arrow, 1, {y: 100, opacity: 0, ease: pixGS.Linear.easeNone, overwrite: "none"});
+            this.timeline.to(this.$arrow, 1, {y: 100, opacity: 0, ease: Linear.easeNone, overwrite: "none"});
         }
 
         this.$arrow.on('click', function (e) {
