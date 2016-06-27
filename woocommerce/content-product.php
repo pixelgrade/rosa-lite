@@ -58,54 +58,50 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] ) {
 	 * @hooked woocommerce_template_loop_product_link_open - 10
 	 */
 	do_action( 'woocommerce_before_shop_loop_item' ); ?>
+	
+	<?php
+		/**
+		 * woocommerce_before_shop_loop_item_title hook
+		 *
+		 * @hooked woocommerce_show_product_loop_sale_flash - 10
+		 * @hooked woocommerce_template_loop_product_thumbnail - 10
+		 */
+		do_action( 'woocommerce_before_shop_loop_item_title' );
+	?>
 
-	<a href="<?php the_permalink(); ?>">
+	<h4 class="product__title"><?php the_title(); ?></h4>
 
-		<?php
-			/**
-			 * woocommerce_before_shop_loop_item_title hook
-			 *
-			 * @hooked woocommerce_show_product_loop_sale_flash - 10
-			 * @hooked woocommerce_template_loop_product_thumbnail - 10
-			 */
-			do_action( 'woocommerce_before_shop_loop_item_title' );
-		?>
+    <?php
+        // Getting the categories for each product
+        $terms = get_the_terms( $product->id, 'product_tag' );
+        if( !empty($terms) && ! is_wp_error( $terms ) ): ?>
 
-		<h4 class="product__title"><?php the_title(); ?></h4>
+        <ul class="product__cats  nav">
 
         <?php
-            // Getting the categories for each product
-            $terms = get_the_terms( $product->id, 'product_tag' );
-            if( !empty($terms) && ! is_wp_error( $terms ) ): ?>
 
-            <ul class="product__cats  nav">
+        // Getting only the first 3 categories
+        $terms = array_slice($terms, 0, 3);
 
-            <?php
-
-            // Getting only the first 3 categories
-            $terms = array_slice($terms, 0, 3);
-
-            foreach ( $terms as $term ) {
-                echo '<li class="product__cat"><span rel="category">' . $term->name . '</span></li>';
-            }
-            ?>
-
-            </ul>
-
-            <?php endif;
+        foreach ( $terms as $term ) {
+            echo '<li class="product__cat"><span rel="category">' . $term->name . '</span></li>';
+        }
         ?>
-        <hr/>
 
-		<?php
-		/**
-		 * woocommerce_after_shop_loop_item_title hook
-		 *
-		 * @hooked woocommerce_template_loop_rating - 5
-		 * @hooked woocommerce_template_loop_price - 10
-		 */
-		do_action( 'woocommerce_after_shop_loop_item_title' ); ?>
+        </ul>
 
-	</a>
+        <?php endif;
+    ?>
+    <hr/>
+
+	<?php
+	/**
+	 * woocommerce_after_shop_loop_item_title hook
+	 *
+	 * @hooked woocommerce_template_loop_rating - 5
+	 * @hooked woocommerce_template_loop_price - 10
+	 */
+	do_action( 'woocommerce_after_shop_loop_item_title' ); ?>
 
 	<?php
 
