@@ -205,7 +205,7 @@ function hoverArrow($arrow){
         var $arrowIcn = $arrow.find('.rsArrowIcn');
 
         $loop = setInterval(function(){
-            pixGS.TweenMax.to($arrowIcn, 0, {x: $mouseX, y: $mouseY, z: 0.01});
+            TweenMax.to($arrowIcn, 0, {x: $mouseX, y: $mouseY, z: 0.01});
         }, 10);
 
 

@@ -21,7 +21,7 @@ var ScrollToTop = (function() {
         offsetTop = $button.offset().top;
         $button.data('offsetTop', offsetTop);
 
-        this.timeline   = new pixGS.TimelineMax({ paused: true });
+        this.timeline   = new TimelineMax({ paused: true });
 
         this.timeline.fromTo('.blurp--bottom', .6, {
             y:          40,
@@ -29,7 +29,7 @@ var ScrollToTop = (function() {
         }, {
             y:          0,
             scale:      1,
-            ease:       pixGS.Power3.easeOut,
+            ease:       Power3.easeOut,
             force3D:    true
 
         });
@@ -41,7 +41,7 @@ var ScrollToTop = (function() {
             y: 0,
             scale: 1,
             opacity: 1,
-            ease: pixGS.Back.easeOut
+            ease: Back.easeOut
         }, '-=0.1');
 
         this.timeline.fromTo($('.btn__arrow--bottom'),.4, {
@@ -51,7 +51,7 @@ var ScrollToTop = (function() {
             y: 0,
             scale: 1,
             opacity: 1,
-            ease: pixGS.Back.easeOut
+            ease: Back.easeOut
         }, '-=0.25');
 
         $button.on('click', function (e) {

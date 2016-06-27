@@ -1,0 +1,18 @@
+.woocommerce-account {
+	.woocommerce-MyAccount-navigation {
+		padding: 24px;
+
+		float: none;
+		width: 100%;
+
+		li:not(.is-active) a {
+			color: #262526;
+			border-color: transparent;
+		}
+	}
+
+	.woocommerce-MyAccount-content {
+		float: none;
+		width: 100%;
+	}
+}

@@ -521,7 +521,9 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 									body.woocommerce ul.products li.product a.added_to_cart, body.woocommerce ul.products li.product .price ins,
 									.single-product .entry-summary .price span, body.woocommerce .star-rating span:before, .comment-reply-link,
 									.nav.nav--items-social a:hover:before, .sidebar--main .widget [class*="social"] > ul a:hover:before, .widget [class*=\'social\'] > ul a:hover:before,
-									.site-footer .separator--flower',
+									.site-footer .separator--flower,
+									.woocommerce-account .woocommerce-MyAccount-navigation li a:hover,
+									.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a',
 							),
 							array(
 								'property' => 'background-color',
@@ -543,7 +545,9 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								.btn--text.wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit.read-more-button,
 								.btn--text.otreservations-submit, .otreservations-submit, .read-more-button,
 								.widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button, blockquote, .article__content a:not([class]), .shop-categories a.active,
-								body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart, .menu-list__item-highlight-wrapper:before'
+								body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart, .menu-list__item-highlight-wrapper:before,
+								.woocommerce-account .woocommerce-MyAccount-navigation li a:hover,
+								.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a'
 							),
 							array(
 								'property' => 'outline-color',

@@ -281,6 +281,19 @@ button.nav-trigger{
 			top: 0;
 		}
 	}
+
+	.navigation--is-visible.android-browser &,
+	.navigation--is-visible.is--winmob & {
+		&:after{
+			transform: none;
+			top: -7px;
+		}
+
+		&:before{
+			transform: none;
+			top: 7px;
+		}
+	}
 }
 
 .header--transparent {
@@ -347,13 +360,21 @@ $nav-width: 84vw;
 		top: 0;
 		bottom: 0;
 
+		display: none;
+
 		z-index: 20;
 
 		transform: translateX(-$nav-width);
 
-		.android-browser & {
+		.is--loaded & {
+			display: block;
+		}
+
+		.android-browser &,
+		.is--winmob & {
 			width: 300px;
-			transform: translateX(-300px);
+			left: -300px;
+			//transform: translateX(-300px);
 		}
 
 		.admin-bar & {
@@ -515,7 +536,6 @@ $nav-width: 84vw;
 	}
 
 	.navigation--is-visible {
-
 		.nav-trigger {
 			transform: translate3d($nav-width, -50%, 0);
 		}
@@ -526,13 +546,17 @@ $nav-width: 84vw;
 
 	}
 
-	.navigation--is-visible.android-browser {
+	.navigation--is-visible.android-browser,
+	.navigation--is-visible.is--winmob {
 		.nav-trigger {
 			transform: translate3d(300px, -50%, 0);
 		}
-	}
-}
 
+		.navigation--main {
+			left: 0;
+		}
+	}
+} // media-query(palm)
 
 
 

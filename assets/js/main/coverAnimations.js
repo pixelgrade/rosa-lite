@@ -17,7 +17,7 @@ var CoverAnimation = {
 
             var $header         = $(header),
                 $headline       = $header.find('.article__headline'),
-                timeline        = new pixGS.TimelineMax({ paused: true }),
+                timeline        = new TimelineMax({ paused: true }),
                 $title          = $headline.find('.headline__primary'),
                 $subtitle       = $headline.find('.headline__secondary'),
                 $description    = $headline.find('.headline__description'),
@@ -36,33 +36,33 @@ var CoverAnimation = {
 
             // ------ A
 
-            timeline.fromTo($title, 0.72, {'letter-spacing': '1em', 'margin-right': '-0.9em'}, {'letter-spacing': '0.2em', 'margin-right': '-0.1em', ease: pixGS.Expo.easeOut});
-            timeline.fromTo($title, 0.89, {opacity: 0}, {opacity: 1, ease: pixGS.Expo.easeOut}, '-=0.72');
-            timeline.fromTo($title, 1, {'y': 30}, {'y': 0, ease: pixGS.Expo.easeOut}, '-=0.89');
-            timeline.fromTo($subtitle, 0.65, {opacity: 0}, {opacity: 1, ease: pixGS.Quint.easeOut}, '-=0.65');
-            timeline.fromTo($subtitle, 0.9, {y: 30}, {y: 0, ease: pixGS.Quint.easeOut}, '-=0.65');
-            timeline.fromTo($star, 0.15, {opacity: 0}, {opacity: 1, ease: pixGS.Quint.easeOut}, '-=0.6');
-            timeline.fromTo($star, 0.55, {rotation: -270}, {rotation: 0, ease: pixGS.Back.easeOut}, '-=0.5');
-            timeline.fromTo($lines, 0.6, {width: 0}, {width: '42%', opacity: 1, ease: pixGS.Quint.easeOut}, '-=0.55');
-            timeline.fromTo($hr, 0.6, {width: 0}, {width: '100%', opacity: 1, ease: pixGS.Quint.easeOut}, '-=0.6');
-            timeline.fromTo($arrows, 0.2, {opacity: 0}, {opacity: 1, ease: pixGS.Quint.easeOut}, '-=0.27');
-            timeline.fromTo($description, 0.5, {opacity: 0}, {opacity: 1, ease: pixGS.Quint.easeOut}, '-=0.28');
+            timeline.fromTo($title, 0.72, {'letter-spacing': '1em', 'margin-right': '-0.9em'}, {'letter-spacing': '0.2em', 'margin-right': '-0.1em', ease: Expo.easeOut});
+            timeline.fromTo($title, 0.89, {opacity: 0}, {opacity: 1, ease: Expo.easeOut}, '-=0.72');
+            timeline.fromTo($title, 1, {'y': 30}, {'y': 0, ease: Expo.easeOut}, '-=0.89');
+            timeline.fromTo($subtitle, 0.65, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.65');
+            timeline.fromTo($subtitle, 0.9, {y: 30}, {y: 0, ease: Quint.easeOut}, '-=0.65');
+            timeline.fromTo($star, 0.15, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.6');
+            timeline.fromTo($star, 0.55, {rotation: -270}, {rotation: 0, ease: Back.easeOut}, '-=0.5');
+            timeline.fromTo($lines, 0.6, {width: 0}, {width: '42%', opacity: 1, ease: Quint.easeOut}, '-=0.55');
+            timeline.fromTo($hr, 0.6, {width: 0}, {width: '100%', opacity: 1, ease: Quint.easeOut}, '-=0.6');
+            timeline.fromTo($arrows, 0.2, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.27');
+            timeline.fromTo($description, 0.5, {opacity: 0}, {opacity: 1, ease: Quint.easeOut}, '-=0.28');
             timeline.fromTo($description, 0.75, {y: -20}, {y: 0}, '-=0.5');
 
             // ------ B
             timeline.addLabel("animatedIn");
 
             // if (i == 0) {
-            //     timeline.fromTo($headline, 1.08, {y: 0}, {y: 150, ease: pixGS.Linear.easeNone});
-            //     timeline.fromTo($title, 1.08, {y: 0}, {opacity: 0, y: -60, ease: pixGS.Quad.easeIn}, '-=1.08');
+            //     timeline.fromTo($headline, 1.08, {y: 0}, {y: 150, ease: Linear.easeNone});
+            //     timeline.fromTo($title, 1.08, {y: 0}, {opacity: 0, y: -60, ease: Quad.easeIn}, '-=1.08');
             // } else {
-                timeline.fromTo($title, 1.08, {y: 0}, {opacity: 0, y: -60, ease: pixGS.Quad.easeIn});
+                timeline.fromTo($title, 1.08, {y: 0}, {opacity: 0, y: -60, ease: Quad.easeIn});
             // }
 
-            timeline.to($description, 1.08, {y: 60, opacity: 0, ease: pixGS.Quad.easeIn}, '-=1.08');
-            timeline.to($subtitle, 1.08, {opacity: 0, y: -90, ease: pixGS.Quad.easeIn}, '-=1.08');
-            timeline.to($lines, 0.86, {width: 0, opacity: 0, ease: pixGS.Quad.easeIn}, '-=0.94');
-            timeline.to($hr, 0.86, {width: 0, opacity: 0, ease: pixGS.Quad.easeIn}, '-=0.86');
+            timeline.to($description, 1.08, {y: 60, opacity: 0, ease: Quad.easeIn}, '-=1.08');
+            timeline.to($subtitle, 1.08, {opacity: 0, y: -90, ease: Quad.easeIn}, '-=1.08');
+            timeline.to($lines, 0.86, {width: 0, opacity: 0, ease: Quad.easeIn}, '-=0.94');
+            timeline.to($hr, 0.86, {width: 0, opacity: 0, ease: Quad.easeIn}, '-=0.86');
             timeline.to($star, 1, {rotation: 180}, '-=1.08');
             timeline.to($star, 0.11, {opacity: 0}, '-=0.03');
             timeline.to($arrows, 0.14, {opacity: 0}, '-=1.08');
