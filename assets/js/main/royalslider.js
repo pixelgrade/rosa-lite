@@ -14,7 +14,10 @@ function royalSliderInit($container) {
 
 	// Find and initialize each slider
 	$container.find('.js-pixslider').each(function () {
-		sliderInit($(this));
+		var $slider = $(this);
+		$slider.imagesLoaded(function() {
+			sliderInit($slider)
+		});
 	});
 
 }
