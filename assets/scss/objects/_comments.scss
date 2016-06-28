@@ -333,7 +333,8 @@ li.depth-2:before {
 .comment-form-email,
 .comment-form-url {
 	@extend .grid__item;
-	@extend .one-third;
+	@extend .one-whole;
+	@extend .lap-and-up-one-third;
 
 	label {
 		display: none;
