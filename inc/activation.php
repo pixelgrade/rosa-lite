@@ -22,8 +22,8 @@ return array(
 		//		'taxonomies' => array(),
 		'metaboxes' => array(
 			//General page settings
-			wpgrade::shortname() . '_page_general'       => array(
-				'id'         => wpgrade::shortname() . '_page_general',
+			'rosa_page_general'       => array(
+				'id'         => 'rosa_page_general',
 				'title'      => __( 'General', 'rosa' ),
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
@@ -62,8 +62,8 @@ return array(
 				),
 			),
 			//for the Page Header Covers
-			wpgrade::shortname() . '_page_header_area_cover'       => array(
-				'id'         => wpgrade::shortname() . '_page_header_area_cover',
+			'rosa_page_header_area_cover'       => array(
+				'id'         => 'rosa_page_header_area_cover',
 				'title'      => __( 'Featured Header Area', 'rosa' ),
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
@@ -123,8 +123,8 @@ return array(
 					),
 				),
 			),
-			wpgrade::shortname() . '_page_header_area_slideshow'  => array(
-				'id'         => wpgrade::shortname() . '_page_header_area_slideshow',
+			'rosa_page_header_area_slideshow'  => array(
+				'id'         => 'rosa_page_header_area_slideshow',
 				'title'      => __( 'Slideshow Settings', 'rosa' ),
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
@@ -223,8 +223,8 @@ return array(
 				)
 			),
 			//for the Contact Page template - Classic
-			wpgrade::shortname() . '_gmap_settings' => array(
-				'id'         => wpgrade::shortname() . '_gmap_settings',
+			'rosa_gmap_settings' => array(
+				'id'         => 'rosa_gmap_settings',
 				'title'      => __( 'Map Coordinates & Display Options', 'rosa' ),
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',

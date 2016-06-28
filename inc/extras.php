@@ -124,7 +124,7 @@ function wpgrade_callback_geting_active() {
 			$types_options = array();
 		}
 
-		$theme_key                   = wpgrade::shortname() . '_pixtypes_theme';
+		$theme_key                   = 'rosa_pixtypes_theme';
 		$types_options[ $theme_key ] = $pixtypes_conf_settings;
 
 		update_option( 'pixtypes_themes_settings', $types_options );
@@ -334,7 +334,7 @@ function rosa_callback_gtkywb() {
 		'method' => 'POST',
 		'body'   => array(
 			'send_stats'    => true,
-			'theme_name'    => wpgrade::shortname(),
+			'theme_name'    => 'rosa',
 			'theme_version' => $themedata->get( 'Version' ),
 			'domain'        => $_SERVER['HTTP_HOST'],
 			'permalink'     => get_permalink( 1 ),

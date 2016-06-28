@@ -137,7 +137,7 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 		}
 
 		if ( ! is_rtl() ) {
-			wp_enqueue_style( 'rosa-main-style', get_template_directory_uri() . '/style.css', array(), $theme->get( 'Version' ) );
+			wp_enqueue_style( 'rosa-main-style', get_stylesheet_uri(), array(), $theme->get( 'Version' ) );
 		}
 
 		// Scripts
@@ -159,7 +159,7 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 
 		wp_localize_script( 'rosa-main-scripts', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
 		// localize the theme_name, we are gonna need it
-		wp_localize_script( 'rosa-main-scripts', 'theme_name', wpgrade::shortname() );
+		wp_localize_script( 'rosa-main-scripts', 'theme_name', 'rosa' );
 		wp_localize_script( 'rosa-main-scripts', 'objectl10n', array(
 			'tPrev'             => __( 'Previous (Left arrow key)', 'rosa' ),
 			'tNext'             => __( 'Next (Right arrow key)', 'rosa' ),
