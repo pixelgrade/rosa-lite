@@ -177,7 +177,10 @@ function init() {
     // $('.site-footer.border-waves').prevAll('article__header').first().find('.article__parallax').addClass('border-waves-top border-waves-top--dark');
 
     $('.js-pixslider').not('.article__parallax .js-pixslider').each(function(i, slider) {
-        sliderInit($(slider));
+        var $slider = $(slider);
+        $slider.imagesLoaded(function() {
+            sliderInit($(slider));
+        });
     });
 
     $('.navigation--main').on('DOMMouseScroll mousewheel', function(ev) {
