@@ -68,6 +68,18 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							'sanitize_callback' => 'wp_kses_post',
 							'live'              => array( '.footer-container .copyright-text' )
 						),
+
+						'google_maps_api_key' => array(
+							'type'    => 'text',
+							'label'   => esc_html__( 'Google Maps API key', 'rosa' ),
+							'default' => '',
+							'desc'    => sprintf(
+								'<p>%s.   <a href="https://developers.google.com/maps/documentation/javascript/get-api-key#get-an-api-key" target="_blank">%s</a> <br><br>%s</p>',
+								esc_html__( 'To use Google Maps you must authenticate your application with an API key', 'rosa' ),
+								esc_html__( 'Optain a key', 'rosa' ),
+								esc_html__( 'After you get the key, enable the "Google Maps JavaScript API" from the Overview tab', 'rosa' )
+							)
+						)
 					)
 				),
 
