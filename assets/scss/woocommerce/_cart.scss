@@ -218,3 +218,10 @@ td.actions{
 .woocommerce-checkout #payment div.payment_box:before {
 	top: -14px;
 }
+
+@media screen and (max-width: 400px) {
+	#add_payment_method #payment .payment_method_paypal .about_paypal,
+	.woocommerce-checkout #payment .payment_method_paypal .about_paypal {
+		float: none;
+	}
+}

@@ -94,9 +94,9 @@
 
 .woocommerce, .woocommerce-page{
 
-	.woocommerce-message, .woocommerce-info, .woocommerce-error{
+	.woocommerce-message, .woocommerce-info, .woocommerce-error {
 		margin-top: $_u !important;
-		padding-left: 1em !important;
+		padding: 1em !important;
 
 		border: none;
 		border: 1px solid $borders;
@@ -113,6 +113,16 @@
 		.button{
 			&:after{
 				content: none;
+			}
+		}
+
+		@media screen and (max-width: 400px) {
+			display: flex;
+			flex-direction: column;
+
+			.button {
+				order: 1;
+				text-align: center;
 			}
 		}
 	}
