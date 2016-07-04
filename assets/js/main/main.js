@@ -17,7 +17,7 @@ function niceScrollInit() {
     var smoothScroll    = $('body').data('smoothscrolling') !== undefined,
         root            = document.documentElement;
 
-    if (smoothScroll && !is_EDGE && !Modernizr.touch && !is_mobile_ie && !is_OSX) {
+    if (smoothScroll && !is_EDGE && !Modernizr.touchevents && !is_mobile_ie && !is_OSX) {
 
         var $window = $(window);		// Window object
 
@@ -407,7 +407,7 @@ function onResize(e) {
 
     royalSliderInit($('.js-pixslider').not('.article__parallax .js-pixslider'));
 
-    if ( ! Modernizr.touch ) {
+    if ( ! Modernizr.touchevents ) {
         requestAnimationFrame(refreshStuff);
     } else {
         if (orientationchange) {
@@ -439,7 +439,7 @@ function updateStuff() {
     DownArrow.update();
     CoverAnimation.update();
 
-    if (!Modernizr.touch && windowWidth >= 900) {
+    if (!Modernizr.touchevents && windowWidth >= 900) {
         Navigator.update();
     }
 

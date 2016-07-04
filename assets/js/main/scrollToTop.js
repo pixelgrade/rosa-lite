@@ -73,7 +73,7 @@ var ScrollToTop = (function() {
             return;
         }
 
-        if (Modernizr.touch && is_OSX) {
+        if (Modernizr.touchevents && is_OSX) {
             this.timeline.progress(1);
             return;
         }

@@ -123,7 +123,7 @@ function sliderInit($slider) {
         var classes = '';
 
         if(is_headerSlider) classes = 'slider-arrows-header';
-        if(hoverArrows && !Modernizr.touch) classes += ' arrows--hover ';
+        if(hoverArrows && !Modernizr.touchevents) classes += ' arrows--hover ';
 
         var $gallery_control = $(
             '<div class="' + classes + '">' +
@@ -149,7 +149,7 @@ function sliderInit($slider) {
         });
     }
 
-    if(hoverArrows && !Modernizr.touch){
+    if(hoverArrows && !Modernizr.touchevents){
         hoverArrow($('.slider-arrows-header .rsArrow'));
 
     }

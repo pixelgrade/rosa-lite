@@ -57,7 +57,7 @@ var DownArrow = {
             return;
         }
 
-        if (Modernizr.touch && is_OSX) {
+        if (Modernizr.touchevents && is_OSX) {
             this.timeline.progress(0);
             return;
         }

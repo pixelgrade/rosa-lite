@@ -89,13 +89,13 @@ var CoverAnimation = {
 
                 timeline.tweenTo("animatedIn", {
                     onComplete: function () {
-                        if (Modernizr.touch) {
+                        if (Modernizr.touchevents) {
                             $headline.data("animated", true);
                         }
                     }
                 });
 
-                if (!Modernizr.touch) {
+                if (!Modernizr.touchevents) {
                     timeline.tweenTo("animatedOut", {
                         onComplete: function () {
                             $headline.data("animated", true);
