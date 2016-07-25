@@ -384,12 +384,6 @@ $(window).load(function() {
     loop();
 
     $html.addClass('is--loaded');
-
-    if ( windowWidth < 900 ) {
-        setTimeout( function() {
-            $html.addClass( 'show-mobile-nav' );
-        }, 2500 );
-    }
 });
 
 

@@ -365,7 +365,7 @@ $nav-width: 84vw;
 
 		transform: translateX(-$nav-width);
 
-		.show-mobile-nav & {
+		.is--loaded & {
 			display: block;
 		}
 
