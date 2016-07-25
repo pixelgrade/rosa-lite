@@ -383,14 +383,13 @@ $(window).load(function() {
 
     loop();
 
-    if( is_android ) {
-        setTimeout(function() {
-            $html.addClass('is--loaded');
-        }, 500);
-    } else {
-        $html.addClass('is--loaded');
-    }
+    $html.addClass('is--loaded');
 
+    if ( windowWidth < 900 ) {
+        setTimeout( function() {
+            $html.addClass( 'show-mobile-nav' );
+        }, 500 );
+    }
 });
 
 
