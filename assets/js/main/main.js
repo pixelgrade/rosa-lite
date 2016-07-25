@@ -388,7 +388,7 @@ $(window).load(function() {
     if ( windowWidth < 900 ) {
         setTimeout( function() {
             $html.addClass( 'show-mobile-nav' );
-        }, 500 );
+        }, 2500 );
     }
 });
 
