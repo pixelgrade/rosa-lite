@@ -4,6 +4,13 @@
 .navigation--main {
 	float: right;
 
+	@media screen and (max-width: 899px) {
+		display: none;
+
+		.is--loaded & {
+			display: block;
+		}
+	}
 
 	@include media-query(lap-and-up) {
 		display: flex;
