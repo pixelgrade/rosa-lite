@@ -383,7 +383,14 @@ $(window).load(function() {
 
     loop();
 
-    $html.addClass('is--loaded');
+    if( is_android ) {
+        setTimeout(function() {
+            $html.addClass('is--loaded');
+        }, 500);
+    } else {
+        $html.addClass('is--loaded');
+    }
+
 });
 
 
