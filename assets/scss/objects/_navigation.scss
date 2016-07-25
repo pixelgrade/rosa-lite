@@ -4,14 +4,6 @@
 .navigation--main {
 	float: right;
 
-	@media screen and (max-width: 899px) {
-		display: none;
-
-		.show-mobile-nav & {
-			display: block;
-		}
-	}
-
 	@include media-query(lap-and-up) {
 		display: flex;
 
@@ -373,7 +365,7 @@ $nav-width: 84vw;
 
 		transform: translateX(-$nav-width);
 
-		.is--loaded & {
+		.show-mobile-nav & {
 			display: block;
 		}
 
