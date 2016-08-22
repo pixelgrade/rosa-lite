@@ -363,7 +363,7 @@ $nav-width: 84vw;
 
 		z-index: 20;
 
-		transform: translateX(-$nav-width);
+		transform: translateX(-100%);
 
 		.is--loaded & {
 			display: block;
