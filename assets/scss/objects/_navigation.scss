@@ -366,7 +366,7 @@ $nav-width: 84vw;
 		transform: translateX(-$nav-width);
 
 		.is--loaded & {
-			display: block;
+			display: none;
 		}
 
 		.android-browser &,
