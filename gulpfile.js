@@ -33,7 +33,6 @@ var
 		'magnific-popup',
 		'royalslider',
 		'gmap',
-		'parallax',
 		'downArrow',
 	    'scrollToTop',
 		'coverAnimations',

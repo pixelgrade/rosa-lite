@@ -198,7 +198,7 @@ function init() {
             ev.preventDefault();
             ev.returnValue = false;
             return false;
-        }
+        };
 
         if (!up && -delta > scrollHeight - height - scrollTop) {
             // Scrolling down, but this will take us past the bottom.
@@ -210,6 +210,8 @@ function init() {
             return prevent();
         }
     });
+
+    $("[data-rellax]").rellax();
 
 	if (globalDebug) {console.groupEnd();}
 }
@@ -235,7 +237,6 @@ function eventHandlers() {
 
     $(document).on('spam.wpcf7 invalid.wpcf7 mailsent.wpcf7 mailfailed.wpcf7', function () {
         setTimeout(function() {
-            Parallax.initialize();
             CoverAnimation.initialize();
         }, 300);
     });
@@ -257,13 +258,6 @@ function eventHandlers() {
         e.stopPropagation();
 
         $(this).toggleClass('active');
-    });
-
-
-    $('.tabs__nav').find("li > a").click(function () {
-        setTimeout(function(){
-            Parallax.update();
-        }, 300);
     });
 
 	if (globalDebug) {console.groupEnd();}
@@ -330,18 +324,15 @@ $(window).load(function() {
 
     if (!$('html').is('.ie9, .lt-ie9')) {
         setTimeout(function() {
-            Parallax.initialize();
             CoverAnimation.initialize();
         }, 600);
     } else {
         setTimeout(function() {
-            Parallax.initialize();
             CoverAnimation.initialize();
         }, 400);
     }
     niceScrollInit();
-
-    royalSliderInit($('.article__content'), true);
+    royalSliderInit();
 
     // if ($('.js-pixslider').length) {
     //     var slider = $('.js-pixslider').data('royalSlider');
@@ -354,8 +345,8 @@ $(window).load(function() {
     magnificPopupInit();
     initVideos();
     resizeVideos();
-    // gmapInit();
-    // gmapMultiplePinsInit();
+    gmapInit();
+    gmapMultiplePinsInit();
 
 
     if(!empty($('#date-otreservations'))){
@@ -403,7 +394,7 @@ function onResize(e) {
 
     resizeVideos();
 
-    royalSliderInit($('.js-pixslider').not('.article__parallax .js-pixslider'));
+    royalSliderInit($('.js-pixslider').not('.c-hero__background .js-pixslider'));
 
     $(".pixcode--tabs").organicTabs();
 
@@ -427,14 +418,13 @@ function onResize(e) {
 }
 
 function refreshStuff() {
-    Parallax.initialize();
+    $("[data-rellax]").rellax("refresh");
     CoverAnimation.initialize();
     ScrollToTop.initialize();
 }
 
 
 function updateStuff() {
-    Parallax.update();
     ScrollToTop.update();
     DownArrow.update();
     CoverAnimation.update();
@@ -445,7 +435,10 @@ function updateStuff() {
     }
 }
 
-$(window).on("organicTabsChange", refreshStuff);
+$(window).on("organicTabsChange", function() {
+    onResize();
+    refreshStuff();
+});
 
 window.latestKnownScrollY = window.pageYOffset;
 

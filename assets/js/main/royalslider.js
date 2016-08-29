@@ -16,7 +16,8 @@ function royalSliderInit($container) {
 	$container.find('.js-pixslider').each(function () {
 		var $slider = $(this);
 		$slider.imagesLoaded(function() {
-			sliderInit($slider)
+			sliderInit($slider);
+            $("[data-rellax]").rellax("refresh");
 		});
 	});
 
@@ -102,18 +103,18 @@ function sliderInit($slider) {
 	}
 
 
-	//lets fire it up
-	$slider.royalSlider(royalSliderParams);
-	$slider.addClass('slider--loaded');
+	// lets fire it up
 
+    $slider.royalSlider(royalSliderParams);
+	$slider.addClass('slider--loaded');
+    onResize();
 
 	var royalSlider = $slider.data('royalSlider');
 	var slidesNumber = royalSlider.numSlides;
 
     if ($slider.closest('.article__content').length) {
         royalSlider.ev.on('rsAfterSlideChange', function(event) {
-            Parallax.initialize();
-            CoverAnimation.initialize();
+            onResize();
         });
     }
 

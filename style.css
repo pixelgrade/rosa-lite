@@ -7577,22 +7577,10 @@ input[type="color"],
   .article--page:empty:before, .article--page:empty:after {
     display: none; }
 
-.article__header, .article__header * {
+.article__header .flexbox, .article__header .site-title, .article__header .flexbox__item, .article__header .site-logo {
   pointer-events: none; }
 
-.article__header .flexbox__item *, .article__header .site-logo *,
-.covers .article__header,
-.covers .article__header *,
-.is_iexplore .article__header,
-.is_iexplore .article__header *,
-.article__header .blurp--top,
-.article__header .down-arrow {
-  pointer-events: auto; }
-
-.article__header .is_iexplore .flexbox, .article__header .is_iexplore .site-title, .article__header .is_iexplore .flexbox__item, .article__header .is_iexplore .site-logo {
-  pointer-events: none; }
-
-.article__header .is_iexplore .flexbox__item *, .article__header .is_iexplore .site-logo * {
+.article__header .flexbox__item *, .article__header .site-logo * {
   pointer-events: auto; }
 
 .article__header.has-no-image {
@@ -7613,7 +7601,10 @@ input[type="color"],
     .article__header.article__header--page {
       padding: 0 12px; } }
   .article__header.article__header--page .flexbox, .article__header.article__header--page .site-title {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
     z-index: 10; }
   .article__header.article__header--page .flexbox__item, .article__header.article__header--page .site-logo {
@@ -7631,19 +7622,20 @@ input[type="color"],
   -webkit-transform-origin: 50% 100%;
   transform-origin: 50% 100%; }
 
-.article--main,
 .article__header {
   position: relative;
   z-index: 10; }
 
+.article--main {
+  position: relative;
+  z-index: 20; }
+
 .article__parallax {
   position: absolute;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
-  opacity: 0;
-  pointer-events: none; }
+  right: 0;
+  bottom: 0; }
   @media only screen and (max-width: 899px) {
     .article__parallax:first-of-type:after {
       content: "";
@@ -7660,21 +7652,6 @@ input[type="color"],
   .article__parallax .flexbox__item *, .article__parallax .site-logo *,
   .covers .article__parallax {
     pointer-events: auto; }
-  .covers .article__parallax {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: auto;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    background: none;
-    overflow: hidden;
-    will-change: transform; }
-    .covers .article__parallax .article__parallax__img {
-      opacity: 1;
-      max-width: none;
-      position: absolute; }
   .article__parallax .gmap,
   .article__parallax .gmap--multiple-pins,
   .article__parallax .article__parallax__img,
@@ -7689,9 +7666,14 @@ input[type="color"],
     right: 0;
     bottom: 0;
     left: 0; }
-    .article__parallax .gmap img,
-    .article__parallax .gmap--multiple-pins img {
-      max-width: none; }
+
+.article__parallax--map {
+  bottom: auto;
+  right: auto;
+  width: 100%;
+  height: 100%;
+  width: 100vw;
+  height: 100vh; }
 
 .article__parallax__slider {
   position: absolute;
@@ -7890,6 +7872,113 @@ input[type="color"],
 .is-edge .article__headline a,
 .is-edge .article__headline .read-more-button {
   opacity: 1 !important; }
+
+/*
+
+    HERO
+    ====
+
+
+    description:
+    ------------
+
+
+    expected markup:
+    ----------------
+
+    <div class="c-hero c-hero--two-thirds">
+
+        <div class="c-hero__slider">
+
+
+            <div class="c-hero__slide">
+
+                <div class="c-hero__background">
+                    <img class="c-hero__image | c-hero__video">
+                </div><!-- .c-hero__background -->
+
+                <div class="c-hero__wrapper c-hero__wrapper--[ top | right | bottom | left ]">
+                    <div class="c-hero__content">
+                        ...
+                    </div><!-- .c-hero__content -->
+                </div><!-- .c-hero__wrapper -->
+
+            </div><!-- .c-hero__slide -->
+
+        </div><!-- .c-hero__slider -->
+
+    </div><!-- .c-hero -->
+
+ */
+.c-hero {
+  position: relative;
+  min-height: 100vh;
+  color: #FFFFFF;
+  -webkit-transform: none !important;
+          transform: none !important; }
+  .c-hero.half-height {
+    min-height: 50vh; }
+  .c-hero.two-thirds-height {
+    min-height: 66.666666vh; }
+
+.c-hero__slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: -ms-flexbox;
+  display: flex; }
+
+.c-hero__slide {
+  position: relative;
+  width: 100%;
+  -ms-flex-negative: 0;
+      flex-shrink: 0; }
+
+.c-hero__layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; }
+
+.c-hero__wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 5vw;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  text-align: center; }
+  .c-hero__wrapper--left {
+    -ms-flex-pack: start;
+        justify-content: flex-start;
+    text-align: left; }
+  .c-hero__wrapper--right {
+    -ms-flex-pack: end;
+        justify-content: flex-end;
+    text-align: right; }
+  .c-hero__wrapper--top > * {
+    -ms-flex-item-align: start;
+        align-self: flex-start; }
+  .c-hero__wrapper--bottom > * {
+    -ms-flex-item-align: end;
+        align-self: flex-end; }
+
+.c-hero__image,
+.c-hero__video {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  object-fit: cover; }
 
 /*-------------------------------*               $BADGE
 \*-------------------------------*/
