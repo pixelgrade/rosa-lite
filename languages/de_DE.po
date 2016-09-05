@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ROSA - An Exquisite Restaurant Wordpress Theme\n"
 "POT-Creation-Date: 2016-02-22 17:33+0200\n"
-"PO-Revision-Date: 2016-02-22 17:33+0200\n"
+"PO-Revision-Date: 2016-09-05 23:00+0200\n"
 "Last-Translator: Vlad Olaru <vlad.olaru@pixelgrade.com>\n"
 "Language-Team: PixelGrade <contact@pixelgrade.com>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.7.5\n"
 "X-Poedit-KeywordsList: __;_e;_x;_n_noop:1,2;_xn;_ex;_nx_noop:1,2;"
 "translate_nooped_plural;_n:1,2;_nx:1,2\n"
 "X-Poedit-Basepath: ..\n"
@@ -1685,7 +1685,7 @@ msgstr "Autoren"
 
 #: woocommerce/loop/result-count.php:28
 msgid "All Products"
-msgstr "Alle Projekte"
+msgstr "Alle Produkte"
 
 #: woocommerce/loop/sale-flash.php:18
 #: woocommerce/single-product/sale-flash.php:16
