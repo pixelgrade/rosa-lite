@@ -439,11 +439,8 @@ function updateStuff() {
     DownArrow.update();
     CoverAnimation.update();
 
-    if (!Modernizr.touchevents && windowWidth >= 900) {
-        Navigator.update();
-    }
-
     if ( windowWidth >= 900 ) {
+        Navigator.update();
         StickyHeader.update();
     }
 }
