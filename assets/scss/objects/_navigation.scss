@@ -658,3 +658,22 @@ $nav-width: 84vw;
 	}
 }
 
+// Treat the case in which there are so
+// many menu items that they exceed the viewport
+@include media-query(lap-and-up) {
+	.navigation--main {
+		flex-wrap: nowrap;
+	}
+
+	.navigation--main > .nav--items-menu {
+		flex-shrink: 1;
+		text-align: center;
+	}
+
+	ul.nav.nav--items-social,
+	.nav--woocommerce {
+		display: flex;
+		align-items: center;
+	}
+}
+
