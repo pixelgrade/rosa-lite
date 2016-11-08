@@ -10,7 +10,7 @@ function magnificPopupInit() {
 			tPrev: objectl10n.tPrev,
 			tNext: objectl10n.tNext,
 			tCounter: objectl10n.tCounter,
-			delegate: 'a[href$=".jpg"], a[href$=".jpeg"], a[href$=".png"], a[href$=".gif"]', // the container for each your gallery items
+			delegate: 'a[href*=".jpg"], a[href*=".jpeg"], a[href*=".png"], a[href*=".gif"]', // the container for each your gallery items
 			type: 'image',
 			closeOnContentClick: false,
 			closeBtnInside: false,
