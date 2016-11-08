@@ -1,7 +1,6 @@
 <?php
 /**
  * The template for displaying the subpages.
-
  */
 
 global $post, $wpgrade_private_post, $footer_needs_big_waves;
@@ -19,6 +18,9 @@ if ( rosa_page_has_children() ) {
 	$pages = get_pages( $args );
 
 	foreach ( $pages as $post ) : setup_postdata( $post );
+
+		rosa_multipage_the_subpage_anchor();
+
 		if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 			// password protection
 			get_template_part( 'template-parts/password-request-form' );

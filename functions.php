@@ -278,6 +278,11 @@ require get_template_directory() . '/inc/integrations.php';
 require get_template_directory() . '/inc/customify.php';
 
 /**
+ * Load the custom logic for multipages
+ */
+require get_template_directory() . '/inc/multipages.php';
+
+/**
  * Load Recommended/Required plugins notification
  */
 require get_template_directory() . '/inc/required-plugins/required-plugins.php';
