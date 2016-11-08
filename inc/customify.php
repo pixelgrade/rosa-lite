@@ -54,9 +54,9 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							'label'   => esc_html__( 'Widget Column width', 'rosa' ),
 							'type'    => 'select',
 							'choices' => array(
-								'one-third'  => 'One third',
-								'two-thirds' => 'Two thirds',
-								'one-whole'  => 'Whole',
+								'one-third'  => esc_html__('One third', 'rosa'),
+								'two-thirds' => esc_html__('Two thirds', 'rosa'),
+								'one-whole'  => esc_html__('Whole', 'rosa'),
 							),
 							'default' => 'one_third',
 						),
@@ -84,23 +84,40 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 				),
 
 				'share_settings' => array(
-					'title'    => __( 'Sharing', 'lens' ),
+					'title'    => __( 'Sharing', 'rosa' ),
 					'options' => array(
 						'share_buttons_settings'        => array(
 							'type'    => 'textarea',
-							'label'   => esc_html__( 'Share Services', 'border' ),
+							'label'   => esc_html__( 'Share Services', 'rosa' ),
 							'default' => 'more,preferred,preferred,preferred,preferred',
-							'desc'    => __( '<p>Add the share services, delimited by a single comma (no spaces). You can find the full list of services <a href="http://www.addthis.com/services/list">here</a>.</p>
-								Notes:
+							'desc'    => sprintf( '
+								<p>%s <a href="http://www.addthis.com/services/list">%s</a>%s</p>
+								%s
 								<ul>
-								<li>— use the <span style="text-decoration:underline;"><strong>more</strong></span> tag to show the plus sign</li>
-								<li>— use the <span style="text-decoration:underline;"><strong>counter</strong></span> for a global share counter</li>
-								<li>— use the <span style="text-decoration:underline;"><strong>preferred</strong></span> tag&nbsp;to show your visitors a personalized lists of buttons (read <a href="http://www.addthis.com/academy/preferred-services-personalization/">more</a>)</li>
-								</ul>')
+								<li>%s <span style="text-decoration:underline;"><strong>%s</strong></span> %s</li>
+								<li>%s <span style="text-decoration:underline;"><strong>%s</strong></span> %s</li>
+								<li>%s <span style="text-decoration:underline;"><strong>%s</strong></span> %s <a href="http://www.addthis.com/academy/preferred-services-personalization/">%s</a>%s</li>
+								</ul>',
+								esc_html__( 'Add the share services, delimited by a single comma (no spaces). You can find the full list of services', 'rosa'),
+								esc_html__( 'here', 'rosa' ),
+								esc_html__( '.', 'rosa' ),
+								esc_html__( 'Notes:', 'rosa' ),
+								esc_html__( '— use the', 'rosa' ),
+								esc_html__( 'more', 'rosa' ),
+								esc_html__( 'tag to show the plus sign', 'rosa' ),
+								esc_html__( '— use the', 'rosa' ),
+								esc_html__( 'counter', 'rosa' ),
+								esc_html__( 'for a global share counter', 'rosa' ),
+								esc_html__( '— use the', 'rosa' ),
+								esc_html__( 'preferred', 'rosa' ),
+								esc_html__( 'tag&nbsp;to show your visitors a personalized lists of buttons (read', 'rosa' ),
+								esc_html__( 'more', 'rosa' ),
+								esc_html__( ')', 'rosa')
+							)
 						),
 						'share_buttons_enable_tracking' => array(
 							'type'    => 'checkbox',
-							'label'   => esc_html__( 'Enable AddThis Sharing Analytics', 'border' ),
+							'label'   => esc_html__( 'Enable AddThis Sharing Analytics', 'rosa' ),
 							'default' => 0,
 						),
 
@@ -108,23 +125,28 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 
 						'share_buttons_enable_addthis_tracking'   => array(
 							'type'    => 'checkbox',
-							'label'   => esc_html__( 'Enable AddThis Tracking', 'border' ),
+							'label'   => esc_html__( 'Enable AddThis Tracking', 'rosa' ),
 							'default' => 0,
 							//'required' => array( 'share_buttons_enable_tracking', '=', 1 ),
 						),
 
 						'share_buttons_addthis_username'          => array(
 							'type'    => 'text',
-							'label'   => esc_html__( 'AddThis Username', 'border' ),
+							'label'   => esc_html__( 'AddThis Username', 'rosa' ),
 							'default' => 'more,preferred,preferred,preferred,preferred',
-							'desc'    => esc_html__( 'Enter here your AddThis username so you will receive analytics data.', 'border' ),
+							'desc'    => esc_html__( 'Enter here your AddThis username so you will receive analytics data.', 'rosa' ),
 							//'required' => array( 'share_buttons_enable_addthis_tracking', '=', 1 ),
 						),
 
 						'share_buttons_enable_ga_tracking'        => array(
 							'type'    => 'checkbox',
-							'label'   => esc_html__( 'AddThis Google Analytics Tracking', 'border' ),
-							'desc'    => __( 'Read more on <a href="http://bit.ly/1kxPg7K">Integrating with Google Analytics</a> article.'),
+							'label'   => esc_html__( 'AddThis Google Analytics Tracking', 'rosa' ),
+							'desc'    => sprintf(
+								'%s <a href="http://bit.ly/1kxPg7K">%s</a> %s',
+								esc_html__( 'Read more on', 'rosa' ),
+								esc_html__( 'Integrating with Google Analytics', 'rosa' ),
+								esc_html__( 'article.', 'rosa' )
+								),
 							'default' => 0,
 							//'required' => array( 'share_buttons_enable_tracking', '=', 1 ),
 						),
@@ -140,7 +162,12 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'share_buttons_enable_ga_social_tracking'        => array(
 							'type'    => 'checkbox',
 							'label'   => esc_html__( 'GA Social Tracking', 'rosa' ),
-							'desc' =>  __( 'If you are using the latest version of GA code, you can take advantage of Google\'s new <a href="http://bit.ly/1iVvkbk">social interaction analytics</a>.', 'rosa' ),
+							'desc' =>  sprintf(
+								'%s <a href="http://bit.ly/1iVvkbk"></a>%s',
+								esc_html__( 'If you are using the latest version of GA code, you can take advantage of Google\'s new', 'rosa'),
+								esc_html__( 'social interaction analytics', 'rosa' ),
+								esc_html__( '.', 'rosa')
+								),
 							'default' => 0,
 							//'required' => array( 'share_buttons_enable_ga_tracking', '=', 1 ),
 						),
@@ -449,8 +476,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							'type'    => 'select',
 							'label'   => __( 'Scroll Down Arrow Style', 'rosa' ),
 							'choices' => array(
-								'transparent' => 'Transparent',
-								'bubble'      => 'Bubble',
+								'transparent' => esc_html__( 'Transparent', 'rosa' ),
+								'bubble'      => esc_html__( 'Bubble', 'rosa' ),
 							),
 							'default' => 'transparent',
 						),
@@ -460,8 +487,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							'label'   => __( 'Slideshow Arrows', 'rosa' ),
 							// 'desc'    => __( 'Select which type of arrows you want on page headers.', 'rosa' ),
 							'choices' => array(
-								'static' => 'Always Show',
-								'hover'  => 'Show On Hover'
+								'static' => esc_html__( 'Always Show', 'rosa' ),
+								'hover'  => esc_html__( 'Show On Hover', 'rosa' )
 							),
 							'default' => 'static',
 						),
@@ -474,9 +501,9 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							'type'    => 'select',
 							'label'   => __( 'Footer Widget Area Style', 'rosa' ),
 							'choices' => array(
-								'light'  => 'Light',
-								'dark'   => 'Dark',
-								'accent' => 'Accent Color',
+								'light'  => esc_html__( 'Light', 'rosa' ),
+								'dark'   => esc_html__( 'Dark', 'rosa' ),
+								'accent' => esc_html__( 'Accent Color', 'rosa' ),
 							),
 							'default' => 'dark',
 							'css' => array(
@@ -491,9 +518,9 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							'type'    => 'select',
 							'label'   => __( 'Footer Bottom Bar Style', 'rosa' ),
 							'choices' => array(
-								'light'  => 'Light',
-								'dark'   => 'Dark',
-								'accent' => 'Accent Color',
+								'light'  => esc_html__( 'Light', 'rosa' ),
+								'dark'   => esc_html__( 'Dark', 'rosa' ),
+								'accent' => esc_html__( 'Accent Color', 'rosa' ),
 							),
 							'default' => 'dark',
 						),
@@ -505,7 +532,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 
 		$config['sections'] = array(
 			'colors_section' => array(
-				'title'       => '&#x1f3a8; ' . esc_html__( 'Colors', 'customify_txtd' ),
+				'title'       => '&#x1f3a8; ' . esc_html__( 'Colors', 'rosa' ),
 				'priority'    => 3,
 				'description' => esc_html__( 'Use the color picker to change the main color of the site to match your brand color. If you want to override the color of some elements you can always use CSS editor panel.', 'rosa' ),
 				'options'     => array(
@@ -578,7 +605,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'text_color'     => array(
 						'type'    => 'color',
-						'label'   => __( 'Text Color', 'rosa' ),
+						'label'   => esc_html__( 'Text Color', 'rosa' ),
 						'live'    => true,
 						'default' => '#515150',
 						'css'     => array(
@@ -594,7 +621,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'headings_color' => array(
 						'type'    => 'color',
-						'label'   => __( 'Headings Color', 'rosa' ),
+						'label'   => esc_html__( 'Headings Color', 'rosa' ),
 						'live'    => true,
 						'default' => '#262526',
 						'css'     => array(
@@ -606,7 +633,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'navlink_color' => array(
 						'type'    => 'color',
-						'label'   => __( 'Nav Links Color', 'rosa' ),
+						'label'   => esc_html__( 'Nav Links Color', 'rosa' ),
 						'live'    => true,
 						'default' => '#262526',
 						'css'     => array(
@@ -621,7 +648,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'cover_text'     => array(
 						'type'    => 'color',
-						'label'   => __( 'Cover Color', 'rosa' ),
+						'label'   => esc_html__( 'Cover Color', 'rosa' ),
 						'live'    => true,
 						'default' => '#ffffff',
 						'css'     => array(
@@ -635,7 +662,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 
 					'header_background_color' => array(
 						'type'    => 'color',
-						'label'   => __( 'Header Color', 'rosa' ),
+						'label'   => esc_html__( 'Header Color', 'rosa' ),
 						'live'    => true,
 						'default' => '#ffffff',
 						'css'     => array(
@@ -647,15 +674,15 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'header_image_pattern'    => array(
 						'type'  => 'custom_background',
-						'label' => __( 'Header Background', 'rosa' ),
-						'desc'  => __( 'Container background with image.', 'rosa' ),
+						'label' => esc_html__( 'Header Background', 'rosa' ),
+						'desc'  => esc_html__( 'Container background with image.', 'rosa' ),
 						'output' => array( ".site-header, .site-header.headroom--not-top" ),
 					),
 
 
 					'content_background_color' => array(
 						'type'    => 'color',
-						'label'   => __( 'Content Color', 'rosa' ),
+						'label'   => esc_html__( 'Content Color', 'rosa' ),
 						'live'    => true,
 						'default' => '#ffffff',
 						'css'     => array(
@@ -667,8 +694,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'container_image_pattern' => array(
 						'type'  => 'custom_background',
-						'label' => __( 'Header Background', 'rosa' ),
-						'desc'  => __( 'Container background with image.', 'rosa' ),
+						'label' => esc_html__( 'Header Background', 'rosa' ),
+						'desc'  => esc_html__( 'Container background with image.', 'rosa' ),
 						'output' => array( '.page .article__content, html' ),
 					),
 
@@ -777,11 +804,11 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 			'sections' => array(
 
 				'headers_typography_section' => array(
-					'title'   => __( 'Headings', 'rosa' ),
+					'title'   => esc_html__( 'Headings', 'rosa' ),
 					'options' => array(
 						'google_titles_font'         => array(
 							'type'             => 'typography',
-							'label'            => __( 'Headings', 'rosa' ),
+							'label'            => esc_html__( 'Headings', 'rosa' ),
 							// 'desc'             => __( 'Font for titles and headings.', 'rosa' ),
 							'default'          => array( 'Source Sans Pro' ),
 							'recommended'      => array(
@@ -796,7 +823,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 
 						'google_subtitles_font'      => array(
 							'type'        => 'typography',
-							'label'       => __( 'Sub Headings', 'rosa' ),
+							'label'       => esc_html__( 'Sub Headings', 'rosa' ),
 							// 'desc'        => __( 'Font for titles and headings.', 'rosa' ),
 							'default'     => array( 'Herr Von Muellerhoff' ),
 							'recommended' => array(
@@ -808,7 +835,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'subheadings_bottom-spacing' => array(
 							'type'        => 'range',
-							'label'       => __( 'Bottom Spacing', 'rosa' ),
+							'label'       => esc_html__( 'Bottom Spacing', 'rosa' ),
 							'live'        => true,
 							'default'     => '-38',
 							'input_attrs' => array(
@@ -827,7 +854,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'subheadings_first-letter'   => array(
 							'type'        => 'range',
-							'label'       => __( 'First Letter Offset', 'rosa' ),
+							'label'       => esc_html__( 'First Letter Offset', 'rosa' ),
 							'live'        => true,
 							'default'     => 9,
 							'input_attrs' => array(
@@ -848,12 +875,12 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 				),
 
 				'nav_typography_section' => array(
-					'title'   => __( 'Navigation', 'rosa' ),
+					'title'   => esc_html__( 'Navigation', 'rosa' ),
 					'options' => array(
 						'google_nav_font'     => array(
 							'type'        => 'typography',
-							'label'       => __( 'Navigation', 'rosa' ),
-							'desc'        => __( 'Font for the navigation menu.', 'rosa' ),
+							'label'       => esc_html__( 'Navigation', 'rosa' ),
+							'desc'        => esc_html__( 'Font for the navigation menu.', 'rosa' ),
 							'default'     => array( 'Cabin' ),
 							'recommended' => array(
 								'Cabin',
@@ -864,7 +891,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'nav_font-size'       => array(
 							'type'        => 'range',
-							'label'       => __( 'Font Size', 'rosa' ),
+							'label'       => esc_html__( 'Font Size', 'rosa' ),
 							'live'        => true,
 							'default'     => 13,
 							'input_attrs' => array(
@@ -883,7 +910,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'nav_letter-spacing'  => array(
 							'type'        => 'range',
-							'label'       => __( 'Letter Spacing', 'rosa' ),
+							'label'       => esc_html__( 'Letter Spacing', 'rosa' ),
 							'live'        => true,
 							'default'     => 1,
 							'input_attrs' => array(
@@ -902,12 +929,12 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'nav_text-transform'  => array(
 							'type'    => 'select',
-							'label'   => __( 'Text Transform', 'rosa' ),
+							'label'   => esc_html__( 'Text Transform', 'rosa' ),
 							'choices' => array(
-								'none'       => 'None',
-								'capitalize' => 'Capitalize',
-								'uppercase'  => 'Uppercase',
-								'lowercase'  => 'Lowercase',
+								'none'       => esc_html__( 'None', 'rosa' ),
+								'capitalize' => esc_html__( 'Capitalize', 'rosa' ),
+								'uppercase'  => esc_html__( 'Uppercase', 'rosa' ),
+								'lowercase'  => esc_html__( 'Lowercase', 'rosa' ),
 							),
 							'default' => 'uppercase',
 							'css'     => array(
@@ -919,11 +946,11 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'nav_text-decoration' => array(
 							'type'    => 'select',
-							'label'   => __( 'Text Decoration', 'rosa' ),
+							'label'   => esc_html__( 'Text Decoration', 'rosa' ),
 							'choices' => array(
-								'none'      => 'None',
-								'underline' => 'Underline',
-								'overline'  => 'Overline',
+								'none'      => esc_html__( 'None', 'rosa' ),
+								'underline' => esc_html__( 'Underline', 'rosa' ),
+								'overline'  => esc_html__( 'Overline', 'rosa' ),
 							),
 							'default' => 'none',
 							'css'     => array(
@@ -937,12 +964,12 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 				),
 
 				'content_typography_section' => array(
-					'title'   => __( 'Body', 'rosa' ),
+					'title'   => esc_html__( 'Body', 'rosa' ),
 					'options' => array(
 						'google_body_font' => array(
 							'type'             => 'typography',
-							'label'            => __( 'Body', 'rosa' ),
-							'desc'             => __( 'Font for content and widget text.', 'rosa' ),
+							'label'            => esc_html__( 'Body', 'rosa' ),
+							'desc'             => esc_html__( 'Font for content and widget text.', 'rosa' ),
 							'default'          => array( 'Cabin' ),
 							'recommended'      => array(
 								'Cabin',
@@ -955,7 +982,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'body-font-size'   => array(
 							'type'        => 'range',
-							'label'       => __( 'Font Size', 'rosa' ),
+							'label'       => esc_html__( 'Font Size', 'rosa' ),
 							'live'        => true,
 							'default'     => 16,
 							'input_attrs' => array(
@@ -974,7 +1001,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'body-line-height' => array(
 							'type'        => 'range',
-							'label'       => __( 'Line Height', 'rosa' ),
+							'label'       => esc_html__( 'Line Height', 'rosa' ),
 							'live'        => true,
 							'default'     => '1.7',
 							'input_attrs' => array(
