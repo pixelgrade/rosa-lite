@@ -75,7 +75,7 @@ gulp.task('style.css', ['assets/css'], function () {
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
-        .pipe(chmod(644))
+        // .pipe(chmod(644))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('.'));
 });
@@ -85,7 +85,7 @@ gulp.task('assets/css', function () {
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
-		.pipe(chmod(644))
+		// .pipe(chmod(644))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./assets/css'));
 });
@@ -122,7 +122,7 @@ gulp.task('scripts-server', function () {
 	return gulp.src(jsFiles)
 			.pipe(concat('main.js'))
 			// .pipe(uglify())
-			.pipe(chmod(644))
+			// .pipe(chmod(644))
 			.pipe(gulp.dest('./assets/js/'));
 });
 

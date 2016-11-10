@@ -1,15 +1,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ROSA - An Exquisite Restaurant Wordpress Theme\n"
-"POT-Creation-Date: 2016-02-22 17:33+0200\n"
-"PO-Revision-Date: 2016-02-22 17:33+0200\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/rosa\n"
+"POT-Creation-Date: 2016-11-08 00:38+0200\n"
+"PO-Revision-Date: 2016-11-08 00:38+0200\n"
 "Last-Translator: Vlad Olaru <vlad.olaru@pixelgrade.com>\n"
 "Language-Team: PixelGrade <contact@pixelgrade.com>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;_n_noop:1,2;_xn;_ex;_nx_noop:1,2;"
 "translate_nooped_plural;_n:1,2;_nx:1,2;__ngettext:1,2;__ngettext_noop:1,2\n"
 "X-Poedit-Basepath: ..\n"
@@ -43,8 +44,7 @@ msgstr "Yazar"
 msgid "Website"
 msgstr "Web Sitesi"
 
-#: comments.php:28
-#, php-format
+#: comments.php:27
 msgid "<span class=\"comment-number total\">1</span> Comment"
 msgid_plural "<span class=\"comment-number total\">%1$s</span>Comments"
 msgstr[0] ""
@@ -90,7 +90,9 @@ msgstr "E-Postanız"
 msgid "your@email.com"
 msgstr ""
 
-#: comments.php:102 comments.php:119 woocommerce/single-product-reviews.php:70
+#: comments.php:102 comments.php:119
+#: inc/import/wordpress-importer/wordpress-importer.php:291
+#: woocommerce/single-product-reviews.php:70
 msgid "Submit"
 msgstr "Onayla"
 
@@ -106,131 +108,158 @@ msgstr "Düşünceleriniz"
 msgid "Url"
 msgstr ""
 
-#: functions.php:157
+#: functions.php:171
 msgid "Previous (Left arrow key)"
 msgstr ""
 
-#: functions.php:158
+#: functions.php:172
 msgid "Next (Right arrow key)"
 msgstr ""
 
-#: functions.php:159
+#: functions.php:173
 msgid "of"
 msgstr ""
 
-#: functions.php:175
-msgid ""
-"The import didn't work completely! <br/> Check out the errors given. You "
-"might want to try reloading the page and then try again."
+#: functions.php:189
+msgid "The import didn't work completely!"
 msgstr ""
 
-#: functions.php:176
+#: functions.php:189
+msgid "Check out what could be wrong here."
+msgstr ""
+
+#: functions.php:190
 msgid ""
 "Importing the demo data will overwrite your current Theme Options settings. "
 "Proceed anyway?"
 msgstr ""
 
-#: functions.php:177
+#: functions.php:191
 msgid "Phew...that was a hard one!"
 msgstr ""
 
-#: functions.php:178
-msgid ""
-"The demo data was imported without a glitch! Awesome! <br/><br/><b style="
-"\"color:red\">Remember to update the passwords and roles of imported users. "
-"</b><br/><br/><i>We will now reload the page so you can see the brand new "
-"data!</i>"
+#: functions.php:192
+msgid "The demo data was imported without a glitch! Awesome!"
 msgstr ""
 
-#: functions.php:179
+#: functions.php:193
 msgid "All done!"
 msgstr ""
 
-#: functions.php:180
+#: functions.php:194
 msgid "Working..."
 msgstr ""
 
-#: functions.php:181
+#: functions.php:195
 msgid "The setting up of the demo widgets failed..."
 msgstr ""
 
-#: functions.php:182
+#: functions.php:196
 msgid ""
 "The setting up of the demo widgets failed</i><br />(The script returned the "
 "following message"
 msgstr ""
 
-#: functions.php:183
+#: functions.php:197
 msgid "Finished setting up the demo widgets..."
 msgstr ""
 
-#: functions.php:184 functions.php:187
+#: functions.php:198 functions.php:201
 msgid "The importing of the theme options has failed..."
 msgstr ""
 
-#: functions.php:185
+#: functions.php:199
 msgid ""
 "The importing of the theme options has failed</i><br />(The script returned "
 "the following message"
 msgstr ""
 
-#: functions.php:186
+#: functions.php:200
 msgid "Finished importing the demo theme options..."
 msgstr ""
 
-#: functions.php:188
+#: functions.php:202
 msgid "Importing posts | Step"
 msgstr ""
 
-#: functions.php:189
+#: functions.php:203
 msgid "Error:"
 msgstr ""
 
-#: functions.php:190
+#: functions.php:204
 msgid "You can reload the page and try again."
 msgstr ""
 
-#: functions.php:352
+#: functions.php:379 functions.php:429
 msgid ""
 "A <strong>valid purchase code</strong> is required for automatic updates."
 msgstr ""
 
-#: functions.php:366
+#: functions.php:390 functions.php:440
+msgid "Purchase code not updated. We will keep the existing one."
+msgstr ""
+
+#: functions.php:393 functions.php:443
 msgid ""
 "Your <strong>purchase code is valid</strong>. Thank you! Enjoy one-click "
 "automatic updates."
 msgstr ""
 
-#: functions.php:374
+#: functions.php:400 functions.php:450
+msgid "Purchase code ( e.g. 9g2b13fa-10aa-2267-883a-9201a94cf9b5 )"
+msgstr ""
+
+#: functions.php:401 functions.php:451
 msgid "Enter your purchase code and <strong>hit return/enter</strong>."
 msgstr ""
 
-#: functions.php:376
+#: functions.php:403 functions.php:452
 msgid ""
 "Find out how to <a href=\"https://help.market.envato.com/hc/en-us/"
 "articles/202822600-Where-Is-My-Purchase-Code-\" target=\"_blank\">get your "
 "purchase code</a>."
 msgstr ""
 
-#: functions.php:412
+#: functions.php:468
 msgid ""
-"We are sorry but we couldn't connect to the verification server. Please try "
-"again later.<span class=\"hidden\">"
+"<a href=\"%s\">Please enter your purchase code</a> to get automatic updates "
+"for <b>%s</b>."
 msgstr ""
 
-#: header.php:133
+#: functions.php:514
+msgid ""
+"We are sorry but we couldn't connect to the verification server. Please try "
+"again later."
+msgstr ""
+
+#: functions.php:527
+msgid ""
+"Your purchase's support period has ended. Please extend it to receive "
+"automatic updates."
+msgstr ""
+
+#: functions.php:529
+msgid "Could not find a sale with this purchase code. Please double check."
+msgstr ""
+
+#: functions.php:536
+msgid ""
+"Please enter a valid purchase code. Make sure to get all the characters."
+msgstr ""
+
+#: header.php:135
 msgid "Primary Navigation"
 msgstr ""
 
-#: header.php:177 woocommerce/cart/mini-cart.php:37
+#: header.php:179 woocommerce/cart/mini-cart.php:37
 msgid "View Cart"
 msgstr ""
 
-#: header.php:180 woocommerce/cart/mini-cart.php:38
+#: header.php:182 woocommerce/cart/mini-cart.php:38
 msgid "Checkout"
 msgstr ""
 
-#: inc/activation.php:27
+#: inc/activation.php:27 inc/customify.php:15
 msgid "General"
 msgstr ""
 
@@ -449,224 +478,576 @@ msgstr ""
 msgid "Allow us to change the map colors to better match your website."
 msgstr ""
 
-#: inc/customify.php:75
-msgid "Share Settings"
+#: inc/customify.php:11
+msgid "Theme Options"
 msgstr ""
 
-#: inc/customify.php:80
-msgid "Share Services"
+#: inc/customify.php:19
+msgid "Logo"
 msgstr ""
 
-#: inc/customify.php:81
-msgid ""
-"Add here the share services you want to use, single comma delimited (no "
-"spaces). You can find the full <a href=\"http://www.addthis.com/services/list"
-"\" target=\"_blank\">list of services</a>. Also you can use the more tag to "
-"show the plus sign and the counter tag to show a global share counter.More "
-"about this here: <a href=\"http://bit.ly/1fLP69i\">http://bit.ly/1fLP69i</a>."
+#: inc/customify.php:23
+msgid "Inverted Logo"
 msgstr ""
 
-#: inc/customify.php:94
-msgid ""
-"Do you want to enable AddThis tracking? This will all you to see sharing "
-"analytics in your AddThis account (see more here: <a href=\"http://bit."
-"ly/1oe5zad\">bit.ly/1oe5zad</a>)"
+#: inc/customify.php:27
+msgid "Smooth Scrolling"
 msgstr ""
 
-#: inc/customify.php:110
-msgid ""
-"Do you want to enable the AddThis - Google Analytics tracking integration? "
-"See more about this here: <a href=\"http://bit.ly/1kxPg7K\">bit.ly/1kxPg7K</"
-"a>"
+#: inc/customify.php:31
+msgid "Enable Smooth Scrolling."
 msgstr ""
 
-#: inc/customify.php:126
-msgid ""
-"If you are using the latest version of GA code, you can take advantage of "
-"Google's new <a href=\"http://bit.ly/1iVvkbk\">social interaction analytics</"
-"a>."
-msgstr ""
-
-#: inc/customify.php:163
-msgid "Import demo data"
-msgstr ""
-
-#: inc/customify.php:281
-msgid "Layout Elements"
-msgstr ""
-
-#: inc/customify.php:291
-msgid "Accent Color"
-msgstr ""
-
-#: inc/customify.php:352
-msgid "Text Color"
-msgstr ""
-
-#: inc/customify.php:368
-msgid "Headings Color"
-msgstr ""
-
-#: inc/customify.php:380
-msgid "Cover Color"
-msgstr ""
-
-#: inc/customify.php:395
-msgid "Header"
-msgstr ""
-
-#: inc/customify.php:399
-msgid "Header Color"
-msgstr ""
-
-#: inc/customify.php:411 inc/customify.php:595
-msgid "Header Background"
-msgstr ""
-
-#: inc/customify.php:412 inc/customify.php:596
-msgid "Container background with image."
-msgstr ""
-
-#: inc/customify.php:418
-msgid "Logo Height"
-msgstr ""
-
-#: inc/customify.php:438
-msgid "Header Vertical Margins"
-msgstr ""
-
-#: inc/customify.php:479
-msgid "Menu Items Spacing"
-msgstr ""
-
-#: inc/customify.php:507
-msgid "Content"
-msgstr ""
-
-#: inc/customify.php:512
-msgid "Site Border Width"
-msgstr ""
-
-#: inc/customify.php:513
-msgid "Set the border width of the overall site"
-msgstr ""
-
-#: inc/customify.php:582
-msgid "Content Color"
-msgstr ""
-
-#: inc/customify.php:601
-msgid "Container Width"
-msgstr ""
-
-#: inc/customify.php:602
-msgid "Set the width of the container."
-msgstr ""
-
-#: inc/customify.php:621
-msgid "Sections Vertical Margins"
-msgstr ""
-
-#: inc/customify.php:648
-msgid "Sidebar Width"
-msgstr ""
-
-#: inc/customify.php:649
-msgid "Set the width of the sidebar."
-msgstr ""
-
-#: inc/customify.php:690
-msgid "Scroll Down Arrow Style"
-msgstr ""
-
-#: inc/customify.php:700
-msgid "Slideshow Arrows Style"
-msgstr ""
-
-#: inc/customify.php:701
-msgid "Select which type of arrows you want on page headers."
-msgstr ""
-
-#: inc/customify.php:711
+#: inc/customify.php:36 inc/customify.php:189 inc/customify.php:498
 msgid "Footer"
 msgstr ""
 
-#: inc/customify.php:715
+#: inc/customify.php:40
+msgid "Widget Area Number of Columns"
+msgstr ""
+
+#: inc/customify.php:41
+msgid "Select how many number of columns should the Footer widget area have."
+msgstr ""
+
+#: inc/customify.php:54
+msgid "Widget Column width"
+msgstr ""
+
+#: inc/customify.php:57
+msgid "One third"
+msgstr ""
+
+#: inc/customify.php:58
+msgid "Two thirds"
+msgstr ""
+
+#: inc/customify.php:59
+msgid "Whole"
+msgstr ""
+
+#: inc/customify.php:66
+msgid "Copyright Text"
+msgstr ""
+
+#: inc/customify.php:67
+msgid "2014 &copy; Handcrafted with love by"
+msgstr ""
+
+#: inc/customify.php:74
+msgid "Google Maps API key"
+msgstr ""
+
+#: inc/customify.php:78
+msgid ""
+"To use Google Maps you must authenticate your application with an API key"
+msgstr ""
+
+#: inc/customify.php:79
+msgid "Optain a key"
+msgstr ""
+
+#: inc/customify.php:80
+msgid ""
+"After you get the key, enable the \"Google Maps JavaScript API\" from the "
+"Overview tab"
+msgstr ""
+
+#: inc/customify.php:87
+msgid "Sharing"
+msgstr ""
+
+#: inc/customify.php:91
+msgid "Share Services"
+msgstr ""
+
+#: inc/customify.php:101
+msgid ""
+"Add the share services, delimited by a single comma (no spaces). You can "
+"find the full list of services"
+msgstr ""
+
+#: inc/customify.php:102
+msgid "here"
+msgstr ""
+
+#: inc/customify.php:103 inc/customify.php:169
+msgid "."
+msgstr ""
+
+#: inc/customify.php:104
+msgid "Notes:"
+msgstr ""
+
+#: inc/customify.php:105 inc/customify.php:108 inc/customify.php:111
+msgid "— use the"
+msgstr ""
+
+#: inc/customify.php:106 inc/customify.php:114
+msgid "more"
+msgstr ""
+
+#: inc/customify.php:107
+msgid "tag to show the plus sign"
+msgstr ""
+
+#: inc/customify.php:109
+msgid "counter"
+msgstr ""
+
+#: inc/customify.php:110
+msgid "for a global share counter"
+msgstr ""
+
+#: inc/customify.php:112
+msgid "preferred"
+msgstr ""
+
+#: inc/customify.php:113
+msgid "tag&nbsp;to show your visitors a personalized lists of buttons (read"
+msgstr ""
+
+#: inc/customify.php:115
+msgid ")"
+msgstr ""
+
+#: inc/customify.php:120
+msgid "Enable AddThis Sharing Analytics"
+msgstr ""
+
+#: inc/customify.php:128
+msgid "Enable AddThis Tracking"
+msgstr ""
+
+#: inc/customify.php:135
+msgid "AddThis Username"
+msgstr "AddThis Kullanıcı adı"
+
+#: inc/customify.php:137
+msgid "Enter here your AddThis username so you will receive analytics data."
+msgstr ""
+
+#: inc/customify.php:143
+msgid "AddThis Google Analytics Tracking"
+msgstr ""
+
+#: inc/customify.php:146
+msgid "Read more on"
+msgstr ""
+
+#: inc/customify.php:147
+msgid "Integrating with Google Analytics"
+msgstr ""
+
+#: inc/customify.php:148
+msgid "article."
+msgstr ""
+
+#: inc/customify.php:156
+msgid "GA Property ID"
+msgstr ""
+
+#: inc/customify.php:157
+msgid ""
+"Enter here your GA property ID (generally a serial number of the form UA-"
+"xxxxxx-x)."
+msgstr ""
+
+#: inc/customify.php:164
+msgid "GA Social Tracking"
+msgstr ""
+
+#: inc/customify.php:167
+msgid ""
+"If you are using the latest version of GA code, you can take advantage of "
+"Google's new"
+msgstr ""
+
+#: inc/customify.php:168
+msgid "social interaction analytics"
+msgstr ""
+
+#: inc/customify.php:178
+msgid "Custom JavaScript"
+msgstr ""
+
+#: inc/customify.php:183 inc/customify.php:233
+msgid "Header"
+msgstr ""
+
+#: inc/customify.php:184
+msgid ""
+"Easily add Custom Javascript code. This code will be loaded in the <head> "
+"section."
+msgstr ""
+
+#: inc/customify.php:190
+msgid ""
+"You can paste here your Google Analytics tracking code (or for what matters "
+"any tracking code) and we will put it on every page."
+msgstr ""
+
+#: inc/customify.php:197
+msgid "Demo Data"
+msgstr ""
+
+#: inc/customify.php:199
+msgid ""
+"If you would like to have a \"ready to go\" website as the Rosa's demo site, "
+"this is the button"
+msgstr ""
+
+#: inc/customify.php:207
+msgid ""
+"*Note: We cannot serve you the original images due to their license and "
+"copyright."
+msgstr ""
+
+#: inc/customify.php:207
+msgid "Import demo data"
+msgstr ""
+
+#: inc/customify.php:212
+msgid ""
+"Please wait a few minutes (between 1 and 3 minutes usually, but depending on "
+"your hosting it can take longer) and "
+msgstr ""
+
+#: inc/customify.php:212
+msgid "don't reload the page"
+msgstr ""
+
+#: inc/customify.php:212
+msgid "You will be notified as soon as the import has finished!"
+msgstr ""
+
+#: inc/customify.php:228
+msgid "&#x1f4bb; Layout"
+msgstr ""
+
+#: inc/customify.php:238
+msgid "Logo Height"
+msgstr ""
+
+#: inc/customify.php:262
+msgid "Header Vertical Margins"
+msgstr ""
+
+#: inc/customify.php:303
+msgid "Menu Items Spacing"
+msgstr ""
+
+#: inc/customify.php:331
+msgid "Content"
+msgstr ""
+
+#: inc/customify.php:336
+msgid "Site Border Width"
+msgstr ""
+
+#: inc/customify.php:388
+msgid "Container Width"
+msgstr ""
+
+#: inc/customify.php:408
+msgid "Sections Vertical Margins"
+msgstr ""
+
+#: inc/customify.php:435
+msgid "Sidebar Width"
+msgstr ""
+
+#: inc/customify.php:477
+msgid "Scroll Down Arrow Style"
+msgstr ""
+
+#: inc/customify.php:479
+msgid "Transparent"
+msgstr ""
+
+#: inc/customify.php:480
+msgid "Bubble"
+msgstr ""
+
+#: inc/customify.php:487
+msgid "Slideshow Arrows"
+msgstr ""
+
+#: inc/customify.php:490
+msgid "Always Show"
+msgstr ""
+
+#: inc/customify.php:491
+msgid "Show On Hover"
+msgstr ""
+
+#: inc/customify.php:502
 msgid "Footer Widget Area Style"
 msgstr ""
 
-#: inc/customify.php:732
+#: inc/customify.php:504 inc/customify.php:521
+msgid "Light"
+msgstr ""
+
+#: inc/customify.php:505 inc/customify.php:522
+msgid "Dark"
+msgstr ""
+
+#: inc/customify.php:506 inc/customify.php:523 inc/customify.php:541
+msgid "Accent Color"
+msgstr ""
+
+#: inc/customify.php:519
 msgid "Footer Bottom Bar Style"
 msgstr ""
 
-#: inc/customify.php:750 inc/customify.php:754
+#: inc/customify.php:535
+msgid "Colors"
+msgstr ""
+
+#: inc/customify.php:537
+msgid ""
+"Use the color picker to change the main color of the site to match your "
+"brand color. If you want to override the color of some elements you can "
+"always use CSS editor panel."
+msgstr ""
+
+#: inc/customify.php:608
+msgid "Text Color"
+msgstr ""
+
+#: inc/customify.php:624
+msgid "Headings Color"
+msgstr ""
+
+#: inc/customify.php:636
+msgid "Nav Links Color"
+msgstr ""
+
+#: inc/customify.php:651
+msgid "Cover Color"
+msgstr ""
+
+#: inc/customify.php:665
+msgid "Header Color"
+msgstr ""
+
+#: inc/customify.php:677 inc/customify.php:697
+msgid "Header Background"
+msgstr ""
+
+#: inc/customify.php:678 inc/customify.php:698
+msgid "Container background with image."
+msgstr ""
+
+#: inc/customify.php:685
+msgid "Content Color"
+msgstr ""
+
+#: inc/customify.php:705
+msgid "Blog"
+msgstr ""
+
+#: inc/customify.php:710
+msgid "Single Post"
+msgstr ""
+
+#: inc/customify.php:714
+msgid "Show Author Info Box"
+msgstr ""
+
+#: inc/customify.php:720
+msgid "Sharing Buttons"
+msgstr ""
+
+#: inc/customify.php:724
+msgid "Show Share Buttons in Posts"
+msgstr ""
+
+#: inc/customify.php:730
+msgid "Comments"
+msgstr "Yorumlar"
+
+#: inc/customify.php:734
+msgid "Show Comments Avatars"
+msgstr ""
+
+#: inc/customify.php:740
+msgid "Show Comments Numbers"
+msgstr ""
+
+#: inc/customify.php:746
+msgid "Sidebar"
+msgstr ""
+
+#: inc/customify.php:751
+msgid "Show the main sidebar in the single post pages."
+msgstr ""
+
+#: inc/customify.php:757
+msgid "Blog Archive"
+msgstr ""
+
+#: inc/customify.php:762
+msgid "Read More Text"
+msgstr ""
+
+#: inc/customify.php:763
+msgid "Read more"
+msgstr "Daha fazla oku"
+
+#: inc/customify.php:768
+msgid "Excerpt \"More\" Text"
+msgstr ""
+
+#: inc/customify.php:769
+msgid ".."
+msgstr ""
+
+#: inc/customify.php:774
+msgid "Excerpt Length"
+msgstr ""
+
+#: inc/customify.php:775
+msgid "Set the number of characters for posts excerpt."
+msgstr ""
+
+#: inc/customify.php:781
+msgid "Posts Meta Informations"
+msgstr ""
+
+#: inc/customify.php:786
+msgid "Display the post publish date."
+msgstr ""
+
+#: inc/customify.php:792
+msgid "Change spaces, commas or slashes with a custom dot."
+msgstr ""
+
+#: inc/customify.php:802
+msgid "Fonts"
+msgstr ""
+
+#: inc/customify.php:807 inc/customify.php:811
 msgid "Headings"
 msgstr ""
 
-#: inc/customify.php:755 inc/customify.php:773
-msgid "Font for titles and headings."
-msgstr ""
-
-#: inc/customify.php:772
+#: inc/customify.php:826
 msgid "Sub Headings"
 msgstr ""
 
-#: inc/customify.php:784
+#: inc/customify.php:838
 msgid "Bottom Spacing"
 msgstr ""
 
-#: inc/customify.php:803
+#: inc/customify.php:857
 msgid "First Letter Offset"
 msgstr ""
 
-#: inc/customify.php:824 inc/customify.php:828
+#: inc/customify.php:878 inc/customify.php:882
 msgid "Navigation"
 msgstr ""
 
-#: inc/customify.php:829
+#: inc/customify.php:883
 msgid "Font for the navigation menu."
 msgstr ""
 
-#: inc/customify.php:840 inc/customify.php:931
+#: inc/customify.php:894 inc/customify.php:985
 msgid "Font Size"
 msgstr ""
 
-#: inc/customify.php:859
+#: inc/customify.php:913
 msgid "Letter Spacing"
 msgstr ""
 
-#: inc/customify.php:878
+#: inc/customify.php:932
 msgid "Text Transform"
 msgstr ""
 
-#: inc/customify.php:895
+#: inc/customify.php:934 inc/customify.php:951
+msgid "None"
+msgstr ""
+
+#: inc/customify.php:935
+msgid "Capitalize"
+msgstr ""
+
+#: inc/customify.php:936
+msgid "Uppercase"
+msgstr ""
+
+#: inc/customify.php:937
+msgid "Lowercase"
+msgstr ""
+
+#: inc/customify.php:949
 msgid "Text Decoration"
 msgstr ""
 
-#: inc/customify.php:913 inc/customify.php:917
+#: inc/customify.php:952
+msgid "Underline"
+msgstr ""
+
+#: inc/customify.php:953
+msgid "Overline"
+msgstr ""
+
+#: inc/customify.php:967 inc/customify.php:971
 msgid "Body"
 msgstr ""
 
-#: inc/customify.php:918
+#: inc/customify.php:972
 msgid "Font for content and widget text."
 msgstr ""
 
-#: inc/customify.php:950
+#: inc/customify.php:1004
 msgid "Line Height"
 msgstr ""
 
-#: inc/customify.php:990
+#: inc/customify.php:1036
+msgid "WooCommerce"
+msgstr ""
+
+#: inc/customify.php:1040
+msgid "WooCommerce Support"
+msgstr ""
+
+#: inc/customify.php:1044
 msgid "Enable WooCommerce Support"
+msgstr ""
+
+#: inc/customify.php:1045
+msgid "Turn this off to avoid loading the WooCommerce assets (CSS and JS)."
+msgstr ""
+
+#: inc/customify.php:1050
+msgid "Show cart menu in main navigation"
 msgstr ""
 
 #: inc/customizer.php:19
 msgid "Display Site Title &amp; Tagline"
 msgstr ""
 
+#: inc/extras.php:174 inc/extras.php:181
+msgid "Wrong Password"
+msgstr ""
+
 #: inc/extras.php:194
 msgid ""
 "This post is password protected. To view it please enter your password below:"
 msgstr ""
+
+#: inc/extras.php:197 template-parts/password-request-form.php:24
+msgid "Password"
+msgstr "Şifre"
+
+#: inc/extras.php:200
+msgid "Access"
+msgstr ""
+
+#: inc/extras.php:226
+msgid "Sorry, your password did not match"
+msgstr "Üzgünüz, şifreniz eşleşmedi"
 
 #: inc/extras.php:629
 msgid "Video URL"
@@ -687,12 +1068,22 @@ msgid "Enable Video Autoplay?"
 msgstr ""
 
 #: inc/extras.php:962 inc/extras.php:977
-#, php-format
 msgid "Page %s"
 msgstr "Sayfa %s"
 
+#: inc/extras.php:1099
+msgid "Edit Pages"
+msgstr ""
+
+#: inc/extras.php:1107
+msgid "Parent: %s"
+msgstr ""
+
+#: inc/extras.php:1116
+msgid "Child: %s"
+msgstr ""
+
 #: inc/extras.php:1172
-#, php-format
 msgid "Posts by %s"
 msgstr ""
 
@@ -712,7 +1103,7 @@ msgstr ""
 msgid "Edit Children"
 msgstr ""
 
-#: inc/extras_admin.php:167 inc/template-tags.php:412
+#: inc/extras_admin.php:167 inc/template-tags.php:411
 msgid "Edit"
 msgstr ""
 
@@ -761,21 +1152,18 @@ msgid "Remember to update the passwords and roles of imported users."
 msgstr ""
 
 #: inc/import/wordpress-importer/wordpress-importer.php:201
-#, php-format
 msgid ""
 "The export file could not be found at <code>%s</code>. It is likely that "
 "this was caused by a permissions problem."
 msgstr ""
 
 #: inc/import/wordpress-importer/wordpress-importer.php:219
-#, php-format
 msgid ""
 "This WXR file (version %s) may not be supported by this version of the "
 "importer. Please consider updating."
 msgstr ""
 
 #: inc/import/wordpress-importer/wordpress-importer.php:243
-#, php-format
 msgid ""
 "Failed to import author %s. Their posts will be attributed to the current "
 "user."
@@ -794,7 +1182,6 @@ msgid ""
 msgstr ""
 
 #: inc/import/wordpress-importer/wordpress-importer.php:273
-#, php-format
 msgid ""
 "If a new user is created by WordPress, a new password will be randomly "
 "generated and the new user's role will be set as %s. Manually changing the "
@@ -834,43 +1221,36 @@ msgid "- Select -"
 msgstr ""
 
 #: inc/import/wordpress-importer/wordpress-importer.php:391
-#, php-format
 msgid ""
 "Failed to create new user for %s. Their posts will be attributed to the "
 "current user."
 msgstr ""
 
 #: inc/import/wordpress-importer/wordpress-importer.php:448
-#, php-format
 msgid "Failed to import category %s"
 msgstr ""
 
 #: inc/import/wordpress-importer/wordpress-importer.php:493
-#, php-format
 msgid "Failed to import post tag %s"
 msgstr ""
 
 #: inc/import/wordpress-importer/wordpress-importer.php:549
 #: inc/import/wordpress-importer/wordpress-importer.php:704
 #: inc/import/wordpress-importer/wpgrade-import-class.php:257
-#, php-format
 msgid "Failed to import %s %s"
 msgstr ""
 
 #: inc/import/wordpress-importer/wordpress-importer.php:575
 #: inc/import/wordpress-importer/wpgrade-import-class.php:113
-#, php-format
 msgid "Failed to import \"%s\": Invalid post type %s"
 msgstr ""
 
 #: inc/import/wordpress-importer/wordpress-importer.php:598
-#, php-format
 msgid "%s \"%s\" already exists."
 msgstr ""
 
 #: inc/import/wordpress-importer/wordpress-importer.php:668
 #: inc/import/wordpress-importer/wpgrade-import-class.php:221
-#, php-format
 msgid "Failed to import %s \"%s\""
 msgstr ""
 
@@ -879,7 +1259,6 @@ msgid "Menu item skipped due to missing menu slug"
 msgstr ""
 
 #: inc/import/wordpress-importer/wordpress-importer.php:852
-#, php-format
 msgid "Menu item skipped due to invalid menu slug: %s"
 msgstr ""
 
@@ -896,7 +1275,6 @@ msgid "Remote server did not respond"
 msgstr ""
 
 #: inc/import/wordpress-importer/wordpress-importer.php:998
-#, php-format
 msgid "Remote server returned error response %1$d %2$s"
 msgstr ""
 
@@ -909,7 +1287,6 @@ msgid "Zero size file downloaded"
 msgstr ""
 
 #: inc/import/wordpress-importer/wordpress-importer.php:1019
-#, php-format
 msgid "Remote file is too large, limit is %s"
 msgstr ""
 
@@ -918,7 +1295,6 @@ msgid "Import WordPress"
 msgstr ""
 
 #: inc/import/wordpress-importer/wordpress-importer.php:1135
-#, php-format
 msgid ""
 "A new version of this importer is available. Please update to version %s to "
 "ensure compatibility with newer export files."
@@ -934,394 +1310,410 @@ msgstr ""
 msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
 msgstr ""
 
-#: inc/integrations/woocommerce.php:90
+#: inc/integrations/woocommerce.php:92
 msgctxt "breadcrumb"
 msgid "Shop"
 msgstr ""
 
-#: inc/integrations/woocommerce.php:116
+#: inc/integrations/woocommerce.php:118
 msgid "Product Added"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:324
+#: inc/required-plugins/class-tgm-plugin-activation.php:336
 #: inc/required-plugins/required-plugins.php:60
 msgid "Install Required Plugins"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:325
+#: inc/required-plugins/class-tgm-plugin-activation.php:337
 #: inc/required-plugins/required-plugins.php:61
 msgid "Install Plugins"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:326
+#. translators: %s: plugin name.
+#: inc/required-plugins/class-tgm-plugin-activation.php:339
 #: inc/required-plugins/required-plugins.php:62
-#, php-format
 msgid "Installing Plugin: %s"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:327
-#, php-format
+#. translators: %s: plugin name.
+#: inc/required-plugins/class-tgm-plugin-activation.php:341
 msgid "Updating Plugin: %s"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:328
+#: inc/required-plugins/class-tgm-plugin-activation.php:342
 #: inc/required-plugins/required-plugins.php:64
 msgid "Something went wrong with the plugin API."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:330
-#: inc/required-plugins/required-plugins.php:65
-#, php-format
-msgid "This theme requires the following plugin: %1$s."
-msgid_plural "This theme requires the following plugins: %1$s."
-msgstr[0] ""
-msgstr[1] ""
-
-#: inc/required-plugins/class-tgm-plugin-activation.php:335
-#: inc/required-plugins/required-plugins.php:67
-#, php-format
-msgid "This theme recommends the following plugin: %1$s."
-msgid_plural "This theme recommends the following plugins: %1$s."
-msgstr[0] ""
-msgstr[1] ""
-
-#: inc/required-plugins/class-tgm-plugin-activation.php:340
-#: inc/required-plugins/required-plugins.php:77
-#, php-format
-msgid ""
-"The following plugin needs to be updated to its latest version to ensure "
-"maximum compatibility with this theme: %1$s."
-msgid_plural ""
-"The following plugins need to be updated to their latest version to ensure "
-"maximum compatibility with this theme: %1$s."
-msgstr[0] ""
-msgstr[1] ""
-
-#: inc/required-plugins/class-tgm-plugin-activation.php:345
-#, php-format
-msgid "There is an update available for: %1$s."
-msgid_plural "There are updates available for the following plugins: %1$s."
-msgstr[0] ""
-msgstr[1] ""
-
-#: inc/required-plugins/class-tgm-plugin-activation.php:350
-#: inc/required-plugins/required-plugins.php:71
-#, php-format
-msgid "The following required plugin is currently inactive: %1$s."
-msgid_plural "The following required plugins are currently inactive: %1$s."
-msgstr[0] ""
-msgstr[1] ""
-
-#: inc/required-plugins/class-tgm-plugin-activation.php:355
-#: inc/required-plugins/required-plugins.php:73
-#, php-format
-msgid "The following recommended plugin is currently inactive: %1$s."
-msgid_plural "The following recommended plugins are currently inactive: %1$s."
-msgstr[0] ""
-msgstr[1] ""
-
-#: inc/required-plugins/class-tgm-plugin-activation.php:360
+#. translators: 1: plugin name(s).
+#: inc/required-plugins/class-tgm-plugin-activation.php:379
 #: inc/required-plugins/required-plugins.php:81
 msgid "Begin installing plugin"
 msgid_plural "Begin installing plugins"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:365
+#: inc/required-plugins/class-tgm-plugin-activation.php:384
 msgid "Begin updating plugin"
 msgid_plural "Begin updating plugins"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:370
+#: inc/required-plugins/class-tgm-plugin-activation.php:389
 msgid "Begin activating plugin"
 msgid_plural "Begin activating plugins"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:374
+#: inc/required-plugins/class-tgm-plugin-activation.php:394
 #: inc/required-plugins/required-plugins.php:83
 msgid "Return to Required Plugins Installer"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:375
-msgid "Return to the dashboard"
+#: inc/required-plugins/class-tgm-plugin-activation.php:395
+#: inc/required-plugins/class-tgm-plugin-activation.php:944
+#: inc/required-plugins/class-tgm-plugin-activation.php:2650
+#: inc/required-plugins/class-tgm-plugin-activation.php:3697
+msgid "Return to the Dashboard"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:376
-#: inc/required-plugins/class-tgm-plugin-activation.php:3109
+#: inc/required-plugins/class-tgm-plugin-activation.php:396
+#: inc/required-plugins/class-tgm-plugin-activation.php:3276
 #: inc/required-plugins/required-plugins.php:84
 msgid "Plugin activated successfully."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:377
-#: inc/required-plugins/class-tgm-plugin-activation.php:2912
+#: inc/required-plugins/class-tgm-plugin-activation.php:397
+#: inc/required-plugins/class-tgm-plugin-activation.php:3069
 msgid "The following plugin was activated successfully:"
-msgid_plural "The following plugins were activated successfully:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:378
-#, php-format
+#. translators: 1: plugin name.
+#: inc/required-plugins/class-tgm-plugin-activation.php:399
 msgid "No action taken. Plugin %1$s was already active."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:379
-#, php-format
+#. translators: 1: plugin name.
+#: inc/required-plugins/class-tgm-plugin-activation.php:401
 msgid ""
 "Plugin not activated. A higher version of %s is needed for this theme. "
 "Please update the plugin."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:380
-#, php-format
+#. translators: 1: dashboard link.
+#: inc/required-plugins/class-tgm-plugin-activation.php:403
 msgid "All plugins installed and activated successfully. %1$s"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:381
+#: inc/required-plugins/class-tgm-plugin-activation.php:404
 msgid "Dismiss this notice"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:382
+#: inc/required-plugins/class-tgm-plugin-activation.php:405
 msgid ""
 "There are one or more required or recommended plugins to install, update or "
 "activate."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:383
+#: inc/required-plugins/class-tgm-plugin-activation.php:406
 msgid "Please contact the administrator of this site for help."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:1955
-#, php-format
-msgctxt "%s = version number"
+#: inc/required-plugins/class-tgm-plugin-activation.php:613
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr ""
+
+#: inc/required-plugins/class-tgm-plugin-activation.php:614
+msgid "Update Required"
+msgstr ""
+
+#: inc/required-plugins/class-tgm-plugin-activation.php:1051
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+msgstr ""
+
+#: inc/required-plugins/class-tgm-plugin-activation.php:1051
+#: inc/required-plugins/class-tgm-plugin-activation.php:1054
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+
+#: inc/required-plugins/class-tgm-plugin-activation.php:1054
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+
+#: inc/required-plugins/class-tgm-plugin-activation.php:1238
+#: inc/required-plugins/class-tgm-plugin-activation.php:3065
+msgctxt "plugin A *and* plugin B"
+msgid "and"
+msgstr ""
+
+#. translators: %s: version number
+#: inc/required-plugins/class-tgm-plugin-activation.php:2099
 msgid "TGMPA v%s"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2241
+#: inc/required-plugins/class-tgm-plugin-activation.php:2390
 msgid "Required"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2244
+#: inc/required-plugins/class-tgm-plugin-activation.php:2393
 msgid "Recommended"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2260
+#: inc/required-plugins/class-tgm-plugin-activation.php:2409
 msgid "WordPress Repository"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2263
+#: inc/required-plugins/class-tgm-plugin-activation.php:2412
 msgid "External Source"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2266
+#: inc/required-plugins/class-tgm-plugin-activation.php:2415
 msgid "Pre-Packaged"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2283
+#: inc/required-plugins/class-tgm-plugin-activation.php:2432
 msgid "Not Installed"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2287
+#: inc/required-plugins/class-tgm-plugin-activation.php:2436
 msgid "Installed But Not Activated"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2289
+#: inc/required-plugins/class-tgm-plugin-activation.php:2438
 msgid "Active"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2295
+#: inc/required-plugins/class-tgm-plugin-activation.php:2444
 msgid "Required Update not Available"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2298
+#: inc/required-plugins/class-tgm-plugin-activation.php:2447
 msgid "Requires Update"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2301
+#: inc/required-plugins/class-tgm-plugin-activation.php:2450
 msgid "Update recommended"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2309
-#, php-format
-msgctxt "%1$s = install status, %2$s = update status"
+#. translators: 1: install status, 2: update status
+#: inc/required-plugins/class-tgm-plugin-activation.php:2459
+msgctxt "Install/Update Status"
 msgid "%1$s, %2$s"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2354
-#, php-format
+#. translators: 1: number of plugins.
+#: inc/required-plugins/class-tgm-plugin-activation.php:2505
+msgctxt "plugins"
 msgid "All <span class=\"count\">(%s)</span>"
 msgid_plural "All <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2357
-#, php-format
+#. translators: 1: number of plugins.
+#: inc/required-plugins/class-tgm-plugin-activation.php:2509
 msgid "To Install <span class=\"count\">(%s)</span>"
 msgid_plural "To Install <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2360
-#, php-format
+#. translators: 1: number of plugins.
+#: inc/required-plugins/class-tgm-plugin-activation.php:2513
 msgid "Update Available <span class=\"count\">(%s)</span>"
 msgid_plural "Update Available <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2363
-#, php-format
+#. translators: 1: number of plugins.
+#: inc/required-plugins/class-tgm-plugin-activation.php:2517
 msgid "To Activate <span class=\"count\">(%s)</span>"
 msgid_plural "To Activate <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2445
+#: inc/required-plugins/class-tgm-plugin-activation.php:2599
 msgctxt "as in: \"version nr unknown\""
 msgid "unknown"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2453
+#: inc/required-plugins/class-tgm-plugin-activation.php:2607
 msgid "Installed version:"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2461
+#: inc/required-plugins/class-tgm-plugin-activation.php:2615
 msgid "Minimum required version:"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2473
+#: inc/required-plugins/class-tgm-plugin-activation.php:2627
 msgid "Available version:"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2496
-#, php-format
-msgid ""
-"No plugins to install, update or activate. <a href=\"%1$s\">Return to the "
-"Dashboard</a>"
+#: inc/required-plugins/class-tgm-plugin-activation.php:2650
+msgid "No plugins to install, update or activate."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2510
+#: inc/required-plugins/class-tgm-plugin-activation.php:2664
 msgid "Plugin"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2511
+#: inc/required-plugins/class-tgm-plugin-activation.php:2665
 msgid "Source"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2512
+#: inc/required-plugins/class-tgm-plugin-activation.php:2666
 msgid "Type"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2516
+#: inc/required-plugins/class-tgm-plugin-activation.php:2670
 msgid "Version"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2517
+#: inc/required-plugins/class-tgm-plugin-activation.php:2671
 msgid "Status"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2565
-#, php-format
-msgctxt "%2$s = plugin name in screen reader markup"
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/required-plugins/class-tgm-plugin-activation.php:2720
 msgid "Install %2$s"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2569
-#, php-format
-msgctxt "%2$s = plugin name in screen reader markup"
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/required-plugins/class-tgm-plugin-activation.php:2725
 msgid "Update %2$s"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2574
-#, php-format
-msgctxt "%2$s = plugin name in screen reader markup"
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/required-plugins/class-tgm-plugin-activation.php:2731
 msgid "Activate %2$s"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2677
+#: inc/required-plugins/class-tgm-plugin-activation.php:2801
+msgid "Upgrade message from the plugin author:"
+msgstr ""
+
+#: inc/required-plugins/class-tgm-plugin-activation.php:2834
 msgid "Install"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2683
+#: inc/required-plugins/class-tgm-plugin-activation.php:2840
 msgid "Update"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2686
+#: inc/required-plugins/class-tgm-plugin-activation.php:2843
 msgid "Activate"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2717
+#: inc/required-plugins/class-tgm-plugin-activation.php:2874
 msgid "No plugins were selected to be installed. No action taken."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2719
+#: inc/required-plugins/class-tgm-plugin-activation.php:2876
 msgid "No plugins were selected to be updated. No action taken."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2760
+#: inc/required-plugins/class-tgm-plugin-activation.php:2917
 msgid "No plugins are available to be installed at this time."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:2762
+#: inc/required-plugins/class-tgm-plugin-activation.php:2919
 msgid "No plugins are available to be updated at this time."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:3108
+#: inc/required-plugins/class-tgm-plugin-activation.php:3025
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: inc/required-plugins/class-tgm-plugin-activation.php:3051
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: inc/required-plugins/class-tgm-plugin-activation.php:3275
 msgid "Plugin activation failed."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:3447
-#, php-format
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/required-plugins/class-tgm-plugin-activation.php:3615
 msgid "Updating Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:3449
-#, php-format
+#. translators: 1: plugin name, 2: error message.
+#: inc/required-plugins/class-tgm-plugin-activation.php:3618
 msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:3450
-#, php-format
+#. translators: 1: plugin name.
+#: inc/required-plugins/class-tgm-plugin-activation.php:3620
 msgid "The installation of %1$s failed."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:3454
+#: inc/required-plugins/class-tgm-plugin-activation.php:3624
 msgid ""
 "The installation and activation process is starting. This process may take a "
 "while on some hosts, so please be patient."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:3455
-#, php-format
+#. translators: 1: plugin name.
+#: inc/required-plugins/class-tgm-plugin-activation.php:3626
 msgid "%1$s installed and activated successfully."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:3456
+#: inc/required-plugins/class-tgm-plugin-activation.php:3626
+#: inc/required-plugins/class-tgm-plugin-activation.php:3634
+msgid "Show Details"
+msgstr ""
+
+#: inc/required-plugins/class-tgm-plugin-activation.php:3626
+#: inc/required-plugins/class-tgm-plugin-activation.php:3634
+msgid "Hide Details"
+msgstr ""
+
+#: inc/required-plugins/class-tgm-plugin-activation.php:3627
 msgid "All installations and activations have been completed."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:3457
-#, php-format
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/required-plugins/class-tgm-plugin-activation.php:3629
 msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:3460
+#: inc/required-plugins/class-tgm-plugin-activation.php:3632
 msgid ""
 "The installation process is starting. This process may take a while on some "
 "hosts, so please be patient."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:3462
+#. translators: 1: plugin name.
+#: inc/required-plugins/class-tgm-plugin-activation.php:3634
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: inc/required-plugins/class-tgm-plugin-activation.php:3635
 msgid "All installations have been completed."
 msgstr ""
 
-#: inc/required-plugins/class-tgm-plugin-activation.php:3463
-#, php-format
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/required-plugins/class-tgm-plugin-activation.php:3637
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
+#: inc/required-plugins/required-plugins.php:65
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/required-plugins/required-plugins.php:67
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
 #: inc/required-plugins/required-plugins.php:69
-#, php-format
 msgid ""
 "Sorry, but you do not have the correct permissions to install the %s plugin. "
 "Contact the administrator of this site for help on getting the plugin "
@@ -1333,8 +1725,19 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
+#: inc/required-plugins/required-plugins.php:71
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/required-plugins/required-plugins.php:73
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
 #: inc/required-plugins/required-plugins.php:75
-#, php-format
 msgid ""
 "Sorry, but you do not have the correct permissions to activate the %s "
 "plugin. Contact the administrator of this site for help on getting the "
@@ -1346,8 +1749,17 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
+#: inc/required-plugins/required-plugins.php:77
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
 #: inc/required-plugins/required-plugins.php:79
-#, php-format
 msgid ""
 "Sorry, but you do not have the correct permissions to update the %s plugin. "
 "Contact the administrator of this site for help on getting the plugin "
@@ -1366,7 +1778,6 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: inc/required-plugins/required-plugins.php:85
-#, php-format
 msgid "All plugins installed and activated successfully. %s"
 msgstr ""
 
@@ -1412,24 +1823,35 @@ msgstr ""
 msgid "Archives"
 msgstr "Arşivler:"
 
-#: inc/template-tags.php:107
+#: inc/template-tags.php:106
 msgid "Please select a menu in this location"
 msgstr ""
 
-#: inc/template-tags.php:206
+#: inc/template-tags.php:205
 msgid "Make this gallery a slideshow"
 msgstr ""
 
-#: inc/template-tags.php:249 woocommerce/global/breadcrumb.php:216
+#: inc/template-tags.php:248 woocommerce/global/breadcrumb.php:216
 msgid "Page"
 msgstr "Sayfa"
 
-#: inc/template-tags.php:408
-#, php-format
+#: inc/template-tags.php:262
+msgid "Posts navigation"
+msgstr ""
+
+#: inc/template-tags.php:297
+msgid "Next"
+msgstr "Sonraki"
+
+#: inc/template-tags.php:347
+msgid "Prev"
+msgstr "Önceki"
+
+#: inc/template-tags.php:407
 msgid "on %s at %s"
 msgstr ""
 
-#: inc/template-tags.php:422
+#: inc/template-tags.php:421
 msgid "Your comment is awaiting moderation."
 msgstr "Yorumunuz kısa sürede yayınlanacak."
 
@@ -1440,6 +1862,14 @@ msgstr ""
 #: inc/widgets.php:19 inc/widgets.php:20
 msgid "Footer Area"
 msgstr ""
+
+#: inc/widgets.php:41
+msgid "The latest comments"
+msgstr "En Son Yorum"
+
+#: inc/widgets.php:43
+msgid "Latest Comments"
+msgstr "Son Yorumlar"
 
 #: inc/widgets.php:76
 msgid "Recent Comments"
@@ -1455,6 +1885,14 @@ msgstr ""
 
 #: inc/widgets.php:162
 msgid "Number of comments to show:"
+msgstr ""
+
+#: index.php:27 single.php:88
+msgid "Categories"
+msgstr "Kategoriler"
+
+#: index.php:32 single.php:91
+msgid "View all posts in %s"
 msgstr ""
 
 #: page-templates/page-no-title.php:44 page.php:53
@@ -1473,13 +1911,8 @@ msgstr ""
 msgid "Search..."
 msgstr "Ara..."
 
-#: single.php:88
-msgid "Categories"
-msgstr "Kategoriler"
-
-#: single.php:91
-#, php-format
-msgid "View all posts in %s"
+#: single.php:67
+msgid "Pages: "
 msgstr ""
 
 #: single.php:101
@@ -1487,14 +1920,29 @@ msgid "Tags"
 msgstr "Etiketler"
 
 #: single.php:104
-#, php-format
 msgid "View all posts tagged %s"
 msgstr ""
 
 #: template-parts/content-none.php:12
-#, php-format
 msgid ""
 "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/content-none.php:16
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with "
+"different keywords."
+msgstr ""
+"Üzgünüz, aramanızla eşleşen bir içerik bulunamadı. Bir başka sözcük girin."
+
+#: template-parts/content-none.php:24
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: template-parts/header-page.php:232
+msgid "Currently there are no images assigned to this slideshow"
 msgstr ""
 
 #: template-parts/password-request-form.php:10
@@ -1508,10 +1956,6 @@ msgstr ""
 #: template-parts/password-request-form.php:16
 msgid "Please enter your password to continue."
 msgstr ""
-
-#: template-parts/password-request-form.php:24
-msgid "Password"
-msgstr "Şifre"
 
 #: template-parts/password-request-form.php:27
 msgid "Authenticate"
@@ -1529,19 +1973,19 @@ msgstr ""
 msgid "Return To Shop"
 msgstr ""
 
-#: woocommerce/cart/cart.php:26
+#: woocommerce/cart/cart.php:26 woocommerce/cart/cart.php:56
 msgid "Product"
 msgstr ""
 
-#: woocommerce/cart/cart.php:27
+#: woocommerce/cart/cart.php:27 woocommerce/cart/cart.php:72
 msgid "Price"
 msgstr ""
 
-#: woocommerce/cart/cart.php:28
+#: woocommerce/cart/cart.php:28 woocommerce/cart/cart.php:78
 msgid "Quantity"
 msgstr ""
 
-#: woocommerce/cart/cart.php:29
+#: woocommerce/cart/cart.php:29 woocommerce/cart/cart.php:95
 msgid "Total"
 msgstr ""
 
@@ -1621,8 +2065,49 @@ msgstr ""
 msgid "Out of stock"
 msgstr ""
 
+#: woocommerce/single-product/meta.php:31
+msgid "SKU:"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:31
+msgid "N/A"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:39
+msgid "%s Category"
+msgid_plural "%s Categories"
+msgstr[0] "%s Kategori"
+msgstr[1] "%s Kategoriler"
+
+#: woocommerce/single-product/meta.php:52
+msgid "%s Tag"
+msgid_plural "%s Tags"
+msgstr[0] "%s Etiket"
+msgstr[1] "%s Etiketler"
+
+#: woocommerce/single-product/rating.php:26
+msgid "%s customer review"
+msgid_plural "%s customer reviews"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce/single-product/rating.php:27
+msgid "Rated %s out of 5"
+msgstr ""
+
+#: woocommerce/single-product/rating.php:29
+msgid "out of 5"
+msgstr ""
+
+#: woocommerce/single-product/related.php:37
+msgid "Related Products"
+msgstr ""
+
+#: woocommerce/single-product/tabs/description.php:14
+msgid "Product Description"
+msgstr ""
+
 #: woocommerce/single-product-reviews.php:24
-#, php-format
 msgid "%s review for %s"
 msgid_plural "%s reviews for %s"
 msgstr[0] ""
@@ -1645,7 +2130,6 @@ msgid "Be the first to review"
 msgstr "Yorum yapın"
 
 #: woocommerce/single-product-reviews.php:61
-#, php-format
 msgid "Leave a Reply to %s"
 msgstr "%s İçin Yorum Yapın"
 
@@ -1686,90 +2170,49 @@ msgid ""
 "Only logged in customers who have purchased this product may leave a review."
 msgstr ""
 
-#: woocommerce/single-product/meta.php:31
-msgid "SKU:"
+#. Theme Name of the plugin/theme
+msgid "Rosa"
 msgstr ""
 
-#: woocommerce/single-product/meta.php:31
-msgid "N/A"
+#. Theme URI of the plugin/theme
+msgid "https://pixelgrade.com/demos/rosa3"
 msgstr ""
 
-#: woocommerce/single-product/meta.php:39
-#, php-format
-msgid "%s Category"
-msgid_plural "%s Categories"
-msgstr[0] "%s Kategori"
-msgstr[1] "%s Kategoriler"
-
-#: woocommerce/single-product/meta.php:52
-#, php-format
-msgid "%s Tag"
-msgid_plural "%s Tags"
-msgstr[0] "%s Etiket"
-msgstr[1] "%s Etiketler"
-
-#: woocommerce/single-product/rating.php:26
-#, php-format
-msgid "%s customer review"
-msgid_plural "%s customer reviews"
-msgstr[0] ""
-msgstr[1] ""
-
-#: woocommerce/single-product/rating.php:27
-#, php-format
-msgid "Rated %s out of 5"
+#. Description of the plugin/theme
+msgid ""
+"ROSA is an enchanting and easy-to-use parallax Restaurant WordPress theme "
+"that allows you to tell your story in a dynamic, narrative and enjoyable "
+"way, making it perfect for restaurants, bakeries, bars or coffee shops."
 msgstr ""
 
-#: woocommerce/single-product/rating.php:29
-msgid "out of 5"
+#. Author of the plugin/theme
+msgid "PixelGrade"
 msgstr ""
 
-#: woocommerce/single-product/related.php:37
-msgid "Related Products"
+#. Author URI of the plugin/theme
+msgid "https://pixelgrade.com"
 msgstr ""
 
-#: woocommerce/single-product/tabs/description.php:14
-msgid "Product Description"
+#. Template Name of the plugin/theme
+msgid "Map Header"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Default Template (No title)"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Slideshow Header"
 msgstr ""
 
 #~ msgid "Date"
 #~ msgstr "Tarih"
-
-#~ msgid "Comments"
-#~ msgstr "Yorumlar"
-
-#~ msgid "AddThis Username"
-#~ msgstr "AddThis Kullanıcı adı"
-
-#~ msgid "Prev"
-#~ msgstr "Önceki"
-
-#~ msgid "Next"
-#~ msgstr "Sonraki"
 
 #~ msgid "View all"
 #~ msgstr "Tümünü göster"
 
 #~ msgid "View All"
 #~ msgstr "Tümünü Göster"
-
-#~ msgid "The latest comments"
-#~ msgstr "En Son Yorum"
-
-#~ msgid "Latest Comments"
-#~ msgstr "Son Yorumlar"
-
-#~ msgid "Sorry, your password did not match"
-#~ msgstr "Üzgünüz, şifreniz eşleşmedi"
-
-#~ msgid ""
-#~ "Sorry, but nothing matched your search terms. Please try again with "
-#~ "different keywords."
-#~ msgstr ""
-#~ "Üzgünüz, aramanızla eşleşen bir içerik bulunamadı. Bir başka sözcük girin."
-
-#~ msgid "Read more"
-#~ msgstr "Daha fazla oku"
 
 #~ msgid "Please Wait"
 #~ msgstr "Lütfen Bekleyin!"
