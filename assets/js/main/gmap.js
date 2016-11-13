@@ -24,16 +24,35 @@ function get_url_parameter(needed_param, gmap_url) {
 
 function get_newMap_oldUrl_coordinates(url) {
 	var coordinates = {},
-		split,
-		distance;
+		temp_coords,
+		temp_zoom;
 
-	split = url.split('!3d');
-	coordinates.latitude = split[1];
-	split = split[0].split('!2d');
-	coordinates.longitude = split[1];
-	split = split[0].split('!1d');
-	distance = split[1];
-	coordinates.zoom = 21 - Math.round(Math.log(Math.round(distance / 218), 2));
+	temp_coords = url.split('!3d');
+	temp_coords = temp_coords[1];
+	temp_coords = temp_coords.split('!4d');
+
+	// Get the first part of the temp_coords array which is the latitude
+	coordinates.latitude = temp_coords[0];
+
+	// Get the second part of the temp_coords, before the zoom level, which is the longitude
+	temp_coords[1] = temp_coords[1].split('?')[0];
+	coordinates.longitude = temp_coords[1];
+
+	// Get the zoom level
+	// Get the whole coordinates including the zoom
+	temp_zoom = url.split('@');
+	temp_zoom = temp_zoom[1];
+	// Remove the part after the coordinates
+	temp_zoom = temp_zoom.split('/');
+	temp_zoom = temp_zoom[0];
+	// Split the coordinates and get only the zoom level
+	temp_zoom = temp_zoom.split(',');
+	temp_zoom = temp_zoom[2];
+	// Take off the z part
+	if ( temp_zoom.indexOf('z') >= 0 ) {
+		temp_zoom = temp_zoom.substring( 0, temp_zoom.length - 1 );
+	}
+	coordinates.zoom = temp_zoom;
 
 	return coordinates;
 }
