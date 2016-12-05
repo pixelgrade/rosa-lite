@@ -17,7 +17,6 @@ var theme 		= 'rosa',
 	beautify 	= require('gulp-beautify'),
 	uglify 		= require('gulp-uglify'),
 	csscomb 	= require('gulp-csscomb'),
-	chmod 		= require('gulp-chmod'),
 	fs          = require('fs'),
 	rtlcss 		= require('gulp-rtlcss'),
 	postcss 	= require('gulp-postcss'),
@@ -75,9 +74,8 @@ gulp.task('style.css', ['assets/css'], function () {
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
-        // .pipe(chmod(644))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('.'));
+        .pipe(gulp.dest('.', {"mode": "0644"}));
 });
 
 gulp.task('assets/css', function () {
@@ -85,9 +83,8 @@ gulp.task('assets/css', function () {
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7"))
-		// .pipe(chmod(644))
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('./assets/css'));
+        .pipe(gulp.dest('./assets/css', {"mode": "0644"}));
 });
 
 
@@ -122,8 +119,7 @@ gulp.task('scripts-server', function () {
 	return gulp.src(jsFiles)
 			.pipe(concat('main.js'))
 			// .pipe(uglify())
-			// .pipe(chmod(644))
-			.pipe(gulp.dest('./assets/js/'));
+			.pipe(gulp.dest('./assets/js/', {"mode": "0644"}));
 });
 
 gulp.task('watch', ['styles', 'scripts'], function () {
