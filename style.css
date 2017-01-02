@@ -9899,6 +9899,10 @@ small.muted {
     .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="500px"]:before, .nav--items-social.menu-list__items a[href*="500px"]:before, .nav--items-social.rsBullets a[href*="500px"]:before,
     .widget [class*="social"] > ul a[href*="500px"]:before {
       content: ""; }
+    .nav.nav--items-social a[href*="tel"]:before, .nav--items-social.author__social-links a[href*="tel"]:before, .nav--items-social.commentlist a[href*="tel"]:before, .nav--items-social.social-links-list a[href*="tel"]:before, .nav--items-social.sub-menu a[href*="tel"]:before, .nav--items-social.tabs__nav a[href*="tel"]:before,
+    .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="tel"]:before, .nav--items-social.menu-list__items a[href*="tel"]:before, .nav--items-social.rsBullets a[href*="tel"]:before,
+    .widget [class*="social"] > ul a[href*="tel"]:before {
+      content: ""; }
 
 .header--transparent .nav.nav--items-social a:before, .header--transparent .nav--items-social.author__social-links a:before, .header--transparent .nav--items-social.commentlist a:before, .header--transparent .nav--items-social.social-links-list a:before, .header--transparent .nav--items-social.sub-menu a:before, .header--transparent .nav--items-social.tabs__nav a:before, .header--transparent
 .woocommerce-MyAccount-navigation ul.nav--items-social a:before,
