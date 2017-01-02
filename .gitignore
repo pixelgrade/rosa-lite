@@ -1,9 +1,7 @@
 assets/.sass-cache
-assets/css/style.css
+assets/css/*.map
+assets/css/**/*.map
 assets/inc/metaboxes/.sass-cache
-assets/css/*
-assets/js/main.js
-assets/js/plugins.js
 inc/vendor/twitter-api/cache.tweetcache
 
 .DS_Store
@@ -21,8 +19,3 @@ build
 *.css.map
 *.js.map
 npm-debug.log
-style.css
-editor-style.css
-rtl.css
-woocommerce.css
-404.css

@@ -1,0 +1,56 @@
+/*------------------------------------*    404 Page
+\*------------------------------------*/
+.error404 {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: black;
+  background-size: cover; }
+  .error404 .overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1; }
+  .error404 .overlay--shadow {
+    background: #1a1919;
+    opacity: 0.6; }
+  .error404 .container {
+    background: transparent; }
+  .error404 .content {
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; }
+  .error404 .content-404 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+    max-width: 440px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    z-index: 10; }
+  .error404 h1 {
+    display: inline-block;
+    letter-spacing: auto;
+    color: white; }
+  .error404 .description {
+    position: relative;
+    z-index: 10; }
+    .error404 .description.second {
+      position: fixed;
+      bottom: 58px;
+      left: 0;
+      width: 100%;
+      color: white;
+      text-align: center;
+      font-size: 14px; }
+  .error404 .site-header, .error404 .site-footer, .error404 .fixed-bar {
+    display: none; }
+
+/*# sourceMappingURL=404.css.map */
