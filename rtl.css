@@ -7825,7 +7825,6 @@ input[type="color"],
     color: white; }
 
 .break-words, .headline__primary, .headline__secondary {
-  word-break: break-word;
   word-wrap: break-word;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
@@ -9128,7 +9127,7 @@ hr, .separator {
   background: none !important; }
 
 .addthis_32x32_style .dummy .at300bs, .addthis_32x32_style .at300bs, .addthis_32x32_style .at15t {
-  background: url(../images/addThis_32x32_pxg.png) no-repeat left;
+  background: url(../images/addThis_32x32_pxg.png) no-repeat right;
   opacity: 0.3; }
 
 div.addthis_toolbox a {
