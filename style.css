@@ -7825,7 +7825,6 @@ input[type="color"],
     color: white; }
 
 .break-words, .headline__primary, .headline__secondary {
-  word-break: break-word;
   word-wrap: break-word;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
