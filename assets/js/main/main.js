@@ -328,8 +328,6 @@ $(window).load(function() {
     //Set textarea from contact page to autoresize
     if($("textarea").length) { $("textarea").autosize(); }
 
-    $(".pixcode--tabs").organicTabs();
-
     if (!$('html').is('.ie9, .lt-ie9')) {
         setTimeout(function() {
             Parallax.initialize();
@@ -406,6 +404,8 @@ function onResize(e) {
     resizeVideos();
 
     royalSliderInit($('.js-pixslider').not('.article__parallax .js-pixslider'));
+
+    $(".pixcode--tabs").organicTabs();
 
     if ( ! Modernizr.touchevents ) {
         requestAnimationFrame(refreshStuff);
