@@ -28,6 +28,6 @@
     "gulp-util": "~2.2.14",
     "gulp-zip": "~0.1.2",
     "jshint-stylish": "~0.1.5",
-    "tiny-lr": "0.0.5",
+    "tiny-lr": "0.0.5"
   }
 }
