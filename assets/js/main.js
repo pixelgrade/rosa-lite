@@ -114,6 +114,8 @@ function magnificPopupInit() {
 			type: 'image',
 			closeOnContentClick: false,
 			closeBtnInside: false,
+            closeOnBgClick: false,
+            fixedContentPos: true,
 			removalDelay: 500,
 			mainClass: 'mfp-fade',
 			image: {
@@ -159,7 +161,10 @@ function magnificPopupInit() {
 					}
 
 					$('.mfp-title').html(output);
-				}
+				},
+                beforeClose: function () {
+                    $( '.mfp-arrow, .mfp-close' ).hide();
+                }
 			}
 		});
 	});
