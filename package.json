@@ -2,6 +2,7 @@
   "name": "rosa",
   "devDependencies": {
     "gulp": "*",
+    "browser-sync": "^2.14.0",
     "gulp-sass": "*",
     "gulp-sourcemaps": "*",
     "gulp-autoprefixer": "~1.0.1",
@@ -28,6 +29,5 @@
     "gulp-zip": "~0.1.2",
     "jshint-stylish": "~0.1.5",
     "tiny-lr": "0.0.5",
-    "browser-sync": "^2.7.3"
   }
 }

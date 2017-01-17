@@ -21,7 +21,10 @@ var theme 		= 'rosa',
 	rtlcss 		= require('gulp-rtlcss'),
 	postcss 	= require('gulp-postcss'),
 	del         = require('del'),
-	rename 		= require('gulp-rename');
+	rename 		= require('gulp-rename'),
+	bs          = require('browser-sync'),
+	u           = require('gulp-util'),
+	reload      = bs.reload;
 
 var
 	themeTextDomain = '\'rosa\'',
@@ -50,6 +53,9 @@ var
 jsFiles.forEach(function (e, k) {
 	jsFiles[k] = jsMainPath + e + ".js";
 });
+
+var config = require('./gulpconfig.json');
+
 
 var options = {
 	silent: true,
@@ -86,6 +92,22 @@ gulp.task('assets/css', function () {
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./assets/css', {"mode": "0644"}));
 });
+
+gulp.task('browser-sync', function () {
+	bs({
+		// Point this to your pre-existing server.
+		proxy: config.baseurl + (u.env.port ? ':' + u.env.port : ''),
+		files: ['*.php', 'style.css', 'assets/js/main.js'],
+		// This tells BrowserSync to auto-open a tab once it boots.
+		open: true
+	}, function(err, bs) {
+		if (err) {
+			console.log(bs.options);
+		}
+	});
+});
+
+gulp.task('bs', ['styles', 'scripts', 'browser-sync', 'watch']);
 
 
 
