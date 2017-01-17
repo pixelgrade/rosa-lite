@@ -4024,20 +4024,7 @@ $.fn.gmap3 = function () {
             });
         },
         _scaleElement: function() {
-            var parentWidth = this.$parent.data( "plugin_" + Rellax ).width,
-                parentHeight = this.$parent.data( "plugin_" + Rellax ).height,
-                oldWidth = this.width,
-                oldHeight = this.height,
-                newWidth,
-                newHeight,
-                scale;
-
-            scale = Math.max( parentWidth / oldWidth, parentHeight / oldHeight );
-
-            this.width = oldWidth * scale;
-            this.height = oldHeight * scale;
-
-            this.offset.left -= ( oldWidth * scale - parentWidth )/2;
+	        this.height = ( windowHeight + this.height ) * this.options.amount;
         },
         _reloadElement: function() {
             var self = this,
@@ -4095,24 +4082,24 @@ $.fn.gmap3 = function () {
             $el.css( style );
         },
         _isInViewport: function( offset ) {
-            var offset = ( offset != undefined && ! this.isContainer ) ? offset : 0;
-            return lastKnownScrollY > this.offset.top - this.height + offset && lastKnownScrollY < this.offset.top + this.height + offset;
+            offset = ( offset != undefined && ! this.isContainer ) ? offset : 0;
+            return lastKnownScrollY > this.offset.top - windowHeight + offset && lastKnownScrollY < this.offset.top + windowHeight + offset;
         },
         _updatePosition: function() {
             var self = this,
-                progress = ( lastKnownScrollY - this.offset.top + self.height ) / ( self.height + this.height ),
-                move = ( self.height + this.height ) * ( progress - 0.5 );
+                progress = ( lastKnownScrollY - this.offset.top + windowHeight ) / ( windowHeight + this.height ),
+                move = ( windowHeight + this.height ) * ( progress - 0.5 );
 
-//            if ( self._isInViewport( move ) ) {
+	        if ( self._isInViewport() ) {
                 if ( ! self.$parent.length && ! self.isVisible ) {
-//                    $( self.element ).show();
+                    $( self.element ).show();
                     self.isVisible = true;
                 }
                 if ( self.isContainer ) {
                     $( self.element ).css( 'transform', 'translate3d(0,' + ( -lastKnownScrollY ) + 'px,0)' );
                 } else {
                     move = move * self.options.amount;
-                    if ( !self.$parent.length )
+                    if ( ! self.$parent.length )
                         move -= lastKnownScrollY;
 
                     if ( self.options.scale !== 1 ) {
@@ -4122,12 +4109,12 @@ $.fn.gmap3 = function () {
                         $( self.element ).css( 'transform', 'translate3d(0,' + move + 'px,0)' );
                     }
                 }
-//            } else {
-//                if ( ! self.$parent.length && self.isVisible ) {
-//                    $( self.element ).hide();
-//                    self.isVisible = false;
-//                }
-//            }
+            } else {
+                if ( ! self.$parent.length && self.isVisible ) {
+                    $( self.element ).hide();
+                    self.isVisible = false;
+                }
+            }
 
         }
     });

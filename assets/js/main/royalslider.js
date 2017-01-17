@@ -17,7 +17,6 @@ function royalSliderInit($container) {
 		var $slider = $(this);
 		$slider.imagesLoaded(function() {
 			sliderInit($slider);
-            $("[data-rellax]").rellax("refresh");
 		});
 	});
 
@@ -121,10 +120,17 @@ function sliderInit($slider) {
 	// create the markup for the customArrows
     if (royalSlider && rs_customArrows) {
 
-        var classes = '';
+        var classes = 'slider__custom-arrows';
 
-        if(is_headerSlider) classes = 'slider-arrows-header';
-        if(hoverArrows && !Modernizr.touchevents) classes += ' arrows--hover ';
+        if ( is_headerSlider ) {
+	        classes = 'slider-arrows-header';
+        }
+
+        if ( hoverArrows && ! Modernizr.touchevents ) {
+	        classes += ' arrows--hover ';
+        }
+
+	    $slider.find( '.slider__custom-arrows' ).off( 'click' ).remove();
 
         var $gallery_control = $(
             '<div class="' + classes + '">' +

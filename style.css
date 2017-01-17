@@ -7597,9 +7597,6 @@ input[type="color"],
 .article__header.article__header--page {
   position: relative;
   overflow: hidden; }
-  @media only screen and (max-width: 899px) {
-    .article__header.article__header--page {
-      padding: 0 12px; } }
   .article__header.article__header--page .flexbox, .article__header.article__header--page .site-title {
     position: absolute;
     top: 0;
@@ -7974,10 +7971,11 @@ input[type="color"],
         align-self: flex-end; }
 
 .c-hero__image,
+.c-hero__slider,
+.c-hero__map,
 .c-hero__video {
   width: 100%;
   height: 100%;
-  min-height: 100vh;
   object-fit: cover; }
 
 /*-------------------------------*               $BADGE

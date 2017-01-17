@@ -185,7 +185,6 @@ function royalSliderInit($container) {
 		var $slider = $(this);
 		$slider.imagesLoaded(function() {
 			sliderInit($slider);
-            $("[data-rellax]").rellax("refresh");
 		});
 	});
 
@@ -289,10 +288,17 @@ function sliderInit($slider) {
 	// create the markup for the customArrows
     if (royalSlider && rs_customArrows) {
 
-        var classes = '';
+        var classes = 'slider__custom-arrows';
 
-        if(is_headerSlider) classes = 'slider-arrows-header';
-        if(hoverArrows && !Modernizr.touchevents) classes += ' arrows--hover ';
+        if ( is_headerSlider ) {
+	        classes = 'slider-arrows-header';
+        }
+
+        if ( hoverArrows && ! Modernizr.touchevents ) {
+	        classes += ' arrows--hover ';
+        }
+
+	    $slider.find( '.slider__custom-arrows' ).off( 'click' ).remove();
 
         var $gallery_control = $(
             '<div class="' + classes + '">' +
@@ -1456,13 +1462,6 @@ function init() {
 
     // $('.site-footer.border-waves').prevAll('article__header').first().find('.article__parallax').addClass('border-waves-top border-waves-top--dark');
 
-    $('.js-pixslider').not('.article__parallax .js-pixslider').each(function(i, slider) {
-        var $slider = $(slider);
-        $slider.imagesLoaded(function() {
-            sliderInit($(slider));
-        });
-    });
-
     $('.navigation--main').on('DOMMouseScroll mousewheel', function(ev) {
         var $this = $(this),
             scrollTop = this.scrollTop,
@@ -1611,16 +1610,9 @@ $(window).load(function() {
             CoverAnimation.initialize();
         }, 400);
     }
+
     niceScrollInit();
     royalSliderInit();
-
-    // if ($('.js-pixslider').length) {
-    //     var slider = $('.js-pixslider').data('royalSlider');
-
-    //     slider.ev.on('rsAfterInit rsAfterContentSet rsAfterSlideChange', function () {
-    //         ScrollToTop.initialize();
-    //     });
-    // }
 
     magnificPopupInit();
     initVideos();
@@ -1674,7 +1666,7 @@ function onResize(e) {
 
     resizeVideos();
 
-    royalSliderInit($('.js-pixslider').not('.c-hero__background .js-pixslider'));
+    royalSliderInit( $( '.js-pixslider' ).not( '.c-hero__background .js-pixslider' ) );
 
     $(".pixcode--tabs").organicTabs();
 
@@ -1698,7 +1690,6 @@ function onResize(e) {
 }
 
 function refreshStuff() {
-    $("[data-rellax]").rellax("refresh");
     CoverAnimation.initialize();
     ScrollToTop.initialize();
 }
@@ -1732,7 +1723,7 @@ $window.scroll(function() {
 function loop() {
     // Avoid calculations if not needed
     if (latestKnownScrollY !== newScrollY) {
-        latestKnownScrollY = newScrollY
+        latestKnownScrollY = newScrollY;
         updateStuff();
     }
     requestAnimationFrame(loop);

@@ -106,10 +106,6 @@
 	// background: #333;
 	overflow: hidden;
 
-	@include media-query(palm) {
-		padding: 0 $_u2;
-	}
-
 	.flexbox {
 		position: absolute;
 		top: 0;
