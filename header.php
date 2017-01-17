@@ -117,7 +117,7 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 			<div class="flexbox">
 				<div class="flexbox__item">
 					<button class="nav-trigger  js-nav-trigger">
-						<span class="nav-icon icon--lines"></span>
+						<span class="nav-icon"></span>
 					</button>
 				</div>
 				<div class="flexbox__item  branding-container">
