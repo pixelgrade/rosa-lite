@@ -9214,7 +9214,7 @@ hr, .separator {
   background: none !important; }
 
 .addthis_32x32_style .dummy .at300bs, .addthis_32x32_style .at300bs, .addthis_32x32_style .at15t {
-  background: url(../images/addThis_32x32_pxg.png) no-repeat right;
+  background: url(../images/addThis_32x32_pxg.png) no-repeat left;
   opacity: 0.3; }
 
 div.addthis_toolbox a {
@@ -9773,14 +9773,12 @@ small.muted {
   .woocommerce-MyAccount-navigation ul.nav--items-social a, .nav--items-social.menu-list__items a, .nav--items-social.rsBullets a,
   .widget [class*="social"] > ul a {
     position: relative;
-    overflow: hidden;
     font-size: 16px;
     padding: 8px 24px;
     padding: 0.5rem 1.5rem;
     width: 36px;
     width: 2.25rem;
-    text-decoration: none;
-    color: transparent !important; }
+    text-decoration: none; }
     .nav.nav--items-social a:before, .nav--items-social.author__social-links a:before, .nav--items-social.commentlist a:before, .nav--items-social.social-links-list a:before, .nav--items-social.sub-menu a:before, .nav--items-social.tabs__nav a:before,
     .woocommerce-MyAccount-navigation ul.nav--items-social a:before, .nav--items-social.menu-list__items a:before, .nav--items-social.rsBullets a:before,
     .widget [class*="social"] > ul a:before {

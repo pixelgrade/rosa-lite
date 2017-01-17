@@ -159,6 +159,8 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 								'menu_id'        => '',
 								'depth'          => 1,
 								'items_wrap'     => '<ul id="%1$s" class="%2$s  nav">%3$s</ul>',
+								'link_before'    => '<span class="screen-reader-text">',
+								'link_after'     => '</span>',
 							) );
 						}
 

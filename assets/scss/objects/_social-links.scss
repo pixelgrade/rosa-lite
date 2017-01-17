@@ -6,14 +6,12 @@
 
     a {
         position: relative;
-        overflow: hidden;
         font-size: 16px;
 
         @include rem(padding, 8px 24px);
         @include rem(width, 36px);
 
         text-decoration: none;
-        color: transparent !important;
 
         &:before {
             position: absolute;
