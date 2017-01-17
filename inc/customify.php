@@ -346,38 +346,26 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							'css'         => array(
 								array(
 									'property' => 'border-width',
-									'selector' => 'body > .page, .site-header, .site-footer',
+									'selector' => 'body > .page, .site-header',
 									'unit'     => 'px',
 									'media'    => 'screen and (min-width: 900px)'
 								),
 								array(
 									'property' => 'margin-top',
-									'selector' => '.article__header + .article--page',
+									'selector' => '.article__header:first-of-type + .article--page',
 									'unit'     => 'px',
 									'callback_filter' => 'rosa_range_negative_value',
 									'media'    => ' screen and (min-width: 900px) '
 								),
 								array(
-									'property' => 'margin-right',
-									'selector' => 'body .navigator, body .covers',
-									'unit'     => 'px',
-									'media'    => ' screen and (min-width: 900px)'
-								),
-								array(
-									'property' => 'right',
-									'selector' => 'body .covers .article__parallax',
+									'property' => 'padding-right',
+									'selector' => 'body .navigator, div.page',
 									'unit'     => 'px',
 									'media'    => '  screen and (min-width: 900px)'
 								),
 								array(
-									'property' => 'margin-left',
-									'selector' => 'body .covers',
-									'unit'     => 'px',
-									'media'    => 'screen and (min-width : 900px)'
-								),
-								array(
-									'property' => 'left',
-									'selector' => 'body .covers .article__parallax',
+									'property' => 'padding-left',
+									'selector' => 'div.page',
 									'unit'     => 'px',
 									'media'    => ' screen and (min-width: 900px)'
 								),

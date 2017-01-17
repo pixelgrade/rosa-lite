@@ -9,7 +9,7 @@ global $is_gmap, $page_section_idx, $header_height;
 $page_section_idx++;
 
 //header general classes
-$classes = "article__header  article__header--page";
+$classes = "c-hero  article__header  article__header--page";
 
 //first lets get to know this page a little better
 $header_height = get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_header_height', true );
@@ -66,8 +66,8 @@ if ( $pin_type == 'single' ) {
 
 		?>
 		<header id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ); ?>">
-			<div class="article__parallax">
-				<div id="gmap-<?php the_ID() ?>" class="gmap"
+			<div class="c-hero__background c-hero__layer" data-rellax data-rellax-container>
+				<div data-rellax id="gmap-<?php the_ID() ?>" class="c-hero__map gmap"
 					data-url="<?php esc_attr_e( $gmap_url ); ?>" <?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
 					data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>" data-pin_type="single"></div>
 			</div>
@@ -151,23 +151,9 @@ if ( $pin_type == 'single' ) {
 				$slider_delay = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_delay', true );
 			} ?>
 			<header id="post-<?php the_ID() ?>-title" class="<?php echo $classes ?>">
-				<?php if ( ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) { ?>
-					<div class="flexbox">
-						<div class="flexbox__item">
-							<hgroup class="article__headline">
-								<?php if ( ! empty( $subtitle ) ) {
-									echo '<h2 class="headline__secondary">' . $subtitle . '</h2>' . PHP_EOL;
-								} ?>
-								<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
-								<?php if ( ! empty( $description ) ) {
-									echo '<div class="headline__description">' . $description . '</div>' . PHP_EOL;
-								} ?>
-							</hgroup>
-						</div>
-					</div>
-				<?php } ?>
-				<div class="article__parallax">
-					<div class="article__parallax__slider  header--slideshow  js-pixslider"
+				<div class="c-hero__background c-hero__layer" data-rellax data-rellax-container>
+					<div class="c-hero__slider  js-pixslider"
+						data-rellax
 						data-imagealigncenter
 						data-imagescale="<?php echo $image_scale_mode; ?>"
 						data-slidertransition="<?php echo $slider_transition; ?>"
@@ -226,6 +212,21 @@ if ( $pin_type == 'single' ) {
 						} ?>
 					</div>
 				</div>
+				<?php if ( ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) { ?>
+					<div class="flexbox">
+					<div class="flexbox__item">
+						<hgroup class="article__headline">
+							<?php if ( ! empty( $subtitle ) ) {
+								echo '<h2 class="headline__secondary">' . $subtitle . '</h2>' . PHP_EOL;
+							} ?>
+							<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
+							<?php if ( ! empty( $description ) ) {
+								echo '<div class="headline__description">' . $description . '</div>' . PHP_EOL;
+							} ?>
+						</hgroup>
+					</div>
+					</div>
+				<?php } ?>
 			</header>
 		<?php } else { ?>
 			<div class="empty-slideshow">
@@ -242,26 +243,24 @@ if ( $pin_type == 'single' ) {
 				<?php if ( has_post_thumbnail() ) {
 					$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full-size' );
 					if ( ! empty( $image[0] ) ) { ?>
-						<div class="article__parallax">
-							<img class="article__parallax__img" src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
+						<div class="c-hero__background c-hero__layer" data-rellax data-rellax-container>
+							<img class="c-hero__image" data-rellax src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
 						</div>
 					<?php
 					}
 				}
 
 				if ( ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) { ?>
-					<div class="flexbox">
-						<div class="flexbox__item">
-							<hgroup class="article__headline">
-								<?php if ( ! empty( $subtitle ) ) {
-									echo '<h2 class="headline__secondary">' . $subtitle . '</h2>' . PHP_EOL;
-								} ?>
-								<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
-								<?php if ( ! empty( $description ) ) {
-									echo '<div class="headline__description">' . $description . '</div>' . PHP_EOL;
-								} ?>
-							</hgroup>
-						</div>
+					<div class="c-hero__wrapper">
+						<hgroup class="article__headline">
+							<?php if ( ! empty( $subtitle ) ) {
+								echo '<h2 class="headline__secondary">' . $subtitle . '</h2>' . PHP_EOL;
+							} ?>
+							<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
+							<?php if ( ! empty( $description ) ) {
+								echo '<div class="headline__description">' . $description . '</div>' . PHP_EOL;
+							} ?>
+						</hgroup>
 					</div>
 				<?php } ?>
 			</header>
