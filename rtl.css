@@ -7537,11 +7537,11 @@ input[type="color"],
 .border-waves-top:after,
 .border-waves-bottom:before {
   content: "";
+  position: absolute;
+  right: 0;
   display: block;
   width: 100%;
   height: 14px;
-  position: absolute;
-  right: 0;
   background: url("./assets/images/border-wave.svg") top left repeat-x;
   -webkit-transform: translate3d(0, 0, 0.1px);
           transform: translate3d(0, 0, 0.1px); }
@@ -7590,9 +7590,9 @@ input[type="color"],
   position: absolute;
   bottom: 100%;
   right: 50%;
+  z-index: 10;
   margin-right: -96px;
-  margin-bottom: -12px;
-  z-index: 10; }
+  margin-bottom: -12px; }
 
 .article__header.article__header--page {
   position: relative;
@@ -7636,10 +7636,10 @@ input[type="color"],
   @media only screen and (max-width: 899px) {
     .article__parallax:first-of-type:after {
       content: "";
-      display: block;
       position: absolute;
       top: 0;
       right: 0;
+      display: block;
       width: 100%;
       height: 100%;
       background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, transparent 50%);
@@ -7707,15 +7707,15 @@ input[type="color"],
   padding-top: 0; }
 
 .down-arrow {
+  position: absolute;
+  right: 50%;
+  z-index: 100;
   display: block;
   width: 80px;
   height: 80px;
-  opacity: 0.7;
-  position: absolute;
-  right: 50%;
   margin-right: -40px;
-  cursor: pointer;
-  z-index: 100; }
+  opacity: 0.7;
+  cursor: pointer; }
   .down-arrow .arrow {
     position: absolute;
     top: 50%;

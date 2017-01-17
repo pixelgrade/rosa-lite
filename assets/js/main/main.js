@@ -174,19 +174,6 @@ function init() {
 	/* INSTANTIATE EVENT HANDLERS */
 	eventHandlers();
 
-	// move waves in siblings so they keep up with the parallax
-	// var $waves = jQuery('.border-waves').not('.site-footer');
-	// $waves.removeClass('border-waves');
-
-	// $waves.each(function(i, obj) {
-	//     var $wave = $(obj);
-	//     $wave.prevAll('.article__header').first().find('.article__parallax').addClass('border-waves-top');
-	//     $wave.nextAll('.article__header').first().find('.article__parallax').addClass('border-waves-bottom');
-	//     $wave.next('.site-footer').addClass('border-waves-bottom');
-	// });
-
-	// $('.site-footer.border-waves').prevAll('article__header').first().find('.article__parallax').addClass('border-waves-top border-waves-top--dark');
-
 	$( '.navigation--main' ).on( 'DOMMouseScroll mousewheel', function ( ev ) {
 		var $this = $( this ),
 			scrollTop = this.scrollTop,
