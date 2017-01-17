@@ -232,7 +232,6 @@ button.nav-trigger{
 	top: 2px;
 	right: inherit;
 	display: block;
-	width: 26px;
 	height: 2px;
 
 	background-color: black;
@@ -255,11 +254,11 @@ button.nav-trigger{
 		transition: all .3s;
 	}
 
-	&:after {
+	&:before {
 		top: -7px;
 	}
 
-	&:before {
+	&:after {
 		top: 7px;
 	}
 
@@ -270,12 +269,12 @@ button.nav-trigger{
 			background-color: white !important;
 		}
 
-		&:after{
+		&:after {
 			transform: rotate(45deg);
 			top: 0;
 		}
 
-		&:before{
+		&:before {
 			transform: rotate(-45deg);
 			top: 0;
 		}
@@ -283,12 +282,12 @@ button.nav-trigger{
 
 	.navigation--is-visible.android-browser &,
 	.navigation--is-visible.is--winmob & {
-		&:after{
+		&:before {
 			transform: none;
 			top: -7px;
 		}
 
-		&:before{
+		&:after {
 			transform: none;
 			top: 7px;
 		}

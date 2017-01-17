@@ -8468,7 +8468,6 @@ button.nav-trigger {
   top: 2px;
   left: inherit;
   display: block;
-  width: 26px;
   height: 2px;
   background-color: black;
   border-radius: 2.5rem;
@@ -8483,9 +8482,9 @@ button.nav-trigger {
     border-radius: 2.5rem;
     background-color: black;
     transition: all .3s; }
-  .nav-icon:after {
-    top: -7px; }
   .nav-icon:before {
+    top: -7px; }
+  .nav-icon:after {
     top: 7px; }
   .navigation--is-visible .nav-icon {
     background-color: transparent !important; }
@@ -8499,13 +8498,13 @@ button.nav-trigger {
       -webkit-transform: rotate(45deg);
               transform: rotate(45deg);
       top: 0; }
-  .navigation--is-visible.android-browser .nav-icon:after,
-  .navigation--is-visible.is--winmob .nav-icon:after {
+  .navigation--is-visible.android-browser .nav-icon:before,
+  .navigation--is-visible.is--winmob .nav-icon:before {
     -webkit-transform: none;
             transform: none;
     top: -7px; }
-  .navigation--is-visible.android-browser .nav-icon:before,
-  .navigation--is-visible.is--winmob .nav-icon:before {
+  .navigation--is-visible.android-browser .nav-icon:after,
+  .navigation--is-visible.is--winmob .nav-icon:after {
     -webkit-transform: none;
             transform: none;
     top: 7px; }
