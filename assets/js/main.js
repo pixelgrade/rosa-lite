@@ -101,12 +101,12 @@ var globalDebug = false,
 /* --- Magnific Popup Initialization --- */
 
 function magnificPopupInit() {
-	if (globalDebug) {
-		console.log("Magnific Popup - Init");
+	if ( globalDebug ) {
+		console.log( "Magnific Popup - Init" );
 	}
 
-	$('.js-post-gallery').each(function () { // the containers for all your galleries should have the class gallery
-		$(this).magnificPopup({
+	$( '.js-post-gallery' ).each( function () { // the containers for all your galleries should have the class gallery
+		$( this ).magnificPopup( {
 			tPrev: objectl10n.tPrev,
 			tNext: objectl10n.tNext,
 			tCounter: objectl10n.tCounter,
@@ -114,21 +114,23 @@ function magnificPopupInit() {
 			type: 'image',
 			closeOnContentClick: false,
 			closeBtnInside: false,
+			closeOnBgClick: false,
+			fixedContentPos: true,
 			removalDelay: 500,
 			mainClass: 'mfp-fade',
 			image: {
 				markup: '<div class="mfp-figure">' +
-				'<div class="mfp-close"></div>' +
-				'<div class="mfp-img"></div>' +
-				'<div class="mfp-bottom-bar">' +
-				'<div class="mfp-title"></div>' +
-				'<div class="mfp-counter"></div>' +
-				'</div>' +
-				'</div>',
-				titleSrc: function (item) {
+				        '<div class="mfp-close"></div>' +
+				        '<div class="mfp-img"></div>' +
+				        '<div class="mfp-bottom-bar">' +
+				        '<div class="mfp-title"></div>' +
+				        '<div class="mfp-counter"></div>' +
+				        '</div>' +
+				        '</div>',
+				titleSrc: function ( item ) {
 					var output = '';
-					if (typeof item.el.attr('data-alt') !== "undefined" && item.el.attr('data-alt') !== "") {
-						output += '<small>' + item.el.attr('data-alt') + '</small>';
+					if ( typeof item.el.attr( 'data-alt' ) !== "undefined" && item.el.attr( 'data-alt' ) !== "" ) {
+						output += '<small>' + item.el.attr( 'data-alt' ) + '</small>';
 					}
 					return output;
 				}
@@ -139,31 +141,33 @@ function magnificPopupInit() {
 				//arrowMarkup: '<a href="#" class="gallery-arrow gallery-arrow--%dir% control-item arrow-button arrow-button--%dir%">%dir%</a>'
 			},
 			callbacks: {
-				elementParse: function (item) {
+				elementParse: function ( item ) {
 
-					if (this.currItem != undefined) {
+					if ( this.currItem != undefined ) {
 						item = this.currItem;
 					}
 
 					var output = '';
-					if (typeof item.el.attr('data-alt') !== "undefined" && item.el.attr('data-alt') !== "") {
-						output += '<small>' + item.el.attr('data-alt') + '</small>';
+					if ( typeof item.el.attr( 'data-alt' ) !== "undefined" && item.el.attr( 'data-alt' ) !== "" ) {
+						output += '<small>' + item.el.attr( 'data-alt' ) + '</small>';
 					}
 
-					$('.mfp-title').html(output);
+					$( '.mfp-title' ).html( output );
 				},
-				change: function (item) {
+				change: function ( item ) {
 					var output = '';
-					if (typeof item.el.attr('data-alt') !== "undefined" && item.el.attr('data-alt') !== "") {
-						output += '<small>' + item.el.attr('data-alt') + '</small>';
+					if ( typeof item.el.attr( 'data-alt' ) !== "undefined" && item.el.attr( 'data-alt' ) !== "" ) {
+						output += '<small>' + item.el.attr( 'data-alt' ) + '</small>';
 					}
 
-					$('.mfp-title').html(output);
+					$( '.mfp-title' ).html( output );
+				},
+				beforeClose: function () {
+					$( '.mfp-arrow, .mfp-close' ).hide();
 				}
 			}
-		});
-	});
-
+		} );
+	} );
 }
 
 /* --- Royal Slider Init --- */
