@@ -108,8 +108,8 @@ if ( $pin_type == 'single' ) {
 		$pins .= '}';
 		?>
 		<header id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ) ?>">
-			<div class="article__parallax">
-				<div class="gmap--multiple-pins" id="gmap-<?php the_ID() ?>"
+			<div class="c-hero__background c-hero__layer" data-rellax data-rellax-container>
+				<div data-rellax id="gmap-<?php the_ID() ?>" class="c-hero__map gmap--multiple-pins"
 					<?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
 					 data-pins='<?php echo esc_attr( $pins ) ?>' data-pin_type="multiple"></div>
 			</div>
