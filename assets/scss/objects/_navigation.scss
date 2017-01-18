@@ -3,12 +3,14 @@
 \*------------------------------------*/
 .navigation--main {
 	float: right;
+}
 
-	@include media-query(lap-and-up) {
+@include media-query(lap-and-up) {
+	html:not(.is--ie) .navigation--main {
 		display: flex;
 
 		& > .nav--main {
-			flex: 1 0 auto;
+			flex-grow: 1;
 		}
 	}
 }
