@@ -131,18 +131,6 @@ gulp.task('scripts-watch', function () {
 	return gulp.watch('assets/js/**/*.js', ['scripts']);
 });
 
-gulp.task('scripts-server', function () {
-
-	gulp.src('./assets/js/plugins/*.js')
-			.pipe(concat('plugins.js'))
-			.pipe(gulp.dest('./assets/js/'));
-
-	return gulp.src(jsFiles)
-			.pipe(concat('main.js'))
-			// .pipe(uglify())
-			.pipe(gulp.dest('./assets/js/', {"mode": "0644"}));
-});
-
 gulp.task('watch', ['styles', 'scripts'], function () {
 	gulp.watch('assets/scss/**/*.scss', ['styles']);
 	gulp.watch('assets/js/**/*.js', ['scripts']);
@@ -157,18 +145,13 @@ gulp.task('start', ['styles', 'scripts'], function () {
 	// silence
 });
 
-gulp.task('server', ['styles', 'scripts-server'], function () {
-	console.log('The styles and scripts have been compiled for production! Go and clear the caches!');
-});
-
-
 
 
 
 /**
  * Copy theme folder outside in a build folder, recreate styles before that
  */
-gulp.task('copy-folder', ['styles', 'scripts'], function () {
+gulp.task('copy-folder', function () {
 
 	return gulp.src('./')
 		.pipe(exec("rm -Rf ./../build; mkdir -p ./../build/rosa; rsync -aq --exclude='node_modules' ./* ./../build/rosa/"));
