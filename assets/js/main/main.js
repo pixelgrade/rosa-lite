@@ -9,7 +9,8 @@ var $body = $( 'body' ),
 	documentHeight = $document.height(),
 	aspectRatio = windowWidth / windowHeight,
 	orientation = windowWidth > windowHeight ? 'landscape' : 'portrait',
-	orientationchange = false;
+	orientationchange = false,
+	isTouch = !! ( ( "ontouchstart" in window ) || window.DocumentTouch && document instanceof DocumentTouch );
 
 function niceScrollInit() {
 	if ( globalDebug ) {
@@ -204,6 +205,8 @@ function init() {
 		}
 	} );
 
+
+	setHeroHeights();
 	$( "[data-rellax]" ).rellax();
 
 	if ( globalDebug ) {
@@ -211,6 +214,21 @@ function init() {
 	}
 }
 
+function setHeroHeights() {
+	$( ".article__header--page" ).each( function(i, obj) {
+		var $obj = $(obj);
+
+		$obj.css({
+			minHeight: '',
+			height: ''
+		});
+
+		$obj.css({
+			minHeight: $obj.outerHeight(),
+			height: 'auto'
+		});
+	});
+}
 
 /* ====== EVENT HANDLERS ====== */
 
@@ -390,44 +408,52 @@ $( window ).load( function () {
 /* ====== ON RESIZE ====== */
 
 $( window ).on( "debouncedresize", onResize );
+setHeroHeights();
 
-function onResize( e ) {
-	if ( globalDebug ) {
-		console.group( "OnResize" );
+
+var orntn = getOrientation();;
+
+function getOrientation() {
+	return windowWidth > windowHeight ? "landscape" : "portrait";
+}
+
+$window.on( 'resize', function() {
+	windowWidth = window.innerWidth;
+	windowHeight = window.innerHeight;
+
+	if ( isTouch && getOrientation() === orntn ) {
+		return;
 	}
 
-	windowWidth = $( window ).width();
-	windowHeight = $( window ).height();
+	setHeroHeights();
 
-	newOrientation = windowWidth > windowHeight ? 'landscape' : 'portrait';
-	if ( newOrientation !== orientation ) {
-		orientationchange = true;
-		orientation = newOrientation;
-	}
+	function refresh() {
+		resizeVideos();
 
-	resizeVideos();
+	//	royalSliderInit( $( '.js-pixslider' ).not( '.c-hero__background .js-pixslider' ) );
+	//	$( ".pixcode--tabs" ).organicTabs();
 
-	royalSliderInit( $( '.js-pixslider' ).not( '.c-hero__background .js-pixslider' ) );
-
-	$( ".pixcode--tabs" ).organicTabs();
-
-	if ( ! Modernizr.touchevents ) {
-		requestAnimationFrame( refreshStuff );
-	} else {
-		if ( orientationchange ) {
-			setTimeout( function () {
-				requestAnimationFrame( refreshStuff );
-			}, 300 );
+		if ( touch && windowWidth < 900 ) {
+			HandleSubmenusOnTouch.init();
+		} else {
+			HandleSubmenusOnTouch.release();
 		}
+
+		requestAnimationFrame( refreshStuff );
 	}
 
-	if ( touch && windowWidth < 900 ) {
-		HandleSubmenusOnTouch.init();
+	if ( isTouch ) {
+		setTimeout( refresh, 100 );
 	} else {
-		HandleSubmenusOnTouch.release();
+		refresh();
 	}
 
-	orientationchange = false;
+
+	orntn = getOrientation();
+});
+
+
+function onResize() {
 }
 
 function refreshStuff() {
@@ -452,13 +478,13 @@ $( window ).on( "organicTabsChange", function () {
 	refreshStuff();
 } );
 
-window.latestKnownScrollY = window.pageYOffset;
+var latestKnownScrollY = window.scrollY;
 
-var newScrollY = latestKnownScrollY,
+var newScrollY = -1,
 	ticking = false;
 
 $window.scroll( function () {
-	newScrollY = window.pageYOffset;
+	newScrollY = window.scrollY;
 } );
 
 function loop() {
@@ -541,3 +567,6 @@ $( function () {
 
 	} );
 } );
+
+$.fn.rellax.defaults.reloadEvent = isTouch ? 'load orientationchange' : 'load resize';
+$.fn.rellax.defaults.bleed = isTouch ? 60 : 0;

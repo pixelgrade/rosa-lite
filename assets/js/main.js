@@ -427,16 +427,35 @@ function get_url_parameter(needed_param, gmap_url) {
 
 function get_newMap_oldUrl_coordinates(url) {
 	var coordinates = {},
-		split,
-		distance;
+		temp_coords,
+		temp_zoom;
 
-	split = url.split('!3d');
-	coordinates.latitude = split[1];
-	split = split[0].split('!2d');
-	coordinates.longitude = split[1];
-	split = split[0].split('!1d');
-	distance = split[1];
-	coordinates.zoom = 21 - Math.round(Math.log(Math.round(distance / 218), 2));
+	temp_coords = url.split('!3d');
+	temp_coords = temp_coords[1];
+	temp_coords = temp_coords.split('!4d');
+
+	// Get the first part of the temp_coords array which is the latitude
+	coordinates.latitude = temp_coords[0];
+
+	// Get the second part of the temp_coords, before the zoom level, which is the longitude
+	temp_coords[1] = temp_coords[1].split('?')[0];
+	coordinates.longitude = temp_coords[1];
+
+	// Get the zoom level
+	// Get the whole coordinates including the zoom
+	temp_zoom = url.split('@');
+	temp_zoom = temp_zoom[1];
+	// Remove the part after the coordinates
+	temp_zoom = temp_zoom.split('/');
+	temp_zoom = temp_zoom[0];
+	// Split the coordinates and get only the zoom level
+	temp_zoom = temp_zoom.split(',');
+	temp_zoom = temp_zoom[2];
+	// Take off the z part
+	if ( temp_zoom.indexOf('z') >= 0 ) {
+		temp_zoom = temp_zoom.substring( 0, temp_zoom.length - 1 );
+	}
+	coordinates.zoom = temp_zoom;
 
 	return coordinates;
 }
@@ -718,7 +737,7 @@ function gmapMultiplePinsInit($container) {
 				if (typeof map == "undefined") return;
 
 				if (1 < pins.length) {
-					map.setZoom(map.getZoom() - 1);
+//					map.setZoom(map.getZoom() - 1);
 				} else {
 					map.setZoom(zoom);
 				}
@@ -1303,7 +1322,8 @@ var $body = $( 'body' ),
 	documentHeight = $document.height(),
 	aspectRatio = windowWidth / windowHeight,
 	orientation = windowWidth > windowHeight ? 'landscape' : 'portrait',
-	orientationchange = false;
+	orientationchange = false,
+	isTouch = !! ( ( "ontouchstart" in window ) || window.DocumentTouch && document instanceof DocumentTouch );
 
 function niceScrollInit() {
 	if ( globalDebug ) {
@@ -1498,6 +1518,8 @@ function init() {
 		}
 	} );
 
+
+	setHeroHeights();
 	$( "[data-rellax]" ).rellax();
 
 	if ( globalDebug ) {
@@ -1505,6 +1527,21 @@ function init() {
 	}
 }
 
+function setHeroHeights() {
+	$( ".article__header--page" ).each( function(i, obj) {
+		var $obj = $(obj);
+
+		$obj.css({
+			minHeight: '',
+			height: ''
+		});
+
+		$obj.css({
+			minHeight: $obj.outerHeight(),
+			height: 'auto'
+		});
+	});
+}
 
 /* ====== EVENT HANDLERS ====== */
 
@@ -1684,44 +1721,52 @@ $( window ).load( function () {
 /* ====== ON RESIZE ====== */
 
 $( window ).on( "debouncedresize", onResize );
+setHeroHeights();
 
-function onResize( e ) {
-	if ( globalDebug ) {
-		console.group( "OnResize" );
+
+var orntn = getOrientation();;
+
+function getOrientation() {
+	return windowWidth > windowHeight ? "landscape" : "portrait";
+}
+
+$window.on( 'resize', function() {
+	windowWidth = window.innerWidth;
+	windowHeight = window.innerHeight;
+
+	if ( isTouch && getOrientation() === orntn ) {
+		return;
 	}
 
-	windowWidth = $( window ).width();
-	windowHeight = $( window ).height();
+	setHeroHeights();
 
-	newOrientation = windowWidth > windowHeight ? 'landscape' : 'portrait';
-	if ( newOrientation !== orientation ) {
-		orientationchange = true;
-		orientation = newOrientation;
-	}
+	function refresh() {
+		resizeVideos();
 
-	resizeVideos();
+	//	royalSliderInit( $( '.js-pixslider' ).not( '.c-hero__background .js-pixslider' ) );
+	//	$( ".pixcode--tabs" ).organicTabs();
 
-	royalSliderInit( $( '.js-pixslider' ).not( '.c-hero__background .js-pixslider' ) );
-
-	$( ".pixcode--tabs" ).organicTabs();
-
-	if ( ! Modernizr.touchevents ) {
-		requestAnimationFrame( refreshStuff );
-	} else {
-		if ( orientationchange ) {
-			setTimeout( function () {
-				requestAnimationFrame( refreshStuff );
-			}, 300 );
+		if ( touch && windowWidth < 900 ) {
+			HandleSubmenusOnTouch.init();
+		} else {
+			HandleSubmenusOnTouch.release();
 		}
+
+		requestAnimationFrame( refreshStuff );
 	}
 
-	if ( touch && windowWidth < 900 ) {
-		HandleSubmenusOnTouch.init();
+	if ( isTouch ) {
+		setTimeout( refresh, 100 );
 	} else {
-		HandleSubmenusOnTouch.release();
+		refresh();
 	}
 
-	orientationchange = false;
+
+	orntn = getOrientation();
+});
+
+
+function onResize() {
 }
 
 function refreshStuff() {
@@ -1746,13 +1791,13 @@ $( window ).on( "organicTabsChange", function () {
 	refreshStuff();
 } );
 
-window.latestKnownScrollY = window.pageYOffset;
+var latestKnownScrollY = window.scrollY;
 
-var newScrollY = latestKnownScrollY,
+var newScrollY = -1,
 	ticking = false;
 
 $window.scroll( function () {
-	newScrollY = window.pageYOffset;
+	newScrollY = window.scrollY;
 } );
 
 function loop() {
@@ -1835,6 +1880,10 @@ $( function () {
 
 	} );
 } );
+
+$.fn.rellax.defaults.reloadEvent = isTouch ? 'load orientationchange' : 'load resize';
+$.fn.rellax.defaults.bleed = isTouch ? 60 : 0;
+
 /* --- 404 Page --- */
 gifImages = [
 	"http://i.imgur.com/ShiZM6m.gif",

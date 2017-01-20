@@ -5820,36 +5820,70 @@ $.fn.gmap3 = function () {
 
     var $window = $( window ),
         elements = [],
-        lastKnownScrollY;
+        lastScrollY = -1,
+        latestScrollY = window.scrollY,
+        requestTick = false,
+        windowWidth = window.innerWidth,
+        windowHeight = window.innerHeight,
+        orientation,
+        isTouch = !! ( ( "ontouchstart" in window ) || window.DocumentTouch && document instanceof DocumentTouch );
+
+    function getOrientation() {
+        return windowWidth > windowHeight ? "landscape" : "portrait";
+    }
 
     function updateAll() {
-        $.each( elements, function( i, element ) {
-            element._updatePosition();
-        });
+        if ( requestTick ) {
+            $.each( elements, function( i, element ) {
+                element._updatePosition();
+            });
+            requestTick = false;
+        }
         window.requestAnimationFrame( updateAll );
     }
 
-    window.requestAnimationFrame( updateAll );
-
-    $window.on( 'load resize', function(e) {
-        windowWidth = $window.width();
-        windowHeight = $window.height();
-
+    function reloadAll() {
         $.each( elements, function( i, element ) {
             element._reloadElement();
         });
-    });
+    }
 
-    $window.on( 'load scroll', function(e) {
-        lastKnownScrollY = $( e.target ).scrollTop();
+    $( window ).on("load", function() {
+
+        reloadAll();
+        requestTick = true;
+        window.requestAnimationFrame( updateAll );
+
+        $window.on( 'resize', function() {
+            windowWidth = window.innerWidth;
+            windowHeight = window.innerHeight;
+
+            if ( isTouch && getOrientation() === orientation ) {
+                return;
+            }
+
+            orientation = getOrientation();
+            reloadAll();
+            requestTick = true;
+        });
+
+        $window.on( 'scroll', function() {
+            latestScrollY = window.scrollY;
+
+            if ( lastScrollY !== latestScrollY ) {
+                requestTick = true;
+                lastScrollY = latestScrollY;
+            }
+        });
+
     });
 
     function Rellax( element, options ) {
         this.element = element;
-        this.options = $.extend( {}, $.fn.rellax.defaults, options );
+        this.options = $.extend( $.fn.rellax.defaults, options );
 
         var self = this,
-            $el = $( this.element ).addClass( 'rellax-active' ),
+            $el = $( this.element ),
             myAmount = $el.data( 'rellax-amount' ),
             myBleed = $el.data( 'rellax-bleed' ),
             fill = $el.data( 'rellax-fill' ),
@@ -5858,15 +5892,17 @@ $.fn.gmap3 = function () {
         this.isContainer = $el.is( self.options.container );
         this.$parent = $el.parent().closest( self.options.container );
 
-        this.options.amount = myAmount != undefined ? parseFloat(myAmount) : this.options.amount;
-        this.options.bleed = myBleed != undefined ? parseFloat(myBleed) : this.options.bleed;
-        this.options.scale = myScale != undefined ? parseFloat(myScale) : this.options.scale;
-        this.options.fill = fill != undefined ? true : false;
+        this.options.amount = myAmount !== undefined ? parseFloat(myAmount) : this.options.amount;
+        this.options.bleed = myBleed !== undefined ? parseFloat(myBleed) : this.options.bleed;
+        this.options.scale = myScale !== undefined ? parseFloat(myScale) : this.options.scale;
+        this.options.fill = fill !== undefined ;
 
         if ( self.options.amount == 0 ) return;
 
         self._reloadElement();
         self._bindEvents();
+
+        $el.addClass( 'rellax-active' )
 
         elements.push( self );
     }
@@ -5874,16 +5910,13 @@ $.fn.gmap3 = function () {
     $.extend( Rellax.prototype, {
         constructor: Rellax,
         _bindEvents: function() {
-            var self = this;
-            $window.on( 'load resize', function(e) {
-                self._reloadElement();
-            });
         },
         _scaleElement: function() {
-	        this.height = ( windowHeight + this.height ) * this.options.amount;
+	        this.height = this.$parent.outerHeight() + ( windowHeight - this.$parent.outerHeight() ) * this.options.amount;
         },
         _reloadElement: function() {
             var self = this,
+                parent,
                 $el = $( this.element ).removeAttr( 'style' );
 
             if ( self.$parent.length ) {
@@ -5899,24 +5932,23 @@ $.fn.gmap3 = function () {
             }
 
             if ( self.isContainer ) {
-                self.width += 2 * self.options.bleed;
                 self.height += 2 * self.options.bleed;
-                self.offset.left -= self.options.bleed;
                 self.offset.top -= self.options.bleed;
             }
 
             if ( self.$parent.length ) {
+                parent = self.$parent.data( "plugin_" + Rellax );
                 self.offset.left = self.offset.left - self.$parent.offset().left;
             }
 
             var style = {
-                position: self.$parent.length ? 'absolute' : 'fixed',
+                position: self.$parent.length ? 'absolute' : 'static',
                 top: self.offset.top,
                 left: self.offset.left,
                 width: self.width,
                 height: self.height,
-                marginTop: 0,
-                marginLeft: 0
+                marginTop: self.$parent.length ? ( parent.height - self.height ) / 2 : 0,
+                marginLeft: self.$parent.length ? ( parent.width - self.width ) / 2 : 0
             };
 
             if ( self.isContainer ) $.extend( style, {zIndex: -1} );
@@ -5937,41 +5969,39 @@ $.fn.gmap3 = function () {
 
             $el.css( style );
         },
-        _isInViewport: function( offset ) {
-            offset = ( offset != undefined && ! this.isContainer ) ? offset : 0;
-            return lastKnownScrollY > this.offset.top - windowHeight + offset && lastKnownScrollY < this.offset.top + windowHeight + offset;
+        _isInViewport: function() {
+            var offset = this.isContainer ? this.options.bleed : 0;
+            return latestScrollY > this.offset.top - windowHeight - offset &&
+                   latestScrollY < this.offset.top + this.height + offset;
         },
         _updatePosition: function() {
             var self = this,
-                progress = ( lastKnownScrollY - this.offset.top + windowHeight ) / ( windowHeight + this.height ),
-                move = ( windowHeight + this.height ) * ( progress - 0.5 );
+                _this = this.$parent.length ? this.$parent.data( "plugin_" + Rellax ) : this,
+                progress = ( latestScrollY - _this.offset.top + windowHeight ) / ( windowHeight + _this.height ),
+                move = ( windowHeight + _this.height ) * ( progress - 0.5 ) * self.options.amount,
+                scale = 1 + ( self.options.scale - 1 ) * ( progress - 0.5 );
 
-	        if ( self._isInViewport() ) {
-                if ( ! self.$parent.length && ! self.isVisible ) {
-                    $( self.element ).show();
-                    self.isVisible = true;
-                }
-                if ( self.isContainer ) {
-                    $( self.element ).css( 'transform', 'translate3d(0,' + ( -lastKnownScrollY ) + 'px,0)' );
-                } else {
-                    move = move * self.options.amount;
-                    if ( ! self.$parent.length )
-                        move -= lastKnownScrollY;
-
-                    if ( self.options.scale !== 1 ) {
-                        var scale = 1 + ( self.options.scale - 1 ) * (progress - 0.5);
-                        $( self.element ).css( 'transform', 'translate3d(0,' + move + 'px,0) scale(' + scale + ')' );
-                    } else {
-                        $( self.element ).css( 'transform', 'translate3d(0,' + move + 'px,0)' );
-                    }
-                }
+            if ( this.isContainer ) {
+                $( self.element ).css( 'transform', 'translate3d(0,' + ( -latestScrollY ) + 'px,0)' );
             } else {
-                if ( ! self.$parent.length && self.isVisible ) {
-                    $( self.element ).hide();
-                    self.isVisible = false;
+                if ( ! this.$parent.length ) {
+                    move -= latestScrollY;
+                } else {
+                    move -= self.options.bleed;
                 }
+
+                $( self.element ).css( 'transform', 'translate3d(0,' + move + 'px,0) scale(' + scale + ')' );
             }
 
+            if ( _this._isInViewport() && ! _this.isVisible ) {
+                $( self.element ).addClass( 'rellax-visible' );
+                self.isVisible = true;
+            }
+
+            if ( ! _this._isInViewport() && _this.isVisible ) {
+                $( self.element ).removeClass( 'rellax-visible' );
+                self.isVisible = false;
+            }
         }
     });
 
@@ -5988,7 +6018,7 @@ $.fn.gmap3 = function () {
                 }
             }
         });
-    }
+    };
 
     $.fn.rellax.defaults = {
         amount: 0.5,
