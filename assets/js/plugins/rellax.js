@@ -96,7 +96,7 @@
         self._reloadElement();
         self._bindEvents();
 
-        $el.addClass( 'rellax-active' )
+        $el.addClass( 'rellax-active' );
 
         elements.push( self );
     }
@@ -106,6 +106,7 @@
         _bindEvents: function() {
         },
         _scaleElement: function() {
+            this.width = this.$parent.outerWidth();
 	        this.height = this.$parent.outerHeight() + ( windowHeight - this.$parent.outerHeight() ) * this.options.amount;
         },
         _reloadElement: function() {
@@ -136,7 +137,7 @@
             }
 
             var style = {
-                position: self.$parent.length ? 'absolute' : 'static',
+                position: self.$parent.length ? 'fixed' : 'absolute',
                 top: self.offset.top,
                 left: self.offset.left,
                 width: self.width,

@@ -1323,7 +1323,7 @@ var $body = $( 'body' ),
 	aspectRatio = windowWidth / windowHeight,
 	orientation = windowWidth > windowHeight ? 'landscape' : 'portrait',
 	orientationchange = false,
-	isTouch = !! ( ( "ontouchstart" in window ) || window.DocumentTouch && document instanceof DocumentTouch );
+	isTouch = ! ! ( ( "ontouchstart" in window ) || window.DocumentTouch && document instanceof DocumentTouch );
 
 function niceScrollInit() {
 	if ( globalDebug ) {
@@ -1337,7 +1337,7 @@ function niceScrollInit() {
 
 		var $window = $( window );		// Window object
 
-		$window.on( "mousewheel DOMMouseScroll", function ( event ) {
+		$window.on( "mousewheel DOMMouseScroll", function( event ) {
 
 			var scrollTo,
 				scrollDistance = 400,
@@ -1388,7 +1388,7 @@ function smoothScrollTo( y, speed ) {
 
 function menuTrigger() {
 
-	$( '.js-nav-trigger' ).on( 'click', function ( e ) {
+	$( '.js-nav-trigger' ).on( 'click', function( e ) {
 
 		e.preventDefault();
 		e.stopPropagation();
@@ -1415,7 +1415,7 @@ function initVideos() {
 	var videos = $( 'iframe, video' );
 
 	// Figure out and save aspect ratio for each video
-	videos.each( function () {
+	videos.each( function() {
 		$( this ).data( 'aspectRatio', this.width / this.height )
 		         // and remove the hard coded width/height
 		         .removeAttr( 'height' )
@@ -1423,11 +1423,11 @@ function initVideos() {
 	} );
 
 	// Firefox Opacity Video Hack
-	$( 'iframe' ).each( function () {
+	$( 'iframe' ).each( function() {
 		var url = $( this ).attr( "src" );
-        if ( ! empty( url ) ) {
-            $( this ).attr( "src", setQueryParameter( url, "wmode", "transparenartt" ) );
-        }
+		if ( ! empty( url ) ) {
+			$( this ).attr( "src", setQueryParameter( url, "wmode", "transparenartt" ) );
+		}
 	} );
 }
 
@@ -1436,7 +1436,7 @@ function resizeVideos() {
 
 	var videos = $( 'iframe, video' );
 
-	videos.each( function () {
+	videos.each( function() {
 		var video = $( this ),
 			ratio = video.data( 'aspectRatio' ),
 			w = video.css( 'width', '100%' ).width(),
@@ -1459,9 +1459,9 @@ function init() {
 	if ( typeof (
 			isIe
 		) != 'undefined' || (
-	     ! (
-		     window.ActiveXObject
-	     ) && "ActiveXObject" in window
+		     ! (
+			     window.ActiveXObject
+		     ) && "ActiveXObject" in window
 	     ) ) {
 		$( 'html' ).addClass( 'is--ie' );
 	}
@@ -1488,7 +1488,21 @@ function init() {
 	/* INSTANTIATE EVENT HANDLERS */
 	eventHandlers();
 
-	$( '.navigation--main' ).on( 'DOMMouseScroll mousewheel', function ( ev ) {
+//	move waves in siblings so they keep up with the parallax
+//	var $waves = jQuery( '.border-waves' ).not( '.site-footer' );
+//	$waves.removeClass( 'border-waves' );
+//
+//	$waves.each( function( i, obj ) {
+//		var $wave = $( obj );
+//		$wave.prevAll( '.article__header' ).first().find( '.article__parallax' ).addClass( 'border-waves-top' );
+//		$wave.nextAll( '.article__header' ).first().find( '.article__parallax' ).addClass( 'border-waves-bottom' );
+//		$wave.next( '.site-footer' ).addClass( 'border-waves-bottom' );
+//	} );
+//
+//	$( '.site-footer.border-waves' ).prevAll( 'article__header' ).first().find( '.article__parallax' ).addClass( 'border-waves-top border-waves-top--dark' );
+
+
+	$( '.navigation--main' ).on( 'DOMMouseScroll mousewheel', function( ev ) {
 		var $this = $( this ),
 			scrollTop = this.scrollTop,
 			scrollHeight = this.scrollHeight,
@@ -1500,7 +1514,7 @@ function init() {
 			),
 			up = delta > 0;
 
-		var prevent = function () {
+		var prevent = function() {
 			ev.stopPropagation();
 			ev.preventDefault();
 			ev.returnValue = false;
@@ -1528,19 +1542,19 @@ function init() {
 }
 
 function setHeroHeights() {
-	$( ".article__header--page" ).each( function(i, obj) {
-		var $obj = $(obj);
+	$( ".article__header--page" ).each( function( i, obj ) {
+		var $obj = $( obj );
 
-		$obj.css({
+		$obj.css( {
 			minHeight: '',
 			height: ''
-		});
+		} );
 
-		$obj.css({
+		$obj.css( {
 			minHeight: $obj.outerHeight(),
 			height: 'auto'
-		});
-	});
+		} );
+	} );
 }
 
 /* ====== EVENT HANDLERS ====== */
@@ -1567,8 +1581,8 @@ function eventHandlers() {
 	$( 'body' ).off( 'click', '.js-arrow-popup-prev', magnificPrev ).on( 'click', '.js-arrow-popup-prev', magnificPrev );
 	$( 'body' ).off( 'click', '.js-arrow-popup-next', magnificNext ).on( 'click', '.js-arrow-popup-next', magnificNext );
 
-	$( document ).on( 'spam.wpcf7 invalid.wpcf7 mailsent.wpcf7 mailfailed.wpcf7', function () {
-		setTimeout( function () {
+	$( document ).on( 'spam.wpcf7 invalid.wpcf7 mailsent.wpcf7 mailfailed.wpcf7', function() {
+		setTimeout( function() {
 			CoverAnimation.initialize();
 		}, 300 );
 	} );
@@ -1581,15 +1595,15 @@ function eventHandlers() {
 		filterHandler = 'hover';
 	}
 
-    if ( touch && windowWidth < 900 ) {
-        HandleSubmenusOnTouch.init();
-    }
+	if ( touch && windowWidth < 900 ) {
+		HandleSubmenusOnTouch.init();
+	}
 
-    if ( ieMobile ) {
-        filterHandler = 'click';
-    }
+	if ( ieMobile ) {
+		filterHandler = 'click';
+	}
 
-	$( '.pix-dropdown' ).on( filterHandler, function ( e ) {
+	$( '.pix-dropdown' ).on( filterHandler, function( e ) {
 		e.stopPropagation();
 
 		$( this ).toggleClass( 'active' );
@@ -1637,7 +1651,7 @@ function magnificNext( e ) {
 
 /* ====== ON DOCUMENT READY ====== */
 
-$( document ).ready( function () {
+$( document ).ready( function() {
 
 	if ( globalDebug ) {
 		console.group( "OnDocumentReady" );
@@ -1654,7 +1668,7 @@ $( document ).ready( function () {
 
 /* ====== ON WINDOW LOAD ====== */
 
-$( window ).load( function () {
+$( window ).load( function() {
 
 	if ( globalDebug ) {
 		console.group( "OnWindowLoad" );
@@ -1672,11 +1686,11 @@ $( window ).load( function () {
 	}
 
 	if ( ! $( 'html' ).is( '.ie9, .lt-ie9' ) ) {
-		setTimeout( function () {
+		setTimeout( function() {
 			CoverAnimation.initialize();
 		}, 600 );
 	} else {
-		setTimeout( function () {
+		setTimeout( function() {
 			CoverAnimation.initialize();
 		}, 400 );
 	}
@@ -1707,7 +1721,7 @@ $( window ).load( function () {
 	$( '.pixcode--tabs' ).organicTabs();
 	DownArrow.initialize();
 
-	setTimeout( function () {
+	setTimeout( function() {
 		Navigator.initialize();
 		ScrollToTop.initialize();
 	}, 60 );
@@ -1724,7 +1738,7 @@ $( window ).on( "debouncedresize", onResize );
 setHeroHeights();
 
 
-var orntn = getOrientation();;
+var orntn = getOrientation();
 
 function getOrientation() {
 	return windowWidth > windowHeight ? "landscape" : "portrait";
@@ -1743,8 +1757,8 @@ $window.on( 'resize', function() {
 	function refresh() {
 		resizeVideos();
 
-	//	royalSliderInit( $( '.js-pixslider' ).not( '.c-hero__background .js-pixslider' ) );
-	//	$( ".pixcode--tabs" ).organicTabs();
+		//	royalSliderInit( $( '.js-pixslider' ).not( '.c-hero__background .js-pixslider' ) );
+		//	$( ".pixcode--tabs" ).organicTabs();
 
 		if ( touch && windowWidth < 900 ) {
 			HandleSubmenusOnTouch.init();
@@ -1763,7 +1777,7 @@ $window.on( 'resize', function() {
 
 
 	orntn = getOrientation();
-});
+} );
 
 
 function onResize() {
@@ -1786,17 +1800,17 @@ function updateStuff() {
 	}
 }
 
-$( window ).on( "organicTabsChange", function () {
+$( window ).on( "organicTabsChange", function() {
 	onResize();
 	refreshStuff();
 } );
 
 var latestKnownScrollY = window.scrollY;
 
-var newScrollY = -1,
+var newScrollY = - 1,
 	ticking = false;
 
-$window.scroll( function () {
+$window.scroll( function() {
 	newScrollY = window.scrollY;
 } );
 
@@ -1811,7 +1825,7 @@ function loop() {
 
 if ( navigator.userAgent.match( /iPad;.*CPU.*OS 7_\d/i ) && window.innerHeight != document.documentElement.clientHeight ) {
 
-	var fixViewportHeight = function () {
+	var fixViewportHeight = function() {
 		$( 'html, body' ).outerHeight( window.innerHeight );
 	};
 
@@ -1848,13 +1862,13 @@ function detectIE() {
 
 
 // smooth scrolling to anchors
-$( function () {
+$( function() {
 
 	var $header = $( '.site-header' ),
 		headerHeight = parseInt( $header.outerHeight(), 10 ),
 		$html = $( 'html' );
 
-	$( '.site-header a[href*="#"]:not([href="#"])' ).click( function () {
+	$( '.site-header a[href*="#"]:not([href="#"])' ).click( function() {
 
 		var timeout = 0;
 
@@ -1869,7 +1883,7 @@ $( function () {
 			var target = $( this.hash );
 			target = target.length ? target : $( '[name=' + this.hash.slice( 1 ) + ']' );
 			if ( target.length ) {
-				setTimeout( function () {
+				setTimeout( function() {
 					$( 'html,body' ).animate( {
 						scrollTop: target.offset().top - headerHeight
 					}, 1000 );

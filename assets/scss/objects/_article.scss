@@ -157,6 +157,7 @@
 .article--main {
     position: relative;
     z-index: 20;
+    will-change: transform;
 }
 
 .article__parallax {
