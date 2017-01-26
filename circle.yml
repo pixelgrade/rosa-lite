@@ -89,7 +89,9 @@ deployment:
     branch: test
     commands:
      - sh ./circle_scripts/deploy_test.sh
+     - curl https://test.demos.pixelgrade.com/git-webhook.php
   production:
     branch: master
     commands:
      - sh ./circle_scripts/deploy_production.sh
+     - curl https://demos.pixelgrade.com/git-webhook.php
