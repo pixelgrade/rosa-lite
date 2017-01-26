@@ -112,10 +112,15 @@
 }
 
 .c-hero__image,
-.c-hero__slider,
-.c-hero__map,
 .c-hero__video {
+    width: auto;
+    height: auto;
+    max-width: none;
+    object-fit: cover;
+}
+
+.c-hero__map,
+.c-hero__slider {
     width: 100%;
     height: 100%;
-    object-fit: cover;
 }

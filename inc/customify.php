@@ -364,6 +364,12 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 									'media'    => '  screen and (min-width: 900px)'
 								),
 								array(
+									'property' => 'border-bottom-width',
+									'selector' => '.site-footer',
+									'unit'     => 'px',
+									'media'    => '    screen and (min-width: 900px)'
+								),
+								array(
 									'property' => 'padding-left',
 									'selector' => 'div.page',
 									'unit'     => 'px',

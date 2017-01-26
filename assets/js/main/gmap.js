@@ -334,7 +334,7 @@ function gmapMultiplePinsInit($container) {
 				if (typeof map == "undefined") return;
 
 				if (1 < pins.length) {
-					map.setZoom(map.getZoom() - 1);
+//					map.setZoom(map.getZoom() - 1);
 				} else {
 					map.setZoom(zoom);
 				}
