@@ -55,7 +55,7 @@ cd ./$DEMO_REPO/wp-content/themes/$THEME_NAME || {
 echo "=== Commit new theme"
 
 git add .
-git commit -m "Auto update `$THEME_NAME` on branch `$THEME_STAGGING_BRANCH` via CircleCi"
+git commit -m "Auto update $THEME_NAME on branch $THEME_STAGGING_BRANCH via CircleCi"
 
 echo "=== Push new theme"
 
