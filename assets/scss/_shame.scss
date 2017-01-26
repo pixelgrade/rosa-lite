@@ -210,17 +210,17 @@ html, body, body > .page {
 	top: 10% !important;
 }
 
-[data-rellax-container]:not(.rellax-visible) {
-	visibility: hidden;
-}
+//[data-rellax-container]:not(.rellax-visible) {
+//	visibility: hidden;
+//}
 
-[data-rellax-container] {
-	opacity: 0;
-
-	&.rellax-active {
-		animation: fade-in .3s ease-in-out forwards;
-	}
-}
+//[data-rellax-container] {
+//	opacity: 0;
+//
+//	&.rellax-active {
+//		animation: fade-in .3s ease-in-out forwards;
+//	}
+//}
 
 @keyframes fade-in {
 	0% { opacity: 0; }

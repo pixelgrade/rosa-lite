@@ -11909,15 +11909,6 @@ html, body, body > .page {
 #at-expanded-menu-container .at-expanded-menu {
   top: 10% !important; }
 
-[data-rellax-container]:not(.rellax-visible) {
-  visibility: hidden; }
-
-[data-rellax-container] {
-  opacity: 0; }
-  [data-rellax-container].rellax-active {
-    -webkit-animation: fade-in .3s ease-in-out forwards;
-            animation: fade-in .3s ease-in-out forwards; }
-
 @-webkit-keyframes fade-in {
   0% {
     opacity: 0; }
