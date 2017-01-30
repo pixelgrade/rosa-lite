@@ -10505,6 +10505,8 @@ a.site-logo--text {
     color: white; }
   .sidebar--footer a {
     color: white; }
+  .sidebar--footer [class*="social"] a, .sidebar--footer [class*="social"] a:hover {
+    color: transparent; }
 
 .widget_calendar caption {
   margin-bottom: 12px;
