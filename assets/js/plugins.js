@@ -33,7 +33,7 @@
  *  Contact   : jbdemonte@gmail.com
  *  Web site  : http://gmap3.net
  *  Licence   : GPL v3 : http://www.gnu.org/licenses/gpl.html
- *  
+ *
  *  Copyright (c) 2010-2014 Jean-Baptiste DEMONTE
  *  All rights reserved.
  */
@@ -5838,18 +5838,25 @@ $.fn.gmap3 = function () {
             } );
         }
 
-        window.requestAnimationFrame( loop );
-
-        $window.on( 'load resize', function( e ) {
-            windowWidth = $window.width();
-            windowHeight = $window.height();
-
+        function reloadAll() {
             $.each( elements, function( i, element ) {
                 element._reloadElement();
             } );
+        }
+
+        $window.on( 'load', function() {
+            windowWidth = $window.width();
+            windowHeight = $window.height();
+
+            reloadAll();
+            window.requestAnimationFrame( loop );
         } );
 
-        $window.on( 'load scroll', function( e ) {
+        $window.on( 'resize', function() {
+            reloadAll();
+        } );
+
+        $window.on( 'load scroll', function() {
             lastKnownScrollY = window.scrollY;
         } );
 
@@ -5867,16 +5874,15 @@ $.fn.gmap3 = function () {
             this.isContainer = $el.is( self.options.container );
             this.$parent = $el.parent().closest( self.options.container );
 
-            this.options.amount = myAmount != undefined ? parseFloat( myAmount ) : this.options.amount;
-            this.options.bleed = myBleed != undefined ? parseFloat( myBleed ) : this.options.bleed;
-            this.options.scale = myScale != undefined ? parseFloat( myScale ) : this.options.scale;
-            this.options.fill = fill != undefined ? true : false;
+            this.options.amount = myAmount !== undefined ? parseFloat( myAmount ) : this.options.amount;
+            this.options.bleed = myBleed !== undefined ? parseFloat( myBleed ) : this.options.bleed;
+            this.options.scale = myScale !== undefined ? parseFloat( myScale ) : this.options.scale;
+            this.options.fill = fill !== undefined;
 
             if ( self.options.amount == 0 ) {
                 return;
             }
 
-            self._reloadElement();
             self._bindEvents();
 
             elements.push( self );
@@ -5885,15 +5891,21 @@ $.fn.gmap3 = function () {
         $.extend( Rellax.prototype, {
             constructor: Rellax,
             _bindEvents: function() {
-                var self = this;
-                $window.on( 'load resize', function( e ) {
-                    self._reloadElement();
-                } );
             },
             _scaleElement: function() {
-                this.height = (
-                                  windowHeight + this.height
-                              ) * this.options.amount;
+                var minWidth = this.$parent.data( "plugin_" + Rellax ).width,
+                    minHeight = ( windowHeight + this.height ) * this.options.amount,
+                    scaleX = minWidth / this.width,
+                    scaleY = minHeight / this.height,
+                    scale = Math.max(scaleX, scaleY),
+                    newWidth = this.width * scale,
+                    newHeight = this.height * scale;
+
+//                this.offset.left += ( this.width - newHeight ) / 2;
+                this.offset.top += ( this.height - newHeight ) / 2;
+
+                this.width = newWidth;
+                this.height = newHeight;
             },
             _reloadElement: function() {
                 var self = this,
@@ -5932,10 +5944,6 @@ $.fn.gmap3 = function () {
                     marginLeft: 0
                 };
 
-                if ( self.isContainer ) {
-//					$.extend( style, {zIndex: - 1} );
-                }
-
                 if ( self.$parent.length ) {
 
                     $.extend( style, {
@@ -5952,7 +5960,7 @@ $.fn.gmap3 = function () {
                 $el.css( style );
             },
             _isInViewport: function( offset ) {
-                offset = ( offset != undefined && ! this.isContainer ) ? offset : 0;
+                offset = 0;
                 return lastKnownScrollY > this.offset.top - windowHeight + offset && lastKnownScrollY < this.offset.top + windowHeight + offset;
             },
             _updatePosition: function() {
@@ -5962,15 +5970,12 @@ $.fn.gmap3 = function () {
                     move = ( windowHeight + this.height ) * ( progress - 0.5 );
 
                 if ( ! self.$parent.length ) {
-                    $el.hide();
-                    self.isVisible = false;
+                    $el.toggleClass( 'rellax-hidden', ! self._isInViewport() );
                 }
 
-                if ( self._isInViewport() ) {
-                    if ( ! self.$parent.length  ) {
-                        $el.show();
-                        self.isVisible = true;
-                    }
+//                if ( self._isInViewport() ) {
+
+                    $el.attr( 'data-progress', progress );
 
                     if ( self.isContainer ) {
                         $el.css( 'transform', 'translate3d(0,' + ( - lastKnownScrollY ) + 'px,0)' );
@@ -5987,7 +5992,7 @@ $.fn.gmap3 = function () {
                             $el.css( 'transform', 'translate3d(0,' + move + 'px,0)' );
                         }
                     }
-                }
+//                }
             }
         } );
 
@@ -6004,7 +6009,7 @@ $.fn.gmap3 = function () {
                     }
                 }
             } );
-        }
+        };
 
         $.fn.rellax.defaults = {
             amount: 0.5,

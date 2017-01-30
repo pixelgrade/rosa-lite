@@ -221,6 +221,7 @@ function init() {
 
 
 	setHeroHeights();
+
 	$( "[data-rellax]" ).rellax();
 
 	if ( globalDebug ) {

@@ -735,12 +735,6 @@ function gmapMultiplePinsInit($container) {
 
 			google.maps.event.addListenerOnce(map, 'idle', function() {
 				if (typeof map == "undefined") return;
-
-				if (1 < pins.length) {
-//					map.setZoom(map.getZoom() - 1);
-				} else {
-					map.setZoom(zoom);
-				}
 			});
 
 		});
@@ -1534,6 +1528,7 @@ function init() {
 
 
 	setHeroHeights();
+
 	$( "[data-rellax]" ).rellax();
 
 	if ( globalDebug ) {

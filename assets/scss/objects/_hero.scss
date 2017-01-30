@@ -113,14 +113,16 @@
 
 .c-hero__image,
 .c-hero__video {
-    width: auto;
-    height: auto;
-    max-width: none;
-    object-fit: cover;
+    //width: auto;
+    //height: auto;
+    //max-width: none;
+    //object-fit: cover;
+    //position: absolute;
 }
 
 .c-hero__map,
 .c-hero__slider {
-    width: 100%;
+    width: 100% !important;
     height: 100%;
+    left: 0 !important;
 }

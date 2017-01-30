@@ -214,15 +214,25 @@ html, body, body > .page {
 //	visibility: hidden;
 //}
 
-//[data-rellax-container] {
-//	opacity: 0;
-//
-//	&.rellax-active {
-//		animation: fade-in .3s ease-in-out forwards;
-//	}
-//}
+[data-rellax-container] {
+	opacity: 0;
+
+	&.rellax-active {
+		animation: fade-in .3s ease-in-out forwards;
+	}
+}
 
 @keyframes fade-in {
 	0% { opacity: 0; }
 	100% { opacity: 1; }
+}
+
+.rellax-hidden {
+    visibility: hidden;
+    pointer-events: none;
+
+    .c-hero__image,
+    .c-hero__slider {
+        display: none;
+    }
 }

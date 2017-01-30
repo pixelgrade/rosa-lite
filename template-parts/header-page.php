@@ -67,7 +67,7 @@ if ( $pin_type == 'single' ) {
 		?>
 		<header id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ); ?>">
 			<div class="c-hero__background c-hero__layer" data-rellax data-rellax-container>
-				<div data-rellax id="gmap-<?php the_ID() ?>" class="c-hero__map gmap"
+				<div data-rellax data-rellax-fill id="gmap-<?php the_ID() ?>" class="c-hero__map gmap"
 					data-url="<?php esc_attr_e( $gmap_url ); ?>" <?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
 					data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>" data-pin_type="single"></div>
 			</div>
@@ -109,7 +109,7 @@ if ( $pin_type == 'single' ) {
 		?>
 		<header id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ) ?>">
 			<div class="c-hero__background c-hero__layer" data-rellax data-rellax-container>
-				<div data-rellax id="gmap-<?php the_ID() ?>" class="c-hero__map gmap--multiple-pins"
+				<div data-rellax data-rellax-fill id="gmap-<?php the_ID() ?>" class="c-hero__map gmap--multiple-pins"
 					<?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
 					 data-pins='<?php echo esc_attr( $pins ) ?>' data-pin_type="multiple"></div>
 			</div>
@@ -153,11 +153,12 @@ if ( $pin_type == 'single' ) {
 			<header id="post-<?php the_ID() ?>-title" class="<?php echo $classes ?>">
 				<div class="c-hero__background c-hero__layer" data-rellax data-rellax-container>
 					<div class="c-hero__slider  js-pixslider"
-						data-rellax
-						data-imagealigncenter
-						data-imagescale="<?php echo $image_scale_mode; ?>"
-						data-slidertransition="<?php echo $slider_transition; ?>"
-						data-customArrows="true"
+					     data-rellax
+						 data-rellax-fill
+						 data-imagealigncenter
+						 data-imagescale="<?php echo $image_scale_mode; ?>"
+						 data-slidertransition="<?php echo $slider_transition; ?>"
+						 data-customArrows="true"
 
 						<?php
 						if ( $slider_transition == 'move' ) {
