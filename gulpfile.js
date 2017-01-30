@@ -283,7 +283,7 @@ gulp.task('update-demo', function () {
 			console.log('This task may ask for a github user / password or a ssh passphrase');
 
 			if ( res.demo_update === 'test' ) {
-				run_exec('git checkout test; git pull origin ' + main_branch + '; git push origin test; git checkout ' + main_branch + ';', function (err, stdout, stderr) {
+				run_exec('git fetch; git checkout test; git pull origin ' + main_branch + '; git push origin test; git checkout ' + main_branch + ';', function (err, stdout, stderr) {
 					// console.log(stdout);
 					// console.log(stderr);
 				});
@@ -293,7 +293,7 @@ gulp.task('update-demo', function () {
 
 
 			if ( res.demo_update === 'production' ) {
-				run_exec('git checkout master; git pull origin test; git push origin master; git checkout ' + main_branch + ';', function (err, stdout, stderr) {
+				run_exec('git fetch; git checkout master; git pull origin test; git push origin master; git checkout ' + main_branch + ';', function (err, stdout, stderr) {
 					console.log(stdout);
 					console.log(stderr);
 				});
