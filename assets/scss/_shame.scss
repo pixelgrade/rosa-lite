@@ -214,12 +214,12 @@ html, body, body > .page {
 //	visibility: hidden;
 //}
 
-[data-rellax-container] {
-	opacity: 0;
+[data-rellax] {
+	will-change: transform;
+}
 
-	&.rellax-active {
-		animation: fade-in .3s ease-in-out forwards;
-	}
+[data-rellax-container] {
+	overflow: hidden;
 }
 
 @keyframes fade-in {
@@ -228,11 +228,6 @@ html, body, body > .page {
 }
 
 .rellax-hidden {
-    visibility: hidden;
     pointer-events: none;
-
-    .c-hero__image,
-    .c-hero__slider {
-        display: none;
-    }
+	opacity: 0;
 }

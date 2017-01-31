@@ -1891,7 +1891,7 @@ $( function() {
 } );
 
 $.fn.rellax.defaults.reloadEvent = isTouch ? 'load orientationchange' : 'load resize';
-$.fn.rellax.defaults.bleed = isTouch ? 60 : 0;
+$.fn.rellax.defaults.bleed = isTouch ? 60 : 20;
 
 /* --- 404 Page --- */
 gifImages = [
