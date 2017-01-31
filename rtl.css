@@ -11921,6 +11921,11 @@ html, body, body > .page {
 
 [data-rellax-container] {
   overflow: hidden; }
+  [data-rellax-container] [data-rellax] {
+    opacity: 0; }
+    [data-rellax-container] [data-rellax].rellax-active {
+      -webkit-animation: fade-in 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
+              animation: fade-in 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards; }
 
 @-webkit-keyframes fade-in {
   0% {
@@ -11934,8 +11939,10 @@ html, body, body > .page {
   100% {
     opacity: 1; } }
 
-.rellax-hidden {
+.rellax-element.rellax-hidden {
   pointer-events: none;
-  opacity: 0; }
+  visibility: hidden;
+  opacity: 0;
+  transition: none; }
 
 /*# sourceMappingURL=to.css.map */
