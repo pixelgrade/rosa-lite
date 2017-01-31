@@ -65,7 +65,7 @@ if ( $pin_type == 'single' ) {
 		$classes .= ' ' . $gmap_height;
 
 		?>
-		<header id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ); ?>">
+		<header data-bully id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ); ?>">
 			<div class="c-hero__background c-hero__layer" data-rellax data-rellax-container>
 				<div data-rellax data-rellax-fill id="gmap-<?php the_ID() ?>" class="c-hero__map gmap"
 					data-url="<?php esc_attr_e( $gmap_url ); ?>" <?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
@@ -107,7 +107,7 @@ if ( $pin_type == 'single' ) {
 		}
 		$pins .= '}';
 		?>
-		<header id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ) ?>">
+		<header data-bully id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ) ?>">
 			<div class="c-hero__background c-hero__layer" data-rellax data-rellax-container>
 				<div data-rellax data-rellax-fill id="gmap-<?php the_ID() ?>" class="c-hero__map gmap--multiple-pins"
 					<?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
@@ -150,7 +150,7 @@ if ( $pin_type == 'single' ) {
 			if ( $slider_autoplay ) {
 				$slider_delay = get_post_meta( get_the_ID(), wpgrade::prefix() . 'post_slider_delay', true );
 			} ?>
-			<header id="post-<?php the_ID() ?>-title" class="<?php echo $classes ?>">
+			<header data-bully id="post-<?php the_ID() ?>-title" class="<?php echo $classes ?>">
 				<div class="c-hero__background c-hero__layer" data-rellax data-rellax-container>
 					<div class="c-hero__slider  js-pixslider"
 					     data-rellax
@@ -240,7 +240,7 @@ if ( $pin_type == 'single' ) {
 			if ( ! has_post_thumbnail() ) {
 				$classes .= ' has-no-image';
 			} ?>
-			<header id="post-<?php the_ID() ?>-title" class="<?php echo $classes ?>" data-type="image">
+			<header data-bully id="post-<?php the_ID() ?>-title" class="<?php echo $classes ?>" data-type="image">
 				<?php if ( has_post_thumbnail() ) {
 					$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full-size' );
 					if ( ! empty( $image[0] ) ) { ?>
@@ -266,7 +266,7 @@ if ( $pin_type == 'single' ) {
 				<?php } ?>
 			</header>
 		<?php } else { ?>
-			<header id="post-<?php the_ID() ?>-title" class="<?php echo $classes ?>" style="display: none"></header>
+			<header data-bully id="post-<?php the_ID() ?>-title" class="<?php echo $classes ?>" style="display: none"></header>
 		<?php }
 	}
 } ?>
