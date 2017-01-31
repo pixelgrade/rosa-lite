@@ -2921,7 +2921,7 @@ $.fn.gmap3 = function () {
 		}
 
 		if ( count !== current ) {
-			var offset = $bully.children( '.c-bully__bullet' ).first().outerHeight( true ) * ( count - 1 );
+			var offset = $bully.children( '.c-bully__bullet' ).not('.c-bully__bullet--active').first().outerHeight( true ) * ( count - 1 );
 			$current.removeClass( 'c-bully__bullet--squash' );
 			setTimeout(function() {
 				$current.addClass( 'c-bully__bullet--squash' );
@@ -2939,11 +2939,14 @@ $.fn.gmap3 = function () {
 		});
 	}
 
-	$window.on('load scroll', function(e) {
+	$window.on('load resize scroll', function(e) {
 		lastKnownScrollY = window.scrollY;
 	});
 
-	$window.on('load resize', reloadAll);
+	$window.on('load resize', function() {
+		lastKnownScrollY = window.scrollY;
+		reloadAll();
+	});
 
 	function Bully(element, options) {
 		this.element = element;
@@ -2996,8 +2999,6 @@ $.fn.gmap3 = function () {
 	$.fn.bully.defaults = {
 		scrollDuration: 600
 	};
-
-	$('[data-bully]').bully();
 
 })( jQuery, window, document );
 /*! Magnific Popup - v1.1.0 - 2016-02-20

@@ -9663,16 +9663,18 @@ div.mfp-title {
 .c-bully {
   position: fixed;
   top: 50%;
-  right: 2rem;
+  right: 48px;
   font-size: 12px;
-  -webkit-transform: translate3d(0, -50%, 0);
-          transform: translate3d(0, -50%, 0);
-  z-index: 9000; }
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  z-index: 9000;
+  color: #000; }
   .c-bully--inversed {
-    color: white; }
+    color: #FFF; }
 
 .c-bully__bullet {
   padding: 0.5em;
+  opacity: 0;
   cursor: pointer; }
   .c-bully__bullet:after {
     content: "";
@@ -9686,10 +9688,22 @@ div.mfp-title {
     position: absolute;
     top: 0;
     left: 0;
-    transition: top 0.2s ease-in-out; }
+    transition: top 0.2s cubic-bezier(0.420, 0.000, 0.580, 1.000); }
+    .c-bully__bullet--active:before {
+      content: "";
+      width: 1em;
+      height: 1em;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 14px;
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+      background: currentColor;
+      border-radius: 50%; }
     .c-bully__bullet--active:after {
-      background: currentColor; }
-  .c-bully__bullet--squash:after {
+      border-color: transparent; }
+  .c-bully__bullet--squash {
     -webkit-animation: bully-squash 0.2s ease-out forwards;
             animation: bully-squash 0.2s ease-out forwards; }
 

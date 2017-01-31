@@ -1527,6 +1527,25 @@ function init() {
 
 
 	setHeroHeights();
+	royalSliderInit();
+
+	$('[data-bully]').bully();
+
+	var items = $('.c-bully__bullet').length;
+
+	$('.c-bully__bullet').each(function (i, obj) {
+
+		var stagger = 3000 + i * 400,
+			$obj    = $(obj);
+
+		if ($obj.is('.c-bully__bullet--active')) {
+			stagger = stagger + items * 400;
+		}
+
+		setTimeout(function () {
+			TweenMax.fromTo($obj, 1, {opacity: 0, scale: 0.7}, {opacity: 1, scale: 1, force3D: true, ease: Elastic.easeOut});
+		}, stagger);
+	});
 
 	$( "[data-rellax]" ).rellax();
 
@@ -1690,7 +1709,6 @@ $( window ).load( function() {
 	}
 
 	niceScrollInit();
-	royalSliderInit();
 
 	magnificPopupInit();
 	initVideos();

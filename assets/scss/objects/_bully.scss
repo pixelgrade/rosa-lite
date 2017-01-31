@@ -3,18 +3,20 @@ $bully-transition-duration: .2s;
 .c-bully {
 	position: fixed;
 	top: 50%;
-	right: 2rem;
+	right: 48px;
 	font-size: 12px;
-	transform: translate3d(0, -50%, 0);
+	transform: translate(0, -50%);
 	z-index: 9000;
+	color: #000;
 
 	&--inversed {
-		color: white;
+		color: #FFF;
 	}
 }
 
 .c-bully__bullet {
 	padding: 0.5em;
+	opacity: 0;
 
 	cursor: pointer;
 
@@ -36,14 +38,27 @@ $bully-transition-duration: .2s;
 		top: 0;
 		left: 0;
 
-		transition: top $bully-transition-duration ease-in-out;
+		transition: top $bully-transition-duration bezier(easeQuadOut);
+
+		&:before {
+			content: "";
+			width: 1em;
+			height: 1em;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			font-size: 14px;
+			transform: translate(-50%, -50%);
+			background: currentColor;
+			border-radius: 50%;
+		}
 
 		&:after {
-			background: currentColor;
+			border-color: transparent;
 		}
 	}
 
-	&--squash:after {
+	&--squash {
 		animation: bully-squash $bully-transition-duration ease-out forwards;
 	}
 }
