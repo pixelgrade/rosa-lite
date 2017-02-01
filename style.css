@@ -7983,7 +7983,8 @@ input[type="color"],
   min-height: 100%;
   width: auto;
   height: auto;
-  max-width: none; }
+  max-width: none;
+  object-fit: cover; }
 
 .c-hero__map,
 .c-hero__slider {

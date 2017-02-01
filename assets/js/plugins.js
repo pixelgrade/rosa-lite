@@ -2879,7 +2879,7 @@ $.fn.gmap3 = function () {
 	}, s
 });
 /*!
- * jQuery Bully Plugin v0.1.1
+ * jQuery Bully Plugin v0.1.3
  * Examples and documentation at http://pixelgrade.github.io/rellax/
  * Copyright (c) 2016 PixelGrade http://www.pixelgrade.com
  * Licensed under MIT http://www.opensource.org/licenses/mit-license.php/
