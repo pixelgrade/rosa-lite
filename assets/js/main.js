@@ -1691,7 +1691,6 @@ $( function() {
 
 $( "[data-rellax]" ).rellax();
 
-$.fn.rellax.defaults.reloadEvent = isTouch ? 'load orientationchange' : 'load resize';
 $.fn.rellax.defaults.bleed = 60;
 
 /* --- 404 Page --- */

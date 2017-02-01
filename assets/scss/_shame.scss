@@ -210,10 +210,6 @@ html, body, body > .page {
 	top: 10% !important;
 }
 
-//[data-rellax-container]:not(.rellax-visible) {
-//	visibility: hidden;
-//}
-
 [data-rellax] {
 	will-change: transform, opacity;
 	backface-visibility: hidden;
