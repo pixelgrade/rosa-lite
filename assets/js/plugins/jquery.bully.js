@@ -11,7 +11,7 @@
 			windowHeight = $window.height(),
 			elements = [],
 			$bully,
-			lastScrollY = window.scrollY,
+			lastScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0),
 			current = 0,
 			inversed = false,
 			frameRendered = true;
@@ -81,7 +81,7 @@
 
 		$window.on( 'scroll', function( e ) {
 			if ( frameRendered === true ) {
-				lastScrollY = window.scrollY;
+				lastScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0);
 			}
 			frameRendered = false;
 		} );
@@ -129,7 +129,7 @@
 				}
 
 				if ( self.options.scrollDuration === 'auto' ) {
-					var duration = Math.abs( window.scrollY - self.offset.top ) / (
+					var duration = Math.abs( lastScrollY - self.offset.top ) / (
 					               self.options.scrollPerSecond / 1000
 						);
 					$target.animate( {scrollTop: self.offset.top}, duration );

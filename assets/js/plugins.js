@@ -2891,7 +2891,7 @@ $.fn.gmap3 = function () {
 			windowHeight = $window.height(),
 			elements = [],
 			$bully,
-			lastScrollY = window.scrollY,
+			lastScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0),
 			current = 0,
 			inversed = false,
 			frameRendered = true;
@@ -2961,7 +2961,7 @@ $.fn.gmap3 = function () {
 
 		$window.on( 'scroll', function( e ) {
 			if ( frameRendered === true ) {
-				lastScrollY = window.scrollY;
+				lastScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0);
 			}
 			frameRendered = false;
 		} );
@@ -3009,7 +3009,7 @@ $.fn.gmap3 = function () {
 				}
 
 				if ( self.options.scrollDuration === 'auto' ) {
-					var duration = Math.abs( window.scrollY - self.offset.top ) / (
+					var duration = Math.abs( lastScrollY - self.offset.top ) / (
 					               self.options.scrollPerSecond / 1000
 						);
 					$target.animate( {scrollTop: self.offset.top}, duration );
@@ -6013,11 +6013,6 @@ $.fn.gmap3 = function () {
                 this.offset.top -= this.options.bleed;
                 this.height += 2 * this.options.bleed;
 
-                if ( this.parent !== undefined ) {
-                    this.height = windowHeight - ( windowHeight - this.parent.height ) * ( 1 - this.options.amount );
-                    this.offset.top = ( this.parent.height - this.height ) / 2;
-                }
-
                 if ( this.parent === undefined && this.$parent.length ) {
                     var parentHeight = this.$parent.outerHeight();
 
@@ -6025,20 +6020,38 @@ $.fn.gmap3 = function () {
                     this.offset.top = ( parentHeight - this.height ) / 2;
                 }
             },
+            _scaleElement: function() {
+                var parentHeight = this.$parent.outerHeight(),
+                    parentWidth = this.$parent.outerWidth(),
+                    scaleY = parentHeight / this.height,
+                    scaleX = parentWidth / this.width,
+                    scale = Math.max(scaleX, scaleY);
+
+                this.width = this.width * scale;
+                this.height = this.height * scale;
+
+                console.log(parentWidth, parentHeight, this.width, this.height, scale);
+
+                this.offset.top = ( this.height - parentHeight ) / 2;
+                this.offset.left = ( parentWidth - this.width ) / 2;
+            },
             _prepareElement: function() {
                 if ( this.parent == undefined ) {
                     this.$el.addClass( 'rellax-element' );
                     this.$el.css({
                         position: 'fixed',
-                        left: this.offset.left,
                         top: this.offset.top,
+                        left: this.offset.left,
                         width: this.width,
                         height: this.height
                     });
                 } else {
+                    this._scaleElement();
                     this.$el.css({
                         position: 'absolute',
                         top: this.offset.top,
+                        left: this.offset.left,
+                        width: this.width,
                         height: this.height
                     });
                 }
@@ -6113,7 +6126,7 @@ $.fn.gmap3 = function () {
         var $window = $( window ),
             windowWidth = window.innerWidth,
             windowHeight = window.innerHeight ,
-            lastScrollY = window.scrollY,
+            lastScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0),
             frameRendered = true,
             elements = [];
 
@@ -6195,7 +6208,7 @@ $.fn.gmap3 = function () {
 
             $window.on( 'scroll', function() {
                 if ( frameRendered === true ) {
-                    lastScrollY = window.scrollY;
+                    lastScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0);
                 }
                 frameRendered = false;
             });

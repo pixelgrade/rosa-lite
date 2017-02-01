@@ -1552,7 +1552,6 @@ $window.on( 'resize', function() {
 	function refresh() {
 		resizeVideos();
 
-		//	royalSliderInit( $( '.js-pixslider' ).not( '.c-hero__background .js-pixslider' ) );
 		//	$( ".pixcode--tabs" ).organicTabs();
 
 		if ( touch && windowWidth < 900 ) {
@@ -1576,6 +1575,9 @@ $window.on( 'resize', function() {
 
 
 function onResize() {
+	$( '.js-pixslider' ).each(function (i, obj) {
+		var $obj = $(obj);
+	});
 }
 
 function refreshStuff() {
@@ -1599,13 +1601,13 @@ $( window ).on( "organicTabsChange", function() {
 	refreshStuff();
 } );
 
-var latestKnownScrollY = window.scrollY;
+var latestKnownScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0);
 
 var newScrollY = - 1,
 	ticking = false;
 
 $window.scroll( function() {
-	newScrollY = window.scrollY;
+	newScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0);
 } );
 
 function loop() {
