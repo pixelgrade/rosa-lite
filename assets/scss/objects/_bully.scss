@@ -1,4 +1,8 @@
-$bully-transition-duration: .2s;
+[class*="c-bully"],
+[class*="c-bully"]:before,
+[class*="c-bully"]:after {
+	box-sizing: border-box;
+}
 
 .c-bully {
 	position: fixed;
@@ -9,9 +13,13 @@ $bully-transition-duration: .2s;
 	z-index: 9000;
 	color: #000;
 
-	&--inversed {
-		color: #FFF;
+	@include media-query(palm) {
+		display: none;
 	}
+}
+
+.c-bully--inversed {
+	color: #FFF;
 }
 
 .c-bully__bullet {
@@ -19,57 +27,66 @@ $bully-transition-duration: .2s;
 	opacity: 0;
 
 	cursor: pointer;
+}
 
-	&:after {
-		content: "";
+.c-bully__bullet:after {
+	content: "";
 
-		display: block;
-		width: 1em;
-		height: 1em;
+	display: block;
+	width: 1em;
+	height: 1em;
 
-		border: 2px solid currentColor;
-		border-radius: 50%;
+	border: 2px solid currentColor;
+	border-radius: 50%;
 
-		will-change: transform;
-	}
+	will-change: transform;
+}
 
-	&--active {
-		position: absolute;
-		top: 0;
-		left: 0;
+.c-bully__bullet--active {
+	position: absolute;
+	top: 0;
+	left: 0;
 
-		transition: top $bully-transition-duration bezier(easeQuadOut);
+	transition: top 0.2s ease-out;
+}
 
-		&:before {
-			content: "";
-			width: 1em;
-			height: 1em;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			font-size: 14px;
-			transform: translate(-50%, -50%);
-			background: currentColor;
-			border-radius: 50%;
-		}
+.c-bully__bullet--active:before {
+	content: "";
+	width: 1em;
+	height: 1em;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	font-size: 14px;
+	transform: translate(-50%, -50%);
+	background: currentColor;
+	border-radius: 50%;
+}
 
-		&:after {
-			border-color: transparent;
-		}
-	}
+.c-bully__bullet--active:after {
+	border-color: transparent;
+}
 
-	&--squash {
-		animation: bully-squash $bully-transition-duration ease-out forwards;
-	}
+.c-bully__bullet--pop {
+	animation: bully-pop 0.6s cubic-bezier(0.485, 1.630, 0.430, 2) forwards, fade-in 0.2s 0.2s ease-out forwards;
+}
+
+.c-bully__bullet--squash {
+	opacity: 1;
+	animation: bully-squash 0.2s ease-out forwards;
+}
+
+@keyframes fade-in {
+	0% { opacity: 0 }
+	100% { opacity: 1 }
+}
+
+@keyframes bully-pop {
+	50% { transform: scale(0.7); }
+	100% { transform: scale(1); }
 }
 
 @keyframes bully-squash {
-	50% {
-		transform: scale(0.6, 2);
-	}
-
-	100% {
-		//border-radius: 50%;
-		transform: scale(1);
-	}
+	50% { transform: scale(0.6, 1.8) }
+	100% { transform: scale(1) }
 }

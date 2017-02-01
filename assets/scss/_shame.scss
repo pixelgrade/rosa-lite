@@ -215,24 +215,17 @@ html, body, body > .page {
 //}
 
 [data-rellax] {
-	will-change: transform;
+	will-change: transform, opacity;
+	//opacity: 0;
+	backface-visibility: hidden;
 }
 
 [data-rellax-container] {
 	overflow: hidden;
-
-    [data-rellax] {
-        opacity: 0;
-
-        &.rellax-active {
-            animation: fade-in .2s bezier(easeOutQuad) forwards;
-        }
-    }
 }
 
-@keyframes fade-in {
-	0% { opacity: 0; }
-	100% { opacity: 1; }
+.rellax-active {
+	opacity: 1;
 }
 
 .rellax-element.rellax-hidden {

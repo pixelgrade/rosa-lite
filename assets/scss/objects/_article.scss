@@ -126,16 +126,6 @@
         text-align: center;
     }
 
-    &.full-height {
-        height: 100%;
-    }
-    &.half-height {
-        height: 50%;
-    }
-    &.two-thirds-height {
-        height: 66%;
-    }
-
     &.header--slideshow {
         padding: 0;
     }
@@ -362,4 +352,8 @@
 
 .c-hero__map {
     width: 100% !important;
+}
+
+.article__content .rsOverflow {
+    transition: none !important;
 }

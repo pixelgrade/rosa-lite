@@ -2879,128 +2879,165 @@ $.fn.gmap3 = function () {
 	}, s
 });
 /*!
- * jQuery Bully Plugin v0.1.0
+ * jQuery Bully Plugin v0.1.1
  * Examples and documentation at http://pixelgrade.github.io/rellax/
  * Copyright (c) 2016 PixelGrade http://www.pixelgrade.com
  * Licensed under MIT http://www.opensource.org/licenses/mit-license.php/
  */
-;(function ($, window, document, undefined) {
+;(
+	function( $, window, document, undefined ) {
 
-	var $window = $(window),
-		windowWidth = $window.width(),
-		windowHeight = $window.height(),
-		elements = [],
-		$bully,
-		bullyOffset,
-		lastKnownScrollY,
-		current = 0,
-		inversed = false;
+		var $window = $( window ),
+			windowHeight = $window.height(),
+			elements = [],
+			$bully,
+			lastScrollY = window.scrollY,
+			current = 0,
+			inversed = false,
+			frameRendered = true;
 
-	$bully = $( '<div class="c-bully">' ).appendTo( 'body' );
-	bullyOffset = $bully.offset();
-	$current = $( '<div class="c-bully__bullet c-bully__bullet--active">' ).appendTo( $bully );
+		$bully = $( '<div class="c-bully">' ).appendTo( 'body' );
+		$current = $( '<div class="c-bully__bullet c-bully__bullet--active">' ).appendTo( $bully );
 
-	(function update() {
-		var count = 0,
-			inverse = false;
+		(
+			function update() {
+				if ( frameRendered !== true ) {
 
-		$.each(elements, function(i, element) {
-			if ( lastKnownScrollY >= element.offset.top - windowHeight / 2 ) {
-				count = count + 1;
-				inverse = true;
+					var count = 0,
+						inverse = false;
 
-				if ( lastKnownScrollY >= element.offset.top + element.height - windowHeight / 2 ) {
-					inverse = false;
+					$.each( elements, function( i, element ) {
+						if ( lastScrollY >= element.offset.top - windowHeight / 2 ) {
+							count = count + 1;
+							inverse = lastScrollY < element.offset.top + element.height - windowHeight / 2;
+						}
+					} );
+
+					if ( inversed !== inverse ) {
+						inversed = inverse;
+						$bully.toggleClass( 'c-bully--inversed', inversed );
+					}
+
+					if ( count !== current ) {
+						var offset = $bully.children( '.c-bully__bullet' ).not( '.c-bully__bullet--active' ).first().outerHeight( true ) * (
+								count - 1
+							);
+						$current.removeClass( 'c-bully__bullet--squash' );
+						setTimeout( function() {
+							$current.addClass( 'c-bully__bullet--squash' );
+						} );
+						$current.css( 'top', offset );
+						current = count;
+					}
 				}
+
+				window.requestAnimationFrame( update );
+				frameRendered = true;
 			}
-		});
+		)();
 
-		if ( inversed !== inverse ) {
-			inversed = inverse;
-			$bully.toggleClass( 'c-bully--inversed', inversed );
+		function reloadAll() {
+			$.each( elements, function( i, element ) {
+				element._reloadElement();
+			} );
 		}
 
-		if ( count !== current ) {
-			var offset = $bully.children( '.c-bully__bullet' ).not('.c-bully__bullet--active').first().outerHeight( true ) * ( count - 1 );
-			$current.removeClass( 'c-bully__bullet--squash' );
-			setTimeout(function() {
-				$current.addClass( 'c-bully__bullet--squash' );
-			});
-			$current.css( 'top', offset );
-			current = count;
+		function staggerClass( $elements, classname, timeout ) {
+
+			$.each( $elements, function( i, obj ) {
+
+				var stagger = i * timeout;
+
+				setTimeout( function() {
+					obj.$bullet.addClass( classname );
+				}, stagger );
+			} );
 		}
 
-		window.requestAnimationFrame(update);
-	})();
+		$window.on( 'load', function( e ) {
+			staggerClass( elements, 'c-bully__bullet--pop', 400 );
+			frameRendered = false;
+		} );
 
-	function reloadAll() {
-		$.each(elements, function(i, element) {
-			element._reloadElement();
-		});
+		$window.on( 'scroll', function( e ) {
+			if ( frameRendered === true ) {
+				lastScrollY = window.scrollY;
+			}
+			frameRendered = false;
+		} );
+
+		$window.on( 'load resize', function() {
+			reloadAll();
+		} );
+
+		function Bully( element, options ) {
+			this.element = element;
+			this.options = $.extend( {}, $.fn.bully.defaults, options );
+
+			var self = this,
+				$bullet = $( '<div class="c-bully__bullet">' );
+
+			$bullet.data( 'bully-data', self ).appendTo( $bully );
+			$bullet.on( 'click', function( event ) {
+				event.preventDefault();
+				event.stopPropagation();
+
+				self.onClick();
+			} );
+
+			this.$bullet = $bullet;
+
+			self._reloadElement();
+			elements.push( self );
+			current = 0;
+		}
+
+		Bully.prototype = {
+			constructor: Bully,
+			_reloadElement: function() {
+				this.offset = $( this.element ).offset();
+				this.height = $( this.element ).outerHeight();
+			},
+			onClick: function() {
+
+				var self = this,
+					$target = $( 'html, body' );
+
+				if ( self.options.scrollDuration == 0 ) {
+					$target.scrollTop( self.offset.top );
+					return;
+				}
+
+				if ( self.options.scrollDuration === 'auto' ) {
+					var duration = Math.abs( window.scrollY - self.offset.top ) / (
+					               self.options.scrollPerSecond / 1000
+						);
+					$target.animate( {scrollTop: self.offset.top}, duration );
+					return;
+				}
+
+				$target.animate( {scrollTop: self.offset.top}, self.options.scrollDuration );
+			}
+		};
+
+		$.fn.bully = function( options ) {
+			return this.each( function() {
+				if ( ! $.data( this, "plugin_" + Bully ) ) {
+					$.data( this, "plugin_" + Bully, new Bully( this, options ) );
+				}
+			} );
+		};
+
+		$.fn.bully.defaults = {
+			scrollDuration: 'auto',
+			scrollPerSecond: 4000
+		};
+
+		$window.on( 'rellax ' + $.fn.bully.defaults.reloadEvent, reloadAll );
+
+
 	}
-
-	$window.on('load resize scroll', function(e) {
-		lastKnownScrollY = window.scrollY;
-	});
-
-	$window.on('load resize', function() {
-		lastKnownScrollY = window.scrollY;
-		reloadAll();
-	});
-
-	function Bully(element, options) {
-		this.element = element;
-		this.options = $.extend({}, $.fn.bully.defaults, options);
-
-		var self = this,
-			$bullet = $( '<div class="c-bully__bullet">' );
-
-		$bullet.data( 'bully-data', self ).appendTo( $bully );
-		$bullet.on( 'click', function( event ) {
-			event.preventDefault();
-			event.stopPropagation();
-
-			self.onClick();
-		});
-
-		self._reloadElement();
-		elements.push(self);
-		current = 0;
-	};
-
-	Bully.prototype = {
-		constructor: Bully,
-		_reloadElement: function() {
-			this.offset = $(this.element).offset();
-			this.height = $(this.element).outerHeight();
-		},
-		onClick: function() {
-
-			var self = this;
-
-			if ( self.options.scrollDuration == 0 ) {
-				$( 'html, body' ).scrollTop( self.offset.top );
-			}
-
-			$( 'html, body' ).animate({
-				scrollTop: self.offset.top
-			}, self.options.scrollDuration );
-		}
-	};
-
-	$.fn.bully = function ( options ) {
-		return this.each(function () {
-			if ( ! $.data(this, "plugin_" + Bully) ) {
-				$.data(this, "plugin_" + Bully, new Bully( this, options ));
-			}
-		});
-	};
-
-	$.fn.bully.defaults = {
-		scrollDuration: 600
-	};
-
-})( jQuery, window, document );
+)( jQuery, window, document );
 /*! Magnific Popup - v1.1.0 - 2016-02-20
  * http://dimsemenov.com/plugins/magnific-popup/
  * Copyright (c) 2016 Dmitry Semenov; */
@@ -5940,70 +5977,6 @@ $.fn.gmap3 = function () {
             return;
         }
 
-        var $window = $( window ),
-            windowWidth = window.innerWidth,
-            windowHeight = window.innerHeight,
-            lastScrollY = window.scrollY,
-            elements = [];
-
-        function loop() {
-            if ( frameRendered !== true ) {
-                updateAll();
-            }
-            window.requestAnimationFrame( loop );
-            frameRendered = true;
-        }
-
-        $window.on( 'resize', function() {
-            windowWidth = window.innerWidth;
-            windowHeight = window.innerHeight;
-
-            requestAnimationFrame(reloadAll);
-            requestAnimationFrame(prepareAll);
-            requestAnimationFrame(function() {
-                updateAll( true );
-            });
-        } );
-
-        var frameRendered = true;
-
-        $window.on( 'scroll', function() {
-            if ( frameRendered === true ) {
-                lastScrollY = window.scrollY;
-            }
-            frameRendered = false;
-        } );
-
-        $window.on( 'load', function() {
-            reloadAll();
-            prepareAll();
-            requestAnimationFrame(function() {
-                updateAll( true );
-            });
-            $.each(elements, function(i, element) {
-                element.$el.addClass( 'rellax-active' );
-            });
-            window.requestAnimationFrame( loop );
-        });
-
-        function updateAll( forced ) {
-            $.each(elements, function(i, element) {
-                element._updatePosition( forced );
-            });
-        }
-
-        function reloadAll() {
-            $.each(elements, function(i, element) {
-                element._reloadElement();
-            });
-        }
-
-        function prepareAll() {
-            $.each(elements, function(i, element) {
-                element._prepareElement();
-            });
-        }
-
         function Rellax( element, options ) {
             this.$el = $( element );
             this.options = $.extend( $.fn.rellax.defaults, options );
@@ -6030,11 +6003,6 @@ $.fn.gmap3 = function () {
 
         $.extend( Rellax.prototype, {
             constructor: Rellax,
-            _bindEvents: function() {
-
-            },
-            _scaleElement: function() {
-            },
             _reloadElement: function() {
                 this.$el.removeAttr( 'style' );
                 this.$el.removeClass( 'rellax-element' );
@@ -6076,15 +6044,21 @@ $.fn.gmap3 = function () {
                     });
                 }
             },
-            _isInViewport: function( offset ) {
-                return lastScrollY > this.offset.top - windowHeight + offset && lastScrollY < this.offset.top + windowHeight + offset;
+            _setParentHeight: function() {
+                if ( this.parent == undefined ) {
+                    var $parent = this.$el.parent(),
+                        parentHeight = $parent.css( 'minHeight', '' ).outerHeight();
+
+                    parentHeight = windowHeight < parentHeight ? windowHeight : parentHeight;
+                    $parent.css( 'minHeight', parentHeight );
+                }
             },
             _updatePosition: function( forced ) {
                 var progress = this._getProgress(),
                     height = this.parent !== undefined ? this.parent.height : this.height,
                     move = ( windowHeight + height ) * ( progress - 0.5 ) * this.options.amount,
                     scale = 1 + ( this.options.scale - 1 ) * progress,
-                    scaleTransform = scale > 1 ? 'scale(' + scale + ')' : '';
+                    scaleTransform = scale >= 1 ? 'scale(' + scale + ')' : '';
 
                 if ( this.parent === undefined && this.$parent.length ) {
                     move *= -1;
@@ -6133,9 +6107,109 @@ $.fn.gmap3 = function () {
             amount: 0.5,
             bleed: 0,
             scale: 1,
-            container: '[data-rellax-container]'
+            container: "[data-rellax-container]",
+            reloadEvent: "ontouchstart" in window && "onorientationchange" in window ? "orientationchange debouncedresize" : "resize"
         };
 
+        var $window = $( window ),
+            windowWidth = window.innerWidth,
+            windowHeight = window.innerHeight ,
+            lastScrollY = window.scrollY,
+            frameRendered = true,
+            elements = [];
+
+        function render() {
+            if ( frameRendered !== true ) {
+                updateAll();
+            }
+            window.requestAnimationFrame( render );
+            frameRendered = true;
+        }
+
+        function updateAll( forced ) {
+            $.each(elements, function(i, element) {
+                element._updatePosition( forced );
+            });
+        }
+
+        function reloadAll() {
+            $.each(elements, function(i, element) {
+                element._reloadElement();
+            });
+        }
+
+        function prepareAll() {
+            $.each(elements, function(i, element) {
+                element._prepareElement();
+            });
+        }
+
+        function setHeights() {
+            $.each(elements, function(i, element) {
+                element._setParentHeight();
+            });
+        }
+
+        function badRestart() {
+            console.group('restart');
+            console.trace();
+            setHeights();
+            reloadAll();
+            prepareAll();
+            updateAll( true );
+            console.groupEnd();
+        }
+
+        var restart = throttle(badRestart, 1000);
+
+        function throttle(fn, threshhold, scope) {
+            threshhold || (threshhold = 250);
+            var last,
+                deferTimer;
+            return function () {
+                var context = scope || this;
+
+                var now = +new Date,
+                    args = arguments;
+                if (last && now < last + threshhold) {
+                    // hold on to it
+                    clearTimeout(deferTimer);
+                    deferTimer = setTimeout(function () {
+                        last = now;
+                        fn.apply(context, args);
+                    }, threshhold);
+                } else {
+                    last = now;
+                    fn.apply(context, args);
+                }
+            };
+        }
+
+        function bindEvents() {
+
+            $(document).ready(function() {
+                restart();
+                render();
+            });
+
+            $window.on( 'resize', function() {
+                windowWidth = window.innerWidth;
+                windowHeight = window.innerHeight;
+            });
+
+            $window.on( 'scroll', function() {
+                if ( frameRendered === true ) {
+                    lastScrollY = window.scrollY;
+                }
+                frameRendered = false;
+            });
+
+            $window.on( 'rellax load ' + $.fn.rellax.defaults.reloadEvent, function(e) {
+                restart();
+            });
+        }
+
+        bindEvents();
     }
 )( jQuery, window, document );
 

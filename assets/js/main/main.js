@@ -219,8 +219,6 @@ function init() {
 		}
 	} );
 
-
-	setHeroHeights();
 	royalSliderInit();
 
 	$('[data-bully]').bully();
@@ -241,27 +239,9 @@ function init() {
 		}, stagger);
 	});
 
-	$( "[data-rellax]" ).rellax();
-
 	if ( globalDebug ) {
 		console.groupEnd();
 	}
-}
-
-function setHeroHeights() {
-	$( ".article__header--page" ).each( function( i, obj ) {
-		var $obj = $( obj );
-
-		$obj.css( {
-			minHeight: '',
-			height: ''
-		} );
-
-		$obj.css( {
-			minHeight: $obj.outerHeight(),
-			height: 'auto'
-		} );
-	} );
 }
 
 /* ====== EVENT HANDLERS ====== */
@@ -428,7 +408,6 @@ $( window ).load( function() {
 	DownArrow.initialize();
 
 	setTimeout( function() {
-		Navigator.initialize();
 		ScrollToTop.initialize();
 	}, 60 );
 
@@ -441,7 +420,6 @@ $( window ).load( function() {
 /* ====== ON RESIZE ====== */
 
 $( window ).on( "debouncedresize", onResize );
-setHeroHeights();
 
 
 var orntn = getOrientation();
@@ -457,8 +435,6 @@ $window.on( 'resize', function() {
 	if ( isTouch && getOrientation() === orntn ) {
 		return;
 	}
-
-	setHeroHeights();
 
 	function refresh() {
 		resizeVideos();
@@ -501,7 +477,6 @@ function updateStuff() {
 	CoverAnimation.update();
 
 	if ( windowWidth >= 900 ) {
-		Navigator.update();
 		StickyHeader.update();
 	}
 }
@@ -601,5 +576,7 @@ $( function() {
 	} );
 } );
 
+$( "[data-rellax]" ).rellax();
+
 $.fn.rellax.defaults.reloadEvent = isTouch ? 'load orientationchange' : 'load resize';
-$.fn.rellax.defaults.bleed = isTouch ? 60 : 20;
+$.fn.rellax.defaults.bleed = 60;

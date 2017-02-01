@@ -115,7 +115,7 @@ function sliderInit( $slider ) {
 
 	royalSlider.ev.on( 'rsBeforeAnimStart rsAfterSlideChange rsAfterContentSet', function ( event ) {
 		onResize();
-		$( window ).trigger( 'resize' );
+		$( window ).trigger( 'rellax' );
 	});
 
 	// create the markup for the customArrows
