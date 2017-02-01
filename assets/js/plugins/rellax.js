@@ -185,13 +185,10 @@
         }
 
         function badRestart() {
-            console.group('restart');
-            console.trace();
             setHeights();
             reloadAll();
             prepareAll();
             updateAll( true );
-            console.groupEnd();
         }
 
         var restart = throttle(badRestart, 1000);
