@@ -1575,9 +1575,6 @@ $window.on( 'resize', function() {
 
 
 function onResize() {
-	$( '.js-pixslider' ).each(function (i, obj) {
-		var $obj = $(obj);
-	});
 }
 
 function refreshStuff() {

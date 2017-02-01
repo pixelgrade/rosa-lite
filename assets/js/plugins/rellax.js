@@ -64,9 +64,7 @@
                 this.width = this.width * scale;
                 this.height = this.height * scale;
 
-                console.log(parentWidth, parentHeight, this.width, this.height, scale);
-
-                this.offset.top = ( this.height - parentHeight ) / 2;
+                this.offset.top = ( parentHeight - this.height ) / 2;
                 this.offset.left = ( parentWidth - this.width ) / 2;
             },
             _prepareElement: function() {
