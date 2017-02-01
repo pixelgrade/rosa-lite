@@ -11966,15 +11966,22 @@ html, body, body > .page {
           backface-visibility: hidden; }
 
 [data-rellax-container] {
-  overflow: hidden; }
+  overflow: hidden;
+  opacity: 0; }
+  [data-rellax-container].rellax-element {
+    -webkit-animation: fade-in .3s ease-out forwards;
+            animation: fade-in .3s ease-out forwards; }
 
-.rellax-active {
-  opacity: 1; }
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 
 .rellax-element.rellax-hidden {
   pointer-events: none;
   visibility: hidden;
-  opacity: 0;
+  opacity: 0 !important;
   transition: none; }
 
 /*# sourceMappingURL=to.css.map */

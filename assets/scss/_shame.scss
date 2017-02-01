@@ -216,21 +216,26 @@ html, body, body > .page {
 
 [data-rellax] {
 	will-change: transform, opacity;
-	//opacity: 0;
 	backface-visibility: hidden;
 }
 
 [data-rellax-container] {
 	overflow: hidden;
+	opacity: 0;
+
+	&.rellax-element {
+		animation: fade-in .3s ease-out forwards;
+	}
 }
 
-.rellax-active {
-	opacity: 1;
+@keyframes fade-in {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
 }
 
 .rellax-element.rellax-hidden {
     pointer-events: none;
     visibility: hidden;
-    opacity: 0;
+    opacity: 0 !important;
     transition: none;
 }

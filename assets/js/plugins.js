@@ -6005,7 +6005,6 @@ $.fn.gmap3 = function () {
             constructor: Rellax,
             _reloadElement: function() {
                 this.$el.removeAttr( 'style' );
-                this.$el.removeClass( 'rellax-element' );
 
                 this.offset = this.$el.offset();
                 this.height = this.$el.outerHeight();
@@ -6157,7 +6156,9 @@ $.fn.gmap3 = function () {
             updateAll( true );
         }
 
-        var restart = throttle(badRestart, 1000);
+        var restart = throttle(function() {
+            badRestart();
+        }, 300);
 
         function throttle(fn, threshhold, scope) {
             threshhold || (threshhold = 250);
