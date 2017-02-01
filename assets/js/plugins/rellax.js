@@ -190,9 +190,7 @@
             updateAll( true );
         }
 
-        var restart = throttle(function() {
-            badRestart();
-        }, 300);
+        var restart = throttle(badRestart, 300);
 
         function throttle(fn, threshhold, scope) {
             threshhold || (threshhold = 250);

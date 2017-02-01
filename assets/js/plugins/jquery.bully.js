@@ -153,7 +153,7 @@
 			scrollPerSecond: 4000
 		};
 
-		$window.on( 'rellax ' + $.fn.bully.defaults.reloadEvent, reloadAll );
+		$window.on( 'rellax load', reloadAll );
 
 
 	}

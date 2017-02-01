@@ -3033,7 +3033,7 @@ $.fn.gmap3 = function () {
 			scrollPerSecond: 4000
 		};
 
-		$window.on( 'rellax ' + $.fn.bully.defaults.reloadEvent, reloadAll );
+		$window.on( 'rellax load', reloadAll );
 
 
 	}
@@ -6156,9 +6156,7 @@ $.fn.gmap3 = function () {
             updateAll( true );
         }
 
-        var restart = throttle(function() {
-            badRestart();
-        }, 300);
+        var restart = throttle(badRestart, 300);
 
         function throttle(fn, threshhold, scope) {
             threshhold || (threshhold = 250);
