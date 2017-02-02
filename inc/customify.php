@@ -683,6 +683,10 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							array(
 								'property' => 'background-color',
 								'selector' => '.page .article__content, .up-link, html, .menu-list__item-title .item_title, .menu-list__item-price, .desc__content',
+							),
+							array(
+								'property' => 'border-color',
+								'selector' => '.site-header, .site-footer'
 							)
 						)
 					),
