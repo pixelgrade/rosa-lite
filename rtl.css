@@ -7979,11 +7979,8 @@ input[type="color"],
   min-height: 100%;
   width: auto;
   height: auto;
-  max-width: none; }
-  @supports (object-fit: cover) {
-    .c-hero__image,
-    .c-hero__video {
-      object-fit: cover; } }
+  max-width: none;
+  object-fit: cover; }
 
 .c-hero__map,
 .c-hero__slider {
