@@ -147,7 +147,7 @@
             bleed: 0,
             scale: 1,
             container: "[data-rellax-container]",
-            reloadEvent: "ontouchstart" in window && "onorientationchange" in window ? "orientationchange debouncedresize" : "resize"
+            reloadEvent: "ontouchstart" in window && "onorientationchange" in window ? "orientationchange" : "resize"
         };
 
         var $window = $( window ),
@@ -190,41 +190,36 @@
         }
 
         function badRestart() {
+            console.group( 'rellax:restart' );
+            console.trace();
             setHeights();
             reloadAll();
             prepareAll();
             updateAll( true );
+            console.groupEnd();
         }
 
-        var restart = throttle(badRestart, 300);
+        var restart = debounce(badRestart, 500);
 
-        function throttle(fn, threshhold, scope) {
-            threshhold || (threshhold = 250);
-            var last,
-                deferTimer;
-            return function () {
-                var context = scope || this;
-
-                var now = +new Date,
-                    args = arguments;
-                if (last && now < last + threshhold) {
-                    // hold on to it
-                    clearTimeout(deferTimer);
-                    deferTimer = setTimeout(function () {
-                        last = now;
-                        fn.apply(context, args);
-                    }, threshhold);
-                } else {
-                    last = now;
-                    fn.apply(context, args);
-                }
+        function debounce(func, wait, immediate) {
+            var timeout;
+            return function() {
+                var context = this, args = arguments;
+                var later = function() {
+                    timeout = null;
+                    if (!immediate) func.apply(context, args);
+                };
+                var callNow = immediate && !timeout;
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (callNow) func.apply(context, args);
             };
-        }
+        };
 
         function bindEvents() {
 
-            $(document).ready(function() {
-                restart();
+            $window.load(function() {
+                badRestart();
                 render();
             });
 
@@ -240,11 +235,11 @@
                 frameRendered = false;
             });
 
-            $window.on( 'rellax load ' + $.fn.rellax.defaults.reloadEvent, function(e) {
-                restart();
-            });
+            $window.on( 'rellax ' + $.fn.rellax.defaults.reloadEvent, restart );
+
         }
 
         bindEvents();
+
     }
 )( jQuery, window, document );

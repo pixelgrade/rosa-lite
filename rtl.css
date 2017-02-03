@@ -11977,4 +11977,9 @@ html, body, body > .page {
   visibility: hidden;
   opacity: 0; }
 
+.c-hero__slider .rsOverflow,
+.c-hero__slider .gallery-item {
+  width: 100% !important;
+  height: 100% !important; }
+
 /*# sourceMappingURL=to.css.map */

@@ -233,3 +233,11 @@ html, body, body > .page {
     visibility: hidden;
 	opacity: 0;
 }
+
+.c-hero__slider {
+	.rsOverflow,
+	.gallery-item {
+		width: 100% !important;
+		height: 100% !important;
+	}
+}

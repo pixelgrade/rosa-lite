@@ -1115,14 +1115,15 @@ var StickyHeader = (function() {
 
 /* --- NICESCROLL --- */
 
+globalDebug = true;
+
 var $body = $( 'body' ),
 	$html = $( 'html' ),
 	$window = $( window ),
 	$document = $( document ),
 	documentHeight = $document.height(),
 	aspectRatio = windowWidth / windowHeight,
-	orientation = windowWidth > windowHeight ? 'landscape' : 'portrait',
-	orientationchange = false,
+	orientation = getOrientation(),
 	isTouch = ! ! ( ( "ontouchstart" in window ) || window.DocumentTouch && document instanceof DocumentTouch );
 
 function niceScrollInit() {
@@ -1332,26 +1333,6 @@ function init() {
 		}
 	} );
 
-	royalSliderInit();
-
-	$('[data-bully]').bully();
-
-	var items = $('.c-bully__bullet').length;
-
-	$('.c-bully__bullet').each(function (i, obj) {
-
-		var stagger = 3000 + i * 400,
-			$obj    = $(obj);
-
-		if ($obj.is('.c-bully__bullet--active')) {
-			stagger = stagger + items * 400;
-		}
-
-		setTimeout(function () {
-			TweenMax.fromTo($obj, 1, {opacity: 0, scale: 0.7}, {opacity: 1, scale: 1, force3D: true, ease: Elastic.easeOut});
-		}, stagger);
-	});
-
 	if ( globalDebug ) {
 		console.groupEnd();
 	}
@@ -1524,18 +1505,31 @@ $( window ).load( function() {
 		ScrollToTop.initialize();
 	}, 60 );
 
+	royalSliderInit();
+
 	loop();
+
+	$('[data-bully]').bully();
+
+	var items = $('.c-bully__bullet').length;
+
+	$('.c-bully__bullet').each(function (i, obj) {
+
+		var stagger = 3000 + i * 400,
+			$obj    = $(obj);
+
+		if ($obj.is('.c-bully__bullet--active')) {
+			stagger = stagger + items * 400;
+		}
+
+		setTimeout(function () {
+			TweenMax.fromTo($obj, 1, {opacity: 0, scale: 0.7}, {opacity: 1, scale: 1, force3D: true, ease: Elastic.easeOut});
+		}, stagger);
+	});
+
 
 	$html.addClass( 'is--loaded' );
 } );
-
-
-/* ====== ON RESIZE ====== */
-
-$( window ).on( "debouncedresize", onResize );
-
-
-var orntn = getOrientation();
 
 function getOrientation() {
 	return windowWidth > windowHeight ? "landscape" : "portrait";
@@ -1544,9 +1538,17 @@ function getOrientation() {
 $window.on( 'resize', function() {
 	windowWidth = window.innerWidth;
 	windowHeight = window.innerHeight;
+} );
 
-	if ( isTouch && getOrientation() === orntn ) {
-		return;
+$( window ).on( "debouncedresize", onResize );
+
+function onResize() {
+	var neworientation = getOrientation();
+
+	if ( neworientation !== orientation ) {
+		orientation = neworientation;
+		$( window ).trigger( "debouncedorientationchange" );
+		console.log("debouncedorientationchange");
 	}
 
 	function refresh() {
@@ -1563,18 +1565,7 @@ $window.on( 'resize', function() {
 		requestAnimationFrame( refreshStuff );
 	}
 
-	if ( isTouch ) {
-		setTimeout( refresh, 100 );
-	} else {
-		refresh();
-	}
-
-
-	orntn = getOrientation();
-} );
-
-
-function onResize() {
+	refresh();
 }
 
 function refreshStuff() {
@@ -1691,6 +1682,7 @@ $( function() {
 $( "[data-rellax]" ).rellax();
 
 $.fn.rellax.defaults.bleed = 60;
+$.fn.rellax.defaults.reloadEvent = "ontouchstart" in window && "onorientationchange" in window ? "debouncedorientationchange" : "debouncedresize";
 
 /* --- 404 Page --- */
 gifImages = [
