@@ -5965,7 +5965,7 @@ $.fn.gmap3 = function () {
 }));
 
 /*!
- * jQuery Rellax Plugin v0.3.3
+ * jQuery Rellax Plugin v0.3.4
  * Examples and documentation at http://pixelgrade.github.io/rellax/
  * Copyright (c) 2016 PixelGrade http://www.pixelgrade.com
  * Licensed under MIT http://www.opensource.org/licenses/mit-license.php/
@@ -6156,13 +6156,10 @@ $.fn.gmap3 = function () {
         }
 
         function badRestart() {
-            console.group( 'rellax:restart' );
-            console.trace();
             setHeights();
             reloadAll();
             prepareAll();
             updateAll( true );
-            console.groupEnd();
         }
 
         var restart = debounce(badRestart, 500);
