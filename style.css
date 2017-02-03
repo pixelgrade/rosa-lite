@@ -11989,4 +11989,8 @@ html, body, body > .page {
   width: 100% !important;
   height: 100% !important; }
 
+.c-hero__image,
+.c-hero__video {
+  max-width: none !important; }
+
 /*# sourceMappingURL=style.css.map */
