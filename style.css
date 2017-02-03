@@ -8439,10 +8439,10 @@ a:hover > .pixcode--icon {
   float: right; }
 
 @media only screen and (min-width: 900px) {
-  html:not(.is--ie) .navigation--main {
+  .navigation--main {
     display: -ms-flexbox;
     display: flex; }
-    html:not(.is--ie) .navigation--main > .nav--main {
+    .navigation--main > .nav--main {
       -ms-flex-positive: 1;
           flex-grow: 1; } }
 
