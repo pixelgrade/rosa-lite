@@ -148,18 +148,6 @@ html body.woocommerce ul.products li.product {
     margin-bottom: 78px;
 }
 
-.pixslider img { display: none; } .pixslider.slider--loaded img { display: block; }
-
-.ie9{
-	.article__parallax img{
-		opacity: 1;
-	}
-
-	.article__parallax--img img{
-		opacity: 1;
-	}
-}
-
 /* Text meant only for screen readers. */
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
@@ -245,4 +233,12 @@ html, body, body > .page {
 .c-hero__image,
 .c-hero__video {
 	max-width: none !important;
+}
+
+.article__content .pixslider > .slide {
+	float: none;
+
+	&:not(:first-child) {
+		display: none;
+	}
 }
