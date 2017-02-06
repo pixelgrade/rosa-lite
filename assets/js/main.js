@@ -17,6 +17,10 @@ var is_OSX          = ua.match(/(iPad|iPhone|iPod|Macintosh)/g) ? true : false;
 var iOS 			= getIOSVersion(ua);
 var is_EDGE 		= /Edge\/12./i.test(navigator.userAgent);
 
+var latestKnownScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0),
+	newScrollY = - 1,
+	ticking = false;
+
 if (is_EDGE) {
 	jQuery('body').addClass('is-edge');
 }
@@ -1586,11 +1590,6 @@ $( window ).on( "organicTabsChange", function() {
 	onResize();
 	refreshStuff();
 } );
-
-var latestKnownScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0);
-
-var newScrollY = - 1,
-	ticking = false;
 
 $window.scroll( function() {
 	newScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0);

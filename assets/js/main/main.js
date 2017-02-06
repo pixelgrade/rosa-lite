@@ -474,11 +474,6 @@ $( window ).on( "organicTabsChange", function() {
 	refreshStuff();
 } );
 
-var latestKnownScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0);
-
-var newScrollY = - 1,
-	ticking = false;
-
 $window.scroll( function() {
 	newScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0);
 } );
