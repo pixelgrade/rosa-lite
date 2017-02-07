@@ -11988,4 +11988,7 @@ html, body, body > .page {
   .article__content .pixslider > .slide:not(:first-child) {
     display: none; }
 
+.mfp-container {
+  cursor: default; }
+
 /*# sourceMappingURL=style.css.map */
