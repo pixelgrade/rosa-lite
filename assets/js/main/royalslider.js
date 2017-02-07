@@ -154,7 +154,7 @@ function sliderInit( $slider ) {
 	}
 
 	if ( hoverArrows && ! Modernizr.touchevents ) {
-		hoverArrow( $( '.slider__custom-arrows .rsArrow' ) );
+		hoverArrow( $gallery_control.find( '.rsArrow' ) );
 
 	}
 
