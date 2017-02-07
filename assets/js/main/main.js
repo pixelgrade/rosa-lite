@@ -173,6 +173,7 @@ function init() {
 
 	/* INSTANTIATE EVENT HANDLERS */
 	eventHandlers();
+	updateHeaderPadding();
 
 //	move waves in siblings so they keep up with the parallax
 //	var $waves = jQuery( '.border-waves' ).not( '.site-footer' );
@@ -391,6 +392,7 @@ $( window ).load( function() {
 	}, 60 );
 
 	royalSliderInit();
+	updateHeaderPadding();
 
 	loop();
 
@@ -404,11 +406,11 @@ $( window ).load( function() {
 
 		$('.c-bully__bullet').each(function (i, obj) {
 
-			var stagger = 3000 + i * 400,
+			var stagger = i * 400,
 				$obj    = $(obj);
 
-			if ($obj.is('.c-bully__bullet--active')) {
-				stagger = stagger + items * 400;
+			if ( $obj.is('.c-bully__bullet--active') ) {
+				return;
 			}
 
 			setTimeout(function () {
@@ -425,9 +427,19 @@ function getOrientation() {
 	return windowWidth > windowHeight ? "landscape" : "portrait";
 }
 
+function updateHeaderPadding() {
+	var $header = $( '.site-header' ),
+		headerHeight = $header.outerHeight();
+
+	if ( ! $header.next().is( '.c-hero' ) ) {
+		$('#page').css('paddingTop', headerHeight);
+	}
+}
+
 $window.on( 'resize', function() {
 	windowWidth = window.innerWidth;
 	windowHeight = window.innerHeight;
+
 } );
 
 $( window ).on( "debouncedresize", onResize );
