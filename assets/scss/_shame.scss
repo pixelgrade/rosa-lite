@@ -148,18 +148,6 @@ html body.woocommerce ul.products li.product {
     margin-bottom: 78px;
 }
 
-.pixslider img { display: none; } .pixslider.slider--loaded img { display: block; }
-
-.ie9{
-	.article__parallax img{
-		opacity: 1;
-	}
-
-	.article__parallax--img img{
-		opacity: 1;
-	}
-}
-
 /* Text meant only for screen readers. */
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
@@ -210,19 +198,51 @@ html, body, body > .page {
 	top: 10% !important;
 }
 
-[data-rellax-container]:not(.rellax-visible) {
-	visibility: hidden;
+[data-rellax] {
+	will-change: transform, opacity;
+	backface-visibility: hidden;
 }
 
 [data-rellax-container] {
-	opacity: 0;
+	overflow: hidden;
 
-	&.rellax-active {
-		animation: fade-in .3s ease-in-out forwards;
+	[data-rellax] {
+		transition: opacity .3s ease-out;
+		opacity: 0;
+
+		.is--loaded & {
+			opacity: 1;
+		}
 	}
 }
 
-@keyframes fade-in {
-	0% { opacity: 0; }
-	100% { opacity: 1; }
+.rellax-element.rellax-hidden {
+    pointer-events: none;
+    visibility: hidden;
+	opacity: 0;
+}
+
+.c-hero__slider {
+	.rsOverflow,
+	.gallery-item {
+		width: 100% !important;
+		height: 100% !important;
+	}
+}
+
+.c-hero__image,
+.c-hero__video {
+	max-width: none !important;
+}
+
+.article__content .pixslider > .slide {
+	float: none;
+
+	&:not(:first-child) {
+		display: none;
+	}
+}
+
+.mfp-container {
+	cursor: default;
 }

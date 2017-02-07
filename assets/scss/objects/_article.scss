@@ -126,16 +126,6 @@
         text-align: center;
     }
 
-    &.full-height {
-        height: 100%;
-    }
-    &.half-height {
-        height: 50%;
-    }
-    &.two-thirds-height {
-        height: 66%;
-    }
-
     &.header--slideshow {
         padding: 0;
     }
@@ -347,4 +337,23 @@
         border-color: $dark;
         transform: rotate(0);
     }
+}
+
+
+.c-hero__image {
+    //position: absolute;
+    //top: 50%;
+    //left: 50%;
+    //min-width: 100%;
+    //min-height: 100%;
+    //object-fit: cover;
+    //transform: translate(-50%, -50%);
+}
+
+.c-hero__map {
+    width: 100% !important;
+}
+
+.article__content .rsOverflow {
+    transition: none !important;
 }

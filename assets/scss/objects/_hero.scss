@@ -113,6 +113,8 @@
 
 .c-hero__image,
 .c-hero__video {
+    min-width: 100%;
+    min-height: 100%;
     width: auto;
     height: auto;
     max-width: none;
@@ -121,6 +123,7 @@
 
 .c-hero__map,
 .c-hero__slider {
-    width: 100%;
+    width: 100% !important;
     height: 100%;
+    left: 0 !important;
 }

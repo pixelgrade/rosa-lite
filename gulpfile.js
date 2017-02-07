@@ -40,7 +40,6 @@ var
 		'downArrow',
 	    'scrollToTop',
 		'coverAnimations',
-		'navigator',
 	    'stickyHeader',
 		'main',
 		'404',

@@ -41,30 +41,31 @@
 	}
 }
 
-.slider-arrows-header.arrows--hover{
-	.rsArrow{
-		cursor: none;
+.arrows--hover {
+	cursor: none;
 
-		width: 40%;
-		height: 70%;
-
-		top: 15%;
-
-		background: transparent;
-
-		transform: none;
-	}
-
-	.rsArrowIcn{
+	.rsArrow {
 		position: absolute;
 		top: 0;
 		left: 0;
-
-		opacity: 0;
-		transition: opacity .1s linear;
+		width: 50%;
+		height: 100%;
+		background: transparent;
+		transform: none;
+		cursor: none;
 	}
 
-	.visible .rsArrowIcn{
+	.rsArrowRight {
+		left: 50%;
+	}
+
+	.rsArrowIcn {
+		margin-top: -40px;
+		margin-left: -25px;
+		opacity: 0;
+	}
+
+	.visible .rsArrowIcn {
 		opacity: 1;
 	}
 }

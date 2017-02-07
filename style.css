@@ -5,7 +5,7 @@ Theme URI: https://pixelgrade.com/demos/rosa3
 Author: PixelGrade
 Author URI: https://pixelgrade.com
 Description:  ROSA is an enchanting and easy-to-use parallax Restaurant WordPress theme that allows you to tell your story in a dynamic, narrative and enjoyable way, making it perfect for restaurants, bakeries, bars or coffee shops.
-Version: 2.2.1
+Version: 2.2.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: rosa
@@ -2202,7 +2202,7 @@ html.flexbox, html.site-title {
   /* [1] */
   vertical-align: middle;
   /* [2] */
-  white-space: nowrap;
+  white-space: normal;
   /* [3] */
   font-family: inherit;
   /* [4] */
@@ -7612,12 +7612,6 @@ input[type="color"],
         justify-content: center; }
   .article__header.article__header--page .flexbox__item, .article__header.article__header--page .site-logo {
     text-align: center; }
-  .article__header.article__header--page.full-height {
-    height: 100%; }
-  .article__header.article__header--page.half-height {
-    height: 50%; }
-  .article__header.article__header--page.two-thirds-height {
-    height: 66%; }
   .article__header.article__header--page.header--slideshow {
     padding: 0; }
 
@@ -7773,6 +7767,12 @@ input[type="color"],
     border-color: #262526;
     -webkit-transform: rotate(0);
             transform: rotate(0); }
+
+.c-hero__map {
+  width: 100% !important; }
+
+.article__content .rsOverflow {
+  transition: none !important; }
 
 /*------------------------------------*    $ARTICLE HEADING + SUBHEADING
 \*------------------------------------*/
@@ -7979,6 +7979,8 @@ input[type="color"],
 
 .c-hero__image,
 .c-hero__video {
+  min-width: 100%;
+  min-height: 100%;
   width: auto;
   height: auto;
   max-width: none;
@@ -7986,8 +7988,9 @@ input[type="color"],
 
 .c-hero__map,
 .c-hero__slider {
-  width: 100%;
-  height: 100%; }
+  width: 100% !important;
+  height: 100%;
+  left: 0 !important; }
 
 /*-------------------------------*               $BADGE
 \*-------------------------------*/
@@ -8436,10 +8439,10 @@ a:hover > .pixcode--icon {
   float: right; }
 
 @media only screen and (min-width: 900px) {
-  html:not(.is--ie) .navigation--main {
+  .navigation--main {
     display: -ms-flexbox;
     display: flex; }
-    html:not(.is--ie) .navigation--main > .nav--main {
+    .navigation--main > .nav--main {
       -ms-flex-positive: 1;
           flex-grow: 1; } }
 
@@ -9125,24 +9128,26 @@ hr, .separator {
       top: 50%;
       position: relative; } }
 
-.slider-arrows-header.arrows--hover .rsArrow {
-  cursor: none;
-  width: 40%;
-  height: 70%;
-  top: 15%;
-  background: transparent;
-  -webkit-transform: none;
-          transform: none; }
-
-.slider-arrows-header.arrows--hover .rsArrowIcn {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity .1s linear; }
-
-.slider-arrows-header.arrows--hover .visible .rsArrowIcn {
-  opacity: 1; }
+.arrows--hover {
+  cursor: none; }
+  .arrows--hover .rsArrow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: transparent;
+    -webkit-transform: none;
+            transform: none;
+    cursor: none; }
+  .arrows--hover .rsArrowRight {
+    left: 50%; }
+  .arrows--hover .rsArrowIcn {
+    margin-top: -40px;
+    margin-left: -25px;
+    opacity: 0; }
+  .arrows--hover .visible .rsArrowIcn {
+    opacity: 1; }
 
 .pixcode--tabs {
   padding: 24px;
@@ -9657,64 +9662,117 @@ div.mfp-title {
   top: 0.125rem;
   left: 0.0625rem; }
 
-.navigator {
+[class*="c-bully"],
+[class*="c-bully"]:before,
+[class*="c-bully"]:after {
+  box-sizing: border-box; }
+
+.c-bully {
   position: fixed;
   top: 50%;
   right: 48px;
-  z-index: 999;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  opacity: 0; }
+  font-size: 12px;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  z-index: 9000;
+  color: #000; }
   @media only screen and (max-width: 899px) {
-    .navigator {
+    .c-bully {
       display: none; } }
-  .navigator.navigator--transparent {
-    right: 0;
-    background: white;
-    border: 12px solid transparent;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    transition: opacity .3s ease-out; }
-    .navigator.navigator--transparent:hover {
-      opacity: 1 !important; }
 
-.navigator__item {
+.c-bully--inversed {
+  color: #FFF; }
+
+.c-bully__bullet {
+  padding: 0.5em;
+  opacity: 0;
+  cursor: pointer; }
+
+.c-bully__bullet:after {
+  content: "";
   display: block;
-  padding: 6px;
-  background: rgba(255, 255, 255, 0.01);
-  -webkit-transform: scale(0.7);
-          transform: scale(0.7);
-  opacity: 0; }
-  .navigator__item .bullet {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 2px solid white;
-    transition: background-color, border-color .1s ease-in-out;
-    cursor: pointer; }
-    .navigator--transparent .navigator__item .bullet {
-      border: 2px solid black; }
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  will-change: transform; }
 
-.navigator__item--selected {
+.c-bully__bullet--active {
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-transform: scale(0.7);
-          transform: scale(0.7);
-  opacity: 0; }
-  .navigator__item--selected .bullet {
-    background: white;
-    border-color: transparent;
-    border-color: rgba(255, 255, 255, 0.01);
-    cursor: default; }
-    .navigator--transparent .navigator__item--selected .bullet {
-      background: black; }
+  transition: top 0.2s ease-out; }
 
-.navigator--black .navigator__item .bullet {
-  border-color: black; }
+.c-bully__bullet--active:before {
+  content: "";
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 14px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: currentColor;
+  border-radius: 50%; }
 
-.navigator--black .navigator__item--selected .bullet {
-  background: black; }
+.c-bully__bullet--active:after {
+  border-color: transparent; }
+
+.c-bully__bullet--pop {
+  opacity: 1;
+  transition: opacity .2s .2s ease-out;
+  -webkit-animation: bully-pop 0.6s cubic-bezier(0.485, 1.63, 0.43, 2) forwards;
+          animation: bully-pop 0.6s cubic-bezier(0.485, 1.63, 0.43, 2) forwards; }
+
+.c-bully__bullet--squash {
+  transition-delay: 0s;
+  -webkit-animation: bully-squash 0.2s ease-out forwards;
+          animation: bully-squash 0.2s ease-out forwards; }
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-webkit-keyframes bully-pop {
+  50% {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7); }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes bully-pop {
+  50% {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7); }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@-webkit-keyframes bully-squash {
+  50% {
+    -webkit-transform: scale(0.6, 1.8);
+            transform: scale(0.6, 1.8); }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes bully-squash {
+  50% {
+    -webkit-transform: scale(0.6, 1.8);
+            transform: scale(0.6, 1.8); }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
 
 .input-group {
   position: relative;
@@ -10028,11 +10086,7 @@ small.muted {
   width: 100%;
   height: 100%;
   position: relative; }
-  @media only screen and (min-width: 900px) {
-    #page {
-      padding-top: 72px; } }
   .header--transparent #page {
-    padding-top: 0 !important;
     margin-top: 0 !important;
     top: 0 !important; }
   @media only screen and (max-width: 899px) {
@@ -10509,6 +10563,8 @@ a.site-logo--text {
     color: white; }
   .sidebar--footer a {
     color: white; }
+  .sidebar--footer [class*="social"] a, .sidebar--footer [class*="social"] a:hover {
+    color: transparent; }
 
 .widget_calendar caption {
   margin-bottom: 12px;
@@ -11877,18 +11933,6 @@ body, .site-header, .site-footer {
 html body.woocommerce ul.products li.product {
   margin-bottom: 78px; }
 
-.pixslider img {
-  display: none; }
-
-.pixslider.slider--loaded img {
-  display: block; }
-
-.ie9 .article__parallax img {
-  opacity: 1; }
-
-.ie9 .article__parallax--img img {
-  opacity: 1; }
-
 /* Text meant only for screen readers. */
 .screen-reader-text {
   clip: rect(1px, 1px, 1px, 1px);
@@ -11914,25 +11958,39 @@ html, body, body > .page {
 #at-expanded-menu-container .at-expanded-menu {
   top: 10% !important; }
 
-[data-rellax-container]:not(.rellax-visible) {
-  visibility: hidden; }
+[data-rellax] {
+  will-change: transform, opacity;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden; }
 
 [data-rellax-container] {
+  overflow: hidden; }
+  [data-rellax-container] [data-rellax] {
+    transition: opacity .3s ease-out;
+    opacity: 0; }
+    .is--loaded [data-rellax-container] [data-rellax] {
+      opacity: 1; }
+
+.rellax-element.rellax-hidden {
+  pointer-events: none;
+  visibility: hidden;
   opacity: 0; }
-  [data-rellax-container].rellax-active {
-    -webkit-animation: fade-in .3s ease-in-out forwards;
-            animation: fade-in .3s ease-in-out forwards; }
 
-@-webkit-keyframes fade-in {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
+.c-hero__slider .rsOverflow,
+.c-hero__slider .gallery-item {
+  width: 100% !important;
+  height: 100% !important; }
 
-@keyframes fade-in {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
+.c-hero__image,
+.c-hero__video {
+  max-width: none !important; }
+
+.article__content .pixslider > .slide {
+  float: none; }
+  .article__content .pixslider > .slide:not(:first-child) {
+    display: none; }
+
+.mfp-container {
+  cursor: default; }
 
 /*# sourceMappingURL=style.css.map */

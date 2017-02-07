@@ -17,6 +17,10 @@ var is_OSX          = ua.match(/(iPad|iPhone|iPod|Macintosh)/g) ? true : false;
 var iOS 			= getIOSVersion(ua);
 var is_EDGE 		= /Edge\/12./i.test(navigator.userAgent);
 
+var latestKnownScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0),
+	newScrollY = - 1,
+	ticking = false;
+
 if (is_EDGE) {
 	jQuery('body').addClass('is-edge');
 }
@@ -230,12 +234,10 @@ function sliderInit( $slider ) {
 		rs_keyboardNav = false;
 		rs_drag = false;
 		rs_transition = 'fade';
-		rs_customArrows = false;
 	}
-
 	// make sure default arrows won't appear if customArrows is set
 	if ( rs_customArrows ) {
-		arrows = false;
+		rs_arrows = false;
 	}
 
 	//the main params for Royal Slider
@@ -280,16 +282,13 @@ function sliderInit( $slider ) {
 
 	$slider.royalSlider( royalSliderParams );
 	$slider.addClass( 'slider--loaded' );
-	onResize();
 
 	var royalSlider = $slider.data( 'royalSlider' );
 	var slidesNumber = royalSlider.numSlides;
 
-	if ( $slider.closest( '.article__content' ).length ) {
-		royalSlider.ev.on( 'rsAfterSlideChange', function ( event ) {
-			onResize();
-		} );
-	}
+	royalSlider.ev.on( 'rsBeforeAnimStart rsAfterSlideChange rsAfterContentSet', function ( event ) {
+		$( window ).trigger( 'rellax' );
+	});
 
 	// create the markup for the customArrows
 	if ( royalSlider && rs_customArrows ) {
@@ -331,7 +330,7 @@ function sliderInit( $slider ) {
 	}
 
 	if ( hoverArrows && ! Modernizr.touchevents ) {
-		hoverArrow( $( '.slider-arrows-header .rsArrow' ) );
+		hoverArrow( $gallery_control.find( '.rsArrow' ) );
 
 	}
 
@@ -368,38 +367,41 @@ function sliderMarkupGallery( $gallery ) {
  */
 
 function hoverArrow( $arrow ) {
-	var $mouseX = 0, $mouseY = 0;
-	var $arrowH = 35, $arrowW = 35;
 
-	$arrow.mouseenter( function ( e ) {
-		$( this ).addClass( 'visible' );
+	$arrow.each(function(i, obj) {
 
-		moveArrow( $( this ) );
-	} );
+		var $arrow = $(obj),
+			update = false,
+			offset = $arrow.offset(),
+			$icon = $arrow.find( '.rsArrowIcn' ),
+			mouseX,
+			mouseY;
 
-	var $loop;
-
-	function moveArrow( $arrow ) {
-		var $mouseX;
-		var $mouseY;
+		$arrow.mouseenter( function ( e ) {
+			offset = $arrow.offset();
+			$( this ).addClass( 'visible' );
+			update = true;
+		});
 
 		$arrow.mousemove( function ( e ) {
-			$mouseX = e.pageX - $arrow.offset().left - 40;
-			$mouseY = e.pageY - $arrow.offset().top - 40;
-		} );
-
-		var $arrowIcn = $arrow.find( '.rsArrowIcn' );
-
-		$loop = setInterval( function () {
-			TweenMax.to( $arrowIcn, 0, {x: $mouseX, y: $mouseY, z: 0.01} );
-		}, 10 );
-
+			mouseX = e.pageX - offset.left;
+			mouseY = e.pageY - offset.top;
+		});
 
 		$arrow.mouseleave( function ( e ) {
 			$( this ).removeClass( 'visible' );
-			clearInterval( $loop );
-		} );
-	}
+			update = false;
+		});
+
+		function loop() {
+			if ( update ) {
+				TweenMax.to( $icon, 0, {x: mouseX, y: mouseY, z: 0.01, force3D: true} );
+			}
+			requestAnimationFrame(loop);
+		}
+
+		loop();
+	});
 }
 /* --- GMAP Init --- */
 
@@ -735,12 +737,6 @@ function gmapMultiplePinsInit($container) {
 
 			google.maps.event.addListenerOnce(map, 'idle', function() {
 				if (typeof map == "undefined") return;
-
-				if (1 < pins.length) {
-//					map.setZoom(map.getZoom() - 1);
-				} else {
-					map.setZoom(zoom);
-				}
 			});
 
 		});
@@ -1089,199 +1085,6 @@ var CoverAnimation = {
         });
     }
 }
-/* --- Navigator Init --- */
-
-var Navigator = {
-    // variables
-    $el:                $('<div class="navigator"></div>'),
-    sectionSelector:    '.article__header',
-    scrollDuration:     300,
-
-    // private
-    currentSelected:    0,
-    lastSelected:       0,
-    isWhite:            true,
-    wasWhite:           true,
-    initialized:        false,
-    timeline:           new TimelineMax({ paused: true }),
-    nextTop:            0,
-    footer:             null,
-    footerTop:          0,
-
-    initialize: function () {
-
-        var that        = this,
-            $navigator  = this.$el;
-
-        this.initialized    = true;
-        this.$sections      = $(that.sectionSelector);
-
-        this.footer = $('.sidebar--footer__dark');
-
-        if (this.footer.length) {
-            this.footerTop = this.footer.offset().top;
-        }
-
-        if (this.$sections.length < 2) {
-            return;
-        }
-
-        for (var index = 0; index < this.$sections.length; index++) {
-
-            var $section        = $(that.$sections[index]),
-                sectionTop      = $section.offset().top,
-                sectionHeight   = $section.outerHeight(),
-                $button         = $('<a href="#" class="navigator__item"><div class="bullet"></div></a>');
-
-            if ($section.css('display') == 'none') {
-
-                if (!$section.next().is('.article--page')) {
-                    that.$sections.splice(index, 1);
-                    index--;
-                    continue;
-                } else {
-                    sectionTop = that.nextTop;
-                }
-            } else {
-                that.nextTop += sectionHeight;
-            }
-
-            if ($section.next().is('.article--page')) {
-                that.nextTop += $section.next().outerHeight();
-            }
-
-            $button.appendTo($navigator);
-            $button.data('scrollTo', sectionTop - windowHeight/2 + sectionHeight/2);
-            $section.data('offsetTop', sectionTop).data('height', sectionHeight);
-
-            $section.data('display', $section.css('display'));
-
-            // closures
-            (function ($newButton) {
-                $newButton.on('click', function (event) {
-                    event.preventDefault();
-                    event.stopPropagation();
-
-                    smoothScrollTo($newButton.data('scrollTo'));
-
-                    return false;
-                });
-            })($button);
-
-        }
-
-        this.$selected          = $('<div class="navigator__item  navigator__item--selected"><div class="bullet"></div></div>').appendTo($navigator);
-        this.$selectedBullet    = this.$selected.find('.bullet');
-
-        this.timeline.add(TweenMax.to(that.$selectedBullet, 0, {}));
-
-        this.timeline.add(TweenMax.to(that.$selectedBullet, 0.1, {
-            borderTopLeftRadius: 20,
-            borderTopRightRadius: 20,
-            borderBottomLeftRadius: 50,
-            borderBottomRightRadius: 50,
-            'scaleY': 2,
-            'scaleX': 0.6
-        }));
-
-        this.timeline.add(TweenMax.to(that.$selectedBullet, 0.1, {
-            borderTopLeftRadius: 50,
-            borderTopRightRadius: 50,
-            borderBottomLeftRadius: 50,
-            borderBottomRightRadius: 50,
-            'scaleY': 1,
-            'scaleX': 1
-        }));
-
-        this.timeline.add(TweenMax.to(that.$selectedBullet, 0, {
-            'scale': 1.2
-        }));
-
-
-        $navigator.css({'margin-top': -1 * $navigator.height() / 2}).prependTo("body");
-
-        this.update();
-
-        $('.navigator__item').each(function (i, obj) {
-
-            var items   = $('.navigator__item').length,
-                stagger = 3000 + i * 400,
-                $obj    = $(obj);
-
-            if ($obj.is('.navigator__item--selected')) {
-                stagger = stagger + items * 100;
-            }
-
-            setTimeout(function () {
-                TweenMax.fromTo($obj, 1, {opacity: 0, scale: 0.7}, {opacity: 1.25, scale: 1, ease: Elastic.easeOut});
-            }, stagger);
-        });
-
-        if($navigator.hasClass('navigator--transparent'))
-            TweenMax.to($navigator, 2, {opacity: .2 });
-        else
-            TweenMax.to($navigator, .3, {opacity: 1 });
-    },
-
-    update: function () {
-        var that        = this,
-            $navigator  = this.$el;
-
-        if (!this.initialized) {
-//            this.initialize();
-            return;
-        }
-
-        // loop through each header and find current state
-        this.$sections.each(function(i, element) {
-
-            var $section                = $(element),
-                sectionTop              = $section.data('offsetTop'),
-                sectionBottom           = sectionTop + $section.data('height'),
-                navigatorMiddle         = latestKnownScrollY + (windowHeight / 2);
-
-            // if there's no header
-
-            if ($section.data('display') == 'none') {
-                sectionBottom = sectionTop;
-                if (!$section.next().is('.article--page')) {
-                    return;
-                }
-            }
-
-            if (navigatorMiddle > sectionTop) {
-                that.currentSelected = i;
-                that.isWhite = true;
-
-                if (navigatorMiddle > sectionBottom) {
-                    that.isWhite = false;
-                }
-            }
-
-        });
-
-        if (this.footerTop != 0 && this.footerTop < latestKnownScrollY + (windowHeight / 2)) {
-            this.isWhite = true;
-        }
-
-        // if the navigator's indicator has to be moved
-        // then move it accordingly and update state
-        if (this.lastSelected != this.currentSelected) {
-            this.lastSelected = this.currentSelected;
-            TweenMax.to(this.$selected, 0.3, {top: 24 * that.currentSelected});
-            that.timeline.tweenFromTo(0, 0.3);
-//            that.timeline.play();
-        }
-
-        // if the navigator's color has to be changed
-        // then change it accordingly and update state
-        if (this.wasWhite != this.isWhite) {
-            this.wasWhite = this.isWhite;
-            $navigator.toggleClass('navigator--black', !that.isWhite);
-        }
-    }
-
-}
 /* --- Sticky Header Init --- */
 
 var StickyHeader = (function() {
@@ -1321,8 +1124,7 @@ var $body = $( 'body' ),
 	$document = $( document ),
 	documentHeight = $document.height(),
 	aspectRatio = windowWidth / windowHeight,
-	orientation = windowWidth > windowHeight ? 'landscape' : 'portrait',
-	orientationchange = false,
+	orientation = getOrientation(),
 	isTouch = ! ! ( ( "ontouchstart" in window ) || window.DocumentTouch && document instanceof DocumentTouch );
 
 function niceScrollInit() {
@@ -1382,7 +1184,7 @@ function smoothScrollTo( y, speed ) {
 	var distance = Math.abs( latestKnownScrollY - y ),
 		time = speed * distance / 2000;
 
-	TweenMax.to( $( window ), time, {scrollTo: {y: y, autoKill: true, ease: Quint.easeInOut}} );
+	TweenMax.to( $( window ), time, {scrollTo: {y: y, autoKill: false, ease: Quint.easeInOut}} );
 }
 
 
@@ -1487,6 +1289,7 @@ function init() {
 
 	/* INSTANTIATE EVENT HANDLERS */
 	eventHandlers();
+	updateHeaderPadding();
 
 //	move waves in siblings so they keep up with the parallax
 //	var $waves = jQuery( '.border-waves' ).not( '.site-footer' );
@@ -1532,29 +1335,9 @@ function init() {
 		}
 	} );
 
-
-	setHeroHeights();
-	$( "[data-rellax]" ).rellax();
-
 	if ( globalDebug ) {
 		console.groupEnd();
 	}
-}
-
-function setHeroHeights() {
-	$( ".article__header--page" ).each( function( i, obj ) {
-		var $obj = $( obj );
-
-		$obj.css( {
-			minHeight: '',
-			height: ''
-		} );
-
-		$obj.css( {
-			minHeight: $obj.outerHeight(),
-			height: 'auto'
-		} );
-	} );
 }
 
 /* ====== EVENT HANDLERS ====== */
@@ -1696,7 +1479,6 @@ $( window ).load( function() {
 	}
 
 	niceScrollInit();
-	royalSliderInit();
 
 	magnificPopupInit();
 	initVideos();
@@ -1722,65 +1504,83 @@ $( window ).load( function() {
 	DownArrow.initialize();
 
 	setTimeout( function() {
-		Navigator.initialize();
 		ScrollToTop.initialize();
 	}, 60 );
 
+	royalSliderInit();
+	updateHeaderPadding();
+
 	loop();
+
+	var $bulletedSections = $('[data-bully]');
+
+	if ( $bulletedSections.length > 1 ) {
+
+		$bulletedSections.bully();
+
+		$('.c-bully__bullet').each(function (i, obj) {
+
+			var stagger = i * 400,
+				$obj    = $(obj);
+
+			setTimeout(function () {
+				$obj.addClass('c-bully__bullet--pop');
+			}, stagger);
+		});
+	}
+
 
 	$html.addClass( 'is--loaded' );
 } );
 
-
-/* ====== ON RESIZE ====== */
-
-$( window ).on( "debouncedresize", onResize );
-setHeroHeights();
-
-
-var orntn = getOrientation();
-
 function getOrientation() {
 	return windowWidth > windowHeight ? "landscape" : "portrait";
+}
+
+function updateHeaderPadding() {
+	var $header = $( '.site-header' ),
+		headerHeight = $header.outerHeight();
+
+	if ( ! $header.next().is( '.c-hero' ) ) {
+		$('#page').css('paddingTop', headerHeight);
+	}
 }
 
 $window.on( 'resize', function() {
 	windowWidth = window.innerWidth;
 	windowHeight = window.innerHeight;
 
-	if ( isTouch && getOrientation() === orntn ) {
-		return;
-	}
-
-	setHeroHeights();
-
-	function refresh() {
-		resizeVideos();
-
-		//	royalSliderInit( $( '.js-pixslider' ).not( '.c-hero__background .js-pixslider' ) );
-		//	$( ".pixcode--tabs" ).organicTabs();
-
-		if ( touch && windowWidth < 900 ) {
-			HandleSubmenusOnTouch.init();
-		} else {
-			HandleSubmenusOnTouch.release();
-		}
-
-		requestAnimationFrame( refreshStuff );
-	}
-
-	if ( isTouch ) {
-		setTimeout( refresh, 100 );
-	} else {
-		refresh();
-	}
-
-
-	orntn = getOrientation();
 } );
 
+$( window ).on( "debouncedresize", onResize );
+
+$( window ).on( "rellax:restart", function() {
+	$( '.js-pixslider' ).each(function(i, obj) {
+		var rs = $(obj).data('royalSlider');
+
+		if (typeof rs !== "undefined") {
+			rs.updateSliderSize(true);
+		}
+	});
+});
 
 function onResize() {
+	var neworientation = getOrientation();
+
+	if ( neworientation !== orientation ) {
+		orientation = neworientation;
+		$( window ).trigger( "debouncedorientationchange" );
+	}
+
+	resizeVideos();
+
+	if ( touch && windowWidth < 900 ) {
+		HandleSubmenusOnTouch.init();
+	} else {
+		HandleSubmenusOnTouch.release();
+	}
+
+	requestAnimationFrame( refreshStuff );
 }
 
 function refreshStuff() {
@@ -1795,7 +1595,6 @@ function updateStuff() {
 	CoverAnimation.update();
 
 	if ( windowWidth >= 900 ) {
-		Navigator.update();
 		StickyHeader.update();
 	}
 }
@@ -1805,13 +1604,8 @@ $( window ).on( "organicTabsChange", function() {
 	refreshStuff();
 } );
 
-var latestKnownScrollY = window.scrollY;
-
-var newScrollY = - 1,
-	ticking = false;
-
 $window.scroll( function() {
-	newScrollY = window.scrollY;
+	newScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0);
 } );
 
 function loop() {
@@ -1895,8 +1689,10 @@ $( function() {
 	} );
 } );
 
-$.fn.rellax.defaults.reloadEvent = isTouch ? 'load orientationchange' : 'load resize';
-$.fn.rellax.defaults.bleed = isTouch ? 60 : 0;
+$( "[data-rellax]" ).rellax();
+
+$.fn.rellax.defaults.bleed = 60;
+$.fn.rellax.defaults.reloadEvent = "ontouchstart" in window && "onorientationchange" in window ? "debouncedorientationchange" : "debouncedresize";
 
 /* --- 404 Page --- */
 gifImages = [

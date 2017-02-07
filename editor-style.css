@@ -2135,7 +2135,7 @@ html.flexbox {
   /* [1] */
   vertical-align: middle;
   /* [2] */
-  white-space: nowrap;
+  white-space: normal;
   /* [3] */
   font-family: inherit;
   /* [4] */

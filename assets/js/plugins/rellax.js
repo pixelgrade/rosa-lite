@@ -1,225 +1,243 @@
-/* ========================================================== */
-/* ================= noah modified version ================= */
-/* ========================================================== */
-
 /*!
- * jQuery Rellax Plugin v0.2.1
+ * jQuery Rellax Plugin v0.3.4
  * Examples and documentation at http://pixelgrade.github.io/rellax/
  * Copyright (c) 2016 PixelGrade http://www.pixelgrade.com
  * Licensed under MIT http://www.opensource.org/licenses/mit-license.php/
  */
-;( function ( $, window, document, undefined ) {
+;(
+    function( $, window, document, undefined ) {
 
-    if ( !window.requestAnimationFrame ) return;
-
-    var $window = $( window ),
-        elements = [],
-        lastScrollY = -1,
-        latestScrollY = window.scrollY,
-        requestTick = false,
-        windowWidth = window.innerWidth,
-        windowHeight = window.innerHeight,
-        orientation,
-        isTouch = !! ( ( "ontouchstart" in window ) || window.DocumentTouch && document instanceof DocumentTouch );
-
-    function getOrientation() {
-        return windowWidth > windowHeight ? "landscape" : "portrait";
-    }
-
-    function updateAll() {
-        if ( requestTick ) {
-            $.each( elements, function( i, element ) {
-                element._updatePosition();
-            });
-            requestTick = false;
+        if ( ! window.requestAnimationFrame ) {
+            return;
         }
-        window.requestAnimationFrame( updateAll );
-    }
 
-    function reloadAll() {
-        $.each( elements, function( i, element ) {
-            element._reloadElement();
-        });
-    }
+        function Rellax( element, options ) {
+            this.$el = $( element );
+            this.options = $.extend( $.fn.rellax.defaults, options );
+            this.$parent = this.$el.parent().closest( this.options.container );
+            this.parent = this.$parent.data( "plugin_" + Rellax );
 
-    $( window ).on("load", function() {
+            var $el = this.$el,
+                amount = $el.data( 'rellax-amount' ),
+                bleed = $el.data( 'rellax-bleed' ),
+                fill = $el.data( 'rellax-fill' ),
+                scale = $el.data( 'rellax-scale' );
 
-        reloadAll();
-        requestTick = true;
-        window.requestAnimationFrame( updateAll );
+            this.options.amount = amount !== undefined ? parseFloat( amount ) : this.options.amount;
+            this.options.bleed = bleed !== undefined ? parseFloat( bleed ) : this.options.bleed;
+            this.options.scale = scale !== undefined ? parseFloat( scale ) : this.options.scale;
+            this.options.fill = fill !== undefined;
 
-        $window.on( 'resize', function() {
-            windowWidth = window.innerWidth;
-            windowHeight = window.innerHeight;
-
-            if ( isTouch && getOrientation() === orientation ) {
+            if ( this.options.amount == 0 ) {
                 return;
             }
 
-            orientation = getOrientation();
-            reloadAll();
-            requestTick = true;
-        });
+            elements.push( this );
+        }
 
-        $window.on( 'scroll', function() {
-            latestScrollY = window.scrollY;
+        $.extend( Rellax.prototype, {
+            constructor: Rellax,
+            _reloadElement: function() {
+                this.$el.removeAttr( 'style' );
 
-            if ( lastScrollY !== latestScrollY ) {
-                requestTick = true;
-                lastScrollY = latestScrollY;
-            }
-        });
+                this.offset = this.$el.offset();
+                this.height = this.$el.outerHeight();
+                this.width = this.$el.outerWidth();
 
-    });
+                if ( this.parent === undefined ) {
+                    this.offset.top -= this.options.bleed;
+                    this.height += 2 * this.options.bleed;
+                }
+            },
+            _scaleElement: function() {
+                var parentHeight = this.$parent.outerHeight(),
+                    parentWidth = this.$parent.outerWidth(),
+                    scaleY = ( parentHeight + ( windowHeight - parentHeight ) * ( 1 - this.options.amount ) ) / this.height,
+                    scaleX = parentWidth / this.width,
+                    scale = Math.max(scaleX, scaleY);
 
-    function Rellax( element, options ) {
-        this.element = element;
-        this.options = $.extend( $.fn.rellax.defaults, options );
+                this.width = this.width * scale;
+                this.height = this.height * scale;
 
-        var self = this,
-            $el = $( this.element ),
-            myAmount = $el.data( 'rellax-amount' ),
-            myBleed = $el.data( 'rellax-bleed' ),
-            fill = $el.data( 'rellax-fill' ),
-            myScale = $el.data( 'rellax-scale' );
-
-        this.isContainer = $el.is( self.options.container );
-        this.$parent = $el.parent().closest( self.options.container );
-
-        this.options.amount = myAmount !== undefined ? parseFloat(myAmount) : this.options.amount;
-        this.options.bleed = myBleed !== undefined ? parseFloat(myBleed) : this.options.bleed;
-        this.options.scale = myScale !== undefined ? parseFloat(myScale) : this.options.scale;
-        this.options.fill = fill !== undefined ;
-
-        if ( self.options.amount == 0 ) return;
-
-        self._reloadElement();
-        self._bindEvents();
-
-        $el.addClass( 'rellax-active' );
-
-        elements.push( self );
-    }
-
-    $.extend( Rellax.prototype, {
-        constructor: Rellax,
-        _bindEvents: function() {
-        },
-        _scaleElement: function() {
-            this.width = this.$parent.outerWidth();
-	        this.height = this.$parent.outerHeight() + ( windowHeight - this.$parent.outerHeight() ) * this.options.amount;
-        },
-        _reloadElement: function() {
-            var self = this,
-                parent,
-                $el = $( this.element ).removeAttr( 'style' );
-
-            if ( self.$parent.length ) {
-                self.$parent.css( 'position', 'static' );
-            }
-
-            self.width = $el.width();
-            self.height = $el.height();
-            self.offset = $el.offset();
-
-            if ( self.$parent.length || self.options.fill ) {
-                self._scaleElement();
-            }
-
-            if ( self.isContainer ) {
-                self.height += 2 * self.options.bleed;
-                self.offset.top -= self.options.bleed;
-            }
-
-            if ( self.$parent.length ) {
-                parent = self.$parent.data( "plugin_" + Rellax );
-                self.offset.left = self.offset.left - self.$parent.offset().left;
-            }
-
-            var style = {
-                position: self.$parent.length ? 'fixed' : 'absolute',
-                top: self.offset.top,
-                left: self.offset.left,
-                width: self.width,
-                height: self.height,
-                marginTop: self.$parent.length ? ( parent.height - self.height ) / 2 : 0,
-                marginLeft: self.$parent.length ? ( parent.width - self.width ) / 2 : 0
-            };
-
-            if ( self.isContainer ) $.extend( style, {zIndex: -1} );
-
-            if ( self.$parent.length ) {
-
-                $.extend( style, {
-                    top: self.offset.top - self.$parent.offset().top + self.options.bleed
-                } );
-
-                self.$parent.css( {
-                    position: 'fixed',
-                    overflow: 'hidden',
-                    zIndex: -1
-                } );
-
-            }
-
-            $el.css( style );
-        },
-        _isInViewport: function() {
-            var offset = this.isContainer ? this.options.bleed : 0;
-            return latestScrollY > this.offset.top - windowHeight - offset &&
-                   latestScrollY < this.offset.top + this.height + offset;
-        },
-        _updatePosition: function() {
-            var self = this,
-                _this = this.$parent.length ? this.$parent.data( "plugin_" + Rellax ) : this,
-                progress = ( latestScrollY - _this.offset.top + windowHeight ) / ( windowHeight + _this.height ),
-                move = ( windowHeight + _this.height ) * ( progress - 0.5 ) * self.options.amount,
-                scale = 1 + ( self.options.scale - 1 ) * ( progress - 0.5 );
-
-            if ( this.isContainer ) {
-                $( self.element ).css( 'transform', 'translate3d(0,' + ( -latestScrollY ) + 'px,0)' );
-            } else {
-                if ( ! this.$parent.length ) {
-                    move -= latestScrollY;
+                this.offset.top = ( parentHeight - this.height ) / 2;
+                this.offset.left = ( parentWidth - this.width ) / 2;
+            },
+            _prepareElement: function() {
+                if ( this.parent === undefined ) {
+                    this.$el.addClass( 'rellax-element' );
+                    this.$el.css({
+                        position: 'fixed',
+                        top: this.offset.top,
+                        left: this.offset.left,
+                        width: this.width,
+                        height: this.height
+                    });
                 } else {
-                    move -= self.options.bleed;
+                    this._scaleElement();
+                    this.$el.css({
+                        position: 'absolute',
+                        top: this.offset.top,
+                        left: this.offset.left,
+                        width: this.width,
+                        height: this.height
+                    });
+                }
+            },
+            _setParentHeight: function() {
+                if ( this.parent == undefined ) {
+                    var $parent = this.$el.parent(),
+                        parentHeight = $parent.css( 'minHeight', '' ).outerHeight();
+
+                    parentHeight = windowHeight < parentHeight ? windowHeight : parentHeight;
+                    $parent.css( 'minHeight', parentHeight );
+                }
+            },
+            _updatePosition: function( forced ) {
+                var progress = this._getProgress(),
+                    height = this.parent !== undefined ? this.parent.height : this.height,
+                    move = ( windowHeight + height ) * ( progress - 0.5 ) * this.options.amount,
+                    scale = 1 + ( this.options.scale - 1 ) * progress,
+                    scaleTransform = scale >= 1 ? 'scale(' + scale + ')' : '';
+
+                if ( this.parent === undefined && this.$parent.length ) {
+                    move *= -1;
                 }
 
-                $( self.element ).css( 'transform', 'translate3d(0,' + move + 'px,0) scale(' + scale + ')' );
-            }
+                if ( forced !== true && ( progress < 0 || progress > 1 ) ) {
+                    this.$el.addClass( 'rellax-hidden' );
+                    return;
+                }
 
-            if ( _this._isInViewport() && ! _this.isVisible ) {
-                $( self.element ).addClass( 'rellax-visible' );
-                self.isVisible = true;
-            }
+                this.$el.removeClass( 'rellax-hidden' );
 
-            if ( ! _this._isInViewport() && _this.isVisible ) {
-                $( self.element ).removeClass( 'rellax-visible' );
-                self.isVisible = false;
-            }
-        }
-    });
+                this.$el.data( 'progress', progress );
 
-    $.fn.rellax = function ( options ) {
-        return this.each(function () {
-            if ( ! $.data( this, "plugin_" + Rellax ) ) {
-                $.data( this, "plugin_" + Rellax, new Rellax( this, options ) );
-            } else {
-                var self = $.data( this, "plugin_" + Rellax );
-                if ( options && typeof options == 'string' ) {
-                    if ( options == "refresh" ) {
-                        self._reloadElement();
+                if ( this.$el.is( this.options.container ) ) {
+                    this.$el.css( 'transform', 'translate3d(0,' + ( - lastScrollY ) + 'px,0)' );
+                } else {
+                    this.$el.css( 'transform', 'translate3d(0,' + move + 'px,0) ' + scaleTransform );
+                }
+            },
+            _getProgress: function() {
+                if ( this.parent !== undefined ) {
+                    return parseFloat( this.$parent.data( 'progress' ) );
+                } else {
+                    return ( ( lastScrollY - this.offset.top + windowHeight ) / ( windowHeight + this.height ) );
+                }
+            }
+        } );
+
+        $.fn.rellax = function( options ) {
+            return this.each( function() {
+                if ( ! $.data( this, "plugin_" + Rellax ) ) {
+                    $.data( this, "plugin_" + Rellax, new Rellax( this, options ) );
+                } else {
+                    var self = $.data( this, "plugin_" + Rellax );
+                    if ( options && typeof options === "string" ) {
+                        if ( options == "refresh" ) {
+                            self._reloadElement();
+                        }
                     }
                 }
+            } );
+        };
+
+        $.fn.rellax.defaults = {
+            amount: 0.5,
+            bleed: 0,
+            scale: 1,
+            container: "[data-rellax-container]",
+            reloadEvent: "ontouchstart" in window && "onorientationchange" in window ? "orientationchange" : "resize"
+        };
+
+        var $window = $( window ),
+            windowWidth = window.innerWidth,
+            windowHeight = window.innerHeight ,
+            lastScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0),
+            frameRendered = true,
+            elements = [];
+
+        function render() {
+            if ( frameRendered !== true ) {
+                updateAll();
             }
-        });
-    };
+            window.requestAnimationFrame( render );
+            frameRendered = true;
+        }
 
-    $.fn.rellax.defaults = {
-        amount: 0.5,
-        bleed: 0,
-        scale: 1,
-        container: '[data-rellax-container]'
-    };
+        function updateAll( forced ) {
+            $.each(elements, function(i, element) {
+                element._updatePosition( forced );
+            });
+        }
 
-})( jQuery, window, document );
+        function reloadAll() {
+            $.each(elements, function(i, element) {
+                element._reloadElement();
+            });
+        }
+
+        function prepareAll() {
+            $.each(elements, function(i, element) {
+                element._prepareElement();
+            });
+        }
+
+        function setHeights() {
+            $.each(elements, function(i, element) {
+                element._setParentHeight();
+            });
+        }
+
+        function badRestart() {
+            setHeights();
+            reloadAll();
+            prepareAll();
+            updateAll( true );
+            $( window ).trigger( 'rellax:restart' );
+        }
+
+        var restart = debounce(badRestart, 300);
+
+        function debounce(func, wait, immediate) {
+            var timeout;
+            return function() {
+                var context = this, args = arguments;
+                var later = function() {
+                    timeout = null;
+                    if (!immediate) func.apply(context, args);
+                };
+                var callNow = immediate && !timeout;
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (callNow) func.apply(context, args);
+            };
+        };
+
+        function bindEvents() {
+
+            $window.load(function() {
+                badRestart();
+                render();
+            });
+
+            $window.on( 'resize', function() {
+                windowWidth = window.innerWidth;
+                windowHeight = window.innerHeight;
+            });
+
+            $window.on( 'scroll', function() {
+                if ( frameRendered === true ) {
+                    lastScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0);
+                }
+                frameRendered = false;
+            });
+
+            $window.on( 'rellax ' + $.fn.rellax.defaults.reloadEvent, restart );
+
+        }
+
+        bindEvents();
+
+    }
+)( jQuery, window, document );

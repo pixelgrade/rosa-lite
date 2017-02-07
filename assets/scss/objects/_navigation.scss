@@ -6,7 +6,7 @@
 }
 
 @include media-query(lap-and-up) {
-	html:not(.is--ie) .navigation--main {
+	.navigation--main {
 		display: flex;
 
 		& > .nav--main {

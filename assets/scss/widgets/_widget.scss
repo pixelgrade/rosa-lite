@@ -238,4 +238,11 @@
 	a {
 		color: white;
 	}
+
+	[class*="social"] a {
+		&,
+		&:hover {
+			color: transparent;
+		}
+	}
 }
