@@ -284,13 +284,11 @@ function sliderInit( $slider ) {
 
 	$slider.royalSlider( royalSliderParams );
 	$slider.addClass( 'slider--loaded' );
-	onResize();
 
 	var royalSlider = $slider.data( 'royalSlider' );
 	var slidesNumber = royalSlider.numSlides;
 
 	royalSlider.ev.on( 'rsBeforeAnimStart rsAfterSlideChange rsAfterContentSet', function ( event ) {
-		onResize();
 		$( window ).trigger( 'rellax' );
 	});
 
@@ -1544,30 +1542,33 @@ $window.on( 'resize', function() {
 
 $( window ).on( "debouncedresize", onResize );
 
+$( window ).on( "rellax:restart", function() {
+	$( '.js-pixslider' ).each(function(i, obj) {
+		var rs = $(obj).data('royalSlider');
+
+		if (typeof rs !== "undefined") {
+			rs.updateSliderSize(true);
+		}
+	});
+});
+
 function onResize() {
 	var neworientation = getOrientation();
 
 	if ( neworientation !== orientation ) {
 		orientation = neworientation;
 		$( window ).trigger( "debouncedorientationchange" );
-		console.log("debouncedorientationchange");
 	}
 
-	function refresh() {
-		resizeVideos();
+	resizeVideos();
 
-		//	$( ".pixcode--tabs" ).organicTabs();
-
-		if ( touch && windowWidth < 900 ) {
-			HandleSubmenusOnTouch.init();
-		} else {
-			HandleSubmenusOnTouch.release();
-		}
-
-		requestAnimationFrame( refreshStuff );
+	if ( touch && windowWidth < 900 ) {
+		HandleSubmenusOnTouch.init();
+	} else {
+		HandleSubmenusOnTouch.release();
 	}
 
-	refresh();
+	requestAnimationFrame( refreshStuff );
 }
 
 function refreshStuff() {

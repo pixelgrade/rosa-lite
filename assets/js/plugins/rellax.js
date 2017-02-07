@@ -194,9 +194,10 @@
             reloadAll();
             prepareAll();
             updateAll( true );
+            $( window ).trigger( 'rellax:restart' );
         }
 
-        var restart = debounce(badRestart, 500);
+        var restart = debounce(badRestart, 300);
 
         function debounce(func, wait, immediate) {
             var timeout;

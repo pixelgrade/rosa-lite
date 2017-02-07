@@ -108,13 +108,11 @@ function sliderInit( $slider ) {
 
 	$slider.royalSlider( royalSliderParams );
 	$slider.addClass( 'slider--loaded' );
-	onResize();
 
 	var royalSlider = $slider.data( 'royalSlider' );
 	var slidesNumber = royalSlider.numSlides;
 
 	royalSlider.ev.on( 'rsBeforeAnimStart rsAfterSlideChange rsAfterContentSet', function ( event ) {
-		onResize();
 		$( window ).trigger( 'rellax' );
 	});
 
