@@ -58,12 +58,10 @@ function sliderInit( $slider ) {
 		rs_keyboardNav = false;
 		rs_drag = false;
 		rs_transition = 'fade';
-		rs_customArrows = false;
 	}
-
 	// make sure default arrows won't appear if customArrows is set
 	if ( rs_customArrows ) {
-		arrows = false;
+		rs_arrows = false;
 	}
 
 	//the main params for Royal Slider
@@ -156,7 +154,7 @@ function sliderInit( $slider ) {
 	}
 
 	if ( hoverArrows && ! Modernizr.touchevents ) {
-		hoverArrow( $( '.slider-arrows-header .rsArrow' ) );
+		hoverArrow( $( '.slider__custom-arrows .rsArrow' ) );
 
 	}
 
@@ -193,36 +191,39 @@ function sliderMarkupGallery( $gallery ) {
  */
 
 function hoverArrow( $arrow ) {
-	var $mouseX = 0, $mouseY = 0;
-	var $arrowH = 35, $arrowW = 35;
 
-	$arrow.mouseenter( function ( e ) {
-		$( this ).addClass( 'visible' );
+	$arrow.each(function(i, obj) {
 
-		moveArrow( $( this ) );
-	} );
+		var $arrow = $(obj),
+			update = false,
+			offset = $arrow.offset(),
+			$icon = $arrow.find( '.rsArrowIcn' ),
+			mouseX,
+			mouseY;
 
-	var $loop;
-
-	function moveArrow( $arrow ) {
-		var $mouseX;
-		var $mouseY;
+		$arrow.mouseenter( function ( e ) {
+			offset = $arrow.offset();
+			$( this ).addClass( 'visible' );
+			update = true;
+		});
 
 		$arrow.mousemove( function ( e ) {
-			$mouseX = e.pageX - $arrow.offset().left - 40;
-			$mouseY = e.pageY - $arrow.offset().top - 40;
-		} );
-
-		var $arrowIcn = $arrow.find( '.rsArrowIcn' );
-
-		$loop = setInterval( function () {
-			TweenMax.to( $arrowIcn, 0, {x: $mouseX, y: $mouseY, z: 0.01} );
-		}, 10 );
-
+			mouseX = e.pageX - offset.left;
+			mouseY = e.pageY - offset.top;
+		});
 
 		$arrow.mouseleave( function ( e ) {
 			$( this ).removeClass( 'visible' );
-			clearInterval( $loop );
-		} );
-	}
+			update = false;
+		});
+
+		function loop() {
+			if ( update ) {
+				TweenMax.to( $icon, 0, {x: mouseX, y: mouseY, z: 0.01, force3D: true} );
+			}
+			requestAnimationFrame(loop);
+		}
+
+		loop();
+	});
 }

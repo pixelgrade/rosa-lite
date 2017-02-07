@@ -9124,24 +9124,26 @@ hr, .separator {
       top: 50%;
       position: relative; } }
 
-.slider-arrows-header.arrows--hover .rsArrow {
-  cursor: none;
-  width: 40%;
-  height: 70%;
-  top: 15%;
-  background: transparent;
-  -webkit-transform: none;
-          transform: none; }
-
-.slider-arrows-header.arrows--hover .rsArrowIcn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  opacity: 0;
-  transition: opacity .1s linear; }
-
-.slider-arrows-header.arrows--hover .visible .rsArrowIcn {
-  opacity: 1; }
+.arrows--hover {
+  cursor: none; }
+  .arrows--hover .rsArrow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: transparent;
+    -webkit-transform: none;
+            transform: none;
+    cursor: none; }
+  .arrows--hover .rsArrowRight {
+    right: 50%; }
+  .arrows--hover .rsArrowIcn {
+    margin-top: -40px;
+    margin-right: -25px;
+    opacity: 0; }
+  .arrows--hover .visible .rsArrowIcn {
+    opacity: 1; }
 
 .pixcode--tabs {
   padding: 24px;
