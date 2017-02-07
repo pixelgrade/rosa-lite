@@ -1509,23 +1509,28 @@ $( window ).load( function() {
 
 	loop();
 
-	$('[data-bully]').bully();
+	var $bulletedSections = $('[data-bully]');
 
-	var items = $('.c-bully__bullet').length;
+	if ( $bulletedSections.length > 1 ) {
 
-	$('.c-bully__bullet').each(function (i, obj) {
+		$bulletedSections.bully();
 
-		var stagger = 3000 + i * 400,
-			$obj    = $(obj);
+		var items = $('.c-bully__bullet').length;
 
-		if ($obj.is('.c-bully__bullet--active')) {
-			stagger = stagger + items * 400;
-		}
+		$('.c-bully__bullet').each(function (i, obj) {
 
-		setTimeout(function () {
-			TweenMax.fromTo($obj, 1, {opacity: 0, scale: 0.7}, {opacity: 1, scale: 1, force3D: true, ease: Elastic.easeOut});
-		}, stagger);
-	});
+			var stagger = 3000 + i * 400,
+				$obj    = $(obj);
+
+			if ($obj.is('.c-bully__bullet--active')) {
+				stagger = stagger + items * 400;
+			}
+
+			setTimeout(function () {
+				TweenMax.fromTo($obj, 1, {opacity: 0, scale: 0.7}, {opacity: 1, scale: 1, force3D: true, ease: Elastic.easeOut});
+			}, stagger);
+		});
+	}
 
 
 	$html.addClass( 'is--loaded' );
