@@ -3033,7 +3033,7 @@ $.fn.gmap3 = function () {
 			scrollPerSecond: 4000
 		};
 
-		$window.on( 'rellax load', reloadAll );
+		$window.on( 'rellax rellax:restart load', reloadAll );
 
 
 	}

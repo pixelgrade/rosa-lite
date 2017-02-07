@@ -68,11 +68,13 @@
 }
 
 .c-bully__bullet--pop {
-	animation: bully-pop 0.6s cubic-bezier(0.485, 1.630, 0.430, 2) forwards, fade-in 0.2s 0.2s ease-out forwards;
+	opacity: 1;
+	transition: opacity .2s .2s ease-out;
+	animation: bully-pop 0.6s cubic-bezier(0.485, 1.630, 0.430, 2) forwards;
 }
 
-html.is--loaded .c-bully__bullet--squash {
-	opacity: 1;
+.c-bully__bullet--squash {
+	transition-delay: 0s;
 	animation: bully-squash 0.2s ease-out forwards;
 }
 
