@@ -1185,7 +1185,7 @@ function smoothScrollTo( y, speed ) {
 	var distance = Math.abs( latestKnownScrollY - y ),
 		time = speed * distance / 2000;
 
-	TweenMax.to( $( window ), time, {scrollTo: {y: y, autoKill: true, ease: Quint.easeInOut}} );
+	TweenMax.to( $( window ), time, {scrollTo: {y: y, autoKill: false, ease: Quint.easeInOut}} );
 }
 
 
