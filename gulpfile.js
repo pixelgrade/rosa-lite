@@ -272,7 +272,7 @@ gulp.task('update-demo', function () {
 			type: 'list',
 			name: 'demo_update',
 			message: 'Which demo would you like to update?',
-			choices: ['none', 'test', 'production']
+			choices: ['cancel', 'test.demos.pixelgrade.com/' + theme_name, 'demos.pixelgrade.com/' + theme_name]
 		}, function(res){
 
 			if ( res.demo_update === 'none' ) {

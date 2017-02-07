@@ -89,9 +89,11 @@ deployment:
     branch: test
     commands:
      - sh ./circle_scripts/deploy_test.sh
+     - sleep 5 # need to wait a few secs, because the commit won't have effects instantly on server
      - curl https://test.demos.pixelgrade.com/git-webhook.php
   production:
     branch: master
     commands:
      - sh ./circle_scripts/deploy_production.sh
+     - sleep 5 # need to wait a few secs, because the commit won't have effects instantly on server
      - curl https://demos.pixelgrade.com/git-webhook.php
