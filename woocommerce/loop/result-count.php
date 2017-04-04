@@ -17,7 +17,7 @@ $terms = get_terms('product_cat');
 // if there is a category queried cache it
 $current_term =	get_queried_object();
 
-if ( !empty($terms ) /*&& rosa_option('display_product_filters', '0')*/ ) {
+if ( !empty($terms ) /*&& pixelgrade_option('display_product_filters', '0')*/ ) {
 	// create a link which should link to the shop
 	$all_link = get_post_type_archive_link('product');
 

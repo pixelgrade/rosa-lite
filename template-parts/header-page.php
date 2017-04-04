@@ -172,7 +172,7 @@ if ( $pin_type == 'single' ) {
 							echo ' data-visiblenearby ' . PHP_EOL;
 						}
 
-						if ( rosa_option( 'slideshow_arrows_style' ) == 'hover' ) {
+						if ( pixelgrade_option( 'slideshow_arrows_style' ) == 'hover' ) {
 							echo ' data-hoverarrows ';
 						} ?>
 						>

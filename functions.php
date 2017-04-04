@@ -123,7 +123,7 @@ add_action( 'after_setup_theme', 'rosa_content_width', 0 );
 if ( ! function_exists( 'rosa_load_assets' ) ) {
 	function rosa_load_assets(){
 		$theme = wp_get_theme();
-		$google_maps_key = rosa_option( 'google_maps_api_key' );
+		$google_maps_key = pixelgrade_option( 'google_maps_api_key' );
 
 		if ( ! empty( $google_maps_key ) ) {
 			$google_maps_key = '&key=' . $google_maps_key;

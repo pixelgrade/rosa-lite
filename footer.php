@@ -13,8 +13,8 @@ if ( $is_gmap === true ) {
 }
 
 if ( ! is_404() ):
-	$footer_sidebar_style = 'sidebar--footer__' . rosa_option( 'footer_sidebar_style' );
-	$footer_bottom_bar_style = 'copyright-area__' . rosa_option( 'footer_bottombar_style' ); ?>
+	$footer_sidebar_style = 'sidebar--footer__' . pixelgrade_option( 'footer_sidebar_style' );
+	$footer_bottom_bar_style = 'copyright-area__' . pixelgrade_option( 'footer_bottombar_style' ); ?>
 
 	<footer class="site-footer <?php echo $footer_needs_big_waves === true ? 'border-waves' : '' ?>">
 		<aside class="sidebar  sidebar--footer <?php echo $footer_sidebar_style ?>">
@@ -33,10 +33,10 @@ if ( ! is_404() ):
 			</div>
 			<div class="container">
 				<div class="footer-container">
-					<?php $copyright_text = rosa_option( 'copyright_text' );
+					<?php $copyright_text = pixelgrade_option( 'copyright_text' );
 					if ( ! empty( $copyright_text ) ) : ?>
 						<div class="copyright-text">
-							<?php echo rosa_option( 'copyright_text' ) ?>
+							<?php echo pixelgrade_option( 'copyright_text' ) ?>
 						</div>
 					<?php endif;
 					$theme_locations = get_nav_menu_locations();

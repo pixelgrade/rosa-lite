@@ -260,7 +260,7 @@ if ( ! function_exists( 'rosa_callback_addthis' ) ) {
 
 	function rosa_callback_addthis() {
 		//lets determine if we need the addthis script at all
-		if ( is_single() && rosa_option( 'blog_single_show_share_links' ) ):
+		if ( is_single() && pixelgrade_option( 'blog_single_show_share_links' ) ):
 			wp_enqueue_script( 'addthis-api' );
 
 			//here we will configure the AddThis sharing globally
@@ -270,8 +270,8 @@ if ( ! function_exists( 'rosa_callback_addthis' ) ) {
 			} ?>
 			<script type="text/javascript">
 				addthis_config = {
-					<?php if ( rosa_option( 'share_buttons_enable_tracking' ) && rosa_option( 'share_buttons_enable_addthis_tracking' ) ):
-					echo 'username : "' . rosa_option( 'share_buttons_addthis_username' ) . '",';
+					<?php if ( pixelgrade_option( 'share_buttons_enable_tracking' ) && pixelgrade_option( 'share_buttons_enable_addthis_tracking' ) ):
+					echo 'username : "' . pixelgrade_option( 'share_buttons_addthis_username' ) . '",';
 				endif; ?>
 					ui_click: false,
 					ui_delay: 100,
@@ -279,9 +279,9 @@ if ( ! function_exists( 'rosa_callback_addthis' ) ) {
 					ui_use_css: true,
 					data_track_addressbar: false,
 					data_track_clickback: false
-					<?php if ( rosa_option( 'share_buttons_enable_tracking' ) && rosa_option( 'share_buttons_enable_ga_tracking' ) ):
-					echo ', data_ga_property: "' . rosa_option( 'share_buttons_ga_id' ) . '"';
-					if ( rosa_option( 'share_buttons_enable_ga_social_tracking' ) ):
+					<?php if ( pixelgrade_option( 'share_buttons_enable_tracking' ) && pixelgrade_option( 'share_buttons_enable_ga_tracking' ) ):
+					echo ', data_ga_property: "' . pixelgrade_option( 'share_buttons_ga_id' ) . '"';
+					if ( pixelgrade_option( 'share_buttons_enable_ga_social_tracking' ) ):
 						echo ', data_ga_social : true';
 					endif;
 				endif; ?>
@@ -690,7 +690,7 @@ add_action( 'init', 'rosa_register_attachments_custom_fields' );
  * Load custom javascript set by theme options
  */
 function rosa_callback_load_custom_js() {
-	$custom_js = rosa_option( 'custom_js' );
+	$custom_js = pixelgrade_option( 'custom_js' );
 	if ( ! empty( $custom_js ) ) {
 		//first lets test is the js code is clean or has <script> tags and such
 		//if we have <script> tags than we will not enclose it in anything - raw output
@@ -705,7 +705,7 @@ function rosa_callback_load_custom_js() {
 add_action( 'wp_head', 'rosa_callback_load_custom_js', 999 );
 
 function rosa_callback_load_custom_js_footer() {
-	$custom_js = rosa_option( 'custom_js_footer' );
+	$custom_js = pixelgrade_option( 'custom_js_footer' );
 	if ( ! empty( $custom_js ) ) {
 		//first lets test is the js code is clean or has <script> tags and such
 		//if we have <script> tags than we will not enclose it in anything - raw output
@@ -731,7 +731,7 @@ add_action( 'wp_footer', 'rosa_callback_load_custom_js_footer', 999 );
  */
 function short_text( $text, $cut_length, $limit, $echo = true ) {
 	$char_count = mb_strlen( $text );
-	$text       = ( $char_count > $limit ) ? mb_substr( $text, 0, $cut_length ) . rosa_option( 'blog_excerpt_more_text' ) : $text;
+	$text       = ( $char_count > $limit ) ? mb_substr( $text, 0, $cut_length ) . pixelgrade_option( 'blog_excerpt_more_text' ) : $text;
 	if ( $echo ) {
 		echo $text;
 	} else {
@@ -892,8 +892,8 @@ function rosa_better_excerpt( $text = '' ) {
 		$text         = strip_tags( $text, $allowed_tags );
 
 		// Set custom excerpt length - number of characters to be shown in excerpts
-		if ( rosa_option( 'blog_excerpt_length' ) ) {
-			$excerpt_length = absint( rosa_option( 'blog_excerpt_length' ) );
+		if ( pixelgrade_option( 'blog_excerpt_length' ) ) {
+			$excerpt_length = absint( pixelgrade_option( 'blog_excerpt_length' ) );
 		} else {
 			$excerpt_length = 180;
 		}
@@ -919,7 +919,7 @@ function rosa_better_excerpt( $text = '' ) {
  * Replace the [...] wordpress puts in when using the the_excerpt() method.
  */
 function new_excerpt_more( $excerpt ) {
-	return rosa_option( 'blog_excerpt_more_text' );
+	return pixelgrade_option( 'blog_excerpt_more_text' );
 }
 
 add_filter( 'excerpt_more', 'new_excerpt_more' );
@@ -1188,19 +1188,45 @@ function rosa_page_has_children() {
 	return count( $pages );
 }
 
-function rosa_option( $option, $default = null ) {
-	global $pagenow;
-	global $pixcustomify_plugin;
+// This function should come from Customify, but we need to do our best to make things happen
+if ( ! function_exists( 'pixelgrade_option') ) {
+	/**
+	 * Get option from the database
+	 *
+	 * @param string $option The option name.
+	 * @param mixed $default Optional. The default value to return when the option was not found or saved.
+	 * @param bool $force_default Optional. When true, we will use the $default value provided for when the option was not saved at least once.
+	 *                          When false, we will let the option's default set value (in the Customify settings) kick in first, than our $default.
+	 *                          It basically, reverses the order of fallback, first the option's default, then our own.
+	 *                          This is ignored when $default is null.
+	 *
+	 * @return mixed
+	 */
+	function pixelgrade_option( $option, $default = null, $force_default = true ) {
+		/** @var PixCustomifyPlugin $pixcustomify_plugin */
+		global $pixcustomify_plugin;
 
-	// if there is set an key in url force that value
-	if ( isset( $_GET[ $option ] ) && ! empty( $option ) ) {
-		return $_GET[ $option ];
-	} elseif ( $pixcustomify_plugin !== null && $pixcustomify_plugin->has_option( $option ) ) {
-		// if this is a customify value get it here
-		return $pixcustomify_plugin->get_option( $option, $default );
+		if ( $pixcustomify_plugin !== null ) {
+			// if there is a customify value get it here
+
+			// First we see if we are not supposed to force over the option's default value
+			if ( $default !== null && $force_default == false ) {
+				// We will not pass the default here so Customify will fallback on the option's default value, if set
+				$customify_value = $pixcustomify_plugin->get_option( $option );
+
+				// We only fallback on the $default if none was given from Customify
+				if ( $customify_value == null ) {
+					return $default;
+				}
+			} else {
+				$customify_value = $pixcustomify_plugin->get_option( $option, $default );
+			}
+
+			return $customify_value;
+		}
+
+		return $default;
 	}
-
-	return $default;
 }
 
 
@@ -1213,7 +1239,7 @@ function rosa_image_src( $target, $size = null ) {
 	if ( isset( $_GET[ $target ] ) && ! empty( $target ) ) {
 		return rosa_get_attachment_image( $_GET[ $target ], $size );
 	} else { // empty target, or no query
-		$image = rosa_option( $target );
+		$image = pixelgrade_option( $target );
 		if ( is_numeric( $image ) ) {
 			return rosa_get_attachment_image( $image, $size );
 		}

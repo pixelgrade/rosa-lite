@@ -17,7 +17,7 @@ add_theme_support( 'woocommerce' );
  */
 function rosa_callback_load_woocommerce_assets() {
 	global $woocommerce;
-	if ( ! rosa_option( 'enable_woocommerce_support', '0' ) ) {
+	if ( ! pixelgrade_option( 'enable_woocommerce_support', '0' ) ) {
 		return;
 	}
 

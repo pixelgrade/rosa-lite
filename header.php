@@ -55,14 +55,14 @@ if ( is_single() ) {
 <?php
 $class_name = 'header--sticky';
 
-if ( rosa_option( 'nav_always_show' ) ) {
+if ( pixelgrade_option( 'nav_always_show' ) ) {
 	$class_name .= '  nav-scroll-show';
 } else {
 	$class_name .= '  nav-scroll-hide';
 }
 
-$data_smoothscrolling = ( rosa_option( 'use_smooth_scroll' ) == 1 ) ? 'data-smoothscrolling' : '';
-$data_main_color      = ( rosa_option( 'main_color' ) ) ? 'data-color="' . rosa_option( 'main_color' ) . '"' : '';
+$data_smoothscrolling = ( pixelgrade_option( 'use_smooth_scroll' ) == 1 ) ? 'data-smoothscrolling' : '';
+$data_main_color      = ( pixelgrade_option( 'main_color' ) ) ? 'data-color="' . pixelgrade_option( 'main_color' ) . '"' : '';
 
 //first let's test if we are in woocommerce
 if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
@@ -164,7 +164,7 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 							) );
 						}
 
-						if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && rosa_option( 'show_cart_menu' ) ) :
+						if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && pixelgrade_option( 'show_cart_menu' ) ) :
 							global $woocommerce; ?>
 							<ul class="nav  nav--main  nav--woocommerce">
 								<li class="shop-menu-item  menu-item-has-children">
