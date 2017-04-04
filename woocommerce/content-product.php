@@ -73,7 +73,7 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] ) {
 
     <?php
         // Getting the categories for each product
-        $terms = get_the_terms( $product->id, 'product_tag' );
+        $terms = get_the_terms( $product->get_id(), 'product_tag' );
         if( !empty($terms) && ! is_wp_error( $terms ) ): ?>
 
         <ul class="product__cats  nav">
