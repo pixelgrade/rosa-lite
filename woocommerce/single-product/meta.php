@@ -39,7 +39,7 @@ if ( get_the_terms( $post->ID, 'product_tag' ) !== false ) {
 
 	<?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
 
-		<span class="sku_wrapper"><?php _e( 'SKU:', 'rosa' ); ?> <span class="sku" itemprop="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : __( 'N/A', 'rosa' ); ?></span>.</span>
+		<span class="sku_wrapper"><?php _e( 'SKU:', 'rosa' ); ?> <span class="sku" itemprop="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'rosa' ); ?></span>.</span>
 
 	<?php endif; ?>
 	<?php if ( $cat_count > 0 ) : ?>
