@@ -25,7 +25,7 @@ if ( $related_products ) : ?>
 	<div class="related products">
         <div class="separator separator--flower  related-separator">&#10043;</div>
 
-		<h3 class="related__title"><?php esc_html_e( 'Related Products', 'woocommerce' ); ?></h3>
+		<h3 class="related__title"><?php esc_html_e( 'Related products', 'woocommerce' ); ?></h3>
 
 		<?php woocommerce_product_loop_start(); ?>
 
