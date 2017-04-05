@@ -1187,6 +1187,12 @@ function rosa_page_has_children() {
 
 	return count( $pages );
 }
+if ( ! function_exists( 'rosa_option') ) {
+	function rosa_option( $option, $default = null ) {
+		_deprecated_function( 'rosa_option', '2.2.5', 'pixelgrade_option' );
+		return pixelgrade_option( $option, $default );
+	}
+}
 
 // This function should come from Customify, but we need to do our best to make things happen
 if ( ! function_exists( 'pixelgrade_option') ) {

@@ -10,7 +10,7 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see     https://docs.woothemes.com/document/template-structure/
+ * @see     https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
  * @version 2.6.1
@@ -73,7 +73,7 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] ) {
 
     <?php
         // Getting the categories for each product
-        $terms = get_the_terms( $product->id, 'product_tag' );
+        $terms = get_the_terms( $product->get_id(), 'product_tag' );
         if( !empty($terms) && ! is_wp_error( $terms ) ): ?>
 
         <ul class="product__cats  nav">

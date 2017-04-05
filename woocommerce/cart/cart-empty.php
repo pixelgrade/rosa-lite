@@ -17,4 +17,4 @@ wc_print_notices();
 
 <?php do_action( 'woocommerce_cart_is_empty' ); ?>
 
-<p class="return-to-shop"><a class="btn  btn--secondary" href="<?php echo apply_filters( 'woocommerce_return_to_shop_redirect', get_permalink( wc_get_page_id( 'shop' ) ) ); ?>"><?php _e( 'Return To Shop', 'woocommerce' ) ?></a></p>
+<p class="return-to-shop"><a class="btn  btn--secondary" href="<?php echo apply_filters( 'woocommerce_return_to_shop_redirect', get_permalink( wc_get_page_id( 'shop' ) ) ); ?>"><?php _e( 'Return to shop', 'woocommerce' ) ?></a></p>
