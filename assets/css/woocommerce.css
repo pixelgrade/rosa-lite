@@ -676,10 +676,6 @@ html .woocommerce ul.products {
   margin-top: 0;
   margin-bottom: 72px; }
 
-.woocommerce-product-gallery__image:not(:first-child) {
-  margin-top: 10px;
-  margin-right: 10px; }
-
 /*------------------------------------*    $CART
 \*------------------------------------*/
 .woocommerce .cart-collaterals .cart_totals,
