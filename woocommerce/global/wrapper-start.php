@@ -27,7 +27,7 @@ if ( ! empty( $border_style ) ) {
 	<section class="article__content">
 		<div class="container">
 		<?php if ( is_product() ) {
-			echo '<hr />';
+			echo '<hr class="product-header-separator" />';
 		} ?>
 		<section class="page__content  js-post-gallery  cf">
 
