@@ -156,6 +156,14 @@
 	}
 }
 
+.woocommerce-page button.button.alt.disabled {
+	&,
+	&:hover {
+		opacity: .5;
+		background: $dark;
+	}
+}
+
 .woocommerce #content div.product .woocommerce-tabs ul.tabs li:after,
 .woocommerce #content div.product .woocommerce-tabs ul.tabs li:before,
 .woocommerce div.product .woocommerce-tabs ul.tabs li:after,

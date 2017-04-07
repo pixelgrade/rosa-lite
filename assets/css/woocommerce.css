@@ -553,6 +553,10 @@ html .woocommerce ul.products {
     background: #c59d5f;
     color: white; }
 
+.woocommerce-page button.button.alt.disabled, .woocommerce-page button.button.alt.disabled:hover {
+  opacity: .5;
+  background: #262526; }
+
 .woocommerce #content div.product .woocommerce-tabs ul.tabs li:after,
 .woocommerce #content div.product .woocommerce-tabs ul.tabs li:before,
 .woocommerce div.product .woocommerce-tabs ul.tabs li:after,
