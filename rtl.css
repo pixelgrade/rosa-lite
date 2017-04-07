@@ -9230,7 +9230,7 @@ hr, .separator {
   background: none !important; }
 
 .addthis_32x32_style .dummy .at300bs, .addthis_32x32_style .at300bs, .addthis_32x32_style .at15t {
-  background: url(../images/addThis_32x32_pxg.png) no-repeat right;
+  background: url(../images/addThis_32x32_pxg.png) no-repeat left;
   opacity: 0.3; }
 
 div.addthis_toolbox a {
