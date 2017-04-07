@@ -278,3 +278,30 @@
 .woocommerce button.single_add_to_cart_button {
 	font-weight: bold !important;
 }
+
+// WooCommerce 3.0 Adjustments
+.product__badge {
+    z-index: 10;
+}
+
+// Add spacing between product gallery images
+.woocommerce div.product div.images {
+
+    .woocommerce-product-gallery__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -12px;
+
+        @include media-query(palm) {
+            margin-bottom: 12px;
+        }
+    }
+
+    .woocommerce-product-gallery__image {
+        padding-left: 12px;
+    }
+
+    .woocommerce-product-gallery__image:nth-child(n+2) {
+        margin-top: 12px;
+    }
+}
