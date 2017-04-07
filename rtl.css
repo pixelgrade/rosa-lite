@@ -496,7 +496,7 @@ hr {
  * Address styling not present in IE 8/9.
  */
 mark {
-  background: #ff100%;
+  background: #ff0;
   color: #000; }
 
 /*
@@ -10243,8 +10243,8 @@ a.site-logo--text {
     width: 10px;
     border-right: 2px solid white;
     border-top: 2px solid white;
-    -webkit-transform: translateX(50%) rotate(45deg);
-            transform: translateX(50%) rotate(45deg); }
+    -webkit-transform: translateX(50%) rotate(-45deg);
+            transform: translateX(50%) rotate(-45deg); }
     .copyright-area__light .btn--top_text .btn__arrow {
       border-color: #262526; }
   .btn--top_text .btn__arrow--top {
@@ -11033,7 +11033,7 @@ img.rsImg {
   z-index: 1042;
   overflow: hidden;
   position: fixed;
-  background: #100%b0b0b;
+  background: #0b0b0b;
   opacity: 0.8;
   filter: alpha(opacity=80); }
 

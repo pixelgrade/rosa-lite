@@ -64,7 +64,7 @@ if ( get_the_terms( $post->ID, 'product_tag' ) !== false ) {
 				$tag_count
 			); ?>
 		</span>
-		<?php echo $product->get_tags( '' ); ?>
+		<?php echo wc_get_product_tag_list( get_the_ID(), '', '', '' ); ?>
 	</div>
 	<?php endif; ?>
 	<?php do_action( 'woocommerce_product_meta_end' ); ?>
