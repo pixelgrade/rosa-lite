@@ -1,8 +1,6 @@
 machine:
   timezone:
     Europe/Copenhagen
-  node:
-    version: 7.3.0
   php:
     version: 5.6.22
 
@@ -24,8 +22,6 @@ dependencies:
     - "~/rosa/wordpress/wp-content/themes/rosa/node_modules" # relative to the user's home directory
 
   pre:
-    - npm install gulp -g
-
     # No password is required for the MySQL user `ubuntu`
     - mysql -u ubuntu -e "create database wordpress"
 
@@ -65,6 +61,11 @@ dependencies:
     - sudo apt-get purge libapache2-mod-php5
     - sudo apt-get update && sudo apt-get install libapache2-mod-php5
 
+    # Remove phpunit 6 and install the 5.7 version since we are not ready to go for php 7
+    - wget https://phar.phpunit.de/phpunit-5.7.phar
+    - chmod +x phpunit-5.7.phar
+    - sudo mv phpunit-5.7.phar /usr/local/bin/phpunit
+
   post:
     # Copy Apache conf into `site-available`
     - sudo cp ~/rosa/tests/apache-ci.conf /etc/apache2/sites-available
@@ -89,11 +90,9 @@ deployment:
     branch: test
     commands:
      - sh ./circle_scripts/deploy_test.sh
-     - sleep 5 # need to wait a few secs, because the commit won't have effects instantly on server
-     - curl https://test.demos.pixelgrade.com/git-webhook.php
+     - sleep 15 && curl https://test.demos.pixelgrade.com/git-webhook.php # need to wait a few secs, because the commit won't have effects instantly on server
   production:
     branch: master
     commands:
      - sh ./circle_scripts/deploy_production.sh
-     - sleep 5 # need to wait a few secs, because the commit won't have effects instantly on server
-     - curl https://demos.pixelgrade.com/git-webhook.php
+     - sleep 15 && curl https://demos.pixelgrade.com/git-webhook.php # need to wait a few secs, because the commit won't have effects instantly on server
