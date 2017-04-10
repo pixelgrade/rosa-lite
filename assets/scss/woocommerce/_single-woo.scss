@@ -322,3 +322,19 @@
 	margin-top: 0;
 	margin-bottom: 72px;
 }
+
+.woocommerce #review_form #respond {
+	.comment-form-comment { margin-bottom: 30px; }
+
+	.comment-form-author,
+	.comment-form-email {
+		width: 49.8%;
+		margin-bottom: 30px;
+	}
+
+	.form-submit {
+		text-align: right;
+
+		input { margin-left: 0; }
+	}
+}
