@@ -13,7 +13,7 @@
  * @see 	    https://docs.woocommerce.com/document/template-structure/
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
- * @version     1.6.4
+ * @version     3.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php
 	/**
-	 * woocommerce_before_single_product hook
+	 * woocommerce_before_single_product hook.
 	 *
 	 * @hooked wc_print_notices - 10
 	 */
