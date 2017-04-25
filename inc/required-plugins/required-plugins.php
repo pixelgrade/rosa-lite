@@ -23,6 +23,17 @@ function rosa_register_required_plugins() {
 	//	);
 	$plugins = array(
 		array(
+			'name'               => 'Pixelgrade Care',
+			'slug'               => 'pixelgrade-care',
+			'force_activation'   => true,
+			'force_deactivation' => true,
+			'required'           => true,
+			'source'             => 'https://wupdates.com/api_wupl_version/JxbVe/2v5t1czd3vw4kmb5xqmyxj1kkwmnt9q0463lhj393r5yxtshdyg05jssgd4jglnfx7A2vdxtfdcf78r9r1sm217k4ht3r2g7pkdng5f6tgwyrk23wryA0pjxvs7gwhhb',
+			'external_url'       => 'https://github.com/pixelgrade/pixelgrade_care',
+			'version'            => '1.0.0',
+			'is_automatic'       => true
+		),
+		array(
 			'name'               => 'PixTypes',
 			'slug'               => 'pixtypes',
 			'required'           => true,
