@@ -46,7 +46,9 @@ function rosa_register_required_plugins() {
 		array(
 			'name'               => 'PixLikes',
 			'slug'               => 'pixlikes',
-			'source'             => get_template_directory() . '/inc/required-plugins/plugins/pixlikes.zip',
+			'version'            => '1.1.3',
+			'external_url'       => 'https://github.com/pixelgrade/pixlikes',
+			'source'             => 'https://wupdates.com/api_wupl_version/v75R3/zfj7hxx36y35qssyp1tAfyk4g5y1dl3sshkxph1cdzx74jtgjdkctlwkrx033lv1b4jx5mcs41w5wf72srsysn31ccyg6lbvg3n0yf0xnfyj3330fqpbp52wmlsmtszf',
 		),
 		array(
 			'name'               => 'PixCodes',
