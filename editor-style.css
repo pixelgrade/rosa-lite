@@ -2343,19 +2343,15 @@ html.flexbox {
   float: left;
   margin-left: 24px;
   margin-left: 1.5rem;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: column;
-      flex-direction: column; }
+  flex-direction: column; }
 
 .stat__title {
-  -ms-flex-order: 2;
-      order: 2; }
+  order: 2; }
 
 .stat__value {
   margin-left: 0;
-  -ms-flex-order: 1;
-      order: 1; }
+  order: 1; }
 
 /*------------------------------------*		$GREYBOX
 	\*------------------------------------*/
@@ -3450,52 +3446,35 @@ html.flexbox {
   margin-left: .3em; }
 
 .icon-spin {
-  -webkit-animation: fa-spin 2s infinite linear;
   animation: fa-spin 2s infinite linear; }
 
 .icon-pulse {
-  -webkit-animation: fa-spin 1s infinite steps(8);
   animation: fa-spin 1s infinite steps(8); }
-
-@-webkit-keyframes fa-spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg); }
-  100% {
-    -webkit-transform: rotate(359deg);
-    transform: rotate(359deg); } }
 
 @keyframes fa-spin {
   0% {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg); }
   100% {
-    -webkit-transform: rotate(359deg);
     transform: rotate(359deg); } }
 
 .icon-rotate-90 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
-  -webkit-transform: rotate(90deg);
   transform: rotate(90deg); }
 
 .icon-rotate-180 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
-  -webkit-transform: rotate(180deg);
   transform: rotate(180deg); }
 
 .icon-rotate-270 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-  -webkit-transform: rotate(270deg);
   transform: rotate(270deg); }
 
 .icon-flip-horizontal {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
-  -webkit-transform: scale(-1, 1);
   transform: scale(-1, 1); }
 
 .icon-flip-vertical {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
-  -webkit-transform: scale(1, -1);
   transform: scale(1, -1); }
 
 :root .icon-rotate-90,
@@ -3503,8 +3482,7 @@ html.flexbox {
 :root .icon-rotate-270,
 :root .icon-flip-horizontal,
 :root .icon-flip-vertical {
-  -webkit-filter: none;
-          filter: none; }
+  filter: none; }
 
 .icon-stack {
   position: relative;
@@ -7164,7 +7142,6 @@ strong {
 .break-words, .headline__primary, .headline__secondary {
   word-wrap: break-word;
   -webkit-hyphens: auto;
-  -moz-hyphens: auto;
   -ms-hyphens: auto;
       hyphens: auto; }
 
