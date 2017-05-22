@@ -39,3 +39,7 @@ if ( class_exists( 'FLBuilderModel' ) ) {
 if ( function_exists( 'siteorigin_panels_render' ) ) {
 	require get_template_directory() . '/inc/integrations/page-builder-siteorigin.php';
 }
+
+if ( class_exists( 'Gridable' ) ) {
+	require get_template_directory() . '/inc/integrations/gridable.php';
+}

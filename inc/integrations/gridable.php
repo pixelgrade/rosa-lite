@@ -1,0 +1,123 @@
+<?php
+/**
+ * Gridable Compatibility File.
+ *
+ * @link https://wordpress.org/plugins/gridable/
+ *
+ * @package Rosa
+ * @since Rosa 1.0
+ */
+
+/**
+ * Setup Gridable Row Options
+ *
+ * @param $options
+ * @return array
+ */
+function rosa_gridable_row_options( $options ) {
+	$options['thick-gutter'] = array(
+		'label'   => esc_html__( 'Thick Gutter?', 'rosa' ),
+		'type'    => 'checkbox',
+		'default' => 0
+	);
+
+	$options['class'] = array(
+		'label'   => esc_html__( 'Class', 'rosa' ),
+		'type'    => 'text',
+		'default' => ''
+	);
+
+	return $options;
+}
+add_filter( 'gridable_row_options', 'rosa_gridable_row_options', 10, 1 );
+
+/**
+ * Setup Gridable Row Classes
+ *
+ * @param array $classes
+ * @param int $cols_nr
+ * @param array $atts
+ * @param string $content
+ *
+ * @return array
+ */
+function rosa_gridable_row_class( $classes, $cols_nr, $atts, $content ) {
+	if ( ! empty( $atts['class'] ) ) {
+		$classes[] =  $atts['class'];
+	}
+
+	if ( ! empty( $atts['thick-gutter'] ) ) {
+		$classes[] = 'thick-gutter';
+	}
+
+	return $classes;
+}
+add_filter( 'gridable_row_class',  'rosa_gridable_row_class', 10, 4 );
+
+/**
+ * Gridable Column Attributes
+ *
+ * @param array $options
+ *
+ * @return array
+ */
+function rosa_gridable_column_options( $options ) {
+	$options['column_style'] = array(
+		'label'   => esc_html__( 'Column Style', 'rosa' ),
+		'type'    => 'select',
+		'options' => array(
+			'classic' => esc_html__( 'Classic', 'rosa' ),
+			'island' => esc_html__( 'Island', 'rosa' ),
+			'narrow' => esc_html__( 'Narrow', 'rosa' ),
+			'promo-box' => esc_html__( 'Promo Box', 'rosa' ),
+		),
+		'default' => 'classic'
+	);
+
+	$options['class'] = array(
+		'label'   => esc_html__( 'CSS Class', 'rosa' ),
+		'type'    => 'text',
+		'default' => ''
+	);
+
+	return $options;
+}
+add_filter( 'gridable_column_options', 'rosa_gridable_column_options', 10, 1 );
+
+/**
+ * Gridable Column Classes
+ *
+ * @param array $classes
+ * @param int $size
+ * @param array $atts
+ * @param string $content
+ *
+ * @return array
+ */
+function rosa_gridable_column_class( $classes, $size, $atts, $content ) {
+	if ( ! empty( $atts['class'] ) ) {
+		$classes[] =  $atts['class'];
+	}
+
+	if ( ! empty( $atts['column_style'] ) && $atts['column_style'] !== 'promo-box' ) {
+		$classes[] = $atts['column_style'];
+	}
+	return $classes;
+}
+add_filter( 'gridable_column_class',  'rosa_gridable_column_class', 10, 4 );
+
+/**
+ * Gridable Column Content Filter
+ * We need to wrap up the content inside a promo-box container if the class exists or the option is enabled
+ *
+ * @param array $atts
+ */
+function rosa_gridable_column_wrapper_start( $content, $atts ) {
+	if ( ( ! empty( $atts['column_style'] ) && $atts['column_style'] === 'promo-box' )
+	     || ( ! empty( $atts['class'] ) && strpos( $atts['class'], 'promo-box' ) !== false ) ) {
+		$content = '<div class="promo-box__container">' . $content . '</div>';
+	}
+	
+	return $content;
+}
+add_filter( 'gridable_the_column_content', 'rosa_gridable_column_wrapper_start', 10, 2 );

@@ -9,7 +9,6 @@
 /**
  * Start Hook PixCodes params
  */
-
 function rosa_callback_change_separator_params( $params ) {
 	//we only need alignment, color and style
 
@@ -138,7 +137,6 @@ function rosa_callbacks_setup_shortcodes_plugin() {
 	$current_options = get_option( 'wpgrade_shortcodes_list' );
 
 	$shortcodes = array(
-		'Columns',
 		'Button',
 		'Icon',
 		'Tabs',
