@@ -259,13 +259,10 @@
     content: none; }
   @media screen and (max-width: 400px) {
     .woocommerce .woocommerce-message, .woocommerce .woocommerce-info, .woocommerce .woocommerce-error, .woocommerce-page .woocommerce-message, .woocommerce-page .woocommerce-info, .woocommerce-page .woocommerce-error {
-      display: -ms-flexbox;
       display: flex;
-      -ms-flex-direction: column;
-          flex-direction: column; }
+      flex-direction: column; }
       .woocommerce .woocommerce-message .button, .woocommerce .woocommerce-info .button, .woocommerce .woocommerce-error .button, .woocommerce-page .woocommerce-message .button, .woocommerce-page .woocommerce-info .button, .woocommerce-page .woocommerce-error .button {
-        -ms-flex-order: 1;
-            order: 1;
+        order: 1;
         text-align: center; } }
 
 .woocommerce .woocommerce-error, .woocommerce-page .woocommerce-error {
@@ -347,8 +344,7 @@ html .woocommerce ul.products {
     position: absolute;
     bottom: 0;
     left: 50%;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+    transform: translateX(-50%);
     background: white !important;
     color: #c59d5f;
     opacity: 0;
@@ -383,8 +379,7 @@ html .woocommerce ul.products {
     bottom: 0;
     left: 50%;
     z-index: 10;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+    transform: translateX(-50%);
     margin-top: 12px; }
     .woocommerce ul.products li.product .added_to_cart:after {
       content: none; }
@@ -658,10 +653,8 @@ html .woocommerce ul.products {
   z-index: 10; }
 
 .woocommerce div.product div.images .woocommerce-product-gallery__wrapper {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   margin-left: -12px; }
   @media only screen and (max-width: 899px) {
     .woocommerce div.product div.images .woocommerce-product-gallery__wrapper {
@@ -750,8 +743,7 @@ td.actions {
         /* Top/left values mimic padding */
         top: 50%;
         left: 6px;
-        -webkit-transform: translateY(-50%);
-                transform: translateY(-50%);
+        transform: translateY(-50%);
         width: 45%;
         padding-right: 10px;
         font-weight: bold;
