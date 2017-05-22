@@ -32,8 +32,8 @@ var csscomb = require( 'gulp-csscomb' );
 
 var jsFiles = [
 	'./assets/js/main/wrapper-start.js',
+	'./assets/js/main/shared-vars.js',
 	'./assets/js/modules/*.js',
-	'./assets/js/main/unsorted.js',
 	'./assets/js/main/main.js',
 	'./assets/js/main/wrapper-end.js',
 	'./assets/js/vendor/*.js'
@@ -97,8 +97,8 @@ gulp.task( 'css-process', function() {
 	return gulp.src( 'style.css' )
 	           .pipe( sourcemaps.init( {loadMaps: true} ) )
 //	           .pipe( cmq() )
-	           //	           .pipe( csso() )
-               .pipe( csscomb() )
+//	           .pipe( csso() )
+	           .pipe( csscomb() )
 	           .pipe( sourcemaps.write() )
 	           .pipe( gulp.dest( '.' ) );
 } );

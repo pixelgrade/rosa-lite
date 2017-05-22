@@ -17,5 +17,4 @@ function closest(e, classname) {
 	return e.parentNode && closest(e.parentNode, classname);
 }
 
-})
-(jQuery, window);
+}) (jQuery, window);

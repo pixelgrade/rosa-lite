@@ -6,7 +6,7 @@ gifImages = [
     "http://i.imgur.com/UYPLKwN.gif",
     "http://media.tumblr.com/d9e792a91d5391b8a7aa22689d4e2555/tumblr_inline_mwq1hmelce1qmoozl.gif",
     "http://www.teen.com/wp-content/uploads/2013/10/world-without-jennifer-lawrence-gifs-food-uproxx-2.gif"
-]
+];
 
 function getGif() {
 	return gifImages[Math.floor(Math.random() * gifImages.length)];
