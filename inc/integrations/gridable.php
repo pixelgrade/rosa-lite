@@ -8,6 +8,9 @@
  * @since Rosa 1.0
  */
 
+// we don't need the gridable style since rosa has a similar grid system
+add_filter( 'gridable_load_public_style', '__return_false' );
+
 /**
  * Setup Gridable Row Options
  *
@@ -39,6 +42,12 @@ function rosa_gridable_row_class( $classes, $cols_nr, $atts, $content ) {
 	if ( ! empty( $atts['class'] ) ) {
 		$classes[] =  $atts['class'];
 	}
+
+	// remove the default gridable classes
+	unset( $classes[0] );
+	unset( $classes[1] );
+
+	$classes[] = 'pixcode  pixcode--grid  grid';
 
 	return $classes;
 }
@@ -91,6 +100,28 @@ function rosa_gridable_column_class( $classes, $size, $atts, $content ) {
 	if ( ! empty( $atts['column_style'] ) && $atts['column_style'] !== 'promo-box' ) {
 		$classes[] = $atts['column_style'];
 	}
+
+	$ratios = array(
+		1  => 'one-twelfth',
+		2  => 'two-twelfths',
+		3  => 'three-twelfths',
+		4  => 'four-twelfths',
+		5  => 'five-twelfths',
+		6  => 'six-twelfths',
+		7  => 'seven-twelfths',
+		8  => 'eight-twelfths',
+		9  => 'nine-twelfths',
+		10 => 'ten-twelfths',
+		11 => 'eleven-twelfths',
+		12 => 'one-whole',
+	);
+
+	$classes[] = 'grid__item ' . $ratios[ $size ] . ' palm-one-whole';
+
+	// remove the default gridable classes
+	unset( $classes[0] );
+	unset( $classes[1] );
+
 	return $classes;
 }
 add_filter( 'gridable_column_class',  'rosa_gridable_column_class', 10, 4 );
