@@ -15,12 +15,6 @@
  * @return array
  */
 function rosa_gridable_row_options( $options ) {
-	$options['thick-gutter'] = array(
-		'label'   => esc_html__( 'Thick Gutter?', 'rosa' ),
-		'type'    => 'checkbox',
-		'default' => 0
-	);
-
 	$options['class'] = array(
 		'label'   => esc_html__( 'Class', 'rosa' ),
 		'type'    => 'text',
@@ -46,10 +40,6 @@ function rosa_gridable_row_class( $classes, $cols_nr, $atts, $content ) {
 		$classes[] =  $atts['class'];
 	}
 
-	if ( ! empty( $atts['thick-gutter'] ) ) {
-		$classes[] = 'thick-gutter';
-	}
-
 	return $classes;
 }
 add_filter( 'gridable_row_class',  'rosa_gridable_row_class', 10, 4 );
@@ -66,10 +56,9 @@ function rosa_gridable_column_options( $options ) {
 		'label'   => esc_html__( 'Column Style', 'rosa' ),
 		'type'    => 'select',
 		'options' => array(
-			'classic' => esc_html__( 'Classic', 'rosa' ),
+			'simple' => esc_html__( 'Simple', 'rosa' ),
 			'island' => esc_html__( 'Island', 'rosa' ),
-			'narrow' => esc_html__( 'Narrow', 'rosa' ),
-			'promo-box' => esc_html__( 'Promo Box', 'rosa' ),
+			'promo-box' => esc_html__( 'Feature Box', 'rosa' ),
 		),
 		'default' => 'classic'
 	);

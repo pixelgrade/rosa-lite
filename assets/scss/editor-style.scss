@@ -4,6 +4,9 @@ Theme Name: Rosa
 Description: Used to style the TinyMCE editor.
 */
 
+$content-class: '.mce-content-body';
+$editor-style:  true;
+
 @import "vars";
 @import "_vendor/inuit.css/inuit";
 @import "_vendor/icon-fonts/icon-fonts";

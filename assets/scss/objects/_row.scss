@@ -1,0 +1,93 @@
+/* ==========================================================================
+   #FRONTEND + EDITOR STYLES VARS
+   ========================================================================== */
+
+// NOT DONE
+// Set Front End classes
+$row__wrapper: '.row__wrapper';
+$row: '.row';
+$column__wrapper: '.column__wrapper';
+$column: '.column';
+$c-col-prefix: '.column';
+$c-row--stretch: '.row-style--stretch';
+$column--stretch: '.column--stretch';
+
+// Rows
+$gridable-row-simple: '.row-style--simple';
+$gridable-row-strip: '.row-style--strip';
+
+// DONE
+// Columns
+$gridable-col-simple: '.column-style--simple';
+$gridable-col-island: '.column-style--island';
+$gridable-col-boxed: '.promo-box__container';
+
+// Set Editor Style Data Attributes Alternatives
+@if $editor-style == true {
+    // NOT DONE
+    $row__wrapper: '.row';
+    $row: '.row';
+    $column: '.grid__item';
+    $c-col-prefix: 'data-sh-column-attr-size';
+    $c-row--stretch: '[data-sh-row-attr-stretch=true]';
+
+    // Todo: Target only columns with images or galleries
+    // $column--stretch: '&[data-sh-row-attr-stretch=true] .grid__item';
+
+    $gridable-row-simple: '[data-sh-row-attr-row_style=simple]';
+    $gridable-row-strip: '[data-sh-row-attr-row_style=strip]';
+
+    // DONE
+    $gridable-col-simple: '.row .grid__item[data-sh-column-attr-column_style=simple]';
+    $gridable-col-island: '.row .grid__item[data-sh-column-attr-column_style=island]';
+    $gridable-col-boxed: '.row .grid__item[data-sh-column-attr-column_style=promo-box], .row .grid__item[data-sh-column-attr-class=promo-box]';
+}
+
+
+/* ==========================================================================
+    #THE GRID
+   ========================================================================== */
+
+// *NEW*
+// <div class="gridable--row row-style--strip row-style--stretch">
+//  <div class="row">
+//      <div class="gridable--col col-style--highlighted">
+//          <div class="column">
+//          </div>
+//      </div>
+//  </div>
+// </div>
+
+// Promo Box:
+// Dark Background
+// White Text
+// Padding
+#{$gridable-col-boxed} {
+    padding: 36px 54px;
+    background-color: $accent;
+    color: white;
+
+    .promo-box.dark &{
+        background-color: $dark;
+    }
+
+    h1, h2, h3, h4, h5, h6{
+        margin-top: 0;
+        color: white;
+    }
+
+    p:last-child{
+        margin-bottom: 0;
+    }
+}
+
+html #{$gridable-col-boxed}#{$gridable-col-boxed} {
+    a {
+        color: white;
+        text-decoration: underline;
+
+        &:hover {
+            color: inherit !important;
+        }
+    }
+}

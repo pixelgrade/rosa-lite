@@ -9525,26 +9525,6 @@ p.menu-list__item-desc {
 .article__header .article__headline .otreservations-submit {
   opacity: 1; }
 
-.promo-box__container {
-  padding: 36px 54px;
-  background-color: #c59d5f;
-  color: white; }
-  .promo-box.dark .promo-box__container {
-    background-color: #262526; }
-  .promo-box__container h1, .promo-box__container h2, .promo-box__container .tabs__nav, .promo-box__container
-  .woocommerce-MyAccount-navigation ul,
-  .woocommerce-MyAccount-navigation .promo-box__container ul, .promo-box__container h3, .promo-box__container h4, .promo-box__container h5, .promo-box__container h6 {
-    margin-top: 0;
-    color: white; }
-  .promo-box__container p:last-child {
-    margin-bottom: 0; }
-
-html .promo-box__container.promo-box__container a {
-  color: white;
-  text-decoration: underline; }
-  html .promo-box__container.promo-box__container a:hover {
-    color: inherit !important; }
-
 /*----------------------------------------*    $MAGNIFIC POPUP STYLING + OVERRIDES
 \*----------------------------------------*/
 button.mfp-arrow {
@@ -10074,6 +10054,32 @@ small.muted {
 
 .sidebar--main .widget [class*="social"] > ul a:before {
   color: #262526; }
+
+/* ==========================================================================
+   #FRONTEND + EDITOR STYLES VARS
+   ========================================================================== */
+/* ==========================================================================
+    #THE GRID
+   ========================================================================== */
+.promo-box__container {
+  padding: 36px 54px;
+  background-color: #c59d5f;
+  color: white; }
+  .promo-box.dark .promo-box__container {
+    background-color: #262526; }
+  .promo-box__container h1, .promo-box__container h2, .promo-box__container .tabs__nav, .promo-box__container
+  .woocommerce-MyAccount-navigation ul,
+  .woocommerce-MyAccount-navigation .promo-box__container ul, .promo-box__container h3, .promo-box__container h4, .promo-box__container h5, .promo-box__container h6 {
+    margin-top: 0;
+    color: white; }
+  .promo-box__container p:last-child {
+    margin-bottom: 0; }
+
+html .promo-box__container.promo-box__container a {
+  color: white;
+  text-decoration: underline; }
+  html .promo-box__container.promo-box__container a:hover {
+    color: inherit !important; }
 
 /*------------------------------------*    $LAYOUT
 \*------------------------------------*/
