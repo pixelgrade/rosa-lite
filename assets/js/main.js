@@ -1076,7 +1076,7 @@ GMap.prototype.initializeMap = function( $map ) {
 		if ( typeof url === "string" ) {
 
 			coordinates = that.getCenterFrom( url );
-			pins = that.getPinsFrom( url );
+			pins = that.getPinsFrom( url, markerContent );
 
 			// if there are no markers encoded in the url
 			// place a pin the center of the map
@@ -1150,7 +1150,7 @@ GMap.prototype.getCenterFrom = function( url ) {
 	return false;
 };
 
-GMap.prototype.getPinsFrom = function( url ) {
+GMap.prototype.getPinsFrom = function( url, markerContent ) {
 	var that = this,
 		coordinates = [],
 		pins = [];
@@ -1176,7 +1176,7 @@ GMap.prototype.getPinsFrom = function( url ) {
 	$.each( coordinates, function( i, coord ) {
 		pins.push( {
 			position: [coord[0], coord[1]],
-			content: that.getPinMarkup( '', 'tooltip' ),
+			content: that.getPinMarkup( markerContent, 'tooltip' ),
 			x: 0,
 			y: 4
 		} );
