@@ -251,3 +251,7 @@ html, body, body > .page {
 .gridable--row {
     justify-content: flex-start;
 }
+
+.tabs__pane:not(.hide):not([style]) {
+    position: static;
+}

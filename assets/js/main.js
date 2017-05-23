@@ -1791,7 +1791,6 @@ $( window ).load( function() {
 		});
 	}
 
-
 	$html.addClass( 'is--loaded' );
 } );
 
@@ -1811,7 +1810,6 @@ function updateHeaderPadding() {
 $window.on( 'resize', function() {
 	windowWidth = window.innerWidth;
 	windowHeight = window.innerHeight;
-
 } );
 
 $( window ).on( "debouncedresize", onResize );
@@ -1864,6 +1862,7 @@ function updateStuff() {
 $( window ).on( "organicTabsChange", function() {
 	onResize();
 	refreshStuff();
+	$window.trigger( 'rellax' );
 } );
 
 $window.scroll( function() {
