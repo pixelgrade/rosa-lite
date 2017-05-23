@@ -1071,7 +1071,7 @@ GMap.prototype.initializeMap = function( $map ) {
 			style = typeof $map.data( 'customstyle' ) !== "undefined" ? "rosa" : google.maps.MapTypeId.ROADMAP,
 			markerContent = $map.data( 'markercontent' ),
 			coordinates,
-			pins;
+			pins = [];
 
 		if ( typeof url === "string" ) {
 
@@ -1123,8 +1123,11 @@ GMap.prototype.initializeMap = function( $map ) {
 			fullscreenControl: true
 		} )
 		.styledmaptype( "rosa", that.customStyle, {name: "Rosa"} )
-		.overlay( pins )
-	    .fit();
+		.overlay( pins );
+
+		if ( pins.length > 1 ) {
+			$map.gmap3().fit();
+		}
 
 	}
 
