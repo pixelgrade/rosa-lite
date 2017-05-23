@@ -367,9 +367,9 @@ $( window ).load( function() {
 	magnificPopupInit();
 	initVideos();
 	resizeVideos();
-	gmapInit();
-	gmapMultiplePinsInit();
 
+	var Map = new GMap();
+	Map.init();
 
 	if ( ! empty( $( '#date-otreservations' ) ) ) {
 		var dateFormat = $( '#date-otreservations' ).closest( '.otw-wrapper' ).children( '.txtDateFormat' ).attr( 'value' ).toUpperCase();

@@ -2,72 +2,73 @@
     $GOOGLE MAPS
 \*------------------------------------*/
 
-.map__marker {
+.gmap img {
+	max-width: none;
+}
+
+.map-tooltip {
+	position: absolute;
+	bottom: 0;
+    left: 0;
+}
+
+.map-tooltip__content {
 	position: relative;
 	bottom: 100%;
 	left: -50%;
 	top: -12px;
+
+	padding: $_u $_2u;
+
 	background: black;
 	color: white;
-	padding: $_u $_2u;
 	border-radius: $_u4 / 2;
 
 	&:after {
 		content: "";
-		display: block;
 		position: absolute;
 		top: 100%;
 		left: 50%;
+
+		display: block;
+		margin-left: - $_u2;
 		border: $_u2 solid transparent;
 		border-top-color: black;
-		margin-left: - $_u2;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
 		margin: $_u4 0;
-		color: white;
+		color: inherit;
 	}
-
-	img{
-		max-width: none;
-	}
-}
-
-.map__marker-wrap {
-	position: absolute;
-	bottom: 0; left: 0;
-}
-
-.gmap img, .gmap--multiple-pins img {
-	max-width: none;
 }
 
 /* Multiple Pins */
-.gmap__marker {
+.map-pin {
 	position: relative;
 	top: rem(-55px);
 	left: rem(-23px);
 }
 
-.gmap__marker__btn {
+.map-pin__text {
+	min-width: 0;
+
+	padding: rem(14px) rem(16px);
+	padding-left: rem(56px);
+	border-radius: 40px;
+
 	font-size: rem(13px);
 	line-height: 1;
 	font-weight: normal;
 	text-transform: uppercase;
 	letter-spacing: .2em;
 
-	transition: all .15s;
-	border-radius: 40px;
-	padding: rem(14px) rem(16px);
-	padding-left: rem(56px);
-	min-width: 0;
-
 	color: $dark;
 	background-color: white;
 
+	transition: all .15s;
+
 	&:hover {
 		color: $accent;
-		// background-color: $accent;
 	}
 
 	@include media-query(palm) {
@@ -76,9 +77,10 @@
 	}
 }
 
-.gmap__marker__img {
-	width: rem(42px);
+.map-pin img {
 	position: absolute;
 	top: rem(2px);
 	left: rem(1px);
+
+	width: rem(42px);
 }
