@@ -19,7 +19,7 @@ $gridable-row-strip: '.row-style--strip';
 // DONE
 // Columns
 $gridable-col-simple: '.column-style--simple';
-$gridable-col-island: '.column-style--island';
+$gridable-col-island: '.island';
 $gridable-col-boxed: '.promo-box__container';
 
 // Set Editor Style Data Attributes Alternatives
@@ -78,6 +78,13 @@ $gridable-col-boxed: '.promo-box__container';
 
     p:last-child{
         margin-bottom: 0;
+    }
+}
+
+@if $editor-style == true {
+
+    #{$gridable-col-island} {
+        padding: 46px;
     }
 }
 
