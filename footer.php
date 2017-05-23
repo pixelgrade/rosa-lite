@@ -13,7 +13,7 @@ if ( $is_gmap === true ) {
 }
 
 if ( ! is_404() ):
-	$footer_sidebar_style = 'sidebar--footer__' . pixelgrade_option( 'footer_sidebar_style' );
+    $footer_sidebar_style = 'sidebar--footer__' . pixelgrade_option( 'footer_sidebar_style' );
 	$footer_bottom_bar_style = 'copyright-area__' . pixelgrade_option( 'footer_bottombar_style' ); ?>
 
 	<footer class="site-footer <?php echo $footer_needs_big_waves === true ? 'border-waves' : '' ?>">

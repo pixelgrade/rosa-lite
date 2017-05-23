@@ -484,346 +484,495 @@ function setProgress(timeline, start, end) {
     timeline.progress(progress);
 }
 
-/* --- GMAP Init --- */
+/**
+ * Generic tree implementation
+ *
+ * This class represents any node in the tree.
+ */
+var Node = function( val ) {
 
-// Overwrite Math.log to accept a second optional parameter as base for logarithm
-Math.log = (function () {
-	var log = Math.log;
-	return function (n, base) {
-		return log(n) / (base ? log(base) : 1);
-	};
-})();
+	this.val = val;
+	this.children = [];
+	this.parent = null;
 
-function get_url_parameter(needed_param, gmap_url) {
-	var sURLVariables = (gmap_url.split('?'))[1];
-	if (typeof sURLVariables === "undefined") {
-		return sURLVariables;
+	/**
+	 * Sets the parent node of this node.
+	 */
+	this.setParentNode = function( node ) {
+		this.parent = node;
+		node.children[node.children.length] = this;
 	}
-	sURLVariables = sURLVariables.split('&');
-	for (var i = 0; i < sURLVariables.length; i++) {
-		var sParameterName = sURLVariables[i].split('=');
-		if (sParameterName[0] == needed_param) {
-			return sParameterName[1];
+
+	/**
+	 * Gets the parent node of this node.
+	 */
+	this.getParentNode = function() {
+		return this.parent;
+	}
+
+	/**
+	 * Adds a child node of this node.
+	 */
+	this.addChild = function( node ) {
+		node.parent = this;
+		this.children[this.children.length] = node;
+	}
+
+	/**
+	 * Gets the array of child nodes of this node.
+	 */
+	this.getChildren = function() {
+		return this.children;
+	}
+
+	/**
+	 * Removes all the children of this node.
+	 */
+	this.removeChildren = function() {
+		for ( child of this.children ) {
+			child.parent = null;
+		}
+		this.children = [];
+	}
+
+	/**
+	 * Recursively counts the number of all descendants, from children down, and
+	 * returns the total number.
+	 */
+	this.getTotalDescendantCount = function() {
+		var count = 0;
+		for ( child of this.children ) {
+			count += child.getTotalDescendantCount();
+		}
+		return count + this.children.length;
+	}
+}
+
+/**
+ * Protocol Buffer implementation, which extends the functionality of Node
+ * while specifically typing the stored value
+ */
+var PrBufNode = function( id, type, value ) {
+	this.val = {id, type, value}
+	this.children = [];
+	this.parent = null;
+}
+
+PrBufNode.prototype = new Node();
+PrBufNode.prototype.constructor = PrBufNode;
+
+PrBufNode.prototype.id = function() {
+	return this.val.id;
+}
+PrBufNode.prototype.type = function() {
+	return this.val.type;
+}
+PrBufNode.prototype.value = function() {
+	return this.val.value;
+}
+
+/**
+ * Compares the number of descendants with the value specified in the map element.
+ * If all the children have not yet been added, we continue adding to this element.
+ */
+PrBufNode.prototype.findLatestIncompleteNode = function() {
+
+	//if it's a branch (map) node ('m') and has room,
+	//or if it's the root (identified by having a null parent), which has no element limit,
+	//then return this node
+	if ( (
+		     (
+			     this.val.type === 'm'
+		     ) && (
+			     this.val.value > this.getTotalDescendantCount()
+		     )
+	     )
+	     || (
+		     null === this.parent
+	     ) ) {
+		return this;
+	}
+	else {
+		return this.parent.findLatestIncompleteNode();
+	}
+}
+
+/**
+ * Parses the input URL 'data' protocol buffer parameter into a tree
+ */
+PrBufNode.create = function( urlToParse ) {
+	var rootNode = null;
+	var re = /data=!([^?&]+)/;
+	var dataArray = urlToParse.match( re );
+	if ( dataArray && dataArray.length >= 1 ) {
+		rootNode = new PrBufNode();
+		var workingNode = rootNode;
+		//we iterate through each of the elements, creating a node for it, and
+		//deciding where to place it in the tree
+		var elemArray = dataArray[1].split( "!" );
+		for ( var i = 0; i < elemArray.length; i ++ ) {
+			var elemRe = /^([0-9]+)([a-z])(.+)$/;
+			var elemValsArray = elemArray[i].match( elemRe );
+			if ( elemValsArray && elemValsArray.length > 3 ) {
+				var elemNode = new PrBufNode( elemValsArray[1], elemValsArray[2], elemValsArray[3] );
+				workingNode.addChild( elemNode );
+				workingNode = elemNode.findLatestIncompleteNode();
+			}
+		}
+	}
+	return rootNode;
+}
+
+
+/**
+ * Represents a basic waypoint, with latitude and longitude.
+ *
+ * If both are not specified, the waypoint is considered to be valid
+ * but empty waypoint (these can exist in the data parameter, where
+ * the coordinates have been specified in the URL path.
+ */
+var GmdpWaypoint = function( lat, lng, primary ) {
+	this.lat = lat;
+	this.lng = lng;
+	this.primary = primary ? true : false;
+}
+
+/**
+ * Represents a basic route, comprised of an ordered list of
+ * GmdpWaypoint objects.
+ */
+var GmdpRoute = function() {
+	this.route = new Array();
+}
+
+/**
+ * Pushes a GmdpWaypoint on to the end of this GmdpRoute.
+ */
+GmdpRoute.prototype.pushWaypoint = function( wpt ) {
+	if ( wpt instanceof GmdpWaypoint ) {
+		this.route.push( wpt );
+	}
+}
+
+/**
+ * Sets the mode of transportation.
+ * If the passed parameter represents one of the integers normally used by Google Maps,
+ * it will be interpreted as the relevant transport mode, and set as a string:
+ * "car", "bike", "foot", "transit", "flight"
+ */
+GmdpRoute.prototype.setTransportation = function( transportation ) {
+	switch ( transportation ) {
+		case '0':
+			this.transportation = "car";
+			break;
+		case '1':
+			this.transportation = "bike";
+			break;
+		case '2':
+			this.transportation = "foot";
+			break;
+		case '3':
+			this.transportation = "transit";
+			break;
+		case '4':
+			this.transportation = "flight";
+			break;
+		default:
+			this.transportation = transportation;
+			break;
+	}
+}
+
+/**
+ * Returns the mode of transportation (if any) for the route.
+ */
+GmdpRoute.prototype.getTransportation = function() {
+	return this.transportation;
+}
+
+GmdpRoute.prototype.setUnit = function( unit ) {
+	switch ( unit ) {
+		case '0':
+			this.unit = "km";
+			break;
+		case '1':
+			this.unit = "miles";
+			break;
+	}
+}
+
+GmdpRoute.prototype.getUnit = function() {
+	return this.unit;
+}
+
+GmdpRoute.prototype.setRoutePref = function( routePref ) {
+	switch ( routePref ) {
+		case '0':
+		case '1':
+			this.routePref = "best route";
+			break;
+		case '2':
+			this.routePref = "fewer transfers";
+			break;
+		case '3':
+			this.routePref = "less walking";
+			break;
+	}
+}
+
+GmdpRoute.prototype.getRoutePref = function() {
+	return this.routePref;
+}
+
+GmdpRoute.prototype.setArrDepTimeType = function( arrDepTimeType ) {
+	switch ( arrDepTimeType ) {
+		case '0':
+			this.arrDepTimeType = "depart at";
+			break;
+		case '1':
+			this.arrDepTimeType = "arrive by";
+			break;
+		case '2':
+			this.arrDepTimeType = "last available";
+			break;
+	}
+}
+
+GmdpRoute.prototype.getArrDepTimeType = function() {
+	return this.arrDepTimeType;
+}
+
+GmdpRoute.prototype.addTransitModePref = function( transitModePref ) {
+	//there can be multiple preferred transit modes, so we store them in an array
+	//we assume there will be no duplicate values, but it probably doesn't matter
+	//even if there are
+	switch ( transitModePref ) {
+		case '0':
+			this.transitModePref.push( "bus" );
+			break;
+		case '1':
+			this.transitModePref.push( "subway" );
+			break;
+		case '2':
+			this.transitModePref.push( "train" );
+			break;
+		case '3':
+			this.transitModePref.push( "tram / light rail" );
+			break;
+	}
+}
+
+GmdpRoute.prototype.getTransitModePref = function() {
+	return this.transitModePref;
+}
+
+
+/**
+ * Returns the list of all waypoints belonging to this route.
+ */
+GmdpRoute.prototype.getAllWaypoints = function() {
+	return this.route;
+}
+
+
+function GmdpException( message ) {
+	this.message = message;
+	// Use V8's native method if available, otherwise fallback
+	if ( "captureStackTrace" in Error ) {
+		Error.captureStackTrace( this, GmdpException );
+	} else {
+		this.stack = (
+			new Error()
+		).stack;
+	}
+}
+
+GmdpException.prototype = Object.create( Error.prototype );
+GmdpException.prototype.name = "GmdpException";
+
+/**
+ * Represents a google maps data parameter, constructed from the passed URL.
+ *
+ * Utility methods defined below allow the user to easily extract interesting
+ * information from the data parameter.
+ */
+var Gmdp = function( url ) {
+	this.prBufRoot = PrBufNode.create( url );
+	this.mapType = "map";
+
+	if ( this.prBufRoot == null ) {
+		throw new GmdpException( "no parsable data parameter found" );
+	}
+
+	//the main top node for routes is 4m; other urls (eg. streetview) feature 3m etc.
+	var routeTop = null;
+	var streetviewTop = null;
+
+	for ( var child of this.prBufRoot.getChildren() ) {
+		if ( child.id() == 3 && child.type() == 'm' ) {
+			var mapTypeChildren = child.getChildren();
+			if ( mapTypeChildren && mapTypeChildren.length >= 1 ) {
+				if ( mapTypeChildren[0].id() == 1 && mapTypeChildren[0].type() == 'e' ) {
+					switch ( mapTypeChildren[0].value() ) {
+						case '1':
+							this.mapType = "streetview";
+							streetviewTop = child;
+							break;
+						case '3':
+							this.mapType = "earth";
+							break;
+					}
+				}
+			}
+		} else if ( child.id() == 4 && child.type() == 'm' ) {
+			routeTop = child;
+		}
+	}
+	if ( routeTop ) {
+		var directions = null;
+		for ( var child of routeTop.getChildren() ) {
+			if ( child.id() == 4 && child.type() == 'm' ) {
+				directions = child;
+			}
+		}
+		if ( directions ) {
+			this.route = new GmdpRoute();
+			this.route.arrDepTimeType = "leave now"; //default if no value is specified
+			this.route.avoidHighways = false;
+			this.route.avoidTolls = false;
+			this.route.avoidFerries = false;
+			this.route.transitModePref = [];
+
+			for ( primaryChild of directions.getChildren() ) {
+				if ( primaryChild.id() == 1 && primaryChild.type() == 'm' ) {
+					if ( primaryChild.value() == 0 ) {
+						this.route.pushWaypoint( new GmdpWaypoint( undefined, undefined, true ) );
+					}
+					else {
+						var addedPrimaryWpt = false;
+						var wptNodes = primaryChild.getChildren();
+						for ( wptNode of wptNodes ) {
+							if ( wptNode.id() == 2 ) {
+								//this is the primary wpt, add coords
+								var coordNodes = wptNode.getChildren();
+								if ( coordNodes &&
+								     coordNodes.length >= 2 &&
+								     coordNodes[0].id() == 1 &&
+								     coordNodes[0].type() == 'd' &&
+								     coordNodes[1].id() == 2 &&
+								     coordNodes[1].type() == 'd' ) {
+									this.route.pushWaypoint(
+										new GmdpWaypoint( coordNodes[1].value(),
+											coordNodes[0].value(),
+											true ) );
+								}
+								addedPrimaryWpt = true;
+							} else if ( wptNode.id() == 3 ) {
+								//this is a secondary (unnamed) wpt
+								//
+								//but first, if we haven't yet added the primary wpt,
+								//then the coordinates are apparently not specified,
+								//so we should add an empty wpt
+								if ( ! addedPrimaryWpt ) {
+									this.route.pushWaypoint( new GmdpWaypoint( undefined, undefined, true ) );
+									addedPrimaryWpt = true;
+								}
+
+								//now proceed with the secondary wpt itself
+								var secondaryWpts = wptNode.getChildren();
+								if ( secondaryWpts && secondaryWpts.length > 1 ) {
+									var coordNodes = secondaryWpts[0].getChildren();
+									if ( coordNodes &&
+									     coordNodes.length >= 2 &&
+									     coordNodes[0].id() == 1 &&
+									     coordNodes[0].type() == 'd' &&
+									     coordNodes[1].id() == 2 &&
+									     coordNodes[1].type() == 'd' ) {
+										this.route.pushWaypoint(
+											new GmdpWaypoint( coordNodes[1].value(),
+												coordNodes[0].value(),
+												false ) );
+									}
+								}
+							}
+						}
+					}
+				} else if ( primaryChild.id() == 2 && primaryChild.type() == 'm' ) {
+					var routeOptions = primaryChild.getChildren();
+					for ( routeOption of routeOptions ) {
+						if ( routeOption.id() == 1 && routeOption.type() == 'b' ) {
+							this.route.avoidHighways = true;
+						}
+						else if ( routeOption.id() == 2 && routeOption.type() == 'b' ) {
+							this.route.avoidTolls = true;
+						}
+						else if ( routeOption.id() == 3 && routeOption.type() == 'b' ) {
+							this.route.avoidFerries = true;
+						}
+						else if ( routeOption.id() == 4 && routeOption.type() == 'e' ) {
+							this.route.setRoutePref( routeOption.value() );
+						}
+						else if ( routeOption.id() == 5 && routeOption.type() == 'e' ) {
+							this.route.addTransitModePref( routeOption.value() );
+						}
+						else if ( routeOption.id() == 6 && routeOption.type() == 'e' ) {
+							this.route.setArrDepTimeType( routeOption.value() );
+						}
+						if ( routeOption.id() == 8 && routeOption.type() == 'j' ) {
+							this.route.arrDepTime = routeOption.value(); //as a unix timestamp
+						}
+					}
+				} else if ( primaryChild.id() == 3 && primaryChild.type() == 'e' ) {
+					this.route.setTransportation( primaryChild.value() );
+				} else if ( primaryChild.id() == 4 && primaryChild.type() == 'e' ) {
+					this.route.setUnit( primaryChild.value() );
+				}
+			}
+		}
+	}
+	if ( streetviewTop ) {
+		var streetviewChildren = streetviewTop.getChildren();
+		for ( streetviewChild of streetviewChildren ) {
+			if ( streetviewChild.id() == 3 && streetviewChild.type() == 'm' ) {
+				var svInfos = streetviewChild.getChildren();
+				for ( svInfo of svInfos ) {
+					if ( svInfo.id() == 2 && svInfo.type() == 'e' ) {
+						if ( svInfo.value() == 4 ) {
+							//!2e4!3e11 indicates a photosphere, rather than standard streetview
+							//but the 3e11 doesn't seem to matter too much (?)
+							this.mapType = "photosphere";
+						}
+					}
+					if ( svInfo.id() == 6 && svInfo.type() == 's' ) {
+						this.svURL = decodeURIComponent( svInfo.value() );
+					}
+				}
+			}
 		}
 	}
 }
 
-function get_newMap_oldUrl_coordinates(url) {
-	var coordinates = {},
-		temp_coords,
-		temp_zoom;
-
-	temp_coords = url.split('!3d');
-	temp_coords = temp_coords[1];
-	temp_coords = temp_coords.split('!4d');
-
-	// Get the first part of the temp_coords array which is the latitude
-	coordinates.latitude = temp_coords[0];
-
-	// Get the second part of the temp_coords, before the zoom level, which is the longitude
-	temp_coords[1] = temp_coords[1].split('?')[0];
-	coordinates.longitude = temp_coords[1];
-
-	// Get the zoom level
-	// Get the whole coordinates including the zoom
-	temp_zoom = url.split('@');
-	temp_zoom = temp_zoom[1];
-	// Remove the part after the coordinates
-	temp_zoom = temp_zoom.split('/');
-	temp_zoom = temp_zoom[0];
-	// Split the coordinates and get only the zoom level
-	temp_zoom = temp_zoom.split(',');
-	temp_zoom = temp_zoom[2];
-	// Take off the z part
-	if ( temp_zoom.indexOf('z') >= 0 ) {
-		temp_zoom = temp_zoom.substring( 0, temp_zoom.length - 1 );
-	}
-	coordinates.zoom = temp_zoom;
-
-	return coordinates;
+/**
+ * Returns the route defined by this data parameter.
+ */
+Gmdp.prototype.getRoute = function() {
+	return this.route;
 }
 
-function get_newMap_newUrl_coordinates(url) {
-	var coordinates = {};
-
-	url = url.split('@')[1];
-	url = url.split('z/')[0];
-	url = url.split(',');
-
-	coordinates.latitude 	= url[0];
-	coordinates.longitude 	= url[1];
-	coordinates.zoom 		= url[2];
-
-	if (coordinates.zoom.indexOf('z') >= 0) {
-		coordinates.zoom = coordinates.zoom.substring(0, coordinates.zoom.length - 1);
-	}
-
-	return coordinates;
+/**
+ * Returns the main map type ("map", "earth").
+ */
+Gmdp.prototype.getMapType = function() {
+	return this.mapType;
 }
 
-function get_oldMap_coordinates(url) {
-	var coordinates = {},
-		variables;
-
-	variables = get_url_parameter('ll', url);
-	if (typeof variables == "undefined") {
-		variables = get_url_parameter('sll', url);
-	}
-
-	if (typeof variables == "undefined") {
-		return variables;
-	}
-
-	variables = variables.split(',');
-	coordinates.latitude = variables[0];
-	coordinates.longitude = variables[1];
-
-	coordinates.zoom = get_url_parameter('z', url);
-	if (typeof coordinates.zoom === "undefined") {
-		coordinates.zoom = 10;
-	}
-
-	return coordinates;
+/**
+ * Returns the main map type ("map", "earth").
+ */
+Gmdp.prototype.getStreetviewURL = function() {
+	return this.svURL;
 }
 
-function gmapInit($container) {
-	var $gmaps;
-
-	if (typeof $container !== "undefined") {
-		$gmaps = $container.find('.gmap');
-	} else {
-		$gmaps = $('.gmap');
-	}
-
-	if ( $gmaps.length && typeof google !== 'undefined' ) {
-		if (globalDebug) {console.log("GMap Init");}
-
-		$gmaps.each(function () {
-
-			var $gmap = $( this ),
-				url = $gmap.data( 'url' ),
-				style = typeof $gmap.data( 'customstyle' ) !== "undefined" ? "style1" : google.maps.MapTypeId.ROADMAP,
-				coordinates,
-				pins 		= [],
-				gmap_markercontent = $gmap.data( 'markercontent' );
-
-			if ( url ) {
-				//Parse the URL and load variables (ll = latitude/longitude; z = zoom)
-				coordinates = get_oldMap_coordinates( url );
-				if ( typeof variables == "undefined" ) {
-					coordinates = url.split( '!3d' )[0] !== url ? get_newMap_oldUrl_coordinates( url ) : get_newMap_newUrl_coordinates( url );
-				}
-
-				if ( typeof coordinates !== "undefined" && coordinates.latitude && coordinates.longitude ) {
-					pins.push({
-						latLng: [coordinates.latitude, coordinates.longitude],
-						options: {
-							content: '<div class="map__marker-wrap"><div class="map__marker">' + gmap_markercontent + '</div></div>'
-						}
-					});
-				}
-			}
-
-			// if there were no pins we could handle get out
-			if (!pins.length) {
-				return;
-			}
-
-			$gmap.gmap3( {
-				map: {
-					options: {
-						center: new google.maps.LatLng( coordinates.latitude, coordinates.longitude ),
-						zoom: parseInt( coordinates.zoom ),
-						mapTypeId: style,
-						mapTypeControlOptions: {mapTypeIds: []},
-						scrollwheel: false,
-						panControl: true,
-						panControlOptions: {
-							position: google.maps.ControlPosition.LEFT_CENTER
-						},
-						zoomControl: true,
-						zoomControlOptions: {
-							style: google.maps.ZoomControlStyle.LARGE,
-							position: google.maps.ControlPosition.LEFT_CENTER
-						},
-						scaleControl: true,
-						streetViewControl: true,
-						streetViewControlOptions: {
-							position: google.maps.ControlPosition.LEFT_CENTER
-						}
-					}
-				},
-				overlay: {
-					values: pins
-				},
-				styledmaptype: {
-					id: "style1",
-					options: {
-						name: "Style 1"
-					},
-					styles: [
-						{
-							"stylers": [
-								{"saturation": -100},
-								{"gamma": 3.00},
-								{"visibility": "simplified"}
-							]
-						}, {
-							"featureType": "road",
-							"stylers": [
-								{"hue": $( "body" ).data( "color" ) ? $( "body" ).data( "color" ) : "#ffaa00"},
-								{"saturation": 48},
-								{"gamma": 0.40},
-								{"visibility": "on"}
-							]
-						}, {
-							"featureType": "administrative",
-							"stylers": [
-								{"visibility": "on"}
-							]
-						}
-					]
-				}
-			});
-
-		});
-	}
-
-}
-
-function gmapMultiplePinsInit($container) {
-
-	var $gmaps;
-
-	if (typeof $container !== "undefined") {
-		$gmaps = $container.find('.gmap--multiple-pins');
-	} else {
-		$gmaps = $('.gmap--multiple-pins');
-	}
-
-	$gmaps.empty();
-
-	$imageMarkup 	= $('.js-map-pin');
-
-	if ( $imageMarkup.length > 0 ) {
-		$imageMarkup = $($imageMarkup[0]).html();
-	}
-
-	if ( $gmaps.length && typeof google !== 'undefined' ) {
-		if (globalDebug) {console.log("GMap Multiple Pins Init");}
-
-		$gmaps.each(function () {
-
-			var $gmap = $( this ),
-				links,
-				style = typeof $gmap.data( 'customstyle' ) !== "undefined" ? "style1" : google.maps.MapTypeId.ROADMAP,
-				pins 		= [],
-				zoom		= 10;
-
-			links = $gmap.data('pins');
-
-			$.each(links, function(label, url) {
-				var coordinates;
-				if (url) {
-					coordinates = get_oldMap_coordinates(url);
-					if (typeof variables == "undefined") {
-						coordinates = url.split('!3d')[0] !== url ? get_newMap_oldUrl_coordinates(url) : get_newMap_newUrl_coordinates(url);
-					}
-					if (typeof coordinates !== "undefined" && coordinates.latitude && coordinates.longitude) {
-						pins.push({
-							latLng: [coordinates.latitude, coordinates.longitude],
-							options: {
-								content: '<div class="gmap__marker"><div class="gmap__marker__btn">' + label + '</div>' + $imageMarkup + '</div>'
-							}
-						});
-					}
-				}
-			});
-
-			// if there were no pins we could handle get out
-			if (!pins.length) {
-				return;
-			}
-
-			if ($gmap.data('initialized') == true) {
-				$gmap.gmap3('destroy').empty();
-			}
-
-			$gmap.data('initialized', true);
-
-			$gmap.gmap3( {
-				map: {
-					options: {
-						zoom: zoom,
-						mapTypeId: style,
-						mapTypeControl: false,
-						panControl: true,
-						panControlOptions: {
-							position: google.maps.ControlPosition.LEFT_CENTER
-						},
-						zoomControl: true,
-						zoomControlOptions: {
-							style: google.maps.ZoomControlStyle.LARGE,
-							position: google.maps.ControlPosition.LEFT_CENTER
-						},
-						scaleControl: true,
-						streetViewControl: true,
-						streetViewControlOptions: {
-							position: google.maps.ControlPosition.LEFT_CENTER
-						},
-						scrollwheel: false
-					}
-				},
-				overlay: {
-					values: pins
-				},
-				styledmaptype: {
-					id: "style1",
-					options: {
-						name: "Style 1"
-					},
-					styles: [
-						{
-							"stylers": [
-								{"saturation": -100},
-								{"gamma": 3.00},
-								{"visibility": "simplified"}
-							]
-						}, {
-							"featureType": "road",
-							"stylers": [
-								{"hue": $( "body" ).data( "color" ) ? $( "body" ).data( "color" ) : "#ffaa00"},
-								{"saturation": 48},
-								{"gamma": 0.40},
-								{"visibility": "on"}
-							]
-						}, {
-							"featureType": "administrative",
-							"stylers": [
-								{"saturation": -30},
-								{"gamma": 0.6},
-								{"visibility": "on"}
-							]
-						}, {
-							"featureType": "administrative.neighborhood",
-							"stylers": [
-								{"visibility": "off"}
-							]
-						}
-					]
-				}
-			}, "autofit");
-
-			var map = $gmap.gmap3("get");
-
-			google.maps.event.addListenerOnce(map, 'idle', function() {
-				if (typeof map == "undefined") return;
-			});
-
-		});
-	}
-
-}
 /* --- Magnific Popup Initialization --- */
 
 function magnificPopupInit() {
@@ -895,6 +1044,183 @@ function magnificPopupInit() {
 		} );
 	} );
 }
+
+var GMap = function() {
+	this.maps = [];
+	this.pinIconMarkup = $( '.js-map-pin' ).html();
+};
+
+GMap.prototype.init = function( $container ) {
+	var that = this;
+
+	$container = typeof $container !== "undefined" ? $container : $( 'body' );
+
+	$container.find( '.c-hero__map' ).each( function( i, obj ) {
+		var $map = $( obj );
+		that.maps.push( $map );
+		that.initializeMap( $map );
+	} );
+};
+
+GMap.prototype.initializeMap = function( $map ) {
+	var that = this;
+
+	if ( typeof google !== 'undefined' ) {
+
+		var url = $map.data( 'url' ),
+			style = typeof $map.data( 'customstyle' ) !== "undefined" ? "rosa" : google.maps.MapTypeId.ROADMAP,
+			markerContent = $map.data( 'markercontent' ),
+			coordinates,
+			pins;
+
+		if ( typeof url === "string" ) {
+
+			coordinates = that.getCenterFrom( url );
+			pins = that.getPinsFrom( url );
+
+			// if there are no markers encoded in the url
+			// place a pin the center of the map
+			if ( pins.length === 0 && typeof coordinates !== "undefined" ) {
+				pins.push( {
+					position: [coordinates.latitude, coordinates.longitude],
+					content: that.getPinMarkup( markerContent ),
+					x: 0,
+					y: 4
+				} );
+			}
+		} else {
+			var pinsData = $map.data( 'pins' );
+
+			$.each( pinsData, function( label, url ) {
+				coordinates = that.getCenterFrom( url );
+
+				pins.push( {
+					position: [coordinates['latitude'], coordinates['longitude']],
+					content: that.getPinMarkup( label, 'pin' ),
+					x: 0,
+					y: 4
+				} );
+
+			} );
+		}
+
+		$map
+		.gmap3( {
+			center: [coordinates.latitude, coordinates.longitude],
+			zoom: parseInt( coordinates.zoom ),
+			mapTypeId: style,
+			scrollwheel: false,
+			mapTypeControl: false,
+			zoomControl: true,
+			zoomControlOptions: {
+				position: google.maps.ControlPosition.LEFT_CENTER
+			},
+			scaleControl: true,
+			streetViewControl: true,
+			streetViewControlOptions: {
+				position: google.maps.ControlPosition.LEFT_CENTER
+			},
+			fullscreenControl: true
+		} )
+		.styledmaptype( "rosa", that.customStyle, {name: "Rosa"} )
+		.overlay( pins )
+	    .fit();
+
+	}
+
+};
+
+GMap.prototype.getCenterFrom = function( url ) {
+	var split = url.split( '@' )[1].split( '/' )[0].split( 'z' )[0].split( ',' ),
+		coordinates = {};
+
+	if ( 2 === split.length || 3 === split.length ) {
+		coordinates.latitude = parseFloat( split[0] );
+		coordinates.longitude = parseFloat( split[1] );
+
+		if ( 3 === split.length ) {
+			coordinates.zoom = parseFloat( split[2] );
+		}
+		return coordinates;
+	}
+
+	return false;
+};
+
+GMap.prototype.getPinsFrom = function( url ) {
+	var that = this,
+		coordinates = [],
+		pins = [];
+
+	function parseChildren( obj ) {
+		var coord = [];
+		$.each( obj.getChildren(), function( i, child ) {
+			if ( child.type() == "d" ) {
+				coord.push( child.value() );
+			}
+			parseChildren( child );
+		} );
+
+		if ( coord.length === 2 ) {
+			coordinates.push( coord );
+		}
+	}
+
+	if ( url.indexOf( 'data=' ) > - 1 ) {
+		parseChildren( new Gmdp( url ).prBufRoot );
+	}
+
+	$.each( coordinates, function( i, coord ) {
+		pins.push( {
+			position: [coord[0], coord[1]],
+			content: that.getPinMarkup( '', 'tooltip' ),
+			x: 0,
+			y: 4
+		} );
+	} );
+
+	return pins;
+};
+
+GMap.prototype.getPinMarkup = function( content, type ) {
+	type = type || 'tooltip';
+
+	if ( type === 'tooltip' ) {
+		return '<div class="map-tooltip"><div class="map-tooltip__content">' + content + '</div></div>';
+	} else {
+		return '<div class="map-pin"><div class="map-pin__text">' + content + '</div>' + this.pinIconMarkup + '</div>'
+	}
+};
+
+GMap.prototype.customStyle = [
+	{
+		"stylers": [
+			{"saturation": - 100},
+			{"gamma": 3.00},
+			{"visibility": "simplified"}
+		]
+	}, {
+		"featureType": "road",
+		"stylers": [
+			{"hue": $( "body" ).data( "color" ) ? $( "body" ).data( "color" ) : "#ffaa00"},
+			{"saturation": 48},
+			{"gamma": 0.40},
+			{"visibility": "on"}
+		]
+	}, {
+		"featureType": "administrative",
+		"stylers": [
+			{"saturation": - 30},
+			{"gamma": 0.6},
+			{"visibility": "on"}
+		]
+	}, {
+		"featureType": "administrative.neighborhood",
+		"stylers": [
+			{"visibility": "off"}
+		]
+	}
+];
 
 /* --- Royal Slider Init --- */
 
@@ -1745,9 +2071,9 @@ $( window ).load( function() {
 	magnificPopupInit();
 	initVideos();
 	resizeVideos();
-	gmapInit();
-	gmapMultiplePinsInit();
 
+	var Map = new GMap();
+	Map.init();
 
 	if ( ! empty( $( '#date-otreservations' ) ) ) {
 		var dateFormat = $( '#date-otreservations' ).closest( '.otw-wrapper' ).children( '.txtDateFormat' ).attr( 'value' ).toUpperCase();

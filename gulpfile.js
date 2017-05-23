@@ -118,11 +118,17 @@ gulp.task( 'styles-components', 'Compiles Sass and uses autoprefixer', function(
 // -----------------------------------------------------------------------------
 // Combine JavaScript files
 // -----------------------------------------------------------------------------
-gulp.task( 'scripts', 'Concatenate all JS into main.js and wrap all code in a closure', function() {
+gulp.task( 'scripts', 'Concatenate all JS into main.js and wrap all code in a closure', ['scripts-vendor'], function() {
 	return gulp.src( jsFiles )
 	           // Concatenate all our files into main.js
 	           .pipe( concat( 'main.js' ) )
 	           .pipe( gulp.dest( './assets/js/' ) );
+} );
+
+gulp.task( 'scripts-vendor', 'Concatenate all JS into main.js and wrap all code in a closure', function() {
+	return 	gulp.src('./assets/js/plugins/*.js')
+	              .pipe(concat('plugins.js'))
+	              .pipe(gulp.dest('./assets/js/'));
 } );
 
 // -----------------------------------------------------------------------------
