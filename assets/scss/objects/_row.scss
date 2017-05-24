@@ -4,10 +4,10 @@
 
 // NOT DONE
 // Set Front End classes
-$row__wrapper: '.row__wrapper';
+
 $row: '.row';
 $column__wrapper: '.column__wrapper';
-$column: '.column';
+
 $c-col-prefix: '.column';
 $c-row--stretch: '.row-style--stretch';
 $column--stretch: '.column--stretch';
@@ -17,6 +17,9 @@ $gridable-row-simple: '.row-style--simple';
 $gridable-row-strip: '.row-style--strip';
 
 // DONE
+$row__wrapper: '.pixcode--grid';
+$column: '.grid__item';
+
 // Columns
 $gridable-col-simple: '.column-style--simple';
 $gridable-col-island: '.island';
@@ -25,9 +28,8 @@ $gridable-col-boxed: '.promo-box__container';
 // Set Editor Style Data Attributes Alternatives
 @if $editor-style == true {
     // NOT DONE
-    $row__wrapper: '.row';
+    $row__wrapper: '.row.grid';
     $row: '.row';
-    $column: '.grid__item';
     $c-col-prefix: 'data-sh-column-attr-size';
     $c-row--stretch: '[data-sh-row-attr-stretch=true]';
 
@@ -38,6 +40,9 @@ $gridable-col-boxed: '.promo-box__container';
     $gridable-row-strip: '[data-sh-row-attr-row_style=strip]';
 
     // DONE
+    $row__wrapper: '.row.grid';
+    $column: '.grid__item';
+
     $gridable-col-simple: '.row .grid__item[data-sh-column-attr-column_style=simple]';
     $gridable-col-island: '.row .grid__item[data-sh-column-attr-column_style=island]';
     $gridable-col-boxed: '.row .grid__item[data-sh-column-attr-column_style=promo-box], .row .grid__item[data-sh-column-attr-class=promo-box]';
@@ -57,6 +62,31 @@ $gridable-col-boxed: '.promo-box__container';
 //      </div>
 //  </div>
 // </div>
+
+/**
+ * Grid Row
+ */
+
+
+#{$row__wrapper} {
+    position: relative;
+    margin-bottom: $_15u;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/**
+ * Grid Columns / Row Items
+ */
+#{$column} {
+
+    // Remove bottom spacing for the last element (eg. paragraph)
+    & > *:last-child {
+        margin-bottom: 0;
+    }
+}
 
 // Promo Box:
 // Dark Background
