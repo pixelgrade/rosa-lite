@@ -12,23 +12,6 @@
 add_filter( 'gridable_load_public_style', '__return_false' );
 
 /**
- * Setup Gridable Row Options
- *
- * @param $options
- * @return array
- */
-function rosa_gridable_row_options( $options ) {
-	$options['class'] = array(
-		'label'   => esc_html__( 'Class', 'rosa' ),
-		'type'    => 'text',
-		'default' => ''
-	);
-
-	return $options;
-}
-add_filter( 'gridable_row_options', 'rosa_gridable_row_options', 10, 1 );
-
-/**
  * Setup Gridable Row Classes
  *
  * @param array $classes
