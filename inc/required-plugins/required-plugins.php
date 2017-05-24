@@ -34,42 +34,47 @@ function rosa_register_required_plugins() {
 			'is_automatic'       => true
 		),
 		array(
-			'name'               => 'PixTypes',
-			'slug'               => 'pixtypes',
-			'required'           => true,
+			'name'     => 'PixTypes',
+			'slug'     => 'pixtypes',
+			'required' => true,
 		),
 		array(
-			'name'               => 'Customify',
-			'slug'               => 'customify',
-			'required'           => true,
+			'name'     => 'Customify',
+			'slug'     => 'customify',
+			'required' => true,
 		),
 		array(
-			'name'               => 'PixLikes',
-			'slug'               => 'pixlikes',
-			'version'            => '1.1.3',
-			'external_url'       => 'https://github.com/pixelgrade/pixlikes',
-			'source'             => 'https://wupdates.com/api_wupl_version/v75R3/zfj7hxx36y35qssyp1tAfyk4g5y1dl3sshkxph1cdzx74jtgjdkctlwkrx033lv1b4jx5mcs41w5wf72srsysn31ccyg6lbvg3n0yf0xnfyj3330fqpbp52wmlsmtszf',
+			'name' => 'Gridable',
+			'slug' => 'gridable',
+			'required' => true,
 		),
 		array(
-			'name'               => 'PixCodes',
-			'slug'               => 'pixcodes',
+			'name' => 'PixCodes',
+			'slug' => 'pixcodes',
 		),
 		array(
-			'name'     => 'Contact Form 7',
-			'slug'     => 'contact-form-7',
+			'name' => 'Contact Form 7',
+			'slug' => 'contact-form-7',
+		),
+		array(
+			'name'         => 'PixLikes',
+			'slug'         => 'pixlikes',
+			'version'      => '1.1.3',
+			'external_url' => 'https://github.com/pixelgrade/pixlikes',
+			'source'       => 'https://wupdates.com/api_wupl_version/v75R3/zfj7hxx36y35qssyp1tAfyk4g5y1dl3sshkxph1cdzx74jtgjdkctlwkrx033lv1b4jx5mcs41w5wf72srsysn31ccyg6lbvg3n0yf0xnfyj3330fqpbp52wmlsmtszf',
 		),
 	);
 	// Change this to your theme text domain, used for internationalising strings
 	$theme_text_domain = 'rosa';
 
 	$config = array(
-		'domain'           => $theme_text_domain, // Text domain - likely want to be the same as your theme.
-		'default_path'     => '', // Default absolute path to pre-packaged plugins
-		'menu'             => 'install-required-plugins', // Menu slug
-		'has_notices'      => true, // Show admin notices or not
-		'is_automatic'     => false, // Automatically activate plugins after installation or not
-		'message'          => '', // Message to output right before the plugins table
-		'strings'          => array(
+		'domain'       => $theme_text_domain, // Text domain - likely want to be the same as your theme.
+		'default_path' => '', // Default absolute path to pre-packaged plugins
+		'menu'         => 'install-required-plugins', // Menu slug
+		'has_notices'  => true, // Show admin notices or not
+		'is_automatic' => false, // Automatically activate plugins after installation or not
+		'message'      => '', // Message to output right before the plugins table
+		'strings'      => array(
 			'page_title'                      => __( 'Install Required Plugins', $theme_text_domain ),
 			'menu_title'                      => __( 'Install Plugins', $theme_text_domain ),
 			'installing'                      => __( 'Installing Plugin: %s', $theme_text_domain ),
