@@ -81,9 +81,18 @@ $gridable-col-boxed: '.promo-box__container';
  * Grid Columns / Row Items
  */
 #{$column} {
-
     // Remove bottom spacing for the last element (eg. paragraph)
-    & > *:last-child {
+    // above 899px when there is more than one column
+    @include media-query(lap-and-up){
+        & > *:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    // On mobile devices, when the layout is switching 
+    // to one column, remove the spacing for the last 
+    // element, only from the last column
+    &:last-child > *:last-child {
         margin-bottom: 0;
     }
 }
