@@ -147,6 +147,10 @@ function rosa_callbacks_setup_shortcodes_plugin() {
 		'RestaurantMenu',
 	);
 
+	if ( ! class_exists('Gridable' ) ) {
+		$shortcodes[] = 'Columns';
+	}
+
 	// create an array with shortcodes which are needed by the
 	// current theme
 	if ( $current_options ) {
