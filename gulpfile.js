@@ -80,7 +80,7 @@ gulp.task( 'css', 'Compiles main css files (ie. style.css editor-style.css)', fu
 	           .pipe( sourcemaps.init() )
 	           .pipe( sass().on( 'error', logError ) )
 	           .pipe( prefix() )
-	           .pipe( sourcemaps.write() )
+	           .pipe( sourcemaps.write( '.' ) )
 	           .pipe( gulp.dest( '.' ) );
 } );
 
@@ -99,7 +99,7 @@ gulp.task( 'css-process', function() {
 //	           .pipe( cmq() )
 //	           .pipe( csso() )
 	           .pipe( csscomb() )
-	           .pipe( sourcemaps.write() )
+	           .pipe( sourcemaps.write( '.' ) )
 	           .pipe( gulp.dest( '.' ) );
 } );
 
