@@ -1237,28 +1237,3 @@ function rosa_migrate_gmap_page_general_metas() {
 		}
 	}
 }
-
-
-/**
- * With the new wp 43 version we've made some big changes in customizer, so we really need a first time save
- * for the old options to work in the new customizer
- */
-function convert_rosa_for_wp_43_once() {
-	if ( ! is_admin() || ! function_exists( 'is_plugin_active' ) || ! is_plugin_active( 'customify/customify.php' ) || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
-		return;
-	}
-
-	$is_not_old = get_option( 'rosa_converted_to_43' );
-
-	$this_wp_version = get_bloginfo( 'version' );
-	$this_wp_version = explode( '.', $this_wp_version );
-	$is_wp43         = false;
-	if ( ! $is_not_old && (int) $this_wp_version[0] >= 4 && (int) $this_wp_version[1] >= 3 ) {
-		$is_wp43 = true;
-		update_option( 'rosa_converted_to_43', true );
-		header( 'Location: ' . admin_url() . 'customize.php?save_customizer_once=true' );
-		die();
-	}
-}
-
-add_action( 'admin_init', 'convert_rosa_for_wp_43_once' );
