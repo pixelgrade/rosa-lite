@@ -2175,6 +2175,7 @@ function onResize() {
 function refreshStuff() {
 	CoverAnimation.initialize();
 	ScrollToTop.initialize();
+	$window.trigger( 'rellax' );
 }
 
 
@@ -2280,10 +2281,8 @@ $( function() {
 } );
 
 $( "[data-rellax]" ).rellax();
-
 $.fn.rellax.defaults.bleed = 60;
-$.fn.rellax.defaults.reloadEvent = "ontouchstart" in window && "onorientationchange" in window ? "debouncedorientationchange" : "debouncedresize";
-
+$window.trigger( 'rellax' );
 // returns the depth of the element "e" relative to element with id=id
 // for this calculation only parents with classname = waypoint are considered
 function getLevelDepth(e, id, waypoint, cnt) {

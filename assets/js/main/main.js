@@ -468,6 +468,7 @@ function onResize() {
 function refreshStuff() {
 	CoverAnimation.initialize();
 	ScrollToTop.initialize();
+	$window.trigger( 'rellax' );
 }
 
 
@@ -573,6 +574,5 @@ $( function() {
 } );
 
 $( "[data-rellax]" ).rellax();
-
 $.fn.rellax.defaults.bleed = 60;
-$.fn.rellax.defaults.reloadEvent = "ontouchstart" in window && "onorientationchange" in window ? "debouncedorientationchange" : "debouncedresize";
+$window.trigger( 'rellax' );

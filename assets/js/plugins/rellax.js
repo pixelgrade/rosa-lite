@@ -258,7 +258,6 @@
 			});
 
 			$window.on( 'rellax', restart );
-
 		}
 
 		bindEvents();

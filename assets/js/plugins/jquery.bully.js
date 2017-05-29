@@ -1,5 +1,5 @@
 /*!
- * jQuery Bully Plugin v0.1.3
+ * jQuery Bully Plugin v0.1.4
  * Examples and documentation at http://pixelgrade.github.io/rellax/
  * Copyright (c) 2016 PixelGrade http://www.pixelgrade.com
  * Licensed under MIT http://www.opensource.org/licenses/mit-license.php/
@@ -11,6 +11,7 @@
 			windowHeight = $window.height(),
 			elements = [],
 			$bully,
+			$current,
 			lastScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0),
 			current = 0,
 			inversed = false,
@@ -19,42 +20,42 @@
 		$bully = $( '<div class="c-bully">' ).appendTo( 'body' );
 		$current = $( '<div class="c-bully__bullet c-bully__bullet--active">' ).appendTo( $bully );
 
-		(
-			function update() {
-				if ( frameRendered !== true ) {
+		function update() {
+			if ( frameRendered !== true ) {
 
-					var count = 0,
-						inverse = false;
+				var count = 0,
+					inverse = false;
 
-					$.each( elements, function( i, element ) {
-						if ( lastScrollY >= element.offset.top - windowHeight / 2 ) {
-							count = count + 1;
-							inverse = lastScrollY < element.offset.top + element.height - windowHeight / 2;
-						}
-					} );
-
-					if ( inversed !== inverse ) {
-						inversed = inverse;
-						$bully.toggleClass( 'c-bully--inversed', inversed );
+				$.each( elements, function( i, element ) {
+					if ( lastScrollY >= element.offset.top - windowHeight / 2 ) {
+						count = count + 1;
+						inverse = lastScrollY < element.offset.top + element.height - windowHeight / 2;
 					}
+				} );
 
-					if ( count !== current ) {
-						var offset = $bully.children( '.c-bully__bullet' ).not( '.c-bully__bullet--active' ).first().outerHeight( true ) * (
-								count - 1
-							);
-						$current.removeClass( 'c-bully__bullet--squash' );
-						setTimeout( function() {
-							$current.addClass( 'c-bully__bullet--squash' );
-						} );
-						$current.css( 'top', offset );
-						current = count;
-					}
+				if ( inversed !== inverse ) {
+					inversed = inverse;
+					$bully.toggleClass( 'c-bully--inversed', inversed );
 				}
 
-				window.requestAnimationFrame( update );
-				frameRendered = true;
+				if ( count !== current ) {
+					var offset = $bully.children( '.c-bully__bullet' ).not( '.c-bully__bullet--active' ).first().outerHeight( true ) * (
+							count - 1
+						);
+					$current.removeClass( 'c-bully__bullet--squash' );
+					setTimeout( function() {
+						$current.addClass( 'c-bully__bullet--squash' );
+					} );
+					$current.css( 'top', offset );
+					current = count;
+				}
 			}
-		)();
+
+			window.requestAnimationFrame( update );
+			frameRendered = true;
+		}
+
+		update();
 
 		function reloadAll() {
 			$.each( elements, function( i, element ) {
@@ -112,32 +113,47 @@
 			current = 0;
 		}
 
-		Bully.prototype = {
-			constructor: Bully,
-			_reloadElement: function() {
-				this.offset = $( this.element ).offset();
-				this.height = $( this.element ).outerHeight();
-			},
-			onClick: function() {
+		Bully.prototype.constructor = Bully;
 
-				var self = this,
-					$target = $( 'html, body' );
+		Bully.prototype._reloadElement = function() {
+			// for some strange reason Customizer reload makes jQuery's .offset() to fail
+			var self = this,
+				box = {
+					top: 0,
+					left: 0
+				};
 
-				if ( self.options.scrollDuration == 0 ) {
-					$target.scrollTop( self.offset.top );
-					return;
-				}
-
-				if ( self.options.scrollDuration === 'auto' ) {
-					var duration = Math.abs( lastScrollY - self.offset.top ) / (
-					               self.options.scrollPerSecond / 1000
-						);
-					$target.animate( {scrollTop: self.offset.top}, duration );
-					return;
-				}
-
-				$target.animate( {scrollTop: self.offset.top}, self.options.scrollDuration );
+			// quickfix: replicate .offset() logic here
+			if ( typeof self.element.getBoundingClientRect !== "undefined" ) {
+				box = self.element.getBoundingClientRect();
 			}
+
+			self.offset = {
+				top: box.top + (window.pageYOffset || self.element.scrollTop) - (self.element.clientTop || 0),
+				left: box.left + (window.pageXOffset || self.element.scrollLeft) - (self.element.clientLeft || 0)
+			};
+			self.height = $( self.element ).outerHeight();
+		};
+
+		Bully.prototype.onClick = function() {
+
+			var self = this,
+				$target = $( 'html, body' );
+
+			if ( self.options.scrollDuration == 0 ) {
+				$target.scrollTop( self.offset.top );
+				return;
+			}
+
+			if ( self.options.scrollDuration === 'auto' ) {
+				var duration = Math.abs( lastScrollY - self.offset.top ) / (
+				               self.options.scrollPerSecond / 1000
+					);
+				$target.animate( {scrollTop: self.offset.top}, duration );
+				return;
+			}
+
+			$target.animate( {scrollTop: self.offset.top}, self.options.scrollDuration );
 		};
 
 		$.fn.bully = function( options ) {

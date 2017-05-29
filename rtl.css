@@ -9715,7 +9715,9 @@ div.mfp-title {
 
 .c-bully__bullet--pop {
   opacity: 1;
-  transition: opacity .2s .2s ease-out;
+  transition-property: opacity, -webkit-transform;
+  transition-property: opacity, transform;
+  transition-property: opacity, transform, -webkit-transform;
   -webkit-animation: bully-pop 0.6s cubic-bezier(0.485, 1.63, 0.43, 2) forwards;
           animation: bully-pop 0.6s cubic-bezier(0.485, 1.63, 0.43, 2) forwards; }
 
