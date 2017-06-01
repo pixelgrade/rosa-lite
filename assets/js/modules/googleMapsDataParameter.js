@@ -43,7 +43,9 @@ var Node = function( val ) {
 	 * Removes all the children of this node.
 	 */
 	this.removeChildren = function() {
-		for ( child of this.children ) {
+		var child;
+		for ( var i = 0; i < this.children.length; i++ ) {
+			child = this.children[i];
 			child.parent = null;
 		}
 		this.children = [];
@@ -54,8 +56,10 @@ var Node = function( val ) {
 	 * returns the total number.
 	 */
 	this.getTotalDescendantCount = function() {
-		var count = 0;
-		for ( child of this.children ) {
+		var count = 0,
+			child;
+		for ( var i = 0; i < this.children.length; i++ ) {
+			child = this.children[i];
 			count += child.getTotalDescendantCount();
 		}
 		return count + this.children.length;
@@ -67,7 +71,11 @@ var Node = function( val ) {
  * while specifically typing the stored value
  */
 var PrBufNode = function( id, type, value ) {
-	this.val = {id, type, value}
+	this.val = {
+		id: id,
+		type: type,
+		value: value
+	};
 	this.children = [];
 	this.parent = null;
 }
@@ -321,8 +329,11 @@ var Gmdp = function( url ) {
 	//the main top node for routes is 4m; other urls (eg. streetview) feature 3m etc.
 	var routeTop = null;
 	var streetviewTop = null;
+	var rootChildren = this.prBufRoot.getChildren(),
+		child;
 
-	for ( var child of this.prBufRoot.getChildren() ) {
+	for ( var i = 0; i < rootChildren.length; i++ ) {
+		child = rootChildren[i];
 		if ( child.id() == 3 && child.type() == 'm' ) {
 			var mapTypeChildren = child.getChildren();
 			if ( mapTypeChildren && mapTypeChildren.length >= 1 ) {
@@ -343,8 +354,11 @@ var Gmdp = function( url ) {
 		}
 	}
 	if ( routeTop ) {
-		var directions = null;
-		for ( var child of routeTop.getChildren() ) {
+		var directions = null,
+			routeChildren = routeTop.getChildren();
+
+		for ( var i = 0; i < routeChildren.length; i++ ) {
+			child = routeChildren[i];
 			if ( child.id() == 4 && child.type() == 'm' ) {
 				directions = child;
 			}
@@ -357,15 +371,20 @@ var Gmdp = function( url ) {
 			this.route.avoidFerries = false;
 			this.route.transitModePref = [];
 
-			for ( primaryChild of directions.getChildren() ) {
+			var directionsChildren = directions.getChildren();
+
+			for ( var i = 0; i < directionsChildren.length; i++ ) {
+				child = directionsChildren[i];
 				if ( primaryChild.id() == 1 && primaryChild.type() == 'm' ) {
 					if ( primaryChild.value() == 0 ) {
 						this.route.pushWaypoint( new GmdpWaypoint( undefined, undefined, true ) );
 					}
 					else {
 						var addedPrimaryWpt = false;
-						var wptNodes = primaryChild.getChildren();
-						for ( wptNode of wptNodes ) {
+						var wptNodes = primaryChild.getChildren(),
+							wptNode;
+						for ( var i = 0; i < wptNodes.length; i++ ) {
+							wptNode = wptNodes[i];
 							if ( wptNode.id() == 2 ) {
 								//this is the primary wpt, add coords
 								var coordNodes = wptNode.getChildren();
@@ -412,8 +431,11 @@ var Gmdp = function( url ) {
 						}
 					}
 				} else if ( primaryChild.id() == 2 && primaryChild.type() == 'm' ) {
-					var routeOptions = primaryChild.getChildren();
-					for ( routeOption of routeOptions ) {
+					var routeOptions = primaryChild.getChildren(),
+						routeOption;
+					for ( var i = 0; i < routeOptions.length; i++ ) {
+						routeOption = routeOptions[i];
+
 						if ( routeOption.id() == 1 && routeOption.type() == 'b' ) {
 							this.route.avoidHighways = true;
 						}
@@ -445,11 +467,15 @@ var Gmdp = function( url ) {
 		}
 	}
 	if ( streetviewTop ) {
-		var streetviewChildren = streetviewTop.getChildren();
-		for ( streetviewChild of streetviewChildren ) {
+		var streetviewChildren = streetviewTop.getChildren(),
+			streetviewChild;
+		for ( var i = 0; i < streetviewChildren.length; i++ ) {
+			streetviewChild = streetviewChildren[i];
 			if ( streetviewChild.id() == 3 && streetviewChild.type() == 'm' ) {
-				var svInfos = streetviewChild.getChildren();
-				for ( svInfo of svInfos ) {
+				var svInfos = streetviewChild.getChildren(),
+					svInfo;
+				for ( var i = 0; i < svInfos.length; i++ ) {
+					svInfo = svInfos[i];
 					if ( svInfo.id() == 2 && svInfo.type() == 'e' ) {
 						if ( svInfo.value() == 4 ) {
 							//!2e4!3e11 indicates a photosphere, rather than standard streetview
