@@ -305,7 +305,7 @@ function rosa_overwrite_gallery_atts( $out, $pairs, $atts ) {
 	//if we need to make a slideshow then output full size images
 	if ( isset( $atts['mkslideshow'] ) && $atts['mkslideshow'] == true ) {
 		$out['size'] = 'full-size';
-	} elseif ( isset( $atts['columns'] ) ) { //else smaller images depending on no. of columns
+	} elseif ( isset( $atts['columns'] ) && ( ! isset( $atts['size'] ) || 'thumbnail' === $atts['size'] ) ) { //else try and use a decent size image if the user has left the default image size (i.e. thumbnail)
 		switch ( $atts['columns'] ) {
 			case '1':
 				$out['size'] = 'large';
@@ -318,9 +318,7 @@ function rosa_overwrite_gallery_atts( $out, $pairs, $atts ) {
 
 	return $out;
 }
-
 add_filter( 'shortcode_atts_gallery', 'rosa_overwrite_gallery_atts', 10, 3 );
-
 
 /*
 * We would like to GetToKnowYourWorkBetter
