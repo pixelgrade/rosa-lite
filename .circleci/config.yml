@@ -20,7 +20,7 @@ jobs:
       only:
         - circle2
     steps:
-#      - checkout
+      - checkout
       - run:
           name: Add domain
           command: echo 127.0.0.1 rosa.dev | tee -a /etc/hosts
