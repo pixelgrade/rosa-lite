@@ -61,15 +61,7 @@ workflows:
   build_test_and_deploy:
     jobs:
       - build
-      - run_mysql:
-          requires:
-            - build
-      - install_wp:
-          requires:
-            - run_mysql
-      - run_phpunit:
-          requires:
-            - install_wp
-      - deployment:
-          requires:
-            - run_phpunit
+      - run_mysql
+      - install_wp
+      - run_phpunit
+      - deployment
