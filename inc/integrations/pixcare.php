@@ -12,12 +12,12 @@
  */
 function rosa_force_redirect_to_pixcare_install_once() {
 	$plugin_version = get_option( 'pixelgrade_care_version' );
-	$plugin_files   = get_plugin_files( 'pixelgrade-care/pixelgrade-care.php' );
-	if ( ! function_exists( 'get_plugin_files' ) ) {
-		require_once ABSPATH . 'wp-admin/includes/plugin.php';
-	}
+//	$plugin_files   = get_plugin_files( 'pixelgrade-care/pixelgrade-care.php' );
+//	if ( ! function_exists( 'get_plugin_files' ) ) {
+//		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+//	}
 
-	if ( class_exists( 'PixelgradeCare' ) || count( $plugin_files ) > 1 ) {
+	if ( class_exists( 'PixelgradeCare' ) ) {
 		return;
 	}
 
