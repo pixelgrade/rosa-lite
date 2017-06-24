@@ -1,10 +1,24 @@
 <?php
 
-class PluginName_Sample extends WP_UnitTestCase
-{
+class ThemeUnitTests extends WP_UnitTestCase {
 
-    function test_get_option_allow_data_success()
-    {
-        $this->assertEquals(true, '1');
-    }
+	function test_dummy_check() {
+		$this->assertEquals( true, '1' );
+	}
+
+	/**
+	 * Ensure the active Theme is Rosa
+	 */
+	function test_theme_name(){
+		$theme = wp_get_theme();
+
+		$theme_template = get_option( 'current_theme' );
+
+		$this->assertEquals( $theme_template, 'Rosa' );
+
+		$this->assertEquals( $theme->stylesheet, 'rosa' );
+
+		$this->assertEquals( $theme->template, 'rosa' );
+	}
 }
+

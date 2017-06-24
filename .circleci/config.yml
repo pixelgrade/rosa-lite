@@ -18,7 +18,8 @@ jobs:
         ports: 3306:3306
     branches:
       only:
-        - circle2
+        - test
+        - master
     steps:
       - checkout
       - run:
