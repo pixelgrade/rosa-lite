@@ -44,8 +44,8 @@ jobs:
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "test" ]; then
-              sh ./deploy_test.sh
+              sh ./.circleci/deploy_test.sh
             fi
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              sh ./deploy_production.sh
+              sh ./.circleci/deploy_production.sh
             fi
