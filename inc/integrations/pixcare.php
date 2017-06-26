@@ -12,8 +12,8 @@
  */
 function rosa_force_redirect_to_pixcare_install_once() {
 	$plugin_version = get_option( 'pixelgrade_care_version' );
-	$plugin_files   = get_plugin_files( 'pixelgrade-care/pixelgrade-care.php' );
-	if ( class_exists( 'PixelgradeCare' ) || count( $plugin_files ) > 1 ) {
+
+	if ( class_exists( 'PixelgradeCare' ) || ! file_exists( WP_PLUGIN_DIR . '/pixelgrade-care/pixelgrade-care.php' ) ) {
 		return;
 	}
 
