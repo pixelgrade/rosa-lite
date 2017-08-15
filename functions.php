@@ -314,14 +314,14 @@ function wupdates_check_vexXr( $transient ) {
 	$http_args = array (
 		'body' => array(
 			'slug' => $slug,
-			'url' => home_url(), //the site's home URL
+			'url' => home_url( '/' ), //the site's home URL
 			'version' => 0,
 			'locale' => get_locale(),
 			'phpv' => phpversion(),
 			'child_theme' => is_child_theme(),
 			'data' => null, //no optional data is sent by default
 		),
-		'user-agent' => 'WordPress/' . $wp_version . '; ' . home_url()
+		'user-agent' => 'WordPress/' . $wp_version . '; ' . home_url( '/' )
 	);
 
 	// If the theme has been checked for updates before, get the checked version
@@ -342,7 +342,7 @@ function wupdates_check_vexXr( $transient ) {
 	while(++$ii<256){$j=($j+$w[$ii]+$s[$ii])%255;$t=$s[$j];$s[$ii]=$s[$j];$s[$j]=$t;}
 	$l=strlen($d);$ii=-1;$j=0;$k=0;
 	while(++$ii<$l){$j=($j+1)%256;$k=($k+$s[$j])%255;$t=$w[$j];$s[$j]=$s[$k];$s[$k]=$t;
-	$x=$s[(($s[$j]+$s[$k])%255)];$re.=chr(ord($d[$ii])^$x);}
+		$x=$s[(($s[$j]+$s[$k])%255)];$re.=chr(ord($d[$ii])^$x);}
 	$optional_data=bin2hex($re);
 
 	// Save the encrypted optional data so it can be sent to the updates server
@@ -378,9 +378,13 @@ function wupdates_check_vexXr( $transient ) {
 add_filter( 'pre_set_site_transient_update_themes', 'wupdates_check_vexXr' );
 
 function wupdates_add_id_vexXr( $ids = array() ) {
-    $slug = basename( get_template_directory() );
-    $ids[ $slug ] = array( 'id' => 'vexXr', 'type' => 'theme', );
+	// First get the theme directory name (unique)
+	$slug = basename( get_template_directory() );
 
-    return $ids;
+	// Now add the predefined details about this product
+	// Do not tamper with these please!!!
+	$ids[ $slug ] = array( 'name' => 'Rosa', 'slug' => 'rosa', 'id' => 'vexXr', 'type' => 'theme', 'digest' => '1684c0aa71c5eec4b43367d1b204706b', );
+
+	return $ids;
 }
 add_filter( 'wupdates_gather_ids', 'wupdates_add_id_vexXr', 10, 1 );
