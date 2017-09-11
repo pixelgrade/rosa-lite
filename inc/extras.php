@@ -11,6 +11,8 @@
 function rosa_get_current_canonical_url() {
 	global $wp_query;
 
+	$link = false;
+
 	if ( $wp_query->is_404 || $wp_query->is_search ) {
 		return false;
 	}
@@ -135,20 +137,19 @@ function wpgrade_callback_geting_active() {
 	 */
 	delete_option( 'rewrite_rules' );
 }
-
-add_action( 'init', 'wpgrade_callback_geting_active' );
+add_action( 'after_switch_theme', 'wpgrade_callback_geting_active', 99999 );
 
 // Start password protected stuff
-add_action( 'wp', 'rosa_prepare_password_for_custom_post_types' );
 function rosa_prepare_password_for_custom_post_types() {
 
 	global $wpgrade_private_post;
 	$wpgrade_private_post = rosa_is_password_protected();
 }
+add_action( 'wp', 'rosa_prepare_password_for_custom_post_types' );
 
 /**
  * Checks if a post type object needs password aproval
- * @return if the form was submited it returns an array with the success status and a message
+ * @return array If the form was submited it returns an array with the success status and a message
  */
 function rosa_is_password_protected() {
 	global $post;
