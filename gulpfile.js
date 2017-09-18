@@ -115,6 +115,13 @@ gulp.task( 'styles-components', 'Compiles Sass and uses autoprefixer', function(
 	           .pipe( gulp.dest( './components' ) );
 } );
 
+gulp.task( 'remove-sourcemaps', function () {
+	gulp.src( '*.css' )
+	    .pipe( sourcemaps.init( {loadMaps: true} ) )
+	    .pipe( sourcemaps.write( '/dev/null', {addComment: false} ) )
+	    .pipe( gulp.dest( '.' ) );
+});
+
 // -----------------------------------------------------------------------------
 // Combine JavaScript files
 // -----------------------------------------------------------------------------
@@ -213,7 +220,7 @@ gulp.task( 'string-replace', ['copy-folder'], function() {
 /**
  * Remove unneeded files and folders from the build folder
  */
-gulp.task( 'build', 'Remove unneeded files and folders from the build folder', ['string-replace'], function() {
+gulp.task( 'build', 'Remove unneeded files and folders from the build folder', ['string-replace', 'remove-sourcemaps'], function() {
 
 	// files that should not be present in build
 	files_to_remove = [
