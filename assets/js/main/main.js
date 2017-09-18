@@ -11,6 +11,14 @@ var $body = $( 'body' ),
 	orientation = getOrientation(),
 	isTouch = ! ! ( ( "ontouchstart" in window ) || window.DocumentTouch && document instanceof DocumentTouch );
 
+var $target = $( window.location.hash ).filter( '.article--page' );
+
+if ( $target.length ) {
+	requestAnimationFrame( function() {
+		window.scrollTo( 0, $target.offset().top - $( '.site-header' ).height() );
+	} );
+}
+
 function niceScrollInit() {
 	if ( globalDebug ) {
 		console.log( "NiceScroll Init" );
@@ -63,7 +71,7 @@ function niceScrollInit() {
 
 function smoothScrollTo( y, speed ) {
 
-	speed = typeof speed == "undefined" ? 1 : speed;
+	speed = typeof speed === "undefined" ? 1 : speed;
 
 	var distance = Math.abs( latestKnownScrollY - y ),
 		time = speed * distance / 2000;
@@ -142,13 +150,7 @@ function init() {
 	// /* GLOBAL VARS */
 	touch = false;
 
-	if ( typeof (
-			isIe
-		) != 'undefined' || (
-		     ! (
-			     window.ActiveXObject
-		     ) && "ActiveXObject" in window
-	     ) ) {
+	if ( typeof ( isIe ) !== 'undefined' || ( ! ( window.ActiveXObject ) && "ActiveXObject" in window ) ) {
 		$( 'html' ).addClass( 'is--ie' );
 	}
 

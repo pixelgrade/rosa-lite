@@ -37,6 +37,4 @@
 		if (is_android) $('html').addClass('is--ancient-android');
 		if (safari) $bod.addClass('safari');
 		if (phone) $bod.addClass('phone');
-
-
 	}
