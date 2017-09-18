@@ -4564,7 +4564,7 @@
 }));
 
 /*!
- * jQuery Rellax Plugin v0.3.6.2
+ * jQuery Rellax Plugin v0.3.7.1
  * Examples and documentation at http://pixelgrade.github.io/rellax/
  * Copyright (c) 2016 PixelGrade http://www.pixelgrade.com
  * Licensed under MIT http://www.opensource.org/licenses/mit-license.php/
@@ -4597,6 +4597,12 @@
 			if ( this.options.amount == 0 ) {
 				return;
 			}
+
+			this._setParentHeight();
+			this._resetElement();
+			this._reloadElement();
+			this._prepareElement();
+			this._updatePosition();
 
 			elements.push( this );
 		}
@@ -4723,7 +4729,10 @@
 				} else {
 					if ( options === "destroy" ) {
 						idx = elements.indexOf( element );
-						if ( idx > -1 ) {
+						if ( idx > - 1 ) {
+							elements[idx]._resetElement();
+							elements[idx].$el.removeClass( 'rellax-element rellax-hidden' );
+							$.removeData( this, "plugin_" + Rellax );
 							elements.splice( idx, 1 );
 						}
 					}
@@ -4811,7 +4820,7 @@
 		}
 
 		function bindEvents() {
-			var restart = debounce( badRestart, 300, true );
+			var restart = debounce( badRestart, 300 );
 
 			$( document ).ready( render );
 
