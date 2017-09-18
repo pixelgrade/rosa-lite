@@ -1292,18 +1292,18 @@ function sliderInit( $slider ) {
 		rs_slidesSpacing = typeof $slider.data( 'slidesspacing' ) !== "undefined" ? parseInt( $slider.data( 'slidesspacing' ) ) : 0,
 		rs_keyboardNav = typeof $slider.data( 'fullscreen' ) !== "undefined",
 		rs_imageScale = $slider.data( 'imagescale' ),
-		rs_visibleNearby = typeof $slider.data( 'visiblenearby' ) !== "undefined" ? true : false,
+		rs_visibleNearby = typeof $slider.data( 'visiblenearby' ) !== "undefined",
 		rs_imageAlignCenter = typeof $slider.data( 'imagealigncenter' ) !== "undefined",
-		rs_transition = typeof $slider.data( 'slidertransition' ) !== "undefined" && $slider.data( 'slidertransition' ) != '' ? $slider.data( 'slidertransition' ) : 'move',
-		rs_autoPlay = typeof $slider.data( 'sliderautoplay' ) !== "undefined" ? true : false,
-		rs_delay = typeof $slider.data( 'sliderdelay' ) !== "undefined" && $slider.data( 'sliderdelay' ) != '' ? $slider.data( 'sliderdelay' ) : '1000',
+		rs_transition = typeof $slider.data( 'slidertransition' ) !== "undefined" && $slider.data( 'slidertransition' ) !== '' ? $slider.data( 'slidertransition' ) : 'move',
+		rs_autoPlay = typeof $slider.data( 'sliderautoplay' ) !== "undefined",
+		rs_delay = typeof $slider.data( 'sliderdelay' ) !== "undefined" && $slider.data( 'sliderdelay' ) !== '' ? $slider.data( 'sliderdelay' ) : '1000',
 		rs_drag = true,
-		rs_globalCaption = typeof $slider.data( 'showcaptions' ) !== "undefined" ? true : false,
-		is_headerSlider = $slider.hasClass( 'header--slideshow' ) ? true : false,
+		rs_globalCaption = typeof $slider.data( 'showcaptions' ) !== "undefined",
+		is_headerSlider = $slider.hasClass( 'header--slideshow' ),
 		hoverArrows = typeof $slider.data( 'hoverarrows' ) !== "undefined";
 
 	// Single slide case
-	if ( $children.length == 1 ) {
+	if ( $children.length === 1 ) {
 		rs_arrows = false;
 		rs_bullets = 'none';
 		rs_customArrows = false;
@@ -1362,7 +1362,7 @@ function sliderInit( $slider ) {
 	var royalSlider = $slider.data( 'royalSlider' );
 	var slidesNumber = royalSlider.numSlides;
 
-	royalSlider.ev.on( 'rsBeforeAnimStart rsAfterSlideChange rsAfterContentSet', function ( event ) {
+	royalSlider.ev.on( 'rsAfterSlideChange rsAfterContentSet', function ( event ) {
 		$( window ).trigger( 'rellax' );
 	});
 
@@ -1388,7 +1388,7 @@ function sliderInit( $slider ) {
 			'</div>'
 		);
 
-		if ( $slider.data( 'customarrows' ) == "left" ) {
+		if ( $slider.data( 'customarrows' ) === "left" ) {
 			$gallery_control.addClass( 'gallery-control--left' );
 		}
 
@@ -1410,7 +1410,7 @@ function sliderInit( $slider ) {
 
 	}
 
-	if ( slidesNumber == 1 ) {
+	if ( slidesNumber === 1 ) {
 		$slider.addClass( 'single-slide' );
 	}
 
