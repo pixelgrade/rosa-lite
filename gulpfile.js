@@ -27,7 +27,6 @@ var concat = require( 'gulp-concat' );
 var bs = require( 'browser-sync' );
 var jsonToSass = require( 'gulp-json-to-sass-map' );
 var rtlcss = require( 'gulp-rtlcss' );
-var cmq = require( 'gulp-combine-media-queries' );
 var csscomb = require( 'gulp-csscomb' );
 
 var jsFiles = [
