@@ -1,5 +1,5 @@
 /*!
- *  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 
@@ -15,13 +15,15 @@
 @import "rotated-flipped";
 @import "stacked";
 @import "icons";
+@import "screen-reader";
+
 
 [class^='icon-'],
 [class*=' icon-'] {
-	font-family: FontAwesome;
-	font-weight: normal;
-	font-style: normal;
-	text-decoration: inherit;
-	-webkit-font-smoothing: antialiased;
-	*margin-right: .3em;
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: inherit;
+    -webkit-font-smoothing: antialiased;
+    *margin-right: .3em;
 }
