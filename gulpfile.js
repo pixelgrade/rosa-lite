@@ -115,7 +115,7 @@ gulp.task( 'styles-components', 'Compiles Sass and uses autoprefixer', function(
 } );
 
 gulp.task( 'remove-sourcemaps', function () {
-	gulp.src( '*.css' )
+	gulp.src( ['*.css', 'assets/**/*.css'] )
 	    .pipe( sourcemaps.init( {loadMaps: true} ) )
 	    .pipe( sourcemaps.write( '/dev/null', {addComment: false} ) )
 	    .pipe( gulp.dest( '.' ) );
