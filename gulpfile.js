@@ -197,7 +197,7 @@ gulp.task( 'bs', 'Main development task:', ['styles', 'scripts', 'browser-sync',
 // -----------------------------------------------------------------------------
 // Copy theme folder outside in a build folder, recreate styles before that
 // -----------------------------------------------------------------------------
-gulp.task( 'copy-folder', 'Copy theme production files to a build folder', function() {
+gulp.task( 'copy-folder', 'Copy theme production files to a build folder', ['remove-sourcemaps'], function() {
 	return gulp.src( './' )
 	           .pipe( exec( 'rm -Rf ./../build; mkdir -p ./../build/' + theme + '; rsync -av --exclude="node_modules" ./* ./../build/' + theme + '/', {
 		           silent: true,
@@ -208,7 +208,7 @@ gulp.task( 'copy-folder', 'Copy theme production files to a build folder', funct
 /**
  * Replace strings in components to match the theme's - like textdomain, styles prefix, etc
  */
-gulp.task( 'string-replace', ['remove-sourcemaps', 'copy-folder'], function() {
+gulp.task( 'string-replace', ['copy-folder'], function() {
 	return gulp.src( '../build/' + theme + '/components/**/*.php' )
 	           .pipe( replace( /['|"]components['|"]/g, '\'' + theme_txtdomain + '\'' ) ) // the text domain
 	           .pipe( replace( /style\( ?'pixelgrade/g, 'style\( \'' + theme ) ) //the style registering and enqueue
