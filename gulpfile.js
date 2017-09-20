@@ -208,7 +208,7 @@ gulp.task( 'copy-folder', 'Copy theme production files to a build folder', funct
 /**
  * Replace strings in components to match the theme's - like textdomain, styles prefix, etc
  */
-gulp.task( 'string-replace', ['copy-folder'], function() {
+gulp.task( 'string-replace', ['remove-sourcemaps', 'copy-folder'], function() {
 	return gulp.src( '../build/' + theme + '/components/**/*.php' )
 	           .pipe( replace( /['|"]components['|"]/g, '\'' + theme_txtdomain + '\'' ) ) // the text domain
 	           .pipe( replace( /style\( ?'pixelgrade/g, 'style\( \'' + theme ) ) //the style registering and enqueue
@@ -219,7 +219,7 @@ gulp.task( 'string-replace', ['copy-folder'], function() {
 /**
  * Remove unneeded files and folders from the build folder
  */
-gulp.task( 'build', 'Remove unneeded files and folders from the build folder', ['string-replace', 'remove-sourcemaps'], function() {
+gulp.task( 'build', 'Remove unneeded files and folders from the build folder', ['string-replace'], function() {
 
 	// files that should not be present in build
 	files_to_remove = [
