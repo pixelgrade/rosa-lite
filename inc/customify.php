@@ -680,17 +680,13 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'default' => '#ffffff',
 						'css'     => array(
 							array(
-								'property'        => 'background-color',
-								'selector'        => '.up-link, .menu-list__item-title .item_title, .menu-list__item-price, .desc__content',
-								'callback_filter' => 'rosa_background_menu_transparent',
-							),
-							array(
 								'property' => 'border-color',
 								'selector' => '.site-header, .site-footer'
 							),
 							array(
 								'property' => 'background-color',
-								'selector' => 'html, .page .article__content',
+								'selector' => 'html, .page .article__content, .up-link, .menu-list__item-title .item_title, 
+								.menu-list__item-price, .desc__content',
 							)
 						)
 					),
@@ -1060,14 +1056,6 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 	}
 }
 add_filter( 'customify_filter_fields', 'add_customify_rosa_options', 11 );
-
-function rosa_background_menu_transparent( $value, $selector, $property, $unit ) {
-
-	$output = $selector . '{
-		' . $property . ': ' . 'transparent' . '' . $unit . ";\n" . "}\n";
-
-	return $output;
-}
 
 function rosa_range_negative_value( $value, $selector, $property, $unit ) {
 
