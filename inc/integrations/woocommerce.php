@@ -23,7 +23,7 @@ function rosa_callback_load_woocommerce_assets() {
 	}
 
 	$theme = wp_get_theme();
-	wp_enqueue_style( 'rosa-woocommerce', get_template_directory_uri() . '/assets/css/woocommerce.css', array( 'woocommerce-general' ), $theme->get( 'Version' ) );
+	wp_enqueue_style( 'rosa-woocommerce', get_template_directory_uri() . '/woocommerce.css', array( 'woocommerce-general' ), $theme->get( 'Version' ) );
 }
 
 add_action( 'wp_enqueue_scripts', 'rosa_callback_load_woocommerce_assets', 1 );

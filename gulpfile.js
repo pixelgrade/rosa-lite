@@ -77,7 +77,7 @@ gulp.task( 'css', 'Compiles main css files (ie. style.css editor-style.css)', fu
 
 	return gulp.src( 'assets/scss/*.scss' )
 	           .pipe( sourcemaps.init() )
-	           .pipe( sass().on( 'error', logError ) )
+	           .pipe( sass( {outputStyle: 'expanded'} ).on( 'error', logError ) )
 	           .pipe( prefix() )
 	           .pipe( sourcemaps.write( '.' ) )
 	           .pipe( gulp.dest( '.' ) );

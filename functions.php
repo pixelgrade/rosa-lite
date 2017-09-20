@@ -148,7 +148,7 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 		}
 
 		if ( is_404() ) {
-			wp_enqueue_style( 'rosa-404-style', get_template_directory_uri() . '/assets/css/404.css', array(), time(), 'all' );
+			wp_enqueue_style( 'rosa-404-style', get_template_directory_uri() . '/404.css', array(), time(), 'all' );
 		}
 
 		if ( ! class_exists( 'PixCustomifyPlugin' ) ) {
