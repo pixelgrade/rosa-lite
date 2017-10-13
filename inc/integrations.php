@@ -10,6 +10,10 @@
  */
 require get_template_directory() . '/inc/integrations/pixcare.php';
 
+/**
+ * Load Starter Content compatibility file.
+ */
+require get_template_directory() . '/inc/integrations/pixcare_starter_content.php';
 
 /**
  * Load WooCommerce compatibility file.
