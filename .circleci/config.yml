@@ -3,23 +3,18 @@ jobs:
   build:
     working_directory: /tmp/wordpress/wp-content/themes/rosa
     docker:
-      - image: andreilupu/wptrunk
+      - image: pixelgrade/wptrunk
         environment:
           WORDPRESS_DB_HOST: 127.0.0.1
         ports:
           - 8080:80
           - 3306:3306
-#      - image: phpunit/phpunit
       - image: mysql:5.7
         environment:
           MYSQL_ROOT_HOST: "%"
           MYSQL_DATABASE: wordpress
           MYSQL_ROOT_PASSWORD: mypass
         ports: 3306:3306
-    branches:
-      only:
-        - test
-        - master
     steps:
       - checkout
       - run:
@@ -49,3 +44,15 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               sh ./.circleci/deploy_production.sh
             fi
+
+workflows:
+  version: 2
+  test-and-deploy:
+    jobs:
+      - build:
+          context: org-global
+          filters:
+            branches:
+              only:
+                - test
+                - master
