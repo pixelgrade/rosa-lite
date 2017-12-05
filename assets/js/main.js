@@ -205,11 +205,11 @@ var CoverAnimation = {
 
             var animatedInTime      = timeline.getLabelTime("animatedIn"),
                 animatedOutTime     = timeline.getLabelTime("animatedOut"),
-                start               = headerTop + headerHeight / 2 - wh / 2,
+                start               = headerTop + headerHeight / 2 - windowHeight / 2,
                 end                 = start + headerHeight / 2,
                 ab, bc;
 
-            if (i == 0) {
+            if (i === 0) {
                 start = headerTop;
                 end = start + windowHeight / 2;
             }
