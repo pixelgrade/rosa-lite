@@ -322,30 +322,6 @@ function rosa_overwrite_gallery_atts( $out, $pairs, $atts ) {
 add_filter( 'shortcode_atts_gallery', 'rosa_overwrite_gallery_atts', 10, 3 );
 
 /*
-* We would like to GetToKnowYourWorkBetter
-*
-* Invoked by rosa_callback_themesetup
-*/
-function rosa_callback_gtkywb() {
-	$themedata = wpgrade::themedata();
-
-	$response = wp_remote_post( REQUEST_PROTOCOL . '//pixelgrade.com/stats', array(
-		'method' => 'POST',
-		'body'   => array(
-			'send_stats'    => true,
-			'theme_name'    => 'rosa',
-			'theme_version' => $themedata->get( 'Version' ),
-			'domain'        => $_SERVER['HTTP_HOST'],
-			'permalink'     => get_permalink( 1 ),
-			'is_child'      => is_child_theme(),
-		)
-	) );
-}
-
-// some info
-add_action( 'after_switch_theme', 'rosa_callback_gtkywb' );
-
-/*
  * Add custom filter for gallery shortcode output
  */
 function rosa_custom_post_gallery( $output, $attr ) {
@@ -995,7 +971,11 @@ function rosa_get_first_gallery_image_src( $post_ID, $image_size ) {
 	}
 }
 
-//fix the sticky posts logic by preventing them to appear again
+/**
+ * Fix the sticky posts logic by preventing them to appear again
+ * 
+ * @param WP_Query $query
+ */
 function rosa_pre_get_posts_sticky_posts( $query ) {
 
 	// Do nothing if not home or not main query.
@@ -1026,9 +1006,7 @@ function rosa_pre_get_posts_sticky_posts( $query ) {
 	}
 
 	$query->set( 'post__not_in', $sticky );
-
 }
-
 add_action( 'pre_get_posts', 'rosa_pre_get_posts_sticky_posts' );
 
 /**
@@ -1053,7 +1031,6 @@ function rosa_post_classes( $classes ) {
 
 	return $classes;
 }
-
 add_filter( 'post_class', 'rosa_post_classes' );
 
 
@@ -1156,7 +1133,6 @@ function rosa_subpages_admin_bar_edit_links_frontend( $wp_admin_bar ) {
 		}
 	}
 }
-
 add_action( 'admin_bar_menu', 'rosa_subpages_admin_bar_edit_links_frontend', 999 );
 
 /**
@@ -1296,8 +1272,6 @@ function rosa_get_attachment_image( $id, $size = null ) {
 
 /*=========== SANITIZE UPLOADED FILE NAMES ==========*/
 
-add_filter( 'sanitize_file_name', 'rosa_sanitize_file_name', 10 );
-
 /**
  * Clean up uploaded file names
  * @author toscho
@@ -1311,6 +1285,7 @@ function rosa_sanitize_file_name( $filename ) {
 
 	return $filename;
 }
+add_filter( 'sanitize_file_name', 'rosa_sanitize_file_name', 10 );
 
 function rosa_lower_ascii( $str ) {
 	$str   = strtolower( $str );
