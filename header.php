@@ -169,7 +169,7 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 							<ul class="nav  nav--main  nav--woocommerce">
 								<li class="shop-menu-item  menu-item-has-children">
 									<div class="widget_shopping_cart_content">
-										<a class="cart-icon-link" href="<?php echo $woocommerce->cart->get_cart_url(); ?>">
+										<a class="cart-icon-link" href="<?php echo wc_get_cart_url(); ?>">
 											<i class="icon-shopping-cart"></i>
 											<span class="shop-items-number"><?php echo sprintf( _n( '%d', $woocommerce->cart->cart_contents_count, 'woocommerce' ), $woocommerce->cart->cart_contents_count ); ?></span>
 										</a>
@@ -178,10 +178,10 @@ echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?> >
 												<span class="shop-menu-item__price"><?php echo $woocommerce->cart->get_cart_total(); ?></span>
 											</li>
 											<li>
-												<a href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><?php _e( 'View Cart', 'woocommerce' ) ?></a>
+												<a href="<?php echo wc_get_cart_url(); ?>"><?php _e( 'View Cart', 'woocommerce' ) ?></a>
 											</li>
 											<li>
-												<a href="<?php echo $woocommerce->cart->get_checkout_url() ?>"><?php _e( 'Checkout', 'woocommerce' ) ?></a>
+												<a href="<?php echo wc_get_checkout_url() ?>"><?php _e( 'Checkout', 'woocommerce' ) ?></a>
 											</li>
 										</ul>
 									</div>

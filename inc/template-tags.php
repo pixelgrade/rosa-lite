@@ -430,3 +430,15 @@ if ( ! function_exists('rosa_comments') ) {
 		<?php
 	} // don't remove this bracket!
 }
+if ( ! function_exists( 'rosa_footer_the_copyright' ) ) {
+	function rosa_footer_the_copyright() {
+		$copyright_text = pixelgrade_option( 'copyright_text', __( '%year% &copy; Handcrafted with love by <a href="#">Pixelgrade</a> Team', 'rosa' ) );
+
+		if ( ! empty( $copyright_text ) ) {
+			// We need to parse some tags
+			// like %year%
+			$copyright_text = str_replace( '%year%', date( 'Y' ), $copyright_text );
+			echo '<div class="copyright-text">' . do_shortcode( $copyright_text ) . '</div>';
+		}
+	}
+}

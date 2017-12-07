@@ -64,7 +64,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'copyright_text' => array(
 							'type'              => 'textarea',
 							'label'             => esc_html__( 'Copyright Text', 'rosa' ),
-							'default'           => esc_html__( '2014 &copy; Handcrafted with love by', 'rosa' ) . ' <a href="#">PixelGrade</a> Team',
+							'default'           => __( '%year% &copy; Handcrafted with love by <a href="https://pixelgrade.com" target="_blank">Pixelgrade</a> Team', 'rosa' ),
 							'sanitize_callback' => 'wp_kses_post',
 							'live'              => array( '.footer-container .copyright-text' )
 						),

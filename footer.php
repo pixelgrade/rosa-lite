@@ -33,12 +33,9 @@ if ( ! is_404() ):
 			</div>
 			<div class="container">
 				<div class="footer-container">
-					<?php $copyright_text = pixelgrade_option( 'copyright_text' );
-					if ( ! empty( $copyright_text ) ) : ?>
-						<div class="copyright-text">
-							<?php echo pixelgrade_option( 'copyright_text' ) ?>
-						</div>
-					<?php endif;
+					<?php
+					rosa_footer_the_copyright();
+
 					$theme_locations = get_nav_menu_locations();
 					if ( isset( $theme_locations["footer_menu"] ) && ( $theme_locations["footer_menu"] != 0 ) ) {
 						wp_nav_menu( array(

@@ -296,7 +296,7 @@ require get_template_directory() . '/inc/multipages.php';
 /**
  * Load Recommended/Required plugins notification
  */
-require get_template_directory() . '/inc/required-plugins/required-plugins.php';
+require get_template_directory() . '/inc/required-plugins.php';
 
 /* Automagical updates */
 function wupdates_check_vexXr( $transient ) {
