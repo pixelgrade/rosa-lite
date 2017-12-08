@@ -5,11 +5,13 @@ Theme URI: https://demos.pixelgrade.com/rosa
 Author: Pixelgrade
 Author URI: https://pixelgrade.com
 Description:  ROSA is an enchanting and easy-to-use parallax Restaurant WordPress theme that allows you to tell your story in a dynamic, narrative and enjoyable way, making it perfect for restaurants, bakeries, bars or coffee shops.
-Version: 2.3.0
+Version: 2.3.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: rosa
 Tags: fluid-layout, responsive-layout, parallax, translation-ready, restaurant
+Requires at least: 4.7
+Tested up to: 4.9.2
 */
 /*------------------------------------*    STYLE.CSS
 \*------------------------------------*/
@@ -13072,7 +13074,7 @@ a.site-logo--text {
   position: absolute;
   right: 0;
   background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 19 14' enable-background='new 0 0 19 14' xml:space='preserve'><g><path fill='#121212' d='M0,0c4,0,6.5,5.9,9.5,5.9S15,0,19,0v7H0V0z'/><path fill='#121212' d='M19,14c-4,0-6.5-5.9-9.5-5.9S4,14,0,14l0-7h19V14z'/></g></svg>");
-  background-position: top left;
+  background-position: top right;
   background-repeat: repeat-x;
   z-index: 30;
   top: -6px;
