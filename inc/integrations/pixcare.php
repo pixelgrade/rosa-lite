@@ -11,12 +11,11 @@
  * So we add a transient which will be handled by the `rosa_admin_redirect_to_pixcare_install_once` action
  */
 function rosa_force_redirect_to_pixcare_install_once() {
-	$plugin_version = get_option( 'pixelgrade_care_version' );
-
-	if ( class_exists( 'PixelgradeCare' ) || ! file_exists( WP_PLUGIN_DIR . '/pixelgrade-care/pixelgrade-care.php' ) ) {
+	if ( class_exists( 'PixelgradeCare' ) || file_exists( WP_PLUGIN_DIR . '/pixelgrade-care/pixelgrade-care.php' ) ) {
 		return;
 	}
 
+	$plugin_version = get_option( 'pixelgrade_care_version' );
 	if ( empty( $plugin_version ) ) {
 		set_transient( '_rosa_activation_redirect', 1 );
 	}

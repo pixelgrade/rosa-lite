@@ -1,7 +1,7 @@
 <?php
 /**
  * PixCare Starter Content Compatibility File.
- * Here we add all the actions and filters responsable for the import action.
+ * Here we add all the actions and filters responsible for the import action.
  */
 
 /**
