@@ -57,5 +57,4 @@ var windowWidth 		= window.innerWidth || document.documentElement.clientWidth ||
 
 /* --- To enable verbose debug add to Theme Options > Custom Code footer -> globalDebug=true; --- */
 var globalDebug = false,
-	timestamp,
-    gifImages;
+	timestamp;
