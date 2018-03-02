@@ -34,8 +34,7 @@ var jsFiles = [
 	'./assets/js/main/shared-vars.js',
 	'./assets/js/modules/*.js',
 	'./assets/js/main/main.js',
-	'./assets/js/main/wrapper-end.js',
-	'./assets/js/vendor/*.js'
+	'./assets/js/main/wrapper-end.js'
 ];
 
 var config = {

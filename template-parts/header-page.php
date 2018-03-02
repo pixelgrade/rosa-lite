@@ -34,14 +34,16 @@ if ( empty( $title ) ) {
 }
 $description = __(get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_description', true ));
 $pin_type = get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_gmap_pin_type', true );
-//filter the content with some limitations to avoid having plugins doing nasty things to it
+// filter the content with some limitations to avoid having plugins doing nasty things to it
 $description = rosa_display_content( $description, 'default' );
 
-if ( get_page_template_slug( get_the_ID() ) == 'page-templates/contact.php' ) {
+if ( 'page-templates/contact.php' === get_page_template_slug( get_the_ID() ) ) {
 	if ( empty( $pin_type ) ) {
 		$pin_type = 'single';
 	}
-}  else { 	$pin_type = ''; }
+} else {
+	$pin_type = '';
+}
 
 /* FIRST TEST FOR CONTACT PAGE TEMPLATE */
 if ( $pin_type == 'single' ) {

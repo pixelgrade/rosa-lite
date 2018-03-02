@@ -167,16 +167,24 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 		wp_enqueue_script( 'scroll-to-plugin', '//cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js', array( 'jquery' ) );
 		wp_enqueue_script( 'rosa-rs', '//pxgcdn.com/js/rs/9.5.7/index.js', array( 'jquery' ) );
 
-		wp_enqueue_script( 'rosa-plugins-scripts', get_template_directory_uri() . '/assets/js/plugins.js', array( 'jquery', 'modernizr', 'rosa-rs', 'scroll-to-plugin', 'tween-max', 'ease-pack' ), $theme->get( 'Version' ), true );
+		$script_dependencies = array( 'jquery', 'modernizr', 'rosa-rs', 'scroll-to-plugin', 'tween-max', 'ease-pack' );
+		$pin = get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_gmap_pin_type', true );
+
+		if ( 'single' === $pin || 'multiple' === $pin ) {
+			wp_enqueue_script( 'google-maps', '//maps.google.com/maps/api/js?language=en' . $google_maps_key, array( 'jquery' ), null, true );
+			wp_enqueue_script( 'gmap3', get_template_directory_uri() . '/assets/js/vendor/gmap3.jquery.js', array( 'jquery', 'google-maps' ), null, true );
+			$script_dependencies[] = 'gmap3';
+		}
+
+		wp_enqueue_script( 'rosa-plugins-scripts', get_template_directory_uri() . '/assets/js/plugins.js', $script_dependencies, $theme->get( 'Version' ), true );
 		wp_enqueue_script( 'rosa-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'rosa-plugins-scripts' ), $theme->get( 'Version' ), true );
 
 		if ( is_single() ) {
 			wp_enqueue_script( 'addthis-api', '//s7.addthis.com/js/300/addthis_widget.js#async=1', array( 'jquery' ), null, true );
 		}
 
-		wp_enqueue_script( 'google-maps', '//maps.google.com/maps/api/js?language=en' . $google_maps_key, array( 'jquery' ), null, true );
-
 		wp_localize_script( 'rosa-main-scripts', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
+
 		// localize the theme_name, we are gonna need it
 		wp_localize_script( 'rosa-main-scripts', 'theme_name', 'rosa' );
 		wp_localize_script( 'rosa-main-scripts', 'objectl10n', array(
