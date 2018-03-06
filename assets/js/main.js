@@ -1620,7 +1620,7 @@ var StickyHeader = (function() {
 
 	function init() {
 		headerHeight = $header.outerHeight();
-		$headers = $( '.article__header' );
+		$headers = $( '.article__header' ).first();
 	}
 
 	function update() {
