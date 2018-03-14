@@ -2603,26 +2603,21 @@ html.flexbox {
   float: left;
   margin-left: 24px;
   margin-left: 1.5rem;
-  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+      flex-direction: column;
 }
 
 .stat__title {
-  -webkit-box-ordinal-group: 3;
-      -ms-flex-order: 2;
-          order: 2;
+  -ms-flex-order: 2;
+      order: 2;
 }
 
 .stat__value {
   margin-left: 0;
-  -webkit-box-ordinal-group: 2;
-      -ms-flex-order: 1;
-          order: 1;
+  -ms-flex-order: 1;
+      order: 1;
 }
 
 /*------------------------------------*		$GREYBOX
@@ -3973,64 +3968,44 @@ html.flexbox {
 }
 
 .icon-spin {
-  -webkit-animation: fa-spin 2s infinite linear;
   animation: fa-spin 2s infinite linear;
 }
 
 .icon-pulse {
-  -webkit-animation: fa-spin 1s infinite steps(8);
   animation: fa-spin 1s infinite steps(8);
-}
-
-@-webkit-keyframes fa-spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(359deg);
-    transform: rotate(359deg);
-  }
 }
 
 @keyframes fa-spin {
   0% {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(359deg);
     transform: rotate(359deg);
   }
 }
 
 .icon-rotate-90 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
-  -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 
 .icon-rotate-180 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
-  -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
 .icon-rotate-270 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
-  -webkit-transform: rotate(270deg);
   transform: rotate(270deg);
 }
 
 .icon-flip-horizontal {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
-  -webkit-transform: scale(-1, 1);
   transform: scale(-1, 1);
 }
 
 .icon-flip-vertical {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
-  -webkit-transform: scale(1, -1);
   transform: scale(1, -1);
 }
 
@@ -9292,4 +9267,4 @@ body.mce-content-body {
   line-height: inherit;
 }
 
-/*# sourceMappingURL=editor-style.css.map */
+
