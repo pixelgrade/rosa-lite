@@ -604,7 +604,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'css'     => array(
 							array(
 								'property' => 'color',
-								'selector' => 'body, .up-link'
+								'selector' => 'body, .up-link, .down-arrow--bubble .arrow'
 							),
 							array(
 								'property' => 'border-color',
@@ -679,6 +679,10 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'live'    => true,
 						'default' => '#ffffff',
 						'css'     => array(
+							array(
+								'property' => 'color',
+								'selector' => '.blurp--top, .border-waves'
+							),
 							array(
 								'property' => 'border-color',
 								'selector' => '.site-header, .site-footer'

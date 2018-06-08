@@ -59,6 +59,8 @@ if ( ! is_404() ):
 
 <?php endif; ?>
 
+<?php get_template_part( 'template-parts/svg/border-wave-svg' ); ?>
+
 <div class="covers"></div>
 </div><!-- #page -->
 
