@@ -1,0 +1,132 @@
+$team: (
+    victor: 12,
+    adi: 14,
+    vlad: 13,
+    radu: 13,
+    george: 14,
+    razvan: 10,
+    oana: 11,
+    ilinca: 15,
+    alin: 12,
+    arlo: 16,
+    paco: 14,
+    minela: 15,
+);
+
+$team: (
+    adi: (
+        frames: 14,
+        elementor-id: '2856f0b4',
+        url: 'https://pixelgrade.com/wp-content/uploads/2018/05/about-adi.jpg',
+    ),
+    vlad: (
+        frames: 13,
+        elementor-id: '596b42e3',
+        url: 'https://pixelgrade.com/wp-content/uploads/2018/05/about-vlad.jpg',
+    ),
+    radu: (
+        frames: 13,
+        elementor-id: '676d9164',
+        url: 'https://pixelgrade.com/wp-content/uploads/2018/05/about-radu.jpg',
+    ),
+    george: (
+        frames: 14,
+        elementor-id: '575f4263',
+        url: 'https://pixelgrade.com/wp-content/uploads/2018/05/about-george.jpg',
+    ),
+    razvan: (
+        frames: 10,
+        elementor-id: '4973bdf0',
+        url: 'https://pixelgrade.com/wp-content/uploads/2018/05/about-razvan.jpg',
+    ),
+    oana: (
+        frames: 11,
+        elementor-id: '1c4dcdb6',
+        url: 'https://pixelgrade.com/wp-content/uploads/2018/05/about-oana.jpg',
+    ),
+    ilinca: (
+        frames: 15,
+        elementor-id: '2982d489',
+        url: 'https://pixelgrade.com/wp-content/uploads/2018/05/about-ilinca.jpg',
+    ),
+    alin: (
+        frames: 12,
+        elementor-id: '3629ee4f',
+        url: 'https://pixelgrade.com/wp-content/uploads/2018/05/about-alin.jpg',
+    ),
+    arlo: (
+        frames: 16,
+        elementor-id: '460195d',
+        url: 'https://pixelgrade.com/wp-content/uploads/2018/05/about-arlo.jpg',
+    ),
+    paco: (
+        frames: 14,
+        elementor-id: '652e467',
+        url: 'https://pixelgrade.com/wp-content/uploads/2018/05/about-paco.jpg',
+    ),
+    minela: (
+        frames: 15,
+        elementor-id: '323b87d6',
+        url: 'https://pixelgrade.com/wp-content/uploads/2018/05/about-minela.jpg',
+    ),
+);
+
+$classes: ();
+$framerate: 100ms;
+
+@each $member, $props in $team {
+    $frames: map-get($props, frames);
+    $id: map-get($props, elementor-id);
+    $src: map-get($props, url);
+    $class: elementor-element-#{$id};
+
+    $classes: join($classes, unquote(".#{$class}"), comma);
+
+    .#{$class} {
+
+        .elementor-image {
+            background-image: url(#{$src});
+            background-size: $frames * 100% 100%;
+            padding-top: 100%;
+
+            img {
+                display: none;
+            }
+        }
+
+        &:hover .elementor-image {
+            animation: play-#{$class} #{($frames - 1) * $framerate} steps(#{$frames - 1}) forwards;
+        }
+    }
+
+    @keyframes play-#{$class} {
+        from { background-position: 0 0; }
+        to { background-position: #{($frames - 1) * -100%} 0; }
+    }
+}
+
+#{$classes} {
+
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        z-index: -1;
+        top: -20px;
+        left: -20px;
+        background-image: url("https://pixelgrade.com/wp-content/themes/storechild/assets/_img/interface/grid-black.svg");
+    }
+
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 125px;
+        height: 100px;
+        bottom: 0;
+        right: 0;
+        background-image: url("https://pixelgrade.com/wp-content/themes/storechild/assets/_img/interface/grid-white.svg");
+    }
+}

@@ -281,14 +281,18 @@
 
 @media screen and (max-width: 400px) {
   .woocommerce .woocommerce-message, .woocommerce .woocommerce-info, .woocommerce .woocommerce-error, .woocommerce-page .woocommerce-message, .woocommerce-page .woocommerce-info, .woocommerce-page .woocommerce-error {
+    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-direction: column;
-        flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
   .woocommerce .woocommerce-message .button, .woocommerce .woocommerce-info .button, .woocommerce .woocommerce-error .button, .woocommerce-page .woocommerce-message .button, .woocommerce-page .woocommerce-info .button, .woocommerce-page .woocommerce-error .button {
-    -ms-flex-order: 1;
-        order: 1;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
     text-align: center;
   }
 }
@@ -395,7 +399,8 @@ html .woocommerce ul.products li.product {
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   background: white !important;
   color: #c59d5f;
   opacity: 0;
@@ -446,7 +451,8 @@ html .woocommerce ul.products li.product {
   bottom: 0;
   left: 50%;
   z-index: 10;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   margin-top: 12px;
 }
 
@@ -790,6 +796,7 @@ html .woocommerce ul.products li.product {
 }
 
 .woocommerce div.product div.images .woocommerce-product-gallery__wrapper {
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -909,7 +916,8 @@ td.actions {
     /* Top/left values mimic padding */
     top: 50%;
     left: 6px;
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
     width: 45%;
     padding-right: 10px;
     font-weight: bold;
@@ -1060,4 +1068,4 @@ td.actions {
   width: 100%;
 }
 
-
+/*# sourceMappingURL=woocommerce.css.map */
