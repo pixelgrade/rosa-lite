@@ -191,32 +191,6 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 					)
 				),
-
-				'import_demo_data' => array(
-					'title'       => esc_html__( 'Demo Data', 'rosa' ),
-					'priority'    => 999999,
-					'description' => esc_html__( 'If you would like to have a "ready to go" website as the Rosa\'s demo site, this is the button', 'rosa' ),
-					'options'     => array(
-						'import_demodata_button' => array(
-							'title' => 'Import',
-							'type'  => 'html',
-							'html'  => '<input type="hidden" name="wpGrade-nonce-import-posts-pages" value="' . wp_create_nonce( 'wpGrade_nonce_import_demo_posts_pages' ) . '" />
-								<input type="hidden" name="wpGrade-nonce-import-theme-options" value="' . wp_create_nonce( 'wpGrade_nonce_import_demo_theme_options' ) . '" />
-								<input type="hidden" name="wpGrade-nonce-import-widgets" value="' . wp_create_nonce( 'wpGrade_nonce_import_demo_widgets' ) . '" />
-								<input type="hidden" name="wpGrade_import_ajax_url" value="' . admin_url( "admin-ajax.php" ) . '" />' . '<span class="description customize-control-description"><p>' . esc_html__( '*Note: We cannot serve you the original images due to their license and copyright.', 'rosa' ) . '</p> <a href="#" class="button button-primary" id="wpGrade_import_demodata_button" style="width: 70%; text-align: center; padding: 10px; display: inline-block; height: auto;  margin: 0 15% 10% 15%;">' . __( 'Import demo data', 'rosa' ) . '
-									</a>' .
-
-							           '<div class="wpGrade-loading-wrap hidden">
-									<span class="wpGrade-loading wpGrade-import-loading"></span>
-									<div class="wpGrade-import-wait">' . esc_html__( 'Please wait a few minutes (between 1 and 3 minutes usually, but depending on your hosting it can take longer) and ', 'rosa' ) . '<strong>' . esc_html__( 'don\'t reload the page', 'rosa' ) . '</strong>.' . esc_html__( 'You will be notified as soon as the import has finished!', 'rosa' ) . '
-									</div>
-								</div>
-
-								<div class="wpGrade-import-results hidden"></div>
-								<div class="hr"><div class="inner"><span>&nbsp;</span></div></div>'
-						)
-					)
-				),
 			)
 		);
 
