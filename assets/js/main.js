@@ -1973,8 +1973,8 @@ function init() {
 
 	$( '.border-waves' ).each( function(i, obj) {
 		var $obj = $(obj),
-			$before = $borderTemplate.clone().removeClass( 'border-waves-template' ).addClass( 'border-waves border-waves-before' ),
-			$after = $borderTemplate.clone().removeClass( 'border-waves-template' ).addClass( 'border-waves border-waves-after' );
+			$before = $borderTemplate.clone().removeClass( 'border-waves-template' ).addClass( 'border-waves-before' ),
+			$after = $borderTemplate.clone().removeClass( 'border-waves-template' ).addClass( 'border-waves-after' );
 
 		$before.appendTo( $obj );
 		$after.appendTo( $obj );
