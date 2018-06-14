@@ -65,23 +65,15 @@ if ( ! comments_open() ) {
 		<div id="review_form_wrapper">
 			<div id="review_form">
 				<?php
-				$commenter = wp_get_current_commenter();
-
 				$comment_form = array(
 					'title_reply'          => have_comments() ? __( 'Add a review', 'woocommerce' ) : sprintf( __( 'Be the first to review &ldquo;%s&rdquo;', 'woocommerce' ), get_the_title() ),
 					'title_reply_to'       => __( 'Leave a Reply to %s', 'woocommerce' ),
 					'comment_notes_before' => '',
 					'comment_notes_after'  => '',
-					'fields'               => array(
-						'author' => '<br/><p class="comment-form-author">' . '<label for="author">' . esc_html__( 'Name', 'woocommerce' ) . ' <span class="required">*</span></label> ' .
-							            '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" aria-required="true" placeholder="Name" /></p>',
-						'email'  => '<p class="comment-form-email"><label for="email">' . esc_html__( 'Email', 'woocommerce' ) . ' <span class="required">*</span></label> ' .
-						            '<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" aria-required="true" /></p>',
-						),
-						'label_submit'  => __( 'Submit', 'woocommerce' ),
-						'logged_in_as'  => '',
-						'comment_field' => ''
-					);
+					'label_submit'  => __( 'Submit', 'woocommerce' ),
+					'logged_in_as'  => '',
+					'comment_field' => ''
+				);
 
 				if ( get_option( 'woocommerce_enable_review_rating' ) === 'yes' ) {
 					$comment_form['comment_field'] = '<p class="comment-form-rating"><label for="rating">' . __( 'Your rating', 'woocommerce' ) .'</label><select name="rating" id="rating" aria-required="true" required>

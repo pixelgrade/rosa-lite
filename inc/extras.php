@@ -1609,3 +1609,35 @@ function rosa_get_avatar_url( $email, $size = 32 ) {
 		return '';
 	}
 }
+
+if ( ! function_exists( 'rosa_comment_form_custom_fields' ) ) :
+	/**
+	 * Custom comment form fields.
+	 *
+	 * @param array $fields
+	 *
+	 * @return array
+	 */
+	function rosa_comment_form_custom_fields( $fields ) {
+
+		$commenter = wp_get_current_commenter();
+		$req = get_option( 'require_name_email' );
+		$aria_req = ( $req ? ' aria-required="true"' : '' );
+
+		if ( is_user_logged_in() ) {
+			$fields = array_merge( $fields, array(
+				'author' => '<p class="comment-form-author"><label for="author" class="show-on-ie8">' . __( 'Name', 'rosa' ) . '</label><input id="author" name="author" value="' . esc_attr( $commenter['comment_author'] ) . '" type="text" placeholder="' . __( 'Name', 'rosa' ) . '..." size="30" ' . $aria_req . ' /></p>',
+				'email'  => '<p class="comment-form-email"><label for="email" class="show-on-ie8">' . __( 'Email', 'rosa' ) . '</label><input id="email" name="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" type="text" placeholder="' . __( 'your@email.com', 'rosa' ) . '..." ' . $aria_req . ' /></p>',
+			) );
+		} else {
+			$fields = array_merge( $fields, array(
+				'author' => '<p class="comment-form-author"><label for="author" class="show-on-ie8">' . __( 'Name', 'rosa' ) . '</label><input id="author" name="author" value="' . esc_attr( $commenter['comment_author'] ) . '" type="text" placeholder="' . __( 'Name', 'rosa' ) . '..." size="30" ' . $aria_req . ' /></p><!--',
+				'email'  => '--><p class="comment-form-email"><label for="name" class="show-on-ie8">' . __( 'Email', 'rosa' ) . '</label><input id="email" name="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" type="text" placeholder="' . __( 'your@email.com', 'rosa' ) . '..." ' . $aria_req . ' /></p><!--',
+				'url'    => '--><p class="comment-form-url"><label for="url" class="show-on-ie8">' . __( 'Url', 'rosa' ) . '</label><input id="url" name="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" placeholder="' . __( 'Website', 'rosa' ) . '..." type="text"></p>',
+			) );
+		}
+
+		return $fields;
+	}
+endif;
+add_filter('comment_form_default_fields', 'rosa_comment_form_custom_fields');
