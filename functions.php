@@ -155,6 +155,7 @@ if ( ! function_exists( 'rosa_page_has_contact_descendants' ) ) {
 				return true;
 			}
 		}
+		wp_reset_postdata();
 
 		return false;
 	}

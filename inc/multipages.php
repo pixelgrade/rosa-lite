@@ -95,7 +95,7 @@ function rosa_multipage_get_parent( $post = null ) {
 	}
 
 	// Allow others to short-circuit us and prevent us from entering the multipage logic
-	if ( ! apply_filters( 'pixelgrade_multipage_allow', is_page( $post->ID ), $post ) ) {
+	if ( ! apply_filters( 'pixelgrade_multipage_allow', 'page' === $post->post_type, $post ) ) {
 		return false;
 	}
 
