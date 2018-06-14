@@ -114,8 +114,8 @@ add_action( 'woocommerce_single_product_summary', 'woocommerce_breadcrumb', 3, 0
  * Custom Add To Cart Messages
  * Add this to your theme functions.php file
  **/
-add_filter( 'wc_add_to_cart_params', 'custom_add_to_cart_message' );
-function custom_add_to_cart_message( $params ) {
+add_filter( 'woocommerce_get_script_data', 'custom_add_to_cart_message', 10, 2 );
+function custom_add_to_cart_message( $params, $handle ) {
 	$params['i18n_view_cart'] = __( 'Product Added', 'rosa' );
 
 	return $params;
