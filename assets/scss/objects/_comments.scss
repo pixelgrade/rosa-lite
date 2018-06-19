@@ -310,14 +310,15 @@ li.depth-2:before {
 .comment-form {
 	@extend .grid;
 
-	label {
-		display: none;
-	}
-
 	.lt-ie9 & {
 		label {
 			display: block;
 		}
+	}
+
+	> * {
+		@extend .grid__item;
+		@extend .one-whole;
 	}
 
 	input, textarea {
@@ -331,14 +332,29 @@ li.depth-2:before {
 
 .comment-form-author,
 .comment-form-email,
-.comment-form-url {
-	@extend .grid__item;
-	@extend .one-whole;
-	@extend .lap-and-up-one-third;
+.comment-form-url,
+.comment-form-comment {
 
 	label {
 		display: none;
 	}
+}
+
+.comment-form-cookies-consent {
+
+	input[type="checkbox"] {
+		margin-right: 1em;
+	}
+
+	label {
+		display: inline;
+	}
+}
+
+.comment-form-author,
+.comment-form-email,
+.comment-form-url {
+	@extend .lap-and-up-one-third;
 
 	input {
 		padding: $_u4 0;
