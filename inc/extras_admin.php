@@ -87,7 +87,7 @@ function rosa_admin_get_pointer_help_template ( $pointers ) { ?>
 				pointer = WPHelpPointer.pointers[i];
 				options = $.extend(pointer.options, {
 					close: function () {
-						$.post(ajaxurl, {
+						$.post(rosaStrings.ajaxurl, {
 							pointer: pointer.pointer_id,
 							action: 'dismiss-wp-pointer'
 						});

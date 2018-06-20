@@ -35,7 +35,7 @@
 //to make sure it reflects the current page
 function adminBarEditFix(id) {
 	//get the admin ajax url and clean it
-	var baseURL = ajaxurl.replace('admin-ajax.php', 'post.php');
+	var baseURL = rosaStrings.ajaxurl.replace('admin-ajax.php', 'post.php');
 
 	$('#wp-admin-bar-edit a').attr('href', baseURL + '?post=' + id + '&action=edit');
 }

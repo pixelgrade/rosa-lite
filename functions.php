@@ -210,20 +210,20 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 		wp_enqueue_script( 'rosa-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'rosa-plugins-scripts' ), $theme->get( 'Version' ), true );
 
 		if ( is_single() ) {
-			wp_enqueue_script( 'addthis-api', '//s7.addthis.com/js/300/addthis_widget.js#async=1', array( 'jquery' ), null, true );
+			wp_register_script( 'addthis-api', '//s7.addthis.com/js/300/addthis_widget.js#async=1', array( 'jquery' ), null, true );
 		}
 
-		wp_localize_script( 'rosa-main-scripts', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
-
-		// localize the theme_name, we are gonna need it
-		wp_localize_script( 'rosa-main-scripts', 'theme_name', 'rosa' );
-		wp_localize_script( 'rosa-main-scripts', 'objectl10n', array(
+		$localization_array = array(
+			'ajaxurl'      => admin_url( 'admin-ajax.php' ),
+			'theme_name' => 'rosa',
 			'tPrev'             => __( 'Previous (Left arrow key)', 'rosa' ),
 			'tNext'             => __( 'Next (Right arrow key)', 'rosa' ),
 			'tCounter'          => __( 'of', 'rosa' ),
 			'infscrLoadingText' => "",
 			'infscrReachedEnd'  => "",
-		) );
+		);
+
+		wp_localize_script( 'rosa-main-scripts', 'rosaStrings', $localization_array );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'rosa_load_assets' );

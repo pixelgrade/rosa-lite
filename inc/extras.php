@@ -261,44 +261,49 @@ if ( ! function_exists( 'rosa_callback_addthis' ) ) {
 
 	function rosa_callback_addthis() {
 		//lets determine if we need the addthis script at all
-		if ( is_single() && pixelgrade_option( 'blog_single_show_share_links' ) ):
+		if ( is_single() && pixelgrade_option( 'blog_single_show_share_links' ) ) {
 			wp_enqueue_script( 'addthis-api' );
 
 			//here we will configure the AddThis sharing globally
 			global $post;
 			if ( empty( $post ) ) {
 				return;
-			} ?>
-			<script type="text/javascript">
-				addthis_config = {
-					<?php if ( pixelgrade_option( 'share_buttons_enable_tracking' ) && pixelgrade_option( 'share_buttons_enable_addthis_tracking' ) ):
-					echo 'username : "' . pixelgrade_option( 'share_buttons_addthis_username' ) . '",';
-				endif; ?>
-					ui_click: false,
-					ui_delay: 100,
-					ui_offset_top: 42,
-					ui_use_css: true,
-					data_track_addressbar: false,
-					data_track_clickback: false
-					<?php if ( pixelgrade_option( 'share_buttons_enable_tracking' ) && pixelgrade_option( 'share_buttons_enable_ga_tracking' ) ):
-					echo ', data_ga_property: "' . pixelgrade_option( 'share_buttons_ga_id' ) . '"';
-					if ( pixelgrade_option( 'share_buttons_enable_ga_social_tracking' ) ):
-						echo ', data_ga_social : true';
-					endif;
-				endif; ?>
-				};
+			}
 
-				addthis_share = {
-					url: "<?php echo rosa_get_current_canonical_url(); ?>",
-					title: "<?php wp_title( '|', true, 'right' ); ?>",
-					description: "<?php echo trim( strip_tags( get_the_excerpt() ) ) ?>"
-				};
-			</script>
-			<?php
-		endif;
+			$addthis_config = array(
+				'ui_click'              => false,
+				'ui_delay'              => 100,
+				'ui_offset_top'         => 10,
+				'ui_use_css'            => true,
+				'data_track_addressbar' => false,
+				'data_track_clickback'  => false,
+			);
+
+			if ( pixelgrade_option( 'share_buttons_enable_tracking' ) && pixelgrade_option( 'share_buttons_enable_addthis_tracking' ) ) {
+				$addthis_config['username'] = pixelgrade_option( 'share_buttons_addthis_username' );
+			}
+
+			if ( pixelgrade_option( 'share_buttons_enable_tracking' ) && pixelgrade_option( 'share_buttons_enable_ga_tracking' ) ) {
+				$addthis_config['data_ga_property'] = pixelgrade_option( 'share_buttons_ga_id' );
+				if ( pixelgrade_option( 'share_buttons_enable_ga_social_tracking' ) ) {
+					$addthis_config['data_ga_social'] = true;
+				}
+			}
+
+			$addthis_share = array(
+				'url'         => rosa_get_current_canonical_url(),
+				'title'       => wp_title( '|', false, 'right' ),
+				'description' => trim( strip_tags( get_the_excerpt() ) ),
+			);
+
+			$js = "addthis_config = " . wp_json_encode( $addthis_config, JSON_FORCE_OBJECT ) . ";" . PHP_EOL .
+			      "addthis_share = " . wp_json_encode( $addthis_share, JSON_FORCE_OBJECT ) . ";" . PHP_EOL;
+
+			wp_add_inline_script( 'addthis-api', $js );
+		}
 	}
 }
-add_action( 'wp_enqueue_scripts', 'rosa_callback_addthis' );
+add_action( 'wp_enqueue_scripts', 'rosa_callback_addthis', 20 );
 
 //use different image sizes depending on the number of columns
 function rosa_overwrite_gallery_atts( $out, $pairs, $atts ) {

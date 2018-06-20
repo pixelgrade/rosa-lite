@@ -1025,9 +1025,9 @@ function magnificPopupInit() {
 
 	$( '.js-post-gallery' ).each( function () { // the containers for all your galleries should have the class gallery
 		$( this ).magnificPopup( {
-			tPrev: objectl10n.tPrev,
-			tNext: objectl10n.tNext,
-			tCounter: objectl10n.tCounter,
+			tPrev: rosaStrings.tPrev,
+			tNext: rosaStrings.tNext,
+			tCounter: rosaStrings.tCounter,
 			delegate: 'a[href*=".jpg"], a[href*=".jpeg"], a[href*=".png"], a[href*=".gif"]', // the container for each your gallery items
 			type: 'image',
 			closeOnContentClick: false,
@@ -1705,7 +1705,7 @@ var StickyHeader = (function() {
 //to make sure it reflects the current page
 function adminBarEditFix(id) {
 	//get the admin ajax url and clean it
-	var baseURL = ajaxurl.replace('admin-ajax.php', 'post.php');
+	var baseURL = rosaStrings.ajaxurl.replace('admin-ajax.php', 'post.php');
 
 	$('#wp-admin-bar-edit a').attr('href', baseURL + '?post=' + id + '&action=edit');
 }
