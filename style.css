@@ -1773,9 +1773,7 @@ label,
 /**
 	 * Grid
 	 */
-.grid__item, .logged-in-as, .comment-form-author,
-.comment-form-email,
-.comment-form-url, .comment-form-comment,
+.grid__item, .logged-in-as, .comment-form > *, .comment-form-comment,
 .form-submit,
 .comment-subscription-form, .otw-input-wrap, .otw-button-wrap {
   display: inline-block;
@@ -1794,9 +1792,7 @@ label,
   text-align: left;
 }
 
-.grid--rev > .grid__item, .grid--rev > .logged-in-as, .grid--rev > .comment-form-author, .grid--rev >
-.comment-form-email, .grid--rev >
-.comment-form-url, .grid--rev > .comment-form-comment, .grid--rev >
+.grid--rev > .grid__item, .grid--rev > .logged-in-as, .comment-form.grid--rev > *, .grid--rev > .comment-form-comment, .grid--rev >
 .form-submit, .grid--rev >
 .comment-subscription-form, .grid--rev > .otw-input-wrap, .grid--rev > .otw-button-wrap {
   direction: ltr;
@@ -1811,9 +1807,7 @@ label,
   margin-left: 0;
 }
 
-.grid--full > .grid__item, .grid--full > .logged-in-as, .grid--full > .comment-form-author, .grid--full >
-.comment-form-email, .grid--full >
-.comment-form-url, .grid--full > .comment-form-comment, .grid--full >
+.grid--full > .grid__item, .grid--full > .logged-in-as, .comment-form.grid--full > *, .grid--full > .comment-form-comment, .grid--full >
 .form-submit, .grid--full >
 .comment-subscription-form, .grid--full > .otw-input-wrap, .grid--full > .otw-button-wrap {
   padding-left: 0;
@@ -1826,9 +1820,7 @@ label,
   text-align: right;
 }
 
-.grid--right > .grid__item, .grid--right > .logged-in-as, .grid--right > .comment-form-author, .grid--right >
-.comment-form-email, .grid--right >
-.comment-form-url, .grid--right > .comment-form-comment, .grid--right >
+.grid--right > .grid__item, .grid--right > .logged-in-as, .comment-form.grid--right > *, .grid--right > .comment-form-comment, .grid--right >
 .form-submit, .grid--right >
 .comment-subscription-form, .grid--right > .otw-input-wrap, .grid--right > .otw-button-wrap {
   text-align: left;
@@ -1842,9 +1834,7 @@ label,
   text-align: center;
 }
 
-.grid--center > .grid__item, .grid--center > .logged-in-as, .grid--center > .comment-form-author, .grid--center >
-.comment-form-email, .grid--center >
-.comment-form-url, .grid--center > .comment-form-comment, .grid--center >
+.grid--center > .grid__item, .grid--center > .logged-in-as, .comment-form.grid--center > *, .grid--center > .comment-form-comment, .grid--center >
 .form-submit, .grid--center >
 .comment-subscription-form, .grid--center > .otw-input-wrap, .grid--center > .otw-button-wrap {
   text-align: left;
@@ -1854,17 +1844,13 @@ label,
 	 * Align grid cells vertically (`.grid--middle` or `.grid--bottom`). Extends
 	 * `.grid`.
 	 */
-.grid--middle > .grid__item, .grid--middle > .logged-in-as, .grid--middle > .comment-form-author, .grid--middle >
-.comment-form-email, .grid--middle >
-.comment-form-url, .grid--middle > .comment-form-comment, .grid--middle >
+.grid--middle > .grid__item, .grid--middle > .logged-in-as, .comment-form.grid--middle > *, .grid--middle > .comment-form-comment, .grid--middle >
 .form-submit, .grid--middle >
 .comment-subscription-form, .grid--middle > .otw-input-wrap, .grid--middle > .otw-button-wrap {
   vertical-align: middle;
 }
 
-.grid--bottom > .grid__item, .grid--bottom > .logged-in-as, .grid--bottom > .comment-form-author, .grid--bottom >
-.comment-form-email, .grid--bottom >
-.comment-form-url, .grid--bottom > .comment-form-comment, .grid--bottom >
+.grid--bottom > .grid__item, .grid--bottom > .logged-in-as, .comment-form.grid--bottom > *, .grid--bottom > .comment-form-comment, .grid--bottom >
 .form-submit, .grid--bottom >
 .comment-subscription-form, .grid--bottom > .otw-input-wrap, .grid--bottom > .otw-button-wrap {
   vertical-align: bottom;
@@ -1878,9 +1864,7 @@ label,
   margin-left: -0.75rem;
 }
 
-.grid--narrow > .grid__item, .grid--narrow > .logged-in-as, .grid--narrow > .comment-form-author, .grid--narrow >
-.comment-form-email, .grid--narrow >
-.comment-form-url, .grid--narrow > .comment-form-comment, .grid--narrow >
+.grid--narrow > .grid__item, .grid--narrow > .logged-in-as, .comment-form.grid--narrow > *, .grid--narrow > .comment-form-comment, .grid--narrow >
 .form-submit, .grid--narrow >
 .comment-subscription-form, .grid--narrow > .otw-input-wrap, .grid--narrow > .otw-button-wrap {
   padding-left: 12px;
@@ -1895,9 +1879,7 @@ label,
   margin-left: -3rem;
 }
 
-.grid--wide > .grid__item, .grid--wide > .logged-in-as, .grid--wide > .comment-form-author, .grid--wide >
-.comment-form-email, .grid--wide >
-.comment-form-url, .grid--wide > .comment-form-comment, .grid--wide >
+.grid--wide > .grid__item, .grid--wide > .logged-in-as, .comment-form.grid--wide > *, .grid--wide > .comment-form-comment, .grid--wide >
 .form-submit, .grid--wide >
 .comment-subscription-form, .grid--wide > .otw-input-wrap, .grid--wide > .otw-button-wrap {
   padding-left: 48px;
@@ -2780,9 +2762,7 @@ html.flexbox, html.site-title {
 /**
 	* Whole
 	*/
-.one-whole, .logged-in-as, .comment-form-author,
-.comment-form-email,
-.comment-form-url, .comment-form-comment,
+.one-whole, .logged-in-as, .comment-form > *, .comment-form-comment,
 .form-submit,
 .comment-subscription-form {
   width: 100%;
@@ -10545,10 +10525,6 @@ li.depth-2:before {
 
 /*----------------------------------------**   $COMMENT_FORM
 \*----------------------------------------*/
-.comment-form label {
-  display: none;
-}
-
 .lt-ie9 .comment-form label {
   display: block;
 }
@@ -10564,8 +10540,17 @@ li.depth-2:before {
 
 .comment-form-author label,
 .comment-form-email label,
-.comment-form-url label {
+.comment-form-url label,
+.comment-form-comment label {
   display: none;
+}
+
+.comment-form-cookies-consent input[type="checkbox"] {
+  margin-right: 1em;
+}
+
+.comment-form-cookies-consent label {
+  display: inline;
 }
 
 .comment-form-author input,
@@ -12953,18 +12938,14 @@ small.muted {
  * Grid Columns / Row Items
  */
 @media only screen and (min-width: 900px) {
-  .grid__item > *:last-child, .logged-in-as > *:last-child, .comment-form-author > *:last-child,
-  .comment-form-email > *:last-child,
-  .comment-form-url > *:last-child, .comment-form-comment > *:last-child,
+  .grid__item > *:last-child, .logged-in-as > *:last-child, .comment-form > * > *:last-child, .comment-form-comment > *:last-child,
   .form-submit > *:last-child,
   .comment-subscription-form > *:last-child, .otw-input-wrap > *:last-child, .otw-button-wrap > *:last-child {
     margin-bottom: 0;
   }
 }
 
-.grid__item:last-child > *:last-child, .logged-in-as:last-child > *:last-child, .comment-form-author:last-child > *:last-child,
-.comment-form-email:last-child > *:last-child,
-.comment-form-url:last-child > *:last-child, .comment-form-comment:last-child > *:last-child,
+.grid__item:last-child > *:last-child, .logged-in-as:last-child > *:last-child, .comment-form > :last-child > *:last-child, .comment-form-comment:last-child > *:last-child,
 .form-submit:last-child > *:last-child,
 .comment-subscription-form:last-child > *:last-child, .otw-input-wrap:last-child > *:last-child, .otw-button-wrap:last-child > *:last-child {
   margin-bottom: 0;
@@ -13378,9 +13359,7 @@ a.site-logo--text {
   border: 0;
 }
 
-.footer-widget-area.col-1.one-third, .footer-widget-area.col-1.two-sixths, .footer-widget-area.col-1.four-twelfths, .footer-widget-area.col-1.one-whole, .footer-widget-area.col-1.logged-in-as, .footer-widget-area.col-1.comment-form-author,
-.footer-widget-area.col-1.comment-form-email,
-.footer-widget-area.col-1.comment-form-url, .footer-widget-area.col-1.comment-form-comment,
+.footer-widget-area.col-1.one-third, .footer-widget-area.col-1.two-sixths, .footer-widget-area.col-1.four-twelfths, .footer-widget-area.col-1.one-whole, .footer-widget-area.col-1.logged-in-as, .comment-form > .footer-widget-area.col-1, .footer-widget-area.col-1.comment-form-comment,
 .footer-widget-area.col-1.form-submit,
 .footer-widget-area.col-1.comment-subscription-form, .footer-widget-area.col-1.two-thirds, .footer-widget-area.col-1.four-sixths, .footer-widget-area.col-1.eight-twelfths {
   margin: 0 auto;
@@ -14931,11 +14910,7 @@ http://nicolasgallagher.com/micro-clearfix-hack/
  */
 /*------------------------------------*    $GRID
 \*------------------------------------*/
-.pixcode--grid > .grid__item, .otw-wrapper > .grid__item, .pixcode--grid > .logged-in-as, .otw-wrapper > .logged-in-as, .pixcode--grid > .comment-form-author, .otw-wrapper > .comment-form-author, .pixcode--grid >
-.comment-form-email, .otw-wrapper >
-.comment-form-email, .pixcode--grid >
-.comment-form-url, .otw-wrapper >
-.comment-form-url, .pixcode--grid > .comment-form-comment, .otw-wrapper > .comment-form-comment, .pixcode--grid >
+.pixcode--grid > .grid__item, .otw-wrapper > .grid__item, .pixcode--grid > .logged-in-as, .otw-wrapper > .logged-in-as, .comment-form.pixcode--grid > *, .comment-form.otw-wrapper > *, .pixcode--grid > .comment-form-comment, .otw-wrapper > .comment-form-comment, .pixcode--grid >
 .form-submit, .otw-wrapper >
 .form-submit, .pixcode--grid >
 .comment-subscription-form, .otw-wrapper >
@@ -15271,11 +15246,7 @@ body, .site-header, .site-footer {
   margin-left: -48px;
 }
 
-.pixcode--grid > .grid__item, .otw-wrapper > .grid__item, .pixcode--grid > .logged-in-as, .otw-wrapper > .logged-in-as, .pixcode--grid > .comment-form-author, .otw-wrapper > .comment-form-author, .pixcode--grid >
-.comment-form-email, .otw-wrapper >
-.comment-form-email, .pixcode--grid >
-.comment-form-url, .otw-wrapper >
-.comment-form-url, .pixcode--grid > .comment-form-comment, .otw-wrapper > .comment-form-comment, .pixcode--grid >
+.pixcode--grid > .grid__item, .otw-wrapper > .grid__item, .pixcode--grid > .logged-in-as, .otw-wrapper > .logged-in-as, .comment-form.pixcode--grid > *, .comment-form.otw-wrapper > *, .pixcode--grid > .comment-form-comment, .otw-wrapper > .comment-form-comment, .pixcode--grid >
 .form-submit, .otw-wrapper >
 .form-submit, .pixcode--grid >
 .comment-subscription-form, .otw-wrapper >
@@ -15293,11 +15264,7 @@ body, .site-header, .site-footer {
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  .pixcode--grid.mobile-first .grid__item, .mobile-first.otw-wrapper .grid__item, .pixcode--grid.mobile-first .logged-in-as, .mobile-first.otw-wrapper .logged-in-as, .pixcode--grid.mobile-first .comment-form-author, .mobile-first.otw-wrapper .comment-form-author, .pixcode--grid.mobile-first
-  .comment-form-email, .mobile-first.otw-wrapper
-  .comment-form-email, .pixcode--grid.mobile-first
-  .comment-form-url, .mobile-first.otw-wrapper
-  .comment-form-url, .pixcode--grid.mobile-first .comment-form-comment, .mobile-first.otw-wrapper .comment-form-comment, .pixcode--grid.mobile-first
+  .pixcode--grid.mobile-first .grid__item, .mobile-first.otw-wrapper .grid__item, .pixcode--grid.mobile-first .logged-in-as, .mobile-first.otw-wrapper .logged-in-as, .pixcode--grid.mobile-first .comment-form > *, .mobile-first.otw-wrapper .comment-form > *, .pixcode--grid.mobile-first .comment-form-comment, .mobile-first.otw-wrapper .comment-form-comment, .pixcode--grid.mobile-first
   .form-submit, .mobile-first.otw-wrapper
   .form-submit, .pixcode--grid.mobile-first
   .comment-subscription-form, .mobile-first.otw-wrapper
@@ -15306,11 +15273,7 @@ body, .site-header, .site-footer {
         -ms-flex-order: 2;
             order: 2;
   }
-  .pixcode--grid.mobile-first .grid__item:last-child, .mobile-first.otw-wrapper .grid__item:last-child, .pixcode--grid.mobile-first .logged-in-as:last-child, .mobile-first.otw-wrapper .logged-in-as:last-child, .pixcode--grid.mobile-first .comment-form-author:last-child, .mobile-first.otw-wrapper .comment-form-author:last-child, .pixcode--grid.mobile-first
-  .comment-form-email:last-child, .mobile-first.otw-wrapper
-  .comment-form-email:last-child, .pixcode--grid.mobile-first
-  .comment-form-url:last-child, .mobile-first.otw-wrapper
-  .comment-form-url:last-child, .pixcode--grid.mobile-first .comment-form-comment:last-child, .mobile-first.otw-wrapper .comment-form-comment:last-child, .pixcode--grid.mobile-first
+  .pixcode--grid.mobile-first .grid__item:last-child, .mobile-first.otw-wrapper .grid__item:last-child, .pixcode--grid.mobile-first .logged-in-as:last-child, .mobile-first.otw-wrapper .logged-in-as:last-child, .pixcode--grid.mobile-first .comment-form > :last-child, .mobile-first.otw-wrapper .comment-form > :last-child, .pixcode--grid.mobile-first .comment-form-comment:last-child, .mobile-first.otw-wrapper .comment-form-comment:last-child, .pixcode--grid.mobile-first
   .form-submit:last-child, .mobile-first.otw-wrapper
   .form-submit:last-child, .pixcode--grid.mobile-first
   .comment-subscription-form:last-child, .mobile-first.otw-wrapper
@@ -15322,9 +15285,7 @@ body, .site-header, .site-footer {
 }
 
 @media only screen and (max-width: 899px) {
-  .article__content .grid__item.island:first-child, .article__content .island.logged-in-as:first-child, .article__content .island.comment-form-author:first-child, .article__content
-  .island.comment-form-email:first-child, .article__content
-  .island.comment-form-url:first-child, .article__content .island.comment-form-comment:first-child, .article__content
+  .article__content .grid__item.island:first-child, .article__content .island.logged-in-as:first-child, .article__content .comment-form > .island:first-child, .article__content .island.comment-form-comment:first-child, .article__content
   .island.form-submit:first-child, .article__content
   .island.comment-subscription-form:first-child, .article__content .island.otw-input-wrap:first-child, .article__content .island.otw-button-wrap:first-child {
     padding-top: 0;
@@ -15332,9 +15293,7 @@ body, .site-header, .site-footer {
 }
 
 @media only screen and (max-width: 899px) {
-  .grid__item.island, .island.logged-in-as, .island.comment-form-author,
-  .island.comment-form-email,
-  .island.comment-form-url, .island.comment-form-comment,
+  .grid__item.island, .island.logged-in-as, .comment-form > .island, .island.comment-form-comment,
   .island.form-submit,
   .island.comment-subscription-form, .island.otw-input-wrap, .island.otw-button-wrap {
     padding-left: 48px;
@@ -15344,9 +15303,7 @@ body, .site-header, .site-footer {
 }
 
 @media only screen and (min-width: 900px) {
-  .grid__item.island, .island.logged-in-as, .island.comment-form-author,
-  .island.comment-form-email,
-  .island.comment-form-url, .island.comment-form-comment,
+  .grid__item.island, .island.logged-in-as, .comment-form > .island, .island.comment-form-comment,
   .island.form-submit,
   .island.comment-subscription-form, .island.otw-input-wrap, .island.otw-button-wrap {
     margin-bottom: 0;
