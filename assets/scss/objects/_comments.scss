@@ -316,7 +316,7 @@ li.depth-2:before {
 		}
 	}
 
-	> * {
+	> p {
 		@extend .grid__item;
 		@extend .one-whole;
 	}

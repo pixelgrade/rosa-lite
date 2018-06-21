@@ -1773,7 +1773,7 @@ label,
 /**
 	 * Grid
 	 */
-.grid__item, .logged-in-as, .comment-form > *, .comment-form-comment,
+.grid__item, .logged-in-as, .comment-form > p, .comment-form-comment,
 .form-submit,
 .comment-subscription-form, .otw-input-wrap, .otw-button-wrap {
   display: inline-block;
@@ -1792,7 +1792,7 @@ label,
   text-align: left;
 }
 
-.grid--rev > .grid__item, .grid--rev > .logged-in-as, .comment-form.grid--rev > *, .grid--rev > .comment-form-comment, .grid--rev >
+.grid--rev > .grid__item, .grid--rev > .logged-in-as, .comment-form.grid--rev > p, .grid--rev > .comment-form-comment, .grid--rev >
 .form-submit, .grid--rev >
 .comment-subscription-form, .grid--rev > .otw-input-wrap, .grid--rev > .otw-button-wrap {
   direction: ltr;
@@ -1807,7 +1807,7 @@ label,
   margin-left: 0;
 }
 
-.grid--full > .grid__item, .grid--full > .logged-in-as, .comment-form.grid--full > *, .grid--full > .comment-form-comment, .grid--full >
+.grid--full > .grid__item, .grid--full > .logged-in-as, .comment-form.grid--full > p, .grid--full > .comment-form-comment, .grid--full >
 .form-submit, .grid--full >
 .comment-subscription-form, .grid--full > .otw-input-wrap, .grid--full > .otw-button-wrap {
   padding-left: 0;
@@ -1820,7 +1820,7 @@ label,
   text-align: right;
 }
 
-.grid--right > .grid__item, .grid--right > .logged-in-as, .comment-form.grid--right > *, .grid--right > .comment-form-comment, .grid--right >
+.grid--right > .grid__item, .grid--right > .logged-in-as, .comment-form.grid--right > p, .grid--right > .comment-form-comment, .grid--right >
 .form-submit, .grid--right >
 .comment-subscription-form, .grid--right > .otw-input-wrap, .grid--right > .otw-button-wrap {
   text-align: left;
@@ -1834,7 +1834,7 @@ label,
   text-align: center;
 }
 
-.grid--center > .grid__item, .grid--center > .logged-in-as, .comment-form.grid--center > *, .grid--center > .comment-form-comment, .grid--center >
+.grid--center > .grid__item, .grid--center > .logged-in-as, .comment-form.grid--center > p, .grid--center > .comment-form-comment, .grid--center >
 .form-submit, .grid--center >
 .comment-subscription-form, .grid--center > .otw-input-wrap, .grid--center > .otw-button-wrap {
   text-align: left;
@@ -1844,13 +1844,13 @@ label,
 	 * Align grid cells vertically (`.grid--middle` or `.grid--bottom`). Extends
 	 * `.grid`.
 	 */
-.grid--middle > .grid__item, .grid--middle > .logged-in-as, .comment-form.grid--middle > *, .grid--middle > .comment-form-comment, .grid--middle >
+.grid--middle > .grid__item, .grid--middle > .logged-in-as, .comment-form.grid--middle > p, .grid--middle > .comment-form-comment, .grid--middle >
 .form-submit, .grid--middle >
 .comment-subscription-form, .grid--middle > .otw-input-wrap, .grid--middle > .otw-button-wrap {
   vertical-align: middle;
 }
 
-.grid--bottom > .grid__item, .grid--bottom > .logged-in-as, .comment-form.grid--bottom > *, .grid--bottom > .comment-form-comment, .grid--bottom >
+.grid--bottom > .grid__item, .grid--bottom > .logged-in-as, .comment-form.grid--bottom > p, .grid--bottom > .comment-form-comment, .grid--bottom >
 .form-submit, .grid--bottom >
 .comment-subscription-form, .grid--bottom > .otw-input-wrap, .grid--bottom > .otw-button-wrap {
   vertical-align: bottom;
@@ -1864,7 +1864,7 @@ label,
   margin-left: -0.75rem;
 }
 
-.grid--narrow > .grid__item, .grid--narrow > .logged-in-as, .comment-form.grid--narrow > *, .grid--narrow > .comment-form-comment, .grid--narrow >
+.grid--narrow > .grid__item, .grid--narrow > .logged-in-as, .comment-form.grid--narrow > p, .grid--narrow > .comment-form-comment, .grid--narrow >
 .form-submit, .grid--narrow >
 .comment-subscription-form, .grid--narrow > .otw-input-wrap, .grid--narrow > .otw-button-wrap {
   padding-left: 12px;
@@ -1879,7 +1879,7 @@ label,
   margin-left: -3rem;
 }
 
-.grid--wide > .grid__item, .grid--wide > .logged-in-as, .comment-form.grid--wide > *, .grid--wide > .comment-form-comment, .grid--wide >
+.grid--wide > .grid__item, .grid--wide > .logged-in-as, .comment-form.grid--wide > p, .grid--wide > .comment-form-comment, .grid--wide >
 .form-submit, .grid--wide >
 .comment-subscription-form, .grid--wide > .otw-input-wrap, .grid--wide > .otw-button-wrap {
   padding-left: 48px;
@@ -2762,7 +2762,7 @@ html.flexbox, html.site-title {
 /**
 	* Whole
 	*/
-.one-whole, .logged-in-as, .comment-form > *, .comment-form-comment,
+.one-whole, .logged-in-as, .comment-form > p, .comment-form-comment,
 .form-submit,
 .comment-subscription-form {
   width: 100%;
@@ -12938,14 +12938,14 @@ small.muted {
  * Grid Columns / Row Items
  */
 @media only screen and (min-width: 900px) {
-  .grid__item > *:last-child, .logged-in-as > *:last-child, .comment-form > * > *:last-child, .comment-form-comment > *:last-child,
+  .grid__item > *:last-child, .logged-in-as > *:last-child, .comment-form > p > *:last-child, .comment-form-comment > *:last-child,
   .form-submit > *:last-child,
   .comment-subscription-form > *:last-child, .otw-input-wrap > *:last-child, .otw-button-wrap > *:last-child {
     margin-bottom: 0;
   }
 }
 
-.grid__item:last-child > *:last-child, .logged-in-as:last-child > *:last-child, .comment-form > :last-child > *:last-child, .comment-form-comment:last-child > *:last-child,
+.grid__item:last-child > *:last-child, .logged-in-as:last-child > *:last-child, .comment-form > p:last-child > *:last-child, .comment-form-comment:last-child > *:last-child,
 .form-submit:last-child > *:last-child,
 .comment-subscription-form:last-child > *:last-child, .otw-input-wrap:last-child > *:last-child, .otw-button-wrap:last-child > *:last-child {
   margin-bottom: 0;
@@ -13359,7 +13359,7 @@ a.site-logo--text {
   border: 0;
 }
 
-.footer-widget-area.col-1.one-third, .footer-widget-area.col-1.two-sixths, .footer-widget-area.col-1.four-twelfths, .footer-widget-area.col-1.one-whole, .footer-widget-area.col-1.logged-in-as, .comment-form > .footer-widget-area.col-1, .footer-widget-area.col-1.comment-form-comment,
+.footer-widget-area.col-1.one-third, .footer-widget-area.col-1.two-sixths, .footer-widget-area.col-1.four-twelfths, .footer-widget-area.col-1.one-whole, .footer-widget-area.col-1.logged-in-as, .comment-form > p.footer-widget-area.col-1, .footer-widget-area.col-1.comment-form-comment,
 .footer-widget-area.col-1.form-submit,
 .footer-widget-area.col-1.comment-subscription-form, .footer-widget-area.col-1.two-thirds, .footer-widget-area.col-1.four-sixths, .footer-widget-area.col-1.eight-twelfths {
   margin: 0 auto;
@@ -14910,7 +14910,7 @@ http://nicolasgallagher.com/micro-clearfix-hack/
  */
 /*------------------------------------*    $GRID
 \*------------------------------------*/
-.pixcode--grid > .grid__item, .otw-wrapper > .grid__item, .pixcode--grid > .logged-in-as, .otw-wrapper > .logged-in-as, .comment-form.pixcode--grid > *, .comment-form.otw-wrapper > *, .pixcode--grid > .comment-form-comment, .otw-wrapper > .comment-form-comment, .pixcode--grid >
+.pixcode--grid > .grid__item, .otw-wrapper > .grid__item, .pixcode--grid > .logged-in-as, .otw-wrapper > .logged-in-as, .comment-form.pixcode--grid > p, .comment-form.otw-wrapper > p, .pixcode--grid > .comment-form-comment, .otw-wrapper > .comment-form-comment, .pixcode--grid >
 .form-submit, .otw-wrapper >
 .form-submit, .pixcode--grid >
 .comment-subscription-form, .otw-wrapper >
@@ -15246,7 +15246,7 @@ body, .site-header, .site-footer {
   margin-left: -48px;
 }
 
-.pixcode--grid > .grid__item, .otw-wrapper > .grid__item, .pixcode--grid > .logged-in-as, .otw-wrapper > .logged-in-as, .comment-form.pixcode--grid > *, .comment-form.otw-wrapper > *, .pixcode--grid > .comment-form-comment, .otw-wrapper > .comment-form-comment, .pixcode--grid >
+.pixcode--grid > .grid__item, .otw-wrapper > .grid__item, .pixcode--grid > .logged-in-as, .otw-wrapper > .logged-in-as, .comment-form.pixcode--grid > p, .comment-form.otw-wrapper > p, .pixcode--grid > .comment-form-comment, .otw-wrapper > .comment-form-comment, .pixcode--grid >
 .form-submit, .otw-wrapper >
 .form-submit, .pixcode--grid >
 .comment-subscription-form, .otw-wrapper >
@@ -15264,7 +15264,7 @@ body, .site-header, .site-footer {
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  .pixcode--grid.mobile-first .grid__item, .mobile-first.otw-wrapper .grid__item, .pixcode--grid.mobile-first .logged-in-as, .mobile-first.otw-wrapper .logged-in-as, .pixcode--grid.mobile-first .comment-form > *, .mobile-first.otw-wrapper .comment-form > *, .pixcode--grid.mobile-first .comment-form-comment, .mobile-first.otw-wrapper .comment-form-comment, .pixcode--grid.mobile-first
+  .pixcode--grid.mobile-first .grid__item, .mobile-first.otw-wrapper .grid__item, .pixcode--grid.mobile-first .logged-in-as, .mobile-first.otw-wrapper .logged-in-as, .pixcode--grid.mobile-first .comment-form > p, .mobile-first.otw-wrapper .comment-form > p, .pixcode--grid.mobile-first .comment-form-comment, .mobile-first.otw-wrapper .comment-form-comment, .pixcode--grid.mobile-first
   .form-submit, .mobile-first.otw-wrapper
   .form-submit, .pixcode--grid.mobile-first
   .comment-subscription-form, .mobile-first.otw-wrapper
@@ -15273,7 +15273,7 @@ body, .site-header, .site-footer {
         -ms-flex-order: 2;
             order: 2;
   }
-  .pixcode--grid.mobile-first .grid__item:last-child, .mobile-first.otw-wrapper .grid__item:last-child, .pixcode--grid.mobile-first .logged-in-as:last-child, .mobile-first.otw-wrapper .logged-in-as:last-child, .pixcode--grid.mobile-first .comment-form > :last-child, .mobile-first.otw-wrapper .comment-form > :last-child, .pixcode--grid.mobile-first .comment-form-comment:last-child, .mobile-first.otw-wrapper .comment-form-comment:last-child, .pixcode--grid.mobile-first
+  .pixcode--grid.mobile-first .grid__item:last-child, .mobile-first.otw-wrapper .grid__item:last-child, .pixcode--grid.mobile-first .logged-in-as:last-child, .mobile-first.otw-wrapper .logged-in-as:last-child, .pixcode--grid.mobile-first .comment-form > p:last-child, .mobile-first.otw-wrapper .comment-form > p:last-child, .pixcode--grid.mobile-first .comment-form-comment:last-child, .mobile-first.otw-wrapper .comment-form-comment:last-child, .pixcode--grid.mobile-first
   .form-submit:last-child, .mobile-first.otw-wrapper
   .form-submit:last-child, .pixcode--grid.mobile-first
   .comment-subscription-form:last-child, .mobile-first.otw-wrapper
@@ -15285,7 +15285,7 @@ body, .site-header, .site-footer {
 }
 
 @media only screen and (max-width: 899px) {
-  .article__content .grid__item.island:first-child, .article__content .island.logged-in-as:first-child, .article__content .comment-form > .island:first-child, .article__content .island.comment-form-comment:first-child, .article__content
+  .article__content .grid__item.island:first-child, .article__content .island.logged-in-as:first-child, .article__content .comment-form > p.island:first-child, .article__content .island.comment-form-comment:first-child, .article__content
   .island.form-submit:first-child, .article__content
   .island.comment-subscription-form:first-child, .article__content .island.otw-input-wrap:first-child, .article__content .island.otw-button-wrap:first-child {
     padding-top: 0;
@@ -15293,7 +15293,7 @@ body, .site-header, .site-footer {
 }
 
 @media only screen and (max-width: 899px) {
-  .grid__item.island, .island.logged-in-as, .comment-form > .island, .island.comment-form-comment,
+  .grid__item.island, .island.logged-in-as, .comment-form > p.island, .island.comment-form-comment,
   .island.form-submit,
   .island.comment-subscription-form, .island.otw-input-wrap, .island.otw-button-wrap {
     padding-left: 48px;
@@ -15303,7 +15303,7 @@ body, .site-header, .site-footer {
 }
 
 @media only screen and (min-width: 900px) {
-  .grid__item.island, .island.logged-in-as, .comment-form > .island, .island.comment-form-comment,
+  .grid__item.island, .island.logged-in-as, .comment-form > p.island, .island.comment-form-comment,
   .island.form-submit,
   .island.comment-subscription-form, .island.otw-input-wrap, .island.otw-button-wrap {
     margin-bottom: 0;

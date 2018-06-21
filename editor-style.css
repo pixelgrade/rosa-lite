@@ -8910,6 +8910,100 @@ strong {
   font-weight: 600;
 }
 
+p .alignleft {
+  margin-left: 0 !important;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-right: 3rem;
+}
+
+p .alignright {
+  margin-right: 0 !important;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-left: 3rem;
+}
+
+p .aligncenter {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+p .alignleft,
+p .alignright,
+p .aligncenter,
+p .alignnone {
+  clear: none;
+}
+
+p .alignnone {
+  display: inline-block;
+}
+
+.alignleft,
+.alignright,
+.aligncenter,
+.alignnone {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  max-width: 100%;
+}
+
+.alignleft, .alignleft img,
+.alignright,
+.alignright img,
+.aligncenter,
+.aligncenter img,
+.alignnone,
+.alignnone img {
+  display: block;
+}
+
+.alignnone,
+.aligncenter {
+  display: block;
+}
+
+.aligncenter {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.entry-content .aligncenter + p, .entry-content
+.alignnone + p {
+  margin-top: 2rem;
+}
+
+.alignleft.alignleft,
+.alignright.alignright {
+  max-width: 50%;
+}
+
+.alignleft {
+  margin-right: 2rem;
+  float: left;
+  clear: left;
+}
+
+.alignright {
+  margin-left: 2rem;
+  float: right;
+  clear: right;
+}
+
+.aligncenter, .aligncenter img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+figure {
+  width: 100%;
+}
+
+figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
+  margin-top: 2rem;
+}
+
 /*------------------------------------*    $SHORTCODES
 \*------------------------------------*/
 /**

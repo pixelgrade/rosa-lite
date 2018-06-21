@@ -17,6 +17,7 @@ $editor-style:  true;
 // BASE
 @import "base/core";
 @import "base/typography";
+@import "base/wp-align";
 
 @import "shortcodes/__shortcodes";
 @import "objects/beautons";
