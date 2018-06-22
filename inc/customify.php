@@ -655,7 +655,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'css'     => array(
 							array(
 								'property' => 'color',
-								'selector' => '.blurp--top, .border-waves'
+								'selector' => '.blurp--top, .border-waves-before, .border-waves-after'
 							),
 							array(
 								'property' => 'border-color',
