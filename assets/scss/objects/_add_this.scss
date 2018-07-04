@@ -9,21 +9,20 @@
 		float: right;
 	}
 
-	border: 1px solid $borders;
+	border: 1px solid currentColor;
 
 	a, .totals{
 		display: inline-block;
 		float:none !important;
 		padding: $_u4;
 		vertical-align: top;
-		border-left: 1px solid $borders;
-
-		color: $light;
+		border-left: 1px solid currentColor;
 		text-align: center;
 	}
 
 	a{
 		padding: 6px !important;
+		color: currentColor;
 
 		&:first-child{
 			border-left: 0;
@@ -40,10 +39,10 @@
 	}
 
 	a:hover{
-		color: $accent;
-		& > span {
-			opacity:1;
-		}
+		color: currentColor;
+
+		//& > span {
+		//}
 	}
 
 	li{
@@ -64,27 +63,36 @@
 	opacity:0.3;
 }
 
+//div.addthis_toolbox {
+//	opacity: 0.47;
+//}
+
 div.addthis_toolbox a {
 	margin-bottom: 0;
 
+	svg {
+		fill: currentColor;
+	}
+
 	.at-icon-wrapper {
 		display: block;
-
+		opacity: 0.475;
 		background-color: transparent !important;
-		filter: invert(1) grayscale(1) contrast(.1) brightness(1.5);
+		//filter: invert(1) grayscale(1) contrast(.1) brightness(1.5);
 
 		&:hover {
-			filter: invert(1) grayscale(0) contrast(1) brightness(1);
+			//filter: invert(1) grayscale(0) contrast(1) brightness(1);
+          opacity: 1;
 		}
 
 		html[class*="is--ie"] & {
 			svg path {
-				fill: #D2D2D2;
+				//fill: currentColor;
 			}
 
 			&:hover {
 				svg path {
-					fill: #000000;
+					//fill: currentColor;
 				}
 			}
 		}

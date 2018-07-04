@@ -20,7 +20,8 @@
 		left: 20px;
 		top: 0;
 
-		border-left: 1px solid $borders;
+		border-left: 1px solid currentColor;
+		opacity: 0.375;
 		height: 100%;
 	}
 
@@ -37,13 +38,12 @@
 	width: 42px;
 	height: 42px;
 
-	border: 1px solid $borders;
+	border: 1px solid currentColor;
 
 	@include font-size(14px);
 	line-height: 42px;
 	text-align: center;
 
-	color: $lightest;
 	background: white;
 
 	&.total {
@@ -54,7 +54,7 @@
 .comment-number--dark {
 	@extend .comment-number;
 
-	border: 1px solid $dark;
+	border: 0;
 	display: inline-block;
 
 	background-color: $dark;
@@ -158,15 +158,24 @@ li.comment, li.pingback {
 					position: absolute;
 					top: 45px;
 
-					border-top: 1px solid $borders;
+					border-top: 1px solid currentColor;
+					opacity: 0.375;
 				}
 			}
 
 			.comment-number {
-				border: 1px solid #eeeeee;
+				border: 0;
 
-				background: #eeeeee;
-				color: $gray;
+				&:before {
+					content: "";
+					position: absolute;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+					background: currentColor;
+					opacity: 0.1;
+				}
 			}
 		}
 	}
@@ -219,12 +228,13 @@ li.depth-2:before {
 	@include rem(margin-right, $_u2);
 }
 
-.comment__time {
-
-}
+//.comment__time {
+//
+//}
 
 .comment__timestamp {
-	color: $light;
+	color: currentColor;
+	opacity: 0.55;
 }
 
 .comment__avatar {
@@ -238,7 +248,8 @@ li.depth-2:before {
 
 	@include font-size(14px);
 
-	color: $light;
+	color: currentColor;
+	opacity: 0.55;
 }
 
 .comment__links {

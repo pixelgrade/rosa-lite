@@ -47,8 +47,9 @@ hr, .separator {
 		position: absolute;
 		top: 50%;
 		width: 42%;
-		border: 1px solid $borders;
+		border: 1px solid currentColor;
 		transform: translateY(-50%);
+		opacity: 0.8;
 	}
 
 	&.separator_color--white .line {
@@ -80,12 +81,14 @@ hr, .separator {
 
 	.arrow--left {
 		left: 0;
-		border-left: 7px solid $borders;
+		border-left: 7px solid currentColor;
+		opacity: 0.8;
 	}
 
 	.arrow--right {
 		right: 0;
-		border-right: 7px solid $borders;
+		border-right: 7px solid currentColor;
+		opacity: 0.8;
 	}
 
 	&.separator_color--white {
@@ -105,8 +108,7 @@ hr, .separator {
 
 	font-size: 17px;
 	font-family: Serif;
-
-	color: #9a9998;
+	opacity: 0.8;
 
 	.site-footer & {
 		color: $accent;

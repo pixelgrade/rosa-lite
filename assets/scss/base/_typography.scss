@@ -136,16 +136,18 @@ a {
 }
 
 .link--light {
-	color: $lightest;
+	color: currentColor;
+	opacity: 0.45;
 }
 
 .link--dark {
-	color: $dark;
+	color: currentColor;
 }
 
 .link--light, .link--dark {
 	&:hover {
 		color: $accent;
+		opacity: 1;
 	}
 }
 

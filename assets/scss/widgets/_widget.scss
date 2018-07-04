@@ -232,11 +232,12 @@
 	color: white;
 
 	.widget__title {
-		color: white;
+		color: inherit;
 	}
 
 	a {
-		color: white;
+		color: inherit;
+		text-decoration: underline;
 	}
 
 	[class*="social"] a {
