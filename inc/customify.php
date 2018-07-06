@@ -532,8 +532,10 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 									.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a,
 									.comment__author-name a:hover,
 									a.site-logo--text:hover,
-									.headroom--not-top a.site-logo--text:hover,
-									.is-today .pika-button',
+									.site-header.headroom--not-top a.site-logo--text:hover,
+									.is-today .pika-button,
+									.shop-categories.tabs__nav a.active,
+									.shop-categories.tabs__nav a:hover',
 							),
 							array(
 								'property' => 'background-color',
@@ -614,6 +616,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .latest-comments__body,
                                                 .pixlikes-box,
                                                 
+                                                .woocommerce .woocommerce-ordering select,
+                                                
                                                 .sidebar--main .widget',
                                 'callback_filter' => 'rosa_transparent_separator_and_borders_color'
                             ),
@@ -633,8 +637,18 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								                .widget a,
 								                .icon-search:before,
 								                .icon-envelope:before,
-								                .input-group input.form-control'
+								                .input-group input.form-control,
+								                .woocommerce .woocommerce-ordering select,
+								                .shop-categories.tabs__nav a,
+								                .woocommerce .woocommerce-breadcrumb a:hover'
 							),
+                            array(
+								'property' => 'color',
+								'selector' => '
+								    .woocommerce .woocommerce-breadcrumb,
+								    .woocommerce .woocommerce-breadcrumb a',
+                                'callback_filter' => 'rosa_transparent_separator_and_borders_color'
+			                ),
 							array(
 								'property' => 'background-color',
 								'selector' => '.comment-number--dark, 
@@ -645,70 +659,70 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                     .add-comment .add-comment__button,
                                     .otreservations-submit'
 							),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.comment-form input::-webkit-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.comment-form input:-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.comment-form input::-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.comment-form input:-ms-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.comment-form textarea::-webkit-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.comment-form textarea:-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.comment-form textarea::-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.comment-form textarea:-ms-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.form-search .search-query::-webkit-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.form-search .search-query:-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.form-search .search-query::-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.form-search .search-query:-ms-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.input-group input.form-control::-webkit-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.input-group input.form-control:-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.input-group input.form-control::-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.input-group input.form-control:-ms-input-placeholder'
-                            )
+//                            array(
+//                                'property' => 'color',
+//                                'selector' => '.comment-form input::-webkit-input-placeholder'
+//                            ),
+//                            array(
+//                                'property' => 'color',
+//                                'selector' => '.comment-form input:-moz-placeholder'
+//                            ),
+//                            array(
+//                                'property' => 'color',
+//                                'selector' => '.comment-form input::-moz-placeholder'
+//                            ),
+//                            array(
+//                                'property' => 'color',
+//                                'selector' => '.comment-form input:-ms-input-placeholder'
+//                            ),
+//                            array(
+//                                'property' => 'color',
+//                                'selector' => '.comment-form textarea::-webkit-input-placeholder'
+//                            ),
+//                            array(
+//                                'property' => 'color',
+//                                'selector' => '.comment-form textarea:-moz-placeholder'
+//                            ),
+//                            array(
+//                                'property' => 'color',
+//                                'selector' => '.comment-form textarea::-moz-placeholder'
+//                            ),
+//                            array(
+//                                'property' => 'color',
+//                                'selector' => '.comment-form textarea:-ms-input-placeholder'
+//                            ),
+//                            array(
+//                                'property' => 'color',
+//                                'selector' => '.form-search .search-query::-webkit-input-placeholder'
+//                            ),
+//                            array(
+//                                'property' => 'color',
+//                                'selector' => '.form-search .search-query:-moz-placeholder'
+//                            ),
+//                            array(
+//                                'property' => 'color',
+//                                'selector' => '.form-search .search-query::-moz-placeholder'
+//                            ),
+//                            array(
+//                                'property' => 'color',
+//                                'selector' => '.form-search .search-query:-ms-input-placeholder'
+//                            ),
+//                            array(
+//                                'property' => 'color',
+//                                'selector' => '.input-group input.form-control::-webkit-input-placeholder'
+//                            ),
+//                            array(
+//                                'property' => 'color',
+//                                'selector' => '.input-group input.form-control:-moz-placeholder'
+//                            ),
+//                            array(
+//                                'property' => 'color',
+//                                'selector' => '.input-group input.form-control::-moz-placeholder'
+//                            ),
+//                            array(
+//                                'property' => 'color',
+//                                'selector' => '.input-group input.form-control:-ms-input-placeholder'
+//                            )
 						)
 					),
 					'navlink_color'  => array(
@@ -723,7 +737,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 												.headroom--not-top .nav--main a,
 												.nav.nav--items-social a:before,
 												.headroom--not-top .nav.nav--items-social a:before,
-												a.site-logo--text'
+												.site-header.headroom--not-top a.site-logo--text'
 							),
                             array(
                                 'property' => 'border-color',
@@ -805,6 +819,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								.comment-form input,
 								.form-search .search-query,
 								.input-group input.form-control,
+								
+								.woocommerce .woocommerce-ordering select,
 								
 								.comment-number,
 								.is-today .pika-button',
@@ -1293,8 +1309,10 @@ function rosa_transparent_separator_and_borders_color( value, selector, property
         head = document.head || document.getElementsByTagName('head')[0];
 
     css += selector + ' {' +
-        property + ': ' + value + '20' +
+        property + ': ' + value.substring(0,7) + '20' +
     '}';
+    
+    console.log(css);
 
     if ( style !== null ) {
         style.innerHTML = css;
