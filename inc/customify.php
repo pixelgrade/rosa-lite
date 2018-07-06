@@ -644,6 +644,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							),
                             array(
 								'property' => 'color',
+								'unit' => '88',
 								'selector' => '
 								    .woocommerce .woocommerce-breadcrumb,
 								    .woocommerce .woocommerce-breadcrumb a',
@@ -1292,9 +1293,13 @@ function rosa_range_negative_value( $value, $selector, $property, $unit ) {
 	return $output;
 }
 
-function rosa_transparent_separator_and_borders_color($value, $selector, $property ) {
+function rosa_transparent_separator_and_borders_color( $value, $selector, $property, $unit ) {
+    if ( empty( $unit ) ) {
+        $unit = '20';
+    }
+
     $output = $selector . '{' .
-        $property . ': ' . $value . '20;' .
+        $property . ': ' . $value . $unit . ';' .
         '}';
     return $output;
 }
@@ -1302,15 +1307,41 @@ function rosa_transparent_separator_and_borders_color($value, $selector, $proper
 function rosa_transparent_separator_and_borders_color_customizer_preview() {
 
     $js = "
-function rosa_transparent_separator_and_borders_color( value, selector, property ) {
+    
+    function makeSafeForCSS(name) {
+        return name.replace(/[^a-z0-9]/g, function(s) {
+            var c = s.charCodeAt(0);
+            if (c == 32) return '-';
+            if (c >= 65 && c <= 90) return '_' + s.toLowerCase();
+            return '__' + ('000' + c.toString(16)).slice(-4);
+        });
+    }
+    
+    String.prototype.hashCode = function() {
+        var hash = 0, i, chr;
+        
+        if ( this.length === 0 ) return hash;
+        
+        for (i = 0; i < this.length; i++) {
+            chr   = this.charCodeAt(i);
+            hash  = ((hash << 5) - hash) + chr;
+            hash |= 0; // Convert to 32bit integer
+        }
+        return hash;
+    };
+    
+function rosa_transparent_separator_and_borders_color( value, selector, property, unit ) {
 
     var css = '',
-        style = document.getElementById('rosa_transparent_separator_and_borders_color_style_tag'),
+        id = 'rosa_transparent_separator_and_borders_color_style_tag_' + makeSafeForCSS( property + selector ).hashCode(),
+        style = document.getElementById( id ),
         head = document.head || document.getElementsByTagName('head')[0];
+        
+    if ( typeof unit !== 'string' ) {
+        unit = '20';
+    }
 
-    css += selector + ' {' +
-        property + ': ' + value.substring(0,7) + '20' +
-    '}';
+    css += selector + ' {' + property + ': ' + value.substring(0,7) + unit + ';}';
     
     console.log(css);
 
@@ -1318,7 +1349,7 @@ function rosa_transparent_separator_and_borders_color( value, selector, property
         style.innerHTML = css;
     } else {
         style = document.createElement('style');
-        style.setAttribute('id', 'rosa_transparent_separator_and_borders_color_style_tag');
+        style.setAttribute('id', id);
 
         style.type = 'text/css';
         if ( style.styleSheet ) {
