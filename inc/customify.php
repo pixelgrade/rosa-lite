@@ -517,7 +517,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 									.form-submit #comment-submit.read-more-button, .btn--text.wpcf7-form-control.wpcf7-submit,
 									.wpcf7-form-control.wpcf7-submit.read-more-button, .btn--text.otreservations-submit,
 									.otreservations-submit.read-more-button, .widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button,
-									a:hover > .pixcode--icon, .widget a:hover, .footer-widget-area .widget a:hover, blockquote, .meta-list a.btn:hover,
+									a:hover > .pixcode--icon, .widget a:hover, blockquote, .meta-list a.btn:hover,
 									.meta-list a.comments_add-comment:hover, .meta-list .form-submit a#comment-submit:hover,
 									.form-submit .meta-list a#comment-submit:hover, .meta-list a.wpcf7-form-control.wpcf7-submit:hover,
 									.meta-list a.otreservations-submit:hover, .meta-list .widget_tag_cloud a:hover, .widget_tag_cloud .meta-list a:hover, .btn.btn--text:hover,
@@ -530,14 +530,19 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 									.site-footer .separator--flower,
 									.woocommerce-account .woocommerce-MyAccount-navigation li a:hover,
 									.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a,
-									.comment__author-name a:hover',
+									.comment__author-name a:hover,
+									a.site-logo--text:hover,
+									.headroom--not-top a.site-logo--text:hover,
+									.is-today .pika-button',
 							),
 							array(
 								'property' => 'background-color',
 								'selector' => '.btn--primary, .shop-menu-item .shop-items-number, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover,
 								.pagination li a:hover, form.shipping_calculator button.button:hover, .otreservations-submit:hover, .pixcode--icon.square:hover, .pixcode--icon.circle:hover,
 								.sidebar--footer__accent, .copyright-area.copyright-area__accent, .menu-list__item-highlight-title,
-								.promo-box__container'
+								.promo-box__container,
+                                :not(.pika-today) > .pika-button:hover,
+                                .pika-table .is-selected .pika-button.pika-day'
 							),
 							array(
 								'property' => 'background',
@@ -587,18 +592,29 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							array(
 								'property' => 'border-color',
 								'selector' => '.up-link:before,
+								
                                                 .pix-dropdown .dropdown__trigger,
+                                                .pix-dropdown.active .dropdown__menu,
+                                                .pix-dropdown.active .dropdown__menu:before,
+                                                
+                                                .otw-widget-form .otw-reservation-date,
+                                                .otw-widget-form .otw-reservation-time,
+                                                .otw-widget-form .otw-party-size-select,
+                                                
+                                                .form-search .search-query,
+                                                
                                                 hr, .separator,
-                                                .sidebar--main .widget,
-                                                .latest-comments__body,
-                                                .pixlikes-box,
+                                                
                                                 .meta-list a.btn,
                                                 .meta-list a.btn:last-child,
+                                                div.addthis_toolbox,
+                                                div.addthis_toolbox a,
                                                 .comment-form textarea,
                                                 .comment-form input,
-                                                .form-search .search-query,
-                                                div.addthis_toolbox,
-                                                div.addthis_toolbox a',
+                                                .latest-comments__body,
+                                                .pixlikes-box,
+                                                
+                                                .sidebar--main .widget',
                                 'callback_filter' => 'rosa_transparent_separator_and_borders_color'
                             ),
 						),
@@ -616,7 +632,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								                .pix-dropdown .dropdown__trigger,
 								                .widget a,
 								                .icon-search:before,
-								                .icon-envelope:before'
+								                .icon-envelope:before,
+								                .input-group input.form-control'
 							),
 							array(
 								'property' => 'background-color',
@@ -625,7 +642,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                     .comments-area-title .total.comment-number--dark, 
                                     .comment-reply-title .comment-number.total, 
                                     .comment-reply-title .total.comment-number--dark, 
-                                    .add-comment .add-comment__button'
+                                    .add-comment .add-comment__button,
+                                    .otreservations-submit'
 							),
                             array(
                                 'property' => 'color',
@@ -704,11 +722,14 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								'selector' => '.nav--main a,
 												.headroom--not-top .nav--main a,
 												.nav.nav--items-social a:before,
-												.headroom--not-top .nav.nav--items-social a:before'
+												.headroom--not-top .nav.nav--items-social a:before,
+												a.site-logo--text'
 							),
                             array(
                                 'property' => 'border-color',
                                 'selector' => '.menu-item-has-children:after, .menu-item-language:after,
+                                                .headroom--not-top .menu-item-has-children:after,
+                                                .headroom--not-top .menu-item-language:after,
                                                 .pix-dropdown .dropdown__trigger:after'
                             ),
                             array(
@@ -718,19 +739,6 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .comments_add-comment:hover,
                                                 .form-submit #comment-submit:hover'
                             )
-						)
-					),
-					'cover_text'     => array(
-						'type'    => 'color',
-						'label'   => esc_html__( 'Cover Color', 'rosa' ),
-						'live'    => true,
-						'default' => '#ffffff',
-						'css'     => array(
-							array(
-								'property' => 'color',
-								'selector' => '.article__header .article__headline .headline__primary,
-								.article__header .article__headline .headline__description *',
-							)
 						)
 					),
 					'header_background_color' => array(
@@ -760,15 +768,27 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							array(
 								'property' => 'color',
 								'selector' => '.blurp--top, .border-waves-before, .border-waves-after,
-								                .btn--secondary,
-								                .btn-secondary:hover,
+								                
+								                .btn,
+								                .btn:hover,
+								                .comments_add-comment,
+								                .comments_add-comment:hover,
+								                .form-submit #comment-submit,
+								                .form-submit #comment-submit:hover,
+								                .otreservations-submit,
+								                .otreservations-submit:hover,
+								                
+								                .promo-box__container,
 								                
 								                .comment-number--dark, 
 								                .comments-area-title .comment-number.total,
 								                .comments-area-title .total.comment-number--dark, 
 								                .comment-reply-title .comment-number.total, 
 								                .comment-reply-title .total.comment-number--dark, 
-								                .add-comment .add-comment__button'
+								                .add-comment .add-comment__button,
+								                
+								                .pika-button:hover,
+                                                .pika-table .is-selected .pika-button.pika-day'
 							),
 							array(
 								'property' => 'border-color',
@@ -780,11 +800,14 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								.menu-list__item-price, .desc__content,
 								.pix-dropdown.active .dropdown__menu,
 								
+								.otw-input-wrap select option,
+								
 								.comment-form input,
 								.form-search .search-query,
 								.input-group input.form-control,
 								
-								.comment-number',
+								.comment-number,
+								.is-today .pika-button',
 							)
 						)
 					),
@@ -794,6 +817,22 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'desc'   => esc_html__( 'Container background with image.', 'rosa' ),
 						'output' => array( '.page .article__content' ),
 					),
+                    'this_divider_6983365' => array(
+                        'type' => 'html',
+                        'html' => '<span class="separator label large">' . esc_html__( 'Footer Widget Area', 'rosa' ) . '</span>'
+                    ),
+                    'footer_widget_area_accent_color'     => array(
+                        'type'    => 'color',
+                        'label'   => __( 'Footer Widget Area Accent Color', 'rosa' ),
+                        'live'    => true,
+                        'default' => '#c59d5f',
+                        'css'     => array(
+                            array(
+                                'property' => 'color',
+                                'selector' => '.footer-widget-area .widget a:hover',
+                            ),
+                        ),
+                    ),
                     'footer_widget_area_background_color'     => array(
                         'type'    => 'color',
                         'label'   => __( 'Footer Widget Area Background Color', 'rosa' ),
@@ -820,6 +859,23 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                             array(
                                 'property' => 'border-color',
                                 'selector' => '.btn--top_text .btn__arrow'
+                            ),
+                        ),
+                    ),
+                    'this_divider_6360676' => array(
+                        'type' => 'html',
+                        'html' => '<span class="separator label large">' . esc_html__( 'Footer', 'rosa' ) . '</span>'
+                    ),
+                    'footer_accent_color'     => array(
+                        'type'    => 'color',
+                        'label'   => __( 'Footer Accent Color', 'rosa' ),
+                        'live'    => true,
+                        'default' => '#c59d5f',
+                        'css'     => array(
+                            array(
+                                'property' => 'color',
+                                'selector' => '.copyright-text a,
+                                                .nav--footer a:hover',
                             ),
                         ),
                     ),
@@ -1488,7 +1544,9 @@ function rosa_add_customify_style_manager_section ( $options ) {
             'sm_color_primary' => array(
                 'default' => '#c59d5f',
                 'connected_fields' => array(
-                    'main_color'
+                    'main_color',
+                    'footer_accent_color',
+                    'footer_widget_area_accent_color'
                 ),
             ),
             'sm_dark_primary' => array(
@@ -1509,7 +1567,6 @@ function rosa_add_customify_style_manager_section ( $options ) {
             'sm_light_primary' => array(
                 'default' => '#ffffff',
                 'connected_fields' => array(
-                    'cover_text',
                     'header_background_color',
                     'content_background_color',
                     'footer_widget_area_text_color',

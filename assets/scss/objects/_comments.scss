@@ -57,7 +57,7 @@
 	border: 0;
 	display: inline-block;
 
-	background-color: $dark;
+	background-color: currentColor;
 	color: white;
 
 	@include font-size(20px);
@@ -214,12 +214,28 @@ li.depth-2:before {
 	}
 }
 
+/*
+
+.comment-article:hover .comment-reply-link,
+.comment-article:hover .comment-edit-link
+.comment-article:hover .comment-edit-link:hover
+
+ */
+
 .comment-article {
 	margin-bottom: 0;
 
 	&:hover {
-		.comment-edit-link, .comment-reply-link {
+		.comment-reply-link {
 			opacity: 1;
+		}
+
+		.comment-edit-link {
+			opacity: 0.55;
+
+			&:hover {
+				opacity: 1;
+			}
 		}
 	}
 }
@@ -235,6 +251,10 @@ li.depth-2:before {
 .comment__timestamp {
 	color: currentColor;
 	opacity: 0.55;
+}
+
+.comment__timestamp:hover {
+    opacity: 1;
 }
 
 .comment__avatar {
@@ -261,10 +281,11 @@ li.depth-2:before {
 }
 
 .comment-edit-link, .comment-reply-link {
-	color: $light;
+	color: currentColor;
 	opacity: 0;
 	@include rem(margin-right, $_u2);
-	transition: opacity .15s ease-in-out;
+	transition: opacity .15s ease-in-out,
+				color .15s ease-in-out;
 	transform: translateZ(0);
 }
 
