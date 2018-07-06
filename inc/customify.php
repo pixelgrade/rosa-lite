@@ -1540,6 +1540,7 @@ function rosa_add_customify_style_manager_section ( $options ) {
     }
 
     $options['sections']['style_manager_section'] = array_replace_recursive(  $options['sections']['style_manager_section'], array(
+    	'priority' => -1,
         'options' => array(
             'sm_color_primary' => array(
                 'default' => '#c59d5f',
@@ -1548,6 +1549,12 @@ function rosa_add_customify_style_manager_section ( $options ) {
                     'footer_accent_color',
                     'footer_widget_area_accent_color'
                 ),
+            ),
+            'sm_color_secondary' => array(
+            	'default' => '#c59d5f',
+            ),
+            'sm_color_tertiary' => array(
+            	'default' => '#c59d5f',
             ),
             'sm_dark_primary' => array(
                 'default' => '#252525',
@@ -1564,6 +1571,9 @@ function rosa_add_customify_style_manager_section ( $options ) {
                     'footer_widget_area_background_color',
                 ),
             ),
+            'sm_dark_tertiary' => array(
+                'default' => '#515150',
+            ),
             'sm_light_primary' => array(
                 'default' => '#ffffff',
                 'connected_fields' => array(
@@ -1573,6 +1583,12 @@ function rosa_add_customify_style_manager_section ( $options ) {
                     'footer_text_color',
                 ),
             ),
+            'sm_light_secondary' => array(
+            	'default' => '#F9F9F9'
+            ),
+            'sm_light_tertiary' => array(
+            	'default' => '#F9F9F9'
+            ),
         ),
     ) );
 
@@ -1580,3 +1596,29 @@ function rosa_add_customify_style_manager_section ( $options ) {
 }
 
 add_filter('customify_filter_fields', 'rosa_add_customify_style_manager_section', 12, 1);
+
+function rosa_add_default_color_palette( $color_palettes ) {
+
+	$color_palettes = array_merge(array(
+		'default' => array(
+			'label' => 'Default',
+			'preview' => array(
+				'background_image_url' => 'https://cloud.pixelgrade.com/wp-content/uploads/2018/07/rosa-palette.jpg',
+			),
+			'options' => array(
+				'sm_color_primary' => '#c59d5f',
+				'sm_color_secondary' => '#c59d5f',
+				'sm_color_tertiary' => '#c59d5f',
+				'sm_dark_primary' => '#252525',
+				'sm_dark_secondary' => '#515150',
+				'sm_dark_tertiary' => '#515150',
+				'sm_light_primary' => '#FFFFFF',
+				'sm_light_secondary' => '#F9F9F9',
+				'sm_light_tertiary' => '#F9F9F9',
+			),
+		),
+	), $color_palettes);
+
+	return $color_palettes;
+}
+add_filter( 'customify_get_color_palettes', 'rosa_add_default_color_palette' );
