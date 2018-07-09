@@ -32,14 +32,14 @@
 	}
 
 	a:hover {
-		color: white !important;
+		color: white;
 		background-color: $accent;
 		border-bottom: 1px solid transparent;
 	}
 
 	span.current {
 		color: $dark;
-		border: 1px solid $borders;
+		border: 1px solid currentColor;
 	}
 
 	.inf_scroll & {
@@ -96,7 +96,7 @@
 	color: $dark;
 
 	&.disabled {
-		color: #F0F0F0 !important;
+		color: #F0F0F0;
 		pointer-events: none;
 	}
 }

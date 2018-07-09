@@ -531,20 +531,36 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 									.woocommerce-account .woocommerce-MyAccount-navigation li a:hover,
 									.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a,
 									.comment__author-name a:hover,
-									a.site-logo--text:hover,
+									.site-header.headroom--top a.site-logo--text:hover,
 									.site-header.headroom--not-top a.site-logo--text:hover,
 									.is-today .pika-button,
-									.shop-categories.tabs__nav a.active,
-									.shop-categories.tabs__nav a:hover',
+									.tabs__nav a.active,
+									.tabs__nav a:hover,
+									.woocommerce ul.products li.product .price del,
+									.woocommerce .product .price,
+									.woocommerce ul.products li.product:hover .product__button:hover,
+									.single-product .entry-summary .price ins span,
+									.single-product .entry-summary .price del span,
+									.single-product .entry-summary .price del,
+									.pixcode.pixcode--icon:hover',
 							),
 							array(
 								'property' => 'background-color',
-								'selector' => '.btn--primary, .shop-menu-item .shop-items-number, .comments_add-comment, .form-submit #comment-submit, .btn:hover, .wpcf7-form-control.wpcf7-submit:hover,
+								'selector' => '.btn--primary, .shop-menu-item .shop-items-number, .comments_add-comment, .form-submit #comment-submit, .btn:not(.btn--primary):hover, .wpcf7-form-control.wpcf7-submit:hover,
 								.pagination li a:hover, form.shipping_calculator button.button:hover, .otreservations-submit:hover, .pixcode--icon.square:hover, .pixcode--icon.circle:hover,
 								.sidebar--footer__accent, .copyright-area.copyright-area__accent, .menu-list__item-highlight-title,
 								.promo-box__container,
                                 :not(.pika-today) > .pika-button:hover,
-                                .pika-table .is-selected .pika-button.pika-day'
+                                .pika-table .is-selected .pika-button.pika-day,
+                                .pagination .nav-links .page-numbers:not(.current):hover,
+                                .pagination .nav-links .page-numbers.prev:not(.disabled):hover,
+                                .pagination .nav-links .page-numbers.next:hover,
+                                .woocommerce div.product form.cart .button:hover,
+                                .woocommerce table.shop_table div.coupon .button:hover,
+                                .woocommerce-page table.shop_table div.coupon .button:hover,
+                                .woocommerce-cart-form .actions input[name="update_cart"][disabled]:hover,
+                                .woocommerce div.cart-collaterals .wc-proceed-to-checkout .checkout-button:hover,
+                                .product__badge.on-sale'
 							),
 							array(
 								'property' => 'background',
@@ -561,7 +577,9 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								.widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button, blockquote, .article__content a:not([class]), .shop-categories a.active,
 								body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart, .menu-list__item-highlight-wrapper:before,
 								.woocommerce-account .woocommerce-MyAccount-navigation li a:hover,
-								.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a'
+								.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a,
+								.woocommerce ul.products li.product:hover .product__button:hover,
+								.pagination .nav-links .page-numbers.current'
 							),
 							array(
 								'property' => 'outline-color',
@@ -589,10 +607,13 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								'selector' => 'body, .up-link, .down-arrow--bubble .arrow,
 								                .article__date,
 								                .pixlikes-box .likes-text,
-								                .pixlikes-box .likes-count'
+								                .pixlikes-box .likes-count,
+								                .woocommerce-message,
+								                .menu-list span.dots'
 							),
 							array(
 								'property' => 'border-color',
+								'unit' => '37',
 								'selector' => '.up-link:before,
 								
                                                 .pix-dropdown .dropdown__trigger,
@@ -617,9 +638,23 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .pixlikes-box,
                                                 
                                                 .woocommerce .woocommerce-ordering select,
+                                                .woocommerce div.woocommerce-message,
+                                                .woocommerce table.shop_table,
+                                                .woocommerce-page table.shop_table,
+                                                .woocommerce table.shop_table td,
+                                                .woocommerce table.shop_table div.coupon .input-text[name="coupon_code"],
+                                                .woocommerce-page table.shop_table div.coupon .input-text[name="coupon_code"],
+                                                .woocommerce div.cart-collaterals div.cart-totals .shop_table,
                                                 
                                                 .sidebar--main .widget',
-                                'callback_filter' => 'rosa_transparent_separator_and_borders_color'
+                                'callback_filter' => 'rosa_transparent_color'
+                            ),
+                            array(
+                                'property' => 'border-color',
+                                'unit' => '88',
+                                'selector' => '.woocommerce-cart .cart-collaterals .cart_totals tr th,
+                                                .woocommerce-cart .cart-collaterals .cart_totals tr td',
+                                'callback_filter' => 'rosa_transparent_color'
                             ),
 						),
 					),
@@ -639,8 +674,10 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								                .icon-envelope:before,
 								                .input-group input.form-control,
 								                .woocommerce .woocommerce-ordering select,
-								                .shop-categories.tabs__nav a,
-								                .woocommerce .woocommerce-breadcrumb a:hover'
+								                .tabs__nav a,
+								                .woocommerce .woocommerce-breadcrumb a:hover,
+                                               .woocommerce-page table.shop_table .input-text,
+                                               .pixcode.pixcode--icon'
 							),
                             array(
 								'property' => 'color',
@@ -648,82 +685,133 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								'selector' => '
 								    .woocommerce .woocommerce-breadcrumb,
 								    .woocommerce .woocommerce-breadcrumb a',
-                                'callback_filter' => 'rosa_transparent_separator_and_borders_color'
+                                'callback_filter' => 'rosa_transparent_color'
 			                ),
 							array(
 								'property' => 'background-color',
 								'selector' => '.comment-number--dark, 
-                                    .comments-area-title .comment-number.total,
-                                    .comments-area-title .total.comment-number--dark, 
-                                    .comment-reply-title .comment-number.total, 
-                                    .comment-reply-title .total.comment-number--dark, 
-                                    .add-comment .add-comment__button,
-                                    .otreservations-submit'
+                                                .comments-area-title .comment-number.total,
+                                                .comments-area-title .total.comment-number--dark, 
+                                                .comment-reply-title .comment-number.total, 
+                                                .comment-reply-title .total.comment-number--dark, 
+                                                .add-comment .add-comment__button,
+                                                .otreservations-submit,
+                                                .btn:not(.btn--primary),
+                                                .pagination .nav-links .page-numbers,
+                                                .woocommerce div.woocommerce-message .button.wc-forward,
+                                                .woocommerce .quantity input.qty,
+                                                .woocommerce div.product form.cart .button,
+                                                .woocommerce #review_form #respond .form-submit input,
+                                                .woocommerce table.shop_table div.coupon .button,
+                                                .woocommerce-page table.shop_table div.coupon .button,
+                                                .woocommerce-cart-form .actions input[name="update_cart"],
+                                                .woocommerce div.cart-collaterals .wc-proceed-to-checkout .checkout-button,
+                                                .woocommerce table.shop_table .input-text.qty,
+                                                .woocommerce-page table.shop_table .input-text.qty,
+                                                .pixcode.pixcode--icon.circle,
+                                                .pixcode.pixcode--icon.square'
 							),
-//                            array(
-//                                'property' => 'color',
-//                                'selector' => '.comment-form input::-webkit-input-placeholder'
-//                            ),
-//                            array(
-//                                'property' => 'color',
-//                                'selector' => '.comment-form input:-moz-placeholder'
-//                            ),
-//                            array(
-//                                'property' => 'color',
-//                                'selector' => '.comment-form input::-moz-placeholder'
-//                            ),
-//                            array(
-//                                'property' => 'color',
-//                                'selector' => '.comment-form input:-ms-input-placeholder'
-//                            ),
-//                            array(
-//                                'property' => 'color',
-//                                'selector' => '.comment-form textarea::-webkit-input-placeholder'
-//                            ),
-//                            array(
-//                                'property' => 'color',
-//                                'selector' => '.comment-form textarea:-moz-placeholder'
-//                            ),
-//                            array(
-//                                'property' => 'color',
-//                                'selector' => '.comment-form textarea::-moz-placeholder'
-//                            ),
-//                            array(
-//                                'property' => 'color',
-//                                'selector' => '.comment-form textarea:-ms-input-placeholder'
-//                            ),
-//                            array(
-//                                'property' => 'color',
-//                                'selector' => '.form-search .search-query::-webkit-input-placeholder'
-//                            ),
-//                            array(
-//                                'property' => 'color',
-//                                'selector' => '.form-search .search-query:-moz-placeholder'
-//                            ),
-//                            array(
-//                                'property' => 'color',
-//                                'selector' => '.form-search .search-query::-moz-placeholder'
-//                            ),
-//                            array(
-//                                'property' => 'color',
-//                                'selector' => '.form-search .search-query:-ms-input-placeholder'
-//                            ),
-//                            array(
-//                                'property' => 'color',
-//                                'selector' => '.input-group input.form-control::-webkit-input-placeholder'
-//                            ),
-//                            array(
-//                                'property' => 'color',
-//                                'selector' => '.input-group input.form-control:-moz-placeholder'
-//                            ),
-//                            array(
-//                                'property' => 'color',
-//                                'selector' => '.input-group input.form-control::-moz-placeholder'
-//                            ),
-//                            array(
-//                                'property' => 'color',
-//                                'selector' => '.input-group input.form-control:-ms-input-placeholder'
-//                            )
+                                array(
+                                    'property' => 'border-color',
+                                    'selector' => 'div:not(.c-hero-layer) .pixcode-slider[data-arrows] .rsArrowIcn'
+                                ),
+
+                            array(
+                                'property' => 'color',
+                                'selector' => '.comment-form input::-webkit-input-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.comment-form input:-moz-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.comment-form input::-moz-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.comment-form input:-ms-input-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.comment-form textarea::-webkit-input-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.comment-form textarea:-moz-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.comment-form textarea::-moz-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.comment-form textarea:-ms-input-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.form-search .search-query::-webkit-input-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.form-search .search-query:-moz-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.form-search .search-query::-moz-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.form-search .search-query:-ms-input-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.input-group input.form-control::-webkit-input-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.input-group input.form-control:-moz-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.input-group input.form-control::-moz-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.input-group input.form-control:-ms-input-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.woocommerce table.shop_table .input-text::-webkit-input-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.woocommerce table.shop_table .input-text:-moz-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.woocommerce table.shop_table .input-text::-moz-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.woocommerce table.shop_table .input-text:-ms-input-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.woocommerce-page table.shop_table .input-text::-webkit-input-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.woocommerce-page table.shop_table .input-text:-moz-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.woocommerce-page table.shop_table .input-text::-moz-placeholder'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.woocommerce-page table.shop_table .input-text:-ms-input-placeholder'
+                            )
 						)
 					),
 					'navlink_color'  => array(
@@ -738,14 +826,17 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 												.headroom--not-top .nav--main a,
 												.nav.nav--items-social a:before,
 												.headroom--not-top .nav.nav--items-social a:before,
-												.site-header.headroom--not-top a.site-logo--text'
+												a.site-logo--text,
+												.site-header.headroom--not-top a.site-logo--text,
+												.woocommerce ul.products li.product:hover .product__button'
 							),
                             array(
                                 'property' => 'border-color',
                                 'selector' => '.menu-item-has-children:after, .menu-item-language:after,
                                                 .headroom--not-top .menu-item-has-children:after,
                                                 .headroom--not-top .menu-item-language:after,
-                                                .pix-dropdown .dropdown__trigger:after'
+                                                .pix-dropdown .dropdown__trigger:after,
+                                                .woocommerce ul.products li.product:hover .product__button'
                             ),
                             array(
                                 'property' => 'background-color',
@@ -784,27 +875,72 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								'property' => 'color',
 								'selector' => '.blurp--top, .border-waves-before, .border-waves-after,
 								                
-								                .btn,
-								                .btn:hover,
-								                .comments_add-comment,
-								                .comments_add-comment:hover,
-								                .form-submit #comment-submit,
-								                .form-submit #comment-submit:hover,
-								                .otreservations-submit,
-								                .otreservations-submit:hover,
-								                
-								                .promo-box__container,
-								                
-								                .comment-number--dark, 
-								                .comments-area-title .comment-number.total,
-								                .comments-area-title .total.comment-number--dark, 
-								                .comment-reply-title .comment-number.total, 
-								                .comment-reply-title .total.comment-number--dark, 
-								                .add-comment .add-comment__button,
-								                
-								                .pika-button:hover,
-                                                .pika-table .is-selected .pika-button.pika-day'
+                                                .btn,
+                                                .btn:hover,
+                                                .comments_add-comment,
+                                                .comments_add-comment:hover,
+                                                .form-submit #comment-submit,
+                                                .form-submit #comment-submit:hover,
+                                                .otreservations-submit,
+                                                .otreservations-submit:hover,
+                                                
+                                                .promo-box__container,
+                                                
+                                                .comment-number--dark, 
+                                                .comments-area-title .comment-number.total,
+                                                .comments-area-title .total.comment-number--dark, 
+                                                .comment-reply-title .comment-number.total, 
+                                                .comment-reply-title .total.comment-number--dark, 
+                                                .add-comment .add-comment__button,
+                                                
+                                                .pika-button:hover,
+                                                .pika-table .is-selected .pika-button.pika-day,
+                                                .pagination .nav-links .page-numbers:hover,
+                                                .pagination .nav-links .page-numbers.prev:not(.disabled),
+                                                .pagination .nav-links .page-numbers.prev:not(.disabled):before,
+                                                .pagination .nav-links .page-numbers.current,
+                                                .pagination .nav-links .page-numbers.next,
+                                                .pagination .nav-links .page-numbers.next:hover,
+                                                .pagination .nav-links .page-numbers.next:after,
+                                                .woocommerce .cart,
+                                                .woocommerce div.woocommerce-message .button.wc-forward,
+                                                .woocommerce div.woocommerce-message .button.wc-forward:hover,
+                                                .woocommerce div.product form.cart .button,
+                                                .woocommerce #review_form #respond .form-submit input,
+                                                .woocommerce #review_form #respond .form-submit input:hover,
+                                                .woocommerce table.shop_table div.coupon .button,
+                                                .woocommerce-page table.shop_table div.coupon .button,
+                                                .woocommerce table.shop_table div.coupon .button:hover,
+                                                .woocommerce-page table.shop_table div.coupon .button:hover,
+                                                .woocommerce-cart-form .actions input[name="update_cart"],
+                                                .woocommerce-cart-form .actions input[name="update_cart"]:hover,
+                                                .woocommerce div.cart-collaterals .wc-proceed-to-checkout .checkout-button,
+                                                .woocommerce div.cart-collaterals .wc-proceed-to-checkout .checkout-button:hover,
+                                                .woocommerce table.shop_table .input-text.qty,
+                                                .product__badge.on-sale,
+                                                .pixcode.pixcode--icon.circle,
+                                                .pixcode.pixcode--icon.circle:hover,
+                                                .pixcode.pixcode--icon.square,
+                                                .pixcode.pixcode--icon.square:hover'
 							),
+                            array(
+                                'property' => 'color',
+                                'unit' => '88',
+                                'selector' => '.pagination .nav-links .page-numbers,
+                                                .pagination .nav-links .page-numbers.prev.disabled,
+                                                .pagination .nav-links .page-numbers.prev.disabled:before,
+                                                .pagination .nav-links .page-numbers.next.disabled,
+                                                .pagination .nav-links .page-numbers.next.disabled:after',
+                                'callback_filter' => 'rosa_transparent_color'
+                            ),
+                            array(
+                                'property' => 'background-color',
+                                'unit' => '88',
+                                'selector' => '.pagination .nav-links .page-numbers,
+                                                .pagination .nav-links .page-numbers.prev.disabled,
+                                                .pagination .nav-links .page-numbers.next.disabled',
+                                'callback_filter' => 'rosa_transparent_color'
+                            ),
 							array(
 								'property' => 'border-color',
 								'selector' => '.site-header, .site-footer,'
@@ -822,6 +958,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								.input-group input.form-control,
 								
 								.woocommerce .woocommerce-ordering select,
+								.woocommerce table.shop_table .input-text[name="coupon_code"],
+                               .woocommerce-page table.shop_table .input-text[name="coupon_code"],
 								
 								.comment-number,
 								.is-today .pika-button',
@@ -920,8 +1058,9 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                         'css'     => array(
                             array(
                                 'property' => 'color',
+                                'unit' => '91',
                                 'selector' => '.footer-container',
-                                'callback_filter' => 'rosa_transparent_footer_text_color',
+                                'callback_filter' => 'rosa_transparent_color',
                             ),
                         ),
                     ),
@@ -1293,18 +1432,18 @@ function rosa_range_negative_value( $value, $selector, $property, $unit ) {
 	return $output;
 }
 
-function rosa_transparent_separator_and_borders_color( $value, $selector, $property, $unit ) {
+function rosa_transparent_color($value, $selector, $property, $unit ) {
     if ( empty( $unit ) ) {
         $unit = '20';
     }
 
-    $output = $selector . '{' .
+    $output = $selector . ' {' .
         $property . ': ' . $value . $unit . ';' .
         '}';
     return $output;
 }
 
-function rosa_transparent_separator_and_borders_color_customizer_preview() {
+function rosa_transparent_color_customizer_preview() {
 
     $js = "
     
@@ -1330,10 +1469,10 @@ function rosa_transparent_separator_and_borders_color_customizer_preview() {
         return hash;
     };
     
-function rosa_transparent_separator_and_borders_color( value, selector, property, unit ) {
+function rosa_transparent_color( value, selector, property, unit ) {
 
     var css = '',
-        id = 'rosa_transparent_separator_and_borders_color_style_tag_' + makeSafeForCSS( property + selector ).hashCode(),
+        id = 'rosa_transparent_color_style_tag_' + makeSafeForCSS( property + selector ).hashCode(),
         style = document.getElementById( id ),
         head = document.head || document.getElementsByTagName('head')[0];
         
@@ -1343,8 +1482,6 @@ function rosa_transparent_separator_and_borders_color( value, selector, property
 
     css += selector + ' {' + property + ': ' + value.substring(0,7) + unit + ';}';
     
-    console.log(css);
-
     if ( style !== null ) {
         style.innerHTML = css;
     } else {
@@ -1363,48 +1500,7 @@ function rosa_transparent_separator_and_borders_color( value, selector, property
 }" . PHP_EOL;
     wp_add_inline_script( 'customify-previewer-scripts', $js );
 }
-add_action( 'customize_preview_init', 'rosa_transparent_separator_and_borders_color_customizer_preview', 20 );
-
-function rosa_transparent_footer_text_color( $value, $selector, $property ) {
-    $output = $selector . '{' .
-        $property . ': ' . $value . '91;' .
-    '}';
-    return $output;
-}
-
-function rosa_transparent_footer_text_color_customizer_preview() {
-
-    $js = "
-function rosa_transparent_footer_text_color( value, selector, property ) {
-
-    var css = '',
-        style = document.getElementById('rosa_transparent_footer_text_color_style_tag'),
-        head = document.head || document.getElementsByTagName('head')[0];
-
-    css += selector + ' {' +
-        property + ': ' + value + '91' +
-    '}';
-
-    if ( style !== null ) {
-        style.innerHTML = css;
-    } else {
-        style = document.createElement('style');
-        style.setAttribute('id', 'rosa_transparent_footer_text_color_style_tag');
-
-        style.type = 'text/css';
-        if ( style.styleSheet ) {
-            style.styleSheet.cssText = css;
-        } else {
-            style.appendChild(document.createTextNode(css));
-        }
-
-        head.appendChild(style);
-    }
-}" . PHP_EOL;
-
-    wp_add_inline_script( 'customify-previewer-scripts', $js );
-}
-add_action( 'customize_preview_init', 'rosa_transparent_footer_text_color_customizer_preview', 20 );
+add_action( 'customize_preview_init', 'rosa_transparent_color_customizer_preview', 20 );
 
 function rosa_footer_style_select( $value, $selector, $property, $unit ) {
 	$waves_fill_color = '#121212';

@@ -21,7 +21,7 @@
 		height: 3px;
 		display: block;
 
-		background-image: radial-gradient(circle closest-side, $lightest 99%, transparent 1%);
+		background-image: radial-gradient(circle closest-side, currentColor 99%, transparent 1%);
 		background-position: bottom;
 		background-size: 6px 3px;
 		background-repeat: repeat-x;

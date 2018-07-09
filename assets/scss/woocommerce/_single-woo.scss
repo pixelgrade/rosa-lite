@@ -122,7 +122,7 @@
 	border: none;
 
 	background: $dark;
-	color: white;
+	color: inherit;
 
 	box-shadow: none;
 
@@ -152,7 +152,7 @@
 
 	&:hover {
 		background: $accent;
-		color:white;
+		color: inherit;
 	}
 }
 
@@ -285,6 +285,7 @@
 
 .woocommerce button.single_add_to_cart_button {
 	font-weight: bold !important;
+	color: inherit;
 }
 
 // WooCommerce 3.0 Adjustments
