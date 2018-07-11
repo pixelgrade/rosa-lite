@@ -573,6 +573,10 @@ $nav-width: 84vw;
 		padding-right: $_u2 !important;
 	}
 
+	a:before {
+		color: currentColor;
+	}
+
 	i {
 		font-size: 14px;
 	}

@@ -37,7 +37,7 @@
 			margin-bottom:3px;
 		}
 
-		.headline__primary, .headline__description {
+		.headline__primary, .headline__description *:not(div) {
 			color: white;
 		}
 	}

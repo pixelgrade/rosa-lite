@@ -564,6 +564,12 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                 form.checkout_coupon.woocommerce-form-coupon button[name="apply_coupon"]:hover,
                                 div.woocommerce-checkout-payment button.button.alt[name="woocommerce_checkout_place_order"]:hover'
 							),
+                            array(
+                                'property' => 'background-color',
+                                'unit' => '88',
+                                'selector' => '.select2-container--default .select2-results__option[data-selected=true]',
+                                'callback_filter' => 'rosa_transparent_color'
+                            ),
 							array(
 								'property' => 'background',
 								'selector' => 'body.woocommerce button.button.alt:hover, body.woocommerce-page #respond input#submit:hover,
@@ -595,7 +601,12 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							array(
 								'property' => 'fill',
 								'selector' => '.copyright-area.copyright-area__accent svg path'
-							)
+							),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.navigation--main .nav--main li a:hover',
+                                'media' => 'only screen and (max-width: 899px)'
+                            ),
 						)
 					),
 					'text_color'     => array(
@@ -610,16 +621,61 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								                .article__date,
 								                .pixlikes-box .likes-text,
 								                .pixlikes-box .likes-count,
+								                .comment-form-comment textarea,
 								                .woocommerce .woocommerce-message,
 								                .woocommerce .woocommerce-info,
 								                .woocommerce .woocommerce-error,
 								                .menu-list span.dots,
 								                .woocommerce .woocommerce-billing-fields__field-wrapper span.select2-selection.select2-selection--single,
+								                .select2-container--default .select2-selection--single .select2-selection__rendered,
+								                .select2-container--default .select2-results__option[data-selected=true]
 								                .woocommerce .woocommerce-billing-fields__field-wrapper input.input-text,
 								                form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"],
 								                form.checkout .woocommerce-billing-fields__field-wrapper span.select2-dropdown.select2-dropdown--below,
-								                form.checkout textarea[name="order_comments"]'
+								                .select2-container--default .select2-results__option--highlighted[aria-selected],
+                                               .select2-container--default .select2-results__option--highlighted[data-selected],
+								                form.checkout textarea[name="order_comments"],
+								                .header--transparent .shop-menu-item .shop-menu-item__price'
 							),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.navigation--main .nav--main li a',
+                                'media' => 'only screen and (max-width: 899px)'
+                            ),
+                            array(
+                                'property' => 'border-color',
+                                'selector' => '.navigation--main .nav--main li.menu-item-has-children > a:after, 
+                                                .navigation--main .nav--main li.menu-item-language > a:after',
+                                'media' => 'only screen and (max-width: 899px)'
+                            ),
+                            array(
+                                'property' => 'border-color',
+                                'unit' => '30',
+                                'selector' => '.navigation--main .nav--main',
+                                'media' => 'only screen and (max-width: 899px)',
+                                'callback_filter' => 'rosa_transparent_color'
+                            ),
+                            array(
+                                'property' => 'background-color',
+                                'unit' => '30',
+                                'selector' => '.widget_shopping_cart_content,
+                                                .navigation--main .nav--main li.menu-item-has-children a:before',
+                                'media' => 'only screen and (max-width: 899px)',
+                                'callback_filter' => 'rosa_transparent_color'
+                            ),
+                            array(
+                                'property' => 'background-color',
+                                'unit' => '50',
+                                'selector' => '.navigation--main .nav--main li.menu-item-has-children a:before',
+                                'media' => 'only screen and (max-width: 899px)',
+                                'callback_filter' => 'rosa_transparent_color'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'unit' => '20',
+                                'selector' => '.comment-form-comment:before',
+                                'callback_filter' => 'rosa_transparent_color'
+                            ),
                             array(
                                 'property' => 'color',
                                 'unit' => '8C',
@@ -632,6 +688,14 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                 'selector' => '.pagination .nav-links .page-numbers,
                                                 .pagination .nav-links .page-numbers.prev.disabled,
                                                 .pagination .nav-links .page-numbers.next.disabled',
+                                'callback_filter' => 'rosa_transparent_color'
+                            ),
+
+							array(
+                                'property' => 'background-color',
+                                'unit' => '30',
+                                'selector' => '.select2-container--default .select2-results__option--highlighted[aria-selected],
+                                                .select2-container--default .select2-results__option--highlighted[data-selected]',
                                 'callback_filter' => 'rosa_transparent_color'
                             ),
 							array(
@@ -678,6 +742,10 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .woocommerce .woocommerce-info,
                                                 .woocommerce-checkout #payment ul.payment_methods,
                                                 
+                                                span.select2-dropdown.select2-dropdown--below,
+                                                span.select2-dropdown.select2-dropdown--above,
+                                                .select2-container--default .select2-search--dropdown .select2-search__field,
+                                                
                                                 .sidebar--main .widget',
                                 'callback_filter' => 'rosa_transparent_color'
                             ),
@@ -714,10 +782,9 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							),
                             array(
 								'property' => 'color',
-								'unit' => '88',
-								'selector' => '
-								    .woocommerce .woocommerce-breadcrumb,
-								    .woocommerce .woocommerce-breadcrumb a',
+								'unit'     => '88',
+								'selector' => '.woocommerce .woocommerce-breadcrumb,
+								                .woocommerce .woocommerce-breadcrumb a',
                                 'callback_filter' => 'rosa_transparent_color'
 			                ),
 							array(
@@ -750,12 +817,16 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .site-header .nav-trigger .nav-icon:before,
                                                 .site-header .nav-trigger .nav-icon:after'
 							),
-                                array(
-                                    'property' => 'border-color',
-                                    'selector' => 'div:not(.c-hero-layer) .pixcode-slider[data-arrows] .rsArrowIcn,
-                                                    .btn.btn--text:hover'
-                                ),
-
+                            array(
+                                'property' => 'border-color',
+                                'selector' => 'div:not(.c-hero-layer) .pixcode-slider[data-arrows] .rsArrowIcn,
+                                                .btn.btn--text:hover'
+                            ),
+                            array(
+                                'property' => 'background-color',
+                                'selector' => 'body .navigation--main',
+                                'media' => 'only screen and (max-width: 899px)'
+                            ),
                             array(
                                 'property' => 'color',
                                 'selector' => '.comment-form input::-webkit-input-placeholder'
@@ -1049,10 +1120,12 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								.woocommerce .woocommerce-billing-fields__field-wrapper input.input-text,
 								form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"],
 								.woocommerce .woocommerce-billing-fields__field-wrapper span.select2-selection.select2-selection--single,
-								form.checkout .woocommerce-billing-fields__field-wrapper span.select2-dropdown.select2-dropdown--below,
+								span.select2-dropdown.select2-dropdown--below,
+								span.select2-dropdown.select2-dropdown--above,
 								form.checkout textarea[name="order_comments"],
 								div.woocommerce-checkout-payment#payment,
 								.woocommerce-checkout #payment ul.payment_methods,
+								.select2-container--default .select2-search--dropdown .select2-search__field,
 								
 								.comment-number,
 								.is-today .pika-button'
