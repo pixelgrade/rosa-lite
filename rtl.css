@@ -8511,7 +8511,7 @@ html.flexbox, html.site-title {
   padding: 6px 12px;
   font-size: 13px;
   text-align: center;
-  color: white;
+  color: inherit;
   background: rgba(0, 0, 0, 0.6);
 }
 
@@ -8834,7 +8834,7 @@ a:hover {
 }
 
 .link--dark, .comment__author-name a {
-  color: currentColor;
+  color: inherit;
 }
 
 .link--light:hover, .meta-list a.btn:hover, .meta-list a.comments_add-comment:hover, .meta-list .form-submit a#comment-submit:hover, .form-submit .meta-list a#comment-submit:hover, .meta-list a.wpcf7-form-control.wpcf7-submit:hover, .meta-list a.otreservations-submit:hover, .meta-list .widget_tag_cloud a:hover, .widget_tag_cloud .meta-list a:hover, .meta-list a.read-more-button:hover, .link--dark:hover, .comment__author-name a:hover {
@@ -9539,7 +9539,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
 }
 
 .author__title a {
-  color: currentColor;
+  color: inherit;
 }
 
 .author__bio {
@@ -9904,15 +9904,6 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
 .article__header .article__headline .headline__description,
 .article__header .article__headline .star,
 .article__header .article__headline .line,
-.article__header .article__headline .btn,
-.article__header .article__headline .comments_add-comment,
-.article__header .article__headline .form-submit #comment-submit, .form-submit
-.article__header .article__headline #comment-submit,
-.article__header .article__headline .wpcf7-form-control.wpcf7-submit,
-.article__header .article__headline .otreservations-submit,
-.article__header .article__headline .widget_tag_cloud a, .widget_tag_cloud
-.article__header .article__headline a,
-.article__header .article__headline .read-more-button,
 .article__header .article__headline .arrow {
   opacity: 0;
 }
@@ -9933,8 +9924,17 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   margin-bottom: 3px;
 }
 
-.article__header .article__headline .headline__primary, .article__header .article__headline .headline__description *:not(div) {
+.article__header .article__headline .headline__primary, .article__header .article__headline .headline__description > *:not(.star):not(.separator--flower) {
   color: white;
+}
+
+.article__header .article__headline .headline__description .btn, .article__header .article__headline .headline__description .comments_add-comment, .article__header .article__headline .headline__description .form-submit #comment-submit, .form-submit .article__header .article__headline .headline__description #comment-submit, .article__header .article__headline .headline__description .wpcf7-form-control.wpcf7-submit, .article__header .article__headline .headline__description .otreservations-submit, .article__header .article__headline .headline__description .widget_tag_cloud a, .widget_tag_cloud .article__header .article__headline .headline__description a, .article__header .article__headline .headline__description .read-more-button {
+  background-color: white;
+}
+
+.article__header .article__headline .headline__description .btn.btn--text, .article__header .article__headline .headline__description .btn--text.comments_add-comment, .article__header .article__headline .headline__description .comments_add-comment.read-more-button, .article__header .article__headline .headline__description .form-submit .btn--text#comment-submit, .form-submit .article__header .article__headline .headline__description .btn--text#comment-submit, .article__header .article__headline .headline__description .form-submit #comment-submit.read-more-button, .form-submit .article__header .article__headline .headline__description #comment-submit.read-more-button, .article__header .article__headline .headline__description .btn--text.wpcf7-form-control.wpcf7-submit, .article__header .article__headline .headline__description .wpcf7-form-control.wpcf7-submit.read-more-button, .article__header .article__headline .headline__description .btn--text.otreservations-submit, .article__header .article__headline .headline__description .otreservations-submit.read-more-button, .article__header .article__headline .headline__description .widget_tag_cloud a.btn--text, .widget_tag_cloud .article__header .article__headline .headline__description a.btn--text, .article__header .article__headline .headline__description .widget_tag_cloud a.read-more-button, .widget_tag_cloud .article__header .article__headline .headline__description a.read-more-button, .article__header .article__headline .headline__description .read-more-button {
+  color: inherit;
+  border-color: inherit;
 }
 
 .break-words, .headline__primary, .headline__secondary {
@@ -10434,13 +10434,6 @@ li.depth-2:before {
   font-weight: bold;
 }
 
-/*
-
-.comment-article:hover .comment-reply-link,
-.comment-article:hover .comment-edit-link
-.comment-article:hover .comment-edit-link:hover
-
- */
 .comment-article {
   margin-bottom: 0;
 }
@@ -10483,7 +10476,7 @@ li.depth-2:before {
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.72429;
-  color: currentColor;
+  color: inherit;
 }
 
 .comment__links {
@@ -10495,7 +10488,7 @@ li.depth-2:before {
 }
 
 .comment-edit-link, .comment-reply-link {
-  color: currentColor;
+  color: inherit;
   opacity: 0;
   margin-left: 12px;
   margin-left: 0.75rem;
@@ -10845,9 +10838,6 @@ a:hover > .pixcode--icon.circle, a:hover > .pixcode--icon.square {
 
 .menu-item-has-children, .menu-item-language {
   position: relative;
-  /*&:hover:after {
-		border-color: $accent;
-	}*/
 }
 
 .menu-item-has-children:after, .menu-item-language:after {
@@ -10861,9 +10851,6 @@ a:hover > .pixcode--icon.circle, a:hover > .pixcode--icon.square {
   height: 5px;
   border-left: 1px solid #262526;
   border-bottom: 1px solid #262526;
-  /*.headroom--not-top & {
-			border-color: $dark;
-		}*/
   -webkit-transform: translateY(-50%) rotate(-45deg);
           transform: translateY(-50%) rotate(-45deg);
 }
@@ -11250,7 +11237,7 @@ button.nav-trigger {
 }
 
 .nav--items-social a:before {
-  color: currentColor;
+  color: inherit;
 }
 
 .nav--items-social i {
@@ -11547,7 +11534,7 @@ button.nav-trigger {
   padding: 8px 24px;
   padding-left: 70px;
   border: 1px solid #ddd;
-  color: currentColor;
+  color: inherit;
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.72429;
@@ -11850,7 +11837,7 @@ hr.separator_color--white, .separator.separator_color--white {
 }
 
 .add_this_list a:hover {
-  color: currentColor;
+  color: inherit;
 }
 
 .add_this_list li {
@@ -12203,7 +12190,7 @@ p.menu-list__item-desc + span.dots {
 .otreservations-subtitle {
   font-size: 10px;
   text-transform: uppercase;
-  color: currentColor;
+  color: inherit;
   opacity: 0.45;
 }
 
@@ -12233,7 +12220,7 @@ p.menu-list__item-desc + span.dots {
   background: none;
   border: 1px solid #d8d8d8;
   border-radius: 3px;
-  color: currentColor;
+  color: inherit;
 }
 
 .otw-button-wrap {
