@@ -8750,15 +8750,17 @@ a:hover {
 }
 
 .link--light, .meta-list a.btn, .meta-list a.otreservations-submit {
-  color: #b3b3b3;
+  color: inherit;
+  opacity: 0.45;
 }
 
 .link--dark {
-  color: #262526;
+  color: currentColor;
 }
 
 .link--light:hover, .meta-list a.btn:hover, .meta-list a.otreservations-submit:hover, .link--dark:hover {
   color: #c59d5f;
+  opacity: 1;
 }
 
 .article__content a:not([class]) {
@@ -9035,14 +9037,12 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   text-transform: uppercase;
   letter-spacing: .2em;
   background-color: #262526;
-  color: white;
   transition: all .15s;
   border-radius: 3px;
 }
 
 .btn:hover, .otreservations-submit:hover {
   background-color: #c59d5f;
-  color: white;
 }
 
 .btn.a, .a.otreservations-submit {
@@ -9055,11 +9055,11 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
 }
 
 .btn--primary:hover {
-  background-color: #262526 !important;
+  background-color: #262526;
 }
 
 .btn--secondary, .btn--tertiary, .otreservations-submit {
-  color: white;
+  color: transparent;
 }
 
 .btn--tertiary {
@@ -9141,8 +9141,8 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
 }
 
 .btn.btn--text:hover, .btn--text.otreservations-submit:hover {
-  color: #262526 !important;
-  border-color: #262526 !important;
+  color: #262526;
+  border-color: #262526;
 }
 
 /*------------------------------------*    $ARTICLE HEADING + SUBHEADING
@@ -9181,7 +9181,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   margin-bottom: 3px;
 }
 
-.article__header .article__headline .headline__primary, .article__header .article__headline .headline__description {
+.article__header .article__headline .headline__primary, .article__header .article__headline .headline__description *:not(div) {
   color: white;
 }
 
@@ -9272,7 +9272,8 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
 .otreservations-subtitle {
   font-size: 10px;
   text-transform: uppercase;
-  color: #b3b3b3;
+  color: currentColor;
+  opacity: 0.45;
 }
 
 .otw-widget-form {
@@ -9301,6 +9302,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   background: none;
   border: 1px solid #d8d8d8;
   border-radius: 3px;
+  color: currentColor;
 }
 
 .otw-button-wrap {
@@ -9354,7 +9356,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
 
 .row .grid__item[data-sh-column-attr-column_style=promo-box] h1, .row [data-sh-column-attr-column_style=promo-box].otw-input-wrap h1, .row [data-sh-column-attr-column_style=promo-box].otw-button-wrap h1, .row .grid__item[data-sh-column-attr-column_style=promo-box] h2, .row [data-sh-column-attr-column_style=promo-box].otw-input-wrap h2, .row [data-sh-column-attr-column_style=promo-box].otw-button-wrap h2, .row .grid__item[data-sh-column-attr-column_style=promo-box] h3, .row [data-sh-column-attr-column_style=promo-box].otw-input-wrap h3, .row [data-sh-column-attr-column_style=promo-box].otw-button-wrap h3, .row .grid__item[data-sh-column-attr-column_style=promo-box] h4, .row [data-sh-column-attr-column_style=promo-box].otw-input-wrap h4, .row [data-sh-column-attr-column_style=promo-box].otw-button-wrap h4, .row .grid__item[data-sh-column-attr-column_style=promo-box] h5, .row [data-sh-column-attr-column_style=promo-box].otw-input-wrap h5, .row [data-sh-column-attr-column_style=promo-box].otw-button-wrap h5, .row .grid__item[data-sh-column-attr-column_style=promo-box] h6, .row [data-sh-column-attr-column_style=promo-box].otw-input-wrap h6, .row [data-sh-column-attr-column_style=promo-box].otw-button-wrap h6, .row .grid__item[data-sh-column-attr-class=promo-box] h1, .row [data-sh-column-attr-class=promo-box].otw-input-wrap h1, .row [data-sh-column-attr-class=promo-box].otw-button-wrap h1, .row .grid__item[data-sh-column-attr-class=promo-box] h2, .row [data-sh-column-attr-class=promo-box].otw-input-wrap h2, .row [data-sh-column-attr-class=promo-box].otw-button-wrap h2, .row .grid__item[data-sh-column-attr-class=promo-box] h3, .row [data-sh-column-attr-class=promo-box].otw-input-wrap h3, .row [data-sh-column-attr-class=promo-box].otw-button-wrap h3, .row .grid__item[data-sh-column-attr-class=promo-box] h4, .row [data-sh-column-attr-class=promo-box].otw-input-wrap h4, .row [data-sh-column-attr-class=promo-box].otw-button-wrap h4, .row .grid__item[data-sh-column-attr-class=promo-box] h5, .row [data-sh-column-attr-class=promo-box].otw-input-wrap h5, .row [data-sh-column-attr-class=promo-box].otw-button-wrap h5, .row .grid__item[data-sh-column-attr-class=promo-box] h6, .row [data-sh-column-attr-class=promo-box].otw-input-wrap h6, .row [data-sh-column-attr-class=promo-box].otw-button-wrap h6 {
   margin-top: 0;
-  color: white;
+  color: inherit;
 }
 
 .row .grid__item[data-sh-column-attr-column_style=promo-box] p:last-child, .row [data-sh-column-attr-column_style=promo-box].otw-input-wrap p:last-child, .row [data-sh-column-attr-column_style=promo-box].otw-button-wrap p:last-child, .row .grid__item[data-sh-column-attr-class=promo-box] p:last-child, .row [data-sh-column-attr-class=promo-box].otw-input-wrap p:last-child, .row [data-sh-column-attr-class=promo-box].otw-button-wrap p:last-child {

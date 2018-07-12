@@ -5,7 +5,7 @@ Theme URI: https://demos.pixelgrade.com/rosa
 Author: Pixelgrade
 Author URI: https://pixelgrade.com
 Description:  ROSA is an enchanting and easy-to-use parallax Restaurant WordPress theme that allows you to tell your story in a dynamic, narrative and enjoyable way, making it perfect for restaurants, bakeries, bars or coffee shops.
-Version: 2.3.5
+Version: 2.4.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: rosa
@@ -8829,15 +8829,17 @@ a:hover {
 }
 
 .link--light, .meta-list a.btn, .meta-list a.comments_add-comment, .meta-list .form-submit a#comment-submit, .form-submit .meta-list a#comment-submit, .meta-list a.wpcf7-form-control.wpcf7-submit, .meta-list a.otreservations-submit, .meta-list .widget_tag_cloud a, .widget_tag_cloud .meta-list a, .meta-list a.read-more-button {
-  color: #b3b3b3;
+  color: inherit;
+  opacity: 0.45;
 }
 
 .link--dark, .comment__author-name a {
-  color: #262526;
+  color: currentColor;
 }
 
 .link--light:hover, .meta-list a.btn:hover, .meta-list a.comments_add-comment:hover, .meta-list .form-submit a#comment-submit:hover, .form-submit .meta-list a#comment-submit:hover, .meta-list a.wpcf7-form-control.wpcf7-submit:hover, .meta-list a.otreservations-submit:hover, .meta-list .widget_tag_cloud a:hover, .widget_tag_cloud .meta-list a:hover, .meta-list a.read-more-button:hover, .link--dark:hover, .comment__author-name a:hover {
   color: #c59d5f;
+  opacity: 1;
 }
 
 .article__content a:not([class]) {
@@ -9393,14 +9395,12 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   text-transform: uppercase;
   letter-spacing: .2em;
   background-color: #262526;
-  color: white;
   transition: all .15s;
   border-radius: 3px;
 }
 
 .btn:hover, .comments_add-comment:hover, .form-submit #comment-submit:hover, .wpcf7-form-control.wpcf7-submit:hover, .otreservations-submit:hover, .widget_tag_cloud a:hover, .read-more-button:hover {
   background-color: #c59d5f;
-  color: white;
 }
 
 .btn.a, .a.comments_add-comment, .form-submit .a#comment-submit, .a.wpcf7-form-control.wpcf7-submit, .a.otreservations-submit, .widget_tag_cloud a.a, .a.read-more-button {
@@ -9413,11 +9413,11 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
 }
 
 .btn--primary:hover, .comments_add-comment:hover, .form-submit #comment-submit:hover {
-  background-color: #262526 !important;
+  background-color: #262526;
 }
 
 .btn--secondary, .btn--tertiary, .wpcf7-form-control.wpcf7-submit, .otreservations-submit {
-  color: white;
+  color: transparent;
 }
 
 .btn--tertiary {
@@ -9499,8 +9499,8 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
 }
 
 .btn.btn--text:hover, .btn--text.comments_add-comment:hover, .form-submit .btn--text#comment-submit:hover, .form-submit #comment-submit.read-more-button:hover, .btn--text.wpcf7-form-control.wpcf7-submit:hover, .btn--text.otreservations-submit:hover, .widget_tag_cloud a.btn--text:hover, .read-more-button:hover {
-  color: #262526 !important;
-  border-color: #262526 !important;
+  color: #262526;
+  border-color: #262526;
 }
 
 /*------------------------------------*               AUTHOR BOX
@@ -9539,7 +9539,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
 }
 
 .author__title a {
-  color: #262526;
+  color: currentColor;
 }
 
 .author__bio {
@@ -9933,7 +9933,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   margin-bottom: 3px;
 }
 
-.article__header .article__headline .headline__primary, .article__header .article__headline .headline__description {
+.article__header .article__headline .headline__primary, .article__header .article__headline .headline__description *:not(div) {
   color: white;
 }
 
@@ -10235,7 +10235,8 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   position: absolute;
   right: 20px;
   top: 0;
-  border-right: 1px solid #d8d8d8;
+  border-right: 1px solid currentColor;
+  opacity: 0.375;
   height: 100%;
 }
 
@@ -10250,13 +10251,12 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
 .comment-number, .comment-number--dark, .comments-area-title .comment-number.total, .comment-reply-title .comment-number.total, .add-comment .add-comment__button {
   width: 42px;
   height: 42px;
-  border: 1px solid #d8d8d8;
+  border: 1px solid currentColor;
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.72429;
   line-height: 42px;
   text-align: center;
-  color: #b3b3b3;
   background: white;
 }
 
@@ -10265,9 +10265,9 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
 }
 
 .comment-number--dark, .comments-area-title .comment-number.total, .comments-area-title .total.comment-number--dark, .comment-reply-title .comment-number.total, .comment-reply-title .total.comment-number--dark, .add-comment .add-comment__button {
-  border: 1px solid #262526;
+  border: 0;
   display: inline-block;
-  background-color: #262526;
+  background-color: currentColor;
   color: white;
   font-size: 20px;
   font-size: 1.25rem;
@@ -10359,14 +10359,24 @@ li.comment .children, li.pingback .children {
     content: "";
     position: absolute;
     top: 45px;
-    border-top: 1px solid #d8d8d8;
+    border-top: 1px solid currentColor;
+    opacity: 0.375;
   }
 }
 
 li.comment .children li .comment-number, li.comment .children li .comment-number--dark, li.comment .children li .add-comment .add-comment__button, .add-comment li.comment .children li .add-comment__button, li.pingback .children li .comment-number, li.pingback .children li .comment-number--dark, li.pingback .children li .add-comment .add-comment__button, .add-comment li.pingback .children li .add-comment__button {
-  border: 1px solid #eeeeee;
-  background: #eeeeee;
-  color: #515150;
+  border: 0;
+}
+
+li.comment .children li .comment-number:before, li.comment .children li .comment-number--dark:before, li.comment .children li .add-comment .add-comment__button:before, .add-comment li.comment .children li .add-comment__button:before, li.pingback .children li .comment-number:before, li.pingback .children li .comment-number--dark:before, li.pingback .children li .add-comment .add-comment__button:before, .add-comment li.pingback .children li .add-comment__button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: currentColor;
+  opacity: 0.1;
 }
 
 li.depth-2:before {
@@ -10424,11 +10434,26 @@ li.depth-2:before {
   font-weight: bold;
 }
 
+/*
+
+.comment-article:hover .comment-reply-link,
+.comment-article:hover .comment-edit-link
+.comment-article:hover .comment-edit-link:hover
+
+ */
 .comment-article {
   margin-bottom: 0;
 }
 
-.comment-article:hover .comment-edit-link, .comment-article:hover .comment-reply-link {
+.comment-article:hover .comment-reply-link {
+  opacity: 1;
+}
+
+.comment-article:hover .comment-edit-link {
+  opacity: 0.55;
+}
+
+.comment-article:hover .comment-edit-link:hover {
   opacity: 1;
 }
 
@@ -10438,7 +10463,12 @@ li.depth-2:before {
 }
 
 .comment__timestamp {
-  color: #919191;
+  color: currentColor;
+  opacity: 0.55;
+}
+
+.comment__timestamp:hover {
+  opacity: 1;
 }
 
 .comment__avatar {
@@ -10453,7 +10483,7 @@ li.depth-2:before {
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.72429;
-  color: #919191;
+  color: currentColor;
 }
 
 .comment__links {
@@ -10465,11 +10495,11 @@ li.depth-2:before {
 }
 
 .comment-edit-link, .comment-reply-link {
-  color: #919191;
+  color: currentColor;
   opacity: 0;
   margin-left: 12px;
   margin-left: 0.75rem;
-  transition: opacity .15s ease-in-out;
+  transition: opacity .15s ease-in-out, color .15s ease-in-out;
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
 }
@@ -10599,8 +10629,26 @@ li.depth-2:before {
   padding: 0;
   border: 0;
   border-bottom: 1px solid #d8d8d8;
-  background: url("./assets/images/textarea-bg1.png") scroll;
+  background: transparent;
   line-height: 26px;
+}
+
+.comment-form-comment {
+  position: relative;
+}
+
+.comment-form-comment:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 1.5rem;
+  width: calc(100% - 1.5rem);
+  height: 100%;
+  background: radial-gradient(circle closest-side, currentColor 50%, transparent 1%);
+  background-position: 100% 8px;
+  background-size: 3px 26px;
+  background-repeat: repeat;
+  z-index: -1;
 }
 
 /**
@@ -10797,10 +10845,9 @@ a:hover > .pixcode--icon.circle, a:hover > .pixcode--icon.square {
 
 .menu-item-has-children, .menu-item-language {
   position: relative;
-}
-
-.menu-item-has-children:hover:after, .menu-item-language:hover:after {
-  border-color: #c59d5f;
+  /*&:hover:after {
+		border-color: $accent;
+	}*/
 }
 
 .menu-item-has-children:after, .menu-item-language:after {
@@ -10814,16 +10861,15 @@ a:hover > .pixcode--icon.circle, a:hover > .pixcode--icon.square {
   height: 5px;
   border-left: 1px solid #262526;
   border-bottom: 1px solid #262526;
+  /*.headroom--not-top & {
+			border-color: $dark;
+		}*/
   -webkit-transform: translateY(-50%) rotate(-45deg);
           transform: translateY(-50%) rotate(-45deg);
 }
 
 .header--transparent .menu-item-has-children:after, .header--transparent .menu-item-language:after {
   border-color: white;
-}
-
-.headroom--not-top .menu-item-has-children:after, .headroom--not-top .menu-item-language:after {
-  border-color: #262526;
 }
 
 .menu-item-has-children:hover > .sub-menu, .menu-item-language:hover > .sub-menu, .menu-item-has-children.hover > .sub-menu, .hover.menu-item-language > .sub-menu {
@@ -11203,6 +11249,10 @@ button.nav-trigger {
   padding-left: 12px !important;
 }
 
+.nav--items-social a:before {
+  color: currentColor;
+}
+
 .nav--items-social i {
   font-size: 14px;
 }
@@ -11335,14 +11385,14 @@ button.nav-trigger {
 }
 
 .pagination a:hover {
-  color: white !important;
+  color: white;
   background-color: #c59d5f;
   border-bottom: 1px solid transparent;
 }
 
 .pagination span.current {
   color: #262526;
-  border: 1px solid #d8d8d8;
+  border: 1px solid currentColor;
 }
 
 .inf_scroll .pagination {
@@ -11396,7 +11446,7 @@ button.nav-trigger {
 }
 
 .page-numbers.prev.disabled, .page-numbers.next.disabled {
-  color: #F0F0F0 !important;
+  color: #F0F0F0;
   pointer-events: none;
 }
 
@@ -11497,6 +11547,7 @@ button.nav-trigger {
   padding: 8px 24px;
   padding-left: 70px;
   border: 1px solid #ddd;
+  color: currentColor;
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.72429;
@@ -11567,9 +11618,10 @@ hr.separator_color--white, .separator.separator_color--white {
   position: absolute;
   top: 50%;
   width: 42%;
-  border: 1px solid #d8d8d8;
+  border: 1px solid currentColor;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+  opacity: 0.8;
 }
 
 .separator--line-flower.separator_color--white .line {
@@ -11598,12 +11650,14 @@ hr.separator_color--white, .separator.separator_color--white {
 
 .separator--line-flower .arrow--left {
   right: 0;
-  border-right: 7px solid #d8d8d8;
+  border-right: 7px solid currentColor;
+  opacity: 0.8;
 }
 
 .separator--line-flower .arrow--right {
   left: 0;
-  border-left: 7px solid #d8d8d8;
+  border-left: 7px solid currentColor;
+  opacity: 0.8;
 }
 
 .separator--line-flower.separator_color--white .arrow--left {
@@ -11618,7 +11672,7 @@ hr.separator_color--white, .separator.separator_color--white {
   margin: 24px 0;
   font-size: 17px;
   font-family: Serif;
-  color: #9a9998;
+  opacity: 0.8;
 }
 
 .site-footer .separator--flower {
@@ -11750,7 +11804,7 @@ hr.separator_color--white, .separator.separator_color--white {
 }
 
 .add_this_list {
-  border: 1px solid #d8d8d8;
+  border: 1px solid currentColor;
 }
 
 @media only screen and (max-width: 899px) {
@@ -11771,13 +11825,13 @@ hr.separator_color--white, .separator.separator_color--white {
   float: none !important;
   padding: 6px;
   vertical-align: top;
-  border-right: 1px solid #d8d8d8;
-  color: #919191;
+  border-right: 1px solid currentColor;
   text-align: center;
 }
 
 .add_this_list a {
   padding: 6px !important;
+  color: currentColor;
 }
 
 .add_this_list a:first-child {
@@ -11796,11 +11850,7 @@ hr.separator_color--white, .separator.separator_color--white {
 }
 
 .add_this_list a:hover {
-  color: #c59d5f;
-}
-
-.add_this_list a:hover > span {
-  opacity: 1;
+  color: currentColor;
 }
 
 .add_this_list li {
@@ -11824,24 +11874,18 @@ div.addthis_toolbox a {
   margin-bottom: 0;
 }
 
+div.addthis_toolbox a svg {
+  fill: currentColor;
+}
+
 div.addthis_toolbox a .at-icon-wrapper {
   display: block;
+  opacity: 0.475;
   background-color: transparent !important;
-  -webkit-filter: invert(1) grayscale(1) contrast(0.1) brightness(1.5);
-          filter: invert(1) grayscale(1) contrast(0.1) brightness(1.5);
 }
 
 div.addthis_toolbox a .at-icon-wrapper:hover {
-  -webkit-filter: invert(1) grayscale(0) contrast(1) brightness(1);
-          filter: invert(1) grayscale(0) contrast(1) brightness(1);
-}
-
-html[class*="is--ie"] div.addthis_toolbox a .at-icon-wrapper svg path {
-  fill: #D2D2D2;
-}
-
-html[class*="is--ie"] div.addthis_toolbox a .at-icon-wrapper:hover svg path {
-  fill: #000000;
+  opacity: 1;
 }
 
 div.addthis_toolbox a .at-icon-wrapper, div.addthis_toolbox a .at-icon-wrapper svg {
@@ -11949,7 +11993,7 @@ body .addthis_32x32_white_style .addthis_counter.addthis_bubble_style a.addthis_
   border: 0;
   height: 3px;
   display: block;
-  background-image: radial-gradient(circle closest-side, #b3b3b3 99%, transparent 1%);
+  background-image: radial-gradient(circle closest-side, currentColor 99%, transparent 1%);
   background-position: bottom;
   background-size: 6px 3px;
   background-repeat: repeat-x;
@@ -12159,7 +12203,8 @@ p.menu-list__item-desc + span.dots {
 .otreservations-subtitle {
   font-size: 10px;
   text-transform: uppercase;
-  color: #b3b3b3;
+  color: currentColor;
+  opacity: 0.45;
 }
 
 .otw-widget-form {
@@ -12188,6 +12233,7 @@ p.menu-list__item-desc + span.dots {
   background: none;
   border: 1px solid #d8d8d8;
   border-radius: 3px;
+  color: currentColor;
 }
 
 .otw-button-wrap {
@@ -12502,6 +12548,7 @@ div.mfp-title small {
   background: #eeeeee;
   outline: none !important;
   border-radius: 0;
+  border: 0;
 }
 
 @media only screen and (max-width: 899px) {
@@ -12595,7 +12642,7 @@ small.muted {
   font-family: FontAwesome;
   -webkit-font-smoothing: antialiased;
   text-align: center;
-  color: white;
+  color: currentColor !important;
   pointer-events: auto;
   transition: color .2s linear;
 }
@@ -12961,7 +13008,7 @@ small.muted {
 .woocommerce-MyAccount-navigation ul,
 .woocommerce-MyAccount-navigation .promo-box__container ul, .promo-box__container h3, .promo-box__container h4, .promo-box__container h5, .promo-box__container h6 {
   margin-top: 0;
-  color: white;
+  color: inherit;
 }
 
 .promo-box__container p:last-child {
@@ -13063,7 +13110,7 @@ html .promo-box__container.promo-box__container a:hover {
 }
 
 .site-header.headroom--not-top .site-logo--text {
-  color: #262526;
+  color: currentColor;
 }
 
 .site-header.headroom--not-top .site-logo-img--light {
@@ -13305,7 +13352,7 @@ a.site-logo--text {
 .nav--footer a {
   padding: 6px;
   text-transform: uppercase;
-  color: #919191;
+  color: inherit;
 }
 
 .sidebar--footer {
@@ -13655,11 +13702,12 @@ a.site-logo--text {
 }
 
 .sidebar--footer .widget__title {
-  color: white;
+  color: inherit;
 }
 
 .sidebar--footer a {
-  color: white;
+  color: inherit;
+  text-decoration: underline;
 }
 
 .sidebar--footer [class*="social"] a, .sidebar--footer [class*="social"] a:hover {
@@ -14878,7 +14926,7 @@ http://nicolasgallagher.com/micro-clearfix-hack/
   color: #fff;
   font-weight: bold;
   background: #33aaff;
-  box-shadow: inset 0 1px 3px #178fe5;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.25);
   border-radius: 3px;
 }
 
@@ -14890,8 +14938,8 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 }
 
 .pika-button:hover {
-  color: #fff !important;
-  background: #c59d5f !important;
+  color: #fff;
+  background: #c59d5f;
   box-shadow: none !important;
   border-radius: 3px !important;
 }
@@ -15174,7 +15222,6 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 
 .article__date .date__dot:after {
   content: "\2022";
-  color: #b3b3b3;
 }
 
 .article__date .date__box:last-child:after {
