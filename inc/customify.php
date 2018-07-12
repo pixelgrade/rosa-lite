@@ -1,5 +1,16 @@
 <?php
 
+define( 'THEME_COLOR_PRIMARY', '#C59D5F' );
+define( 'THEME_COLOR_SECONDARY', '#C59D5F' );
+define( 'THEME_COLOR_TERTIARY', '#C59D5F' );
+
+define( 'THEME_DARK_PRIMARY', '#515151' );
+define( 'THEME_DARK_SECONDARY', '#252525' );
+define( 'THEME_DARK_TERTIARY', '#121212' );
+
+define( 'THEME_LIGHT_PRIMARY', '#FFFFFF' );
+define( 'THEME_LIGHT_SECONDARY', '#F8F8F8' );
+define( 'THEME_LIGHT_TERTIARY', '#EEEEEE' );
 
 if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 
@@ -507,7 +518,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'type'    => 'color',
 						'label'   => __( 'Accent Color', 'rosa' ),
 						'live'    => true,
-						'default' => '#c59d5f',
+						'default' => THEME_COLOR_PRIMARY,
 						'css'     => array(
 							array(
 								'property' => 'color',
@@ -550,7 +561,9 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								'property' => 'background-color',
 								'selector' => '.btn--primary, .shop-menu-item .shop-items-number, .comments_add-comment, .form-submit #comment-submit, .btn:not(.btn--primary):not(.btn--tertiary):hover, .wpcf7-form-control.wpcf7-submit:hover,
 								.pagination li a:hover, form.shipping_calculator button.button:hover, .otreservations-submit:hover, .pixcode--icon.square:hover, .pixcode--icon.circle:hover,
-								.sidebar--footer__accent, .copyright-area.copyright-area__accent, .menu-list__item-highlight-title,
+								.sidebar--footer__accent, 
+								.copyright-area.copyright-area__accent, 
+								.menu-list__item-highlight-title,
 								.promo-box__container,
                                 :not(.pika-today) > .pika-button:hover,
                                 .pika-table .is-selected .pika-button.pika-day,
@@ -600,22 +613,22 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus,
 								input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .form-control:focus'
 							),
-							array(
-								'property' => 'fill',
-								'selector' => '.copyright-area.copyright-area__accent svg path'
-							),
                             array(
                                 'property' => 'color',
                                 'selector' => '.navigation--main .nav--main li a:hover',
                                 'media' => 'only screen and (max-width: 899px)'
                             ),
+							array(
+								'property' => 'fill',
+								'selector' => '.copyright-area.copyright-area__accent svg path'
+							),
 						)
 					),
 					'text_color'     => array(
 						'type'    => 'color',
 						'label'   => esc_html__( 'Text Color', 'rosa' ),
 						'live'    => true,
-						'default' => '#515150',
+						'default' => THEME_DARK_PRIMARY,
 						'css'     => array(
 							array(
 								'property' => 'color',
@@ -637,12 +650,19 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								                .select2-container--default .select2-results__option--highlighted[aria-selected],
                                                .select2-container--default .select2-results__option--highlighted[data-selected],
 								                form.checkout textarea[name="order_comments"],
-								                .header--transparent .shop-menu-item .shop-menu-item__price'
+								                .header--transparent .shop-menu-item .shop-menu-item__price,
+								                .sidebar--footer.sidebar--footer__light, 
+												.copyright-area.copyright-area__light,
+												.sidebar--footer.sidebar--footer__light .widget [class*="social"] > ul a:before'
 							),
                             array(
                                 'property' => 'color',
                                 'selector' => '.navigation--main .nav--main li a',
                                 'media' => 'only screen and (max-width: 899px)'
+                            ),
+                            array(
+                                'property' => 'border-color',
+                                'selector' => '.copyright-area__light .btn--top_text .btn__arrow',
                             ),
                             array(
                                 'property' => 'border-color',
@@ -763,7 +783,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'type'    => 'color',
 						'label'   => esc_html__( 'Headings Color', 'rosa' ),
 						'live'    => true,
-						'default' => '#262526',
+						'default' => THEME_DARK_SECONDARY,
 						'css'     => array(
 							array(
 								'property' => 'color',
@@ -985,7 +1005,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'type'    => 'color',
 						'label'   => esc_html__( 'Nav Links Color', 'rosa' ),
 						'live'    => true,
-						'default' => '#262526',
+						'default' => THEME_DARK_SECONDARY,
 						'css'     => array(
 							array(
 								'property' => 'color',
@@ -1018,7 +1038,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'type'    => 'color',
 						'label'   => esc_html__( 'Header Color', 'rosa' ),
 						'live'    => true,
-						'default' => '#ffffff',
+						'default' => THEME_LIGHT_PRIMARY,
 						'css'     => array(
 							array(
 								'property' => 'background-color',
@@ -1036,7 +1056,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'type'    => 'color',
 						'label'   => esc_html__( 'Content Color', 'rosa' ),
 						'live'    => true,
-						'default' => '#ffffff',
+						'default' => THEME_LIGHT_PRIMARY,
 						'css'     => array(
 							array(
 								'property' => 'color',
@@ -1095,7 +1115,12 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .pixcode.pixcode--icon.circle,
                                                 .pixcode.pixcode--icon.circle:hover,
                                                 .pixcode.pixcode--icon.square,
-                                                .pixcode.pixcode--icon.square:hover'
+                                                .pixcode.pixcode--icon.square:hover,
+                                                
+                                                .sidebar--footer__accent a:hover,
+                                                .sidebar--footer.sidebar--footer__accent .widget [class*="social"] > ul a:hover:before,
+                                                .copyright-area.copyright-area__accent,
+                                                .copyright-area.copyright-area__accent a:hover'
 							),
                             array(
                                 'property' => 'color',
@@ -1138,7 +1163,14 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .select2-container--default .select2-search--dropdown .select2-search__field,
                                                 
                                                 .comment-number,
-                                                .is-today .pika-button'
+                                                .is-today .pika-button,
+                                                
+                                                .sidebar--footer__light,
+                                                .copyright-area.copyright-area__light'
+							),
+							array(
+								'property' => 'fill',
+								'selector' => '.copyright-area.copyright-area__light svg path'
 							)
 						)
 					),
@@ -1156,11 +1188,13 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                         'type'    => 'color',
                         'label'   => __( 'Footer Widget Area Accent Color', 'rosa' ),
                         'live'    => true,
-                        'default' => '#c59d5f',
+                        'default' => THEME_COLOR_PRIMARY,
                         'css'     => array(
                             array(
                                 'property' => 'color',
-                                'selector' => '.footer-widget-area .widget a:hover',
+                                'selector' => '
+                                    .sidebar--footer a:hover, 
+                                    .sidebar--footer .widget [class*="social"] > ul a:hover:before',
                             ),
                         ),
                     ),
@@ -1168,7 +1202,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                         'type'    => 'color',
                         'label'   => __( 'Footer Widget Area Background Color', 'rosa' ),
                         'live'    => true,
-                        'default' => '#121212',
+                        'default' => THEME_DARK_TERTIARY,
                         'css'     => array(
                             array(
                                 'property' => 'background-color',
@@ -1180,12 +1214,11 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                         'type'    => 'color',
                         'label'   => __( 'Footer Widget Area Text Color', 'rosa' ),
                         'live'    => true,
-                        'default' => '#ffffff',
+                        'default' => THEME_LIGHT_PRIMARY,
                         'css'     => array(
                             array(
                                 'property' => 'color',
-                                'selector' => '.sidebar--footer,
-                                               .footer-widget-area .widget a'
+                                'selector' => '.sidebar--footer, .sidebar--footer .widget [class*="social"] > ul a:before'
                             ),
                             array(
                                 'property' => 'border-color',
@@ -1201,7 +1234,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                         'type'    => 'color',
                         'label'   => __( 'Footer Accent Color', 'rosa' ),
                         'live'    => true,
-                        'default' => '#c59d5f',
+                        'default' => THEME_COLOR_PRIMARY,
                         'css'     => array(
                             array(
                                 'property' => 'color',
@@ -1214,7 +1247,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                         'type'    => 'color',
                         'label'   => __( 'Footer Background Color', 'rosa' ),
                         'live'    => true,
-                        'default' => '#262526',
+                        'default' => THEME_DARK_SECONDARY,
                         'css'     => array(
                             array(
                                 'property' => 'background-color',
@@ -1230,12 +1263,12 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                         'type'    => 'color',
                         'label'   => __( 'Footer Text Color', 'rosa' ),
                         'live'    => true,
-                        'default' => '#919191',
+                        'default' => THEME_LIGHT_PRIMARY,
                         'css'     => array(
                             array(
                                 'property' => 'color',
                                 'unit' => '91',
-                                'selector' => '.footer-container',
+                                'selector' => '.copyright-area',
                                 'callback_filter' => 'rosa_transparent_color',
                             ),
                         ),
@@ -1679,14 +1712,14 @@ function rosa_transparent_color( value, selector, property, unit ) {
 add_action( 'customize_preview_init', 'rosa_transparent_color_customizer_preview', 20 );
 
 function rosa_footer_style_select( $value, $selector, $property, $unit ) {
-	$waves_fill_color = '#121212';
+	$waves_fill_color = THEME_DARK_TERTIARY;
 
 	switch ( $value ) {
 		case 'light' :
-			$waves_fill_color = '#ffffff';
+			$waves_fill_color = THEME_LIGHT_PRIMARY;
 			break;
 		case 'dark' :
-			$waves_fill_color = '#121212';
+			$waves_fill_color = THEME_DARK_TERTIARY;
 			break;
 		case 'accent' :
 			$waves_fill_color = '#' . pixelgrade_option( 'main-color' );
@@ -1864,7 +1897,7 @@ function rosa_add_customify_style_manager_section ( $options ) {
     	'priority' => -1,
         'options' => array(
             'sm_color_primary' => array(
-                'default' => '#c59d5f',
+                'default' => THEME_COLOR_PRIMARY,
                 'connected_fields' => array(
                     'main_color',
                     'footer_accent_color',
@@ -1872,31 +1905,33 @@ function rosa_add_customify_style_manager_section ( $options ) {
                 ),
             ),
             'sm_color_secondary' => array(
-            	'default' => '#c59d5f',
+            	'default' => THEME_COLOR_SECONDARY,
             ),
             'sm_color_tertiary' => array(
-            	'default' => '#c59d5f',
+            	'default' => THEME_COLOR_TERTIARY,
             ),
             'sm_dark_primary' => array(
-                'default' => '#252525',
+                'default' => THEME_DARK_PRIMARY,
                 'connected_fields' => array(
-                    'headings_color',
-                    'navlink_color',
-                    'footer_background_color'
+                    'text_color',
                 ),
             ),
             'sm_dark_secondary' => array(
-                'default' => '#515150',
+                'default' => THEME_DARK_SECONDARY,
                 'connected_fields' => array(
-                    'text_color',
-                    'footer_widget_area_background_color',
+	                'footer_background_color',
+                    'headings_color',
+                    'navlink_color',
                 ),
             ),
             'sm_dark_tertiary' => array(
-                'default' => '#515150',
+                'default' => THEME_DARK_TERTIARY,
+                'connected_fields' => array(
+	                'footer_widget_area_background_color',
+	            ),
             ),
             'sm_light_primary' => array(
-                'default' => '#ffffff',
+                'default' => THEME_LIGHT_PRIMARY,
                 'connected_fields' => array(
                     'header_background_color',
                     'content_background_color',
@@ -1905,10 +1940,10 @@ function rosa_add_customify_style_manager_section ( $options ) {
                 ),
             ),
             'sm_light_secondary' => array(
-            	'default' => '#F9F9F9'
+            	'default' => THEME_LIGHT_SECONDARY
             ),
             'sm_light_tertiary' => array(
-            	'default' => '#F9F9F9'
+            	'default' => THEME_LIGHT_TERTIARY
             ),
         ),
     ) );
@@ -1927,15 +1962,15 @@ function rosa_add_default_color_palette( $color_palettes ) {
 				'background_image_url' => 'https://cloud.pixelgrade.com/wp-content/uploads/2018/07/rosa-palette.jpg',
 			),
 			'options' => array(
-				'sm_color_primary' => '#c59d5f',
-				'sm_color_secondary' => '#c59d5f',
-				'sm_color_tertiary' => '#c59d5f',
-				'sm_dark_primary' => '#252525',
-				'sm_dark_secondary' => '#515150',
-				'sm_dark_tertiary' => '#515150',
-				'sm_light_primary' => '#FFFFFF',
-				'sm_light_secondary' => '#F9F9F9',
-				'sm_light_tertiary' => '#F9F9F9',
+				'sm_color_primary' => THEME_COLOR_PRIMARY,
+				'sm_color_secondary' => THEME_COLOR_PRIMARY,
+				'sm_color_tertiary' => THEME_COLOR_PRIMARY,
+				'sm_dark_primary' => THEME_DARK_PRIMARY,
+				'sm_dark_secondary' => THEME_DARK_SECONDARY,
+				'sm_dark_tertiary' => THEME_DARK_TERTIARY,
+				'sm_light_primary' => THEME_LIGHT_PRIMARY,
+				'sm_light_secondary' => THEME_LIGHT_SECONDARY,
+				'sm_light_tertiary' => THEME_LIGHT_TERTIARY,
 			),
 		),
 	), $color_palettes);

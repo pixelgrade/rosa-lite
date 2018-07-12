@@ -9187,11 +9187,6 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   background-color: white;
 }
 
-.article__header .article__headline .headline__description .btn.btn--text, .article__header .article__headline .headline__description .btn--text.otreservations-submit {
-  color: inherit;
-  border-color: inherit;
-}
-
 .break-words, .headline__primary, .headline__secondary {
   word-wrap: break-word;
   -webkit-hyphens: auto;

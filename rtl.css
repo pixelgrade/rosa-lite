@@ -9932,11 +9932,6 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   background-color: white;
 }
 
-.article__header .article__headline .headline__description .btn.btn--text, .article__header .article__headline .headline__description .btn--text.comments_add-comment, .article__header .article__headline .headline__description .comments_add-comment.read-more-button, .article__header .article__headline .headline__description .form-submit .btn--text#comment-submit, .form-submit .article__header .article__headline .headline__description .btn--text#comment-submit, .article__header .article__headline .headline__description .form-submit #comment-submit.read-more-button, .form-submit .article__header .article__headline .headline__description #comment-submit.read-more-button, .article__header .article__headline .headline__description .btn--text.wpcf7-form-control.wpcf7-submit, .article__header .article__headline .headline__description .wpcf7-form-control.wpcf7-submit.read-more-button, .article__header .article__headline .headline__description .btn--text.otreservations-submit, .article__header .article__headline .headline__description .otreservations-submit.read-more-button, .article__header .article__headline .headline__description .widget_tag_cloud a.btn--text, .widget_tag_cloud .article__header .article__headline .headline__description a.btn--text, .article__header .article__headline .headline__description .widget_tag_cloud a.read-more-button, .widget_tag_cloud .article__header .article__headline .headline__description a.read-more-button, .article__header .article__headline .headline__description .read-more-button {
-  color: inherit;
-  border-color: inherit;
-}
-
 .break-words, .headline__primary, .headline__secondary {
   word-wrap: break-word;
   -webkit-hyphens: auto;
@@ -12629,7 +12624,7 @@ small.muted {
   font-family: FontAwesome;
   -webkit-font-smoothing: antialiased;
   text-align: center;
-  color: currentColor !important;
+  color: white;
   pointer-events: auto;
   transition: color .2s linear;
 }
@@ -13354,6 +13349,10 @@ a.site-logo--text {
   }
 }
 
+.sidebar--footer a {
+  color: inherit;
+}
+
 @media only screen and (min-width: 900px) {
   .footer-widget-area {
     margin: -12px;
@@ -13447,15 +13446,7 @@ a.site-logo--text {
 
 .sidebar--footer__light {
   background-color: white;
-  color: #262526 !important;
-}
-
-.sidebar--footer__light .widget__title {
-  color: #262526 !important;
-}
-
-.sidebar--footer__light a {
-  color: #262526 !important;
+  color: #262526;
 }
 
 .sidebar--footer__dark {
@@ -13469,6 +13460,14 @@ a.site-logo--text {
 
 .sidebar--footer__accent {
   background-color: #c59d5f;
+}
+
+.sidebar--footer.sidebar--footer__accent .widget [class*="social"] > ul a:before {
+  transition: opacity .3s ease-in-out;
+}
+
+.sidebar--footer.sidebar--footer__accent .widget [class*="social"] > ul a:hover:before {
+  opacity: 0.6;
 }
 
 .container {

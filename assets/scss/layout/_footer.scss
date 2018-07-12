@@ -210,9 +210,13 @@
 
 	color: white;
 	background-color: #121012;
+
+	a {
+		color: inherit;
+	}
 }
 
-.footer-widget-area{
+.footer-widget-area {
 	@extend .cf;
 
 	@include media-query(lap-and-up) {
@@ -225,7 +229,7 @@
 		width: 100% !important;
 	}
 
-	.widget{
+	.widget {
 		display: inline-block;
 		vertical-align: middle;
 
@@ -312,16 +316,7 @@
 
 .sidebar--footer__light{
 	background-color: white;
-
-	color: $dark !important;
-
-	.widget__title{
-		color: $dark !important;
-	}
-
-	a{
-		color: $dark !important;
-	}
+	color: $dark;
 }
 
 .sidebar--footer__dark{
@@ -336,4 +331,15 @@
 
 .sidebar--footer__accent{
 	background-color: $accent;
+}
+
+.sidebar--footer.sidebar--footer__accent .widget [class*="social"] > ul a {
+
+	&:before {
+		transition: opacity .3s ease-in-out;
+	}
+
+	&:hover:before {
+		opacity: 0.6;
+	}
 }
