@@ -55,7 +55,7 @@ html .woocommerce ul.products {
 		left: 50%;
 		transform: translateX(-50%);
 
-		background: white !important;
+		//background: white !important;
 		color: $accent;
 
 		opacity: 0;
@@ -77,7 +77,7 @@ html .woocommerce ul.products {
 
 		font-size: 19px !important;
 		font-family: $heading-font-family;
-		color: $dark !important;
+		color: inherit;
 
 		transition: opacity .2s linear;
 

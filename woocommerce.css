@@ -219,10 +219,6 @@
   color: white;
 }
 
-.product__badge.on-sale:hover {
-  background-color: #262526 !important;
-}
-
 .product__badge {
   padding: 9px 18px;
 }
@@ -242,8 +238,8 @@
 }
 
 .woocommerce ul.products li.product .product__button:hover, .woocommerce ul.products li.product .added_to_cart:hover {
-  color: #262526 !important;
-  border-color: #262526 !important;
+  color: inherit;
+  border-color: inherit;
 }
 
 .product__badge {
@@ -264,7 +260,6 @@
 .woocommerce .woocommerce-message, .woocommerce .woocommerce-info, .woocommerce .woocommerce-error, .woocommerce-page .woocommerce-message, .woocommerce-page .woocommerce-info, .woocommerce-page .woocommerce-error {
   margin-top: 24px !important;
   padding: 1em !important;
-  border: none;
   border: 1px solid #d8d8d8;
   background: none;
   border-radius: 0;
@@ -401,7 +396,6 @@ html .woocommerce ul.products li.product {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  background: white !important;
   color: #c59d5f;
   opacity: 0;
   transition: opacity .2s linear;
@@ -419,7 +413,7 @@ html .woocommerce ul.products li.product {
   margin-bottom: 0 !important;
   font-size: 19px !important;
   font-family: "Source Sans Pro", Georgia, serif;
-  color: #262526 !important;
+  color: inherit;
   transition: opacity .2s linear;
 }
 
@@ -625,7 +619,7 @@ html .woocommerce ul.products li.product {
   padding: 0;
   border: none;
   background: #262526;
-  color: white;
+  color: inherit;
   box-shadow: none;
   border-radius: 5px;
 }
@@ -660,7 +654,7 @@ html .woocommerce ul.products li.product {
 .woocommerce-page input.button.alt:hover,
 .woocommerce-page #respond input#submit:hover {
   background: #c59d5f;
-  color: white;
+  color: inherit;
 }
 
 .woocommerce-page button.button.alt.disabled, .woocommerce-page button.button.alt.disabled:hover {
@@ -789,6 +783,7 @@ html .woocommerce ul.products li.product {
 
 .woocommerce button.single_add_to_cart_button {
   font-weight: bold !important;
+  color: inherit;
 }
 
 .product__badge {

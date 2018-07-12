@@ -30,10 +30,6 @@
 %btn--primary {
 	background-color: $accent;
 	color: white;
-
-	&:hover {
-		background-color: $dark !important;
-	}
 }
 
 
@@ -60,8 +56,8 @@
 	letter-spacing: 0.1em;
 
 	&:hover{
-		color: $dark !important;
-		border-color: $dark !important;
+		color: inherit;
+		border-color: inherit;
 	}
 }
 
@@ -99,7 +95,7 @@
 		margin-top: $_u !important;
 		padding: 1em !important;
 
-		border: none;
+		//border: none;
 		border: 1px solid $borders;
 
 		background: none;

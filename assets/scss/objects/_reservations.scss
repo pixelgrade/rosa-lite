@@ -17,7 +17,8 @@
 .otreservations-subtitle{
 	font-size: 10px;
 	text-transform: uppercase;
-	color: $lightest;
+	color: inherit;
+	opacity: 0.45;
 }
 
 .otw-widget-form{
@@ -57,6 +58,7 @@
 
 			border: 1px solid $borders;
 			border-radius: 3px;
+			color: inherit;
 		}
 	}
 }

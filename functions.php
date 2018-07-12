@@ -113,6 +113,11 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 				'ocs'           => '6AU8WKBK1yZRDerL57ObzDPM7SGWRp21Csi5Ti5LdVNG9MbP'
 			)
 		);
+
+        /**
+         * Enable support for the Style Manager Customizer section (via Customify).
+         */
+        add_theme_support( 'customizer_style_manager' );
 	}
 }
 add_action( 'after_setup_theme', 'rosa_theme_setup' );

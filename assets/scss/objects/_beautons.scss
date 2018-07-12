@@ -12,14 +12,14 @@
 	letter-spacing: .2em;
 
 	background-color: $dark;
-	color: white;
+	//color: transparent;
 
 	transition: all .15s;
 	border-radius: 3px;
 
 	&:hover {
 		background-color: $accent;
-		color: white;
+		//color: white;
 	}
 
 	&.a{
@@ -32,12 +32,12 @@
 	color: white;
 
 	&:hover {
-		background-color: $dark !important;
+		background-color: $dark;
 	}
 }
 
 .btn--secondary {
-	color: white;
+	color: transparent;
 }
 
 .btn--tertiary {
@@ -146,7 +146,7 @@
 	letter-spacing: 0.1em;
 
 	&:hover{
-		color: $dark !important;
-		border-color: $dark !important;
+		color: $dark;
+		border-color: $dark;
 	}
 }

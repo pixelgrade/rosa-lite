@@ -21,6 +21,7 @@
 		outline: none !important;
 
 		border-radius: 0;
+		border: 0;
 
 		@include media-query(palm) {
 			border-radius: 2px;

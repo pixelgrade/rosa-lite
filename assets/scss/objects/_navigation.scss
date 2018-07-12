@@ -74,9 +74,9 @@
 .menu-item-has-children {
 	position: relative;
 
-	&:hover:after {
-		border-color: $accent;
-	}
+	//&:hover:after {
+	//	border-color: $accent;
+	//}
 
 	&:after {
 		content: "";
@@ -98,9 +98,9 @@
 			border-color: white;
 		}
 
-		.headroom--not-top & {
-			border-color: $dark;
-		}
+		//.headroom--not-top & {
+		//	border-color: $dark;
+		//}
 
 		transform: translateY(-50%) rotate(45deg);
 	}
@@ -571,6 +571,10 @@ $nav-width: 84vw;
 		white-space: nowrap;
 		padding-left: $_u2 !important;
 		padding-right: $_u2 !important;
+	}
+
+	a:before {
+		color: inherit;
 	}
 
 	i {
