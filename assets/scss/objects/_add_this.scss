@@ -39,10 +39,7 @@
 	}
 
 	a:hover{
-		color: currentColor;
-
-		//& > span {
-		//}
+		color: inherit;
 	}
 
 	li{
@@ -63,10 +60,6 @@
 	opacity:0.3;
 }
 
-//div.addthis_toolbox {
-//	opacity: 0.47;
-//}
-
 div.addthis_toolbox a {
 	margin-bottom: 0;
 
@@ -78,23 +71,9 @@ div.addthis_toolbox a {
 		display: block;
 		opacity: 0.475;
 		background-color: transparent !important;
-		//filter: invert(1) grayscale(1) contrast(.1) brightness(1.5);
 
 		&:hover {
-			//filter: invert(1) grayscale(0) contrast(1) brightness(1);
           opacity: 1;
-		}
-
-		html[class*="is--ie"] & {
-			svg path {
-				//fill: currentColor;
-			}
-
-			&:hover {
-				svg path {
-					//fill: currentColor;
-				}
-			}
 		}
 
 		&, svg {

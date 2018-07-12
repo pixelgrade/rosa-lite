@@ -214,14 +214,6 @@ li.depth-2:before {
 	}
 }
 
-/*
-
-.comment-article:hover .comment-reply-link,
-.comment-article:hover .comment-edit-link
-.comment-article:hover .comment-edit-link:hover
-
- */
-
 .comment-article {
 	margin-bottom: 0;
 
@@ -244,10 +236,6 @@ li.depth-2:before {
 	@include rem(margin-right, $_u2);
 }
 
-//.comment__time {
-//
-//}
-
 .comment__timestamp {
 	color: currentColor;
 	opacity: 0.55;
@@ -268,7 +256,7 @@ li.depth-2:before {
 
 	@include font-size(14px);
 
-	color: currentColor;
+	color: inherit;
 }
 
 .comment__links {
@@ -280,7 +268,7 @@ li.depth-2:before {
 }
 
 .comment-edit-link, .comment-reply-link {
-	color: currentColor;
+	color: inherit;
 	opacity: 0;
 	@include rem(margin-right, $_u2);
 	transition: opacity .15s ease-in-out,

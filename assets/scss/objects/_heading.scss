@@ -16,7 +16,6 @@
 		.headline__description,
 		.star,
 		.line,
-        .btn,
 		.arrow {
 			opacity: 0;
 		}
@@ -37,8 +36,19 @@
 			margin-bottom:3px;
 		}
 
-		.headline__primary, .headline__description *:not(div) {
+		.headline__primary, .headline__description > *:not(.star):not(.separator--flower) {
 			color: white;
+		}
+
+		.headline__description {
+			& .btn {
+				background-color: white;
+
+				&.btn--text {
+					color: inherit;
+					border-color: inherit;
+				}
+			}
 		}
 	}
 }

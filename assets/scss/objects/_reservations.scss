@@ -17,7 +17,7 @@
 .otreservations-subtitle{
 	font-size: 10px;
 	text-transform: uppercase;
-	color: currentColor;
+	color: inherit;
 	opacity: 0.45;
 }
 
@@ -58,7 +58,7 @@
 
 			border: 1px solid $borders;
 			border-radius: 3px;
-			color: currentColor;
+			color: inherit;
 		}
 	}
 }

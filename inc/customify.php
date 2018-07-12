@@ -522,7 +522,9 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 									.form-submit .meta-list a#comment-submit:hover, .meta-list a.wpcf7-form-control.wpcf7-submit:hover,
 									.meta-list a.otreservations-submit:hover, .meta-list .widget_tag_cloud a:hover, .widget_tag_cloud .meta-list a:hover, .btn.btn--text:hover,
 									.article__content a:not([class]), .article__content a:hover:not([class]):hover,
-									.article__header .article__headline .headline__description .star, .read-more-button, .read-more-button:hover, .shop-categories a.active,
+									header.c-hero.article__header .article__headline .headline__description div.star,
+									header.c-hero .article__headline .headline__description div.separator.separator--flower,
+									.read-more-button, .read-more-button:hover, .shop-categories a.active,
 									body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart,
 									body.woocommerce ul.products li.product a.added_to_cart, body.woocommerce ul.products li.product .price ins,
 									.single-product .entry-summary .price span, body.woocommerce .star-rating span:before, .comment-reply-link,
@@ -554,7 +556,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                 .pika-table .is-selected .pika-button.pika-day,
                                 .pagination .nav-links .page-numbers:not(.current):hover,
                                 .pagination .nav-links .page-numbers.prev:not(.disabled):hover,
-                                .pagination .nav-links .page-numbers.next:hover,
+                                .pagination .nav-links .page-numbers.next:not(.disabled):hover,
                                 .woocommerce div.product form.cart .button:hover,
                                 .woocommerce table.shop_table div.coupon .button:hover,
                                 .woocommerce-page table.shop_table div.coupon .button:hover,
@@ -628,7 +630,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								                .menu-list span.dots,
 								                .woocommerce .woocommerce-billing-fields__field-wrapper span.select2-selection.select2-selection--single,
 								                .select2-container--default .select2-selection--single .select2-selection__rendered,
-								                .select2-container--default .select2-results__option[data-selected=true]
+								                .select2-container--default .select2-results__option[data-selected=true],
 								                .woocommerce .woocommerce-billing-fields__field-wrapper input.input-text,
 								                form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"],
 								                form.checkout .woocommerce-billing-fields__field-wrapper span.select2-dropdown.select2-dropdown--below,
@@ -682,20 +684,13 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                 'selector' => '.comment__content',
                                 'callback_filter' => 'rosa_transparent_color'
                             ),
-                            array(
-                                'property' => 'background-color',
-                                'unit' => '88',
-                                'selector' => '.pagination .nav-links .page-numbers,
-                                                .pagination .nav-links .page-numbers.prev.disabled,
-                                                .pagination .nav-links .page-numbers.next.disabled',
-                                'callback_filter' => 'rosa_transparent_color'
-                            ),
-
 							array(
                                 'property' => 'background-color',
                                 'unit' => '30',
                                 'selector' => '.select2-container--default .select2-results__option--highlighted[aria-selected],
-                                                .select2-container--default .select2-results__option--highlighted[data-selected]',
+                                                .select2-container--default .select2-results__option--highlighted[data-selected],
+                                                table tbody tr:nth-of-type(odd),
+                                                .wp-caption-text',
                                 'callback_filter' => 'rosa_transparent_color'
                             ),
 							array(
@@ -713,7 +708,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 
                                                 .form-search .search-query,
                                                 
-                                                hr, .separator,
+                                                hr, hr.separator, .separator,
                                                 
                                                 .meta-list a.btn,
                                                 .meta-list a.btn:last-child,
@@ -728,6 +723,9 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .woocommerce div.woocommerce-message,
                                                 .woocommerce div.woocommerce-info,
                                                 .woocommerce div.woocommerce-error,
+                                                .woocommerce table.shop_attributes,
+                                                .woocommerce table.shop_attributes th,
+                                                .woocommerce table.shop_attributes td,
                                                 .woocommerce table.shop_table,
                                                 .woocommerce-page table.shop_table,
                                                 .woocommerce table.shop_table td,
@@ -741,6 +739,9 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 form.checkout textarea[name="order_comments"],
                                                 .woocommerce .woocommerce-info,
                                                 .woocommerce-checkout #payment ul.payment_methods,
+                                                .woocommerce table.shop_table tfoot th,
+                                                .woocommerce table.shop_table tfoot td,
+                                                .woocommerce table.shop_table tbody th,
                                                 
                                                 span.select2-dropdown.select2-dropdown--below,
                                                 span.select2-dropdown.select2-dropdown--above,
@@ -817,6 +818,13 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .site-header .nav-trigger .nav-icon:before,
                                                 .site-header .nav-trigger .nav-icon:after'
 							),
+                            array(
+                                'property' => 'background-color',
+                                'unit' => '88',
+                                'selector' => '.pagination .nav-links .page-numbers.prev.disabled,
+                                                .pagination .nav-links .page-numbers.next.disabled,',
+                                'callback_filter' => 'rosa_transparent_color'
+                            ),
                             array(
                                 'property' => 'border-color',
                                 'selector' => 'div:not(.c-hero-layer) .pixcode-slider[data-arrows] .rsArrowIcn,
@@ -1033,6 +1041,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							array(
 								'property' => 'color',
 								'selector' => '.blurp--top, .border-waves-before, .border-waves-after,
+								                .menu-list__item-highlight-title,
 								                
                                                 .btn,
                                                 .btn:hover,
@@ -1100,35 +1109,36 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                             ),
 							array(
 								'property' => 'border-color',
-								'selector' => '.site-header, .site-footer,'
+								'selector' => '.site-header, .site-footer'
 							),
 							array(
 								'property' => 'background-color',
 								'selector' => 'html, .page .article__content, .up-link, .menu-list__item-title .item_title, 
-								.menu-list__item-price, .desc__content,
-								.pix-dropdown.active .dropdown__menu,
-								
-								.otw-input-wrap select option,
-								
-								.comment-form input,
-								.form-search .search-query,
-								.input-group input.form-control,
-								
-								.woocommerce .woocommerce-ordering select,
-								.woocommerce table.shop_table .input-text[name="coupon_code"],
-                               .woocommerce-page table.shop_table .input-text[name="coupon_code"],
-								.woocommerce .woocommerce-billing-fields__field-wrapper input.input-text,
-								form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"],
-								.woocommerce .woocommerce-billing-fields__field-wrapper span.select2-selection.select2-selection--single,
-								span.select2-dropdown.select2-dropdown--below,
-								span.select2-dropdown.select2-dropdown--above,
-								form.checkout textarea[name="order_comments"],
-								div.woocommerce-checkout-payment#payment,
-								.woocommerce-checkout #payment ul.payment_methods,
-								.select2-container--default .select2-search--dropdown .select2-search__field,
-								
-								.comment-number,
-								.is-today .pika-button'
+                                                .menu-list__item-price, .desc__content,
+                                                .pix-dropdown.active .dropdown__menu,
+                                                
+                                                .otw-input-wrap select option,
+                                                
+                                                .comment-form input,
+                                                .form-search .search-query,
+                                                .input-group input.form-control,
+                                                
+                                                .woocommerce ul.products li.product .added_to_cart:before,
+                                                .woocommerce .woocommerce-ordering select,
+                                                .woocommerce table.shop_table .input-text[name="coupon_code"],
+                                                .woocommerce-page table.shop_table .input-text[name="coupon_code"],
+                                                .woocommerce .woocommerce-billing-fields__field-wrapper input.input-text,
+                                                form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"],
+                                                .woocommerce .woocommerce-billing-fields__field-wrapper span.select2-selection.select2-selection--single,
+                                                span.select2-dropdown.select2-dropdown--below,
+                                                span.select2-dropdown.select2-dropdown--above,
+                                                form.checkout textarea[name="order_comments"],
+                                                div.woocommerce-checkout-payment#payment,
+                                                .woocommerce-checkout #payment ul.payment_methods,
+                                                .select2-container--default .select2-search--dropdown .select2-search__field,
+                                                
+                                                .comment-number,
+                                                .is-today .pika-button'
 							)
 						)
 					),
