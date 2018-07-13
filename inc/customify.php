@@ -834,7 +834,12 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 
                                                 .site-header .nav-trigger .nav-icon,
                                                 .site-header .nav-trigger .nav-icon:before,
-                                                .site-header .nav-trigger .nav-icon:after'
+                                                .site-header .nav-trigger .nav-icon:after,
+                                                
+                                                .btn--secondary, 
+												.btn--tertiary, 
+												.wpcf7-form-control.wpcf7-submit, 
+												.otreservations-submit'
 							),
                             array(
                                 'property' => 'background-color',
@@ -1071,6 +1076,11 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .otreservations-submit:hover,
                                                 
                                                 .promo-box__container,
+                                                
+												.btn--secondary, 
+												.btn--tertiary, 
+												.wpcf7-form-control.wpcf7-submit, 
+												.otreservations-submit,
                                                 
                                                 .comment-number--dark, 
                                                 .comments-area-title .comment-number.total,
