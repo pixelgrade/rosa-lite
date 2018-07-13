@@ -1035,13 +1035,23 @@ td.actions {
   }
 }
 
-#add_payment_method #payment div.payment_box:before,
-.woocommerce-checkout #payment div.payment_box:before {
+#add_payment_method #payment div.payment_box,
+.woocommerce-cart #payment div.payment_box,
+.woocommerce-checkout #payment div.payment_box {
+  color: inherit;
+  border-color: currentcolor;
+}
+
+#add_payment_method #payment div.payment_box::before,
+.woocommerce-cart #payment div.payment_box::before,
+.woocommerce-checkout #payment div.payment_box::before {
   top: -14px;
+  border-bottom-color: currentColor;
 }
 
 @media screen and (max-width: 400px) {
   #add_payment_method #payment .payment_method_paypal .about_paypal,
+  .woocommerce-cart #payment .payment_method_paypal .about_paypal,
   .woocommerce-checkout #payment .payment_method_paypal .about_paypal {
     float: none;
   }

@@ -650,7 +650,6 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								                .select2-container--default .select2-results__option--highlighted[aria-selected],
                                                .select2-container--default .select2-results__option--highlighted[data-selected],
 								                form.checkout textarea[name="order_comments"],
-								                .header--transparent .shop-menu-item .shop-menu-item__price,
 								                .sidebar--footer.sidebar--footer__light, 
 												.copyright-area.copyright-area__light,
 												.sidebar--footer.sidebar--footer__light .widget [class*="social"] > ul a:before'
@@ -798,7 +797,6 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								                .woocommerce .woocommerce-ordering select,
 								                .tabs__nav a,
 								                .woocommerce .woocommerce-breadcrumb a:hover,
-                                               .woocommerce-page table.shop_table .input-text,
                                                .pixcode.pixcode--icon'
 							),
                             array(
@@ -1090,25 +1088,31 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .pagination .nav-links .page-numbers.next,
                                                 .pagination .nav-links .page-numbers.next:hover,
                                                 .pagination .nav-links .page-numbers.next:after,
-                                                .woocommerce .cart,
+
+                                                .woocommerce .quantity input.qty,
+
                                                 .woocommerce div.woocommerce-message .button.wc-forward,
                                                 .woocommerce div.woocommerce-message .button.wc-forward:hover,
+
                                                 .woocommerce div.product form.cart .button,
+
                                                 .woocommerce #review_form #respond .form-submit input,
-                                                .woocommerce #review_form #respond .form-submit input:hover,
+
                                                 .woocommerce table.shop_table div.coupon .button,
-                                                .woocommerce-page table.shop_table div.coupon .button,
                                                 .woocommerce table.shop_table div.coupon .button:hover,
-                                                .woocommerce-page table.shop_table div.coupon .button:hover,
+                                                
+                                                .woocommerce-page table.shop_table .input-text,
+
                                                 .woocommerce-cart-form .actions input[name="update_cart"],
-                                                .woocommerce-cart-form .actions input[name="update_cart"]:hover,
+
                                                 .woocommerce div.cart-collaterals .wc-proceed-to-checkout .checkout-button,
                                                 .woocommerce div.cart-collaterals .wc-proceed-to-checkout .checkout-button:hover,
-                                                .woocommerce table.shop_table .input-text.qty,
+      
+                                                
                                                 .product__badge.on-sale,
                                                 form.checkout_coupon.woocommerce-form-coupon button[name="apply_coupon"],
                                                 form.checkout_coupon.woocommerce-form-coupon button[name="apply_coupon"]:hover,
-                                                div.woocommerce-checkout-payment#payment,
+
                                                 div.woocommerce-checkout-payment button.button.alt[name="woocommerce_checkout_place_order"],
                                                 div.woocommerce-checkout-payment button.button.alt[name="woocommerce_checkout_place_order"]:hover,
                                                 
@@ -1120,7 +1124,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .sidebar--footer__accent a:hover,
                                                 .sidebar--footer.sidebar--footer__accent .widget [class*="social"] > ul a:hover:before,
                                                 .copyright-area.copyright-area__accent,
-                                                .copyright-area.copyright-area__accent a:hover'
+                                                .copyright-area.copyright-area__accent a:hover,
+                                                .header--transparent .shop-menu-item .shop-menu-item__price'
 							),
                             array(
                                 'property' => 'color',
