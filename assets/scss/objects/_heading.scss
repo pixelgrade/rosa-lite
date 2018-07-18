@@ -36,7 +36,8 @@
 			margin-bottom:3px;
 		}
 
-		.headline__primary, .headline__description > *:not(.star):not(.separator--flower) {
+		.headline__primary,
+		.headline__description > *:not(.star):not(.separator--flower):not(.btn) {
 			color: white;
 		}
 

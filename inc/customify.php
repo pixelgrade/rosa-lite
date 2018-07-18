@@ -4,8 +4,8 @@ define( 'THEME_COLOR_PRIMARY', '#C59D5F' );
 define( 'THEME_COLOR_SECONDARY', '#C59D5F' );
 define( 'THEME_COLOR_TERTIARY', '#C59D5F' );
 
-define( 'THEME_DARK_PRIMARY', '#515151' );
-define( 'THEME_DARK_SECONDARY', '#252525' );
+define( 'THEME_DARK_PRIMARY', '#252525' );
+define( 'THEME_DARK_SECONDARY', '#515151' );
 define( 'THEME_DARK_TERTIARY', '#121212' );
 
 define( 'THEME_LIGHT_PRIMARY', '#FFFFFF' );
@@ -628,7 +628,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'type'    => 'color',
 						'label'   => esc_html__( 'Text Color', 'rosa' ),
 						'live'    => true,
-						'default' => THEME_DARK_PRIMARY,
+						'default' => THEME_DARK_SECONDARY,
 						'css'     => array(
 							array(
 								'property' => 'color',
@@ -782,7 +782,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'type'    => 'color',
 						'label'   => esc_html__( 'Headings Color', 'rosa' ),
 						'live'    => true,
-						'default' => THEME_DARK_SECONDARY,
+						'default' => THEME_DARK_PRIMARY,
 						'css'     => array(
 							array(
 								'property' => 'color',
@@ -1008,7 +1008,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'type'    => 'color',
 						'label'   => esc_html__( 'Nav Links Color', 'rosa' ),
 						'live'    => true,
-						'default' => THEME_DARK_SECONDARY,
+						'default' => THEME_DARK_PRIMARY,
 						'css'     => array(
 							array(
 								'property' => 'color',
@@ -1153,35 +1153,40 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							),
 							array(
 								'property' => 'background-color',
-								'selector' => 'html, .page .article__content, .up-link, .menu-list__item-title .item_title, 
-                                                .menu-list__item-price, .desc__content,
-                                                .pix-dropdown.active .dropdown__menu,
-                                                
-                                                .otw-input-wrap select option,
-                                                
-                                                .comment-form input,
-                                                .form-search .search-query,
-                                                .input-group input.form-control,
-                                                
-                                                .woocommerce ul.products li.product .added_to_cart:before,
-                                                .woocommerce .woocommerce-ordering select,
-                                                .woocommerce table.shop_table .input-text[name="coupon_code"],
-                                                .woocommerce-page table.shop_table .input-text[name="coupon_code"],
-                                                .woocommerce .woocommerce-billing-fields__field-wrapper input.input-text,
-                                                form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"],
-                                                .woocommerce .woocommerce-billing-fields__field-wrapper span.select2-selection.select2-selection--single,
-                                                span.select2-dropdown.select2-dropdown--below,
-                                                span.select2-dropdown.select2-dropdown--above,
-                                                form.checkout textarea[name="order_comments"],
-                                                div.woocommerce-checkout-payment#payment,
-                                                .woocommerce-checkout #payment ul.payment_methods,
-                                                .select2-container--default .select2-search--dropdown .select2-search__field,
-                                                
-                                                .comment-number,
-                                                .is-today .pika-button,
-                                                
-                                                .sidebar--footer__light,
-                                                .copyright-area.copyright-area__light'
+								'selector' => '
+									html, 
+									body.mce-content-body, 
+									.page .article__content, 
+									.up-link, 
+									.menu-list__item-title .item_title, 
+                                    .menu-list__item-price, .desc__content,
+                                    .pix-dropdown.active .dropdown__menu,
+                                    
+                                    .otw-input-wrap select option,
+                                    
+                                    .comment-form input,
+                                    .form-search .search-query,
+                                    .input-group input.form-control,
+                                    
+                                    .woocommerce ul.products li.product .added_to_cart:before,
+                                    .woocommerce .woocommerce-ordering select,
+                                    .woocommerce table.shop_table .input-text[name="coupon_code"],
+                                    .woocommerce-page table.shop_table .input-text[name="coupon_code"],
+                                    .woocommerce .woocommerce-billing-fields__field-wrapper input.input-text,
+                                    form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"],
+                                    .woocommerce .woocommerce-billing-fields__field-wrapper span.select2-selection.select2-selection--single,
+                                    span.select2-dropdown.select2-dropdown--below,
+                                    span.select2-dropdown.select2-dropdown--above,
+                                    form.checkout textarea[name="order_comments"],
+                                    div.woocommerce-checkout-payment#payment,
+                                    .woocommerce-checkout #payment ul.payment_methods,
+                                    .select2-container--default .select2-search--dropdown .select2-search__field,
+                                    
+                                    .comment-number,
+                                    .is-today .pika-button,
+                                    
+                                    .sidebar--footer__light,
+                                    .copyright-area.copyright-area__light'
 							),
 							array(
 								'property' => 'fill',
@@ -1262,7 +1267,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                         'type'    => 'color',
                         'label'   => __( 'Footer Background Color', 'rosa' ),
                         'live'    => true,
-                        'default' => THEME_DARK_SECONDARY,
+                        'default' => THEME_DARK_PRIMARY,
                         'css'     => array(
                             array(
                                 'property' => 'background-color',
@@ -1918,6 +1923,15 @@ function rosa_add_customify_style_manager_section ( $options ) {
                     'footer_accent_color',
                     'footer_widget_area_accent_color'
                 ),
+                'css' => array(
+	                array(
+		                'property' => 'background-color',
+		                'selector' => '
+		                    .article__header[class] .article__headline .headline__description .btn:hover,
+		                    .article__header[class] .article__headline .headline__description .btn:active,
+		                    .article__header[class] .article__headline .headline__description .btn:focus'
+	                ),
+                ),
             ),
             'sm_color_secondary' => array(
             	'default' => THEME_COLOR_SECONDARY,
@@ -1926,17 +1940,23 @@ function rosa_add_customify_style_manager_section ( $options ) {
             	'default' => THEME_COLOR_TERTIARY,
             ),
             'sm_dark_primary' => array(
-                'default' => THEME_DARK_PRIMARY,
-                'connected_fields' => array(
-                    'text_color',
-                ),
-            ),
-            'sm_dark_secondary' => array(
-                'default' => THEME_DARK_SECONDARY,
+	            'default' => THEME_DARK_PRIMARY,
                 'connected_fields' => array(
 	                'footer_background_color',
-                    'headings_color',
-                    'navlink_color',
+	                'headings_color',
+	                'navlink_color',
+                ),
+	            'css' => array(
+	            	array(
+	                    'property' => 'color',
+			            'selector' => '.article__header .article__headline .headline__description .btn'
+		            ),
+	            ),
+            ),
+            'sm_dark_secondary' => array(
+	            'default' => THEME_DARK_SECONDARY,
+                'connected_fields' => array(
+	                'text_color',
                 ),
             ),
             'sm_dark_tertiary' => array(
@@ -1952,6 +1972,12 @@ function rosa_add_customify_style_manager_section ( $options ) {
                     'content_background_color',
                     'footer_widget_area_text_color',
                     'footer_text_color',
+                ),
+                'css' => array(
+	                array(
+		                'property' => 'background-color',
+		                'selector' => '.article__header .article__headline .headline__description .btn'
+	                ),
                 ),
             ),
             'sm_light_secondary' => array(
