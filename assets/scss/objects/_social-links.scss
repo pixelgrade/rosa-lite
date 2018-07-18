@@ -6,11 +6,12 @@
 
     a {
         position: relative;
-        font-size: 16px;
+        color: inherit;
 
         @include rem(padding, 8px 24px);
         @include rem(width, 36px);
 
+        font-size: 16px;
         text-decoration: none;
 
         &:before {
@@ -24,7 +25,6 @@
             font-family: FontAwesome;
             -webkit-font-smoothing: antialiased;
             text-align: center;
-            color: white;
 
             pointer-events: auto;
 
@@ -33,10 +33,6 @@
             @include media-query(palm) {
                 opacity: .5;
             }
-        }
-
-        &:hover:before {
-            color: $accent;
         }
 
         // default share icon used as a fallback
@@ -90,10 +86,6 @@
             &[href*="500px"]:before           {content: $fa-var-500px; }
             &[href*="tel"]:before           {content: $fa-var-phone; }
     }
-}
-
-.header--transparent .nav.nav--items-social a:before {
-    color: white;
 }
 
 .widget [class*="social"] > ul {

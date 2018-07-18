@@ -9179,7 +9179,8 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   margin-bottom: 3px;
 }
 
-.article__header .article__headline .headline__primary, .article__header .article__headline .headline__description > *:not(.star):not(.separator--flower) {
+.article__header .article__headline .headline__primary,
+.article__header .article__headline .headline__description > *:not(.star):not(.separator--flower):not(.btn):not(.otreservations-submit) {
   color: white;
 }
 

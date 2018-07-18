@@ -9924,7 +9924,8 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   margin-bottom: 3px;
 }
 
-.article__header .article__headline .headline__primary, .article__header .article__headline .headline__description > *:not(.star):not(.separator--flower):not(.btn) {
+.article__header .article__headline .headline__primary,
+.article__header .article__headline .headline__description > *:not(.star):not(.separator--flower):not(.btn):not(.comments_add-comment):not(.form-submit #comment-submit):not(.wpcf7-form-control.wpcf7-submit):not(.otreservations-submit):not(.widget_tag_cloud a):not(.read-more-button) {
   color: white;
 }
 
@@ -11113,17 +11114,15 @@ button.nav-trigger {
     border-bottom: 0;
   }
   .navigation--main .nav--main li a {
-    padding: 14px 0;
     display: block;
+    padding: 14px 0;
+    color: inherit;
     font-size: 16px;
     font-size: 1rem;
     line-height: 1.51;
   }
   .navigation--main .nav--main li a:before {
     content: none;
-  }
-  .navigation--main .nav--main li a, .navigation--main .nav--main li a:before {
-    color: #cccccc;
   }
   .navigation--main .nav--main li.menu-item-has-children:after, .navigation--main .nav--main li.menu-item-language:after {
     content: none;
@@ -11139,10 +11138,10 @@ button.nav-trigger {
     width: 8px;
     height: 8px;
     margin-left: 15px;
-    border-right: 2px solid #cccccc;
-    border-bottom: 2px solid #cccccc;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
     -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
+    transform: rotate(45deg);
   }
   .navigation--main .nav--main li.menu-item-has-children > a:before, .navigation--main .nav--main li.menu-item-language > a:before {
     content: "";
@@ -11288,14 +11287,6 @@ button.nav-trigger {
 .shop-menu-item .shop-menu-item__price {
   padding: 12px 0;
   display: block;
-}
-
-.header--transparent .shop-menu-item .shop-menu-item__price {
-  color: white;
-}
-
-.headroom--not-top .shop-menu-item .shop-menu-item__price {
-  color: #262526;
 }
 
 .navigation--main .nav--main .shop-menu-item.menu-item-has-children > a:after, .navigation--main .nav--main .shop-menu-item.menu-item-language > a:after {
@@ -12608,11 +12599,12 @@ small.muted {
 .woocommerce-MyAccount-navigation ul.nav--items-social a, .nav--items-social.menu-list__items a, .nav--items-social.rsBullets a,
 .widget [class*="social"] > ul a {
   position: relative;
-  font-size: 16px;
+  color: inherit;
   padding: 8px 24px;
   padding: 0.5rem 1.5rem;
   width: 36px;
   width: 2.25rem;
+  font-size: 16px;
   text-decoration: none;
 }
 
@@ -12628,7 +12620,6 @@ small.muted {
   font-family: FontAwesome;
   -webkit-font-smoothing: antialiased;
   text-align: center;
-  color: white;
   pointer-events: auto;
   transition: color .2s linear;
 }
@@ -12639,12 +12630,6 @@ small.muted {
   .widget [class*="social"] > ul a:before {
     opacity: .5;
   }
-}
-
-.nav.nav--items-social a:hover:before, .nav--items-social.author__social-links a:hover:before, .nav--items-social.commentlist a:hover:before, .nav--items-social.social-links-list a:hover:before, .nav--items-social.sub-menu a:hover:before, .nav--items-social.tabs__nav a:hover:before,
-.woocommerce-MyAccount-navigation ul.nav--items-social a:hover:before, .nav--items-social.menu-list__items a:hover:before, .nav--items-social.rsBullets a:hover:before,
-.widget [class*="social"] > ul a:hover:before {
-  color: #c59d5f;
 }
 
 .nav.nav--items-social a[href*="mailto:"]:before, .nav--items-social.author__social-links a[href*="mailto:"]:before, .nav--items-social.commentlist a[href*="mailto:"]:before, .nav--items-social.social-links-list a[href*="mailto:"]:before, .nav--items-social.sub-menu a[href*="mailto:"]:before, .nav--items-social.tabs__nav a[href*="mailto:"]:before,
@@ -12919,12 +12904,6 @@ small.muted {
 .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="tel"]:before, .nav--items-social.menu-list__items a[href*="tel"]:before, .nav--items-social.rsBullets a[href*="tel"]:before,
 .widget [class*="social"] > ul a[href*="tel"]:before {
   content: "";
-}
-
-.header--transparent .nav.nav--items-social a:before, .header--transparent .nav--items-social.author__social-links a:before, .header--transparent .nav--items-social.commentlist a:before, .header--transparent .nav--items-social.social-links-list a:before, .header--transparent .nav--items-social.sub-menu a:before, .header--transparent .nav--items-social.tabs__nav a:before, .header--transparent
-.woocommerce-MyAccount-navigation ul.nav--items-social a:before,
-.woocommerce-MyAccount-navigation .header--transparent ul.nav--items-social a:before, .header--transparent .nav--items-social.menu-list__items a:before, .header--transparent .nav--items-social.rsBullets a:before {
-  color: white;
 }
 
 .widget [class*="social"] > ul {
@@ -15369,7 +15348,7 @@ body, .site-header, .site-footer {
 
 .btn.button--light, .button--light.comments_add-comment, .form-submit .button--light#comment-submit, .button--light.wpcf7-form-control.wpcf7-submit, .button--light.otreservations-submit, .widget_tag_cloud a.button--light, .button--light.read-more-button {
   background: white;
-  color: black !important;
+  color: black;
 }
 
 .article__header .btn, .article__header .comments_add-comment, .article__header .form-submit #comment-submit, .form-submit .article__header #comment-submit, .article__header .wpcf7-form-control.wpcf7-submit, .article__header .otreservations-submit, .article__header .widget_tag_cloud a, .widget_tag_cloud .article__header a, .article__header .read-more-button {
