@@ -6,7 +6,6 @@
 
     a {
         position: relative;
-        color: inherit;
 
         @include rem(padding, 8px 24px);
         @include rem(width, 36px);
