@@ -522,103 +522,125 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'css'     => array(
 							array(
 								'property' => 'color',
-								'selector' => '
-									a, 
-									a:hover, 
-									.nav--main a:hover, 
-									.headroom--not-top .nav--main a:hover, 
-									.headline__secondary, 
-									.separator--line-flower,
-									.tabs__nav a.current, 
-									.tabs__nav a:hover, 
-									.btn.btn--text, 
-									.btn--text.comments_add-comment, 
-									.headroom--not-top .nav.nav--items-social a:hover:before,
-									.comments_add-comment.read-more-button, 
-									.form-submit .btn--text#comment-submit,
-									.form-submit #comment-submit.read-more-button, 
-									.btn--text.wpcf7-form-control.wpcf7-submit,
-									.wpcf7-form-control.wpcf7-submit.read-more-button, 
-									.btn--text.otreservations-submit,
-									.otreservations-submit.read-more-button, 
-									.widget_tag_cloud a.btn--text, 
-									.widget_tag_cloud a.read-more-button, 
-									.btn.read-more-button,
-									a:hover > .pixcode--icon, 
-									.widget a:hover, 
-									blockquote, 
-									.meta-list a.btn:hover,
-									.meta-list a.comments_add-comment:hover, 
-									.meta-list .form-submit a#comment-submit:hover,
-									.form-submit .meta-list a#comment-submit:hover, 
-									.meta-list a.wpcf7-form-control.wpcf7-submit:hover,
-									.meta-list a.otreservations-submit:hover, 
-									.meta-list .widget_tag_cloud a:hover, 
-									.widget_tag_cloud .meta-list a:hover, 
-									.btn.btn--text:hover,
-									.article__content a:not([class]), 
-									.article__content a:hover:not([class]):hover,
-									header.c-hero.article__header .article__headline .headline__description div.star,
-									header.c-hero .article__headline .headline__description div.separator.separator--flower,
-									.read-more-button, 
-									.read-more-button:hover, 
-									.shop-categories a.active,
-									body.woocommerce ul.products li.product .product__button, 
-									body.woocommerce ul.products li.product .added_to_cart,
-									body.woocommerce ul.products li.product a.added_to_cart, 
-									body.woocommerce ul.products li.product .price ins,
-									.single-product .entry-summary .price span, 
-									body.woocommerce .star-rating span:before, 
-									.comment-reply-link,
-									.sidebar--main .widget [class*="social"] > ul a:hover:before, 
-									.widget [class*="social"] > ul a:hover:before,
-									.site-footer .separator--flower,
-									.woocommerce-account .woocommerce-MyAccount-navigation li a:hover,
-									.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a,
-									.comment__author-name a:hover,
-									.site-header.headroom--top a.site-logo--text:hover,
-									.site-header.headroom--not-top a.site-logo--text:hover,
-									.is-today .pika-button,
-									.tabs__nav a.active,
-									.tabs__nav a:hover,
-									.woocommerce ul.products li.product .price del,
-									.woocommerce .product .price,
-									.woocommerce ul.products li.product:hover .product__button:hover,
-									.single-product .entry-summary .price ins span,
-									.single-product .entry-summary .price del span,
-									.single-product .entry-summary .price del,
-									.pixcode.pixcode--icon:hover',
+								'selector' => 'a,
+                                                a:hover,
+                                                .article__content a:not([class]),
+                                                .article__content a:not([class]):hover,
+                                                
+                                                .nav--main a:hover,
+                                                .headroom--not-top .nav--main a:hover,
+                                                a:hover > .pixcode--icon,
+                                                
+                                                .headline__secondary,
+                                                .separator--line-flower,
+                                                header.c-hero.article__header .article__headline .headline__description div.star,
+                                                header.c-hero .article__headline .headline__description div.separator.separator--flower,
+                                                
+                                                .tabs__nav a:hover,
+                                                .tabs__nav a.active,
+                                                .tabs__nav a.current,
+                                                
+                                                .btn.btn--text,
+                                                .read-more-button,
+                                                
+                                                .meta-list .form-submit a#comment-submit:hover,
+                                                .form-submit .meta-list a#comment-submit:hover,
+                                                .form-submit .btn--text#comment-submit,
+                                                .form-submit #comment-submit.read-more-button,
+                                                
+                                                .headroom--not-top .nav.nav--items-social a:hover:before,
+                                                .sidebar--main .widget [class*="social"] > ul a:hover:before, 
+                                                .widget [class*="social"] > ul a:hover:before,
+                                                
+                                                .btn--text.wpcf7-form-control.wpcf7-submit,
+                                                .wpcf7-form-control.wpcf7-submit.read-more-button,
+                                                 
+                                                .btn--text.otreservations-submit,
+                                                .otreservations-submit,
+                                                 
+                                                .widget_tag_cloud a.btn--text,
+                                                .widget_tag_cloud a.read-more-button,
+                                                .sidebar--main .widget a:hover,
+                                                .sidebar--main .widget .tagcloud a:hover,
+                                                 
+                                                blockquote,
+                                                 
+                                                .meta-list a.btn:hover,
+                                                .meta-list a.wpcf7-form-control.wpcf7-submit:hover,
+                                                .meta-list a.otreservations-submit:hover,
+                                                .meta-list .widget_tag_cloud a:hover,
+                                                .widget_tag_cloud .meta-list a:hover,
+                                                
+                                                .single-post .article__content a:not([class]),
+                                                .single-post .article__content a:not([class]):hover,
+                                                                                    
+                                                .shop-categories a.active,
+                                                body.woocommerce ul.products li.product .product__button, 
+                                                body.woocommerce ul.products li.product .added_to_cart,
+                                                body.woocommerce ul.products li.product a.added_to_cart, 
+                                                body.woocommerce ul.products li.product .price ins,
+                                                .woocommerce ul.products li.product .price del,
+                                                .woocommerce .product .price,
+                                                .woocommerce ul.products li.product:hover .product__button,
+                                                
+                                                .single-product .entry-summary .price ins span,
+                                                .single-product .entry-summary .price del span,
+                                                .single-product .entry-summary .price del,
+                                                
+                                                .single-product .entry-summary .price span, 
+                                                
+                                                body.woocommerce .star-rating span:before, 
+                                                
+                                                .comment-reply-link,
+                                                
+                                                .woocommerce-account .woocommerce-MyAccount-navigation li a:hover,
+                                                .woocommerce-account .woocommerce-MyAccount-navigation li.is-active a,
+                                                .comment__author-name a:hover,
+                                                
+                                                .site-header.headroom--top a.site-logo--text:hover,
+                                                .site-header.headroom--not-top a.site-logo--text:hover,
+                                                
+                                                .is-today .pika-button,
+
+                                                .pixcode.pixcode--icon:hover',
 							),
 							array(
 								'property' => 'background-color',
-								'selector' => '.btn--primary, 
-								.shop-menu-item .shop-items-number, 
-								.comments_add-comment, 
-								.form-submit #comment-submit, 
-								.btn:not(.btn--primary):not(.btn--tertiary):hover, 
-								.wpcf7-form-control.wpcf7-submit:hover,
-								.pagination li a:hover, 
-								form.shipping_calculator button.button:hover, 
-								.otreservations-submit:hover, 
-								.pixcode--icon.square:hover, 
-								.pixcode--icon.circle:hover,
-								.sidebar--footer__accent, 
-								.copyright-area.copyright-area__accent, 
-								.menu-list__item-highlight-title,
-								.promo-box__container,
-                                :not(.pika-today) > .pika-button:hover,
-                                .pika-table .is-selected .pika-button.pika-day,
-                                .pagination .nav-links .page-numbers:not(.current):hover,
-                                .pagination .nav-links .page-numbers.prev:not(.disabled):hover,
-                                .pagination .nav-links .page-numbers.next:not(.disabled):hover,
-                                .woocommerce div.product form.cart .button:hover,
-                                .woocommerce table.shop_table div.coupon .button:hover,
-                                .woocommerce-page table.shop_table div.coupon .button:hover,
-                                .woocommerce-cart-form .actions input[name="update_cart"][disabled]:hover,
-                                .woocommerce div.cart-collaterals .wc-proceed-to-checkout .checkout-button:hover,
-                                .product__badge.on-sale,
-                                form.checkout_coupon.woocommerce-form-coupon button[name="apply_coupon"]:hover,
-                                div.woocommerce-checkout-payment button.button.alt[name="woocommerce_checkout_place_order"]:hover'
+								'selector' => '.btn--primary,
+								                .btn:not(.btn--primary):not(.btn--tertiary):hover,
+								                
+                                                .shop-menu-item .shop-items-number,
+                                                 
+                                                .comments_add-comment, 
+                                                .form-submit #comment-submit, 
+                                                 
+                                                .wpcf7-form-control.wpcf7-submit:hover,
+                                                form.shipping_calculator button.button:hover,
+                                                 
+                                                .pagination li a:hover,
+                                                .pagination .nav-links .page-numbers:not(.current):hover,
+                                                .pagination .nav-links .page-numbers.prev:not(.disabled):hover,
+                                                .pagination .nav-links .page-numbers.next:not(.disabled):hover,
+                                                 
+                                                .otreservations-submit:hover,
+                                                 
+                                                .pixcode--icon.square:hover, 
+                                                .pixcode--icon.circle:hover,
+                                                 
+                                                .menu-list__item-highlight-title,
+                                                .promo-box__container,
+                                                
+                                                :not(.pika-today) > .pika-button:hover,
+                                                .pika-table .is-selected .pika-button.pika-day,
+                                                
+                                                .woocommerce div.product form.cart .button:hover,
+                                                .woocommerce table.shop_table div.coupon .button:hover,
+                                                .woocommerce-page table.shop_table div.coupon .button:hover,
+                                                .woocommerce-cart-form .actions input[name="update_cart"][disabled]:hover,
+                                                .woocommerce div.cart-collaterals .wc-proceed-to-checkout .checkout-button:hover,
+                                                .product__badge.on-sale,
+                                                form.checkout_coupon.woocommerce-form-coupon button[name="apply_coupon"]:hover,
+                                                div.woocommerce-checkout-payment button.button.alt[name="woocommerce_checkout_place_order"]:hover'
 							),
                             array(
                                 'property' => 'background-color',
@@ -628,31 +650,72 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                             ),
 							array(
 								'property' => 'background',
-								'selector' => 'body.woocommerce button.button.alt:hover, body.woocommerce-page #respond input#submit:hover,
-								body.woocommerce div.woocommerce-message .button:hover, td.actions input.button:hover, body.woocommerce-page input.button:hover,
-								body.woocommerce-page input.button.alt:hover, a:hover > .pixcode--icon.circle, a:hover > .pixcode--icon.square'
+								'selector' => 'body.woocommerce button.button.alt:hover, 
+								                body.woocommerce-page #respond input#submit:hover,
+                                                body.woocommerce div.woocommerce-message .button:hover, 
+                                                td.actions input.button:hover,
+                                                body.woocommerce-page input.button:hover,
+                                                body.woocommerce-page input.button.alt:hover,
+                                                a:hover > .pixcode--icon.circle,
+                                                a:hover > .pixcode--icon.square'
 							),
 							array(
 								'property' => 'border-color',
-								'selector' => '.tabs__nav a.current, .tabs__nav a:hover, .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button,
-								.form-submit .btn--text#comment-submit, .form-submit #comment-submit.read-more-button,
-								.btn--text.wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit.read-more-button,
-								.btn--text.otreservations-submit, .otreservations-submit, .read-more-button,
-								.widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .btn.read-more-button, blockquote, .article__content a:not([class]), .shop-categories a.active,
-								body.woocommerce ul.products li.product .product__button, body.woocommerce ul.products li.product .added_to_cart, .menu-list__item-highlight-wrapper:before,
-								.woocommerce-account .woocommerce-MyAccount-navigation li a:hover,
-								.woocommerce-account .woocommerce-MyAccount-navigation li.is-active a,
-								.woocommerce ul.products li.product:hover .product__button:hover,
-								.pagination .nav-links .page-numbers.current'
+								'selector' => '.btn.btn--text,
+								
+								                .btn--text.comments_add-comment, 
+								                .comments_add-comment.read-more-button,
+								                .form-submit .btn--text#comment-submit, 
+                                                .form-submit #comment-submit.read-more-button,
+                                                .btn--text.wpcf7-form-control.wpcf7-submit, 
+                                                .wpcf7-form-control.wpcf7-submit.read-more-button,
+                                                
+								                .tabs__nav a.current,                
+								                .tabs__nav a:hover,
+                                                
+                                                .btn--text.otreservations-submit, 
+                                                .otreservations-submit, 
+                                                
+                                                .read-more-button,
+                                                .btn.read-more-button, 
+                                                
+                                                .widget_tag_cloud a.btn--text, 
+                                                .widget_tag_cloud a.read-more-button, 
+                                                
+                                                blockquote, 
+                                                
+                                                .article__content a:not([class]), 
+                                                
+                                                .menu-list__item-highlight-wrapper:before,
+                                                
+                                                .shop-categories a.active,
+                                                body.woocommerce ul.products li.product .product__button, 
+                                                body.woocommerce ul.products li.product .added_to_cart, 
+                                                
+                                                .woocommerce-account .woocommerce-MyAccount-navigation li a:hover,
+                                                .woocommerce-account .woocommerce-MyAccount-navigation li.is-active a,
+                                                .woocommerce ul.products li.product:hover .product__button,
+                                                
+                                                .pagination .nav-links .page-numbers.current'
 							),
 							array(
 								'property' => 'outline-color',
-								'selector' => 'select:focus, textarea:focus, input[type="text"]:focus,
-								input[type="password"]:focus, input[type="datetime"]:focus,
-								input[type="datetime-local"]:focus, input[type="date"]:focus,
-								input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus,
-								input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus,
-								input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .form-control:focus'
+								'selector' => 'select:focus, textarea:focus, 
+								                input[type="text"]:focus,
+                                                input[type="password"]:focus, 
+                                                input[type="datetime"]:focus,
+                                                input[type="datetime-local"]:focus, 
+                                                input[type="date"]:focus,
+                                                input[type="month"]:focus, 
+                                                input[type="time"]:focus, 
+                                                input[type="week"]:focus,
+                                                input[type="number"]:focus, 
+                                                input[type="email"]:focus, 
+                                                input[type="url"]:focus,
+                                                input[type="search"]:focus, 
+                                                input[type="tel"]:focus, 
+                                                input[type="color"]:focus, 
+                                                .form-control:focus'
 							),
 							array(
 								'property' => 'fill',
@@ -668,24 +731,32 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'css'     => array(
 							array(
 								'property' => 'color',
-								'selector' => 'body, .up-link, .down-arrow--bubble .arrow,
+								'selector' => 'body, 
+								                .up-link, 
+								                .down-arrow--bubble .arrow,
 								                .article__date,
+								                
 								                .pixlikes-box .likes-text,
 								                .pixlikes-box .likes-count,
 								                .comment-form-comment textarea,
+								                
 								                .woocommerce .woocommerce-message,
 								                .woocommerce .woocommerce-info,
 								                .woocommerce .woocommerce-error,
-								                .menu-list span.dots,
+								                .woocommerce .woocommerce-billing-fields__field-wrapper input.input-text,
+								                form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"],
+								                .woocommerce-cart-form .cart .input-text[name="coupon_code"],
+								                form.checkout textarea[name="order_comments"],
+								                
 								                .woocommerce .woocommerce-billing-fields__field-wrapper span.select2-selection.select2-selection--single,
 								                .select2-container--default .select2-selection--single .select2-selection__rendered,
 								                .select2-container--default .select2-results__option[data-selected=true],
-								                .woocommerce .woocommerce-billing-fields__field-wrapper input.input-text,
-								                form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"],
 								                form.checkout .woocommerce-billing-fields__field-wrapper span.select2-dropdown.select2-dropdown--below,
 								                .select2-container--default .select2-results__option--highlighted[aria-selected],
-                                               .select2-container--default .select2-results__option--highlighted[data-selected],
-								                form.checkout textarea[name="order_comments"],
+                                                .select2-container--default .select2-results__option--highlighted[data-selected],
+								                
+								                .menu-list span.dots,
+								                
 								                .sidebar--footer.sidebar--footer__light, 
 												.copyright-area.copyright-area__light,
 												.sidebar--footer.sidebar--footer__light .widget [class*="social"] > ul a:before'
@@ -703,7 +774,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                             array(
                                 'property' => 'color',
                                 'unit' => '8C',
-                                'selector' => '.comment__content',
+                                'selector' => '.comment__content,
+                                                .woocommerce ul.products li.product .product__cat',
                                 'callback_filter' => 'rosa_transparent_color'
                             ),
 							array(
@@ -712,7 +784,14 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                 'selector' => '.select2-container--default .select2-results__option--highlighted[aria-selected],
                                                 .select2-container--default .select2-results__option--highlighted[data-selected],
                                                 table tbody tr:nth-of-type(odd),
-                                                .wp-caption-text',
+                                                .wp-caption-text,
+                                                div.woocommerce-checkout-payment#payment',
+                                'callback_filter' => 'rosa_transparent_color'
+                            ),
+                            array(
+                                'property' => 'background-color',
+                                'unit' => '20',
+                                'selector' => 'div.woocommerce-checkout-payment#payment',
                                 'callback_filter' => 'rosa_transparent_color'
                             ),
 							array(
@@ -734,8 +813,10 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 
                                                 .meta-list a.btn,
                                                 .meta-list a.btn:last-child,
+                                                
                                                 div.addthis_toolbox,
                                                 div.addthis_toolbox a,
+                                                
                                                 .comment-form textarea,
                                                 .comment-form input,
                                                 .latest-comments__body,
@@ -754,29 +835,24 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .woocommerce table.shop_table div.coupon .input-text[name="coupon_code"],
                                                 .woocommerce-page table.shop_table div.coupon .input-text[name="coupon_code"],
                                                 .woocommerce div.cart-collaterals div.cart-totals .shop_table,
+                                                .woocommerce-cart .cart-collaterals .cart_totals tr th,
+                                                .woocommerce-cart .cart-collaterals .cart_totals tr td,
                                                 form.checkout_coupon.woocommerce-form-coupon,
                                                 form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"],
                                                 .woocommerce .woocommerce-billing-fields__field-wrapper input.input-text,
-                                                .woocommerce .woocommerce-billing-fields__field-wrapper span.select2-selection.select2-selection--single,
                                                 form.checkout textarea[name="order_comments"],
                                                 .woocommerce .woocommerce-info,
                                                 .woocommerce-checkout #payment ul.payment_methods,
+                                                .woocommerce table.shop_table tbody th,
                                                 .woocommerce table.shop_table tfoot th,
                                                 .woocommerce table.shop_table tfoot td,
-                                                .woocommerce table.shop_table tbody th,
                                                 
+                                                .woocommerce .woocommerce-billing-fields__field-wrapper span.select2-selection.select2-selection--single,
                                                 span.select2-dropdown.select2-dropdown--below,
                                                 span.select2-dropdown.select2-dropdown--above,
                                                 .select2-container--default .select2-search--dropdown .select2-search__field,
                                                 
                                                 .sidebar--main .widget',
-                                'callback_filter' => 'rosa_transparent_color'
-                            ),
-                            array(
-                                'property' => 'border-color',
-                                'unit' => '88',
-                                'selector' => '.woocommerce-cart .cart-collaterals .cart_totals tr th,
-                                                .woocommerce-cart .cart-collaterals .cart_totals tr td',
                                 'callback_filter' => 'rosa_transparent_color'
                             ),
 						),
@@ -789,18 +865,25 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'css'     => array(
 							array(
 								'property' => 'color',
-								'selector' => 'h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, 
-								                .article-archive .article__title a, .article-archive .article__title a:hover,
-								                .btn.btn--text:hover, 
+								'selector' => 'h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
+								
+								                .article-archive .article__title a,
+								                .article-archive .article__title a:hover,
+								                
+								                .btn.btn--text:hover,
 								                .pix-dropdown .dropdown__trigger,
-								                .widget a,
+								                
+								                .sidebar--main .widget a,
 								                .icon-search:before,
 								                .icon-envelope:before,
+								                
 								                .input-group input.form-control,
 								                .woocommerce .woocommerce-ordering select,
-								                .tabs__nav a,
 								                .woocommerce .woocommerce-breadcrumb a:hover,
-                                               .pixcode.pixcode--icon'
+								                
+								                .tabs__nav a,
+								                
+                                                .pixcode.pixcode--icon'
 							),
                             array(
 								'property' => 'color',
@@ -817,9 +900,15 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .comment-reply-title .comment-number.total, 
                                                 .comment-reply-title .total.comment-number--dark, 
                                                 .add-comment .add-comment__button,
-                                                .otreservations-submit,
+                                                
                                                 .btn:not(.btn--primary),
+                                                .btn--secondary, 
+												.btn--tertiary,
+												
                                                 .pagination .nav-links .page-numbers,
+                                                
+                                                .otreservations-submit,
+                                                
                                                 .woocommerce div.woocommerce-message .button.wc-forward,
                                                 .woocommerce .quantity input.qty,
                                                 .woocommerce div.product form.cart .button,
@@ -830,14 +919,14 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .woocommerce div.cart-collaterals .wc-proceed-to-checkout .checkout-button,
                                                 .woocommerce table.shop_table .input-text.qty,
                                                 .woocommerce-page table.shop_table .input-text.qty,
-                                                .pixcode.pixcode--icon.circle,
+                                                
+                                                .wpcf7-form-control.wpcf7-submit
+                                                
+                                                .pixcode.pixcode--icon.circle,  
                                                 .pixcode.pixcode--icon.square,
+                                                
                                                 form.checkout_coupon.woocommerce-form-coupon button[name="apply_coupon"],
-                                                div.woocommerce-checkout-payment button.button.alt[name="woocommerce_checkout_place_order"], 
-                                                .btn--secondary, 
-												.btn--tertiary, 
-												.wpcf7-form-control.wpcf7-submit, 
-												.otreservations-submit'
+                                                div.woocommerce-checkout-payment button.button.alt[name="woocommerce_checkout_place_order"]'
 							),
                             array(
                                 'property' => 'background-color',
@@ -851,6 +940,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                 'selector' => 'div:not(.c-hero-layer) .pixcode-slider[data-arrows] .rsArrowIcn,
                                                 .btn.btn--text:hover'
                             ),
+                            //comment
+                            //input
                             array(
                                 'property' => 'color',
                                 'selector' => '.comment-form input::-webkit-input-placeholder'
@@ -867,6 +958,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                 'property' => 'color',
                                 'selector' => '.comment-form input:-ms-input-placeholder'
                             ),
+                            //comment
+                            //textarea
                             array(
                                 'property' => 'color',
                                 'selector' => '.comment-form textarea::-webkit-input-placeholder'
@@ -883,6 +976,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                 'property' => 'color',
                                 'selector' => '.comment-form textarea:-ms-input-placeholder'
                             ),
+                            //blog search
                             array(
                                 'property' => 'color',
                                 'selector' => '.form-search .search-query::-webkit-input-placeholder'
@@ -915,6 +1009,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                 'property' => 'color',
                                 'selector' => '.input-group input.form-control:-ms-input-placeholder'
                             ),
+                            //woocommerce
                             array(
                                 'property' => 'color',
                                 'selector' => '.woocommerce table.shop_table .input-text::-webkit-input-placeholder'
@@ -947,6 +1042,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                 'property' => 'color',
                                 'selector' => '.woocommerce-page table.shop_table .input-text:-ms-input-placeholder'
                             ),
+                            //woocommerce
+                            //coupon
                             array(
                                 'property' => 'color',
                                 'selector' => 'form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"]::-webkit-input-placeholder'
@@ -979,6 +1076,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                 'property' => 'color',
                                 'selector' => '.woocommerce .woocommerce-billing-fields__field-wrapper input.input-text:-ms-input-placeholder'
                             ),
+                            //woocommerce
+                            //checkout comment textarea
                             array(
                                 'property' => 'color',
                                 'selector' => 'form.checkout textarea[name="order_comments"]::-webkit-input-placeholder'
@@ -1005,25 +1104,34 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'css'     => array(
 							array(
 								'property' => 'color',
-								'selector' => '
-									.nav--main a,
-									.nav--main .shop-menu-item__price,
-									.headroom--not-top .nav--main a,
-									.headroom--not-top .nav--main .shop-menu-item__price,
-									a.site-logo--text,
-									.site-header.headroom--not-top a.site-logo--text,
-									.woocommerce ul.products li.product:hover .product__button'
+								'selector' => '.nav--main .shop-menu-item__price,
+                                                .headroom--not-top .nav--main a,
+                                                .headroom--not-top .nav--main .shop-menu-item__price,
+                                                
+                                                a.site-logo--text,
+                                                .site-header.headroom--not-top a.site-logo--text,
+                                                
+                                                .read-more-button:hover,
+                                                
+                                                .woocommerce ul.products li.product:hover .product__button:hover'
 							),
                             array(
                                 'property' => 'border-color',
-                                'selector' => '.woocommerce ul.products li.product:hover .product__button'
+                                'selector' => '.headroom--not-top .menu-item-has-children:after, 
+								                .headroom--not-top .menu-item-language:after,
+								                
+								                .read-more-button:hover,
+								                
+                                                .woocommerce ul.products li.product:hover .product__button:hover'
                             ),
                             array(
                                 'property' => 'background-color',
                                 'selector' => '.btn--secondary,
                                                 .btn--primary:hover,
+                                                
                                                 .comments_add-comment:hover,
-                                                .form-submit #comment-submit:hover'
+                                                .form-submit #comment-submit:hover,
+                                                .widget .tagcloud a'
                             )
 						)
 					),
@@ -1035,7 +1143,10 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'css'     => array(
 							array(
 								'property' => 'background-color',
-								'selector' => '.site-header, .site-header.headroom--not-top, .sub-menu, .headroom--not-top .sub-menu',
+								'selector' => '.site-header, 
+								                .site-header.headroom--not-top,
+								                .sub-menu,
+								                .headroom--not-top .sub-menu',
 							)
 						)
 					),
@@ -1053,80 +1164,73 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'css'     => array(
 							array(
 								'property' => 'color',
-								'selector' => '
-									.blurp--top, 
-									.border-waves-before, .border-waves-after,
-					                .menu-list__item-highlight-title,
-					                
-                                    .btn,
-                                    .btn:hover,
-                                    .comments_add-comment,
-                                    .comments_add-comment:hover,
-                                    .form-submit #comment-submit,
-                                    .form-submit #comment-submit:hover,
-                                    .otreservations-submit,
-                                    .otreservations-submit:hover,
-                                    
-                                    .promo-box__container,
-                                    
-									.btn--secondary, 
-									.btn--tertiary, 
-									.wpcf7-form-control.wpcf7-submit, 
-									.otreservations-submit,
-                                    
-                                    .comment-number--dark, 
-                                    .comments-area-title .comment-number.total,
-                                    .comments-area-title .total.comment-number--dark, 
-                                    .comment-reply-title .comment-number.total, 
-                                    .comment-reply-title .total.comment-number--dark, 
-                                    .add-comment .add-comment__button,
-                                    
-                                    .pika-button:hover,
-                                    .pika-table .is-selected .pika-button.pika-day,
-                                    .pagination .nav-links .page-numbers:hover,
-                                    .pagination .nav-links .page-numbers.prev:not(.disabled),
-                                    .pagination .nav-links .page-numbers.prev:not(.disabled):before,
-                                    .pagination .nav-links .page-numbers.current,
-                                    .pagination .nav-links .page-numbers.next,
-                                    .pagination .nav-links .page-numbers.next:hover,
-                                    .pagination .nav-links .page-numbers.next:after,
-
-                                    .woocommerce .quantity input.qty,
-
-                                    .woocommerce div.woocommerce-message .button.wc-forward,
-                                    .woocommerce div.woocommerce-message .button.wc-forward:hover,
-
-                                    .woocommerce div.product form.cart .button,
-
-                                    .woocommerce #review_form #respond .form-submit input,
-
-                                    .woocommerce table.shop_table div.coupon .button,
-                                    .woocommerce table.shop_table div.coupon .button:hover,
-                                    
-                                    .woocommerce-page table.shop_table .input-text,
-
-                                    .woocommerce-cart-form .actions input[name="update_cart"],
-
-                                    .woocommerce div.cart-collaterals .wc-proceed-to-checkout .checkout-button,
-                                    .woocommerce div.cart-collaterals .wc-proceed-to-checkout .checkout-button:hover,
-
-                                    
-                                    .product__badge.on-sale,
-                                    form.checkout_coupon.woocommerce-form-coupon button[name="apply_coupon"],
-                                    form.checkout_coupon.woocommerce-form-coupon button[name="apply_coupon"]:hover,
-
-                                    div.woocommerce-checkout-payment button.button.alt[name="woocommerce_checkout_place_order"],
-                                    div.woocommerce-checkout-payment button.button.alt[name="woocommerce_checkout_place_order"]:hover,
-                                    
-                                    .pixcode.pixcode--icon.circle,
-                                    .pixcode.pixcode--icon.circle:hover,
-                                    .pixcode.pixcode--icon.square,
-                                    .pixcode.pixcode--icon.square:hover,
-                                    
-                                    .sidebar--footer__accent a:hover,
-                                    .sidebar--footer.sidebar--footer__accent .widget [class*="social"] > ul a:hover:before,
-                                    .copyright-area.copyright-area__accent,
-                                    .copyright-area.copyright-area__accent a:hover'
+								'selector' => '.blurp--top, 
+                                                .border-waves-before,
+                                                .border-waves-after,
+                                                .menu-list__item-highlight-title,
+                                                
+                                                .btn,
+                                                .btn:hover,
+                                                .btn--secondary, 
+                                                .btn--tertiary, 
+                                                
+                                                .comments_add-comment,
+                                                .comments_add-comment:hover,
+                                                .form-submit #comment-submit,
+                                                .form-submit #comment-submit:hover,
+                                                .comment-number--dark, 
+                                                .comments-area-title .comment-number.total,
+                                                .comments-area-title .total.comment-number--dark, 
+                                                .comment-reply-title .comment-number.total, 
+                                                .comment-reply-title .total.comment-number--dark, 
+                                                .add-comment .add-comment__button,
+                                                
+                                                .promo-box__container,
+                                                
+                                                .otreservations-submit,
+                                                .otreservations-submit:hover,
+                                                
+                                                .wpcf7-form-control.wpcf7-submit, 
+                                                
+                                                .pika-button:hover,
+                                                .pika-table .is-selected .pika-button.pika-day,
+                                                
+                                                .pagination .nav-links .page-numbers:hover,
+                                                .pagination .nav-links .page-numbers.prev:not(.disabled),
+                                                .pagination .nav-links .page-numbers.prev:not(.disabled):before,
+                                                .pagination .nav-links .page-numbers.current,
+                                                .pagination .nav-links .page-numbers.next,
+                                                .pagination .nav-links .page-numbers.next:hover,
+                                                .pagination .nav-links .page-numbers.next:after,
+            
+            
+                                                .woocommerce div.woocommerce-message .button.wc-forward,
+                                                .woocommerce div.woocommerce-message .button.wc-forward:hover,
+                                                .woocommerce div.product form.cart .button,
+                                                .woocommerce .quantity input.qty,
+                                                .woocommerce #review_form #respond .form-submit input,
+                                                .woocommerce table.shop_table div.coupon .button,
+                                                .woocommerce table.shop_table div.coupon .button:hover,
+                                                .woocommerce-page table.shop_table .input-text,
+                                                .woocommerce-cart-form .actions input[name="update_cart"],
+                                                .woocommerce div.cart-collaterals .wc-proceed-to-checkout .checkout-button,
+                                                .woocommerce div.cart-collaterals .wc-proceed-to-checkout .checkout-button:hover,
+                                                .product__badge.on-sale,
+                                                form.checkout_coupon.woocommerce-form-coupon button[name="apply_coupon"],
+                                                form.checkout_coupon.woocommerce-form-coupon button[name="apply_coupon"]:hover,
+                                                div.woocommerce-checkout-payment button.button.alt[name="woocommerce_checkout_place_order"],
+                                                div.woocommerce-checkout-payment button.button.alt[name="woocommerce_checkout_place_order"]:hover,
+                                                
+                                                .pixcode.pixcode--icon.circle,
+                                                .pixcode.pixcode--icon.circle:hover,
+                                                .pixcode.pixcode--icon.square,
+                                                .pixcode.pixcode--icon.square:hover,
+                                                
+                                                .sidebar--main .widget .tagcloud a,
+                                                .sidebar--footer__accent a:hover,
+                                                .sidebar--footer.sidebar--footer__accent .widget [class*="social"] > ul a:hover:before,
+                                                .copyright-area.copyright-area__accent,
+                                                .copyright-area.copyright-area__accent a:hover'
 							),
                             array(
                                 'property' => 'color',
@@ -1144,40 +1248,40 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							),
 							array(
 								'property' => 'background-color',
-								'selector' => '
-									html, 
-									body.mce-content-body, 
-									.page .article__content, 
-									.up-link, 
-									.menu-list__item-title .item_title, 
-                                    .menu-list__item-price, .desc__content,
-                                    .pix-dropdown.active .dropdown__menu,
-                                    
-                                    .otw-input-wrap select option,
-                                    
-                                    .comment-form input,
-                                    .form-search .search-query,
-                                    .input-group input.form-control,
-                                    
-                                    .woocommerce ul.products li.product .added_to_cart:before,
-                                    .woocommerce .woocommerce-ordering select,
-                                    .woocommerce table.shop_table .input-text[name="coupon_code"],
-                                    .woocommerce-page table.shop_table .input-text[name="coupon_code"],
-                                    .woocommerce .woocommerce-billing-fields__field-wrapper input.input-text,
-                                    form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"],
-                                    .woocommerce .woocommerce-billing-fields__field-wrapper span.select2-selection.select2-selection--single,
-                                    span.select2-dropdown.select2-dropdown--below,
-                                    span.select2-dropdown.select2-dropdown--above,
-                                    form.checkout textarea[name="order_comments"],
-                                    div.woocommerce-checkout-payment#payment,
-                                    .woocommerce-checkout #payment ul.payment_methods,
-                                    .select2-container--default .select2-search--dropdown .select2-search__field,
-                                    
-                                    .comment-number,
-                                    .is-today .pika-button,
-                                    
-                                    .sidebar--footer__light,
-                                    .copyright-area.copyright-area__light'
+								'selector' => 'html, 
+                                                body.mce-content-body, 
+                                                .page .article__content,
+                                                .desc__content,
+                                                 
+                                                .up-link,
+                                                 
+                                                .menu-list__item-title .item_title, 
+                                                .menu-list__item-price, 
+                                                .pix-dropdown.active .dropdown__menu,
+                                                
+                                                .otw-input-wrap select option,
+                                                
+                                                .comment-number,
+                                                .comment-form input,
+                                                .form-search .search-query,
+                                                .input-group input.form-control,
+                                                
+                                                .woocommerce ul.products li.product .added_to_cart:before,
+                                                .woocommerce .woocommerce-ordering select,
+                                                .woocommerce table.shop_table .input-text[name="coupon_code"],
+                                                .woocommerce-page table.shop_table .input-text[name="coupon_code"],
+                                                .woocommerce .woocommerce-billing-fields__field-wrapper input.input-text,
+                                                form.checkout textarea[name="order_comments"],
+                                                form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"],
+                                                .woocommerce .woocommerce-billing-fields__field-wrapper span.select2-selection.select2-selection--single,
+                                                span.select2-dropdown.select2-dropdown--below,
+                                                span.select2-dropdown.select2-dropdown--above,
+                                                .select2-container--default .select2-search--dropdown .select2-search__field,
+                                                
+                                                .is-today .pika-button,
+                                                
+                                                .sidebar--footer__light,
+                                                .copyright-area.copyright-area__light'
 							),
 							array(
 								'property' => 'fill',
@@ -1203,9 +1307,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                         'css'     => array(
                             array(
                                 'property' => 'color',
-                                'selector' => '
-                                    .sidebar--footer a:hover, 
-                                    .sidebar--footer .widget [class*="social"] > ul a:hover:before',
+                                'selector' => '.sidebar--footer a:hover, 
+                                                .sidebar--footer .widget [class*="social"] > ul a:hover:before',
                             ),
                         ),
                     ),
@@ -1236,7 +1339,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                         'css'     => array(
                             array(
                                 'property' => 'color',
-                                'selector' => '.sidebar--footer, .sidebar--footer .widget [class*="social"] > ul a:before'
+                                'selector' => '.sidebar--footer,
+                                                .sidebar--footer .widget [class*="social"] > ul a:before'
                             ),
                             array(
                                 'property' => 'border-color',
@@ -1257,7 +1361,13 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                             array(
                                 'property' => 'color',
                                 'selector' => '.copyright-text a,
-                                                .nav--footer a:hover',
+                                                .nav--footer a:hover,
+                                                .site-footer .separator--flower',
+                            ),
+                            array(
+                                'property' => 'background-color',
+                                'selector' => '.sidebar--footer__accent, 
+                                                .copyright-area.copyright-area__accent',
                             ),
                         ),
                     ),
