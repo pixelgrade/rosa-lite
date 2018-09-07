@@ -522,35 +522,15 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'css'     => array(
 							array(
 								'property' => 'color',
-								'selector' => 'a,
-                                                a:hover,
-                                                .article__content a:not([class]),
-                                                .article__content a:not([class]):hover,
-                                                
-                                                .nav--main a:hover,
-                                                .headroom--not-top .nav--main a:hover,
-                                                a:hover > .pixcode--icon,
-                                                
-                                                .headline__secondary,
-                                                .separator--line-flower,
+								'selector' => '.separator--line-flower > .star,
                                                 header.c-hero.article__header .article__headline .headline__description div.star,
                                                 header.c-hero .article__headline .headline__description div.separator.separator--flower,
+                                                .headline__secondary,
                                                 
-                                                .tabs__nav a:hover,
-                                                .tabs__nav a.active,
-                                                .tabs__nav a.current,
-                                                
-                                                .btn.btn--text,
-                                                .read-more-button,
-                                                
-                                                .meta-list .form-submit a#comment-submit:hover,
-                                                .form-submit .meta-list a#comment-submit:hover,
-                                                .form-submit .btn--text#comment-submit,
-                                                .form-submit #comment-submit.read-more-button,
-                                                
-                                                .headroom--not-top .nav.nav--items-social a:hover:before,
-                                                .sidebar--main .widget [class*="social"] > ul a:hover:before, 
-                                                .widget [class*="social"] > ul a:hover:before,
+                                                .single-product .entry-summary .price ins span,
+                                                .single-product .entry-summary .price del span,
+                                                .single-product .entry-summary .price del,
+                                                .single-product .entry-summary .price span,
                                                 
                                                 .btn--text.wpcf7-form-control.wpcf7-submit,
                                                 .wpcf7-form-control.wpcf7-submit.read-more-button,
@@ -562,71 +542,37 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .widget_tag_cloud a.read-more-button,
                                                 .sidebar--main .widget a:hover,
                                                 .sidebar--main .widget .tagcloud a:hover,
+                                                .widget .tagcloud a:hover,
                                                  
                                                 blockquote,
-                                                 
-                                                .meta-list a.btn:hover,
-                                                .meta-list a.wpcf7-form-control.wpcf7-submit:hover,
-                                                .meta-list a.otreservations-submit:hover,
-                                                .meta-list .widget_tag_cloud a:hover,
-                                                .widget_tag_cloud .meta-list a:hover,
-                                                
-                                                .single-post .article__content a:not([class]),
-                                                .single-post .article__content a:not([class]):hover,
-                                                                                    
-                                                .shop-categories a.active,
-                                                body.woocommerce ul.products li.product .product__button, 
-                                                body.woocommerce ul.products li.product .added_to_cart,
-                                                body.woocommerce ul.products li.product a.added_to_cart, 
-                                                body.woocommerce ul.products li.product .price ins,
-                                                .woocommerce ul.products li.product .price del,
-                                                .woocommerce .product .price,
-                                                .woocommerce ul.products li.product:hover .product__button,
-                                                
-                                                .single-product .entry-summary .price ins span,
-                                                .single-product .entry-summary .price del span,
-                                                .single-product .entry-summary .price del,
-                                                
-                                                .single-product .entry-summary .price span, 
-                                                
-                                                body.woocommerce .star-rating span:before, 
-                                                
-                                                .comment-reply-link,
-                                                
-                                                .woocommerce-account .woocommerce-MyAccount-navigation li a:hover,
-                                                .woocommerce-account .woocommerce-MyAccount-navigation li.is-active a,
-                                                .comment__author-name a:hover,
-                                                
-                                                .site-header.headroom--top a.site-logo--text:hover,
-                                                .site-header.headroom--not-top a.site-logo--text:hover,
                                                 
                                                 .is-today .pika-button,
-
-                                                .pixcode.pixcode--icon:hover',
-							),
+                                                
+                                                body.woocommerce .star-rating span:before',
+                            ),
 							array(
 								'property' => 'background-color',
 								'selector' => '.btn--primary,
 								                .btn:not(.btn--primary):not(.btn--tertiary):hover,
+								                .btn.btn--secondary:hover,
+								                .comments_add-comment,
+                                                .form-submit #comment-submit,
 								                
                                                 .shop-menu-item .shop-items-number,
-                                                 
-                                                .comments_add-comment, 
-                                                .form-submit #comment-submit, 
-                                                 
+                                                
                                                 .wpcf7-form-control.wpcf7-submit:hover,
                                                 form.shipping_calculator button.button:hover,
-                                                 
+                                                
                                                 .pagination li a:hover,
                                                 .pagination .nav-links .page-numbers:not(.current):hover,
                                                 .pagination .nav-links .page-numbers.prev:not(.disabled):hover,
                                                 .pagination .nav-links .page-numbers.next:not(.disabled):hover,
-                                                 
+                                                
                                                 .otreservations-submit:hover,
-                                                 
-                                                .pixcode--icon.square:hover, 
-                                                .pixcode--icon.circle:hover,
-                                                 
+                                                
+                                                .pixcode.pixcode--icon.square:hover,
+                                                .pixcode.pixcode--icon.circle:hover,
+                                                
                                                 .menu-list__item-highlight-title,
                                                 .promo-box__container,
                                                 
@@ -650,79 +596,176 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                             ),
 							array(
 								'property' => 'background',
-								'selector' => 'body.woocommerce button.button.alt:hover, 
+								'selector' => 'body.woocommerce button.button.alt:hover,
 								                body.woocommerce-page #respond input#submit:hover,
-                                                body.woocommerce div.woocommerce-message .button:hover, 
+                                                body.woocommerce div.woocommerce-message .button:hover,
                                                 td.actions input.button:hover,
                                                 body.woocommerce-page input.button:hover,
                                                 body.woocommerce-page input.button.alt:hover,
+                                                
                                                 a:hover > .pixcode--icon.circle,
                                                 a:hover > .pixcode--icon.square'
 							),
 							array(
 								'property' => 'border-color',
-								'selector' => '.btn.btn--text,
-								
-								                .btn--text.comments_add-comment, 
-								                .comments_add-comment.read-more-button,
-								                .form-submit .btn--text#comment-submit, 
-                                                .form-submit #comment-submit.read-more-button,
-                                                .btn--text.wpcf7-form-control.wpcf7-submit, 
-                                                .wpcf7-form-control.wpcf7-submit.read-more-button,
-                                                
-								                .tabs__nav a.current,                
-								                .tabs__nav a:hover,
-                                                
-                                                .btn--text.otreservations-submit, 
-                                                .otreservations-submit, 
-                                                
-                                                .read-more-button,
-                                                .btn.read-more-button, 
-                                                
-                                                .widget_tag_cloud a.btn--text, 
-                                                .widget_tag_cloud a.read-more-button, 
-                                                
-                                                blockquote, 
-                                                
-                                                .article__content a:not([class]), 
-                                                
-                                                .menu-list__item-highlight-wrapper:before,
-                                                
-                                                .shop-categories a.active,
-                                                body.woocommerce ul.products li.product .product__button, 
-                                                body.woocommerce ul.products li.product .added_to_cart, 
-                                                
-                                                .woocommerce-account .woocommerce-MyAccount-navigation li a:hover,
-                                                .woocommerce-account .woocommerce-MyAccount-navigation li.is-active a,
-                                                .woocommerce ul.products li.product:hover .product__button,
-                                                
-                                                .pagination .nav-links .page-numbers.current'
+								'selector' => 'blockquote,
+                                                .menu-list__item-highlight-wrapper:before'
+
 							),
 							array(
 								'property' => 'outline-color',
-								'selector' => 'select:focus, textarea:focus, 
+								'selector' => 'select:focus,
+								                textarea:focus,
 								                input[type="text"]:focus,
-                                                input[type="password"]:focus, 
+                                                input[type="password"]:focus,
                                                 input[type="datetime"]:focus,
-                                                input[type="datetime-local"]:focus, 
+                                                input[type="datetime-local"]:focus,
                                                 input[type="date"]:focus,
-                                                input[type="month"]:focus, 
-                                                input[type="time"]:focus, 
+                                                input[type="month"]:focus,
+                                                input[type="time"]:focus,
                                                 input[type="week"]:focus,
-                                                input[type="number"]:focus, 
-                                                input[type="email"]:focus, 
+                                                input[type="number"]:focus,
+                                                input[type="email"]:focus,
                                                 input[type="url"]:focus,
-                                                input[type="search"]:focus, 
-                                                input[type="tel"]:focus, 
-                                                input[type="color"]:focus, 
+                                                input[type="search"]:focus,
+                                                input[type="tel"]:focus,
+                                                input[type="color"]:focus,
                                                 .form-control:focus'
 							),
 							array(
 								'property' => 'fill',
 								'selector' => '.copyright-area.copyright-area__accent svg path'
 							),
-						)
+						),
 					),
+                    'links_color'   => array(
+                        'type'      => 'color',
+                        'label'     => esc_html__('Links color', 'rosa'),
+                        'live'      => true,
+                        'default'   => THEME_COLOR_PRIMARY,
+                        'css'       => array (
+                            array(
+                                'property' => 'color',
+                                'selector' => 'a,
+                                                a:hover,
+                                                
+                                                .article__content a:not([class]),
+                                                .article__content a:not([class]):hover,
+                                                
+                                                .site-header.headroom--top a.site-logo--text:hover,
+                                                .site-header.headroom--not-top a.site-logo--text:hover,
+                                                
+                                                .nav--main a:hover,
+                                                .headroom--not-top .nav--main a:hover,
+                                                
+                                                a.pixcode-icon-link:hover > .pixcode--icon,
+                                                
+                                                .headroom--not-top .nav.nav--items-social a:hover:before,
+                                                .sidebar--main .widget [class*="social"] > ul a:hover:before,
+                                                .widget [class*="social"] > ul a:hover:before,
+                                                
+                                                .shop-categories a.active,
+                                                body.woocommerce ul.products li.product .product__button,
+                                                body.woocommerce ul.products li.product .added_to_cart,
+                                                body.woocommerce ul.products li.product a.added_to_cart,
+                                                body.woocommerce ul.products li.product .price ins,
+                                                .woocommerce ul.products li.product .price del,
+                                                .woocommerce .product .price,
+                                                .woocommerce ul.products li.product:hover .product__button,
+                                                
+                                                .tabs__nav a:hover,
+                                                .tabs__nav a.active,
+                                                .tabs__nav a.current,
+                                                
+                                                .btn.btn--text,
+                                                .read-more-button,
+                                                
+                                                .meta-list .form-submit a#comment-submit:hover,
+                                                .form-submit .meta-list a#comment-submit:hover,
+                                                .form-submit .btn--text#comment-submit,
+                                                .form-submit #comment-submit.read-more-button,
+                                                
+                                                .comment-reply-link,
+                                                
+                                                .woocommerce-account .woocommerce-MyAccount-navigation li a:hover,
+                                                .woocommerce-account .woocommerce-MyAccount-navigation li.is-active a,
+                                                .comment__author-name a:hover,
+                                                
+                                                .meta-list a.btn:hover,
+                                                .meta-list a.wpcf7-form-control.wpcf7-submit:hover,
+                                                .meta-list a.otreservations-submit:hover,
+                                                .meta-list .widget_tag_cloud a:hover,
+                                                .widget_tag_cloud .meta-list a:hover,
+                                                
+                                                .single-post .article__content a:not([class]),
+                                                .single-post .article__content a:not([class]):hover',
+                            ),
+                            array(
+                                'property' => 'border-color',
+                                'selector' => '.btn.btn--text,
+								
+								                .btn--text.comments_add-comment,
+								                .comments_add-comment.read-more-button,
+								                .form-submit .btn--text#comment-submit,
+                                                .form-submit #comment-submit.read-more-button,
+                                                .btn--text.wpcf7-form-control.wpcf7-submit,
+                                                .wpcf7-form-control.wpcf7-submit.read-more-button,
+                                                
+								                .tabs__nav a.current,
+								                .tabs__nav a:hover,
+                                                
+                                                .btn--text.otreservations-submit,
+                                                .otreservations-submit,
+                                                
+                                                .read-more-button,
+                                                .btn.read-more-button,
+                                                
+                                                .widget_tag_cloud a.btn--text,
+                                                .widget_tag_cloud a.read-more-button,
+                                                
+                                                .article__content a:not([class]),
+                                                
+                                                .shop-categories a.active,
+                                                body.woocommerce ul.products li.product .product__button,
+                                                body.woocommerce ul.products li.product .added_to_cart,
+                                                
+                                                .woocommerce-account .woocommerce-MyAccount-navigation li a:hover,
+                                                .woocommerce-account .woocommerce-MyAccount-navigation li.is-active a,
+                                                .woocommerce ul.products li.product:hover .product__button,
+                                                
+                                                .pagination .nav-links .page-numbers.current',
+                            ),
+                            array(
+                                'property' => 'background-color',
+                                'selector' => 'a.pixcode-icon-link:hover > .pixcode.pixcode--icon.square,
+                                                a.pixcode-icon-link:hover > .pixcode.pixcode--icon.circle',
+                            ),
+                        ),
+                    ),
+					'buttons_color' => array(
+					    'type'      => 'color',
+                        'label'     => esc_html__( 'Buttons Color', 'rosa' ),
+                        'live'      => true,
+                        'default'   => THEME_DARK_PRIMARY,
+                        'css' => array(
+                            array(
+                                'property' => 'background-color',
+                                'selector' => '.btn:not(.btn--primary),
+                                                .btn--secondary,
+                                                .btn--tertiary,
+                                                .add-comment .add-comment__button',
+                            ),
+                            array(
+                                'property' => 'color',
+                                'selector' => '.btn.btn--text:hover,
+                                                .tabs__nav a',
+                            ),
+                            array (
+                                'property' => 'border-color',
+                                'selector' => '.btn.btn--text:hover'
+                            ),
+                        ),
+                    ),
 					'text_color'     => array(
 						'type'    => 'color',
 						'label'   => esc_html__( 'Text Color', 'rosa' ),
@@ -731,8 +774,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'css'     => array(
 							array(
 								'property' => 'color',
-								'selector' => 'body, 
-								                .up-link, 
+								'selector' => 'body,
+                                                .up-link,
 								                .down-arrow--bubble .arrow,
 								                .article__date,
 								                
@@ -769,6 +812,12 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                 'property' => 'color',
                                 'unit' => '20',
                                 'selector' => '.comment-form-comment:before',
+                                'callback_filter' => 'rosa_transparent_color'
+                            ),
+                            array(
+                                'property' => 'color',
+                                'unit' => '37',
+                                'selector' => '.separator--line-flower',
                                 'callback_filter' => 'rosa_transparent_color'
                             ),
                             array(
@@ -837,15 +886,19 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .woocommerce div.cart-collaterals div.cart-totals .shop_table,
                                                 .woocommerce-cart .cart-collaterals .cart_totals tr th,
                                                 .woocommerce-cart .cart-collaterals .cart_totals tr td,
-                                                form.checkout_coupon.woocommerce-form-coupon,
-                                                form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"],
                                                 .woocommerce .woocommerce-billing-fields__field-wrapper input.input-text,
-                                                form.checkout textarea[name="order_comments"],
                                                 .woocommerce .woocommerce-info,
                                                 .woocommerce-checkout #payment ul.payment_methods,
                                                 .woocommerce table.shop_table tbody th,
                                                 .woocommerce table.shop_table tfoot th,
                                                 .woocommerce table.shop_table tfoot td,
+                                                form.checkout_coupon.woocommerce-form-coupon,
+                                                form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"],
+                                                form.checkout textarea[name="order_comments"],
+                                                
+                                                input.wpcf7-form-control.wpcf7-text.wpcf7-validates-as-required,
+                                                input.wpcf7-form-control.wpcf7-text,
+                                                textarea.wpcf7-form-control.wpcf7-textarea,
                                                 
                                                 .woocommerce .woocommerce-billing-fields__field-wrapper span.select2-selection.select2-selection--single,
                                                 span.select2-dropdown.select2-dropdown--below,
@@ -870,20 +923,17 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								                .article-archive .article__title a,
 								                .article-archive .article__title a:hover,
 								                
-								                .btn.btn--text:hover,
 								                .pix-dropdown .dropdown__trigger,
 								                
 								                .sidebar--main .widget a,
 								                .icon-search:before,
 								                .icon-envelope:before,
 								                
+								                .pixcode--icon,
+								                
 								                .input-group input.form-control,
 								                .woocommerce .woocommerce-ordering select,
-								                .woocommerce .woocommerce-breadcrumb a:hover,
-								                
-								                .tabs__nav a,
-								                
-                                                .pixcode.pixcode--icon'
+								                .woocommerce .woocommerce-breadcrumb a:hover'
 							),
                             array(
 								'property' => 'color',
@@ -898,12 +948,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .comments-area-title .comment-number.total,
                                                 .comments-area-title .total.comment-number--dark, 
                                                 .comment-reply-title .comment-number.total, 
-                                                .comment-reply-title .total.comment-number--dark, 
-                                                .add-comment .add-comment__button,
-                                                
-                                                .btn:not(.btn--primary),
-                                                .btn--secondary, 
-												.btn--tertiary,
+                                                .comment-reply-title .total.comment-number--dark,
 												
                                                 .pagination .nav-links .page-numbers,
                                                 
@@ -920,9 +965,9 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .woocommerce table.shop_table .input-text.qty,
                                                 .woocommerce-page table.shop_table .input-text.qty,
                                                 
-                                                .wpcf7-form-control.wpcf7-submit
+                                                .wpcf7-form-control.wpcf7-submit,
                                                 
-                                                .pixcode.pixcode--icon.circle,  
+                                                .pixcode.pixcode--icon.circle,
                                                 .pixcode.pixcode--icon.square,
                                                 
                                                 form.checkout_coupon.woocommerce-form-coupon button[name="apply_coupon"],
@@ -932,13 +977,12 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                 'property' => 'background-color',
                                 'unit' => '88',
                                 'selector' => '.pagination .nav-links .page-numbers.prev.disabled,
-                                                .pagination .nav-links .page-numbers.next.disabled,',
+                                                .pagination .nav-links .page-numbers.next.disabled',
                                 'callback_filter' => 'rosa_transparent_color'
                             ),
                             array(
                                 'property' => 'border-color',
-                                'selector' => 'div:not(.c-hero-layer) .pixcode-slider[data-arrows] .rsArrowIcn,
-                                                .btn.btn--text:hover'
+                                'selector' => 'div:not(.c-hero-layer) .pixcode-slider[data-arrows] .rsArrowIcn'
                             ),
                             //comment
                             //input
@@ -1104,7 +1148,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'css'     => array(
 							array(
 								'property' => 'color',
-								'selector' => '.nav--main .shop-menu-item__price,
+								'selector' => '.nav--main a,
+                                                
                                                 .headroom--not-top .nav--main a,
                                                 .headroom--not-top .nav--main .shop-menu-item__price,
                                                 
@@ -1120,19 +1165,25 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                 'selector' => '.headroom--not-top .menu-item-has-children:after, 
 								                .headroom--not-top .menu-item-language:after,
 								                
+								                .menu-item-has-children:after,
+                                                .menu-item-language:after,
+								                
 								                .read-more-button:hover,
 								                
                                                 .woocommerce ul.products li.product:hover .product__button:hover'
                             ),
                             array(
                                 'property' => 'background-color',
-                                'selector' => '.btn--secondary,
+                                'selector' => 'body:not(.header--transparent) .nav-trigger .nav-icon,
+                                                body:not(.header--transparent) .nav-trigger .nav-icon:before,
+                                                body:not(.header--transparent) .nav-trigger .nav-icon:after,
+                                                
                                                 .btn--primary:hover,
                                                 
                                                 .comments_add-comment:hover,
                                                 .form-submit #comment-submit:hover,
                                                 .widget .tagcloud a'
-                            )
+                            ),
 						)
 					),
 					'header_background_color' => array(
@@ -1164,25 +1215,27 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'css'     => array(
 							array(
 								'property' => 'color',
-								'selector' => '.blurp--top, 
+								'selector' => '.nav--main .shop-menu-item__price,
+								
+								                .blurp--top,
                                                 .border-waves-before,
                                                 .border-waves-after,
                                                 .menu-list__item-highlight-title,
                                                 
                                                 .btn,
                                                 .btn:hover,
-                                                .btn--secondary, 
-                                                .btn--tertiary, 
+                                                .btn--secondary,
+                                                .btn--tertiary,
                                                 
                                                 .comments_add-comment,
                                                 .comments_add-comment:hover,
                                                 .form-submit #comment-submit,
                                                 .form-submit #comment-submit:hover,
-                                                .comment-number--dark, 
+                                                .comment-number--dark,
                                                 .comments-area-title .comment-number.total,
-                                                .comments-area-title .total.comment-number--dark, 
-                                                .comment-reply-title .comment-number.total, 
-                                                .comment-reply-title .total.comment-number--dark, 
+                                                .comments-area-title .total.comment-number--dark,
+                                                .comment-reply-title .comment-number.total,
+                                                .comment-reply-title .total.comment-number--dark,
                                                 .add-comment .add-comment__button,
                                                 
                                                 .promo-box__container,
@@ -1190,7 +1243,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .otreservations-submit,
                                                 .otreservations-submit:hover,
                                                 
-                                                .wpcf7-form-control.wpcf7-submit, 
+                                                .wpcf7-form-control.wpcf7-submit,
                                                 
                                                 .pika-button:hover,
                                                 .pika-table .is-selected .pika-button.pika-day,
@@ -1202,6 +1255,11 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .pagination .nav-links .page-numbers.next,
                                                 .pagination .nav-links .page-numbers.next:hover,
                                                 .pagination .nav-links .page-numbers.next:after,
+                                                
+                                                a.pixcode-icon-link:hover > .pixcode.pixcode--icon.square,
+                                                a.pixcode-icon-link:hover > .pixcode.pixcode--icon.circle,
+                                                .pixcode.pixcode--icon.circle,
+                                                .pixcode.pixcode--icon.square,
             
             
                                                 .woocommerce div.woocommerce-message .button.wc-forward,
@@ -1220,11 +1278,6 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 form.checkout_coupon.woocommerce-form-coupon button[name="apply_coupon"]:hover,
                                                 div.woocommerce-checkout-payment button.button.alt[name="woocommerce_checkout_place_order"],
                                                 div.woocommerce-checkout-payment button.button.alt[name="woocommerce_checkout_place_order"]:hover,
-                                                
-                                                .pixcode.pixcode--icon.circle,
-                                                .pixcode.pixcode--icon.circle:hover,
-                                                .pixcode.pixcode--icon.square,
-                                                .pixcode.pixcode--icon.square:hover,
                                                 
                                                 .sidebar--main .widget .tagcloud a,
                                                 .sidebar--footer__accent a:hover,
@@ -1248,15 +1301,15 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							),
 							array(
 								'property' => 'background-color',
-								'selector' => 'html, 
-                                                body.mce-content-body, 
+								'selector' => 'html,
+                                                body.mce-content-body,
                                                 .page .article__content,
                                                 .desc__content,
                                                  
                                                 .up-link,
                                                  
-                                                .menu-list__item-title .item_title, 
-                                                .menu-list__item-price, 
+                                                .menu-list__item-title .item_title,
+                                                .menu-list__item-price,
                                                 .pix-dropdown.active .dropdown__menu,
                                                 
                                                 .otw-input-wrap select option,
@@ -1277,6 +1330,9 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 span.select2-dropdown.select2-dropdown--below,
                                                 span.select2-dropdown.select2-dropdown--above,
                                                 .select2-container--default .select2-search--dropdown .select2-search__field,
+                                                input.wpcf7-form-control.wpcf7-text.wpcf7-validates-as-required,
+                                                input.wpcf7-form-control.wpcf7-text,
+                                                textarea.wpcf7-form-control.wpcf7-textarea,
                                                 
                                                 .is-today .pika-button,
                                                 
@@ -1307,7 +1363,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                         'css'     => array(
                             array(
                                 'property' => 'color',
-                                'selector' => '.sidebar--footer a:hover, 
+                                'selector' => '.sidebar--footer a:hover,
                                                 .sidebar--footer .widget [class*="social"] > ul a:hover:before',
                             ),
                         ),
@@ -1414,7 +1470,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 	                        array(
 		                        'property' => 'color',
 		                        'selector' => '.navigation--main .nav--main li a',
-		                        'media' => 'only screen and (max-width: 899px)'
+		                        'media' => 'only screen and (max-width: 899px) '
 	                        ),
 	                        array(
 		                        'property' => 'border-color',
@@ -2078,6 +2134,7 @@ function rosa_add_customify_style_manager_section ( $options ) {
                 'connected_fields' => array(
                     'main_color',
                     'footer_accent_color',
+                    'links_color',
                     'footer_widget_area_accent_color'
                 ),
                 'css' => array(
@@ -2099,9 +2156,10 @@ function rosa_add_customify_style_manager_section ( $options ) {
             'sm_dark_primary' => array(
 	            'default' => THEME_DARK_PRIMARY,
                 'connected_fields' => array(
-	                'footer_background_color',
 	                'mobile_navigation_background_color',
-	                'headings_color',
+                    'footer_background_color',
+                    'headings_color',
+	                'buttons_color',
 	                'navlink_color',
                 ),
 	            'css' => array(
@@ -2177,8 +2235,8 @@ function rosa_add_default_color_palette( $color_palettes ) {
 			),
 			'options' => array(
 				'sm_color_primary' => THEME_COLOR_PRIMARY,
-				'sm_color_secondary' => THEME_COLOR_PRIMARY,
-				'sm_color_tertiary' => THEME_COLOR_PRIMARY,
+				'sm_color_secondary' => THEME_COLOR_SECONDARY,
+				'sm_color_tertiary' => THEME_COLOR_TERTIARY,
 				'sm_dark_primary' => THEME_DARK_PRIMARY,
 				'sm_dark_secondary' => THEME_DARK_SECONDARY,
 				'sm_dark_tertiary' => THEME_DARK_TERTIARY,
