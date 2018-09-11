@@ -1,8 +1,8 @@
 <?php
 
 define( 'THEME_COLOR_PRIMARY', '#C59D5F' );
-define( 'THEME_COLOR_SECONDARY', '#C59D5F' );
-define( 'THEME_COLOR_TERTIARY', '#C59D5F' );
+define( 'THEME_COLOR_SECONDARY', '#BBB36C' );
+define( 'THEME_COLOR_TERTIARY', '#7C8365' );
 
 define( 'THEME_DARK_PRIMARY', '#252525' );
 define( 'THEME_DARK_SECONDARY', '#515151' );
@@ -514,7 +514,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 				'priority'    => 3,
 				'description' => esc_html__( 'Use the color picker to change the main color of the site to match your brand color. If you want to override the color of some elements you can always use CSS editor panel.', 'rosa' ),
 				'options'     => array(
-					'main_color'     => array(
+					'main_color'                          => array(
 						'type'    => 'color',
 						'label'   => __( 'Accent Color', 'rosa' ),
 						'live'    => true,
@@ -549,7 +549,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .is-today .pika-button,
                                                 
                                                 body.woocommerce .star-rating span:before',
-                            ),
+							),
 							array(
 								'property' => 'background-color',
 								'selector' => '.btn--primary,
@@ -588,12 +588,12 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 form.checkout_coupon.woocommerce-form-coupon button[name="apply_coupon"]:hover,
                                                 div.woocommerce-checkout-payment button.button.alt[name="woocommerce_checkout_place_order"]:hover'
 							),
-                            array(
-                                'property' => 'background-color',
-                                'unit' => '88',
-                                'selector' => '.select2-container--default .select2-results__option[data-selected=true]',
-                                'callback_filter' => 'rosa_transparent_color'
-                            ),
+							array(
+								'property'        => 'background-color',
+								'unit'            => '88',
+								'selector'        => '.select2-container--default .select2-results__option[data-selected=true]',
+								'callback_filter' => 'rosa_transparent_color'
+							),
 							array(
 								'property' => 'background',
 								'selector' => 'body.woocommerce button.button.alt:hover,
@@ -638,15 +638,15 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							),
 						),
 					),
-                    'links_color'   => array(
-                        'type'      => 'color',
-                        'label'     => esc_html__('Links color', 'rosa'),
-                        'live'      => true,
-                        'default'   => THEME_COLOR_PRIMARY,
-                        'css'       => array (
-                            array(
-                                'property' => 'color',
-                                'selector' => 'a,
+					'links_color'                         => array(
+						'type'    => 'color',
+						'label'   => esc_html__( 'Links color', 'rosa' ),
+						'live'    => true,
+						'default' => THEME_COLOR_PRIMARY,
+						'css'     => array(
+							array(
+								'property' => 'color',
+								'selector' => 'a,
                                                 a:hover,
                                                 
                                                 .article__content a:not([class]),
@@ -699,10 +699,10 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 
                                                 .single-post .article__content a:not([class]),
                                                 .single-post .article__content a:not([class]):hover',
-                            ),
-                            array(
-                                'property' => 'border-color',
-                                'selector' => '.btn.btn--text,
+							),
+							array(
+								'property' => 'border-color',
+								'selector' => '.btn.btn--text,
 								
 								                .btn--text.comments_add-comment,
 								                .comments_add-comment.read-more-button,
@@ -734,30 +734,30 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .woocommerce ul.products li.product:hover .product__button,
                                                 
                                                 .pagination .nav-links .page-numbers.current',
-                            ),
-                            array(
-                                'property' => 'background-color',
-                                'selector' => 'a.pixcode-icon-link:hover > .pixcode.pixcode--icon.square,
+							),
+							array(
+								'property' => 'background-color',
+								'selector' => 'a.pixcode-icon-link:hover > .pixcode.pixcode--icon.square,
                                                 a.pixcode-icon-link:hover > .pixcode.pixcode--icon.circle',
-                            ),
-                        ),
-                    ),
-					'buttons_color' => array(
-					    'type'      => 'color',
-                        'label'     => esc_html__( 'Buttons Color', 'rosa' ),
-                        'live'      => true,
-                        'default'   => THEME_DARK_PRIMARY,
-                        'css' => array(
-                            array(
-                                'property' => 'background-color',
-                                'selector' => '.btn:not(.btn--primary),
+							),
+						),
+					),
+					'buttons_color'                       => array(
+						'type'    => 'color',
+						'label'   => esc_html__( 'Buttons Color', 'rosa' ),
+						'live'    => true,
+						'default' => THEME_DARK_PRIMARY,
+						'css'     => array(
+							array(
+								'property' => 'background-color',
+								'selector' => '.btn:not(.btn--primary),
                                                 .btn--secondary,
                                                 .btn--tertiary,
                                                 .add-comment .add-comment__button',
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.btn.btn--text:hover,
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.btn.btn--text:hover,
                                                 .tabs__nav a',
                             ),
                             array (
@@ -805,49 +805,49 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 												.copyright-area.copyright-area__light,
 												.sidebar--footer.sidebar--footer__light .widget [class*="social"] > ul a:before'
 							),
-                            array(
-                                'property' => 'border-color',
-                                'selector' => '.copyright-area__light .btn--top_text .btn__arrow',
-                            ),
-                            array(
-                                'property' => 'color',
-                                'unit' => '20',
-                                'selector' => '.comment-form-comment:before',
-                                'callback_filter' => 'rosa_transparent_color'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'unit' => '37',
-                                'selector' => '.separator--line-flower',
-                                'callback_filter' => 'rosa_transparent_color'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'unit' => '8C',
-                                'selector' => '.comment__content,
-                                                .woocommerce ul.products li.product .product__cat',
-                                'callback_filter' => 'rosa_transparent_color'
-                            ),
 							array(
-                                'property' => 'background-color',
-                                'unit' => '30',
-                                'selector' => '.select2-container--default .select2-results__option--highlighted[aria-selected],
+								'property' => 'border-color',
+								'selector' => '.copyright-area__light .btn--top_text .btn__arrow',
+							),
+							array(
+								'property'        => 'color',
+								'unit'            => '20',
+								'selector'        => '.comment-form-comment:before',
+								'callback_filter' => 'rosa_transparent_color'
+							),
+							array(
+								'property'        => 'color',
+								'unit'            => '37',
+								'selector'        => '.separator--line-flower',
+								'callback_filter' => 'rosa_transparent_color'
+							),
+							array(
+								'property'        => 'color',
+								'unit'            => '8C',
+								'selector'        => '.comment__content,
+                                                .woocommerce ul.products li.product .product__cat',
+								'callback_filter' => 'rosa_transparent_color'
+							),
+							array(
+								'property'        => 'background-color',
+								'unit'            => '30',
+								'selector'        => '.select2-container--default .select2-results__option--highlighted[aria-selected],
                                                 .select2-container--default .select2-results__option--highlighted[data-selected],
                                                 table tbody tr:nth-of-type(odd),
                                                 .wp-caption-text,
                                                 div.woocommerce-checkout-payment#payment',
-                                'callback_filter' => 'rosa_transparent_color'
-                            ),
-                            array(
-                                'property' => 'background-color',
-                                'unit' => '20',
-                                'selector' => 'div.woocommerce-checkout-payment#payment',
-                                'callback_filter' => 'rosa_transparent_color'
-                            ),
+								'callback_filter' => 'rosa_transparent_color'
+							),
 							array(
-								'property' => 'border-color',
-								'unit' => '37',
-								'selector' => '.up-link:before,
+								'property'        => 'background-color',
+								'unit'            => '20',
+								'selector'        => 'div.woocommerce-checkout-payment#payment',
+								'callback_filter' => 'rosa_transparent_color'
+							),
+							array(
+								'property'        => 'border-color',
+								'unit'            => '37',
+								'selector'        => '.up-link:before,
 								
                                                 .pix-dropdown .dropdown__trigger,
                                                 .pix-dropdown.active .dropdown__menu,
@@ -907,11 +907,11 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .select2-container--default .select2-search--dropdown .select2-search__field,
                                                 
                                                 .sidebar--main .widget',
-                                'callback_filter' => 'rosa_transparent_color'
-                            ),
+								'callback_filter' => 'rosa_transparent_color'
+							),
 						),
 					),
-					'headings_color' => array(
+					'headings_color'                      => array(
 						'type'    => 'color',
 						'label'   => esc_html__( 'Headings Color', 'rosa' ),
 						'live'    => true,
@@ -936,13 +936,13 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								                .woocommerce .woocommerce-ordering select,
 								                .woocommerce .woocommerce-breadcrumb a:hover'
 							),
-                            array(
-								'property' => 'color',
-								'unit'     => '88',
-								'selector' => '.woocommerce .woocommerce-breadcrumb,
+							array(
+								'property'        => 'color',
+								'unit'            => '88',
+								'selector'        => '.woocommerce .woocommerce-breadcrumb,
 								                .woocommerce .woocommerce-breadcrumb a',
-                                'callback_filter' => 'rosa_transparent_color'
-			                ),
+								'callback_filter' => 'rosa_transparent_color'
+							),
 							array(
 								'property' => 'background-color',
 								'selector' => '.comment-number--dark, 
@@ -974,174 +974,174 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 form.checkout_coupon.woocommerce-form-coupon button[name="apply_coupon"],
                                                 div.woocommerce-checkout-payment button.button.alt[name="woocommerce_checkout_place_order"]'
 							),
-                            array(
-                                'property' => 'background-color',
-                                'unit' => '88',
-                                'selector' => '.pagination .nav-links .page-numbers.prev.disabled,
+							array(
+								'property'        => 'background-color',
+								'unit'            => '88',
+								'selector'        => '.pagination .nav-links .page-numbers.prev.disabled,
                                                 .pagination .nav-links .page-numbers.next.disabled',
-                                'callback_filter' => 'rosa_transparent_color'
-                            ),
-                            array(
-                                'property' => 'border-color',
-                                'selector' => 'div:not(.c-hero-layer) .pixcode-slider[data-arrows] .rsArrowIcn'
-                            ),
-                            //comment
-                            //input
-                            array(
-                                'property' => 'color',
-                                'selector' => '.comment-form input::-webkit-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.comment-form input:-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.comment-form input::-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.comment-form input:-ms-input-placeholder'
-                            ),
-                            //comment
-                            //textarea
-                            array(
-                                'property' => 'color',
-                                'selector' => '.comment-form textarea::-webkit-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.comment-form textarea:-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.comment-form textarea::-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.comment-form textarea:-ms-input-placeholder'
-                            ),
-                            //blog search
-                            array(
-                                'property' => 'color',
-                                'selector' => '.form-search .search-query::-webkit-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.form-search .search-query:-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.form-search .search-query::-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.form-search .search-query:-ms-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.input-group input.form-control::-webkit-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.input-group input.form-control:-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.input-group input.form-control::-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.input-group input.form-control:-ms-input-placeholder'
-                            ),
-                            //woocommerce
-                            array(
-                                'property' => 'color',
-                                'selector' => '.woocommerce table.shop_table .input-text::-webkit-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.woocommerce table.shop_table .input-text:-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.woocommerce table.shop_table .input-text::-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.woocommerce table.shop_table .input-text:-ms-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.woocommerce-page table.shop_table .input-text::-webkit-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.woocommerce-page table.shop_table .input-text:-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.woocommerce-page table.shop_table .input-text::-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.woocommerce-page table.shop_table .input-text:-ms-input-placeholder'
-                            ),
-                            //woocommerce
-                            //coupon
-                            array(
-                                'property' => 'color',
-                                'selector' => 'form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"]::-webkit-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => 'form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"]:-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => 'form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"]::-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => 'form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"]:-ms-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.woocommerce .woocommerce-billing-fields__field-wrapper input.input-text::-webkit-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.woocommerce .woocommerce-billing-fields__field-wrapper input.input-text:-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.woocommerce .woocommerce-billing-fields__field-wrapper input.input-text::-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => '.woocommerce .woocommerce-billing-fields__field-wrapper input.input-text:-ms-input-placeholder'
-                            ),
-                            //woocommerce
-                            //checkout comment textarea
-                            array(
-                                'property' => 'color',
-                                'selector' => 'form.checkout textarea[name="order_comments"]::-webkit-input-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => 'form.checkout textarea[name="order_comments"]:-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => 'form.checkout textarea[name="order_comments"]::-moz-placeholder'
-                            ),
-                            array(
-                                'property' => 'color',
-                                'selector' => 'form.checkout textarea[name="order_comments"]:-ms-input-placeholder'
-                            )
+								'callback_filter' => 'rosa_transparent_color'
+							),
+							array(
+								'property' => 'border-color',
+								'selector' => 'div:not(.c-hero-layer) .pixcode-slider[data-arrows] .rsArrowIcn'
+							),
+							//comment
+							//input
+							array(
+								'property' => 'color',
+								'selector' => '.comment-form input::-webkit-input-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.comment-form input:-moz-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.comment-form input::-moz-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.comment-form input:-ms-input-placeholder'
+							),
+							//comment
+							//textarea
+							array(
+								'property' => 'color',
+								'selector' => '.comment-form textarea::-webkit-input-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.comment-form textarea:-moz-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.comment-form textarea::-moz-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.comment-form textarea:-ms-input-placeholder'
+							),
+							//blog search
+							array(
+								'property' => 'color',
+								'selector' => '.form-search .search-query::-webkit-input-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.form-search .search-query:-moz-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.form-search .search-query::-moz-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.form-search .search-query:-ms-input-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.input-group input.form-control::-webkit-input-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.input-group input.form-control:-moz-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.input-group input.form-control::-moz-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.input-group input.form-control:-ms-input-placeholder'
+							),
+							//woocommerce
+							array(
+								'property' => 'color',
+								'selector' => '.woocommerce table.shop_table .input-text::-webkit-input-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.woocommerce table.shop_table .input-text:-moz-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.woocommerce table.shop_table .input-text::-moz-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.woocommerce table.shop_table .input-text:-ms-input-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.woocommerce-page table.shop_table .input-text::-webkit-input-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.woocommerce-page table.shop_table .input-text:-moz-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.woocommerce-page table.shop_table .input-text::-moz-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.woocommerce-page table.shop_table .input-text:-ms-input-placeholder'
+							),
+							//woocommerce
+							//coupon
+							array(
+								'property' => 'color',
+								'selector' => 'form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"]::-webkit-input-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => 'form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"]:-moz-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => 'form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"]::-moz-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => 'form.checkout_coupon.woocommerce-form-coupon input[name="coupon_code"]:-ms-input-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.woocommerce .woocommerce-billing-fields__field-wrapper input.input-text::-webkit-input-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.woocommerce .woocommerce-billing-fields__field-wrapper input.input-text:-moz-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.woocommerce .woocommerce-billing-fields__field-wrapper input.input-text::-moz-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => '.woocommerce .woocommerce-billing-fields__field-wrapper input.input-text:-ms-input-placeholder'
+							),
+							//woocommerce
+							//checkout comment textarea
+							array(
+								'property' => 'color',
+								'selector' => 'form.checkout textarea[name="order_comments"]::-webkit-input-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => 'form.checkout textarea[name="order_comments"]:-moz-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => 'form.checkout textarea[name="order_comments"]::-moz-placeholder'
+							),
+							array(
+								'property' => 'color',
+								'selector' => 'form.checkout textarea[name="order_comments"]:-ms-input-placeholder'
+							)
 						)
 					),
-					'navlink_color'  => array(
+					'navlink_color'                       => array(
 						'type'    => 'color',
 						'label'   => esc_html__( 'Nav Links Color', 'rosa' ),
 						'live'    => true,
@@ -1169,10 +1169,10 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								                .read-more-button:hover,
 								                
                                                 .woocommerce ul.products li.product:hover .product__button:hover'
-                            ),
-                            array(
-                                'property' => 'background-color',
-                                'selector' => 'body:not(.header--transparent) .nav-trigger .nav-icon,
+							),
+							array(
+								'property' => 'background-color',
+								'selector' => 'body:not(.header--transparent) .nav-trigger .nav-icon,
                                                 body:not(.header--transparent) .nav-trigger .nav-icon:before,
                                                 body:not(.header--transparent) .nav-trigger .nav-icon:after,
                                                 
@@ -1181,10 +1181,10 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .comments_add-comment:hover,
                                                 .form-submit #comment-submit:hover,
                                                 .widget .tagcloud a'
-                            ),
+							),
 						)
 					),
-					'header_background_color' => array(
+					'header_background_color'             => array(
 						'type'    => 'color',
 						'label'   => esc_html__( 'Header Color', 'rosa' ),
 						'live'    => true,
@@ -1199,13 +1199,13 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							)
 						)
 					),
-					'header_image_pattern'    => array(
+					'header_image_pattern'                => array(
 						'type'   => 'custom_background',
 						'label'  => esc_html__( 'Header Background', 'rosa' ),
 						'desc'   => esc_html__( 'Container background with image.', 'rosa' ),
 						'output' => array( ".site-header, .site-header.headroom--not-top" ),
 					),
-					'content_background_color' => array(
+					'content_background_color'            => array(
 						'type'    => 'color',
 						'label'   => esc_html__( 'Content Color', 'rosa' ),
 						'live'    => true,
@@ -1294,8 +1294,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .pagination .nav-links .page-numbers.prev.disabled:before,
                                                 .pagination .nav-links .page-numbers.next.disabled,
                                                 .pagination .nav-links .page-numbers.next.disabled:after',
-                                'callback_filter' => 'rosa_transparent_color'
-                            ),
+								'callback_filter' => 'rosa_transparent_color'
+							),
 							array(
 								'property' => 'border-color',
 								'selector' => '.site-header, 
@@ -1349,119 +1349,119 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							)
 						)
 					),
-					'container_image_pattern'  => array(
+					'container_image_pattern'             => array(
 						'type'   => 'custom_background',
 						'label'  => esc_html__( 'Header Background', 'rosa' ),
 						'desc'   => esc_html__( 'Container background with image.', 'rosa' ),
 						'output' => array( '.page .article__content' ),
 					),
-                    'this_divider_6983365' => array(
-                        'type' => 'html',
-                        'html' => '<span class="separator label large">' . esc_html__( 'Footer Widget Area', 'rosa' ) . '</span>'
-                    ),
-                    'footer_widget_area_accent_color'     => array(
-                        'type'    => 'color',
-                        'label'   => __( 'Accent Color', 'rosa' ),
-                        'live'    => true,
-                        'default' => THEME_COLOR_PRIMARY,
-                        'css'     => array(
-                            array(
-                                'property' => 'color',
-                                'selector' => '.sidebar--footer a:hover,
+					'this_divider_6983365'                => array(
+						'type' => 'html',
+						'html' => '<span class="separator label large">' . esc_html__( 'Footer Widget Area', 'rosa' ) . '</span>'
+					),
+					'footer_widget_area_accent_color'     => array(
+						'type'    => 'color',
+						'label'   => __( 'Accent Color', 'rosa' ),
+						'live'    => true,
+						'default' => THEME_COLOR_PRIMARY,
+						'css'     => array(
+							array(
+								'property' => 'color',
+								'selector' => '.sidebar--footer a:hover,
                                                 .sidebar--footer .widget [class*="social"] > ul a:hover:before',
-                            ),
-                        ),
-                    ),
-                    'footer_widget_area_background_color'     => array(
-                        'type'    => 'color',
-                        'label'   => __( 'Background Color', 'rosa' ),
-                        'live'    => true,
-                        'default' => THEME_DARK_TERTIARY,
-                        'css'     => array(
-                            array(
-                                'property' => 'background-color',
-                                'selector' => '.sidebar--footer__dark',
-                            ),
-	                        array(
-		                        'property' => 'background-color',
-		                        'unit' => '80',
-		                        'selector' => '.navigation--main .nav--main li.menu-item-has-children a:before',
-		                        'media' => 'only screen and (max-width: 899px)',
-		                        'callback_filter' => 'rosa_transparent_color'
-	                        ),
-                        ),
-                    ),
-                    'footer_widget_area_text_color'     => array(
-                        'type'    => 'color',
-                        'label'   => __( 'Text Color', 'rosa' ),
-                        'live'    => true,
-                        'default' => THEME_LIGHT_PRIMARY,
-                        'css'     => array(
-                            array(
-                                'property' => 'color',
-                                'selector' => '.sidebar--footer,
+							),
+						),
+					),
+					'footer_widget_area_background_color' => array(
+						'type'    => 'color',
+						'label'   => __( 'Background Color', 'rosa' ),
+						'live'    => true,
+						'default' => THEME_DARK_TERTIARY,
+						'css'     => array(
+							array(
+								'property' => 'background-color',
+								'selector' => '.sidebar--footer__dark',
+							),
+							array(
+								'property'        => 'background-color',
+								'unit'            => '80',
+								'selector'        => '.navigation--main .nav--main li.menu-item-has-children a:before',
+								'media'           => 'only screen and (max-width: 899px)',
+								'callback_filter' => 'rosa_transparent_color'
+							),
+						),
+					),
+					'footer_widget_area_text_color'       => array(
+						'type'    => 'color',
+						'label'   => __( 'Text Color', 'rosa' ),
+						'live'    => true,
+						'default' => THEME_LIGHT_PRIMARY,
+						'css'     => array(
+							array(
+								'property' => 'color',
+								'selector' => '.sidebar--footer,
                                                 .sidebar--footer .widget [class*="social"] > ul a:before'
-                            ),
-                            array(
-                                'property' => 'border-color',
-                                'selector' => '.btn--top_text .btn__arrow'
-                            ),
-                        ),
-                    ),
-                    'this_divider_6360676' => array(
-                        'type' => 'html',
-                        'html' => '<span class="separator label large">' . esc_html__( 'Footer', 'rosa' ) . '</span>'
-                    ),
-                    'footer_accent_color'     => array(
-                        'type'    => 'color',
-                        'label'   => __( 'Accent Color', 'rosa' ),
-                        'live'    => true,
-                        'default' => THEME_COLOR_PRIMARY,
-                        'css'     => array(
-                            array(
-                                'property' => 'color',
-                                'selector' => '.copyright-text a,
+							),
+							array(
+								'property' => 'border-color',
+								'selector' => '.btn--top_text .btn__arrow'
+							),
+						),
+					),
+					'this_divider_6360676'                => array(
+						'type' => 'html',
+						'html' => '<span class="separator label large">' . esc_html__( 'Footer', 'rosa' ) . '</span>'
+					),
+					'footer_accent_color'                 => array(
+						'type'    => 'color',
+						'label'   => __( 'Accent Color', 'rosa' ),
+						'live'    => true,
+						'default' => THEME_COLOR_PRIMARY,
+						'css'     => array(
+							array(
+								'property' => 'color',
+								'selector' => '.copyright-text a,
                                                 .nav--footer a:hover,
                                                 .site-footer .separator--flower',
-                            ),
-                            array(
-                                'property' => 'background-color',
-                                'selector' => '.sidebar--footer__accent, 
+							),
+							array(
+								'property' => 'background-color',
+								'selector' => '.sidebar--footer__accent, 
                                                 .copyright-area.copyright-area__accent',
-                            ),
-                        ),
-                    ),
-                    'footer_background_color'     => array(
-                        'type'    => 'color',
-                        'label'   => __( 'Background Color', 'rosa' ),
-                        'live'    => true,
-                        'default' => THEME_DARK_PRIMARY,
-                        'css'     => array(
-                            array(
-                                'property' => 'background-color',
-                                'selector' => '.copyright-area.copyright-area__dark'
-                            ),
-                            array(
-                                'property' => 'fill',
-                                'selector' => '.copyright-area svg path'
-                            ),
-                        ),
-                    ),
-                    'footer_text_color'     => array(
-                        'type'    => 'color',
-                        'label'   => __( 'Text Color', 'rosa' ),
-                        'live'    => true,
-                        'default' => THEME_LIGHT_PRIMARY,
-                        'css'     => array(
-                            array(
-                                'property' => 'color',
-                                'unit' => '91',
-                                'selector' => '.copyright-area',
-                                'callback_filter' => 'rosa_transparent_color',
-                            ),
-                        ),
-                    ),
-					'this_divider_20042018' => array(
+							),
+						),
+					),
+					'footer_background_color'             => array(
+						'type'    => 'color',
+						'label'   => __( 'Background Color', 'rosa' ),
+						'live'    => true,
+						'default' => THEME_DARK_PRIMARY,
+						'css'     => array(
+							array(
+								'property' => 'background-color',
+								'selector' => '.copyright-area.copyright-area__dark'
+							),
+							array(
+								'property' => 'fill',
+								'selector' => '.copyright-area svg path'
+							),
+						),
+					),
+					'footer_text_color'                   => array(
+						'type'    => 'color',
+						'label'   => __( 'Text Color', 'rosa' ),
+						'live'    => true,
+						'default' => THEME_LIGHT_PRIMARY,
+						'css'     => array(
+							array(
+								'property'        => 'color',
+								'unit'            => '91',
+								'selector'        => '.copyright-area',
+								'callback_filter' => 'rosa_transparent_color',
+							),
+						),
+					),
+					'this_divider_20042018'               => array(
 						'type' => 'html',
 						'html' => '<span class="separator label large">' . esc_html__( 'Mobile Navigation', 'rosa' ) . '</span>'
 					),
@@ -1874,20 +1874,21 @@ function rosa_range_negative_value( $value, $selector, $property, $unit ) {
 	return $output;
 }
 
-function rosa_transparent_color($value, $selector, $property, $unit ) {
-    if ( empty( $unit ) ) {
-        $unit = '20';
-    }
+function rosa_transparent_color( $value, $selector, $property, $unit ) {
+	if ( empty( $unit ) ) {
+		$unit = '20';
+	}
 
-    $output = $selector . ' {' .
-        $property . ': ' . $value . $unit . ';' .
-        '}';
-    return $output;
+	$output = $selector . ' {' .
+	          $property . ': ' . $value . $unit . ';' .
+	          '}';
+
+	return $output;
 }
 
 function rosa_transparent_color_customizer_preview() {
 
-    $js = "
+	$js = "
     
     function makeSafeForCSS(name) {
         return name.replace(/[^a-z0-9]/g, function(s) {
@@ -1940,8 +1941,9 @@ function rosa_transparent_color( value, selector, property, unit ) {
         head.appendChild(style);
     }
 }" . PHP_EOL;
-    wp_add_inline_script( 'customify-previewer-scripts', $js );
+	wp_add_inline_script( 'customify-previewer-scripts', $js );
 }
+
 add_action( 'customize_preview_init', 'rosa_transparent_color_customizer_preview', 20 );
 
 function rosa_footer_style_select( $value, $selector, $property, $unit ) {
@@ -2117,136 +2119,137 @@ function rosa_migrate_gmap_page_general_metas() {
 	}
 }
 
-function rosa_add_customify_style_manager_section ( $options ) {
-    if( ! current_theme_supports('customizer_style_manager') ) {
-        return $options;
-    }
+function rosa_add_customify_style_manager_section( $options ) {
+	if ( ! current_theme_supports( 'customizer_style_manager' ) ) {
+		return $options;
+	}
 
-    if( ! isset( $options['sections']['style_manager_section'] ) ) {
-        $options['sections']['style_manager_section'] = array();
-    }
+	if ( ! isset( $options['sections']['style_manager_section'] ) ) {
+		$options['sections']['style_manager_section'] = array();
+	}
 
-    $options['sections']['style_manager_section'] = array_replace_recursive(  $options['sections']['style_manager_section'], array(
-    	'priority' => -1,
-        'options' => array(
-            'sm_color_primary' => array(
-                'default' => THEME_COLOR_PRIMARY,
-                'connected_fields' => array(
-                    'main_color',
-                    'footer_accent_color',
-                    'links_color',
-                    'footer_widget_area_accent_color'
-                ),
-                'css' => array(
-	                array(
-		                'property' => 'background-color',
-		                'selector' => '
+	$options['sections']['style_manager_section'] = array_replace_recursive( $options['sections']['style_manager_section'], array(
+		'priority' => - 1,
+		'options'  => array(
+			'sm_color_primary'   => array(
+				'default'          => THEME_COLOR_PRIMARY,
+				'connected_fields' => array(
+					'main_color',
+					'footer_accent_color',
+					'links_color',
+					'footer_widget_area_accent_color'
+				),
+				'css'              => array(
+					array(
+						'property' => 'background-color',
+						'selector' => '
 		                    .article__header[class] .article__headline .headline__description .btn:hover,
 		                    .article__header[class] .article__headline .headline__description .btn:active,
 		                    .article__header[class] .article__headline .headline__description .btn:focus'
-	                ),
-                ),
-            ),
-            'sm_color_secondary' => array(
-            	'default' => THEME_COLOR_SECONDARY,
-            ),
-            'sm_color_tertiary' => array(
-            	'default' => THEME_COLOR_TERTIARY,
-            ),
-            'sm_dark_primary' => array(
-	            'default' => THEME_DARK_PRIMARY,
-                'connected_fields' => array(
-	                'mobile_navigation_background_color',
-                    'footer_background_color',
-                    'headings_color',
-	                'buttons_color',
-	                'navlink_color',
-                ),
-	            'css' => array(
-	            	array(
-	                    'property' => 'color',
-			            'selector' => '.article__header .article__headline .headline__description .btn'
-		            ),
-	            ),
-            ),
-            'sm_dark_secondary' => array(
-	            'default' => THEME_DARK_SECONDARY,
-                'connected_fields' => array(
-	                'text_color',
-                ),
-            ),
-            'sm_dark_tertiary' => array(
-                'default' => THEME_DARK_TERTIARY,
-                'connected_fields' => array(
-	                'footer_widget_area_background_color',
-	            ),
-            ),
-            'sm_light_primary' => array(
-                'default' => THEME_LIGHT_PRIMARY,
-                'connected_fields' => array(
-                    'header_background_color',
-                    'content_background_color',
-                    'footer_widget_area_text_color',
-                    'footer_text_color',
-                ),
-                'css' => array(
-	                array(
-		                'property' => 'color',
-		                'selector' => '
+					),
+				),
+			),
+			'sm_color_secondary' => array(
+				'default' => THEME_COLOR_SECONDARY,
+			),
+			'sm_color_tertiary'  => array(
+				'default' => THEME_COLOR_TERTIARY,
+			),
+			'sm_dark_primary'    => array(
+				'default'          => THEME_DARK_PRIMARY,
+				'connected_fields' => array(
+					'mobile_navigation_background_color',
+					'footer_background_color',
+					'headings_color',
+					'buttons_color',
+					'navlink_color',
+				),
+				'css'              => array(
+					array(
+						'property' => 'color',
+						'selector' => '.article__header .article__headline .headline__description .btn'
+					),
+				),
+			),
+			'sm_dark_secondary'  => array(
+				'default'          => THEME_DARK_SECONDARY,
+				'connected_fields' => array(
+					'text_color',
+				),
+			),
+			'sm_dark_tertiary'   => array(
+				'default'          => THEME_DARK_TERTIARY,
+				'connected_fields' => array(
+					'footer_widget_area_background_color',
+				),
+			),
+			'sm_light_primary'   => array(
+				'default'          => THEME_LIGHT_PRIMARY,
+				'connected_fields' => array(
+					'header_background_color',
+					'content_background_color',
+					'footer_widget_area_text_color',
+					'footer_text_color',
+				),
+				'css'              => array(
+					array(
+						'property' => 'color',
+						'selector' => '
 		                    .article__header .article__headline .headline__primary, 
 		                    .article__header .article__headline .headline__description > *:not(.star):not(.separator--flower):not(.btn),
 		                    .header--transparent .nav--main a,
 		                    .header--transparent .nav--main .shop-menu-item__price'
-	                ),
-	                array(
-		                'property' => 'background-color',
-		                'selector' => '
+					),
+					array(
+						'property' => 'background-color',
+						'selector' => '
 		                    .article__header .article__headline .headline__description .btn,
 		                    .site-header .nav-trigger .nav-icon,
                             .site-header .nav-trigger .nav-icon:before,
                             .site-header .nav-trigger .nav-icon:after'
-	                ),
-                ),
-            ),
-            'sm_light_secondary' => array(
-            	'default' => THEME_LIGHT_SECONDARY,
-	            'connected_fields' => array(
-		            'mobile_navigation_color'
-	            ),
-            ),
-            'sm_light_tertiary' => array(
-            	'default' => THEME_LIGHT_TERTIARY
-            ),
-        ),
-    ) );
+					),
+				),
+			),
+			'sm_light_secondary' => array(
+				'default'          => THEME_LIGHT_SECONDARY,
+				'connected_fields' => array(
+					'mobile_navigation_color'
+				),
+			),
+			'sm_light_tertiary'  => array(
+				'default' => THEME_LIGHT_TERTIARY
+			),
+		),
+	) );
 
-    return $options;
+	return $options;
 }
 
-add_filter('customify_filter_fields', 'rosa_add_customify_style_manager_section', 12, 1);
+add_filter( 'customify_filter_fields', 'rosa_add_customify_style_manager_section', 12, 1 );
 
 function rosa_add_default_color_palette( $color_palettes ) {
 
-	$color_palettes = array_merge(array(
+	$color_palettes = array_merge( array(
 		'default' => array(
-			'label' => 'Default',
+			'label'   => 'Default',
 			'preview' => array(
 				'background_image_url' => 'https://cloud.pixelgrade.com/wp-content/uploads/2018/07/rosa-palette.jpg',
 			),
 			'options' => array(
-				'sm_color_primary' => THEME_COLOR_PRIMARY,
+				'sm_color_primary'   => THEME_COLOR_PRIMARY,
 				'sm_color_secondary' => THEME_COLOR_SECONDARY,
-				'sm_color_tertiary' => THEME_COLOR_TERTIARY,
-				'sm_dark_primary' => THEME_DARK_PRIMARY,
-				'sm_dark_secondary' => THEME_DARK_SECONDARY,
-				'sm_dark_tertiary' => THEME_DARK_TERTIARY,
-				'sm_light_primary' => THEME_LIGHT_PRIMARY,
+				'sm_color_tertiary'  => THEME_COLOR_TERTIARY,
+				'sm_dark_primary'    => THEME_DARK_PRIMARY,
+				'sm_dark_secondary'  => THEME_DARK_SECONDARY,
+				'sm_dark_tertiary'   => THEME_DARK_TERTIARY,
+				'sm_light_primary'   => THEME_LIGHT_PRIMARY,
 				'sm_light_secondary' => THEME_LIGHT_SECONDARY,
-				'sm_light_tertiary' => THEME_LIGHT_TERTIARY,
+				'sm_light_tertiary'  => THEME_LIGHT_TERTIARY,
 			),
 		),
-	), $color_palettes);
+	), $color_palettes );
 
 	return $color_palettes;
 }
+
 add_filter( 'customify_get_color_palettes', 'rosa_add_default_color_palette' );
