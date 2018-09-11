@@ -762,8 +762,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                             ),
                             array (
                                 'property' => 'border-color',
-                                'selector' => '.btn.btn--text:hover,
-                                                .pix-dropdown .dropdown__trigger:after'
+                                'selector' => '.btn.btn--text:hover'
                             ),
                         ),
                     ),
@@ -983,7 +982,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							),
 							array(
 								'property' => 'border-color',
-								'selector' => 'div:not(.c-hero-layer) .pixcode-slider[data-arrows] .rsArrowIcn'
+								'selector' => 'div:not(.c-hero-layer) .pixcode-slider[data-arrows] .rsArrowIcn,
+								                .pix-dropdown .dropdown__trigger:after'
 							),
 							//comment
 							//input
@@ -1283,11 +1283,6 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							),
                             array(
                                 'property' => 'color',
-                                'selector' => '.nav--main .shop-menu-item__price',
-                                'media' => 'only screen and (max-width: 899px)'
-                            ),
-                            array(
-                                'property' => 'color',
                                 'unit' => '88',
                                 'selector' => '.pagination .nav-links .page-numbers,
                                                 .pagination .nav-links .page-numbers.prev.disabled,
@@ -1299,9 +1294,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							array(
 								'property' => 'border-color',
 								'selector' => '.site-header, 
-								                .site-footer,
-								                .header--transparent .menu-item-has-children:after, 
-								                .header--transparent .menu-item-language:after'
+								                .site-footer'
 							),
 							array(
 								'property' => 'background-color',
@@ -2198,8 +2191,14 @@ function rosa_add_customify_style_manager_section( $options ) {
 		                    .article__header .article__headline .headline__primary, 
 		                    .article__header .article__headline .headline__description > *:not(.star):not(.separator--flower):not(.btn),
 		                    .header--transparent .nav--main a,
-		                    .header--transparent .nav--main .shop-menu-item__price'
+		                    .header--transparent .nav--main .shop-menu-item__price,
+		                    .headroom--top:not(.header--transparent) .nav--main .shop-menu-item__price'
 					),
+                    array(
+                        'property' => 'border-color',
+                        'selector' => '.header--transparent .menu-item-has-children:after,
+                                        .header--transparent .menu-item-language:after'
+                    ),
 					array(
 						'property' => 'background-color',
 						'selector' => '
