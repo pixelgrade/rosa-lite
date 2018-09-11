@@ -11624,13 +11624,11 @@ hr.separator_color--white, .separator.separator_color--white {
 .separator--line-flower .arrow--left {
   right: 0;
   border-right: 7px solid currentColor;
-  opacity: 0.8;
 }
 
 .separator--line-flower .arrow--right {
   left: 0;
   border-left: 7px solid currentColor;
-  opacity: 0.8;
 }
 
 .separator--line-flower.separator_color--white .arrow--left {
