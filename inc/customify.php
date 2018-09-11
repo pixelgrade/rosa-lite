@@ -762,7 +762,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                             ),
                             array (
                                 'property' => 'border-color',
-                                'selector' => '.btn.btn--text:hover'
+                                'selector' => '.btn.btn--text:hover,
+                                                .pix-dropdown .dropdown__trigger:after'
                             ),
                         ),
                     ),
@@ -1162,11 +1163,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							),
                             array(
                                 'property' => 'border-color',
-                                'selector' => '.headroom--not-top .menu-item-has-children:after, 
-								                .headroom--not-top .menu-item-language:after,
-								                
-								                .menu-item-has-children:after,
-                                                .menu-item-language:after,
+                                'selector' => '.headroom--not-top .menu-item.menu-item-has-children:after, 
+								                .headroom--not-top .menu-item.menu-item-language:after,
 								                
 								                .read-more-button:hover,
 								                
@@ -1215,9 +1213,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'css'     => array(
 							array(
 								'property' => 'color',
-								'selector' => '.nav--main .shop-menu-item__price,
-								
-								                .blurp--top,
+								'selector' => '.blurp--top,
                                                 .border-waves-before,
                                                 .border-waves-after,
                                                 .menu-list__item-highlight-title,
@@ -1287,6 +1283,11 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							),
                             array(
                                 'property' => 'color',
+                                'selector' => '.nav--main .shop-menu-item__price',
+                                'media' => 'only screen and (max-width: 899px)'
+                            ),
+                            array(
+                                'property' => 'color',
                                 'unit' => '88',
                                 'selector' => '.pagination .nav-links .page-numbers,
                                                 .pagination .nav-links .page-numbers.prev.disabled,
@@ -1297,7 +1298,10 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                             ),
 							array(
 								'property' => 'border-color',
-								'selector' => '.site-header, .site-footer'
+								'selector' => '.site-header, 
+								                .site-footer,
+								                .header--transparent .menu-item-has-children:after, 
+								                .header--transparent .menu-item-language:after'
 							),
 							array(
 								'property' => 'background-color',
@@ -1469,26 +1473,22 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                         'css'     => array(
 	                        array(
 		                        'property' => 'color',
-		                        'selector' => '.navigation--main .nav--main li a',
-		                        'media' => 'only screen and (max-width: 899px) '
+		                        'selector' => '.navigation--main .nav--main li a,
+		                                        .shop-menu-item .shop-menu-item__price',
+		                        'media' => 'only screen and (max-width: 899px)'
 	                        ),
 	                        array(
 		                        'property' => 'border-color',
 		                        'unit' => '30',
 		                        'selector' => '.navigation--main .nav--main',
-		                        'media' => 'only screen and (max-width: 899px)',
+		                        'media' => 'only screen and (max-width: 899px) ',
 		                        'callback_filter' => 'rosa_transparent_color'
-	                        ),
-	                        array(
-		                        'property' => 'color',
-		                        'selector' => '.shop-menu-item .shop-menu-item__price',
-		                        'media' => 'only screen and (max-width: 899px)'
 	                        ),
 	                        array(
 		                        'property' => 'background-color',
 		                        'unit' => '19',
 		                        'selector' => '.widget_shopping_cart_content',
-		                        'media' => 'only screen and (max-width: 899px)',
+		                        'media' => 'only screen and (max-width: 899px)  ',
 		                        'callback_filter' => 'rosa_transparent_color'
 	                        ),
                         ),
