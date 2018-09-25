@@ -45,12 +45,7 @@ if ( ! function_exists( 'woocommerce_template_loop_product_thumbnail' ) ) {
 	add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
 
 	function woocommerce_template_loop_product_thumbnail() {
-
-		global $post;
-
-		$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'small-size' );
-
-		echo woocommerce_get_product_thumbnail( 'small-size' );
+		echo woocommerce_get_product_thumbnail( 'woocommerce_thumbnail' );
 	}
 }
 
