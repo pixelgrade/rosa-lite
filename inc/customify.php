@@ -636,6 +636,11 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								'property' => 'fill',
 								'selector' => '.copyright-area.copyright-area__accent svg path'
 							),
+							array(
+								'property' => 'color',
+								'selector' => '.c-hero__map',
+								'callback_filter' => 'rosa_map_color',
+							),
 						),
 					),
 					'links_color'                         => array(
@@ -1938,6 +1943,27 @@ function rosa_transparent_color( value, selector, property, unit ) {
 }
 
 add_action( 'customize_preview_init', 'rosa_transparent_color_customizer_preview', 20 );
+
+function rosa_map_color( $value, $selector, $property, $unit ) {
+	$output = $selector . ' {' .
+	          $property . ': ' . $value . $unit . ';' .
+	          '}';
+
+	return $output;
+}
+
+function rosa_map_color_customizer_preview() {
+
+	$js = "
+	
+	function rosa_map_color( value, selector, property, unit ) {
+		jQuery( window.document.body ).trigger( 'rosa:update-map-color', value );
+	}" . PHP_EOL;
+
+	wp_add_inline_script( 'customify-previewer-scripts', $js );
+}
+
+add_action( 'customize_preview_init', 'rosa_map_color_customizer_preview', 20 );
 
 function rosa_footer_style_select( $value, $selector, $property, $unit ) {
 	$waves_fill_color = THEME_DARK_TERTIARY;

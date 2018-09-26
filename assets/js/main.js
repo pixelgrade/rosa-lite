@@ -1089,18 +1089,17 @@ function magnificPopupInit() {
 }
 
 var GMap = function() {
-	this.maps = [];
 	this.pinIconMarkup = $( '.js-map-pin' ).html();
 };
 
 GMap.prototype.init = function( $container ) {
 	var that = this;
+	var $body = $( 'body' );
 
-	$container = typeof $container !== "undefined" ? $container : $( 'body' );
+	$container = typeof $container !== "undefined" ? $container : $body;
 
 	$container.find( '.c-hero__map' ).each( function( i, obj ) {
 		var $map = $( obj );
-		that.maps.push( $map );
 		that.initializeMap( $map );
 	} );
 };
@@ -1148,25 +1147,30 @@ GMap.prototype.initializeMap = function( $map ) {
 		}
 
 		$map
-		.gmap3( {
-			center: [coordinates.latitude, coordinates.longitude],
-			zoom: parseInt( coordinates.zoom ),
-			mapTypeId: style,
-			scrollwheel: false,
-			mapTypeControl: false,
-			zoomControl: true,
-			zoomControlOptions: {
-				position: google.maps.ControlPosition.LEFT_CENTER
-			},
-			scaleControl: true,
-			streetViewControl: true,
-			streetViewControlOptions: {
-				position: google.maps.ControlPosition.LEFT_CENTER
-			},
-			fullscreenControl: true
-		} )
-		.styledmaptype( "rosa", that.customStyle, {name: "Rosa"} )
-		.overlay( pins );
+			.gmap3( {
+				center: [coordinates.latitude, coordinates.longitude],
+				zoom: parseInt( coordinates.zoom ),
+				mapTypeId: style,
+				scrollwheel: false,
+				mapTypeControl: false,
+				zoomControl: true,
+				zoomControlOptions: {
+					position: google.maps.ControlPosition.LEFT_CENTER
+				},
+				scaleControl: true,
+				streetViewControl: true,
+				streetViewControlOptions: {
+					position: google.maps.ControlPosition.LEFT_CENTER
+				},
+				fullscreenControl: true
+			} )
+			.styledmaptype( "rosa", that.customStyle, {name: "Rosa"} )
+			.overlay( pins );
+
+		$body.on( 'rosa:update-map-color', function(e, color) {
+			that.customStyle[1].stylers[0].hue = color;
+			$map.gmap3().styledmaptype( "rosa", that.customStyle, {name: "Rosa"} );
+		});
 
 		if ( pins.length > 1 ) {
 			$map.gmap3().fit();
