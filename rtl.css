@@ -10061,6 +10061,10 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   min-height: 66.666666vh;
 }
 
+.c-hero__background {
+  background-color: #262526;
+}
+
 .c-hero__slider {
   position: absolute;
   top: 0;

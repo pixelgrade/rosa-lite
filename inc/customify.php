@@ -2188,6 +2188,10 @@ function rosa_add_customify_style_manager_section( $options ) {
 						'property' => 'color',
 						'selector' => '.article__header .article__headline .headline__description .btn'
 					),
+					array(
+						'property' => 'background-color',
+						'selector' => '.c-hero__background'
+					),
 				),
 			),
 			'sm_dark_secondary'  => array(
