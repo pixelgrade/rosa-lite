@@ -166,4 +166,8 @@ class wpgrade_latest_comments extends WP_Widget {
 	}
 }
 
-add_action( 'widgets_init', create_function( '', 'return register_widget("wpgrade_latest_comments");' ) );
+function rosa_register_widgets() {
+	register_widget( 'wpgrade_latest_comments' );
+}
+
+add_action( 'widgets_init', 'rosa_register_widgets' );
