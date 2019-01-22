@@ -6,7 +6,7 @@
 ( function( $, window ) {
 
 	// Site title and description.
-    if (!document.getElementsByClassName('site-logo--image')) {
+    if ( ! $( '.site-logo--image' ).length ) {
         wp.customize('blogname', function (value) {
             value.bind(function (to) {
                 $('.site-title a').text(to);
