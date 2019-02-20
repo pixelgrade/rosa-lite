@@ -373,14 +373,24 @@ $( window ).load( function() {
 	if ( ! empty( $( '#date-otreservations' ) ) ) {
 		var dateFormat = $( '#date-otreservations' ).closest( '.otw-wrapper' ).children( '.txtDateFormat' ).attr( 'value' ).toUpperCase();
 
+		function disabledWeekends() {
+
+			if($('.pixcode--otreservations').hasClass('disable-weekends')) {
+				return true;
+			}
+
+			return false;
+		}
+
 		// Pikaday
 		var picker = new Pikaday( {
 			field: document.getElementById( 'date-otreservations' ),
 			format: dateFormat,
 			minDate: moment().toDate(),
 			defaultDate: moment().toDate(),
-			setDefaultDate: true
-		} );
+			setDefaultDate: true,
+			disableWeekends: disabledWeekends()
+		} )
 	}
 
 	$( '.pixcode--tabs' ).organicTabs();
