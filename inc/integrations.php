@@ -47,3 +47,7 @@ if ( function_exists( 'siteorigin_panels_render' ) ) {
 if ( class_exists( 'Gridable' ) ) {
 	require get_template_directory() . '/inc/integrations/gridable.php';
 }
+
+if ( class_exists( 'Elementor\Plugin' ) ) {
+	require get_template_directory() . '/inc/integrations/elementor.php';
+}

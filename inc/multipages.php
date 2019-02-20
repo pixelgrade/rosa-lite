@@ -229,7 +229,7 @@ class Rosa_Multipage {
 	/**
 	 * Returns the modified sample permalink
 	 *
-	 * @param string  $permalink Sample permalink.
+	 * @param array  $permalink Sample permalink.
 	 * @param int     $post_id   Post ID.
 	 * @param string  $title     Post title.
 	 * @param string  $name      Post name (slug).
