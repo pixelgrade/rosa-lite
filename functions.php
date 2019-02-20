@@ -135,37 +135,6 @@ function rosa_content_width() {
 
 add_action( 'after_setup_theme', 'rosa_content_width', 0 );
 
-// check if current page or any of the children use the contact page template
-if ( ! function_exists( 'rosa_page_has_contact_descendants' ) ) {
-	function rosa_page_has_contact_descendants( $id = null ) {
-
-		$my_post = get_post( $id );
-
-		if ( 'page-templates/contact.php' === get_page_template_slug() ) {
-			return true;
-		}
-
-		$args = array(
-			'post_parent' => $my_post->ID,
-			'post_type'   => 'page',
-			'orderby'     => 'menu_order'
-		);
-
-		$child_query = new WP_Query( $args );
-
-		while ( $child_query->have_posts() ) {
-			$child_query->the_post();
-
-			if ( 'page-templates/contact.php' === get_page_template_slug() ) {
-				return true;
-			}
-		}
-		wp_reset_postdata();
-
-		return false;
-	}
-}
-
 /// load assets
 if ( ! function_exists( 'rosa_load_assets' ) ) {
 	function rosa_load_assets(){

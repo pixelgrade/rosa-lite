@@ -700,22 +700,38 @@ function rosa_callback_load_custom_js_footer() {
 add_action( 'wp_footer', 'rosa_callback_load_custom_js_footer', 999 );
 
 
-/**
- * Cutting the titles and adding '...' after
- *
- * @param  [string] $text       [description]
- * @param  [int] $cut_length [description]
- * @param  [int] $limit      [description]
- *
- * @return [type]             [description]
- */
-function short_text( $text, $cut_length, $limit, $echo = true ) {
-	$char_count = mb_strlen( $text );
-	$text       = ( $char_count > $limit ) ? mb_substr( $text, 0, $cut_length ) . pixelgrade_option( 'blog_excerpt_more_text' ) : $text;
-	if ( $echo ) {
-		echo $text;
-	} else {
-		return $text;
+// check if current page or any of the children use the contact page template
+if ( ! function_exists( 'rosa_page_has_contact_descendants' ) ) {
+	function rosa_page_has_contact_descendants( $id = null ) {
+
+		$my_post = get_post( $id );
+
+		$has_contact_descendents = false;
+
+		if ( 'page-templates/contact.php' === get_page_template_slug() ) {
+			$has_contact_descendents = true;
+		} else {
+			// We need to look in children
+
+			$args = array(
+				'post_parent' => $my_post->ID,
+				'post_type'   => 'page',
+				'orderby'     => 'menu_order'
+			);
+
+			$child_query = new WP_Query( $args );
+
+			while ( $child_query->have_posts() ) {
+				if ( 'page-templates/contact.php' === get_page_template_slug( $child_query->next_post() ) ) {
+					$has_contact_descendents = true;
+					break;
+				}
+			}
+
+			wp_reset_postdata();
+		}
+
+		return $has_contact_descendents;
 	}
 }
 
@@ -738,7 +754,7 @@ function short_text( $text, $cut_length, $limit, $echo = true ) {
  * @link   http://book.cakephp.org/view/1469/Text#truncate-1625
  */
 
-function truncate( $text, $length = 100, $options = array() ) {
+function rosa_truncate( $text, $length = 100, $options = array() ) {
 	$default = array(
 		'ending' => '...',
 		'exact'  => true,
@@ -885,7 +901,7 @@ function rosa_better_excerpt( $text = '' ) {
 			'exact'  => false,
 			'html'   => true
 		);
-		$text    = truncate( $text, $excerpt_length, $options );
+		$text    = rosa_truncate( $text, $excerpt_length, $options );
 
 	}
 
@@ -978,7 +994,7 @@ function rosa_get_first_gallery_image_src( $post_ID, $image_size ) {
 
 /**
  * Fix the sticky posts logic by preventing them to appear again
- * 
+ *
  * @param WP_Query $query
  */
 function rosa_pre_get_posts_sticky_posts( $query ) {
