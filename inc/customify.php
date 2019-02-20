@@ -1164,7 +1164,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 
                                                 .read-more-button:hover,
                                                 
-                                                .woocommerce ul.products li.product:hover .product__button:hover'
+                                                .woocommerce ul.products li.product:hover .product__button:hover,
+                                                .nav--main .shop-menu-item__price'
 							),
                             array(
                                 'property' => 'border-color',
@@ -2221,8 +2222,7 @@ function rosa_add_customify_style_manager_section( $options ) {
 		                    .article__header .article__headline .headline__primary, 
 		                    .article__header .article__headline .headline__description > *:not(.star):not(.separator--flower):not(.btn),
 		                    .header--transparent .nav--main a,
-		                    .header--transparent .nav--main .shop-menu-item__price,
-		                    .headroom--top:not(.header--transparent) .nav--main .shop-menu-item__price'
+		                    .header--transparent .nav--main .shop-menu-item__price'
 					),
                     array(
                         'property' => 'border-color',
