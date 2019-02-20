@@ -35,8 +35,7 @@ if ( ! comments_open() ) {
 			} else {
 				esc_html_e( 'Reviews', 'woocommerce' );
 			}
-			?>
-		</h2>
+			?></h2>
 
 		<?php if ( have_comments() ) : ?>
 			<ol class="commentlist">
