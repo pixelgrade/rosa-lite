@@ -1073,4 +1073,37 @@ td.actions {
   width: 100%;
 }
 
+.payment_method_stripe .form-row-wide {
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.payment_method_stripe .form-row-wide .stripe-card-group {
+  width: 100%;
+}
+
+.payment_method_stripe .form-row-wide .wc-stripe-elements-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+@media only screen and (max-width: 899px) {
+  .payment_method_stripe .form-row-first[class][class] {
+    width: 100%;
+  }
+  .payment_method_stripe .form-row-last[class][class] {
+    width: 100%;
+  }
+}
+
+.payment_method_stripe .wc-stripe-elements-field {
+  width: 100%;
+}
+
 /*# sourceMappingURL=woocommerce.css.map */
