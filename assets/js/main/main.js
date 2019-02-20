@@ -374,9 +374,12 @@ $( window ).load( function() {
 		var dateFormat = $( '#date-otreservations' ).closest( '.otw-wrapper' ).children( '.txtDateFormat' ).attr( 'value' ).toUpperCase();
 
 		function disabledWeekends() {
+
 			if($('.pixcode--otreservations').hasClass('disable-weekends')) {
-				return true
+				return true;
 			}
+
+			return false;
 		}
 
 		// Pikaday
