@@ -67,7 +67,6 @@ if ( ! comments_open() ) {
 		<div id="review_form_wrapper">
 			<div id="review_form">
 				<?php
-				$commenter = wp_get_current_commenter();
 
 				$comment_form = array(
 					/* translators: %s is product title */
