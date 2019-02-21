@@ -24,18 +24,21 @@ get_header(); ?>
 				if ( ! is_wp_error( $categories ) ) : ?>
 
 					<div class="pix-dropdown  down  archive-filter">
-						<a class="dropdown__trigger" href="#"><?php esc_html_e( 'Categories', 'rosa' ) ?></a>
-						<ul class="dropdown__menu  nav  nav--banner">
-							<?php foreach ( $categories as $category ) : ?>
+                        <div class="categories__menu">
+                            <a class="dropdown__trigger" href="#"><?php esc_html_e( 'Categories', 'rosa' ) ?></a>
+                            <ul class="dropdown__menu  nav  nav--banner">
+                                <?php foreach ( $categories as $category ) : ?>
 
-								<li>
-									<a href="<?php echo get_category_link( $category->term_id ); ?>" title="<?php echo esc_attr( sprintf( esc_html__( "View all posts in %s", 'rosa' ), $category->name ) ) ?>">
-										<?php echo $category->cat_name; ?>
-									</a>
-								</li>
+                                    <li>
+                                        <a href="<?php echo get_category_link( $category->term_id ); ?>" title="<?php echo esc_attr( sprintf( esc_html__( "View all posts in %s", 'rosa' ), $category->name ) ) ?>">
+                                            <?php echo $category->cat_name; ?>
+                                        </a>
+                                    </li>
 
-							<?php endforeach; ?>
-						</ul>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                        <?php get_search_form(); ?>
 					</div>
 
 				<?php endif;

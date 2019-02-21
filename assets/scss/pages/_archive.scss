@@ -218,8 +218,12 @@
 }
 
 .archive-filter {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 1.5em;
 	@include media-query(palm){
 		margin-bottom: $_u;
+		grid-template-columns: 1fr;
 	}
 
 	@include media-query(lap-and-up){

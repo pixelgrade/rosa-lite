@@ -269,7 +269,7 @@ function eventHandlers() {
 		filterHandler = 'click';
 	}
 
-	$( '.pix-dropdown' ).on( filterHandler, function( e ) {
+	$( '.categories__menu' ).on( filterHandler, function( e ) {
 		e.stopPropagation();
 
 		$( this ).toggleClass( 'active' );

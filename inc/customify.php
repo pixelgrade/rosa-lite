@@ -853,9 +853,9 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								'unit'            => '37',
 								'selector'        => '.up-link:before,
 								
-                                                .pix-dropdown .dropdown__trigger,
-                                                .pix-dropdown.active .dropdown__menu,
-                                                .pix-dropdown.active .dropdown__menu:before,
+                                                .categories__menu .dropdown__trigger,
+                                                .categories__menu.active .dropdown__menu,
+                                                .categories__menu.active .dropdown__menu:before,
                                                 
                                                 .otw-widget-form .otw-reservation-date,
                                                 .otw-widget-form .otw-reservation-time,
@@ -928,7 +928,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								                .article-archive .article__title a,
 								                .article-archive .article__title a:hover,
 								                
-								                .pix-dropdown .dropdown__trigger,
+								                .categories__menu .dropdown__trigger,
 								                
 								                .sidebar--main .widget a,
 								                .icon-search:before,
@@ -988,7 +988,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 							array(
 								'property' => 'border-color',
 								'selector' => 'div:not(.c-hero-layer) .pixcode-slider[data-arrows] .rsArrowIcn,
-								                .pix-dropdown .dropdown__trigger:after'
+								                .categories__menu .dropdown__trigger:after'
 							),
 							//comment
 							//input
@@ -1313,7 +1313,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                  
                                                 .menu-list__item-title .item_title,
                                                 .menu-list__item-price,
-                                                .pix-dropdown.active .dropdown__menu,
+                                                .categories__menu.active .dropdown__menu,
                                                 
                                                 .otw-input-wrap select option,
                                                 

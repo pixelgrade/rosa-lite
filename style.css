@@ -12070,21 +12070,9 @@ p.menu-list__item-desc + span.dots {
   text-align: center;
 }
 
-.pix-dropdown.active .dropdown__menu {
-  border: 1px solid #d8d8d8;
-  border-top: 0;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-.pix-dropdown.active .dropdown__trigger {
-  border-bottom: 1px solid transparent;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
 .pix-dropdown .dropdown__trigger {
   display: block;
+  height: 100%;
   padding: 6px 36px;
   border: 1px solid #d8d8d8;
   background: none;
@@ -12151,6 +12139,29 @@ p.menu-list__item-desc + span.dots {
 .pix-dropdown.active .dropdown__menu {
   display: block;
   z-index: 9;
+}
+
+.pix-dropdown .categories__menu {
+  position: relative;
+}
+
+.pix-dropdown .categories__menu.active .dropdown__menu {
+  display: block;
+  z-index: 9;
+  border: 1px solid #d8d8d8;
+  border-top: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.pix-dropdown .categories__menu.active .dropdown__trigger {
+  border-bottom: 1px solid transparent;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.pix-dropdown .categories__menu .dropdown__trigger {
+  line-height: 2.5;
 }
 
 /*------------------------------------*    $CONTACT FORM
@@ -15205,9 +15216,19 @@ http://nicolasgallagher.com/micro-clearfix-hack/
   font-size: 13px;
 }
 
+.archive-filter {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-gap: 1.5em;
+}
+
 @media only screen and (max-width: 899px) {
   .archive-filter {
     margin-bottom: 24px;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
   }
 }
 
