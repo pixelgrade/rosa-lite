@@ -103,6 +103,12 @@
 //	}
 	.categories__menu {
 		position: relative;
+		@supports not (display: grid) {
+			width: 100%;
+		}
+		@include media-query(palm) {
+			order: 2;
+		}
 		&.active {
 			.dropdown__menu {
 				display: block;
