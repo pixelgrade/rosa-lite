@@ -586,11 +586,9 @@ var ieVersion = getIEversion();
 var Rosa = {};
 
 if ( ! ieVersion ) {
-	Rosa.Parallax = new Parallax( '[data-rellax]', {
-		bleed: 60,
-		container: '[data-rellax-container]'
-	} );
-
-	// Rosa.Parallax.disabled = "ontouchstart" in window && "onorientationchange" in window;
-	Rosa.Parallax.init();
+	$( "[data-rellax]" ).rellax();
+	$.fn.rellax.defaults.bleed = 60;
+	$window.trigger( 'rellax' );
 }
+
+
