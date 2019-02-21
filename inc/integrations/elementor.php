@@ -15,12 +15,16 @@
  * @return bool
  */
 function rosa_prevent_multipage_logic_in_elementor( $allow, $post ) {
+	if ( empty( $post ) || is_wp_error( $post ) || empty( $post->ID ) ) {
+		return $allow;
+	}
+
 	// We will not allow the multipage logic when the request is for the Elementor main editor window or the preview window,
 	// but only for permalinks related to the actual page being edited, not for others.
-		if ( ( isset( Elementor\Plugin::instance()->preview ) && method_exists( Elementor\Plugin::instance()->preview, 'is_preview_mode' ) && isset( $post->ID ) && Elementor\Plugin::instance()->preview->is_preview_mode( $post->ID ) ) ||
-		     ( isset( Elementor\Plugin::instance()->editor ) && method_exists( Elementor\Plugin::instance()->editor, 'is_edit_mode' ) && isset( $post->ID ) && Elementor\Plugin::instance()->editor->is_edit_mode( $post->ID ) ) ) {
-			return false;
-		}
+	if ( ( isset( Elementor\Plugin::instance()->preview ) && method_exists( Elementor\Plugin::instance()->preview, 'is_preview_mode' ) && Elementor\Plugin::instance()->preview->is_preview_mode( $post->ID ) ) ||
+	     ( isset( Elementor\Plugin::instance()->editor ) && method_exists( Elementor\Plugin::instance()->editor, 'is_edit_mode' ) && Elementor\Plugin::instance()->editor->is_edit_mode( $post->ID ) ) ) {
+		return false;
+	}
 
 	return $allow;
 }
@@ -35,6 +39,10 @@ add_filter( 'pixelgrade_multipage_allow', 'rosa_prevent_multipage_logic_in_eleme
  * @return bool
  */
 function rosa_allow_empty_markup_in_elementor( $allow, $post ) {
+	if ( empty( $post ) || is_wp_error( $post ) || empty( $post->ID ) ) {
+		return $allow;
+	}
+
 	if ( ( isset( Elementor\Plugin::instance()->preview ) && method_exists( Elementor\Plugin::instance()->preview, 'is_preview_mode' ) && Elementor\Plugin::instance()->preview->is_preview_mode( $post->ID ) ) ||
 	     ( isset( Elementor\Plugin::instance()->editor ) && method_exists( Elementor\Plugin::instance()->editor, 'is_edit_mode' ) && Elementor\Plugin::instance()->editor->is_edit_mode( $post->ID ) ) ) {
 		return true;
