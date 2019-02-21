@@ -11520,6 +11520,18 @@ button.nav-trigger {
   height: 44px;
 }
 
+@supports not ((display: -ms-grid) or (display: grid)) {
+  .form-search {
+    margin-left: 1.5em;
+  }
+  @media only screen and (max-width: 899px) {
+    .form-search {
+      margin-left: 0;
+      margin-bottom: 1.5em;
+    }
+  }
+}
+
 .form-search .search-query {
   position: absolute;
   left: 0;
@@ -12143,6 +12155,20 @@ p.menu-list__item-desc + span.dots {
 
 .pix-dropdown .categories__menu {
   position: relative;
+}
+
+@supports not ((display: -ms-grid) or (display: grid)) {
+  .pix-dropdown .categories__menu {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 899px) {
+  .pix-dropdown .categories__menu {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
 }
 
 .pix-dropdown .categories__menu.active .dropdown__menu {
@@ -15216,19 +15242,45 @@ http://nicolasgallagher.com/micro-clearfix-hack/
   font-size: 13px;
 }
 
-.archive-filter {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  grid-gap: 1.5em;
+@supports ((display: -ms-grid) or (display: grid)) {
+  .archive-filter {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5em;
+  }
+}
+
+@supports not ((display: -ms-grid) or (display: grid)) {
+  .archive-filter {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+    max-width: 403px;
+  }
+  @media only screen and (max-width: 899px) {
+    .archive-filter {
+      max-width: 100%;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+    }
+  }
 }
 
 @media only screen and (max-width: 899px) {
   .archive-filter {
     margin-bottom: 24px;
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
+  }
+  @supports ((display: -ms-grid) or (display: grid)) {
+    .archive-filter {
+      -ms-grid-columns: 1fr;
+          grid-template-columns: 1fr;
+    }
   }
 }
 

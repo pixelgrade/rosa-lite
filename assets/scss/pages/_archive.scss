@@ -218,12 +218,31 @@
 }
 
 .archive-filter {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-gap: 1.5em;
+
+	@supports (display: grid) {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 1.5em;
+	}
+
+	@supports not (display: grid) {
+		display: flex;
+		align-items: center;
+
+		width: 100%;
+		max-width: 403px;
+
+		@include media-query(palm) {
+			max-width: 100%;
+			flex-wrap: wrap;
+		}
+	}
+
 	@include media-query(palm){
 		margin-bottom: $_u;
-		grid-template-columns: 1fr;
+		@supports (display: grid) {
+			grid-template-columns: 1fr;
+		}
 	}
 
 	@include media-query(lap-and-up){
