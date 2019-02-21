@@ -704,11 +704,15 @@ add_action( 'wp_footer', 'rosa_callback_load_custom_js_footer', 999 );
 if ( ! function_exists( 'rosa_page_has_contact_descendants' ) ) {
 	function rosa_page_has_contact_descendants( $id = null ) {
 
-		$my_post = get_post( $id );
-
+		// The default is that it doesn't have.
 		$has_contact_descendents = false;
 
-		if ( 'page-templates/contact.php' === get_page_template_slug() ) {
+		$my_post = get_post( $id );
+		if ( empty( $my_post ) || is_wp_error( $my_post ) || empty( $my_post->ID ) ) {
+			return $has_contact_descendents;
+		}
+
+		if ( 'page-templates/contact.php' === get_page_template_slug( $my_post ) ) {
 			$has_contact_descendents = true;
 		} else {
 			// We need to look in children
