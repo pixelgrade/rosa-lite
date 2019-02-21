@@ -2349,7 +2349,7 @@ html.flexbox, html.site-title {
 		   <li class=first><b class=split__title>1st place</b> Bob</li>
 		   <li class=second><b class=split__title>2nd place</b> Lilly</li>
 		   <li class=third><b class=split__title>3rd place</b> Ted</li>
-	   </ol>​
+	   </ol>
 	 *
 	 * Demo: jsfiddle.net/inuitcss/9gZW7
 	 *
@@ -9212,7 +9212,7 @@ input[type="color"]:-ms-input-placeholder,
   margin-left: 6px;
 }
 
-/** 
+/**
   * Inline forms
   *
   * Make forms appear inline(-block) by adding the `.form-inline` class. Inline
@@ -11562,7 +11562,7 @@ button.nav-trigger {
 
 /**
  * Separator Shortcode
- * <hr class="separator" />  
+ * <hr class="separator" />
  */
 /*==========  $SEPARATORS  ==========*/
 hr, .separator {
