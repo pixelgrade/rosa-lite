@@ -6,7 +6,6 @@ var Parallax = function( selector, options ) {
 
 Parallax.prototype.init = function( $container ) {
     $container = $container || $( 'body' );
-
     if ( this.disabled === false ) {
         $container.find( this.selector ).rellax( this.options );
     }
