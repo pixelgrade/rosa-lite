@@ -1280,7 +1280,6 @@ var Parallax = function( selector, options ) {
 
 Parallax.prototype.init = function( $container ) {
     $container = $container || $( 'body' );
-
     if ( this.disabled === false ) {
         $container.find( this.selector ).rellax( this.options );
     }
@@ -2193,6 +2192,7 @@ $( document ).ready( function() {
 	if ( globalDebug ) {
 		console.groupEnd();
 	}
+
 } );
 
 
@@ -2286,6 +2286,7 @@ $( window ).load( function() {
 		});
 	}
 
+	Rosa.Parallax.init();
 	$html.addClass( 'is--loaded' );
 } );
 
@@ -2449,13 +2450,12 @@ $( function() {
 var ieVersion = getIEversion();
 var Rosa = {};
 
-if ( ! ieVersion ) {
-	$( "[data-rellax]" ).rellax();
-	$.fn.rellax.defaults.bleed = 60;
-	$window.trigger( 'rellax' );
-}
+Rosa.Parallax = new Parallax( '[data-rellax]', {
+	bleed: 60,
+	container: '[data-rellax-container]'
+} );
 
-
+Rosa.Parallax.disabled = ieVersion && ieVersion < 12;
 
 // returns the depth of the element "e" relative to element with id=id
 // for this calculation only parents with classname = waypoint are considered

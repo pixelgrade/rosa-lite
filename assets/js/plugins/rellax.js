@@ -29,7 +29,7 @@
 			this.options.scale = scale !== undefined ? parseFloat( scale ) : this.options.scale;
 			this.options.fill = fill !== undefined;
 
-			if ( this.options.amount == 0 ) {
+			if ( this.options.amount === 0 ) {
 				return;
 			}
 
