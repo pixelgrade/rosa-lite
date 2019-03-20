@@ -9,12 +9,34 @@
 }
 
 html .woocommerce ul.products {
-    text-align: center;
 
     li.product {
         margin-left: 1.25%;
         margin-right: 1.25%;
     }
+}
+
+.woocommerce[class] ul.products {
+	@for $i from 1 through 12 {
+		&.columns-#{$i} {
+			li.product {
+				@media screen and (max-width: 480px) {
+					width: 100%;
+				}
+
+				@media screen and (min-width: 480px) and (max-width: 768px) {
+					width: 47.5%;
+
+					margin-left: 1.25%;
+					margin-right: 1.25%;
+				}
+
+				@media screen and (min-width: 769px){
+					width: calc((100%/#{$i}) - 2.5%);
+				}
+			}
+		}
+	}
 }
 
 .woocommerce ul.products li.product{
@@ -25,22 +47,12 @@ html .woocommerce ul.products {
 
 	text-align: center;
 
-//	@media screen and (max-width: 480px){
-//		width: 100%;
-//	}
-//
-//	@media screen and (min-width: 481px){
-		margin: 0 1.5%;
-		margin-bottom: 78px;
-//	}
-
-//	@media screen and (min-width: 481px) and (max-width: 768px){
-		width: 46% !important;
-//	}
-
-	@media screen and (min-width: 769px){
-		width: 30% !important;
+	@media screen and (max-width: 480px){
+		width: 100%;
 	}
+
+	margin: 0 1.5%;
+	margin-bottom: 78px;
 
 	.product__title{
 		margin: 18px 0 3px;

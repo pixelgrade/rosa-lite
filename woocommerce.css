@@ -354,19 +354,249 @@ ul.payment_methods li * {
 
 /*------------------------------------*    $WOOCOMMERCE ARCHIVE
 \*------------------------------------*/
-@media only screen and (min-width: 900px) {
-  .woocommerce ul.products {
-    margin: 0 -1.5%;
-  }
-}
-
-html .woocommerce ul.products {
-  text-align: center;
-}
-
 html .woocommerce ul.products li.product {
   margin-left: 1.25%;
   margin-right: 1.25%;
+}
+
+@media screen and (max-width: 480px) {
+  .woocommerce[class] ul.products.columns-1 li.product {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .woocommerce[class] ul.products.columns-1 li.product {
+    width: 47.5%;
+    margin-left: 1.25%;
+    margin-right: 1.25%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .woocommerce[class] ul.products.columns-1 li.product {
+    width: calc((100%/1) - 2.5%);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .woocommerce[class] ul.products.columns-2 li.product {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .woocommerce[class] ul.products.columns-2 li.product {
+    width: 47.5%;
+    margin-left: 1.25%;
+    margin-right: 1.25%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .woocommerce[class] ul.products.columns-2 li.product {
+    width: calc((100%/2) - 2.5%);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .woocommerce[class] ul.products.columns-3 li.product {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .woocommerce[class] ul.products.columns-3 li.product {
+    width: 47.5%;
+    margin-left: 1.25%;
+    margin-right: 1.25%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .woocommerce[class] ul.products.columns-3 li.product {
+    width: calc((100%/3) - 2.5%);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .woocommerce[class] ul.products.columns-4 li.product {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .woocommerce[class] ul.products.columns-4 li.product {
+    width: 47.5%;
+    margin-left: 1.25%;
+    margin-right: 1.25%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .woocommerce[class] ul.products.columns-4 li.product {
+    width: calc((100%/4) - 2.5%);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .woocommerce[class] ul.products.columns-5 li.product {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .woocommerce[class] ul.products.columns-5 li.product {
+    width: 47.5%;
+    margin-left: 1.25%;
+    margin-right: 1.25%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .woocommerce[class] ul.products.columns-5 li.product {
+    width: calc((100%/5) - 2.5%);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .woocommerce[class] ul.products.columns-6 li.product {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .woocommerce[class] ul.products.columns-6 li.product {
+    width: 47.5%;
+    margin-left: 1.25%;
+    margin-right: 1.25%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .woocommerce[class] ul.products.columns-6 li.product {
+    width: calc((100%/6) - 2.5%);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .woocommerce[class] ul.products.columns-7 li.product {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .woocommerce[class] ul.products.columns-7 li.product {
+    width: 47.5%;
+    margin-left: 1.25%;
+    margin-right: 1.25%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .woocommerce[class] ul.products.columns-7 li.product {
+    width: calc((100%/7) - 2.5%);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .woocommerce[class] ul.products.columns-8 li.product {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .woocommerce[class] ul.products.columns-8 li.product {
+    width: 47.5%;
+    margin-left: 1.25%;
+    margin-right: 1.25%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .woocommerce[class] ul.products.columns-8 li.product {
+    width: calc((100%/8) - 2.5%);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .woocommerce[class] ul.products.columns-9 li.product {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .woocommerce[class] ul.products.columns-9 li.product {
+    width: 47.5%;
+    margin-left: 1.25%;
+    margin-right: 1.25%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .woocommerce[class] ul.products.columns-9 li.product {
+    width: calc((100%/9) - 2.5%);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .woocommerce[class] ul.products.columns-10 li.product {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .woocommerce[class] ul.products.columns-10 li.product {
+    width: 47.5%;
+    margin-left: 1.25%;
+    margin-right: 1.25%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .woocommerce[class] ul.products.columns-10 li.product {
+    width: calc((100%/10) - 2.5%);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .woocommerce[class] ul.products.columns-11 li.product {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .woocommerce[class] ul.products.columns-11 li.product {
+    width: 47.5%;
+    margin-left: 1.25%;
+    margin-right: 1.25%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .woocommerce[class] ul.products.columns-11 li.product {
+    width: calc((100%/11) - 2.5%);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .woocommerce[class] ul.products.columns-12 li.product {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .woocommerce[class] ul.products.columns-12 li.product {
+    width: 47.5%;
+    margin-left: 1.25%;
+    margin-right: 1.25%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .woocommerce[class] ul.products.columns-12 li.product {
+    width: calc((100%/12) - 2.5%);
+  }
 }
 
 .woocommerce ul.products li.product {
@@ -377,12 +607,11 @@ html .woocommerce ul.products li.product {
   text-align: center;
   margin: 0 1.5%;
   margin-bottom: 78px;
-  width: 46% !important;
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (max-width: 480px) {
   .woocommerce ul.products li.product {
-    width: 30% !important;
+    width: 100%;
   }
 }
 
