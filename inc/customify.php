@@ -1868,10 +1868,63 @@ add_filter( 'customify_filter_fields', 'add_customify_rosa_options', 11 );
 function rosa_range_negative_value( $value, $selector, $property, $unit ) {
 
 	$output = $selector . '{
-		' . $property . ': -' . $value . '' . $unit . ";\n" . "}\n";
+	' . $property . ': -' . $value . '' . $unit . ";\n" . "}\n";
 
 	return $output;
 }
+
+function rosa_range_negative_value_customizer_preview() {
+	$js = '';
+	$js .= "
+	
+	String.prototype.hashCode = function() {
+	  var hash = 0, i, chr;
+	  if (this.length === 0) return hash;
+	  for (i = 0; i < this.length; i++) {
+	    chr   = this.charCodeAt(i);
+	    hash  = ((hash << 5) - hash) + chr;
+	    hash |= 0; // Convert to 32bit integer
+	  }
+	  return hash;
+	};
+
+	function rosa_range_negative_value( value, selector, property, unit ) {
+
+
+	var css = '';
+		unique_string = selector + property,
+		uid = unique_string.hashCode(),
+		unique_id = 'rosa_negative_spacings_' + uid,
+		style = document.getElementById( unique_id ),
+		head = document.head || document.getElementsByTagName('head')[0];
+	
+	css += selector + ' {' +
+		   property + ': ' + -1 * value + unit + ';' +
+		   '}';" . PHP_EOL;
+
+		$js .= "
+	if ( style !== null ) {
+			style.innerHTML = css;
+	} else {
+		style = document.createElement('style');
+		style.setAttribute('id', unique_id );
+	
+		style.type = 'text/css';
+		if ( style.styleSheet ) {
+			style.styleSheet.cssText = css;
+		} else {
+			style.appendChild(document.createTextNode(css));
+		}
+	
+		head.appendChild(style);
+	}
+	}" . PHP_EOL;
+
+	wp_add_inline_script( 'customify-previewer-scripts', $js );
+
+}
+
+add_action( 'customize_preview_init', 'rosa_range_negative_value_customizer_preview', 20 );
 
 function rosa_transparent_color( $value, $selector, $property, $unit ) {
 	if ( empty( $unit ) ) {
