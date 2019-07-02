@@ -1,8 +1,7 @@
 # ROSA - An Exquisite Restaurant WordPress Theme
-### ROSA is the #1 best selling restaurant WordPress theme built to help restaurant and other culinary owners to shape an experience that people love and remember. It gives enough freedom to make it your own by tailoring to a specific set of bold needs and preferences.
+**ROSA is the most used restaurant WordPress theme built to help restaurant and other culinary owners to shape an experience that people love and remember. It gives enough freedom to make it your own by tailoring to a specific set of bold needs and preferences.**
 
-## Documentation
-The documentation is available at http://pixelgrade.com/docs/rosa
+[Presentation](https://pixelgrade.com/themes/rosa/) · [Demo Preview](https://demos.pixelgrade.com/rosa/) · [Documentation](http://pixelgrade.com/docs/rosa) · [Changelog](http://wupdates.com/rosa-changelog)
 
 ## Contributing
 The proposed value of **Open Source** is that by freely sharing the code with the community, others can use, improve and contribute back to it. 
