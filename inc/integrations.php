@@ -6,16 +6,6 @@
 */
 
 /**
- * Load PixCare compatibility file.
- */
-require get_template_directory() . '/inc/integrations/pixcare.php';
-
-/**
- * Load Starter Content compatibility file.
- */
-require get_template_directory() . '/inc/integrations/pixcare_starter_content.php';
-
-/**
  * Load PixCodes compatibility file
  * https://wordpress.org/plugins/pixcodes/
  */

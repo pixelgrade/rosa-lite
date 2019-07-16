@@ -10,46 +10,7 @@ require_once get_template_directory() . '/inc/required-plugins/class-tgm-plugin-
 
 function rosa_register_required_plugins() {
 
-	/**
-	 * Array of plugin arrays. Required keys are name and slug.
-	 * If the source is NOT from the .org repo, then source is also required.
-	 */
-	//	$plugins = array(
-	//		array(
-	//			'name'     				=> 'PLUGIN NAME', // The plugin name
-	//			'slug'     				=> 'PLUGINSLUG', // The plugin slug (typically the folder name)
-	//			'source'   				=> 'PLUGIN_LOCATION', // The plugin source
-	//			'required' 				=> false, // If false, the plugin is only 'recommended' instead of required
-	//			'version' 				=> '1.0', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented. If the plugin version is higher than the plugin version installed , the user will be notified to update the plugin
-	//			'force_activation' 		=> false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-	//			'force_deactivation' 	=> false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
-	//			'external_url' 			=> '', // If set, overrides default API URL and points to an external URL
-	//		)
-	//	);
-
-	$protocol = 'http:';
-	if ( is_ssl() ) {
-		$protocol = 'https:';
-	}
-
 	$plugins = array(
-		array(
-			'name'               => 'Pixelgrade Care',
-			'slug'               => 'pixelgrade-care',
-			'force_activation'   => true,
-			'force_deactivation' => false,
-			'required'           => true,
-			'source'             => $protocol . '//wupdates.com/api_wupl_version/JxbVe/2v5t1czd3vw4kmb5xqmyxj1kkwmnt9q0463lhj393r5yxtshdyg05jssgd4jglnfx7A2vdxtfdcf78r9r1sm217k4ht3r2g7pkdng5f6tgwyrk23wryA0pjxvs7gwhhb',
-			'external_url'       => $protocol . '//github.com/pixelgrade/pixelgrade_care',
-			'version'            => '1.4.9.2',
-			'is_automatic'       => true
-		),
-		array(
-			'name'     => 'Customify',
-			'slug'     => 'customify',
-			'version'  => '2.3.3',
-			'required' => true,
-		),
 		array(
 			'name'     => 'PixTypes',
 			'slug'     => 'pixtypes',
@@ -63,17 +24,7 @@ function rosa_register_required_plugins() {
 		array(
 			'name' => 'PixCodes',
 			'slug' => 'pixcodes',
-		),
-		array(
-			'name' => 'Contact Form 7',
-			'slug' => 'contact-form-7',
-		),
-		array(
-			'name'         => 'PixLikes',
-			'slug'         => 'pixlikes',
-			'version'      => '1.1.3',
-			'external_url' => 'https://github.com/pixelgrade/pixlikes',
-			'source'       => 'https://wupdates.com/api_wupl_version/v75R3/zfj7hxx36y35qssyp1tAfyk4g5y1dl3sshkxph1cdzx74jtgjdkctlwkrx033lv1b4jx5mcs41w5wf72srsysn31ccyg6lbvg3n0yf0xnfyj3330fqpbp52wmlsmtszf',
+			'required' => true,
 		),
 	);
 
