@@ -14,16 +14,6 @@ function rosa_register_sidebars() {
 		'after_widget'  => '</div>',
 	) );
 
-	register_sidebar( array(
-		'id'            => 'sidebar-footer',
-		'name'          => __( 'Footer Area', 'rosa-lite' ),
-		'description'   => __( 'Footer Area', 'rosa-lite' ),
-		'before_title'  => '<h4 class="widget__title widget--menu__title">',
-		'after_title'   => '</h4>',
-		'before_widget' => '<div id="%1$s" class="widget widget--menu %2$s">',
-		'after_widget'  => '</div>',
-	) );
-
 	//allow the Text Widgets to handle shortcodes
 	add_filter( 'widget_text', 'shortcode_unautop');
 	add_filter('widget_text', 'do_shortcode');
