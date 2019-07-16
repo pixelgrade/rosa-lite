@@ -64,29 +64,6 @@ if ( pixelgrade_option( 'nav_always_show' ) ) {
 $data_smoothscrolling = ( pixelgrade_option( 'use_smooth_scroll' ) == 1 ) ? 'data-smoothscrolling' : '';
 $data_main_color      = ( pixelgrade_option( 'main_color' ) ) ? 'data-color="' . esc_attr( pixelgrade_option( 'main_color' ) ) . '"' : '';
 
-//first let's test if we are in woocommerce
-if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-	//we need to setup post data
-	if ( is_shop() || is_cart() || is_checkout() || is_checkout_pay_page() || is_account_page() || is_order_received_page() ) {
-
-		$shop_page_id = wc_get_page_id( 'shop' );
-
-		if ( ! empty( $shop_page_id ) && $shop_page_id != 0 ) {
-			global $post;
-			$post = get_post( $shop_page_id );
-
-			setup_postdata( $post );
-
-			$make_transparent_menu_bar = get_post_meta( get_the_ID(), wpgrade::prefix() . 'header_transparent_menu_bar', true );
-
-			if ( $make_transparent_menu_bar == 'on' ) {
-				$class_name .= '  header--transparent';
-			}
-
-		}
-	}
-}
-
 //make the header menu bar transparent
 //only for static pages
 if ( is_page() ) {
@@ -162,31 +139,8 @@ if ( is_single() ) {
 								'link_after'     => '</span>',
 							) );
 						}
+						?>
 
-						if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) && pixelgrade_option( 'show_cart_menu' ) ) :
-							global $woocommerce; ?>
-							<ul class="nav  nav--main  nav--woocommerce">
-								<li class="shop-menu-item  menu-item-has-children">
-									<div class="widget_shopping_cart_content">
-										<a class="cart-icon-link" href="<?php echo wc_get_cart_url(); ?>">
-											<i class="icon-shopping-cart"></i>
-											<span class="shop-items-number"><?php echo sprintf( _n( '%d', $woocommerce->cart->cart_contents_count, 'woocommerce' ), $woocommerce->cart->cart_contents_count ); ?></span>
-										</a>
-										<ul class="sub-menu">
-											<li>
-												<span class="shop-menu-item__price"><?php echo $woocommerce->cart->get_cart_total(); ?></span>
-											</li>
-											<li>
-												<a href="<?php echo wc_get_cart_url(); ?>"><?php _e( 'View Cart', 'woocommerce' ) ?></a>
-											</li>
-											<li>
-												<a href="<?php echo wc_get_checkout_url() ?>"><?php _e( 'Checkout', 'woocommerce' ) ?></a>
-											</li>
-										</ul>
-									</div>
-								</li>
-							</ul>
-						<?php endif; ?>
 					</nav>
 					<div class="nav-overlay"></div>
 				</div>
