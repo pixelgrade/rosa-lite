@@ -138,11 +138,8 @@ function rosa_callbacks_setup_shortcodes_plugin() {
 
 	$shortcodes = array(
 		'Button',
-		'Icon',
-		'Tabs',
 		'Heading',
 		'Separator',
-		'Slider',
 	);
 
 	if ( ! class_exists('Gridable' ) ) {
