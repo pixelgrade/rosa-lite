@@ -143,8 +143,6 @@ function rosa_callbacks_setup_shortcodes_plugin() {
 		'Heading',
 		'Separator',
 		'Slider',
-		'OpenTableReservations',
-		'RestaurantMenu',
 	);
 
 	if ( ! class_exists('Gridable' ) ) {
