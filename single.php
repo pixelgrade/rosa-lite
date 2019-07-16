@@ -64,7 +64,7 @@ else :
 						if ( $multipage ): ?>
 
 							<div class="entry__meta-box  meta-box--pagination" role="navigation">
-								<h2 class="screen-reader-text"><?php esc_html_e( 'Pages: ', 'rosa' ); ?></h2>
+								<h2 class="screen-reader-text"><?php esc_html_e( 'Pages: ', 'rosa-lite' ); ?></h2>
 								<?php
 								$args = array(
 									'before'           => '<nav class="nav pagination--single">',
@@ -72,8 +72,8 @@ else :
 									'link_before'      => '<span>',
 									'link_after'       => '</span>',
 									'next_or_number'   => 'next_and_number',
-									'previouspagelink' => __( '&laquo;', 'rosa' ),
-									'nextpagelink'     => __( '&raquo;', 'rosa' )
+									'previouspagelink' => __( '&laquo;', 'rosa-lite' ),
+									'nextpagelink'     => __( '&raquo;', 'rosa-lite' )
 								);
 								wp_link_pages( $args );
 								?>
@@ -85,10 +85,10 @@ else :
 						if ( ! is_wp_error( $categories ) && ! empty( $categories ) ): ?>
 
 							<div class="meta--categories btn-list  meta-list">
-								<span class="btn  btn--small  btn--secondary  list-head"><?php _e( 'Categories', 'rosa' ) ?></span>
+								<span class="btn  btn--small  btn--secondary  list-head"><?php _e( 'Categories', 'rosa-lite' ) ?></span>
 								<?php
 								foreach ( $categories as $category ) {
-									echo '<a class="btn  btn--small  btn--tertiary" href="' . get_category_link( $category->term_id ) . '" title="' . esc_attr( sprintf( __( "View all posts in %s", 'rosa' ), $category->name ) ) . '" rel="tag">' . $category->name . '</a>';
+									echo '<a class="btn  btn--small  btn--tertiary" href="' . get_category_link( $category->term_id ) . '" title="' . esc_attr( sprintf( __( "View all posts in %s", 'rosa-lite' ), $category->name ) ) . '" rel="tag">' . $category->name . '</a>';
 								}; ?>
 							</div><!-- .meta--categories -->
 
@@ -98,10 +98,10 @@ else :
 						if ( ! empty( $tags ) ): ?>
 
 							<div class="meta--tags  btn-list  meta-list">
-								<span class="btn  btn--small  btn--secondary  list-head"><?php _e( 'Tags', 'rosa' ) ?></span>
+								<span class="btn  btn--small  btn--secondary  list-head"><?php _e( 'Tags', 'rosa-lite' ) ?></span>
 								<?php
 								foreach ( $tags as $tag ) {
-									echo '<a class="btn  btn--small  btn--tertiary" href="' . get_tag_link( $tag->term_id ) . '" title="' . esc_attr( sprintf( __( "View all posts tagged %s", 'rosa' ), $tag->name ) ) . '" rel="tag">' . $tag->name . '</a>';
+									echo '<a class="btn  btn--small  btn--tertiary" href="' . get_tag_link( $tag->term_id ) . '" title="' . esc_attr( sprintf( __( "View all posts tagged %s", 'rosa-lite' ), $tag->name ) ) . '" rel="tag">' . $tag->name . '</a>';
 								}; ?>
 							</div><!-- .meta--tags -->
 

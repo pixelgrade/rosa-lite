@@ -74,7 +74,7 @@ function rosa_pixcare_install_page() {
 	<head>
 		<meta name="viewport" content="width=device-width"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title><?php _e( 'Pixelgrade Care &rsaquo; Installer', 'rosa' ); ?></title>
+		<title><?php _e( 'Pixelgrade Care &rsaquo; Installer', 'rosa-lite' ); ?></title>
 		<script type="text/javascript">
             var ajaxurl = '<?php echo esc_url( admin_url( 'admin-ajax.php', 'relative' ) ); ?>',
                 pagenow = 'plugins';
@@ -89,28 +89,28 @@ function rosa_pixcare_install_page() {
 
 					<div class="section section--informative">
 
-						<h2 class="section__title u-text-center"><?php esc_html_e( 'One more lap to go..', 'rosa' ); ?></h2>
+						<h2 class="section__title u-text-center"><?php esc_html_e( 'One more lap to go..', 'rosa-lite' ); ?></h2>
 						<div class="section__content">
 							<?php
 							echo sprintf(
 								'%s <strong>%s</strong> %s',
-								esc_html__( 'Start your digital journey with our', 'rosa' ),
-								esc_html__( 'Pixelgrade Care®', 'rosa' ),
-								esc_html__( 'on board. It\'s the core of your experience with our WordPress theme, and we bet you are going to love it from day one. You’re in great hands, no doubt about that!', 'rosa' )
+								esc_html__( 'Start your digital journey with our', 'rosa-lite' ),
+								esc_html__( 'Pixelgrade Care®', 'rosa-lite' ),
+								esc_html__( 'on board. It\'s the core of your experience with our WordPress theme, and we bet you are going to love it from day one. You’re in great hands, no doubt about that!', 'rosa-lite' )
 							); ?>
 						</div>
 						<div class="plugins">
 							<div class="plugin  box  box--neutral  box--plugin-missing  box--plugin-invalidated">
 								<div class="box__body">
-									<h5 class="box__title"><?php esc_html_e( 'Pixelgrade Care®', 'rosa' ) ?></h5>
-									<p class="box__text"><?php esc_html_e( 'Installing ...', 'rosa' ) ?></p>
+									<h5 class="box__title"><?php esc_html_e( 'Pixelgrade Care®', 'rosa-lite' ) ?></h5>
+									<p class="box__text"><?php esc_html_e( 'Installing ...', 'rosa-lite' ) ?></p>
 								</div>
 							</div>
 						</div>
 					</div>
 
 					<a class="btn  btn--text  btn--return-to-dashboard"
-					   href="<?php echo esc_url( admin_url() ); ?>"><?php esc_html_e( 'Return to the WordPress Dashboard', 'rosa' ) ?></a>
+					   href="<?php echo esc_url( admin_url() ); ?>"><?php esc_html_e( 'Return to the WordPress Dashboard', 'rosa-lite' ) ?></a>
 				</div>
 			</div>
 		</div>
@@ -128,8 +128,8 @@ function rosa_pixcare_install_page() {
                 wp.ajax.settings.url = "<?php echo esc_url_raw( $nonce_url ) ?>";
                 $plugin.addClass('box--plugin-installing');
                 wp.ajax.send({type: 'GET'}).always(function (res) {
-                    var success = res.indexOf('<p><?php esc_html_e( 'Plugin installed successfully.', 'rosa' ); ?></p>');
-                    var already_exists = res.indexOf('<p><?php esc_html_e( 'Plugin destination folder already exists.', 'rosa' ); ?></p>');
+                    var success = res.indexOf('<p><?php esc_html_e( 'Plugin installed successfully.', 'rosa-lite' ); ?></p>');
+                    var already_exists = res.indexOf('<p><?php esc_html_e( 'Plugin destination folder already exists.', 'rosa-lite' ); ?></p>');
 
                     if (success !== -1) {
 
@@ -150,7 +150,7 @@ function rosa_pixcare_install_page() {
                         $plugin.removeClass('box--plugin-installing box--neutral');
                         $plugin.addClass('box--plugin-invalidated box--error');
 
-                        $status.text('<?php esc_html_e( 'Bummer! Something went wrong. I’m sorry but you will need to install the plugin manually. Redirecting you to the appropriate page…', 'rosa' ); ?>');
+                        $status.text('<?php esc_html_e( 'Bummer! Something went wrong. I’m sorry but you will need to install the plugin manually. Redirecting you to the appropriate page…', 'rosa-lite' ); ?>');
 
                         setTimeout(function () {
                             window.location.href = '<?php echo esc_url( admin_url( 'index.php?page=pixelgrade_care-setup-wizard' ) ); ?>';

@@ -19,37 +19,37 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 		$config['opt-name'] = 'rosa_options';
 
 		$config['panels']['theme_options'] = array(
-			'title'    => '&#x1f506; ' . esc_html__( 'Theme Options', 'rosa' ),
+			'title'    => '&#x1f506; ' . esc_html__( 'Theme Options', 'rosa-lite' ),
 			'priority' => 1,
 			'sections' => array(
 				'general' => array(
-					'title'   => esc_html__( 'General', 'rosa' ),
+					'title'   => esc_html__( 'General', 'rosa-lite' ),
 					'options' => array(
 						'main_logo_light'          => array(
 							'type'  => 'media',
-							'label' => esc_html__( 'Logo', 'rosa' ),
+							'label' => esc_html__( 'Logo', 'rosa-lite' ),
 						),
 						'main_logo_dark'           => array(
 							'type'  => 'media',
-							'label' => esc_html__( 'Inverted Logo', 'rosa' ),
+							'label' => esc_html__( 'Inverted Logo', 'rosa-lite' ),
 						),
 						'divider_title_5347678321' => array(
 							'type' => 'html',
-							'html' => '<span class="separator label">' . esc_html__( 'Smooth Scrolling', 'rosa' ) . '</span>'
+							'html' => '<span class="separator label">' . esc_html__( 'Smooth Scrolling', 'rosa-lite' ) . '</span>'
 						),
 						'use_smooth_scroll'        => array(
 							'type'    => 'checkbox',
-							'label'   => esc_html__( 'Enable Smooth Scrolling.', 'rosa' ),
+							'label'   => esc_html__( 'Enable Smooth Scrolling.', 'rosa-lite' ),
 							'default' => 1,
 						),
 						'divider_title_534793921'  => array(
 							'type' => 'html',
-							'html' => '<span class="separator label large">' . esc_html__( 'Footer', 'rosa' ) . '</span>'
+							'html' => '<span class="separator label large">' . esc_html__( 'Footer', 'rosa-lite' ) . '</span>'
 						),
 
 						'footer_number_of_columns' => array(
-							'label'   => esc_html__( 'Widget Area Number of Columns', 'rosa' ),
-							'desc'    => esc_html__( 'Select how many number of columns should the Footer widget area have.', 'rosa' ),
+							'label'   => esc_html__( 'Widget Area Number of Columns', 'rosa-lite' ),
+							'desc'    => esc_html__( 'Select how many number of columns should the Footer widget area have.', 'rosa-lite' ),
 							'type'    => 'select',
 							'choices' => array(
 								'1' => '1',
@@ -62,44 +62,44 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 
 						'footer_column_width' => array(
-							'label'   => esc_html__( 'Widget Column width', 'rosa' ),
+							'label'   => esc_html__( 'Widget Column width', 'rosa-lite' ),
 							'type'    => 'select',
 							'choices' => array(
-								'one-third'  => esc_html__( 'One third', 'rosa' ),
-								'two-thirds' => esc_html__( 'Two thirds', 'rosa' ),
-								'one-whole'  => esc_html__( 'Whole', 'rosa' ),
+								'one-third'  => esc_html__( 'One third', 'rosa-lite' ),
+								'two-thirds' => esc_html__( 'Two thirds', 'rosa-lite' ),
+								'one-whole'  => esc_html__( 'Whole', 'rosa-lite' ),
 							),
 							'default' => 'one_third',
 						),
 
 						'copyright_text' => array(
 							'type'              => 'textarea',
-							'label'             => esc_html__( 'Copyright Text', 'rosa' ),
-							'default'           => __( '%year% &copy; Handcrafted with love by <a href="https://pixelgrade.com" target="_blank">Pixelgrade</a> Team', 'rosa' ),
+							'label'             => esc_html__( 'Copyright Text', 'rosa-lite' ),
+							'default'           => __( '%year% &copy; Handcrafted with love by <a href="https://pixelgrade.com" target="_blank">Pixelgrade</a> Team', 'rosa-lite' ),
 							'sanitize_callback' => 'wp_kses_post',
 							'live'              => array( '.footer-container .copyright-text' )
 						),
 
 						'google_maps_api_key' => array(
 							'type'    => 'text',
-							'label'   => esc_html__( 'Google Maps API key', 'rosa' ),
+							'label'   => esc_html__( 'Google Maps API key', 'rosa-lite' ),
 							'default' => '',
 							'desc'    => sprintf(
 								'<p>%s.   <a href="https://developers.google.com/maps/documentation/javascript/get-api-key#get-an-api-key" target="_blank">%s</a> <br><br>%s</p>',
-								esc_html__( 'To use Google Maps you must authenticate your application with an API key', 'rosa' ),
-								esc_html__( 'Optain a key', 'rosa' ),
-								esc_html__( 'After you get the key, enable the "Google Maps JavaScript API" from the Overview tab', 'rosa' )
+								esc_html__( 'To use Google Maps you must authenticate your application with an API key', 'rosa-lite' ),
+								esc_html__( 'Optain a key', 'rosa-lite' ),
+								esc_html__( 'After you get the key, enable the "Google Maps JavaScript API" from the Overview tab', 'rosa-lite' )
 							)
 						)
 					)
 				),
 
 				'share_settings' => array(
-					'title'   => __( 'Sharing', 'rosa' ),
+					'title'   => __( 'Sharing', 'rosa-lite' ),
 					'options' => array(
 						'share_buttons_settings'        => array(
 							'type'    => 'textarea',
-							'label'   => esc_html__( 'Share Services', 'rosa' ),
+							'label'   => esc_html__( 'Share Services', 'rosa-lite' ),
 							'default' => 'more,preferred,preferred,preferred,preferred',
 							'desc'    => sprintf( '
 								<p>%s <a href="http://www.addthis.com/services/list">%s</a>%s</p>
@@ -109,53 +109,53 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								<li>%s <span style="text-decoration:underline;"><strong>%s</strong></span> %s</li>
 								<li>%s <span style="text-decoration:underline;"><strong>%s</strong></span> %s <a href="http://www.addthis.com/academy/preferred-services-personalization/">%s</a>%s</li>
 								</ul>',
-								esc_html__( 'Add the share services, delimited by a single comma (no spaces). You can find the full list of services', 'rosa' ),
-								esc_html__( 'here', 'rosa' ),
-								esc_html__( '.', 'rosa' ),
-								esc_html__( 'Notes:', 'rosa' ),
-								esc_html__( '— use the', 'rosa' ),
-								esc_html__( 'more', 'rosa' ),
-								esc_html__( 'tag to show the plus sign', 'rosa' ),
-								esc_html__( '— use the', 'rosa' ),
-								esc_html__( 'counter', 'rosa' ),
-								esc_html__( 'for a global share counter', 'rosa' ),
-								esc_html__( '— use the', 'rosa' ),
-								esc_html__( 'preferred', 'rosa' ),
-								esc_html__( 'tag&nbsp;to show your visitors a personalized lists of buttons (read', 'rosa' ),
-								esc_html__( 'more', 'rosa' ),
-								esc_html__( ')', 'rosa' )
+								esc_html__( 'Add the share services, delimited by a single comma (no spaces). You can find the full list of services', 'rosa-lite' ),
+								esc_html__( 'here', 'rosa-lite' ),
+								esc_html__( '.', 'rosa-lite' ),
+								esc_html__( 'Notes:', 'rosa-lite' ),
+								esc_html__( '— use the', 'rosa-lite' ),
+								esc_html__( 'more', 'rosa-lite' ),
+								esc_html__( 'tag to show the plus sign', 'rosa-lite' ),
+								esc_html__( '— use the', 'rosa-lite' ),
+								esc_html__( 'counter', 'rosa-lite' ),
+								esc_html__( 'for a global share counter', 'rosa-lite' ),
+								esc_html__( '— use the', 'rosa-lite' ),
+								esc_html__( 'preferred', 'rosa-lite' ),
+								esc_html__( 'tag&nbsp;to show your visitors a personalized lists of buttons (read', 'rosa-lite' ),
+								esc_html__( 'more', 'rosa-lite' ),
+								esc_html__( ')', 'rosa-lite' )
 							)
 						),
 						'share_buttons_enable_tracking' => array(
 							'type'    => 'checkbox',
-							'label'   => esc_html__( 'Enable AddThis Sharing Analytics', 'rosa' ),
+							'label'   => esc_html__( 'Enable AddThis Sharing Analytics', 'rosa-lite' ),
 							'default' => 0,
 						),
 
 
 						'share_buttons_enable_addthis_tracking' => array(
 							'type'    => 'checkbox',
-							'label'   => esc_html__( 'Enable AddThis Tracking', 'rosa' ),
+							'label'   => esc_html__( 'Enable AddThis Tracking', 'rosa-lite' ),
 							'default' => 0,
 							//'required' => array( 'share_buttons_enable_tracking', '=', 1 ),
 						),
 
 						'share_buttons_addthis_username' => array(
 							'type'    => 'text',
-							'label'   => esc_html__( 'AddThis Username', 'rosa' ),
+							'label'   => esc_html__( 'AddThis Username', 'rosa-lite' ),
 							'default' => 'more,preferred,preferred,preferred,preferred',
-							'desc'    => esc_html__( 'Enter here your AddThis username so you will receive analytics data.', 'rosa' ),
+							'desc'    => esc_html__( 'Enter here your AddThis username so you will receive analytics data.', 'rosa-lite' ),
 							//'required' => array( 'share_buttons_enable_addthis_tracking', '=', 1 ),
 						),
 
 						'share_buttons_enable_ga_tracking' => array(
 							'type'    => 'checkbox',
-							'label'   => esc_html__( 'AddThis Google Analytics Tracking', 'rosa' ),
+							'label'   => esc_html__( 'AddThis Google Analytics Tracking', 'rosa-lite' ),
 							'desc'    => sprintf(
 								'%s <a href="http://bit.ly/1kxPg7K">%s</a> %s',
-								esc_html__( 'Read more on', 'rosa' ),
-								esc_html__( 'Integrating with Google Analytics', 'rosa' ),
-								esc_html__( 'article.', 'rosa' )
+								esc_html__( 'Read more on', 'rosa-lite' ),
+								esc_html__( 'Integrating with Google Analytics', 'rosa-lite' ),
+								esc_html__( 'article.', 'rosa-lite' )
 							),
 							'default' => 0,
 							//'required' => array( 'share_buttons_enable_tracking', '=', 1 ),
@@ -163,20 +163,20 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 
 						'share_buttons_ga_id' => array(
 							'type'    => 'text',
-							'label'   => esc_html__( 'GA Property ID', 'rosa' ),
-							'desc'    => esc_html__( 'Enter here your GA property ID (generally a serial number of the form UA-xxxxxx-x).', 'rosa' ),
+							'label'   => esc_html__( 'GA Property ID', 'rosa-lite' ),
+							'desc'    => esc_html__( 'Enter here your GA property ID (generally a serial number of the form UA-xxxxxx-x).', 'rosa-lite' ),
 							'default' => '',
 							//'required' => array( 'share_buttons_enable_ga_tracking', '=', 1 ),
 						),
 
 						'share_buttons_enable_ga_social_tracking' => array(
 							'type'    => 'checkbox',
-							'label'   => esc_html__( 'GA Social Tracking', 'rosa' ),
+							'label'   => esc_html__( 'GA Social Tracking', 'rosa-lite' ),
 							'desc'    => sprintf(
 								'%s <a href="http://bit.ly/1iVvkbk"></a>%s',
-								esc_html__( 'If you are using the latest version of GA code, you can take advantage of Google\'s new', 'rosa' ),
-								esc_html__( 'social interaction analytics', 'rosa' ),
-								esc_html__( '.', 'rosa' )
+								esc_html__( 'If you are using the latest version of GA code, you can take advantage of Google\'s new', 'rosa-lite' ),
+								esc_html__( 'social interaction analytics', 'rosa-lite' ),
+								esc_html__( '.', 'rosa-lite' )
 							),
 							'default' => 0,
 							//'required' => array( 'share_buttons_enable_ga_tracking', '=', 1 ),
@@ -185,19 +185,19 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 				),
 
 				'custom_js' => array(
-					'title'    => esc_html__( 'Custom JavaScript', 'rosa' ),
+					'title'    => esc_html__( 'Custom JavaScript', 'rosa-lite' ),
 					'priority' => 999,
 					'options'  => array(
 						'custom_js'        => array(
 							'type'        => 'ace_editor',
-							'label'       => esc_html__( 'Header', 'rosa' ),
-							'desc'        => esc_html__( 'Easily add Custom Javascript code. This code will be loaded in the <head> section.', 'rosa' ),
+							'label'       => esc_html__( 'Header', 'rosa-lite' ),
+							'desc'        => esc_html__( 'Easily add Custom Javascript code. This code will be loaded in the <head> section.', 'rosa-lite' ),
 							'editor_type' => 'javascript',
 						),
 						'custom_js_footer' => array(
 							'type'        => 'ace_editor',
-							'label'       => esc_html__( 'Footer', 'rosa' ),
-							'desc'        => esc_html__( 'You can paste here your Google Analytics tracking code (or for what matters any tracking code) and we will put it on every page.', 'rosa' ),
+							'label'       => esc_html__( 'Footer', 'rosa-lite' ),
+							'desc'        => esc_html__( 'You can paste here your Google Analytics tracking code (or for what matters any tracking code) and we will put it on every page.', 'rosa-lite' ),
 							'editor_type' => 'javascript',
 						),
 					)
@@ -209,17 +209,17 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 		 * BACKGROUNDS - This section will handle different elements backgrounds
 		 */
 		$config['panels']['layouts_panel'] = array(
-			'title'    => __( '&#x1f4bb; Layout', 'rosa' ),
+			'title'    => __( '&#x1f4bb; Layout', 'rosa-lite' ),
 			'priority' => 2,
 			'sections' => array(
 
 				'header_layouts_section' => array(
-					'title'   => __( 'Header', 'rosa' ),
+					'title'   => __( 'Header', 'rosa-lite' ),
 					'options' => array(
 
 						'header_logo_height' => array(
 							'type'        => 'range',
-							'label'       => __( 'Logo Height', 'rosa' ),
+							'label'       => __( 'Logo Height', 'rosa-lite' ),
 							'default'     => 32,
 							'live'        => true,
 							'input_attrs' => array(
@@ -243,7 +243,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 
 						'header_vertical_margins' => array(
 							'type'        => 'range',
-							'label'       => __( 'Header Vertical Margins', 'rosa' ),
+							'label'       => __( 'Header Vertical Margins', 'rosa-lite' ),
 							'default'     => 0,
 							'live'        => true,
 							'input_attrs' => array(
@@ -284,7 +284,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 
 						'navigation_menu_items_spacing' => array(
 							'type'        => 'range',
-							'label'       => __( 'Menu Items Spacing', 'rosa' ),
+							'label'       => __( 'Menu Items Spacing', 'rosa-lite' ),
 							'default'     => 24,
 							'live'        => true,
 							'input_attrs' => array(
@@ -312,13 +312,13 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 				),
 
 				'content_layouts_section'    => array(
-					'title'   => __( 'Content', 'rosa' ),
+					'title'   => __( 'Content', 'rosa-lite' ),
 					'options' => array(
 
 						'border_width'              => array(
 							'type'        => 'range',
-							'label'       => __( 'Site Border Width', 'rosa' ),
-							// 'desc'        => __( 'Set the border width of the overall site', 'rosa' ),
+							'label'       => __( 'Site Border Width', 'rosa-lite' ),
+							// 'desc'        => __( 'Set the border width of the overall site', 'rosa-lite' ),
 							'live'        => true,
 							'default'     => '0',
 							'input_attrs' => array(
@@ -363,8 +363,8 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'content_width'             => array(
 							'type'        => 'range',
-							'label'       => __( 'Container Width', 'rosa' ),
-							// 'desc'        => __( 'Set the width of the container.', 'rosa' ),
+							'label'       => __( 'Container Width', 'rosa-lite' ),
+							// 'desc'        => __( 'Set the width of the container.', 'rosa-lite' ),
 							'live'        => true,
 							'default'     => 1250,
 							'input_attrs' => array(
@@ -383,7 +383,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'sections_vertical_margins' => array(
 							'type'        => 'range',
-							'label'       => __( 'Sections Vertical Margins', 'rosa' ),
+							'label'       => __( 'Sections Vertical Margins', 'rosa-lite' ),
 							'live'        => true,
 							'default'     => 78,
 							'input_attrs' => array(
@@ -411,7 +411,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'sidebar_width' => array(
 							'type'        => 'range',
 							'label'       => __( 'Sidebar Width', 'rosa' ),
-							// 'desc'        => __( 'Set the width of the sidebar.', 'rosa' ),
+							// 'desc'        => __( 'Set the width of the sidebar.', 'rosa-lite' ),
 							'live'        => true,
 							'default'     => 300,
 							'input_attrs' => array(
@@ -463,7 +463,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'slideshow_arrows_style' => array(
 							'type'    => 'select',
 							'label'   => __( 'Slideshow Arrows', 'rosa' ),
-							// 'desc'    => __( 'Select which type of arrows you want on page headers.', 'rosa' ),
+							// 'desc'    => __( 'Select which type of arrows you want on page headers.', 'rosa-lite' ),
 							'choices' => array(
 								'static' => esc_html__( 'Always Show', 'rosa' ),
 								'hover'  => esc_html__( 'Show On Hover', 'rosa' )
@@ -1518,7 +1518,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					'blog_single_show_author_box'  => array(
 						'type'    => 'checkbox',
 						'label'   => esc_html__( 'Show Author Info Box', 'rosa' ),
-						//'subtitle' => __( 'Do you want to show author info box with avatar and description bellow the post?', 'rosa' ),
+						//'subtitle' => __( 'Do you want to show author info box with avatar and description bellow the post?', 'rosa-lite' ),
 						'default' => 1,
 					),
 					'this_divider_37986312'        => array(
@@ -1615,7 +1615,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'google_titles_font' => array(
 							'type'             => 'typography',
 							'label'            => esc_html__( 'Headings', 'rosa' ),
-							// 'desc'             => __( 'Font for titles and headings.', 'rosa' ),
+							// 'desc'             => __( 'Font for titles and headings.', 'rosa-lite' ),
 							'default'          => array( 'Source Sans Pro' ),
 							'recommended'      => array(
 								'Source Sans Pro',
@@ -1630,7 +1630,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'google_subtitles_font'      => array(
 							'type'        => 'typography',
 							'label'       => esc_html__( 'Sub Headings', 'rosa' ),
-							// 'desc'        => __( 'Font for titles and headings.', 'rosa' ),
+							// 'desc'        => __( 'Font for titles and headings.', 'rosa-lite' ),
 							'default'     => array( 'Herr Von Muellerhoff' ),
 							'recommended' => array(
 								'Herr Von Muellerhoff',

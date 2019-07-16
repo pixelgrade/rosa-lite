@@ -131,7 +131,7 @@ if ( is_single() ) {
 						$has_main_menu = true;
 					} ?>
 					<nav class="navigation  navigation--main<?php echo ( ! $has_main_menu ) ? "  no-menu" : ""; ?>" id="js-navigation--main">
-						<h2 class="accessibility"><?php _e( 'Primary Navigation', 'rosa' ) ?></h2>
+						<h2 class="accessibility"><?php _e( 'Primary Navigation', 'rosa-lite' ) ?></h2>
 
 						<?php
 						wp_nav_menu( array(

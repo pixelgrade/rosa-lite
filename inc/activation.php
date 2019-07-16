@@ -24,30 +24,30 @@ return array(
 			//General page settings
 			'rosa_page_general'       => array(
 				'id'         => 'rosa_page_general',
-				'title'      => __( 'General', 'rosa' ),
+				'title'      => __( 'General', 'rosa-lite' ),
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
 				'priority'   => 'high',
 				'show_names' => true, // Show field names on the left
 				'fields'     => array(
 					array(
-						'name' => __( 'Make Menu Bar Transparent', 'rosa' ),
-						'desc' => __( "This will remove the background from the menu and logo top bar.", 'rosa' ),
+						'name' => __( 'Make Menu Bar Transparent', 'rosa-lite' ),
+						'desc' => __( "This will remove the background from the menu and logo top bar.", 'rosa-lite' ),
 						'id'   => wpgrade::prefix() . 'header_transparent_menu_bar',
 						'type' => 'checkbox',
 					),
 					array(
-						'name' => __( 'Content Border Style', 'rosa' ),
-						'desc' => '<p class="cmb_metabox_description">'.__( 'Select the style of the top and bottom borders of the content.', 'rosa' ).'</p>',
+						'name' => __( 'Content Border Style', 'rosa-lite' ),
+						'desc' => '<p class="cmb_metabox_description">'.__( 'Select the style of the top and bottom borders of the content.', 'rosa-lite' ).'</p>',
 						'id'   => wpgrade::prefix() . 'page_border_style',
 						'type'    => 'select',
 						'options' => array(
 							array(
-								'name'  => __( 'Simple', 'rosa' ),
+								'name'  => __( 'Simple', 'rosa-lite' ),
 								'value' => 'simple',
 							),
 							array(
-								'name'  => __( 'Waves', 'rosa' ),
+								'name'  => __( 'Waves', 'rosa-lite' ),
 								'value' => 'waves',
 							),
 						),
@@ -55,7 +55,7 @@ return array(
 					),
 //					array(
 //						'name' => __( 'Inverse The Colors', 'rosa' ),
-//						'desc' => __( "This will make the content background black and the text white.", 'rosa' ),
+//						'desc' => __( "This will make the content background black and the text white.", 'rosa-lite' ),
 //						'id'   => rosa::prefix() . 'inverse_section_colors',
 //						'type' => 'checkbox',
 //					),
@@ -64,7 +64,7 @@ return array(
 			//for the Page Header Covers
 			'rosa_page_header_area_cover'       => array(
 				'id'         => 'rosa_page_header_area_cover',
-				'title'      => __( 'Featured Header Area', 'rosa' ),
+				'title'      => __( 'Featured Header Area', 'rosa-lite' ),
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
 				'priority'   => 'high',
@@ -76,41 +76,41 @@ return array(
 				'show_names' => true, // Show field names on the left
 				'fields'     => array(
 					array(
-						'name' => __( 'Header Height', 'rosa' ),
-						'desc' => '<p class="cmb_metabox_description">' . __( 'Select the height of the header area in relation to the browser window.', 'rosa' ).'</p>',
+						'name' => __( 'Header Height', 'rosa-lite' ),
+						'desc' => '<p class="cmb_metabox_description">' . __( 'Select the height of the header area in relation to the browser window.', 'rosa-lite' ).'</p>',
 						'id'   => wpgrade::prefix() . 'page_header_height',
 						'type'    => 'select',
 						'options' => array(
 							array(
-								'name'  => __( '&nbsp; &#9673;&#9711; &nbsp;Half', 'rosa' ),
+								'name'  => __( '&nbsp; &#9673;&#9711; &nbsp;Half', 'rosa-lite' ),
 								'value' => 'half-height',
 							),
 							array(
-								'name'  => __( '&#9673;&#9673;&#9711; Two Thirds', 'rosa' ),
+								'name'  => __( '&#9673;&#9673;&#9711; Two Thirds', 'rosa-lite' ),
 								'value' => 'two-thirds-height',
 							),
 							array(
-								'name'  => __( '&#9673;&#9673;&#9673; Full Height', 'rosa' ),
+								'name'  => __( '&#9673;&#9673;&#9673; Full Height', 'rosa-lite' ),
 								'value' => 'full-height',
 							)
 						),
 						'std'     => 'half-height',
 					),
 					array(
-						'name' => __( 'Subtitle', 'rosa' ),
+						'name' => __( 'Subtitle', 'rosa-lite' ),
 						// 'desc' => __( "This is optional. Leave empty to remove the subtitle.", 'rosa' ),
 						'id'   => wpgrade::prefix() . 'page_cover_subtitle',
 						'type' => 'text',
 					),
 					array(
-						'name' => __( 'Title', 'rosa' ),
-						'desc' => __( "If left empty we will use the page title. Tip: put a space if you don't want any cover text.", 'rosa' ),
+						'name' => __( 'Title', 'rosa-lite' ),
+						'desc' => __( "If left empty we will use the page title. Tip: put a space if you don't want any cover text.", 'rosa-lite' ),
 						'id'   => wpgrade::prefix() . 'page_cover_title',
 						'type' => 'text',
 					),
 					array(
-						'name'    => __( 'Description', 'rosa' ),
-						'desc'    => __( "You can use shortcodes (like the Separator) or even images to further embellish this.", 'rosa' ),
+						'name'    => __( 'Description', 'rosa-lite' ),
+						'desc'    => __( "You can use shortcodes (like the Separator) or even images to further embellish this.", 'rosa-lite' ),
 						'id'      => wpgrade::prefix() . 'page_cover_description',
 						'type'    => 'wysiwyg',
 						'options' => array(
@@ -125,7 +125,7 @@ return array(
 			),
 			'rosa_page_header_area_slideshow'  => array(
 				'id'         => 'rosa_page_header_area_slideshow',
-				'title'      => __( 'Slideshow Settings', 'rosa' ),
+				'title'      => __( 'Slideshow Settings', 'rosa-lite' ),
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
 				'priority'   => 'high',
@@ -137,85 +137,85 @@ return array(
 				'show_names' => true, // Show field names on the left
 				'fields'     => array(
 					array(
-						'name' => __( 'Images', 'rosa' ),
+						'name' => __( 'Images', 'rosa-lite' ),
 						'id'   => wpgrade::prefix() . 'main_gallery',
 						'type' => 'gallery',
 					),
 					array(
-						'name'    => __( 'Image Scaling', 'rosa' ),
+						'name'    => __( 'Image Scaling', 'rosa-lite' ),
 						'desc'    => __( '<p class="cmb_metabox_description"><strong>Fill</strong> scales image to completely fill slider container (recommended for landscape images)</p>
 <p class="cmb_metabox_description"><strong>Fit</strong> scales image to fit the container (recommended for portrait images)</p>
 <p class="cmb_metabox_description"><strong>Fit if Smaller</strong> scales image to fit only if size of slider container is less than size of image.</p>
-<p class="cmb_metabox_description"><a target="_blank" href="http://bit.ly/slider-image-scaling">Visual explanation</a></p>', 'rosa' ),
+<p class="cmb_metabox_description"><a target="_blank" href="http://bit.ly/slider-image-scaling">Visual explanation</a></p>', 'rosa-lite' ),
 						'id'      => wpgrade::prefix() . 'post_slider_image_scale_mode',
 						'type'    => 'select',
 						'options' => array(
 							array(
-								'name'  => __( 'Fit', 'rosa' ),
+								'name'  => __( 'Fit', 'rosa-lite' ),
 								'value' => 'fit'
 							),
 							array(
-								'name'  => __( 'Fill', 'rosa' ),
+								'name'  => __( 'Fill', 'rosa-lite' ),
 								'value' => 'fill'
 							),
 							array(
-								'name'  => __( 'Fit if Smaller', 'rosa' ),
+								'name'  => __( 'Fit if Smaller', 'rosa-lite' ),
 								'value' => 'fit-if-smaller'
 							)
 						),
 						'std'     => 'fill'
 					),
 					array(
-						'name'    => __( 'Show Nearby Images', 'rosa' ),
-						'desc'    => __( 'Enable this if you want to avoid having empty space on the sides of the image when using mostly portrait images.', 'rosa' ),
+						'name'    => __( 'Show Nearby Images', 'rosa-lite' ),
+						'desc'    => __( 'Enable this if you want to avoid having empty space on the sides of the image when using mostly portrait images.', 'rosa-lite' ),
 						'id'      => wpgrade::prefix() . 'post_slider_visiblenearby',
 						'type'    => 'select',
 						'options' => array(
 							array(
-								'name'  => __( 'Enabled', 'rosa' ),
+								'name'  => __( 'Enabled', 'rosa-lite' ),
 								'value' => true
 							),
 							array(
-								'name'  => __( 'Disabled', 'rosa' ),
+								'name'  => __( 'Disabled', 'rosa-lite' ),
 								'value' => false
 							)
 						),
 						'std'     => false
 					),
 					array(
-						'name'    => __( 'Slider transition', 'rosa' ),
+						'name'    => __( 'Slider transition', 'rosa-lite' ),
 						'id'      => wpgrade::prefix() . 'post_slider_transition',
 						'type'    => 'select',
 						'options' => array(
 							array(
-								'name'  => __( 'Slide/Move', 'rosa' ),
+								'name'  => __( 'Slide/Move', 'rosa-lite' ),
 								'value' => 'move'
 							),
 							array(
-								'name'  => __( 'Fade', 'rosa' ),
+								'name'  => __( 'Fade', 'rosa-lite' ),
 								'value' => 'fade'
 							)
 						),
 						'std'     => 'move'
 					),
 					array(
-						'name'    => __( 'Slider autoplay', 'rosa' ),
+						'name'    => __( 'Slider autoplay', 'rosa-lite' ),
 						'id'      => wpgrade::prefix() . 'post_slider_autoplay',
 						'type'    => 'select',
 						'options' => array(
 							array(
-								'name'  => __( 'Enabled', 'rosa' ),
+								'name'  => __( 'Enabled', 'rosa-lite' ),
 								'value' => true
 							),
 							array(
-								'name'  => __( 'Disabled', 'rosa' ),
+								'name'  => __( 'Disabled', 'rosa-lite' ),
 								'value' => false
 							)
 						),
 						'std'     => false
 					),
 					array(
-						'name' => __( 'Autoplay delay between slides (in milliseconds)', 'rosa' ),
+						'name' => __( 'Autoplay delay between slides (in milliseconds)', 'rosa-lite' ),
 						'id'   => wpgrade::prefix() . 'post_slider_delay',
 						'type' => 'text_small',
 						'std'  => '1000'
@@ -225,7 +225,7 @@ return array(
 			//for the Contact Page template - Classic
 			'rosa_gmap_settings' => array(
 				'id'         => 'rosa_gmap_settings',
-				'title'      => __( 'Map Coordinates & Display Options', 'rosa' ),
+				'title'      => __( 'Map Coordinates & Display Options', 'rosa-lite' ),
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
 				'priority'   => 'high',
@@ -238,38 +238,38 @@ return array(
 				'show_names' => true, // Show field names on the left
 				'fields'     => array(
 					array(
-						'name' => __( 'Map Height', 'rosa' ),
-						'desc' => __( '<p class="cmb_metabox_description">Select the height of the Google Map area in relation to the browser window.</p>', 'rosa' ),
+						'name' => __( 'Map Height', 'rosa-lite' ),
+						'desc' => __( '<p class="cmb_metabox_description">Select the height of the Google Map area in relation to the browser window.</p>', 'rosa-lite' ),
 						'id'   => wpgrade::prefix() . 'page_gmap_height',
 						'type'    => 'select',
 						'options' => array(
 							array(
-								'name'  => __( '&nbsp; &#9673;&#9711; &nbsp;Half', 'rosa' ),
+								'name'  => __( '&nbsp; &#9673;&#9711; &nbsp;Half', 'rosa-lite' ),
 								'value' => 'half-height',
 							),
 							array(
-								'name'  => __( '&#9673;&#9673;&#9711; Two Thirds', 'rosa' ),
+								'name'  => __( '&#9673;&#9673;&#9711; Two Thirds', 'rosa-lite' ),
 								'value' => 'two-thirds-height',
 							),
 							array(
-								'name'  => __( '&#9673;&#9673;&#9673; Full Height', 'rosa' ),
+								'name'  => __( '&#9673;&#9673;&#9673; Full Height', 'rosa-lite' ),
 								'value' => 'full-height',
 							)
 						),
 						'std'     => 'half-height',
 					),
 					array(
-						'name' => __( 'Location Type', 'rosa' ),
-						'desc' => __( '<p class="cmb_metabox_description">Select multiple if you want to display several pins on the map.</p>', 'rosa' ),
+						'name' => __( 'Location Type', 'rosa-lite' ),
+						'desc' => __( '<p class="cmb_metabox_description">Select multiple if you want to display several pins on the map.</p>', 'rosa-lite' ),
 						'id'   => wpgrade::prefix() . 'page_gmap_pin_type',
 						'type'    => 'select',
 						'options' => array(
 							array(
-								'name'  => __( 'Single', 'rosa' ),
+								'name'  => __( 'Single', 'rosa-lite' ),
 								'value' => 'single',
 							),
 							array(
-								'name'  => __( 'Multiple', 'rosa' ),
+								'name'  => __( 'Multiple', 'rosa-lite' ),
 								'value' => 'multiple',
 							)
 						),
@@ -277,13 +277,13 @@ return array(
 					),
 					array(
 						'name' => __( 'Google Maps Pins', 'mies_txtd' ),
-						'desc' => __( 'Paste here the Share URL you have taken from <a href="http://www.google.com/maps" target="_blank">Google Maps</a>.', 'rosa' ),
+						'desc' => __( 'Paste here the Share URL you have taken from <a href="http://www.google.com/maps" target="_blank">Google Maps</a>.', 'rosa-lite' ),
 						'id'   => 'gmap_urls',
 						'type' => 'gmap_pins',
 						'std' => array(
 							1 => array(
 								'location_url' => "https://www.google.ro/maps/@51.5075586,-0.1284425,18z",
-								'name' => __('London', 'rosa')
+								'name' => __('London', 'rosa-lite')
 							)
 						),
 						'display_on' => array(
@@ -295,8 +295,8 @@ return array(
 						),
 					),
 					array(
-						'name' => __( 'Google Maps URL', 'rosa' ),
-						'desc' => __( 'Paste here the Share URL you have taken from <a href="http://www.google.com/maps" target="_blank">Google Maps</a>.', 'rosa' ),
+						'name' => __( 'Google Maps URL', 'rosa-lite' ),
+						'desc' => __( 'Paste here the Share URL you have taken from <a href="http://www.google.com/maps" target="_blank">Google Maps</a>.', 'rosa-lite' ),
 						'id'   => wpgrade::prefix() . 'gmap_url',
 						'type' => 'textarea_small',
 						'std'  => '',
@@ -309,8 +309,8 @@ return array(
 						),
 					),
 					array(
-						'name'    => __( 'Pin Content', 'rosa' ),
-						'desc'    => __( 'Insert here the content of the location marker - leave empty for no custom marker.', 'rosa' ),
+						'name'    => __( 'Pin Content', 'rosa-lite' ),
+						'desc'    => __( 'Insert here the content of the location marker - leave empty for no custom marker.', 'rosa-lite' ),
 						'id'      => wpgrade::prefix() . 'gmap_marker_content',
 						'type'    => 'wysiwyg',
 						'std'     => '',
@@ -330,8 +330,8 @@ return array(
 						),
 					),
 					array(
-						'name' => __( 'Custom Colors', 'rosa' ),
-						'desc' => __( 'Allow us to change the map colors to better match your website.', 'rosa' ),
+						'name' => __( 'Custom Colors', 'rosa-lite' ),
+						'desc' => __( 'Allow us to change the map colors to better match your website.', 'rosa-lite' ),
 						'id'   => wpgrade::prefix() . 'gmap_custom_style',
 						'type' => 'checkbox',
 						'std'  => 'on',

@@ -10,7 +10,7 @@ if ( ! defined('REQUEST_PROTOCOL')) {
 }
 
 // Loads the theme's translated strings
-load_theme_textdomain( 'rosa', get_template_directory() . '/languages' );
+load_theme_textdomain( 'rosa-lite', get_template_directory() . '/languages' );
 
 if ( ! function_exists(' rosa_theme_setup' ) ) {
 	function rosa_theme_setup () {
@@ -189,10 +189,10 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 
 		$localization_array = array(
 			'ajaxurl'      => admin_url( 'admin-ajax.php' ),
-			'theme_name' => 'rosa',
-			'tPrev'             => __( 'Previous (Left arrow key)', 'rosa' ),
-			'tNext'             => __( 'Next (Right arrow key)', 'rosa' ),
-			'tCounter'          => __( 'of', 'rosa' ),
+			'theme_name' => 'rosa-lite',
+			'tPrev'             => __( 'Previous (Left arrow key)', 'rosa-lite' ),
+			'tNext'             => __( 'Next (Right arrow key)', 'rosa-lite' ),
+			'tCounter'          => __( 'of', 'rosa-lite' ),
 			'infscrLoadingText' => "",
 			'infscrReachedEnd'  => "",
 		);
@@ -210,22 +210,22 @@ if ( ! function_exists( 'rosa_load_admin_assets' ) ) {
 
 		$translation_array = array
 		(
-			'import_failed' => esc_html__( 'The import didn\'t work completely!', 'rosa' ) . '<br/><a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( 'Check out what could be wrong here.', 'rosa') . '</a>',
-			'import_confirm' => esc_html__( 'Importing the demo data will overwrite your current Theme Options settings. Proceed anyway?', 'rosa'),
-			'import_phew' => esc_html__( 'Phew...that was a hard one!', 'rosa'),
-			'import_success_note' => '<strong>' . esc_html__( 'The demo data was imported without a glitch! Awesome!', 'rosa') . '</strong><br/><br/>',
-			'import_all_done' => esc_html__( "All done!", 'rosa'),
-			'import_working' => esc_html__( "Working...", 'rosa'),
-			'import_widgets_failed' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "The setting up of the demo widgets failed...", 'rosa' ) . '</a>',
-			'import_widgets_error' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . __( 'The setting up of the demo widgets failed</i><br />(The script returned the following message', 'rosa' ) . '</a>',
-			'import_widgets_done' => esc_html__( 'Finished setting up the demo widgets...', 'rosa'),
-			'import_theme_options_failed' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "The importing of the theme options has failed...", 'rosa' ) . '</a>',
-			'import_theme_options_error' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . __( 'The importing of the theme options has failed</i><br />(The script returned the following message', 'rosa' ) . '</a>',
-			'import_theme_options_done' => esc_html__( 'Finished importing the demo theme options...', 'rosa'),
-			'import_posts_failed' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "The importing of the theme options has failed...", 'rosa' ) . '</a>',
-			'import_posts_step' => esc_html__( 'Importing posts | Step', 'rosa'),
-			'import_error' =>  '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "Error:", 'rosa') . '</a>',
-			'import_try_reload' =>  esc_html__( "You can reload the page and try again.", 'rosa'),
+			'import_failed' => esc_html__( 'The import didn\'t work completely!', 'rosa-lite' ) . '<br/><a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( 'Check out what could be wrong here.', 'rosa-lite') . '</a>',
+			'import_confirm' => esc_html__( 'Importing the demo data will overwrite your current Theme Options settings. Proceed anyway?', 'rosa-lite'),
+			'import_phew' => esc_html__( 'Phew...that was a hard one!', 'rosa-lite'),
+			'import_success_note' => '<strong>' . esc_html__( 'The demo data was imported without a glitch! Awesome!', 'rosa-lite') . '</strong><br/><br/>',
+			'import_all_done' => esc_html__( "All done!", 'rosa-lite'),
+			'import_working' => esc_html__( "Working...", 'rosa-lite'),
+			'import_widgets_failed' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "The setting up of the demo widgets failed...", 'rosa-lite' ) . '</a>',
+			'import_widgets_error' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . __( 'The setting up of the demo widgets failed</i><br />(The script returned the following message', 'rosa-lite' ) . '</a>',
+			'import_widgets_done' => esc_html__( 'Finished setting up the demo widgets...', 'rosa-lite'),
+			'import_theme_options_failed' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "The importing of the theme options has failed...", 'rosa-lite' ) . '</a>',
+			'import_theme_options_error' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . __( 'The importing of the theme options has failed</i><br />(The script returned the following message', 'rosa-lite' ) . '</a>',
+			'import_theme_options_done' => esc_html__( 'Finished importing the demo theme options...', 'rosa-lite'),
+			'import_posts_failed' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "The importing of the theme options has failed...", 'rosa-lite' ) . '</a>',
+			'import_posts_step' => esc_html__( 'Importing posts | Step', 'rosa-lite'),
+			'import_error' =>  '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "Error:", 'rosa-lite') . '</a>',
+			'import_try_reload' =>  esc_html__( "You can reload the page and try again.", 'rosa-lite'),
 		);
 		wp_localize_script( 'rosa_admin_general_script', 'rosa_admin_js_texts', $translation_array );
 	}

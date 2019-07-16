@@ -288,7 +288,7 @@ class Rosa_Multipage {
 
 			$wp_admin_bar->add_node( array(
 				'id'    => 'edit_parent',
-				'title' => __( 'Edit Parent', 'rosa' ),
+				'title' => __( 'Edit Parent', 'rosa-lite' ),
 				'href'  => get_edit_post_link( $post->post_parent ),
 				'meta'  => array( 'class' => 'edit_parent_button' )
 			) );
@@ -317,7 +317,7 @@ class Rosa_Multipage {
 
 				$wp_admin_bar->add_node( array(
 					'id'    => 'edit_prev_child',
-					'title' => __( 'Edit Prev Child', 'rosa' ),
+					'title' => __( 'Edit Prev Child', 'rosa-lite' ),
 					'href'  => get_edit_post_link( $prev_post->ID ),
 					'meta'  => array( 'class' => 'edit_prev_child_button' )
 				) );
@@ -329,7 +329,7 @@ class Rosa_Multipage {
 
 				$wp_admin_bar->add_node( array(
 					'id'    => 'edit_next_child',
-					'title' => __( 'Edit Next Child', 'rosa' ),
+					'title' => __( 'Edit Next Child', 'rosa-lite' ),
 					'href'  => get_edit_post_link( $next_post->ID ),
 					'meta'  => array( 'class' => 'edit_next_child_button' )
 				) );
@@ -353,7 +353,7 @@ class Rosa_Multipage {
 
 				$args = array(
 					'id'    => 'edit_children',
-					'title' => __( 'Edit Children', 'rosa' ),
+					'title' => __( 'Edit Children', 'rosa-lite' ),
 					'href'  => '#',
 					'meta'  => array( 'class' => 'edit_children_button' )
 				);
@@ -364,7 +364,7 @@ class Rosa_Multipage {
 					$kid_args = array(
 						'parent' => 'edit_children',
 						'id'    => 'edit_child_' . $kid->post_name,
-						'title' => __( 'Edit', 'rosa' ) . ': ' . $kid->post_title,
+						'title' => __( 'Edit', 'rosa-lite' ) . ': ' . $kid->post_title,
 						'href'  => get_edit_post_link( $kid->ID ),
 						'meta'  => array( 'class' => 'edit_child_button' )
 					);

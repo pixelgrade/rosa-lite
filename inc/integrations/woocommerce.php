@@ -85,7 +85,7 @@ function rosa_woocommerce_breadcrumbs() {
 		'wrap_after'  => '</nav>',
 		'before'      => '',
 		'after'       => '',
-		'home'        => _x( 'Shop', 'breadcrumb', 'rosa' )
+		'home'        => _x( 'Shop', 'breadcrumb', 'rosa-lite' )
 	);
 }
 
@@ -111,7 +111,7 @@ add_action( 'woocommerce_single_product_summary', 'woocommerce_breadcrumb', 3, 0
  **/
 add_filter( 'woocommerce_get_script_data', 'custom_add_to_cart_message', 10, 2 );
 function custom_add_to_cart_message( $params, $handle ) {
-	$params['i18n_view_cart'] = __( 'Product Added', 'rosa' );
+	$params['i18n_view_cart'] = __( 'Product Added', 'rosa-lite' );
 
 	return $params;
 }

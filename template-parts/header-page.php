@@ -233,7 +233,7 @@ if ( $pin_type == 'single' ) {
 			</header>
 		<?php } else { ?>
 			<div class="empty-slideshow">
-				<?php esc_attr_e( 'Currently there are no images assigned to this slideshow', 'rosa' ); ?>
+				<?php esc_attr_e( 'Currently there are no images assigned to this slideshow', 'rosa-lite' ); ?>
 			</div>
 		<?php }
 

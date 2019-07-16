@@ -28,26 +28,26 @@ if ( post_password_required() ) {
 							'<span class="comment-number total">1</span> Comment',
 							'<span class="comment-number total">%1$s</span>Comments',
 							get_comments_number(),
-							'rosa'
+							'rosa-lite'
 						),
 						number_format_i18n( get_comments_number() )
 					);
 				else:
-					_e( '<span class="comment-number total">+</span> There are no comments', 'rosa' );
+					_e( '<span class="comment-number total">+</span> There are no comments', 'rosa-lite' );
 				endif;
 				?>
 			</h3>
-			<?php echo '<a class="comments_add-comment" href="#reply-title">' . __( 'Add yours', 'rosa' ) . '</a>'; ?>
+			<?php echo '<a class="comments_add-comment" href="#reply-title">' . __( 'Add yours', 'rosa-lite' ) . '</a>'; ?>
 		</div>
 		<?php
 		// You can start editing here -- including this comment!
 		if ( have_comments() ) :
 			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 				<nav role="navigation" id="comment-nav-above" class="site-navigation comment-navigation">
-					<h3 class="assistive-text"><?php _e( 'Comment navigation', 'rosa' ); ?></h3>
+					<h3 class="assistive-text"><?php _e( 'Comment navigation', 'rosa-lite' ); ?></h3>
 
-					<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'rosa' ) ); ?></div>
-					<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'rosa' ) ); ?></div>
+					<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'rosa-lite' ) ); ?></div>
+					<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'rosa-lite' ) ); ?></div>
 				</nav><!-- #comment-nav-before .site-navigation .comment-navigation -->
 			<?php endif; // check for comment navigation ?>
 
@@ -64,10 +64,10 @@ if ( post_password_required() ) {
 
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 				<nav role="navigation" id="comment-nav-below" class="site-navigation comment-navigation">
-					<h3 class="assistive-text"><?php _e( 'Comment navigation', 'rosa' ); ?></h3>
+					<h3 class="assistive-text"><?php _e( 'Comment navigation', 'rosa-lite' ); ?></h3>
 
-					<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'rosa' ) ); ?></div>
-					<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'rosa' ) ); ?></div>
+					<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'rosa-lite' ) ); ?></div>
+					<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'rosa-lite' ) ); ?></div>
 				</nav><!-- #comment-nav-below .site-navigation .comment-navigation -->
 			<?php endif; // check for comment navigation ?>
 
@@ -79,33 +79,33 @@ if ( post_password_required() ) {
 // If comments are closed and there are comments, let's leave a little note, shall we?
 if ( ! comments_open() && post_type_supports( get_post_type(), 'comments' ) && ! is_page() ) :
 	?>
-	<p class="nocomments"><?php _e( 'Comments are closed.', 'rosa' ); ?></p>
+	<p class="nocomments"><?php _e( 'Comments are closed.', 'rosa-lite' ); ?></p>
 <?php endif;
 
 if ( is_user_logged_in() ) {
 	$current_user  = wp_get_current_user();
 	$comments_args = array(
 		// change the title of send button=
-		'title_reply'          => __( '<span class="comment-number total">+</span> Leave a Comment', 'rosa' ),
+		'title_reply'          => __( '<span class="comment-number total">+</span> Leave a Comment', 'rosa-lite' ),
 		// remove "Text or HTML to be displayed after the set of comment fields"
 		'comment_notes_before' => '',
 		'comment_notes_after'  => '',
 		'id_submit'            => 'comment-submit',
-		'label_submit'         => __( 'Submit', 'rosa' ),
+		'label_submit'         => __( 'Submit', 'rosa-lite' ),
 		// redefine your own textarea (the comment body)
-		'comment_field'        => '<p class="comment-form-comment"><label for="comment" class="show-on-ie8">' . __( 'Comment', 'rosa' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="' . __( 'Your thoughts..', 'rosa' ) . '"></textarea></p>'
+		'comment_field'        => '<p class="comment-form-comment"><label for="comment" class="show-on-ie8">' . __( 'Comment', 'rosa-lite' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="' . __( 'Your thoughts..', 'rosa-lite' ) . '"></textarea></p>'
 	);
 } else {
 	$comments_args = array(
 		// change the title of send button
-		'title_reply'          => __( '<span class="comment-number total">+</span> Leave a Comment', 'rosa' ),
+		'title_reply'          => __( '<span class="comment-number total">+</span> Leave a Comment', 'rosa-lite' ),
 		// remove "Text or HTML to be displayed after the set of comment fields"
 		'comment_notes_before' => '',
 		'comment_notes_after'  => '',
 		'id_submit'            => 'comment-submit',
-		'label_submit'         => __( 'Submit', 'rosa' ),
+		'label_submit'         => __( 'Submit', 'rosa-lite' ),
 		// redefine your own textarea (the comment body)
-		'comment_field'        => '<p class="comment-form-comment"><label for="comment" class="show-on-ie8">' . __( 'Comment', 'rosa' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="' . __( 'Your thoughts..', 'rosa' ) . '"></textarea></p>'
+		'comment_field'        => '<p class="comment-form-comment"><label for="comment" class="show-on-ie8">' . __( 'Comment', 'rosa-lite' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="' . __( 'Your thoughts..', 'rosa-lite' ) . '"></textarea></p>'
 	);
 }
 

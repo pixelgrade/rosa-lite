@@ -45,18 +45,18 @@ add_filter( 'gridable_row_class',  'rosa_gridable_row_class', 10, 4 );
  */
 function rosa_gridable_column_options( $options ) {
 	$options['column_style'] = array(
-		'label'   => esc_html__( 'Column Style', 'rosa' ),
+		'label'   => esc_html__( 'Column Style', 'rosa-lite' ),
 		'type'    => 'select',
 		'options' => array(
-			'simple' => esc_html__( 'Simple', 'rosa' ),
-			'island' => esc_html__( 'Island', 'rosa' ),
-			'promo-box' => esc_html__( 'Feature Box', 'rosa' ),
+			'simple' => esc_html__( 'Simple', 'rosa-lite' ),
+			'island' => esc_html__( 'Island', 'rosa-lite' ),
+			'promo-box' => esc_html__( 'Feature Box', 'rosa-lite' ),
 		),
 		'default' => 'classic'
 	);
 
 	$options['class'] = array(
-		'label'   => esc_html__( 'CSS Class', 'rosa' ),
+		'label'   => esc_html__( 'CSS Class', 'rosa-lite' ),
 		'type'    => 'text',
 		'default' => ''
 	);
