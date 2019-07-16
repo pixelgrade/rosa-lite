@@ -250,13 +250,6 @@ require get_template_directory() . '/inc/widgets.php';
 require get_template_directory() . '/inc/extras.php';
 
 /**
- * Custom functions for the WordPress admin area
- */
-if ( is_admin() ) {
-	require get_template_directory() . '/inc/extras_admin.php';
-}
-
-/**
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
