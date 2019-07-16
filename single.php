@@ -133,10 +133,6 @@ else :
 							</div>
 						</div><!-- .grid -->
 
-						<?php if ( pixelgrade_option( 'blog_single_show_author_box' ) ) {
-							get_template_part( 'author-bio' );
-						} ?>
-
 					</footer><!-- .article__footer -->
 
 					<?php if ( function_exists( 'yarpp_related' ) ) {
