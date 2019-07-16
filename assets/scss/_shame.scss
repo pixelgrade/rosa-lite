@@ -255,3 +255,26 @@ html, body, body > .page {
 .tabs__pane:not(.hide):not([style]) {
     position: static;
 }
+
+/* Label for View Pro Customizer Section */
+
+[id*="pro__section"] {
+	.accordion-section-title:before {
+		position: absolute;
+		right: 30px;
+
+		content: "pro";
+		display: inline-block;
+		margin-right: 5px;
+		padding: 4px 12px;
+		border-radius: $label-border-radius;
+
+		font-size: $label-font-size;
+		font-weight: 300;
+		line-height: 1;
+
+		background-color: $label-bg-color;
+		color: #ffffff;
+		text-transform: capitalize;
+	}
+}

@@ -14,7 +14,7 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) :
 
 else :
 	$has_sidebar = false;
-	if ( pixelgrade_option( 'blog_single_show_sidebar' ) ) {
+	if ( pixelgrade_option( 'blog_single_show_sidebar', true ) ) {
 		$has_sidebar = true;
 	}
 
@@ -40,7 +40,7 @@ else :
 
 						<?php
 						if ( has_post_thumbnail() ):
-							if ( pixelgrade_option( 'blog_single_show_sidebar' ) ) { //use a smaller image size
+							if ( $has_sidebar ) { //use a smaller image size
 								$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'medium-size' );
 							} else { //use a larger image size
 								$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large-size' );
@@ -108,30 +108,6 @@ else :
 						<?php endif; ?>
 
 						<hr class="separator"/>
-						<div class="grid">
-							<div class="grid__item  lap-and-up-one-half">
-								<?php
-								if ( function_exists( 'display_pixlikes' ) ) {
-									display_pixlikes();
-								} ?>
-							</div><!--
-                         --><div class="grid__item  lap-and-up-one-half">
-
-								<?php if ( pixelgrade_option( 'blog_single_show_share_links' ) ): ?>
-
-									<div class="addthis_toolbox addthis_default_style addthis_32x32_style  add_this_list"
-									     addthis:url="<?php echo rosa_get_current_canonical_url(); ?>"
-									     addthis:title="<?php wp_title( '|', true, 'right' ); ?>"
-									     addthis:description="<?php echo trim( strip_tags( get_the_excerpt() ) ); ?>">
-
-										<?php get_template_part( 'template-parts/addthis-social-buttons' ); ?>
-
-									</div>
-
-								<?php endif; ?>
-
-							</div>
-						</div><!-- .grid -->
 
 					</footer><!-- .article__footer -->
 
