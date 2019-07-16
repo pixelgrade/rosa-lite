@@ -90,14 +90,9 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 		 */
 		add_theme_support( 'menus' );
 
-		$menus = array(
-			'main_menu'   => 'Main Menu',
-			'footer_menu' => 'Footer Menu',
-			'social_menu' => 'Social Links'
-		);
-		foreach ( $menus as $key => $value ) {
-			register_nav_menu( $key, $value );
-		}
+
+		register_nav_menu( 'main_menu', 'Main Menu' );
+
 
 		add_editor_style( 'editor-style.css' );
 

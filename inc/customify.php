@@ -1832,34 +1832,6 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 		 * FONTS - This section will handle different elements fonts (eg. headings, body)
 		 */
 
-
-		/**
-		 * Check if WooCommerce is active
-		 **/
-		if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-
-			$config['panels']['theme_options']['sections']['woocommerce'] = array(
-				'title'   => esc_html__( 'WooCommerce', 'rosa-lite' ),
-				'options' => array(
-					'divider_title_962836192'    => array(
-						'type' => 'html',
-						'html' => '<span class="separator label">' . esc_html__( 'WooCommerce Support', 'rosa-lite' ) . '</span>'
-					),
-					'enable_woocommerce_support' => array(
-						'type'    => 'checkbox',
-						'label'   => __( 'Enable WooCommerce Support', 'rosa-lite' ),
-						'desc'    => esc_html__( 'Turn this off to avoid loading the WooCommerce assets (CSS and JS).', 'rosa-lite' ),
-						'default' => 1,
-					),
-					'show_cart_menu'             => array(
-						'type'    => 'checkbox',
-						'label'   => esc_html__( 'Show cart menu in main navigation', 'rosa-lite' ),
-						'default' => 1,
-					),
-				)
-			);
-		}
-
 		return $config;
 	}
 }
