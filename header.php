@@ -121,24 +121,6 @@ if ( is_single() ) {
 							'fallback_cb'    => 'rosa_please_select_a_menu_fallback',
 							'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 						) );
-
-						$theme_locations = get_nav_menu_locations();
-						if ( isset( $theme_locations["social_menu"] ) && ( $theme_locations["social_menu"] != 0 ) ) {
-							wp_nav_menu( array(
-								'theme_location' => 'social_menu',
-								'menu'           => '',
-								'container'      => '',
-								'container_id'   => '',
-								//                    'menu_class'      => 'site-navigation site-navigation--footer site-navigation--secondary flush--bottom',
-								'menu_class'     => 'nav--main  nav--items-social',
-								'fallback_cb'    => false,
-								'menu_id'        => '',
-								'depth'          => 1,
-								'items_wrap'     => '<ul id="%1$s" class="%2$s  nav">%3$s</ul>',
-								'link_before'    => '<span class="screen-reader-text">',
-								'link_after'     => '</span>',
-							) );
-						}
 						?>
 
 					</nav>
