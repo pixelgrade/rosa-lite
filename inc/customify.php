@@ -410,7 +410,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 
 						'sidebar_width' => array(
 							'type'        => 'range',
-							'label'       => __( 'Sidebar Width', 'rosa' ),
+							'label'       => __( 'Sidebar Width', 'rosa-lite' ),
 							// 'desc'        => __( 'Set the width of the sidebar.', 'rosa-lite' ),
 							'live'        => true,
 							'default'     => 300,
@@ -452,36 +452,36 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 
 						'down_arrow_style' => array(
 							'type'    => 'select',
-							'label'   => __( 'Scroll Down Arrow Style', 'rosa' ),
+							'label'   => __( 'Scroll Down Arrow Style', 'rosa-lite' ),
 							'choices' => array(
-								'transparent' => esc_html__( 'Transparent', 'rosa' ),
-								'bubble'      => esc_html__( 'Bubble', 'rosa' ),
+								'transparent' => esc_html__( 'Transparent', 'rosa-lite' ),
+								'bubble'      => esc_html__( 'Bubble', 'rosa-lite' ),
 							),
 							'default' => 'transparent',
 						),
 
 						'slideshow_arrows_style' => array(
 							'type'    => 'select',
-							'label'   => __( 'Slideshow Arrows', 'rosa' ),
+							'label'   => __( 'Slideshow Arrows', 'rosa-lite' ),
 							// 'desc'    => __( 'Select which type of arrows you want on page headers.', 'rosa-lite' ),
 							'choices' => array(
-								'static' => esc_html__( 'Always Show', 'rosa' ),
-								'hover'  => esc_html__( 'Show On Hover', 'rosa' )
+								'static' => esc_html__( 'Always Show', 'rosa-lite' ),
+								'hover'  => esc_html__( 'Show On Hover', 'rosa-lite' )
 							),
 							'default' => 'static',
 						),
 					),
 				),
 				'footer_backgrounds_section' => array(
-					'title'   => __( 'Footer', 'rosa' ),
+					'title'   => __( 'Footer', 'rosa-lite' ),
 					'options' => array(
 						'footer_sidebar_style'   => array(
 							'type'    => 'select',
-							'label'   => __( 'Footer Widget Area Style', 'rosa' ),
+							'label'   => __( 'Footer Widget Area Style', 'rosa-lite' ),
 							'choices' => array(
-								'light'  => esc_html__( 'Light', 'rosa' ),
-								'dark'   => esc_html__( 'Dark', 'rosa' ),
-								'accent' => esc_html__( 'Accent Color', 'rosa' ),
+								'light'  => esc_html__( 'Light', 'rosa-lite' ),
+								'dark'   => esc_html__( 'Dark', 'rosa-lite' ),
+								'accent' => esc_html__( 'Accent Color', 'rosa-lite' ),
 							),
 							'default' => 'dark',
 							'css'     => array(
@@ -494,11 +494,11 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'footer_bottombar_style' => array(
 							'type'    => 'select',
-							'label'   => __( 'Footer Bottom Bar Style', 'rosa' ),
+							'label'   => __( 'Footer Bottom Bar Style', 'rosa-lite' ),
 							'choices' => array(
-								'light'  => esc_html__( 'Light', 'rosa' ),
-								'dark'   => esc_html__( 'Dark', 'rosa' ),
-								'accent' => esc_html__( 'Accent Color', 'rosa' ),
+								'light'  => esc_html__( 'Light', 'rosa-lite' ),
+								'dark'   => esc_html__( 'Dark', 'rosa-lite' ),
+								'accent' => esc_html__( 'Accent Color', 'rosa-lite' ),
 							),
 							'default' => 'dark',
 						),
@@ -510,13 +510,13 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 
 		$config['sections'] = array(
 			'colors_section' => array(
-				'title'       => '&#x1f3a8; ' . esc_html__( 'Colors', 'rosa' ),
+				'title'       => '&#x1f3a8; ' . esc_html__( 'Colors', 'rosa-lite' ),
 				'priority'    => 3,
-				'description' => esc_html__( 'Use the color picker to change the main color of the site to match your brand color. If you want to override the color of some elements you can always use CSS editor panel.', 'rosa' ),
+				'description' => esc_html__( 'Use the color picker to change the main color of the site to match your brand color. If you want to override the color of some elements you can always use CSS editor panel.', 'rosa-lite' ),
 				'options'     => array(
 					'main_color'                          => array(
 						'type'    => 'color',
-						'label'   => __( 'Accent Color', 'rosa' ),
+						'label'   => __( 'Accent Color', 'rosa-lite' ),
 						'live'    => true,
 						'default' => THEME_COLOR_PRIMARY,
 						'css'     => array(
@@ -645,7 +645,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'links_color'                         => array(
 						'type'    => 'color',
-						'label'   => esc_html__( 'Links color', 'rosa' ),
+						'label'   => esc_html__( 'Links color', 'rosa-lite' ),
 						'live'    => true,
 						'default' => THEME_COLOR_PRIMARY,
 						'css'     => array(
@@ -749,7 +749,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'buttons_color'                       => array(
 						'type'    => 'color',
-						'label'   => esc_html__( 'Buttons Color', 'rosa' ),
+						'label'   => esc_html__( 'Buttons Color', 'rosa-lite' ),
 						'live'    => true,
 						'default' => THEME_DARK_PRIMARY,
 						'css'     => array(
@@ -773,7 +773,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                     ),
 					'text_color'     => array(
 						'type'    => 'color',
-						'label'   => esc_html__( 'Text Color', 'rosa' ),
+						'label'   => esc_html__( 'Text Color', 'rosa-lite' ),
 						'live'    => true,
 						'default' => THEME_DARK_SECONDARY,
 						'css'     => array(
@@ -917,7 +917,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'headings_color'                      => array(
 						'type'    => 'color',
-						'label'   => esc_html__( 'Headings Color', 'rosa' ),
+						'label'   => esc_html__( 'Headings Color', 'rosa-lite' ),
 						'live'    => true,
 						'default' => THEME_DARK_PRIMARY,
 						'css'     => array(
@@ -1148,7 +1148,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'navlink_color'                       => array(
 						'type'    => 'color',
-						'label'   => esc_html__( 'Nav Links Color', 'rosa' ),
+						'label'   => esc_html__( 'Nav Links Color', 'rosa-lite' ),
 						'live'    => true,
 						'default' => THEME_DARK_PRIMARY,
 						'css'     => array(
@@ -1192,7 +1192,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'header_background_color'             => array(
 						'type'    => 'color',
-						'label'   => esc_html__( 'Header Color', 'rosa' ),
+						'label'   => esc_html__( 'Header Color', 'rosa-lite' ),
 						'live'    => true,
 						'default' => THEME_LIGHT_PRIMARY,
 						'css'     => array(
@@ -1207,13 +1207,13 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'header_image_pattern'                => array(
 						'type'   => 'custom_background',
-						'label'  => esc_html__( 'Header Background', 'rosa' ),
-						'desc'   => esc_html__( 'Container background with image.', 'rosa' ),
+						'label'  => esc_html__( 'Header Background', 'rosa-lite' ),
+						'desc'   => esc_html__( 'Container background with image.', 'rosa-lite' ),
 						'output' => array( ".site-header, .site-header.headroom--not-top" ),
 					),
 					'content_background_color'            => array(
 						'type'    => 'color',
-						'label'   => esc_html__( 'Content Color', 'rosa' ),
+						'label'   => esc_html__( 'Content Color', 'rosa-lite' ),
 						'live'    => true,
 						'default' => THEME_LIGHT_PRIMARY,
 						'css'     => array(
@@ -1350,17 +1350,17 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'container_image_pattern'             => array(
 						'type'   => 'custom_background',
-						'label'  => esc_html__( 'Header Background', 'rosa' ),
-						'desc'   => esc_html__( 'Container background with image.', 'rosa' ),
+						'label'  => esc_html__( 'Header Background', 'rosa-lite' ),
+						'desc'   => esc_html__( 'Container background with image.', 'rosa-lite' ),
 						'output' => array( '.page .article__content' ),
 					),
 					'this_divider_6983365'                => array(
 						'type' => 'html',
-						'html' => '<span class="separator label large">' . esc_html__( 'Footer Widget Area', 'rosa' ) . '</span>'
+						'html' => '<span class="separator label large">' . esc_html__( 'Footer Widget Area', 'rosa-lite' ) . '</span>'
 					),
 					'footer_widget_area_accent_color'     => array(
 						'type'    => 'color',
-						'label'   => __( 'Accent Color', 'rosa' ),
+						'label'   => __( 'Accent Color', 'rosa-lite' ),
 						'live'    => true,
 						'default' => THEME_COLOR_PRIMARY,
 						'css'     => array(
@@ -1373,7 +1373,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'footer_widget_area_background_color' => array(
 						'type'    => 'color',
-						'label'   => __( 'Background Color', 'rosa' ),
+						'label'   => __( 'Background Color', 'rosa-lite' ),
 						'live'    => true,
 						'default' => THEME_DARK_TERTIARY,
 						'css'     => array(
@@ -1392,7 +1392,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'footer_widget_area_text_color'       => array(
 						'type'    => 'color',
-						'label'   => __( 'Text Color', 'rosa' ),
+						'label'   => __( 'Text Color', 'rosa-lite' ),
 						'live'    => true,
 						'default' => THEME_LIGHT_PRIMARY,
 						'css'     => array(
@@ -1409,11 +1409,11 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'this_divider_6360676'                => array(
 						'type' => 'html',
-						'html' => '<span class="separator label large">' . esc_html__( 'Footer', 'rosa' ) . '</span>'
+						'html' => '<span class="separator label large">' . esc_html__( 'Footer', 'rosa-lite' ) . '</span>'
 					),
 					'footer_accent_color'                 => array(
 						'type'    => 'color',
-						'label'   => __( 'Accent Color', 'rosa' ),
+						'label'   => __( 'Accent Color', 'rosa-lite' ),
 						'live'    => true,
 						'default' => THEME_COLOR_PRIMARY,
 						'css'     => array(
@@ -1432,7 +1432,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'footer_background_color'             => array(
 						'type'    => 'color',
-						'label'   => __( 'Background Color', 'rosa' ),
+						'label'   => __( 'Background Color', 'rosa-lite' ),
 						'live'    => true,
 						'default' => THEME_DARK_PRIMARY,
 						'css'     => array(
@@ -1448,7 +1448,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'footer_text_color'                   => array(
 						'type'    => 'color',
-						'label'   => __( 'Text Color', 'rosa' ),
+						'label'   => __( 'Text Color', 'rosa-lite' ),
 						'live'    => true,
 						'default' => THEME_LIGHT_PRIMARY,
 						'css'     => array(
@@ -1462,11 +1462,11 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 					),
 					'this_divider_20042018'               => array(
 						'type' => 'html',
-						'html' => '<span class="separator label large">' . esc_html__( 'Mobile Navigation', 'rosa' ) . '</span>'
+						'html' => '<span class="separator label large">' . esc_html__( 'Mobile Navigation', 'rosa-lite' ) . '</span>'
 					),
                     'mobile_navigation_color'     => array(
                         'type'    => 'color',
-                        'label'   => __( 'Navigation Links Color', 'rosa' ),
+                        'label'   => __( 'Navigation Links Color', 'rosa-lite' ),
                         'live'    => true,
                         'default' => THEME_LIGHT_SECONDARY,
                         'css'     => array(
@@ -1494,7 +1494,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                     ),
                     'mobile_navigation_background_color'     => array(
                         'type'    => 'color',
-                        'label'   => __( 'Navigation Background Color', 'rosa' ),
+                        'label'   => __( 'Navigation Background Color', 'rosa-lite' ),
                         'live'    => true,
                         'default' => THEME_DARK_PRIMARY,
                         'css'     => array(
@@ -1508,94 +1508,94 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 				),
 			),
 			'blog'           => array(
-				'title'    => '&#x1f4d4; ' . esc_html__( 'Blog', 'rosa' ),
+				'title'    => '&#x1f4d4; ' . esc_html__( 'Blog', 'rosa-lite' ),
 				'priority' => 6,
 				'options'  => array(
 					'this_divider_8874320137'      => array(
 						'type' => 'html',
-						'html' => '<span class="separator label large">' . esc_html__( 'Single Post', 'rosa' ) . '</span>'
+						'html' => '<span class="separator label large">' . esc_html__( 'Single Post', 'rosa-lite' ) . '</span>'
 					),
 					'blog_single_show_author_box'  => array(
 						'type'    => 'checkbox',
-						'label'   => esc_html__( 'Show Author Info Box', 'rosa' ),
+						'label'   => esc_html__( 'Show Author Info Box', 'rosa-lite' ),
 						//'subtitle' => __( 'Do you want to show author info box with avatar and description bellow the post?', 'rosa-lite' ),
 						'default' => 1,
 					),
 					'this_divider_37986312'        => array(
 						'type' => 'html',
-						'html' => '<span class="separator label">' . esc_html__( 'Sharing Buttons', 'rosa' ) . '</span>'
+						'html' => '<span class="separator label">' . esc_html__( 'Sharing Buttons', 'rosa-lite' ) . '</span>'
 					),
 					'blog_single_show_share_links' => array(
 						'type'    => 'checkbox',
-						'label'   => esc_html__( 'Show Share Buttons in Posts', 'rosa' ),
+						'label'   => esc_html__( 'Show Share Buttons in Posts', 'rosa-lite' ),
 						'default' => 1,
 					),
 
 					'this_divider_8886312' => array(
 						'type' => 'html',
-						'html' => '<span class="separator label">' . esc_html__( 'Comments', 'rosa' ) . '</span>'
+						'html' => '<span class="separator label">' . esc_html__( 'Comments', 'rosa-lite' ) . '</span>'
 					),
 					'comments_show_avatar' => array(
 						'type'    => 'checkbox',
-						'label'   => esc_html__( 'Show Comments Avatars', 'rosa' ),
+						'label'   => esc_html__( 'Show Comments Avatars', 'rosa-lite' ),
 						'default' => 0,
 					),
 
 					'comments_show_numbering' => array(
 						'type'    => 'checkbox',
-						'label'   => esc_html__( 'Show Comments Numbers', 'rosa' ),
+						'label'   => esc_html__( 'Show Comments Numbers', 'rosa-lite' ),
 						'default' => 1,
 					),
 
 					'this_divider_1286312' => array(
 						'type' => 'html',
-						'html' => '<span class="separator label">' . esc_html__( 'Sidebar', 'rosa' ) . '</span>'
+						'html' => '<span class="separator label">' . esc_html__( 'Sidebar', 'rosa-lite' ) . '</span>'
 					),
 
 					'blog_single_show_sidebar' => array(
 						'type'    => 'checkbox',
-						'label'   => esc_html__( 'Show the main sidebar in the single post pages.', 'rosa' ),
+						'label'   => esc_html__( 'Show the main sidebar in the single post pages.', 'rosa-lite' ),
 						'default' => 1,
 					),
 
 					'this_divider_5343879' => array(
 						'type' => 'html',
-						'html' => '<span class="separator label large">' . esc_html__( 'Blog Archive', 'rosa' ) . '</span>'
+						'html' => '<span class="separator label large">' . esc_html__( 'Blog Archive', 'rosa-lite' ) . '</span>'
 					),
 
 					'blog_read_more_text' => array(
 						'type'    => 'text',
-						'label'   => esc_html__( 'Read More Text', 'rosa' ),
-						'default' => esc_html__( 'Read more', 'rosa' )
+						'label'   => esc_html__( 'Read More Text', 'rosa-lite' ),
+						'default' => esc_html__( 'Read more', 'rosa-lite' )
 					),
 
 					'blog_excerpt_more_text' => array(
 						'type'    => 'text',
-						'label'   => esc_html__( 'Excerpt "More" Text', 'rosa' ),
-						'default' => esc_html__( '..', 'rosa' )
+						'label'   => esc_html__( 'Excerpt "More" Text', 'rosa-lite' ),
+						'default' => esc_html__( '..', 'rosa-lite' )
 					),
 
 					'blog_excerpt_length' => array(
 						'type'    => 'text',
-						'label'   => esc_html__( 'Excerpt Length', 'rosa' ),
-						'desc'    => esc_html__( 'Set the number of characters for posts excerpt.', 'rosa' ),
+						'label'   => esc_html__( 'Excerpt Length', 'rosa-lite' ),
+						'desc'    => esc_html__( 'Set the number of characters for posts excerpt.', 'rosa-lite' ),
 						'default' => 140
 					),
 
 					'this_divider_5363879' => array(
 						'type' => 'html',
-						'html' => '<span class="separator label large">' . esc_html__( 'Posts Meta Informations', 'rosa' ) . '</span>'
+						'html' => '<span class="separator label large">' . esc_html__( 'Posts Meta Informations', 'rosa-lite' ) . '</span>'
 					),
 
 					'blog_show_date' => array(
 						'type'    => 'checkbox',
-						'label'   => esc_html__( 'Display the post publish date.', 'rosa' ),
+						'label'   => esc_html__( 'Display the post publish date.', 'rosa-lite' ),
 						'default' => 1
 					),
 
 					'blog_custom_date_separator' => array(
 						'type'    => 'checkbox',
-						'label'   => esc_html__( 'Change spaces, commas or slashes with a custom dot.', 'rosa' ),
+						'label'   => esc_html__( 'Change spaces, commas or slashes with a custom dot.', 'rosa-lite' ),
 						'default' => 1,
 						//'required' => array( 'blog_show_date', '=', true )
 					),
@@ -1605,16 +1605,16 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 
 
 		$config['panels']['typography_panel'] = array(
-			'title'    => '&#x1f4dd; ' . esc_html__( 'Fonts', 'rosa' ),
+			'title'    => '&#x1f4dd; ' . esc_html__( 'Fonts', 'rosa-lite' ),
 			'priority' => 4,
 			'sections' => array(
 
 				'headers_typography_section' => array(
-					'title'   => esc_html__( 'Headings', 'rosa' ),
+					'title'   => esc_html__( 'Headings', 'rosa-lite' ),
 					'options' => array(
 						'google_titles_font' => array(
 							'type'             => 'typography',
-							'label'            => esc_html__( 'Headings', 'rosa' ),
+							'label'            => esc_html__( 'Headings', 'rosa-lite' ),
 							// 'desc'             => __( 'Font for titles and headings.', 'rosa-lite' ),
 							'default'          => array( 'Source Sans Pro' ),
 							'recommended'      => array(
@@ -1629,7 +1629,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 
 						'google_subtitles_font'      => array(
 							'type'        => 'typography',
-							'label'       => esc_html__( 'Sub Headings', 'rosa' ),
+							'label'       => esc_html__( 'Sub Headings', 'rosa-lite' ),
 							// 'desc'        => __( 'Font for titles and headings.', 'rosa-lite' ),
 							'default'     => array( 'Herr Von Muellerhoff' ),
 							'recommended' => array(
@@ -1641,7 +1641,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'subheadings_bottom-spacing' => array(
 							'type'        => 'range',
-							'label'       => esc_html__( 'Bottom Spacing', 'rosa' ),
+							'label'       => esc_html__( 'Bottom Spacing', 'rosa-lite' ),
 							'live'        => true,
 							'default'     => '-38',
 							'input_attrs' => array(
@@ -1660,7 +1660,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'subheadings_first-letter'   => array(
 							'type'        => 'range',
-							'label'       => esc_html__( 'First Letter Offset', 'rosa' ),
+							'label'       => esc_html__( 'First Letter Offset', 'rosa-lite' ),
 							'live'        => true,
 							'default'     => 9,
 							'input_attrs' => array(
@@ -1681,12 +1681,12 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 				),
 
 				'nav_typography_section' => array(
-					'title'   => esc_html__( 'Navigation', 'rosa' ),
+					'title'   => esc_html__( 'Navigation', 'rosa-lite' ),
 					'options' => array(
 						'google_nav_font'     => array(
 							'type'        => 'typography',
-							'label'       => esc_html__( 'Navigation', 'rosa' ),
-							'desc'        => esc_html__( 'Font for the navigation menu.', 'rosa' ),
+							'label'       => esc_html__( 'Navigation', 'rosa-lite' ),
+							'desc'        => esc_html__( 'Font for the navigation menu.', 'rosa-lite' ),
 							'default'     => array( 'Cabin' ),
 							'recommended' => array(
 								'Cabin',
@@ -1697,7 +1697,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'nav_font-size'       => array(
 							'type'        => 'range',
-							'label'       => esc_html__( 'Font Size', 'rosa' ),
+							'label'       => esc_html__( 'Font Size', 'rosa-lite' ),
 							'live'        => true,
 							'default'     => 13,
 							'input_attrs' => array(
@@ -1716,7 +1716,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'nav_letter-spacing'  => array(
 							'type'        => 'range',
-							'label'       => esc_html__( 'Letter Spacing', 'rosa' ),
+							'label'       => esc_html__( 'Letter Spacing', 'rosa-lite' ),
 							'live'        => true,
 							'default'     => 1,
 							'input_attrs' => array(
@@ -1735,12 +1735,12 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'nav_text-transform'  => array(
 							'type'    => 'select',
-							'label'   => esc_html__( 'Text Transform', 'rosa' ),
+							'label'   => esc_html__( 'Text Transform', 'rosa-lite' ),
 							'choices' => array(
-								'none'       => esc_html__( 'None', 'rosa' ),
-								'capitalize' => esc_html__( 'Capitalize', 'rosa' ),
-								'uppercase'  => esc_html__( 'Uppercase', 'rosa' ),
-								'lowercase'  => esc_html__( 'Lowercase', 'rosa' ),
+								'none'       => esc_html__( 'None', 'rosa-lite' ),
+								'capitalize' => esc_html__( 'Capitalize', 'rosa-lite' ),
+								'uppercase'  => esc_html__( 'Uppercase', 'rosa-lite' ),
+								'lowercase'  => esc_html__( 'Lowercase', 'rosa-lite' ),
 							),
 							'default' => 'uppercase',
 							'css'     => array(
@@ -1752,11 +1752,11 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'nav_text-decoration' => array(
 							'type'    => 'select',
-							'label'   => esc_html__( 'Text Decoration', 'rosa' ),
+							'label'   => esc_html__( 'Text Decoration', 'rosa-lite' ),
 							'choices' => array(
-								'none'      => esc_html__( 'None', 'rosa' ),
-								'underline' => esc_html__( 'Underline', 'rosa' ),
-								'overline'  => esc_html__( 'Overline', 'rosa' ),
+								'none'      => esc_html__( 'None', 'rosa-lite' ),
+								'underline' => esc_html__( 'Underline', 'rosa-lite' ),
+								'overline'  => esc_html__( 'Overline', 'rosa-lite' ),
 							),
 							'default' => 'none',
 							'css'     => array(
@@ -1770,12 +1770,12 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 				),
 
 				'content_typography_section' => array(
-					'title'   => esc_html__( 'Body', 'rosa' ),
+					'title'   => esc_html__( 'Body', 'rosa-lite' ),
 					'options' => array(
 						'google_body_font' => array(
 							'type'             => 'typography',
-							'label'            => esc_html__( 'Body', 'rosa' ),
-							'desc'             => esc_html__( 'Font for content and widget text.', 'rosa' ),
+							'label'            => esc_html__( 'Body', 'rosa-lite' ),
+							'desc'             => esc_html__( 'Font for content and widget text.', 'rosa-lite' ),
 							'default'          => array( 'Cabin' ),
 							'recommended'      => array(
 								'Cabin',
@@ -1788,7 +1788,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'body-font-size'   => array(
 							'type'        => 'range',
-							'label'       => esc_html__( 'Font Size', 'rosa' ),
+							'label'       => esc_html__( 'Font Size', 'rosa-lite' ),
 							'live'        => true,
 							'default'     => 16,
 							'input_attrs' => array(
@@ -1807,7 +1807,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						),
 						'body-line-height' => array(
 							'type'        => 'range',
-							'label'       => esc_html__( 'Line Height', 'rosa' ),
+							'label'       => esc_html__( 'Line Height', 'rosa-lite' ),
 							'live'        => true,
 							'default'     => '1.7',
 							'input_attrs' => array(
@@ -1839,21 +1839,21 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 		if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 
 			$config['panels']['theme_options']['sections']['woocommerce'] = array(
-				'title'   => esc_html__( 'WooCommerce', 'rosa' ),
+				'title'   => esc_html__( 'WooCommerce', 'rosa-lite' ),
 				'options' => array(
 					'divider_title_962836192'    => array(
 						'type' => 'html',
-						'html' => '<span class="separator label">' . esc_html__( 'WooCommerce Support', 'rosa' ) . '</span>'
+						'html' => '<span class="separator label">' . esc_html__( 'WooCommerce Support', 'rosa-lite' ) . '</span>'
 					),
 					'enable_woocommerce_support' => array(
 						'type'    => 'checkbox',
-						'label'   => __( 'Enable WooCommerce Support', 'rosa' ),
-						'desc'    => esc_html__( 'Turn this off to avoid loading the WooCommerce assets (CSS and JS).', 'rosa' ),
+						'label'   => __( 'Enable WooCommerce Support', 'rosa-lite' ),
+						'desc'    => esc_html__( 'Turn this off to avoid loading the WooCommerce assets (CSS and JS).', 'rosa-lite' ),
 						'default' => 1,
 					),
 					'show_cart_menu'             => array(
 						'type'    => 'checkbox',
-						'label'   => esc_html__( 'Show cart menu in main navigation', 'rosa' ),
+						'label'   => esc_html__( 'Show cart menu in main navigation', 'rosa-lite' ),
 						'default' => 1,
 					),
 				)

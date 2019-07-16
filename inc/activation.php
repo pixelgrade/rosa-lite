@@ -54,7 +54,7 @@ return array(
 						'std'     => 'simple',
 					),
 //					array(
-//						'name' => __( 'Inverse The Colors', 'rosa' ),
+//						'name' => __( 'Inverse The Colors', 'rosa-lite' ),
 //						'desc' => __( "This will make the content background black and the text white.", 'rosa-lite' ),
 //						'id'   => rosa::prefix() . 'inverse_section_colors',
 //						'type' => 'checkbox',
@@ -98,7 +98,7 @@ return array(
 					),
 					array(
 						'name' => __( 'Subtitle', 'rosa-lite' ),
-						// 'desc' => __( "This is optional. Leave empty to remove the subtitle.", 'rosa' ),
+						// 'desc' => __( "This is optional. Leave empty to remove the subtitle.", 'rosa-lite' ),
 						'id'   => wpgrade::prefix() . 'page_cover_subtitle',
 						'type' => 'text',
 					),
