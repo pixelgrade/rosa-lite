@@ -53,12 +53,12 @@ function rosa_customize_register( $wp_customize ) {
 		),
 	) );
 
-	$wp_customize->add_setting( 'timber_lite_style_view_pro_desc', array(
+	$wp_customize->add_setting( 'rosa_lite_style_view_pro_desc', array(
 		'default'           => '',
 		'sanitize_callback' => '__return_true',
 	) );
 
-	$wp_customize->add_control( 'timber_lite_style_view_pro_desc', array(
+	$wp_customize->add_control( 'rosa_lite_style_view_pro_desc', array(
 		'section' => 'pro__section',
 		'type'    => 'hidden',
 	) );
@@ -71,14 +71,6 @@ add_action( 'customize_register', 'rosa_customize_register' );
 function rosa_lite_get_pro_link() {
 	return 'https://pixelgrade.com/themes/portfolio/timber-pro?utm_source=timber-lite-clients&utm_medium=customizer&utm_campaign=timber-lite';
 }
-
-/**
- * Assets that will be loaded for the customizer sidebar
- */
-//function rosa_lite_customizer_assets() {
-//	wp_enqueue_style( 'timber_lite_customizer_style', get_template_directory_uri() . '/admin/admin.css', null, '1.0.0', false );
-//}
-//add_action( 'admin_enqueue_scripts', 'rosa_lite_customizer_assets' );
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
