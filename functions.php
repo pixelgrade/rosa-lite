@@ -97,22 +97,6 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 		add_editor_style( 'editor-style.css' );
 
 		add_filter( 'upload_mimes', 'rosa_callback_custom_upload_mimes' );
-
-		/**
-		 * Pixcare Helper Plugin
-		 */
-		add_theme_support( 'pixelgrade_care', array(
-				'support_url'   => 'https://pixelgrade.com/docs/rosa/',
-				'changelog_url' => 'https://wupdates.com/rosa-changelog',
-				'ock'           => 'Lm12n034gL19',
-				'ocs'           => '6AU8WKBK1yZRDerL57ObzDPM7SGWRp21Csi5Ti5LdVNG9MbP'
-			)
-		);
-
-        /**
-         * Enable support for the Style Manager Customizer section (via Customify).
-         */
-        add_theme_support( 'customizer_style_manager' );
 	}
 }
 add_action( 'after_setup_theme', 'rosa_theme_setup' );
@@ -149,10 +133,6 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 
 		if ( is_404() ) {
 			wp_enqueue_style( 'rosa-404-style', get_template_directory_uri() . '/404.css', array(), time(), 'all' );
-		}
-
-		if ( ! class_exists( 'PixCustomifyPlugin' ) ) {
-			wp_enqueue_style( 'rosa-default-fonts', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700,400italic,700italic|Herr+Von+Muellerhoff' );
 		}
 
 		if ( ! is_rtl() ) {
@@ -290,11 +270,6 @@ require get_template_directory() . '/inc/mb_compat.php';
  * Load various plugin integrations
  */
 require get_template_directory() . '/inc/integrations.php';
-
-/**
- * Load theme's configuration file (via Customify plugin)
- */
-require get_template_directory() . '/inc/customify.php';
 
 /**
  * Load the custom logic for multipages
