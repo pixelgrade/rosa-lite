@@ -28,6 +28,7 @@ return array(
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
 				'priority'   => 'high',
+				'hidden'     => true,
 				'show_names' => true, // Show field names on the left
 				'fields'     => array(
 					array(
@@ -58,7 +59,7 @@ return array(
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
 				'priority'   => 'high',
-				'hidden'     => true,
+				'hidden'     => false,
 				'show_on'    => array(
 					'key' => 'page-template',
 					'value' => array( 'default', 'page-templates/slideshow.php' ),
