@@ -41,4 +41,4 @@ The Rosa Lite Theme bundles the following third-party resources:
 * jQuery-Organic-Tabs https://github.com/CSS-Tricks/jQuery-Organic-Tabs, (c) 2012 CSS-TRICKS @todo complete license type
 
 
-* Images:
+* Images: screenshot image from PxHere - [Source](https://pxhere.com/en/photo/1398176) licensed under CC0 Public Domain.
