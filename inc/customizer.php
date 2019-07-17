@@ -75,18 +75,18 @@ function rosa_lite_get_pro_link() {
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
-function rosa_customize_preview_js() {
+function rosa_lite_customize_preview_js() {
 	wp_enqueue_script( 'rosa_customizer_preview', get_template_directory_uri() . '/assets/js/admin/customizer_preview.js', array( 'customize-preview' ), '20160215', true );
 }
-add_action( 'customize_preview_init', 'rosa_customize_preview_js' );
+add_action( 'customize_preview_init', 'rosa_lite_customize_preview_js' );
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
-function rosa_load_customize_js() {
+function rosa_lite_load_customize_js() {
 	wp_enqueue_script( 'rosa_customizer', get_template_directory_uri() . '/assets/js/admin/customizer.js', array( 'wp-ajax-response' ), '20160215', true );
 }
-add_action( 'customize_controls_enqueue_scripts', 'rosa_load_customize_js' );
+add_action( 'customize_controls_enqueue_scripts', 'rosa_lite_load_customize_js' );
 
 /**
  * Assets that will be loaded for the customizer sidebar
