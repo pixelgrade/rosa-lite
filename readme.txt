@@ -2,27 +2,26 @@ Theme Name: Rosa Lite
 Theme URI: https://github.com/pixelgrade/rosa-lite
 Author: Pixelgrade
 Author URI: https://pixelgrade.com/
-Description: Rosa Lite is a free photography WordPress theme that goes out to the edge to enable a fresh, adventurous experience.
+Description: Rosa Lite is a free restaurant WordPress theme, built to help small businesses shape an appealing online experience.
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: rosa-lite
 Domain Path: /languages/
-Tags:
+Tags: food-and-drink, two-columns, right-sidebar, custom-menu, featured-images, translation-ready,
 Requires at least: 4.9.9
 Tested up to: 5.2.2
 
 == Description ==
-Timber Lite is a Free photography WordPress theme that goes out to the edge to enable an adventurous experience.
-Equipped with smart photo galleries and a unique way of showcasing your photographs, illustrations, design projects, or any other type of creative work, Timber is the best option for if you want to put yourself out there for the world to see and admire.
-It has a responsive layout optimized for all devices, it’s easy to use and personalize without writing code and it follows all the best responsible SEO practices for maximum visibility in search engines.
-Its multilingual compatibility with WPML (WordPress Multilingual Plugin) ensures that no matter where you live and the language you speak, you have the right tool to highlight your portfolio and share it with the world.
+Rosa Lite is the free version of Rosa, the #1 best selling restaurant WordPress theme, built to help small businesses shape an appealing online experience.
+It’s packed with a parallax effect to grab attention, an online food menu so people can discover your offering, an easy to customize interface without using code, and a responsive design to address people on the go.
+This theme’s versatility allows it to be used in a wide range of industries, making it the perfect theme if you own a business.
+No matter if it’s a restaurant, beauty salon, house rental, hotel, coffee shop, or any other type of small business, this theme will fit your needs perfectly.
 
 == Changelog ==
 
 = 1.0.0 =
 * Initial release
-
 
 == Credits ==
 
@@ -30,17 +29,16 @@ Unless otherwise specified, all the theme files, scripts and images are licensed
 
 The Rosa Lite Theme bundles the following third-party resources:
 
-//ASTEA SUNT DE LA TIMBER, VEZI CE POTI FURA DE AICI
+* Entypo (c) 2012, [Daniel Bruce](http://www.entypo.com/), licensed under  [Creative Commons Attribution Share Alike License v3.00](https://www.fontsquirrel.com/license/entypo)
+* FontAwesome by [Fonticons Inc.] (https://fontawesome.com/), licensed under [SIL OFL 1.1 License](https://scripts.sil.org/OFL)
+
 * normalize.css https://necolas.github.io/normalize.css/, (c) 2012-2016 Nicolas Gallagher and Jonathan Neal, licensed under [MIT](https://opensource.org/licenses/MIT)
-
-* jQuery.NiceScroll https://github.com/inuyaksa/jquery.nicescroll, (c) 2011-2017 InuYaksa, licensed under [MIT](https://opensource.org/licenses/MIT)
-* jQuery-smartresize https://github.com/louisremi/jquery-smartresize, (c) 2012 @louis_remi, licensed under [MIT](https://opensource.org/licenses/MIT)
-* hammer.js https://github.com/hammerjs/hammer.js, (c) 2014 Jorik Tangelder, licensed under [MIT](https://opensource.org/licenses/MIT)
-* jQuery.appear https://github.com/morr/jquery.appear, (c) 2012 Andrey Sidorov, licensed under [MIT](https://opensource.org/licenses/MIT)
-* djax https://github.com/beezee/djax, (c) 2012, Brian Zeligson, licensed under [MIT](https://opensource.org/licenses/MIT)
-* jQuery-Organic-Tabs https://github.com/CSS-Tricks/jQuery-Organic-Tabs, (c) 2012 CSS-TRICKS @todo complete license type
-* snap.svg https://github.com/adobe-webplatform/Snap.svg/, (c) 2013 – 2017 Adobe Systems Incorporated, licensed under [Apache License 2.0] (https://www.apache.org/licenses/LICENSE-2.0)
+* rellax.js http://pixelgrade.github.io/rellax/, Copyright (c) 2016 Pixelgrade, License: [MIT](http://opensource.org/licenses/MIT)
+* Gmap3 by [DEMONTE Jean-Baptiste](https://github.com/jbdemonte), licensed under [GPL-3.0+](https://www.gnu.org/licenses/gpl-3.0.en.html)
 * modernizr.js https://github.com/modernizr/modernizr, (c) 2009 , licensed under [MIT](https://opensource.org/licenses/MIT) @todo complete author
-* jQuery-mousewheel https://github.com/jquery/jquery-mousewheel, (c) jQuery Foundation, licensed under [MIT](https://opensource.org/licenses/MIT)
+* debouncedresize.js: script by Louis-Remi Babe (https://github.com/louisremi/jquery-smartresize), licensed under the [MIT License](http://opensource.org/licenses/mit-license.html).
+* Magnific Popup: script by Dmitry Semenov (http://dimsemenov.com/plugins/magnific-popup/), licensed under the [MIT License](http://opensource.org/licenses/mit-license.html).
+* jQuery-Organic-Tabs https://github.com/CSS-Tricks/jQuery-Organic-Tabs, (c) 2012 CSS-TRICKS @todo complete license type
 
-* Images: screenshot images by Jonas Svidras - [Image 1](https://pxhere.com/en/photo/1427193) and [Image 2](https://pxhere.com/en/photo/976371), licensed under CC0 Public Domain.
+
+* Images:
