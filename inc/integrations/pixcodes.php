@@ -140,6 +140,7 @@ function rosa_callbacks_setup_shortcodes_plugin() {
 		'Button',
 		'Heading',
 		'Separator',
+		'RestaurantMenu',
 	);
 
 	if ( ! class_exists('Gridable' ) ) {
