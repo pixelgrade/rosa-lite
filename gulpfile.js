@@ -82,7 +82,16 @@ gulp.task( 'css', 'Compiles main css files (ie. style.css editor-style.css)', fu
 	           .pipe( gulp.dest( '.' ) );
 } );
 
-gulp.task( 'styles', 'Generate rtl.css file based on style.css', ['css'], function() {
+gulp.task('styles-admin', 'Compiles styles that will be loaded in WP dashboard.', function(){
+	return gulp.src('assets/scss/admin/*.scss')
+	           .pipe( sourcemaps.init() )
+	           .pipe( sass().on( 'error', logError ) )
+	           .pipe( prefix() )
+	           .pipe( sourcemaps.write( '.' ) )
+	           .pipe( gulp.dest( './css' ) );
+});
+
+gulp.task( 'styles', 'Generate rtl.css file based on style.css', ['css', 'styles-admin'], function() {
 
 	return gulp.src( 'style.css' )
 	           .pipe( rtlcss() )

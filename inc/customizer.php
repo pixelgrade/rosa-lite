@@ -87,3 +87,11 @@ function rosa_load_customize_js() {
 	wp_enqueue_script( 'rosa_customizer', get_template_directory_uri() . '/assets/js/admin/customizer.js', array( 'wp-ajax-response' ), '20160215', true );
 }
 add_action( 'customize_controls_enqueue_scripts', 'rosa_load_customize_js' );
+
+/**
+ * Assets that will be loaded for the customizer sidebar
+ */
+function rosa_lite_customizer_assets() {
+	wp_enqueue_style( 'rosa_lite_customizer_style', get_template_directory_uri() . '/css/customizer.css', null, '1.0.0', false );
+}
+add_action( 'customize_controls_enqueue_scripts', 'rosa_lite_customizer_assets' );

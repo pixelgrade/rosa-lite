@@ -1666,3 +1666,63 @@ if ( ! function_exists( 'rosa_comment_form_custom_fields' ) ) :
 	}
 endif;
 add_filter('comment_form_default_fields', 'rosa_comment_form_custom_fields');
+
+if ( ! function_exists( 'rosa_lite_google_fonts_url' ) ) {
+	/**
+	 * Register Google fonts for Rosa Lite.
+	 *
+	 * @since rosa-lite 1.0.0
+	 *
+	 * @return string Google fonts URL for the theme.
+	 */
+	function rosa_lite_google_fonts_url() {
+		$fonts_url = '';
+		$fonts     = array();
+		$subsets   = 'latin,latin-ext';
+
+
+		/* Translators: If there are characters in your language that are not
+		* supported by Cabin, translate this to 'off'. Do not translate
+		* into your own language.
+		*/
+		if ( 'off' !== _x( 'on', 'Cabin font: on or off', '__theme_txtd' ) ) {
+			$fonts[] = 'Cabin:400, 400i, 500, 500i, 600, 600i, 700, 700i';
+		}
+		/* Translators: If there are characters in your language that are not
+		* supported by Source Sans Pro, translate this to 'off'. Do not translate
+		* into your own language.
+		*/
+		if ( 'off' !== _x( 'on', 'Source Sans Pro font: on or off', '__theme_txtd' ) ) {
+			$fonts[] = 'Source Sans Pro:200, 200i, 300, 300i, 400, 400i, 600, 600i, 700, 700i, 900, 900i';
+		}
+		/* Translators: If there are characters in your language that are not
+		* supported by Herr Von Muellerhoff, translate this to 'off'. Do not translate
+		* into your own language.
+		*/
+		if ( 'off' !== _x( 'on', 'Herr Von Muellerhoff font: on or off', '__theme_txtd' ) ) {
+			$fonts[] = 'Herr Von Muellerhoff:400';
+		}
+
+		/* translators: To add an additional character subset specific to your language, translate this to 'greek', 'cyrillic', 'devanagari' or 'vietnamese'. Do not translate into your own language. */
+		$subset = esc_html_x( 'no-subset', 'Add new subset (greek, cyrillic, devanagari, vietnamese)', '__theme_txtd' );
+
+		if ( 'cyrillic' == $subset ) {
+			$subsets .= ',cyrillic,cyrillic-ext';
+		} elseif ( 'greek' == $subset ) {
+			$subsets .= ',greek,greek-ext';
+		} elseif ( 'devanagari' == $subset ) {
+			$subsets .= ',devanagari';
+		} elseif ( 'vietnamese' == $subset ) {
+			$subsets .= ',vietnamese';
+		}
+
+		if ( $fonts ) {
+			$fonts_url = add_query_arg( array(
+				'family' => urlencode( implode( '|', $fonts ) ),
+				'subset' => urlencode( $subsets ),
+			), '//fonts.googleapis.com/css' );
+		}
+
+		return $fonts_url;
+	} #function
+}

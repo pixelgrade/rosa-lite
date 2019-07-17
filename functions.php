@@ -139,6 +139,8 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 			wp_enqueue_style( 'rosa-main-style', get_stylesheet_uri(), array(), $theme->get( 'Version' ) );
 		}
 
+		wp_enqueue_style( 'rosa-lite-google-fonts', rosa_lite_google_fonts_url() );
+
 		// Scripts
 		wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr.min.js', array( 'jquery' ), '3.3.1' );
 		wp_enqueue_script( 'webfont-script', '//ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js', array( 'jquery' ) );
