@@ -267,11 +267,6 @@ require get_template_directory() . '/inc/mb_compat.php';
 require get_template_directory() . '/inc/integrations.php';
 
 /**
- * Load the custom logic for multipages
- */
-require get_template_directory() . '/inc/multipages.php';
-
-/**
  * Load Recommended/Required plugins notification
  */
 require get_template_directory() . '/inc/required-plugins.php';

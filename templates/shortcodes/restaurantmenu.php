@@ -77,15 +77,6 @@ foreach ( $lines as $key => $line ) {
 	 * Now to test for the front markers - from complex to simple
 	 */
 
-	//Product HIGHLIGHT Title
-	if ( 0 === strpos( $line, HIGHLIGHT_MARKER ) ) {
-		//just remember the title so we can use it when we find a product title
-		//it better be on the next line or else... naughty boy
-		$opened_product_highlight_title = substr( $line, 2 );
-
-		continue;
-	}
-
 	//Product Title
 	if ( 0 === strpos( $line, TITLE_MARKER ) ) {
 		//since we have found a product we need to make sure that the product list is started
