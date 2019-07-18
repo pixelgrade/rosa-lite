@@ -12,7 +12,7 @@ $page_section_idx++;
 $classes = "c-hero  article__header  article__header--page";
 
 //first lets get to know this page a little better
-$header_height = get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_header_height', true );
+$header_height = 'full-height';
 if ( empty($header_height) ) {
 	$header_height = 'half-height'; //the default
 }
