@@ -247,12 +247,6 @@ function eventHandlers() {
 	$( 'body' ).off( 'click', '.js-arrow-popup-prev', magnificPrev ).on( 'click', '.js-arrow-popup-prev', magnificPrev );
 	$( 'body' ).off( 'click', '.js-arrow-popup-next', magnificNext ).on( 'click', '.js-arrow-popup-next', magnificNext );
 
-	$( document ).on( 'spam.wpcf7 invalid.wpcf7 mailsent.wpcf7 mailfailed.wpcf7', function() {
-		setTimeout( function() {
-			CoverAnimation.initialize();
-		}, 300 );
-	} );
-
 	var filterHandler;
 
 	if ( touch ) {
@@ -352,16 +346,6 @@ $( window ).load( function() {
 		$( "textarea" ).autosize();
 	}
 
-	if ( ! $( 'html' ).is( '.ie9, .lt-ie9' ) ) {
-		setTimeout( function() {
-			CoverAnimation.initialize();
-		}, 600 );
-	} else {
-		setTimeout( function() {
-			CoverAnimation.initialize();
-		}, 400 );
-	}
-
 	niceScrollInit();
 
 	magnificPopupInit();
@@ -410,7 +394,7 @@ $( window ).load( function() {
 
 	if ( $bulletedSections.length > 1 ) {
 
-		$bulletedSections.bully();
+//		$bulletedSections.bully();
 
 		$('.c-bully__bullet').each(function (i, obj) {
 
@@ -477,7 +461,6 @@ function onResize() {
 }
 
 function refreshStuff() {
-	CoverAnimation.initialize();
 	ScrollToTop.initialize();
 	$window.trigger( 'rellax' );
 }
@@ -486,7 +469,6 @@ function refreshStuff() {
 function updateStuff() {
 	ScrollToTop.update();
 	DownArrow.update();
-	CoverAnimation.update();
 
 	if ( windowWidth >= 900 ) {
 		StickyHeader.update();

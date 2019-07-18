@@ -9160,7 +9160,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
 .article__header .article__headline .star,
 .article__header .article__headline .line,
 .article__header .article__headline .arrow {
-  opacity: 0;
+  opacity: 1;
 }
 
 .article__header .article__headline .headline__primary {

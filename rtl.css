@@ -9905,7 +9905,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
 .article__header .article__headline .star,
 .article__header .article__headline .line,
 .article__header .article__headline .arrow {
-  opacity: 0;
+  opacity: 1;
 }
 
 .article__header .article__headline .headline__primary {
@@ -15473,6 +15473,10 @@ html, body, body > .page {
 [data-rellax-container] [data-rellax] {
   transition: opacity .3s ease-out;
   opacity: 0;
+}
+
+.is--loaded [data-rellax-container] [data-rellax] {
+  opacity: 1;
 }
 
 .rellax-element.rellax-hidden {
