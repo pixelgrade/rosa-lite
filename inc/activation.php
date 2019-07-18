@@ -18,8 +18,6 @@ return array(
 		'load_likes_with_ajax' => false,
 	),
 	'pixtypes-settings' => array(
-		//		'post_types' => array(),
-		//		'taxonomies' => array(),
 		'metaboxes' => array(
 			//General page settings
 			'rosa_page_general'       => array(

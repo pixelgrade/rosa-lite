@@ -14,17 +14,17 @@ function rosa_register_required_plugins() {
 		array(
 			'name'     => 'PixTypes',
 			'slug'     => 'pixtypes',
-			'required' => true,
+			'required' => false,
 		),
 		array(
 			'name' => 'Gridable',
 			'slug' => 'gridable',
-			'required' => true,
+			'required' => false,
 		),
 		array(
 			'name' => 'PixCodes',
 			'slug' => 'pixcodes',
-			'required' => true,
+			'required' => false,
 		),
 	);
 
