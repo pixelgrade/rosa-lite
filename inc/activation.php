@@ -35,19 +35,6 @@ return array(
 						'id'   => wpgrade::prefix() . 'header_transparent_menu_bar',
 						'type' => 'checkbox',
 					),
-					array(
-						'name' => __( 'Content Border Style', 'rosa-lite' ),
-						'desc' => '<p class="cmb_metabox_description">'.__( 'Select the style of the top and bottom borders of the content.', 'rosa-lite' ).'</p>',
-						'id'   => wpgrade::prefix() . 'page_border_style',
-						'type'    => 'select',
-						'options' => array(
-							array(
-								'name'  => __( 'Simple', 'rosa-lite' ),
-								'value' => 'simple',
-							),
-						),
-						'std'     => 'simple',
-					),
 				),
 			),
 			//options for the Page Header Covers
@@ -60,23 +47,10 @@ return array(
 				'hidden'     => false,
 				'show_on'    => array(
 					'key' => 'page-template',
-					'value' => array( 'default', 'page-templates/slideshow.php' ),
+					'value' => array( 'default' ),
 				),
 				'show_names' => true, // Show field names on the left
 				'fields'     => array(
-					array(
-						'name' => __( 'Header Height', 'rosa-lite' ),
-						'desc' => '<p class="cmb_metabox_description">' . __( 'Select the height of the header area in relation to the browser window.', 'rosa-lite' ).'</p>',
-						'id'   => wpgrade::prefix() . 'page_header_height',
-						'type'    => 'select',
-						'options' => array(
-							array(
-								'name'  => __( '&#9673;&#9673;&#9673; Full Height', 'rosa-lite' ),
-								'value' => 'full-height',
-							)
-						),
-						'std'     => 'full-height',
-					),
 					array(
 						'name' => __( 'Subtitle', 'rosa-lite' ),
 						'id'   => wpgrade::prefix() . 'page_cover_subtitle',
