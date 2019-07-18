@@ -15448,6 +15448,7 @@ html, body, body > .page {
   .site-footer {
     border: 0 solid white;
     border-top: 0 !important;
+    margin-top: 75px;
   }
 }
 
@@ -15472,10 +15473,6 @@ html, body, body > .page {
 [data-rellax-container] [data-rellax] {
   transition: opacity .3s ease-out;
   opacity: 0;
-}
-
-.is--loaded [data-rellax-container] [data-rellax] {
-  opacity: 1;
 }
 
 .rellax-element.rellax-hidden {
