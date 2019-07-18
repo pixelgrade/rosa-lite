@@ -330,49 +330,13 @@
 	function( $, window, document, undefined ) {
 
 		var $window = $( window ),
-			windowHeight = $window.height(),
 			elements = [],
 			$bully,
-			$current,
 			lastScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0),
 			current = 0,
-			inversed = false,
 			frameRendered = true;
 
-		$bully = $( '<div class="c-bully">' ).appendTo( 'body' );
-		$current = $( '<div class="c-bully__bullet c-bully__bullet--active">' ).appendTo( $bully );
-
 		function update() {
-			if ( frameRendered !== true ) {
-
-				var count = 0,
-					inverse = false;
-
-				$.each( elements, function( i, element ) {
-					if ( lastScrollY >= element.offset.top - windowHeight / 2 ) {
-						count = count + 1;
-						inverse = lastScrollY < element.offset.top + element.height - windowHeight / 2;
-					}
-				} );
-
-				if ( inversed !== inverse ) {
-					inversed = inverse;
-					$bully.toggleClass( 'c-bully--inversed', inversed );
-				}
-
-				if ( count !== current ) {
-					var offset = $bully.children( '.c-bully__bullet' ).not( '.c-bully__bullet--active' ).first().outerHeight( true ) * (
-							count - 1
-						);
-					$current.removeClass( 'c-bully__bullet--squash' );
-					setTimeout( function() {
-						$current.addClass( 'c-bully__bullet--squash' );
-					} );
-					$current.css( 'top', offset );
-					current = count;
-				}
-			}
-
 			window.requestAnimationFrame( update );
 			frameRendered = true;
 		}

@@ -23,16 +23,16 @@ if ( ! defined( 'PRICE_MARKER' ) ) {
 
 //fist make sure no loose ends or beginnings
 //Clean Slate operation under way
-$menu = trim( $this->get_clean_content( $content ) );
+$restaurant_menu = trim( $this->get_clean_content( $content ) );
 
 //some special styles
-$menu_style_class = '';
+$restaurant_menu_style_class = '';
 if (isset($type) && !empty($type)) {
-	$menu_style_class = 'menu-list__' . $type;
+	$restaurant_menu_style_class = 'menu-list__' . $type;
 }
 
 //remove <p> - we just need the </p>s to split by
-$menu = str_replace( "<p>", "", $menu );
+$restaurant_menu = str_replace( "<p>", "", $restaurant_menu );
 
 /**
  * now split it by paragraphs - this is for us the empty line
@@ -40,12 +40,12 @@ $menu = str_replace( "<p>", "", $menu );
  * and since we treat empty lines like a show stopper - new product
  * this is good enough for us - no need to un-autop and split by new line chars
  */
-$lines = preg_split( '#(<\/p>|<br \/>|<br\/>|<br>)#', $menu );
+$lines = preg_split( '#(<\/p>|<br \/>|<br\/>|<br>)#', $restaurant_menu );
 //remove any empty array elements - empty strings
 $lines = array_filter( $lines, 'strlen' );
 
 //open the wrapper and let the show begin
-$output .= '<div class="menu-list ' . $menu_style_class . '">' . PHP_EOL;
+$output .= '<div class="menu-list ' . $restaurant_menu_style_class . '">' . PHP_EOL;
 
 //remember if we have outputted the open tag
 $opened_list            = false;
