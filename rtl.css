@@ -9925,8 +9925,8 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
 }
 
 .article__header .article__headline .headline__primary,
-.article__header .article__headline .headline__description > *:not(.star):not(.separator--flower):not(.btn):not(.comments_add-comment):not(.form-submit #comment-submit):not(.wpcf7-form-control.wpcf7-submit):not(.otreservations-submit):not(.widget_tag_cloud a):not(.read-more-button) {
-  color: white;
+.article__header .article__headline .headline__description h5 {
+  color: #FFFFFF;
 }
 
 .article__header .article__headline .headline__description .btn, .article__header .article__headline .headline__description .comments_add-comment, .article__header .article__headline .headline__description .form-submit #comment-submit, .form-submit .article__header .article__headline .headline__description #comment-submit, .article__header .article__headline .headline__description .wpcf7-form-control.wpcf7-submit, .article__header .article__headline .headline__description .otreservations-submit, .article__header .article__headline .headline__description .widget_tag_cloud a, .widget_tag_cloud .article__header .article__headline .headline__description a, .article__header .article__headline .headline__description .read-more-button {
@@ -9964,6 +9964,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   padding: 0 72px;
   margin: 0 -72px;
   color: #c59d5f;
+  margin-bottom: -38px;
 }
 
 @media screen and (max-width: 900px) {

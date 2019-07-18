@@ -1686,14 +1686,14 @@ if ( ! function_exists( 'rosa_lite_google_fonts_url' ) ) {
 		* into your own language.
 		*/
 		if ( 'off' !== _x( 'on', 'Cabin font: on or off', '__theme_txtd' ) ) {
-			$fonts[] = 'Cabin:400, 400i, 500, 500i, 600, 600i, 700, 700i';
+			$fonts[] = 'Cabin:400,400i,500,500i,600,600i,700,700i';
 		}
 		/* Translators: If there are characters in your language that are not
 		* supported by Source Sans Pro, translate this to 'off'. Do not translate
 		* into your own language.
 		*/
 		if ( 'off' !== _x( 'on', 'Source Sans Pro font: on or off', '__theme_txtd' ) ) {
-			$fonts[] = 'Source Sans Pro:200, 200i, 300, 300i, 400, 400i, 600, 600i, 700, 700i, 900, 900i';
+			$fonts[] = 'Source Sans Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i';
 		}
 		/* Translators: If there are characters in your language that are not
 		* supported by Herr Von Muellerhoff, translate this to 'off'. Do not translate

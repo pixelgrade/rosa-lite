@@ -37,8 +37,8 @@
 		}
 
 		.headline__primary,
-		.headline__description > *:not(.star):not(.separator--flower):not(.btn) {
-			color: white;
+		.headline__description h5 {
+			color: #FFFFFF;
 		}
 
 		.headline__description {
@@ -83,6 +83,8 @@
 	margin: 0 -72px;
 
 	color: $accent;
+
+	margin-bottom: -38px;
 
 	@include max-screen(900px) {
 		font-size: 85px;

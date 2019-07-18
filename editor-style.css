@@ -9180,8 +9180,8 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
 }
 
 .article__header .article__headline .headline__primary,
-.article__header .article__headline .headline__description > *:not(.star):not(.separator--flower):not(.btn):not(.otreservations-submit) {
-  color: white;
+.article__header .article__headline .headline__description h5 {
+  color: #FFFFFF;
 }
 
 .article__header .article__headline .headline__description .btn, .article__header .article__headline .headline__description .otreservations-submit {
@@ -9219,6 +9219,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   padding: 0 72px;
   margin: 0 -72px;
   color: #c59d5f;
+  margin-bottom: -38px;
 }
 
 @media screen and (max-width: 900px) {
