@@ -195,7 +195,7 @@ if ( ! function_exists( 'rosa_callback_the_password_form' ) ) {
 		<p>' . __( "This post is password protected. To view it please enter your password below:", 'rosa-lite' ) . '</p>
 		<div class="row">
 			<div class="column  span-12  hand-span-10">
-				<input name="post_password" id="' . $label . '" type="password" size="20" placeholder="' . esc_html__( "Password", 'rosa-lite' ) . '"/>
+				<input name="post_password" id="' . $label . '" type="password" size="20" placeholder="' . esc_attr__( "Password", 'rosa-lite' ) . '"/>
 			</div>
 			<div class="column  span-12  hand-span-2">
 				<input type="submit" name="' . esc_attr__( "Access", 'rosa-lite' ) . '" value="' . esc_attr__( "Access", 'rosa-lite' ) . '" class="btn post-password-submit"/>
@@ -606,10 +606,10 @@ function rosa_register_attachments_custom_fields() {
 		function add_video_url_field_to_attachments( $form_fields, $post ) {
 			if ( ! isset( $form_fields["video_url"] ) ) {
 				$form_fields["video_url"] = array(
-					"label" => __( "Video URL", 'rosa-lite' ),
+					"label" => esc_html__( "Video URL", 'rosa-lite' ),
 					"input" => "text", // this is default if "input" is omitted
 					"value" => esc_url( get_post_meta( $post->ID, "_video_url", true ) ),
-					"helps" => __( "<p class='desc'>Attach a video to this image <span class='small'>(YouTube or Vimeo)</span>.</p>", 'rosa-lite' ),
+					"helps" => wp_kses_post( __( "<p class='desc'>Attach a video to this image <span class='small'>(YouTube or Vimeo)</span>.</p>", 'rosa-lite' ) ),
 				);
 			}
 
@@ -624,9 +624,9 @@ function rosa_register_attachments_custom_fields() {
 				}
 
 				$form_fields["video_autoplay"] = array(
-					"label" => __( "Video  Autoplay", 'rosa-lite' ),
+					"label" => esc_html__( "Video  Autoplay", 'rosa-lite' ),
 					"input" => "html",
-					"html"  => '<input' . $checked . ' type="checkbox" name="attachments[' . $post->ID . '][video_autoplay]" id="attachments[' . $post->ID . '][video_autoplay]" /><label for="attachments[' . $post->ID . '][video_autoplay]">' . __( 'Enable Video Autoplay?', 'rosa-lite' ) . '</label>'
+					"html"  => '<input' . $checked . ' type="checkbox" name="attachments[' . $post->ID . '][video_autoplay]" id="attachments[' . $post->ID . '][video_autoplay]" /><label for="attachments[' . $post->ID . '][video_autoplay]">' . esc_html__( 'Enable Video Autoplay?', 'rosa-lite' ) . '</label>'
 
 				);
 			}
@@ -1169,7 +1169,7 @@ function rosa_the_author_posts_link() {
 	if ( ! is_object( $authordata ) ) {
 		return false;
 	}
-	$link = sprintf( '<a href="%1$s" title="%2$s">%3$s</a>', esc_url( get_author_posts_url( $authordata->ID, $authordata->user_nicename ) ), esc_attr( sprintf( __( 'Posts by %s', 'rosa-lite' ), get_the_author() ) ), get_the_author() );
+	$link = sprintf( '<a href="%1$s" title="%2$s">%3$s</a>', esc_url( get_author_posts_url( $authordata->ID, $authordata->user_nicename ) ), sprintf( esc_attr__( 'Posts by %s', 'rosa-lite' ), get_the_author() ), get_the_author() );
 
 	/**
 	 * Filter the link to the author page of the author of the current post.
@@ -1651,14 +1651,14 @@ if ( ! function_exists( 'rosa_comment_form_custom_fields' ) ) :
 
 		if ( is_user_logged_in() ) {
 			$fields = array_merge( $fields, array(
-				'author' => '<p class="comment-form-author"><label for="author" class="show-on-ie8">' . __( 'Name', 'rosa-lite' ) . '</label><input id="author" name="author" value="' . esc_attr( $commenter['comment_author'] ) . '" type="text" placeholder="' . __( 'Name', 'rosa-lite' ) . '..." size="30" ' . $aria_req . ' /></p>',
-				'email'  => '<p class="comment-form-email"><label for="email" class="show-on-ie8">' . __( 'Email', 'rosa-lite' ) . '</label><input id="email" name="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" type="text" placeholder="' . __( 'your@email.com', 'rosa-lite' ) . '..." ' . $aria_req . ' /></p>',
+				'author' => '<p class="comment-form-author"><label for="author" class="show-on-ie8">' . esc_html__( 'Name', 'rosa-lite' ) . '</label><input id="author" name="author" value="' . esc_attr( $commenter['comment_author'] ) . '" type="text" placeholder="' . esc_attr__( 'Name', 'rosa-lite' ) . '..." size="30" ' . $aria_req . ' /></p>',
+				'email'  => '<p class="comment-form-email"><label for="email" class="show-on-ie8">' . esc_html__( 'Email', 'rosa-lite' ) . '</label><input id="email" name="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" type="text" placeholder="' . esc_attr__( 'your@email.com', 'rosa-lite' ) . '..." ' . $aria_req . ' /></p>',
 			) );
 		} else {
 			$fields = array_merge( $fields, array(
-				'author' => '<p class="comment-form-author"><label for="author" class="show-on-ie8">' . __( 'Name', 'rosa-lite' ) . '</label><input id="author" name="author" value="' . esc_attr( $commenter['comment_author'] ) . '" type="text" placeholder="' . __( 'Name', 'rosa-lite' ) . '..." size="30" ' . $aria_req . ' /></p><!--',
-				'email'  => '--><p class="comment-form-email"><label for="name" class="show-on-ie8">' . __( 'Email', 'rosa-lite' ) . '</label><input id="email" name="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" type="text" placeholder="' . __( 'your@email.com', 'rosa-lite' ) . '..." ' . $aria_req . ' /></p><!--',
-				'url'    => '--><p class="comment-form-url"><label for="url" class="show-on-ie8">' . __( 'Url', 'rosa-lite' ) . '</label><input id="url" name="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" placeholder="' . __( 'Website', 'rosa-lite' ) . '..." type="text"></p>',
+				'author' => '<p class="comment-form-author"><label for="author" class="show-on-ie8">' . esc_html__( 'Name', 'rosa-lite' ) . '</label><input id="author" name="author" value="' . esc_attr( $commenter['comment_author'] ) . '" type="text" placeholder="' . esc_attr__( 'Name', 'rosa-lite' ) . '..." size="30" ' . $aria_req . ' /></p><!--',
+				'email'  => '--><p class="comment-form-email"><label for="name" class="show-on-ie8">' . esc_html__( 'Email', 'rosa-lite' ) . '</label><input id="email" name="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" type="text" placeholder="' . esc_attr__( 'your@email.com', 'rosa-lite' ) . '..." ' . $aria_req . ' /></p><!--',
+				'url'    => '--><p class="comment-form-url"><label for="url" class="show-on-ie8">' . esc_html__( 'Url', 'rosa-lite' ) . '</label><input id="url" name="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" placeholder="' . esc_attr__( 'Website', 'rosa-lite' ) . '..." type="text"></p>',
 			) );
 		}
 

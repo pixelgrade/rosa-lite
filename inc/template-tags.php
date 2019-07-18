@@ -11,14 +11,14 @@ if( ! function_exists('rosa_the_archive_title' ) ) {
 				<?php if ( isset( $object->post_title ) ) {
 					echo $object->post_title;
 				} else {
-					_e( 'News', 'rosa-lite' );
+					esc_html_e( 'News', 'rosa-lite' );
 				} ?></h1>
 			<hr class="separator"/>
 			<?php
 		} elseif ( is_search() ) {
 			?>
 			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php _e( 'Search Results for: ', 'rosa-lite' ) ?></span>
+				<span class="archive__side-title beta"><?php esc_html_e( 'Search Results for: ', 'rosa-lite' ) ?></span>
 
 				<h1 class="hN  archive__title"><?php echo get_search_query(); ?></h1>
 			</div>
@@ -28,39 +28,39 @@ if( ! function_exists('rosa_the_archive_title' ) ) {
 			?>
 			<div class="heading headin--main">
 				<h1 class="archive__title"><?php echo single_tag_title( '', false ); ?></h1>
-				<span class="archive__side-title beta"><?php _e( 'Tag', 'rosa-lite' ) ?></span>
+				<span class="archive__side-title beta"><?php esc_html_e( 'Tag', 'rosa-lite' ) ?></span>
 			</div>
 			<hr class="separator"/>
 		<?php } elseif ( ! empty( $object ) && isset( $object->term_id ) ) { ?>
 			<div class="heading headin--main">
 				<h1 class="archive__title"><?php echo $object->name; ?></h1>
-				<span class="archive__side-title beta"><?php _e( 'Category', 'rosa-lite' ) ?></span>
+				<span class="archive__side-title beta"><?php esc_html_e( 'Category', 'rosa-lite' ) ?></span>
 			</div>
 			<hr class="separator"/>
 		<?php } elseif ( is_day() ) { ?>
 			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php _e( 'Daily Archives: ', 'rosa-lite' ) ?></span>
+				<span class="archive__side-title beta"><?php esc_html_e( 'Daily Archives: ', 'rosa-lite' ) ?></span>
 
 				<h1 class="archive__title"><?php echo get_the_date(); ?></h1>
 			</div>
 			<hr class="separator"/>
 		<?php } elseif ( is_month() ) { ?>
 			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php _e( 'Monthly Archives: ', 'rosa-lite' ) ?></span>
+				<span class="archive__side-title beta"><?php esc_html_e( 'Monthly Archives: ', 'rosa-lite' ) ?></span>
 
 				<h1 class="archive__title"><?php echo get_the_date( _x( 'F Y', 'monthly archives date format', 'rosa-lite' ) ); ?></h1>
 			</div>
 			<hr class="separator"/>
 		<?php } elseif ( is_year() ) { ?>
 			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php _e( 'Yearly Archives: ', 'rosa-lite' ) ?></span>
+				<span class="archive__side-title beta"><?php esc_html_e( 'Yearly Archives: ', 'rosa-lite' ) ?></span>
 
 				<h1 class="archive__title"><?php echo get_the_date( _x( 'Y', 'yearly archives date format', 'rosa-lite' ) ); ?></h1>
 			</div>
 			<hr class="separator"/>
 		<?php } else { ?>
 			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php _e( 'Archives', 'rosa-lite' ) ?></span>
+				<span class="archive__side-title beta"><?php esc_html_e( 'Archives', 'rosa-lite' ) ?></span>
 			</div>
 			<hr class="separator"/>
 			<?php
@@ -103,7 +103,7 @@ if( ! function_exists('rosa_callback_inlined_custom_style' ) ) {
 function rosa_please_select_a_menu_fallback() {
 	echo '
 		<ul class="nav  nav--main sub-menu" >
-			<li><a href="' . admin_url( 'nav-menus.php?action=locations' ) . '">' . __( 'Please select a menu in this location', 'rosa-lite' ) . '</a></li>
+			<li><a href="' . admin_url( 'nav-menus.php?action=locations' ) . '">' . esc_html__( 'Please select a menu in this location', 'rosa-lite' ) . '</a></li>
 		</ul>';
 }
 
@@ -202,7 +202,7 @@ if ( ! function_exists( 'rosa_custom_gallery_settings' ) ) {
 		?>
 		<script type="text/html" id="tmpl-mkslideshow">
 			<label class="setting">
-				<span><?php _e( 'Make this gallery a slideshow', 'rosa-lite' ) ?></span>
+				<span><?php esc_html_e( 'Make this gallery a slideshow', 'rosa-lite' ) ?></span>
 				<input type="checkbox" data-setting="mkslideshow">
 			</label>
 		</script>
@@ -245,7 +245,7 @@ if ( ! function_exists( 'rosa_the_posts_navigation' ) ) :
 		global $wp_query;
 
 		$big = 999999999; // need an unlikely integer
-		$a11y_text = __( 'Page', 'rosa-lite' ); // Accessibility improvement
+		$a11y_text = esc_html__( 'Page', 'rosa-lite' ); // Accessibility improvement
 
 		$links = paginate_links( array(
 			'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
@@ -404,11 +404,11 @@ if ( ! function_exists('rosa_comments') ) {
 				<header class="comment__meta comment-author">
 					<?php printf( '<span class="comment__author-name">%s</span>', get_comment_author_link() ) ?>
 					<time class="comment__time" datetime="<?php comment_time( 'c' ); ?>">
-						<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>" class="comment__timestamp"><?php printf( __( 'on %s at %s', 'rosa-lite' ), get_comment_date(), get_comment_time() ); ?> </a>
+						<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>" class="comment__timestamp"><?php printf( esc_html__( 'on %s at %s', 'rosa-lite' ), get_comment_date(), get_comment_time() ); ?> </a>
 					</time>
 					<div class="comment__links">
 						<?php
-						edit_comment_link( __( 'Edit', 'rosa-lite' ), '  ', '' );
+						edit_comment_link( esc_html__( 'Edit', 'rosa-lite' ), '  ', '' );
 						comment_reply_link( array_merge( $args, array( 'depth'     => $depth,
 						                                               'max_depth' => $args['max_depth']
 						) ) );
@@ -418,7 +418,7 @@ if ( ! function_exists('rosa_comments') ) {
 				<!-- .comment-meta -->
 				<?php if ( $comment->comment_approved == '0' ) : ?>
 					<div class="alert info">
-						<p><?php _e( 'Your comment is awaiting moderation.', 'rosa-lite' ) ?></p>
+						<p><?php esc_html_e( 'Your comment is awaiting moderation.', 'rosa-lite' ) ?></p>
 					</div>
 				<?php endif; ?>
 				<section class="comment__content comment">
@@ -432,7 +432,7 @@ if ( ! function_exists('rosa_comments') ) {
 }
 if ( ! function_exists( 'rosa_footer_the_copyright' ) ) {
 	function rosa_footer_the_copyright() {
-		$copyright_text = pixelgrade_option( 'copyright_text', __( '%year% &copy; Handcrafted with love by <a href="#">Pixelgrade</a> Team', 'rosa-lite' ) );
+		$copyright_text = pixelgrade_option( 'copyright_text', wp_kses_post( __( '%year% &copy; Handcrafted with love by <a href="#">Pixelgrade</a> Team', 'rosa-lite' ) ) );
 
 		if ( ! empty( $copyright_text ) ) {
 			// We need to parse some tags

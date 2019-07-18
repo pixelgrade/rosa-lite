@@ -41,14 +41,14 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 						global $numpages;
 						if ( $numpages > 1 ): ?>
 							<div class="entry__meta-box  meta-box--pagination">
-								<span class="meta-box__title"><?php _e( 'Pages', 'rosa-lite' ) ?></span>
+								<span class="meta-box__title"><?php esc_html_e( 'Pages', 'rosa-lite' ) ?></span>
 								<?php
 								$args = array(
 									'before'           => '<ol class="nav  pagination--single">',
 									'after'            => '</ol>',
 									'next_or_number'   => 'next_and_number',
-									'previouspagelink' => __( '&laquo;', 'rosa-lite' ),
-									'nextpagelink'     => __( '&raquo;', 'rosa-lite' )
+									'previouspagelink' => esc_html__( '&laquo;', 'rosa-lite' ),
+									'nextpagelink'     => esc_html__( '&raquo;', 'rosa-lite' )
 								);
 								wp_link_pages( $args ); ?>
 							</div>

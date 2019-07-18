@@ -7,11 +7,11 @@
  * @package Gema
  */
 
-if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
+if ( is_home() && current_user_can( 'publish_posts' ) ){ ?>
 
-	<p><?php printf( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'rosa-lite' ), admin_url( 'post-new.php' ) ); ?></p>
+	<p><?php printf( wp_kses_post( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'rosa-lite' ) ), admin_url( 'post-new.php' ) ); ?></p>
 
-<?php elseif ( is_search() ) : ?>
+<?php }elseif ( is_search() ){ ?>
 
 	<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with different keywords.', 'rosa-lite' ); ?></p>
 	<div class="search-form">
@@ -19,7 +19,7 @@ if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 	</div>
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>
-<?php else : ?>
+<?php } else { ?>
 
 	<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'rosa-lite' ); ?></p>
 	<div class="search-form  search-form--404">
@@ -27,4 +27,4 @@ if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 	</div>
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>
-<?php endif;
+<?php }

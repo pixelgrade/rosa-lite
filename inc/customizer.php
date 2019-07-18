@@ -1,9 +1,9 @@
 <?php
 /**
- * Rosa Theme Customizer
+ * Rosa Lite Theme Customizer
  *
- * @package Rosa
- * @since Rosa 2.0.0
+ * @package Rosa Lite
+ * @since Rosa Lite 1.0.0
  */
 
 /**
@@ -16,7 +16,7 @@ function rosa_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 
 	// Rename the label to "Display Site Title & Tagline" in order to make this option clearer.
-	$wp_customize->get_control( 'display_header_text' )->label = __( 'Display Site Title &amp; Tagline', 'rosa-lite' );
+	$wp_customize->get_control( 'display_header_text' )->label = esc_html__( 'Display Site Title &amp; Tagline', 'rosa-lite' );
 
 	// View Pro
 	$wp_customize->add_section( 'pro__section', array(

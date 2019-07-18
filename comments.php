@@ -33,21 +33,21 @@ if ( post_password_required() ) {
 						number_format_i18n( get_comments_number() )
 					);
 				else:
-					_e( '<span class="comment-number total">+</span> There are no comments', 'rosa-lite' );
+					wp_kses_post( _e( '<span class="comment-number total">+</span> There are no comments', 'rosa-lite' ) );
 				endif;
 				?>
 			</h3>
-			<?php echo '<a class="comments_add-comment" href="#reply-title">' . __( 'Add yours', 'rosa-lite' ) . '</a>'; ?>
+			<?php echo '<a class="comments_add-comment" href="#reply-title">' . esc_html__( 'Add yours', 'rosa-lite' ) . '</a>'; ?>
 		</div>
 		<?php
 		// You can start editing here -- including this comment!
 		if ( have_comments() ) :
 			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 				<nav role="navigation" id="comment-nav-above" class="site-navigation comment-navigation">
-					<h3 class="assistive-text"><?php _e( 'Comment navigation', 'rosa-lite' ); ?></h3>
+					<h3 class="assistive-text"><?php esc_html_e( 'Comment navigation', 'rosa-lite' ); ?></h3>
 
-					<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'rosa-lite' ) ); ?></div>
-					<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'rosa-lite' ) ); ?></div>
+					<div class="nav-previous"><?php previous_comments_link( esc_html__( '&larr; Older Comments', 'rosa-lite' ) ); ?></div>
+					<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments &rarr;', 'rosa-lite' ) ); ?></div>
 				</nav><!-- #comment-nav-before .site-navigation .comment-navigation -->
 			<?php endif; // check for comment navigation ?>
 
@@ -64,10 +64,10 @@ if ( post_password_required() ) {
 
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 				<nav role="navigation" id="comment-nav-below" class="site-navigation comment-navigation">
-					<h3 class="assistive-text"><?php _e( 'Comment navigation', 'rosa-lite' ); ?></h3>
+					<h3 class="assistive-text"><?php esc_html_e( 'Comment navigation', 'rosa-lite' ); ?></h3>
 
-					<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'rosa-lite' ) ); ?></div>
-					<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'rosa-lite' ) ); ?></div>
+					<div class="nav-previous"><?php previous_comments_link( esc_html__( '&larr; Older Comments', 'rosa-lite' ) ); ?></div>
+					<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments &rarr;', 'rosa-lite' ) ); ?></div>
 				</nav><!-- #comment-nav-below .site-navigation .comment-navigation -->
 			<?php endif; // check for comment navigation ?>
 
@@ -79,7 +79,7 @@ if ( post_password_required() ) {
 // If comments are closed and there are comments, let's leave a little note, shall we?
 if ( ! comments_open() && post_type_supports( get_post_type(), 'comments' ) && ! is_page() ) :
 	?>
-	<p class="nocomments"><?php _e( 'Comments are closed.', 'rosa-lite' ); ?></p>
+	<p class="nocomments"><?php esc_html_e( 'Comments are closed.', 'rosa-lite' ); ?></p>
 <?php endif;
 
 if ( is_user_logged_in() ) {
@@ -91,9 +91,9 @@ if ( is_user_logged_in() ) {
 		'comment_notes_before' => '',
 		'comment_notes_after'  => '',
 		'id_submit'            => 'comment-submit',
-		'label_submit'         => __( 'Submit', 'rosa-lite' ),
+		'label_submit'         => esc_html__( 'Submit', 'rosa-lite' ),
 		// redefine your own textarea (the comment body)
-		'comment_field'        => '<p class="comment-form-comment"><label for="comment" class="show-on-ie8">' . __( 'Comment', 'rosa-lite' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="' . __( 'Your thoughts..', 'rosa-lite' ) . '"></textarea></p>'
+		'comment_field'        => '<p class="comment-form-comment"><label for="comment" class="show-on-ie8">' . esc_html__( 'Comment', 'rosa-lite' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="' . esc_html__( 'Your thoughts..', 'rosa-lite' ) . '"></textarea></p>'
 	);
 } else {
 	$comments_args = array(
@@ -103,9 +103,9 @@ if ( is_user_logged_in() ) {
 		'comment_notes_before' => '',
 		'comment_notes_after'  => '',
 		'id_submit'            => 'comment-submit',
-		'label_submit'         => __( 'Submit', 'rosa-lite' ),
+		'label_submit'         => esc_html__( 'Submit', 'rosa-lite' ),
 		// redefine your own textarea (the comment body)
-		'comment_field'        => '<p class="comment-form-comment"><label for="comment" class="show-on-ie8">' . __( 'Comment', 'rosa-lite' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="' . __( 'Your thoughts..', 'rosa-lite' ) . '"></textarea></p>'
+		'comment_field'        => '<p class="comment-form-comment"><label for="comment" class="show-on-ie8">' . esc_html__( 'Comment', 'rosa-lite' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="' . esc_html__( 'Your thoughts..', 'rosa-lite' ) . '"></textarea></p>'
 	);
 }
 

@@ -6,8 +6,8 @@ function rosa_register_sidebars() {
 
 	register_sidebar( array(
 		'id'            => 'sidebar-main',
-		'name'          => __( 'Main Sidebar', 'rosa-lite' ),
-		'description'   => __( 'Main Sidebar', 'rosa-lite' ),
+		'name'          => esc_html__( 'Main Sidebar', 'rosa-lite' ),
+		'description'   => esc_html__( 'Main Sidebar', 'rosa-lite' ),
 		'before_title'  => '<h4 class="widget__title widget--sidebar-blog__title">',
 		'after_title'   => '</h4>',
 		'before_widget' => '<div id="%1$s" class="widget widget--sidebar-blog %2$s">',
@@ -63,7 +63,7 @@ class wpgrade_latest_comments extends WP_Widget {
 		extract( $args, EXTR_SKIP );
 		$output = '';
 
-		$title  = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Recent Comments', 'rosa-lite' );
+		$title  = ( ! empty( $instance['title'] ) ) ? $instance['title'] : esc_html__( 'Recent Comments', 'rosa-lite' );
 		$title  = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 		$number = ( ! empty( $instance['number'] ) ) ? absint( $instance['number'] ) : 5;
 		if ( ! $number ) {
@@ -93,7 +93,7 @@ class wpgrade_latest_comments extends WP_Widget {
 					<div class="media__body  latest-comments__body">
 						<div class="comment__meta">
 							<a class="latest-comments__author" href="<?php echo get_comment_author_url() ?>"><?php echo $comment->comment_author; ?></a>
-							<?php _e('on' , 'rosa-lite' ); ?>
+							<?php esc_html_e('on' , 'rosa-lite' ); ?>
 							<a class="latest-comments__title" href="<?php echo $comment->guid; ?>"><?php echo $comment->post_title; ?></a>
 						</div>
 						<div class="latest-comments__content">
@@ -144,12 +144,12 @@ class wpgrade_latest_comments extends WP_Widget {
 		$title  = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 		$number = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5; ?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'rosa-lite' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'rosa-lite' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>"/>
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of comments to show:', 'rosa-lite' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php esc_html_e( 'Number of comments to show:', 'rosa-lite' ); ?></label>
 			<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo $number; ?>" size="3"/>
 		</p>
 		<?php
