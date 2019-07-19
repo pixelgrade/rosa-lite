@@ -31,12 +31,12 @@ if ( ! empty( $subtitle ) ) {
 	$subtitle   = '<span class="first-letter">' . $first_char . '</span>' . mb_substr( $subtitle, 1 );
 }
 
-$title = __(get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_title', true ), 'rosa-lite' );
+$page_title = __( get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_title', true ), 'rosa-lite' );
 if ( empty( $title ) ) {
 	//use the page title if empty
-	$title = get_the_title();
+	$page_title = get_the_title();
 }
-$description = __(get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_description', true ), 'rosa-lite' );
+$description = __( get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_description', true ), 'rosa-lite' );
 $pin_type = get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_gmap_pin_type', true );
 // filter the content with some limitations to avoid having plugins doing nasty things to it
 $description = rosa_display_content( $description, 'default' );
@@ -105,8 +105,8 @@ if ( $pin_type == 'single' ) {
 		$pins = '{';
 		$count = count( $gmap_urls );
 		$comma = ',';
-		foreach ( $gmap_urls as $order => $pin ) {
-			if ( $count == $order ) {
+		foreach ( $gmap_urls as $array_key => $pin ) {
+			if ( $count == $array_key ) {
 				$comma = '';
 			}
 			$pins .= '"' . $pin['name'] . '":"' . $pin['location_url'] . '"' . $comma;

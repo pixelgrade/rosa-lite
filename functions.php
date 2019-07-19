@@ -84,15 +84,9 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 			add_image_size( $size_key, $width, $height, $hard_crop );
 		}
 
-		/*
-		 * Register custom menus.
-		 * This works on 3.1+
-		 */
-		add_theme_support( 'menus' );
-
-
 		register_nav_menu( 'main_menu', 'Main Menu' );
 
+		add_theme_support( 'title-tag' );
 
 		add_editor_style( 'editor-style.css' );
 

@@ -558,7 +558,7 @@ function rosa_register_attachments_custom_fields() {
 		function add_video_url_field_to_attachments( $form_fields, $post ) {
 			if ( ! isset( $form_fields["video_url"] ) ) {
 				$form_fields["video_url"] = array(
-					"label" => esc_html__( "Video URL", 'rosa-lite' ),
+					"label" => esc_html__( 'Video URL', 'rosa-lite' ),
 					"input" => "text", // this is default if "input" is omitted
 					"value" => esc_url( get_post_meta( $post->ID, "_video_url", true ) ),
 					"helps" => wp_kses_post( __( "<p class='desc'>Attach a video to this image <span class='small'>(YouTube or Vimeo)</span>.</p>", 'rosa-lite' ) ),
@@ -576,7 +576,7 @@ function rosa_register_attachments_custom_fields() {
 				}
 
 				$form_fields["video_autoplay"] = array(
-					"label" => esc_html__( "Video  Autoplay", 'rosa-lite' ),
+					"label" => esc_html__( 'Video  Autoplay', 'rosa-lite' ),
 					"input" => "html",
 					"html"  => '<input' . $checked . ' type="checkbox" name="attachments[' . $post->ID . '][video_autoplay]" id="attachments[' . $post->ID . '][video_autoplay]" /><label for="attachments[' . $post->ID . '][video_autoplay]">' . esc_html__( 'Enable Video Autoplay?', 'rosa-lite' ) . '</label>'
 
