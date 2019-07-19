@@ -7,18 +7,18 @@ class ThemeUnitTests extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Ensure the active Theme is Rosa
+	 * Ensure the active Theme is Rosa Lite
 	 */
 	function test_theme_name(){
 		$theme = wp_get_theme();
 
 		$theme_template = get_option( 'current_theme' );
 
-		$this->assertEquals( $theme_template, 'Rosa' );
+		$this->assertEquals( $theme_template, 'Rosa Lite' );
 
-		$this->assertEquals( $theme->stylesheet, 'rosa' );
+		$this->assertEquals( $theme->stylesheet, 'rosa-lite' );
 
-		$this->assertEquals( $theme->template, 'rosa' );
+		$this->assertEquals( $theme->template, 'rosa-lite' );
 	}
 }
 

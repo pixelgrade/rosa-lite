@@ -14,7 +14,6 @@ get_header(); ?>
 		</a>
 
 	</div>
-	<p class="description second"><?php printf( esc_html__( '*but you can hit space bar for another GIF', 'rosa-lite' ), home_url() ); ?></p>
 	<div class="overlay overlay--color"></div>
 	<div class="overlay overlay--shadow"></div>
 

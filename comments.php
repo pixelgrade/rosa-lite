@@ -33,7 +33,7 @@ if ( post_password_required() ) {
 						number_format_i18n( get_comments_number() )
 					);
 				else:
-					wp_kses_post( _e( '<span class="comment-number total">+</span> There are no comments', 'rosa-lite' ) );
+					echo wp_kses_post( __( '<span class="comment-number total">+</span> There are no comments', 'rosa-lite' ) );
 				endif;
 				?>
 			</h3>
@@ -86,7 +86,7 @@ if ( is_user_logged_in() ) {
 	$current_user  = wp_get_current_user();
 	$comments_args = array(
 		// change the title of send button=
-		'title_reply'          => __( '<span class="comment-number total">+</span> Leave a Comment', 'rosa-lite' ),
+		'title_reply'          => wp_kses_post( __( '<span class="comment-number total">+</span> Leave a Comment', 'rosa-lite' ) ),
 		// remove "Text or HTML to be displayed after the set of comment fields"
 		'comment_notes_before' => '',
 		'comment_notes_after'  => '',
@@ -98,7 +98,7 @@ if ( is_user_logged_in() ) {
 } else {
 	$comments_args = array(
 		// change the title of send button
-		'title_reply'          => __( '<span class="comment-number total">+</span> Leave a Comment', 'rosa-lite' ),
+		'title_reply'          => wp_kses_post( __( '<span class="comment-number total">+</span> Leave a Comment', 'rosa-lite' ) ),
 		// remove "Text or HTML to be displayed after the set of comment fields"
 		'comment_notes_before' => '',
 		'comment_notes_after'  => '',

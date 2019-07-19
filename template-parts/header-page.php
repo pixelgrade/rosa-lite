@@ -9,7 +9,7 @@ global $is_gmap, $page_section_idx, $header_height;
 $page_section_idx++;
 
 //header general classes
-$classes = "c-hero  article__header  article__header--page";
+$classes = 'c-hero  article__header  article__header--page';
 
 //first lets get to know this page a little better
 $header_height = 'full-height';
@@ -233,7 +233,7 @@ if ( $pin_type == 'single' ) {
 			</header>
 		<?php } else { ?>
 			<div class="empty-slideshow">
-				<?php esc_attr_e( 'Currently there are no images assigned to this slideshow', 'rosa-lite' ); ?>
+				<?php esc_html_e( 'Currently there are no images assigned to this slideshow', 'rosa-lite' ); ?>
 			</div>
 		<?php }
 

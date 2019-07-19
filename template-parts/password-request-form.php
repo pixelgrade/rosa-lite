@@ -16,15 +16,15 @@
 				<span class="gray"><?php esc_html_e( 'Please enter your password to continue.', 'rosa-lite' ); ?></span>
 			<?php } ?>
 		</div>
-		<form class="auth-form" method="post" action="<?php echo wp_login_url() . '?action=postpass'; // just keep this action path ... wordpress will refear for us?>">
+		<form class="auth-form" method="post" action="<?php echo wp_login_url() . '?action=postpass'; // just keep this action path ... WordPress will refer for us?>">
 			<div class="protected-form-container">
 				<div class="protected-password-field">
 					<?php wp_nonce_field( 'password_protection', 'submit_password_nonce' ); ?>
 					<input type="hidden" name="submit_password" value="1"/>
-					<input type="password" name="post_password" id="auth_password" class="auth__pass" placeholder="<?php esc_html_e( "Password", 'rosa-lite' ) ?>"/>
+					<input type="password" name="post_password" id="auth_password" class="auth__pass" placeholder="<?php esc_html_e( 'Password', 'rosa-lite' ) ?>"/>
 				</div>
 				<div class="protected-submit-button">
-					<input type="submit" name="Submit" id="auth_submit" class="auth__submit  btn" value="<?php esc_html_e( "Authenticate", 'rosa-lite' ) ?>"/>
+					<input type="submit" name="Submit" id="auth_submit" class="auth__submit  btn" value="<?php esc_html_e( 'Authenticate', 'rosa-lite' ) ?>"/>
 				</div>
 			</div>
 		</form>
