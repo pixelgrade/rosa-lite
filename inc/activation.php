@@ -35,7 +35,7 @@ return array(
 					array(
 						'name' => esc_html__( 'Make Menu Bar Transparent', 'rosa-lite' ),
 						'desc' => esc_html__( 'This will remove the background from the menu and logo top bar.', 'rosa-lite' ),
-						'id'   => wpgrade::prefix() . 'header_transparent_menu_bar_lite',
+						'id'   => wpgrade::prefix() . 'header_transparent_menu_bar',
 						'type' => 'checkbox',
 					),
 				),

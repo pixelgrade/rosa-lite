@@ -70,7 +70,7 @@ $data_main_color      = ( pixelgrade_option( 'main_color' ) ) ? 'data-color="' .
 //make the header menu bar transparent
 //only for static pages
 if ( is_page() ) {
-	$make_transparent_menu_bar = get_post_meta( get_the_ID(), wpgrade::prefix() . 'header_transparent_menu_bar_lite', true );
+	$make_transparent_menu_bar = get_post_meta( get_the_ID(), wpgrade::prefix() . 'header_transparent_menu_bar', true );
 
 	if ( $make_transparent_menu_bar == 'on' ) {
 		$class_name .= '  header--transparent';
