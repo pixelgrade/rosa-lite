@@ -1644,26 +1644,26 @@ if ( ! function_exists( 'rosa_lite_google_fonts_url' ) ) {
 		* supported by Cabin, translate this to 'off'. Do not translate
 		* into your own language.
 		*/
-		if ( 'off' !== _x( 'on', 'Cabin font: on or off', '__theme_txtd' ) ) {
+		if ( 'off' !== _x( 'on', 'Cabin font: on or off', 'rosa-lite' ) ) {
 			$fonts[] = 'Cabin:400,400i,500,500i,600,600i,700,700i';
 		}
 		/* Translators: If there are characters in your language that are not
 		* supported by Source Sans Pro, translate this to 'off'. Do not translate
 		* into your own language.
 		*/
-		if ( 'off' !== _x( 'on', 'Source Sans Pro font: on or off', '__theme_txtd' ) ) {
+		if ( 'off' !== _x( 'on', 'Source Sans Pro font: on or off', 'rosa-lite' ) ) {
 			$fonts[] = 'Source Sans Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i';
 		}
 		/* Translators: If there are characters in your language that are not
 		* supported by Herr Von Muellerhoff, translate this to 'off'. Do not translate
 		* into your own language.
 		*/
-		if ( 'off' !== _x( 'on', 'Herr Von Muellerhoff font: on or off', '__theme_txtd' ) ) {
+		if ( 'off' !== _x( 'on', 'Herr Von Muellerhoff font: on or off', 'rosa-lite' ) ) {
 			$fonts[] = 'Herr Von Muellerhoff:400';
 		}
 
 		/* translators: To add an additional character subset specific to your language, translate this to 'greek', 'cyrillic', 'devanagari' or 'vietnamese'. Do not translate into your own language. */
-		$subset = esc_html_x( 'no-subset', 'Add new subset (greek, cyrillic, devanagari, vietnamese)', '__theme_txtd' );
+		$subset = esc_html_x( 'no-subset', 'Add new subset (greek, cyrillic, devanagari, vietnamese)', 'rosa-lite' );
 
 		if ( 'cyrillic' == $subset ) {
 			$subsets .= ',cyrillic,cyrillic-ext';
