@@ -5,7 +5,7 @@
  * Displays all of the <head> section and everything up till the main content
  *
  * @package Rosa
- * @since   Rosa 1.0
+ * @since   Rosa Lite 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ){

@@ -424,7 +424,7 @@ function rosa_custom_post_gallery( $output, $attr ) {
 
 		/**
 		 * Filter whether to print default gallery styles.
-		 * @since 3.1.0
+		 * @since 1.0.0
 		 *
 		 * @param bool $print Whether to print default gallery styles.
 		 *                    Defaults to false if the theme supports HTML5 galleries.
@@ -450,7 +450,7 @@ function rosa_custom_post_gallery( $output, $attr ) {
 
 		/**
 		 * Filter the default gallery shortcode CSS styles.
-		 * @since 2.5.0
+		 * @since 1.0.0
 		 *
 		 * @param string $gallery_style Default gallery shortcode CSS styles.
 		 * @param string $gallery_div   Opening HTML div container for the gallery shortcode output.
@@ -990,7 +990,7 @@ add_action( 'pre_get_posts', 'rosa_pre_get_posts_sticky_posts' );
 
 /**
  * Extend the default WordPress post classes.
- * @since Rosa 1.5.6
+ * @since Rosa Lite 1.0.0
  *
  * @param array $classes A list of existing post class values.
  *
@@ -1132,7 +1132,7 @@ function rosa_the_author_posts_link() {
 
 	/**
 	 * Filter the link to the author page of the author of the current post.
-	 * @since 2.9.0
+	 * @since 1.0.0
 	 *
 	 * @param string $link HTML link.
 	 */

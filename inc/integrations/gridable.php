@@ -4,8 +4,8 @@
  *
  * @link https://wordpress.org/plugins/gridable/
  *
- * @package Rosa
- * @since Rosa 1.0
+ * @package Rosa Lite 1.0.0
+ * @since Rosa Lite 1.0.0
  */
 
 // we don't need the gridable style since rosa has a similar grid system

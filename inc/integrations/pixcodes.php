@@ -2,8 +2,8 @@
 /**
  * Custom functions that deal with various plugin integrations of PixCodes.
  *
- * @package Rosa
- * @since 2.0.0
+ * @package Rosa Lite
+ * @since 1.0.0
  */
 
 /**

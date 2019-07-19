@@ -1,8 +1,8 @@
 <?php
 /**
  * The template for displaying the footer widget areas.
- * @package Rosa
- * @since   Rosa 1.0
+ * @package Rosa Lite
+ * @since   Rosa Lite 1.0.0
  **/
 
 if ( ! defined( 'ABSPATH' ) ){

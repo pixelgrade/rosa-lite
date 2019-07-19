@@ -1,9 +1,9 @@
 <?php
 /**
- * Rosa required or recommended plugins
+ * Rosa Lite required or recommended plugins
  *
- * @package Rosa
- * @since Rosa 1.0
+ * @package Rosa Lite
+ * @since Rosa Lite 1.0
  */
 
 require_once get_template_directory() . '/inc/required-plugins/class-tgm-plugin-activation.php';

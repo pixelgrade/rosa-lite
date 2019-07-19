@@ -239,7 +239,7 @@ if ( ! function_exists( 'rosa_the_posts_navigation' ) ) :
 	 * Prints the HTML of the posts navigation
 	 * It will display both prev/next and page numbers (i.e « Prev 1 … 3 4 5 6 7 … 9 Next » )
 	 *
-	 * @since Rosa 2.0.0
+	 * @since Rosa Lite 1.0.0
 	 */
 	function rosa_the_posts_navigation() {
 		global $wp_query;
@@ -275,7 +275,7 @@ endif;
  *
  * --Customized version of the function in core get_next_posts_link()
  *
- * @since 2.7.0
+ * @since 1.0.0
  *
  * @global int      $paged
  * @global WP_Query $wp_query
@@ -301,7 +301,7 @@ function rosa_get_next_posts_link( $label = null ) {
 			/**
 			 * Filter the anchor tag attributes for the next posts page link.
 			 *
-			 * @since 2.7.0
+			 * @since 1.0.0
 			 *
 			 * @param string $attributes Attributes for the anchor tag.
 			 */
@@ -313,7 +313,7 @@ function rosa_get_next_posts_link( $label = null ) {
 			/**
 			 * Filter the anchor tag attributes for the next posts page link.
 			 *
-			 * @since 2.7.0
+			 * @since 1.0.0
 			 *
 			 * @param string $attributes Attributes for the anchor tag.
 			 */
@@ -330,7 +330,7 @@ function rosa_get_next_posts_link( $label = null ) {
  *
  * --Customized version of the function in core get_prev_posts_link()
  *
- * @since 2.7.0
+ * @since 1.0.0
  *
  * @global int      $paged
  *
@@ -351,7 +351,7 @@ function rosa_get_prev_posts_link( $label = null ) {
 			/**
 			 * Filter the anchor tag attributes for the prev posts page link.
 			 *
-			 * @since 2.7.0
+			 * @since 1.0.0
 			 *
 			 * @param string $attributes Attributes for the anchor tag.
 			 */
@@ -363,7 +363,7 @@ function rosa_get_prev_posts_link( $label = null ) {
 			/**
 			 * Filter the anchor tag attributes for the prev posts page link.
 			 *
-			 * @since 2.7.0
+			 * @since 1.0.0
 			 *
 			 * @param string $attributes Attributes for the anchor tag.
 			 */

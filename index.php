@@ -6,8 +6,8 @@
  * It is used to display a page when nothing more specific matches a query.
  * For example, it puts together the home page when no home.php file exists.
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
- * @package Rosa
- * @since   Rosa 1.0
+ * @package Rosa Lite
+ * @since   Rosa Lite 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ){
