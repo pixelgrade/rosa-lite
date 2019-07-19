@@ -10,7 +10,7 @@ License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: rosa-lite
 Domain Path: /languages/
-Tags: food-and-drink, two-columns, right-sidebar, custom-menu, featured-images, translation-ready
+Tags: food-and-drink, two-columns, right-sidebar, custom-menu, featured-images, translation-ready, threaded-comments
 Requires PHP: 5.3.0
 Requires at least: 4.9.9
 Tested up to: 5.2.2
