@@ -26,7 +26,7 @@ $subtitle = trim( get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_s
 //we need to mess with the subtitle a little bit - because it deserves it
 //we need to wrap the first subtitle letter in a span so we can control it - height wise
 if ( ! empty( $subtitle ) ) {
-	$subtitle   = esc_html__( $subtitle, 'rosa-lite' );
+	$subtitle   = esc_html( $subtitle );
 	$first_char = mb_substr( $subtitle, 0, 1 );
 	$subtitle   = '<span class="first-letter">' . $first_char . '</span>' . mb_substr( $subtitle, 1 );
 }
@@ -34,12 +34,10 @@ if ( ! empty( $subtitle ) ) {
 $page_title =  get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_title', true );
 if ( empty( $page_title ) ) {
 	//use the page title if empty
-	$page_title = get_the_title();
+	$page_title = esc_html( get_the_title() );
 }
-$page_title= esc_html__( $page_title,'rosa-lite');
 
-$description = get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_description', true );
-$description= esc_html__( $description,'rosa-lite');
+$description = esc_html( get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_description', true ) );
 
 $pin_type = get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_gmap_pin_type', true );
 // filter the content with some limitations to avoid having plugins doing nasty things to it

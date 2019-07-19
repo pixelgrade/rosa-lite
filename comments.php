@@ -28,13 +28,11 @@ if ( post_password_required() ) {
 				<?php
 				if ( have_comments() ) :
 					printf(
-						_n(
-						/* translators: 1: One comment */
-						'<span class="comment-number total">1</span> Comment',
-							/* translators: 1: number of comments */
-							'<span class="comment-number total">%1$s</span>Comments',
-							get_comments_number(),
-							'rosa-lite'
+					/* translators: 1: One comment, 2: Number of comments */
+					_n( '<span class="comment-number total">1</span> Comment',
+                        '<span class="comment-number total">%1$s</span>Comments',
+                        get_comments_number(),
+                        'rosa-lite'
 						),
 						number_format_i18n( get_comments_number() )
 					);
