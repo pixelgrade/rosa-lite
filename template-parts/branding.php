@@ -1,3 +1,7 @@
+<?php if ( ! defined( 'ABSPATH' ) ){
+	exit; // Exit if accessed directly
+} ?>
+
 <div class="site-header__branding">
 	<?php
 	if ( rosa_image_src( 'main_logo_light' ) ) { ?>

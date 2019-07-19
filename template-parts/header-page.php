@@ -3,6 +3,10 @@
  * This template handles the page headers with image and cover text
  */
 
+if ( ! defined( 'ABSPATH' ) ){
+	exit; // Exit if accessed directly
+}
+
 global $is_gmap, $page_section_idx, $header_height;
 
 //increment the page section number

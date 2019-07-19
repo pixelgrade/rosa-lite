@@ -4,6 +4,10 @@
  * The template for displaying pages without a title.
  */
 
+if ( ! defined( 'ABSPATH' ) ){
+	exit; // Exit if accessed directly
+}
+
 get_header();
 
 global $post, $wpgrade_private_post, $page_section_idx, $header_height;

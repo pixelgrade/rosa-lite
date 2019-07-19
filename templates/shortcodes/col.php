@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ){
+	exit; // Exit if accessed directly
+}
+
 $output = '';
 $ratios = array(
 	1  => 'one-twelfth',

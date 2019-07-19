@@ -3,6 +3,10 @@
  * Template to display the post in archives
  */
 
+if ( ! defined( 'ABSPATH' ) ){
+	exit; // Exit if accessed directly
+}
+
 //post thumb specific
 $has_thumb = has_post_thumbnail();
 

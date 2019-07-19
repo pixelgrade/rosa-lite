@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ){
+	exit; // Exit if accessed directly
+}
+
 $output = '';
 $output .= '<div class="pixcode  pixcode--grid  grid  ';
 if($thick_gutter) $output .= 'thick-gutter  ';

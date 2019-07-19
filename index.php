@@ -10,6 +10,10 @@
  * @since   Rosa 1.0
  */
 
+if ( ! defined( 'ABSPATH' ) ){
+	exit; // Exit if accessed directly
+}
+
 get_header(); ?>
 
 	<section class="container  container--archive">

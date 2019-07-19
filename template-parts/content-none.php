@@ -7,6 +7,10 @@
  * @package Gema
  */
 
+if ( ! defined( 'ABSPATH' ) ){
+	exit; // Exit if accessed directly
+}
+
 if ( is_home() && current_user_can( 'publish_posts' ) ){ ?>
 
 	<p><?php printf(

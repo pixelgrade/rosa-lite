@@ -6,6 +6,10 @@
  * 'pages' on your WordPress site will use a different template.
  */
 
+if ( ! defined( 'ABSPATH' ) ){
+	exit; // Exit if accessed directly
+}
+
 get_header();
 
 global $post, $wpgrade_private_post, $page_section_idx, $header_height;

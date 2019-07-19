@@ -8,6 +8,9 @@
  * @since   Rosa 1.0
  */
 
+if ( ! defined( 'ABSPATH' ) ){
+	exit; // Exit if accessed directly
+}
 
 //detect what type of content are we displaying
 $schema_org = '';

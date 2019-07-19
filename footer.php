@@ -5,6 +5,10 @@
  * @since   Rosa 1.0
  **/
 
+if ( ! defined( 'ABSPATH' ) ){
+	exit; // Exit if accessed directly
+}
+
 global $is_gmap, $footer_needs_big_waves;
 
 if ( $is_gmap === true ) {

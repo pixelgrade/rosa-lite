@@ -4,6 +4,10 @@
 
  */
 
+if ( ! defined( 'ABSPATH' ) ){
+	exit; // Exit if accessed directly
+}
+
 get_header(); ?>
 	<div class="content-404">
 		<h1 class="hN"><?php esc_html_e( 'Whoops!', 'rosa-lite' ); ?></h1>
