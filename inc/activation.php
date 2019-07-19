@@ -34,7 +34,7 @@ return array(
 				'fields'     => array(
 					array(
 						'name' => esc_html__( 'Make Menu Bar Transparent', 'rosa-lite' ),
-						'desc' => esc_html__( "This will remove the background from the menu and logo top bar.", 'rosa-lite' ),
+						'desc' => esc_html__( 'This will remove the background from the menu and logo top bar.', 'rosa-lite' ),
 						'id'   => wpgrade::prefix() . 'header_transparent_menu_bar_lite',
 						'type' => 'checkbox',
 					),
@@ -60,7 +60,7 @@ return array(
 					),
 					array(
 						'name' => esc_html__( 'Title', 'rosa-lite' ),
-						'desc' => esc_html__( "If left empty we will use the page title. Tip: put a space if you don't want any cover text.", 'rosa-lite' ),
+						'desc' => esc_html__( 'If left empty we will use the page title. Tip: put a space if you don\'t want any cover text.', 'rosa-lite' ),
 						'id'   => wpgrade::prefix() . 'page_cover_title',
 						'type' => 'text',
 					),

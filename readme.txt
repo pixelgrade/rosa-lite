@@ -35,10 +35,15 @@ The Rosa Lite Theme bundles the following third-party resources:
 * normalize.css https://necolas.github.io/normalize.css/, (c) 2012-2016 Nicolas Gallagher and Jonathan Neal, licensed under [MIT](https://opensource.org/licenses/MIT)
 * rellax.js http://pixelgrade.github.io/rellax/, Copyright (c) 2016 Pixelgrade, License: [MIT](http://opensource.org/licenses/MIT)
 * Gmap3 by [DEMONTE Jean-Baptiste](https://github.com/jbdemonte), licensed under [GPL-3.0+](https://www.gnu.org/licenses/gpl-3.0.en.html)
-* modernizr.js https://github.com/modernizr/modernizr, (c) 2009 , licensed under [MIT](https://opensource.org/licenses/MIT) @todo complete author
+* modernizr.js https://github.com/modernizr/modernizr, (c) 2009 , licensed under [MIT](https://opensource.org/licenses/MIT)
 * debouncedresize.js: script by Louis-Remi Babe (https://github.com/louisremi/jquery-smartresize), licensed under the [MIT License](http://opensource.org/licenses/mit-license.html).
 * Magnific Popup: script by Dmitry Semenov (http://dimsemenov.com/plugins/magnific-popup/), licensed under the [MIT License](http://opensource.org/licenses/mit-license.html).
-* jQuery-Organic-Tabs https://github.com/CSS-Tricks/jQuery-Organic-Tabs, (c) 2012 CSS-TRICKS @todo complete license type
+* jQuery-Organic-Tabs https://github.com/CSS-Tricks/jQuery-Organic-Tabs, (c) 2012 CSS-TRICKS, licensed under [GPL-3.0+](https://www.gnu.org/licenses/gpl-3.0.en.html)
+* hoverIntent: script by Brian Cherne ( http://cherne.net/brian/resources/jquery.hoverIntent.html ), (c) 2007-2013, licensed under the [MIT License](http://opensource.org/licenses/mit-license.html).
+* imagesLoaded: script by DeSandro ( https://github.com/desandro/imagesloaded ), (c) 2014-2018, licensed under the [MIT License](http://opensource.org/licenses/mit-license.html).
+* Pikaday: script by David Bushell and Ramiro Rikkert ( https://github.com/Pikaday/Pikaday ), (c) 2014-2018, licensed under the [MIT License](http://opensource.org/licenses/mit-license.html).
+* Respond: script by Scott Jehl ( https://github.com/scottjehl/Respond ), (c) 2011-2017, licensed under the [MIT License](http://opensource.org/licenses/mit-license.html).
+* Autosize: script by Jack Moore ( https://github.com/jackmoore/autosize ), (c) 2013, licensed under the [MIT License](http://opensource.org/licenses/mit-license.html).
 
 
 * Images: screenshot image from PxHere - [Source](https://pxhere.com/en/photo/1398176) licensed under CC0 Public Domain.
