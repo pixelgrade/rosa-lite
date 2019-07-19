@@ -44,10 +44,9 @@ return array(
 				'pages'      => array( 'page' ), // Post type
 				'context'    => 'normal',
 				'priority'   => 'high',
-				'hidden'     => false,
 				'show_on'    => array(
 					'key' => 'page-template',
-					'value' => array( 'default' ),
+					'value' => array( '', 'default' ),
 				),
 				'show_names' => true, // Show field names on the left
 				'fields'     => array(
