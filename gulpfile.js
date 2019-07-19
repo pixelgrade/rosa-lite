@@ -3,8 +3,8 @@
 // This is not a normal require, because our gulp-help tool (which provides the
 // nice task descriptions on the command-line) requires changing the function
 // signature of gulp tasks to include the task description.
-var theme = theme_name = main_branch = 'rosa';
-var theme_txtdomain = 'rosa';
+var theme = theme_name = main_branch = 'rosa-lite';
+var theme_txtdomain = 'rosa-lite';
 var gulp = require( 'gulp-help' )( require( 'gulp' ) );
 
 // Gulp / Node utilities
@@ -38,7 +38,7 @@ var jsFiles = [
 ];
 
 var config = {
-	"baseurl": "demos.dev/rosa"
+	"baseurl": "demos.dev/rosa-lite"
 };
 
 if ( fs.existsSync( './gulpconfig.json' ) ) {
