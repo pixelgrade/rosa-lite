@@ -22,7 +22,7 @@ if ( empty($header_height) ) {
 }
 $classes .= ' ' . $header_height;
 
-$subtitle = trim( __(get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_subtitle', true ) ));
+$subtitle = trim( __(get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_subtitle', true ), 'rosa-lite' ) );
 //we need to mess with the subtitle a little bit - because it deserves it
 //we need to wrap the first subtitle letter in a span so we can control it - height wise
 if ( ! empty( $subtitle ) ) {
@@ -31,12 +31,12 @@ if ( ! empty( $subtitle ) ) {
 	$subtitle   = '<span class="first-letter">' . $first_char . '</span>' . mb_substr( $subtitle, 1 );
 }
 
-$title = __(get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_title', true ));
+$title = __(get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_title', true ), 'rosa-lite' );
 if ( empty( $title ) ) {
 	//use the page title if empty
 	$title = get_the_title();
 }
-$description = __(get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_description', true ));
+$description = __(get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_description', true ), 'rosa-lite' );
 $pin_type = get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_gmap_pin_type', true );
 // filter the content with some limitations to avoid having plugins doing nasty things to it
 $description = rosa_display_content( $description, 'default' );
@@ -74,7 +74,7 @@ if ( $pin_type == 'single' ) {
 		<header data-bully id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ); ?>">
 			<div class="c-hero__background c-hero__layer" data-rellax data-rellax-container>
 				<div data-rellax data-rellax-fill id="gmap-<?php the_ID() ?>" class="c-hero__map gmap"
-					data-url="<?php esc_attr_e( $gmap_url ); ?>" <?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
+					data-url="<?php echo esc_attr( $gmap_url ); ?>" <?php echo ( $gmap_custom_style == 'on' ) ? 'data-customstyle' : ''; ?>
 					data-markercontent="<?php echo esc_attr( $gmap_marker_content ); ?>" data-pin_type="single"></div>
 			</div>
 		</header>
@@ -226,7 +226,7 @@ if ( $pin_type == 'single' ) {
 							<?php if ( ! empty( $subtitle ) ) {
 								echo '<h2 class="headline__secondary">' . $subtitle . '</h2>' . PHP_EOL;
 							} ?>
-							<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
+							<h1 class="headline__primary"><?php echo esc_html( $title ) ?></h1>
 							<?php if ( ! empty( $description ) ) {
 								echo '<div class="headline__description">' . $description . '</div>' . PHP_EOL;
 							} ?>
@@ -263,7 +263,7 @@ if ( $pin_type == 'single' ) {
 							<?php if ( ! empty( $subtitle ) ) {
 								echo '<h2 class="headline__secondary">' . $subtitle . '</h2>' . PHP_EOL;
 							} ?>
-							<h1 class="headline__primary"><?php esc_html_e( $title ) ?></h1>
+							<h1 class="headline__primary"><?php echo esc_html( $title ) ?></h1>
 							<?php if ( ! empty( $description ) ) {
 								echo '<div class="headline__description">' . $description . '</div>' . PHP_EOL;
 							} ?>

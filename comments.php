@@ -30,6 +30,7 @@ if ( post_password_required() ) {
 					printf(
 						_n(
 							'<span class="comment-number total">1</span> Comment',
+							/* translators: 1: number of comments*/
 							'<span class="comment-number total">%1$s</span>Comments',
 							get_comments_number(),
 							'rosa-lite'
@@ -87,7 +88,6 @@ if ( ! comments_open() && post_type_supports( get_post_type(), 'comments' ) && !
 <?php endif;
 
 if ( is_user_logged_in() ) {
-	$current_user  = wp_get_current_user();
 	$comments_args = array(
 		// change the title of send button=
 		'title_reply'          => wp_kses_post( __( '<span class="comment-number total">+</span> Leave a Comment', 'rosa-lite' ) ),

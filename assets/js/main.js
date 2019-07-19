@@ -1113,7 +1113,7 @@ function royalSliderInit( $container ) {
 
 	$container = typeof $container !== 'undefined' ? $container : $( 'body' );
 
-	// Transform Wordpress Galleries to Sliders
+	// Transform WordPress Galleries to Sliders
 	$container.find( '.wp-gallery' ).each( function () {
 		sliderMarkupGallery( $( this ) );
 	} );
@@ -1272,7 +1272,7 @@ function sliderInit( $slider ) {
 }
 
 /*
- * Wordpress Galleries to Sliders
+ * WordPress Galleries to Sliders
  * Create the markup for the slider from the gallery shortcode
  * take all the images and insert them in the .gallery <div>
  */

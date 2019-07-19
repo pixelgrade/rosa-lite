@@ -213,7 +213,7 @@ add_action( 'admin_enqueue_scripts', 'rosa_load_admin_assets' );
 // --------------
 
 /**
- * Make sure wordpress allows our mime types.
+ * Make sure WordPress allows our mime types.
  * @return array
  */
 function rosa_callback_custom_upload_mimes( $existing_mimes = null ) {

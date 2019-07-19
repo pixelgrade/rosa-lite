@@ -162,7 +162,7 @@ function rosa_is_password_protected() {
 				if ( $post->post_password === $_POST['post_password'] ) {
 					$private_post['allowed'] = true;
 
-					// ok if we have a correct password we should inform wordpress too
+					// ok if we have a correct password we should inform WordPress too
 					// otherwise the mad dog will put the password form again in the_content() and other filters
 					global $wp_hasher;
 					if ( empty( $wp_hasher ) ) {
@@ -868,7 +868,7 @@ function rosa_better_excerpt( $text = '' ) {
 }
 
 /**
- * Replace the [...] wordpress puts in when using the the_excerpt() method.
+ * Replace the [...] WordPress puts in when using the the_excerpt() method.
  */
 function new_excerpt_more( $excerpt ) {
 	return pixelgrade_option( 'blog_excerpt_more_text' );
@@ -1226,7 +1226,7 @@ function rosa_display_content( $content, $filtergroup ) {
 	$convert_chars   = apply_filters( 'convert_chars', $convert_smilies );
 	$content         = wpautop( $convert_chars );
 
-	// including Wordpress plugin.php for is_plugin_active function
+	// including WordPress plugin.php for is_plugin_active function
 	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 	if ( is_plugin_active( 'pixcodes/pixcodes.php' ) ) {
