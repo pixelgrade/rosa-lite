@@ -105,9 +105,9 @@ else :
 							<div class="meta--tags  btn-list  meta-list">
 								<span class="btn  btn--small  btn--secondary  list-head"><?php esc_html_e( 'Tags', 'rosa-lite' ) ?></span>
 								<?php
-								foreach ( $tags as $tag ) {
+								foreach ( $tags as $one_tag ) {
 									/* translators: %s: tag name */
-									echo '<a class="btn  btn--small  btn--tertiary" href="' . get_tag_link( $tag->term_id ) . '" title="' . esc_attr( sprintf( __( "View all posts tagged %s", 'rosa-lite' ), $tag->name ) ) . '" rel="tag">' . $tag->name . '</a>';
+									echo '<a class="btn  btn--small  btn--tertiary" href="' . get_tag_link( $one_tag->term_id ) . '" title="' . esc_attr( sprintf( __( "View all posts tagged %s", 'rosa-lite' ), $one_tag->name ) ) . '" rel="tag">' . $one_tag->name . '</a>';
 								}; ?>
 							</div><!-- .meta--tags -->
 

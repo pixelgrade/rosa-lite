@@ -29,8 +29,9 @@ if ( post_password_required() ) {
 				if ( have_comments() ) :
 					printf(
 						_n(
-							'<span class="comment-number total">1</span> Comment',
-							/* translators: 1: number of comments*/
+						/* translators: 1: One comment */
+						'<span class="comment-number total">1</span> Comment',
+							/* translators: 1: number of comments */
 							'<span class="comment-number total">%1$s</span>Comments',
 							get_comments_number(),
 							'rosa-lite'
