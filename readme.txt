@@ -1,9 +1,11 @@
-Theme Name: Rosa Lite
+=== Rosa Lite ===
+
+Contributors: pixelgrade, babbardel, vlad.olaru, razvanonofrei
 Theme URI: https://github.com/pixelgrade/rosa-lite
 Author: Pixelgrade
 Author URI: https://pixelgrade.com/
 Description: Rosa Lite is a free restaurant WordPress theme, built to help small businesses shape an appealing online experience.
-Version: 1.0.0
+Stable Tag: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: rosa-lite
