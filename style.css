@@ -9395,6 +9395,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   text-transform: uppercase;
   letter-spacing: .2em;
   background-color: #262526;
+  color: #919191;
   transition: all .15s;
   border-radius: 3px;
 }
@@ -9417,7 +9418,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
 }
 
 .btn--secondary, .btn--tertiary, .wpcf7-form-control.wpcf7-submit, .otreservations-submit {
-  color: transparent;
+  color: #919191;
 }
 
 .btn--tertiary {

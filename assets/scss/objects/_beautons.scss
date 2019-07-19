@@ -12,7 +12,7 @@
 	letter-spacing: .2em;
 
 	background-color: $dark;
-	//color: transparent;
+	color: $light;
 
 	transition: all .15s;
 	border-radius: 3px;
@@ -37,7 +37,7 @@
 }
 
 .btn--secondary {
-	color: transparent;
+	color: $light;
 }
 
 .btn--tertiary {
