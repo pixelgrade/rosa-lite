@@ -959,7 +959,7 @@ function rosa_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary.
 	if ( $paged >= 2 || $page >= 2 ) {
-		$title = "$title $sep " . sprintf( __( 'Page %s', 'rosa-lite' ), max( $paged, $page ) );
+		$title = "$title $sep " . sprintf( esc_html__( 'Page %s', 'rosa-lite' ), max( $paged, $page ) );
 	}
 
 	return $title;
@@ -974,7 +974,7 @@ function rosa_fix_yoast_page_number( $title ) {
 	if ( is_home() || is_front_page() ) {
 		// Add a page number if necessary.
 		if ( $paged >= 2 || $page >= 2 ) {
-			$title = "$title $sep " . sprintf( __( 'Page %s', 'rosa-lite' ), max( $paged, $page ) );
+			$title = "$title $sep " . sprintf( esc_html__( 'Page %s', 'rosa-lite' ), max( $paged, $page ) );
 		}
 	}
 
