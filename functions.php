@@ -143,11 +143,11 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 
 		// Scripts
 		wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr.min.js', array( 'jquery' ), '3.3.1' );
-		wp_enqueue_script( 'webfont-script', '//ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js', array( 'jquery' ) );
-		wp_enqueue_script( 'tween-max', '//cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js', array( 'jquery' ) );
-		wp_enqueue_script( 'ease-pack', '//cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/easing/EasePack.min.js', array( 'jquery' ) );
-		wp_enqueue_script( 'scroll-to-plugin', '//cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/ScrollToPlugin.min.js', array( 'jquery' ) );
-		wp_enqueue_script( 'rosa-rs', '//pxgcdn.com/js/rs/9.5.7/index.js', array( 'jquery' ) );
+		wp_enqueue_script( 'webfont-script', get_theme_file_uri( '/assets/js/webfont.js' ), array( 'jquery' ), '1.6.16' );
+		wp_register_script( 'tween-max', get_theme_file_uri( '/assets/js/TweenMax.min.js' ), array( 'jquery'), '1.19.1' );
+		wp_enqueue_script( 'ease-pack', get_theme_file_uri( '/assets/js/EasePack.min.js' ), array( 'jquery' ), '1.15.5' );
+		wp_enqueue_script( 'scroll-to-plugin', get_theme_file_uri( '/assets/js/ScrollToPlugin.min.js' ), array( 'jquery' ), '1.8.1' );
+		wp_enqueue_script( 'rosa-rs', get_theme_file_uri( '/assets/js/index.js' ), array( 'jquery' ), '9.5.7' );
 
 		$script_dependencies = array( 'jquery', 'modernizr', 'rosa-rs', 'scroll-to-plugin', 'tween-max', 'ease-pack' );
 
@@ -194,10 +194,10 @@ if ( ! function_exists( 'rosa_load_admin_assets' ) ) {
 			'import_all_done' => esc_html__( "All done!", 'rosa-lite'),
 			'import_working' => esc_html__( "Working...", 'rosa-lite'),
 			'import_widgets_failed' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "The setting up of the demo widgets failed...", 'rosa-lite' ) . '</a>',
-			'import_widgets_error' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . __( 'The setting up of the demo widgets failed</i><br />(The script returned the following message', 'rosa-lite' ) . '</a>',
+			'import_widgets_error' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . wp_kses_post( __( 'The setting up of the demo widgets failed</i><br />(The script returned the following message', 'rosa-lite' ) ) . '</a>',
 			'import_widgets_done' => esc_html__( 'Finished setting up the demo widgets...', 'rosa-lite'),
 			'import_theme_options_failed' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "The importing of the theme options has failed...", 'rosa-lite' ) . '</a>',
-			'import_theme_options_error' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . __( 'The importing of the theme options has failed</i><br />(The script returned the following message', 'rosa-lite' ) . '</a>',
+			'import_theme_options_error' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . wp_kses_post( __( 'The importing of the theme options has failed</i><br />(The script returned the following message', 'rosa-lite' ) ) . '</a>',
 			'import_theme_options_done' => esc_html__( 'Finished importing the demo theme options...', 'rosa-lite'),
 			'import_posts_failed' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "The importing of the theme options has failed...", 'rosa-lite' ) . '</a>',
 			'import_posts_step' => esc_html__( 'Importing posts | Step', 'rosa-lite'),

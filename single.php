@@ -88,6 +88,7 @@ else :
 								<span class="btn  btn--small  btn--secondary  list-head"><?php esc_html_e( 'Categories', 'rosa-lite' ) ?></span>
 								<?php
 								foreach ( $categories as $category ) {
+									/* translators: %s: category name */
 									echo '<a class="btn  btn--small  btn--tertiary" href="' . get_category_link( $category->term_id ) . '" title="' . esc_attr( sprintf( __( "View all posts in %s", 'rosa-lite' ), $category->name ) ) . '" rel="tag">' . $category->name . '</a>';
 								}; ?>
 							</div><!-- .meta--categories -->
@@ -101,6 +102,7 @@ else :
 								<span class="btn  btn--small  btn--secondary  list-head"><?php esc_html_e( 'Tags', 'rosa-lite' ) ?></span>
 								<?php
 								foreach ( $tags as $tag ) {
+									/* translators: %s: tag name */
 									echo '<a class="btn  btn--small  btn--tertiary" href="' . get_tag_link( $tag->term_id ) . '" title="' . esc_attr( sprintf( __( "View all posts tagged %s", 'rosa-lite' ), $tag->name ) ) . '" rel="tag">' . $tag->name . '</a>';
 								}; ?>
 							</div><!-- .meta--tags -->

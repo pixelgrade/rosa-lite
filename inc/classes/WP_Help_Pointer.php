@@ -48,7 +48,8 @@ class WP_Help_Pointer {
 					'screen'  => $ptr['screen'],
 					'target'  => $ptr['target'],
 					'options' => array(
-						'content'  => sprintf( '<h3> %s </h3> <p> %s </p>', $ptr['title'], $ptr['content'] ),
+						/* translators: 1: pointer title, 1: pointer counter */
+						'content'  => sprintf( '<h3> %1$s </h3> <p> %2$s </p>', $ptr['title'], $ptr['content'] ),
 						'position' => $ptr['position']
 					)
 				);

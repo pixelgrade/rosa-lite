@@ -402,9 +402,12 @@ if ( ! function_exists('rosa_comments') ) {
 			<?php endif; ?>
 			<div class="media__body">
 				<header class="comment__meta comment-author">
-					<?php printf( '<span class="comment__author-name">%s</span>', get_comment_author_link() ) ?>
+					<?php /* translators: %s: comment author link */
+                    printf( '<span class="comment__author-name">%s</span>', get_comment_author_link() ) ?>
 					<time class="comment__time" datetime="<?php comment_time( 'c' ); ?>">
-						<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>" class="comment__timestamp"><?php printf( esc_html__( 'on %s at %s', 'rosa-lite' ), get_comment_date(), get_comment_time() ); ?> </a>
+						<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>" class="comment__timestamp"><?php printf(
+							/* translators: 1: comment date, 2: comment time */
+							esc_html__( 'on %1$s at %2$s', 'rosa-lite' ), get_comment_date(), get_comment_time() ); ?> </a>
 					</time>
 					<div class="comment__links">
 						<?php

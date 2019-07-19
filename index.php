@@ -30,7 +30,9 @@ get_header(); ?>
                                 <?php foreach ( $categories as $category ) : ?>
 
                                     <li>
-                                        <a href="<?php echo get_category_link( $category->term_id ); ?>" title="<?php echo esc_attr( sprintf( __( "View all posts in %s", 'rosa-lite' ), $category->name ) ) ?>">
+                                        <a href="<?php echo get_category_link( $category->term_id ); ?>" title="<?php
+                                        /* translators: %s: category name */
+                                        echo esc_attr( sprintf( __( "View all posts in %s", 'rosa-lite' ), $category->name ) ) ?>">
                                             <?php echo $category->cat_name; ?>
                                         </a>
                                     </li>

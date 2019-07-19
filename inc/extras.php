@@ -87,7 +87,7 @@ function rosa_get_current_canonical_url() {
 		$link = user_trailingslashit( $link, 'paged' );
 	}
 
-	return $link;
+	return esc_url( $link );
 }
 
 /**
@@ -256,54 +256,6 @@ if ( ! function_exists( 'rosa_add_title_caption_to_attachment' ) ) {
 
 	add_filter( 'wp_get_attachment_link', 'rosa_add_title_caption_to_attachment', 10, 5 );
 }
-
-if ( ! function_exists( 'rosa_callback_addthis' ) ) {
-
-	function rosa_callback_addthis() {
-		//lets determine if we need the addthis script at all
-		if ( is_single() && pixelgrade_option( 'blog_single_show_share_links' ) ) {
-			wp_enqueue_script( 'addthis-api' );
-
-			//here we will configure the AddThis sharing globally
-			global $post;
-			if ( empty( $post ) ) {
-				return;
-			}
-
-			$addthis_config = array(
-				'ui_click'              => false,
-				'ui_delay'              => 100,
-				'ui_offset_top'         => 10,
-				'ui_use_css'            => true,
-				'data_track_addressbar' => false,
-				'data_track_clickback'  => false,
-			);
-
-			if ( pixelgrade_option( 'share_buttons_enable_tracking' ) && pixelgrade_option( 'share_buttons_enable_addthis_tracking' ) ) {
-				$addthis_config['username'] = pixelgrade_option( 'share_buttons_addthis_username' );
-			}
-
-			if ( pixelgrade_option( 'share_buttons_enable_tracking' ) && pixelgrade_option( 'share_buttons_enable_ga_tracking' ) ) {
-				$addthis_config['data_ga_property'] = pixelgrade_option( 'share_buttons_ga_id' );
-				if ( pixelgrade_option( 'share_buttons_enable_ga_social_tracking' ) ) {
-					$addthis_config['data_ga_social'] = true;
-				}
-			}
-
-			$addthis_share = array(
-				'url'         => rosa_get_current_canonical_url(),
-				'title'       => wp_title( '|', false, 'right' ),
-				'description' => trim( strip_tags( get_the_excerpt() ) ),
-			);
-
-			$js = "addthis_config = " . wp_json_encode( $addthis_config, JSON_FORCE_OBJECT ) . ";" . PHP_EOL .
-			      "addthis_share = " . wp_json_encode( $addthis_share, JSON_FORCE_OBJECT ) . ";" . PHP_EOL;
-
-			wp_add_inline_script( 'addthis-api', $js );
-		}
-	}
-}
-add_action( 'wp_enqueue_scripts', 'rosa_callback_addthis', 20 );
 
 //use different image sizes depending on the number of columns
 function rosa_overwrite_gallery_atts( $out, $pairs, $atts ) {
@@ -959,6 +911,7 @@ function rosa_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary.
 	if ( $paged >= 2 || $page >= 2 ) {
+		/* translators: %s: Page number */
 		$title = "$title $sep " . sprintf( esc_html__( 'Page %s', 'rosa-lite' ), max( $paged, $page ) );
 	}
 
@@ -974,6 +927,7 @@ function rosa_fix_yoast_page_number( $title ) {
 	if ( is_home() || is_front_page() ) {
 		// Add a page number if necessary.
 		if ( $paged >= 2 || $page >= 2 ) {
+			/* translators: %s: Page number */
 			$title = "$title $sep " . sprintf( esc_html__( 'Page %s', 'rosa-lite' ), max( $paged, $page ) );
 		}
 	}
@@ -1105,6 +1059,7 @@ function rosa_subpages_admin_bar_edit_links_frontend( $wp_admin_bar ) {
 				$wp_admin_bar->add_node( array(
 					'parent' => 'edit',
 					'id'     => 'edit_' . $top_level_page->post_name,
+					/* translators: %s: Page parent name */
 					'title'  => sprintf( esc_html__( 'Parent: %s', 'rosa-lite' ), trim( strip_tags( $top_level_page->post_title ) ) ),
 					'href'   => get_edit_post_link( $top_level_page->ID ),
 					'meta'   => array( 'class' => 'edit_parent_link' )
@@ -1114,6 +1069,7 @@ function rosa_subpages_admin_bar_edit_links_frontend( $wp_admin_bar ) {
 					$kid_args = array(
 						'parent' => 'edit',
 						'id'     => 'edit_child_' . $kid->post_name,
+						/* translators: %s: Page child name */
 						'title'  => sprintf( esc_html__( 'Child: %s', 'rosa-lite' ), trim( strip_tags( $kid->post_title ) ) ),
 						'href'   => get_edit_post_link( $kid->ID ),
 						'meta'   => array( 'class' => 'edit_child_link' )
@@ -1169,7 +1125,10 @@ function rosa_the_author_posts_link() {
 	if ( ! is_object( $authordata ) ) {
 		return false;
 	}
-	$link = sprintf( '<a href="%1$s" title="%2$s">%3$s</a>', esc_url( get_author_posts_url( $authordata->ID, $authordata->user_nicename ) ), sprintf( esc_attr__( 'Posts by %s', 'rosa-lite' ), get_the_author() ), get_the_author() );
+	/* translators: 1: link to author, 2:author name, 3: author name */
+	$link = sprintf( '<a href="%1$s" title="%2$s">%3$s</a>', esc_url( get_author_posts_url( $authordata->ID, $authordata->user_nicename ) ),
+		/* translators: %s: author name */
+		sprintf( esc_attr__( 'Posts by %s', 'rosa-lite' ), get_the_author() ), get_the_author() );
 
 	/**
 	 * Filter the link to the author page of the author of the current post.
@@ -1718,8 +1677,8 @@ if ( ! function_exists( 'rosa_lite_google_fonts_url' ) ) {
 
 		if ( $fonts ) {
 			$fonts_url = add_query_arg( array(
-				'family' => urlencode( implode( '|', $fonts ) ),
-				'subset' => urlencode( $subsets ),
+				'family' => rawurlencode( implode( '|', $fonts ) ),
+				'subset' => rawurlencode( $subsets ),
 			), '//fonts.googleapis.com/css' );
 		}
 
