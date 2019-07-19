@@ -276,30 +276,8 @@ gulp.task( 'build', 'Remove unneeded files and folders from the build folder', [
  * Create the theme installer archive and delete the build folder
  */
 gulp.task( 'zip', 'Create the theme installer archive and delete the build folder', ['build'], function() {
-
-	var versionString = '';
-	// get theme version from styles.css
-	var contents = fs.readFileSync( "./style.css", "utf8" );
-
-	// split it by lines
-	var lines = contents.split( /[\r\n]/ );
-
-	function checkIfVersionLine( value, index, ar ) {
-		var myRegEx = /^[Vv]ersion:/;
-		if ( myRegEx.test( value ) ) {
-			return true;
-		}
-		return false;
-	}
-
-	// apply the filter
-	var versionLine = lines.filter( checkIfVersionLine );
-
-	versionString = versionLine[0].replace( /^[Vv]ersion:/, '' ).trim();
-	versionString = '-' + versionString.replace( /\./g, '-' );
-
 	return gulp.src( './' )
-	           .pipe( exec( 'cd ./../; rm -rf ' + theme[0].toUpperCase() + theme.slice( 1 ) + '*.zip; cd ./build/; zip -r -X ./../' + theme[0].toUpperCase() + theme.slice( 1 ) + '-Installer' + versionString + '.zip ./; cd ./../; rm -rf ./build' ) );
+	           .pipe( exec( 'cd ./../; rm -rf ' + theme[0].toUpperCase() + theme.slice( 1 ) + '*.zip; cd ./build/; zip -r -X ./../' + theme[0].toUpperCase() + theme.slice( 1 ) + '.zip ./; cd ./../; rm -rf ./build' ) );
 } );
 
 gulp.task( 'server', 'Compile scripts and styles for production purposes', ['styles', 'scripts'], function() {
