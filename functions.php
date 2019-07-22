@@ -111,14 +111,7 @@ add_action( 'after_setup_theme', 'rosa_content_width', 0 );
 /// load assets
 if ( ! function_exists( 'rosa_load_assets' ) ) {
 	function rosa_load_assets(){
-		$theme = wp_get_theme();
-		$google_maps_key = pixelgrade_option( 'google_maps_api_key' );
-
-		if ( ! empty( $google_maps_key ) ) {
-			$google_maps_key = '&key=' . $google_maps_key;
-		} else {
-			$google_maps_key = '';
-		}
+		$theme = wp_get_theme( get_template() );
 
 		// Styles
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -129,34 +122,29 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 			wp_enqueue_style( 'rosa-404-style', get_template_directory_uri() . '/404.css', array(), time(), 'all' );
 		}
 
-		if ( ! is_rtl() ) {
-			wp_enqueue_style( 'rosa-main-style', get_stylesheet_uri(), array(), $theme->get( 'Version' ) );
-		}
+		wp_enqueue_style( 'rosa-main-style', get_template_directory_uri() . '/style.css', array(), $theme->get( 'Version' ) );
+		wp_style_add_data( 'rosa-main-style', 'rtl', 'replace' );
 
 		wp_enqueue_style( 'rosa-lite-google-fonts', rosa_lite_google_fonts_url() );
 
 		// Scripts
-		wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr.min.js', array( 'jquery' ), '3.3.1' );
-		wp_enqueue_script( 'webfont-script', get_theme_file_uri( '/assets/js/webfont.js' ), array( 'jquery' ), '1.6.16' );
+		$script_dependencies = array( 'jquery', );
+
+		wp_register_script( 'modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr.min.js', array( 'jquery' ), '3.6.0' );
+		$script_dependencies[] = 'modernizr';
+		wp_register_script( 'webfont-script', get_theme_file_uri( '/assets/js/webfont.js' ), array( 'jquery' ), '1.6.16' );
+		$script_dependencies[] = 'webfont-script';
 		wp_register_script( 'tween-max', get_theme_file_uri( '/assets/js/TweenMax.min.js' ), array( 'jquery'), '1.19.1' );
-		wp_enqueue_script( 'ease-pack', get_theme_file_uri( '/assets/js/EasePack.min.js' ), array( 'jquery' ), '1.15.5' );
-		wp_enqueue_script( 'scroll-to-plugin', get_theme_file_uri( '/assets/js/ScrollToPlugin.min.js' ), array( 'jquery' ), '1.8.1' );
-		wp_enqueue_script( 'rosa-rs', get_theme_file_uri( '/assets/js/index.js' ), array( 'jquery' ), '9.5.7' );
-
-		$script_dependencies = array( 'jquery', 'modernizr', 'rosa-rs', 'scroll-to-plugin', 'tween-max', 'ease-pack' );
-
-		if ( rosa_page_has_contact_descendants() ) {
-			wp_enqueue_script( 'google-maps', '//maps.google.com/maps/api/js?language=en' . $google_maps_key, array( 'jquery' ), null, true );
-			wp_enqueue_script( 'gmap3', get_template_directory_uri() . '/assets/js/vendor/gmap3.jquery.js', array( 'jquery', 'google-maps' ), null, true );
-			$script_dependencies[] = 'gmap3';
-		}
+		$script_dependencies[] = 'tween-max';
+		wp_register_script( 'ease-pack', get_theme_file_uri( '/assets/js/EasePack.min.js' ), array( 'jquery' ), '1.15.5' );
+		$script_dependencies[] = 'ease-pack';
+		wp_register_script( 'scroll-to-plugin', get_theme_file_uri( '/assets/js/ScrollToPlugin.min.js' ), array( 'jquery' ), '1.8.1' );
+		$script_dependencies[] = 'scroll-to-plugin';
+		wp_register_script( 'rosa-rs', get_theme_file_uri( '/assets/js/index.js' ), array( 'jquery' ), '9.5.7' );
+		$script_dependencies[] = 'rosa-rs';
 
 		wp_enqueue_script( 'rosa-plugins-scripts', get_template_directory_uri() . '/assets/js/plugins.js', $script_dependencies, $theme->get( 'Version' ), true );
 		wp_enqueue_script( 'rosa-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'rosa-plugins-scripts' ), $theme->get( 'Version' ), true );
-
-		if ( is_single() ) {
-			wp_register_script( 'addthis-api', '//s7.addthis.com/js/300/addthis_widget.js#async=1', array( 'jquery' ), null, true );
-		}
 
 		$localization_array = array(
 			'ajaxurl'      => admin_url( 'admin-ajax.php' ),
@@ -176,7 +164,8 @@ add_action( 'wp_enqueue_scripts', 'rosa_load_assets' );
 if ( ! function_exists( 'rosa_load_admin_assets' ) ) {
 
 	function rosa_load_admin_assets() {
-		$theme = wp_get_theme();
+		$theme = wp_get_theme( get_template() );
+
 		wp_enqueue_script( 'rosa_admin_general_script', get_template_directory_uri() . '/assets/js/admin/admin-general.js', array('jquery'), $theme->get( 'Version' ) );
 
 		$translation_array = array
