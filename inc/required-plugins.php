@@ -26,6 +26,11 @@ function rosa_register_required_plugins() {
 			'slug' => 'pixcodes',
 			'required' => false,
 		),
+		array(
+			'name' => 'Customify',
+			'slug' => 'customify',
+			'required' => false,
+		),
 	);
 
 	$config = array(

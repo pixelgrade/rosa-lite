@@ -1139,20 +1139,6 @@ function rosa_the_author_posts_link() {
 	echo apply_filters( 'the_author_posts_link', $link );
 }
 
-function rosa_page_has_children() {
-	global $post;
-
-	$pages = get_pages( 'child_of=' . $post->ID );
-
-	return count( $pages );
-}
-if ( ! function_exists( 'rosa_option') ) {
-	function rosa_option( $option, $default = null ) {
-		_deprecated_function( 'rosa_option', '2.2.5', 'pixelgrade_option' );
-		return pixelgrade_option( $option, $default );
-	}
-}
-
 // This function should come from Customify, but we need to do our best to make things happen
 if ( ! function_exists( 'pixelgrade_option') ) {
 	/**
@@ -1684,4 +1670,28 @@ if ( ! function_exists( 'rosa_lite_google_fonts_url' ) ) {
 
 		return $fonts_url;
 	} #function
+}
+
+function rosa_lite_remove_customify_controls( $data ) {
+
+	$data['remove_panels'] = array( 'theme_options_panel', );
+//	$data['remove_settings'] = array();
+
+//	$allowed_controls = array(
+//		'sm_current_color_palette',
+//		'sm_palettes_description',
+//		'sm_color_palette'
+//	);
+//
+//	foreach ( $data['panels']['style_manager_panel']['sections']['sm_color_palettes_section']['options'] as $control_key => $control ) {
+//		if ( ! in_array( $control_key, $allowed_controls ) ) {
+//			array_push( $data['remove_settings'], $control_key );
+//		}
+//	}
+
+	return $data;
+}
+
+if ( class_exists( 'PixCustomifyPlugin' ) ) {
+	add_filter( 'customify_final_config', 'rosa_lite_remove_customify_controls' );
 }
