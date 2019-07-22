@@ -69,7 +69,7 @@ add_action( 'customize_register', 'rosa_customize_register' );
  * Generate a link to the Timber Lite info page.
  */
 function rosa_lite_get_pro_link() {
-	return 'https://pixelgrade.com/themes/portfolio/timber-pro?utm_source=timber-lite-clients&utm_medium=customizer&utm_campaign=timber-lite';
+	return 'https://pixelgrade.com/themes/portfolio/rosa-pro/?utm_source=rosa-lite-clients&utm_medium=customizer&utm_campaign=rosa-lite';
 }
 
 /**

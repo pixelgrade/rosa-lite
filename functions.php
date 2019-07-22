@@ -1,19 +1,22 @@
 <?php
-
-// ensure REQUEST_PROTOCOL is defined
-if ( ! defined('REQUEST_PROTOCOL')) {
-	if (is_ssl()) {
-		define( 'REQUEST_PROTOCOL', 'https:' );
-	} else {
-		define( 'REQUEST_PROTOCOL', 'http:' );
-	}
-}
-
-// Loads the theme's translated strings
-load_theme_textdomain( 'rosa-lite', get_template_directory() . '/languages' );
+/**
+ * Rosa Lite functions and definitions
+ *
+ * @package Patch Lite
+ * @since Patch Lite 1.0
+ */
 
 if ( ! function_exists(' rosa_theme_setup' ) ) {
 	function rosa_theme_setup () {
+
+		/*
+		 * Make theme available for translation.
+		 * Translations can be filed in the /languages/ directory.
+		 * If you're building a theme based on Patch, use a find and replace
+		 * to change 'patch' to the name of your theme in all the template files
+		 */
+		load_theme_textdomain( 'rosa-lite', get_template_directory() . '/languages' );
+
 		//add theme support for RSS feed links automatically generated in the head section
 		add_theme_support( 'automatic-feed-links' );
 
@@ -88,9 +91,12 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 
 		add_theme_support( 'title-tag' );
 
-		add_editor_style( 'editor-style.css' );
+		/**
+		 * Enable support for the Style Manager Customizer section (via Customify).
+		 */
+		add_theme_support( 'customizer_style_manager' );
 
-		add_filter( 'upload_mimes', 'rosa_callback_custom_upload_mimes' );
+		add_editor_style( array( 'editor-style.css', rosa_lite_google_fonts_url() ) );
 	}
 }
 add_action( 'after_setup_theme', 'rosa_theme_setup' );
@@ -122,10 +128,11 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 			wp_enqueue_style( 'rosa-404-style', get_template_directory_uri() . '/404.css', array(), time(), 'all' );
 		}
 
+
 		wp_enqueue_style( 'rosa-main-style', get_template_directory_uri() . '/style.css', array(), $theme->get( 'Version' ) );
 		wp_style_add_data( 'rosa-main-style', 'rtl', 'replace' );
 
-		wp_enqueue_style( 'rosa-lite-google-fonts', rosa_lite_google_fonts_url() );
+		wp_enqueue_style( 'rosa-google-fonts', rosa_lite_google_fonts_url() );
 
 		// Scripts
 		$script_dependencies = array( 'jquery', );
@@ -167,59 +174,9 @@ if ( ! function_exists( 'rosa_load_admin_assets' ) ) {
 		$theme = wp_get_theme( get_template() );
 
 		wp_enqueue_script( 'rosa_admin_general_script', get_template_directory_uri() . '/assets/js/admin/admin-general.js', array('jquery'), $theme->get( 'Version' ) );
-
-		$translation_array = array
-		(
-			'import_failed' => esc_html__( 'The import didn\'t work completely!', 'rosa-lite' ) . '<br/><a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( 'Check out what could be wrong here.', 'rosa-lite') . '</a>',
-			'import_confirm' => esc_html__( 'Importing the demo data will overwrite your current Theme Options settings. Proceed anyway?', 'rosa-lite'),
-			'import_phew' => esc_html__( 'Phew...that was a hard one!', 'rosa-lite'),
-			'import_success_note' => '<strong>' . esc_html__( 'The demo data was imported without a glitch! Awesome!', 'rosa-lite') . '</strong><br/><br/>',
-			'import_all_done' => esc_html__( "All done!", 'rosa-lite'),
-			'import_working' => esc_html__( "Working...", 'rosa-lite'),
-			'import_widgets_failed' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "The setting up of the demo widgets failed...", 'rosa-lite' ) . '</a>',
-			'import_widgets_error' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . wp_kses_post( __( 'The setting up of the demo widgets failed</i><br />(The script returned the following message', 'rosa-lite' ) ) . '</a>',
-			'import_widgets_done' => esc_html__( 'Finished setting up the demo widgets...', 'rosa-lite'),
-			'import_theme_options_failed' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "The importing of the theme options has failed...", 'rosa-lite' ) . '</a>',
-			'import_theme_options_error' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . wp_kses_post( __( 'The importing of the theme options has failed</i><br />(The script returned the following message', 'rosa-lite' ) ) . '</a>',
-			'import_theme_options_done' => esc_html__( 'Finished importing the demo theme options...', 'rosa-lite'),
-			'import_posts_failed' => '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "The importing of the theme options has failed...", 'rosa-lite' ) . '</a>',
-			'import_posts_step' => esc_html__( 'Importing posts | Step', 'rosa-lite'),
-			'import_error' =>  '<a href="http://help.pixelgrade.com/solution/articles/4000074170-can-t-finish-demo-data-import">' . esc_html__( "Error:", 'rosa-lite') . '</a>',
-			'import_try_reload' =>  esc_html__( "You can reload the page and try again.", 'rosa-lite'),
-		);
-		wp_localize_script( 'rosa_admin_general_script', 'rosa_admin_js_texts', $translation_array );
 	}
 }
 add_action( 'admin_enqueue_scripts', 'rosa_load_admin_assets' );
-
-// Media Handlers
-// --------------
-
-/**
- * Make sure WordPress allows our mime types.
- * @return array
- */
-function rosa_callback_custom_upload_mimes( $existing_mimes = null ) {
-	if ( $existing_mimes === null ) {
-		$existing_mimes = array();
-	}
-
-	$existing_mimes['mp3']  = 'audio/mpeg3';
-	$existing_mimes['oga']  = 'audio/ogg';
-	$existing_mimes['ogv']  = 'video/ogg';
-	$existing_mimes['mp4a'] = 'audio/mp4';
-	$existing_mimes['mp4']  = 'video/mp4';
-	$existing_mimes['weba'] = 'audio/webm';
-	$existing_mimes['webm'] = 'video/webm';
-
-	// allow svg files only for admins
-	if ( is_admin() ) {
-		//and some more
-		$existing_mimes['svg'] = 'image/svg+xml';
-	}
-
-	return $existing_mimes;
-}
 
 require get_template_directory() . '/inc/classes/wpgrade.php';
 
@@ -233,6 +190,11 @@ require get_template_directory() . '/inc/widgets.php';
  * Custom functions that act independently of the theme templates.
  */
 require get_template_directory() . '/inc/extras.php';
+
+/**
+ * Load theme's configuration file (via Customify plugin)
+ */
+require get_template_directory() . '/inc/customify.php';
 
 /**
  * Customizer additions.

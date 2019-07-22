@@ -2,7 +2,7 @@
 /**
 * Require files that deal with various plugin integrations.
 *
-* @package Rosa
+* @package Rosa Lite
 */
 
 /**
