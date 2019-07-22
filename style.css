@@ -9884,6 +9884,10 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
           transform: rotate(0);
 }
 
+.sticky {
+  color: inherit;
+}
+
 .c-hero__map {
   width: 100% !important;
 }
@@ -15527,4 +15531,4 @@ html, body, body > .page {
   position: static;
 }
 
-
+/*# sourceMappingURL=style.css.map */
