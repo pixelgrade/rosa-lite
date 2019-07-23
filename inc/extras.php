@@ -619,39 +619,6 @@ function rosa_register_attachments_custom_fields() {
 add_action( 'init', 'rosa_register_attachments_custom_fields' );
 
 /**
- * Load custom javascript set by theme options
- */
-function rosa_callback_load_custom_js() {
-	$custom_js = pixelgrade_option( 'custom_js' );
-	if ( ! empty( $custom_js ) ) {
-		//first lets test is the js code is clean or has <script> tags and such
-		//if we have <script> tags than we will not enclose it in anything - raw output
-		if ( strpos( $custom_js, '</script>' ) !== false ) {
-			echo $custom_js . "\n";
-		} else {
-			echo "<script type=\"text/javascript\">\n;(function($){\n" . $custom_js . "\n})(jQuery);\n</script>\n";
-		}
-	}
-}
-
-add_action( 'wp_head', 'rosa_callback_load_custom_js', 999 );
-
-function rosa_callback_load_custom_js_footer() {
-	$custom_js = pixelgrade_option( 'custom_js_footer' );
-	if ( ! empty( $custom_js ) ) {
-		//first lets test is the js code is clean or has <script> tags and such
-		//if we have <script> tags than we will not enclose it in anything - raw output
-		if ( strpos( $custom_js, '</script>' ) !== false ) {
-			echo $custom_js . "\n";
-		} else {
-			echo "<script type=\"text/javascript\">\n;(function($){\n" . $custom_js . "\n})(jQuery);\n</script>\n";
-		}
-	}
-}
-
-add_action( 'wp_footer', 'rosa_callback_load_custom_js_footer', 999 );
-
-/**
  * Borrowed from CakePHP
  * Truncates text.
  * Cuts a string to the length of $length and replaces the last characters
