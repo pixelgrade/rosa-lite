@@ -19,7 +19,7 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 
 } else {
 	$has_sidebar = false;
-	if ( pixelgrade_option( 'blog_single_show_sidebar', true ) ) {
+	if ( pixelgrade_option( 'blog_single_show_sidebar', true ) && is_active_sidebar( 'sidebar-main' ) ) {
 		$has_sidebar = true;
 	}
 
