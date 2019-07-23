@@ -29,7 +29,7 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 
 		$classes = 'article--page  article--main';
 
-		$down_arrow_style = pixelgrade_option('down_arrow_style', 'transparent', true );
+		$down_arrow_style = pixelgrade_option('down_arrow_style', 'transparent' );
 		if ( $page_section_idx == 1 && 'full-height' === $header_height && 'bubble' === $down_arrow_style ) {
 			$classes .= ' article--arrow';
 		}

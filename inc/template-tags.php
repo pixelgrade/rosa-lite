@@ -89,7 +89,7 @@ if ( ! function_exists( 'rosa_display_header_down_arrow' ) ) {
 			return;
 		}
 
-		$down_arrow_style = pixelgrade_option('down_arrow_style', 'transparent', true );
+		$down_arrow_style = pixelgrade_option('down_arrow_style', 'transparent' );
 
 		echo '<div class="down-arrow down-arrow--' . $down_arrow_style . '"><div class="arrow"></div></div>' . "\n";
 	}
@@ -353,16 +353,16 @@ if ( ! function_exists( 'rosa_lite_comments' ) ) {
 		?>
 	<li <?php comment_class(); ?>>
 		<article id="comment-<?php echo esc_attr( $comment->comment_ID ); ?>" class="comment-article  media">
-			<?php if ( pixelgrade_option( 'comments_show_numbering' ) ): ?>
+			<?php if ( pixelgrade_option( 'comments_show_numbering', 1 ) ): ?>
 				<span class="comment-number"><?php echo $comment_number ?></span>
 			<?php endif; ?>
-			<?php if ( pixelgrade_option( 'comments_show_avatar' ) && get_comment_type( $comment->comment_ID ) == 'comment' ): ?>
+			<?php if ( pixelgrade_option( 'comments_show_avatar', 0 ) && get_comment_type( $comment->comment_ID ) == 'comment' ) { ?>
 				<aside class="comment__avatar  media__img">
 					<!-- custom gravatar call -->
 					<?php $bgauthemail = get_comment_author_email(); ?>
 					<img src="http://www.gravatar.com/avatar/<?php echo esc_attr( md5( $bgauthemail ) ); ?>?s=60" class="comment__avatar-image" height="60" width="60" style="background-image: <?php echo esc_url( get_template_directory_uri() . '/library/images/nothing.gif' ); ?>; background-size: 100% 100%"/>
 				</aside>
-			<?php endif; ?>
+			<?php } ?>
 			<div class="media__body">
 				<header class="comment__meta comment-author">
 					<?php

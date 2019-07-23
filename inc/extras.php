@@ -714,8 +714,8 @@ function rosa_lite_better_excerpt( $text = '' ) {
 		$text         = strip_tags( $text, $allowed_tags );
 
 		// Set custom excerpt length - number of characters to be shown in excerpts
-		if ( pixelgrade_option( 'blog_excerpt_length' ) ) {
-			$excerpt_length = absint( pixelgrade_option( 'blog_excerpt_length' ) );
+		if ( pixelgrade_option( 'blog_excerpt_length', 140 ) ) {
+			$excerpt_length = absint( pixelgrade_option( 'blog_excerpt_length', 140 ) );
 		} else {
 			$excerpt_length = 180;
 		}
@@ -891,24 +891,6 @@ if ( ! function_exists( 'pixelgrade_get_option_customizer_config') ) {
 
 		return false;
 	}
-}
-
-/**
- * Get the image src attribute.
- * Target should be a valid option accessible via WPGradeOptions interface.
- * @return string|false
- */
-function rosa_lite_image_src( $target, $size = null ) {
-	if ( isset( $_GET[ $target ] ) && ! empty( $target ) ) {
-		return rosa_lite_get_attachment_image( $_GET[ $target ], $size );
-	} else { // empty target, or no query
-		$image = pixelgrade_option( $target );
-		if ( is_numeric( $image ) ) {
-			return rosa_lite_get_attachment_image( $image, $size );
-		}
-	}
-
-	return false;
 }
 
 /**

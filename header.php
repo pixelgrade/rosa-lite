@@ -60,8 +60,8 @@ $class_name = 'header--sticky';
 $class_name .= '  nav-scroll-hide';
 
 
-$data_smoothscrolling = ( pixelgrade_option( 'use_smooth_scroll' ) == 1 ) ? 'data-smoothscrolling' : '';
-$data_main_color      = ( pixelgrade_option( 'main_color' ) ) ? 'data-color="' . esc_attr( pixelgrade_option( 'main_color' ) ) . '"' : '';
+$data_smoothscrolling = ( 1 == pixelgrade_option( 'use_smooth_scroll', 1 ) ) ? 'data-smoothscrolling' : '';
+$data_main_color      = ( pixelgrade_option( 'main_color', '#C59D5F' ) ) ? 'data-color="' . esc_attr( pixelgrade_option( 'main_color', '#C59D5F' ) ) . '"' : '';
 
 //make the header menu bar transparent
 //only for static pages
