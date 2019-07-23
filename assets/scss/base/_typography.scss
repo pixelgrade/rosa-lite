@@ -13,6 +13,8 @@ body {
 	line-height: 1.625;
 	color: $gray;
 
+	background-color: #FFFFFF;
+
 	@include media-query(lap-and-up) {
 		// font-weight: 300;
 	}
