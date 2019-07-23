@@ -7117,6 +7117,7 @@ img[height] {
   padding-bottom: 4rem !important; }
 
 .gallery {
+  clear: both;
   margin-left: -12px !important;
   margin-bottom: -12px !important; }
   .gallery .gallery-item {
