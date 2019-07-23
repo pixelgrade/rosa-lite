@@ -359,7 +359,6 @@ $( window ).load( function() {
 		ScrollToTop.initialize();
 	}, 60 );
 
-	royalSliderInit();
 	updateHeaderPadding();
 
 	loop();

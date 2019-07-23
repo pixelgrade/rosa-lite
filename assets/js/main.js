@@ -1127,7 +1127,6 @@
             ScrollToTop.initialize();
         }, 60);
 
-        royalSliderInit();
         updateHeaderPadding();
 
         loop();

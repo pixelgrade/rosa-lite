@@ -823,7 +823,7 @@ textarea:focus {
  * and over in your markup.
  */
 .cf:after, .nav:after, .author__social-links:after, .commentlist:after, .social-links-list:after, .sub-menu:after, .tabs__nav:after,
-.woocommerce-MyAccount-navigation ul:after, .menu-list__items:after, .rsBullets:after, .media:after, .author:after, .latest-comments__list:after, .island:after,
+.woocommerce-MyAccount-navigation ul:after, .menu-list__items:after, .media:after, .author:after, .latest-comments__list:after, .island:after,
 .islet:after, .matrix:after, .multi-list:after, .widget_nav_menu ul:after, .widget_categories ul:after, .widget_meta ul:after, .stat-group:after, .wp-caption:after, .gallery:after, blockquote cite:after, blockquote .testimonial__author-name:after, .btn-list:after, .widget_tag_cloud .wp-tag-cloud:after, .comments-area-title:after, .comment-reply-title:after, .nav--main:after, .progressbar:after, .copyright-area:after, .footer-widget-area:after, .container:after, .pixcode--grid:after, .article--archive:after {
   content: "";
   display: table;
@@ -1817,10 +1817,10 @@ html.flexbox, html.site-title {
 	 *
 	 */
 .nav, .author__social-links, .commentlist, .social-links-list, .sub-menu, .tabs__nav,
-.woocommerce-MyAccount-navigation ul, .menu-list__items, .rsBullets {
+.woocommerce-MyAccount-navigation ul, .menu-list__items {
   list-style: none;
   margin-left: 0; }
-  .nav > li, .author__social-links > li, .commentlist > li, .social-links-list > li, .sub-menu > li, .tabs__nav > li, .woocommerce-MyAccount-navigation ul > li, .menu-list__items > li, .rsBullets > li,
+  .nav > li, .author__social-links > li, .commentlist > li, .social-links-list > li, .sub-menu > li, .tabs__nav > li, .woocommerce-MyAccount-navigation ul > li, .menu-list__items > li,
   .nav > li > a,
   .author__social-links > li > a,
   .commentlist > li > a,
@@ -1828,8 +1828,7 @@ html.flexbox, html.site-title {
   .sub-menu > li > a,
   .tabs__nav > li > a,
   .woocommerce-MyAccount-navigation ul > li > a,
-  .menu-list__items > li > a,
-  .rsBullets > li > a {
+  .menu-list__items > li > a {
     display: inline-block;
     *display: inline;
     zoom: 1; }
@@ -9344,7 +9343,7 @@ button.nav-trigger {
         flex-shrink: 1;
     text-align: center; }
   ul.nav.nav--items-social, ul.nav--items-social.author__social-links, ul.nav--items-social.commentlist, ul.nav--items-social.social-links-list, ul.nav--items-social.sub-menu, ul.nav--items-social.tabs__nav,
-  .woocommerce-MyAccount-navigation ul.nav--items-social, ul.nav--items-social.menu-list__items, ul.nav--items-social.rsBullets,
+  .woocommerce-MyAccount-navigation ul.nav--items-social, ul.nav--items-social.menu-list__items,
   .nav--woocommerce {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -10250,12 +10249,12 @@ small.muted {
   line-height: 1.85615; }
 
 .nav.nav--items-social, .nav--items-social.author__social-links, .nav--items-social.commentlist, .nav--items-social.social-links-list, .nav--items-social.sub-menu, .nav--items-social.tabs__nav,
-.woocommerce-MyAccount-navigation ul.nav--items-social, .nav--items-social.menu-list__items, .nav--items-social.rsBullets,
+.woocommerce-MyAccount-navigation ul.nav--items-social, .nav--items-social.menu-list__items,
 .widget [class*="social"] > ul {
   display: inline-block;
   margin-bottom: 0;
   line-height: 1; }
-  .nav.nav--items-social a, .nav--items-social.author__social-links a, .nav--items-social.commentlist a, .nav--items-social.social-links-list a, .nav--items-social.sub-menu a, .nav--items-social.tabs__nav a, .woocommerce-MyAccount-navigation ul.nav--items-social a, .nav--items-social.menu-list__items a, .nav--items-social.rsBullets a,
+  .nav.nav--items-social a, .nav--items-social.author__social-links a, .nav--items-social.commentlist a, .nav--items-social.social-links-list a, .nav--items-social.sub-menu a, .nav--items-social.tabs__nav a, .woocommerce-MyAccount-navigation ul.nav--items-social a, .nav--items-social.menu-list__items a,
   .widget [class*="social"] > ul a {
     position: relative;
     padding: 8px 24px;
@@ -10264,7 +10263,7 @@ small.muted {
     width: 2.25rem;
     font-size: 16px;
     text-decoration: none; }
-    .nav.nav--items-social a:before, .nav--items-social.author__social-links a:before, .nav--items-social.commentlist a:before, .nav--items-social.social-links-list a:before, .nav--items-social.sub-menu a:before, .nav--items-social.tabs__nav a:before, .woocommerce-MyAccount-navigation ul.nav--items-social a:before, .nav--items-social.menu-list__items a:before, .nav--items-social.rsBullets a:before,
+    .nav.nav--items-social a:before, .nav--items-social.author__social-links a:before, .nav--items-social.commentlist a:before, .nav--items-social.social-links-list a:before, .nav--items-social.sub-menu a:before, .nav--items-social.tabs__nav a:before, .woocommerce-MyAccount-navigation ul.nav--items-social a:before, .nav--items-social.menu-list__items a:before,
     .widget [class*="social"] > ul a:before {
       position: absolute;
       top: 50%;
@@ -10279,144 +10278,144 @@ small.muted {
       -webkit-transition: color .2s linear;
       transition: color .2s linear; }
       @media only screen and (max-width: 899px) {
-        .nav.nav--items-social a:before, .nav--items-social.author__social-links a:before, .nav--items-social.commentlist a:before, .nav--items-social.social-links-list a:before, .nav--items-social.sub-menu a:before, .nav--items-social.tabs__nav a:before, .woocommerce-MyAccount-navigation ul.nav--items-social a:before, .nav--items-social.menu-list__items a:before, .nav--items-social.rsBullets a:before,
+        .nav.nav--items-social a:before, .nav--items-social.author__social-links a:before, .nav--items-social.commentlist a:before, .nav--items-social.social-links-list a:before, .nav--items-social.sub-menu a:before, .nav--items-social.tabs__nav a:before, .woocommerce-MyAccount-navigation ul.nav--items-social a:before, .nav--items-social.menu-list__items a:before,
         .widget [class*="social"] > ul a:before {
           opacity: .5; } }
-    .nav.nav--items-social a[href*="mailto:"]:before, .nav--items-social.author__social-links a[href*="mailto:"]:before, .nav--items-social.commentlist a[href*="mailto:"]:before, .nav--items-social.social-links-list a[href*="mailto:"]:before, .nav--items-social.sub-menu a[href*="mailto:"]:before, .nav--items-social.tabs__nav a[href*="mailto:"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="mailto:"]:before, .nav--items-social.menu-list__items a[href*="mailto:"]:before, .nav--items-social.rsBullets a[href*="mailto:"]:before, .nav.nav--items-social a[href*="mail"]:before, .nav--items-social.author__social-links a[href*="mail"]:before, .nav--items-social.commentlist a[href*="mail"]:before, .nav--items-social.social-links-list a[href*="mail"]:before, .nav--items-social.sub-menu a[href*="mail"]:before, .nav--items-social.tabs__nav a[href*="mail"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="mail"]:before, .nav--items-social.menu-list__items a[href*="mail"]:before, .nav--items-social.rsBullets a[href*="mail"]:before,
+    .nav.nav--items-social a[href*="mailto:"]:before, .nav--items-social.author__social-links a[href*="mailto:"]:before, .nav--items-social.commentlist a[href*="mailto:"]:before, .nav--items-social.social-links-list a[href*="mailto:"]:before, .nav--items-social.sub-menu a[href*="mailto:"]:before, .nav--items-social.tabs__nav a[href*="mailto:"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="mailto:"]:before, .nav--items-social.menu-list__items a[href*="mailto:"]:before, .nav.nav--items-social a[href*="mail"]:before, .nav--items-social.author__social-links a[href*="mail"]:before, .nav--items-social.commentlist a[href*="mail"]:before, .nav--items-social.social-links-list a[href*="mail"]:before, .nav--items-social.sub-menu a[href*="mail"]:before, .nav--items-social.tabs__nav a[href*="mail"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="mail"]:before, .nav--items-social.menu-list__items a[href*="mail"]:before,
     .widget [class*="social"] > ul a[href*="mailto:"]:before,
     .widget [class*="social"] > ul a[href*="mail"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="feed"]:before, .nav--items-social.author__social-links a[href*="feed"]:before, .nav--items-social.commentlist a[href*="feed"]:before, .nav--items-social.social-links-list a[href*="feed"]:before, .nav--items-social.sub-menu a[href*="feed"]:before, .nav--items-social.tabs__nav a[href*="feed"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="feed"]:before, .nav--items-social.menu-list__items a[href*="feed"]:before, .nav--items-social.rsBullets a[href*="feed"]:before, .nav.nav--items-social a[href*="rss"]:before, .nav--items-social.author__social-links a[href*="rss"]:before, .nav--items-social.commentlist a[href*="rss"]:before, .nav--items-social.social-links-list a[href*="rss"]:before, .nav--items-social.sub-menu a[href*="rss"]:before, .nav--items-social.tabs__nav a[href*="rss"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="rss"]:before, .nav--items-social.menu-list__items a[href*="rss"]:before, .nav--items-social.rsBullets a[href*="rss"]:before,
+    .nav.nav--items-social a[href*="feed"]:before, .nav--items-social.author__social-links a[href*="feed"]:before, .nav--items-social.commentlist a[href*="feed"]:before, .nav--items-social.social-links-list a[href*="feed"]:before, .nav--items-social.sub-menu a[href*="feed"]:before, .nav--items-social.tabs__nav a[href*="feed"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="feed"]:before, .nav--items-social.menu-list__items a[href*="feed"]:before, .nav.nav--items-social a[href*="rss"]:before, .nav--items-social.author__social-links a[href*="rss"]:before, .nav--items-social.commentlist a[href*="rss"]:before, .nav--items-social.social-links-list a[href*="rss"]:before, .nav--items-social.sub-menu a[href*="rss"]:before, .nav--items-social.tabs__nav a[href*="rss"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="rss"]:before, .nav--items-social.menu-list__items a[href*="rss"]:before,
     .widget [class*="social"] > ul a[href*="feed"]:before,
     .widget [class*="social"] > ul a[href*="rss"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="behance"]:before, .nav--items-social.author__social-links a[href*="behance"]:before, .nav--items-social.commentlist a[href*="behance"]:before, .nav--items-social.social-links-list a[href*="behance"]:before, .nav--items-social.sub-menu a[href*="behance"]:before, .nav--items-social.tabs__nav a[href*="behance"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="behance"]:before, .nav--items-social.menu-list__items a[href*="behance"]:before, .nav--items-social.rsBullets a[href*="behance"]:before,
+    .nav.nav--items-social a[href*="behance"]:before, .nav--items-social.author__social-links a[href*="behance"]:before, .nav--items-social.commentlist a[href*="behance"]:before, .nav--items-social.social-links-list a[href*="behance"]:before, .nav--items-social.sub-menu a[href*="behance"]:before, .nav--items-social.tabs__nav a[href*="behance"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="behance"]:before, .nav--items-social.menu-list__items a[href*="behance"]:before,
     .widget [class*="social"] > ul a[href*="behance"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="delicious"]:before, .nav--items-social.author__social-links a[href*="delicious"]:before, .nav--items-social.commentlist a[href*="delicious"]:before, .nav--items-social.social-links-list a[href*="delicious"]:before, .nav--items-social.sub-menu a[href*="delicious"]:before, .nav--items-social.tabs__nav a[href*="delicious"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="delicious"]:before, .nav--items-social.menu-list__items a[href*="delicious"]:before, .nav--items-social.rsBullets a[href*="delicious"]:before,
+    .nav.nav--items-social a[href*="delicious"]:before, .nav--items-social.author__social-links a[href*="delicious"]:before, .nav--items-social.commentlist a[href*="delicious"]:before, .nav--items-social.social-links-list a[href*="delicious"]:before, .nav--items-social.sub-menu a[href*="delicious"]:before, .nav--items-social.tabs__nav a[href*="delicious"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="delicious"]:before, .nav--items-social.menu-list__items a[href*="delicious"]:before,
     .widget [class*="social"] > ul a[href*="delicious"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="deviantart"]:before, .nav--items-social.author__social-links a[href*="deviantart"]:before, .nav--items-social.commentlist a[href*="deviantart"]:before, .nav--items-social.social-links-list a[href*="deviantart"]:before, .nav--items-social.sub-menu a[href*="deviantart"]:before, .nav--items-social.tabs__nav a[href*="deviantart"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="deviantart"]:before, .nav--items-social.menu-list__items a[href*="deviantart"]:before, .nav--items-social.rsBullets a[href*="deviantart"]:before,
+    .nav.nav--items-social a[href*="deviantart"]:before, .nav--items-social.author__social-links a[href*="deviantart"]:before, .nav--items-social.commentlist a[href*="deviantart"]:before, .nav--items-social.social-links-list a[href*="deviantart"]:before, .nav--items-social.sub-menu a[href*="deviantart"]:before, .nav--items-social.tabs__nav a[href*="deviantart"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="deviantart"]:before, .nav--items-social.menu-list__items a[href*="deviantart"]:before,
     .widget [class*="social"] > ul a[href*="deviantart"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="digg"]:before, .nav--items-social.author__social-links a[href*="digg"]:before, .nav--items-social.commentlist a[href*="digg"]:before, .nav--items-social.social-links-list a[href*="digg"]:before, .nav--items-social.sub-menu a[href*="digg"]:before, .nav--items-social.tabs__nav a[href*="digg"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="digg"]:before, .nav--items-social.menu-list__items a[href*="digg"]:before, .nav--items-social.rsBullets a[href*="digg"]:before,
+    .nav.nav--items-social a[href*="digg"]:before, .nav--items-social.author__social-links a[href*="digg"]:before, .nav--items-social.commentlist a[href*="digg"]:before, .nav--items-social.social-links-list a[href*="digg"]:before, .nav--items-social.sub-menu a[href*="digg"]:before, .nav--items-social.tabs__nav a[href*="digg"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="digg"]:before, .nav--items-social.menu-list__items a[href*="digg"]:before,
     .widget [class*="social"] > ul a[href*="digg"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="etsy"]:before, .nav--items-social.author__social-links a[href*="etsy"]:before, .nav--items-social.commentlist a[href*="etsy"]:before, .nav--items-social.social-links-list a[href*="etsy"]:before, .nav--items-social.sub-menu a[href*="etsy"]:before, .nav--items-social.tabs__nav a[href*="etsy"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="etsy"]:before, .nav--items-social.menu-list__items a[href*="etsy"]:before, .nav--items-social.rsBullets a[href*="etsy"]:before,
+    .nav.nav--items-social a[href*="etsy"]:before, .nav--items-social.author__social-links a[href*="etsy"]:before, .nav--items-social.commentlist a[href*="etsy"]:before, .nav--items-social.social-links-list a[href*="etsy"]:before, .nav--items-social.sub-menu a[href*="etsy"]:before, .nav--items-social.tabs__nav a[href*="etsy"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="etsy"]:before, .nav--items-social.menu-list__items a[href*="etsy"]:before,
     .widget [class*="social"] > ul a[href*="etsy"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="dribbble"]:before, .nav--items-social.author__social-links a[href*="dribbble"]:before, .nav--items-social.commentlist a[href*="dribbble"]:before, .nav--items-social.social-links-list a[href*="dribbble"]:before, .nav--items-social.sub-menu a[href*="dribbble"]:before, .nav--items-social.tabs__nav a[href*="dribbble"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="dribbble"]:before, .nav--items-social.menu-list__items a[href*="dribbble"]:before, .nav--items-social.rsBullets a[href*="dribbble"]:before,
+    .nav.nav--items-social a[href*="dribbble"]:before, .nav--items-social.author__social-links a[href*="dribbble"]:before, .nav--items-social.commentlist a[href*="dribbble"]:before, .nav--items-social.social-links-list a[href*="dribbble"]:before, .nav--items-social.sub-menu a[href*="dribbble"]:before, .nav--items-social.tabs__nav a[href*="dribbble"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="dribbble"]:before, .nav--items-social.menu-list__items a[href*="dribbble"]:before,
     .widget [class*="social"] > ul a[href*="dribbble"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="facebook"]:before, .nav--items-social.author__social-links a[href*="facebook"]:before, .nav--items-social.commentlist a[href*="facebook"]:before, .nav--items-social.social-links-list a[href*="facebook"]:before, .nav--items-social.sub-menu a[href*="facebook"]:before, .nav--items-social.tabs__nav a[href*="facebook"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="facebook"]:before, .nav--items-social.menu-list__items a[href*="facebook"]:before, .nav--items-social.rsBullets a[href*="facebook"]:before,
+    .nav.nav--items-social a[href*="facebook"]:before, .nav--items-social.author__social-links a[href*="facebook"]:before, .nav--items-social.commentlist a[href*="facebook"]:before, .nav--items-social.social-links-list a[href*="facebook"]:before, .nav--items-social.sub-menu a[href*="facebook"]:before, .nav--items-social.tabs__nav a[href*="facebook"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="facebook"]:before, .nav--items-social.menu-list__items a[href*="facebook"]:before,
     .widget [class*="social"] > ul a[href*="facebook"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="flickr"]:before, .nav--items-social.author__social-links a[href*="flickr"]:before, .nav--items-social.commentlist a[href*="flickr"]:before, .nav--items-social.social-links-list a[href*="flickr"]:before, .nav--items-social.sub-menu a[href*="flickr"]:before, .nav--items-social.tabs__nav a[href*="flickr"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="flickr"]:before, .nav--items-social.menu-list__items a[href*="flickr"]:before, .nav--items-social.rsBullets a[href*="flickr"]:before,
+    .nav.nav--items-social a[href*="flickr"]:before, .nav--items-social.author__social-links a[href*="flickr"]:before, .nav--items-social.commentlist a[href*="flickr"]:before, .nav--items-social.social-links-list a[href*="flickr"]:before, .nav--items-social.sub-menu a[href*="flickr"]:before, .nav--items-social.tabs__nav a[href*="flickr"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="flickr"]:before, .nav--items-social.menu-list__items a[href*="flickr"]:before,
     .widget [class*="social"] > ul a[href*="flickr"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="foursquare"]:before, .nav--items-social.author__social-links a[href*="foursquare"]:before, .nav--items-social.commentlist a[href*="foursquare"]:before, .nav--items-social.social-links-list a[href*="foursquare"]:before, .nav--items-social.sub-menu a[href*="foursquare"]:before, .nav--items-social.tabs__nav a[href*="foursquare"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="foursquare"]:before, .nav--items-social.menu-list__items a[href*="foursquare"]:before, .nav--items-social.rsBullets a[href*="foursquare"]:before,
+    .nav.nav--items-social a[href*="foursquare"]:before, .nav--items-social.author__social-links a[href*="foursquare"]:before, .nav--items-social.commentlist a[href*="foursquare"]:before, .nav--items-social.social-links-list a[href*="foursquare"]:before, .nav--items-social.sub-menu a[href*="foursquare"]:before, .nav--items-social.tabs__nav a[href*="foursquare"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="foursquare"]:before, .nav--items-social.menu-list__items a[href*="foursquare"]:before,
     .widget [class*="social"] > ul a[href*="foursquare"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="github"]:before, .nav--items-social.author__social-links a[href*="github"]:before, .nav--items-social.commentlist a[href*="github"]:before, .nav--items-social.social-links-list a[href*="github"]:before, .nav--items-social.sub-menu a[href*="github"]:before, .nav--items-social.tabs__nav a[href*="github"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="github"]:before, .nav--items-social.menu-list__items a[href*="github"]:before, .nav--items-social.rsBullets a[href*="github"]:before,
+    .nav.nav--items-social a[href*="github"]:before, .nav--items-social.author__social-links a[href*="github"]:before, .nav--items-social.commentlist a[href*="github"]:before, .nav--items-social.social-links-list a[href*="github"]:before, .nav--items-social.sub-menu a[href*="github"]:before, .nav--items-social.tabs__nav a[href*="github"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="github"]:before, .nav--items-social.menu-list__items a[href*="github"]:before,
     .widget [class*="social"] > ul a[href*="github"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="plus.google"]:before, .nav--items-social.author__social-links a[href*="plus.google"]:before, .nav--items-social.commentlist a[href*="plus.google"]:before, .nav--items-social.social-links-list a[href*="plus.google"]:before, .nav--items-social.sub-menu a[href*="plus.google"]:before, .nav--items-social.tabs__nav a[href*="plus.google"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="plus.google"]:before, .nav--items-social.menu-list__items a[href*="plus.google"]:before, .nav--items-social.rsBullets a[href*="plus.google"]:before,
+    .nav.nav--items-social a[href*="plus.google"]:before, .nav--items-social.author__social-links a[href*="plus.google"]:before, .nav--items-social.commentlist a[href*="plus.google"]:before, .nav--items-social.social-links-list a[href*="plus.google"]:before, .nav--items-social.sub-menu a[href*="plus.google"]:before, .nav--items-social.tabs__nav a[href*="plus.google"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="plus.google"]:before, .nav--items-social.menu-list__items a[href*="plus.google"]:before,
     .widget [class*="social"] > ul a[href*="plus.google"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="instagram"]:before, .nav--items-social.author__social-links a[href*="instagram"]:before, .nav--items-social.commentlist a[href*="instagram"]:before, .nav--items-social.social-links-list a[href*="instagram"]:before, .nav--items-social.sub-menu a[href*="instagram"]:before, .nav--items-social.tabs__nav a[href*="instagram"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="instagram"]:before, .nav--items-social.menu-list__items a[href*="instagram"]:before, .nav--items-social.rsBullets a[href*="instagram"]:before,
+    .nav.nav--items-social a[href*="instagram"]:before, .nav--items-social.author__social-links a[href*="instagram"]:before, .nav--items-social.commentlist a[href*="instagram"]:before, .nav--items-social.social-links-list a[href*="instagram"]:before, .nav--items-social.sub-menu a[href*="instagram"]:before, .nav--items-social.tabs__nav a[href*="instagram"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="instagram"]:before, .nav--items-social.menu-list__items a[href*="instagram"]:before,
     .widget [class*="social"] > ul a[href*="instagram"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="linkedin"]:before, .nav--items-social.author__social-links a[href*="linkedin"]:before, .nav--items-social.commentlist a[href*="linkedin"]:before, .nav--items-social.social-links-list a[href*="linkedin"]:before, .nav--items-social.sub-menu a[href*="linkedin"]:before, .nav--items-social.tabs__nav a[href*="linkedin"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="linkedin"]:before, .nav--items-social.menu-list__items a[href*="linkedin"]:before, .nav--items-social.rsBullets a[href*="linkedin"]:before,
+    .nav.nav--items-social a[href*="linkedin"]:before, .nav--items-social.author__social-links a[href*="linkedin"]:before, .nav--items-social.commentlist a[href*="linkedin"]:before, .nav--items-social.social-links-list a[href*="linkedin"]:before, .nav--items-social.sub-menu a[href*="linkedin"]:before, .nav--items-social.tabs__nav a[href*="linkedin"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="linkedin"]:before, .nav--items-social.menu-list__items a[href*="linkedin"]:before,
     .widget [class*="social"] > ul a[href*="linkedin"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="pinterest"]:before, .nav--items-social.author__social-links a[href*="pinterest"]:before, .nav--items-social.commentlist a[href*="pinterest"]:before, .nav--items-social.social-links-list a[href*="pinterest"]:before, .nav--items-social.sub-menu a[href*="pinterest"]:before, .nav--items-social.tabs__nav a[href*="pinterest"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="pinterest"]:before, .nav--items-social.menu-list__items a[href*="pinterest"]:before, .nav--items-social.rsBullets a[href*="pinterest"]:before,
+    .nav.nav--items-social a[href*="pinterest"]:before, .nav--items-social.author__social-links a[href*="pinterest"]:before, .nav--items-social.commentlist a[href*="pinterest"]:before, .nav--items-social.social-links-list a[href*="pinterest"]:before, .nav--items-social.sub-menu a[href*="pinterest"]:before, .nav--items-social.tabs__nav a[href*="pinterest"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="pinterest"]:before, .nav--items-social.menu-list__items a[href*="pinterest"]:before,
     .widget [class*="social"] > ul a[href*="pinterest"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="reddit"]:before, .nav--items-social.author__social-links a[href*="reddit"]:before, .nav--items-social.commentlist a[href*="reddit"]:before, .nav--items-social.social-links-list a[href*="reddit"]:before, .nav--items-social.sub-menu a[href*="reddit"]:before, .nav--items-social.tabs__nav a[href*="reddit"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="reddit"]:before, .nav--items-social.menu-list__items a[href*="reddit"]:before, .nav--items-social.rsBullets a[href*="reddit"]:before,
+    .nav.nav--items-social a[href*="reddit"]:before, .nav--items-social.author__social-links a[href*="reddit"]:before, .nav--items-social.commentlist a[href*="reddit"]:before, .nav--items-social.social-links-list a[href*="reddit"]:before, .nav--items-social.sub-menu a[href*="reddit"]:before, .nav--items-social.tabs__nav a[href*="reddit"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="reddit"]:before, .nav--items-social.menu-list__items a[href*="reddit"]:before,
     .widget [class*="social"] > ul a[href*="reddit"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="skype"]:before, .nav--items-social.author__social-links a[href*="skype"]:before, .nav--items-social.commentlist a[href*="skype"]:before, .nav--items-social.social-links-list a[href*="skype"]:before, .nav--items-social.sub-menu a[href*="skype"]:before, .nav--items-social.tabs__nav a[href*="skype"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="skype"]:before, .nav--items-social.menu-list__items a[href*="skype"]:before, .nav--items-social.rsBullets a[href*="skype"]:before,
+    .nav.nav--items-social a[href*="skype"]:before, .nav--items-social.author__social-links a[href*="skype"]:before, .nav--items-social.commentlist a[href*="skype"]:before, .nav--items-social.social-links-list a[href*="skype"]:before, .nav--items-social.sub-menu a[href*="skype"]:before, .nav--items-social.tabs__nav a[href*="skype"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="skype"]:before, .nav--items-social.menu-list__items a[href*="skype"]:before,
     .widget [class*="social"] > ul a[href*="skype"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="soundcloud"]:before, .nav--items-social.author__social-links a[href*="soundcloud"]:before, .nav--items-social.commentlist a[href*="soundcloud"]:before, .nav--items-social.social-links-list a[href*="soundcloud"]:before, .nav--items-social.sub-menu a[href*="soundcloud"]:before, .nav--items-social.tabs__nav a[href*="soundcloud"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="soundcloud"]:before, .nav--items-social.menu-list__items a[href*="soundcloud"]:before, .nav--items-social.rsBullets a[href*="soundcloud"]:before,
+    .nav.nav--items-social a[href*="soundcloud"]:before, .nav--items-social.author__social-links a[href*="soundcloud"]:before, .nav--items-social.commentlist a[href*="soundcloud"]:before, .nav--items-social.social-links-list a[href*="soundcloud"]:before, .nav--items-social.sub-menu a[href*="soundcloud"]:before, .nav--items-social.tabs__nav a[href*="soundcloud"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="soundcloud"]:before, .nav--items-social.menu-list__items a[href*="soundcloud"]:before,
     .widget [class*="social"] > ul a[href*="soundcloud"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="spotify"]:before, .nav--items-social.author__social-links a[href*="spotify"]:before, .nav--items-social.commentlist a[href*="spotify"]:before, .nav--items-social.social-links-list a[href*="spotify"]:before, .nav--items-social.sub-menu a[href*="spotify"]:before, .nav--items-social.tabs__nav a[href*="spotify"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="spotify"]:before, .nav--items-social.menu-list__items a[href*="spotify"]:before, .nav--items-social.rsBullets a[href*="spotify"]:before,
+    .nav.nav--items-social a[href*="spotify"]:before, .nav--items-social.author__social-links a[href*="spotify"]:before, .nav--items-social.commentlist a[href*="spotify"]:before, .nav--items-social.social-links-list a[href*="spotify"]:before, .nav--items-social.sub-menu a[href*="spotify"]:before, .nav--items-social.tabs__nav a[href*="spotify"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="spotify"]:before, .nav--items-social.menu-list__items a[href*="spotify"]:before,
     .widget [class*="social"] > ul a[href*="spotify"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="stumbleupon"]:before, .nav--items-social.author__social-links a[href*="stumbleupon"]:before, .nav--items-social.commentlist a[href*="stumbleupon"]:before, .nav--items-social.social-links-list a[href*="stumbleupon"]:before, .nav--items-social.sub-menu a[href*="stumbleupon"]:before, .nav--items-social.tabs__nav a[href*="stumbleupon"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="stumbleupon"]:before, .nav--items-social.menu-list__items a[href*="stumbleupon"]:before, .nav--items-social.rsBullets a[href*="stumbleupon"]:before,
+    .nav.nav--items-social a[href*="stumbleupon"]:before, .nav--items-social.author__social-links a[href*="stumbleupon"]:before, .nav--items-social.commentlist a[href*="stumbleupon"]:before, .nav--items-social.social-links-list a[href*="stumbleupon"]:before, .nav--items-social.sub-menu a[href*="stumbleupon"]:before, .nav--items-social.tabs__nav a[href*="stumbleupon"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="stumbleupon"]:before, .nav--items-social.menu-list__items a[href*="stumbleupon"]:before,
     .widget [class*="social"] > ul a[href*="stumbleupon"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="tumblr"]:before, .nav--items-social.author__social-links a[href*="tumblr"]:before, .nav--items-social.commentlist a[href*="tumblr"]:before, .nav--items-social.social-links-list a[href*="tumblr"]:before, .nav--items-social.sub-menu a[href*="tumblr"]:before, .nav--items-social.tabs__nav a[href*="tumblr"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="tumblr"]:before, .nav--items-social.menu-list__items a[href*="tumblr"]:before, .nav--items-social.rsBullets a[href*="tumblr"]:before,
+    .nav.nav--items-social a[href*="tumblr"]:before, .nav--items-social.author__social-links a[href*="tumblr"]:before, .nav--items-social.commentlist a[href*="tumblr"]:before, .nav--items-social.social-links-list a[href*="tumblr"]:before, .nav--items-social.sub-menu a[href*="tumblr"]:before, .nav--items-social.tabs__nav a[href*="tumblr"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="tumblr"]:before, .nav--items-social.menu-list__items a[href*="tumblr"]:before,
     .widget [class*="social"] > ul a[href*="tumblr"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="twitter"]:before, .nav--items-social.author__social-links a[href*="twitter"]:before, .nav--items-social.commentlist a[href*="twitter"]:before, .nav--items-social.social-links-list a[href*="twitter"]:before, .nav--items-social.sub-menu a[href*="twitter"]:before, .nav--items-social.tabs__nav a[href*="twitter"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="twitter"]:before, .nav--items-social.menu-list__items a[href*="twitter"]:before, .nav--items-social.rsBullets a[href*="twitter"]:before,
+    .nav.nav--items-social a[href*="twitter"]:before, .nav--items-social.author__social-links a[href*="twitter"]:before, .nav--items-social.commentlist a[href*="twitter"]:before, .nav--items-social.social-links-list a[href*="twitter"]:before, .nav--items-social.sub-menu a[href*="twitter"]:before, .nav--items-social.tabs__nav a[href*="twitter"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="twitter"]:before, .nav--items-social.menu-list__items a[href*="twitter"]:before,
     .widget [class*="social"] > ul a[href*="twitter"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="vimeo"]:before, .nav--items-social.author__social-links a[href*="vimeo"]:before, .nav--items-social.commentlist a[href*="vimeo"]:before, .nav--items-social.social-links-list a[href*="vimeo"]:before, .nav--items-social.sub-menu a[href*="vimeo"]:before, .nav--items-social.tabs__nav a[href*="vimeo"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="vimeo"]:before, .nav--items-social.menu-list__items a[href*="vimeo"]:before, .nav--items-social.rsBullets a[href*="vimeo"]:before,
+    .nav.nav--items-social a[href*="vimeo"]:before, .nav--items-social.author__social-links a[href*="vimeo"]:before, .nav--items-social.commentlist a[href*="vimeo"]:before, .nav--items-social.social-links-list a[href*="vimeo"]:before, .nav--items-social.sub-menu a[href*="vimeo"]:before, .nav--items-social.tabs__nav a[href*="vimeo"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="vimeo"]:before, .nav--items-social.menu-list__items a[href*="vimeo"]:before,
     .widget [class*="social"] > ul a[href*="vimeo"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="vine"]:before, .nav--items-social.author__social-links a[href*="vine"]:before, .nav--items-social.commentlist a[href*="vine"]:before, .nav--items-social.social-links-list a[href*="vine"]:before, .nav--items-social.sub-menu a[href*="vine"]:before, .nav--items-social.tabs__nav a[href*="vine"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="vine"]:before, .nav--items-social.menu-list__items a[href*="vine"]:before, .nav--items-social.rsBullets a[href*="vine"]:before,
+    .nav.nav--items-social a[href*="vine"]:before, .nav--items-social.author__social-links a[href*="vine"]:before, .nav--items-social.commentlist a[href*="vine"]:before, .nav--items-social.social-links-list a[href*="vine"]:before, .nav--items-social.sub-menu a[href*="vine"]:before, .nav--items-social.tabs__nav a[href*="vine"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="vine"]:before, .nav--items-social.menu-list__items a[href*="vine"]:before,
     .widget [class*="social"] > ul a[href*="vine"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="vk"]:before, .nav--items-social.author__social-links a[href*="vk"]:before, .nav--items-social.commentlist a[href*="vk"]:before, .nav--items-social.social-links-list a[href*="vk"]:before, .nav--items-social.sub-menu a[href*="vk"]:before, .nav--items-social.tabs__nav a[href*="vk"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="vk"]:before, .nav--items-social.menu-list__items a[href*="vk"]:before, .nav--items-social.rsBullets a[href*="vk"]:before,
+    .nav.nav--items-social a[href*="vk"]:before, .nav--items-social.author__social-links a[href*="vk"]:before, .nav--items-social.commentlist a[href*="vk"]:before, .nav--items-social.social-links-list a[href*="vk"]:before, .nav--items-social.sub-menu a[href*="vk"]:before, .nav--items-social.tabs__nav a[href*="vk"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="vk"]:before, .nav--items-social.menu-list__items a[href*="vk"]:before,
     .widget [class*="social"] > ul a[href*="vk"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="weibo"]:before, .nav--items-social.author__social-links a[href*="weibo"]:before, .nav--items-social.commentlist a[href*="weibo"]:before, .nav--items-social.social-links-list a[href*="weibo"]:before, .nav--items-social.sub-menu a[href*="weibo"]:before, .nav--items-social.tabs__nav a[href*="weibo"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="weibo"]:before, .nav--items-social.menu-list__items a[href*="weibo"]:before, .nav--items-social.rsBullets a[href*="weibo"]:before,
+    .nav.nav--items-social a[href*="weibo"]:before, .nav--items-social.author__social-links a[href*="weibo"]:before, .nav--items-social.commentlist a[href*="weibo"]:before, .nav--items-social.social-links-list a[href*="weibo"]:before, .nav--items-social.sub-menu a[href*="weibo"]:before, .nav--items-social.tabs__nav a[href*="weibo"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="weibo"]:before, .nav--items-social.menu-list__items a[href*="weibo"]:before,
     .widget [class*="social"] > ul a[href*="weibo"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="xing"]:before, .nav--items-social.author__social-links a[href*="xing"]:before, .nav--items-social.commentlist a[href*="xing"]:before, .nav--items-social.social-links-list a[href*="xing"]:before, .nav--items-social.sub-menu a[href*="xing"]:before, .nav--items-social.tabs__nav a[href*="xing"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="xing"]:before, .nav--items-social.menu-list__items a[href*="xing"]:before, .nav--items-social.rsBullets a[href*="xing"]:before,
+    .nav.nav--items-social a[href*="xing"]:before, .nav--items-social.author__social-links a[href*="xing"]:before, .nav--items-social.commentlist a[href*="xing"]:before, .nav--items-social.social-links-list a[href*="xing"]:before, .nav--items-social.sub-menu a[href*="xing"]:before, .nav--items-social.tabs__nav a[href*="xing"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="xing"]:before, .nav--items-social.menu-list__items a[href*="xing"]:before,
     .widget [class*="social"] > ul a[href*="xing"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="yahoo"]:before, .nav--items-social.author__social-links a[href*="yahoo"]:before, .nav--items-social.commentlist a[href*="yahoo"]:before, .nav--items-social.social-links-list a[href*="yahoo"]:before, .nav--items-social.sub-menu a[href*="yahoo"]:before, .nav--items-social.tabs__nav a[href*="yahoo"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="yahoo"]:before, .nav--items-social.menu-list__items a[href*="yahoo"]:before, .nav--items-social.rsBullets a[href*="yahoo"]:before,
+    .nav.nav--items-social a[href*="yahoo"]:before, .nav--items-social.author__social-links a[href*="yahoo"]:before, .nav--items-social.commentlist a[href*="yahoo"]:before, .nav--items-social.social-links-list a[href*="yahoo"]:before, .nav--items-social.sub-menu a[href*="yahoo"]:before, .nav--items-social.tabs__nav a[href*="yahoo"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="yahoo"]:before, .nav--items-social.menu-list__items a[href*="yahoo"]:before,
     .widget [class*="social"] > ul a[href*="yahoo"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="youtube"]:before, .nav--items-social.author__social-links a[href*="youtube"]:before, .nav--items-social.commentlist a[href*="youtube"]:before, .nav--items-social.social-links-list a[href*="youtube"]:before, .nav--items-social.sub-menu a[href*="youtube"]:before, .nav--items-social.tabs__nav a[href*="youtube"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="youtube"]:before, .nav--items-social.menu-list__items a[href*="youtube"]:before, .nav--items-social.rsBullets a[href*="youtube"]:before,
+    .nav.nav--items-social a[href*="youtube"]:before, .nav--items-social.author__social-links a[href*="youtube"]:before, .nav--items-social.commentlist a[href*="youtube"]:before, .nav--items-social.social-links-list a[href*="youtube"]:before, .nav--items-social.sub-menu a[href*="youtube"]:before, .nav--items-social.tabs__nav a[href*="youtube"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="youtube"]:before, .nav--items-social.menu-list__items a[href*="youtube"]:before,
     .widget [class*="social"] > ul a[href*="youtube"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="angel.co"]:before, .nav--items-social.author__social-links a[href*="angel.co"]:before, .nav--items-social.commentlist a[href*="angel.co"]:before, .nav--items-social.social-links-list a[href*="angel.co"]:before, .nav--items-social.sub-menu a[href*="angel.co"]:before, .nav--items-social.tabs__nav a[href*="angel.co"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="angel.co"]:before, .nav--items-social.menu-list__items a[href*="angel.co"]:before, .nav--items-social.rsBullets a[href*="angel.co"]:before,
+    .nav.nav--items-social a[href*="angel.co"]:before, .nav--items-social.author__social-links a[href*="angel.co"]:before, .nav--items-social.commentlist a[href*="angel.co"]:before, .nav--items-social.social-links-list a[href*="angel.co"]:before, .nav--items-social.sub-menu a[href*="angel.co"]:before, .nav--items-social.tabs__nav a[href*="angel.co"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="angel.co"]:before, .nav--items-social.menu-list__items a[href*="angel.co"]:before,
     .widget [class*="social"] > ul a[href*="angel.co"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="yelp"]:before, .nav--items-social.author__social-links a[href*="yelp"]:before, .nav--items-social.commentlist a[href*="yelp"]:before, .nav--items-social.social-links-list a[href*="yelp"]:before, .nav--items-social.sub-menu a[href*="yelp"]:before, .nav--items-social.tabs__nav a[href*="yelp"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="yelp"]:before, .nav--items-social.menu-list__items a[href*="yelp"]:before, .nav--items-social.rsBullets a[href*="yelp"]:before,
+    .nav.nav--items-social a[href*="yelp"]:before, .nav--items-social.author__social-links a[href*="yelp"]:before, .nav--items-social.commentlist a[href*="yelp"]:before, .nav--items-social.social-links-list a[href*="yelp"]:before, .nav--items-social.sub-menu a[href*="yelp"]:before, .nav--items-social.tabs__nav a[href*="yelp"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="yelp"]:before, .nav--items-social.menu-list__items a[href*="yelp"]:before,
     .widget [class*="social"] > ul a[href*="yelp"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="last.fm"]:before, .nav--items-social.author__social-links a[href*="last.fm"]:before, .nav--items-social.commentlist a[href*="last.fm"]:before, .nav--items-social.social-links-list a[href*="last.fm"]:before, .nav--items-social.sub-menu a[href*="last.fm"]:before, .nav--items-social.tabs__nav a[href*="last.fm"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="last.fm"]:before, .nav--items-social.menu-list__items a[href*="last.fm"]:before, .nav--items-social.rsBullets a[href*="last.fm"]:before,
+    .nav.nav--items-social a[href*="last.fm"]:before, .nav--items-social.author__social-links a[href*="last.fm"]:before, .nav--items-social.commentlist a[href*="last.fm"]:before, .nav--items-social.social-links-list a[href*="last.fm"]:before, .nav--items-social.sub-menu a[href*="last.fm"]:before, .nav--items-social.tabs__nav a[href*="last.fm"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="last.fm"]:before, .nav--items-social.menu-list__items a[href*="last.fm"]:before,
     .widget [class*="social"] > ul a[href*="last.fm"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="slideshare"]:before, .nav--items-social.author__social-links a[href*="slideshare"]:before, .nav--items-social.commentlist a[href*="slideshare"]:before, .nav--items-social.social-links-list a[href*="slideshare"]:before, .nav--items-social.sub-menu a[href*="slideshare"]:before, .nav--items-social.tabs__nav a[href*="slideshare"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="slideshare"]:before, .nav--items-social.menu-list__items a[href*="slideshare"]:before, .nav--items-social.rsBullets a[href*="slideshare"]:before,
+    .nav.nav--items-social a[href*="slideshare"]:before, .nav--items-social.author__social-links a[href*="slideshare"]:before, .nav--items-social.commentlist a[href*="slideshare"]:before, .nav--items-social.social-links-list a[href*="slideshare"]:before, .nav--items-social.sub-menu a[href*="slideshare"]:before, .nav--items-social.tabs__nav a[href*="slideshare"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="slideshare"]:before, .nav--items-social.menu-list__items a[href*="slideshare"]:before,
     .widget [class*="social"] > ul a[href*="slideshare"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="twitch.tv"]:before, .nav--items-social.author__social-links a[href*="twitch.tv"]:before, .nav--items-social.commentlist a[href*="twitch.tv"]:before, .nav--items-social.social-links-list a[href*="twitch.tv"]:before, .nav--items-social.sub-menu a[href*="twitch.tv"]:before, .nav--items-social.tabs__nav a[href*="twitch.tv"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="twitch.tv"]:before, .nav--items-social.menu-list__items a[href*="twitch.tv"]:before, .nav--items-social.rsBullets a[href*="twitch.tv"]:before,
+    .nav.nav--items-social a[href*="twitch.tv"]:before, .nav--items-social.author__social-links a[href*="twitch.tv"]:before, .nav--items-social.commentlist a[href*="twitch.tv"]:before, .nav--items-social.social-links-list a[href*="twitch.tv"]:before, .nav--items-social.sub-menu a[href*="twitch.tv"]:before, .nav--items-social.tabs__nav a[href*="twitch.tv"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="twitch.tv"]:before, .nav--items-social.menu-list__items a[href*="twitch.tv"]:before,
     .widget [class*="social"] > ul a[href*="twitch.tv"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="bloglovin"]:before, .nav--items-social.author__social-links a[href*="bloglovin"]:before, .nav--items-social.commentlist a[href*="bloglovin"]:before, .nav--items-social.social-links-list a[href*="bloglovin"]:before, .nav--items-social.sub-menu a[href*="bloglovin"]:before, .nav--items-social.tabs__nav a[href*="bloglovin"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="bloglovin"]:before, .nav--items-social.menu-list__items a[href*="bloglovin"]:before, .nav--items-social.rsBullets a[href*="bloglovin"]:before,
+    .nav.nav--items-social a[href*="bloglovin"]:before, .nav--items-social.author__social-links a[href*="bloglovin"]:before, .nav--items-social.commentlist a[href*="bloglovin"]:before, .nav--items-social.social-links-list a[href*="bloglovin"]:before, .nav--items-social.sub-menu a[href*="bloglovin"]:before, .nav--items-social.tabs__nav a[href*="bloglovin"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="bloglovin"]:before, .nav--items-social.menu-list__items a[href*="bloglovin"]:before,
     .widget [class*="social"] > ul a[href*="bloglovin"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="#search"]:before, .nav--items-social.author__social-links a[href*="#search"]:before, .nav--items-social.commentlist a[href*="#search"]:before, .nav--items-social.social-links-list a[href*="#search"]:before, .nav--items-social.sub-menu a[href*="#search"]:before, .nav--items-social.tabs__nav a[href*="#search"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="#search"]:before, .nav--items-social.menu-list__items a[href*="#search"]:before, .nav--items-social.rsBullets a[href*="#search"]:before,
+    .nav.nav--items-social a[href*="#search"]:before, .nav--items-social.author__social-links a[href*="#search"]:before, .nav--items-social.commentlist a[href*="#search"]:before, .nav--items-social.social-links-list a[href*="#search"]:before, .nav--items-social.sub-menu a[href*="#search"]:before, .nav--items-social.tabs__nav a[href*="#search"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="#search"]:before, .nav--items-social.menu-list__items a[href*="#search"]:before,
     .widget [class*="social"] > ul a[href*="#search"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="medium.com"]:before, .nav--items-social.author__social-links a[href*="medium.com"]:before, .nav--items-social.commentlist a[href*="medium.com"]:before, .nav--items-social.social-links-list a[href*="medium.com"]:before, .nav--items-social.sub-menu a[href*="medium.com"]:before, .nav--items-social.tabs__nav a[href*="medium.com"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="medium.com"]:before, .nav--items-social.menu-list__items a[href*="medium.com"]:before, .nav--items-social.rsBullets a[href*="medium.com"]:before,
+    .nav.nav--items-social a[href*="medium.com"]:before, .nav--items-social.author__social-links a[href*="medium.com"]:before, .nav--items-social.commentlist a[href*="medium.com"]:before, .nav--items-social.social-links-list a[href*="medium.com"]:before, .nav--items-social.sub-menu a[href*="medium.com"]:before, .nav--items-social.tabs__nav a[href*="medium.com"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="medium.com"]:before, .nav--items-social.menu-list__items a[href*="medium.com"]:before,
     .widget [class*="social"] > ul a[href*="medium.com"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="whatsapp"]:before, .nav--items-social.author__social-links a[href*="whatsapp"]:before, .nav--items-social.commentlist a[href*="whatsapp"]:before, .nav--items-social.social-links-list a[href*="whatsapp"]:before, .nav--items-social.sub-menu a[href*="whatsapp"]:before, .nav--items-social.tabs__nav a[href*="whatsapp"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="whatsapp"]:before, .nav--items-social.menu-list__items a[href*="whatsapp"]:before, .nav--items-social.rsBullets a[href*="whatsapp"]:before,
+    .nav.nav--items-social a[href*="whatsapp"]:before, .nav--items-social.author__social-links a[href*="whatsapp"]:before, .nav--items-social.commentlist a[href*="whatsapp"]:before, .nav--items-social.social-links-list a[href*="whatsapp"]:before, .nav--items-social.sub-menu a[href*="whatsapp"]:before, .nav--items-social.tabs__nav a[href*="whatsapp"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="whatsapp"]:before, .nav--items-social.menu-list__items a[href*="whatsapp"]:before,
     .widget [class*="social"] > ul a[href*="whatsapp"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="leanpub"]:before, .nav--items-social.author__social-links a[href*="leanpub"]:before, .nav--items-social.commentlist a[href*="leanpub"]:before, .nav--items-social.social-links-list a[href*="leanpub"]:before, .nav--items-social.sub-menu a[href*="leanpub"]:before, .nav--items-social.tabs__nav a[href*="leanpub"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="leanpub"]:before, .nav--items-social.menu-list__items a[href*="leanpub"]:before, .nav--items-social.rsBullets a[href*="leanpub"]:before,
+    .nav.nav--items-social a[href*="leanpub"]:before, .nav--items-social.author__social-links a[href*="leanpub"]:before, .nav--items-social.commentlist a[href*="leanpub"]:before, .nav--items-social.social-links-list a[href*="leanpub"]:before, .nav--items-social.sub-menu a[href*="leanpub"]:before, .nav--items-social.tabs__nav a[href*="leanpub"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="leanpub"]:before, .nav--items-social.menu-list__items a[href*="leanpub"]:before,
     .widget [class*="social"] > ul a[href*="leanpub"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="renren"]:before, .nav--items-social.author__social-links a[href*="renren"]:before, .nav--items-social.commentlist a[href*="renren"]:before, .nav--items-social.social-links-list a[href*="renren"]:before, .nav--items-social.sub-menu a[href*="renren"]:before, .nav--items-social.tabs__nav a[href*="renren"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="renren"]:before, .nav--items-social.menu-list__items a[href*="renren"]:before, .nav--items-social.rsBullets a[href*="renren"]:before,
+    .nav.nav--items-social a[href*="renren"]:before, .nav--items-social.author__social-links a[href*="renren"]:before, .nav--items-social.commentlist a[href*="renren"]:before, .nav--items-social.social-links-list a[href*="renren"]:before, .nav--items-social.sub-menu a[href*="renren"]:before, .nav--items-social.tabs__nav a[href*="renren"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="renren"]:before, .nav--items-social.menu-list__items a[href*="renren"]:before,
     .widget [class*="social"] > ul a[href*="renren"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="twitch"]:before, .nav--items-social.author__social-links a[href*="twitch"]:before, .nav--items-social.commentlist a[href*="twitch"]:before, .nav--items-social.social-links-list a[href*="twitch"]:before, .nav--items-social.sub-menu a[href*="twitch"]:before, .nav--items-social.tabs__nav a[href*="twitch"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="twitch"]:before, .nav--items-social.menu-list__items a[href*="twitch"]:before, .nav--items-social.rsBullets a[href*="twitch"]:before,
+    .nav.nav--items-social a[href*="twitch"]:before, .nav--items-social.author__social-links a[href*="twitch"]:before, .nav--items-social.commentlist a[href*="twitch"]:before, .nav--items-social.social-links-list a[href*="twitch"]:before, .nav--items-social.sub-menu a[href*="twitch"]:before, .nav--items-social.tabs__nav a[href*="twitch"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="twitch"]:before, .nav--items-social.menu-list__items a[href*="twitch"]:before,
     .widget [class*="social"] > ul a[href*="twitch"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="tripadvisor"]:before, .nav--items-social.author__social-links a[href*="tripadvisor"]:before, .nav--items-social.commentlist a[href*="tripadvisor"]:before, .nav--items-social.social-links-list a[href*="tripadvisor"]:before, .nav--items-social.sub-menu a[href*="tripadvisor"]:before, .nav--items-social.tabs__nav a[href*="tripadvisor"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="tripadvisor"]:before, .nav--items-social.menu-list__items a[href*="tripadvisor"]:before, .nav--items-social.rsBullets a[href*="tripadvisor"]:before,
+    .nav.nav--items-social a[href*="tripadvisor"]:before, .nav--items-social.author__social-links a[href*="tripadvisor"]:before, .nav--items-social.commentlist a[href*="tripadvisor"]:before, .nav--items-social.social-links-list a[href*="tripadvisor"]:before, .nav--items-social.sub-menu a[href*="tripadvisor"]:before, .nav--items-social.tabs__nav a[href*="tripadvisor"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="tripadvisor"]:before, .nav--items-social.menu-list__items a[href*="tripadvisor"]:before,
     .widget [class*="social"] > ul a[href*="tripadvisor"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="500px"]:before, .nav--items-social.author__social-links a[href*="500px"]:before, .nav--items-social.commentlist a[href*="500px"]:before, .nav--items-social.social-links-list a[href*="500px"]:before, .nav--items-social.sub-menu a[href*="500px"]:before, .nav--items-social.tabs__nav a[href*="500px"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="500px"]:before, .nav--items-social.menu-list__items a[href*="500px"]:before, .nav--items-social.rsBullets a[href*="500px"]:before,
+    .nav.nav--items-social a[href*="500px"]:before, .nav--items-social.author__social-links a[href*="500px"]:before, .nav--items-social.commentlist a[href*="500px"]:before, .nav--items-social.social-links-list a[href*="500px"]:before, .nav--items-social.sub-menu a[href*="500px"]:before, .nav--items-social.tabs__nav a[href*="500px"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="500px"]:before, .nav--items-social.menu-list__items a[href*="500px"]:before,
     .widget [class*="social"] > ul a[href*="500px"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="tel:"]:before, .nav--items-social.author__social-links a[href*="tel:"]:before, .nav--items-social.commentlist a[href*="tel:"]:before, .nav--items-social.social-links-list a[href*="tel:"]:before, .nav--items-social.sub-menu a[href*="tel:"]:before, .nav--items-social.tabs__nav a[href*="tel:"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="tel:"]:before, .nav--items-social.menu-list__items a[href*="tel:"]:before, .nav--items-social.rsBullets a[href*="tel:"]:before,
+    .nav.nav--items-social a[href*="tel:"]:before, .nav--items-social.author__social-links a[href*="tel:"]:before, .nav--items-social.commentlist a[href*="tel:"]:before, .nav--items-social.social-links-list a[href*="tel:"]:before, .nav--items-social.sub-menu a[href*="tel:"]:before, .nav--items-social.tabs__nav a[href*="tel:"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="tel:"]:before, .nav--items-social.menu-list__items a[href*="tel:"]:before,
     .widget [class*="social"] > ul a[href*="tel:"]:before {
       content: ""; }
 
@@ -11070,400 +11069,6 @@ a.site-logo--text {
 /**
  * 3rd Party Plugins; icon fonts, sliders
  */
-/* v1.0.5 */
-/* Core RS CSS file. 95% of time you shouldn't change anything here. */
-/*rtl:begin:ignore*/
-.royalSlider, .pixslider {
-  width: 600px;
-  height: 400px;
-  position: relative;
-  direction: ltr; }
-
-.royalSlider > *, .pixslider > * {
-  float: left; }
-
-.rsWebkit3d .rsSlide {
-  -webkit-transform: translateZ(0); }
-
-.rsWebkit3d .rsSlide,
-.rsWebkit3d .rsContainer,
-.rsWebkit3d .rsThumbs,
-.rsWebkit3d .rsPreloader,
-.rsWebkit3d img,
-.rsWebkit3d .rsOverflow,
-.rsWebkit3d .rsBtnCenterer,
-.rsWebkit3d .rsAbsoluteEl,
-.rsWebkit3d .rsABlock,
-.rsWebkit3d .rsLink {
-  -webkit-backface-visibility: hidden; }
-
-.rsFade.rsWebkit3d .rsSlide,
-.rsFade.rsWebkit3d img,
-.rsFade.rsWebkit3d .rsContainer {
-  -webkit-transform: none; }
-
-.rsOverflow {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  float: left;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
-
-.rsVisibleNearbyWrap {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  left: 0;
-  top: 0;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
-
-.rsVisibleNearbyWrap .rsOverflow {
-  position: absolute;
-  left: 0;
-  top: 0; }
-
-.rsContainer {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  z-index: 2; }
-
-.rsArrow,
-.rsThumbsArrow {
-  cursor: pointer; }
-
-.rsThumb {
-  float: left;
-  position: relative; }
-
-.rsArrow,
-.rsNav,
-.rsThumbsArrow {
-  opacity: 1;
-  -webkit-transition: opacity 0.3s linear;
-  transition: opacity 0.3s linear; }
-
-.rsHidden {
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: visibility 0s linear 0.3s, opacity 0.3s linear;
-  transition: visibility 0s linear 0.3s, opacity 0.3s linear; }
-
-.rsGCaption {
-  width: 100%;
-  float: left;
-  text-align: center; }
-
-/* Fullscreen options, very important ^^ */
-.royalSlider.rsFullscreen, .rsFullscreen.pixslider {
-  position: fixed !important;
-  height: auto !important;
-  width: auto !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  z-index: 2147483647 !important;
-  top: 0 !important;
-  left: 0 !important;
-  bottom: 0 !important;
-  right: 0 !important; }
-
-.royalSlider .rsSlide.rsFakePreloader, .pixslider .rsSlide.rsFakePreloader {
-  opacity: 1 !important;
-  -webkit-transition: 0s;
-  transition: 0s;
-  display: none; }
-
-.rsSlide {
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: block;
-  overflow: hidden;
-  height: 100%;
-  width: 100%; }
-
-.royalSlider.rsAutoHeight, .rsAutoHeight.pixslider,
-.rsAutoHeight .rsSlide {
-  height: auto; }
-
-.rsContent {
-  width: 100%;
-  height: 100%;
-  position: relative; }
-
-.rsPreloader {
-  position: absolute;
-  z-index: 0; }
-
-.rsNav {
-  -moz-user-select: -moz-none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-      user-select: none; }
-
-.rsNavItem {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.25); }
-
-.rsThumbs {
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  float: left;
-  z-index: 22; }
-
-.rsTabs {
-  float: left;
-  background: none !important; }
-
-.rsTabs,
-.rsThumbs {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
-
-.rsVideoContainer {
-  width: auto;
-  height: auto;
-  line-height: 0;
-  position: relative; }
-
-.rsVideoFrameHolder {
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: #141414;
-  opacity: 0;
-  -webkit-transition: .3s; }
-
-.rsVideoFrameHolder.rsVideoActive {
-  opacity: 1; }
-
-.rsVideoContainer iframe,
-.rsVideoContainer video,
-.rsVideoContainer embed,
-.rsVideoContainer .rsVideoObj {
-  position: absolute;
-  z-index: 50;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%; }
-
-/* ios controls over video bug, shifting video */
-.rsVideoContainer.rsIOSVideo iframe,
-.rsVideoContainer.rsIOSVideo video,
-.rsVideoContainer.rsIOSVideo embed {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  padding-right: 44px; }
-
-/***************
-*
-*  6. Play/close video button
-*
-****************/
-.rsDefault .rsPlayBtn {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
-  width: 64px;
-  height: 64px;
-  margin-left: -32px;
-  margin-top: -32px;
-  cursor: pointer; }
-
-.rsPlayBtnIcon {
-  width: 64px;
-  display: block;
-  height: 64px;
-  margin-top: -32px;
-  margin-left: -32px;
-  border-radius: 4px;
-  -webkit-transition: .3s;
-  transition: .3s;
-  background: url(../images/rs-default.png) no-repeat 0 -32px;
-  background-color: #000;
-  background-color: rgba(0, 0, 0, 0.75);
-  *background-color: #000; }
-
-.rsPlayBtn:hover .rsPlayBtnIcon {
-  background-color: rgba(0, 0, 0, 0.9); }
-
-.rsBtnCenterer {
-  position: absolute;
-  left: 50%;
-  top: 50%; }
-
-.rsCloseVideoBtn {
-  right: 0;
-  top: 0;
-  width: 44px;
-  height: 44px;
-  z-index: 500;
-  position: absolute;
-  cursor: pointer;
-  -webkit-backface-visibility: hidden;
-  -webkit-transform: translateZ(0); }
-
-.rsCloseVideoBtn.rsiOSBtn {
-  top: -38px;
-  right: -6px; }
-
-.rsCloseVideoIcn {
-  margin: 6px;
-  width: 32px;
-  height: 32px;
-  background: url("../images/rs-default.png") -64px 0;
-  background-color: #000;
-  background-color: rgba(0, 0, 0, 0.75);
-  *background-color: #000; }
-
-.rsCloseVideoIcn:hover {
-  background-color: rgba(0, 0, 0, 0.9); }
-
-.rsABlock {
-  left: 0;
-  top: 0;
-  position: absolute;
-  z-index: 15; }
-
-img.rsImg {
-  max-width: none; }
-
-.grab-cursor {
-  cursor: url(data:image/png;base64,R0lGODlhEAAQAJECAP///wAAAP///wAAACH5BAEAAAIALAAAAAAQABAAAAI0lC8RyLkBgFoMSotrVHsnhHWXdISS+DzRimIWy3Ii7CU0Tdn3mr93bvDBgMFfozg86mKHAgA7) 8 8, move; }
-
-.grabbing-cursor {
-  cursor: url(data:image/png;base64,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) 8 8, move; }
-
-.rsNoDrag {
-  cursor: auto; }
-
-.rsLink {
-  left: 0;
-  top: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: block;
-  z-index: 20;
-  background: url(blank.gif); }
-
-/*----------------------------------------*\
-    $CUSTOM STYLING
-\*----------------------------------------*/
-.pixslider {
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-  margin: 0;
-  -webkit-transform: translateZ(0);
-          transform: translateZ(0); }
-  .pixslider img {
-    width: 100%;
-    height: auto;
-    display: block; }
-  .pixslider blockquote {
-    margin-bottom: 72px;
-    margin-bottom: 4.5rem; }
-
-.pixslider__slide {
-  width: 100%; }
-
-/*----------------------------------------*\
-    $ARROWS CUSTOM STYLING
-\*----------------------------------------*/
-.rsArrow {
-  display: block;
-  color: white;
-  position: absolute;
-  top: 50%; }
-  .rsArrow .rsArrowIcn {
-    border-bottom: 2px solid white; }
-
-.rsArrowLeft {
-  left: 0; }
-  .rsArrowLeft .rsArrowIcn {
-    border-left: 2px solid white;
-    -webkit-transform: rotate(45deg);
-            transform: rotate(45deg); }
-
-.rsArrowRight {
-  right: 0; }
-  .rsArrowRight .rsArrowIcn {
-    border-right: 2px solid white;
-    -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-    float: left; }
-
-.full-width-slider {
-  width: 100%; }
-
-/*----------------------------------------*\
-    $BULLETS CUSTOM STYLING
-\*----------------------------------------*/
-.rsBullets {
-  margin-left: -6px;
-  margin-left: -0.375rem; }
-
-.rsBullet {
-  display: inline-block;
-  margin: 2px 6px;
-  margin: 0.125rem 0.375rem;
-  width: 6px;
-  width: 0.375rem;
-  height: 6px;
-  height: 0.375rem;
-  border-radius: 50%;
-  text-indent: -999em;
-  background-color: #cacaca;
-  cursor: pointer; }
-
-.rsNavSelected {
-  width: 8px;
-  width: 0.5rem;
-  height: 8px;
-  height: 0.5rem;
-  margin: 0 6px;
-  margin: 0 0.375rem;
-  background-color: #c59d5f; }
-
-/*------------------------------------*\
-    $CUSTOM ARROWS
-\*------------------------------------*/
-.royalSlider, .pixslider {
-  opacity: 0; }
-  .royalSlider.slider--loaded, .slider--loaded.pixslider {
-    opacity: 1; }
-
-.rsArrow {
-  width: 50px;
-  height: 80px;
-  background: rgba(0, 0, 0, 0.5);
-  -webkit-transform: translate3d(0, -50%, 0);
-          transform: translate3d(0, -50%, 0);
-  z-index: 2000; }
-
-.rsArrowLeft .rsArrowIcn {
-  margin-left: 16px; }
-
-.rsArrowIcn {
-  height: 35px;
-  width: 35px;
-  margin: 0;
-  margin-top: 22px;
-  border-color: white; }
-
-.pixcode-slider[data-arrows] .rsArrow {
-  background: transparent; }
-
-.pixcode-slider[data-arrows] .rsArrowIcn {
-  border-color: #262526; }
-
-.pixcode-slider[data-arrows] .slide {
-  padding: 0 50px; }
-
-/*rtl:end:ignore*/
 /* Magnific Popup CSS */
 .mfp-bg {
   top: 0;
