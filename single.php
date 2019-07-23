@@ -17,10 +17,7 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) :
 	get_template_part( 'template-parts/password-request-form' );
 
 else :
-	$has_sidebar = false;
-	if ( pixelgrade_option( 'blog_single_show_sidebar', true ) ) {
-		$has_sidebar = true;
-	}
+	$has_sidebar = true;
 
 	//post thumb specific
 	$has_thumb = has_post_thumbnail();
