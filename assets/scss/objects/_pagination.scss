@@ -58,7 +58,7 @@
 		color: #FFFFFF;
 	}
 
-	.nav-links .page-numbers.prev.disabled {
+	.nav-links .page-numbers.prev.disabled, .nav-links .page-numbers.next.disabled {
 		background-color: $gray;
 		color: $light;
 	}
