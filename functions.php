@@ -154,8 +154,6 @@ if ( ! function_exists( 'rosa_lite_load_assets' ) ) {
 		$script_dependencies[] = 'ease-pack';
 		wp_register_script( 'scroll-to-plugin', get_theme_file_uri( '/assets/js/ScrollToPlugin.min.js' ), array( 'jquery' ), '1.8.1' );
 		$script_dependencies[] = 'scroll-to-plugin';
-		wp_register_script( 'rosa-rs', get_theme_file_uri( '/assets/js/index.js' ), array( 'jquery' ), '9.5.7' );
-		$script_dependencies[] = 'rosa-rs';
 
 		wp_enqueue_script( 'rosa-plugins-scripts', get_theme_file_uri( '/assets/js/plugins.js' ), $script_dependencies, $theme->get( 'Version' ), true );
 		wp_enqueue_script( 'rosa-main-scripts', get_theme_file_uri( '/assets/js/main.js' ), array( 'rosa-plugins-scripts' ), $theme->get( 'Version' ), true );
