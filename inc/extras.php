@@ -795,7 +795,7 @@ function rosa_better_excerpt( $text = '' ) {
  * Replace the [...] WordPress puts in when using the the_excerpt() method.
  */
 function new_excerpt_more( $excerpt ) {
-	return pixelgrade_option( 'blog_excerpt_more_text' );
+	return '..';
 }
 
 add_filter( 'excerpt_more', 'new_excerpt_more' );

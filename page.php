@@ -31,10 +31,7 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 
 		$classes = "article--page  article--main" ;
 
-		$down_arrow_style = pixelgrade_option('down_arrow_style');
-		if ( $page_section_idx == 1 && $header_height == 'full-height' && $down_arrow_style == 'bubble' ) {
-			$classes .= " article--arrow";
-		}
+		$down_arrow_style = 'transparent';
 
 		$border_style = 'simple';
 		if ( ! empty( $border_style ) ) {

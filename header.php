@@ -57,11 +57,8 @@ if ( is_single() ) {
 <?php
 $class_name = 'header--sticky';
 
-if ( pixelgrade_option( 'nav_always_show' ) ) {
-	$class_name .= '  nav-scroll-show';
-} else {
-	$class_name .= '  nav-scroll-hide';
-}
+$class_name .= '  nav-scroll-hide';
+
 
 $data_smoothscrolling = ( pixelgrade_option( 'use_smooth_scroll' ) == 1 ) ? 'data-smoothscrolling' : '';
 $data_main_color      = ( pixelgrade_option( 'main_color' ) ) ? 'data-color="' . esc_attr( pixelgrade_option( 'main_color' ) ) . '"' : '';
