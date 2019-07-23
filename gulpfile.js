@@ -1,33 +1,18 @@
-// Gulp
-//
-// This is not a normal require, because our gulp-help tool (which provides the
-// nice task descriptions on the command-line) requires changing the function
-// signature of gulp tasks to include the task description.
-var theme = theme_name = main_branch = 'rosa-lite';
-var theme_txtdomain = 'rosa-lite';
-var gulp = require( 'gulp-help' )( require( 'gulp' ) );
+var gulp = require('gulp'),
+	plugins = require('gulp-load-plugins')(),
+	del = require('del'),
+	fs = require('fs'),
+	cp = require('child_process');
 
 // Gulp / Node utilities
 var u = require( 'gulp-util' );
 var log = u.log;
 var c = u.colors;
-var sequence = require( 'run-sequence' );
-var exec = require( 'gulp-exec' );
-var del = require( 'del' );
-var fs = require( 'fs' );
-var rename = require( 'gulp-rename' );
-var replace = require( 'gulp-replace' );
-var prompt = require( 'gulp-prompt' );
 
-// Basic workflow plugins
-var prefix = require( 'gulp-autoprefixer' );
-var sass = require( 'gulp-sass' );
-var sourcemaps = require( 'gulp-sourcemaps' );
-var concat = require( 'gulp-concat' );
-var bs = require( 'browser-sync' );
-var jsonToSass = require( 'gulp-json-to-sass-map' );
-var rtlcss = require( 'gulp-rtlcss' );
-var csscomb = require( 'gulp-csscomb' );
+function logError( err, res ) {
+	log( c.red( 'Sass failed to compile' ) );
+	log( c.red( '> ' ) + err.file.split( '/' )[err.file.split( '/' ).length - 1] + ' ' + c.underline( 'line ' + err.line ) + ': ' + err.message );
+}
 
 var jsFiles = [
 	'./assets/js/main/wrapper-start.js',
@@ -36,6 +21,14 @@ var jsFiles = [
 	'./assets/js/main/main.js',
 	'./assets/js/main/wrapper-end.js'
 ];
+
+var theme_name = 'rosa-lite',
+	theme = theme_name,
+	main_branch = 'master',
+	options = {
+		silent: true,
+		continueOnError: true // default: false
+	};
 
 var config = {
 	"baseurl": "demos.dev/rosa-lite"
@@ -54,180 +47,111 @@ if ( fs.existsSync( './gulpconfig.json' ) ) {
 // combine the compiled CSS with vendor files and minify the aggregate.
 // -----------------------------------------------------------------------------
 
-function logError( err, res ) {
-	log( c.red( 'Sass failed to compile' ) );
-	log( c.red( '> ' ) + err.file.split( '/' )[err.file.split( '/' ).length - 1] + ' ' + c.underline( 'line ' + err.line ) + ': ' + err.message );
+function stylesMain() {
+	return gulp.src('assets/scss/*.scss')
+		.pipe(plugins.sourcemaps.init())
+		.pipe(plugins.sass({'sourcemap=auto': true, style: 'expanded'}).on('error', logError))
+		.pipe(plugins.autoprefixer())
+		.pipe(plugins.sourcemaps.write('.'))
+		.pipe(plugins.replace(/^@charset \"UTF-8\";\n/gm, ''))
+		.pipe(gulp.dest('./', {mode: "0644"}))
 }
+stylesMain.description = 'Compiles main css files (ie. style.css editor-style.css)';
+gulp.task('styles-main', stylesMain);
 
-gulp.task( 'typeline-config', 'Create SCSS typeline config from json', function() {
+function stylesRTL() {
+	return gulp.src('style.css')
+		.pipe(plugins.rtlcss())
+		.pipe(plugins.rename('style-rtl.css'))
+		.pipe(gulp.dest('.', {mode: "0644"}))
+}
+stylesRTL.description = 'Generate style-rtl.css file based on style.css';
+gulp.task('styles-rtl', stylesRTL)
 
-	return gulp.src( 'inc/integrations/typeline-config.json' )
-	           .pipe( jsonToSass( {
-		           source: 'inc/integrations/typeline-config.json',
-		           output: 'assets/scss/tools/_typeline-config.scss'
-	           } ) )
-	           .pipe( jsonToSass( {
-		           source: 'inc/integrations/typeline-config-editor.json',
-		           output: 'assets/scss/tools/_typeline-config-editor.scss'
-	           } ) );
-} );
+function stylesAdmin() {
 
-gulp.task( 'css', 'Compiles main css files (ie. style.css editor-style.css)', function() {
-
-	return gulp.src( 'assets/scss/*.scss' )
-	           .pipe( sourcemaps.init() )
-	           .pipe( sass( {outputStyle: 'expanded'} ).on( 'error', logError ) )
-	           .pipe( prefix() )
-	           .pipe( sourcemaps.write( '.' ) )
-	           .pipe( gulp.dest( '.' ) );
-} );
-
-gulp.task('styles-admin', 'Compiles styles that will be loaded in WP dashboard.', function(){
 	return gulp.src('assets/scss/admin/*.scss')
-	           .pipe( sourcemaps.init() )
-	           .pipe( sass().on( 'error', logError ) )
-	           .pipe( prefix() )
-	           .pipe( sourcemaps.write( '.' ) )
-	           .pipe( gulp.dest( './css' ) );
-});
+		.pipe(plugins.sourcemaps.init())
+		.pipe(plugins.sass().on('error', logError))
+		.pipe(plugins.autoprefixer())
+		.pipe(plugins.replace(/^@charset \"UTF-8\";\n/gm, ''))
+		.pipe(gulp.dest('./css'))
+}
+stylesAdmin.description = 'Compiles WordPress admin Sass and uses autoprefixer';
+gulp.task('styles-admin', stylesAdmin )
 
-gulp.task( 'styles', 'Generate rtl.css file based on style.css', ['css', 'styles-admin'], function() {
+function stylesWatch() {
+	plugins.livereload.listen();
+	return gulp.watch('assets/scss/**/*.scss', stylesMain);
+}
+gulp.task('styles-watch', stylesWatch);
 
-	return gulp.src( 'style.css' )
-	           .pipe( rtlcss() )
-	           .pipe( rename( 'rtl.css' ) )
-	           .pipe( gulp.dest( '.' ) );
-} );
-
-gulp.task( 'css-process', function() {
-
-	return gulp.src( 'style.css' )
-	           .pipe( sourcemaps.init( {loadMaps: true} ) )
-//	           .pipe( cmq() )
-//	           .pipe( csso() )
-	           .pipe( csscomb() )
-	           .pipe( sourcemaps.write( '.' ) )
-	           .pipe( gulp.dest( '.' ) );
-} );
-
-gulp.task( 'styles-components', 'Compiles Sass and uses autoprefixer', function() {
-
-	return gulp.src( 'components/**/*.scss' )
-	           .pipe( sass().on( 'error', logError ) )
-	           .pipe( prefix() )
-	           .pipe( rename( function( path ) {
-		           path.dirname = path.dirname.replace( '/scss', '' ); //Remove the scss directory at the end
-		           path.dirname += "/css"; //Append the css subdirectory to the path; see http://stackoverflow.com/questions/31358552/gulp-write-output-files-to-subfolder-relative-of-src-path
-	           } ) )
-	           .pipe( gulp.dest( './components' ) );
-} );
-
-gulp.task( 'remove-sourcemaps', function () {
-	gulp.src( ['*.css', 'assets/**/*.css'] )
-	    .pipe( sourcemaps.init( {loadMaps: true} ) )
-	    .pipe( sourcemaps.write( '/dev/null', {addComment: false} ) )
-	    .pipe( gulp.dest( '.' ) );
-});
+function stylesSequence(cb) {
+	return gulp.series( 'styles-main', 'styles-rtl', 'styles-admin' )(cb);
+}
+stylesSequence.description = 'Compile the styles and generate RTL version.';
+gulp.task( 'styles', stylesSequence  );
 
 // -----------------------------------------------------------------------------
 // Combine JavaScript files
 // -----------------------------------------------------------------------------
-gulp.task( 'scripts', 'Concatenate all JS into main.js and wrap all code in a closure', ['scripts-vendor'], function() {
-	return gulp.src( jsFiles )
-	           // Concatenate all our files into main.js
-	           .pipe( concat( 'main.js' ) )
-	           .pipe( gulp.dest( './assets/js/' ) );
-} );
+function scripts() {
+	return gulp.src(jsFiles)
+		.pipe(plugins.concat('main.js'))
+		.pipe(plugins.beautify({indentSize: 2}))
+		.pipe(gulp.dest('./assets/js/', {"mode": "0644"}));
+}
+gulp.task('scripts', scripts);
 
-gulp.task( 'scripts-vendor', 'Concatenate all JS into main.js and wrap all code in a closure', function() {
-	return 	gulp.src('./assets/js/plugins/*.js')
-	              .pipe(concat('plugins.js'))
-	              .pipe(gulp.dest('./assets/js/'));
-} );
+function scriptsVendor() {
+	return gulp.src('./assets/js/plugins/*.js')
+		.pipe(concat('plugins.js'))
+		.pipe(plugins.beautify({indentSize: 2}))
+		.pipe(gulp.dest('./assets/js/', {"mode": "0644"}));
+}
+gulp.task('scripts-vendor', scripts);
 
-// -----------------------------------------------------------------------------
-// Browser Sync using Proxy server
-//
-// Makes web development better by eliminating the need to refresh. Essential
-// for CSS development and multi-device testing.
-//
-// This is how you'd connect to a local server that runs itself.
-// Examples would be a PHP site such as Wordpress or a
-// Drupal site, or a node.js site like Express.
-//
-// Usage: gulp browser-sync-proxy --port 8080
-// -----------------------------------------------------------------------------
-gulp.task( 'browser-sync', false, function() {
-	bs( {
-		// Point this to your pre-existing server.
-		proxy: config.baseurl + (
-			u.env.port ? ':' + u.env.port : ''
-		),
-		files: ['*.php', 'style.css', 'assets/js/main.js'],
-		// This tells BrowserSync to auto-open a tab once it boots.
-		open: true
-	}, function( err, bs ) {
-		if ( err ) {
-			console.log( bs.options );
-		}
-	} );
-} );
+function scriptsWatch() {
+	plugins.livereload.listen();
+	return gulp.watch('assets/js/**/*.js', scripts);
+}
+gulp.task('scripts-watch', scriptsWatch);
 
-
-// -----------------------------------------------------------------------------
-// Watch tasks
-//
-// These tasks are run whenever a file is saved. Don't confuse the files being
-// watched (gulp.watch blobs in this task) with the files actually operated on
-// by the gulp.src blobs in each individual task.
-//
-// A few of the performance-related tasks are excluded because they can take a
-// bit of time to run and don't need to happen on every file change. If you want
-// to run those tasks more frequently, set up a new watch task here.
-// -----------------------------------------------------------------------------
-gulp.task( 'watch', 'Watch for changes to various files and process them', function() {
-	gulp.watch( [
-		'inc/integrations/typeline-config.json',
-		'inc/integrations/typeline-config-editor.json'
-	], ['typeline-config'] );
-	gulp.watch( 'components/**/*.scss', ['styles-components'] );
-	gulp.watch( 'assets/scss/**/*.scss', ['styles'] );
-	gulp.watch( 'assets/js/**/*.js', ['scripts'] );
-} );
-// -----------------------------------------------------------------------------
-// Convenience task for development.
-//
-// This is the command you run to warm the site up for development. It will do
-// a full build, open BrowserSync, and start listening for changes.
-// -----------------------------------------------------------------------------
-gulp.task( 'bs', 'Main development task:', ['styles', 'scripts', 'browser-sync', 'watch'] );
-
-// -----------------------------------------------------------------------------
-// Copy theme folder outside in a build folder, recreate styles before that
-// -----------------------------------------------------------------------------
-gulp.task( 'copy-folder', 'Copy theme production files to a build folder', ['remove-sourcemaps'], function() {
-	return gulp.src( './' )
-	           .pipe( exec( 'rm -Rf ./../build; mkdir -p ./../build/' + theme + '; rsync -av --exclude="node_modules" ./* ./../build/' + theme + '/', {
-		           silent: true,
-		           continueOnError: true // default: false
-	           } ) );
-} );
+function watch() {
+	gulp.watch('assets/scss/**/*.scss', stylesMain);
+	gulp.watch('assets/js/**/*.js', scripts);
+}
+gulp.task('watch', watch);
 
 /**
- * Replace strings in components to match the theme's - like textdomain, styles prefix, etc
+ * Copy theme folder outside in a build folder, recreate styles before that
  */
-gulp.task( 'string-replace', ['copy-folder'], function() {
-	return gulp.src( '../build/' + theme + '/components/**/*.php' )
-	           .pipe( replace( /['|"]components['|"]/g, '\'' + theme_txtdomain + '\'' ) ) // the text domain
-	           .pipe( replace( /style\( ?'pixelgrade/g, 'style\( \'' + theme ) ) //the style registering and enqueue
-	           .pipe( replace( /script\( ?'pixelgrade/g, 'script\( \'' + theme ) ) //the script registering and enqueue
-	           .pipe( gulp.dest( '../build/' + theme + '/components' ) );
-} );
+function copyFolder() {
+	var dir = process.cwd();
+	return gulp.src( './*' )
+		.pipe( plugins.exec( 'rm -Rf ./../build; mkdir -p ./../build/' + theme + ';', {
+			silent: true,
+			continueOnError: true // default: false
+		} ) )
+		.pipe( plugins.rsync({
+			root: dir,
+			destination: '../build/' + theme + '/',
+			// archive: true,
+			progress: false,
+			silent: false,
+			compress: false,
+			recursive: true,
+			emptyDirectories: true,
+			clean: true,
+			exclude: ['node_modules']
+		}));
+}
+gulp.task( 'copy-folder', copyFolder );
 
 /**
- * Remove unneeded files and folders from the build folder
+ * Clean the folder of unneeded files and folders
  */
-gulp.task( 'build', 'Remove unneeded files and folders from the build folder', ['string-replace'], function() {
+function removeUnneededFiles(done) {
 
 	// files that should not be present in build
 	files_to_remove = [
@@ -235,16 +159,12 @@ gulp.task( 'build', 'Remove unneeded files and folders from the build folder', [
 		'node_modules',
 		'config.rb',
 		'gulpfile.js',
-		'gulpconfig.js',
-		'gulpconfig.json',
-		'gulpconfig.json.example',
 		'package.json',
+		'package-lock.json',
 		'pxg.json',
 		'build',
 		'css',
 		'.idea',
-		'.editorconfig',
-		'.gitignore',
 		'**/.svn*',
 		'**/*.css.map',
 		'**/.sass*',
@@ -256,82 +176,182 @@ gulp.task( 'build', 'Remove unneeded files and folders from the build folder', [
 		'**/.DS_Store',
 		'__MACOSX',
 		'**/__MACOSX',
-		'README.md',
-		'.csscomb',
-		'.codeclimate.yml',
 		'tests',
 		'circle.yml',
 		'circle_scripts',
-		'.labels'
+		'README.md',
+		'.labels',
+		'.circleci',
+		'.csscomb',
+		'.csscomb.json',
+		'.codeclimate.yml',
+		'tests',
+		'.jscsrc',
+		'.jshintignore',
+		'browserslist',
+		'babel.config.js'
 	];
 
-	files_to_remove.forEach( function( e, k ) {
+	files_to_remove.forEach(function (e, k) {
 		files_to_remove[k] = '../build/' + theme + '/' + e;
-	} );
+	});
 
-	return del.sync( files_to_remove, {force: true} );
-} );
+	return del(files_to_remove, {force: true});
+}
+gulp.task( 'remove-files', removeUnneededFiles );
+
+function maybeFixBuildDirPermissions(done) {
+
+	cp.execSync('find ./../build -type d -exec chmod 755 {} \\;');
+
+	return done();
+}
+maybeFixBuildDirPermissions.description = 'Make sure that all directories in the build directory have 755 permissions.';
+gulp.task( 'fix-build-dir-permissions', maybeFixBuildDirPermissions );
+
+function maybeFixBuildFilePermissions(done) {
+
+	cp.execSync('find ./../build -type f -exec chmod 644 {} \\;');
+
+	return done();
+}
+maybeFixBuildFilePermissions.description = 'Make sure that all files in the build directory have 644 permissions.';
+gulp.task( 'fix-build-file-permissions', maybeFixBuildFilePermissions );
+
+function maybeFixIncorrectLineEndings(done) {
+
+	cp.execSync('find ./../build -type f -print0 | xargs -0 -n 1 -P 4 dos2unix');
+
+	return done();
+}
+maybeFixIncorrectLineEndings.description = 'Make sure that all line endings in the files in the build directory are UNIX line endings.';
+gulp.task( 'fix-line-endings', maybeFixIncorrectLineEndings );
+
+// -----------------------------------------------------------------------------
+// Replace the themes' text domain with the actual text domain (think variations)
+// -----------------------------------------------------------------------------
+function replaceThemeTextdomainPlaceholder() {
+
+	return gulp.src( '../build/' + theme + '/**/*.php' )
+		.pipe( plugins.replace( /['|"]__theme_txtd['|"]/g, '\'' + theme + '\'' ) )
+		.pipe( gulp.dest( '../build/' + theme ) );
+}
+gulp.task( 'txtdomain-replace', replaceThemeTextdomainPlaceholder);
 
 /**
- * Create the theme installer archive and delete the build folder
+ * Create a zip archive out of the cleaned folder and delete the folder
  */
-gulp.task( 'zip', 'Create the theme installer archive and delete the build folder', ['build'], function() {
-	return gulp.src( './' )
-	           .pipe( exec( 'cd ./../; rm -rf ' + theme[0].toUpperCase() + theme.slice( 1 ) + '*.zip; cd ./build/; zip -r -X ./../' + theme[0].toUpperCase() + theme.slice( 1 ) + '.zip ./; cd ./../; rm -rf ./build' ) );
-} );
+function createZipFile(){
 
-gulp.task( 'server', 'Compile scripts and styles for production purposes', ['styles', 'scripts'], function() {
-	console.log( 'The styles and scripts have been compiled for production! Go and clear the caches!' );
-} );
+	var versionString = '';
+	//get theme version from styles.css
+	var contents = fs.readFileSync("./style.css", "utf8");
 
-// -----------------------------------------------------------------------------
-// Default: load task listing
-//
-// Instead of launching some unspecified build process when someone innocently
-// types `gulp` into the command line, we provide a task listing so they know
-// what options they have without digging into the file.
-// -----------------------------------------------------------------------------
-gulp.task( 'default', false, ['help'] );
+	// split it by lines
+	var lines = contents.split(/[\r\n]/);
 
-//Creates a prompt command which allows you to update the demos
-gulp.task( 'update-demo', function() {
+	function checkIfVersionLine(value, index, ar) {
+		var myRegEx = /^[Vv]ersion:/;
+		if ( myRegEx.test(value) ) {
+			return true;
+		}
+		return false;
+	}
 
-	var run_exec = require( 'child_process' ).exec;
+	// apply the filter
+	var versionLine = lines.filter(checkIfVersionLine);
 
-	gulp.src( './' )
-	    .pipe( prompt.confirm( "This task will stash all your local changes without commiting them,\n Make sure you did all your commits and pushes to the main " + main_branch + " branch! \n Are you sure you want to continue?!? " ) )
-	    .pipe( prompt.prompt( {
-		    type: 'list',
-		    name: 'demo_update',
-		    message: 'Which demo would you like to update?',
-		    choices: ['cancel', 'test.demos.pixelgrade.com/' + theme_name, 'demos.pixelgrade.com/' + theme_name]
-	    }, function( res ) {
+	versionString = versionLine[0].replace(/^[Vv]ersion:/, '' ).trim();
+	versionString = '-' + versionString.replace(/\./g,'-');
 
-		    if ( res.demo_update === 'cancel' ) {
-			    console.log( 'No hard feelings!' );
-			    return false;
-		    }
+	// Right now we create a zip without the version information in the name.
+	return gulp.src('./')
+		.pipe(plugins.exec('cd ./../; rm -rf ' + theme + '*.zip; cd ./build/; zip -r -X ./../' + theme + '.zip ./; cd ./../; rm -rf build'));
+	// return gulp.src('./')
+	// 	.pipe(exec('cd ./../; rm -rf' + theme[0].toUpperCase() + theme.slice(1) + '*.zip; cd ./build/; zip -r -X ./../' + theme[0].toUpperCase() + theme.slice(1) + versionString + '.zip ./; cd ./../; rm -rf build'));
 
-		    console.log( 'This task may ask for a github user / password or a ssh passphrase' );
+}
+gulp.task( 'make-zip', createZipFile );
 
-		    if ( res.demo_update === 'test.demos.pixelgrade.com/' + theme_name ) {
-			    run_exec( 'git fetch; git checkout test; git pull origin ' + main_branch + '; git push origin test; git checkout ' + main_branch + ';', function( err, stdout, stderr ) {
-				    // console.log(stdout);
-				    // console.log(stderr);
-			    } );
-			    console.log( " ==== The master branch is up-to-date now. But is the CircleCi job to update the remote test.demo.pixelgrade.com" );
-			    return true;
-		    }
+function buildSequence(cb) {
+	return gulp.series( 'copy-folder', 'remove-files', 'fix-build-dir-permissions', 'fix-build-file-permissions', 'fix-line-endings', 'txtdomain-replace' )(cb);
+}
+buildSequence.description = 'Sets up the build folder';
+gulp.task( 'build', buildSequence );
+
+function zipSequence(cb) {
+	return gulp.series( 'build', 'make-zip' )(cb);
+}
+zipSequence.description = 'Creates the zip file';
+gulp.task( 'zip', zipSequence  );
+
+function updateDemoInstall() {
+
+	var run_exec = require('child_process').exec;
+
+	gulp.src('./')
+		.pipe(plugins.prompt.confirm( "This task will stash all your local changes without commiting them,\n Make sure you did all your commits and pushes to the main " + main_branch + " branch! \n Are you sure you want to continue?!? "))
+		.pipe(plugins.prompt.prompt({
+			type: 'list',
+			name: 'demo_update',
+			message: 'Which demo would you like to update?',
+			choices: ['cancel', 'test.demos.pixelgrade.com/' + theme_name, 'demos.pixelgrade.com/' + theme_name]
+		}, function(res){
+
+			if ( res.demo_update === 'cancel' ) {
+				console.log( 'No hard feelings!' );
+				return false;
+			}
+
+			console.log('This task may ask for a github user / password or a ssh passphrase');
+
+			if ( res.demo_update ===  'test.demos.pixelgrade.com/' + theme_name ) {
+				run_exec('git fetch; git checkout test; git pull origin ' + main_branch + '; git push origin test; git checkout ' + main_branch + ';', function (err, stdout, stderr) {
+					// console.log(stdout);
+					// console.log(stderr);
+				});
+				console.log( " ==== The master branch is up-to-date now. But is the CircleCi job to update the remote test.demo.pixelgrade.com" );
+				return true;
+			}
 
 
-		    if ( res.demo_update === 'demos.pixelgrade.com/' + theme_name ) {
-			    run_exec( 'git fetch; git checkout master; git pull origin test; git push origin master; git checkout ' + main_branch + ';', function( err, stdout, stderr ) {
-				    console.log( stdout );
-				    console.log( stderr );
-			    } );
+			if ( res.demo_update === 'demos.pixelgrade.com/' + theme_name ) {
+				run_exec('git fetch; git checkout master; git pull origin test; git push origin master; git checkout ' + main_branch + ';', function (err, stdout, stderr) {
+					// console.log(stdout);
+					// console.log(stderr);
+				});
 
-			    console.log( " ==== The master branch is up-to-date now. But is the CircleCi job to update the remote demo.pixelgrade.com" );
-			    return true;
-		    }
-	    } ) );
-} );
+				console.log( " ==== The master branch is up-to-date now. But is the CircleCi job to update the remote demo.pixelgrade.com" );
+				return true;
+			}
+		}));
+}
+gulp.task('update-demo', updateDemoInstall);
+
+
+/**
+ * Short commands help
+ */
+function help(done) {
+
+	var $help = '\nCommands available : \n \n' +
+		'=== General Commands === \n' +
+		'start              (default)Compiles all styles and scripts and makes the theme ready to start \n' +
+		'zip               	Generate the zip archive \n' +
+		'build				Generate the build directory with the cleaned theme \n' +
+		'help               Print all commands \n' +
+		'=== Style === \n' +
+		'styles-main        Compiles styles in production mode\n' +
+		'styles-rtl         Compiles RTL styles in production mode\n' +
+		'=== Scripts === \n' +
+		'scripts            Concatenate all js scripts \n' +
+		'=== Watchers === \n' +
+		'watch              Watches all js and scss files \n' +
+		'styles-watch       Watch only styles\n' +
+		'scripts-watch      Watch scripts only \n';
+
+	console.log($help);
+
+	done();
+}
+gulp.task('help', help);
