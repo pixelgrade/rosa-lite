@@ -119,6 +119,10 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 
 						<hr class="separator"/>
 
+						<?php if ( pixelgrade_option( 'blog_single_show_author_box', true ) ) {
+							get_template_part( 'author-bio' );
+						} ?>
+
 					</footer><!-- .article__footer -->
 
 					<?php if ( function_exists( 'yarpp_related' ) ) {
