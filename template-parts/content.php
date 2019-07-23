@@ -43,14 +43,9 @@ if ( ! $has_thumb ) {
 		} ?>
 
 		<header>
-
-			<?php if ( pixelgrade_option( 'blog_show_date' ) ) : ?>
-
 				<div class="article__date">
 					<time class="published" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo $date ?></time>
 				</div>
-
-			<?php endif; ?>
 
 			<h2 class="article__title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 			<div class="separator separator--flower">&#10043;</div>
@@ -60,11 +55,9 @@ if ( ! $has_thumb ) {
 			<?php echo rosa_better_excerpt(); ?>
 		</section>
 
-		<?php
-		$read_more = pixelgrade_option( 'blog_read_more_text' );
-		if ( ! empty( $read_more ) ) : ?>
-			<a href="<?php the_permalink(); ?>" class="read-more-button"><?php echo $read_more ?></a>
-		<?php endif; ?>
+		<?php $read_more = 'Read More';?>
+
+        <a href="<?php the_permalink(); ?>" class="read-more-button"><?php echo $read_more ?></a>
 
 	</div><!-- .article__body -->
 </article>
