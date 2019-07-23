@@ -9391,7 +9391,7 @@ button.nav-trigger {
     color: #FFFFFF; }
   .pagination .nav-links .page-numbers.current {
     color: #FFFFFF; }
-  .pagination .nav-links .page-numbers.prev.disabled {
+  .pagination .nav-links .page-numbers.prev.disabled, .pagination .nav-links .page-numbers.next.disabled {
     background-color: #515150;
     color: #919191; }
 
