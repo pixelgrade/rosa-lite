@@ -215,6 +215,8 @@
 	@extend .btn;
 	@extend .btn--text;
 	font-size: 13px;
+
+	color: $accent;
 }
 
 .archive-filter {

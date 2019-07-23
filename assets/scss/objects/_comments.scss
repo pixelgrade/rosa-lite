@@ -87,6 +87,9 @@
 	.comment-number.total {
 		@extend .comment-number--dark;
 
+		color: #FFFFFF;
+		background-color: $dark;
+
 		position: relative;
 		z-index: 1;
 	}
@@ -256,7 +259,7 @@ li.depth-2:before {
 
 	@include font-size(14px);
 
-	color: inherit;
+	color: $light;
 }
 
 .comment__links {

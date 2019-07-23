@@ -45,6 +45,23 @@
 	.inf_scroll & {
 		display: none;
 	}
+
+	.nav-links .page-numbers {
+		background-color: $dark;
+	}
+
+	.page-numbers.prev, .page-numbers.next {
+		color: #FFFFFF;
+	}
+
+	.nav-links .page-numbers.current {
+		color: #FFFFFF;
+	}
+
+	.nav-links .page-numbers.prev.disabled {
+		background-color: $gray;
+		color: $light;
+	}
 }
 
 .pagination--single {

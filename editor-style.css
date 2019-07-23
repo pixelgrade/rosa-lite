@@ -784,7 +784,7 @@ textarea:focus {
  * and over in your markup.
  */
 .cf:after, .nav:after, .media:after, .island:after,
-.islet:after, .matrix:after, .multi-list:after, .stat-group:after, .wp-caption:after, .gallery:after, blockquote cite:after, blockquote .testimonial__author-name:after, .pixcode--grid:after, .otw-wrapper:after, .btn-list:after {
+.islet:after, .matrix:after, .multi-list:after, .stat-group:after, .wp-caption:after, .gallery:after, blockquote cite:after, blockquote .testimonial__author-name:after, .pixcode--grid:after, .btn-list:after {
   content: "";
   display: table;
   clear: both; }
@@ -1598,7 +1598,7 @@ label,
 /**
 	 * Grid wrapper
 	 */
-.grid, .otw-wrapper {
+.grid {
   margin-left: -24px;
   margin-left: -1.5rem;
   list-style: none;
@@ -1607,13 +1607,13 @@ label,
 /**
 	 * Very infrequently occuring grid wrappers as children of grid wrappers.
 	 */
-.grid > .grid, .otw-wrapper > .grid, .grid > .otw-wrapper, .otw-wrapper > .otw-wrapper {
+.grid > .grid {
   margin-left: 0; }
 
 /**
 	 * Grid
 	 */
-.grid__item, .otw-input-wrap, .otw-button-wrap {
+.grid__item {
   display: inline-block;
   width: 100%;
   padding-left: 24px;
@@ -1627,7 +1627,7 @@ label,
 .grid--rev {
   direction: rtl;
   text-align: left; }
-  .grid--rev > .grid__item, .grid--rev > .otw-input-wrap, .grid--rev > .otw-button-wrap {
+  .grid--rev > .grid__item {
     direction: ltr;
     text-align: left; }
 
@@ -1637,7 +1637,7 @@ label,
 	 */
 .grid--full {
   margin-left: 0; }
-  .grid--full > .grid__item, .grid--full > .otw-input-wrap, .grid--full > .otw-button-wrap {
+  .grid--full > .grid__item {
     padding-left: 0; }
 
 /**
@@ -1645,7 +1645,7 @@ label,
 	 */
 .grid--right {
   text-align: right; }
-  .grid--right > .grid__item, .grid--right > .otw-input-wrap, .grid--right > .otw-button-wrap {
+  .grid--right > .grid__item {
     text-align: left; }
 
 /**
@@ -1654,17 +1654,17 @@ label,
 	 */
 .grid--center {
   text-align: center; }
-  .grid--center > .grid__item, .grid--center > .otw-input-wrap, .grid--center > .otw-button-wrap {
+  .grid--center > .grid__item {
     text-align: left; }
 
 /**
 	 * Align grid cells vertically (`.grid--middle` or `.grid--bottom`). Extends
 	 * `.grid`.
 	 */
-.grid--middle > .grid__item, .grid--middle > .otw-input-wrap, .grid--middle > .otw-button-wrap {
+.grid--middle > .grid__item {
   vertical-align: middle; }
 
-.grid--bottom > .grid__item, .grid--bottom > .otw-input-wrap, .grid--bottom > .otw-button-wrap {
+.grid--bottom > .grid__item {
   vertical-align: bottom; }
 
 /**
@@ -1673,7 +1673,7 @@ label,
 .grid--narrow {
   margin-left: -12px;
   margin-left: -0.75rem; }
-  .grid--narrow > .grid__item, .grid--narrow > .otw-input-wrap, .grid--narrow > .otw-button-wrap {
+  .grid--narrow > .grid__item {
     padding-left: 12px;
     padding-left: 0.75rem; }
 
@@ -1683,7 +1683,7 @@ label,
 .grid--wide {
   margin-left: -48px;
   margin-left: -3rem; }
-  .grid--wide > .grid__item, .grid--wide > .otw-input-wrap, .grid--wide > .otw-button-wrap {
+  .grid--wide > .grid__item {
     padding-left: 48px;
     padding-left: 3rem; }
 
@@ -2180,7 +2180,7 @@ html.flexbox {
 	 * 8. Basic cosmetics for default buttons. Change or override at will.
 	 * 9. Don’t allow buttons to have underlines; it kinda ruins the illusion.
 	 */
-.btn, .otreservations-submit {
+.btn {
   display: inline-block;
   /* [1] */
   vertical-align: middle;
@@ -2210,7 +2210,7 @@ html.flexbox {
   border-radius: 0;
   /* [8] */ }
 
-.btn, .otreservations-submit, .btn:hover, .otreservations-submit:hover {
+.btn, .btn:hover {
   text-decoration: none;
   /* [9] */ }
 
@@ -2777,7 +2777,7 @@ html.flexbox {
   /**
 	* Thirds
 	*/
-  .lap-and-up-one-third, .lap-and-up-two-sixths, .lap-and-up-four-twelfths, .otw-input-wrap {
+  .lap-and-up-one-third, .lap-and-up-two-sixths, .lap-and-up-four-twelfths {
     width: 33.333%; }
   .lap-and-up-two-thirds, .lap-and-up-four-sixths, .lap-and-up-eight-twelfths {
     width: 66.666%; }
@@ -7220,9 +7220,9 @@ h5, h6 {
 /*------------------------------------*\
                LINKS
 \*------------------------------------*/
-a, .article__content a:not([class]), .btn.btn--text, .btn--text.otreservations-submit {
+a, .article__content a:not([class]), .btn.btn--text {
   text-decoration: none; }
-  a, .article__content a:not([class]), .btn.btn--text, .btn--text.otreservations-submit, a:hover, .article__content a:hover:not([class]), .btn.btn--text:hover, .btn--text.otreservations-submit:hover {
+  a, .article__content a:not([class]), .btn.btn--text, a:hover, .article__content a:hover:not([class]), .btn.btn--text:hover {
     color: #c59d5f; }
 
 a {
@@ -7230,14 +7230,14 @@ a {
   a:hover {
     color: #c59d5f; }
 
-.link--light, .meta-list a.btn, .meta-list a.otreservations-submit {
+.link--light, .meta-list a.btn {
   color: inherit;
   opacity: 0.45; }
 
 .link--dark {
   color: inherit; }
 
-.link--light:hover, .meta-list a.btn:hover, .meta-list a.otreservations-submit:hover, .link--dark:hover {
+.link--light:hover, .meta-list a.btn:hover, .link--dark:hover {
   color: #c59d5f;
   opacity: 1; }
 
@@ -7440,7 +7440,7 @@ figure {
 /*------------------------------------*\
     $GRID
 \*------------------------------------*/
-.pixcode--grid > .grid__item, .otw-wrapper > .grid__item, .pixcode--grid > .otw-input-wrap, .otw-wrapper > .otw-input-wrap, .pixcode--grid > .otw-button-wrap, .otw-wrapper > .otw-button-wrap {
+.pixcode--grid > .grid__item {
   float: left; }
 
 .pixcode--heading {
@@ -7454,7 +7454,7 @@ figure {
 /*------------------------------------*\
     $BUTTONS
 \*------------------------------------*/
-.btn, .otreservations-submit {
+.btn {
   padding: 12px 30px;
   font-size: 12px;
   line-height: 1;
@@ -7466,9 +7466,9 @@ figure {
   -webkit-transition: all .15s;
   transition: all .15s;
   border-radius: 3px; }
-  .btn:hover, .otreservations-submit:hover {
+  .btn:hover {
     background-color: #c59d5f; }
-  .btn.a, .a.otreservations-submit {
+  .btn.a {
     border-bottom: none; }
 
 .btn--primary {
@@ -7477,8 +7477,8 @@ figure {
   .btn--primary:hover {
     background-color: #262526; }
 
-.btn--secondary, .btn--tertiary, .otreservations-submit {
-  color: #919191; }
+.btn--secondary, .btn--tertiary {
+  color: #FFFFFF; }
 
 .btn--tertiary {
   background-color: #919191; }
@@ -7501,14 +7501,14 @@ figure {
   padding: 0;
   margin: 0 0 0 -2px;
   list-style: none; }
-  .btn-list > .btn, .btn-list > .otreservations-submit, .btn-list > li, .btn-list > a {
+  .btn-list > .btn, .btn-list > li, .btn-list > a {
     float: left;
     margin-left: 2px;
     margin-bottom: 2px; }
 
 .meta-list {
   margin-bottom: 12px; }
-  .meta-list .btn, .meta-list .otreservations-submit {
+  .meta-list .btn {
     padding: 0 6px;
     font-size: 12px;
     font-size: 0.75rem;
@@ -7518,18 +7518,18 @@ figure {
   .meta-list .list-head {
     margin-right: 12px;
     border: 1px solid transparent; }
-  .meta-list a.btn, .meta-list a.otreservations-submit {
+  .meta-list a.btn {
     margin-left: 0;
     border: 1px solid #d8d8d8;
     border-right: 0;
     border-radius: 0;
     background: transparent; }
-    .meta-list a.btn:hover, .meta-list a.otreservations-submit:hover {
+    .meta-list a.btn:hover {
       color: #c59d5f; }
-  .meta-list a.btn:last-child, .meta-list a.otreservations-submit:last-child {
+  .meta-list a.btn:last-child {
     border-right: 1px solid #d8d8d8; }
 
-.btn.btn--text, .btn--text.otreservations-submit {
+.btn.btn--text {
   padding: 3px 0;
   background: transparent !important;
   border: 0;
@@ -7539,7 +7539,7 @@ figure {
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: 0.1em; }
-  .btn.btn--text:hover, .btn--text.otreservations-submit:hover {
+  .btn.btn--text:hover {
     color: #262526;
     border-color: #262526; }
 
@@ -7571,7 +7571,7 @@ figure {
   .article__header .article__headline .headline__primary,
   .article__header .article__headline .headline__description h5 {
     color: #FFFFFF; }
-  .article__header .article__headline .headline__description .btn, .article__header .article__headline .headline__description .otreservations-submit {
+  .article__header .article__headline .headline__description .btn {
     background-color: white; }
 
 .break-words, .headline__primary, .headline__secondary {
@@ -7628,56 +7628,8 @@ figure {
 .is-edge .article__headline .star,
 .is-edge .article__headline .line,
 .is-edge .article__headline .arrow,
-.is-edge .article__headline .btn,
-.is-edge .article__headline .otreservations-submit {
+.is-edge .article__headline .btn {
   opacity: 1 !important; }
-
-/*------------------------------------*\
-    $OPEN TABLE RESERVATIONS
-\*------------------------------------*/
-.otreservations {
-  text-align: center; }
-
-.otreservation-title-wrapper {
-  margin-bottom: 36px; }
-
-.otreservations-title {
-  margin: 0; }
-
-.otreservations-subtitle {
-  font-size: 10px;
-  text-transform: uppercase;
-  color: inherit;
-  opacity: 0.45; }
-
-.otw-widget-form {
-  margin: 0 auto;
-  max-width: 700px; }
-
-@media only screen and (max-width: 899px) {
-  .otw-input-wrap {
-    margin-bottom: 24px; } }
-
-.otw-input-wrap label {
-  margin-right: 12px; }
-
-.otw-input-wrap label, .otw-input-wrap input, .otw-input-wrap select {
-  display: inline-block; }
-
-.otw-input-wrap input, .otw-input-wrap select, .widget .otw-input-wrap input, .widget .otw-input-wrap select {
-  width: 150px;
-  height: 40px;
-  padding: 6px;
-  background: none;
-  border: 1px solid #d8d8d8;
-  border-radius: 3px;
-  color: inherit; }
-
-.otw-button-wrap {
-  margin-top: 36px; }
-
-.article__header .article__headline .otreservations-submit {
-  opacity: 1; }
 
 /* ==========================================================================
    #FRONTEND + EDITOR STYLES VARS
@@ -7688,41 +7640,41 @@ figure {
 /**
  * Grid Row
  */
-.row.grid, .row.otw-wrapper {
+.row.grid {
   position: relative;
   margin-bottom: 36px; }
-  .row.grid:last-child, .row.otw-wrapper:last-child {
+  .row.grid:last-child {
     margin-bottom: 0; }
 
 /**
  * Grid Columns / Row Items
  */
 @media only screen and (min-width: 900px) {
-  .grid__item > *:last-child, .otw-input-wrap > *:last-child, .otw-button-wrap > *:last-child {
+  .grid__item > *:last-child {
     margin-bottom: 0; } }
 
-.grid__item:last-child > *:last-child, .otw-input-wrap:last-child > *:last-child, .otw-button-wrap:last-child > *:last-child {
+.grid__item:last-child > *:last-child {
   margin-bottom: 0; }
 
-.row .grid__item[data-sh-column-attr-column_style=promo-box], .row .otw-input-wrap[data-sh-column-attr-column_style=promo-box], .row .otw-button-wrap[data-sh-column-attr-column_style=promo-box], .row .grid__item[data-sh-column-attr-class=promo-box], .row .otw-input-wrap[data-sh-column-attr-class=promo-box], .row .otw-button-wrap[data-sh-column-attr-class=promo-box] {
+.row .grid__item[data-sh-column-attr-column_style=promo-box], .row .grid__item[data-sh-column-attr-class=promo-box] {
   padding: 36px 54px;
   background-color: #c59d5f;
   color: white; }
-  .promo-box.dark .row .grid__item[data-sh-column-attr-column_style=promo-box], .promo-box.dark .row .otw-input-wrap[data-sh-column-attr-column_style=promo-box], .promo-box.dark .row .otw-button-wrap[data-sh-column-attr-column_style=promo-box], .promo-box.dark .row .grid__item[data-sh-column-attr-class=promo-box], .promo-box.dark .row .otw-input-wrap[data-sh-column-attr-class=promo-box], .promo-box.dark .row .otw-button-wrap[data-sh-column-attr-class=promo-box] {
+  .promo-box.dark .row .grid__item[data-sh-column-attr-column_style=promo-box], .promo-box.dark .row .grid__item[data-sh-column-attr-class=promo-box] {
     background-color: #262526; }
-  .row .grid__item[data-sh-column-attr-column_style=promo-box] h1, .row .otw-input-wrap[data-sh-column-attr-column_style=promo-box] h1, .row .otw-button-wrap[data-sh-column-attr-column_style=promo-box] h1, .row .grid__item[data-sh-column-attr-column_style=promo-box] h2, .row .otw-input-wrap[data-sh-column-attr-column_style=promo-box] h2, .row .otw-button-wrap[data-sh-column-attr-column_style=promo-box] h2, .row .grid__item[data-sh-column-attr-column_style=promo-box] h3, .row .otw-input-wrap[data-sh-column-attr-column_style=promo-box] h3, .row .otw-button-wrap[data-sh-column-attr-column_style=promo-box] h3, .row .grid__item[data-sh-column-attr-column_style=promo-box] h4, .row .otw-input-wrap[data-sh-column-attr-column_style=promo-box] h4, .row .otw-button-wrap[data-sh-column-attr-column_style=promo-box] h4, .row .grid__item[data-sh-column-attr-column_style=promo-box] h5, .row .otw-input-wrap[data-sh-column-attr-column_style=promo-box] h5, .row .otw-button-wrap[data-sh-column-attr-column_style=promo-box] h5, .row .grid__item[data-sh-column-attr-column_style=promo-box] h6, .row .otw-input-wrap[data-sh-column-attr-column_style=promo-box] h6, .row .otw-button-wrap[data-sh-column-attr-column_style=promo-box] h6, .row .grid__item[data-sh-column-attr-class=promo-box] h1, .row .otw-input-wrap[data-sh-column-attr-class=promo-box] h1, .row .otw-button-wrap[data-sh-column-attr-class=promo-box] h1, .row .grid__item[data-sh-column-attr-class=promo-box] h2, .row .otw-input-wrap[data-sh-column-attr-class=promo-box] h2, .row .otw-button-wrap[data-sh-column-attr-class=promo-box] h2, .row .grid__item[data-sh-column-attr-class=promo-box] h3, .row .otw-input-wrap[data-sh-column-attr-class=promo-box] h3, .row .otw-button-wrap[data-sh-column-attr-class=promo-box] h3, .row .grid__item[data-sh-column-attr-class=promo-box] h4, .row .otw-input-wrap[data-sh-column-attr-class=promo-box] h4, .row .otw-button-wrap[data-sh-column-attr-class=promo-box] h4, .row .grid__item[data-sh-column-attr-class=promo-box] h5, .row .otw-input-wrap[data-sh-column-attr-class=promo-box] h5, .row .otw-button-wrap[data-sh-column-attr-class=promo-box] h5, .row .grid__item[data-sh-column-attr-class=promo-box] h6, .row .otw-input-wrap[data-sh-column-attr-class=promo-box] h6, .row .otw-button-wrap[data-sh-column-attr-class=promo-box] h6 {
+  .row .grid__item[data-sh-column-attr-column_style=promo-box] h1, .row .grid__item[data-sh-column-attr-column_style=promo-box] h2, .row .grid__item[data-sh-column-attr-column_style=promo-box] h3, .row .grid__item[data-sh-column-attr-column_style=promo-box] h4, .row .grid__item[data-sh-column-attr-column_style=promo-box] h5, .row .grid__item[data-sh-column-attr-column_style=promo-box] h6, .row .grid__item[data-sh-column-attr-class=promo-box] h1, .row .grid__item[data-sh-column-attr-class=promo-box] h2, .row .grid__item[data-sh-column-attr-class=promo-box] h3, .row .grid__item[data-sh-column-attr-class=promo-box] h4, .row .grid__item[data-sh-column-attr-class=promo-box] h5, .row .grid__item[data-sh-column-attr-class=promo-box] h6 {
     margin-top: 0;
     color: inherit; }
-  .row .grid__item[data-sh-column-attr-column_style=promo-box] p:last-child, .row .otw-input-wrap[data-sh-column-attr-column_style=promo-box] p:last-child, .row .otw-button-wrap[data-sh-column-attr-column_style=promo-box] p:last-child, .row .grid__item[data-sh-column-attr-class=promo-box] p:last-child, .row .otw-input-wrap[data-sh-column-attr-class=promo-box] p:last-child, .row .otw-button-wrap[data-sh-column-attr-class=promo-box] p:last-child {
+  .row .grid__item[data-sh-column-attr-column_style=promo-box] p:last-child, .row .grid__item[data-sh-column-attr-class=promo-box] p:last-child {
     margin-bottom: 0; }
 
-.row .grid__item[data-sh-column-attr-column_style=island], .row .otw-input-wrap[data-sh-column-attr-column_style=island], .row .otw-button-wrap[data-sh-column-attr-column_style=island] {
+.row .grid__item[data-sh-column-attr-column_style=island] {
   padding: 46px; }
 
-html .row .grid__item[data-sh-column-attr-column_style=promo-box] a, html .row .otw-input-wrap[data-sh-column-attr-column_style=promo-box] a, html .row .otw-button-wrap[data-sh-column-attr-column_style=promo-box] a, .row .grid__item[data-sh-column-attr-class=promo-box].row .grid__item[data-sh-column-attr-column_style=promo-box] a, .row .otw-input-wrap[data-sh-column-attr-class=promo-box].row .grid__item[data-sh-column-attr-column_style=promo-box] a, .row .otw-button-wrap[data-sh-column-attr-class=promo-box].row .grid__item[data-sh-column-attr-column_style=promo-box] a, .row .grid__item[data-sh-column-attr-class=promo-box].row .otw-input-wrap[data-sh-column-attr-column_style=promo-box] a, .row .otw-input-wrap[data-sh-column-attr-class=promo-box].row .otw-input-wrap[data-sh-column-attr-column_style=promo-box] a, .row .otw-button-wrap[data-sh-column-attr-class=promo-box].row .otw-input-wrap[data-sh-column-attr-column_style=promo-box] a, .row .grid__item[data-sh-column-attr-class=promo-box].row .otw-button-wrap[data-sh-column-attr-column_style=promo-box] a, .row .otw-input-wrap[data-sh-column-attr-class=promo-box].row .otw-button-wrap[data-sh-column-attr-column_style=promo-box] a, .row .otw-button-wrap[data-sh-column-attr-class=promo-box].row .otw-button-wrap[data-sh-column-attr-column_style=promo-box] a, .row .grid__item[data-sh-column-attr-class=promo-box] a, .row .otw-input-wrap[data-sh-column-attr-class=promo-box] a, .row .otw-button-wrap[data-sh-column-attr-class=promo-box] a {
+html .row .grid__item[data-sh-column-attr-column_style=promo-box] a, .row .grid__item[data-sh-column-attr-class=promo-box].row .grid__item[data-sh-column-attr-column_style=promo-box] a, .row .grid__item[data-sh-column-attr-class=promo-box] a {
   color: white;
   text-decoration: underline; }
-  html .row .grid__item[data-sh-column-attr-column_style=promo-box] a:hover, html .row .otw-input-wrap[data-sh-column-attr-column_style=promo-box] a:hover, html .row .otw-button-wrap[data-sh-column-attr-column_style=promo-box] a:hover, .row .grid__item[data-sh-column-attr-class=promo-box].row .grid__item[data-sh-column-attr-column_style=promo-box] a:hover, .row .otw-input-wrap[data-sh-column-attr-class=promo-box].row .grid__item[data-sh-column-attr-column_style=promo-box] a:hover, .row .otw-button-wrap[data-sh-column-attr-class=promo-box].row .grid__item[data-sh-column-attr-column_style=promo-box] a:hover, .row .grid__item[data-sh-column-attr-class=promo-box].row .otw-input-wrap[data-sh-column-attr-column_style=promo-box] a:hover, .row .otw-input-wrap[data-sh-column-attr-class=promo-box].row .otw-input-wrap[data-sh-column-attr-column_style=promo-box] a:hover, .row .otw-button-wrap[data-sh-column-attr-class=promo-box].row .otw-input-wrap[data-sh-column-attr-column_style=promo-box] a:hover, .row .grid__item[data-sh-column-attr-class=promo-box].row .otw-button-wrap[data-sh-column-attr-column_style=promo-box] a:hover, .row .otw-input-wrap[data-sh-column-attr-class=promo-box].row .otw-button-wrap[data-sh-column-attr-column_style=promo-box] a:hover, .row .otw-button-wrap[data-sh-column-attr-class=promo-box].row .otw-button-wrap[data-sh-column-attr-column_style=promo-box] a:hover, .row .grid__item[data-sh-column-attr-class=promo-box] a:hover, .row .otw-input-wrap[data-sh-column-attr-class=promo-box] a:hover, .row .otw-button-wrap[data-sh-column-attr-class=promo-box] a:hover {
+  html .row .grid__item[data-sh-column-attr-column_style=promo-box] a:hover, .row .grid__item[data-sh-column-attr-class=promo-box].row .grid__item[data-sh-column-attr-column_style=promo-box] a:hover, .row .grid__item[data-sh-column-attr-class=promo-box] a:hover {
     color: inherit !important; }
 
 html {
