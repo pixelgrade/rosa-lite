@@ -2,7 +2,7 @@
     $DEFAULTS
 \*------------------------------------*/
 /**
- * inuit.css’ default variables. Redefine these in your `_vars.scss` file (found
+ * inuit.css' default variables. Redefine these in your `_vars.scss` file (found
  * in the inuit.css-web-template) to override them.
  */
 
@@ -39,7 +39,7 @@ $base-line-height: 24px !default;
 $base-font-family: sans-serif !default;
 
 /**
- * Default colour for objects’ borders etc.
+ * Default colour for objects' borders etc.
  */
 $base-ui-color: #ccc !default;
 
@@ -123,7 +123,7 @@ $micro-size: 10px !default;
 $english-quotes: true !default;
 
 /**
- * If you want English quotes then please do not edit these; they’re only here
+ * If you want English quotes then please do not edit these; they're only here
  * because Sass needs them.
  */
 $open-quote: null;

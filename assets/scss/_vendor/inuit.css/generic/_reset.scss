@@ -8,7 +8,7 @@
 
 @if $global-border-box == true {
 	/**
-	* Let’s make the box model all nice, shall we...?
+	* Let's make the box model all nice, shall we...?
 	*/
 	* {
 		&,
@@ -54,7 +54,7 @@ ins {
 }
 
 /**
- * So that `alt` text is visually offset if images don’t load.
+ * So that `alt` text is visually offset if images don't load.
  */
 img {
 	font-style: italic;

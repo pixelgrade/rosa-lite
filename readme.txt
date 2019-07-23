@@ -3,7 +3,7 @@ Theme URI: https://github.com/pixelgrade/rosa-lite
 Author: Pixelgrade
 Author URI: https://pixelgrade.com/
 Contributors: pixelgrade, babbardel, vlad.olaru, razvanonofrei
-Description: Rosa Lite is a free restaurant WordPress theme, built to help small businesses shape an appealing online experience.
+Description: This is the free version of Rosa, the #1 best selling restaurant WordPress theme, built to help small businesses shape an appealing online experience. It's packed with a parallax effect to grab attention, an online food menu so people can discover your offering, an easy to customize interface without using code, and a responsive design to address people on the go. This theme's versatility allows it to be used in a wide range of industries, making it the perfect theme if you own a business. No matter if it's a restaurant, beauty salon, house rental, hotel, coffee shop, or any other type of small business, this theme will fit your needs perfectly.
 Version: 1.0.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -17,9 +17,9 @@ Tested up to: 5.2.2
 == Description ==
 
 Rosa Lite is the free version of Rosa, the #1 best selling restaurant WordPress theme, built to help small businesses shape an appealing online experience.
-It’s packed with a parallax effect to grab attention, an online food menu so people can discover your offering, an easy to customize interface without using code, and a responsive design to address people on the go.
-This theme’s versatility allows it to be used in a wide range of industries, making it the perfect theme if you own a business.
-No matter if it’s a restaurant, beauty salon, house rental, hotel, coffee shop, or any other type of small business, this theme will fit your needs perfectly.
+It's packed with a parallax effect to grab attention, an online food menu so people can discover your offering, an easy to customize interface without using code, and a responsive design to address people on the go.
+This theme's versatility allows it to be used in a wide range of industries, making it the perfect theme if you own a business.
+No matter if it's a restaurant, beauty salon, house rental, hotel, coffee shop, or any other type of small business, this theme will fit your needs perfectly.
 
 == Installation ==
 

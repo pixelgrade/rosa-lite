@@ -3,8 +3,8 @@ Theme Name: Rosa Lite
 Theme URI: https://github.com/pixelgrade/rosa-lite
 Author: Pixelgrade
 Author URI: https://pixelgrade.com
-Description: Rosa Lite is a free restaurant WordPress theme, built to help small businesses shape an appealing online experience.
-Stable Tag: 1.0.0
+Description: This is the free version of Rosa, the #1 best selling restaurant WordPress theme, built to help small businesses shape an appealing online experience. It's packed with a parallax effect to grab attention, an online food menu so people can discover your offering, an easy to customize interface without using code, and a responsive design to address people on the go. This theme's versatility allows it to be used in a wide range of industries, making it the perfect theme if you own a business. No matter if it's a restaurant, beauty salon, house rental, hotel, coffee shop, or any other type of small business, this theme will fit your needs perfectly.
+Version: 1.0.0
 License: GNU General Public License v3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: rosa-lite
@@ -44,7 +44,7 @@ and Blueprint http://www.blueprintcss.org/
     VARS.SCSS
 \*------------------------------------*/
 /**
- * Any variables you find set in inuit.css’ `_vars.scss` that you do not wish to
+ * Any variables you find set in inuit.css' `_vars.scss` that you do not wish to
  * keep, simply redefine here. This means that if inuit.css, for example, sets
  * your `$base-font-size` at 16px and you wish it to be 14px, simply redeclare
  * that variable in this file. inuit.css ignores its own variables in favour of
@@ -55,7 +55,7 @@ and Blueprint http://www.blueprintcss.org/
     $OBJECTS-AND-ABSTRACTIONS
 \*------------------------------------*/
 /**
- * All of inuit.css’ objects and abstractions are initially turned off by
+ * All of inuit.css' objects and abstractions are initially turned off by
  * default. This means that you start any project with as little as possible,
  * and introducing objects and abstractions is as simple as switching the
  * following variables to `true`.
@@ -124,7 +124,7 @@ and Blueprint http://www.blueprintcss.org/
     $CONTENTS
 \*------------------------------------*/
 /**
- * CONTENTS............You’re reading it!
+ * CONTENTS............You're reading it!
  * WARNING.............Here be dragons!
  * IMPORTS.............Begin importing the sections below
  *
@@ -202,7 +202,7 @@ and Blueprint http://www.blueprintcss.org/
     $DEFAULTS
 \*------------------------------------*/
 /**
- * inuit.css’ default variables. Redefine these in your `_vars.scss` file (found
+ * inuit.css' default variables. Redefine these in your `_vars.scss` file (found
  * in the inuit.css-web-template) to override them.
  */
 /*------------------------------------*\
@@ -229,7 +229,7 @@ and Blueprint http://www.blueprintcss.org/
  * Base font-family.
  */
 /**
- * Default colour for objects’ borders etc.
+ * Default colour for objects' borders etc.
  */
 /*------------------------------------*\
     $RESPONSIVE
@@ -267,7 +267,7 @@ and Blueprint http://www.blueprintcss.org/
  * English quote marks?
  */
 /**
- * If you want English quotes then please do not edit these; they’re only here
+ * If you want English quotes then please do not edit these; they're only here
  * because Sass needs them.
  */
 /**
@@ -390,11 +390,11 @@ and Blueprint http://www.blueprintcss.org/
 /**
  * Media query mixin.
  *
- * It’s not great practice to define solid breakpoints up-front, preferring to
- * modify your design when it needs it, rather than assuming you’ll want a
- * change at ‘mobile’. However, as inuit.css is required to take a hands off
+ * It's not great practice to define solid breakpoints up-front, preferring to
+ * modify your design when it needs it, rather than assuming you'll want a
+ * change at ‘mobile'. However, as inuit.css is required to take a hands off
  * approach to design decisions, this is the closest we can get to baked-in
- * responsiveness. It’s flexible enough to allow you to set your own breakpoints
+ * responsiveness. It's flexible enough to allow you to set your own breakpoints
  * but solid enough to be frameworkified.
  *
  * We define some broad breakpoints in our vars file that are picked up here
@@ -753,7 +753,7 @@ table {
  * As per: csswizardry.com/2011/10/reset-restarted
  */
 /**
-	* Let’s make the box model all nice, shall we...?
+	* Let's make the box model all nice, shall we...?
 	*/
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
@@ -791,7 +791,7 @@ ins {
   border-bottom: 1px solid; }
 
 /**
- * So that `alt` text is visually offset if images don’t load.
+ * So that `alt` text is visually offset if images don't load.
  */
 img {
   font-style: italic; }
@@ -1123,7 +1123,7 @@ pre mark {
  *
  * 1. Make the list look like code.
  * 2. Give the list flush numbers with a leading zero.
- * 3. Make sure lines of code don’t wrap.
+ * 3. Make sure lines of code don't wrap.
  * 4. Give the code form by forcing the `code` to honour white-space.
  */
 .line-numbers {
@@ -1589,7 +1589,7 @@ label,
    <small class=extra-help>.edu emails only</small>
  *
  * We leave the help text in the document flow and merely set it to
- * `visibility:hidden;`. This means that it won’t interfere with anything once
+ * `visibility:hidden;`. This means that it won't interfere with anything once
  * it reappears.
  *
  */
@@ -1778,7 +1778,7 @@ label,
 		   </div>
 	   </div>
 	 *
-	 * It’s pretty poorly named I’m afraid, but it works...
+	 * It's pretty poorly named I'm afraid, but it works...
 	 *
 	 * Demo: jsfiddle.net/inuitcss/ufUh2
 	 *
@@ -1928,7 +1928,7 @@ html.flexbox, html.site-title {
 	\*------------------------------------*/
 /**
 	 * Link-group nav, used for displaying related options. Extends `.nav--block`
-	 * but could also extend `.nav--fit`. Extend with colours and ‘current states’
+	 * but could also extend `.nav--fit`. Extend with colours and ‘current states'
 	 * in your theme stylesheet.
 	 *
 	  <ul class="nav  options">
@@ -2253,11 +2253,11 @@ html.flexbox, html.site-title {
 	 * 4. Make buttons inherit font styles.
 	 * 5. Force all elements using beautons to appear clickable.
 	 * 6. Normalise box model styles.
-	 * 7. If the button’s text is 1em, and the button is (3 * font-size) tall, then
+	 * 7. If the button's text is 1em, and the button is (3 * font-size) tall, then
 	 *    there is 1em of space above and below that text. We therefore apply 1em
 	 *    of space to the left and right, as padding, to keep consistent spacing.
 	 * 8. Basic cosmetics for default buttons. Change or override at will.
-	 * 9. Don’t allow buttons to have underlines; it kinda ruins the illusion.
+	 * 9. Don't allow buttons to have underlines; it kinda ruins the illusion.
 	 */
 .btn, .comments_add-comment, .form-submit #comment-submit, .wpcf7-form-control.wpcf7-submit, .widget_tag_cloud a, .read-more-button {
   display: inline-block;
@@ -2320,7 +2320,7 @@ html.flexbox, html.site-title {
 /**
 	 * These buttons will fill the entirety of their container.
 	 *
-	 * 1. Remove padding so that widths and paddings don’t conflict.
+	 * 1. Remove padding so that widths and paddings don't conflict.
 	 */
 .btn--full {
   width: 100%;
@@ -2435,7 +2435,7 @@ html.flexbox, html.site-title {
   color: #fff;
   /* Override this color in your theme stylesheet */
   /**
-		 * Normally we’d use border-radius:100%; but instead here we just use an
+		 * Normally we'd use border-radius:100%; but instead here we just use an
 		 * overly large number; `border-radius:100%;` would create an oval on
 		 * non-square elements whereas we just want to round the ends of an element.
 		 */
@@ -2516,7 +2516,7 @@ html.flexbox, html.site-title {
 	 * The beauty of combining the greyboxing with inuit.css objects is that any
 	 * prototyping can quickly be converted into/used as production code.
 	 *
-	 * For a more complete prototyping framework, consider Adam Whitcroft’s Proto:
+	 * For a more complete prototyping framework, consider Adam Whitcroft's Proto:
 	 * adamwhitcroft.com/proto
 	 *
 	 * Demo: jsfiddle.net/inuitcss/qCXfh/
@@ -2538,7 +2538,7 @@ html.flexbox, html.site-title {
   text-decoration: underline; }
 
 /**
-	 * All greyboxes will occupy 100% of their parent’s width, but to alter their
+	 * All greyboxes will occupy 100% of their parent's width, but to alter their
 	 * heights we apply incrementally larger line-heights:
 	 */
 .greybox--small,
@@ -2677,15 +2677,15 @@ html.flexbox, html.site-title {
   width: 91.666%; }
 
 /**
- * If you have set `$responsive` to ‘true’ in `_vars.scss` then you now have
- * access to these classes. You can define at which breakpoint you’d like an
+ * If you have set `$responsive` to ‘true' in `_vars.scss` then you now have
+ * access to these classes. You can define at which breakpoint you'd like an
  * element to be a certain size, e.g.:
  *
  * `<div class="g  one-quarter  lap-one-half  palm-one-whole"> ... </div>`
  *
- * This would create a `div` that, at ‘desktop’ sizes, takes up a quarter of the
- * horizontal space, a half of that space at ‘tablet’ sizes, and goes full width
- * at ‘mobile’ sizes.
+ * This would create a `div` that, at ‘desktop' sizes, takes up a quarter of the
+ * horizontal space, a half of that space at ‘tablet' sizes, and goes full width
+ * at ‘mobile' sizes.
  *
  * Demo: jsfiddle.net/inuitcss/WS4Ge
  *
@@ -3078,7 +3078,7 @@ html.flexbox, html.site-title {
     width: 91.666%; } }
 
 /**
-	 * If you have set the additional `$responsive-extra` variable to ‘true’ in
+	 * If you have set the additional `$responsive-extra` variable to ‘true' in
 	 * `_vars.scss` then you now have access to the following class available to
 	 * accomodate much larger screen resolutions.
 	 */
@@ -3118,7 +3118,7 @@ html.flexbox, html.site-title {
 \*------------------------------------*/
 /**
  * A series of helper classes to use arbitrarily. Only use a helper class if an
- * element/component doesn’t already have a class to which you could apply this
+ * element/component doesn't already have a class to which you could apply this
  * styling, e.g. if you need to float `.main-nav` left then add `float:left;` to
  * that ruleset as opposed to adding the `.float--left` class to the markup.
  *

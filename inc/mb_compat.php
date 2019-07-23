@@ -1,6 +1,7 @@
 <?php
 /**
  * Multibyte String Functions Pseudo-Replacements
+ *
  * This is in case the mb PHP extension is not present although it should be
  */
 
