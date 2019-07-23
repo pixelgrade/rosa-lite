@@ -223,27 +223,3 @@
 	color: white;
 	margin-bottom: 2px;
 }
-
-/*------------------------------------*\
-    $FOOTER WIDGETS
-\*------------------------------------*/
-
-.sidebar--footer {
-	color: white;
-
-	.widget__title {
-		color: inherit;
-	}
-
-	a {
-		color: inherit;
-		text-decoration: underline;
-	}
-
-	[class*="social"] a {
-		&,
-		&:hover {
-			color: transparent;
-		}
-	}
-}

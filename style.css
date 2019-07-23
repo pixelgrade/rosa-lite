@@ -9626,51 +9626,6 @@ hr, .separator {
   .site-footer .separator--flower {
     color: #c59d5f; }
 
-/*------------------------------------*\
-               SLIDER ARROWS
-\*------------------------------------*/
-/**
- * On fade transition the arrows disappear
- */
-.rsArrow {
-  z-index: 10; }
-  .arrows--outside .rsArrow {
-    top: 0;
-    height: 100%; }
-    .arrows--outside .rsArrow .rsArrowIcn {
-      top: 45%;
-      position: relative; }
-  .single-post .arrows--outside .rsArrow {
-    height: 100%; }
-  @media only screen and (max-width: 899px) {
-    .billboard.arrows--outside .rsArrow {
-      height: 80%; } }
-  @media only screen and (min-width: 900px) {
-    .arrows--outside .rsArrow .rsArrowIcn {
-      top: 50%;
-      position: relative; } }
-
-.arrows--hover {
-  cursor: none; }
-  .arrows--hover .rsArrow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    background: transparent;
-    -webkit-transform: none;
-            transform: none;
-    cursor: none; }
-  .arrows--hover .rsArrowRight {
-    left: 50%; }
-  .arrows--hover .rsArrowIcn {
-    margin-top: -40px;
-    margin-left: -25px;
-    opacity: 0; }
-  .arrows--hover .visible .rsArrowIcn {
-    opacity: 1; }
-
 .pixcode--tabs {
   padding: 24px;
   margin: -24px;
@@ -9716,126 +9671,6 @@ hr, .separator {
     opacity: 0;
     z-index: 5;
     pointer-events: none; }
-
-.add_this_list {
-  border: 1px solid currentColor; }
-  @media only screen and (max-width: 899px) {
-    .add_this_list {
-      float: left;
-      margin: 12px 0; } }
-  @media only screen and (min-width: 900px) {
-    .add_this_list {
-      float: right; } }
-  .add_this_list a, .add_this_list .totals {
-    display: inline-block;
-    float: none !important;
-    padding: 6px;
-    vertical-align: top;
-    border-left: 1px solid currentColor;
-    text-align: center; }
-  .add_this_list a {
-    padding: 6px !important;
-    color: currentColor; }
-    .add_this_list a:first-child {
-      border-left: 0; }
-  .add_this_list .totals {
-    height: 40px;
-    padding: 6px 12px; }
-  .add_this_list .totals-text {
-    font-size: 12px;
-    font-size: 0.75rem;
-    line-height: 2.01; }
-  .add_this_list a:hover {
-    color: inherit; }
-  .add_this_list li {
-    border-right: 1px solid #d8d8d8; }
-  .add_this_list li:last-child {
-    border: none; }
-
-.addthis_32x32_style .addthis_counter.addthis_bubble_style {
-  background: none !important; }
-
-.addthis_32x32_style .dummy .at300bs, .addthis_32x32_style .at300bs, .addthis_32x32_style .at15t {
-  background: url(../images/addThis_32x32_pxg.png) no-repeat left;
-  opacity: 0.3; }
-
-div.addthis_toolbox a {
-  margin-bottom: 0; }
-  div.addthis_toolbox a svg {
-    fill: currentColor; }
-  div.addthis_toolbox a .at-icon-wrapper {
-    display: block;
-    opacity: 0.475;
-    background-color: transparent !important; }
-    div.addthis_toolbox a .at-icon-wrapper:hover {
-      opacity: 1; }
-    div.addthis_toolbox a .at-icon-wrapper, div.addthis_toolbox a .at-icon-wrapper svg {
-      width: 27px !important;
-      height: 28px !important; }
-
-body .addthis_32x32_style .addthis_counter.addthis_bubble_style,
-body .addthis_32x32_white_style .addthis_counter.addthis_bubble_style {
-  height: 28px;
-  line-height: 28px; }
-
-body .addthis_32x32_style .addthis_counter.addthis_bubble_style a.addthis_button_expanded,
-body .addthis_32x32_white_style .addthis_counter.addthis_bubble_style a.addthis_button_expanded {
-  line-height: 28px;
-  height: 28px;
-  -webkit-filter: invert(1) grayscale(1) contrast(0.1) brightness(1);
-          filter: invert(1) grayscale(1) contrast(0.1) brightness(1);
-  font-weight: 200;
-  font-size: 13px; }
-  body .addthis_32x32_style .addthis_counter.addthis_bubble_style a.addthis_button_expanded:before,
-  body .addthis_32x32_white_style .addthis_counter.addthis_bubble_style a.addthis_button_expanded:before {
-    content: "";
-    float: left;
-    margin: 0 12px;
-    font-family: FontAwesome; }
-
-.pixlikes-box {
-  position: relative;
-  float: left;
-  padding: 6px 12px;
-  height: 40px;
-  border: 1px solid #d8d8d8;
-  cursor: default;
-  -webkit-transition: all .3s linear;
-  transition: all .3s linear; }
-  .pixlikes-box.likeable {
-    cursor: pointer; }
-  .pixlikes-box.animate {
-    background: #262526; }
-    .pixlikes-box.animate span {
-      color: white !important; }
-    .pixlikes-box.animate .likes-text:before {
-      opacity: 1; }
-  .pixlikes-box span {
-    -webkit-transition: all .3s linear;
-    transition: all .3s linear; }
-  .pixlikes-box .likes-text {
-    font-size: 14px;
-    font-size: 0.875rem;
-    line-height: 1.72429; }
-  .pixlikes-box .likes-count {
-    color: #262526; }
-  .pixlikes-box .likes-text {
-    color: #515150; }
-    .pixlikes-box .likes-text:before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      content: "Don't move!";
-      height: 38px;
-      line-height: 38px;
-      text-align: center;
-      color: white;
-      background: #262526;
-      opacity: 0;
-      -webkit-transition: all .3s linear;
-      transition: all .3s linear; }
 
 /*------------------------------------*\
     $MENU LISTS / ROSAs
@@ -10974,42 +10809,12 @@ a.site-logo--text {
   color: white;
   margin-bottom: 2px; }
 
-/*------------------------------------*\
-    $FOOTER WIDGETS
-\*------------------------------------*/
-.sidebar--footer {
-  color: white; }
-  .sidebar--footer .widget__title {
-    color: inherit; }
-  .sidebar--footer a {
-    color: inherit;
-    text-decoration: underline; }
-  .sidebar--footer [class*="social"] a, .sidebar--footer [class*="social"] a:hover {
-    color: transparent; }
-
 .widget_calendar caption {
   margin-bottom: 12px;
   margin-bottom: 0.75rem; }
 
 .widget_calendar th, .widget_calendar td {
   text-align: center; }
-
-/*------------------------------------------------*\
-               $SOCIAL ICONS WIDGET
-\*------------------------------------------------*/
-.site-footer .widget_wpgrade_social_links a {
-  float: none;
-  position: relative;
-  top: -6px; }
-
-.site-footer .widget_wpgrade_social_links .pixcode--icon {
-  color: white;
-  font-size: 24px; }
-  .site-footer .widget_wpgrade_social_links .pixcode--icon:hover {
-    color: #c59d5f; }
-  .site-footer .widget_wpgrade_social_links .pixcode--icon:before {
-    margin-left: 12px;
-    margin-right: 12px; }
 
 /*------------------------------------------------*\
                $LATEST COMMENTS WIDGET
