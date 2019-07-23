@@ -352,32 +352,6 @@ $( window ).load( function() {
 	initVideos();
 	resizeVideos();
 
-	var Map = new GMap();
-	Map.init();
-
-	if ( ! empty( $( '#date-otreservations' ) ) ) {
-		var dateFormat = $( '#date-otreservations' ).closest( '.otw-wrapper' ).children( '.txtDateFormat' ).attr( 'value' ).toUpperCase();
-
-		function disabledWeekends() {
-
-			if($('.pixcode--otreservations').hasClass('disable-weekends')) {
-				return true;
-			}
-
-			return false;
-		}
-
-		// Pikaday
-		var picker = new Pikaday( {
-			field: document.getElementById( 'date-otreservations' ),
-			format: dateFormat,
-			minDate: moment().toDate(),
-			defaultDate: moment().toDate(),
-			setDefaultDate: true,
-			disableWeekends: disabledWeekends()
-		} )
-	}
-
 	$( '.pixcode--tabs' ).organicTabs();
 	DownArrow.initialize();
 

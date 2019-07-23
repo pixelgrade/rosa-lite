@@ -628,11 +628,6 @@ $nav-width: 84vw;
 		border-radius: 50%;
 	}
 
-	.shop-menu-item__price {
-		padding: $_u2 0;
-		display: block;
-	}
-
 	.navigation--main .nav--main &.menu-item-has-children > a:after{
 		content: none;
 	}

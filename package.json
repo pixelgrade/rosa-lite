@@ -2,7 +2,7 @@
   "name": "rosa",
   "repository": "git@github.com:pixelgrade/rosa.git",
   "devDependencies": {
-    "browser-sync": "^2.26.3",
+    "browser-sync": "^2.26.7",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
@@ -10,7 +10,7 @@
     "gulp-csscomb": "^3.0.8",
     "gulp-exec": "^2.1.2",
     "gulp-help": "^1.6.1",
-    "gulp-json-to-sass-map": "^1.0.1",
+    "gulp-json-to-sass-map": "^1.0.5",
     "gulp-prompt": "^0.2.0",
     "gulp-rename": "*",
     "gulp-replace": "*",
@@ -19,5 +19,8 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-util": "^3.0.7",
     "run-sequence": "^1.2.2"
+  },
+  "dependencies": {
+    "natives": "^1.1.6"
   }
 }

@@ -827,7 +827,7 @@ textarea:focus {
  */
 .cf:after, .nav:after, .author__social-links:after, .commentlist:after, .social-links-list:after, .sub-menu:after, .tabs__nav:after,
 .woocommerce-MyAccount-navigation ul:after, .menu-list__items:after, .rsBullets:after, .media:after, .author:after, .latest-comments__list:after, .island:after,
-.islet:after, .matrix:after, .multi-list:after, .widget_nav_menu ul:after, .widget_categories ul:after, .widget_meta ul:after, .stat-group:after, .wp-caption:after, .gallery:after, blockquote cite:after, blockquote .testimonial__author-name:after, .btn-list:after, .widget_tag_cloud .wp-tag-cloud:after, .comments-area-title:after, .comment-reply-title:after, .nav--main:after, .progressbar:after, .copyright-area:after, .footer-widget-area:after, .container:after, .pixcode--grid:after, .otw-wrapper:after, .article--archive:after {
+.islet:after, .matrix:after, .multi-list:after, .widget_nav_menu ul:after, .widget_categories ul:after, .widget_meta ul:after, .stat-group:after, .wp-caption:after, .gallery:after, blockquote cite:after, blockquote .testimonial__author-name:after, .btn-list:after, .widget_tag_cloud .wp-tag-cloud:after, .comments-area-title:after, .comment-reply-title:after, .nav--main:after, .progressbar:after, .copyright-area:after, .footer-widget-area:after, .container:after, .pixcode--grid:after, .article--archive:after {
   content: "";
   display: table;
   clear: both;
@@ -1757,7 +1757,7 @@ label,
 /**
 	 * Grid wrapper
 	 */
-.grid, .comment-form, .otw-wrapper {
+.grid, .comment-form {
   margin-left: -24px;
   margin-left: -1.5rem;
   list-style: none;
@@ -1767,7 +1767,7 @@ label,
 /**
 	 * Very infrequently occuring grid wrappers as children of grid wrappers.
 	 */
-.grid > .grid, .comment-form > .grid, .otw-wrapper > .grid, .grid > .comment-form, .comment-form > .comment-form, .otw-wrapper > .comment-form, .grid > .otw-wrapper, .comment-form > .otw-wrapper, .otw-wrapper > .otw-wrapper {
+.grid > .grid, .comment-form > .grid, .grid > .comment-form, .comment-form > .comment-form {
   margin-left: 0;
 }
 
@@ -1776,7 +1776,7 @@ label,
 	 */
 .grid__item, .logged-in-as, .comment-form > p, .comment-form-comment,
 .form-submit,
-.comment-subscription-form, .otw-input-wrap, .otw-button-wrap {
+.comment-subscription-form {
   display: inline-block;
   width: 100%;
   padding-left: 24px;
@@ -1795,7 +1795,7 @@ label,
 
 .grid--rev > .grid__item, .grid--rev > .logged-in-as, .comment-form.grid--rev > p, .grid--rev > .comment-form-comment, .grid--rev >
 .form-submit, .grid--rev >
-.comment-subscription-form, .grid--rev > .otw-input-wrap, .grid--rev > .otw-button-wrap {
+.comment-subscription-form {
   direction: ltr;
   text-align: left;
 }
@@ -1810,7 +1810,7 @@ label,
 
 .grid--full > .grid__item, .grid--full > .logged-in-as, .comment-form.grid--full > p, .grid--full > .comment-form-comment, .grid--full >
 .form-submit, .grid--full >
-.comment-subscription-form, .grid--full > .otw-input-wrap, .grid--full > .otw-button-wrap {
+.comment-subscription-form {
   padding-left: 0;
 }
 
@@ -1823,7 +1823,7 @@ label,
 
 .grid--right > .grid__item, .grid--right > .logged-in-as, .comment-form.grid--right > p, .grid--right > .comment-form-comment, .grid--right >
 .form-submit, .grid--right >
-.comment-subscription-form, .grid--right > .otw-input-wrap, .grid--right > .otw-button-wrap {
+.comment-subscription-form {
   text-align: left;
 }
 
@@ -1837,7 +1837,7 @@ label,
 
 .grid--center > .grid__item, .grid--center > .logged-in-as, .comment-form.grid--center > p, .grid--center > .comment-form-comment, .grid--center >
 .form-submit, .grid--center >
-.comment-subscription-form, .grid--center > .otw-input-wrap, .grid--center > .otw-button-wrap {
+.comment-subscription-form {
   text-align: left;
 }
 
@@ -1847,13 +1847,13 @@ label,
 	 */
 .grid--middle > .grid__item, .grid--middle > .logged-in-as, .comment-form.grid--middle > p, .grid--middle > .comment-form-comment, .grid--middle >
 .form-submit, .grid--middle >
-.comment-subscription-form, .grid--middle > .otw-input-wrap, .grid--middle > .otw-button-wrap {
+.comment-subscription-form {
   vertical-align: middle;
 }
 
 .grid--bottom > .grid__item, .grid--bottom > .logged-in-as, .comment-form.grid--bottom > p, .grid--bottom > .comment-form-comment, .grid--bottom >
 .form-submit, .grid--bottom >
-.comment-subscription-form, .grid--bottom > .otw-input-wrap, .grid--bottom > .otw-button-wrap {
+.comment-subscription-form {
   vertical-align: bottom;
 }
 
@@ -1867,7 +1867,7 @@ label,
 
 .grid--narrow > .grid__item, .grid--narrow > .logged-in-as, .comment-form.grid--narrow > p, .grid--narrow > .comment-form-comment, .grid--narrow >
 .form-submit, .grid--narrow >
-.comment-subscription-form, .grid--narrow > .otw-input-wrap, .grid--narrow > .otw-button-wrap {
+.comment-subscription-form {
   padding-left: 12px;
   padding-left: 0.75rem;
 }
@@ -1882,7 +1882,7 @@ label,
 
 .grid--wide > .grid__item, .grid--wide > .logged-in-as, .comment-form.grid--wide > p, .grid--wide > .comment-form-comment, .grid--wide >
 .form-submit, .grid--wide >
-.comment-subscription-form, .grid--wide > .otw-input-wrap, .grid--wide > .otw-button-wrap {
+.comment-subscription-form {
   padding-left: 48px;
   padding-left: 3rem;
 }
@@ -2424,7 +2424,7 @@ html.flexbox, html.site-title {
 	 * 8. Basic cosmetics for default buttons. Change or override at will.
 	 * 9. Don’t allow buttons to have underlines; it kinda ruins the illusion.
 	 */
-.btn, .comments_add-comment, .form-submit #comment-submit, .wpcf7-form-control.wpcf7-submit, .otreservations-submit, .widget_tag_cloud a, .read-more-button {
+.btn, .comments_add-comment, .form-submit #comment-submit, .wpcf7-form-control.wpcf7-submit, .widget_tag_cloud a, .read-more-button {
   display: inline-block;
   /* [1] */
   vertical-align: middle;
@@ -2455,7 +2455,7 @@ html.flexbox, html.site-title {
   /* [8] */
 }
 
-.btn, .comments_add-comment, .form-submit #comment-submit, .wpcf7-form-control.wpcf7-submit, .otreservations-submit, .widget_tag_cloud a, .read-more-button, .btn:hover, .comments_add-comment:hover, .form-submit #comment-submit:hover, .wpcf7-form-control.wpcf7-submit:hover, .otreservations-submit:hover, .widget_tag_cloud a:hover, .read-more-button:hover {
+.btn, .comments_add-comment, .form-submit #comment-submit, .wpcf7-form-control.wpcf7-submit, .widget_tag_cloud a, .read-more-button, .btn:hover, .comments_add-comment:hover, .form-submit #comment-submit:hover, .wpcf7-form-control.wpcf7-submit:hover, .widget_tag_cloud a:hover, .read-more-button:hover {
   text-decoration: none;
   /* [9] */
 }
@@ -3121,7 +3121,7 @@ html.flexbox, html.site-title {
 	*/
   .lap-and-up-one-third, .lap-and-up-two-sixths, .lap-and-up-four-twelfths, .comment-form-author,
   .comment-form-email,
-  .comment-form-url, .otw-input-wrap {
+  .comment-form-url {
     width: 33.333%;
   }
   .lap-and-up-two-thirds, .lap-and-up-four-sixths, .lap-and-up-eight-twelfths {
@@ -8813,11 +8813,11 @@ h5, h6 {
 
 /*------------------------------------*               LINKS
 \*------------------------------------*/
-a, .article__content a:not([class]), .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button, .form-submit .btn--text#comment-submit, .form-submit #comment-submit.read-more-button, .btn--text.wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit.read-more-button, .btn--text.otreservations-submit, .otreservations-submit.read-more-button, .widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .read-more-button {
+a, .article__content a:not([class]), .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button, .form-submit .btn--text#comment-submit, .form-submit #comment-submit.read-more-button, .btn--text.wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit.read-more-button, .widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .read-more-button {
   text-decoration: none;
 }
 
-a, .article__content a:not([class]), .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button, .form-submit .btn--text#comment-submit, .form-submit #comment-submit.read-more-button, .btn--text.wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit.read-more-button, .btn--text.otreservations-submit, .otreservations-submit.read-more-button, .widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .read-more-button, a:hover, .article__content a:hover:not([class]), .btn.btn--text:hover, .btn--text.comments_add-comment:hover, .form-submit .btn--text#comment-submit:hover, .form-submit #comment-submit.read-more-button:hover, .btn--text.wpcf7-form-control.wpcf7-submit:hover, .btn--text.otreservations-submit:hover, .widget_tag_cloud a.btn--text:hover, .read-more-button:hover {
+a, .article__content a:not([class]), .btn.btn--text, .btn--text.comments_add-comment, .comments_add-comment.read-more-button, .form-submit .btn--text#comment-submit, .form-submit #comment-submit.read-more-button, .btn--text.wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit.read-more-button, .widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .read-more-button, a:hover, .article__content a:hover:not([class]), .btn.btn--text:hover, .btn--text.comments_add-comment:hover, .form-submit .btn--text#comment-submit:hover, .form-submit #comment-submit.read-more-button:hover, .btn--text.wpcf7-form-control.wpcf7-submit:hover, .widget_tag_cloud a.btn--text:hover, .read-more-button:hover {
   color: #c59d5f;
 }
 
@@ -8829,7 +8829,7 @@ a:hover {
   color: #c59d5f;
 }
 
-.link--light, .meta-list a.btn, .meta-list a.comments_add-comment, .meta-list .form-submit a#comment-submit, .form-submit .meta-list a#comment-submit, .meta-list a.wpcf7-form-control.wpcf7-submit, .meta-list a.otreservations-submit, .meta-list .widget_tag_cloud a, .widget_tag_cloud .meta-list a, .meta-list a.read-more-button {
+.link--light, .meta-list a.btn, .meta-list a.comments_add-comment, .meta-list .form-submit a#comment-submit, .form-submit .meta-list a#comment-submit, .meta-list a.wpcf7-form-control.wpcf7-submit, .meta-list .widget_tag_cloud a, .widget_tag_cloud .meta-list a, .meta-list a.read-more-button {
   color: inherit;
   opacity: 0.45;
 }
@@ -8838,7 +8838,7 @@ a:hover {
   color: inherit;
 }
 
-.link--light:hover, .meta-list a.btn:hover, .meta-list a.comments_add-comment:hover, .meta-list .form-submit a#comment-submit:hover, .form-submit .meta-list a#comment-submit:hover, .meta-list a.wpcf7-form-control.wpcf7-submit:hover, .meta-list a.otreservations-submit:hover, .meta-list .widget_tag_cloud a:hover, .widget_tag_cloud .meta-list a:hover, .meta-list a.read-more-button:hover, .link--dark:hover, .comment__author-name a:hover {
+.link--light:hover, .meta-list a.btn:hover, .meta-list a.comments_add-comment:hover, .meta-list .form-submit a#comment-submit:hover, .form-submit .meta-list a#comment-submit:hover, .meta-list a.wpcf7-form-control.wpcf7-submit:hover, .meta-list .widget_tag_cloud a:hover, .widget_tag_cloud .meta-list a:hover, .meta-list a.read-more-button:hover, .link--dark:hover, .comment__author-name a:hover {
   color: #c59d5f;
   opacity: 1;
 }
@@ -9388,7 +9388,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
  */
 /*------------------------------------*    $BUTTONS
 \*------------------------------------*/
-.btn, .comments_add-comment, .form-submit #comment-submit, .wpcf7-form-control.wpcf7-submit, .otreservations-submit, .widget_tag_cloud a, .read-more-button {
+.btn, .comments_add-comment, .form-submit #comment-submit, .wpcf7-form-control.wpcf7-submit, .widget_tag_cloud a, .read-more-button {
   padding: 12px 30px;
   font-size: 12px;
   line-height: 1;
@@ -9401,11 +9401,11 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   border-radius: 3px;
 }
 
-.btn:hover, .comments_add-comment:hover, .form-submit #comment-submit:hover, .wpcf7-form-control.wpcf7-submit:hover, .otreservations-submit:hover, .widget_tag_cloud a:hover, .read-more-button:hover {
+.btn:hover, .comments_add-comment:hover, .form-submit #comment-submit:hover, .wpcf7-form-control.wpcf7-submit:hover, .widget_tag_cloud a:hover, .read-more-button:hover {
   background-color: #c59d5f;
 }
 
-.btn.a, .a.comments_add-comment, .form-submit .a#comment-submit, .a.wpcf7-form-control.wpcf7-submit, .a.otreservations-submit, .widget_tag_cloud a.a, .a.read-more-button {
+.btn.a, .a.comments_add-comment, .form-submit .a#comment-submit, .a.wpcf7-form-control.wpcf7-submit, .widget_tag_cloud a.a, .a.read-more-button {
   border-bottom: none;
 }
 
@@ -9418,7 +9418,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   background-color: #262526;
 }
 
-.btn--secondary, .btn--tertiary, .wpcf7-form-control.wpcf7-submit, .otreservations-submit {
+.btn--secondary, .btn--tertiary, .wpcf7-form-control.wpcf7-submit {
   color: #919191;
 }
 
@@ -9448,7 +9448,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   list-style: none;
 }
 
-.btn-list > .btn, .widget_tag_cloud .wp-tag-cloud > .btn, .btn-list > .comments_add-comment, .widget_tag_cloud .wp-tag-cloud > .comments_add-comment, .form-submit .btn-list > #comment-submit, .widget_tag_cloud .form-submit .wp-tag-cloud > #comment-submit, .form-submit .widget_tag_cloud .wp-tag-cloud > #comment-submit, .btn-list > .wpcf7-form-control.wpcf7-submit, .widget_tag_cloud .wp-tag-cloud > .wpcf7-form-control.wpcf7-submit, .btn-list > .otreservations-submit, .widget_tag_cloud .wp-tag-cloud > .otreservations-submit, .widget_tag_cloud .btn-list > a, .widget_tag_cloud .wp-tag-cloud > a, .btn-list > .read-more-button, .widget_tag_cloud .wp-tag-cloud > .read-more-button, .btn-list > li, .widget_tag_cloud .wp-tag-cloud > li, .btn-list > a, .widget_tag_cloud .wp-tag-cloud > a {
+.btn-list > .btn, .widget_tag_cloud .wp-tag-cloud > .btn, .btn-list > .comments_add-comment, .widget_tag_cloud .wp-tag-cloud > .comments_add-comment, .form-submit .btn-list > #comment-submit, .widget_tag_cloud .form-submit .wp-tag-cloud > #comment-submit, .form-submit .widget_tag_cloud .wp-tag-cloud > #comment-submit, .btn-list > .wpcf7-form-control.wpcf7-submit, .widget_tag_cloud .wp-tag-cloud > .wpcf7-form-control.wpcf7-submit, .widget_tag_cloud .btn-list > a, .widget_tag_cloud .wp-tag-cloud > a, .btn-list > .read-more-button, .widget_tag_cloud .wp-tag-cloud > .read-more-button, .btn-list > li, .widget_tag_cloud .wp-tag-cloud > li, .btn-list > a, .widget_tag_cloud .wp-tag-cloud > a {
   float: left;
   margin-left: 2px;
   margin-bottom: 2px;
@@ -9458,7 +9458,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   margin-bottom: 12px;
 }
 
-.meta-list .btn, .meta-list .comments_add-comment, .meta-list .form-submit #comment-submit, .form-submit .meta-list #comment-submit, .meta-list .wpcf7-form-control.wpcf7-submit, .meta-list .otreservations-submit, .meta-list .widget_tag_cloud a, .widget_tag_cloud .meta-list a, .meta-list .read-more-button {
+.meta-list .btn, .meta-list .comments_add-comment, .meta-list .form-submit #comment-submit, .form-submit .meta-list #comment-submit, .meta-list .wpcf7-form-control.wpcf7-submit, .meta-list .widget_tag_cloud a, .widget_tag_cloud .meta-list a, .meta-list .read-more-button {
   padding: 0 6px;
   font-size: 12px;
   font-size: 0.75rem;
@@ -9472,7 +9472,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   border: 1px solid transparent;
 }
 
-.meta-list a.btn, .meta-list a.comments_add-comment, .meta-list .form-submit a#comment-submit, .form-submit .meta-list a#comment-submit, .meta-list a.wpcf7-form-control.wpcf7-submit, .meta-list a.otreservations-submit, .meta-list .widget_tag_cloud a, .widget_tag_cloud .meta-list a, .meta-list a.read-more-button {
+.meta-list a.btn, .meta-list a.comments_add-comment, .meta-list .form-submit a#comment-submit, .form-submit .meta-list a#comment-submit, .meta-list a.wpcf7-form-control.wpcf7-submit, .meta-list .widget_tag_cloud a, .widget_tag_cloud .meta-list a, .meta-list a.read-more-button {
   margin-left: 0;
   border: 1px solid #d8d8d8;
   border-right: 0;
@@ -9480,15 +9480,15 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   background: transparent;
 }
 
-.meta-list a.btn:hover, .meta-list a.comments_add-comment:hover, .meta-list .form-submit a#comment-submit:hover, .form-submit .meta-list a#comment-submit:hover, .meta-list a.wpcf7-form-control.wpcf7-submit:hover, .meta-list a.otreservations-submit:hover, .meta-list .widget_tag_cloud a:hover, .widget_tag_cloud .meta-list a:hover, .meta-list a.read-more-button:hover {
+.meta-list a.btn:hover, .meta-list a.comments_add-comment:hover, .meta-list .form-submit a#comment-submit:hover, .form-submit .meta-list a#comment-submit:hover, .meta-list a.wpcf7-form-control.wpcf7-submit:hover, .meta-list .widget_tag_cloud a:hover, .widget_tag_cloud .meta-list a:hover, .meta-list a.read-more-button:hover {
   color: #c59d5f;
 }
 
-.meta-list a.btn:last-child, .meta-list a.comments_add-comment:last-child, .meta-list .form-submit a#comment-submit:last-child, .form-submit .meta-list a#comment-submit:last-child, .meta-list a.wpcf7-form-control.wpcf7-submit:last-child, .meta-list a.otreservations-submit:last-child, .meta-list .widget_tag_cloud a:last-child, .widget_tag_cloud .meta-list a:last-child, .meta-list a.read-more-button:last-child {
+.meta-list a.btn:last-child, .meta-list a.comments_add-comment:last-child, .meta-list .form-submit a#comment-submit:last-child, .form-submit .meta-list a#comment-submit:last-child, .meta-list a.wpcf7-form-control.wpcf7-submit:last-child, .meta-list .widget_tag_cloud a:last-child, .widget_tag_cloud .meta-list a:last-child, .meta-list a.read-more-button:last-child {
   border-right: 1px solid #d8d8d8;
 }
 
-.btn.btn--text, .btn--text.comments_add-comment, .form-submit .btn--text#comment-submit, .form-submit #comment-submit.read-more-button, .btn--text.wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit.read-more-button, .btn--text.otreservations-submit, .widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .read-more-button {
+.btn.btn--text, .btn--text.comments_add-comment, .form-submit .btn--text#comment-submit, .form-submit #comment-submit.read-more-button, .btn--text.wpcf7-form-control.wpcf7-submit, .wpcf7-form-control.wpcf7-submit.read-more-button, .widget_tag_cloud a.btn--text, .widget_tag_cloud a.read-more-button, .read-more-button {
   padding: 3px 0;
   background: transparent !important;
   border: 0;
@@ -9500,7 +9500,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   letter-spacing: 0.1em;
 }
 
-.btn.btn--text:hover, .btn--text.comments_add-comment:hover, .form-submit .btn--text#comment-submit:hover, .form-submit #comment-submit.read-more-button:hover, .btn--text.wpcf7-form-control.wpcf7-submit:hover, .btn--text.otreservations-submit:hover, .widget_tag_cloud a.btn--text:hover, .read-more-button:hover {
+.btn.btn--text:hover, .btn--text.comments_add-comment:hover, .form-submit .btn--text#comment-submit:hover, .form-submit #comment-submit.read-more-button:hover, .btn--text.wpcf7-form-control.wpcf7-submit:hover, .widget_tag_cloud a.btn--text:hover, .read-more-button:hover {
   color: #262526;
   border-color: #262526;
 }
@@ -9935,7 +9935,7 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
   color: #FFFFFF;
 }
 
-.article__header .article__headline .headline__description .btn, .article__header .article__headline .headline__description .comments_add-comment, .article__header .article__headline .headline__description .form-submit #comment-submit, .form-submit .article__header .article__headline .headline__description #comment-submit, .article__header .article__headline .headline__description .wpcf7-form-control.wpcf7-submit, .article__header .article__headline .headline__description .otreservations-submit, .article__header .article__headline .headline__description .widget_tag_cloud a, .widget_tag_cloud .article__header .article__headline .headline__description a, .article__header .article__headline .headline__description .read-more-button {
+.article__header .article__headline .headline__description .btn, .article__header .article__headline .headline__description .comments_add-comment, .article__header .article__headline .headline__description .form-submit #comment-submit, .form-submit .article__header .article__headline .headline__description #comment-submit, .article__header .article__headline .headline__description .wpcf7-form-control.wpcf7-submit, .article__header .article__headline .headline__description .widget_tag_cloud a, .widget_tag_cloud .article__header .article__headline .headline__description a, .article__header .article__headline .headline__description .read-more-button {
   background-color: white;
 }
 
@@ -10012,7 +10012,6 @@ figure.alignleft, figure.alignright, figure.aligncenter, figure.alignnone {
 .is-edge .article__headline .form-submit #comment-submit, .form-submit
 .is-edge .article__headline #comment-submit,
 .is-edge .article__headline .wpcf7-form-control.wpcf7-submit,
-.is-edge .article__headline .otreservations-submit,
 .is-edge .article__headline .widget_tag_cloud a, .widget_tag_cloud
 .is-edge .article__headline a,
 .is-edge .article__headline .read-more-button {
@@ -11295,11 +11294,6 @@ button.nav-trigger {
   border-radius: 50%;
 }
 
-.shop-menu-item .shop-menu-item__price {
-  padding: 12px 0;
-  display: block;
-}
-
 .navigation--main .nav--main .shop-menu-item.menu-item-has-children > a:after, .navigation--main .nav--main .shop-menu-item.menu-item-language > a:after {
   content: none;
 }
@@ -12209,64 +12203,6 @@ p.menu-list__item-desc + span.dots {
   top: 32px;
 }
 
-/*------------------------------------*    $OPEN TABLE RESERVATIONS
-\*------------------------------------*/
-.otreservations {
-  text-align: center;
-}
-
-.otreservation-title-wrapper {
-  margin-bottom: 36px;
-}
-
-.otreservations-title {
-  margin: 0;
-}
-
-.otreservations-subtitle {
-  font-size: 10px;
-  text-transform: uppercase;
-  color: inherit;
-  opacity: 0.45;
-}
-
-.otw-widget-form {
-  margin: 0 auto;
-  max-width: 700px;
-}
-
-@media only screen and (max-width: 899px) {
-  .otw-input-wrap {
-    margin-bottom: 24px;
-  }
-}
-
-.otw-input-wrap label {
-  margin-right: 12px;
-}
-
-.otw-input-wrap label, .otw-input-wrap input, .otw-input-wrap select {
-  display: inline-block;
-}
-
-.otw-input-wrap input, .otw-input-wrap select, .widget .otw-input-wrap input, .widget .otw-input-wrap select {
-  width: 150px;
-  height: 40px;
-  padding: 6px;
-  background: none;
-  border: 1px solid #d8d8d8;
-  border-radius: 3px;
-  color: inherit;
-}
-
-.otw-button-wrap {
-  margin-top: 36px;
-}
-
-.article__header .article__headline .otreservations-submit {
-  opacity: 1;
-}
-
 /*----------------------------------------*    $MAGNIFIC POPUP STYLING + OVERRIDES
 \*----------------------------------------*/
 button.mfp-arrow {
@@ -12325,87 +12261,6 @@ div.mfp-title small {
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.51;
-}
-
-/*------------------------------------*    $GOOGLE MAPS
-\*------------------------------------*/
-.gmap img {
-  max-width: none;
-}
-
-.map-tooltip {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-.map-tooltip__content {
-  position: relative;
-  bottom: 100%;
-  left: -50%;
-  top: -12px;
-  padding: 24px 48px;
-  background: black;
-  color: white;
-  border-radius: 3px;
-}
-
-.map-tooltip__content:after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  display: block;
-  margin-left: -12px;
-  border: 12px solid transparent;
-  border-top-color: black;
-}
-
-.map-tooltip__content h1, .map-tooltip__content h2, .map-tooltip__content .tabs__nav, .map-tooltip__content
-.woocommerce-MyAccount-navigation ul,
-.woocommerce-MyAccount-navigation .map-tooltip__content ul, .map-tooltip__content h3, .map-tooltip__content h4, .map-tooltip__content h5, .map-tooltip__content h6 {
-  margin: 6px 0;
-  color: inherit;
-}
-
-/* Multiple Pins */
-.map-pin {
-  position: relative;
-  top: -3.4375rem;
-  left: -1.4375rem;
-}
-
-.map-pin__text {
-  min-width: 0;
-  padding: 0.875rem 1rem;
-  padding-left: 3.5rem;
-  border-radius: 40px;
-  font-size: 0.8125rem;
-  line-height: 1;
-  font-weight: normal;
-  text-transform: uppercase;
-  letter-spacing: .2em;
-  color: #262526;
-  background-color: white;
-  transition: all .15s;
-}
-
-.map-pin__text:hover {
-  color: #c59d5f;
-}
-
-@media only screen and (max-width: 899px) {
-  .map-pin__text {
-    font-size: 0.6875rem;
-    padding: 0.75rem 0.75rem 0.75rem 3.375rem;
-  }
-}
-
-.map-pin img {
-  position: absolute;
-  top: 0.125rem;
-  left: 0.0625rem;
-  width: 2.625rem;
 }
 
 [class*="c-bully"],
@@ -12978,12 +12833,12 @@ small.muted {
 /**
  * Grid Row
  */
-.pixcode--grid, .otw-wrapper {
+.pixcode--grid {
   position: relative;
   margin-bottom: 36px;
 }
 
-.pixcode--grid:last-child, .otw-wrapper:last-child {
+.pixcode--grid:last-child {
   margin-bottom: 0;
 }
 
@@ -12993,14 +12848,14 @@ small.muted {
 @media only screen and (min-width: 900px) {
   .grid__item > *:last-child, .logged-in-as > *:last-child, .comment-form > p > *:last-child, .comment-form-comment > *:last-child,
   .form-submit > *:last-child,
-  .comment-subscription-form > *:last-child, .otw-input-wrap > *:last-child, .otw-button-wrap > *:last-child {
+  .comment-subscription-form > *:last-child {
     margin-bottom: 0;
   }
 }
 
 .grid__item:last-child > *:last-child, .logged-in-as:last-child > *:last-child, .comment-form > p:last-child > *:last-child, .comment-form-comment:last-child > *:last-child,
 .form-submit:last-child > *:last-child,
-.comment-subscription-form:last-child > *:last-child, .otw-input-wrap:last-child > *:last-child, .otw-button-wrap:last-child > *:last-child {
+.comment-subscription-form:last-child > *:last-child {
   margin-bottom: 0;
 }
 
@@ -14762,205 +14617,6 @@ img.mfp-img {
   opacity: 0;
 }
 
-/*!
- * Pikaday
- * Copyright © 2014 David Bushell | BSD & MIT license | http://dbushell.com/
- */
-.pika-single {
-  z-index: 9999;
-  display: block;
-  position: relative;
-  color: #333;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-bottom-color: #bbb;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-/*
-clear child float (pika-lendar), using the famous micro clearfix hack
-http://nicolasgallagher.com/micro-clearfix-hack/
-*/
-.pika-single:before,
-.pika-single:after {
-  content: " ";
-  display: table;
-}
-
-.pika-single:after {
-  clear: both;
-}
-
-.pika-single {
-  *zoom: 1;
-}
-
-.pika-single.is-hidden {
-  display: none;
-}
-
-.pika-single.is-bound {
-  position: absolute;
-  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.5);
-}
-
-.pika-lendar {
-  float: left;
-  width: 240px;
-  margin: 8px;
-}
-
-.pika-title {
-  position: relative;
-  text-align: center;
-}
-
-.pika-label {
-  display: inline-block;
-  *display: inline;
-  position: relative;
-  z-index: 9999;
-  overflow: hidden;
-  margin: 0;
-  padding: 5px 3px;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: bold;
-  background-color: #fff;
-}
-
-.pika-title select {
-  cursor: pointer;
-  position: absolute;
-  z-index: 9998;
-  margin: 0;
-  left: 0;
-  top: 5px;
-  filter: alpha(opacity=0);
-  opacity: 0;
-}
-
-.pika-prev,
-.pika-next {
-  display: block;
-  cursor: pointer;
-  position: relative;
-  outline: none;
-  border: 0;
-  padding: 0;
-  width: 20px;
-  height: 30px;
-  /* hide text using text-indent trick, using width value (it's enough) */
-  text-indent: 20px;
-  white-space: nowrap;
-  overflow: hidden;
-  background-color: transparent;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 75% 75%;
-  opacity: .5;
-  *position: absolute;
-  *top: 0;
-}
-
-.pika-prev:hover,
-.pika-next:hover {
-  opacity: 1;
-}
-
-.pika-prev,
-.is-rtl .pika-next {
-  float: left;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAAUklEQVR42u3VMQoAIBADQf8Pgj+OD9hG2CtONJB2ymQkKe0HbwAP0xucDiQWARITIDEBEnMgMQ8S8+AqBIl6kKgHiXqQqAeJepBo/z38J/U0uAHlaBkBl9I4GwAAAABJRU5ErkJggg==");
-  *left: 0;
-}
-
-.pika-next,
-.is-rtl .pika-prev {
-  float: right;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAAU0lEQVR42u3VOwoAMAgE0dwfAnNjU26bYkBCFGwfiL9VVWoO+BJ4Gf3gtsEKKoFBNTCoCAYVwaAiGNQGMUHMkjGbgjk2mIONuXo0nC8XnCf1JXgArVIZAQh5TKYAAAAASUVORK5CYII=");
-  *right: 0;
-}
-
-.pika-prev.is-disabled,
-.pika-next.is-disabled {
-  cursor: default;
-  opacity: .2;
-}
-
-.pika-select {
-  display: inline-block;
-  *display: inline;
-}
-
-.pika-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-  border: 0;
-}
-
-.pika-table th,
-.pika-table td {
-  width: 14.285714285714286%;
-  padding: 0;
-}
-
-.pika-table th {
-  color: #999;
-  font-size: 12px;
-  line-height: 25px;
-  font-weight: bold;
-  text-align: center;
-}
-
-.pika-button {
-  cursor: pointer;
-  display: block;
-  outline: none;
-  border: 0;
-  margin: 0;
-  width: 100%;
-  padding: 5px;
-  color: #666;
-  font-size: 12px;
-  line-height: 15px;
-  text-align: right;
-  background: #f5f5f5;
-}
-
-.pika-week {
-  font-size: 11px;
-  color: #999;
-}
-
-.is-today .pika-button {
-  color: #33aaff;
-  font-weight: bold;
-}
-
-.is-selected .pika-button {
-  color: #fff;
-  font-weight: bold;
-  background: #33aaff;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.25);
-  border-radius: 3px;
-}
-
-.is-disabled .pika-button {
-  pointer-events: none;
-  cursor: default;
-  color: #999;
-  opacity: .3;
-}
-
-.pika-button:hover {
-  color: #fff;
-  background: #c59d5f;
-  box-shadow: none !important;
-  border-radius: 3px !important;
-}
-
 /*------------------------------------*    $SHORTCODES
 \*------------------------------------*/
 /**
@@ -14968,11 +14624,9 @@ http://nicolasgallagher.com/micro-clearfix-hack/
  */
 /*------------------------------------*    $GRID
 \*------------------------------------*/
-.pixcode--grid > .grid__item, .otw-wrapper > .grid__item, .pixcode--grid > .logged-in-as, .otw-wrapper > .logged-in-as, .comment-form.pixcode--grid > p, .comment-form.otw-wrapper > p, .pixcode--grid > .comment-form-comment, .otw-wrapper > .comment-form-comment, .pixcode--grid >
-.form-submit, .otw-wrapper >
+.pixcode--grid > .grid__item, .pixcode--grid > .logged-in-as, .comment-form.pixcode--grid > p, .pixcode--grid > .comment-form-comment, .pixcode--grid >
 .form-submit, .pixcode--grid >
-.comment-subscription-form, .otw-wrapper >
-.comment-subscription-form, .pixcode--grid > .otw-input-wrap, .otw-wrapper > .otw-input-wrap, .pixcode--grid > .otw-button-wrap, .otw-wrapper > .otw-button-wrap {
+.comment-subscription-form {
   float: left;
 }
 
@@ -15328,27 +14982,25 @@ body, .site-header, .site-footer {
 }
 
 @media only screen and (min-width: 900px) {
-  .pixcode--grid img, .otw-wrapper img {
+  .pixcode--grid img {
     margin: 0;
     display: inline-block;
     vertical-align: top;
   }
 }
 
-.pixcode--grid, .otw-wrapper {
+.pixcode--grid {
   margin-left: -48px;
 }
 
-.pixcode--grid > .grid__item, .otw-wrapper > .grid__item, .pixcode--grid > .logged-in-as, .otw-wrapper > .logged-in-as, .comment-form.pixcode--grid > p, .comment-form.otw-wrapper > p, .pixcode--grid > .comment-form-comment, .otw-wrapper > .comment-form-comment, .pixcode--grid >
-.form-submit, .otw-wrapper >
+.pixcode--grid > .grid__item, .pixcode--grid > .logged-in-as, .comment-form.pixcode--grid > p, .pixcode--grid > .comment-form-comment, .pixcode--grid >
 .form-submit, .pixcode--grid >
-.comment-subscription-form, .otw-wrapper >
-.comment-subscription-form, .pixcode--grid > .otw-input-wrap, .otw-wrapper > .otw-input-wrap, .pixcode--grid > .otw-button-wrap, .otw-wrapper > .otw-button-wrap {
+.comment-subscription-form {
   padding-left: 48px;
 }
 
 @media only screen and (max-width: 899px) {
-  .pixcode--grid.mobile-first, .mobile-first.otw-wrapper {
+  .pixcode--grid.mobile-first {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -15357,20 +15009,16 @@ body, .site-header, .site-footer {
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  .pixcode--grid.mobile-first .grid__item, .mobile-first.otw-wrapper .grid__item, .pixcode--grid.mobile-first .logged-in-as, .mobile-first.otw-wrapper .logged-in-as, .pixcode--grid.mobile-first .comment-form > p, .mobile-first.otw-wrapper .comment-form > p, .pixcode--grid.mobile-first .comment-form-comment, .mobile-first.otw-wrapper .comment-form-comment, .pixcode--grid.mobile-first
-  .form-submit, .mobile-first.otw-wrapper
+  .pixcode--grid.mobile-first .grid__item, .pixcode--grid.mobile-first .logged-in-as, .pixcode--grid.mobile-first .comment-form > p, .pixcode--grid.mobile-first .comment-form-comment, .pixcode--grid.mobile-first
   .form-submit, .pixcode--grid.mobile-first
-  .comment-subscription-form, .mobile-first.otw-wrapper
-  .comment-subscription-form, .pixcode--grid.mobile-first .otw-input-wrap, .mobile-first.otw-wrapper .otw-input-wrap, .pixcode--grid.mobile-first .otw-button-wrap, .mobile-first.otw-wrapper .otw-button-wrap {
+  .comment-subscription-form {
     -webkit-box-ordinal-group: 3;
         -ms-flex-order: 2;
             order: 2;
   }
-  .pixcode--grid.mobile-first .grid__item:last-child, .mobile-first.otw-wrapper .grid__item:last-child, .pixcode--grid.mobile-first .logged-in-as:last-child, .mobile-first.otw-wrapper .logged-in-as:last-child, .pixcode--grid.mobile-first .comment-form > p:last-child, .mobile-first.otw-wrapper .comment-form > p:last-child, .pixcode--grid.mobile-first .comment-form-comment:last-child, .mobile-first.otw-wrapper .comment-form-comment:last-child, .pixcode--grid.mobile-first
-  .form-submit:last-child, .mobile-first.otw-wrapper
+  .pixcode--grid.mobile-first .grid__item:last-child, .pixcode--grid.mobile-first .logged-in-as:last-child, .pixcode--grid.mobile-first .comment-form > p:last-child, .pixcode--grid.mobile-first .comment-form-comment:last-child, .pixcode--grid.mobile-first
   .form-submit:last-child, .pixcode--grid.mobile-first
-  .comment-subscription-form:last-child, .mobile-first.otw-wrapper
-  .comment-subscription-form:last-child, .pixcode--grid.mobile-first .otw-input-wrap:last-child, .mobile-first.otw-wrapper .otw-input-wrap:last-child, .pixcode--grid.mobile-first .otw-button-wrap:last-child, .mobile-first.otw-wrapper .otw-button-wrap:last-child {
+  .comment-subscription-form:last-child {
     -webkit-box-ordinal-group: 2;
         -ms-flex-order: 1;
             order: 1;
@@ -15380,7 +15028,7 @@ body, .site-header, .site-footer {
 @media only screen and (max-width: 899px) {
   .article__content .grid__item.island:first-child, .article__content .island.logged-in-as:first-child, .article__content .comment-form > p.island:first-child, .article__content .island.comment-form-comment:first-child, .article__content
   .island.form-submit:first-child, .article__content
-  .island.comment-subscription-form:first-child, .article__content .island.otw-input-wrap:first-child, .article__content .island.otw-button-wrap:first-child {
+  .island.comment-subscription-form:first-child {
     padding-top: 0;
   }
 }
@@ -15388,7 +15036,7 @@ body, .site-header, .site-footer {
 @media only screen and (max-width: 899px) {
   .grid__item.island, .island.logged-in-as, .comment-form > p.island, .island.comment-form-comment,
   .island.form-submit,
-  .island.comment-subscription-form, .island.otw-input-wrap, .island.otw-button-wrap {
+  .island.comment-subscription-form {
     padding-left: 48px;
     padding-right: 0;
     margin-bottom: 0;
@@ -15398,7 +15046,7 @@ body, .site-header, .site-footer {
 @media only screen and (min-width: 900px) {
   .grid__item.island, .island.logged-in-as, .comment-form > p.island, .island.comment-form-comment,
   .island.form-submit,
-  .island.comment-subscription-form, .island.otw-input-wrap, .island.otw-button-wrap {
+  .island.comment-subscription-form {
     margin-bottom: 0;
     padding: 30px;
     padding-left: 78px !important;
@@ -15427,12 +15075,12 @@ body, .site-header, .site-footer {
   }
 }
 
-.btn.button--light, .button--light.comments_add-comment, .form-submit .button--light#comment-submit, .button--light.wpcf7-form-control.wpcf7-submit, .button--light.otreservations-submit, .widget_tag_cloud a.button--light, .button--light.read-more-button {
+.btn.button--light, .button--light.comments_add-comment, .form-submit .button--light#comment-submit, .button--light.wpcf7-form-control.wpcf7-submit, .widget_tag_cloud a.button--light, .button--light.read-more-button {
   background: white;
   color: black;
 }
 
-.article__header .btn, .article__header .comments_add-comment, .article__header .form-submit #comment-submit, .form-submit .article__header #comment-submit, .article__header .wpcf7-form-control.wpcf7-submit, .article__header .otreservations-submit, .article__header .widget_tag_cloud a, .widget_tag_cloud .article__header a, .article__header .read-more-button {
+.article__header .btn, .article__header .comments_add-comment, .article__header .form-submit #comment-submit, .form-submit .article__header #comment-submit, .article__header .wpcf7-form-control.wpcf7-submit, .article__header .widget_tag_cloud a, .widget_tag_cloud .article__header a, .article__header .read-more-button {
   transition: none;
 }
 

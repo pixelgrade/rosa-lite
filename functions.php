@@ -154,14 +154,8 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 
 		$script_dependencies = array( 'jquery', 'modernizr', 'rosa-rs', 'scroll-to-plugin', 'tween-max', 'ease-pack' );
 
-		if ( rosa_page_has_contact_descendants() ) {
-			wp_enqueue_script( 'google-maps', '//maps.google.com/maps/api/js?language=en' . $google_maps_key, array( 'jquery' ), null, true );
-			wp_enqueue_script( 'gmap3', get_template_directory_uri() . '/assets/js/vendor/gmap3.jquery.js', array( 'jquery', 'google-maps' ), null, true );
-			$script_dependencies[] = 'gmap3';
-		}
-
 		wp_enqueue_script( 'rosa-plugins-scripts', get_template_directory_uri() . '/assets/js/plugins.js', $script_dependencies, $theme->get( 'Version' ), true );
-		wp_enqueue_script( 'rosa-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'rosa-plugins-scripts' ), $theme->get( 'Version' ), true );
+		wp_enqueue_script( 'rosa-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'imagesloaded', 'rosa-plugins-scripts' ), $theme->get( 'Version' ), true );
 
 		if ( is_single() ) {
 			wp_register_script( 'addthis-api', '//s7.addthis.com/js/300/addthis_widget.js#async=1', array( 'jquery' ), null, true );

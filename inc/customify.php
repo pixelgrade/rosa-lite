@@ -510,11 +510,6 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 header.c-hero .article__headline .headline__description div.separator.separator--flower,
                                                 .headline__secondary,
                                                 
-                                                .single-product .entry-summary .price ins span,
-                                                .single-product .entry-summary .price del span,
-                                                .single-product .entry-summary .price del,
-                                                .single-product .entry-summary .price span,
-                                                
                                                 .btn--text.wpcf7-form-control.wpcf7-submit,
                                                 .wpcf7-form-control.wpcf7-submit.read-more-button,
                                                  
@@ -527,9 +522,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .sidebar--main .widget .tagcloud a:hover,
                                                 .widget .tagcloud a:hover,
                                                  
-                                                blockquote,
-                                                
-                                                .is-today .pika-button',
+                                                blockquote',
 							),
 							array(
 								'property' => 'background-color',
@@ -539,10 +532,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								                .comments_add-comment,
                                                 .form-submit #comment-submit,
 								                
-                                                .shop-menu-item .shop-items-number,
-                                                
                                                 .wpcf7-form-control.wpcf7-submit:hover,
-                                                form.shipping_calculator button.button:hover,
                                                 
                                                 .pagination li a:hover,
                                                 .pagination .nav-links .page-numbers:not(.current):hover,
@@ -555,12 +545,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .pixcode.pixcode--icon.circle:hover,
                                                 
                                                 .menu-list__item-highlight-title,
-                                                .promo-box__container,
-                                                
-                                                :not(.pika-today) > .pika-button:hover,
-                                                .pika-table .is-selected .pika-button.pika-day,
-                                                
-                                                .product__badge.on-sale'
+                                                .promo-box__container'
 							),
 							array(
 								'property'        => 'background-color',
@@ -785,10 +770,6 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .categories__menu.active .dropdown__menu,
                                                 .categories__menu.active .dropdown__menu:before,
                                                 
-                                                .otw-widget-form .otw-reservation-date,
-                                                .otw-widget-form .otw-reservation-time,
-                                                .otw-widget-form .otw-party-size-select,
-                                                
                                                 .form-search .search-query,
                                                 
                                                 hr, hr.separator, .separator,
@@ -849,8 +830,6 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .comment-reply-title .total.comment-number--dark,
 												
                                                 .pagination .nav-links .page-numbers,
-                                                
-                                                .otreservations-submit,
                                                 
                                                 .wpcf7-form-control.wpcf7-submit,
                                                 
@@ -938,23 +917,6 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								'property' => 'color',
 								'selector' => '.input-group input.form-control:-ms-input-placeholder'
 							),
-							//checkout comment textarea
-							array(
-								'property' => 'color',
-								'selector' => 'form.checkout textarea[name="order_comments"]::-webkit-input-placeholder'
-							),
-							array(
-								'property' => 'color',
-								'selector' => 'form.checkout textarea[name="order_comments"]:-moz-placeholder'
-							),
-							array(
-								'property' => 'color',
-								'selector' => 'form.checkout textarea[name="order_comments"]::-moz-placeholder'
-							),
-							array(
-								'property' => 'color',
-								'selector' => 'form.checkout textarea[name="order_comments"]:-ms-input-placeholder'
-							)
 						)
 					),
 					'navlink_color'                       => array(
@@ -968,14 +930,11 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								'selector' => '.nav--main a,
                                                 
                                                 .headroom--not-top .nav--main a,
-                                                .headroom--not-top .nav--main .shop-menu-item__price,
                                                 
                                                 a.site-logo--text,
                                                 .site-header.headroom--not-top a.site-logo--text,
                                                 
-                                                .read-more-button:hover,
-                                                
-                                                .nav--main .shop-menu-item__price'
+                                                .read-more-button:hover'
 							),
 							array(
 								'property' => 'border-color',
@@ -1050,13 +1009,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 
                                                 .promo-box__container,
                                                 
-                                                .otreservations-submit,
-                                                .otreservations-submit:hover,
-                                                
                                                 .wpcf7-form-control.wpcf7-submit,
-                                                
-                                                .pika-button:hover,
-                                                .pika-table .is-selected .pika-button.pika-day,
                                                 
                                                 .pagination .nav-links .page-numbers:hover,
                                                 .pagination .nav-links .page-numbers.prev:not(.disabled),
@@ -1102,10 +1055,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 .up-link,
                                                  
                                                 .menu-list__item-title .item_title,
-                                                .menu-list__item-price,
                                                 .categories__menu.active .dropdown__menu,
-                                                
-                                                .otw-input-wrap select option,
                                                 
                                                 .comment-number,
                                                 .comment-form input,
@@ -1118,8 +1068,6 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
                                                 input.wpcf7-form-control.wpcf7-text.wpcf7-validates-as-required,
                                                 input.wpcf7-form-control.wpcf7-text,
                                                 textarea.wpcf7-form-control.wpcf7-textarea,
-                                                
-                                                .is-today .pika-button,
                                                 
                                                 .sidebar--footer__light,
                                                 .copyright-area.copyright-area__light'
@@ -1201,8 +1149,7 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 						'css'     => array(
 							array(
 								'property' => 'color',
-								'selector' => '.navigation--main .nav--main li a,
-		                                        .shop-menu-item .shop-menu-item__price',
+								'selector' => '.navigation--main .nav--main li a',
 								'media' => 'only screen and (max-width: 899px)'
 							),
 							array(
@@ -1210,13 +1157,6 @@ if ( ! function_exists( 'add_customify_rosa_options' ) ) {
 								'unit' => '30',
 								'selector' => '.navigation--main .nav--main',
 								'media' => 'only screen and (max-width: 899px) ',
-								'callback_filter' => 'rosa_transparent_color'
-							),
-							array(
-								'property' => 'background-color',
-								'unit' => '19',
-								'selector' => '.widget_shopping_cart_content',
-								'media' => 'only screen and (max-width: 899px)  ',
 								'callback_filter' => 'rosa_transparent_color'
 							),
 						),
@@ -1843,8 +1783,7 @@ function rosa_add_customify_style_manager_section( $options ) {
 						'selector' => '
 		                    .article__header .article__headline .headline__primary, 
 		                    .article__header .article__headline .headline__description > *:not(.star):not(.separator--flower):not(.btn),
-		                    .header--transparent .nav--main a,
-		                    .header--transparent .nav--main .shop-menu-item__price'
+		                    .header--transparent .nav--main a'
 					),
 					array(
 						'property' => 'border-color',
