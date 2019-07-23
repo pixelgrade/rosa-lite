@@ -2,8 +2,8 @@
 /**
  * Rosa Lite functions and definitions
  *
- * @package Patch Lite
- * @since Patch Lite 1.0
+ * @package Rosa Lite
+ * @since Rosa Lite 1.0
  */
 
 if ( ! function_exists(' rosa_theme_setup' ) ) {
