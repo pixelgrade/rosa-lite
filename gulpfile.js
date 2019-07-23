@@ -163,7 +163,6 @@ function removeUnneededFiles(done) {
 		'package-lock.json',
 		'pxg.json',
 		'build',
-		'css',
 		'.idea',
 		'**/.svn*',
 		'**/*.css.map',
