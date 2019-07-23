@@ -11,16 +11,6 @@ if ( ! defined( 'ABSPATH' ) ){
 }
 
 return array(
-	'pixlikes-settings' => array(
-		'show_on_post'         => false,
-		'show_on_page'         => false,
-		'show_on_homepage'      => false,
-		'show_on_archive'      => false,
-		'like_action'          => 'click',
-		'hover_time'           => 1000,
-		'free_votes'           => false,
-		'load_likes_with_ajax' => false,
-	),
 	'pixtypes-settings' => array(
 		'metaboxes' => array(
 			//General page settings
