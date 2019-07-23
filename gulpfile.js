@@ -163,7 +163,6 @@ function removeUnneededFiles(done) {
 		'package-lock.json',
 		'pxg.json',
 		'build',
-		'css',
 		'.idea',
 		'**/.svn*',
 		'**/*.css.map',
@@ -243,33 +242,9 @@ gulp.task( 'txtdomain-replace', replaceThemeTextdomainPlaceholder);
  */
 function createZipFile(){
 
-	var versionString = '';
-	//get theme version from styles.css
-	var contents = fs.readFileSync("./style.css", "utf8");
-
-	// split it by lines
-	var lines = contents.split(/[\r\n]/);
-
-	function checkIfVersionLine(value, index, ar) {
-		var myRegEx = /^[Vv]ersion:/;
-		if ( myRegEx.test(value) ) {
-			return true;
-		}
-		return false;
-	}
-
-	// apply the filter
-	var versionLine = lines.filter(checkIfVersionLine);
-
-	versionString = versionLine[0].replace(/^[Vv]ersion:/, '' ).trim();
-	versionString = '-' + versionString.replace(/\./g,'-');
-
 	// Right now we create a zip without the version information in the name.
 	return gulp.src('./')
 		.pipe(plugins.exec('cd ./../; rm -rf ' + theme + '*.zip; cd ./build/; zip -r -X ./../' + theme + '.zip ./; cd ./../; rm -rf build'));
-	// return gulp.src('./')
-	// 	.pipe(exec('cd ./../; rm -rf' + theme[0].toUpperCase() + theme.slice(1) + '*.zip; cd ./build/; zip -r -X ./../' + theme[0].toUpperCase() + theme.slice(1) + versionString + '.zip ./; cd ./../; rm -rf build'));
-
 }
 gulp.task( 'make-zip', createZipFile );
 

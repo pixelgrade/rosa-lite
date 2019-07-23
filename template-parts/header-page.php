@@ -221,17 +221,14 @@ if ( $pin_type == 'single' ) {
 						} ?>
 					</div>
 				</div>
-				<?php if ( ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) { ?>
+				<?php if ( ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) ) { ?>
 					<div class="flexbox">
 					<div class="flexbox__item">
 						<hgroup class="article__headline">
 							<?php if ( ! empty( $subtitle ) ) {
 								echo '<h2 class="headline__secondary">' . $subtitle . '</h2>' . PHP_EOL;
 							} ?>
-							<h1 class="headline__primary"><?php echo esc_html( $title ) ?></h1>
-							<?php if ( ! empty( $description ) ) {
-								echo '<div class="headline__description">' . $description . '</div>' . PHP_EOL;
-							} ?>
+							<h1 class="headline__primary"><?php echo esc_html( $page_title ) ?></h1>
 						</hgroup>
 					</div>
 					</div>
@@ -259,16 +256,13 @@ if ( $pin_type == 'single' ) {
 					}
 				}
 
-				if ( ! empty( $subtitle ) || ( ! empty( $title ) && $title !== ' ' ) || ! empty( $description ) ) { ?>
+				if ( ! empty( $subtitle ) || ( ! empty( $page_title ) && $page_title !== ' ' ) ) { ?>
 					<div class="c-hero__wrapper">
 						<hgroup class="article__headline">
 							<?php if ( ! empty( $subtitle ) ) {
 								echo '<h2 class="headline__secondary">' . $subtitle . '</h2>' . PHP_EOL;
 							} ?>
-							<h1 class="headline__primary"><?php echo esc_html( $title ) ?></h1>
-							<?php if ( ! empty( $description ) ) {
-								echo '<div class="headline__description">' . $description . '</div>' . PHP_EOL;
-							} ?>
+							<h1 class="headline__primary"><?php echo esc_html( $page_title ); ?></h1>
 						</hgroup>
 					</div>
 				<?php } ?>
