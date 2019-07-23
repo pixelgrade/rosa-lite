@@ -20,5 +20,8 @@
 		"gulp-sass": "^4.0.2",
 		"gulp-sourcemaps": "^2.6.5",
 		"gulp-util": "^3.0.8"
+	},
+	"dependencies": {
+		"del": "^5.0.0"
 	}
 }
