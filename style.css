@@ -762,8 +762,7 @@ table {
 /**
  * The usual...
  */
-h1, h2, .tabs__nav,
-.woocommerce-MyAccount-navigation ul, h3, h4, h5, h6,
+h1, h2, .tabs__nav, h3, h4, h5, h6,
 p, blockquote, pre,
 dl, dd, ol, ul,
 form, fieldset, legend,
@@ -822,8 +821,7 @@ textarea:focus {
  * Extend the clearfix class with Sass to avoid the `.cf` class appearing over
  * and over in your markup.
  */
-.cf:after, .nav:after, .author__social-links:after, .commentlist:after, .social-links-list:after, .sub-menu:after, .tabs__nav:after,
-.woocommerce-MyAccount-navigation ul:after, .menu-list__items:after, .media:after, .author:after, .latest-comments__list:after, .island:after,
+.cf:after, .nav:after, .author__social-links:after, .commentlist:after, .social-links-list:after, .sub-menu:after, .tabs__nav:after, .menu-list__items:after, .media:after, .author:after, .latest-comments__list:after, .island:after,
 .islet:after, .matrix:after, .multi-list:after, .widget_nav_menu ul:after, .widget_categories ul:after, .widget_meta ul:after, .stat-group:after, .wp-caption:after, .gallery:after, blockquote cite:after, blockquote .testimonial__author-name:after, .btn-list:after, .widget_tag_cloud .wp-tag-cloud:after, .comments-area-title:after, .comment-reply-title:after, .nav--main:after, .progressbar:after, .copyright-area:after, .footer-widget-area:after, .container:after, .pixcode--grid:after, .article--archive:after {
   content: "";
   display: table;
@@ -840,8 +838,7 @@ textarea:focus {
 /**
  * Base elements
  */
-h1, h2, .tabs__nav,
-.woocommerce-MyAccount-navigation ul, h3, h4, h5, h6, hgroup,
+h1, h2, .tabs__nav, h3, h4, h5, h6, hgroup,
 ul, ol, dl,
 blockquote, p, address,
 table,
@@ -855,8 +852,7 @@ pre,
 .islet {
   margin-bottom: 24px;
   margin-bottom: 1.5rem; }
-  .islet h1, .islet h2, .islet .tabs__nav,
-  .islet .woocommerce-MyAccount-navigation ul, .woocommerce-MyAccount-navigation .islet ul, .islet h3, .islet h4, .islet h5, .islet h6, .islet hgroup, .islet
+  .islet h1, .islet h2, .islet .tabs__nav, .islet h3, .islet h4, .islet h5, .islet h6, .islet hgroup, .islet
   ul, .islet ol, .islet dl, .islet
   blockquote, .islet p, .islet address, .islet
   table, .islet
@@ -916,8 +912,7 @@ h1, .alpha {
   font-size: 2.9375rem;
   line-height: 1.03128; }
 
-h2, .tabs__nav,
-.woocommerce-MyAccount-navigation ul, .beta, .heading .archive__side-title, .widget--sidebar__title .archive__side-title, .widget--footer__title .archive__side-title {
+h2, .tabs__nav, .beta, .heading .archive__side-title, .widget--sidebar__title .archive__side-title, .widget--footer__title .archive__side-title {
   font-size: 32px;
   font-size: 2rem;
   line-height: 1.135; }
@@ -1816,18 +1811,16 @@ html.flexbox, html.site-title {
 	 * Demo: jsfiddle.net/inuitcss/Vnph4
 	 *
 	 */
-.nav, .author__social-links, .commentlist, .social-links-list, .sub-menu, .tabs__nav,
-.woocommerce-MyAccount-navigation ul, .menu-list__items {
+.nav, .author__social-links, .commentlist, .social-links-list, .sub-menu, .tabs__nav, .menu-list__items {
   list-style: none;
   margin-left: 0; }
-  .nav > li, .author__social-links > li, .commentlist > li, .social-links-list > li, .sub-menu > li, .tabs__nav > li, .woocommerce-MyAccount-navigation ul > li, .menu-list__items > li,
+  .nav > li, .author__social-links > li, .commentlist > li, .social-links-list > li, .sub-menu > li, .tabs__nav > li, .menu-list__items > li,
   .nav > li > a,
   .author__social-links > li > a,
   .commentlist > li > a,
   .social-links-list > li > a,
   .sub-menu > li > a,
   .tabs__nav > li > a,
-  .woocommerce-MyAccount-navigation ul > li > a,
   .menu-list__items > li > a {
     display: inline-block;
     *display: inline;
@@ -1860,8 +1853,7 @@ html.flexbox, html.site-title {
 	   </ul>
 	 *
 	 */
-.nav--banner, .tabs__nav,
-.woocommerce-MyAccount-navigation ul {
+.nav--banner, .tabs__nav {
   text-align: center; }
 
 /**
@@ -7260,12 +7252,10 @@ body {
 /*------------------------------------*\
                HEADINGS
 \*------------------------------------*/
-h1, h2, .tabs__nav,
-.woocommerce-MyAccount-navigation ul, h3, h4, h5, h6, hgroup, p {
+h1, h2, .tabs__nav, h3, h4, h5, h6, hgroup, p {
   margin-bottom: 30px; }
 
-h1, h2, .tabs__nav,
-.woocommerce-MyAccount-navigation ul, h3, h4, h5, h6 {
+h1, h2, .tabs__nav, h3, h4, h5, h6 {
   margin-bottom: 30px;
   font-family: "Source Sans Pro", Georgia, serif;
   font-weight: bold;
@@ -7278,8 +7268,7 @@ h1 {
   margin-bottom: 42px;
   font-weight: 900; }
 
-h2, .tabs__nav,
-.woocommerce-MyAccount-navigation ul, h3, h4 {
+h2, .tabs__nav, h3, h4 {
   margin-top: 42px;
   font-weight: 500; }
 
@@ -7290,10 +7279,7 @@ h5, h6 {
 .article__title, .latest-comments__title, .article__title .hN, .latest-comments__title .hN, .article__title .widget_calendar caption, .widget_calendar .article__title caption, .latest-comments__title .widget_calendar caption, .widget_calendar .latest-comments__title caption, .widget__title .hN, .widget__title .widget_calendar caption, .widget_calendar .widget__title caption, .heading .hN, .widget--sidebar__title .hN, .widget--footer__title .hN, .heading .widget_calendar caption, .widget_calendar .heading caption, .widget--sidebar__title .widget_calendar caption, .widget_calendar .widget--sidebar__title caption, .widget--footer__title .widget_calendar caption, .widget_calendar .widget--footer__title caption {
   margin-top: 0; }
 
-.heading h2, .widget--sidebar__title h2, .widget--footer__title h2, .heading .tabs__nav, .widget--sidebar__title .tabs__nav, .widget--footer__title .tabs__nav,
-.heading .woocommerce-MyAccount-navigation ul, .woocommerce-MyAccount-navigation .heading ul,
-.widget--sidebar__title .woocommerce-MyAccount-navigation ul, .woocommerce-MyAccount-navigation .widget--sidebar__title ul,
-.widget--footer__title .woocommerce-MyAccount-navigation ul, .woocommerce-MyAccount-navigation .widget--footer__title ul {
+.heading h2, .widget--sidebar__title h2, .widget--footer__title h2, .heading .tabs__nav, .widget--sidebar__title .tabs__nav, .widget--footer__title .tabs__nav {
   display: inline-block;
   margin-bottom: 0; }
 
@@ -7308,8 +7294,7 @@ h5, h6 {
 @media screen and (max-width: 600px) {
   h1, .alpha {
     font-size: 28.2px; }
-  h2, .tabs__nav,
-  .woocommerce-MyAccount-navigation ul, .beta, .heading .archive__side-title, .widget--sidebar__title .archive__side-title, .widget--footer__title .archive__side-title {
+  h2, .tabs__nav, .beta, .heading .archive__side-title, .widget--sidebar__title .archive__side-title, .widget--footer__title .archive__side-title {
     font-size: 26.56px; }
   h3, .gamma, .widget_calendar caption {
     font-size: 19.92px; }
@@ -8293,8 +8278,7 @@ figure {
   letter-spacing: 72px; }
 
 /*rtl:end:ignore*/
-.headline__description h1, .headline__description h2, .headline__description .tabs__nav,
-.headline__description .woocommerce-MyAccount-navigation ul, .woocommerce-MyAccount-navigation .headline__description ul, .headline__description h3, .headline__description h4, .headline__description h5, .headline__description h6 {
+.headline__description h1, .headline__description h2, .headline__description .tabs__nav, .headline__description h3, .headline__description h4, .headline__description h5, .headline__description h6 {
   margin-bottom: 12px; }
 
 .is-edge .headline__primary,
@@ -9299,7 +9283,7 @@ button.nav-trigger {
       display: none !important; } }
 
 @media only screen and (max-width: 899px) {
-  .nav--items-social, .nav--woocommerce {
+  .nav--items-social {
     width: auto;
     display: inline-block;
     vertical-align: middle; } }
@@ -9343,9 +9327,7 @@ button.nav-trigger {
     -ms-flex-negative: 1;
         flex-shrink: 1;
     text-align: center; }
-  ul.nav.nav--items-social, ul.nav--items-social.author__social-links, ul.nav--items-social.commentlist, ul.nav--items-social.social-links-list, ul.nav--items-social.sub-menu, ul.nav--items-social.tabs__nav,
-  .woocommerce-MyAccount-navigation ul.nav--items-social, ul.nav--items-social.menu-list__items,
-  .nav--woocommerce {
+  ul.nav.nav--items-social, ul.nav--items-social.author__social-links, ul.nav--items-social.commentlist, ul.nav--items-social.social-links-list, ul.nav--items-social.sub-menu, ul.nav--items-social.tabs__nav, ul.nav--items-social.menu-list__items {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -9631,24 +9613,18 @@ hr, .separator {
   margin: -24px;
   padding-bottom: 0; }
 
-.tabs__nav,
-.woocommerce-MyAccount-navigation ul {
+.tabs__nav {
   margin-bottom: 24px;
   margin-bottom: 1.5rem; }
-  .tabs__nav li,
-  .woocommerce-MyAccount-navigation ul li {
+  .tabs__nav li {
     border: 6px solid transparent; }
-    .tabs__nav li:last-child,
-    .woocommerce-MyAccount-navigation ul li:last-child {
+    .tabs__nav li:last-child {
       border: 0; }
-  .tabs__nav a,
-  .woocommerce-MyAccount-navigation ul a {
+  .tabs__nav a {
     text-decoration: none;
     color: #262526;
     border-bottom: 3px solid transparent; }
-    .tabs__nav a.current, .tabs__nav a:hover,
-    .woocommerce-MyAccount-navigation ul a.current,
-    .woocommerce-MyAccount-navigation ul a:hover {
+    .tabs__nav a.current, .tabs__nav a:hover {
       color: #c59d5f;
       border-color: #c59d5f; }
 
@@ -10084,13 +10060,12 @@ small.muted {
   font-size: 0.8125rem;
   line-height: 1.85615; }
 
-.nav.nav--items-social, .nav--items-social.author__social-links, .nav--items-social.commentlist, .nav--items-social.social-links-list, .nav--items-social.sub-menu, .nav--items-social.tabs__nav,
-.woocommerce-MyAccount-navigation ul.nav--items-social, .nav--items-social.menu-list__items,
+.nav.nav--items-social, .nav--items-social.author__social-links, .nav--items-social.commentlist, .nav--items-social.social-links-list, .nav--items-social.sub-menu, .nav--items-social.tabs__nav, .nav--items-social.menu-list__items,
 .widget [class*="social"] > ul {
   display: inline-block;
   margin-bottom: 0;
   line-height: 1; }
-  .nav.nav--items-social a, .nav--items-social.author__social-links a, .nav--items-social.commentlist a, .nav--items-social.social-links-list a, .nav--items-social.sub-menu a, .nav--items-social.tabs__nav a, .woocommerce-MyAccount-navigation ul.nav--items-social a, .nav--items-social.menu-list__items a,
+  .nav.nav--items-social a, .nav--items-social.author__social-links a, .nav--items-social.commentlist a, .nav--items-social.social-links-list a, .nav--items-social.sub-menu a, .nav--items-social.tabs__nav a, .nav--items-social.menu-list__items a,
   .widget [class*="social"] > ul a {
     position: relative;
     padding: 8px 24px;
@@ -10099,7 +10074,7 @@ small.muted {
     width: 2.25rem;
     font-size: 16px;
     text-decoration: none; }
-    .nav.nav--items-social a:before, .nav--items-social.author__social-links a:before, .nav--items-social.commentlist a:before, .nav--items-social.social-links-list a:before, .nav--items-social.sub-menu a:before, .nav--items-social.tabs__nav a:before, .woocommerce-MyAccount-navigation ul.nav--items-social a:before, .nav--items-social.menu-list__items a:before,
+    .nav.nav--items-social a:before, .nav--items-social.author__social-links a:before, .nav--items-social.commentlist a:before, .nav--items-social.social-links-list a:before, .nav--items-social.sub-menu a:before, .nav--items-social.tabs__nav a:before, .nav--items-social.menu-list__items a:before,
     .widget [class*="social"] > ul a:before {
       position: absolute;
       top: 50%;
@@ -10114,144 +10089,144 @@ small.muted {
       -webkit-transition: color .2s linear;
       transition: color .2s linear; }
       @media only screen and (max-width: 899px) {
-        .nav.nav--items-social a:before, .nav--items-social.author__social-links a:before, .nav--items-social.commentlist a:before, .nav--items-social.social-links-list a:before, .nav--items-social.sub-menu a:before, .nav--items-social.tabs__nav a:before, .woocommerce-MyAccount-navigation ul.nav--items-social a:before, .nav--items-social.menu-list__items a:before,
+        .nav.nav--items-social a:before, .nav--items-social.author__social-links a:before, .nav--items-social.commentlist a:before, .nav--items-social.social-links-list a:before, .nav--items-social.sub-menu a:before, .nav--items-social.tabs__nav a:before, .nav--items-social.menu-list__items a:before,
         .widget [class*="social"] > ul a:before {
           opacity: .5; } }
-    .nav.nav--items-social a[href*="mailto:"]:before, .nav--items-social.author__social-links a[href*="mailto:"]:before, .nav--items-social.commentlist a[href*="mailto:"]:before, .nav--items-social.social-links-list a[href*="mailto:"]:before, .nav--items-social.sub-menu a[href*="mailto:"]:before, .nav--items-social.tabs__nav a[href*="mailto:"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="mailto:"]:before, .nav--items-social.menu-list__items a[href*="mailto:"]:before, .nav.nav--items-social a[href*="mail"]:before, .nav--items-social.author__social-links a[href*="mail"]:before, .nav--items-social.commentlist a[href*="mail"]:before, .nav--items-social.social-links-list a[href*="mail"]:before, .nav--items-social.sub-menu a[href*="mail"]:before, .nav--items-social.tabs__nav a[href*="mail"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="mail"]:before, .nav--items-social.menu-list__items a[href*="mail"]:before,
+    .nav.nav--items-social a[href*="mailto:"]:before, .nav--items-social.author__social-links a[href*="mailto:"]:before, .nav--items-social.commentlist a[href*="mailto:"]:before, .nav--items-social.social-links-list a[href*="mailto:"]:before, .nav--items-social.sub-menu a[href*="mailto:"]:before, .nav--items-social.tabs__nav a[href*="mailto:"]:before, .nav--items-social.menu-list__items a[href*="mailto:"]:before, .nav.nav--items-social a[href*="mail"]:before, .nav--items-social.author__social-links a[href*="mail"]:before, .nav--items-social.commentlist a[href*="mail"]:before, .nav--items-social.social-links-list a[href*="mail"]:before, .nav--items-social.sub-menu a[href*="mail"]:before, .nav--items-social.tabs__nav a[href*="mail"]:before, .nav--items-social.menu-list__items a[href*="mail"]:before,
     .widget [class*="social"] > ul a[href*="mailto:"]:before,
     .widget [class*="social"] > ul a[href*="mail"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="feed"]:before, .nav--items-social.author__social-links a[href*="feed"]:before, .nav--items-social.commentlist a[href*="feed"]:before, .nav--items-social.social-links-list a[href*="feed"]:before, .nav--items-social.sub-menu a[href*="feed"]:before, .nav--items-social.tabs__nav a[href*="feed"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="feed"]:before, .nav--items-social.menu-list__items a[href*="feed"]:before, .nav.nav--items-social a[href*="rss"]:before, .nav--items-social.author__social-links a[href*="rss"]:before, .nav--items-social.commentlist a[href*="rss"]:before, .nav--items-social.social-links-list a[href*="rss"]:before, .nav--items-social.sub-menu a[href*="rss"]:before, .nav--items-social.tabs__nav a[href*="rss"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="rss"]:before, .nav--items-social.menu-list__items a[href*="rss"]:before,
+    .nav.nav--items-social a[href*="feed"]:before, .nav--items-social.author__social-links a[href*="feed"]:before, .nav--items-social.commentlist a[href*="feed"]:before, .nav--items-social.social-links-list a[href*="feed"]:before, .nav--items-social.sub-menu a[href*="feed"]:before, .nav--items-social.tabs__nav a[href*="feed"]:before, .nav--items-social.menu-list__items a[href*="feed"]:before, .nav.nav--items-social a[href*="rss"]:before, .nav--items-social.author__social-links a[href*="rss"]:before, .nav--items-social.commentlist a[href*="rss"]:before, .nav--items-social.social-links-list a[href*="rss"]:before, .nav--items-social.sub-menu a[href*="rss"]:before, .nav--items-social.tabs__nav a[href*="rss"]:before, .nav--items-social.menu-list__items a[href*="rss"]:before,
     .widget [class*="social"] > ul a[href*="feed"]:before,
     .widget [class*="social"] > ul a[href*="rss"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="behance"]:before, .nav--items-social.author__social-links a[href*="behance"]:before, .nav--items-social.commentlist a[href*="behance"]:before, .nav--items-social.social-links-list a[href*="behance"]:before, .nav--items-social.sub-menu a[href*="behance"]:before, .nav--items-social.tabs__nav a[href*="behance"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="behance"]:before, .nav--items-social.menu-list__items a[href*="behance"]:before,
+    .nav.nav--items-social a[href*="behance"]:before, .nav--items-social.author__social-links a[href*="behance"]:before, .nav--items-social.commentlist a[href*="behance"]:before, .nav--items-social.social-links-list a[href*="behance"]:before, .nav--items-social.sub-menu a[href*="behance"]:before, .nav--items-social.tabs__nav a[href*="behance"]:before, .nav--items-social.menu-list__items a[href*="behance"]:before,
     .widget [class*="social"] > ul a[href*="behance"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="delicious"]:before, .nav--items-social.author__social-links a[href*="delicious"]:before, .nav--items-social.commentlist a[href*="delicious"]:before, .nav--items-social.social-links-list a[href*="delicious"]:before, .nav--items-social.sub-menu a[href*="delicious"]:before, .nav--items-social.tabs__nav a[href*="delicious"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="delicious"]:before, .nav--items-social.menu-list__items a[href*="delicious"]:before,
+    .nav.nav--items-social a[href*="delicious"]:before, .nav--items-social.author__social-links a[href*="delicious"]:before, .nav--items-social.commentlist a[href*="delicious"]:before, .nav--items-social.social-links-list a[href*="delicious"]:before, .nav--items-social.sub-menu a[href*="delicious"]:before, .nav--items-social.tabs__nav a[href*="delicious"]:before, .nav--items-social.menu-list__items a[href*="delicious"]:before,
     .widget [class*="social"] > ul a[href*="delicious"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="deviantart"]:before, .nav--items-social.author__social-links a[href*="deviantart"]:before, .nav--items-social.commentlist a[href*="deviantart"]:before, .nav--items-social.social-links-list a[href*="deviantart"]:before, .nav--items-social.sub-menu a[href*="deviantart"]:before, .nav--items-social.tabs__nav a[href*="deviantart"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="deviantart"]:before, .nav--items-social.menu-list__items a[href*="deviantart"]:before,
+    .nav.nav--items-social a[href*="deviantart"]:before, .nav--items-social.author__social-links a[href*="deviantart"]:before, .nav--items-social.commentlist a[href*="deviantart"]:before, .nav--items-social.social-links-list a[href*="deviantart"]:before, .nav--items-social.sub-menu a[href*="deviantart"]:before, .nav--items-social.tabs__nav a[href*="deviantart"]:before, .nav--items-social.menu-list__items a[href*="deviantart"]:before,
     .widget [class*="social"] > ul a[href*="deviantart"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="digg"]:before, .nav--items-social.author__social-links a[href*="digg"]:before, .nav--items-social.commentlist a[href*="digg"]:before, .nav--items-social.social-links-list a[href*="digg"]:before, .nav--items-social.sub-menu a[href*="digg"]:before, .nav--items-social.tabs__nav a[href*="digg"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="digg"]:before, .nav--items-social.menu-list__items a[href*="digg"]:before,
+    .nav.nav--items-social a[href*="digg"]:before, .nav--items-social.author__social-links a[href*="digg"]:before, .nav--items-social.commentlist a[href*="digg"]:before, .nav--items-social.social-links-list a[href*="digg"]:before, .nav--items-social.sub-menu a[href*="digg"]:before, .nav--items-social.tabs__nav a[href*="digg"]:before, .nav--items-social.menu-list__items a[href*="digg"]:before,
     .widget [class*="social"] > ul a[href*="digg"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="etsy"]:before, .nav--items-social.author__social-links a[href*="etsy"]:before, .nav--items-social.commentlist a[href*="etsy"]:before, .nav--items-social.social-links-list a[href*="etsy"]:before, .nav--items-social.sub-menu a[href*="etsy"]:before, .nav--items-social.tabs__nav a[href*="etsy"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="etsy"]:before, .nav--items-social.menu-list__items a[href*="etsy"]:before,
+    .nav.nav--items-social a[href*="etsy"]:before, .nav--items-social.author__social-links a[href*="etsy"]:before, .nav--items-social.commentlist a[href*="etsy"]:before, .nav--items-social.social-links-list a[href*="etsy"]:before, .nav--items-social.sub-menu a[href*="etsy"]:before, .nav--items-social.tabs__nav a[href*="etsy"]:before, .nav--items-social.menu-list__items a[href*="etsy"]:before,
     .widget [class*="social"] > ul a[href*="etsy"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="dribbble"]:before, .nav--items-social.author__social-links a[href*="dribbble"]:before, .nav--items-social.commentlist a[href*="dribbble"]:before, .nav--items-social.social-links-list a[href*="dribbble"]:before, .nav--items-social.sub-menu a[href*="dribbble"]:before, .nav--items-social.tabs__nav a[href*="dribbble"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="dribbble"]:before, .nav--items-social.menu-list__items a[href*="dribbble"]:before,
+    .nav.nav--items-social a[href*="dribbble"]:before, .nav--items-social.author__social-links a[href*="dribbble"]:before, .nav--items-social.commentlist a[href*="dribbble"]:before, .nav--items-social.social-links-list a[href*="dribbble"]:before, .nav--items-social.sub-menu a[href*="dribbble"]:before, .nav--items-social.tabs__nav a[href*="dribbble"]:before, .nav--items-social.menu-list__items a[href*="dribbble"]:before,
     .widget [class*="social"] > ul a[href*="dribbble"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="facebook"]:before, .nav--items-social.author__social-links a[href*="facebook"]:before, .nav--items-social.commentlist a[href*="facebook"]:before, .nav--items-social.social-links-list a[href*="facebook"]:before, .nav--items-social.sub-menu a[href*="facebook"]:before, .nav--items-social.tabs__nav a[href*="facebook"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="facebook"]:before, .nav--items-social.menu-list__items a[href*="facebook"]:before,
+    .nav.nav--items-social a[href*="facebook"]:before, .nav--items-social.author__social-links a[href*="facebook"]:before, .nav--items-social.commentlist a[href*="facebook"]:before, .nav--items-social.social-links-list a[href*="facebook"]:before, .nav--items-social.sub-menu a[href*="facebook"]:before, .nav--items-social.tabs__nav a[href*="facebook"]:before, .nav--items-social.menu-list__items a[href*="facebook"]:before,
     .widget [class*="social"] > ul a[href*="facebook"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="flickr"]:before, .nav--items-social.author__social-links a[href*="flickr"]:before, .nav--items-social.commentlist a[href*="flickr"]:before, .nav--items-social.social-links-list a[href*="flickr"]:before, .nav--items-social.sub-menu a[href*="flickr"]:before, .nav--items-social.tabs__nav a[href*="flickr"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="flickr"]:before, .nav--items-social.menu-list__items a[href*="flickr"]:before,
+    .nav.nav--items-social a[href*="flickr"]:before, .nav--items-social.author__social-links a[href*="flickr"]:before, .nav--items-social.commentlist a[href*="flickr"]:before, .nav--items-social.social-links-list a[href*="flickr"]:before, .nav--items-social.sub-menu a[href*="flickr"]:before, .nav--items-social.tabs__nav a[href*="flickr"]:before, .nav--items-social.menu-list__items a[href*="flickr"]:before,
     .widget [class*="social"] > ul a[href*="flickr"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="foursquare"]:before, .nav--items-social.author__social-links a[href*="foursquare"]:before, .nav--items-social.commentlist a[href*="foursquare"]:before, .nav--items-social.social-links-list a[href*="foursquare"]:before, .nav--items-social.sub-menu a[href*="foursquare"]:before, .nav--items-social.tabs__nav a[href*="foursquare"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="foursquare"]:before, .nav--items-social.menu-list__items a[href*="foursquare"]:before,
+    .nav.nav--items-social a[href*="foursquare"]:before, .nav--items-social.author__social-links a[href*="foursquare"]:before, .nav--items-social.commentlist a[href*="foursquare"]:before, .nav--items-social.social-links-list a[href*="foursquare"]:before, .nav--items-social.sub-menu a[href*="foursquare"]:before, .nav--items-social.tabs__nav a[href*="foursquare"]:before, .nav--items-social.menu-list__items a[href*="foursquare"]:before,
     .widget [class*="social"] > ul a[href*="foursquare"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="github"]:before, .nav--items-social.author__social-links a[href*="github"]:before, .nav--items-social.commentlist a[href*="github"]:before, .nav--items-social.social-links-list a[href*="github"]:before, .nav--items-social.sub-menu a[href*="github"]:before, .nav--items-social.tabs__nav a[href*="github"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="github"]:before, .nav--items-social.menu-list__items a[href*="github"]:before,
+    .nav.nav--items-social a[href*="github"]:before, .nav--items-social.author__social-links a[href*="github"]:before, .nav--items-social.commentlist a[href*="github"]:before, .nav--items-social.social-links-list a[href*="github"]:before, .nav--items-social.sub-menu a[href*="github"]:before, .nav--items-social.tabs__nav a[href*="github"]:before, .nav--items-social.menu-list__items a[href*="github"]:before,
     .widget [class*="social"] > ul a[href*="github"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="plus.google"]:before, .nav--items-social.author__social-links a[href*="plus.google"]:before, .nav--items-social.commentlist a[href*="plus.google"]:before, .nav--items-social.social-links-list a[href*="plus.google"]:before, .nav--items-social.sub-menu a[href*="plus.google"]:before, .nav--items-social.tabs__nav a[href*="plus.google"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="plus.google"]:before, .nav--items-social.menu-list__items a[href*="plus.google"]:before,
+    .nav.nav--items-social a[href*="plus.google"]:before, .nav--items-social.author__social-links a[href*="plus.google"]:before, .nav--items-social.commentlist a[href*="plus.google"]:before, .nav--items-social.social-links-list a[href*="plus.google"]:before, .nav--items-social.sub-menu a[href*="plus.google"]:before, .nav--items-social.tabs__nav a[href*="plus.google"]:before, .nav--items-social.menu-list__items a[href*="plus.google"]:before,
     .widget [class*="social"] > ul a[href*="plus.google"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="instagram"]:before, .nav--items-social.author__social-links a[href*="instagram"]:before, .nav--items-social.commentlist a[href*="instagram"]:before, .nav--items-social.social-links-list a[href*="instagram"]:before, .nav--items-social.sub-menu a[href*="instagram"]:before, .nav--items-social.tabs__nav a[href*="instagram"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="instagram"]:before, .nav--items-social.menu-list__items a[href*="instagram"]:before,
+    .nav.nav--items-social a[href*="instagram"]:before, .nav--items-social.author__social-links a[href*="instagram"]:before, .nav--items-social.commentlist a[href*="instagram"]:before, .nav--items-social.social-links-list a[href*="instagram"]:before, .nav--items-social.sub-menu a[href*="instagram"]:before, .nav--items-social.tabs__nav a[href*="instagram"]:before, .nav--items-social.menu-list__items a[href*="instagram"]:before,
     .widget [class*="social"] > ul a[href*="instagram"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="linkedin"]:before, .nav--items-social.author__social-links a[href*="linkedin"]:before, .nav--items-social.commentlist a[href*="linkedin"]:before, .nav--items-social.social-links-list a[href*="linkedin"]:before, .nav--items-social.sub-menu a[href*="linkedin"]:before, .nav--items-social.tabs__nav a[href*="linkedin"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="linkedin"]:before, .nav--items-social.menu-list__items a[href*="linkedin"]:before,
+    .nav.nav--items-social a[href*="linkedin"]:before, .nav--items-social.author__social-links a[href*="linkedin"]:before, .nav--items-social.commentlist a[href*="linkedin"]:before, .nav--items-social.social-links-list a[href*="linkedin"]:before, .nav--items-social.sub-menu a[href*="linkedin"]:before, .nav--items-social.tabs__nav a[href*="linkedin"]:before, .nav--items-social.menu-list__items a[href*="linkedin"]:before,
     .widget [class*="social"] > ul a[href*="linkedin"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="pinterest"]:before, .nav--items-social.author__social-links a[href*="pinterest"]:before, .nav--items-social.commentlist a[href*="pinterest"]:before, .nav--items-social.social-links-list a[href*="pinterest"]:before, .nav--items-social.sub-menu a[href*="pinterest"]:before, .nav--items-social.tabs__nav a[href*="pinterest"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="pinterest"]:before, .nav--items-social.menu-list__items a[href*="pinterest"]:before,
+    .nav.nav--items-social a[href*="pinterest"]:before, .nav--items-social.author__social-links a[href*="pinterest"]:before, .nav--items-social.commentlist a[href*="pinterest"]:before, .nav--items-social.social-links-list a[href*="pinterest"]:before, .nav--items-social.sub-menu a[href*="pinterest"]:before, .nav--items-social.tabs__nav a[href*="pinterest"]:before, .nav--items-social.menu-list__items a[href*="pinterest"]:before,
     .widget [class*="social"] > ul a[href*="pinterest"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="reddit"]:before, .nav--items-social.author__social-links a[href*="reddit"]:before, .nav--items-social.commentlist a[href*="reddit"]:before, .nav--items-social.social-links-list a[href*="reddit"]:before, .nav--items-social.sub-menu a[href*="reddit"]:before, .nav--items-social.tabs__nav a[href*="reddit"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="reddit"]:before, .nav--items-social.menu-list__items a[href*="reddit"]:before,
+    .nav.nav--items-social a[href*="reddit"]:before, .nav--items-social.author__social-links a[href*="reddit"]:before, .nav--items-social.commentlist a[href*="reddit"]:before, .nav--items-social.social-links-list a[href*="reddit"]:before, .nav--items-social.sub-menu a[href*="reddit"]:before, .nav--items-social.tabs__nav a[href*="reddit"]:before, .nav--items-social.menu-list__items a[href*="reddit"]:before,
     .widget [class*="social"] > ul a[href*="reddit"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="skype"]:before, .nav--items-social.author__social-links a[href*="skype"]:before, .nav--items-social.commentlist a[href*="skype"]:before, .nav--items-social.social-links-list a[href*="skype"]:before, .nav--items-social.sub-menu a[href*="skype"]:before, .nav--items-social.tabs__nav a[href*="skype"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="skype"]:before, .nav--items-social.menu-list__items a[href*="skype"]:before,
+    .nav.nav--items-social a[href*="skype"]:before, .nav--items-social.author__social-links a[href*="skype"]:before, .nav--items-social.commentlist a[href*="skype"]:before, .nav--items-social.social-links-list a[href*="skype"]:before, .nav--items-social.sub-menu a[href*="skype"]:before, .nav--items-social.tabs__nav a[href*="skype"]:before, .nav--items-social.menu-list__items a[href*="skype"]:before,
     .widget [class*="social"] > ul a[href*="skype"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="soundcloud"]:before, .nav--items-social.author__social-links a[href*="soundcloud"]:before, .nav--items-social.commentlist a[href*="soundcloud"]:before, .nav--items-social.social-links-list a[href*="soundcloud"]:before, .nav--items-social.sub-menu a[href*="soundcloud"]:before, .nav--items-social.tabs__nav a[href*="soundcloud"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="soundcloud"]:before, .nav--items-social.menu-list__items a[href*="soundcloud"]:before,
+    .nav.nav--items-social a[href*="soundcloud"]:before, .nav--items-social.author__social-links a[href*="soundcloud"]:before, .nav--items-social.commentlist a[href*="soundcloud"]:before, .nav--items-social.social-links-list a[href*="soundcloud"]:before, .nav--items-social.sub-menu a[href*="soundcloud"]:before, .nav--items-social.tabs__nav a[href*="soundcloud"]:before, .nav--items-social.menu-list__items a[href*="soundcloud"]:before,
     .widget [class*="social"] > ul a[href*="soundcloud"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="spotify"]:before, .nav--items-social.author__social-links a[href*="spotify"]:before, .nav--items-social.commentlist a[href*="spotify"]:before, .nav--items-social.social-links-list a[href*="spotify"]:before, .nav--items-social.sub-menu a[href*="spotify"]:before, .nav--items-social.tabs__nav a[href*="spotify"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="spotify"]:before, .nav--items-social.menu-list__items a[href*="spotify"]:before,
+    .nav.nav--items-social a[href*="spotify"]:before, .nav--items-social.author__social-links a[href*="spotify"]:before, .nav--items-social.commentlist a[href*="spotify"]:before, .nav--items-social.social-links-list a[href*="spotify"]:before, .nav--items-social.sub-menu a[href*="spotify"]:before, .nav--items-social.tabs__nav a[href*="spotify"]:before, .nav--items-social.menu-list__items a[href*="spotify"]:before,
     .widget [class*="social"] > ul a[href*="spotify"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="stumbleupon"]:before, .nav--items-social.author__social-links a[href*="stumbleupon"]:before, .nav--items-social.commentlist a[href*="stumbleupon"]:before, .nav--items-social.social-links-list a[href*="stumbleupon"]:before, .nav--items-social.sub-menu a[href*="stumbleupon"]:before, .nav--items-social.tabs__nav a[href*="stumbleupon"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="stumbleupon"]:before, .nav--items-social.menu-list__items a[href*="stumbleupon"]:before,
+    .nav.nav--items-social a[href*="stumbleupon"]:before, .nav--items-social.author__social-links a[href*="stumbleupon"]:before, .nav--items-social.commentlist a[href*="stumbleupon"]:before, .nav--items-social.social-links-list a[href*="stumbleupon"]:before, .nav--items-social.sub-menu a[href*="stumbleupon"]:before, .nav--items-social.tabs__nav a[href*="stumbleupon"]:before, .nav--items-social.menu-list__items a[href*="stumbleupon"]:before,
     .widget [class*="social"] > ul a[href*="stumbleupon"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="tumblr"]:before, .nav--items-social.author__social-links a[href*="tumblr"]:before, .nav--items-social.commentlist a[href*="tumblr"]:before, .nav--items-social.social-links-list a[href*="tumblr"]:before, .nav--items-social.sub-menu a[href*="tumblr"]:before, .nav--items-social.tabs__nav a[href*="tumblr"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="tumblr"]:before, .nav--items-social.menu-list__items a[href*="tumblr"]:before,
+    .nav.nav--items-social a[href*="tumblr"]:before, .nav--items-social.author__social-links a[href*="tumblr"]:before, .nav--items-social.commentlist a[href*="tumblr"]:before, .nav--items-social.social-links-list a[href*="tumblr"]:before, .nav--items-social.sub-menu a[href*="tumblr"]:before, .nav--items-social.tabs__nav a[href*="tumblr"]:before, .nav--items-social.menu-list__items a[href*="tumblr"]:before,
     .widget [class*="social"] > ul a[href*="tumblr"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="twitter"]:before, .nav--items-social.author__social-links a[href*="twitter"]:before, .nav--items-social.commentlist a[href*="twitter"]:before, .nav--items-social.social-links-list a[href*="twitter"]:before, .nav--items-social.sub-menu a[href*="twitter"]:before, .nav--items-social.tabs__nav a[href*="twitter"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="twitter"]:before, .nav--items-social.menu-list__items a[href*="twitter"]:before,
+    .nav.nav--items-social a[href*="twitter"]:before, .nav--items-social.author__social-links a[href*="twitter"]:before, .nav--items-social.commentlist a[href*="twitter"]:before, .nav--items-social.social-links-list a[href*="twitter"]:before, .nav--items-social.sub-menu a[href*="twitter"]:before, .nav--items-social.tabs__nav a[href*="twitter"]:before, .nav--items-social.menu-list__items a[href*="twitter"]:before,
     .widget [class*="social"] > ul a[href*="twitter"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="vimeo"]:before, .nav--items-social.author__social-links a[href*="vimeo"]:before, .nav--items-social.commentlist a[href*="vimeo"]:before, .nav--items-social.social-links-list a[href*="vimeo"]:before, .nav--items-social.sub-menu a[href*="vimeo"]:before, .nav--items-social.tabs__nav a[href*="vimeo"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="vimeo"]:before, .nav--items-social.menu-list__items a[href*="vimeo"]:before,
+    .nav.nav--items-social a[href*="vimeo"]:before, .nav--items-social.author__social-links a[href*="vimeo"]:before, .nav--items-social.commentlist a[href*="vimeo"]:before, .nav--items-social.social-links-list a[href*="vimeo"]:before, .nav--items-social.sub-menu a[href*="vimeo"]:before, .nav--items-social.tabs__nav a[href*="vimeo"]:before, .nav--items-social.menu-list__items a[href*="vimeo"]:before,
     .widget [class*="social"] > ul a[href*="vimeo"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="vine"]:before, .nav--items-social.author__social-links a[href*="vine"]:before, .nav--items-social.commentlist a[href*="vine"]:before, .nav--items-social.social-links-list a[href*="vine"]:before, .nav--items-social.sub-menu a[href*="vine"]:before, .nav--items-social.tabs__nav a[href*="vine"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="vine"]:before, .nav--items-social.menu-list__items a[href*="vine"]:before,
+    .nav.nav--items-social a[href*="vine"]:before, .nav--items-social.author__social-links a[href*="vine"]:before, .nav--items-social.commentlist a[href*="vine"]:before, .nav--items-social.social-links-list a[href*="vine"]:before, .nav--items-social.sub-menu a[href*="vine"]:before, .nav--items-social.tabs__nav a[href*="vine"]:before, .nav--items-social.menu-list__items a[href*="vine"]:before,
     .widget [class*="social"] > ul a[href*="vine"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="vk"]:before, .nav--items-social.author__social-links a[href*="vk"]:before, .nav--items-social.commentlist a[href*="vk"]:before, .nav--items-social.social-links-list a[href*="vk"]:before, .nav--items-social.sub-menu a[href*="vk"]:before, .nav--items-social.tabs__nav a[href*="vk"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="vk"]:before, .nav--items-social.menu-list__items a[href*="vk"]:before,
+    .nav.nav--items-social a[href*="vk"]:before, .nav--items-social.author__social-links a[href*="vk"]:before, .nav--items-social.commentlist a[href*="vk"]:before, .nav--items-social.social-links-list a[href*="vk"]:before, .nav--items-social.sub-menu a[href*="vk"]:before, .nav--items-social.tabs__nav a[href*="vk"]:before, .nav--items-social.menu-list__items a[href*="vk"]:before,
     .widget [class*="social"] > ul a[href*="vk"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="weibo"]:before, .nav--items-social.author__social-links a[href*="weibo"]:before, .nav--items-social.commentlist a[href*="weibo"]:before, .nav--items-social.social-links-list a[href*="weibo"]:before, .nav--items-social.sub-menu a[href*="weibo"]:before, .nav--items-social.tabs__nav a[href*="weibo"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="weibo"]:before, .nav--items-social.menu-list__items a[href*="weibo"]:before,
+    .nav.nav--items-social a[href*="weibo"]:before, .nav--items-social.author__social-links a[href*="weibo"]:before, .nav--items-social.commentlist a[href*="weibo"]:before, .nav--items-social.social-links-list a[href*="weibo"]:before, .nav--items-social.sub-menu a[href*="weibo"]:before, .nav--items-social.tabs__nav a[href*="weibo"]:before, .nav--items-social.menu-list__items a[href*="weibo"]:before,
     .widget [class*="social"] > ul a[href*="weibo"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="xing"]:before, .nav--items-social.author__social-links a[href*="xing"]:before, .nav--items-social.commentlist a[href*="xing"]:before, .nav--items-social.social-links-list a[href*="xing"]:before, .nav--items-social.sub-menu a[href*="xing"]:before, .nav--items-social.tabs__nav a[href*="xing"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="xing"]:before, .nav--items-social.menu-list__items a[href*="xing"]:before,
+    .nav.nav--items-social a[href*="xing"]:before, .nav--items-social.author__social-links a[href*="xing"]:before, .nav--items-social.commentlist a[href*="xing"]:before, .nav--items-social.social-links-list a[href*="xing"]:before, .nav--items-social.sub-menu a[href*="xing"]:before, .nav--items-social.tabs__nav a[href*="xing"]:before, .nav--items-social.menu-list__items a[href*="xing"]:before,
     .widget [class*="social"] > ul a[href*="xing"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="yahoo"]:before, .nav--items-social.author__social-links a[href*="yahoo"]:before, .nav--items-social.commentlist a[href*="yahoo"]:before, .nav--items-social.social-links-list a[href*="yahoo"]:before, .nav--items-social.sub-menu a[href*="yahoo"]:before, .nav--items-social.tabs__nav a[href*="yahoo"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="yahoo"]:before, .nav--items-social.menu-list__items a[href*="yahoo"]:before,
+    .nav.nav--items-social a[href*="yahoo"]:before, .nav--items-social.author__social-links a[href*="yahoo"]:before, .nav--items-social.commentlist a[href*="yahoo"]:before, .nav--items-social.social-links-list a[href*="yahoo"]:before, .nav--items-social.sub-menu a[href*="yahoo"]:before, .nav--items-social.tabs__nav a[href*="yahoo"]:before, .nav--items-social.menu-list__items a[href*="yahoo"]:before,
     .widget [class*="social"] > ul a[href*="yahoo"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="youtube"]:before, .nav--items-social.author__social-links a[href*="youtube"]:before, .nav--items-social.commentlist a[href*="youtube"]:before, .nav--items-social.social-links-list a[href*="youtube"]:before, .nav--items-social.sub-menu a[href*="youtube"]:before, .nav--items-social.tabs__nav a[href*="youtube"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="youtube"]:before, .nav--items-social.menu-list__items a[href*="youtube"]:before,
+    .nav.nav--items-social a[href*="youtube"]:before, .nav--items-social.author__social-links a[href*="youtube"]:before, .nav--items-social.commentlist a[href*="youtube"]:before, .nav--items-social.social-links-list a[href*="youtube"]:before, .nav--items-social.sub-menu a[href*="youtube"]:before, .nav--items-social.tabs__nav a[href*="youtube"]:before, .nav--items-social.menu-list__items a[href*="youtube"]:before,
     .widget [class*="social"] > ul a[href*="youtube"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="angel.co"]:before, .nav--items-social.author__social-links a[href*="angel.co"]:before, .nav--items-social.commentlist a[href*="angel.co"]:before, .nav--items-social.social-links-list a[href*="angel.co"]:before, .nav--items-social.sub-menu a[href*="angel.co"]:before, .nav--items-social.tabs__nav a[href*="angel.co"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="angel.co"]:before, .nav--items-social.menu-list__items a[href*="angel.co"]:before,
+    .nav.nav--items-social a[href*="angel.co"]:before, .nav--items-social.author__social-links a[href*="angel.co"]:before, .nav--items-social.commentlist a[href*="angel.co"]:before, .nav--items-social.social-links-list a[href*="angel.co"]:before, .nav--items-social.sub-menu a[href*="angel.co"]:before, .nav--items-social.tabs__nav a[href*="angel.co"]:before, .nav--items-social.menu-list__items a[href*="angel.co"]:before,
     .widget [class*="social"] > ul a[href*="angel.co"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="yelp"]:before, .nav--items-social.author__social-links a[href*="yelp"]:before, .nav--items-social.commentlist a[href*="yelp"]:before, .nav--items-social.social-links-list a[href*="yelp"]:before, .nav--items-social.sub-menu a[href*="yelp"]:before, .nav--items-social.tabs__nav a[href*="yelp"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="yelp"]:before, .nav--items-social.menu-list__items a[href*="yelp"]:before,
+    .nav.nav--items-social a[href*="yelp"]:before, .nav--items-social.author__social-links a[href*="yelp"]:before, .nav--items-social.commentlist a[href*="yelp"]:before, .nav--items-social.social-links-list a[href*="yelp"]:before, .nav--items-social.sub-menu a[href*="yelp"]:before, .nav--items-social.tabs__nav a[href*="yelp"]:before, .nav--items-social.menu-list__items a[href*="yelp"]:before,
     .widget [class*="social"] > ul a[href*="yelp"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="last.fm"]:before, .nav--items-social.author__social-links a[href*="last.fm"]:before, .nav--items-social.commentlist a[href*="last.fm"]:before, .nav--items-social.social-links-list a[href*="last.fm"]:before, .nav--items-social.sub-menu a[href*="last.fm"]:before, .nav--items-social.tabs__nav a[href*="last.fm"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="last.fm"]:before, .nav--items-social.menu-list__items a[href*="last.fm"]:before,
+    .nav.nav--items-social a[href*="last.fm"]:before, .nav--items-social.author__social-links a[href*="last.fm"]:before, .nav--items-social.commentlist a[href*="last.fm"]:before, .nav--items-social.social-links-list a[href*="last.fm"]:before, .nav--items-social.sub-menu a[href*="last.fm"]:before, .nav--items-social.tabs__nav a[href*="last.fm"]:before, .nav--items-social.menu-list__items a[href*="last.fm"]:before,
     .widget [class*="social"] > ul a[href*="last.fm"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="slideshare"]:before, .nav--items-social.author__social-links a[href*="slideshare"]:before, .nav--items-social.commentlist a[href*="slideshare"]:before, .nav--items-social.social-links-list a[href*="slideshare"]:before, .nav--items-social.sub-menu a[href*="slideshare"]:before, .nav--items-social.tabs__nav a[href*="slideshare"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="slideshare"]:before, .nav--items-social.menu-list__items a[href*="slideshare"]:before,
+    .nav.nav--items-social a[href*="slideshare"]:before, .nav--items-social.author__social-links a[href*="slideshare"]:before, .nav--items-social.commentlist a[href*="slideshare"]:before, .nav--items-social.social-links-list a[href*="slideshare"]:before, .nav--items-social.sub-menu a[href*="slideshare"]:before, .nav--items-social.tabs__nav a[href*="slideshare"]:before, .nav--items-social.menu-list__items a[href*="slideshare"]:before,
     .widget [class*="social"] > ul a[href*="slideshare"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="twitch.tv"]:before, .nav--items-social.author__social-links a[href*="twitch.tv"]:before, .nav--items-social.commentlist a[href*="twitch.tv"]:before, .nav--items-social.social-links-list a[href*="twitch.tv"]:before, .nav--items-social.sub-menu a[href*="twitch.tv"]:before, .nav--items-social.tabs__nav a[href*="twitch.tv"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="twitch.tv"]:before, .nav--items-social.menu-list__items a[href*="twitch.tv"]:before,
+    .nav.nav--items-social a[href*="twitch.tv"]:before, .nav--items-social.author__social-links a[href*="twitch.tv"]:before, .nav--items-social.commentlist a[href*="twitch.tv"]:before, .nav--items-social.social-links-list a[href*="twitch.tv"]:before, .nav--items-social.sub-menu a[href*="twitch.tv"]:before, .nav--items-social.tabs__nav a[href*="twitch.tv"]:before, .nav--items-social.menu-list__items a[href*="twitch.tv"]:before,
     .widget [class*="social"] > ul a[href*="twitch.tv"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="bloglovin"]:before, .nav--items-social.author__social-links a[href*="bloglovin"]:before, .nav--items-social.commentlist a[href*="bloglovin"]:before, .nav--items-social.social-links-list a[href*="bloglovin"]:before, .nav--items-social.sub-menu a[href*="bloglovin"]:before, .nav--items-social.tabs__nav a[href*="bloglovin"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="bloglovin"]:before, .nav--items-social.menu-list__items a[href*="bloglovin"]:before,
+    .nav.nav--items-social a[href*="bloglovin"]:before, .nav--items-social.author__social-links a[href*="bloglovin"]:before, .nav--items-social.commentlist a[href*="bloglovin"]:before, .nav--items-social.social-links-list a[href*="bloglovin"]:before, .nav--items-social.sub-menu a[href*="bloglovin"]:before, .nav--items-social.tabs__nav a[href*="bloglovin"]:before, .nav--items-social.menu-list__items a[href*="bloglovin"]:before,
     .widget [class*="social"] > ul a[href*="bloglovin"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="#search"]:before, .nav--items-social.author__social-links a[href*="#search"]:before, .nav--items-social.commentlist a[href*="#search"]:before, .nav--items-social.social-links-list a[href*="#search"]:before, .nav--items-social.sub-menu a[href*="#search"]:before, .nav--items-social.tabs__nav a[href*="#search"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="#search"]:before, .nav--items-social.menu-list__items a[href*="#search"]:before,
+    .nav.nav--items-social a[href*="#search"]:before, .nav--items-social.author__social-links a[href*="#search"]:before, .nav--items-social.commentlist a[href*="#search"]:before, .nav--items-social.social-links-list a[href*="#search"]:before, .nav--items-social.sub-menu a[href*="#search"]:before, .nav--items-social.tabs__nav a[href*="#search"]:before, .nav--items-social.menu-list__items a[href*="#search"]:before,
     .widget [class*="social"] > ul a[href*="#search"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="medium.com"]:before, .nav--items-social.author__social-links a[href*="medium.com"]:before, .nav--items-social.commentlist a[href*="medium.com"]:before, .nav--items-social.social-links-list a[href*="medium.com"]:before, .nav--items-social.sub-menu a[href*="medium.com"]:before, .nav--items-social.tabs__nav a[href*="medium.com"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="medium.com"]:before, .nav--items-social.menu-list__items a[href*="medium.com"]:before,
+    .nav.nav--items-social a[href*="medium.com"]:before, .nav--items-social.author__social-links a[href*="medium.com"]:before, .nav--items-social.commentlist a[href*="medium.com"]:before, .nav--items-social.social-links-list a[href*="medium.com"]:before, .nav--items-social.sub-menu a[href*="medium.com"]:before, .nav--items-social.tabs__nav a[href*="medium.com"]:before, .nav--items-social.menu-list__items a[href*="medium.com"]:before,
     .widget [class*="social"] > ul a[href*="medium.com"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="whatsapp"]:before, .nav--items-social.author__social-links a[href*="whatsapp"]:before, .nav--items-social.commentlist a[href*="whatsapp"]:before, .nav--items-social.social-links-list a[href*="whatsapp"]:before, .nav--items-social.sub-menu a[href*="whatsapp"]:before, .nav--items-social.tabs__nav a[href*="whatsapp"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="whatsapp"]:before, .nav--items-social.menu-list__items a[href*="whatsapp"]:before,
+    .nav.nav--items-social a[href*="whatsapp"]:before, .nav--items-social.author__social-links a[href*="whatsapp"]:before, .nav--items-social.commentlist a[href*="whatsapp"]:before, .nav--items-social.social-links-list a[href*="whatsapp"]:before, .nav--items-social.sub-menu a[href*="whatsapp"]:before, .nav--items-social.tabs__nav a[href*="whatsapp"]:before, .nav--items-social.menu-list__items a[href*="whatsapp"]:before,
     .widget [class*="social"] > ul a[href*="whatsapp"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="leanpub"]:before, .nav--items-social.author__social-links a[href*="leanpub"]:before, .nav--items-social.commentlist a[href*="leanpub"]:before, .nav--items-social.social-links-list a[href*="leanpub"]:before, .nav--items-social.sub-menu a[href*="leanpub"]:before, .nav--items-social.tabs__nav a[href*="leanpub"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="leanpub"]:before, .nav--items-social.menu-list__items a[href*="leanpub"]:before,
+    .nav.nav--items-social a[href*="leanpub"]:before, .nav--items-social.author__social-links a[href*="leanpub"]:before, .nav--items-social.commentlist a[href*="leanpub"]:before, .nav--items-social.social-links-list a[href*="leanpub"]:before, .nav--items-social.sub-menu a[href*="leanpub"]:before, .nav--items-social.tabs__nav a[href*="leanpub"]:before, .nav--items-social.menu-list__items a[href*="leanpub"]:before,
     .widget [class*="social"] > ul a[href*="leanpub"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="renren"]:before, .nav--items-social.author__social-links a[href*="renren"]:before, .nav--items-social.commentlist a[href*="renren"]:before, .nav--items-social.social-links-list a[href*="renren"]:before, .nav--items-social.sub-menu a[href*="renren"]:before, .nav--items-social.tabs__nav a[href*="renren"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="renren"]:before, .nav--items-social.menu-list__items a[href*="renren"]:before,
+    .nav.nav--items-social a[href*="renren"]:before, .nav--items-social.author__social-links a[href*="renren"]:before, .nav--items-social.commentlist a[href*="renren"]:before, .nav--items-social.social-links-list a[href*="renren"]:before, .nav--items-social.sub-menu a[href*="renren"]:before, .nav--items-social.tabs__nav a[href*="renren"]:before, .nav--items-social.menu-list__items a[href*="renren"]:before,
     .widget [class*="social"] > ul a[href*="renren"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="twitch"]:before, .nav--items-social.author__social-links a[href*="twitch"]:before, .nav--items-social.commentlist a[href*="twitch"]:before, .nav--items-social.social-links-list a[href*="twitch"]:before, .nav--items-social.sub-menu a[href*="twitch"]:before, .nav--items-social.tabs__nav a[href*="twitch"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="twitch"]:before, .nav--items-social.menu-list__items a[href*="twitch"]:before,
+    .nav.nav--items-social a[href*="twitch"]:before, .nav--items-social.author__social-links a[href*="twitch"]:before, .nav--items-social.commentlist a[href*="twitch"]:before, .nav--items-social.social-links-list a[href*="twitch"]:before, .nav--items-social.sub-menu a[href*="twitch"]:before, .nav--items-social.tabs__nav a[href*="twitch"]:before, .nav--items-social.menu-list__items a[href*="twitch"]:before,
     .widget [class*="social"] > ul a[href*="twitch"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="tripadvisor"]:before, .nav--items-social.author__social-links a[href*="tripadvisor"]:before, .nav--items-social.commentlist a[href*="tripadvisor"]:before, .nav--items-social.social-links-list a[href*="tripadvisor"]:before, .nav--items-social.sub-menu a[href*="tripadvisor"]:before, .nav--items-social.tabs__nav a[href*="tripadvisor"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="tripadvisor"]:before, .nav--items-social.menu-list__items a[href*="tripadvisor"]:before,
+    .nav.nav--items-social a[href*="tripadvisor"]:before, .nav--items-social.author__social-links a[href*="tripadvisor"]:before, .nav--items-social.commentlist a[href*="tripadvisor"]:before, .nav--items-social.social-links-list a[href*="tripadvisor"]:before, .nav--items-social.sub-menu a[href*="tripadvisor"]:before, .nav--items-social.tabs__nav a[href*="tripadvisor"]:before, .nav--items-social.menu-list__items a[href*="tripadvisor"]:before,
     .widget [class*="social"] > ul a[href*="tripadvisor"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="500px"]:before, .nav--items-social.author__social-links a[href*="500px"]:before, .nav--items-social.commentlist a[href*="500px"]:before, .nav--items-social.social-links-list a[href*="500px"]:before, .nav--items-social.sub-menu a[href*="500px"]:before, .nav--items-social.tabs__nav a[href*="500px"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="500px"]:before, .nav--items-social.menu-list__items a[href*="500px"]:before,
+    .nav.nav--items-social a[href*="500px"]:before, .nav--items-social.author__social-links a[href*="500px"]:before, .nav--items-social.commentlist a[href*="500px"]:before, .nav--items-social.social-links-list a[href*="500px"]:before, .nav--items-social.sub-menu a[href*="500px"]:before, .nav--items-social.tabs__nav a[href*="500px"]:before, .nav--items-social.menu-list__items a[href*="500px"]:before,
     .widget [class*="social"] > ul a[href*="500px"]:before {
       content: ""; }
-    .nav.nav--items-social a[href*="tel:"]:before, .nav--items-social.author__social-links a[href*="tel:"]:before, .nav--items-social.commentlist a[href*="tel:"]:before, .nav--items-social.social-links-list a[href*="tel:"]:before, .nav--items-social.sub-menu a[href*="tel:"]:before, .nav--items-social.tabs__nav a[href*="tel:"]:before, .woocommerce-MyAccount-navigation ul.nav--items-social a[href*="tel:"]:before, .nav--items-social.menu-list__items a[href*="tel:"]:before,
+    .nav.nav--items-social a[href*="tel:"]:before, .nav--items-social.author__social-links a[href*="tel:"]:before, .nav--items-social.commentlist a[href*="tel:"]:before, .nav--items-social.social-links-list a[href*="tel:"]:before, .nav--items-social.sub-menu a[href*="tel:"]:before, .nav--items-social.tabs__nav a[href*="tel:"]:before, .nav--items-social.menu-list__items a[href*="tel:"]:before,
     .widget [class*="social"] > ul a[href*="tel:"]:before {
       content: ""; }
 
@@ -10299,8 +10274,7 @@ small.muted {
   color: white; }
   .promo-box.dark .promo-box__container {
     background-color: #262526; }
-  .promo-box__container h1, .promo-box__container h2, .promo-box__container .tabs__nav,
-  .promo-box__container .woocommerce-MyAccount-navigation ul, .woocommerce-MyAccount-navigation .promo-box__container ul, .promo-box__container h3, .promo-box__container h4, .promo-box__container h5, .promo-box__container h6 {
+  .promo-box__container h1, .promo-box__container h2, .promo-box__container .tabs__nav, .promo-box__container h3, .promo-box__container h4, .promo-box__container h5, .promo-box__container h6 {
     margin-top: 0;
     color: inherit; }
   .promo-box__container p:last-child {
@@ -11440,8 +11414,7 @@ img.mfp-img {
           width: 100%;
           display: block;
           padding: 0 72px; } }
-  .article--archive h2.article__title, .article--archive .article__title.tabs__nav, .article--archive .tabs__nav.latest-comments__title,
-  .article--archive .woocommerce-MyAccount-navigation ul.article__title, .woocommerce-MyAccount-navigation .article--archive ul.article__title, .article--archive .woocommerce-MyAccount-navigation ul.latest-comments__title, .woocommerce-MyAccount-navigation .article--archive ul.latest-comments__title, .article--archive h2.latest-comments__title {
+  .article--archive h2.article__title, .article--archive .article__title.tabs__nav, .article--archive .tabs__nav.latest-comments__title, .article--archive h2.latest-comments__title {
     margin: 0;
     font-weight: bold; }
   .article--archive .article__content {
@@ -11629,9 +11602,6 @@ body, .site-header, .site-footer {
 .article__header .btn, .article__header .comments_add-comment, .article__header .form-submit #comment-submit, .form-submit .article__header #comment-submit, .article__header .wpcf7-form-control.wpcf7-submit, .article__header .widget_tag_cloud a, .widget_tag_cloud .article__header a, .article__header .read-more-button {
   -webkit-transition: none;
   transition: none; }
-
-html body.woocommerce ul.products li.product {
-  margin-bottom: 78px; }
 
 /* Text meant only for screen readers. */
 .screen-reader-text {

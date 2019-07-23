@@ -598,7 +598,7 @@ $nav-width: 84vw;
 	}
 }
 
-.nav--items-social, .nav--woocommerce {
+.nav--items-social {
 	@include media-query(palm) {
 		width: auto;
 		display: inline-block;
@@ -661,8 +661,7 @@ $nav-width: 84vw;
 		text-align: center;
 	}
 
-	ul.nav.nav--items-social,
-	.nav--woocommerce {
+	ul.nav.nav--items-social {
 		display: flex;
 		align-items: center;
 	}

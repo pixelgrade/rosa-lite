@@ -6,8 +6,7 @@
 	padding-bottom: 0;
 }
 
-.tabs__nav,
-.woocommerce-MyAccount-navigation ul {
+.tabs__nav {
 	@extend .nav;
 	@extend .nav--banner;
 
