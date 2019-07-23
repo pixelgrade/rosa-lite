@@ -770,12 +770,9 @@ function rosa_better_excerpt( $text = '' ) {
 		$allowed_tags = '<p><a><em><strong><i><br><h1><h2><h3><h4><h5><h6><blockquote><ul><li><ol><iframe><embed><object><script>';
 		$text         = strip_tags( $text, $allowed_tags );
 
-		// Set custom excerpt length - number of characters to be shown in excerpts
-		if ( pixelgrade_option( 'blog_excerpt_length' ) ) {
-			$excerpt_length = absint( pixelgrade_option( 'blog_excerpt_length' ) );
-		} else {
-			$excerpt_length = 180;
-		}
+
+		$excerpt_length = 180;
+
 
 		$excerpt_more = apply_filters( 'excerpt_more', ' ' . '[...]' );
 
