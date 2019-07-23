@@ -11,19 +11,19 @@ function rosa_lite_callback_change_separator_params( $params ) {
 	//change the style options
 	if ( isset( $params['color'] ) ) {
 		$params['color']['options'] = array(
-			''      => "Gray",
-			'white' => "White",
+			''      => esc_html__( 'Gray', 'rosa-lite' ),
+			'white' => esc_html__( 'White', 'rosa-lite' ),
 		);
 	}
 
 	//add new params in the right order
 	$params = rosa_lite_array_insert_after( 'color', $params, 'type', array(
 		'type'        => 'select',
-		'name'        => 'Type',
+		'name'        => esc_html__( 'Type', 'rosa-lite' ),
 		'options'     => array(
-			'line'        => "Line",
-			'flower'      => "Flower",
-			'line-flower' => "Line with Flower",
+			'line'        => esc_html__( 'Line', 'rosa-lite' ),
+			'flower'      => esc_html__( 'Flower', 'rosa-lite' ),
+			'line-flower' => esc_html__( 'Line with Flower', 'rosa-lite' ),
 		),
 		'admin_class' => 'span5 push1',
 	) );
@@ -52,22 +52,22 @@ function rosa_lite_callback_change_button_params( $params ) {
 	//change the size options
 	if ( isset( $params['size'] ) ) {
 		$params['size']['options']     = array(
-			''      => "Regular",
-			'small' => "Small",
-			'large' => "Large",
+			''      => esc_html__( 'Regular', 'rosa-lite' ),
+			'small' => esc_html__( 'Small', 'rosa-lite' ),
+			'large' => esc_html__( 'Large', 'rosa-lite' ) ,
 		);
-		$params['size']['name']        = 'Size';
+		$params['size']['name']        = esc_html__( 'Size', 'rosa-lite' );
 		$params['size']['admin_class'] = 'span5 push1';
 	}
 
 	//add new params in the right order
 	$params = rosa_lite_array_insert_before( 'size', $params, 'type', array(
 		'type'        => 'select',
-		'name'        => 'Type',
+		'name'        => esc_html__( 'Type', 'rosa-lite' ),
 		'options'     => array(
-			''        => "Regular",
-			'primary' => "Primary",
-			'text'    => "Text",
+			''        => esc_html__( 'Regular', 'rosa-lite' ),
+			'primary' => esc_html__( 'Primary', 'rosa-lite' ),
+			'text'    => esc_html__( 'Text', 'rosa-lite' ),
 		),
 		'admin_class' => 'span6'
 	) );
@@ -113,14 +113,14 @@ function rosa_lite_callback_change_icon_params( $params ) {
 	//add new params in the right order
 	$params = rosa_lite_array_insert_after( 'size', $params, 'link', array(
 		'type'        => 'text',
-		'name'        => 'Link',
+		'name'        => esc_html__( 'Link', 'rosa-lite' ),
 		'options'     => array(),
 		'admin_class' => 'span6'
 	) );
 
 	$params = rosa_lite_array_insert_after( 'link', $params, 'link_target_blank', array(
 		'type'        => 'switch',
-		'name'        => 'Open in new window',
+		'name'        => esc_html__( 'Open in new window', 'rosa-lite' ),
 		'options'     => array(),
 		'admin_class' => 'span5 push1'
 	) );
