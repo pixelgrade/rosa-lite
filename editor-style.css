@@ -7153,7 +7153,8 @@ img[height] {
 body {
   font-size: 16px;
   line-height: 1.625;
-  color: #515150; }
+  color: #515150;
+  background-color: #FFFFFF; }
 
 /*------------------------------------*\
                HEADINGS
