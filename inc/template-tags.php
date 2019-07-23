@@ -390,10 +390,8 @@ if ( ! function_exists('rosa_comments') ) {
 		$GLOBALS['comment'] = $comment; ?>
 	<li <?php comment_class(); ?>>
 		<article id="comment-<?php echo $comment->comment_ID; ?>" class="comment-article  media">
-			<?php if ( pixelgrade_option( 'comments_show_numbering' ) ): ?>
 				<span class="comment-number"><?php echo $comment_number ?></span>
-			<?php endif; ?>
-			<?php if ( pixelgrade_option( 'comments_show_avatar' ) && get_comment_type( $comment->comment_ID ) == 'comment' ): ?>
+			<?php if ( get_comment_type( $comment->comment_ID ) == 'comment' ): ?>
 				<aside class="comment__avatar  media__img">
 					<!-- custom gravatar call -->
 					<?php $bgauthemail = get_comment_author_email(); ?>
