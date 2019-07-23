@@ -2,8 +2,8 @@
 /**
  * Rosa Lite functions and definitions
  *
- * @package Patch Lite
- * @since Patch Lite 1.0
+ * @package Rosa Lite
+ * @since Rosa Lite 1.0
  */
 
 if ( ! function_exists(' rosa_theme_setup' ) ) {
@@ -151,7 +151,7 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 		$script_dependencies[] = 'rosa-rs';
 
 		wp_enqueue_script( 'rosa-plugins-scripts', get_template_directory_uri() . '/assets/js/plugins.js', $script_dependencies, $theme->get( 'Version' ), true );
-		wp_enqueue_script( 'rosa-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'rosa-plugins-scripts' ), $theme->get( 'Version' ), true );
+		wp_enqueue_script( 'rosa-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'imagesloaded', 'rosa-plugins-scripts' ), $theme->get( 'Version' ), true );
 
 		$localization_array = array(
 			'ajaxurl'      => admin_url( 'admin-ajax.php' ),
