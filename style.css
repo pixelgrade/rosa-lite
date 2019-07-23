@@ -8558,6 +8558,8 @@ figure {
   text-transform: none; }
 
 .comments-area-title .total.comment-number--dark, .comments-area-title .total.comment-number, .comments-area-title .add-comment .total.add-comment__button, .add-comment .comments-area-title .total.add-comment__button, .comment-reply-title .total.comment-number--dark, .comment-reply-title .total.comment-number, .comment-reply-title .add-comment .total.add-comment__button, .add-comment .comment-reply-title .total.add-comment__button {
+  color: #FFFFFF;
+  background-color: #262526;
   position: relative;
   z-index: 1; }
 
@@ -8697,7 +8699,7 @@ li.depth-2:before {
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.72429;
-  color: inherit; }
+  color: #919191; }
 
 .comment__links {
   display: inline-block;
