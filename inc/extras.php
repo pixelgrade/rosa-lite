@@ -2,98 +2,163 @@
 /**
  * Custom functions that act independently of the theme templates.
  * Eventually, some of the functionality here could be replaced by core features.
- * @package Rosa
+ *
+ * @package Rosa Lite
  */
 
 /**
- * The following code is inspired by Yoast SEO.
+ * Extend the default WordPress post classes.
+ *
+ * @param array $classes A list of existing post class values.
+ *
+ * @return array The filtered post class list.
  */
-function rosa_get_current_canonical_url() {
-	global $wp_query;
+function rosa_lite_post_classes( $classes ) {
+	//only add this class for regular pages
+	if ( get_page_template_slug( get_the_ID() ) == '' ) {
+		$subtitle    = trim( get_post_meta( get_the_ID(), rosa_lite_prefix() . 'page_cover_subtitle', true ) );
+		$title       = get_post_meta( get_the_ID(), rosa_lite_prefix() . 'page_cover_title', true );
+		$description = get_post_meta( get_the_ID(), rosa_lite_prefix() . 'page_cover_description', true );
 
-	$link = false;
-
-	if ( $wp_query->is_404 || $wp_query->is_search ) {
-		return false;
+		if ( ! ( has_post_thumbnail() || ! empty( $subtitle ) || $title !== ' ' || ! empty( $description ) ) ) {
+			$classes[] = 'no-page-header';
+		}
 	}
 
-	$haspost = count( $wp_query->posts ) > 0;
+	return $classes;
+}
+add_filter( 'post_class', 'rosa_lite_post_classes' );
 
-	if ( get_query_var( 'm' ) ) {
-		$m = preg_replace( '/[^0-9]/', '', get_query_var( 'm' ) );
-		switch ( strlen( $m ) ) {
-			case 4:
-				$link = get_year_link( $m );
-				break;
-			case 6:
-				$link = get_month_link( substr( $m, 0, 4 ), substr( $m, 4, 2 ) );
-				break;
-			case 8:
-				$link = get_day_link( substr( $m, 0, 4 ), substr( $m, 4, 2 ), substr( $m, 6, 2 ) );
-				break;
-			default:
-				return false;
-		}
-	} elseif ( ( $wp_query->is_single || $wp_query->is_page ) && $haspost ) {
-		$post = $wp_query->posts[0];
-		$link = get_permalink( $post->ID );
-	} elseif ( $wp_query->is_author && $haspost ) {
-		$author = get_userdata( get_query_var( 'author' ) );
-		if ( $author === false ) {
-			return false;
-		}
-		$link = get_author_posts_url( $author->ID, $author->user_nicename );
-	} elseif ( $wp_query->is_category && $haspost ) {
-		$link = get_category_link( get_query_var( 'cat' ) );
-	} elseif ( $wp_query->is_tag && $haspost ) {
-		$tag = get_term_by( 'slug', get_query_var( 'tag' ), 'post_tag' );
-		if ( ! empty( $tag->term_id ) ) {
-			$link = get_tag_link( $tag->term_id );
-		}
-	} elseif ( $wp_query->is_day && $haspost ) {
-		$link = get_day_link( get_query_var( 'year' ), get_query_var( 'monthnum' ), get_query_var( 'day' ) );
-	} elseif ( $wp_query->is_month && $haspost ) {
-		$link = get_month_link( get_query_var( 'year' ), get_query_var( 'monthnum' ) );
-	} elseif ( $wp_query->is_year && $haspost ) {
-		$link = get_year_link( get_query_var( 'year' ) );
-	} elseif ( $wp_query->is_home ) {
-		if ( ( get_option( 'show_on_front' ) == 'page' ) && ( $pageid = get_option( 'page_for_posts' ) ) ) {
-			$link = get_permalink( $pageid );
-		} else {
-			if ( function_exists( 'icl_get_home_url' ) ) {
-				$link = icl_get_home_url();
-			} else { // icl_get_home_url does not exist
-				$link = home_url();
+/**
+ * The prefix used for post metas.
+ *
+ * @return string
+ */
+function rosa_lite_prefix() {
+	return '_rosa_';
+}
+
+// Start password protected stuff
+function rosa_lite_prepare_password_for_custom_post_types() {
+	global $rosa_private_post;
+
+	$rosa_private_post = rosa_lite_is_password_protected();
+}
+add_action( 'wp', 'rosa_lite_prepare_password_for_custom_post_types' );
+
+/**
+ * Checks if a post type object needs password aproval
+ * @return array If the form was submited it returns an array with the success status and a message
+ */
+function rosa_lite_is_password_protected() {
+	global $post;
+	$private_post = array( 'allowed' => false, 'error' => '' );
+
+	if ( isset( $_POST['submit_password'] ) ) { // when we have a submision check the password and its submision
+		if ( isset( $_POST['submit_password_nonce'] ) && wp_verify_nonce( $_POST['submit_password_nonce'], 'password_protection' ) ) {
+			if ( isset ( $_POST['post_password'] ) && ! empty( $_POST['post_password'] ) ) { // some simple checks on password
+				// finally test if the password submitted is correct
+				if ( $post->post_password === $_POST['post_password'] ) {
+					$private_post['allowed'] = true;
+
+					// ok if we have a correct password we should inform WordPress too
+					// otherwise the mad dog will put the password form again in the_content() and other filters
+					global $wp_hasher;
+					if ( empty( $wp_hasher ) ) {
+						require_once( ABSPATH . 'wp-includes/class-phpass.php' );
+						$wp_hasher = new PasswordHash( 8, true );
+					}
+					setcookie( 'wp-postpass_' . COOKIEHASH, $wp_hasher->HashPassword( stripslashes( $_POST['post_password'] ) ), 0, COOKIEPATH );
+
+				} else {
+					$private_post['error'] = '<h4 class="text--error">' . esc_html__( 'Wrong Password', 'rosa-lite' ) . '</h4>';
+				}
 			}
 		}
-	} elseif ( $wp_query->is_tax && $haspost ) {
-		$taxonomy = get_query_var( 'taxonomy' );
-		$term     = get_query_var( 'term' );
-		$link     = get_term_link( $term, $taxonomy );
-	} elseif ( $wp_query->is_archive && function_exists( 'get_post_type_archive_link' ) && ( $post_type = get_query_var( 'post_type' ) ) ) {
-		$link = get_post_type_archive_link( $post_type );
-	} else {
-		return false;
 	}
 
-	//let's see about the page number
-	$page = get_query_var( 'page' );
-	if ( empty( $page ) ) {
-		$page = get_query_var( 'paged' );
+	if ( isset( $_COOKIE[ 'wp-postpass_' . COOKIEHASH ] ) && get_permalink() == wp_get_referer() ) {
+		$private_post['error'] = '<h4 class="text--error">' . esc_html__( 'Wrong Password', 'rosa-lite' ) . '</h4>';
 	}
 
-	if ( ! empty( $page ) && $page > 1 ) {
-		$link = trailingslashit( $link ) . "page/$page";
-		$link = user_trailingslashit( $link, 'paged' );
+	return $private_post;
+}
+
+if ( ! function_exists( 'rosa_lite_callback_the_password_form' ) ) {
+
+	function rosa_lite_callback_the_password_form( $form ) {
+		global $post;
+		$post   = get_post( $post );
+		$postID = $post->ID;
+		$label  = 'pwbox-' . ( empty( $postID ) ? rand() : $postID );
+		$form   = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">
+		<p>' . esc_html__( 'This post is password protected. To view it please enter your password below:', 'rosa-lite' ) . '</p>
+		<div class="row">
+			<div class="column  span-12  hand-span-10">
+				<input name="post_password" id="' . esc_attr( $label ) . '" type="password" size="20" placeholder="' . esc_attr__( 'Password', 'rosa-lite' ) . '"/>
+			</div>
+			<div class="column  span-12  hand-span-2">
+				<input type="submit" name="' . esc_attr__( 'Access', 'rosa-lite' ) . '" value="' . esc_attr__( 'Access', 'rosa-lite' ) . '" class="btn post-password-submit"/>
+			</div>
+		</div>
+	</form>';
+
+		// on form submit put a wrong passwordp msg.
+		if ( get_permalink() != wp_get_referer() ) {
+			return $form;
+		}
+
+		// No cookie, the user has not sent anything until now.
+		if ( ! isset ( $_COOKIE[ 'wp-postpass_' . COOKIEHASH ] ) ) {
+			return $form;
+		}
+
+		require_once ABSPATH . 'wp-includes/class-phpass.php';
+		$hasher = new PasswordHash( 8, true );
+
+		$hash = wp_unslash( $_COOKIE[ 'wp-postpass_' . COOKIEHASH ] );
+		if ( 0 !== strpos( $hash, '$P$B' ) ) {
+			return $form;
+		}
+
+		if ( ! $hasher->CheckPassword( $post->post_password, $hash ) ) {
+
+			// We have a cookie, but it does not match the password.
+			$msg  = '<span class="wrong-password-message">' . esc_html__( 'Sorry, your password did not match', 'rosa-lite' ) . '</span>';
+			$form = $msg . $form;
+		}
+
+		return $form;
+
+	}
+	add_action( 'the_password_form', 'rosa_lite_callback_the_password_form' );
+}
+
+if ( ! function_exists( 'rosa_lite_add_title_caption_to_attachment' ) ) {
+	/**
+	 * Add title and caption back to images
+	 */
+	function rosa_lite_add_title_caption_to_attachment( $markup, $id ) {
+		$att     = get_post( $id );
+		$title   = '';
+		$caption = '';
+		if ( ! empty( $att->post_title ) ) {
+			$title = $att->post_title;
+		}
+		if ( ! empty( $att->post_excerpt ) ) {
+			$caption = $att->post_excerpt;
+		}
+
+		return str_replace( '<a ', '<a data-title="' . $title . '" data-alt="' . $caption . '" ', $markup );
 	}
 
-	return esc_url( $link );
+	add_filter( 'wp_get_attachment_link', 'rosa_lite_add_title_caption_to_attachment', 10, 5 );
 }
 
 /**
  * Theme activation hook
  */
-function wpgrade_callback_geting_active() {
+function rosa_lite_callback_geting_active() {
 
 	/**
 	 * Get the config from /config/activation.php
@@ -137,130 +202,20 @@ function wpgrade_callback_geting_active() {
 	 */
 	delete_option( 'rewrite_rules' );
 }
-add_action( 'after_switch_theme', 'wpgrade_callback_geting_active', 99999 );
-
-// Start password protected stuff
-function rosa_prepare_password_for_custom_post_types() {
-
-	global $wpgrade_private_post;
-	$wpgrade_private_post = rosa_is_password_protected();
-}
-add_action( 'wp', 'rosa_prepare_password_for_custom_post_types' );
+add_action( 'after_switch_theme', 'rosa_lite_callback_geting_active', 99999 );
 
 /**
- * Checks if a post type object needs password aproval
- * @return array If the form was submited it returns an array with the success status and a message
+ * Use different image sizes depending on the number of columns
+ *
+ * @param array $out
+ * @param array $pairs
+ * @param array $atts
+ *
+ * @return array
  */
-function rosa_is_password_protected() {
-	global $post;
-	$private_post = array( 'allowed' => false, 'error' => '' );
+function rosa_lite_overwrite_gallery_atts( $out, $pairs, $atts ) {
 
-	if ( isset( $_POST['submit_password'] ) ) { // when we have a submision check the password and its submision
-		if ( isset( $_POST['submit_password_nonce'] ) && wp_verify_nonce( $_POST['submit_password_nonce'], 'password_protection' ) ) {
-			if ( isset ( $_POST['post_password'] ) && ! empty( $_POST['post_password'] ) ) { // some simple checks on password
-				// finally test if the password submitted is correct
-				if ( $post->post_password === $_POST['post_password'] ) {
-					$private_post['allowed'] = true;
-
-					// ok if we have a correct password we should inform WordPress too
-					// otherwise the mad dog will put the password form again in the_content() and other filters
-					global $wp_hasher;
-					if ( empty( $wp_hasher ) ) {
-						require_once( ABSPATH . 'wp-includes/class-phpass.php' );
-						$wp_hasher = new PasswordHash( 8, true );
-					}
-					setcookie( 'wp-postpass_' . COOKIEHASH, $wp_hasher->HashPassword( stripslashes( $_POST['post_password'] ) ), 0, COOKIEPATH );
-
-				} else {
-					$private_post['error'] = '<h4 class="text--error">' . esc_html__( 'Wrong Password', 'rosa-lite' ) . '</h4>';
-				}
-			}
-		}
-	}
-
-	if ( isset( $_COOKIE[ 'wp-postpass_' . COOKIEHASH ] ) && get_permalink() == wp_get_referer() ) {
-		$private_post['error'] = '<h4 class="text--error">' . esc_html__( 'Wrong Password', 'rosa-lite' ) . '</h4>';
-	}
-
-	return $private_post;
-}
-
-if ( ! function_exists( 'rosa_callback_the_password_form' ) ) {
-	function rosa_callback_the_password_form( $form ) {
-		global $post;
-		$post   = get_post( $post );
-		$postID = $post->ID;
-		$label  = 'pwbox-' . ( empty( $postID ) ? rand() : $postID );
-		$form   = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">
-		<p>' . __( "This post is password protected. To view it please enter your password below:", 'rosa-lite' ) . '</p>
-		<div class="row">
-			<div class="column  span-12  hand-span-10">
-				<input name="post_password" id="' . $label . '" type="password" size="20" placeholder="' . esc_attr__( "Password", 'rosa-lite' ) . '"/>
-			</div>
-			<div class="column  span-12  hand-span-2">
-				<input type="submit" name="' . esc_attr__( "Access", 'rosa-lite' ) . '" value="' . esc_attr__( "Access", 'rosa-lite' ) . '" class="btn post-password-submit"/>
-			</div>
-		</div>
-	</form>';
-
-		// on form submit put a wrong passwordp msg.
-		if ( get_permalink() != wp_get_referer() ) {
-			return $form;
-		}
-
-		// No cookie, the user has not sent anything until now.
-		if ( ! isset ( $_COOKIE[ 'wp-postpass_' . COOKIEHASH ] ) ) {
-			return $form;
-		}
-
-		require_once ABSPATH . 'wp-includes/class-phpass.php';
-		$hasher = new PasswordHash( 8, true );
-
-		$hash = wp_unslash( $_COOKIE[ 'wp-postpass_' . COOKIEHASH ] );
-		if ( 0 !== strpos( $hash, '$P$B' ) ) {
-			return $form;
-		}
-
-		if ( ! $hasher->CheckPassword( $post->post_password, $hash ) ) {
-
-			// We have a cookie, but it does not match the password.
-			$msg  = '<span class="wrong-password-message">' . esc_html__( 'Sorry, your password did not match', 'rosa-lite' ) . '</span>';
-			$form = $msg . $form;
-		}
-
-		return $form;
-
-	}
-
-	add_action( 'the_password_form', 'rosa_callback_the_password_form' );
-}
-// Start password protected form
-
-if ( ! function_exists( 'rosa_add_title_caption_to_attachment' ) ) {
-	/**
-	 * Add title and caption back to images
-	 */
-	function rosa_add_title_caption_to_attachment( $markup, $id ) {
-		$att     = get_post( $id );
-		$title   = '';
-		$caption = '';
-		if ( ! empty( $att->post_title ) ) {
-			$title = $att->post_title;
-		}
-		if ( ! empty( $att->post_excerpt ) ) {
-			$caption = $att->post_excerpt;
-		}
-
-		return str_replace( '<a ', '<a data-title="' . $title . '" data-alt="' . $caption . '" ', $markup );
-	}
-
-	add_filter( 'wp_get_attachment_link', 'rosa_add_title_caption_to_attachment', 10, 5 );
-}
-
-//use different image sizes depending on the number of columns
-function rosa_overwrite_gallery_atts( $out, $pairs, $atts ) {
-
-	//if we need to make a slideshow then output full size images
+	// If we need to make a slideshow then output full size images
 	if ( isset( $atts['mkslideshow'] ) && $atts['mkslideshow'] == true ) {
 		$out['size'] = 'full-size';
 	} elseif ( isset( $atts['columns'] ) && ( ! isset( $atts['size'] ) || 'thumbnail' === $atts['size'] ) ) { //else try and use a decent size image if the user has left the default image size (i.e. thumbnail)
@@ -276,12 +231,12 @@ function rosa_overwrite_gallery_atts( $out, $pairs, $atts ) {
 
 	return $out;
 }
-add_filter( 'shortcode_atts_gallery', 'rosa_overwrite_gallery_atts', 10, 3 );
+add_filter( 'shortcode_atts_gallery', 'rosa_lite_overwrite_gallery_atts', 10, 3 );
 
 /*
  * Add custom filter for gallery shortcode output
  */
-function rosa_custom_post_gallery( $output, $attr ) {
+function rosa_lite_custom_post_gallery( $output, $attr ) {
 	global $post, $wp_locale;
 	static $instance = 0;
 
@@ -502,39 +457,31 @@ function rosa_custom_post_gallery( $output, $attr ) {
 
 	return $output;
 }
+add_filter( 'post_gallery', 'rosa_lite_custom_post_gallery', 10, 2 );
 
-add_filter( 'post_gallery', 'rosa_custom_post_gallery', 10, 2 );
+/**
+ * Customize the "wp_link_pages()" to be able to display both numbers and prev/next links
+ *
+ * @param array $args
+ *
+ * @return array
+ */
+function rosa_lite_add_next_and_number( $args ) {
+	if ( 'next_and_number' === $args['next_or_number'] ) {
+		global $page, $numpages, $multipage, $more;
 
-add_filter( 'mce_buttons', 'rosa_add_next_page_button' );
-// Add "Next page" button to TinyMCE
-function rosa_add_next_page_button( $mce_buttons ) {
-	$pos = array_search( 'wp_more', $mce_buttons, true );
-	if ( $pos !== false ) {
-		$tmp_buttons   = array_slice( $mce_buttons, 0, $pos + 1 );
-		$tmp_buttons[] = 'wp_page';
-		$mce_buttons   = array_merge( $tmp_buttons, array_slice( $mce_buttons, $pos + 1 ) );
-	}
-
-	return $mce_buttons;
-}
-
-add_filter( 'wp_link_pages_args', 'rosa_add_next_and_number' );
-// Customize the "wp_link_pages()" to be able to display both numbers and prev/next links
-function rosa_add_next_and_number( $args ) {
-	if ( $args['next_or_number'] == 'next_and_number' ) {
-		global $page, $numpages, $multipage, $more, $pagenow;
 		$args['next_or_number'] = 'number';
 		$prev                   = '';
 		$next                   = '';
-		if ( $multipage and $more ) {
+		if ( $multipage && $more ) {
 			$i = $page - 1;
-			if ( $i and $more ) {
+			if ( $i && $more ) {
 				$prev .= _wp_link_page( $i );
 				$prev .= $args['link_before'] . $args['previouspagelink'] . $args['link_after'] . '</a>';
 				$prev = apply_filters( 'wp_link_pages_link', $prev, 'prev' );
 			}
 			$i = $page + 1;
-			if ( $i <= $numpages and $more ) {
+			if ( $i <= $numpages && $more ) {
 				$next .= _wp_link_page( $i );
 				$next .= $args['link_before'] . $args['nextpagelink'] . $args['link_after'] . '</a>';
 				$next = apply_filters( 'wp_link_pages_link', $next, 'next' );
@@ -546,11 +493,12 @@ function rosa_add_next_and_number( $args ) {
 
 	return $args;
 }
+add_filter( 'wp_link_pages_args', 'rosa_lite_add_next_and_number' );
 
 /*
  * Add custom fields to attachments
  */
-function rosa_register_attachments_custom_fields() {
+function rosa_lite_register_attachments_custom_fields() {
 
 	//add video support for attachments
 	if ( ! function_exists( 'add_video_url_field_to_attachments' ) ) {
@@ -615,81 +563,7 @@ function rosa_register_attachments_custom_fields() {
 		}
 	}
 }
-
-add_action( 'init', 'rosa_register_attachments_custom_fields' );
-
-/**
- * Load custom javascript set by theme options
- */
-function rosa_callback_load_custom_js() {
-	$custom_js = pixelgrade_option( 'custom_js' );
-	if ( ! empty( $custom_js ) ) {
-		//first lets test is the js code is clean or has <script> tags and such
-		//if we have <script> tags than we will not enclose it in anything - raw output
-		if ( strpos( $custom_js, '</script>' ) !== false ) {
-			echo $custom_js . "\n";
-		} else {
-			echo "<script type=\"text/javascript\">\n;(function($){\n" . $custom_js . "\n})(jQuery);\n</script>\n";
-		}
-	}
-}
-
-add_action( 'wp_head', 'rosa_callback_load_custom_js', 999 );
-
-function rosa_callback_load_custom_js_footer() {
-	$custom_js = pixelgrade_option( 'custom_js_footer' );
-	if ( ! empty( $custom_js ) ) {
-		//first lets test is the js code is clean or has <script> tags and such
-		//if we have <script> tags than we will not enclose it in anything - raw output
-		if ( strpos( $custom_js, '</script>' ) !== false ) {
-			echo $custom_js . "\n";
-		} else {
-			echo "<script type=\"text/javascript\">\n;(function($){\n" . $custom_js . "\n})(jQuery);\n</script>\n";
-		}
-	}
-}
-
-add_action( 'wp_footer', 'rosa_callback_load_custom_js_footer', 999 );
-
-
-// check if current page or any of the children use the contact page template
-if ( ! function_exists( 'rosa_page_has_contact_descendants' ) ) {
-	function rosa_page_has_contact_descendants( $id = null ) {
-
-		// The default is that it doesn't have.
-		$has_contact_descendents = false;
-
-		$my_post = get_post( $id );
-		if ( empty( $my_post ) || is_wp_error( $my_post ) || empty( $my_post->ID ) ) {
-			return $has_contact_descendents;
-		}
-
-		if ( 'page-templates/contact.php' === get_page_template_slug( $my_post ) ) {
-			$has_contact_descendents = true;
-		} else {
-			// We need to look in children
-
-			$args = array(
-				'post_parent' => $my_post->ID,
-				'post_type'   => 'page',
-				'orderby'     => 'menu_order'
-			);
-
-			$child_query = new WP_Query( $args );
-
-			while ( $child_query->have_posts() ) {
-				if ( 'page-templates/contact.php' === get_page_template_slug( $child_query->next_post() ) ) {
-					$has_contact_descendents = true;
-					break;
-				}
-			}
-
-			wp_reset_postdata();
-		}
-
-		return $has_contact_descendents;
-	}
-}
+add_action( 'init', 'rosa_lite_register_attachments_custom_fields' );
 
 /**
  * Borrowed from CakePHP
@@ -710,7 +584,7 @@ if ( ! function_exists( 'rosa_page_has_contact_descendants' ) ) {
  * @link   http://book.cakephp.org/view/1469/Text#truncate-1625
  */
 
-function rosa_truncate( $text, $length = 100, $options = array() ) {
+function rosa_lite_truncate( $text, $length = 100, $options = array() ) {
 	$default = array(
 		'ending' => '...',
 		'exact'  => true,
@@ -801,13 +675,12 @@ function rosa_truncate( $text, $length = 100, $options = array() ) {
 	return $truncate;
 }
 
-//@todo CLEANUP refactor function
-function rosa_better_excerpt( $text = '' ) {
+function rosa_lite_better_excerpt( $text = '' ) {
 	global $post;
 	$raw_excerpt = '';
 
-	//if the post has a manual excerpt ignore the content given
-	if ( $text == '' && function_exists( 'has_excerpt' ) && has_excerpt() ) {
+	// If the post has a manual excerpt ignore the content given.
+	if ( $text == '' && has_excerpt() ) {
 		$text        = get_the_excerpt();
 		$raw_excerpt = $text;
 
@@ -821,9 +694,6 @@ function rosa_better_excerpt( $text = '' ) {
 		// Enable formatting in excerpts - Add HTML tags that you want to be parsed in excerpts
 		$allowed_tags = '<p><a><strong><i><br><h1><h2><h3><h4><h5><h6><blockquote><ul><li><ol>';
 		$text         = strip_tags( $text, $allowed_tags );
-		//		$excerpt_more = apply_filters('excerpt_more', ' ' . '[...]');
-		//		$text .= $excerpt_more;
-
 	} else {
 
 		if ( empty( $text ) ) {
@@ -857,7 +727,7 @@ function rosa_better_excerpt( $text = '' ) {
 			'exact'  => false,
 			'html'   => true
 		);
-		$text    = rosa_truncate( $text, $excerpt_length, $options );
+		$text    = rosa_lite_truncate( $text, $excerpt_length, $options );
 
 	}
 
@@ -867,332 +737,174 @@ function rosa_better_excerpt( $text = '' ) {
 	return apply_filters( 'wp_trim_excerpt', $text, $raw_excerpt );
 }
 
-/**
- * Replace the [...] WordPress puts in when using the the_excerpt() method.
- */
-function new_excerpt_more( $excerpt ) {
-	return pixelgrade_option( 'blog_excerpt_more_text' );
-}
-
-add_filter( 'excerpt_more', 'new_excerpt_more' );
-
-function remove_more_link_scroll( $link ) {
-	$link = preg_replace( '|#more-[0-9]+|', '', $link );
-
-	return $link;
-}
-
-add_filter( 'the_content_more_link', 'remove_more_link_scroll' );
-
-//fix the canonical url of YOAST because on the front page it ignores the pagination
-add_filter( 'wpseo_canonical', 'rosa_get_current_canonical_url' );
-//fix the canonical url of AIOSEOP because on the front page it breaks the pagination
-add_filter( 'aioseop_canonical_url', 'rosa_get_current_canonical_url' );
-
-/**
- * Filter the page title so that plugins can unhook this
- */
-function rosa_wp_title( $title, $sep ) {
-
-	global $paged, $page;
-
-	if ( is_feed() ) {
-		return $title;
-	}
-
-	// Add the site name.
-	$title .= get_bloginfo( 'name' );
-
-	// Add the site description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) ) {
-		$title = "$title $sep $site_description";
-	}
-
-	// Add a page number if necessary.
-	if ( $paged >= 2 || $page >= 2 ) {
-		/* translators: %s: Page number */
-		$title = "$title $sep " . sprintf( esc_html__( 'Page %s', 'rosa-lite' ), max( $paged, $page ) );
-	}
-
-	return $title;
-}
-
-add_filter( 'wp_title', 'rosa_wp_title', 10, 2 );
-
-function rosa_fix_yoast_page_number( $title ) {
-
-	global $paged, $page, $sep;
-
-	if ( is_home() || is_front_page() ) {
-		// Add a page number if necessary.
-		if ( $paged >= 2 || $page >= 2 ) {
-			/* translators: %s: Page number */
-			$title = "$title $sep " . sprintf( esc_html__( 'Page %s', 'rosa-lite' ), max( $paged, $page ) );
-		}
-	}
-
-	return $title;
-}
-
-//filter the YOAST title so we can correct the page number missing on frontpage
-add_filter( 'wpseo_title', 'rosa_fix_yoast_page_number' );
-
-//get the first image in a gallery or portfolio
-function rosa_get_first_gallery_image_src( $post_ID, $image_size ) {
-
-	$gallery_ids = array();
-
-	if ( ! empty( $gallery_ids[0] ) ) {
-		return wp_get_attachment_image_src( $gallery_ids[0], $image_size );
-	} else {
-		return null;
-	}
-}
-
-/**
- * Fix the sticky posts logic by preventing them to appear again
- *
- * @param WP_Query $query
- */
-function rosa_pre_get_posts_sticky_posts( $query ) {
-
-	// Do nothing if not home or not main query.
-	if ( ! $query->is_home() || ! $query->is_main_query() ) {
-		return;
-	}
-
-	$page_on_front = get_option( 'page_on_front' );
-
-	// Do nothing if the blog page is not the front page
-	if ( ! empty( $page_on_front ) ) {
-		return;
-	}
-
-	$sticky = get_option( 'sticky_posts' );
-
-	// Do nothing if no sticky posts
-	if ( empty( $sticky ) ) {
-		return;
-	}
-
-	// We need to respect post ids already in the blacklist of hell
-	$post__not_in = $query->get( 'post__not_in' );
-
-	if ( ! empty( $post__not_in ) ) {
-		$sticky = array_merge( (array) $post__not_in, $sticky );
-		$sticky = array_unique( $sticky );
-	}
-
-	$query->set( 'post__not_in', $sticky );
-}
-add_action( 'pre_get_posts', 'rosa_pre_get_posts_sticky_posts' );
-
-/**
- * Extend the default WordPress post classes.
- * @since Rosa Lite 1.0.0
- *
- * @param array $classes A list of existing post class values.
- *
- * @return array The filtered post class list.
- */
-function rosa_post_classes( $classes ) {
-	//only add this class for regular pages
-	if ( get_page_template_slug( get_the_ID() ) == '' ) {
-		$subtitle    = trim( get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_subtitle', true ) );
-		$title       = get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_title', true );
-		$description = get_post_meta( get_the_ID(), wpgrade::prefix() . 'page_cover_description', true );
-
-		if ( ! ( has_post_thumbnail() || ! empty( $subtitle ) || $title !== ' ' || ! empty( $description ) ) ) {
-			$classes[] = 'no-page-header';
-		}
-	}
-
-	return $classes;
-}
-add_filter( 'post_class', 'rosa_post_classes' );
-
-
-/**
- * Subpages edit links in the admin bar in the frontend (top parent page view)
- * @TODO move this inside a plugin
- *
- * @param WP_Admin_Bar $wp_admin_bar
- */
-function rosa_subpages_admin_bar_edit_links_frontend( $wp_admin_bar ) {
-	global $post;
-
-	//we are only interested in pages, not posts or something else
-	if ( is_page() ) {
-		//we assume this is the king of all pages
-		$top_level_page_ID = $post->ID;
-
-		//what if this is a child page of some group?
-		//well we will start from it's parent, just like we do in the actual content
-		if ( ! empty( $post->post_parent ) ) {
-			$top_level_page_ID = $post->post_parent;
-		}
-
-		$top_level_page = get_post( $top_level_page_ID );
-		if ( ! empty( $top_level_page ) ) {
-
-			$kids = get_children( array(
-					'post_parent' => $top_level_page->ID,
-					'orderby'     => 'menu_order title',
-					//this is the exact ordering used on the All Pages page - order included
-					'order'       => 'ASC',
-					'post_type'   => 'page',
-				) );
-
-			//so we have children - this means this is a top parent page
-			if ( ! empty( $kids ) ) {
-				//so we are on a page that has children
-
-				//first we replace the default "Edit Page" admin bar item with "Edit pages"
-				$wp_admin_bar->add_node( array(
-					'id'    => 'edit', //by passing the same ID, WordPress will do a merge
-					'title' => esc_html__( 'Edit Pages', 'rosa-lite' ),
-					'href'  => get_edit_post_link( $top_level_page->ID ),
-				) );
-
-				//add the parent edit once more for clarity
-				$wp_admin_bar->add_node( array(
-					'parent' => 'edit',
-					'id'     => 'edit_' . $top_level_page->post_name,
-					/* translators: %s: Page parent name */
-					'title'  => sprintf( esc_html__( 'Parent: %s', 'rosa-lite' ), trim( strip_tags( $top_level_page->post_title ) ) ),
-					'href'   => get_edit_post_link( $top_level_page->ID ),
-					'meta'   => array( 'class' => 'edit_parent_link' )
-				) );
-
-				foreach ( $kids as $kid ) {
-					$kid_args = array(
-						'parent' => 'edit',
-						'id'     => 'edit_child_' . $kid->post_name,
-						/* translators: %s: Page child name */
-						'title'  => sprintf( esc_html__( 'Child: %s', 'rosa-lite' ), trim( strip_tags( $kid->post_title ) ) ),
-						'href'   => get_edit_post_link( $kid->ID ),
-						'meta'   => array( 'class' => 'edit_child_link' )
-					);
-
-					if ( $post->ID == $kid->ID ) {
-						//this is the current page
-						$kid_args['meta']['class'] .= ' current_page';
-					}
-
-					$wp_admin_bar->add_node( $kid_args );
-
-					//let's do one more effort and go one level deeper
-					$subkids = get_children( array(
-							'post_parent' => $kid->ID,
-							'orderby'     => 'menu_order title',
-							//this is the exact ordering used on the All Pages page - order included
-							'order'       => 'ASC',
-							'post_type'   => 'page',
-						) );
-
-					if ( ! empty( $subkids ) ) {
-						foreach ( $subkids as $subkid ) {
-							$subkid_args = array(
-								'parent' => 'edit_child_' . $kid->post_name,
-								'id'     => 'edit_subchild_' . $subkid->post_name,
-								'title'  => trim( strip_tags( $subkid->post_title ) ),
-								'href'   => get_edit_post_link( $subkid->ID ),
-								'meta'   => array( 'class' => 'edit_child_link edit_subchild_link' )
-							);
-
-							if ( $post->ID == $subkid->ID ) {
-								//this is the current page
-								$kid_args['meta']['class'] .= ' current_page';
-							}
-
-							$wp_admin_bar->add_node( $subkid_args );
-						}
-					}
-				}
-			}
-		}
-	}
-}
-add_action( 'admin_bar_menu', 'rosa_subpages_admin_bar_edit_links_frontend', 999 );
-
-/**
- * Echo author page link
- * @return bool|string
- */
-function rosa_the_author_posts_link() {
-	global $authordata;
-	if ( ! is_object( $authordata ) ) {
-		return false;
-	}
-	/* translators: 1: link to author, 2:author name, 3: author name */
-	$link = sprintf( '<a href="%1$s" title="%2$s">%3$s</a>', esc_url( get_author_posts_url( $authordata->ID, $authordata->user_nicename ) ),
-		/* translators: %s: author name */
-		sprintf( esc_attr__( 'Posts by %s', 'rosa-lite' ), get_the_author() ), get_the_author() );
-
-	/**
-	 * Filter the link to the author page of the author of the current post.
-	 * @since 1.0.0
-	 *
-	 * @param string $link HTML link.
-	 */
-	echo apply_filters( 'the_author_posts_link', $link );
-}
-
 // This function should come from Customify, but we need to do our best to make things happen
 if ( ! function_exists( 'pixelgrade_option') ) {
 	/**
 	 * Get option from the database
 	 *
-	 * @param string $option The option name.
-	 * @param mixed $default Optional. The default value to return when the option was not found or saved.
-	 * @param bool $force_default Optional. When true, we will use the $default value provided for when the option was not saved at least once.
-	 *                          When false, we will let the option's default set value (in the Customify settings) kick in first, than our $default.
-	 *                          It basically, reverses the order of fallback, first the option's default, then our own.
-	 *                          This is ignored when $default is null.
+	 * @param string $option_id           The option name.
+	 * @param mixed  $default             Optional. The default value to return when the option was not found or saved.
+	 * @param bool   $force_given_default Optional. When true, we will use the $default value provided for when the option was not saved at least once.
+	 *                                    When false, we will let the option's default set value (in the Customify settings) kick in first, then our $default.
+	 *                                    It basically, reverses the order of fallback, first the option's default, then our own.
+	 *                                    This is ignored when $default is null.
 	 *
 	 * @return mixed
 	 */
-	function pixelgrade_option( $option, $default = null, $force_default = true ) {
-		/** @var PixCustomifyPlugin $pixcustomify_plugin */
-		global $pixcustomify_plugin;
-
-		if ( $pixcustomify_plugin !== null ) {
-			// if there is a customify value get it here
-
-			// First we see if we are not supposed to force over the option's default value
-			if ( $default !== null && $force_default == false ) {
-				// We will not pass the default here so Customify will fallback on the option's default value, if set
-				$customify_value = $pixcustomify_plugin->get_option( $option );
-
-				// We only fallback on the $default if none was given from Customify
-				if ( $customify_value == null ) {
-					return $default;
+	function pixelgrade_option( $option_id, $default = null, $force_given_default = false ) {
+		if ( function_exists( 'PixCustomifyPlugin' ) ) {
+			// Customify is present so we should get the value via it
+			// We need to account for the case where a option has an 'active_callback' defined in it's config
+			$options_config = PixCustomifyPlugin()->get_options_configs();
+			if ( ! empty( $options_config ) && ! empty( $options_config[ $option_id ] ) ) {
+				if ( ! empty( $options_config[ $option_id ]['active_callback'] ) ) {
+					// This option has an active callback
+					// We need to "question" it
+					//
+					// IMPORTANT NOTICE:
+					//
+					// Be extra careful when setting up the options to not end up in a circular logic
+					// due to callbacks that get an option and that option has a callback that gets the initial option - INFINITE LOOPS :(
+					if ( is_callable( $options_config[ $option_id ]['active_callback'] ) ) {
+						// Now we call the function and if it returns false, this means that the control is not active
+						// Hence it's saved value doesn't matter
+						$active = call_user_func( $options_config[ $option_id ]['active_callback'] );
+						if ( empty( $active ) ) {
+							// If we need to force the default received; we respect that
+							if ( true === $force_given_default && null !== $default ) {
+								return $default;
+							} else {
+								// Else we return false
+								// because we treat the case when the active callback returns false as if the option would be non-existent
+								// We do not return the default configured value in this case
+								return false;
+							}
+						}
+					}
 				}
+
+				// Now that the option is truly active, we need to see if we are not supposed to force over the option's default value
+				if ( $default !== null && false === $force_given_default ) {
+					// We will not pass the received $default here so Customify will fallback on the option's default value, if set
+					$customify_value = PixCustomifyPlugin()->get_option( $option_id );
+
+					// We only fallback on the $default if none was given from Customify
+					if ( null === $customify_value ) {
+						return $default;
+					}
+				} else {
+					$customify_value = PixCustomifyPlugin()->get_option( $option_id, $default );
+				}
+
+				return $customify_value;
+			}
+		}
+
+		// We don't have Customify present, or Customify doesn't "know" about this option ID, so we need to retrieve the option value the hard way.
+		$option_value = null;
+
+		// Fire the all-gathering-filter that Customify uses so we can get as much data about this option as possible.
+		$config = apply_filters( 'customify_filter_fields', array() );
+
+		if ( ! isset( $config['opt-name'] ) ) {
+			return $default;
+		}
+
+		$option_config = pixelgrade_get_option_customizer_config( $option_id, $config );
+		if ( ! empty( $option_config ) && isset( $option_config['setting_type'] ) && 'option' === $option_config['setting_type'] ) {
+			// We need to retrieve it from the wp_options table
+			// If we have been explicitly given a setting ID we will use that
+			if ( ! empty( $option_config['setting_id'] ) ) {
+				$setting_id = $option_config['setting_id'];
 			} else {
-				$customify_value = $pixcustomify_plugin->get_option( $option, $default );
+				$setting_id = $config['opt-name'] . '[' . $option_id . ']';
 			}
 
-			return $customify_value;
+			$option_value = get_option( $setting_id, null );
+		} else {
+			$values = get_theme_mod( $config['opt-name'] );
+
+			if ( isset( $values[ $option_id ] ) ) {
+				$option_value = $values[ $option_id ];
+			}
+		}
+
+		if ( null !== $option_value ) {
+			return $option_value;
+		}
+
+		if ( false === $force_given_default && isset( $option_config['default'] ) ) {
+			return $option_config['default'];
 		}
 
 		return $default;
 	}
 }
 
+if ( ! function_exists( 'pixelgrade_get_option_customizer_config') ) {
+	/**
+	 * Get the Customify configuration of a certain option.
+	 *
+	 * @param string $option_id
+	 * @param array  $config
+	 *
+	 * @return array|false The option config or false on failure.
+	 */
+	function pixelgrade_get_option_customizer_config( $option_id, $config = array() ) {
+		if ( empty( $config ) ) {
+			// Fire the all-gathering-filter that Customify uses so we can get as much data about this option as possible.
+			$config = apply_filters( 'customify_filter_fields', array() );
+		}
+
+		if ( empty( $config ) ) {
+			return false;
+		}
+
+		// We need to search for the option configured under the given id (the array key)
+		if ( isset ( $config['panels'] ) ) {
+			foreach ( $config['panels'] as $panel_id => $panel_settings ) {
+				if ( isset( $panel_settings['sections'] ) ) {
+					foreach ( $panel_settings['sections'] as $section_id => $section_settings ) {
+						if ( isset( $section_settings['options'] ) ) {
+							foreach ( $section_settings['options'] as $id => $option_config ) {
+								if ( $id === $option_id ) {
+									return $option_config;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		if ( isset ( $config['sections'] ) ) {
+			foreach ( $config['sections'] as $section_id => $section_settings ) {
+				if ( isset( $section_settings['options'] ) ) {
+					foreach ( $section_settings['options'] as $id => $option_config ) {
+						if ( $id === $option_id ) {
+							return $option_config;
+						}
+					}
+				}
+			}
+		}
+
+		return false;
+	}
+}
 
 /**
  * Get the image src attribute.
  * Target should be a valid option accessible via WPGradeOptions interface.
  * @return string|false
  */
-function rosa_image_src( $target, $size = null ) {
+function rosa_lite_image_src( $target, $size = null ) {
 	if ( isset( $_GET[ $target ] ) && ! empty( $target ) ) {
-		return rosa_get_attachment_image( $_GET[ $target ], $size );
+		return rosa_lite_get_attachment_image( $_GET[ $target ], $size );
 	} else { // empty target, or no query
 		$image = pixelgrade_option( $target );
 		if ( is_numeric( $image ) ) {
-			return rosa_get_attachment_image( $image, $size );
+			return rosa_lite_get_attachment_image( $image, $size );
 		}
 	}
 
@@ -1204,7 +916,7 @@ function rosa_image_src( $target, $size = null ) {
  * Filters may be disabled by setting priority to false or null.
  * @return string $content after being filtered
  */
-function rosa_display_content( $content, $filtergroup ) {
+function rosa_lite_display_content( $content, $filtergroup ) {
 	// since we cannot apply "the_content" filter on some content blocks
 	// we should apply at least these bellow
 	$wptexturize     = apply_filters( 'wptexturize', $content );
@@ -1225,7 +937,7 @@ function rosa_display_content( $content, $filtergroup ) {
 }
 
 
-function rosa_get_attachment_image( $id, $size = null ) {
+function rosa_lite_get_attachment_image( $id, $size = null ) {
 
 	if ( empty( $id ) || ! is_numeric( $id ) ) {
 		return false;
@@ -1238,269 +950,6 @@ function rosa_get_attachment_image( $id, $size = null ) {
 	}
 
 	return false;
-}
-
-/*=========== SANITIZE UPLOADED FILE NAMES ==========*/
-
-/**
- * Clean up uploaded file names
- * @author toscho
- * @url    https://github.com/toscho/Germanix-WordPress-Plugin
- */
-function rosa_sanitize_file_name( $filename ) {
-	$filename = html_entity_decode( $filename, ENT_QUOTES, 'utf-8' );
-	$filename = rosa_translit( $filename );
-	$filename = rosa_lower_ascii( $filename );
-	$filename = rosa_remove_doubles( $filename );
-
-	return $filename;
-}
-add_filter( 'sanitize_file_name', 'rosa_sanitize_file_name', 10 );
-
-function rosa_lower_ascii( $str ) {
-	$str   = strtolower( $str );
-	$regex = array(
-		'pattern'     => '~([^a-z\d_.-])~',
-		'replacement' => ''
-	);
-	// Leave underscores, otherwise the taxonomy tag cloud in the
-	// backend won’t work anymore.
-	return preg_replace( $regex['pattern'], $regex['replacement'], $str );
-}
-
-/**
- * Reduces repeated meta characters (-=+.) to one.
- */
-function rosa_remove_doubles( $str ) {
-	$regex = apply_filters( 'germanix_remove_doubles_regex', array(
-		'pattern'     => '~([=+.-])\\1+~',
-		'replacement' => "\\1"
-	) );
-
-	return preg_replace( $regex['pattern'], $regex['replacement'], $str );
-}
-
-/**
- * Replaces non ASCII chars.
- */
-function rosa_translit( $str ) {
-	$utf8 = array(
-		'Ä'  => 'Ae',
-		'ä'  => 'ae',
-		'Æ'  => 'Ae',
-		'æ'  => 'ae',
-		'À'  => 'A',
-		'à'  => 'a',
-		'Á'  => 'A',
-		'á'  => 'a',
-		'Â'  => 'A',
-		'â'  => 'a',
-		'Ã'  => 'A',
-		'ã'  => 'a',
-		'Å'  => 'A',
-		'å'  => 'a',
-		'ª'  => 'a',
-		'ₐ'  => 'a',
-		'ā'  => 'a',
-		'Ć'  => 'C',
-		'ć'  => 'c',
-		'Ç'  => 'C',
-		'ç'  => 'c',
-		'Ð'  => 'D',
-		'đ'  => 'd',
-		'È'  => 'E',
-		'è'  => 'e',
-		'É'  => 'E',
-		'é'  => 'e',
-		'Ê'  => 'E',
-		'ê'  => 'e',
-		'Ë'  => 'E',
-		'ë'  => 'e',
-		'ₑ'  => 'e',
-		'ƒ'  => 'f',
-		'ğ'  => 'g',
-		'Ğ'  => 'G',
-		'Ì'  => 'I',
-		'ì'  => 'i',
-		'Í'  => 'I',
-		'í'  => 'i',
-		'Î'  => 'I',
-		'î'  => 'i',
-		'Ï'  => 'Ii',
-		'ï'  => 'ii',
-		'ī'  => 'i',
-		'ı'  => 'i',
-		'I'  => 'I' // turkish, correct?
-	,
-		'Ñ'  => 'N',
-		'ñ'  => 'n',
-		'ⁿ'  => 'n',
-		'Ò'  => 'O',
-		'ò'  => 'o',
-		'Ó'  => 'O',
-		'ó'  => 'o',
-		'Ô'  => 'O',
-		'ô'  => 'o',
-		'Õ'  => 'O',
-		'õ'  => 'o',
-		'Ø'  => 'O',
-		'ø'  => 'o',
-		'ₒ'  => 'o',
-		'Ö'  => 'Oe',
-		'ö'  => 'oe',
-		'Œ'  => 'Oe',
-		'œ'  => 'oe',
-		'ß'  => 'ss',
-		'Š'  => 'S',
-		'š'  => 's',
-		'ş'  => 's',
-		'Ş'  => 'S',
-		'™'  => 'TM',
-		'Ù'  => 'U',
-		'ù'  => 'u',
-		'Ú'  => 'U',
-		'ú'  => 'u',
-		'Û'  => 'U',
-		'û'  => 'u',
-		'Ü'  => 'Ue',
-		'ü'  => 'ue',
-		'Ý'  => 'Y',
-		'ý'  => 'y',
-		'ÿ'  => 'y',
-		'Ž'  => 'Z',
-		'ž'  => 'z' // misc
-	,
-		'¢'  => 'Cent',
-		'€'  => 'Euro',
-		'‰'  => 'promille',
-		'№'  => 'Nr',
-		'$'  => 'Dollar',
-		'℃'  => 'Grad Celsius',
-		'°C' => 'Grad Celsius',
-		'℉'  => 'Grad Fahrenheit',
-		'°F' => 'Grad Fahrenheit' // Superscripts
-	,
-		'⁰'  => '0',
-		'¹'  => '1',
-		'²'  => '2',
-		'³'  => '3',
-		'⁴'  => '4',
-		'⁵'  => '5',
-		'⁶'  => '6',
-		'⁷'  => '7',
-		'⁸'  => '8',
-		'⁹'  => '9' // Subscripts
-	,
-		'₀'  => '0',
-		'₁'  => '1',
-		'₂'  => '2',
-		'₃'  => '3',
-		'₄'  => '4',
-		'₅'  => '5',
-		'₆'  => '6',
-		'₇'  => '7',
-		'₈'  => '8',
-		'₉'  => '9' // Operators, punctuation
-	,
-		'±'  => 'plusminus',
-		'×'  => 'x',
-		'₊'  => 'plus',
-		'₌'  => '=',
-		'⁼'  => '=',
-		'⁻'  => '-' // sup minus
-	,
-		'₋'  => '-' // sub minus
-	,
-		'–'  => '-' // ndash
-	,
-		'—'  => '-' // mdash
-	,
-		'‑'  => '-' // non breaking hyphen
-	,
-		'․'  => '.' // one dot leader
-	,
-		'‥'  => '..' // two dot leader
-	,
-		'…'  => '...' // ellipsis
-	,
-		'‧'  => '.' // hyphenation point
-	,
-		' '  => '-' // nobreak space
-	,
-		' '  => '-' // normal space
-		// Russian
-	,
-		'А'  => 'A',
-		'Б'  => 'B',
-		'В'  => 'V',
-		'Г'  => 'G',
-		'Д'  => 'D',
-		'Е'  => 'E',
-		'Ё'  => 'YO',
-		'Ж'  => 'ZH',
-		'З'  => 'Z',
-		'И'  => 'I',
-		'Й'  => 'Y',
-		'К'  => 'K',
-		'Л'  => 'L',
-		'М'  => 'M',
-		'Н'  => 'N',
-		'О'  => 'O',
-		'П'  => 'P',
-		'Р'  => 'R',
-		'С'  => 'S',
-		'Т'  => 'T',
-		'У'  => 'U',
-		'Ф'  => 'F',
-		'Х'  => 'H',
-		'Ц'  => 'TS',
-		'Ч'  => 'CH',
-		'Ш'  => 'SH',
-		'Щ'  => 'SCH',
-		'Ъ'  => '',
-		'Ы'  => 'YI',
-		'Ь'  => '',
-		'Э'  => 'E',
-		'Ю'  => 'YU',
-		'Я'  => 'YA',
-		'а'  => 'a',
-		'б'  => 'b',
-		'в'  => 'v',
-		'г'  => 'g',
-		'д'  => 'd',
-		'е'  => 'e',
-		'ё'  => 'yo',
-		'ж'  => 'zh',
-		'з'  => 'z',
-		'и'  => 'i',
-		'й'  => 'y',
-		'к'  => 'k',
-		'л'  => 'l',
-		'м'  => 'm',
-		'н'  => 'n',
-		'о'  => 'o',
-		'п'  => 'p',
-		'р'  => 'r',
-		'с'  => 's',
-		'т'  => 't',
-		'у'  => 'u',
-		'ф'  => 'f',
-		'х'  => 'h',
-		'ц'  => 'ts',
-		'ч'  => 'ch',
-		'ш'  => 'sh',
-		'щ'  => 'sch',
-		'ъ'  => '',
-		'ы'  => 'yi',
-		'ь'  => '',
-		'э'  => 'e',
-		'ю'  => 'yu',
-		'я'  => 'ya'
-	);
-
-	$str = strtr( $str, $utf8 );
-
-	return trim( $str, '-' );
 }
 
 /*
@@ -1520,7 +969,7 @@ function rosa_translit( $str ) {
  *
  * @see array_insert_before()
  */
-function rosa_array_insert_after( $key, array &$array, $new_key, $new_value ) {
+function rosa_lite_array_insert_after( $key, array &$array, $new_key, $new_value ) {
 	if ( array_key_exists( $key, $array ) ) {
 		$new = array();
 		foreach ( $array as $k => $value ) {
@@ -1553,7 +1002,7 @@ function rosa_array_insert_after( $key, array &$array, $new_key, $new_value ) {
  *
  * @see array_insert_after()
  */
-function rosa_array_insert_before( $key, array &$array, $new_key, $new_value ) {
+function rosa_lite_array_insert_before( $key, array &$array, $new_key, $new_value ) {
 	if ( array_key_exists( $key, $array ) ) {
 		$new = array();
 		foreach ( $array as $k => $value ) {
@@ -1569,18 +1018,7 @@ function rosa_array_insert_before( $key, array &$array, $new_key, $new_value ) {
 	return false;
 }
 
-function rosa_get_avatar_url( $email, $size = 32 ) {
-	$get_avatar = get_avatar( $email, $size );
-
-	preg_match( '/< *img[^>]*src *= *["\']?([^"\']*)/i', $get_avatar, $matches );
-	if ( isset( $matches[1] ) ) {
-		return $matches[1];
-	} else {
-		return '';
-	}
-}
-
-if ( ! function_exists( 'rosa_comment_form_custom_fields' ) ) :
+if ( ! function_exists( 'rosa_lite_comment_form_custom_fields' ) ) :
 	/**
 	 * Custom comment form fields.
 	 *
@@ -1588,7 +1026,7 @@ if ( ! function_exists( 'rosa_comment_form_custom_fields' ) ) :
 	 *
 	 * @return array
 	 */
-	function rosa_comment_form_custom_fields( $fields ) {
+	function rosa_lite_comment_form_custom_fields( $fields ) {
 
 		$commenter = wp_get_current_commenter();
 		$req = get_option( 'require_name_email' );
@@ -1610,7 +1048,7 @@ if ( ! function_exists( 'rosa_comment_form_custom_fields' ) ) :
 		return $fields;
 	}
 endif;
-add_filter('comment_form_default_fields', 'rosa_comment_form_custom_fields');
+add_filter('comment_form_default_fields', 'rosa_lite_comment_form_custom_fields' );
 
 if ( ! function_exists( 'rosa_lite_google_fonts_url' ) ) {
 	/**
@@ -1672,26 +1110,21 @@ if ( ! function_exists( 'rosa_lite_google_fonts_url' ) ) {
 	} #function
 }
 
-function rosa_lite_remove_customify_controls( $data ) {
-
-	$data['remove_panels'] = array( 'theme_options_panel', );
-//	$data['remove_settings'] = array();
-
-//	$allowed_controls = array(
-//		'sm_current_color_palette',
-//		'sm_palettes_description',
-//		'sm_color_palette'
-//	);
-//
-//	foreach ( $data['panels']['style_manager_panel']['sections']['sm_color_palettes_section']['options'] as $control_key => $control ) {
-//		if ( ! in_array( $control_key, $allowed_controls ) ) {
-//			array_push( $data['remove_settings'], $control_key );
-//		}
-//	}
-
-	return $data;
+/**
+ * Fix skip link focus in IE11.
+ *
+ * This does not enqueue the script because it is tiny and because it is only for IE11,
+ * thus it does not warrant having an entire dedicated blocking script being loaded.
+ *
+ * @link https://git.io/vWdr2
+ */
+function rosa_lite_skip_link_focus_fix() {
+	// The following is minified via `terser --compress --mangle -- js/skip-link-focus-fix.js`.
+	?>
+	<script>
+		/(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())},!1);
+	</script>
+	<?php
 }
-
-if ( class_exists( 'PixCustomifyPlugin' ) ) {
-	add_filter( 'customify_final_config', 'rosa_lite_remove_customify_controls' );
-}
+// We will put this script inline since it is so small.
+add_action( 'wp_print_footer_scripts', 'rosa_lite_skip_link_focus_fix' );

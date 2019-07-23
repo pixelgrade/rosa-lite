@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ){
 $output = '';
 $output .= '<div class="pixcode  pixcode--grid  grid  ';
 if($thick_gutter) $output .= 'thick-gutter  ';
-$output .= $class . '">' . PHP_EOL;
-$output .= $this->get_clean_content( $content ) . PHP_EOL;
-$output .= '</div>' . PHP_EOL;
+$output .= $class . '">' . "\n";
+$output .= $this->get_clean_content( $content ) . "\n";
+$output .= '</div>' . "\n";
 echo $output;

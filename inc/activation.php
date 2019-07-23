@@ -6,6 +6,10 @@
  * This file will be included in inc/functions/callbacks/activation-hooks.php
  */
 
+if ( ! defined( 'ABSPATH' ) ){
+	exit; // Exit if accessed directly
+}
+
 return array(
 	'pixlikes-settings' => array(
 		'show_on_post'         => false,
@@ -35,7 +39,7 @@ return array(
 					array(
 						'name' => esc_html__( 'Make Menu Bar Transparent', 'rosa-lite' ),
 						'desc' => esc_html__( 'This will remove the background from the menu and logo top bar.', 'rosa-lite' ),
-						'id'   => wpgrade::prefix() . 'header_transparent_menu_bar',
+						'id'   => rosa_lite_prefix() . 'header_transparent_menu_bar',
 						'type' => 'checkbox',
 					),
 				),
@@ -55,13 +59,13 @@ return array(
 				'fields'     => array(
 					array(
 						'name' => esc_html__( 'Subtitle', 'rosa-lite' ),
-						'id'   => wpgrade::prefix() . 'page_cover_subtitle',
+						'id'   => rosa_lite_prefix() . 'page_cover_subtitle',
 						'type' => 'text',
 					),
 					array(
 						'name' => esc_html__( 'Title', 'rosa-lite' ),
 						'desc' => esc_html__( 'If left empty we will use the page title. Tip: put a space if you don\'t want any cover text.', 'rosa-lite' ),
-						'id'   => wpgrade::prefix() . 'page_cover_title',
+						'id'   => rosa_lite_prefix() . 'page_cover_title',
 						'type' => 'text',
 					),
 				),

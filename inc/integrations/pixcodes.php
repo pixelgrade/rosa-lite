@@ -3,13 +3,9 @@
  * Custom functions that deal with various plugin integrations of PixCodes.
  *
  * @package Rosa Lite
- * @since 1.0.0
  */
 
-/**
- * Start Hook PixCodes params
- */
-function rosa_callback_change_separator_params( $params ) {
+function rosa_lite_callback_change_separator_params( $params ) {
 	//we only need alignment, color and style
 
 	//change the style options
@@ -21,7 +17,7 @@ function rosa_callback_change_separator_params( $params ) {
 	}
 
 	//add new params in the right order
-	$params = rosa_array_insert_after( 'color', $params, 'type', array(
+	$params = rosa_lite_array_insert_after( 'color', $params, 'type', array(
 		'type'        => 'select',
 		'name'        => 'Type',
 		'options'     => array(
@@ -48,10 +44,10 @@ function rosa_callback_change_separator_params( $params ) {
 
 	return $params;
 }
-add_filter( 'pixcodes_filter_params_for_separator', 'rosa_callback_change_separator_params', 10, 1 );
+add_filter( 'pixcodes_filter_params_for_separator', 'rosa_lite_callback_change_separator_params', 10, 1 );
 
 
-function rosa_callback_change_button_params( $params ) {
+function rosa_lite_callback_change_button_params( $params ) {
 
 	//change the size options
 	if ( isset( $params['size'] ) ) {
@@ -65,7 +61,7 @@ function rosa_callback_change_button_params( $params ) {
 	}
 
 	//add new params in the right order
-	$params = rosa_array_insert_before( 'size', $params, 'type', array(
+	$params = rosa_lite_array_insert_before( 'size', $params, 'type', array(
 		'type'        => 'select',
 		'name'        => 'Type',
 		'options'     => array(
@@ -83,9 +79,9 @@ function rosa_callback_change_button_params( $params ) {
 
 	return $params;
 }
-add_filter( 'pixcodes_filter_params_for_button', 'rosa_callback_change_button_params', 10, 1 );
+add_filter( 'pixcodes_filter_params_for_button', 'rosa_lite_callback_change_button_params', 10, 1 );
 
-function rosa_callback_remove_columns_params( $params ) {
+function rosa_lite_callback_remove_columns_params( $params ) {
 
 	// unset unneeded params
 	if ( isset( $params['full_width'] ) ) {
@@ -110,19 +106,19 @@ function rosa_callback_remove_columns_params( $params ) {
 
 	return $params;
 }
-add_filter( 'pixcodes_filter_params_for_columns', 'rosa_callback_remove_columns_params', 10, 1 );
+add_filter( 'pixcodes_filter_params_for_columns', 'rosa_lite_callback_remove_columns_params', 10, 1 );
 
-function rosa_callback_change_icon_params( $params ) {
+function rosa_lite_callback_change_icon_params( $params ) {
 
 	//add new params in the right order
-	$params = rosa_array_insert_after( 'size', $params, 'link', array(
+	$params = rosa_lite_array_insert_after( 'size', $params, 'link', array(
 		'type'        => 'text',
 		'name'        => 'Link',
 		'options'     => array(),
 		'admin_class' => 'span6'
 	) );
 
-	$params = rosa_array_insert_after( 'link', $params, 'link_target_blank', array(
+	$params = rosa_lite_array_insert_after( 'link', $params, 'link_target_blank', array(
 		'type'        => 'switch',
 		'name'        => 'Open in new window',
 		'options'     => array(),
@@ -131,9 +127,9 @@ function rosa_callback_change_icon_params( $params ) {
 
 	return $params;
 }
-add_filter( 'pixcodes_filter_params_for_icon', 'rosa_callback_change_icon_params', 10, 1 );
+add_filter( 'pixcodes_filter_params_for_icon', 'rosa_lite_callback_change_icon_params', 10, 1 );
 
-function rosa_callbacks_setup_shortcodes_plugin() {
+function rosa_lite_callbacks_setup_shortcodes_plugin() {
 	$current_options = get_option( 'wpgrade_shortcodes_list' );
 
 	$shortcodes = array(
@@ -163,11 +159,7 @@ function rosa_callbacks_setup_shortcodes_plugin() {
 	// by the shortcodes plugin
 	$current_prefix = get_option( 'rosa_metaboxes_prefix' );
 	if ( empty( $current_prefix ) ) {
-		update_option( 'rosa_metaboxes_prefix', wpgrade::prefix() );
+		update_option( 'rosa_metaboxes_prefix', rosa_lite_prefix() );
 	}
 }
-add_action( 'admin_head', 'rosa_callbacks_setup_shortcodes_plugin' );
-
-/**
- * End Hook PixCodes params
- */
+add_action( 'admin_head', 'rosa_lite_callbacks_setup_shortcodes_plugin' );

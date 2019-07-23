@@ -1,8 +1,15 @@
 <?php
+/**
+ * Custom template tags for this theme.
+ *
+ * Eventually, some of the functionality here could be replaced by core features.
+ *
+ * @package Rosa Lite
+ */
 
-if( ! function_exists('rosa_the_archive_title' ) ) {
+if( ! function_exists( 'rosa_lite_the_archive_title' ) ) {
 
-	function rosa_the_archive_title() {
+	function rosa_lite_the_archive_title() {
 
 		$object = get_queried_object();
 
@@ -68,39 +75,7 @@ if( ! function_exists('rosa_the_archive_title' ) ) {
 	}
 }
 
-if( ! function_exists('rosa_callback_inlined_custom_style' ) ) {
-
-	function rosa_callback_inlined_custom_style() {
-		ob_start();
-		//handle the complicated logic of the footer waves that keeps changing color
-		$footer_sidebar_style    = pixelgrade_option( 'footer_sidebar_style' );
-		$waves_fill_color = '#121212';
-		switch ($footer_sidebar_style) {
-			case 'light' :
-				$waves_fill_color = '#ffffff';
-				break;
-			case 'dark' :
-				$waves_fill_color = '#121212';
-				break;
-			case 'accent' :
-				$waves_fill_color = '#'.pixelgrade_option('main-color');
-				break;
-
-		} ?>
-		.site-footer.border-waves:before,
-		.border-waves-top.border-waves-top--dark:before {
-		background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 19 14' width='19' height='14' enable-background='new 0 0 19 14' xml:space='preserve' preserveAspectRatio='none slice'><g><path fill='<?php echo $waves_fill_color ?>' d='M0,0c4,0,6.5,5.9,9.5,5.9S15,0,19,0v7H0V0z'/><path fill='<?php echo $waves_fill_color ?>' d='M19,14c-4,0-6.5-5.9-9.5-5.9S4,14,0,14l0-7h19V14z'/></g></svg>");
-		}
-		<?php
-
-		$custom_css = ob_get_clean();
-		$style      = 'wpgrade-main-style';
-
-		wp_add_inline_style( $style, $custom_css );
-	}
-}
-
-function rosa_please_select_a_menu_fallback() {
+function rosa_lite_please_select_a_menu_fallback() {
 	echo '
 		<ul class="nav  nav--main sub-menu" >
 			<li><a href="' . admin_url( 'nav-menus.php?action=locations' ) . '">' . esc_html__( 'Please select a menu in this location', 'rosa-lite' ) . '</a></li>
@@ -114,24 +89,17 @@ if ( ! function_exists( 'rosa_display_header_down_arrow' ) ) {
 			return;
 		}
 
-		//get the global option regarding down arrow style
-		$down_arrow_style = pixelgrade_option('down_arrow_style');
-		if ( empty($down_arrow_style) ) {
-			$down_arrow_style = 'transparent'; //the default
-		}
+		$down_arrow_style = pixelgrade_option('down_arrow_style', 'transparent', true );
 
-		if ( $down_arrow_style == 'bubble') {
-			echo '<svg class="blurp--top" width="192" height="61" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 160.7 61.5" enable-background="new 0 0 160.7 61.5" xml:space="preserve"><path fill="currentColor" d="M80.3,61.5c0,0,22.1-2.7,43.1-5.4s41-5.4,36.6-5.4c-21.7,0-34.1-12.7-44.9-25.4S95.3,0,80.3,0c-15,0-24.1,12.7-34.9,25.4S22.3,50.8,0.6,50.8c-4.3,0-6.5,0,3.5,1.3S36.2,56.1,80.3,61.5z"/></svg>';
-		}
-		echo '<div class="down-arrow down-arrow--' . $down_arrow_style . '"><div class="arrow"></div></div>' . PHP_EOL;
+		echo '<div class="down-arrow down-arrow--' . $down_arrow_style . '"><div class="arrow"></div></div>' . "\n";
 	}
 }
 
 /*
  * Add custom styling for the media popup
  */
-if ( ! function_exists( 'rosa_custom_style_for_mediabox' ) ) {
-	function rosa_custom_style_for_mediabox() {
+if ( ! function_exists( 'rosa_lite_custom_style_for_mediabox' ) ) {
+	function rosa_lite_custom_style_for_mediabox() {
 		?>
 		<style>
 			.media-sidebar {
@@ -187,13 +155,13 @@ if ( ! function_exists( 'rosa_custom_style_for_mediabox' ) ) {
 		<?php
 	}
 }
-add_action( 'print_media_templates', 'rosa_custom_style_for_mediabox' );
+add_action( 'print_media_templates', 'rosa_lite_custom_style_for_mediabox' );
 
 /*
  * Add custom settings to the gallery popup interface
  */
-if ( ! function_exists( 'rosa_custom_gallery_settings' ) ) {
-	function rosa_custom_gallery_settings() {
+if ( ! function_exists( 'rosa_lite_custom_gallery_settings' ) ) {
+	function rosa_lite_custom_gallery_settings() {
 
 		// define your backbone template;
 		// the "tmpl-" prefix is required,
@@ -231,21 +199,18 @@ if ( ! function_exists( 'rosa_custom_gallery_settings' ) ) {
 		<?php
 	}
 }
-add_action( 'print_media_templates', 'rosa_custom_gallery_settings' );
+add_action( 'print_media_templates', 'rosa_lite_custom_gallery_settings' );
 
-if ( ! function_exists( 'rosa_the_posts_navigation' ) ) :
+if ( ! function_exists( 'rosa_lite_the_posts_navigation' ) ) :
 
 	/**
 	 * Prints the HTML of the posts navigation
 	 * It will display both prev/next and page numbers (i.e « Prev 1 … 3 4 5 6 7 … 9 Next » )
-	 *
-	 * @since Rosa Lite 1.0.0
 	 */
-	function rosa_the_posts_navigation() {
+	function rosa_lite_the_posts_navigation() {
 		global $wp_query;
 
 		$big = 999999999; // need an unlikely integer
-		$a11y_text = esc_html__( 'Page', 'rosa-lite' ); // Accessibility improvement
 
 		$links = paginate_links( array(
 			'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
@@ -253,20 +218,19 @@ if ( ! function_exists( 'rosa_the_posts_navigation' ) ) :
 			'current' => max( 1, get_query_var('paged') ),
 			'total' => $wp_query->max_num_pages,
 			'prev_next' => false,
-			'before_page_number' => '<span class="screen-reader-text">' . $a11y_text . ' </span>',
+			'before_page_number' => '<span class="screen-reader-text">' . esc_html__( 'Page', 'rosa-lite' ) . ' </span>',
 		) );
 
-		$links = rosa_get_prev_posts_link() . $links . rosa_get_next_posts_link();
+		$links = rosa_lite_get_prev_posts_link() . $links . rosa_lite_get_next_posts_link();
 
 		//wrap the links in a standard navigational markup
-		$screen_reader_text = esc_html__( 'Posts navigation', 'rosa-lite' );
 		$template = '
 		<nav class="nav nav--banner pagination" role="navigation">
 			<h2 class="screen-reader-text">%1$s</h2>
 			<div class="nav-links">%2$s</div>
 		</nav>';
 
-		echo sprintf( $template, esc_html( $screen_reader_text ), $links );
+		echo sprintf( $template, esc_html__( 'Posts navigation', 'rosa-lite' ), $links );
 	}
 endif;
 
@@ -283,7 +247,7 @@ endif;
  * @param string $label    Content for link text.
  * @return string|void HTML-formatted next posts page link.
  */
-function rosa_get_next_posts_link( $label = null ) {
+function rosa_lite_get_next_posts_link( $label = null ) {
 	global $paged, $wp_query;
 
 	$max_page = $wp_query->max_num_pages;
@@ -337,7 +301,7 @@ function rosa_get_next_posts_link( $label = null ) {
  * @param string $label    Content for link text.
  * @return string|void HTML-formatted next posts page link.
  */
-function rosa_get_prev_posts_link( $label = null ) {
+function rosa_lite_get_prev_posts_link( $label = null ) {
 	global $paged;
 
 	if ( ! $paged )
@@ -375,21 +339,20 @@ function rosa_get_prev_posts_link( $label = null ) {
 	return '';
 }
 
-if ( ! function_exists('rosa_comments') ) {
+if ( ! function_exists( 'rosa_lite_comments' ) ) {
 	/*
 	 * COMMENT LAYOUT
 	 */
-	function rosa_comments( $comment, $args, $depth ) {
+	function rosa_lite_comments( $comment, $args, $depth ) {
 		static $comment_number;
 
 		if ( ! isset( $comment_number ) )
 			$comment_number = $args['per_page'] * ( $args['page'] - 1 ) + 1; else {
 			$comment_number ++;
 		}
-
-		$GLOBALS['comment'] = $comment; ?>
+		?>
 	<li <?php comment_class(); ?>>
-		<article id="comment-<?php echo $comment->comment_ID; ?>" class="comment-article  media">
+		<article id="comment-<?php echo esc_attr( $comment->comment_ID ); ?>" class="comment-article  media">
 			<?php if ( pixelgrade_option( 'comments_show_numbering' ) ): ?>
 				<span class="comment-number"><?php echo $comment_number ?></span>
 			<?php endif; ?>
@@ -397,12 +360,13 @@ if ( ! function_exists('rosa_comments') ) {
 				<aside class="comment__avatar  media__img">
 					<!-- custom gravatar call -->
 					<?php $bgauthemail = get_comment_author_email(); ?>
-					<img src="http://www.gravatar.com/avatar/<?php echo md5( $bgauthemail ); ?>?s=60" class="comment__avatar-image" height="60" width="60" style="background-image: <?php echo get_template_directory_uri() . '/library/images/nothing.gif'; ?>; background-size: 100% 100%"/>
+					<img src="http://www.gravatar.com/avatar/<?php echo esc_attr( md5( $bgauthemail ) ); ?>?s=60" class="comment__avatar-image" height="60" width="60" style="background-image: <?php echo esc_url( get_template_directory_uri() . '/library/images/nothing.gif' ); ?>; background-size: 100% 100%"/>
 				</aside>
 			<?php endif; ?>
 			<div class="media__body">
 				<header class="comment__meta comment-author">
-					<?php /* translators: %s: comment author link */
+					<?php
+					/* translators: %s: comment author link */
                     printf( '<span class="comment__author-name">%s</span>', get_comment_author_link() ) ?>
 					<time class="comment__time" datetime="<?php comment_time( 'c' ); ?>">
 						<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>" class="comment__timestamp"><?php printf(
@@ -425,7 +389,7 @@ if ( ! function_exists('rosa_comments') ) {
 					</div>
 				<?php endif; ?>
 				<section class="comment__content comment">
-					<?php comment_text() ?>
+					<?php comment_text(); ?>
 				</section>
 			</div>
 		</article>
@@ -433,15 +397,112 @@ if ( ! function_exists('rosa_comments') ) {
 		<?php
 	} // don't remove this bracket!
 }
-if ( ! function_exists( 'rosa_footer_the_copyright' ) ) {
-	function rosa_footer_the_copyright() {
-		$copyright_text = pixelgrade_option( 'copyright_text', wp_kses_post( __( '%year% &copy; Handcrafted with love by <a href="#">Pixelgrade</a> Team', 'rosa-lite' ) ) );
 
+if ( ! function_exists( 'rosa_lite_footer_the_copyright' ) ) {
+	/**
+	 * Display the footer copyright.
+	 */
+	function rosa_lite_footer_the_copyright() {
+		$output = '';
+		$output .= '<div class="site-info copyright-text">' . "\n";
+		/* translators: %s: WordPress. */
+		$output .= '<a href="' . esc_url( __( 'https://wordpress.org/', 'rosa-lite' ) ) . '">' . sprintf( esc_html__( 'Proudly powered by %s', 'rosa-lite' ), 'WordPress' ) . '</a>' . "\n";
+		$output .= '<span class="sep"> | </span>';
+		/* translators: %1$s: The theme name, %2$s: The theme author name. */
+		$output .= '<span class="c-footer__credits">' . sprintf( esc_html__( 'Theme: %1$s by %2$s.', 'rosa-lite' ), 'Rosa Lite', '<a href="https://pixelgrade.com/?utm_source=rosa-lite-clients&utm_medium=footer&utm_campaign=rosa-lite" title="' . esc_html__( 'The Pixelgrade Website', 'rosa-lite' ) . '" rel="nofollow">Pixelgrade</a>' ) . '</span>' . "\n";
+		$output .= '</div>';
+
+		echo apply_filters( 'pixelgrade_footer_the_copyright', $output );
+	}
+}
+
+if ( ! function_exists( 'rosa_lite_footer_get_copyright_content' ) ) {
+	/**
+	 * Get the footer copyright content (HTML or simple text).
+	 * It already has do_shortcode applied.
+	 *
+	 * @return bool|string
+	 */
+	function rosa_lite_footer_get_copyright_content() {
+		/* translators: %year%: The current year, %site-title%: The site title. */
+		$copyright_text = pixelgrade_option( 'copyright_text', esc_html__( '&copy; %year% %site-title%.', 'rosa-lite' ) );
 		if ( ! empty( $copyright_text ) ) {
 			// We need to parse some tags
-			// like %year%
-			$copyright_text = str_replace( '%year%', date( 'Y' ), $copyright_text );
-			echo '<div class="copyright-text">' . do_shortcode( $copyright_text ) . '</div>';
+			$copyright_text = rosa_lite_parse_content_tags( $copyright_text );
+
+			// Finally process any shortcodes that might be in there
+			return do_shortcode( $copyright_text );
 		}
+
+		return '';
+	}
+}
+
+if ( ! function_exists( 'rosa_lite_parse_content_tags' ) ) {
+	/**
+	 * Replace any content tags present in the content.
+	 *
+	 * @param string $content
+	 *
+	 * @return string
+	 */
+	function rosa_lite_parse_content_tags( $content ) {
+		$original_content = $content;
+
+		// Allow others to alter the content before we do our work
+		$content = apply_filters( 'pixelgrade_before_parse_content_tags', $content );
+
+		// Now we will replace all the supported tags with their value
+		// %year%
+		$content = str_replace( '%year%', date( 'Y' ), $content );
+
+		// %site-title% or %site_title%
+		$content = str_replace( '%site-title%', get_bloginfo( 'name' ), $content );
+		$content = str_replace( '%site_title%', get_bloginfo( 'name' ), $content );
+
+		// This is a little sketchy because who is the user?
+		// It is not necessarily the logged in user, nor the Administrator user...
+		// We will go with the author for cases where we are in a post/page context
+		// Since we need to dd some heavy lifting, we will only do it when necessary
+		if ( false !== strpos( $content, '%first_name%' ) ||
+		     false !== strpos( $content, '%last_name%' ) ||
+		     false !== strpos( $content, '%display_name%' ) ) {
+			$user_id = false;
+			// We need to get the current ID in more global manner
+			$current_object_id = get_queried_object_id();
+			$current_post      = get_post( $current_object_id );
+			if ( ! empty( $current_post->post_author ) ) {
+				$user_id = $current_post->post_author;
+			} else {
+				global $authordata;
+				$user_id = isset( $authordata->ID ) ? $authordata->ID : false;
+			}
+
+			// If we still haven't got a user ID, we will just use the first user on the site
+			if ( empty( $user_id ) ) {
+				$blogusers = get_users(
+					array(
+						'role'   => 'administrator',
+						'number' => 1,
+					)
+				);
+				if ( ! empty( $blogusers ) ) {
+					$blogusers = reset( $blogusers );
+					$user_id   = $blogusers->ID;
+				}
+			}
+
+			if ( ! empty( $user_id ) ) {
+				// %first_name%
+				$content = str_replace( '%first_name%', get_the_author_meta( 'first_name', $user_id ), $content );
+				// %last_name%
+				$content = str_replace( '%last_name%', get_the_author_meta( 'last_name', $user_id ), $content );
+				// %display_name%
+				$content = str_replace( '%display_name%', get_the_author_meta( 'display_name', $user_id ), $content );
+			}
+		}
+
+		// Allow others to alter the content after we did our work
+		return apply_filters( 'pixelgrade_after_parse_content_tags', $content, $original_content );
 	}
 }

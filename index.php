@@ -19,9 +19,8 @@ get_header(); ?>
 	<section class="container  container--archive">
 		<div class="page-content  archive">
 
-			<?php rosa_the_archive_title(); ?>
+			<?php rosa_lite_the_archive_title();
 
-			<?php
 			//the categories dropdown
 			if ( ! is_category() && ! is_tag() && ! is_search() ) :
 				$categories = get_categories();
@@ -80,7 +79,7 @@ get_header(); ?>
 					get_template_part( 'template-parts/content', get_post_format() );
 				endwhile;
 
-				rosa_the_posts_navigation();
+				rosa_lite_the_posts_navigation();
 
 			else :
 

@@ -69,7 +69,7 @@ $data_main_color      = ( pixelgrade_option( 'main_color' ) ) ? 'data-color="' .
 //make the header menu bar transparent
 //only for static pages
 if ( is_page() ) {
-	$make_transparent_menu_bar = get_post_meta( get_the_ID(), wpgrade::prefix() . 'header_transparent_menu_bar', true );
+	$make_transparent_menu_bar = get_post_meta( get_the_ID(), rosa_lite_prefix() . 'header_transparent_menu_bar', true );
 
 	if ( $make_transparent_menu_bar == 'on' ) {
 		$class_name .= '  header--transparent';
@@ -120,7 +120,7 @@ if ( is_single() ) {
 							'container_id'   => '',
 							'menu_class'     => 'nav  nav--main  nav--items-menu',
 							'menu_id'        => '',
-							'fallback_cb'    => 'rosa_please_select_a_menu_fallback',
+							'fallback_cb'    => 'rosa_lite_please_select_a_menu_fallback',
 							'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 						) );
 						?>

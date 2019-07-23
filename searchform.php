@@ -1,4 +1,11 @@
-<?php if ( ! defined( 'ABSPATH' ) ){
+<?php
+/**
+ * The template for displaying the search form.
+ *
+ * @package Rosa Lite
+ */
+
+if ( ! defined( 'ABSPATH' ) ){
 	exit; // Exit if accessed directly
 } ?>
 

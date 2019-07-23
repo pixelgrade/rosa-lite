@@ -10,9 +10,9 @@
  * https://wordpress.org/plugins/pixcodes/
  */
 if ( class_exists( 'WpGradeShortcodes' ) ) {
-	require get_template_directory() . '/inc/integrations/pixcodes.php';
+	require get_parent_theme_file_path( '/inc/integrations/pixcodes.php' ); // phpcs:ignore
 }
 
 if ( class_exists( 'Gridable' ) ) {
-	require get_template_directory() . '/inc/integrations/gridable.php';
+	require get_parent_theme_file_path( '/inc/integrations/gridable.php' ); // phpcs:ignore
 }

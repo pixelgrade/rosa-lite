@@ -26,20 +26,11 @@ if ( post_password_required() ) {
 		<div class="comments-area-title">
 			<h3 class="comments-title">
 				<?php
-				if ( have_comments() ) :
-					printf(
-					/* translators: 1: One comment, 2: Number of comments */
-					_n( '<span class="comment-number total">1</span> Comment',
-                        '<span class="comment-number total">%1$s</span>Comments',
-                        get_comments_number(),
-                        'rosa-lite'
-						),
-						number_format_i18n( get_comments_number() )
-					);
-				else:
+				if ( have_comments() ) {
+					echo '<span class="comment-number total">' . esc_html( number_format_i18n( get_comments_number() ) ) . '</span>' . esc_html( _n( 'Comment', 'Comments', get_comments_number(), 'rosa-lite' ) );
+				} else {
 					echo wp_kses_post( __( '<span class="comment-number total">+</span> There are no comments', 'rosa-lite' ) );
-				endif;
-				?>
+				} ?>
 			</h3>
 			<?php echo '<a class="comments_add-comment" href="#reply-title">' . esc_html__( 'Add yours', 'rosa-lite' ) . '</a>'; ?>
 		</div>
@@ -63,7 +54,7 @@ if ( post_password_required() ) {
 				 * define rosa_comment() and that will be used instead.
 				 * See rosa_comment() in inc/template-tags.php for more.
 				 */
-				wp_list_comments( array( 'callback' => 'rosa_comments', 'short_ping' => true ) ); ?>
+				wp_list_comments( array( 'callback' => 'rosa_lite_comments', 'short_ping' => true ) ); ?>
 			</ol><!-- .commentlist -->
 
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
@@ -81,38 +72,26 @@ if ( post_password_required() ) {
 	</div><!-- #comments .comments-area -->
 <?php
 // If comments are closed and there are comments, let's leave a little note, shall we?
-if ( ! comments_open() && post_type_supports( get_post_type(), 'comments' ) && ! is_page() ) :
-	?>
+if ( ! comments_open() && post_type_supports( get_post_type(), 'comments' ) && ! is_page() ) { ?>
 	<p class="nocomments"><?php esc_html_e( 'Comments are closed.', 'rosa-lite' ); ?></p>
-<?php endif;
+<?php }
 
-if ( is_user_logged_in() ) {
-	$comments_args = array(
-		// change the title of send button=
-		'title_reply'          => wp_kses_post( __( '<span class="comment-number total">+</span> Leave a Comment', 'rosa-lite' ) ),
-		// remove "Text or HTML to be displayed after the set of comment fields"
-		'comment_notes_before' => '',
-		'comment_notes_after'  => '',
-		'id_submit'            => 'comment-submit',
-		'label_submit'         => esc_html__( 'Submit', 'rosa-lite' ),
-		// redefine your own textarea (the comment body)
-		'comment_field'        => '<p class="comment-form-comment"><label for="comment" class="show-on-ie8">' . esc_html__( 'Comment', 'rosa-lite' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="' . esc_html__( 'Your thoughts..', 'rosa-lite' ) . '"></textarea></p>'
-	);
-} else {
-	$comments_args = array(
-		// change the title of send button
-		'title_reply'          => wp_kses_post( __( '<span class="comment-number total">+</span> Leave a Comment', 'rosa-lite' ) ),
-		// remove "Text or HTML to be displayed after the set of comment fields"
-		'comment_notes_before' => '',
-		'comment_notes_after'  => '',
-		'id_submit'            => 'comment-submit',
-		'label_submit'         => esc_html__( 'Submit', 'rosa-lite' ),
-		// redefine your own textarea (the comment body)
-		'comment_field'        => '<p class="comment-form-comment"><label for="comment" class="show-on-ie8">' . esc_html__( 'Comment', 'rosa-lite' ) . '</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="' . esc_html__( 'Your thoughts..', 'rosa-lite' ) . '"></textarea></p>'
-	);
-}
+$comments_args = array(
+	// change the title of the send button
+	'title_reply'          => wp_kses_post( __( '<span class="comment-number total">+</span> Leave a Comment', 'rosa-lite' ) ),
+	// remove "Text or HTML to be displayed after the set of comment fields"
+	'comment_notes_before' => '',
+	'comment_notes_after'  => '',
+	'id_submit'            => 'comment-submit',
+	'label_submit'         => esc_html__( 'Submit', 'rosa-lite' ),
+	// redefine your own textarea (the comment body)
+	'comment_field'        => '<p class="comment-form-comment">
+<label for="comment" class="show-on-ie8">' . esc_html__( 'Comment', 'rosa-lite' ) . '</label>
+<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="' . esc_html__( 'Your thoughts..', 'rosa-lite' ) . '"></textarea>
+</p>',
+);
 
-//if we have no comments than we don't a second title, one is enough
+// If we have no comments than we don't a second title, one is enough
 if ( ! have_comments() ) {
 	$comments_args['title_reply'] = '';
 }

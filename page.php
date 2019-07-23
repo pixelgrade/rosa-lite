@@ -12,38 +12,35 @@ if ( ! defined( 'ABSPATH' ) ){
 
 get_header();
 
-global $post, $wpgrade_private_post, $page_section_idx, $header_height;
+global $post, $rosa_private_post, $page_section_idx, $header_height;
 
 //some global variables that we use in our page sections
-$is_gmap                = false;
 $footer_needs_big_waves = false;
 $page_section_idx       = 0;
 
-if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
+if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 	// password protection
 	get_template_part( 'template-parts/password-request-form' );
-
 } else {
 
 	while ( have_posts() ) : the_post();
 
 		get_template_part( 'template-parts/header', 'page' );
 
-		$classes = "article--page  article--main" ;
+		$classes = 'article--page  article--main';
 
-		$down_arrow_style = pixelgrade_option('down_arrow_style');
-		if ( $page_section_idx == 1 && $header_height == 'full-height' && $down_arrow_style == 'bubble' ) {
-			$classes .= " article--arrow";
+		$down_arrow_style = pixelgrade_option('down_arrow_style', 'transparent', true );
+		if ( $page_section_idx == 1 && 'full-height' === $header_height && 'bubble' === $down_arrow_style ) {
+			$classes .= ' article--arrow';
 		}
 
 		$border_style = 'simple';
-		if ( ! empty( $border_style ) ) {
-			$classes .= ' border-' . $border_style;
-		}
+		$classes .= ' border-' . $border_style;
+
 
 		$show_main_content = apply_filters( 'rosa_avoid_empty_markup_if_no_page_content', ( ! empty( $post->post_content ) ), $post );
 
-		if ( $show_main_content ) : ?>
+		if ( $show_main_content ) { ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
 				<section class="article__content">
 					<div class="container">
@@ -70,19 +67,14 @@ if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) {
 				</section>
 				<?php rosa_display_header_down_arrow( $page_section_idx, $header_height ); ?>
 			</article>
-		<?php endif;
+		<?php }
 
-		$show_subpages = apply_filters( 'rosa_display_subpages', true );
-		if ( $show_subpages ) {
-			get_template_part( 'template-parts/subpages' );
-		}
-
-		//comments
-		if ( comments_open() || '0' != get_comments_number() ): ?>
+		// If comments are open or we have at least one comment, load up the comment template
+		if ( comments_open() || get_comments_number() ) { ?>
 			<div class="container">
 				<?php comments_template(); ?>
 			</div>
-		<?php endif;
+		<?php }
 	endwhile;
 
 } // close if password protection

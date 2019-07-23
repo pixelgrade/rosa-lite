@@ -4,11 +4,10 @@
  *
  * @link https://wordpress.org/plugins/gridable/
  *
- * @package Rosa Lite 1.0.0
- * @since Rosa Lite 1.0.0
+ * @package Rosa Lite
  */
 
-// we don't need the gridable style since rosa has a similar grid system
+// We don't need the Gridable style since Rosa Lite has a similar grid system
 add_filter( 'gridable_load_public_style', '__return_false' );
 
 /**
@@ -21,12 +20,12 @@ add_filter( 'gridable_load_public_style', '__return_false' );
  *
  * @return array
  */
-function rosa_gridable_row_class( $classes, $cols_nr, $atts, $content ) {
+function rosa_lite_gridable_row_class( $classes, $cols_nr, $atts, $content ) {
 	if ( ! empty( $atts['class'] ) ) {
 		$classes[] =  $atts['class'];
 	}
 
-	// remove the default gridable classes
+	// Remove the default Gridable classes
 	unset( $classes[0] );
 	unset( $classes[1] );
 
@@ -34,7 +33,7 @@ function rosa_gridable_row_class( $classes, $cols_nr, $atts, $content ) {
 
 	return $classes;
 }
-add_filter( 'gridable_row_class',  'rosa_gridable_row_class', 10, 4 );
+add_filter( 'gridable_row_class', 'rosa_lite_gridable_row_class', 10, 4 );
 
 /**
  * Gridable Column Attributes
@@ -43,7 +42,7 @@ add_filter( 'gridable_row_class',  'rosa_gridable_row_class', 10, 4 );
  *
  * @return array
  */
-function rosa_gridable_column_options( $options ) {
+function rosa_lite_gridable_column_options( $options ) {
 	$options['column_style'] = array(
 		'label'   => esc_html__( 'Column Style', 'rosa-lite' ),
 		'type'    => 'select',
@@ -63,7 +62,7 @@ function rosa_gridable_column_options( $options ) {
 
 	return $options;
 }
-add_filter( 'gridable_column_options', 'rosa_gridable_column_options', 10, 1 );
+add_filter( 'gridable_column_options', 'rosa_lite_gridable_column_options', 10, 1 );
 
 /**
  * Gridable Column Classes
@@ -75,7 +74,7 @@ add_filter( 'gridable_column_options', 'rosa_gridable_column_options', 10, 1 );
  *
  * @return array
  */
-function rosa_gridable_column_class( $classes, $size, $atts, $content ) {
+function rosa_lite_gridable_column_class( $classes, $size, $atts, $content ) {
 	if ( ! empty( $atts['class'] ) ) {
 		$classes[] =  $atts['class'];
 	}
@@ -101,26 +100,29 @@ function rosa_gridable_column_class( $classes, $size, $atts, $content ) {
 
 	$classes[] = 'grid__item ' . $ratios[ $size ] . ' palm-one-whole';
 
-	// remove the default gridable classes
+	// Remove the default Gridable classes
 	unset( $classes[0] );
 	unset( $classes[1] );
 
 	return $classes;
 }
-add_filter( 'gridable_column_class',  'rosa_gridable_column_class', 10, 4 );
+add_filter( 'gridable_column_class', 'rosa_lite_gridable_column_class', 10, 4 );
 
 /**
  * Gridable Column Content Filter
  * We need to wrap up the content inside a promo-box container if the class exists or the option is enabled
  *
+ * @param string $content
  * @param array $atts
+ *
+ * @return string
  */
-function rosa_gridable_column_wrapper_start( $content, $atts ) {
-	if ( ( ! empty( $atts['column_style'] ) && $atts['column_style'] === 'promo-box' )
+function rosa_lite_gridable_column_wrapper_start( $content, $atts ) {
+	if ( ( ! empty( $atts['column_style'] ) && 'promo-box' === $atts['column_style'] )
 	     || ( ! empty( $atts['class'] ) && strpos( $atts['class'], 'promo-box' ) !== false ) ) {
 		$content = '<div class="promo-box__container">' . $content . '</div>';
 	}
-	
+
 	return $content;
 }
-add_filter( 'gridable_the_column_content', 'rosa_gridable_column_wrapper_start', 10, 2 );
+add_filter( 'gridable_the_column_content', 'rosa_lite_gridable_column_wrapper_start', 10, 2 );

@@ -2,12 +2,19 @@
 /**
  * Rosa Lite functions and definitions
  *
- * @package Patch Lite
- * @since Patch Lite 1.0
+ * @package Rosa Lite
+ * @since Rosa Lite 1.0
  */
 
-if ( ! function_exists(' rosa_theme_setup' ) ) {
-	function rosa_theme_setup () {
+if ( ! function_exists(' rosa_lite_theme_setup' ) ) {
+	/**
+	 * Sets up theme defaults and registers support for various WordPress features.
+	 *
+	 * Note that this function is hooked into the after_setup_theme hook, which
+	 * runs before the init hook. The init hook is too late for some features, such
+	 * as indicating support for post thumbnails.
+	 */
+	function rosa_lite_theme_setup() {
 
 		/*
 		 * Make theme available for translation.
@@ -87,9 +94,23 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 			add_image_size( $size_key, $width, $height, $hard_crop );
 		}
 
-		register_nav_menu( 'main_menu', 'Main Menu' );
+		register_nav_menu( 'main_menu', esc_html__( 'Main Menu', 'rosa-lite' ) );
 
 		add_theme_support( 'title-tag' );
+
+		/*
+		 * Enable support for custom logo.
+		 */
+		add_theme_support( 'custom-logo', array(
+			'height'      => 60,
+			'width'       => 180,
+			'flex-height' => true,
+			'flex-width'  => true,
+			'header-text' => array(
+				'site-title',
+				'site-description-text',
+			)
+		) );
 
 		/**
 		 * Enable support for the Style Manager Customizer section (via Customify).
@@ -99,27 +120,19 @@ if ( ! function_exists(' rosa_theme_setup' ) ) {
 		add_editor_style( array( 'editor-style.css', rosa_lite_google_fonts_url() ) );
 	}
 }
-add_action( 'after_setup_theme', 'rosa_theme_setup' );
+add_action( 'after_setup_theme', 'rosa_lite_theme_setup' );
 
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function rosa_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'rosa_content_width', 960, 0 );
-}
+if ( ! function_exists( 'rosa_lite_load_assets' ) ) {
 
-add_action( 'after_setup_theme', 'rosa_content_width', 0 );
-
-/// load assets
-if ( ! function_exists( 'rosa_load_assets' ) ) {
-	function rosa_load_assets(){
+	function rosa_lite_load_assets(){
 		$theme = wp_get_theme( get_template() );
 
 		// Styles
+		wp_enqueue_style( 'rosa-main-style', get_template_directory_uri() . '/style.css', array(), $theme->get( 'Version' ) );
+		wp_style_add_data( 'rosa-main-style', 'rtl', 'replace' );
+
+		wp_enqueue_style( 'rosa-google-fonts', rosa_lite_google_fonts_url() );
+
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
@@ -128,16 +141,10 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 			wp_enqueue_style( 'rosa-404-style', get_template_directory_uri() . '/404.css', array(), time(), 'all' );
 		}
 
-
-		wp_enqueue_style( 'rosa-main-style', get_template_directory_uri() . '/style.css', array(), $theme->get( 'Version' ) );
-		wp_style_add_data( 'rosa-main-style', 'rtl', 'replace' );
-
-		wp_enqueue_style( 'rosa-google-fonts', rosa_lite_google_fonts_url() );
-
 		// Scripts
 		$script_dependencies = array( 'jquery', );
 
-		wp_register_script( 'modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr.min.js', array( 'jquery' ), '3.6.0' );
+		wp_register_script( 'modernizr', get_theme_file_uri( '/assets/js/vendor/modernizr.min.js' ), array( 'jquery' ), '3.6.0' );
 		$script_dependencies[] = 'modernizr';
 		wp_register_script( 'webfont-script', get_theme_file_uri( '/assets/js/webfont.js' ), array( 'jquery' ), '1.6.16' );
 		$script_dependencies[] = 'webfont-script';
@@ -150,8 +157,8 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 		wp_register_script( 'rosa-rs', get_theme_file_uri( '/assets/js/index.js' ), array( 'jquery' ), '9.5.7' );
 		$script_dependencies[] = 'rosa-rs';
 
-		wp_enqueue_script( 'rosa-plugins-scripts', get_template_directory_uri() . '/assets/js/plugins.js', $script_dependencies, $theme->get( 'Version' ), true );
-		wp_enqueue_script( 'rosa-main-scripts', get_template_directory_uri() . '/assets/js/main.js', array( 'rosa-plugins-scripts' ), $theme->get( 'Version' ), true );
+		wp_enqueue_script( 'rosa-plugins-scripts', get_theme_file_uri( '/assets/js/plugins.js' ), $script_dependencies, $theme->get( 'Version' ), true );
+		wp_enqueue_script( 'rosa-main-scripts', get_theme_file_uri( '/assets/js/main.js' ), array( 'rosa-plugins-scripts' ), $theme->get( 'Version' ), true );
 
 		$localization_array = array(
 			'ajaxurl'      => admin_url( 'admin-ajax.php' ),
@@ -166,25 +173,62 @@ if ( ! function_exists( 'rosa_load_assets' ) ) {
 		wp_localize_script( 'rosa-main-scripts', 'rosaStrings', $localization_array );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'rosa_load_assets' );
+add_action( 'wp_enqueue_scripts', 'rosa_lite_load_assets' );
 
-if ( ! function_exists( 'rosa_load_admin_assets' ) ) {
+if ( ! function_exists( 'rosa_lite_load_admin_assets' ) ) {
 
-	function rosa_load_admin_assets() {
+	function rosa_lite_load_admin_assets() {
 		$theme = wp_get_theme( get_template() );
 
 		wp_enqueue_script( 'rosa_admin_general_script', get_template_directory_uri() . '/assets/js/admin/admin-general.js', array('jquery'), $theme->get( 'Version' ) );
 	}
 }
-add_action( 'admin_enqueue_scripts', 'rosa_load_admin_assets' );
+add_action( 'admin_enqueue_scripts', 'rosa_lite_load_admin_assets' );
 
-require get_template_directory() . '/inc/classes/wpgrade.php';
+if ( ! function_exists( 'rosa_lite_register_sidebars' ) ) {
+	/*
+	 * Register Widgets areas.
+	 */
+	function rosa_lite_register_sidebars() {
+
+		register_sidebar( array(
+			'id'            => 'sidebar-main',
+			'name'          => esc_html__( 'Main Sidebar', 'rosa-lite' ),
+			'description'   => esc_html__( 'Main Sidebar', 'rosa-lite' ),
+			'before_title'  => '<h4 class="widget__title widget--sidebar-blog__title">',
+			'after_title'   => '</h4>',
+			'before_widget' => '<div id="%1$s" class="widget widget--sidebar-blog %2$s">',
+			'after_widget'  => '</div>',
+		) );
+
+		// Allow the Text Widgets to handle shortcodes
+		add_filter( 'widget_text', 'shortcode_unautop' );
+		add_filter( 'widget_text', 'do_shortcode' );
+	}
+}
+add_action( 'widgets_init', 'rosa_lite_register_sidebars' );
+
+/**
+ * Set the content width in pixels, based on the theme's design and stylesheet.
+ *
+ * Priority 0 to make it available to lower priority callbacks.
+ *
+ * @global int $content_width
+ */
+function rosa_lite_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'rosa_lite_content_width', 960, 0 );
+}
+add_action( 'after_setup_theme', 'rosa_lite_content_width', 0 );
+
+/**
+ * MB string functions for when the MB library is not available
+ */
+require get_template_directory() . '/inc/mb_compat.php';
 
 /**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
-require get_template_directory() . '/inc/widgets.php';
 
 /**
  * Custom functions that act independently of the theme templates.
@@ -192,19 +236,9 @@ require get_template_directory() . '/inc/widgets.php';
 require get_template_directory() . '/inc/extras.php';
 
 /**
- * Load theme's configuration file (via Customify plugin)
- */
-require get_template_directory() . '/inc/customify.php';
-
-/**
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
-
-/**
- * MB string functions for when the MB library is not available
- */
-require get_template_directory() . '/inc/mb_compat.php';
 
 /**
  * Load various plugin integrations

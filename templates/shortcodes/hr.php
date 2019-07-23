@@ -15,17 +15,17 @@ $classes = 'class="' . trim( $classes ) . '"';
 
 
 if ( $type == 'line-flower' ) {
-	echo '<div ' . $classes . '>' . PHP_EOL .
-            '<div class="line  line--left"></div>' . PHP_EOL .
-            '<div class="line  line--right"></div>' . PHP_EOL .
-            '<div class="star">&#10043;</div>' . PHP_EOL .
-            '<div class="arrows">' . PHP_EOL .
-                '<div class="arrow arrow--left"></div>' . PHP_EOL .
-                '<div class="arrow arrow--right"></div>' . PHP_EOL .
-            '</div>' . PHP_EOL .
-        '</div>' . PHP_EOL ;
+	echo '<div ' . $classes . '>' . "\n" .
+            '<div class="line  line--left"></div>' . "\n" .
+            '<div class="line  line--right"></div>' . "\n" .
+            '<div class="star">&#10043;</div>' . "\n" .
+            '<div class="arrows">' . "\n" .
+                '<div class="arrow arrow--left"></div>' . "\n" .
+                '<div class="arrow arrow--right"></div>' . "\n" .
+            '</div>' . "\n" .
+        '</div>' . "\n" ;
 } elseif ( $type == 'flower' ) {
-	echo '<div ' . $classes . '>&#10043;</div>' . PHP_EOL ;
+	echo '<div ' . $classes . '>&#10043;</div>' . "\n" ;
 } else {
-	echo '<hr ' . $classes . '/>' . PHP_EOL ;
+	echo '<hr ' . $classes . '/>' . "\n" ;
 }

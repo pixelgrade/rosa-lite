@@ -1,6 +1,8 @@
 <?php
 /**
- * Template to display the post in archives
+ * Template to display the post in archives.
+ *
+ * @package Rosa Lite
  */
 
 if ( ! defined( 'ABSPATH' ) ){
@@ -17,16 +19,17 @@ if ( ! $has_thumb ) {
 
 <article <?php post_class( 'article  article--archive ' . $post_class_thumb ); ?>>
 
-    <?php if ( has_post_thumbnail() ):
+    <?php if ( has_post_thumbnail() ) {
 	    $image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'medium-size' );
-	    if ( ! empty( $image[0] ) ) : ?>
+	    if ( ! empty( $image[0] ) ) { ?>
 
 		    <div class="article__featured-image">
-			    <a href="<?php the_permalink(); ?>"><img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/></a>
+			    <a href="<?php the_permalink(); ?>"><img src="<?php echo esc_url( $image[0] ); ?>"
+			                                             alt="<?php the_title(); ?>"/></a>
 		    </div>
 
-	    <?php endif;
-    endif; ?>
+	    <?php }
+    } ?>
 
 	<div class="article__body">
 
@@ -57,14 +60,10 @@ if ( ! $has_thumb ) {
 		</header>
 
 		<section class="article__content">
-			<?php echo rosa_better_excerpt(); ?>
+			<?php echo rosa_lite_better_excerpt(); ?>
 		</section>
 
-		<?php
-		$read_more = pixelgrade_option( 'blog_read_more_text' );
-		if ( ! empty( $read_more ) ) : ?>
-			<a href="<?php the_permalink(); ?>" class="read-more-button"><?php echo $read_more ?></a>
-		<?php endif; ?>
+		<a href="<?php the_permalink(); ?>" class="read-more-button"><?php esc_html_e( 'Read more', 'rosa-lite' ) ?></a>
 
 	</div><!-- .article__body -->
 </article>

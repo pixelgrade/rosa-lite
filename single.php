@@ -2,6 +2,7 @@
 /**
  * The Template for displaying all single posts.
  *
+ * @package Rosa Lite
  */
 
 if ( ! defined( 'ABSPATH' ) ){
@@ -10,13 +11,13 @@ if ( ! defined( 'ABSPATH' ) ){
 
 get_header();
 
-global $wpgrade_private_post;
+global $rosa_private_post;
 
-if ( post_password_required() && ! $wpgrade_private_post['allowed'] ) :
-	// password protection
+if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
+	// Password protection
 	get_template_part( 'template-parts/password-request-form' );
 
-else :
+} else {
 	$has_sidebar = false;
 	if ( pixelgrade_option( 'blog_single_show_sidebar', true ) ) {
 		$has_sidebar = true;
@@ -46,7 +47,8 @@ else :
 						if ( has_post_thumbnail() ):
 							if ( $has_sidebar ) { //use a smaller image size
 								$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'medium-size' );
-							} else { //use a larger image size
+							} else {
+								// Use a larger image size
 								$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large-size' );
 							}
 							if ( ! empty( $image[0] ) ) : ?>
@@ -65,7 +67,8 @@ else :
 					<footer class="article__footer  push--bottom">
 						<?php
 						global $multipage;
-						if ( $multipage ): ?>
+
+						if ( $multipage ) { ?>
 
 							<div class="entry__meta-box  meta-box--pagination" role="navigation">
 								<h2 class="screen-reader-text"><?php esc_html_e( 'Pages: ', 'rosa-lite' ); ?></h2>
@@ -83,35 +86,36 @@ else :
 								?>
 							</div>
 
-						<?php endif;
+						<?php }
 
 						$categories = get_the_category();
-						if ( ! is_wp_error( $categories ) && ! empty( $categories ) ): ?>
+						if ( ! is_wp_error( $categories ) && ! empty( $categories ) ) { ?>
 
 							<div class="meta--categories btn-list  meta-list">
-								<span class="btn  btn--small  btn--secondary  list-head"><?php esc_html_e( 'Categories', 'rosa-lite' ) ?></span>
+								<span
+									class="btn  btn--small  btn--secondary  list-head"><?php esc_html_e( 'Categories', 'rosa-lite' ) ?></span>
 								<?php
 								foreach ( $categories as $category ) {
 									/* translators: %s: category name */
-									echo '<a class="btn  btn--small  btn--tertiary" href="' . get_category_link( $category->term_id ) . '" title="' . esc_attr( sprintf( __( "View all posts in %s", 'rosa-lite' ), $category->name ) ) . '" rel="tag">' . $category->name . '</a>';
+									echo '<a class="btn  btn--small  btn--tertiary" href="' . esc_url( get_category_link( $category->term_id ) ) . '" title="' . esc_attr( sprintf( __( "View all posts in %s", 'rosa-lite' ), $category->name ) ) . '" rel="tag">' . esc_html( $category->name ) . '</a>';
 								}; ?>
 							</div><!-- .meta--categories -->
 
-						<?php endif;
+						<?php }
 
 						$tags = get_the_tags();
-						if ( ! empty( $tags ) ): ?>
+						if ( ! empty( $tags ) ) { ?>
 
 							<div class="meta--tags  btn-list  meta-list">
 								<span class="btn  btn--small  btn--secondary  list-head"><?php esc_html_e( 'Tags', 'rosa-lite' ) ?></span>
 								<?php
 								foreach ( $tags as $one_tag ) {
 									/* translators: %s: tag name */
-									echo '<a class="btn  btn--small  btn--tertiary" href="' . get_tag_link( $one_tag->term_id ) . '" title="' . esc_attr( sprintf( __( "View all posts tagged %s", 'rosa-lite' ), $one_tag->name ) ) . '" rel="tag">' . $one_tag->name . '</a>';
+									echo '<a class="btn  btn--small  btn--tertiary" href="' . esc_url( get_tag_link( $one_tag->term_id ) ) . '" title="' . esc_attr( sprintf( __( "View all posts tagged %s", 'rosa-lite' ), $one_tag->name ) ) . '" rel="tag">' . esc_html( $one_tag->name ) . '</a>';
 								}; ?>
 							</div><!-- .meta--tags -->
 
-						<?php endif; ?>
+						<?php } ?>
 
 						<hr class="separator"/>
 
@@ -122,7 +126,7 @@ else :
 					}
 
 					// If comments are open or we have at least one comment, load up the comment template
-					if ( comments_open() || '0' != get_comments_number() ) {
+					if ( comments_open() || get_comments_number() ) {
 						comments_template();
 					} ?>
 
@@ -141,7 +145,7 @@ else :
 		} ?>
 
 	</section><!-- .container.container--single -->
-<?php
-endif;
+	<?php
+}
 
 get_footer();
