@@ -31,16 +31,19 @@ if ( ! $has_thumb ) {
 	<div class="article__body">
 
 		<?php
+
 		$date = get_the_time( get_option( 'date_format' ) );
 
-		if ( pixelgrade_option( 'blog_custom_date_separator' ) ) {
+
 			//we need to replace separators with our custom markup
 			$date = str_replace( ', ', ' ', $date );
 			$date = str_replace( '/ ', ' ', $date );
 			$date = str_replace( '  ', ' ', $date );
 
 			$date = str_replace( ' ', '<span class="date__dot"></span>', $date );
-		} ?>
+
+        ?>
+
 
 		<header>
 				<div class="article__date">

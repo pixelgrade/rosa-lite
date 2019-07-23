@@ -7836,7 +7836,7 @@ figure {
     background-color: #262526; }
 
 .btn--secondary, .btn--tertiary, .wpcf7-form-control.wpcf7-submit {
-  color: #919191; }
+  color: #FFFFFF; }
 
 .btn--tertiary {
   background-color: #919191; }
@@ -7950,7 +7950,8 @@ figure {
 \*---------------------------------*/
 .article__title a, .latest-comments__title a {
   -ms-word-wrap: break-word;
-  word-wrap: break-word; }
+  word-wrap: break-word;
+  color: #262526; }
 
 .post .article__title, .post .latest-comments__title {
   -ms-word-wrap: break-word;
@@ -9386,6 +9387,15 @@ button.nav-trigger {
     border: 1px solid currentColor; }
   .inf_scroll .pagination {
     display: none; }
+  .pagination .nav-links .page-numbers {
+    background-color: #262526; }
+  .pagination .page-numbers.prev, .pagination .page-numbers.next {
+    color: #FFFFFF; }
+  .pagination .nav-links .page-numbers.current {
+    color: #FFFFFF; }
+  .pagination .nav-links .page-numbers.prev.disabled {
+    background-color: #515150;
+    color: #919191; }
 
 .pagination--single {
   border: none;
@@ -12067,7 +12077,8 @@ img.mfp-img {
     content: none; }
 
 .read-more-button {
-  font-size: 13px; }
+  font-size: 13px;
+  color: #c59d5f; }
 
 @supports (display: grid) {
   .archive-filter {
