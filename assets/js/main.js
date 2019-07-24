@@ -665,50 +665,6 @@
       };
   })();
 
-  //here we change the link of the Edit button in the Admin Bar
-  //to make sure it reflects the current page
-  function adminBarEditFix(id) {
-    //get the admin ajax url and clean it
-    var baseURL = rosaStrings.ajaxurl.replace("admin-ajax.php", "post.php");
-
-    $("#wp-admin-bar-edit a").attr(
-      "href",
-      baseURL + "?post=" + id + "&action=edit"
-    );
-  }
-
-  /* --- Load AddThis Async --- */
-  function loadAddThisScript() {
-    if (window.addthis) {
-      if (globalDebug) {
-        console.log("AddThis Load Script");
-      }
-      // Listen for the ready event
-      addthis.addEventListener("addthis.ready", addthisReady);
-      addthis.init();
-    }
-  }
-
-  /* --- AddThis On Ready - The API is fully loaded --- */
-  //only fire this the first time we load the AddThis API - even when using ajax
-  function addthisReady() {
-    if (globalDebug) {
-      console.log("AddThis Ready");
-    }
-    addThisInit();
-  }
-
-  /* --- AddThis Init --- */
-  function addThisInit() {
-    if (window.addthis) {
-      if (globalDebug) {
-        console.log("AddThis Toolbox INIT");
-      }
-
-      addthis.toolbox(".addthis_toolbox");
-    }
-  }
-
   var HandleSubmenusOnTouch = (function() {
     var isInitiated = false;
 
@@ -964,8 +920,6 @@
     // /* DETECT PLATFORM */
     platformDetect();
 
-    loadAddThisScript();
-
     if (is_android || window.opera) {
       $("html")
         .addClass("android-browser")
@@ -978,23 +932,6 @@
     /* INSTANTIATE EVENT HANDLERS */
     eventHandlers();
     updateHeaderPadding();
-
-    var $borderTemplate = $(".border-waves-template");
-
-    $(".border-waves").each(function(i, obj) {
-      var $obj = $(obj),
-        $before = $borderTemplate
-          .clone()
-          .removeClass("border-waves-template")
-          .addClass("border-waves-before"),
-        $after = $borderTemplate
-          .clone()
-          .removeClass("border-waves-template")
-          .addClass("border-waves-after");
-
-      $before.appendTo($obj);
-      $after.appendTo($obj);
-    });
 
     $(".navigation--main").on("DOMMouseScroll mousewheel", function(ev) {
       var $this = $(this),

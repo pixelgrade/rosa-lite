@@ -164,8 +164,6 @@ function init() {
 	// /* DETECT PLATFORM */
 	platformDetect();
 
-	loadAddThisScript();
-
 	if ( is_android || window.opera ) {
 		$( 'html' ).addClass( 'android-browser' ).removeClass( 'no-android-browser' );
 	}
@@ -176,17 +174,6 @@ function init() {
 	/* INSTANTIATE EVENT HANDLERS */
 	eventHandlers();
 	updateHeaderPadding();
-
-	var $borderTemplate = $( '.border-waves-template' );
-
-	$( '.border-waves' ).each( function(i, obj) {
-		var $obj = $(obj),
-			$before = $borderTemplate.clone().removeClass( 'border-waves-template' ).addClass( 'border-waves-before' ),
-			$after = $borderTemplate.clone().removeClass( 'border-waves-template' ).addClass( 'border-waves-after' );
-
-		$before.appendTo( $obj );
-		$after.appendTo( $obj );
-	});
 
 	$( '.navigation--main' ).on( 'DOMMouseScroll mousewheel', function( ev ) {
 		var $this = $( this ),

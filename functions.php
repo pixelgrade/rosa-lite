@@ -162,12 +162,9 @@ if ( ! function_exists( 'rosa_lite_load_assets' ) ) {
 
 		$localization_array = array(
 			'ajaxurl'      => admin_url( 'admin-ajax.php' ),
-			'theme_name' => 'rosa-lite',
 			'tPrev'             => esc_html__( 'Previous (Left arrow key)', 'rosa-lite' ),
 			'tNext'             => esc_html__( 'Next (Right arrow key)', 'rosa-lite' ),
 			'tCounter'          => esc_html__( 'of', 'rosa-lite' ),
-			'infscrLoadingText' => "",
-			'infscrReachedEnd'  => "",
 		);
 
 		wp_localize_script( 'rosa-main-scripts', 'rosaStrings', $localization_array );
