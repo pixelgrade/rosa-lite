@@ -1,15 +1,15 @@
 # Copyright (C) 2019 Pixelgrade
-# This file is distributed under the GNU General Public License v2 or later.
+# This file is distributed under the GNU General Public License v3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Rosa Lite\n"
+"Project-Id-Version: Rosa Lite 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/rosa-lite\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-07-19T14:55:28+00:00\n"
+"POT-Creation-Date: 2019-07-24T14:57:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.1.0\n"
 "X-Domain: rosa-lite\n"
@@ -19,11 +19,11 @@ msgid "Rosa Lite"
 msgstr ""
 
 #. Theme URI of the theme
-msgid "https://demos.pixelgrade.com/rosa-lite"
+msgid "https://github.com/pixelgrade/rosa-lite"
 msgstr ""
 
 #. Description of the theme
-msgid "Rosa Lite is a free restaurant WordPress theme, built to help small businesses shape an appealing online experience."
+msgid "This is the free version of Rosa, the #1 best selling restaurant WordPress theme, built to help small businesses shape an appealing online experience. It's packed with a parallax effect to grab attention, an online food menu so people can discover your offering, an easy to customize interface without using code, and a responsive design to address people on the go. This theme's versatility allows it to be used in a wide range of industries, making it the perfect theme if you own a business. No matter if it's a restaurant, beauty salon, house rental, hotel, coffee shop, or any other type of small business, this theme will fit your needs perfectly."
 msgstr ""
 
 #. Author of the theme
@@ -34,81 +34,29 @@ msgstr ""
 msgid "https://pixelgrade.com"
 msgstr ""
 
-#: functions.php:164
+#: functions.php:98
+msgid "Main Menu"
+msgstr ""
+
+#: functions.php:99
+msgid "Footer Menu"
+msgstr ""
+
+#: functions.php:159
 msgid "Previous (Left arrow key)"
 msgstr ""
 
-#: functions.php:165
+#: functions.php:160
 msgid "Next (Right arrow key)"
 msgstr ""
 
-#: functions.php:166
+#: functions.php:161
 msgid "of"
 msgstr ""
 
-#: functions.php:184
-msgid "The import didn't work completely!"
-msgstr ""
-
-#: functions.php:184
-msgid "Check out what could be wrong here."
-msgstr ""
-
-#: functions.php:185
-msgid "Importing the demo data will overwrite your current Theme Options settings. Proceed anyway?"
-msgstr ""
-
-#: functions.php:186
-msgid "Phew...that was a hard one!"
-msgstr ""
-
 #: functions.php:187
-msgid "The demo data was imported without a glitch! Awesome!"
-msgstr ""
-
 #: functions.php:188
-msgid "All done!"
-msgstr ""
-
-#: functions.php:189
-msgid "Working..."
-msgstr ""
-
-#: functions.php:190
-msgid "The setting up of the demo widgets failed..."
-msgstr ""
-
-#: functions.php:191
-msgid "The setting up of the demo widgets failed</i><br />(The script returned the following message"
-msgstr ""
-
-#: functions.php:192
-msgid "Finished setting up the demo widgets..."
-msgstr ""
-
-#: functions.php:193
-#: functions.php:196
-msgid "The importing of the theme options has failed..."
-msgstr ""
-
-#: functions.php:194
-msgid "The importing of the theme options has failed</i><br />(The script returned the following message"
-msgstr ""
-
-#: functions.php:195
-msgid "Finished importing the demo theme options..."
-msgstr ""
-
-#: functions.php:197
-msgid "Importing posts | Step"
-msgstr ""
-
-#: functions.php:198
-msgid "Error:"
-msgstr ""
-
-#: functions.php:199
-msgid "You can reload the page and try again."
+msgid "Main Sidebar"
 msgstr ""
 
 #: 404.php:12
@@ -123,37 +71,7 @@ msgstr ""
 msgid "&#8592; Return to the Home Page"
 msgstr ""
 
-#: inc/widgets.php:9
-#: inc/widgets.php:10
-msgid "Main Sidebar"
-msgstr ""
-
-#: inc/widgets.php:31
-msgid "The latest comments"
-msgstr ""
-
-#: inc/widgets.php:33
-msgid "Latest Comments"
-msgstr ""
-
-#: inc/widgets.php:66
-msgid "Recent Comments"
-msgstr ""
-
-#: inc/widgets.php:96
-msgid "on"
-msgstr ""
-
-#: inc/widgets.php:147
-msgid "Title:"
-msgstr ""
-
-#: inc/widgets.php:152
-msgid "Number of comments to show:"
-msgstr ""
-
 #: inc/required-plugins/class-tgm-plugin-activation.php:327
-#: inc/required-plugins.php:39
 msgid "Install Required Plugins"
 msgstr ""
 
@@ -163,6 +81,7 @@ msgid "Install Plugins"
 msgstr ""
 
 #. translators: %s: plugin name.
+#. translators: %1$s = plugin name
 #: inc/required-plugins/class-tgm-plugin-activation.php:330
 #: inc/required-plugins.php:42
 msgid "Installing Plugin: %s"
@@ -179,6 +98,7 @@ msgid "Something went wrong with the plugin API."
 msgstr ""
 
 #. translators: 1: plugin name(s).
+#. translators: %1$s = plugin name
 #: inc/required-plugins/class-tgm-plugin-activation.php:334
 #: inc/required-plugins.php:45
 msgid "This theme requires the following plugin: %1$s."
@@ -186,6 +106,7 @@ msgid_plural "This theme requires the following plugins: %1$s."
 msgstr[0] ""
 
 #. translators: 1: plugin name(s).
+#. translators: %1$s = plugin name
 #: inc/required-plugins/class-tgm-plugin-activation.php:340
 #: inc/required-plugins.php:47
 msgid "This theme recommends the following plugin: %1$s."
@@ -193,6 +114,7 @@ msgid_plural "This theme recommends the following plugins: %1$s."
 msgstr[0] ""
 
 #. translators: 1: plugin name(s).
+#. translators: %1$s = plugin name
 #: inc/required-plugins/class-tgm-plugin-activation.php:346
 #: inc/required-plugins.php:57
 msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
@@ -206,6 +128,7 @@ msgid_plural "There are updates available for the following plugins: %1$s."
 msgstr[0] ""
 
 #. translators: 1: plugin name(s).
+#. translators: %1$s = plugin name
 #: inc/required-plugins/class-tgm-plugin-activation.php:358
 #: inc/required-plugins.php:51
 msgid "The following required plugin is currently inactive: %1$s."
@@ -213,6 +136,7 @@ msgid_plural "The following required plugins are currently inactive: %1$s."
 msgstr[0] ""
 
 #. translators: 1: plugin name(s).
+#. translators: %1$s = plugin name
 #: inc/required-plugins/class-tgm-plugin-activation.php:364
 #: inc/required-plugins.php:53
 msgid "The following recommended plugin is currently inactive: %1$s."
@@ -236,7 +160,6 @@ msgid_plural "Begin activating plugins"
 msgstr[0] ""
 
 #: inc/required-plugins/class-tgm-plugin-activation.php:385
-#: inc/required-plugins.php:62
 msgid "Return to Required Plugins Installer"
 msgstr ""
 
@@ -423,6 +346,8 @@ msgid "Source"
 msgstr ""
 
 #: inc/required-plugins/class-tgm-plugin-activation.php:2549
+#: inc/integrations/pixcodes.php:24
+#: inc/integrations/pixcodes.php:68
 msgid "Type"
 msgstr ""
 
@@ -556,140 +481,99 @@ msgstr ""
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: inc/activation.php:25
+#: inc/activation.php:19
 msgid "General"
 msgstr ""
 
-#: inc/activation.php:36
+#: inc/activation.php:30
 msgid "Make Menu Bar Transparent"
 msgstr ""
 
-#: inc/activation.php:37
+#: inc/activation.php:31
 msgid "This will remove the background from the menu and logo top bar."
 msgstr ""
 
-#: inc/activation.php:46
+#: inc/activation.php:40
 msgid "Featured Header Area"
 msgstr ""
 
-#: inc/activation.php:57
+#: inc/activation.php:51
 msgid "Subtitle"
 msgstr ""
 
-#: inc/activation.php:62
+#: inc/activation.php:56
 msgid "Title"
 msgstr ""
 
-#: inc/activation.php:63
+#: inc/activation.php:57
 msgid "If left empty we will use the page title. Tip: put a space if you don't want any cover text."
 msgstr ""
 
-#: inc/extras.php:175
-#: inc/extras.php:182
+#: inc/extras.php:77
+#: inc/extras.php:84
 msgid "Wrong Password"
 msgstr ""
 
-#: inc/extras.php:195
+#: inc/extras.php:97
 msgid "This post is password protected. To view it please enter your password below:"
 msgstr ""
 
-#: inc/extras.php:198
+#: inc/extras.php:100
 #: template-parts/password-request-form.php:29
 msgid "Password"
 msgstr ""
 
-#: inc/extras.php:201
+#: inc/extras.php:103
 msgid "Access"
 msgstr ""
 
-#: inc/extras.php:227
+#: inc/extras.php:129
 msgid "Sorry, your password did not match"
 msgstr ""
 
-#: inc/extras.php:561
-msgid "Video URL"
-msgstr ""
-
-#: inc/extras.php:564
-msgid "<p class='desc'>Attach a video to this image <span class='small'>(YouTube or Vimeo)</span>.</p>"
-msgstr ""
-
-#: inc/extras.php:579
-msgid "Video  Autoplay"
-msgstr ""
-
-#: inc/extras.php:581
-msgid "Enable Video Autoplay?"
-msgstr ""
-
-#. translators: %s: Page number
-#: inc/extras.php:915
-#: inc/extras.php:931
-msgid "Page %s"
-msgstr ""
-
-#: inc/extras.php:1054
-msgid "Edit Pages"
-msgstr ""
-
-#. translators: %s: Page parent name
-#: inc/extras.php:1063
-msgid "Parent: %s"
-msgstr ""
-
-#. translators: %s: Page child name
-#: inc/extras.php:1073
-msgid "Child: %s"
-msgstr ""
-
-#. translators: %s: author name
-#: inc/extras.php:1131
-msgid "Posts by %s"
-msgstr ""
-
-#: inc/extras.php:1613
-#: inc/extras.php:1618
+#: inc/extras.php:593
+#: inc/extras.php:598
 msgid "Name"
 msgstr ""
 
-#: inc/extras.php:1614
-#: inc/extras.php:1619
+#: inc/extras.php:594
+#: inc/extras.php:599
 msgid "Email"
 msgstr ""
 
-#: inc/extras.php:1614
-#: inc/extras.php:1619
+#: inc/extras.php:594
+#: inc/extras.php:599
 msgid "your@email.com"
 msgstr ""
 
-#: inc/extras.php:1620
+#: inc/extras.php:600
 msgid "Url"
 msgstr ""
 
-#: inc/extras.php:1620
+#: inc/extras.php:600
 msgid "Website"
 msgstr ""
 
 #. Translators: If there are characters in your language that are not * supported by Cabin, translate this to 'off'. Do not translate * into your own language.
-#: inc/extras.php:1647
+#: inc/extras.php:627
 msgctxt "Cabin font: on or off"
 msgid "on"
 msgstr ""
 
 #. Translators: If there are characters in your language that are not * supported by Source Sans Pro, translate this to 'off'. Do not translate * into your own language.
-#: inc/extras.php:1654
+#: inc/extras.php:634
 msgctxt "Source Sans Pro font: on or off"
 msgid "on"
 msgstr ""
 
 #. Translators: If there are characters in your language that are not * supported by Herr Von Muellerhoff, translate this to 'off'. Do not translate * into your own language.
-#: inc/extras.php:1661
+#: inc/extras.php:641
 msgctxt "Herr Von Muellerhoff font: on or off"
 msgid "on"
 msgstr ""
 
 #. translators: To add an additional character subset specific to your language, translate this to 'greek', 'cyrillic', 'devanagari' or 'vietnamese'. Do not translate into your own language.
-#: inc/extras.php:1666
+#: inc/extras.php:646
 msgctxt "Add new subset (greek, cyrillic, devanagari, vietnamese)"
 msgid "no-subset"
 msgstr ""
@@ -736,36 +620,125 @@ msgstr ""
 msgid "Get Rosa PRO"
 msgstr ""
 
-#: inc/integrations/gridable.php:48
+#: inc/customizer.php:86
+msgid "Inverted Logo"
+msgstr ""
+
+#: inc/customizer.php:93
+#: inc/customizer.php:98
+msgid "Select inverted logo"
+msgstr ""
+
+#: inc/customizer.php:94
+msgid "Change inverted logo"
+msgstr ""
+
+#: inc/customizer.php:95
+msgid "Remove"
+msgstr ""
+
+#: inc/customizer.php:96
+msgid "Default"
+msgstr ""
+
+#: inc/customizer.php:97
+msgid "No inverted logo selected"
+msgstr ""
+
+#: inc/customizer.php:99
+msgid "Choose inverted logo"
+msgstr ""
+
+#: inc/integrations/gridable.php:47
 msgid "Column Style"
 msgstr ""
 
-#: inc/integrations/gridable.php:51
+#: inc/integrations/gridable.php:50
 msgid "Simple"
 msgstr ""
 
-#: inc/integrations/gridable.php:52
+#: inc/integrations/gridable.php:51
 msgid "Island"
 msgstr ""
 
-#: inc/integrations/gridable.php:53
+#: inc/integrations/gridable.php:52
 msgid "Feature Box"
 msgstr ""
 
-#: inc/integrations/gridable.php:59
+#: inc/integrations/gridable.php:58
 msgid "CSS Class"
 msgstr ""
 
+#: inc/integrations/pixcodes.php:16
+msgid "Gray"
+msgstr ""
+
+#: inc/integrations/pixcodes.php:17
+msgid "White"
+msgstr ""
+
+#: inc/integrations/pixcodes.php:26
+msgid "Line"
+msgstr ""
+
+#: inc/integrations/pixcodes.php:27
+msgid "Flower"
+msgstr ""
+
+#: inc/integrations/pixcodes.php:28
+msgid "Line with Flower"
+msgstr ""
+
+#: inc/integrations/pixcodes.php:57
+#: inc/integrations/pixcodes.php:70
+msgid "Regular"
+msgstr ""
+
+#: inc/integrations/pixcodes.php:58
+msgid "Small"
+msgstr ""
+
+#: inc/integrations/pixcodes.php:59
+msgid "Large"
+msgstr ""
+
+#: inc/integrations/pixcodes.php:61
+msgid "Size"
+msgstr ""
+
+#: inc/integrations/pixcodes.php:71
+msgid "Primary"
+msgstr ""
+
+#: inc/integrations/pixcodes.php:72
+msgid "Text"
+msgstr ""
+
+#: inc/integrations/pixcodes.php:118
+msgid "Link"
+msgstr ""
+
+#: inc/integrations/pixcodes.php:125
+msgid "Open in new window"
+msgstr ""
+
+#: inc/required-plugins.php:39
+msgid "Install Recommended Plugins"
+msgstr ""
+
+#. translators: %1$s = plugin name
 #: inc/required-plugins.php:49
 msgid "Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed."
 msgid_plural "Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed."
 msgstr[0] ""
 
+#. translators: %1$s = plugin name
 #: inc/required-plugins.php:55
 msgid "Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated."
 msgid_plural "Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated."
 msgstr[0] ""
 
+#. translators: %1$s = plugin name
 #: inc/required-plugins.php:59
 msgid "Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated."
 msgid_plural "Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated."
@@ -776,159 +749,176 @@ msgid "Activate installed plugin"
 msgid_plural "Activate installed plugins"
 msgstr[0] ""
 
+#: inc/required-plugins.php:62
+msgid "Return to Recommended Plugins Installer"
+msgstr ""
+
+#. translators: %1$s = dashboard link
 #: inc/required-plugins.php:65
 msgid "All plugins installed and activated successfully. %s"
 msgstr ""
 
-#: inc/template-tags.php:14
+#: inc/template-tags.php:21
 msgid "News"
 msgstr ""
 
-#: inc/template-tags.php:21
+#: inc/template-tags.php:28
 msgid "Search Results for: "
 msgstr ""
 
-#: inc/template-tags.php:31
+#: inc/template-tags.php:38
 msgid "Tag"
 msgstr ""
 
-#: inc/template-tags.php:37
+#: inc/template-tags.php:44
 msgid "Category"
 msgstr ""
 
-#: inc/template-tags.php:42
+#: inc/template-tags.php:49
 msgid "Daily Archives: "
 msgstr ""
 
-#: inc/template-tags.php:49
+#: inc/template-tags.php:56
 msgid "Monthly Archives: "
 msgstr ""
 
-#: inc/template-tags.php:51
+#: inc/template-tags.php:58
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr ""
 
-#: inc/template-tags.php:56
+#: inc/template-tags.php:63
 msgid "Yearly Archives: "
 msgstr ""
 
-#: inc/template-tags.php:58
+#: inc/template-tags.php:65
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr ""
 
-#: inc/template-tags.php:63
+#: inc/template-tags.php:70
 msgid "Archives"
 msgstr ""
 
-#: inc/template-tags.php:106
+#: inc/template-tags.php:82
 msgid "Please select a menu in this location"
 msgstr ""
 
-#: inc/template-tags.php:205
-msgid "Make this gallery a slideshow"
-msgstr ""
-
-#: inc/template-tags.php:248
+#: inc/template-tags.php:117
 msgid "Page"
 msgstr ""
 
-#: inc/template-tags.php:262
+#: inc/template-tags.php:123
 msgid "Posts navigation"
 msgstr ""
 
-#: inc/template-tags.php:297
+#: inc/template-tags.php:153
 msgid "Next"
 msgstr ""
 
-#: inc/template-tags.php:347
+#: inc/template-tags.php:201
 msgid "Prev"
 msgstr ""
 
 #. translators: 1: comment date, 2: comment time
-#: inc/template-tags.php:410
+#: inc/template-tags.php:266
 msgid "on %1$s at %2$s"
 msgstr ""
 
-#: inc/template-tags.php:414
+#: inc/template-tags.php:270
 msgid "Edit"
 msgstr ""
 
-#: inc/template-tags.php:424
+#: inc/template-tags.php:280
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/template-tags.php:438
-msgid "%year% &copy; Handcrafted with love by <a href=\"#\">Pixelgrade</a> Team"
+#. translators: %s: WordPress.
+#: inc/template-tags.php:301
+msgid "https://wordpress.org/"
 msgstr ""
 
-#: index.php:32
-#: single.php:92
+#. translators: %s: WordPress.
+#: inc/template-tags.php:301
+msgid "Proudly powered by %s"
+msgstr ""
+
+#. translators: %1$s: The theme name, %2$s: The theme author name.
+#: inc/template-tags.php:304
+msgid "Theme: %1$s by %2$s."
+msgstr ""
+
+#. translators: %1$s: The theme name, %2$s: The theme author name.
+#: inc/template-tags.php:304
+msgid "The Pixelgrade Website"
+msgstr ""
+
+#. translators: %year%: The current year, %site-title%: The site title.
+#: inc/template-tags.php:320
+msgid "&copy; %year% %site-title%."
+msgstr ""
+
+#: index.php:31
+#: single.php:95
 msgid "Categories"
 msgstr ""
 
 #. translators: %s: category name
-#: index.php:39
-#: single.php:96
+#: index.php:38
+#: single.php:99
 msgid "View all posts in %s"
 msgstr ""
 
-#. translators: 1: One comment
-#. translators: 1: number of comments
-#: comments.php:31
-msgid "<span class=\"comment-number total\">1</span> Comment"
-msgid_plural "<span class=\"comment-number total\">%1$s</span>Comments"
+#: comments.php:30
+#: comments.php:89
+msgid "Comment"
+msgid_plural "Comments"
 msgstr[0] ""
 
-#: comments.php:42
+#: comments.php:32
 msgid "<span class=\"comment-number total\">+</span> There are no comments"
 msgstr ""
 
-#: comments.php:46
+#: comments.php:35
 msgid "Add yours"
 msgstr ""
 
-#: comments.php:53
-#: comments.php:73
+#: comments.php:42
+#: comments.php:62
 msgid "Comment navigation"
 msgstr ""
 
-#: comments.php:55
-#: comments.php:75
+#: comments.php:44
+#: comments.php:64
 msgid "&larr; Older Comments"
 msgstr ""
 
-#: comments.php:56
-#: comments.php:76
+#: comments.php:45
+#: comments.php:65
 msgid "Newer Comments &rarr;"
 msgstr ""
 
-#: comments.php:88
+#: comments.php:76
 msgid "Comments are closed."
 msgstr ""
 
-#: comments.php:94
-#: comments.php:106
+#: comments.php:81
 msgid "<span class=\"comment-number total\">+</span> Leave a Comment"
 msgstr ""
 
-#: comments.php:99
-#: comments.php:111
+#: comments.php:86
 msgid "Submit"
 msgstr ""
 
-#: comments.php:101
-#: comments.php:113
-msgid "Comment"
-msgstr ""
-
-#: comments.php:101
-#: comments.php:113
+#: comments.php:90
 msgid "Your thoughts.."
 msgstr ""
 
-#: header.php:113
+#: header.php:48
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:69
 msgid "Primary Navigation"
 msgstr ""
 
@@ -936,20 +926,22 @@ msgstr ""
 msgid "Default Template (No title)"
 msgstr ""
 
-#: page-templates/page-no-title.php:48
-#: page.php:57
+#: page-templates/no-title.php:44
+#: page.php:50
 msgid "Pages"
 msgstr ""
 
-#: page-templates/page-no-title.php:54
-#: single.php:79
-#: page.php:63
+#. translators: The previous page link arrow.
+#: page-templates/no-title.php:50
+#: single.php:80
+#: page.php:56
 msgid "&laquo;"
 msgstr ""
 
-#: page-templates/page-no-title.php:55
-#: single.php:80
-#: page.php:64
+#. translators: The next page link arrow.
+#: page-templates/no-title.php:51
+#: single.php:82
+#: page.php:57
 msgid "&raquo;"
 msgstr ""
 
@@ -982,23 +974,32 @@ msgstr ""
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
 msgstr ""
 
-#: template-parts/header-page.php:242
-msgid "Currently there are no images assigned to this slideshow"
+#: template-parts/content.php:59
+msgid "Read more"
+msgstr ""
+
+#: template-parts/author_bio.php:16
+msgid "Author"
 msgstr ""
 
 #: single.php:71
 msgid "Pages: "
 msgstr ""
 
-#: single.php:106
+#: single.php:109
 msgid "Tags"
 msgstr ""
 
 #. translators: %s: tag name
-#: single.php:110
+#: single.php:113
 msgid "View all posts tagged %s"
 msgstr ""
 
-#: searchform.php:6
-msgid "Search..."
+#: searchform.php:13
+msgctxt "label"
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:14
+msgid "Search &hellip;"
 msgstr ""
