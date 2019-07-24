@@ -220,6 +220,25 @@ img[width], img[height] {
 	@include rem(padding-bottom, 4rem !important);
 }
 
+[class*="gallery-columns-"] {
+	@include grid;
+}
+@include media-query(palm) {
+	@for $i from 2 through 9 {
+		.gallery-columns-#{$i} > * {
+			width: percentage(1 / ($i - 1));
+		}
+	}
+}
+
+@include media-query(lap-and-up) {
+	@for $i from 1 through 9 {
+		.gallery-columns-#{$i} > * {
+			width: percentage( 1 / $i );
+		}
+	}
+}
+
 // WordPress gallery
 .gallery {
 	@extend .cf;
