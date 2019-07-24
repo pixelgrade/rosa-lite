@@ -410,7 +410,7 @@ if ( ! function_exists( 'rosa_lite_footer_the_copyright' ) ) {
 		$output .= '<span class="c-footer__credits">' . sprintf( esc_html__( 'Theme: %1$s by %2$s.', 'rosa-lite' ), 'Rosa Lite', '<a href="https://pixelgrade.com/?utm_source=rosa-lite-clients&utm_medium=footer&utm_campaign=rosa-lite" title="' . esc_html__( 'The Pixelgrade Website', 'rosa-lite' ) . '" rel="nofollow">Pixelgrade</a>' ) . '</span>' . "\n";
 		$output .= '</div>';
 
-		echo apply_filters( 'pixelgrade_footer_the_copyright', $output );
+		echo apply_filters( 'pixelgrade_footer_the_copyright', $output ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
 
@@ -512,7 +512,7 @@ if ( ! function_exists( 'rosa_lite_parse_content_tags' ) ) {
  * @param int|WP_Post $post_id Optional. Post ID or post object.
  */
 function rosa_lite_author_bio_links( $post_id = null ) {
-	echo rosa_lite_get_author_bio_links( $post_id );
+	echo rosa_lite_get_author_bio_links( $post_id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 if ( ! function_exists( 'rosa_lite_get_author_bio_links' ) ) :

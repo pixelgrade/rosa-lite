@@ -56,8 +56,7 @@ function rosa_lite_is_password_protected() {
 
 	if ( isset( $_POST['submit_password'] ) ) {
 		// When we have a submission check the password and its submission
-		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash
-		if ( isset( $_POST['submit_password_nonce'] ) && wp_verify_nonce( $_POST['submit_password_nonce'], 'password_protection' ) ) {
+		if ( isset( $_POST['submit_password_nonce'] ) && wp_verify_nonce( $_POST['submit_password_nonce'], 'password_protection' ) ) { // phpcs:ignore
 			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash
 			if ( isset ( $_POST['post_password'] ) && ! empty( $_POST['post_password'] ) ) {
 				// Finally test if the password submitted is correct
@@ -69,10 +68,10 @@ function rosa_lite_is_password_protected() {
 					// otherwise the mad dog will put the password form again in the_content() and other filters
 					global $wp_hasher;
 					if ( empty( $wp_hasher ) ) {
-						require_once( ABSPATH . 'wp-includes/class-phpass.php' );
-						$wp_hasher = new PasswordHash( 8, true );
+						require_once( ABSPATH . 'wp-includes/class-phpass.php' ); // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+						$wp_hasher = new PasswordHash( 8, true ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 					}
-					setcookie( 'wp-postpass_' . COOKIEHASH, $wp_hasher->HashPassword( stripslashes( $_POST['post_password'] ) ), 0, COOKIEPATH );
+					setcookie( 'wp-postpass_' . COOKIEHASH, $wp_hasher->HashPassword( stripslashes( $_POST['post_password'] ) ), 0, COOKIEPATH ); // phpcs:ignore
 
 				} else {
 					$private_post['error'] = '<h4 class="text--error">' . esc_html__( 'Wrong Password', 'rosa-lite' ) . '</h4>';
@@ -116,10 +115,10 @@ if ( ! function_exists( 'rosa_lite_callback_the_password_form' ) ) {
 			return $form;
 		}
 
-		require_once ABSPATH . 'wp-includes/class-phpass.php';
+		require_once ABSPATH . 'wp-includes/class-phpass.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 		$hasher = new PasswordHash( 8, true );
 
-		$hash = wp_unslash( $_COOKIE[ 'wp-postpass_' . COOKIEHASH ] );
+		$hash = wp_unslash( $_COOKIE[ 'wp-postpass_' . COOKIEHASH ] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		if ( 0 !== strpos( $hash, '$P$B' ) ) {
 			return $form;
 		}
@@ -167,7 +166,7 @@ function rosa_lite_callback_geting_active() {
 	 */
 	$activation_settings = array();
 	if ( file_exists( get_template_directory() . '/inc/activation.php' ) ) {
-		$activation_settings = include get_template_directory() . '/inc/activation.php';
+		$activation_settings = include get_template_directory() . '/inc/activation.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 	}
 
 	/**
