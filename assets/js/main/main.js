@@ -19,67 +19,6 @@ if ( $target.length ) {
 	} );
 }
 
-function niceScrollInit() {
-	if ( globalDebug ) {
-		console.log( "NiceScroll Init" );
-	}
-
-	var smoothScroll = $( 'body' ).data( 'smoothscrolling' ) !== undefined,
-		root = document.documentElement;
-
-	if ( smoothScroll && ! is_EDGE && ! Modernizr.touchevents && ! is_mobile_ie && ! is_OSX ) {
-
-		var $window = $( window );		// Window object
-
-		$window.on( "mousewheel DOMMouseScroll", function( event ) {
-
-			var scrollTo,
-				scrollDistance = 400,
-				delta;
-
-			if ( event.type == 'mousewheel' ) {
-				delta = event.originalEvent.wheelDelta / 120;
-			}
-			else if ( event.type == 'DOMMouseScroll' ) {
-				delta = - event.originalEvent.detail / 3;
-			}
-
-			scrollTo = latestKnownScrollY - delta * scrollDistance;
-
-			if ( scrollTo ) {
-
-				event.preventDefault();
-
-				TweenMax.to( $window, .6, {
-					scrollTo: {
-						y: scrollTo,
-						autoKill: true
-					},
-					ease: Power1.easeOut,	// For more easing functions see http://api.greensock.com/js/com/greensock/easing/package-detail.html
-					autoKill: true,
-					overwrite: 5
-				} );
-
-			}
-
-		} );
-
-	}
-
-}
-
-
-function smoothScrollTo( y, speed ) {
-
-	speed = typeof speed === "undefined" ? 1 : speed;
-
-	var distance = Math.abs( latestKnownScrollY - y ),
-		time = speed * distance / 2000;
-
-	TweenMax.to( $( window ), time, {scrollTo: {y: y, autoKill: false, ease: Quint.easeInOut}} );
-}
-
-
 function menuTrigger() {
 
 	$( '.js-nav-trigger' ).on( 'click', function( e ) {
@@ -328,12 +267,10 @@ $( window ).load( function() {
 		$( "html" ).addClass( "mobile-ie" );
 	}
 
-	//Set textarea from contact page to autoresize
+	// Set textarea from contact page to autoresize
 	if ( $( "textarea" ).length ) {
 		$( "textarea" ).autosize();
 	}
-
-	niceScrollInit();
 
 	magnificPopupInit();
 	initVideos();
@@ -348,23 +285,6 @@ $( window ).load( function() {
 	updateHeaderPadding();
 
 	loop();
-
-	var $bulletedSections = $('[data-bully]');
-
-	if ( $bulletedSections.length > 1 ) {
-
-//		$bulletedSections.bully();
-
-		$('.c-bully__bullet').each(function (i, obj) {
-
-			var stagger = i * 400,
-				$obj    = $(obj);
-
-			setTimeout(function () {
-				$obj.addClass('c-bully__bullet--pop');
-			}, stagger);
-		});
-	}
 
 	Rosa.Parallax.init();
 	$html.addClass( 'is--loaded' );

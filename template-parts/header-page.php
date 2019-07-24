@@ -40,7 +40,7 @@ if ( has_post_thumbnail() || ! empty( $subtitle ) || ( ! empty( $page_title ) &&
 	if ( ! has_post_thumbnail() ) {
 		$classes .= ' has-no-image';
 	} ?>
-	<header data-bully id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ); ?>" data-type="image">
+	<header id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ); ?>" data-type="image">
 		<?php if ( has_post_thumbnail() ) {
 			$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full-size' );
 			if ( ! empty( $image[0] ) ) { ?>
@@ -63,5 +63,5 @@ if ( has_post_thumbnail() || ! empty( $subtitle ) || ( ! empty( $page_title ) &&
 		<?php } ?>
 	</header>
 <?php } else { ?>
-	<header data-bully id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ); ?>" style="display: none"></header>
+	<header id="post-<?php the_ID() ?>-title" class="<?php echo esc_attr( $classes ); ?>" style="display: none"></header>
 <?php }
