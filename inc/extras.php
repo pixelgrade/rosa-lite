@@ -1111,7 +1111,7 @@ function rosa_lite_skip_link_focus_fix() {
 // We will put this script inline since it is so small.
 add_action( 'wp_print_footer_scripts', 'rosa_lite_skip_link_focus_fix' );
 
-function rosa_get_avatar_url( $email, $size = 32 ) {
+function rosa_lite_get_avatar_url( $email, $size = 32 ) {
 	$get_avatar = get_avatar( $email, $size );
 
 	preg_match( '/< *img[^>]*src *= *["\']?([^"\']*)/i', $get_avatar, $matches );
@@ -1120,24 +1120,4 @@ function rosa_get_avatar_url( $email, $size = 32 ) {
 	} else {
 		return '';
 	}
-}
-
-/**
- * Echo author page link
- * @return bool|string
- */
-function rosa_the_author_posts_link() {
-	global $authordata;
-	if ( ! is_object( $authordata ) ) {
-		return false;
-	}
-	$link = sprintf( '<a href="%1$s" title="%2$s">%3$s</a>', esc_url( get_author_posts_url( $authordata->ID, $authordata->user_nicename ) ), esc_attr( sprintf( __( 'Posts by %s', 'rosa-lite' ), get_the_author() ) ), get_the_author() );
-
-	/**
-	 * Filter the link to the author page of the author of the current post.
-	 * @since 2.9.0
-	 *
-	 * @param string $link HTML link.
-	 */
-	echo apply_filters( 'the_author_posts_link', $link );
 }

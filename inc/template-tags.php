@@ -506,3 +506,54 @@ if ( ! function_exists( 'rosa_lite_parse_content_tags' ) ) {
 		return apply_filters( 'pixelgrade_after_parse_content_tags', $content, $original_content );
 	}
 }
+
+/**
+ * Display the markup for the author bio links.
+ * These are the links/websites added by one to it's Gravatar profile
+ *
+ * @param int|WP_Post $post_id Optional. Post ID or post object.
+ */
+function rosa_lite_author_bio_links( $post_id = null ) {
+	echo rosa_lite_get_author_bio_links( $post_id );
+}
+
+if ( ! function_exists( 'rosa_lite_get_author_bio_links' ) ) :
+
+	/**
+	 * Return the markup for the author bio links.
+	 * These are the links/websites added by one to it's Gravatar profile
+	 *
+	 * @param int|WP_Post $post_id Optional. Post ID or post object.
+	 * @return string The HTML markup of the author bio links list.
+	 */
+	function rosa_lite_get_author_bio_links( $post_id = null ) {
+		$post = get_post( $post_id );
+
+		$markup = '';
+
+		if ( empty( $post ) ) {
+			return $markup;
+		}
+
+		$str = wp_remote_fopen( 'https://www.gravatar.com/' . md5( strtolower( trim( get_the_author_meta( 'user_email' ) ) ) ) . '.php' );
+
+		$profile = unserialize( $str );
+
+		if ( is_array( $profile ) && ! empty( $profile['entry'][0]['urls'] ) ) {
+			$markup .= '<ul class="author__social-links">' . PHP_EOL;
+
+			foreach ( $profile['entry'][0]['urls'] as $link ) {
+				if ( ! empty( $link['value'] ) && ! empty( $link['title'] ) ) {
+					$markup .= '<li class="author__social-links__list-item">' . PHP_EOL;
+					$markup .= '<a class="author__social-link" href="' . esc_url( $link['value'] ) . '" target="_blank">' . $link['title'] . '</a>' . PHP_EOL;
+					$markup .= '</li>' . PHP_EOL;
+				}
+			}
+
+			$markup .= '</ul>' . PHP_EOL;
+		}
+
+		return $markup;
+	} #function
+
+endif;

@@ -13,17 +13,16 @@ get_header();
 
 global $rosa_private_post;
 
+// Password protection
 if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
-	// Password protection
-	get_template_part( 'template-parts/password-request-form' );
 
+	get_template_part( 'template-parts/password-request-form' );
 } else {
 	$has_sidebar = false;
 	if ( pixelgrade_option( 'blog_single_show_sidebar', true ) && is_active_sidebar( 'sidebar-main' ) ) {
 		$has_sidebar = true;
 	}
 
-	//post thumb specific
 	$has_thumb = has_post_thumbnail();
 
 	$post_class_thumb = 'has-thumbnail';
@@ -45,7 +44,7 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 
 						<?php
 						if ( has_post_thumbnail() ):
-							if ( $has_sidebar ) { //use a smaller image size
+							if ( $has_sidebar ) { // Use a smaller image size
 								$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'medium-size' );
 							} else {
 								// Use a larger image size
@@ -79,8 +78,10 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 									'link_before'      => '<span>',
 									'link_after'       => '</span>',
 									'next_or_number'   => 'next_and_number',
+									/* translators: The previous page link arrow.  */
 									'previouspagelink' => esc_html__( '&laquo;', 'rosa-lite' ),
-									'nextpagelink'     => esc_html__( '&raquo;', 'rosa-lite' )
+									/* translators: The next page link arrow.  */
+									'nextpagelink'     => esc_html__( '&raquo;', 'rosa-lite' ),
 								);
 								wp_link_pages( $args );
 								?>
@@ -97,7 +98,7 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 								<?php
 								foreach ( $categories as $category ) {
 									/* translators: %s: category name */
-									echo '<a class="btn  btn--small  btn--tertiary" href="' . esc_url( get_category_link( $category->term_id ) ) . '" title="' . esc_attr( sprintf( __( "View all posts in %s", 'rosa-lite' ), $category->name ) ) . '" rel="tag">' . esc_html( $category->name ) . '</a>';
+									echo '<a class="btn  btn--small  btn--tertiary" href="' . esc_url( get_category_link( $category->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'View all posts in %s', 'rosa-lite' ), $category->name ) ) . '" rel="tag">' . esc_html( $category->name ) . '</a>';
 								}; ?>
 							</div><!-- .meta--categories -->
 
@@ -111,7 +112,7 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 								<?php
 								foreach ( $tags as $one_tag ) {
 									/* translators: %s: tag name */
-									echo '<a class="btn  btn--small  btn--tertiary" href="' . esc_url( get_tag_link( $one_tag->term_id ) ) . '" title="' . esc_attr( sprintf( __( "View all posts tagged %s", 'rosa-lite' ), $one_tag->name ) ) . '" rel="tag">' . esc_html( $one_tag->name ) . '</a>';
+									echo '<a class="btn  btn--small  btn--tertiary" href="' . esc_url( get_tag_link( $one_tag->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'View all posts tagged %s', 'rosa-lite' ), $one_tag->name ) ) . '" rel="tag">' . esc_html( $one_tag->name ) . '</a>';
 								}; ?>
 							</div><!-- .meta--tags -->
 
@@ -120,12 +121,13 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 						<hr class="separator"/>
 
 						<?php if ( pixelgrade_option( 'blog_single_show_author_box', true ) ) {
-							get_template_part( 'author-bio' );
+							get_template_part( 'template-parts/author-bio' );
 						} ?>
 
 					</footer><!-- .article__footer -->
 
-					<?php if ( function_exists( 'yarpp_related' ) ) {
+					<?php
+					if ( function_exists( 'yarpp_related' ) ) {
 						yarpp_related();
 					}
 
