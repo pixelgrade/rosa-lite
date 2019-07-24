@@ -157,55 +157,6 @@ if ( ! function_exists( 'rosa_lite_add_title_caption_to_attachment' ) ) {
 add_filter( 'wp_get_attachment_link', 'rosa_lite_add_title_caption_to_attachment', 10, 5 );
 
 /**
- * Theme activation hook
- */
-function rosa_lite_callback_geting_active() {
-
-	/**
-	 * Get the config from /config/activation.php
-	 */
-	$activation_settings = array();
-	if ( file_exists( get_template_directory() . '/inc/activation.php' ) ) {
-		$activation_settings = include get_template_directory() . '/inc/activation.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
-	}
-
-	/**
-	 * Make sure pixlikes has the right settings
-	 */
-	if ( isset( $activation_settings['pixlikes-settings'] ) ) {
-		$pixlikes_settings = $activation_settings['pixlikes-settings'];
-		update_option( 'pixlikes_settings', $pixlikes_settings );
-	}
-
-
-	/**
-	 * Create custom post types, taxonomies and metaboxes
-	 * These will be taken by pixtypes plugin and converted in their own options
-	 */
-
-	if ( isset( $activation_settings['pixtypes-settings'] ) ) {
-
-		$pixtypes_conf_settings = $activation_settings['pixtypes-settings'];
-
-		$types_options = get_option( 'pixtypes_themes_settings' );
-		if ( empty( $types_options ) ) {
-			$types_options = array();
-		}
-
-		$theme_key                   = 'rosa_pixtypes_theme';
-		$types_options[ $theme_key ] = $pixtypes_conf_settings;
-
-		update_option( 'pixtypes_themes_settings', $types_options );
-	}
-
-	/**
-	 * http://wordpress.stackexchange.com/questions/36152/flush-rewrite-rules-not-working-on-plugin-deactivation-invalid-urls-not-showing
-	 */
-	delete_option( 'rewrite_rules' );
-}
-add_action( 'after_switch_theme', 'rosa_lite_callback_geting_active', 99999 );
-
-/**
  * Customize the "wp_link_pages()" to be able to display both numbers and prev/next links
  *
  * @param array $args

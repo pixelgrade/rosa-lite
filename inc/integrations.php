@@ -20,3 +20,9 @@ if ( class_exists( 'WpGradeShortcodes' ) ) {
 if ( class_exists( 'Gridable' ) ) {
 	require get_parent_theme_file_path( '/inc/integrations/gridable.php' ); // phpcs:ignore
 }
+
+/**
+ * Load PixTypes compatibility file
+ * https://wordpress.org/plugins/pixtypes/
+ */
+require get_parent_theme_file_path( '/inc/integrations/pixtypes.php' ); // phpcs:ignore
