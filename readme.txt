@@ -38,9 +38,6 @@ Unless otherwise specified, all the theme files, scripts and images are licensed
 
 The Rosa Lite Theme bundles the following third-party resources:
 
-* Entypo (c) 2012, [Daniel Bruce](http://www.entypo.com/), licensed under the [Creative Commons Attribution Share Alike v3.0 License](https://www.fontsquirrel.com/license/entypo)
-* FontAwesome by [Fonticons Inc.] (https://fontawesome.com/), licensed under the [SIL OFL 1.1 License](https://scripts.sil.org/OFL)
-
 * normalize.css https://necolas.github.io/normalize.css/, (c) 2012-2016 Nicolas Gallagher and Jonathan Neal, licensed under the [MIT License](https://opensource.org/licenses/mit-license.html)
 * inuit.css inuitcss.com, (c) 2013 Harry Roberts, licensed under [Apache License v2.0](http://apache.org/licenses/LICENSE-2.0)
 * rellax.js http://pixelgrade.github.io/rellax/, Copyright (c) 2016-2019 Pixelgrade, License: the [MIT License](https://opensource.org/licenses/mit-license.html)
