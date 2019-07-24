@@ -129,6 +129,7 @@ if ( ! function_exists( 'rosa_lite_load_assets' ) ) {
 
 	function rosa_lite_load_assets(){
 		$theme = wp_get_theme( get_template() );
+		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
 		// Styles
 		wp_enqueue_style( 'rosa-main-style', get_template_directory_uri() . '/style.css', array(), $theme->get( 'Version' ) );
@@ -147,19 +148,17 @@ if ( ! function_exists( 'rosa_lite_load_assets' ) ) {
 		// Scripts
 		$script_dependencies = array( 'jquery', );
 
-		wp_register_script( 'modernizr', get_theme_file_uri( '/assets/js/vendor/modernizr.min.js' ), array( 'jquery' ), '3.6.0' );
+		wp_register_script( 'modernizr', get_theme_file_uri( '/assets/js/vendor/modernizr.min.js' ), array(), '3.6.0' );
 		$script_dependencies[] = 'modernizr';
-		wp_register_script( 'webfont-script', get_theme_file_uri( '/assets/js/webfont.js' ), array( 'jquery' ), '1.6.16' );
-		$script_dependencies[] = 'webfont-script';
-		wp_register_script( 'tween-max', get_theme_file_uri( '/assets/js/TweenMax.min.js' ), array( 'jquery'), '1.19.1' );
+		wp_register_script( 'tween-max', get_theme_file_uri( '/assets/js/vendor/TweenMax.min.js' ), array( 'jquery'), '1.19.1' );
 		$script_dependencies[] = 'tween-max';
-		wp_register_script( 'ease-pack', get_theme_file_uri( '/assets/js/EasePack.min.js' ), array( 'jquery' ), '1.15.5' );
+		wp_register_script( 'ease-pack', get_theme_file_uri( '/assets/js/vendor/EasePack.min.js' ), array( 'jquery' ), '1.15.5' );
 		$script_dependencies[] = 'ease-pack';
-		wp_register_script( 'scroll-to-plugin', get_theme_file_uri( '/assets/js/ScrollToPlugin.min.js' ), array( 'jquery' ), '1.8.1' );
+		wp_register_script( 'scroll-to-plugin', get_theme_file_uri( '/assets/js/vendor/ScrollToPlugin.min.js' ), array(), '1.8.1' );
 		$script_dependencies[] = 'scroll-to-plugin';
 
-		wp_enqueue_script( 'rosa-plugins-scripts', get_theme_file_uri( '/assets/js/plugins.js' ), $script_dependencies, $theme->get( 'Version' ), true );
-		wp_enqueue_script( 'rosa-main-scripts', get_theme_file_uri( '/assets/js/main.js' ), array( 'rosa-plugins-scripts' ), $theme->get( 'Version' ), true );
+		wp_enqueue_script( 'rosa-plugins-scripts', get_theme_file_uri( '/assets/js/plugins' . $suffix . '.js' ), $script_dependencies, $theme->get( 'Version' ), true );
+		wp_enqueue_script( 'rosa-main-scripts', get_theme_file_uri( '/assets/js/main' . $suffix . '.js' ), array( 'rosa-plugins-scripts' ), $theme->get( 'Version' ), true );
 
 		$localization_array = array(
 			'ajaxurl'      => admin_url( 'admin-ajax.php' ),

@@ -95,31 +95,44 @@ gulp.task( 'styles', stylesSequence  );
 // -----------------------------------------------------------------------------
 // Combine JavaScript files
 // -----------------------------------------------------------------------------
-function scripts() {
+function scriptsMain() {
 	return gulp.src(jsFiles)
 		.pipe(plugins.concat('main.js'))
-		.pipe(plugins.beautify({indentSize: 2}))
-		.pipe(gulp.dest('./assets/js/', {"mode": "0644"}));
+		.pipe(plugins.prettier())
+		.pipe(gulp.dest('./assets/js/'))
+		.pipe(plugins.terser())
+		.pipe(plugins.rename('main.min.js'))
+		.pipe(gulp.dest('./assets/js/'));
 }
-gulp.task('scripts', scripts);
+gulp.task('scripts-main', scriptsMain);
 
 function scriptsVendor() {
 	return gulp.src('./assets/js/plugins/*.js')
-		.pipe(concat('plugins.js'))
-		.pipe(plugins.beautify({indentSize: 2}))
-		.pipe(gulp.dest('./assets/js/', {"mode": "0644"}));
+		.pipe(plugins.concat('plugins.js'))
+		.pipe(plugins.prettier())
+		.pipe(gulp.dest('./assets/js/'))
+		.pipe(plugins.terser())
+		.pipe(plugins.rename('plugins.min.js'))
+		.pipe(gulp.dest('./assets/js/'));
 }
-gulp.task('scripts-vendor', scripts);
+gulp.task('scripts-vendor', scriptsVendor);
+
+function scriptsSequence(cb) {
+	return gulp.parallel( 'scripts-main', 'scripts-vendor')(cb);
+}
+scriptsSequence.description = 'Compile the scripts.';
+gulp.task( 'scripts', scriptsSequence  );
 
 function scriptsWatch() {
 	plugins.livereload.listen();
-	return gulp.watch('assets/js/**/*.js', scripts);
+	return gulp.watch('assets/js/**/*.js', scriptsSequence);
 }
 gulp.task('scripts-watch', scriptsWatch);
 
 function watch() {
+	plugins.livereload.listen();
 	gulp.watch('assets/scss/**/*.scss', stylesMain);
-	gulp.watch('assets/js/**/*.js', scripts);
+	gulp.watch('assets/js/**/*.js', scriptsSequence);
 }
 gulp.task('watch', watch);
 
