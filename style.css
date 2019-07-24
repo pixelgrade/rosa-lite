@@ -5815,7 +5815,8 @@ button.nav-trigger {
   margin: 84px 0;
   margin: 5.25rem 0;
   padding-left: 0;
-  position: relative; }
+  position: relative;
+  height: 38px; }
   .pagination:after {
     content: none; }
   .pagination a, .pagination span {
