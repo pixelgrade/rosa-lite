@@ -68,7 +68,7 @@ add_action( 'customize_register', 'rosa_customize_register' );
 /**
  * @param WP_Customize_Manager $wp_customize
  */
-function rosa_lite_add_inverted_logo_option( $wp_customize ) {
+function rosa_lite_add_inverted_logo_control( $wp_customize ) {
 
 	$setting_id = 'rosa_options[main_logo_dark]';
 
@@ -105,7 +105,7 @@ function rosa_lite_add_inverted_logo_option( $wp_customize ) {
 
 	$wp_customize->add_control( $control );
 }
-add_action( 'customize_register', 'rosa_lite_add_inverted_logo_option', 10, 1 );
+add_action( 'customize_register', 'rosa_lite_add_inverted_logo_control', 10, 1 );
 
 /**
  * Sanitize profile photo.

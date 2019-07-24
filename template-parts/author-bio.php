@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ){
 		</div>
 		<p class="author__bio" itemprop="description"><?php the_author_meta( 'description' ); ?></p>
 
-		<?php patch_author_bio_links(); ?>
+		<?php rosa_lite_author_bio_links(); ?>
 
 	</div>
 </aside>
