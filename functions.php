@@ -94,7 +94,10 @@ if ( ! function_exists(' rosa_lite_theme_setup' ) ) {
 			add_image_size( $size_key, $width, $height, $hard_crop );
 		}
 
-		register_nav_menu( 'main_menu', esc_html__( 'Main Menu', 'rosa-lite' ) );
+		register_nav_menus( array(
+			'main_menu'   => esc_html__( 'Main Menu', 'rosa-lite' ),
+			'footer_menu' => esc_html__( 'Footer Menu', 'rosa-lite' ),
+		) );
 
 		add_theme_support( 'title-tag' );
 
