@@ -83,20 +83,20 @@ function rosa_lite_add_inverted_logo_control( $wp_customize ) {
 		$wp_customize,
 		$setting_id . '_control',
 		array(
-			'label' => esc_html__( 'Inverted Logo', '__theme_txtd' ),
+			'label' => esc_html__( 'Inverted Logo', 'rosa-lite' ),
 			'priority'      => 9, // this will make it appear below the Logo (that has a priority of 8).
 			'height'      => 60,
 			'width'       => 180,
 			'flex_height' => true,
 			'flex_width'  => true,
 			'button_labels' => array(
-				'select'       => esc_html__( 'Select inverted logo', '__theme_txtd'  ),
-				'change'       => esc_html__( 'Change inverted logo', '__theme_txtd'  ),
-				'remove'       => esc_html__( 'Remove', '__theme_txtd'  ),
-				'default'      => esc_html__( 'Default', '__theme_txtd'  ),
-				'placeholder'  => esc_html__( 'No inverted logo selected', '__theme_txtd'  ),
-				'frame_title'  => esc_html__( 'Select inverted logo', '__theme_txtd'  ),
-				'frame_button' => esc_html__( 'Choose inverted logo', '__theme_txtd'  ),
+				'select'       => esc_html__( 'Select inverted logo', 'rosa-lite'  ),
+				'change'       => esc_html__( 'Change inverted logo', 'rosa-lite'  ),
+				'remove'       => esc_html__( 'Remove', 'rosa-lite'  ),
+				'default'      => esc_html__( 'Default', 'rosa-lite'  ),
+				'placeholder'  => esc_html__( 'No inverted logo selected', 'rosa-lite'  ),
+				'frame_title'  => esc_html__( 'Select inverted logo', 'rosa-lite'  ),
+				'frame_button' => esc_html__( 'Choose inverted logo', 'rosa-lite'  ),
 			),
 			'section'  => 'title_tagline',
 			'settings' => $setting_id,
@@ -123,7 +123,7 @@ function rosa_lite_sanitize_inverted_logo( $input ) {
 	);
 	$extension     = get_post_mime_type( $input );
 
-	//if file has a valid mime type return input, otherwise return FALSE
+	// If file has a valid mime type return input, otherwise return FALSE
 	foreach ( $mimes_allowed as $mime ) {
 		if ( $extension == $mime ) {
 			return $input;
@@ -153,25 +153,18 @@ function rosa_lite_get_pro_link() {
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function rosa_lite_customize_preview_js() {
-	wp_enqueue_script( 'rosa_customizer_preview', get_template_directory_uri() . '/assets/js/admin/customizer_preview.js', array( 'customize-preview' ), '20190715', true );
+
+	wp_enqueue_script( 'rosa_customizer_preview', get_template_directory_uri() . '/assets/js/admin/customize-preview.js', array( 'customize-preview' ), '1.0.0', true );
 }
 add_action( 'customize_preview_init', 'rosa_lite_customize_preview_js' );
 
 /**
- * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
+ * Assets that will be loaded for the customizer sidebar.
  */
 function rosa_lite_load_customize_js() {
-	wp_enqueue_script( 'rosa_customizer', get_template_directory_uri() . '/assets/js/admin/customizer.js', array( 'wp-ajax-response' ), '20190715', true );
+	wp_enqueue_style( 'rosa-customizer-style', get_template_directory_uri() . '/inc/admin/css/customizer.css', null, '1.0.0', false );
 }
 add_action( 'customize_controls_enqueue_scripts', 'rosa_lite_load_customize_js' );
-
-/**
- * Assets that will be loaded for the customizer sidebar
- */
-function rosa_lite_customizer_assets() {
-	wp_enqueue_style( 'rosa_lite_customizer_style', get_template_directory_uri() . '/css/customizer.css', null, '1.0.0', false );
-}
-add_action( 'customize_controls_enqueue_scripts', 'rosa_lite_customizer_assets' );
 
 function rosa_lite_add_customify_options( $config ) {
 	$config['opt-name'] = 'rosa_options';

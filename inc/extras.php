@@ -802,3 +802,9 @@ function rosa_lite_skip_link_focus_fix() {
 }
 // We will put this script inline since it is so small.
 add_action( 'wp_print_footer_scripts', 'rosa_lite_skip_link_focus_fix' );
+
+if ( ! function_exists( 'wp_body_open' ) ) {
+	function wp_body_open() {
+		do_action( 'wp_body_open' );
+	}
+}

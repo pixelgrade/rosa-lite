@@ -70,12 +70,12 @@ gulp.task('styles-rtl', stylesRTL)
 
 function stylesAdmin() {
 
-	return gulp.src('assets/scss/admin/*.scss')
+	return gulp.src('inc/admin/scss/**/*.scss')
 		.pipe(plugins.sourcemaps.init())
 		.pipe(plugins.sass().on('error', logError))
 		.pipe(plugins.autoprefixer())
 		.pipe(plugins.replace(/^@charset \"UTF-8\";\n/gm, ''))
-		.pipe(gulp.dest('./css'))
+		.pipe(gulp.dest('./inc/admin/css'))
 }
 stylesAdmin.description = 'Compiles WordPress admin Sass and uses autoprefixer';
 gulp.task('styles-admin', stylesAdmin )

@@ -1,5 +1,13 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ){
+/**
+ * This is a PixCodes template that overwrites the one in the plugin.
+ *
+ * The plugin is responsible for putting all the needed variables in the scope of this file.
+ *
+ * @link https://wordpress.org/plugins/pixcodes/
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
@@ -25,17 +33,17 @@ if ( ! defined( 'PRICE_MARKER' ) ) {
 
 /* Lets get to parsing the hell out of the received content so we can have something to eat */
 
-//fist make sure no loose ends or beginnings
-//Clean Slate operation under way
+// Fist make sure no loose ends or beginnings
+// Clean Slate operation under way
 $restaurant_menu = trim( $this->get_clean_content( $content ) );
 
-//some special styles
+// Some special styles
 $restaurant_menu_style_class = '';
-if (isset($type) && !empty($type)) {
+if ( isset( $type ) && ! empty( $type ) ) {
 	$restaurant_menu_style_class = 'menu-list__' . $type;
 }
 
-//remove <p> - we just need the </p>s to split by
+// Remove <p> - we just need the </p>s to split by
 $restaurant_menu = str_replace( "<p>", "", $restaurant_menu );
 
 /**
@@ -45,26 +53,26 @@ $restaurant_menu = str_replace( "<p>", "", $restaurant_menu );
  * this is good enough for us - no need to un-autop and split by new line chars
  */
 $lines = preg_split( '#(<\/p>|<br \/>|<br\/>|<br>)#', $restaurant_menu );
-//remove any empty array elements - empty strings
+// Remove any empty array elements - empty strings
 $lines = array_filter( $lines, 'strlen' );
 
-//open the wrapper and let the show begin
-$output .= '<div class="menu-list ' . $restaurant_menu_style_class . '">' . "\n";
+// Open the wrapper and let the show begin
+$output .= '<div class="menu-list ' . esc_attr( $restaurant_menu_style_class ) . '">' . "\n";
 
-//remember if we have outputted the open tag
-$opened_list            = false;
-$opened_product         = false;
-$opened_product_highlight = false;
+// Remember if we have outputted the open tag
+$opened_list                    = false;
+$opened_product                 = false;
+$opened_product_highlight       = false;
 $opened_product_highlight_title = '';
-$opened_description     = false;
-$number_of_descriptions = 0;
+$opened_description             = false;
+$number_of_descriptions         = 0;
 
-//first lets clean the lines of empty characters
+// First lets clean the lines of empty characters
 foreach ( $lines as $key => $line ) {
 	$lines[ $key ] = trim( $line );
 }
 
-//now go through each line and give it the appropriate markup
+// Now go through each line and give it the appropriate markup
 foreach ( $lines as $key => $line ) {
 	/*
 	 * Now for the real hard work
@@ -81,18 +89,18 @@ foreach ( $lines as $key => $line ) {
 	 * Now to test for the front markers - from complex to simple
 	 */
 
-	//Product Title
+	// Product Title
 	if ( 0 === strpos( $line, TITLE_MARKER ) ) {
-		//since we have found a product we need to make sure that the product list is started
+		// Since we have found a product we need to make sure that the product list is started
 		if ( false === $opened_list ) {
-			$output .= '<ul class="menu-list__items">' . "\n";
+			$output      .= '<ul class="menu-list__items">' . "\n";
 			$opened_list = true;
 		}
 
 		//close any previously opened products
 		if ( true === $opened_product ) {
 			//if there was a highlight title we need to close the wrapper
-			if (true === $opened_product_highlight) {
+			if ( true === $opened_product_highlight ) {
 				$output .= '</div>' . "\n";
 
 				//empty it so everybody knows we no longer have a highlight
@@ -101,152 +109,154 @@ foreach ( $lines as $key => $line ) {
 
 			$output .= '</li>' . "\n";
 
-			//tell the world that we have exited the product
+			// Tell the world that we have exited the product
 			$opened_product = false;
 		}
 
-		//we have a new product so we better open a new wrapper
-		$output .= '<li class="menu-list__item">' . "\n";
+		// We have a new product so we better open a new wrapper
+		$output         .= '<li class="menu-list__item">' . "\n";
 		$opened_product = true;
 
-		//know lets check if we have a highlight
-		if ($opened_product_highlight_title !== '') {
+		// Now lets check if we have a highlight
+		if ( $opened_product_highlight_title !== '' ) {
 			$output .= '<div class="menu-list__item-highlight-wrapper">' . "\n";
 			$output .= '<span class="menu-list__item-highlight-title">' . $opened_product_highlight_title . '</span>' . "\n";
 
-			$opened_product_highlight = true;
-			$opened_product_highlight_title = ''; // since we outputed it make it empty
+			$opened_product_highlight       = true;
+			$opened_product_highlight_title = ''; // since we outputted it make it empty
 		}
 
-		// we need to do some look-ahead to see if we have a product with subproducts - multiple description-price groups
+		// We need to do some look-ahead to see if we have a product with subproducts - multiple description-price groups
 		$number_of_descriptions = 0;
-		$number_of_prices = 0;
-		$idx = $key + 1;
+		$number_of_prices       = 0;
+		$idx                    = $key + 1;
 		while ( $idx < count( $lines ) && 0 !== strpos( $lines[ $idx ], TITLE_MARKER ) && 0 !== strpos( $lines[ $idx ], SECTION_MARKER ) ) {
 			if ( 0 === strpos( $lines[ $idx ], DESCRIPTION_MARKER ) ) {
 				$number_of_descriptions ++;
 			}
 
-            if ( 0 === strpos( $lines[ $idx ], PRICE_MARKER ) ) {
-                $number_of_prices ++;
-            }
+			if ( 0 === strpos( $lines[ $idx ], PRICE_MARKER ) ) {
+				$number_of_prices ++;
+			}
 
 			$idx ++;
 		}
 
-        $output .= '<h4 class="menu-list__item-title">';
+		$output .= '<h4 class="menu-list__item-title">';
 
-        //now output the title without the first 2 characters
+		// Now output the title without the first 2 characters
 
-        //check if there is a description at most and at least a price => show the dots
-        if( $number_of_descriptions < 2 && $number_of_prices > 0  && isset($type) && $type == 'dotted' ) {
-            $output .= '<span class="item_title">' . substr( $line, 2 ) . '</span><span class="dots"></span>';
-        }  else {
-	        $output .= substr( $line, 2 );
-        }
+		// Check if there is a description at most and at least a price => show the dots
+		if ( $number_of_descriptions < 2 && $number_of_prices > 0 && isset( $type ) && $type == 'dotted' ) {
+			$output .= '<span class="item_title">' . substr( $line, 2 ) . '</span><span class="dots"></span>';
+		} else {
+			$output .= substr( $line, 2 );
+		}
 
-        $output .= '</h4>' . "\n";
+		$output .= '</h4>' . "\n";
 
 		continue;
 	}
 
-	//Product description
+	// Product description
 	if ( 0 === strpos( $line, DESCRIPTION_MARKER ) ) {
-		//first close any opened description
+		// First close any opened description
 		if ( true === $opened_description ) {
-			$output .= '</p>' . "\n";
+			$output             .= '</p>' . "\n";
 			$opened_description = false;
 		}
-		//output the description without the first 2 characters
-		$output .= '<p class="menu-list__item-desc"><span class="desc__content">' . substr( $line, 2 ) . '</span>';
+		// Output the description without the first 2 characters
+		$output             .= '<p class="menu-list__item-desc"><span class="desc__content">' . substr( $line, 2 ) . '</span>';
 		$opened_description = true;
 
 		if ( $number_of_descriptions < 2 ) {
-			//we can safely close the description paragraph as the price will align with the product title not the description
-			$output .= '</p>' . "\n";
+			// We can safely close the description paragraph as the price will align with the product title not the description
+			$output             .= '</p>' . "\n";
 			$opened_description = false;
 		}
 
 		continue;
 	}
 
-	//Product price
+	// Product price
 	if ( 0 === strpos( $line, PRICE_MARKER ) ) {
-		//output the price without the first 2 characters
-        if ( isset($type) && $type == 'dotted' ) $output .= '<span class="dots"></span>';
+		// Output the price without the first 2 characters
+		if ( isset( $type ) && $type == 'dotted' ) {
+			$output .= '<span class="dots"></span>';
+		}
 		$output .= '<span class="menu-list__item-price">' . substr( $line, 2 ) . '</span>';
-		//close any opened description
+		// Close any opened description
 		if ( true === $opened_description ) {
-			$output .= '</p>' . "\n";
+			$output             .= '</p>' . "\n";
 			$opened_description = false;
 		}
 
 		continue;
 	}
 
-	//Section Title
+	// Section Title
 	if ( 0 === strpos( $line, SECTION_MARKER ) ) {
-		//first we need to know if there are any lists, products or descriptions opened and close them
+		// First we need to know if there are any lists, products or descriptions opened and close them
 		if ( true === $opened_description ) {
-			$output .= '</p>' . "\n";
+			$output             .= '</p>' . "\n";
 			$opened_description = false;
 		}
 
-		//close any previously opened products
+		// Close any previously opened products
 		if ( true === $opened_product ) {
-			//if there was a highlight title we need to close the wrapper
-			if (true === $opened_product_highlight) {
+			// If there was a highlight title we need to close the wrapper
+			if ( true === $opened_product_highlight ) {
 				$output .= '</div>' . "\n";
 
-				//empty it so everybody knows we no longer have a highlight
+				// Empty it so everybody knows we no longer have a highlight
 				$opened_product_highlight_title = '';
-				$opened_product_highlight = false;
+				$opened_product_highlight       = false;
 			}
 
-			$output .= '</li>' . "\n";
+			$output         .= '</li>' . "\n";
 			$opened_product = false;
 		}
 
 		if ( true === $opened_list ) {
-			$output .= '</ul>' . "\n";
+			$output      .= '</ul>' . "\n";
 			$opened_list = false;
 		}
 
-		//now output the section title without the first character
+		// Now output the section title without the first character
 		$output .= '<h2 class="menu-list__title">' . substr( $line, 1 ) . '</h2>' . "\n";
 
 		continue;
 	}
 }
 
-//some last sanity check - no loose ends
-//close any previously opened descriptions
+// Some last sanity check - no loose ends
+// Close any previously opened descriptions
 if ( true === $opened_description ) {
-	$output .= '</p>' . "\n";
+	$output             .= '</p>' . "\n";
 	$opened_description = false;
 }
 
-//close any previously opened products
+// Close any previously opened products
 if ( true === $opened_product ) {
-	//if there was a highlight title we need to close the wrapper
-	if (true === $opened_product_highlight) {
+	// If there was a highlight title we need to close the wrapper
+	if ( true === $opened_product_highlight ) {
 		$output .= '</div>' . "\n";
 
-		//empty it so everybody knows we no longer have a highlight
+		// Empty it so everybody knows we no longer have a highlight
 		$opened_product_highlight_title = '';
-		$opened_product_highlight = false;
+		$opened_product_highlight       = false;
 	}
 
-	$output .= '</li>' . "\n";
+	$output         .= '</li>' . "\n";
 	$opened_product = false;
 }
 
 if ( true === $opened_list ) {
-	$output .= '</ul>' . "\n";
+	$output      .= '</ul>' . "\n";
 	$opened_list = false;
 }
 
-//all done - close the wrapper
+// All done - close the wrapper
 $output .= '</div>' . "\n";
 
-echo $output;
+echo $output; // phpcs:ignore

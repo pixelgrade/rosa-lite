@@ -2,6 +2,8 @@
 /**
  * Custom functions that deal with various plugin integrations of PixCodes.
  *
+ * @link https://wordpress.org/plugins/pixcodes/
+ *
  * @package Rosa Lite
  */
 

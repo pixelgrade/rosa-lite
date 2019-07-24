@@ -1,5 +1,13 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ){
+/**
+ * This is a PixCodes template that overwrites the one in the plugin.
+ *
+ * The plugin is responsible for putting all the needed variables in the scope of this file.
+ *
+ * @link https://wordpress.org/plugins/pixcodes/
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
@@ -19,8 +27,11 @@ $ratios = array(
 	12 => 'one-whole',
 );
 
-$output .= '<div class="grid__item ' . $ratios[ $size ] . ' palm-one-whole ' . $class . '">' . "\n";
-if( $class =='promo-box' ) $output .= '<div class="promo-box__container">' . $this->get_clean_content( $content ) . '</div>' . "\n";
-else $output .= $this->get_clean_content( $content ) . "\n";
+$output .= '<div class="grid__item ' . esc_attr( $ratios[ $size ] ) . ' palm-one-whole ' . esc_attr( $class ) . '">' . "\n";
+if ( $class == 'promo-box' ) {
+	$output .= '<div class="promo-box__container">' . $this->get_clean_content( $content ) . '</div>' . "\n";
+} else {
+	$output .= $this->get_clean_content( $content ) . "\n";
+}
 $output .= '</div>' . "\n";
-echo $output;
+echo $output; // phpcs:ignore
