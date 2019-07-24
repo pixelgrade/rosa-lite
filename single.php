@@ -13,49 +13,47 @@ get_header();
 
 global $rosa_private_post;
 
-// Password protection
 if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
-
+	// Password protection
 	get_template_part( 'template-parts/password-request-form' );
 } else {
 	$has_sidebar = false;
-	if ( pixelgrade_option( 'blog_single_show_sidebar', true ) && is_active_sidebar( 'sidebar-main' ) ) {
+	if ( is_active_sidebar( 'sidebar-main' ) && pixelgrade_option( 'blog_single_show_sidebar', true ) ) {
 		$has_sidebar = true;
 	}
 
-	$has_thumb = has_post_thumbnail();
-
 	$post_class_thumb = 'has-thumbnail';
-	if ( ! $has_thumb ) {
+	if ( ! has_post_thumbnail() ) {
 		$post_class_thumb = 'no-thumbnail';
-	}
-	?>
+	} ?>
+
 	<section class="container  container--single">
-		<div class="page-content  has-sidebar">
-			<?php if ( $has_sidebar ) {
-				echo '<div class="page-content__wrapper">';
-			}
+		<div id="content" class="page-content  has-sidebar">
+			<?php if ( $has_sidebar ) { ?>
+			<div class="page-content__wrapper">
+			<?php }
 
 			while ( have_posts() ) : the_post(); ?>
-				<article <?php post_class( 'article-single  single-post ' . $post_class_thumb ) ?>>
+				<article id="post-<?php the_ID(); ?>" <?php post_class( 'article-single  single-post ' . $post_class_thumb ) ?>>
 					<header class="article__header">
 						<h1 class="article__title" itemprop="name"><?php the_title(); ?></h1>
 						<hr class="separator"/>
 
 						<?php
-						if ( has_post_thumbnail() ):
-							if ( $has_sidebar ) { // Use a smaller image size
-								$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'medium-size' );
-							} else {
-								// Use a larger image size
-								$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large-size' );
-							}
-							if ( ! empty( $image[0] ) ) : ?>
-								<div class="article__featured-image" itemprop="image">
-									<img src="<?php echo $image[0] ?>" alt="<?php the_title(); ?>"/>
-								</div>
-							<?php endif;
-						endif; ?>
+						if ( has_post_thumbnail() ) {
+							// Use a larger image size
+							$thumbnail_size = 'large-size';
+							if ( $has_sidebar ) {
+								// Use a smaller image size
+								$thumbnail_size = 'medium-size';
+							} ?>
+
+							<div class="article__featured-image" itemprop="image">
+								<?php the_post_thumbnail( $thumbnail_size ); ?>
+							</div>
+
+							<?php
+						} ?>
 
 					</header><!-- .article__header -->
 
@@ -105,7 +103,7 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 						<?php }
 
 						$tags = get_the_tags();
-						if ( ! empty( $tags ) ) { ?>
+						if ( ! is_wp_error( $tags ) && ! empty( $tags ) ) { ?>
 
 							<div class="meta--tags  btn-list  meta-list">
 								<span class="btn  btn--small  btn--secondary  list-head"><?php esc_html_e( 'Tags', 'rosa-lite' ) ?></span>
@@ -140,9 +138,9 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 			<?php
 			endwhile;
 
-			if ( $has_sidebar ) {
-				echo '</div><!-- .page-content__wrapper -->';
-			} ?>
+			if ( $has_sidebar ) { ?>
+			</div><!-- .page-content__wrapper -->
+			<?php } ?>
 
 		</div><!-- .page-content.has-sidebar -->
 

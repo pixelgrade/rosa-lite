@@ -12,7 +12,6 @@ get_header();
 
 global $post, $rosa_private_post, $page_section_idx, $header_height;
 
-$footer_needs_big_waves = false;
 $page_section_idx       = 0;
 
 if ( post_password_required() && ! $rosa_private_post['allowed'] ) {

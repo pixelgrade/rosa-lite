@@ -13,6 +13,21 @@
 if ( ! defined( 'ABSPATH' ) ){
 	exit; // Exit if accessed directly
 }
+
+$class_name = 'header--sticky nav-scroll-hide';
+
+// Make the header menu bar transparent, but only for static pages.
+if ( is_page() ) {
+	$make_transparent_menu_bar = get_post_meta( get_the_ID(), rosa_lite_prefix() . 'header_transparent_menu_bar', true );
+
+	if ( $make_transparent_menu_bar == 'on' ) {
+		$class_name .= '  header--transparent';
+	}
+}
+
+$data_smoothscrolling = ( 1 == pixelgrade_option( 'use_smooth_scroll', 1 ) ) ? 'data-smoothscrolling' : '';
+$data_main_color = ( pixelgrade_option( 'main_color', '#C59D5F' ) ) ? 'data-color="' . esc_attr( pixelgrade_option( 'main_color', '#C59D5F' ) ) . '"' : '';
+
 ?><!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -27,25 +42,10 @@ if ( ! defined( 'ABSPATH' ) ){
 	<![endif]>
 	<?php wp_head(); ?>
 </head>
-<?php
-$class_name = 'header--sticky nav-scroll-hide';
-
-// Make the header menu bar transparent, but only for static pages.
-if ( is_page() ) {
-	$make_transparent_menu_bar = get_post_meta( get_the_ID(), rosa_lite_prefix() . 'header_transparent_menu_bar', true );
-
-	if ( $make_transparent_menu_bar == 'on' ) {
-		$class_name .= '  header--transparent';
-	}
-}
-
-$data_smoothscrolling = ( 1 == pixelgrade_option( 'use_smooth_scroll', 1 ) ) ? 'data-smoothscrolling' : '';
-$data_main_color      = ( pixelgrade_option( 'main_color', '#C59D5F' ) ) ? 'data-color="' . esc_attr( pixelgrade_option( 'main_color', '#C59D5F' ) ) . '"' : '';
-?>
-
 <body <?php body_class( $class_name ); echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?>>
 <?php wp_body_open() ?>
 <div id="page" class="page">
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'rosa-lite' ); ?></a>
 	<div class="site-header  header--inversed  js-header">
 		<div class="container">
 			<div class="flexbox">
@@ -62,10 +62,10 @@ $data_main_color      = ( pixelgrade_option( 'main_color', '#C59D5F' ) ) ? 'data
 					$theme_locations = get_nav_menu_locations();
 					$has_main_menu   = false;
 
-					if ( isset( $theme_locations["main_menu"] ) && ( $theme_locations["main_menu"] != 0 ) ) {
+					if ( isset( $theme_locations['main_menu'] ) && ( $theme_locations['main_menu'] != 0 ) ) {
 						$has_main_menu = true;
 					} ?>
-					<nav class="navigation  navigation--main<?php echo ( ! $has_main_menu ) ? "  no-menu" : ""; ?>" id="js-navigation--main">
+					<nav class="navigation  navigation--main<?php echo ( ! $has_main_menu ) ? '  no-menu' : ''; ?>" id="js-navigation--main">
 						<h2 class="accessibility"><?php esc_html_e( 'Primary Navigation', 'rosa-lite' ) ?></h2>
 
 						<?php
@@ -78,8 +78,7 @@ $data_main_color      = ( pixelgrade_option( 'main_color', '#C59D5F' ) ) ? 'data
 							'menu_id'        => '',
 							'fallback_cb'    => 'rosa_lite_please_select_a_menu_fallback',
 							'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-						) );
-						?>
+						) ); ?>
 
 					</nav>
 					<div class="nav-overlay"></div>

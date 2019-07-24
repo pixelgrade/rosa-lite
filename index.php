@@ -17,75 +17,49 @@ if ( ! defined( 'ABSPATH' ) ){
 get_header(); ?>
 
 	<section class="container  container--archive">
-		<div class="page-content  archive">
+		<div id="content" class="page-content  archive">
 
 			<?php rosa_lite_the_archive_title();
 
-			//the categories dropdown
-			if ( ! is_category() && ! is_tag() && ! is_search() ) :
+			// Display the categories dropdown
+			if ( ! is_category() && ! is_tag() && ! is_search() ) {
 				$categories = get_categories();
-				if ( ! is_wp_error( $categories ) ) : ?>
+				if ( ! is_wp_error( $categories ) ) { ?>
 
 					<div class="pix-dropdown  down  archive-filter">
-                        <div class="categories__menu">
-                            <a class="dropdown__trigger" href="#"><?php esc_html_e( 'Categories', 'rosa-lite' ) ?></a>
-                            <ul class="dropdown__menu  nav  nav--banner">
-                                <?php foreach ( $categories as $category ) : ?>
+						<div class="categories__menu">
+							<a class="dropdown__trigger" href="#"><?php esc_html_e( 'Categories', 'rosa-lite' ) ?></a>
+							<ul class="dropdown__menu  nav  nav--banner">
+								<?php foreach ( $categories as $category ) { ?>
 
-                                    <li>
-                                        <a href="<?php echo get_category_link( $category->term_id ); ?>" title="<?php
-                                        /* translators: %s: category name */
-                                        echo esc_attr( sprintf( __( "View all posts in %s", 'rosa-lite' ), $category->name ) ) ?>">
-                                            <?php echo $category->cat_name; ?>
-                                        </a>
-                                    </li>
+									<li>
+										<a href="<?php echo get_category_link( $category->term_id ); ?>" title="<?php
+										/* translators: %s: category name */
+										echo esc_attr( sprintf( __( 'View all posts in %s', 'rosa-lite' ), $category->name ) ) ?>"><?php echo esc_html( $category->cat_name ); ?></a>
+									</li>
 
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                        <?php get_search_form(); ?>
+								<?php } ?>
+							</ul>
+						</div>
+
+						<?php get_search_form(); ?>
+
 					</div>
 
-				<?php endif;
-			endif;
-
-			//first the sticky posts
-			// get current page we are on. If not set we can assume we are on page 1.
-			$current_page = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-			if ( is_front_page() && $current_page == 1 ) {
-				$sticky = get_option( 'sticky_posts' );
-				// check if there are any
-				if ( ! empty( $sticky ) ) {
-					// optional: sort the newest IDs first
-					rsort( $sticky );
-					// override the query
-					$args = array(
-						'post__in' => $sticky
-					);
-					query_posts( $args );
-					// the loop
-					while ( have_posts() ) : the_post();
-						get_template_part( 'template-parts/post/loop-content/classic' );
-					endwhile;
-
-					wp_reset_postdata();
-					wp_reset_query();
-				}
+				<?php }
 			}
 
-			if ( have_posts() ):
+			if ( have_posts() ) {
 
 				while ( have_posts() ) : the_post();
 					get_template_part( 'template-parts/content', get_post_format() );
 				endwhile;
 
 				rosa_lite_the_posts_navigation();
-
-			else :
+			} else {
 
 				get_template_part( 'template-parts/content', 'none' );
-
-			endif; // end if have_posts() ?>
+			} ?>
 
 		</div><!-- .page-content.archive -->
 	</section><!-- .container.container--archive -->
