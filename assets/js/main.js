@@ -152,83 +152,6 @@
     }
   });
 
-  var DownArrow = {
-    selector: ".down-arrow",
-    $arrow: null,
-    timeline: null,
-    start: 0,
-    end: 0,
-    bubble: false,
-
-    initialize: function() {
-      var that = this;
-
-      this.$arrow = $(this.selector);
-
-      if (empty(this.$arrow)) {
-        return;
-      }
-
-      this.start = 0;
-      this.end = this.start + 300;
-      this.timeline = new TimelineMax({ paused: true });
-      this.$next = this.$arrow.closest(".article--page");
-
-      if (!empty(this.$next)) {
-        this.nextTop = this.$next.offset().top;
-        this.nextHeight = this.$next.outerHeight();
-      }
-
-      if (this.$arrow.hasClass("down-arrow--bubble")) {
-        this.timeline.to(this.$arrow, 0.2, {
-          y: 10,
-          opacity: 0,
-          ease: Linear.easeNone,
-          overwrite: "none"
-        });
-        this.timeline.to(".blurp--top", 0.3, {
-          scaleY: 0,
-          ease: Linear.easeNone,
-          overwrite: "none"
-        });
-        this.bubble = true;
-      } else {
-        this.timeline.to(this.$arrow, 1, {
-          y: 100,
-          opacity: 0,
-          ease: Linear.easeNone,
-          overwrite: "none"
-        });
-      }
-
-      this.$arrow.on("click", function(e) {
-        e.preventDefault();
-
-        if (empty(that.$next)) {
-          return;
-        }
-
-        if (that.$next.is(".article__header")) {
-          smoothScrollTo(that.nextTop - windowHeight / 2 + that.nextHeight / 2);
-        } else {
-          smoothScrollTo(that.nextTop - $(".site-header").height());
-        }
-      });
-    },
-
-    update: function() {
-      if (empty(this.$arrow) || this.bubble) {
-        return;
-      }
-
-      if (Modernizr.touchevents && is_OSX) {
-        this.timeline.progress(0);
-        return;
-      }
-
-      setProgress(this.timeline, this.start, this.end);
-    }
-  };
   // /* ====== HELPER FUNCTIONS ====== */
 
   //similar to PHP's empty function
@@ -474,118 +397,6 @@
 
     observe($(".article__content"));
   })(jQuery);
-  var ScrollToTop = (function() {
-    var start = 0,
-      end = 0,
-      timeline = null,
-      played = false,
-      footerHeight;
-
-    function initialize() {
-      var $button = $(".btn--top"),
-        offsetTop = 0,
-        start = offsetTop - windowHeight + (footerHeight * 3) / 4;
-
-      footerHeight = $(".copyright-area").outerHeight();
-
-      if (empty($button)) {
-        return;
-      }
-
-      offsetTop = $button.offset().top;
-      $button.data("offsetTop", offsetTop);
-
-      this.timeline = new TimelineMax({ paused: true });
-
-      this.timeline.fromTo(
-        ".blurp--bottom",
-        0.6,
-        {
-          y: 40,
-          scale: 0.5
-        },
-        {
-          y: 0,
-          scale: 1,
-          ease: Power3.easeOut,
-          force3D: true
-        }
-      );
-
-      this.timeline.fromTo(
-        $(".btn__arrow--top"),
-        0.4,
-        {
-          y: 15,
-          opacity: 0
-        },
-        {
-          y: 0,
-          scale: 1,
-          opacity: 1,
-          ease: Back.easeOut
-        },
-        "-=0.1"
-      );
-
-      this.timeline.fromTo(
-        $(".btn__arrow--bottom"),
-        0.4,
-        {
-          y: 15,
-          opacity: 0
-        },
-        {
-          y: 0,
-          scale: 1,
-          opacity: 1,
-          ease: Back.easeOut
-        },
-        "-=0.25"
-      );
-
-      $button.on("click", function(e) {
-        e.preventDefault();
-        smoothScrollTo(0);
-      });
-
-      this.update();
-    }
-
-    function update() {
-      var $button = $(".btn--top"),
-        offsetTop = $button.data("offsetTop"),
-        start = offsetTop - windowHeight + (footerHeight * 3) / 4,
-        end = start + windowHeight;
-
-      if (empty($button) || this.timeline == null) {
-        return;
-      }
-
-      if (Modernizr.touchevents && is_OSX) {
-        this.timeline.progress(1);
-        return;
-      }
-
-      if (start < latestKnownScrollY) {
-        if (!this.played) {
-          this.timeline.play();
-          this.played = true;
-        }
-      } else {
-        if (this.played) {
-          this.timeline.reverse();
-          this.played = false;
-        }
-      }
-    }
-
-    return {
-      initialize: initialize,
-      update: update
-    };
-  })();
-
   /* --- Sticky Header Init --- */
 
   var StickyHeader = (function() {
@@ -781,14 +592,10 @@
     });
   }
 
-  function smoothScrollTo(y, speed) {
-    speed = typeof speed === "undefined" ? 1 : speed;
-
-    var distance = Math.abs(latestKnownScrollY - y),
-      time = (speed * distance) / 2000;
-
-    TweenMax.to($(window), time, {
-      scrollTo: { y: y, autoKill: false, ease: Quint.easeInOut }
+  function smoothScrollTo(y) {
+    window.scroll({
+      top: y,
+      behavior: "smooth"
     });
   }
 
@@ -921,6 +728,30 @@
   }
 
   /* ====== EVENT HANDLERS ====== */
+  function heroArrowInit() {
+    var $arrow = $(".down-arrow"),
+      $hero = $arrow.closest(".article--page");
+
+    if (!$arrow.length || !$hero.length) {
+      return;
+    }
+
+    $arrow.on("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      smoothScrollTo($hero.offset().top);
+    });
+  }
+
+  function scrollToTopInit() {
+    var $button = $(".btn--top");
+
+    $button.on("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      smoothScrollTo(0);
+    });
+  }
 
   function eventHandlersOnce() {
     if (globalDebug) {
@@ -928,6 +759,8 @@
     }
 
     menuTrigger();
+    heroArrowInit();
+    scrollToTopInit();
 
     if (globalDebug) {
       console.groupEnd();
@@ -998,14 +831,6 @@
     return false;
   }
 
-  // $(window).bind('beforeunload', function(event) {
-  // 	if (globalDebug) {console.log("ON BEFORE UNLOAD");}
-
-  // 	event.stopPropagation();
-
-  // 	animateBlog('out');
-  // });
-
   /* ====== ON DOCUMENT READY ====== */
 
   $(document).ready(function() {
@@ -1042,12 +867,6 @@
     magnificPopupInit();
     initVideos();
     resizeVideos();
-
-    DownArrow.initialize();
-
-    setTimeout(function() {
-      ScrollToTop.initialize();
-    }, 60);
 
     updateHeaderPadding();
 
@@ -1107,14 +926,10 @@
   }
 
   function refreshStuff() {
-    ScrollToTop.initialize();
     $window.trigger("rellax");
   }
 
   function updateStuff() {
-    ScrollToTop.update();
-    DownArrow.update();
-
     if (windowWidth >= 900) {
       StickyHeader.update();
     }

@@ -104,24 +104,36 @@ function scriptsMain() {
 		.pipe(plugins.rename('main.min.js'))
 		.pipe(gulp.dest('./assets/js/'));
 }
-gulp.task('scripts-main', scriptsMain);
+
+function scriptsMainMin() {
+	return gulp.src('./assets/js/main.js')
+	           .pipe(plugins.terser())
+	           .pipe(plugins.rename('main.min.js'))
+	           .pipe(gulp.dest('./assets/js/'));
+}
+
+gulp.task('scripts-main', gulp.series(scriptsMain, scriptsMainMin));
 
 function scriptsVendor() {
 	return gulp.src('./assets/js/plugins/*.js')
 		.pipe(plugins.concat('plugins.js'))
 		.pipe(plugins.prettier())
-		.pipe(gulp.dest('./assets/js/'))
-		.pipe(plugins.terser())
-		.pipe(plugins.rename('plugins.min.js'))
 		.pipe(gulp.dest('./assets/js/'));
 }
-gulp.task('scripts-vendor', scriptsVendor);
+
+function scriptsVendorMin() {
+	return gulp.src('./assets/js/plugins.js')
+	           .pipe(plugins.terser())
+	           .pipe(plugins.rename('plugins.min.js'))
+	           .pipe(gulp.dest('./assets/js/'));
+}
+gulp.task('scripts-vendor', gulp.series(scriptsVendor, scriptsVendorMin));
 
 function scriptsSequence(cb) {
 	return gulp.parallel( 'scripts-main', 'scripts-vendor')(cb);
 }
 scriptsSequence.description = 'Compile the scripts.';
-gulp.task( 'scripts', scriptsSequence  );
+gulp.task( 'scripts', scriptsSequence );
 
 function scriptsWatch() {
 	plugins.livereload.listen();

@@ -150,12 +150,6 @@ if ( ! function_exists( 'rosa_lite_load_assets' ) ) {
 
 		wp_register_script( 'modernizr', get_theme_file_uri( '/assets/js/vendor/modernizr.min.js' ), array(), '3.6.0' );
 		$script_dependencies[] = 'modernizr';
-		wp_register_script( 'tween-max', get_theme_file_uri( '/assets/js/vendor/TweenMax.min.js' ), array( 'jquery'), '1.19.1' );
-		$script_dependencies[] = 'tween-max';
-		wp_register_script( 'ease-pack', get_theme_file_uri( '/assets/js/vendor/EasePack.min.js' ), array( 'jquery' ), '1.15.5' );
-		$script_dependencies[] = 'ease-pack';
-		wp_register_script( 'scroll-to-plugin', get_theme_file_uri( '/assets/js/vendor/ScrollToPlugin.min.js' ), array(), '1.8.1' );
-		$script_dependencies[] = 'scroll-to-plugin';
 
 		wp_enqueue_script( 'rosa-plugins-scripts', get_theme_file_uri( '/assets/js/plugins' . $suffix . '.js' ), $script_dependencies, $theme->get( 'Version' ), true );
 		wp_enqueue_script( 'rosa-main-scripts', get_theme_file_uri( '/assets/js/main' . $suffix . '.js' ), array( 'rosa-plugins-scripts' ), $theme->get( 'Version' ), true );

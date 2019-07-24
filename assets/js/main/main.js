@@ -19,14 +19,11 @@ if ( $target.length ) {
 	} );
 }
 
-function smoothScrollTo( y, speed ) {
-
-	speed = typeof speed === "undefined" ? 1 : speed;
-
-	var distance = Math.abs( latestKnownScrollY - y ),
-		time = speed * distance / 2000;
-
-	TweenMax.to( $( window ), time, {scrollTo: {y: y, autoKill: false, ease: Quint.easeInOut}} );
+function smoothScrollTo( y ) {
+	window.scroll({
+		top: y,
+		behavior: 'smooth'
+	});
 }
 
 
@@ -160,7 +157,32 @@ function init() {
 	}
 }
 
+
 /* ====== EVENT HANDLERS ====== */
+function heroArrowInit() {
+	var $arrow = $('.down-arrow'),
+		$hero = $arrow.closest('.article--page');
+
+	if ( ! $arrow.length || ! $hero.length ) {
+		return;
+	}
+
+	$arrow.on( 'click', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		smoothScrollTo( $hero.offset().top );
+	});
+}
+
+function scrollToTopInit() {
+	var $button = $('.btn--top');
+
+	$button.on('click', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		smoothScrollTo(0);
+	});
+}
 
 function eventHandlersOnce() {
 	if ( globalDebug ) {
@@ -168,6 +190,8 @@ function eventHandlersOnce() {
 	}
 
 	menuTrigger();
+	heroArrowInit();
+	scrollToTopInit();
 
 	if ( globalDebug ) {
 		console.groupEnd();
@@ -236,16 +260,6 @@ function magnificNext( e ) {
 	return false;
 }
 
-
-// $(window).bind('beforeunload', function(event) {
-// 	if (globalDebug) {console.log("ON BEFORE UNLOAD");}
-
-// 	event.stopPropagation();
-
-// 	animateBlog('out');
-// });
-
-
 /* ====== ON DOCUMENT READY ====== */
 
 $( document ).ready( function() {
@@ -287,15 +301,10 @@ $( window ).load( function() {
 	initVideos();
 	resizeVideos();
 
-	DownArrow.initialize();
-
-	setTimeout( function() {
-		ScrollToTop.initialize();
-	}, 60 );
-
 	updateHeaderPadding();
 
 	loop();
+
 
 	Rosa.Parallax.init();
 	$html.addClass( 'is--loaded' );
@@ -351,14 +360,11 @@ function onResize() {
 }
 
 function refreshStuff() {
-	ScrollToTop.initialize();
 	$window.trigger( 'rellax' );
 }
 
 
 function updateStuff() {
-	ScrollToTop.update();
-	DownArrow.update();
 
 	if ( windowWidth >= 900 ) {
 		StickyHeader.update();
