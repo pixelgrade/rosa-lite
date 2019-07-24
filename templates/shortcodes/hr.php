@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( empty( $type ) ) {
-	$type = '';
+	$type = ''; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 }
 
 // Get the needed classes
@@ -22,7 +22,6 @@ $classes .= ! empty( $color ) ? ' separator_color--' . $color : '';
 
 // Create the class attribute
 $classes = 'class="' . esc_attr( trim( $classes ) ) . '"';
-
 
 if ( $type == 'line-flower' ) {
 	// phpcs:ignore

@@ -54,10 +54,14 @@ function rosa_lite_is_password_protected() {
 	global $post;
 	$private_post = array( 'allowed' => false, 'error' => '' );
 
-	if ( isset( $_POST['submit_password'] ) ) { // when we have a submision check the password and its submision
+	if ( isset( $_POST['submit_password'] ) ) {
+		// When we have a submission check the password and its submission
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash
 		if ( isset( $_POST['submit_password_nonce'] ) && wp_verify_nonce( $_POST['submit_password_nonce'], 'password_protection' ) ) {
-			if ( isset ( $_POST['post_password'] ) && ! empty( $_POST['post_password'] ) ) { // some simple checks on password
-				// finally test if the password submitted is correct
+			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+			if ( isset ( $_POST['post_password'] ) && ! empty( $_POST['post_password'] ) ) {
+				// Finally test if the password submitted is correct
+				// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash
 				if ( $post->post_password === $_POST['post_password'] ) {
 					$private_post['allowed'] = true;
 
@@ -87,9 +91,8 @@ function rosa_lite_is_password_protected() {
 if ( ! function_exists( 'rosa_lite_callback_the_password_form' ) ) {
 
 	function rosa_lite_callback_the_password_form( $form ) {
-		global $post;
-		$post   = get_post( $post );
-		$postID = $post->ID;
+		$post   = get_post();
+		$postID = get_the_ID();
 		$label  = 'pwbox-' . ( empty( $postID ) ? rand() : $postID );
 		$form   = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">
 		<p>' . esc_html__( 'This post is password protected. To view it please enter your password below:', 'rosa-lite' ) . '</p>
@@ -131,8 +134,8 @@ if ( ! function_exists( 'rosa_lite_callback_the_password_form' ) ) {
 		return $form;
 
 	}
-	add_action( 'the_password_form', 'rosa_lite_callback_the_password_form' );
 }
+add_action( 'the_password_form', 'rosa_lite_callback_the_password_form' );
 
 if ( ! function_exists( 'rosa_lite_add_title_caption_to_attachment' ) ) {
 	/**
@@ -151,9 +154,8 @@ if ( ! function_exists( 'rosa_lite_add_title_caption_to_attachment' ) ) {
 
 		return str_replace( '<a ', '<a data-title="' . $title . '" data-alt="' . $caption . '" ', $markup );
 	}
-
-	add_filter( 'wp_get_attachment_link', 'rosa_lite_add_title_caption_to_attachment', 10, 5 );
 }
+add_filter( 'wp_get_attachment_link', 'rosa_lite_add_title_caption_to_attachment', 10, 5 );
 
 /**
  * Theme activation hook

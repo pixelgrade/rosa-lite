@@ -15,7 +15,7 @@ global $rosa_private_post; ?>
 			esc_html_e( 'This is a protected area.', 'rosa-lite' );
 
 			if ( $rosa_private_post['error'] ) {
-				echo $rosa_private_post['error']; ?>
+				echo wp_kses_post( $rosa_private_post['error'] ); ?>
 				<span class="gray"><?php esc_html_e( 'Please enter your password again.', 'rosa-lite' ); ?></span>
 			<?php } else { ?>
 				<span class="gray"><?php esc_html_e( 'Please enter your password to continue.', 'rosa-lite' ); ?></span>
@@ -34,4 +34,4 @@ global $rosa_private_post; ?>
 			</div>
 		</form>
 	</div>
-</div><!-- .content -->
+</div>

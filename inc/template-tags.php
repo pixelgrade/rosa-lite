@@ -16,7 +16,7 @@ if( ! function_exists( 'rosa_lite_the_archive_title' ) ) {
 		if ( is_home() ) { ?>
 			<h1 class="hN  archive__title">
 				<?php if ( isset( $object->post_title ) ) {
-					echo $object->post_title;
+					echo $object->post_title; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				} else {
 					esc_html_e( 'News', 'rosa-lite' );
 				} ?></h1>
@@ -40,7 +40,7 @@ if( ! function_exists( 'rosa_lite_the_archive_title' ) ) {
 			<hr class="separator"/>
 		<?php } elseif ( ! empty( $object ) && isset( $object->term_id ) ) { ?>
 			<div class="heading headin--main">
-				<h1 class="archive__title"><?php echo $object->name; ?></h1>
+				<h1 class="archive__title"><?php echo esc_html( $object->name ); ?></h1>
 				<span class="archive__side-title beta"><?php esc_html_e( 'Category', 'rosa-lite' ) ?></span>
 			</div>
 			<hr class="separator"/>
@@ -75,11 +75,13 @@ if( ! function_exists( 'rosa_lite_the_archive_title' ) ) {
 	}
 }
 
-function rosa_lite_please_select_a_menu_fallback() {
-	echo '
+if ( ! function_exists( 'rosa_lite_please_select_a_menu_fallback' ) ) {
+	function rosa_lite_please_select_a_menu_fallback() {
+		echo '
 		<ul class="nav  nav--main sub-menu" >
-			<li><a href="' . admin_url( 'nav-menus.php?action=locations' ) . '">' . esc_html__( 'Please select a menu in this location', 'rosa-lite' ) . '</a></li>
+			<li><a href="' . esc_url( admin_url( 'nav-menus.php?action=locations' ) ) . '">' . esc_html__( 'Please select a menu in this location', 'rosa-lite' ) . '</a></li>
 		</ul>';
+	}
 }
 
 if ( ! function_exists( 'rosa_display_header_down_arrow' ) ) {
@@ -91,7 +93,7 @@ if ( ! function_exists( 'rosa_display_header_down_arrow' ) ) {
 
 		$down_arrow_style = pixelgrade_option('down_arrow_style', 'transparent' );
 
-		echo '<div class="down-arrow down-arrow--' . $down_arrow_style . '"><div class="arrow"></div></div>' . "\n";
+		echo '<div class="down-arrow down-arrow--' . esc_attr( $down_arrow_style ) . '"><div class="arrow"></div></div>' . "\n";
 	}
 }
 
@@ -201,7 +203,7 @@ if ( ! function_exists( 'rosa_lite_custom_gallery_settings' ) ) {
 }
 add_action( 'print_media_templates', 'rosa_lite_custom_gallery_settings' );
 
-if ( ! function_exists( 'rosa_lite_the_posts_navigation' ) ) :
+if ( ! function_exists( 'rosa_lite_the_posts_navigation' ) ) {
 
 	/**
 	 * Prints the HTML of the posts navigation
@@ -213,33 +215,29 @@ if ( ! function_exists( 'rosa_lite_the_posts_navigation' ) ) :
 		$big = 999999999; // need an unlikely integer
 
 		$links = paginate_links( array(
-			'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-			'format' => '?paged=%#%',
-			'current' => max( 1, get_query_var('paged') ),
-			'total' => $wp_query->max_num_pages,
-			'prev_next' => false,
+			'base'               => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+			'format'             => '?paged=%#%',
+			'current'            => max( 1, get_query_var( 'paged' ) ),
+			'total'              => $wp_query->max_num_pages,
+			'prev_next'          => false,
 			'before_page_number' => '<span class="screen-reader-text">' . esc_html__( 'Page', 'rosa-lite' ) . ' </span>',
 		) );
 
-		$links = rosa_lite_get_prev_posts_link() . $links . rosa_lite_get_next_posts_link();
+		$links = rosa_lite_get_prev_posts_link() . $links . rosa_lite_get_next_posts_link(); ?>
 
-		//wrap the links in a standard navigational markup
-		$template = '
 		<nav class="nav nav--banner pagination" role="navigation">
-			<h2 class="screen-reader-text">%1$s</h2>
-			<div class="nav-links">%2$s</div>
-		</nav>';
+			<h2 class="screen-reader-text"><?php esc_html_e( 'Posts navigation', 'rosa-lite' ); ?></h2>
+			<div class="nav-links"><?php echo $links; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
+		</nav>
 
-		echo sprintf( $template, esc_html__( 'Posts navigation', 'rosa-lite' ), $links );
+		<?php
 	}
-endif;
+}
 
 /**
  * Return the next posts page link.
  *
- * --Customized version of the function in core get_next_posts_link()
- *
- * @since 1.0.0
+ * Customized version of the function in core get_next_posts_link()
  *
  * @global int      $paged
  * @global WP_Query $wp_query
@@ -253,12 +251,13 @@ function rosa_lite_get_next_posts_link( $label = null ) {
 	$max_page = $wp_query->max_num_pages;
 
 	if ( ! $paged )
-		$paged = 1;
+		$paged = 1; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 
-	$nextpage = intval($paged) + 1;
+	$nextpage = intval( $paged ) + 1;
 
-	if ( null === $label )
+	if ( null === $label ) {
 		$label = esc_html__( 'Next', 'rosa-lite' );
+	}
 
 	if ( ! is_single() ) {
 		if ( $nextpage <= $max_page ) {
@@ -273,7 +272,7 @@ function rosa_lite_get_next_posts_link( $label = null ) {
 
 			return '<a href="' . next_posts( $max_page, false ) . '" ' . $attr . '>' . $label . '</a>';
 		} else {
-			//put in a disabled next link
+			// put in a disabled next link
 			/**
 			 * Filter the anchor tag attributes for the next posts page link.
 			 *
@@ -292,7 +291,7 @@ function rosa_lite_get_next_posts_link( $label = null ) {
 /**
  * Return the previous posts page link.
  *
- * --Customized version of the function in core get_prev_posts_link()
+ * Customized version of the function in core get_previous_posts_link()
  *
  * @since 1.0.0
  *
@@ -304,11 +303,9 @@ function rosa_lite_get_next_posts_link( $label = null ) {
 function rosa_lite_get_prev_posts_link( $label = null ) {
 	global $paged;
 
-	if ( ! $paged )
-		$paged = 1;
-
-	if ( null === $label )
+	if ( null === $label ) {
 		$label = esc_html__( 'Prev', 'rosa-lite' );
+	}
 
 	if ( ! is_single() ) {
 		if ( $paged > 1 ) {
@@ -353,10 +350,11 @@ if ( ! function_exists( 'rosa_lite_comments' ) ) {
 		?>
 	<li <?php comment_class(); ?>>
 		<article id="comment-<?php echo esc_attr( $comment->comment_ID ); ?>" class="comment-article  media">
-			<?php if ( pixelgrade_option( 'comments_show_numbering', 1 ) ): ?>
-				<span class="comment-number"><?php echo $comment_number ?></span>
-			<?php endif; ?>
-			<?php if ( pixelgrade_option( 'comments_show_avatar', 0 ) && get_comment_type( $comment->comment_ID ) == 'comment' ) { ?>
+			<?php if ( pixelgrade_option( 'comments_show_numbering', 1 ) ) { ?>
+				<span class="comment-number"><?php echo esc_html( $comment_number ); ?></span>
+			<?php }
+
+			if ( pixelgrade_option( 'comments_show_avatar', 0 ) && 'comment' === get_comment_type( $comment->comment_ID ) ) { ?>
 				<aside class="comment__avatar  media__img">
 					<!-- custom gravatar call -->
 					<?php $bgauthemail = get_comment_author_email(); ?>
@@ -367,11 +365,11 @@ if ( ! function_exists( 'rosa_lite_comments' ) ) {
 				<header class="comment__meta comment-author">
 					<?php
 					/* translators: %s: comment author link */
-                    printf( '<span class="comment__author-name">%s</span>', get_comment_author_link() ) ?>
+                    printf( '<span class="comment__author-name">%s</span>', get_comment_author_link() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					<time class="comment__time" datetime="<?php comment_time( 'c' ); ?>">
-						<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>" class="comment__timestamp"><?php printf(
+						<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>" class="comment__timestamp"><?php printf(
 							/* translators: 1: comment date, 2: comment time */
-							esc_html__( 'on %1$s at %2$s', 'rosa-lite' ), get_comment_date(), get_comment_time() ); ?> </a>
+							esc_html__( 'on %1$s at %2$s', 'rosa-lite' ), esc_html( get_comment_date() ), esc_html( get_comment_time() ) ); ?> </a>
 					</time>
 					<div class="comment__links">
 						<?php
@@ -383,11 +381,11 @@ if ( ! function_exists( 'rosa_lite_comments' ) ) {
 					</div>
 				</header>
 				<!-- .comment-meta -->
-				<?php if ( $comment->comment_approved == '0' ) : ?>
+				<?php if ( '0' === $comment->comment_approved ) { ?>
 					<div class="alert info">
 						<p><?php esc_html_e( 'Your comment is awaiting moderation.', 'rosa-lite' ) ?></p>
 					</div>
-				<?php endif; ?>
+				<?php } ?>
 				<section class="comment__content comment">
 					<?php comment_text(); ?>
 				</section>

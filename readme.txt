@@ -39,13 +39,12 @@ Unless otherwise specified, all the theme files, scripts and images are licensed
 The Rosa Lite Theme bundles the following third-party resources:
 
 * normalize.css https://necolas.github.io/normalize.css/, (c) 2012-2016 Nicolas Gallagher and Jonathan Neal, licensed under the [MIT License](https://opensource.org/licenses/mit-license.html)
-* inuit.css inuitcss.com, (c) 2013 Harry Roberts, licensed under [Apache License v2.0](http://apache.org/licenses/LICENSE-2.0)
-* rellax.js http://pixelgrade.github.io/rellax/, Copyright (c) 2016-2019 Pixelgrade, License: the [MIT License](https://opensource.org/licenses/mit-license.html)
+* inuit.css https://inuitcss.com, (c) 2013 Harry Roberts, licensed under [Apache License v2.0](http://apache.org/licenses/LICENSE-2.0)
+* rellax.js https://pixelgrade.github.io/rellax/, Copyright (c) 2016-2019 Pixelgrade, License: the [MIT License](https://opensource.org/licenses/mit-license.html)
 * modernizr.js https://modernizr.com/, licensed under the [MIT License](https://opensource.org/licenses/mit-license.html)
-* debouncedresize.js https://github.com/louisremi/jquery-smartresize, (c) 2012 Louis-Remi Babe, licensed under the [MIT License](https://opensource.org/licenses/mit-license.html).
+* debounced-resize.js https://github.com/louisremi/jquery-smartresize, (c) 2012 Louis-Remi Babe, licensed under the [MIT License](https://opensource.org/licenses/mit-license.html).
 * magnific-popup.js http://dimsemenov.com/plugins/magnific-popup/, (c) Dmitry Semenov, licensed under the [MIT License](https://opensource.org/licenses/mit-license.html)
 * respond.js https://github.com/scottjehl/Respond, (c) 2011-2017 Scott Jehl, dual licensed under the [MIT License](https://opensource.org/licenses/mit-license.html) and [BSD](https://opensource.org/licenses/BSD-3-Clause)
 * autosize script https://github.com/jackmoore/autosize, (c) 2013 Jack Moore, licensed under the [MIT License](https://opensource.org/licenses/mit-license.html)
-
 
 * Images: screenshot image from PxHere - [Source](https://pxhere.com/en/photo/1398176) licensed under CC0 Public Domain.

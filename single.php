@@ -119,7 +119,7 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 						<hr class="separator"/>
 
 						<?php if ( pixelgrade_option( 'blog_single_show_author_box', true ) ) {
-							get_template_part( 'template-parts/author-bio' );
+							get_template_part( 'template-parts/author_bio' );
 						} ?>
 
 					</footer><!-- .article__footer -->

@@ -42,7 +42,7 @@ $data_main_color = ( pixelgrade_option( 'main_color', '#C59D5F' ) ) ? 'data-colo
 	<![endif]>
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class( $class_name ); echo ' ' . $data_smoothscrolling . ' ' . $data_main_color ?>>
+<body <?php body_class( $class_name ); echo ' ' . $data_smoothscrolling . ' ' . $data_main_color; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 <?php wp_body_open() ?>
 <div id="page" class="page">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'rosa-lite' ); ?></a>

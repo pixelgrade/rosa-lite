@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ){
 }
 
 // create id attribute
-$id = ! empty( $id ) ? 'id="' . esc_attr( $id ) . '"' : '';
+$id = ! empty( $id ) ? 'id="' . esc_attr( $id ) . '"' : ''; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 
 // get needed classes
 $classes = 'pixcode  pixcode--btn  btn';

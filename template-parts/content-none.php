@@ -15,7 +15,7 @@ if ( is_home() && current_user_can( 'publish_posts' ) ) { ?>
 
 	<p><?php printf(
 			wp_kses_post( /* translators: 1: new post link */
-				__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'rosa-lite' ) ), admin_url( 'post-new.php' ) ); ?></p>
+				__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'rosa-lite' ) ), esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
 
 <?php } elseif ( is_search() ) { ?>
 

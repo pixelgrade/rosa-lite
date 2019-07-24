@@ -1,6 +1,7 @@
 <?php
 /**
  * Template Name: Default Template (No title)
+ *
  * The template for displaying pages without a title.
  */
 
@@ -38,7 +39,7 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 						</section>
 						<?php
 						global $numpages;
-						if ( $numpages > 1 ): ?>
+						if ( $numpages > 1 ) { ?>
 							<div class="entry__meta-box  meta-box--pagination">
 								<span class="meta-box__title"><?php esc_html_e( 'Pages', 'rosa-lite' ) ?></span>
 								<?php
@@ -51,7 +52,7 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 								);
 								wp_link_pages( $args ); ?>
 							</div>
-						<?php endif; ?>
+						<?php } ?>
 					</div>
 				</section>
 			</article>

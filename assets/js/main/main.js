@@ -352,7 +352,6 @@ $( window ).load( function() {
 	initVideos();
 	resizeVideos();
 
-	$( '.pixcode--tabs' ).organicTabs();
 	DownArrow.initialize();
 
 	setTimeout( function() {
@@ -447,12 +446,6 @@ function updateStuff() {
 		StickyHeader.update();
 	}
 }
-
-$( window ).on( "organicTabsChange", function() {
-	onResize();
-	refreshStuff();
-	$window.trigger( 'rellax' );
-} );
 
 $window.scroll( function() {
 	newScrollY = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0);

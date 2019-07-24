@@ -36,28 +36,24 @@ if ( ! $has_thumb ) {
 		<?php
 		$date = get_the_time( get_option( 'date_format' ) );
 
+		//we need to replace separators with our custom markup
+		$date = str_replace( ', ', ' ', $date );
+		$date = str_replace( '/ ', ' ', $date );
+		$date = str_replace( '  ', ' ', $date );
 
-			//we need to replace separators with our custom markup
-			$date = str_replace( ', ', ' ', $date );
-			$date = str_replace( '/ ', ' ', $date );
-			$date = str_replace( '  ', ' ', $date );
-
-			$date = str_replace( ' ', '<span class="date__dot"></span>', $date );
-
-        ?>
-
+		$date = str_replace( ' ', '<span class="date__dot"></span>', $date ); ?>
 
 		<header>
-				<div class="article__date">
-					<time class="published" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo $date ?></time>
-				</div>
+			<div class="article__date">
+				<time class="published" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo $date; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></time>
+			</div>
 
 			<h2 class="article__title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 			<div class="separator separator--flower">&#10043;</div>
 		</header>
 
 		<section class="article__content">
-			<?php echo rosa_lite_better_excerpt(); ?>
+			<?php echo rosa_lite_better_excerpt(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		</section>
 
 		<a href="<?php the_permalink(); ?>" class="read-more-button"><?php esc_html_e( 'Read more', 'rosa-lite' ) ?></a>
