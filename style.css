@@ -9568,7 +9568,7 @@ button.nav-trigger {
     outline: none !important; }
   .form-search .search-submit {
     position: absolute;
-    top: 0;
+    top: 3px;
     right: 6px;
     width: 48px;
     width: 3rem;
