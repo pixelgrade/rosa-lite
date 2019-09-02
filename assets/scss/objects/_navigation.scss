@@ -105,7 +105,9 @@
 		transform: translateY(-50%) rotate(45deg);
 	}
 
-	&:hover, &.hover {
+	&:hover,
+	&.hover,
+	&:focus-within {
 		& > .sub-menu {
 			display: block;
 		}

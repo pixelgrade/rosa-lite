@@ -109,7 +109,8 @@
 		@include media-query(palm) {
 			order: 2;
 		}
-		&.active {
+		&.active,
+		&:focus-within {
 			.dropdown__menu {
 				display: block;
 				z-index: 9;
