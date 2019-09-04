@@ -12,7 +12,7 @@ get_header(); ?>
 		<h1 class="hN"><?php esc_html_e( 'Whoops!', 'rosa-lite' ); ?></h1>
 
 		<p class="description"><?php esc_html_e( "The page you're looking for could have been deleted or never existed*", 'rosa-lite' ); ?></p>
-		<a class="btn btn--primary btn--beta btn--large" href="<?php echo esc_url( home_url() ); ?>" title="<?php bloginfo( 'name' ); ?>" rel="home">
+		<a class="btn btn--primary btn--beta btn--large" href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" rel="home">
 			<?php esc_html_e( '&#8592; Return to the Home Page', 'rosa-lite' ); ?>
 		</a>
 

@@ -148,11 +148,11 @@ if ( ! function_exists( 'rosa_lite_load_assets' ) ) {
 		// Scripts
 		$script_dependencies = array( 'jquery', );
 
-		wp_register_script( 'modernizr', get_theme_file_uri( '/assets/js/vendor/modernizr.min.js' ), array(), '3.6.0' );
+		wp_register_script( 'modernizr', get_parent_theme_file_uri( '/assets/js/vendor/modernizr.min.js' ), array(), '3.6.0' );
 		$script_dependencies[] = 'modernizr';
 
-		wp_enqueue_script( 'rosa-plugins-scripts', get_theme_file_uri( '/assets/js/plugins' . $suffix . '.js' ), $script_dependencies, $theme->get( 'Version' ), true );
-		wp_enqueue_script( 'rosa-main-scripts', get_theme_file_uri( '/assets/js/main' . $suffix . '.js' ), array( 'rosa-plugins-scripts' ), $theme->get( 'Version' ), true );
+		wp_enqueue_script( 'rosa-plugins-scripts', get_parent_theme_file_uri( '/assets/js/plugins' . $suffix . '.js' ), $script_dependencies, $theme->get( 'Version' ), true );
+		wp_enqueue_script( 'rosa-main-scripts', get_parent_theme_file_uri( '/assets/js/main' . $suffix . '.js' ), array( 'rosa-plugins-scripts' ), $theme->get( 'Version' ), true );
 
 		$localization_array = array(
 			'ajaxurl'      => admin_url( 'admin-ajax.php' ),
@@ -214,29 +214,29 @@ add_action( 'after_setup_theme', 'rosa_lite_content_width', 0 );
 /**
  * MB string functions for when the MB library is not available
  */
-require get_template_directory() . '/inc/mb_compat.php';
+require_once trailingslashit( get_template_directory() ) . 'inc/mb_compat.php';
 
 /**
  * Custom template tags for this theme.
  */
-require get_template_directory() . '/inc/template-tags.php';
+require_once trailingslashit( get_template_directory() ) . 'inc/template-tags.php';
 
 /**
  * Custom functions that act independently of the theme templates.
  */
-require get_template_directory() . '/inc/extras.php';
+require_once trailingslashit( get_template_directory() ) . 'inc/extras.php';
 
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/customizer.php';
+require_once trailingslashit( get_template_directory() ) . 'inc/customizer.php';
 
 /**
  * Load various plugin integrations
  */
-require get_template_directory() . '/inc/integrations.php';
+require_once trailingslashit( get_template_directory() ) . 'inc/integrations.php';
 
 /**
  * Load Recommended/Required plugins notification
  */
-require get_template_directory() . '/inc/required-plugins.php';
+require_once trailingslashit( get_template_directory() ) . 'inc/required-plugins.php';

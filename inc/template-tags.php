@@ -432,17 +432,17 @@ if ( ! function_exists( 'rosa_lite_get_author_bio_links' ) ) :
 		$profile = unserialize( $str );
 
 		if ( is_array( $profile ) && ! empty( $profile['entry'][0]['urls'] ) ) {
-			$markup .= '<ul class="author__social-links">' . PHP_EOL;
+			$markup .= '<ul class="author__social-links">' . "\n";
 
 			foreach ( $profile['entry'][0]['urls'] as $link ) {
 				if ( ! empty( $link['value'] ) && ! empty( $link['title'] ) ) {
-					$markup .= '<li class="author__social-links__list-item">' . PHP_EOL;
-					$markup .= '<a class="author__social-link" href="' . esc_url( $link['value'] ) . '" target="_blank">' . $link['title'] . '</a>' . PHP_EOL;
-					$markup .= '</li>' . PHP_EOL;
+					$markup .= '<li class="author__social-links__list-item">' . "\n";
+					$markup .= '<a class="author__social-link" href="' . esc_url( $link['value'] ) . '" target="_blank">' . $link['title'] . '</a>' . "\n";
+					$markup .= '</li>' . "\n";
 				}
 			}
 
-			$markup .= '</ul>' . PHP_EOL;
+			$markup .= '</ul>' . "\n";
 		}
 
 		return $markup;
