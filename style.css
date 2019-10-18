@@ -5868,14 +5868,23 @@ button.nav-trigger {
 .page-numbers.prev {
   left: 0; }
   .page-numbers.prev:before {
-    content: "\2190";
     margin-right: 12px; }
+  .page-numbers.prev:before {
+    content: "\2192"; }
+  .page-numbers.prev:before {
+    /*rtl:remove*/
+    content: "\2190"; }
 
 .page-numbers.next {
   right: 0; }
   .page-numbers.next:after {
-    content: "\2192";
     margin-left: 12px; }
+  .page-numbers.next:after {
+    content: "\2190"; }
+  .page-numbers.next:after {
+    /*rtl:begin:remove*/
+    content: "\2192";
+    /*rtl:end:remove*/ }
 
 /*------------------------------------*\
                $PRELOADER

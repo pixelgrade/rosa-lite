@@ -123,8 +123,18 @@
 	left: 0;
 
 	&:before {
-		content: "\2190";
 		margin-right: $_u2;
+	}
+
+	// → displayed for rtl
+	&:before {
+		content: "\2192";
+	}
+
+	// ← removed for rtl
+	&:before {
+		/*rtl:remove*/
+		content: "\2190";
 	}
 }
 
@@ -132,7 +142,18 @@
 	right: 0;
 
 	&:after {
-		content: "\2192";
 		margin-left: $_u2;
+	}
+
+	// ← displayed for rtl
+	&:after {
+		content: "\2190";
+	}
+
+	// → removed for rtl
+	&:after {
+		/*rtl:begin:remove*/
+		content: "\2192";
+		/*rtl:end:remove*/
 	}
 }

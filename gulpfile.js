@@ -66,7 +66,7 @@ function stylesRTL() {
 		.pipe(gulp.dest('.', {mode: "0644"}))
 }
 stylesRTL.description = 'Generate style-rtl.css file based on style.css';
-gulp.task('styles-rtl', stylesRTL)
+gulp.task('styles-rtl', stylesRTL);
 
 function stylesAdmin() {
 
@@ -82,7 +82,7 @@ gulp.task('styles-admin', stylesAdmin )
 
 function stylesWatch() {
 	plugins.livereload.listen();
-	return gulp.watch('assets/scss/**/*.scss', stylesMain);
+	return gulp.watch('assets/scss/**/*.scss', gulp.series( stylesMain, stylesRTL ) );
 }
 gulp.task('styles-watch', stylesWatch);
 
@@ -131,7 +131,7 @@ gulp.task('scripts-watch', scriptsWatch);
 
 function watch() {
 	plugins.livereload.listen();
-	gulp.watch('assets/scss/**/*.scss', stylesMain);
+	gulp.watch('assets/scss/**/*.scss', gulp.series( stylesMain, stylesRTL ));
 	gulp.watch('assets/js/**/*.js', scriptsSequence);
 }
 gulp.task('watch', watch);
