@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ){
 			$image_alt = get_bloginfo( 'name', 'display' );
 		}
 		?>
-		<h1 class="site-title site-title--image">
+		<div class="site-title site-title--image">
 			<a class="site-logo  site-logo--image custom-logo-link" href="<?php echo esc_url( home_url() ); ?>" title="<?php bloginfo( 'name' ) ?>" rel="home">
 				<img class="site-logo-img--light custom-logo" src="<?php echo esc_url( wp_get_attachment_image_url( $custom_logo_id, 'full' ) ); ?>" rel="logo" alt="<?php echo esc_attr( $image_alt ); ?>"/>
 				<?php
@@ -35,12 +35,22 @@ if ( ! defined( 'ABSPATH' ) ){
 					<img class="site-logo-img--dark" src="<?php echo esc_url( wp_get_attachment_image_url( $inverted_logo_id, 'full' ) ); ?>" rel="logo-alt" alt="<?php echo esc_attr( $inverted_image_alt ); ?>"/>
 				<?php } ?>
 			</a>
-		</h1>
-	<?php } else { ?>
-		<h1 class="site-title site-title--text">
-			<a class="site-logo  site-logo--text" href="<?php echo esc_url( home_url() ); ?>" rel="home">
-				<?php bloginfo( 'name' ) ?>
-			</a>
-		</h1>
+		</div>
+	<?php } else {
+
+		if ( is_front_page() && is_home() ) : ?>
+            <h1 class="site-title site-title--text">
+                <a class="site-logo  site-logo--text" href="<?php echo esc_url( home_url() ); ?>" rel="home">
+					<?php bloginfo( 'name' ) ?>
+                </a>
+            </h1> <?php
+        else: ?>
+            <p class="site-title site-title--text">
+                <a class="site-logo  site-logo--text" href="<?php echo esc_url( home_url() ); ?>" rel="home">
+			        <?php bloginfo( 'name' ) ?>
+                </a>
+            </p>
+	    <?php endif; ?>
+
 	<?php } ?>
 </div>

@@ -72,6 +72,11 @@
 	}
 }
 
+.site-title--text {
+	@include font-size($h1-size);
+	@extend h2;
+}
+
 .site-logo {
 	@extend .flexbox__item;
 
