@@ -4244,7 +4244,8 @@ p .alignnone {
 
 .aligncenter {
   margin-right: auto;
-  margin-left: auto; }
+  margin-left: auto;
+  text-align: center; }
 
 .entry-content .aligncenter + p, .entry-content
 .alignnone + p {
@@ -4257,11 +4258,13 @@ p .alignnone {
 .alignleft {
   margin-right: 2rem !important;
   float: left;
+  text-align: left;
   clear: left; }
 
 .alignright {
   margin-left: 2rem !important;
   float: right;
+  text-align: right;
   clear: right; }
 
 .aligncenter, .aligncenter img {

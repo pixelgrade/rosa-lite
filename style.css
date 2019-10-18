@@ -4248,7 +4248,8 @@ p .alignnone {
 
 .aligncenter {
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  text-align: center; }
 
 .entry-content .aligncenter + p, .entry-content
 .alignnone + p {
@@ -4262,6 +4263,7 @@ p .alignnone {
   /*rtl:begin:ignore*/
   margin-right: 2rem !important;
   float: left;
+  text-align: left;
   clear: left;
   /*rtl:end:ignore*/ }
 
@@ -4269,6 +4271,7 @@ p .alignnone {
   /*rtl:begin:ignore*/
   margin-left: 2rem !important;
   float: right;
+  text-align: right;
   clear: right;
   /*rtl:end:ignore*/ }
 
