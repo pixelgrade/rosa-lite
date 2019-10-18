@@ -3517,18 +3517,11 @@ html.flexbox, html.site-title {
     display: block; }
 
 .wp-caption-text {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  margin-bottom: 0 !important;
-  padding: 6px 12px;
-  font-size: 13px;
-  text-align: center;
-  color: inherit;
-  background: rgba(0, 0, 0, 0.6); }
+  font-size: 13px; }
 
 .gallery-item {
-  position: relative; }
+  position: relative;
+  margin: 0; }
   .gallery-item .wp-caption-text {
     left: 6px; }
   .gallery-item .gallery-icon a {
@@ -3716,7 +3709,7 @@ img[height] {
         border-left: 24px solid transparent;
         border-bottom: 24px solid transparent; } }
   .gallery .gallery-icon img {
-    width: 100%;
+    margin: 0;
     border: 0 !important; }
   .gallery .gallery-caption {
     padding: 0;

@@ -44,18 +44,7 @@ p img {
 }
 
 .wp-caption-text {
-	position: absolute;
-	left: 0;
-	bottom: 0;
-
-	margin-bottom: 0 !important;
-	padding: $_u4 $_u2;
-
 	font-size: 13px;
-	text-align: center;
-
-	color: inherit;
-	background: rgba(0, 0, 0, .6);
 }
 
 .sticky {
@@ -68,6 +57,8 @@ p img {
 
 .gallery-item{
 	position: relative;
+
+	margin: 0;
 
 	.wp-caption-text{
 		left: 6px;
@@ -267,7 +258,7 @@ img[width], img[height] {
 	.gallery-icon {
 
 		img {
-			width: 100%;
+			margin: 0;
 			border: 0 !important;
 		}
 	}
