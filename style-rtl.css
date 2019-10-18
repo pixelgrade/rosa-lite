@@ -4198,16 +4198,16 @@ input[type="color"],
     $IMAGES
 \*------------------------------------*/
 p .alignleft {
-  margin-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 3rem;
   margin-top: 3rem;
-  margin-bottom: 3rem;
-  margin-left: 3rem; }
+  margin-bottom: 3rem; }
 
 p .alignright {
-  margin-left: 0 !important;
+  margin-right: 0 !important;
+  margin-left: 3rem;
   margin-top: 3rem;
-  margin-bottom: 3rem;
-  margin-right: 3rem; }
+  margin-bottom: 3rem; }
 
 p .aligncenter {
   margin-top: 3rem;
@@ -4255,14 +4255,14 @@ p .alignnone {
   max-width: 50%; }
 
 .alignleft {
-  margin-left: 2rem;
-  float: right;
-  clear: right; }
-
-.alignright {
-  margin-right: 2rem;
+  margin-right: 2rem !important;
   float: left;
   clear: left; }
+
+.alignright {
+  margin-left: 2rem !important;
+  float: right;
+  clear: right; }
 
 .aligncenter, .aligncenter img {
   margin-right: auto;

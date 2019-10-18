@@ -3842,16 +3842,20 @@ strong {
   font-weight: 600; }
 
 p .alignleft {
+  /*rtl:begin:ignore*/
   margin-left: 0 !important;
+  margin-right: 3rem;
+  /*rtl:end:ignore*/
   margin-top: 3rem;
-  margin-bottom: 3rem;
-  margin-right: 3rem; }
+  margin-bottom: 3rem; }
 
 p .alignright {
+  /*rtl:begin:ignore*/
   margin-right: 0 !important;
+  margin-left: 3rem;
+  /*rtl:end:ignore*/
   margin-top: 3rem;
-  margin-bottom: 3rem;
-  margin-left: 3rem; }
+  margin-bottom: 3rem; }
 
 p .aligncenter {
   margin-top: 3rem;
@@ -3899,14 +3903,18 @@ p .alignnone {
   max-width: 50%; }
 
 .alignleft {
-  margin-right: 2rem;
+  /*rtl:begin:ignore*/
+  margin-right: 2rem !important;
   float: left;
-  clear: left; }
+  clear: left;
+  /*rtl:end:ignore*/ }
 
 .alignright {
-  margin-left: 2rem;
+  /*rtl:begin:ignore*/
+  margin-left: 2rem !important;
   float: right;
-  clear: right; }
+  clear: right;
+  /*rtl:end:ignore*/ }
 
 .aligncenter, .aligncenter img {
   margin-left: auto;

@@ -8,17 +8,21 @@ $wp-align-image-size: 50% !default;
 
 p {
     .alignleft {
+        /*rtl:begin:ignore*/
         margin-left: 0 !important;
+        margin-right: $wp-align-wrapped-image-horizontal-padding;
+        /*rtl:end:ignore*/
         margin-top: $wp-align-wrapped-image-vertical-padding;
         margin-bottom: $wp-align-wrapped-image-vertical-padding;
-        margin-right: $wp-align-wrapped-image-horizontal-padding;
     }
 
     .alignright {
+        /*rtl:begin:ignore*/
         margin-right: 0 !important;
+        margin-left: $wp-align-wrapped-image-horizontal-padding;
+        /*rtl:end:ignore*/
         margin-top: $wp-align-wrapped-image-vertical-padding;
         margin-bottom: $wp-align-wrapped-image-vertical-padding;
-        margin-left: $wp-align-wrapped-image-horizontal-padding;
     }
 
     .aligncenter {
@@ -85,15 +89,19 @@ p {
 }
 
 .alignleft {
-    margin-right: $wp-align-image-horizontal-padding;
+    /*rtl:begin:ignore*/
+    margin-right: $wp-align-image-horizontal-padding !important;
     float: left;
     clear: left;
+    /*rtl:end:ignore*/
 }
 
 .alignright {
-    margin-left: $wp-align-image-horizontal-padding;
+    /*rtl:begin:ignore*/
+    margin-left: $wp-align-image-horizontal-padding !important;
     float: right;
     clear: right;
+    /*rtl:end:ignore*/
 }
 
 .aligncenter {
