@@ -5149,6 +5149,9 @@ li.depth-2:before {
   transition: opacity .15s ease-in-out, color .15s ease-in-out;
   -webkit-transform: translateZ(0);
           transform: translateZ(0); }
+  @media only screen and (max-width: 899px) {
+    .comment-edit-link, .comment-reply-link {
+      opacity: .55; } }
 
 .comment-reply-link {
   color: #c59d5f; }

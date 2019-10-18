@@ -277,6 +277,10 @@ li.depth-2:before {
 	transition: opacity .15s ease-in-out,
 				color .15s ease-in-out;
 	transform: translateZ(0);
+
+	@include media-query(palm) {
+		opacity: .55;
+	}
 }
 
 .comment-reply-link {
