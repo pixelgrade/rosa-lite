@@ -469,6 +469,10 @@ function rosalite_fill_customify_options( $options ) {
 							'selector' => '.copyright-area__light .btn--top_text .btn__arrow',
 						),
 						array(
+							'property'   => 'fill',
+							'selector'  => '.search-submit svg path'
+						),
+						array(
 							'property'        => 'color',
 							'unit'            => '20',
 							'selector'        => '.comment-form-comment:before',
@@ -578,6 +582,8 @@ function rosalite_fill_customify_options( $options ) {
 						array(
 							'property' => 'color',
 							'selector' => 'h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
+												.article__title a, 
+												.latest-comments__title a
 								
 								                .article-archive .article__title a,
 								                .article-archive .article__title a:hover,
@@ -951,6 +957,7 @@ function rosalite_fill_customify_options( $options ) {
 						array(
 							'property' => 'background-color',
 							'selector' => 'html,
+							body,
                                                 body.mce-content-body,
                                                 .page .article__content,
                                                 .desc__content,
@@ -1162,3 +1169,96 @@ function rosalite_add_default_color_palette( $color_palettes ) {
 
 	return $color_palettes;
 }
+
+function rosa_transparent_color( $value, $selector, $property, $unit ) {
+	if ( empty( $unit ) ) {
+		$unit = '20';
+	}
+
+	$output = $selector . ' {' .
+	          $property . ': ' . $value . $unit . ';' .
+	          '}';
+
+	return $output;
+}
+
+function rosa_transparent_color_customizer_preview() {
+
+	$js = "
+    
+    function makeSafeForCSS(name) {
+        return name.replace(/[^a-z0-9]/g, function(s) {
+            var c = s.charCodeAt(0);
+            if (c == 32) return '-';
+            if (c >= 65 && c <= 90) return '_' + s.toLowerCase();
+            return '__' + ('000' + c.toString(16)).slice(-4);
+        });
+    }
+    
+    String.prototype.hashCode = function() {
+        var hash = 0, i, chr;
+        
+        if ( this.length === 0 ) return hash;
+        
+        for (i = 0; i < this.length; i++) {
+            chr   = this.charCodeAt(i);
+            hash  = ((hash << 5) - hash) + chr;
+            hash |= 0; // Convert to 32bit integer
+        }
+        return hash;
+    };
+    
+function rosa_transparent_color( value, selector, property, unit ) {
+
+    var css = '',
+        id = 'rosa_transparent_color_style_tag_' + makeSafeForCSS( property + selector ).hashCode(),
+        style = document.getElementById( id ),
+        head = document.head || document.getElementsByTagName('head')[0];
+        
+    if ( typeof unit !== 'string' ) {
+        unit = '20';
+    }
+
+    css += selector + ' {' + property + ': ' + value.substring(0,7) + unit + ';}';
+    
+    if ( style !== null ) {
+        style.innerHTML = css;
+    } else {
+        style = document.createElement('style');
+        style.setAttribute('id', id);
+
+        style.type = 'text/css';
+        if ( style.styleSheet ) {
+            style.styleSheet.cssText = css;
+        } else {
+            style.appendChild(document.createTextNode(css));
+        }
+
+        head.appendChild(style);
+    }
+}" . PHP_EOL;
+	wp_add_inline_script( 'customify-previewer-scripts', $js );
+}
+
+add_action( 'customize_preview_init', 'rosa_transparent_color_customizer_preview', 20 );
+
+function rosa_map_color( $value, $selector, $property, $unit ) {
+	$output = $selector . ' {' .
+	          $property . ': ' . $value . $unit . ';' .
+	          '}';
+
+	return $output;
+}
+
+function rosa_map_color_customizer_preview() {
+
+	$js = "
+	
+	function rosa_map_color( value, selector, property, unit ) {
+		jQuery( window.document.body ).trigger( 'rosa:update-map-color', value );
+	}" . PHP_EOL;
+
+	wp_add_inline_script( 'customify-previewer-scripts', $js );
+}
+
+add_action( 'customize_preview_init', 'rosa_map_color_customizer_preview', 20 );
