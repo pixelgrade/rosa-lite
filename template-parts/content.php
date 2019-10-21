@@ -24,8 +24,7 @@ if ( ! $has_thumb ) {
 	    if ( ! empty( $image[0] ) ) { ?>
 
 		    <div class="article__featured-image">
-			    <a href="<?php the_permalink(); ?>"><img src="<?php echo esc_url( $image[0] ); ?>"
-			                                             alt="<?php the_title(); ?>"/></a>
+			    <a href="<?php the_permalink(); ?>"><img src="<?php echo esc_url( $image[0] ); ?>" alt="<?php the_title(); ?>"/></a>
 		    </div>
 
 	    <?php }
@@ -36,7 +35,7 @@ if ( ! $has_thumb ) {
 		<?php
 		$date = get_the_time( get_option( 'date_format' ) );
 
-		//we need to replace separators with our custom markup
+		// We need to replace separators with our custom markup.
 		$date = str_replace( ', ', ' ', $date );
 		$date = str_replace( '/ ', ' ', $date );
 		$date = str_replace( '  ', ' ', $date );

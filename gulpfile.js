@@ -2,7 +2,8 @@ var gulp = require('gulp'),
 	plugins = require('gulp-load-plugins')(),
 	del = require('del'),
 	fs = require('fs'),
-	cp = require('child_process');
+	cp = require('child_process'),
+	commandExistsSync = require('command-exists').sync;
 
 // Gulp / Node utilities
 var u = require( 'gulp-util' );
@@ -15,11 +16,11 @@ function logError( err, res ) {
 }
 
 var jsFiles = [
-	'./assets/js/main/wrapper-start.js',
-	'./assets/js/main/shared-vars.js',
-	'./assets/js/modules/*.js',
-	'./assets/js/main/main.js',
-	'./assets/js/main/wrapper-end.js'
+	'./assets/src/main/wrapper-start.js',
+	'./assets/src/main/shared-vars.js',
+	'./assets/src/modules/*.js',
+	'./assets/src/main/main.js',
+	'./assets/src/main/wrapper-end.js'
 ];
 
 var theme_name = 'rosa-lite',
@@ -107,7 +108,7 @@ function scriptsMain() {
 gulp.task('scripts-main', scriptsMain);
 
 function scriptsVendor() {
-	return gulp.src('./assets/js/plugins/*.js')
+	return gulp.src('./assets/src/plugins/*.js')
 		.pipe(plugins.concat('plugins.js'))
 		.pipe(plugins.prettier())
 		.pipe(gulp.dest('./assets/js/'))
@@ -125,14 +126,14 @@ gulp.task( 'scripts', scriptsSequence );
 
 function scriptsWatch() {
 	plugins.livereload.listen();
-	return gulp.watch('assets/js/**/*.js', scriptsSequence);
+	return gulp.watch('assets/src/**/*.js', scriptsSequence);
 }
 gulp.task('scripts-watch', scriptsWatch);
 
 function watch() {
 	plugins.livereload.listen();
 	gulp.watch('assets/scss/**/*.scss', gulp.series( stylesMain, stylesRTL ));
-	gulp.watch('assets/js/**/*.js', scriptsSequence);
+	gulp.watch('assets/src/**/*.js', scriptsSequence);
 }
 gulp.task('watch', watch);
 
@@ -202,7 +203,10 @@ function removeUnneededFiles(done) {
 		'.jshintignore',
 		'browserslist',
 		'babel.config.js',
-		'gulpconfig.json'
+		'gulpconfig.json',
+		'assets/scss',
+		'assets/src',
+		'inc/admin/scss'
 	];
 
 	files_to_remove.forEach(function (e, k) {
@@ -232,8 +236,12 @@ maybeFixBuildFilePermissions.description = 'Make sure that all files in the buil
 gulp.task( 'fix-build-file-permissions', maybeFixBuildFilePermissions );
 
 function maybeFixIncorrectLineEndings(done) {
-
-	cp.execSync('find ./../build -type f -print0 | xargs -0 -n 1 -P 4 dos2unix');
+	if (!commandExistsSync('dos2unix')) {
+		log( c.red( 'Could not ensure that line endings are correct on the build files since you are missing the "dos2unix" utility! You should install it.' ) );
+		log( c.red( 'However, this is not a very big deal. The build task will continue.' ) );
+	} else {
+		cp.execSync('find ./../build -type f -print0 | xargs -0 -n 1 -P 4 dos2unix');
+	}
 
 	return done();
 }
@@ -273,74 +281,3 @@ function zipSequence(cb) {
 }
 zipSequence.description = 'Creates the zip file';
 gulp.task( 'zip', zipSequence  );
-
-function updateDemoInstall() {
-
-	var run_exec = require('child_process').exec;
-
-	gulp.src('./')
-		.pipe(plugins.prompt.confirm( "This task will stash all your local changes without commiting them,\n Make sure you did all your commits and pushes to the main " + main_branch + " branch! \n Are you sure you want to continue?!? "))
-		.pipe(plugins.prompt.prompt({
-			type: 'list',
-			name: 'demo_update',
-			message: 'Which demo would you like to update?',
-			choices: ['cancel', 'test.demos.pixelgrade.com/' + theme_name, 'demos.pixelgrade.com/' + theme_name]
-		}, function(res){
-
-			if ( res.demo_update === 'cancel' ) {
-				console.log( 'No hard feelings!' );
-				return false;
-			}
-
-			console.log('This task may ask for a github user / password or a ssh passphrase');
-
-			if ( res.demo_update ===  'test.demos.pixelgrade.com/' + theme_name ) {
-				run_exec('git fetch; git checkout test; git pull origin ' + main_branch + '; git push origin test; git checkout ' + main_branch + ';', function (err, stdout, stderr) {
-					// console.log(stdout);
-					// console.log(stderr);
-				});
-				console.log( " ==== The master branch is up-to-date now. But is the CircleCi job to update the remote test.demo.pixelgrade.com" );
-				return true;
-			}
-
-
-			if ( res.demo_update === 'demos.pixelgrade.com/' + theme_name ) {
-				run_exec('git fetch; git checkout master; git pull origin test; git push origin master; git checkout ' + main_branch + ';', function (err, stdout, stderr) {
-					// console.log(stdout);
-					// console.log(stderr);
-				});
-
-				console.log( " ==== The master branch is up-to-date now. But is the CircleCi job to update the remote demo.pixelgrade.com" );
-				return true;
-			}
-		}));
-}
-gulp.task('update-demo', updateDemoInstall);
-
-
-/**
- * Short commands help
- */
-function help(done) {
-
-	var $help = '\nCommands available : \n \n' +
-		'=== General Commands === \n' +
-		'start              (default)Compiles all styles and scripts and makes the theme ready to start \n' +
-		'zip               	Generate the zip archive \n' +
-		'build				Generate the build directory with the cleaned theme \n' +
-		'help               Print all commands \n' +
-		'=== Style === \n' +
-		'styles-main        Compiles styles in production mode\n' +
-		'styles-rtl         Compiles RTL styles in production mode\n' +
-		'=== Scripts === \n' +
-		'scripts            Concatenate all js scripts \n' +
-		'=== Watchers === \n' +
-		'watch              Watches all js and scss files \n' +
-		'styles-watch       Watch only styles\n' +
-		'scripts-watch      Watch scripts only \n';
-
-	console.log($help);
-
-	done();
-}
-gulp.task('help', help);

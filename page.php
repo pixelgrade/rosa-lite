@@ -35,7 +35,6 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 
 		$border_style = 'simple';
 		$classes .= ' border-' . $border_style;
-
 		?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
 			<section class="article__content">

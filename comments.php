@@ -22,7 +22,7 @@ if ( post_password_required() ) {
 	return;
 } ?>
 
-	<div id="comments" class="comments-area  <?php if ( ! have_comments() ) { echo 'no-comments'; } ?>">
+	<div id="comments" class="comments-area  <?php echo ( ! have_comments() ) ? 'no-comments' : ''; ?>">
 		<div class="comments-area-title">
 			<h3 class="comments-title">
 				<?php

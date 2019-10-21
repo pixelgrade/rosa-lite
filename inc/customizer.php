@@ -143,7 +143,7 @@ function rosa_lite_customizer_refresh_on_custom_logo( $args, $id ) {
 add_filter( 'customize_dynamic_setting_args', 'rosa_lite_customizer_refresh_on_custom_logo', 10, 2 );
 
 /**
- * Generate a link to the Timber Lite info page.
+ * Generate a link to the Rosa Lite info page.
  */
 function rosa_lite_get_pro_link() {
 	return 'https://pixelgrade.com/themes/portfolio/rosa-pro/?utm_source=rosa-lite-clients&utm_medium=customizer&utm_campaign=rosa-lite';
@@ -154,7 +154,7 @@ function rosa_lite_get_pro_link() {
  */
 function rosa_lite_customize_preview_js() {
 
-	wp_enqueue_script( 'rosa_customizer_preview', get_template_directory_uri() . '/assets/js/admin/customize-preview.js', array( 'customize-preview' ), '1.0.0', true );
+	wp_enqueue_script( 'rosa_customizer_preview', get_template_directory_uri() . '/assets/js/admin/customize-preview.js', array( 'customize-preview' ), '1.0.2', true );
 }
 add_action( 'customize_preview_init', 'rosa_lite_customize_preview_js' );
 
@@ -162,7 +162,7 @@ add_action( 'customize_preview_init', 'rosa_lite_customize_preview_js' );
  * Assets that will be loaded for the customizer sidebar.
  */
 function rosa_lite_load_customize_js() {
-	wp_enqueue_style( 'rosa-customizer-style', get_template_directory_uri() . '/inc/admin/css/customizer.css', null, '1.0.0', false );
+	wp_enqueue_style( 'rosa-customizer-style', get_template_directory_uri() . '/inc/admin/css/customizer.css', null, '1.0.2', false );
 }
 add_action( 'customize_controls_enqueue_scripts', 'rosa_lite_load_customize_js' );
 

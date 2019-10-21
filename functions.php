@@ -166,16 +166,6 @@ if ( ! function_exists( 'rosa_lite_load_assets' ) ) {
 }
 add_action( 'wp_enqueue_scripts', 'rosa_lite_load_assets' );
 
-if ( ! function_exists( 'rosa_lite_load_admin_assets' ) ) {
-
-	function rosa_lite_load_admin_assets() {
-		$theme = wp_get_theme( get_template() );
-
-		wp_enqueue_script( 'rosa_admin_general_script', get_template_directory_uri() . '/assets/js/admin/admin-general.js', array('jquery'), $theme->get( 'Version' ) );
-	}
-}
-add_action( 'admin_enqueue_scripts', 'rosa_lite_load_admin_assets' );
-
 if ( ! function_exists( 'rosa_lite_register_sidebars' ) ) {
 	/*
 	 * Register Widgets areas.
