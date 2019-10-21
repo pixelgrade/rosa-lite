@@ -56,7 +56,7 @@ if ( ! $has_thumb ) {
 			<?php echo rosa_lite_better_excerpt(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		</section>
 
-		<a href="<?php the_permalink(); ?>" class="read-more-button"><?php esc_html_e( 'Read more', 'rosa-lite' ) ?></a>
+		<a href="<?php the_permalink(); ?>" class="read-more-button"><?php esc_html_e( 'Read more', '__theme_txtd' ) ?></a>
 
 	</div><!-- .article__body -->
 </article>

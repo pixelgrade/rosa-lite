@@ -45,7 +45,7 @@ $data_main_color = ( pixelgrade_option( 'main_color', '#C59D5F' ) ) ? 'data-colo
 <body <?php body_class( $class_name ); echo ' ' . $data_smoothscrolling . ' ' . $data_main_color; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 <?php wp_body_open() ?>
 <div id="page" class="page">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'rosa-lite' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', '__theme_txtd' ); ?></a>
 	<div class="site-header  header--inversed  js-header">
 		<div class="container">
 			<div class="flexbox">
@@ -66,7 +66,7 @@ $data_main_color = ( pixelgrade_option( 'main_color', '#C59D5F' ) ) ? 'data-colo
 						$has_main_menu = true;
 					} ?>
 					<nav class="navigation  navigation--main<?php echo ( ! $has_main_menu ) ? '  no-menu' : ''; ?>" id="js-navigation--main">
-						<h2 class="accessibility"><?php esc_html_e( 'Primary Navigation', 'rosa-lite' ) ?></h2>
+						<h2 class="accessibility"><?php esc_html_e( 'Primary Navigation', '__theme_txtd' ) ?></h2>
 
 						<?php
 						wp_nav_menu( array(

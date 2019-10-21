@@ -27,22 +27,22 @@ if ( post_password_required() ) {
 			<h3 class="comments-title">
 				<?php
 				if ( have_comments() ) {
-					echo '<span class="comment-number total">' . esc_html( number_format_i18n( get_comments_number() ) ) . '</span>' . esc_html( _n( 'Comment', 'Comments', get_comments_number(), 'rosa-lite' ) );
+					echo '<span class="comment-number total">' . esc_html( number_format_i18n( get_comments_number() ) ) . '</span>' . esc_html( _n( 'Comment', 'Comments', get_comments_number(), '__theme_txtd' ) );
 				} else {
-					echo wp_kses_post( __( '<span class="comment-number total">+</span> There are no comments', 'rosa-lite' ) );
+					echo wp_kses_post( __( '<span class="comment-number total">+</span> There are no comments', '__theme_txtd' ) );
 				} ?>
 			</h3>
-			<?php echo '<a class="comments_add-comment" href="#reply-title">' . esc_html__( 'Add yours', 'rosa-lite' ) . '</a>'; ?>
+			<?php echo '<a class="comments_add-comment" href="#reply-title">' . esc_html__( 'Add yours', '__theme_txtd' ) . '</a>'; ?>
 		</div>
 		<?php
 		// You can start editing here -- including this comment!
 		if ( have_comments() ) :
 			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 				<nav role="navigation" id="comment-nav-above" class="site-navigation comment-navigation">
-					<h3 class="assistive-text"><?php esc_html_e( 'Comment navigation', 'rosa-lite' ); ?></h3>
+					<h3 class="assistive-text"><?php esc_html_e( 'Comment navigation', '__theme_txtd' ); ?></h3>
 
-					<div class="nav-previous"><?php previous_comments_link( esc_html__( '&larr; Older Comments', 'rosa-lite' ) ); ?></div>
-					<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments &rarr;', 'rosa-lite' ) ); ?></div>
+					<div class="nav-previous"><?php previous_comments_link( esc_html__( '&larr; Older Comments', '__theme_txtd' ) ); ?></div>
+					<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments &rarr;', '__theme_txtd' ) ); ?></div>
 				</nav><!-- #comment-nav-before .site-navigation .comment-navigation -->
 			<?php endif; // check for comment navigation ?>
 
@@ -59,10 +59,10 @@ if ( post_password_required() ) {
 
 			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 				<nav role="navigation" id="comment-nav-below" class="site-navigation comment-navigation">
-					<h3 class="assistive-text"><?php esc_html_e( 'Comment navigation', 'rosa-lite' ); ?></h3>
+					<h3 class="assistive-text"><?php esc_html_e( 'Comment navigation', '__theme_txtd' ); ?></h3>
 
-					<div class="nav-previous"><?php previous_comments_link( esc_html__( '&larr; Older Comments', 'rosa-lite' ) ); ?></div>
-					<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments &rarr;', 'rosa-lite' ) ); ?></div>
+					<div class="nav-previous"><?php previous_comments_link( esc_html__( '&larr; Older Comments', '__theme_txtd' ) ); ?></div>
+					<div class="nav-next"><?php next_comments_link( esc_html__( 'Newer Comments &rarr;', '__theme_txtd' ) ); ?></div>
 				</nav><!-- #comment-nav-below .site-navigation .comment-navigation -->
 			<?php endif; // check for comment navigation ?>
 
@@ -73,21 +73,21 @@ if ( post_password_required() ) {
 <?php
 // If comments are closed and there are comments, let's leave a little note, shall we?
 if ( ! comments_open() && post_type_supports( get_post_type(), 'comments' ) && ! is_page() ) { ?>
-	<p class="nocomments"><?php esc_html_e( 'Comments are closed.', 'rosa-lite' ); ?></p>
+	<p class="nocomments"><?php esc_html_e( 'Comments are closed.', '__theme_txtd' ); ?></p>
 <?php }
 
 $comments_args = array(
 	// change the title of the send button
-	'title_reply'          => wp_kses_post( __( '<span class="comment-number total">+</span> Leave a Comment', 'rosa-lite' ) ),
+	'title_reply'          => wp_kses_post( __( '<span class="comment-number total">+</span> Leave a Comment', '__theme_txtd' ) ),
 	// remove "Text or HTML to be displayed after the set of comment fields"
 	'comment_notes_before' => '',
 	'comment_notes_after'  => '',
 	'id_submit'            => 'comment-submit',
-	'label_submit'         => esc_html__( 'Submit', 'rosa-lite' ),
+	'label_submit'         => esc_html__( 'Submit', '__theme_txtd' ),
 	// redefine your own textarea (the comment body)
 	'comment_field'        => '<p class="comment-form-comment">
-<label for="comment" class="show-on-ie8">' . esc_html__( 'Comment', 'rosa-lite' ) . '</label>
-<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="' . esc_html__( 'Your thoughts..', 'rosa-lite' ) . '"></textarea>
+<label for="comment" class="show-on-ie8">' . esc_html__( 'Comment', '__theme_txtd' ) . '</label>
+<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="' . esc_html__( 'Your thoughts..', '__theme_txtd' ) . '"></textarea>
 </p>',
 );
 

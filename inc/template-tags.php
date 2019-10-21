@@ -18,14 +18,14 @@ if( ! function_exists( 'rosa_lite_the_archive_title' ) ) {
 				<?php if ( isset( $object->post_title ) ) {
 					echo $object->post_title; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				} else {
-					esc_html_e( 'News', 'rosa-lite' );
+					esc_html_e( 'News', '__theme_txtd' );
 				} ?></h1>
 			<hr class="separator"/>
 			<?php
 		} elseif ( is_search() ) {
 			?>
 			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php esc_html_e( 'Search Results for: ', 'rosa-lite' ) ?></span>
+				<span class="archive__side-title beta"><?php esc_html_e( 'Search Results for: ', '__theme_txtd' ) ?></span>
 
 				<h1 class="hN  archive__title"><?php echo get_search_query(); ?></h1>
 			</div>
@@ -35,39 +35,39 @@ if( ! function_exists( 'rosa_lite_the_archive_title' ) ) {
 			?>
 			<div class="heading headin--main">
 				<h1 class="archive__title"><?php echo single_tag_title( '', false ); ?></h1>
-				<span class="archive__side-title beta"><?php esc_html_e( 'Tag', 'rosa-lite' ) ?></span>
+				<span class="archive__side-title beta"><?php esc_html_e( 'Tag', '__theme_txtd' ) ?></span>
 			</div>
 			<hr class="separator"/>
 		<?php } elseif ( ! empty( $object ) && isset( $object->term_id ) ) { ?>
 			<div class="heading headin--main">
 				<h1 class="archive__title"><?php echo esc_html( $object->name ); ?></h1>
-				<span class="archive__side-title beta"><?php esc_html_e( 'Category', 'rosa-lite' ) ?></span>
+				<span class="archive__side-title beta"><?php esc_html_e( 'Category', '__theme_txtd' ) ?></span>
 			</div>
 			<hr class="separator"/>
 		<?php } elseif ( is_day() ) { ?>
 			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php esc_html_e( 'Daily Archives: ', 'rosa-lite' ) ?></span>
+				<span class="archive__side-title beta"><?php esc_html_e( 'Daily Archives: ', '__theme_txtd' ) ?></span>
 
 				<h1 class="archive__title"><?php echo get_the_date(); ?></h1>
 			</div>
 			<hr class="separator"/>
 		<?php } elseif ( is_month() ) { ?>
 			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php esc_html_e( 'Monthly Archives: ', 'rosa-lite' ) ?></span>
+				<span class="archive__side-title beta"><?php esc_html_e( 'Monthly Archives: ', '__theme_txtd' ) ?></span>
 
-				<h1 class="archive__title"><?php echo get_the_date( _x( 'F Y', 'monthly archives date format', 'rosa-lite' ) ); ?></h1>
+				<h1 class="archive__title"><?php echo get_the_date( _x( 'F Y', 'monthly archives date format', '__theme_txtd' ) ); ?></h1>
 			</div>
 			<hr class="separator"/>
 		<?php } elseif ( is_year() ) { ?>
 			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php esc_html_e( 'Yearly Archives: ', 'rosa-lite' ) ?></span>
+				<span class="archive__side-title beta"><?php esc_html_e( 'Yearly Archives: ', '__theme_txtd' ) ?></span>
 
-				<h1 class="archive__title"><?php echo get_the_date( _x( 'Y', 'yearly archives date format', 'rosa-lite' ) ); ?></h1>
+				<h1 class="archive__title"><?php echo get_the_date( _x( 'Y', 'yearly archives date format', '__theme_txtd' ) ); ?></h1>
 			</div>
 			<hr class="separator"/>
 		<?php } else { ?>
 			<div class="heading headin--main">
-				<span class="archive__side-title beta"><?php esc_html_e( 'Archives', 'rosa-lite' ) ?></span>
+				<span class="archive__side-title beta"><?php esc_html_e( 'Archives', '__theme_txtd' ) ?></span>
 			</div>
 			<hr class="separator"/>
 			<?php
@@ -79,7 +79,7 @@ if ( ! function_exists( 'rosa_lite_please_select_a_menu_fallback' ) ) {
 	function rosa_lite_please_select_a_menu_fallback() {
 		echo '
 		<ul class="nav  nav--main" >
-			<li><a href="' . esc_url( admin_url( 'nav-menus.php?action=locations' ) ) . '">' . esc_html__( 'Please select a menu in this location', 'rosa-lite' ) . '</a></li>
+			<li><a href="' . esc_url( admin_url( 'nav-menus.php?action=locations' ) ) . '">' . esc_html__( 'Please select a menu in this location', '__theme_txtd' ) . '</a></li>
 		</ul>';
 	}
 }
@@ -104,11 +104,11 @@ if ( ! function_exists( 'rosa_lite_comments' ) ) {
 	function rosa_lite_comments( $comment, $args, $depth ) {
 		static $comment_number;
 
-		if ( ! isset( $comment_number ) )
-			$comment_number = $args['per_page'] * ( $args['page'] - 1 ) + 1; else {
+		if ( ! isset( $comment_number ) ) {
+			$comment_number = $args['per_page'] * ( $args['page'] - 1 ) + 1;
+		} else {
 			$comment_number ++;
-		}
-		?>
+		} ?>
 	<li <?php comment_class(); ?>>
 		<article id="comment-<?php echo esc_attr( $comment->comment_ID ); ?>" class="comment-article  media">
 			<?php if ( pixelgrade_option( 'comments_show_numbering', 1 ) ) { ?>
@@ -130,11 +130,11 @@ if ( ! function_exists( 'rosa_lite_comments' ) ) {
 					<time class="comment__time" datetime="<?php comment_time( 'c' ); ?>">
 						<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>" class="comment__timestamp"><?php printf(
 							/* translators: 1: comment date, 2: comment time */
-							esc_html__( 'on %1$s at %2$s', 'rosa-lite' ), esc_html( get_comment_date() ), esc_html( get_comment_time() ) ); ?> </a>
+							esc_html__( 'on %1$s at %2$s', '__theme_txtd' ), esc_html( get_comment_date() ), esc_html( get_comment_time() ) ); ?> </a>
 					</time>
 					<div class="comment__links">
 						<?php
-						edit_comment_link( esc_html__( 'Edit', 'rosa-lite' ), '  ', '' );
+						edit_comment_link( esc_html__( 'Edit', '__theme_txtd' ), '  ', '' );
 						comment_reply_link( array_merge( $args, array( 'depth'     => $depth,
 						                                               'max_depth' => $args['max_depth']
 						) ) );
@@ -144,7 +144,7 @@ if ( ! function_exists( 'rosa_lite_comments' ) ) {
 				<!-- .comment-meta -->
 				<?php if ( '0' === $comment->comment_approved ) { ?>
 					<div class="alert info">
-						<p><?php esc_html_e( 'Your comment is awaiting moderation.', 'rosa-lite' ) ?></p>
+						<p><?php esc_html_e( 'Your comment is awaiting moderation.', '__theme_txtd' ) ?></p>
 					</div>
 				<?php } ?>
 				<section class="comment__content comment">
@@ -165,10 +165,10 @@ if ( ! function_exists( 'rosa_lite_footer_the_copyright' ) ) {
 		$output = '';
 		$output .= '<div class="site-info copyright-text">' . "\n";
 		/* translators: %s: WordPress. */
-		$output .= '<a href="' . esc_url( __( 'https://wordpress.org/', 'rosa-lite' ) ) . '">' . sprintf( esc_html__( 'Proudly powered by %s', 'rosa-lite' ), 'WordPress' ) . '</a>' . "\n";
+		$output .= '<a href="' . esc_url( __( 'https://wordpress.org/', '__theme_txtd' ) ) . '">' . sprintf( esc_html__( 'Proudly powered by %s', '__theme_txtd' ), 'WordPress' ) . '</a>' . "\n";
 		$output .= '<span class="sep"> | </span>';
 		/* translators: %1$s: The theme name, %2$s: The theme author name. */
-		$output .= '<span class="c-footer__credits">' . sprintf( esc_html__( 'Theme: %1$s by %2$s.', 'rosa-lite' ), 'Rosa Lite', '<a href="https://pixelgrade.com/?utm_source=rosa-lite-clients&utm_medium=footer&utm_campaign=rosa-lite" title="' . esc_html__( 'The Pixelgrade Website', 'rosa-lite' ) . '" rel="nofollow">Pixelgrade</a>' ) . '</span>' . "\n";
+		$output .= '<span class="c-footer__credits">' . sprintf( esc_html__( 'Theme: %1$s by %2$s.', '__theme_txtd' ), 'Rosa Lite', '<a href="https://pixelgrade.com/?utm_source=rosa-lite-clients&utm_medium=footer&utm_campaign=rosa-lite" title="' . esc_html__( 'The Pixelgrade Website', '__theme_txtd' ) . '" rel="nofollow">Pixelgrade</a>' ) . '</span>' . "\n";
 		$output .= '</div>';
 
 		echo apply_filters( 'pixelgrade_footer_the_copyright', $output ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -184,9 +184,9 @@ if ( ! function_exists( 'rosa_lite_footer_get_copyright_content' ) ) {
 	 */
 	function rosa_lite_footer_get_copyright_content() {
 		/* translators: %year%: The current year, %site-title%: The site title. */
-		$copyright_text = pixelgrade_option( 'copyright_text', esc_html__( '&copy; %year% %site-title%.', 'rosa-lite' ) );
+		$copyright_text = pixelgrade_option( 'copyright_text', esc_html__( '&copy; %year% %site-title%.', '__theme_txtd' ) );
 		if ( ! empty( $copyright_text ) ) {
-			// We need to parse some tags
+			// We may need to parse some tags.
 			$copyright_text = rosa_lite_parse_content_tags( $copyright_text );
 
 			// Finally process any shortcodes that might be in there

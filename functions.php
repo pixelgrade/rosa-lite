@@ -22,7 +22,7 @@ if ( ! function_exists(' rosa_lite_theme_setup' ) ) {
 		 * If you're building a theme based on Patch, use a find and replace
 		 * to change 'patch' to the name of your theme in all the template files
 		 */
-		load_theme_textdomain( 'rosa-lite', get_template_directory() . '/languages' );
+		load_theme_textdomain( '__theme_txtd', get_template_directory() . '/languages' );
 
 		//add theme support for RSS feed links automatically generated in the head section
 		add_theme_support( 'automatic-feed-links' );
@@ -95,8 +95,8 @@ if ( ! function_exists(' rosa_lite_theme_setup' ) ) {
 		}
 
 		register_nav_menus( array(
-			'main_menu'   => esc_html__( 'Main Menu', 'rosa-lite' ),
-			'footer_menu' => esc_html__( 'Footer Menu', 'rosa-lite' ),
+			'main_menu'   => esc_html__( 'Main Menu', '__theme_txtd' ),
+			'footer_menu' => esc_html__( 'Footer Menu', '__theme_txtd' ),
 		) );
 
 		add_theme_support( 'title-tag' );
@@ -156,9 +156,9 @@ if ( ! function_exists( 'rosa_lite_load_assets' ) ) {
 
 		$localization_array = array(
 			'ajaxurl'      => admin_url( 'admin-ajax.php' ),
-			'tPrev'             => esc_html__( 'Previous (Left arrow key)', 'rosa-lite' ),
-			'tNext'             => esc_html__( 'Next (Right arrow key)', 'rosa-lite' ),
-			'tCounter'          => esc_html__( 'of', 'rosa-lite' ),
+			'tPrev'             => esc_html__( 'Previous (Left arrow key)', '__theme_txtd' ),
+			'tNext'             => esc_html__( 'Next (Right arrow key)', '__theme_txtd' ),
+			'tCounter'          => esc_html__( 'of', '__theme_txtd' ),
 		);
 
 		wp_localize_script( 'rosa-main-scripts', 'rosaStrings', $localization_array );
@@ -184,17 +184,13 @@ if ( ! function_exists( 'rosa_lite_register_sidebars' ) ) {
 
 		register_sidebar( array(
 			'id'            => 'sidebar-main',
-			'name'          => esc_html__( 'Main Sidebar', 'rosa-lite' ),
-			'description'   => esc_html__( 'Main Sidebar', 'rosa-lite' ),
+			'name'          => esc_html__( 'Main Sidebar', '__theme_txtd' ),
+			'description'   => esc_html__( 'Main Sidebar', '__theme_txtd' ),
 			'before_title'  => '<h4 class="widget__title widget--sidebar-blog__title">',
 			'after_title'   => '</h4>',
 			'before_widget' => '<div id="%1$s" class="widget widget--sidebar-blog %2$s">',
 			'after_widget'  => '</div>',
 		) );
-
-		// Allow the Text Widgets to handle shortcodes
-		add_filter( 'widget_text', 'shortcode_unautop' );
-		add_filter( 'widget_text', 'do_shortcode' );
 	}
 }
 add_action( 'widgets_init', 'rosa_lite_register_sidebars' );
@@ -210,11 +206,6 @@ function rosa_lite_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'rosa_lite_content_width', 960, 0 );
 }
 add_action( 'after_setup_theme', 'rosa_lite_content_width', 0 );
-
-/**
- * MB string functions for when the MB library is not available
- */
-require_once trailingslashit( get_template_directory() ) . 'inc/mb_compat.php';
 
 /**
  * Custom template tags for this theme.

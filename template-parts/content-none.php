@@ -15,11 +15,11 @@ if ( is_home() && current_user_can( 'publish_posts' ) ) { ?>
 
 	<p><?php printf(
 			wp_kses_post( /* translators: 1: new post link */
-				__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'rosa-lite' ) ), esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
+				__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', '__theme_txtd' ) ), esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
 
 <?php } elseif ( is_search() ) { ?>
 
-	<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with different keywords.', 'rosa-lite' ); ?></p>
+	<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with different keywords.', '__theme_txtd' ); ?></p>
 	<div class="search-form">
 		<?php get_search_form(); ?>
 	</div>
@@ -27,7 +27,7 @@ if ( is_home() && current_user_can( 'publish_posts' ) ) { ?>
 	<p>&nbsp;</p>
 <?php } else { ?>
 
-	<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'rosa-lite' ); ?></p>
+	<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', '__theme_txtd' ); ?></p>
 	<div class="search-form  search-form--404">
 		<?php get_search_form(); ?>
 	</div>

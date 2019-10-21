@@ -74,14 +74,14 @@ function rosa_lite_is_password_protected() {
 					setcookie( 'wp-postpass_' . COOKIEHASH, $wp_hasher->HashPassword( stripslashes( $_POST['post_password'] ) ), 0, COOKIEPATH ); // phpcs:ignore
 
 				} else {
-					$private_post['error'] = '<h4 class="text--error">' . esc_html__( 'Wrong Password', 'rosa-lite' ) . '</h4>';
+					$private_post['error'] = '<h4 class="text--error">' . esc_html__( 'Wrong Password', '__theme_txtd' ) . '</h4>';
 				}
 			}
 		}
 	}
 
 	if ( isset( $_COOKIE[ 'wp-postpass_' . COOKIEHASH ] ) && get_permalink() == wp_get_referer() ) {
-		$private_post['error'] = '<h4 class="text--error">' . esc_html__( 'Wrong Password', 'rosa-lite' ) . '</h4>';
+		$private_post['error'] = '<h4 class="text--error">' . esc_html__( 'Wrong Password', '__theme_txtd' ) . '</h4>';
 	}
 
 	return $private_post;
@@ -94,13 +94,13 @@ if ( ! function_exists( 'rosa_lite_callback_the_password_form' ) ) {
 		$postID = get_the_ID();
 		$label  = 'pwbox-' . ( empty( $postID ) ? rand() : $postID );
 		$form   = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">
-		<p>' . esc_html__( 'This post is password protected. To view it please enter your password below:', 'rosa-lite' ) . '</p>
+		<p>' . esc_html__( 'This post is password protected. To view it please enter your password below:', '__theme_txtd' ) . '</p>
 		<div class="row">
 			<div class="column  span-12  hand-span-10">
-				<input name="post_password" id="' . esc_attr( $label ) . '" type="password" size="20" placeholder="' . esc_attr__( 'Password', 'rosa-lite' ) . '"/>
+				<input name="post_password" id="' . esc_attr( $label ) . '" type="password" size="20" placeholder="' . esc_attr__( 'Password', '__theme_txtd' ) . '"/>
 			</div>
 			<div class="column  span-12  hand-span-2">
-				<input type="submit" name="' . esc_attr__( 'Access', 'rosa-lite' ) . '" value="' . esc_attr__( 'Access', 'rosa-lite' ) . '" class="btn post-password-submit"/>
+				<input type="submit" name="' . esc_attr__( 'Access', '__theme_txtd' ) . '" value="' . esc_attr__( 'Access', '__theme_txtd' ) . '" class="btn post-password-submit"/>
 			</div>
 		</div>
 	</form>';
@@ -126,7 +126,7 @@ if ( ! function_exists( 'rosa_lite_callback_the_password_form' ) ) {
 		if ( ! $hasher->CheckPassword( $post->post_password, $hash ) ) {
 
 			// We have a cookie, but it does not match the password.
-			$msg  = '<span class="wrong-password-message">' . esc_html__( 'Sorry, your password did not match', 'rosa-lite' ) . '</span>';
+			$msg  = '<span class="wrong-password-message">' . esc_html__( 'Sorry, your password did not match', '__theme_txtd' ) . '</span>';
 			$form = $msg . $form;
 		}
 
@@ -590,14 +590,14 @@ if ( ! function_exists( 'rosa_lite_comment_form_custom_fields' ) ) :
 
 		if ( is_user_logged_in() ) {
 			$fields = array_merge( $fields, array(
-				'author' => '<p class="comment-form-author"><label for="author" class="show-on-ie8">' . esc_html__( 'Name', 'rosa-lite' ) . '</label><input id="author" name="author" value="' . esc_attr( $commenter['comment_author'] ) . '" type="text" placeholder="' . esc_attr__( 'Name', 'rosa-lite' ) . '..." size="30" ' . $aria_req . ' /></p>',
-				'email'  => '<p class="comment-form-email"><label for="email" class="show-on-ie8">' . esc_html__( 'Email', 'rosa-lite' ) . '</label><input id="email" name="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" type="text" placeholder="' . esc_attr__( 'your@email.com', 'rosa-lite' ) . '..." ' . $aria_req . ' /></p>',
+				'author' => '<p class="comment-form-author"><label for="author" class="show-on-ie8">' . esc_html__( 'Name', '__theme_txtd' ) . '</label><input id="author" name="author" value="' . esc_attr( $commenter['comment_author'] ) . '" type="text" placeholder="' . esc_attr__( 'Name', '__theme_txtd' ) . '..." size="30" ' . $aria_req . ' /></p>',
+				'email'  => '<p class="comment-form-email"><label for="email" class="show-on-ie8">' . esc_html__( 'Email', '__theme_txtd' ) . '</label><input id="email" name="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" type="text" placeholder="' . esc_attr__( 'your@email.com', '__theme_txtd' ) . '..." ' . $aria_req . ' /></p>',
 			) );
 		} else {
 			$fields = array_merge( $fields, array(
-				'author' => '<p class="comment-form-author"><label for="author" class="show-on-ie8">' . esc_html__( 'Name', 'rosa-lite' ) . '</label><input id="author" name="author" value="' . esc_attr( $commenter['comment_author'] ) . '" type="text" placeholder="' . esc_attr__( 'Name', 'rosa-lite' ) . '..." size="30" ' . $aria_req . ' /></p><!--',
-				'email'  => '--><p class="comment-form-email"><label for="name" class="show-on-ie8">' . esc_html__( 'Email', 'rosa-lite' ) . '</label><input id="email" name="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" type="text" placeholder="' . esc_attr__( 'your@email.com', 'rosa-lite' ) . '..." ' . $aria_req . ' /></p><!--',
-				'url'    => '--><p class="comment-form-url"><label for="url" class="show-on-ie8">' . esc_html__( 'Url', 'rosa-lite' ) . '</label><input id="url" name="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" placeholder="' . esc_attr__( 'Website', 'rosa-lite' ) . '..." type="text"></p>',
+				'author' => '<p class="comment-form-author"><label for="author" class="show-on-ie8">' . esc_html__( 'Name', '__theme_txtd' ) . '</label><input id="author" name="author" value="' . esc_attr( $commenter['comment_author'] ) . '" type="text" placeholder="' . esc_attr__( 'Name', '__theme_txtd' ) . '..." size="30" ' . $aria_req . ' /></p><!--',
+				'email'  => '--><p class="comment-form-email"><label for="name" class="show-on-ie8">' . esc_html__( 'Email', '__theme_txtd' ) . '</label><input id="email" name="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" type="text" placeholder="' . esc_attr__( 'your@email.com', '__theme_txtd' ) . '..." ' . $aria_req . ' /></p><!--',
+				'url'    => '--><p class="comment-form-url"><label for="url" class="show-on-ie8">' . esc_html__( 'Url', '__theme_txtd' ) . '</label><input id="url" name="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" placeholder="' . esc_attr__( 'Website', '__theme_txtd' ) . '..." type="text"></p>',
 			) );
 		}
 
@@ -624,26 +624,26 @@ if ( ! function_exists( 'rosa_lite_google_fonts_url' ) ) {
 		* supported by Cabin, translate this to 'off'. Do not translate
 		* into your own language.
 		*/
-		if ( 'off' !== _x( 'on', 'Cabin font: on or off', 'rosa-lite' ) ) {
+		if ( 'off' !== _x( 'on', 'Cabin font: on or off', '__theme_txtd' ) ) {
 			$fonts[] = 'Cabin:400,400i,500,500i,600,600i,700,700i';
 		}
 		/* Translators: If there are characters in your language that are not
 		* supported by Source Sans Pro, translate this to 'off'. Do not translate
 		* into your own language.
 		*/
-		if ( 'off' !== _x( 'on', 'Source Sans Pro font: on or off', 'rosa-lite' ) ) {
+		if ( 'off' !== _x( 'on', 'Source Sans Pro font: on or off', '__theme_txtd' ) ) {
 			$fonts[] = 'Source Sans Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i';
 		}
 		/* Translators: If there are characters in your language that are not
 		* supported by Herr Von Muellerhoff, translate this to 'off'. Do not translate
 		* into your own language.
 		*/
-		if ( 'off' !== _x( 'on', 'Herr Von Muellerhoff font: on or off', 'rosa-lite' ) ) {
+		if ( 'off' !== _x( 'on', 'Herr Von Muellerhoff font: on or off', '__theme_txtd' ) ) {
 			$fonts[] = 'Herr Von Muellerhoff:400';
 		}
 
 		/* translators: To add an additional character subset specific to your language, translate this to 'greek', 'cyrillic', 'devanagari' or 'vietnamese'. Do not translate into your own language. */
-		$subset = esc_html_x( 'no-subset', 'Add new subset (greek, cyrillic, devanagari, vietnamese)', 'rosa-lite' );
+		$subset = esc_html_x( 'no-subset', 'Add new subset (greek, cyrillic, devanagari, vietnamese)', '__theme_txtd' );
 
 		if ( 'cyrillic' == $subset ) {
 			$subsets .= ',cyrillic,cyrillic-ext';
@@ -685,6 +685,7 @@ function rosa_lite_skip_link_focus_fix() {
 // We will put this script inline since it is so small.
 add_action( 'wp_print_footer_scripts', 'rosa_lite_skip_link_focus_fix' );
 
+// Offer a fallback for installations using less than WordPress 5.2.0.
 if ( ! function_exists( 'wp_body_open' ) ) {
 	function wp_body_open() {
 		do_action( 'wp_body_open' );

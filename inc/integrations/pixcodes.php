@@ -13,19 +13,19 @@ function rosa_lite_callback_change_separator_params( $params ) {
 	//change the style options
 	if ( isset( $params['color'] ) ) {
 		$params['color']['options'] = array(
-			''      => esc_html__( 'Gray', 'rosa-lite' ),
-			'white' => esc_html__( 'White', 'rosa-lite' ),
+			''      => esc_html__( 'Gray', '__theme_txtd' ),
+			'white' => esc_html__( 'White', '__theme_txtd' ),
 		);
 	}
 
 	//add new params in the right order
 	$params = rosa_lite_array_insert_after( 'color', $params, 'type', array(
 		'type'        => 'select',
-		'name'        => esc_html__( 'Type', 'rosa-lite' ),
+		'name'        => esc_html__( 'Type', '__theme_txtd' ),
 		'options'     => array(
-			'line'        => esc_html__( 'Line', 'rosa-lite' ),
-			'flower'      => esc_html__( 'Flower', 'rosa-lite' ),
-			'line-flower' => esc_html__( 'Line with Flower', 'rosa-lite' ),
+			'line'        => esc_html__( 'Line', '__theme_txtd' ),
+			'flower'      => esc_html__( 'Flower', '__theme_txtd' ),
+			'line-flower' => esc_html__( 'Line with Flower', '__theme_txtd' ),
 		),
 		'admin_class' => 'span5 push1',
 	) );
@@ -54,22 +54,22 @@ function rosa_lite_callback_change_button_params( $params ) {
 	//change the size options
 	if ( isset( $params['size'] ) ) {
 		$params['size']['options']     = array(
-			''      => esc_html__( 'Regular', 'rosa-lite' ),
-			'small' => esc_html__( 'Small', 'rosa-lite' ),
-			'large' => esc_html__( 'Large', 'rosa-lite' ) ,
+			''      => esc_html__( 'Regular', '__theme_txtd' ),
+			'small' => esc_html__( 'Small', '__theme_txtd' ),
+			'large' => esc_html__( 'Large', '__theme_txtd' ) ,
 		);
-		$params['size']['name']        = esc_html__( 'Size', 'rosa-lite' );
+		$params['size']['name']        = esc_html__( 'Size', '__theme_txtd' );
 		$params['size']['admin_class'] = 'span5 push1';
 	}
 
 	//add new params in the right order
 	$params = rosa_lite_array_insert_before( 'size', $params, 'type', array(
 		'type'        => 'select',
-		'name'        => esc_html__( 'Type', 'rosa-lite' ),
+		'name'        => esc_html__( 'Type', '__theme_txtd' ),
 		'options'     => array(
-			''        => esc_html__( 'Regular', 'rosa-lite' ),
-			'primary' => esc_html__( 'Primary', 'rosa-lite' ),
-			'text'    => esc_html__( 'Text', 'rosa-lite' ),
+			''        => esc_html__( 'Regular', '__theme_txtd' ),
+			'primary' => esc_html__( 'Primary', '__theme_txtd' ),
+			'text'    => esc_html__( 'Text', '__theme_txtd' ),
 		),
 		'admin_class' => 'span6'
 	) );
@@ -115,14 +115,14 @@ function rosa_lite_callback_change_icon_params( $params ) {
 	//add new params in the right order
 	$params = rosa_lite_array_insert_after( 'size', $params, 'link', array(
 		'type'        => 'text',
-		'name'        => esc_html__( 'Link', 'rosa-lite' ),
+		'name'        => esc_html__( 'Link', '__theme_txtd' ),
 		'options'     => array(),
 		'admin_class' => 'span6'
 	) );
 
 	$params = rosa_lite_array_insert_after( 'link', $params, 'link_target_blank', array(
 		'type'        => 'switch',
-		'name'        => esc_html__( 'Open in new window', 'rosa-lite' ),
+		'name'        => esc_html__( 'Open in new window', '__theme_txtd' ),
 		'options'     => array(),
 		'admin_class' => 'span5 push1'
 	) );

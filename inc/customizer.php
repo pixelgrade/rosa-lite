@@ -16,11 +16,11 @@ function rosa_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 
 	// Rename the label to "Display Site Title & Tagline" in order to make this option clearer.
-	$wp_customize->get_control( 'display_header_text' )->label = esc_html__( 'Display Site Title &amp; Tagline', 'rosa-lite' );
+	$wp_customize->get_control( 'display_header_text' )->label = esc_html__( 'Display Site Title &amp; Tagline', '__theme_txtd' );
 
 	// View Pro
 	$wp_customize->add_section( 'pro__section', array(
-		'title'       => '' . esc_html__( 'View PRO Version', 'rosa-lite' ),
+		'title'       => '' . esc_html__( 'View PRO Version', '__theme_txtd' ),
 		'priority'    => 2,
 		'description' => sprintf(
 		/* translators: %s: The view pro link. */
@@ -47,9 +47,9 @@ function rosa_customize_register( $wp_customize ) {
                             	<div class="description">You will benefit by priority support from a caring and devoted team, eager to help and to spread happiness. We work hard to provide a flawless experience for those who vote us with trust and choose to be our awesome client.</div>
                             </li>
 
-                    </ul> %s </div>', 'rosa-lite' ),
+                    </ul> %s </div>', '__theme_txtd' ),
 			/* translators: %1$s: The view pro URL, %2$s: The view pro link text. */
-			sprintf( '<a href="%1$s" target="_blank" class="button button-primary">%2$s</a>', esc_url( rosa_lite_get_pro_link() ), esc_html__( 'Get Rosa PRO', 'rosa-lite' ) )
+			sprintf( '<a href="%1$s" target="_blank" class="button button-primary">%2$s</a>', esc_url( rosa_lite_get_pro_link() ), esc_html__( 'Get Rosa PRO', '__theme_txtd' ) )
 		),
 	) );
 
@@ -83,20 +83,20 @@ function rosa_lite_add_inverted_logo_control( $wp_customize ) {
 		$wp_customize,
 		$setting_id . '_control',
 		array(
-			'label' => esc_html__( 'Inverted Logo', 'rosa-lite' ),
+			'label' => esc_html__( 'Inverted Logo', '__theme_txtd' ),
 			'priority'      => 9, // this will make it appear below the Logo (that has a priority of 8).
 			'height'      => 60,
 			'width'       => 180,
 			'flex_height' => true,
 			'flex_width'  => true,
 			'button_labels' => array(
-				'select'       => esc_html__( 'Select inverted logo', 'rosa-lite'  ),
-				'change'       => esc_html__( 'Change inverted logo', 'rosa-lite'  ),
-				'remove'       => esc_html__( 'Remove', 'rosa-lite'  ),
-				'default'      => esc_html__( 'Default', 'rosa-lite'  ),
-				'placeholder'  => esc_html__( 'No inverted logo selected', 'rosa-lite'  ),
-				'frame_title'  => esc_html__( 'Select inverted logo', 'rosa-lite'  ),
-				'frame_button' => esc_html__( 'Choose inverted logo', 'rosa-lite'  ),
+				'select'       => esc_html__( 'Select inverted logo', '__theme_txtd'  ),
+				'change'       => esc_html__( 'Change inverted logo', '__theme_txtd'  ),
+				'remove'       => esc_html__( 'Remove', '__theme_txtd'  ),
+				'default'      => esc_html__( 'Default', '__theme_txtd'  ),
+				'placeholder'  => esc_html__( 'No inverted logo selected', '__theme_txtd'  ),
+				'frame_title'  => esc_html__( 'Select inverted logo', '__theme_txtd'  ),
+				'frame_button' => esc_html__( 'Choose inverted logo', '__theme_txtd'  ),
 			),
 			'section'  => 'title_tagline',
 			'settings' => $setting_id,

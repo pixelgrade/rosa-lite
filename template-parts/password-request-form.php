@@ -12,13 +12,13 @@ global $rosa_private_post; ?>
 		</div>
 		<div class="protected-area-text">
 			<?php
-			esc_html_e( 'This is a protected area.', 'rosa-lite' );
+			esc_html_e( 'This is a protected area.', '__theme_txtd' );
 
 			if ( $rosa_private_post['error'] ) {
 				echo wp_kses_post( $rosa_private_post['error'] ); ?>
-				<span class="gray"><?php esc_html_e( 'Please enter your password again.', 'rosa-lite' ); ?></span>
+				<span class="gray"><?php esc_html_e( 'Please enter your password again.', '__theme_txtd' ); ?></span>
 			<?php } else { ?>
-				<span class="gray"><?php esc_html_e( 'Please enter your password to continue.', 'rosa-lite' ); ?></span>
+				<span class="gray"><?php esc_html_e( 'Please enter your password to continue.', '__theme_txtd' ); ?></span>
 			<?php } ?>
 		</div>
 		<form class="auth-form" method="post" action="<?php echo esc_url( wp_login_url() . '?action=postpass' ); // just keep this action path ... WordPress will refer for us?>">
@@ -26,10 +26,10 @@ global $rosa_private_post; ?>
 				<div class="protected-password-field">
 					<?php wp_nonce_field( 'password_protection', 'submit_password_nonce' ); ?>
 					<input type="hidden" name="submit_password" value="1"/>
-					<input type="password" name="post_password" id="auth_password" class="auth__pass" placeholder="<?php esc_attr_e( 'Password', 'rosa-lite' ) ?>"/>
+					<input type="password" name="post_password" id="auth_password" class="auth__pass" placeholder="<?php esc_attr_e( 'Password', '__theme_txtd' ) ?>"/>
 				</div>
 				<div class="protected-submit-button">
-					<input type="submit" name="Submit" id="auth_submit" class="auth__submit  btn" value="<?php esc_attr_e( 'Authenticate', 'rosa-lite' ) ?>"/>
+					<input type="submit" name="Submit" id="auth_submit" class="auth__submit  btn" value="<?php esc_attr_e( 'Authenticate', '__theme_txtd' ) ?>"/>
 				</div>
 			</div>
 		</form>

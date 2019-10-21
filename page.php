@@ -47,14 +47,14 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 					global $numpages;
 					if ( $numpages > 1 ): ?>
 						<div class="entry__meta-box  meta-box--pagination">
-							<span class="meta-box__title"><?php esc_html_e( 'Pages', 'rosa-lite' ) ?></span>
+							<span class="meta-box__title"><?php esc_html_e( 'Pages', '__theme_txtd' ) ?></span>
 							<?php
 							$args = array(
 								'before'           => '<ol class="nav  pagination--single">',
 								'after'            => '</ol>',
 								'next_or_number'   => 'next_and_number',
-								'previouspagelink' => esc_html__( '&laquo;', 'rosa-lite' ),
-								'nextpagelink'     => esc_html__( '&raquo;', 'rosa-lite' )
+								'previouspagelink' => esc_html__( '&laquo;', '__theme_txtd' ),
+								'nextpagelink'     => esc_html__( '&raquo;', '__theme_txtd' )
 							);
 							wp_link_pages( $args ); ?>
 						</div>

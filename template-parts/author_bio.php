@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ){
 	</div>
 	<div class="author__text">
 		<div class="author__title">
-			<h3 class="accessibility"><?php esc_html_e( 'Author', 'rosa-lite' ); ?></h3>
+			<h3 class="accessibility"><?php esc_html_e( 'Author', '__theme_txtd' ); ?></h3>
 			<h4><span itemprop="name"><?php the_author_posts_link(); ?></span></h4>
 		</div>
 		<p class="author__bio" itemprop="description"><?php the_author_meta( 'description' ); ?></p>

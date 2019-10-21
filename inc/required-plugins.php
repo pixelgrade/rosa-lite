@@ -17,13 +17,13 @@ function rosa_lite_register_required_plugins() {
 			'required' => false,
 		),
 		array(
-			'name' => 'Gridable',
-			'slug' => 'gridable',
+			'name'     => 'Gridable',
+			'slug'     => 'gridable',
 			'required' => false,
 		),
 		array(
-			'name' => 'PixCodes',
-			'slug' => 'pixcodes',
+			'name'     => 'PixCodes',
+			'slug'     => 'pixcodes',
 			'required' => false,
 		),
 	);

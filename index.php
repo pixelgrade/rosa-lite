@@ -28,14 +28,14 @@ get_header(); ?>
 
 					<div class="pix-dropdown  down  archive-filter">
 						<div class="categories__menu">
-							<a class="dropdown__trigger" href="#"><?php esc_html_e( 'Categories', 'rosa-lite' ) ?></a>
+							<a class="dropdown__trigger" href="#"><?php esc_html_e( 'Categories', '__theme_txtd' ) ?></a>
 							<ul class="dropdown__menu  nav  nav--banner">
 								<?php foreach ( $categories as $category ) { ?>
 
 									<li>
 										<a href="<?php echo esc_url( get_category_link( $category->term_id ) ); ?>" title="<?php
 										/* translators: %s: category name */
-										echo esc_attr( sprintf( __( 'View all posts in %s', 'rosa-lite' ), $category->name ) ) ?>"><?php echo esc_html( $category->cat_name ); ?></a>
+										echo esc_attr( sprintf( __( 'View all posts in %s', '__theme_txtd' ), $category->name ) ) ?>"><?php echo esc_html( $category->cat_name ); ?></a>
 									</li>
 
 								<?php } ?>

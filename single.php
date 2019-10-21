@@ -68,7 +68,7 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 						if ( $multipage ) { ?>
 
 							<div class="entry__meta-box  meta-box--pagination" role="navigation">
-								<h2 class="screen-reader-text"><?php esc_html_e( 'Pages: ', 'rosa-lite' ); ?></h2>
+								<h2 class="screen-reader-text"><?php esc_html_e( 'Pages: ', '__theme_txtd' ); ?></h2>
 								<?php
 								$args = array(
 									'before'           => '<nav class="nav pagination--single">',
@@ -77,9 +77,9 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 									'link_after'       => '</span>',
 									'next_or_number'   => 'next_and_number',
 									/* translators: The previous page link arrow.  */
-									'previouspagelink' => esc_html__( '&laquo;', 'rosa-lite' ),
+									'previouspagelink' => esc_html__( '&laquo;', '__theme_txtd' ),
 									/* translators: The next page link arrow.  */
-									'nextpagelink'     => esc_html__( '&raquo;', 'rosa-lite' ),
+									'nextpagelink'     => esc_html__( '&raquo;', '__theme_txtd' ),
 								);
 								wp_link_pages( $args );
 								?>
@@ -92,11 +92,11 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 
 							<div class="meta--categories btn-list  meta-list">
 								<span
-									class="btn  btn--small  btn--secondary  list-head"><?php esc_html_e( 'Categories', 'rosa-lite' ) ?></span>
+									class="btn  btn--small  btn--secondary  list-head"><?php esc_html_e( 'Categories', '__theme_txtd' ) ?></span>
 								<?php
 								foreach ( $categories as $category ) {
 									/* translators: %s: category name */
-									echo '<a class="btn  btn--small  btn--tertiary" href="' . esc_url( get_category_link( $category->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'View all posts in %s', 'rosa-lite' ), $category->name ) ) . '" rel="tag">' . esc_html( $category->name ) . '</a>';
+									echo '<a class="btn  btn--small  btn--tertiary" href="' . esc_url( get_category_link( $category->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'View all posts in %s', '__theme_txtd' ), $category->name ) ) . '" rel="tag">' . esc_html( $category->name ) . '</a>';
 								}; ?>
 							</div><!-- .meta--categories -->
 
@@ -106,11 +106,11 @@ if ( post_password_required() && ! $rosa_private_post['allowed'] ) {
 						if ( ! is_wp_error( $tags ) && ! empty( $tags ) ) { ?>
 
 							<div class="meta--tags  btn-list  meta-list">
-								<span class="btn  btn--small  btn--secondary  list-head"><?php esc_html_e( 'Tags', 'rosa-lite' ) ?></span>
+								<span class="btn  btn--small  btn--secondary  list-head"><?php esc_html_e( 'Tags', '__theme_txtd' ) ?></span>
 								<?php
 								foreach ( $tags as $one_tag ) {
 									/* translators: %s: tag name */
-									echo '<a class="btn  btn--small  btn--tertiary" href="' . esc_url( get_tag_link( $one_tag->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'View all posts tagged %s', 'rosa-lite' ), $one_tag->name ) ) . '" rel="tag">' . esc_html( $one_tag->name ) . '</a>';
+									echo '<a class="btn  btn--small  btn--tertiary" href="' . esc_url( get_tag_link( $one_tag->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'View all posts tagged %s', '__theme_txtd' ), $one_tag->name ) ) . '" rel="tag">' . esc_html( $one_tag->name ) . '</a>';
 								}; ?>
 							</div><!-- .meta--tags -->
 
