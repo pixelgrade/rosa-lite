@@ -26,3 +26,8 @@ if ( class_exists( 'Gridable' ) ) {
  * https://wordpress.org/plugins/pixtypes/
  */
 require get_parent_theme_file_path( '/inc/integrations/pixtypes.php' ); // phpcs:ignore
+
+/**
+ * Load theme's configuration file (via Customify plugin)
+ */
+require_once trailingslashit( get_template_directory() ) . 'inc/integrations/customify.php';

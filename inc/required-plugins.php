@@ -26,6 +26,17 @@ function rosa_lite_register_required_plugins() {
 			'slug'     => 'pixcodes',
 			'required' => false,
 		),
+		array(
+			'name'               => 'Pixelgrade Assistant',
+			'slug'               => 'pixelgrade-assistant',
+			'is_callable'        => 'PixelgradeAssistant',
+			'required'           => false,
+		),
+		array(
+			'name'               => 'Customify',
+			'slug'               => 'customify',
+			'required'           => false,
+		),
 	);
 
 	$config = array(
