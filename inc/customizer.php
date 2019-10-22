@@ -165,13 +165,3 @@ function rosa_lite_load_customize_js() {
 	wp_enqueue_style( 'rosa-customizer-style', get_template_directory_uri() . '/inc/admin/css/customizer.css', null, '1.0.2', false );
 }
 add_action( 'customize_controls_enqueue_scripts', 'rosa_lite_load_customize_js' );
-
-function rosa_lite_add_customify_options( $config ) {
-	$config['opt-name'] = 'rosa_options';
-
-	$config['sections'] = array();
-	$config['panels']   = array();
-
-	return $config;
-}
-add_filter( 'customify_filter_fields', 'rosa_lite_add_customify_options' );
