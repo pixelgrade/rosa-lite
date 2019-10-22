@@ -3780,18 +3780,14 @@ blockquote {
 /*------------------------------------*\
                TABLES
 \*------------------------------------*/
-.table--bordered, table {
-  font-size: 14px;
-  font-size: 0.875rem;
-  line-height: 1.72429; }
-  .table--bordered th, table th,
-  .table--bordered td,
-  table td {
-    border: 0; }
-    .table--bordered th:empty, table th:empty,
-    .table--bordered td:empty,
-    table td:empty {
-      border: inherit; }
+.table--bordered th, table th,
+.table--bordered td,
+table td {
+  border: 0; }
+  .table--bordered th:empty, table th:empty,
+  .table--bordered td:empty,
+  table td:empty {
+    border: inherit; }
 
 .table--striped tbody tr:nth-of-type(odd), table tbody tr:nth-of-type(odd) {
   background-color: #fcfcfc; }
