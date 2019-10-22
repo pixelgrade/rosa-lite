@@ -9,6 +9,8 @@ if ( ! defined( 'ABSPATH' ) ){
 	exit; // Exit if accessed directly
 }
 
+global $post;
+
 //post thumb specific
 $has_thumb = has_post_thumbnail();
 
@@ -43,10 +45,11 @@ if ( ! $has_thumb ) {
 		$date = str_replace( ' ', '<span class="date__dot"></span>', $date ); ?>
 
 		<header>
-			<div class="article__date">
-				<time class="published" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo $date; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></time>
-			</div>
-
+            <?php if ( 'post' == get_post_type($post)) { ?>
+                <div class="article__date">
+                    <time class="published" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo $date; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></time>
+                </div>
+            <?php } ?>
 			<h2 class="article__title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 			<div class="separator separator--flower">&#10043;</div>
 		</header>
