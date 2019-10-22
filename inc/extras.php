@@ -151,7 +151,7 @@ if ( ! function_exists( 'rosa_lite_add_title_caption_to_attachment' ) ) {
 			$caption = $att->post_excerpt;
 		}
 
-		return str_replace( '<a ', '<a data-title="' . $title . '" data-alt="' . $caption . '" ', $markup );
+		return str_replace( '<a ', '<a data-title="' . esc_attr( $title ) . '" data-alt="' . esc_attr( $caption ) . '" ', $markup );
 	}
 }
 add_filter( 'wp_get_attachment_link', 'rosa_lite_add_title_caption_to_attachment', 10, 5 );

@@ -6,7 +6,7 @@
  */
 
 // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
-require_once get_template_directory() . '/inc/required-plugins/class-tgm-plugin-activation.php';
+require_once trailingslashit( get_template_directory() ) . 'inc/admin/required-plugins/class-tgm-plugin-activation.php';
 
 function rosa_lite_register_required_plugins() {
 
@@ -25,17 +25,6 @@ function rosa_lite_register_required_plugins() {
 			'name'     => 'PixCodes',
 			'slug'     => 'pixcodes',
 			'required' => false,
-		),
-		array(
-			'name'               => 'Pixelgrade Assistant',
-			'slug'               => 'pixelgrade-assistant',
-			'is_callable'        => 'PixelgradeAssistant',
-			'required'           => false,
-		),
-		array(
-			'name'               => 'Customify',
-			'slug'               => 'customify',
-			'required'           => false,
 		),
 	);
 

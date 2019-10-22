@@ -218,6 +218,6 @@ require_once trailingslashit( get_template_directory() ) . 'inc/customizer.php';
 require_once trailingslashit( get_template_directory() ) . 'inc/integrations.php';
 
 /**
- * Load Recommended/Required plugins notification
+ * Admin dashboard related logic.
  */
-require_once trailingslashit( get_template_directory() ) . 'inc/required-plugins.php';
+require_once trailingslashit( get_template_directory() ) . 'inc/admin.php';

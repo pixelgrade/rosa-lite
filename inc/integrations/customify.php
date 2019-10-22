@@ -3,7 +3,6 @@
  * Rosa Lite Customizer Options Config
  *
  * @package Rosa Lite
- * @since 1.0.2
  */
 /**
  * Hook into the Customify's fields and settings.
@@ -16,26 +15,26 @@
  * @return array The returned options are required, if you don't need options return an empty array
  */
 
-add_filter( 'customify_filter_fields', 'rosalite_add_customify_options', 11, 1 );
-add_filter( 'customify_filter_fields', 'rosalite_add_customify_style_manager_section', 12, 1 );
+add_filter( 'customify_filter_fields', 'rosa_lite_add_customify_options', 11, 1 );
+add_filter( 'customify_filter_fields', 'rosa_lite_add_customify_style_manager_section', 12, 1 );
 
-add_filter( 'customify_filter_fields', 'rosalite_fill_customify_options', 20 );
+add_filter( 'customify_filter_fields', 'rosa_lite_fill_customify_options', 20 );
 
-add_filter( 'customify_get_color_palettes', 'rosalite_add_default_color_palette' );
+add_filter( 'customify_get_color_palettes', 'rosa_lite_add_default_color_palette' );
 
-define( 'ROSALITE_SM_COLOR_PRIMARY', '#C59D5F' );
-define( 'ROSALITE_SM_COLOR_SECONDARY', '#BBB36C' );
-define( 'ROSALITE_SM_COLOR_TERTIARY', '#7C8365' );
+define( 'ROSA_LITE_SM_COLOR_PRIMARY', '#C59D5F' );
+define( 'ROSA_LITE_SM_COLOR_SECONDARY', '#BBB36C' );
+define( 'ROSA_LITE_SM_COLOR_TERTIARY', '#7C8365' );
 
-define( 'ROSALITE_SM_DARK_PRIMARY', '#252525' );
-define( 'ROSALITE_SM_DARK_SECONDARY', '#515151' );
-define( 'ROSALITE_SM_DARK_TERTIARY', '#121212' );
+define( 'ROSA_LITE_SM_DARK_PRIMARY', '#252525' );
+define( 'ROSA_LITE_SM_DARK_SECONDARY', '#515151' );
+define( 'ROSA_LITE_SM_DARK_TERTIARY', '#121212' );
 
-define( 'ROSALITE_SM_LIGHT_PRIMARY', '#FFFFFF' );
-define( 'ROSALITE_SM_LIGHT_SECONDARY', '#CCCCCC' );
-define( 'ROSALITE_SM_LIGHT_TERTIARY', '#EEEEEE' );
+define( 'ROSA_LITE_SM_LIGHT_PRIMARY', '#FFFFFF' );
+define( 'ROSA_LITE_SM_LIGHT_SECONDARY', '#CCCCCC' );
+define( 'ROSA_LITE_SM_LIGHT_TERTIARY', '#EEEEEE' );
 
-function rosalite_add_customify_options( $options ) {
+function rosa_lite_add_customify_options( $options ) {
 	$options['opt-name'] = 'rosa_options';
 
 	$options['sections'] = array();
@@ -43,7 +42,7 @@ function rosalite_add_customify_options( $options ) {
 	return $options;
 }
 
-function rosalite_add_customify_style_manager_section( $options ) {
+function rosa_lite_add_customify_style_manager_section( $options ) {
 	// If the theme hasn't declared support for style manager, bail.
 	if ( ! current_theme_supports( 'customizer_style_manager' ) ) {
 		return $options;
@@ -56,7 +55,7 @@ function rosalite_add_customify_style_manager_section( $options ) {
 	$new_config = array(
 		'options'  => array(
 			'sm_color_primary'   => array(
-				'default'          => ROSALITE_SM_COLOR_PRIMARY,
+				'default'          => ROSA_LITE_SM_COLOR_PRIMARY,
 				'connected_fields' => array(
 					'main_color',
 					'footer_accent_color',
@@ -74,13 +73,13 @@ function rosalite_add_customify_style_manager_section( $options ) {
 				),
 			),
 			'sm_color_secondary' => array(
-				'default' => ROSALITE_SM_COLOR_SECONDARY,
+				'default' => ROSA_LITE_SM_COLOR_SECONDARY,
 			),
 			'sm_color_tertiary'  => array(
-				'default' => ROSALITE_SM_COLOR_TERTIARY,
+				'default' => ROSA_LITE_SM_COLOR_TERTIARY,
 			),
 			'sm_dark_primary'    => array(
-				'default'          => ROSALITE_SM_DARK_PRIMARY,
+				'default'          => ROSA_LITE_SM_DARK_PRIMARY,
 				'connected_fields' => array(
 					'mobile_navigation_background_color',
 					'footer_background_color',
@@ -100,19 +99,19 @@ function rosalite_add_customify_style_manager_section( $options ) {
 				),
 			),
 			'sm_dark_secondary'  => array(
-				'default'          => ROSALITE_SM_DARK_SECONDARY,
+				'default'          => ROSA_LITE_SM_DARK_SECONDARY,
 				'connected_fields' => array(
 					'text_color',
 				),
 			),
 			'sm_dark_tertiary'   => array(
-				'default'          => ROSALITE_SM_DARK_TERTIARY,
+				'default'          => ROSA_LITE_SM_DARK_TERTIARY,
 				'connected_fields' => array(
 					'footer_widget_area_background_color',
 				),
 			),
 			'sm_light_primary'   => array(
-				'default'          => ROSALITE_SM_LIGHT_PRIMARY,
+				'default'          => ROSA_LITE_SM_LIGHT_PRIMARY,
 				'connected_fields' => array(
 					'header_background_color',
 					'content_background_color',
@@ -145,13 +144,13 @@ function rosalite_add_customify_style_manager_section( $options ) {
 				),
 			),
 			'sm_light_secondary' => array(
-				'default'          => ROSALITE_SM_LIGHT_SECONDARY,
+				'default'          => ROSA_LITE_SM_LIGHT_SECONDARY,
 				'connected_fields' => array(
 					'mobile_navigation_color'
 				),
 			),
 			'sm_light_tertiary'  => array(
-				'default' => ROSALITE_SM_LIGHT_TERTIARY
+				'default' => ROSA_LITE_SM_LIGHT_TERTIARY
 			),
 		),
 	);
@@ -166,7 +165,7 @@ function rosalite_add_customify_style_manager_section( $options ) {
 	return $options;
 }
 
-function rosalite_fill_customify_options( $options ) {
+function rosa_lite_fill_customify_options( $options ) {
 	$new_config = array(
 		'colors_section' => array(
 			'title'       => '',
@@ -175,7 +174,7 @@ function rosalite_fill_customify_options( $options ) {
 				'main_color'                          => array(
 					'type'    => 'hidden_control',
 					'live'    => true,
-					'default' => ROSALITE_SM_COLOR_PRIMARY,
+					'default' => ROSA_LITE_SM_COLOR_PRIMARY,
 					'css'     => array(
 						array(
 							'property' => 'color',
@@ -250,7 +249,7 @@ function rosalite_fill_customify_options( $options ) {
 							'property'        => 'background-color',
 							'unit'            => '88',
 							'selector'        => '.select2-container--default .select2-results__option[data-selected=true]',
-							'callback_filter' => 'rosa_transparent_color'
+							'callback_filter' => 'rosa_lite_transparent_color'
 						),
 						array(
 							'property' => 'background',
@@ -297,13 +296,13 @@ function rosalite_fill_customify_options( $options ) {
 						array(
 							'property' => 'color',
 							'selector' => '.c-hero__map',
-							'callback_filter' => 'rosa_map_color',
+							'callback_filter' => 'rosa_lite_map_color',
 						),
 					),
 				),
 				'links_color'                         => array(
 					'type'    => 'hidden_control',
-					'default' => ROSALITE_SM_COLOR_PRIMARY,
+					'default' => ROSA_LITE_SM_COLOR_PRIMARY,
 					'live'    => true,
 					'css'     => array(
 						array(
@@ -407,7 +406,7 @@ function rosalite_fill_customify_options( $options ) {
 				'buttons_color'                       => array(
 					'type'    => 'hidden_control',
 					'live'    => true,
-					'default' => ROSALITE_SM_DARK_PRIMARY,
+					'default' => ROSA_LITE_SM_DARK_PRIMARY,
 					'css'     => array(
 						array(
 							'property' => 'background-color',
@@ -430,7 +429,7 @@ function rosalite_fill_customify_options( $options ) {
 				'text_color'                          => array(
 					'type'    => 'hidden_control',
 					'live'    => true,
-					'default' => ROSALITE_SM_DARK_SECONDARY,
+					'default' => ROSA_LITE_SM_DARK_SECONDARY,
 					'css'     => array(
 						array(
 							'property' => 'color',
@@ -476,20 +475,20 @@ function rosalite_fill_customify_options( $options ) {
 							'property'        => 'color',
 							'unit'            => '20',
 							'selector'        => '.comment-form-comment:before',
-							'callback_filter' => 'rosa_transparent_color'
+							'callback_filter' => 'rosa_lite_transparent_color'
 						),
 						array(
 							'property'        => 'color',
 							'unit'            => '37',
 							'selector'        => '.separator--line-flower',
-							'callback_filter' => 'rosa_transparent_color'
+							'callback_filter' => 'rosa_lite_transparent_color'
 						),
 						array(
 							'property'        => 'color',
 							'unit'            => '8C',
 							'selector'        => '.comment__content,
                                                 .woocommerce ul.products li.product .product__cat',
-							'callback_filter' => 'rosa_transparent_color'
+							'callback_filter' => 'rosa_lite_transparent_color'
 						),
 						array(
 							'property'        => 'background-color',
@@ -499,13 +498,13 @@ function rosalite_fill_customify_options( $options ) {
                                                 table tbody tr:nth-of-type(odd),
                                                 .wp-caption-text,
                                                 div.woocommerce-checkout-payment#payment',
-							'callback_filter' => 'rosa_transparent_color'
+							'callback_filter' => 'rosa_lite_transparent_color'
 						),
 						array(
 							'property'        => 'background-color',
 							'unit'            => '20',
 							'selector'        => 'div.woocommerce-checkout-payment#payment',
-							'callback_filter' => 'rosa_transparent_color'
+							'callback_filter' => 'rosa_lite_transparent_color'
 						),
 						array(
 							'property'        => 'border-color',
@@ -570,14 +569,14 @@ function rosalite_fill_customify_options( $options ) {
                                                 .select2-container--default .select2-search--dropdown .select2-search__field,
                                                 
                                                 .sidebar--main .widget',
-							'callback_filter' => 'rosa_transparent_color'
+							'callback_filter' => 'rosa_lite_transparent_color'
 						),
 					),
 				),
 				'headings_color'                      => array(
 					'type'    => 'hidden_control',
 					'live'    => true,
-					'default' => ROSALITE_SM_DARK_PRIMARY,
+					'default' => ROSA_LITE_SM_DARK_PRIMARY,
 					'css'     => array(
 						array(
 							'property' => 'color',
@@ -605,7 +604,7 @@ function rosalite_fill_customify_options( $options ) {
 							'unit'            => '88',
 							'selector'        => '.woocommerce .woocommerce-breadcrumb,
 								                .woocommerce .woocommerce-breadcrumb a',
-							'callback_filter' => 'rosa_transparent_color'
+							'callback_filter' => 'rosa_lite_transparent_color'
 						),
 						array(
 							'property' => 'background-color',
@@ -643,7 +642,7 @@ function rosalite_fill_customify_options( $options ) {
 							'unit'            => '88',
 							'selector'        => '.pagination .nav-links .page-numbers.prev.disabled,
                                                 .pagination .nav-links .page-numbers.next.disabled',
-							'callback_filter' => 'rosa_transparent_color'
+							'callback_filter' => 'rosa_lite_transparent_color'
 						),
 						array(
 							'property' => 'border-color',
@@ -809,7 +808,7 @@ function rosalite_fill_customify_options( $options ) {
 				'navlink_color'                       => array(
 					'type'    => 'hidden_control',
 					'live'    => true,
-					'default' => ROSALITE_SM_DARK_PRIMARY,
+					'default' => ROSA_LITE_SM_DARK_PRIMARY,
 					'css'     => array(
 						array(
 							'property' => 'color',
@@ -853,7 +852,7 @@ function rosalite_fill_customify_options( $options ) {
 				'header_background_color'             => array(
 					'type'    => 'hidden_control',
 					'live'    => true,
-					'default' => ROSALITE_SM_LIGHT_PRIMARY,
+					'default' => ROSA_LITE_SM_LIGHT_PRIMARY,
 					'css'     => array(
 						array(
 							'property' => 'background-color',
@@ -867,7 +866,7 @@ function rosalite_fill_customify_options( $options ) {
 				'content_background_color'            => array(
 					'type'    => 'hidden_control',
 					'live'    => true,
-					'default' => ROSALITE_SM_LIGHT_PRIMARY,
+					'default' => ROSA_LITE_SM_LIGHT_PRIMARY,
 					'css'     => array(
 						array(
 							'property' => 'color',
@@ -947,7 +946,7 @@ function rosalite_fill_customify_options( $options ) {
                                                 .pagination .nav-links .page-numbers.prev.disabled:before,
                                                 .pagination .nav-links .page-numbers.next.disabled,
                                                 .pagination .nav-links .page-numbers.next.disabled:after',
-							'callback_filter' => 'rosa_transparent_color'
+							'callback_filter' => 'rosa_lite_transparent_color'
 						),
 						array(
 							'property' => 'border-color',
@@ -1004,7 +1003,7 @@ function rosalite_fill_customify_options( $options ) {
 				'footer_widget_area_accent_color'     => array(
 					'type'    => 'hidden_control',
 					'live'    => true,
-					'default' => ROSALITE_SM_COLOR_PRIMARY,
+					'default' => ROSA_LITE_SM_COLOR_PRIMARY,
 					'css'     => array(
 						array(
 							'property' => 'color',
@@ -1016,7 +1015,7 @@ function rosalite_fill_customify_options( $options ) {
 				'footer_widget_area_background_color' => array(
 					'type'    => 'hidden_control',
 					'live'    => true,
-					'default' => ROSALITE_SM_DARK_TERTIARY,
+					'default' => ROSA_LITE_SM_DARK_TERTIARY,
 					'css'     => array(
 						array(
 							'property' => 'background-color',
@@ -1027,14 +1026,14 @@ function rosalite_fill_customify_options( $options ) {
 							'unit'            => '80',
 							'selector'        => '.navigation--main .nav--main li.menu-item-has-children a:before',
 							'media'           => 'only screen and (max-width: 899px)',
-							'callback_filter' => 'rosa_transparent_color'
+							'callback_filter' => 'rosa_lite_transparent_color'
 						),
 					),
 				),
 				'footer_widget_area_text_color'       => array(
 					'type'    => 'hidden_control',
 					'live'    => true,
-					'default' => ROSALITE_SM_LIGHT_PRIMARY,
+					'default' => ROSA_LITE_SM_LIGHT_PRIMARY,
 					'css'     => array(
 						array(
 							'property' => 'color',
@@ -1050,7 +1049,7 @@ function rosalite_fill_customify_options( $options ) {
 				'footer_accent_color'                 => array(
 					'type'    => 'hidden_control',
 					'live'    => true,
-					'default' => ROSALITE_SM_COLOR_PRIMARY,
+					'default' => ROSA_LITE_SM_COLOR_PRIMARY,
 					'css'     => array(
 						array(
 							'property' => 'color',
@@ -1068,7 +1067,7 @@ function rosalite_fill_customify_options( $options ) {
 				'footer_background_color'             => array(
 					'type'    => 'hidden_control',
 					'live'    => true,
-					'default' => ROSALITE_SM_DARK_PRIMARY,
+					'default' => ROSA_LITE_SM_DARK_PRIMARY,
 					'css'     => array(
 						array(
 							'property' => 'background-color',
@@ -1083,20 +1082,20 @@ function rosalite_fill_customify_options( $options ) {
 				'footer_text_color'                   => array(
 					'type'    => 'hidden_control',
 					'live'    => true,
-					'default' => ROSALITE_SM_LIGHT_PRIMARY,
+					'default' => ROSA_LITE_SM_LIGHT_PRIMARY,
 					'css'     => array(
 						array(
 							'property'        => 'color',
 							'unit'            => '91',
 							'selector'        => '.copyright-area',
-							'callback_filter' => 'rosa_transparent_color',
+							'callback_filter' => 'rosa_lite_transparent_color',
 						),
 					),
 				),
 				'mobile_navigation_color'     => array(
 					'type'    => 'hidden_control',
 					'live'    => true,
-					'default' => ROSALITE_SM_LIGHT_SECONDARY,
+					'default' => ROSA_LITE_SM_LIGHT_SECONDARY,
 					'css'     => array(
 						array(
 							'property' => 'color',
@@ -1109,21 +1108,21 @@ function rosalite_fill_customify_options( $options ) {
 							'unit' => '30',
 							'selector' => '.navigation--main .nav--main',
 							'media' => 'only screen and (max-width: 899px) ',
-							'callback_filter' => 'rosa_transparent_color'
+							'callback_filter' => 'rosa_lite_transparent_color'
 						),
 						array(
 							'property' => 'background-color',
 							'unit' => '19',
 							'selector' => '.widget_shopping_cart_content',
 							'media' => 'only screen and (max-width: 899px)  ',
-							'callback_filter' => 'rosa_transparent_color'
+							'callback_filter' => 'rosa_lite_transparent_color'
 						),
 					),
 				),
 				'mobile_navigation_background_color'     => array(
 					'type'    => 'hidden_control',
 					'live'    => true,
-					'default' => ROSALITE_SM_DARK_PRIMARY,
+					'default' => ROSA_LITE_SM_DARK_PRIMARY,
 					'css'     => array(
 						array(
 							'property' => 'background-color',
@@ -1145,7 +1144,7 @@ function rosalite_fill_customify_options( $options ) {
 	return $options;
 }
 
-function rosalite_add_default_color_palette( $color_palettes ) {
+function rosa_lite_add_default_color_palette( $color_palettes ) {
 
 	$color_palettes = array_merge( array(
 		'default' => array(
@@ -1154,15 +1153,15 @@ function rosalite_add_default_color_palette( $color_palettes ) {
 				'background_image_url' => 'https://cloud.pixelgrade.com/wp-content/uploads/2018/07/rosa-palette.jpg',
 			),
 			'options' => array(
-				'sm_color_primary'   => ROSALITE_SM_COLOR_PRIMARY,
-				'sm_color_secondary' => ROSALITE_SM_COLOR_SECONDARY,
-				'sm_color_tertiary'  => ROSALITE_SM_COLOR_TERTIARY,
-				'sm_dark_primary'    => ROSALITE_SM_DARK_PRIMARY,
-				'sm_dark_secondary'  => ROSALITE_SM_DARK_SECONDARY,
-				'sm_dark_tertiary'   => ROSALITE_SM_DARK_TERTIARY,
-				'sm_light_primary'   => ROSALITE_SM_LIGHT_PRIMARY,
-				'sm_light_secondary' => ROSALITE_SM_LIGHT_SECONDARY,
-				'sm_light_tertiary'  => ROSALITE_SM_LIGHT_TERTIARY,
+				'sm_color_primary'   => ROSA_LITE_SM_COLOR_PRIMARY,
+				'sm_color_secondary' => ROSA_LITE_SM_COLOR_SECONDARY,
+				'sm_color_tertiary'  => ROSA_LITE_SM_COLOR_TERTIARY,
+				'sm_dark_primary'    => ROSA_LITE_SM_DARK_PRIMARY,
+				'sm_dark_secondary'  => ROSA_LITE_SM_DARK_SECONDARY,
+				'sm_dark_tertiary'   => ROSA_LITE_SM_DARK_TERTIARY,
+				'sm_light_primary'   => ROSA_LITE_SM_LIGHT_PRIMARY,
+				'sm_light_secondary' => ROSA_LITE_SM_LIGHT_SECONDARY,
+				'sm_light_tertiary'  => ROSA_LITE_SM_LIGHT_TERTIARY,
 			),
 		),
 	), $color_palettes );
@@ -1170,7 +1169,7 @@ function rosalite_add_default_color_palette( $color_palettes ) {
 	return $color_palettes;
 }
 
-function rosa_transparent_color( $value, $selector, $property, $unit ) {
+function rosa_lite_transparent_color( $value, $selector, $property, $unit ) {
 	if ( empty( $unit ) ) {
 		$unit = '20';
 	}
@@ -1182,7 +1181,7 @@ function rosa_transparent_color( $value, $selector, $property, $unit ) {
 	return $output;
 }
 
-function rosa_transparent_color_customizer_preview() {
+function rosa_lite_transparent_color_customizer_preview() {
 
 	$js = "
     
@@ -1208,10 +1207,10 @@ function rosa_transparent_color_customizer_preview() {
         return hash;
     };
     
-function rosa_transparent_color( value, selector, property, unit ) {
+function rosa_lite_transparent_color( value, selector, property, unit ) {
 
     var css = '',
-        id = 'rosa_transparent_color_style_tag_' + makeSafeForCSS( property + selector ).hashCode(),
+        id = 'rosa_lite_transparent_color_style_tag_' + makeSafeForCSS( property + selector ).hashCode(),
         style = document.getElementById( id ),
         head = document.head || document.getElementsByTagName('head')[0];
         
@@ -1240,9 +1239,9 @@ function rosa_transparent_color( value, selector, property, unit ) {
 	wp_add_inline_script( 'customify-previewer-scripts', $js );
 }
 
-add_action( 'customize_preview_init', 'rosa_transparent_color_customizer_preview', 20 );
+add_action( 'customize_preview_init', 'rosa_lite_transparent_color_customizer_preview', 20 );
 
-function rosa_map_color( $value, $selector, $property, $unit ) {
+function rosa_lite_map_color( $value, $selector, $property, $unit ) {
 	$output = $selector . ' {' .
 	          $property . ': ' . $value . $unit . ';' .
 	          '}';
@@ -1250,15 +1249,15 @@ function rosa_map_color( $value, $selector, $property, $unit ) {
 	return $output;
 }
 
-function rosa_map_color_customizer_preview() {
+function rosa_lite_map_color_customizer_preview() {
 
 	$js = "
 	
-	function rosa_map_color( value, selector, property, unit ) {
+	function rosa_lite_map_color( value, selector, property, unit ) {
 		jQuery( window.document.body ).trigger( 'rosa:update-map-color', value );
 	}" . PHP_EOL;
 
 	wp_add_inline_script( 'customify-previewer-scripts', $js );
 }
 
-add_action( 'customize_preview_init', 'rosa_map_color_customizer_preview', 20 );
+add_action( 'customize_preview_init', 'rosa_lite_map_color_customizer_preview', 20 );
