@@ -175,7 +175,7 @@ if ( ! function_exists( 'rosa_lite_register_sidebars' ) ) {
 		register_sidebar( array(
 			'id'            => 'sidebar-main',
 			'name'          => esc_html__( 'Main Sidebar', '__theme_txtd' ),
-			'description'   => esc_html__( 'Main Sidebar', '__theme_txtd' ),
+			'description'   => esc_html__( 'Add widgets here to appear in sidebar.', '__theme_txtd' ),
 			'before_title'  => '<h4 class="widget__title widget--sidebar-blog__title">',
 			'after_title'   => '</h4>',
 			'before_widget' => '<div id="%1$s" class="widget widget--sidebar-blog %2$s">',
