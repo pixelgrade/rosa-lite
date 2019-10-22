@@ -3893,7 +3893,6 @@ blockquote {
                LISTS
 \*------------------------------------*/
 ol {
-  margin-top: 24px;
   margin-bottom: 24px; }
   ul ol, ol ol, dl ol {
     margin-right: 36px;
