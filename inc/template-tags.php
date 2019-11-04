@@ -77,6 +77,10 @@ if( ! function_exists( 'rosa_lite_the_archive_title' ) ) {
 
 if ( ! function_exists( 'rosa_lite_please_select_a_menu_fallback' ) ) {
 	function rosa_lite_please_select_a_menu_fallback() {
+		if ( ! current_user_can( 'edit_theme_options' ) ) {
+			return;
+		}
+
 		echo '
 		<ul class="nav  nav--main" >
 			<li><a href="' . esc_url( admin_url( 'nav-menus.php?action=locations' ) ) . '">' . esc_html__( 'Please select a menu in this location', '__theme_txtd' ) . '</a></li>
