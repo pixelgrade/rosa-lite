@@ -12,6 +12,12 @@ function rosa_lite_register_required_plugins() {
 
 	$plugins = array(
 		array(
+			'name'               => 'Pixelgrade Assistant',
+			'slug'               => 'pixelgrade-assistant',
+			'is_callable'        => 'PixelgradeAssistant',
+			'required'           => false,
+		),
+		array(
 			'name'     => 'PixTypes',
 			'slug'     => 'pixtypes',
 			'required' => false,

@@ -34,3 +34,8 @@ require_once get_parent_theme_file_path( 'inc/integrations/pixtypes.php' ); // p
 if ( function_exists( 'PixCustomifyPlugin' ) ) {
 	require_once get_parent_theme_file_path( 'inc/integrations/customify.php' ); // phpcs:ignore
 }
+
+/**
+ * Load Starter Content compatibility file.
+ */
+require_once get_parent_theme_file_path( 'inc/integrations/pixcare_starter_content.php' ); // phpcs:ignore
