@@ -1,4 +1,4 @@
-# ROSA - An Exquisite Restaurant WordPress Theme
+# ROSA Lite - An Exquisite Restaurant WordPress Theme
 ### ROSA is the most used restaurant WordPress theme built to help restaurant and other culinary owners to shape an experience that people love and remember. It gives enough freedom to make it your own by tailoring to a specific set of bold needs and preferences.
 
 [View Demo](https://demos.pixelgrade.com/rosa-lite/) &nbsp;·&nbsp; [Documentation](https://pixelgrade.com/rosa-lite-documentation/) &nbsp;·&nbsp; [Download for Free](https://downloads.wordpress.org/theme/rosa-lite.latest-stable.zip) &nbsp;·&nbsp; [ View Pro Version](https://pixelgrade.com/themes/rosa-pro/)
