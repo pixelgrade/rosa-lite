@@ -18,6 +18,11 @@ function rosa_lite_register_required_plugins() {
 			'required'           => false,
 		),
 		array(
+			'name'     => 'Customify',
+			'slug'     => 'customify',
+			'required' => false,
+		),
+		array(
 			'name'     => 'PixTypes',
 			'slug'     => 'pixtypes',
 			'required' => false,
