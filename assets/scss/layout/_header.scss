@@ -72,6 +72,10 @@
 	}
 }
 
+.site-title--image[class] {
+	position: relative;
+}
+
 .site-title--text {
 	@include font-size($h1-size);
 	@extend h2;

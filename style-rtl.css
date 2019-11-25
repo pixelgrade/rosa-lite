@@ -6506,6 +6506,9 @@ html .promo-box__container.promo-box__container a {
     .site-title {
       padding: 0 48px; } }
 
+.site-title--image[class] {
+  position: relative; }
+
 .site-title--text {
   font-size: 47px;
   font-size: 2.9375rem;
