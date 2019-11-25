@@ -4,8 +4,8 @@ Author: Pixelgrade
 Author URI: https://pixelgrade.com/
 Contributors: pixelgrade, babbardel, vlad.olaru, razvanonofrei, gorby31
 Description: This is the free version of Rosa, the #1 best selling restaurant WordPress theme, built to help small businesses shape an appealing online experience. It's packed with a parallax effect to grab attention, an online food menu so people can discover your offering, an easy to customize interface without using code, and a responsive design to address people on the go. This theme's versatility allows it to be used in a wide range of industries, making it the perfect theme if you own a business. No matter if it's a restaurant, beauty salon, house rental, hotel, coffee shop, or any other type of small business, this theme will fit your needs perfectly. With the Style Manager system you can customize your site's overall color palettes choosing from a set of predefined, carefully crafted palettes. If in need of help, jump right in the Theme Help section provided via the Pixelgrade Assistant plugin and search the documentation or open a support ticket.
-Version: 1.0.4
-Stable tag: 1.0.4
+Version: 1.0.5
+Stable tag: 1.0.5
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: rosa-lite
@@ -30,6 +30,10 @@ With the Style Manager system you can customize your site's overall color palett
 3. Click Activate to use your new theme right away.
 
 == Changelog ==
+
+= 1.0.5 =
+* Fixed logo when Display Site Title and Tagline option is not enabled.
+* Add Customify as recommended plugin.
 
 = 1.0.4 =
 * Added a notice to recommend the Pixelgrade Assistant plugin so you can access Starter Content (demo content) and easy theme help.
