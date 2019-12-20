@@ -399,6 +399,7 @@ function rosa_lite_fill_customify_options( $options ) {
 								                .pixlikes-box .likes-text,
 								                .pixlikes-box .likes-count,
 								                .comment-form-comment textarea,
+								                .comment-form input,
 								                
 								                .select2-container--default .select2-selection--single .select2-selection__rendered,
 								                .select2-container--default .select2-results__option[data-selected=true],
