@@ -764,7 +764,8 @@ function rosa_lite_fill_customify_options( $options ) {
                                                 .is-today .pika-button,
                                                 
                                                 .sidebar--footer__light,
-                                                .copyright-area.copyright-area__light'
+                                                .copyright-area.copyright-area__light,
+                                                .error404 .overlay--shadow'
 						),
 						array(
 							'property' => 'fill',
