@@ -13,7 +13,7 @@ The essence of **open source** is that by freely sharing the code, you have the 
 It's great if you're willing to use your skills, knowledge, and experience to help further refine this project with your own improvements. We really appreciate it and you're 💯 welcome to submit an issue or pull request on any topic.
 
 ### How can you help?
--  🕵️‍♀️ **Discovered an issue?** Please report it [here](https://github.com/pixelgrade/rosa-lite/issues/new "here") and help us fix it.
+-  🕵️♀️ **Discovered an issue?** Please report it [here](https://github.com/pixelgrade/rosa-lite/issues/new "here") and help us fix it.
 - 🛠 **Fixed a bug?** That's fantastic! Send a [pull request](https://github.com/pixelgrade/rosa-lite/pulls "pull request") and we will look over it.
 - 🔮 **Need a feature?** Please take a moment to find out whether your idea fit the wider scope of this theme and provide as much detail and context as possible. Then propose it [here](https://github.com/pixelgrade/rosa-lite/issues/new).
 - 💎 **Have you made something great?** [Share](https://github.com/pixelgrade/rosa-lite/issues/new "Share") it with us.
