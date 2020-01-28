@@ -4,7 +4,7 @@ Theme URI: https://github.com/pixelgrade/rosa-lite
 Author: Pixelgrade
 Author URI: https://pixelgrade.com
 Description: This is the free version of Rosa, the #1 best selling restaurant WordPress theme, built to help small businesses shape an appealing online experience. It's packed with a parallax effect to grab attention, an online food menu so people can discover your offering, an easy to customize interface without using code, and a responsive design to address people on the go. This theme's versatility allows it to be used in a wide range of industries, making it the perfect theme if you own a business. No matter if it's a restaurant, beauty salon, house rental, hotel, coffee shop, or any other type of small business, this theme will fit your needs perfectly. With the Style Manager system you can customize your site's overall color palettes choosing from a set of predefined, carefully crafted palettes. If in need of help, jump right in the Theme Help section provided via the Pixelgrade Assistant plugin and search the documentation or open a support ticket.
-Version: 1.0.4
+Version: 1.0.6
 License: GNU General Public License v3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: rosa-lite
@@ -5677,9 +5677,6 @@ button.nav-trigger {
       padding: 10px 0; }
     .navigation--main .sub-menu .sub-menu {
       border: 0; }
-    .navigation--main .cart-icon-link {
-      padding: 8px 18px !important;
-      padding: 0.5rem 1.125rem !important; }
   #page {
     -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.86, 0, 0.07, 1);
     transition: -webkit-transform 0.3s cubic-bezier(0.86, 0, 0.07, 1);
@@ -5737,37 +5734,6 @@ button.nav-trigger {
     width: auto;
     display: inline-block;
     vertical-align: middle; } }
-
-.shop-menu-item:after {
-  content: none; }
-
-.shop-menu-item .shop-items-number {
-  position: absolute;
-  right: 3px;
-  bottom: 3px;
-  width: 16px;
-  height: 16px;
-  font-size: 10px;
-  line-height: 16px;
-  text-align: center;
-  color: white;
-  background-color: #c59d5f;
-  border-radius: 50%; }
-
-.navigation--main .nav--main .shop-menu-item.menu-item-has-children > a:after, .navigation--main .nav--main .shop-menu-item.menu-item-language > a:after {
-  content: none; }
-
-.shop-menu-item .cart-icon-link {
-  padding: 12px 10px;
-  padding: 0.75rem 0.625rem;
-  display: block; }
-
-.shop-menu-item .widget_shopping_cart_content {
-  position: relative;
-  display: inline-block; }
-
-.shop-menu-item:hover .sub-menu {
-  display: block; }
 
 @media only screen and (min-width: 900px) {
   .navigation--main {
@@ -6522,6 +6488,9 @@ html .promo-box__container.promo-box__container a {
   @media only screen and (max-width: 899px) {
     .site-title {
       padding: 0 48px; } }
+
+.site-title--image[class] {
+  position: relative; }
 
 .site-title--text {
   font-size: 47px;

@@ -513,10 +513,6 @@ $nav-width: 84vw;
 		.sub-menu .sub-menu{
 			border: 0;
 		}
-
-		.cart-icon-link {
-			@include rem(padding, 8px 18px !important);
-		}
 	}
 
 	#page {
@@ -605,49 +601,6 @@ $nav-width: 84vw;
 		width: auto;
 		display: inline-block;
 		vertical-align: middle;
-	}
-}
-
-.shop-menu-item{
-	&:after{
-		content: none;
-	}
-
-	.shop-items-number{
-		position: absolute;
-		right: 3px;
-		bottom: 3px;
-
-		width: 16px;
-		height: 16px;
-
-		font-size: 10px;
-		line-height: 16px;
-		text-align: center;
-
-		color: white;
-		background-color: $accent;
-		border-radius: 50%;
-	}
-
-	.navigation--main .nav--main &.menu-item-has-children > a:after{
-		content: none;
-	}
-
-	.cart-icon-link{
-		@include rem(padding, $_u2 10px);
-		display: block;
-	}
-
-	.widget_shopping_cart_content{
-		position: relative;
-		display: inline-block;
-	}
-
-	&:hover{
-		.sub-menu{
-			display: block;
-		}
 	}
 }
 
