@@ -1,7 +1,7 @@
 /*!
  * jQuery Rellax Plugin v0.3.7.1
  * Examples and documentation at http://pixelgrade.github.io/rellax/
- * Copyright (c) 2016 - 2019 PixelGrade http://www.pixelgrade.com
+ * Copyright (c) 2016-2020 Pixelgrade https://pixelgrade.com
  * Licensed under MIT http://www.opensource.org/licenses/mit-license.php/
  */
 ;(
