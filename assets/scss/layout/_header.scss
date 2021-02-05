@@ -66,6 +66,8 @@
 
 	height: $_3u;
 	margin: 0;
+  
+  word-break: break-word;
 
 	@include media-query(palm){
 		padding: 0 $_2u;

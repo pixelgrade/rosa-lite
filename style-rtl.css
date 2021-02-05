@@ -6467,7 +6467,8 @@ html .promo-box__container.promo-box__container a {
 \*----------------------------------------*/
 .site-title {
   height: 72px;
-  margin: 0; }
+  margin: 0;
+  word-break: break-word; }
   @media only screen and (max-width: 899px) {
     .site-title {
       padding: 0 48px; } }
