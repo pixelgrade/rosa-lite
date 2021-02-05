@@ -376,8 +376,8 @@
 
     function update() {
       var inversed = false,
-        adminBarHeight = $("#wpadminbar").outerHeight(),
-        headerHeight = $header.outerHeight();
+        adminBarHeight = $("#wpadminbar").outerHeight() || 0,
+        headerHeight = $header.outerHeight() || 0;
 
       $headers.each(function(i, obj) {
         var $obj = $(obj),
@@ -812,7 +812,7 @@
 
   /* ====== ON WINDOW LOAD ====== */
 
-  $(window).load(function() {
+  $(window).on("load", function() {
     if (globalDebug) {
       console.group("OnWindowLoad");
     }

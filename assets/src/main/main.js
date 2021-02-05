@@ -280,7 +280,7 @@ $( document ).ready( function() {
 
 /* ====== ON WINDOW LOAD ====== */
 
-$( window ).load( function() {
+$( window ).on('load', function()  {
 
 	if ( globalDebug ) {
 		console.group( "OnWindowLoad" );
